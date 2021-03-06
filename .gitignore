@@ -6,6 +6,8 @@
 # Node artifact files
 node_modules/
 dist/
+package-lock.json
+.awcache/
 
 # Compiled Java class files
 *.class
@@ -48,3 +50,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Others
+archive/
+workspace.code-workspace
