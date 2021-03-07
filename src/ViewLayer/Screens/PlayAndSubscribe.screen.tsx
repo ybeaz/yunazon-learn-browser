@@ -1,5 +1,7 @@
 import React from 'react'
 
+import './PlayAndSubscribe.style.less'
+
 export const PlayAndSubscribeScreen: Function = (): JSX.Element => {
   return (
     <div className='PlayAndSubscribe'>
