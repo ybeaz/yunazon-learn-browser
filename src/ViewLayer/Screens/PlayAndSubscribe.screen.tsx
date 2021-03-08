@@ -1,11 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import './PlayAndSubscribe.style.less'
 
-export const PlayAndSubscribeScreen: Function = (): JSX.Element => {
+export const PlayAndSubscribeScreen: Function = props => {
+  const { rootPath } = props
+  console.info('PlayAndSubscribe.screen [8]', { props })
   return (
     <div className='PlayAndSubscribe'>
-      ScreenPlayAndSubscribe :-)
+      <div>ScreenPlayAndSubscribe :-)</div>
+      <div className='PlayAndSubscribe__logo_div'>
+        <Link {...{ to: `${rootPath}/home` }}>About</Link>
+      </div>
       <div>
         <iframe
           width='560'
