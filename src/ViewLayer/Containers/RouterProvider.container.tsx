@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
+import * as action from '../../DataLayer/index.action'
 import { PlayAndSubscribeScreen } from '../Screens/PlayAndSubscribe.screen'
 import { Error404Screen } from '../Screens/Error404.screen'
 
@@ -9,6 +11,14 @@ export const RouterProvider = () => {
     PlayAndSubscribeScreen,
     Error404Screen,
   }
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch({
+      type: action.GET_GLOBAL_VARS.REQUEST,
+    })
+  }, [])
 
   const demoHostName = 'r1.userto.com'
   const demoPath = '/demo-youtube-learn.html'

@@ -9,7 +9,7 @@ function* getProductCard(payload) {
     data: { variables },
   } = payload
   // const { user } = yield select(store => store)
-  // console.info('getProductCard [9]', { variables })
+  console.info('getProductCard [9]', { variables })
 
   try {
     const server = 'remote'

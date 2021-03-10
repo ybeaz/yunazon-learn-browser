@@ -1,10 +1,16 @@
-export const rootReducer: Function = (store: any = {}, action: any): any => {
+import { RootState } from '../Interfaces/RootState'
+
+export const rootReducer: Function = (
+  store: RootState = { globalVars: {} },
+  action: any
+): any => {
   const { type } = action
   // console.info('rootReducer [3]', { action })
   switch (type) {
-    case 'GET_PRODUCT_CARD_SUCCESS': {
+    case 'GET_GLOBAL_VARS_SUCCESS': {
       const { data } = action
-      return { ...store, ecomAssets: data }
+      const storeNext = { ...store, globalVars: data }
+      return storeNext
     }
 
     case 'TEST_ACTION': {

@@ -9,6 +9,7 @@ const createRequestTypes = base =>
   }, {})
 
 // Asynchroneous actions for saga
+export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 export const GET_PRODUCT_CARD: any = createRequestTypes('GET_PRODUCT_CARD')
 
 // Synchroneours redux actions
