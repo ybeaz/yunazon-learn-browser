@@ -17,14 +17,14 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/ybeaz/ynazon-app-desktop.git"
   },
-  "author": "",
+  "author": "me",
   "license": "ISC",
   "homepage": "https://bitbucket.org/ybeaz/ynazon-app-desktop#readme",
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint-staged",
       "pre-push": "yarn typecheck && yarn lint",
-      "commit-msg": "npx commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "npx commitlint HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
