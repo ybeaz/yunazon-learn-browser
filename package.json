@@ -11,7 +11,8 @@
     "test": "jest",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
+    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
