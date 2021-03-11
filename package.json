@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+ssh://git@bitbucket.org/ybeaz/ynazon-app-desktop.git"
   },
-  "author": "me1",
+  "author": "me12",
   "license": "ISC",
   "homepage": "https://bitbucket.org/ybeaz/ynazon-app-desktop#readme",
   "husky": {
