@@ -6,6 +6,7 @@
 # Node artifact files
 node_modules/
 package-lock.json
+yarn.lock
 .awcache/
 dist/bundle.min.js
 dist/bundle.min.js.LICENSE.txt
