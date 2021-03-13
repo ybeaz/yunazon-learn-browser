@@ -1,4 +1,4 @@
-import { RootState } from '../Interfaces/RootState'
+import { RootState } from '../@types/RootState'
 
 export const rootReducer: Function = (
   store: RootState = { globalVars: {} },

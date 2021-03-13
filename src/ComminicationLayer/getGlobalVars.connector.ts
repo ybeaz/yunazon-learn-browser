@@ -1,5 +1,4 @@
 import { servers as serversConst } from '../Constants/servers.const'
-import { EcomAssetsAll } from './fragments'
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -8,15 +7,15 @@ const headers = {
 }
 
 export const getGlobalVarsConnector: Function = (): any => {
-  const server = 'remote'
-  const pathname = '/filestorage/globalVars.json'
+  const server: string = 'remote'
+  const pathname: string = '/filestorage/globalVars.json'
 
-  const obj = {
+  const obj: any = {
     testCapture: 'should return 200 code and data defined',
     pathname,
     method: 'get',
     options: { headers: { ...headers } },
-    url: `${serversConst[server]}${pathname}`,
+    url: <string>`${serversConst[server]}${pathname}`,
   }
 
   return obj

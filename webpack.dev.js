@@ -1,9 +1,10 @@
-const merge = require('webpack-merge')
+const { merge } = require('webpack-merge')
 const common = require('./webpack.common.js')
 const webpack = require('webpack')
 const path = require('path')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'development',
@@ -17,7 +18,8 @@ module.exports = merge(common, {
     overlay: true,
     stats: {
       colors: true,
-      chunks: false,
+      chunks: true,
+      chunkModules: false,
       hash: false,
       version: false,
       timings: false,
@@ -25,16 +27,20 @@ module.exports = merge(common, {
       children: false,
       source: false,
       warnings: false,
-      noInfo: true,
-      contentBase: './public',
+      noInfo: false,
+      contentBase: './dist',
       hot: true,
       errors: true,
-      modules: true,
+      modules: false,
       reasons: true,
       errorDetails: true,
     },
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Dev-server',
+      template: 'template.html',
+    }),
     new ESLintPlugin({
       files: 'src/**/*.(js|jsx|ts|tsx)',
       extensions: ['.js', '.jsx', '.ts', '.tsx'],

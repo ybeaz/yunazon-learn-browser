@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import * as action from '../../DataLayer/index.action'
-import { PlayAndSubscribeScreen } from '../Screens/PlayAndSubscribe.screen'
-import { Error404Screen } from '../Screens/Error404.screen'
+import * as action from './DataLayer/index.action'
+import { PlayAndSubscribeScreen } from './ViewLayer/Screens/PlayAndSubscribe.screen'
+import { Error404Screen } from './ViewLayer/Screens/Error404.screen'
 
-export const RouterProvider = () => {
+export const RouterScreensConfig = () => {
   const PAGES = {
     PlayAndSubscribeScreen,
     Error404Screen,
@@ -94,7 +94,7 @@ export const RouterProvider = () => {
     return (
       <Route
         component={() => {
-          // console.info('RouterProvider [86] Error 404', { location })
+          //  console.info('RouterProvider [86] Error 404', { location })
           return <Error404Screen />
         }}
       />

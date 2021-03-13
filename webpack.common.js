@@ -9,12 +9,14 @@
 
 const webpack = require('webpack')
 const glob = require('glob')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // var MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const path = require('path')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const WebpackNotifierPlugin = require('webpack-notifier')
+const TerserPlugin = require('terser-webpack-plugin')
 const styledComponentsTransformer = require('typescript-plugin-styled-components')
   .default
 const keysTransformer = require('ts-transformer-keys/transformer').default
@@ -29,48 +31,43 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: [
-      '.ts',
-      '.tsx',
-      '.js',
-      '.jsx',
-      '.es6',
-      'less',
-      'css',
-      'config',
-      'variables',
-      'overrides',
-    ],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
   module: {
     rules: [
       {
-        test: /\.(ts[\S]{0,2})$/i,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'awesome-typescript-loader', // 'ts-loader',
-            options: {
-              // disable type checker - we will use it in fork plugin
-              transpileOnly: true,
-              getCustomTransformers: program => ({
-                before: [
-                  styledComponentsTransformer(),
-                  keysTransformer(program),
-                ],
-              }),
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(js[\S]{0,2})$/i,
+        test: /\.(js|jsx|ts|tsx)$/i,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
-            query: {
-              plugins: ['@babel/proposal-class-properties'],
+            options: {
+              cacheDirectory: true,
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: {
+                      browsers: [
+                        'last 2 Chrome versions',
+                        'last 2 Firefox versions',
+                        'last 2 Safari versions',
+                        'last 2 Edge versions',
+                        'ie >= 11',
+                      ],
+                    },
+                    useBuiltIns: 'usage',
+                    corejs: 2,
+                  },
+                ],
+                '@babel/preset-react',
+                '@babel/typescript',
+              ],
+              plugins: [
+                ['babel-plugin-transform-require-ignore', {}],
+                '@babel/plugin-proposal-class-properties',
+                '@babel/plugin-proposal-object-rest-spread',
+              ],
             },
           },
         ],
@@ -87,13 +84,12 @@ module.exports = {
           },
           {
             loader: 'less-loader', // compiles Less to CSS
-            options: {},
           },
         ],
       },
       {
         test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-        loader: 'file-loader?name=assets/[name].[ext]',
+        use: ['file-loader?name=assets/[name].[ext]'],
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
@@ -104,24 +100,24 @@ module.exports = {
           'file-loader?name=[name].[ext]?[hash]',
         ],
       },
-      // the following 3 rules handle font extraction
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+        use: ['url-loader?limit=10000&mimetype=application/font-woff'],
       },
       {
         test: /\.otf(\?.*)?$/,
-        use:
+        use: [
           'file-loader?name=/fonts/[name].  [ext]&mimetype=application/font-otf',
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
+        ],
       },
     ],
   },
   plugins: [
+    new WebpackNotifierPlugin({
+      title: 'Yunazon-learn',
+      excludeWarning: true,
+      alwaysNotify: true,
+    }),
     new webpack.ProvidePlugin({
       React: 'react',
       'react-dom': 'ReactDOM',
@@ -130,25 +126,16 @@ module.exports = {
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.HashedModuleIdsPlugin({
-      hashFunction: 'sha256',
-      hashDigest: 'hex',
-      hashDigestLength: 20,
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.NamedModulesPlugin(),
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true,
       statsOptions: { source: false },
     }),
-    new HtmlWebpackPlugin({
-      title: 'Production',
-      template: 'template.html',
-    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new ForkTsCheckerWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [],
+    }),
   ],
   performance: {
     hints: false,
@@ -156,21 +143,19 @@ module.exports = {
   watch: false,
   target: 'web',
   externals: [{ pg: true }],
-  node: {
-    fs: 'empty',
-  },
+  node: {},
   optimization: {
-    namedModules: false,
-    namedChunks: false,
     nodeEnv: 'production',
     flagIncludedChunks: true,
-    occurrenceOrder: true,
     sideEffects: true,
     usedExports: true,
     concatenateModules: true,
-    noEmitOnErrors: true,
     removeAvailableModules: true,
     removeEmptyChunks: true,
     mergeDuplicateChunks: true,
+  },
+  cache: {
+    type: 'filesystem',
+    cacheDirectory: path.resolve(__dirname, '.temp_cache'),
   },
 }

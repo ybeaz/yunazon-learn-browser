@@ -2,9 +2,10 @@ import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { RootState } from '../../Interfaces/RootState'
+import { RootState } from '../../@types/RootState'
 import * as action from '../../DataLayer/index.action'
 import { Header } from '../Components/Header.component'
+
 import './PlayAndSubscribe.style.less'
 
 export const PlayAndSubscribeScreen: Function = (props = { rootPath: '' }) => {
@@ -12,6 +13,11 @@ export const PlayAndSubscribeScreen: Function = (props = { rootPath: '' }) => {
 
   const { globalVars } = useSelector((store: RootState) => store)
   const dispatch = useDispatch()
+
+  if (globalVars?.theme) {
+    const theme = globalVars.theme
+    require(`../StyleThemes/theme${theme}.less`)
+  }
 
   console.info('PlayAndSubscribe [22]', { globalVars })
   return (

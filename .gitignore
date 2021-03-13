@@ -8,6 +8,7 @@ node_modules/
 package-lock.json
 yarn.lock
 .awcache/
+.temp_cache/
 dist/bundle.min.js
 dist/bundle.min.js.LICENSE.txt
 dist/bundle.min.js.map
