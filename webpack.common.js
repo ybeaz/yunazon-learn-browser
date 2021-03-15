@@ -155,7 +155,6 @@ module.exports = {
     mergeDuplicateChunks: true,
   },
   cache: {
-    type: 'filesystem',
-    cacheDirectory: path.resolve(__dirname, '.temp_cache'),
+    type: 'memory',
   },
 }

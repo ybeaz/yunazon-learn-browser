@@ -1,8 +1,103 @@
 .Header {
   display: flex;
   flex-direction: row;
-  padding: 60px;
+  padding: 1em;
   text-align: center;
-  background: #1abc9c;
-  color: white;
+  background-color: @colorSecond;
+
+  &__left {
+    display: flex;
+    flex: 1;
+    &_menu {
+      display: flex;
+      padding-right: 2em;
+      align-items: center;
+      &_icon {
+        display: flex;
+        height: 1.5em;
+        width: 1.5em;
+      }
+    }
+
+    &_logo {
+      display: flex;
+      &_div {
+        display: flex;
+        align-items: center;
+        &_img {
+          display: flex;
+          width: 2em !important;
+          height: 1.5em;
+        }
+      }
+      &_background {
+        background-image: url('https://ynm.userto.com/filestorage/logoYunazonV13.png');
+        width: -webkit-fill-available;
+      }
+      &_brand {
+        font-weight: 700;
+        padding-left: 0.15em;
+        align-items: center;
+        display: flex;
+        font-family: sans-serif;
+        font-size: 1.2em;
+        letter-spacing: -1px;
+        font-size: 1.1em;
+        letter-spacing: -1px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+      }
+    }
+  }
+
+  &__center {
+    display: flex;
+    flex: 1;
+    &_search {
+      display: flex;
+
+      &_input {
+        display: flex;
+        padding-bottom: 1px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 1px;
+        text-size-adjust: 100%;
+        font-weight: 400;
+        font-size: 16px;
+        cursor: text;
+        direction: ltr;
+        letter-spacing: normal;
+        line-height: 24px;
+        background-color: @colorSecondDacker;
+        border-color: @colorSecondLighter2;
+        color: @colorFirst;
+        border-width: 1px;
+        border-style: solid;
+        -webkit-appearance: none;
+        background-clip: border-box;
+      }
+
+      &_button {
+        display: flex;
+      }
+
+      &_icon {
+        display: flex;
+
+        &_test {
+          display: flex;
+          width: 10em;
+          height: 10em;
+          color: #ff0101;
+        }
+      }
+    }
+  }
+  &__right {
+    display: flex;
+    flex: 1;
+  }
 }

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './Error404.style.less'
-
 export const Error404Screen: Function = (): JSX.Element => {
   return (
     <div className='Error404'>

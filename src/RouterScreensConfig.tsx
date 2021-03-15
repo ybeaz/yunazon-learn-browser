@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import * as action from './DataLayer/index.action'
 import { PlayAndSubscribeScreen } from './ViewLayer/Screens/PlayAndSubscribe.screen'
 import { Error404Screen } from './ViewLayer/Screens/Error404.screen'
+import { RootState } from './@types/RootState'
 
 export const RouterScreensConfig = () => {
   const PAGES = {
@@ -15,9 +16,13 @@ export const RouterScreensConfig = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch({
-      type: action.GET_GLOBAL_VARS.REQUEST,
-    })
+    const makeDispatchAsyncWrappered = async () => {
+      await dispatch({
+        type: action.GET_GLOBAL_VARS.REQUEST,
+      })
+    }
+
+    makeDispatchAsyncWrappered()
   }, [])
 
   const demoHostName = 'r1.userto.com'
@@ -101,8 +106,25 @@ export const RouterScreensConfig = () => {
     )
   }
 
+  const getThemeRemotely: Function = () => {
+    try {
+      document.getElementsByTagName('body')[0].style.display = 'none'
+      const { globalVars } = useSelector((store: RootState) => store)
+      const { theme } = globalVars
+      if (theme) {
+        // require('./ViewLayer/Styles/config.style.less')
+        require(`./ViewLayer/Styles/theme${theme}.less`)
+        document.getElementsByTagName('body')[0].style.display = 'flex'
+        // require('./ViewLayer/Styles/index.style.less')
+      }
+    } catch (error) {
+      console.info('RouterScreensConfig [115]', { msg: error.message })
+    }
+  }
+
   return (
     <BrowserRouter>
+      {getThemeRemotely()}
       <Switch>
         {getRoutes()}
         {getRedirects()}
