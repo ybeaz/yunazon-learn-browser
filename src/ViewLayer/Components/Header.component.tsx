@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { IconContext } from 'react-icons'
-import { MdMenu, MdSearch } from 'react-icons/md'
+import { MdPerson, MdMenu, MdSearch } from 'react-icons/md'
 import { IoLogoYoutube } from 'react-icons/io5'
 
 export const Header = () => {
@@ -39,21 +39,35 @@ export const Header = () => {
       </div>
       <div className='Header__center'>
         <div className='Header__center_search'>
-          <input
-            className='Header__center_search_input'
-            type='text'
-            placeholder='Search...'
-          />
-          <button className='Header__center_search_button' type='button'>
+          <div className='Header__center_search_div1'>
+            <input
+              className='Header__center_search_div1_input'
+              type='text'
+              placeholder='Search...'
+            />
+          </div>
+          <div className='Header__center_search_div2'>
+            <button className='Header__center_search_div2_button' type='button'>
+              <IconContext.Provider
+                value={{ className: 'Header__center_search_div2_button_icon' }}
+              >
+                <MdSearch />
+              </IconContext.Provider>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className='Header__right'>
+        <div className='Header__right_user'>
+          <button className='Header__right_user_button' type='button'>
             <IconContext.Provider
-              value={{ className: 'Header__center_search_icon' }}
+              value={{ className: 'Header__right_user_button_icon' }}
             >
-              <MdSearch />
+              <MdPerson />
             </IconContext.Provider>
           </button>
         </div>
       </div>
-      <div className='Header__right'></div>
     </div>
   )
 }
