@@ -5,7 +5,7 @@ import makeAsyncScriptLoader from 'react-async-script'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 const PlayerComponent = () => {
-  const videoProps = { videoId: 'YukDNIPy3sY', width: '640', height: '390' }
+  const videoProps = { videoId: 'GQplO4weJTg', width: '640', height: '390' }
   const {
     playVideoHandler,
     pauseVideoHandler,

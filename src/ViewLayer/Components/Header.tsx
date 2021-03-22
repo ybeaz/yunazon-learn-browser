@@ -34,7 +34,7 @@ export const Header = () => {
               src='https://ynm.userto.com/filestorage/logoYunazonV13.png'
             />
           </div>
-          <div className='Header__left_logo_brand'>YunAzon</div>
+          <div className='Header__left_logo_brand'>YouRails</div>
         </div>
       </div>
       <div className='Header__center'>

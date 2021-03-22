@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as action from '../../DataLayer/index.action'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
+import { CheckBoxes } from '../Components/CheckBoxes'
+import { RadioButtons } from '../Components/RadioButtons'
+import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
 interface IPlayAndSubScribe {
   routeProps: any
@@ -14,6 +17,18 @@ export const PlayAndSubscribeScreen: Function = (
   props: IPlayAndSubScribe = { routeProps: {}, rootPath: '' }
 ) => {
   const dispatch = useDispatch()
+
+  let checkBoxes = [
+    { label: 'One', checked: true },
+    { label: 'Two', checked: false },
+    { label: 'Three', checked: false },
+    { label: 'Four', checked: false },
+  ]
+  checkBoxes = getAddedArrIdPrefix(checkBoxes, 'label')
+  const checkBoxesProps = {
+    capture: 'My first question',
+    checkBoxesIn: checkBoxes,
+  }
 
   // console.info('PlayAndSubscribe.screen [72]', { props })
   return (
@@ -36,7 +51,10 @@ export const PlayAndSubscribeScreen: Function = (
             <Player />
           </div>
         </div>
-        <div className='PlayAndSubscribe__play_right'></div>
+        <div className='PlayAndSubscribe__play_right'>
+          <CheckBoxes {...checkBoxesProps} />
+          <RadioButtons />
+        </div>
       </div>
 
       {/* <!-- Footer --> */}

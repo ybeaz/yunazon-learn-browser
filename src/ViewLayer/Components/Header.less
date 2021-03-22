@@ -98,7 +98,6 @@
       &_div2 {
         display: flex;
         &_button {
-          border: 0px solid @colorSecondLighter3;
           background-color: @colorSecondLighter3;
           display: flex;
           cursor: pointer;
@@ -109,6 +108,9 @@
           margin: 0;
           padding: 0;
           border: none;
+          &:focus {
+            outline: 0;
+          }
 
           &_icon {
             width: 1.3rem;
