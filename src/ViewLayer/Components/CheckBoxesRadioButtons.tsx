@@ -15,7 +15,7 @@ export const CheckBoxesRadioButtons: Function = ({
       const { label, checked = false, id: labelKey } = item
       let multi = 'multy'
 
-      // Stopped  here to convert this component into checkbox and radiobutton with single and multy features
+      // Stopped   here to convert this component into checkbox and radiobutton with single and multy features
       const inputProps = {}
 
       return (
