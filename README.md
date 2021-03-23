@@ -2,11 +2,13 @@
 
 ## Plan
 
-To make layout and styling close to Youtube
-Create Yunazone learn Logo :-)
+
+
 
 ## Done
 
+2021-03-20 Create Yunazone learn Logo, first move
+2021-03-20 To make layout and styling close to Youtube
 2021-03-10 Integrate icon library React Icons
 2021-03-10 Setup main layout
 2021-03-09 Setup globalVars fetching
