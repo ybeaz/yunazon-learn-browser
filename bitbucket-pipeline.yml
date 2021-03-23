@@ -1,0 +1,24 @@
+image: yunazon/default-image2
+
+pipelines:
+  default:
+    - parallel:
+       - step:
+          name: 'Build and Test'
+          script:
+             - echo "You build and test goes here"
+       - step:
+          name: 'Lint'
+          script:
+             - echo "Your linting goes here ..."
+       - step:
+           name: 'Deployment to Staging'
+           deployment: staging
+           script: 
+             - echo: 'Your deployment to stage goes here'
+       - step:
+           name: 'Deployment to Production'
+           deployment: production
+           trigger: 'manual'
+           script:
+             - echo: 'Your deployment to stage goes here'

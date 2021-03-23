@@ -1,0 +1,12 @@
+{
+  "README": {
+    "theme": ["Light", "Dark"]
+  },
+  "favicon": {
+    "href": "https://userto.com/img/favicon.ico"
+  },
+  "theme": "Light",
+  "rus": {
+    "something": 1
+  }
+}

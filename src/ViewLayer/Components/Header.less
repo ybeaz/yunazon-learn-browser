@@ -1,0 +1,154 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  padding: 0.8em 1.5rem;
+  text-align: center;
+  background-color: @colorSecond;
+
+  &__left {
+    display: flex;
+    flex: 1;
+    &_menu {
+      display: flex;
+      padding-right: 1.4em;
+      align-items: center;
+      &_icon {
+        display: flex;
+        height: 1.5em;
+        width: 1.5em;
+      }
+    }
+
+    &_logo {
+      display: flex;
+      &_div {
+        display: flex;
+        align-items: center;
+        &_img {
+          display: flex;
+          width: 1.7em !important;
+          height: 1.1em;
+        }
+      }
+      &_background {
+        background-image: url('https://ynm.userto.com/filestorage/logoYunazonV13.png');
+        width: -webkit-fill-available;
+      }
+      &_brand {
+        font-weight: 700;
+        padding-left: 0.15em;
+        align-items: center;
+        display: flex;
+        font-family: sans-serif;
+        font-size: 1.2em;
+        letter-spacing: -1px;
+        font-size: 1.1em;
+        letter-spacing: -1px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+      }
+    }
+  }
+
+  &__center {
+    display: flex;
+    flex: 6;
+    justify-content: center;
+    &_search {
+      display: flex;
+      width: 100%;
+      padding: 0 10rem 0 10rem;
+      &_div1 {
+        display: flex;
+        width: 100%;
+
+        &_input {
+          color: @colorFirstDarker2;
+          background-color: @colorSecondDacker;
+          border-color: @colorSecondLighter2;
+          display: flex;
+          width: 100%;
+          max-width: 100%;
+          margin: 0 0 0 2px;
+          padding: 2px 0.7rem 2px 0.7rem;
+          text-size-adjust: 100%;
+          font-weight: 400;
+          font-size: 17px;
+          line-height: 24px;
+          letter-spacing: -0.3px;
+          direction: ltr;
+          border-width: 1px;
+          border-style: solid;
+          -webkit-appearance: none;
+          background-clip: border-box;
+          cursor: text;
+          &:active,
+          &:focus {
+            color: @colorFirstDarker2;
+            border-color: @colorActive;
+            border-radius: 0px;
+            outline: none;
+            text-size-adjust: 100%;
+          }
+        }
+      }
+
+      &_div2 {
+        display: flex;
+        &_button {
+          background-color: @colorSecondLighter3;
+          display: flex;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+          width: 65px;
+          border-radius: 0 0 0 0;
+          margin: 0;
+          padding: 0;
+          border: none;
+          &:focus {
+            outline: 0;
+          }
+
+          &_icon {
+            width: 1.3rem;
+            height: 1.3rem;
+            color: @colorSecondLighter4;
+          }
+        }
+      }
+    }
+  }
+  &__right {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+
+    &_user {
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      &_button {
+        border: 1px solid @colorSecond;
+        background-color: @colorSecond;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0 0 0 0;
+        margin: 0;
+        padding: 0;
+        border: none;
+
+        &_icon {
+          color: @colorSecondLighter4;
+          background-color: @colorSecond;
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+      }
+    }
+  }
+}

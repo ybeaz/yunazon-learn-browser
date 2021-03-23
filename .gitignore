@@ -5,7 +5,16 @@
 
 # Node artifact files
 node_modules/
-dist/
+package-lock.json
+yarn.lock
+.awcache/
+.temp_cache/
+dist/bundle.min.js
+dist/bundle.min.js.LICENSE.txt
+dist/bundle.min.js.map
+dist/index.html
+dist/stats.json
+
 
 # Compiled Java class files
 *.class
@@ -48,3 +57,6 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Others
+archive/
+workspace.code-workspace

@@ -1,0 +1,50 @@
+// @plugin "lessPluginBlue";
+// @plugin "lessPluginLoadJson";
+
+@xs-min: 480px;
+@sm-min: 768px;
+@md-min: 992px;
+@lg-min: 1200px;
+
+@xs-max: (@sm-min - 1);
+@sm-max: (@md-min - 1);
+@md-max: (@lg-min - 1);
+
+@phone: ~'only screen and (max-width: @{xs-min})';
+@phone-strict: ~'only screen and (min-width: @{xs-min}) and (max-width: @{xs-max})';
+@tablet: ~'only screen and (min-width: @{sm-min}) and (max-width: @{md-min})';
+@tablet-strict: ~'only screen and (min-width: @{sm-min}) and (max-width: @{sm-max})';
+@desktop: ~'only screen and (min-width: @{md-min}) and (max-width: @{lg-min})';
+@desktop-strict: ~'only screen and (min-width: @{md-min}) and (max-width: @{md-max})';
+@large: ~'only screen and (min-width: @{lg-min})';
+
+// @colorFirstDarker: #000000;
+// @colorFirst: #000000;
+
+// @colorSecondDacker: #ffffff;
+// @colorSecond: #ffffff;
+// @colorSecondLighter2: #ffffff;
+// @colorSecondLighter2: #ffffff;
+// @colorSecondLighter3: #ffffff;
+
+// @colorActive: #ffffff;
+
+@import (css)
+  url(https://fonts.googleapis.com/css?family=Roboto|Noto|sans+serif);
+
+* {
+  font-family: Roboto, Noto, sans-serif;
+  box-sizing: border-box;
+  background-clip: content-box;
+  margin: 0;
+}
+
+body {
+  display: none;
+}
+
+#root {
+  width: 100%;
+  flex: 1;
+}
+// font-family: 'Lucida Grande', Helvetica, Arial, sans-serif;

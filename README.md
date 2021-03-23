@@ -1,29 +1,14 @@
-# README #
+# README
 
-This README would normally document whatever steps are necessary to get your application up and running.
+## Plan
 
-### What is this repository for? ###
+To make layout and styling close to Youtube
+Create Yunazone learn Logo :-)
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Done
 
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+2021-03-10 Integrate icon library React Icons
+2021-03-10 Setup main layout
+2021-03-09 Setup globalVars fetching
+2021-03-08 Setup router, final (or one of the final :) move
+2021-03-06 Setup environment and render "Hello World"
