@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as action from '../../DataLayer/index.action'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
-import { CheckBoxes } from '../Components/CheckBoxes'
+import { CheckBoxesRadioButtons } from '../Components/CheckBoxesRadioButtons'
 import { RadioButtons } from '../Components/RadioButtons'
 import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
@@ -27,7 +27,9 @@ export const PlayAndSubscribeScreen: Function = (
   checkBoxes = getAddedArrIdPrefix(checkBoxes, 'label')
   const checkBoxesProps = {
     capture: 'My first question',
-    checkBoxesIn: checkBoxes,
+    checkInputsIn: checkBoxes,
+    typeInput: 'CheckBoxes',
+    multi: true,
   }
 
   // console.info('PlayAndSubscribe.screen [72]', { props })
@@ -52,7 +54,7 @@ export const PlayAndSubscribeScreen: Function = (
           </div>
         </div>
         <div className='PlayAndSubscribe__play_right'>
-          <CheckBoxes {...checkBoxesProps} />
+          <CheckBoxesRadioButtons {...checkBoxesProps} />
           <RadioButtons />
         </div>
       </div>
