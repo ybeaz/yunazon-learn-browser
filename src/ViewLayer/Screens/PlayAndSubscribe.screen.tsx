@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as action from '../../DataLayer/index.action'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
-import { CheckBoxesRadioButtons } from '../Components/CheckBoxesRadioButtons'
+import { CheckRadioGroup } from '../Components/CheckRadioGroup'
 import { RadioButtons } from '../Components/RadioButtons'
 import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
@@ -18,18 +18,28 @@ export const PlayAndSubscribeScreen: Function = (
 ) => {
   const dispatch = useDispatch()
 
-  let checkBoxes = [
-    { label: 'One', checked: true },
-    { label: 'Two', checked: false },
-    { label: 'Three', checked: false },
-    { label: 'Four', checked: false },
-  ]
-  checkBoxes = getAddedArrIdPrefix(checkBoxes, 'label')
   const checkBoxesProps = {
     capture: 'My first question',
-    checkInputsIn: checkBoxes,
+    checkInputsIn: [
+      { label: 'One', checked: true },
+      { label: 'Two', checked: false },
+      { label: 'Three', checked: false },
+      { label: 'Four', checked: false },
+    ],
     typeInput: 'CheckBoxes',
     multi: true,
+  }
+
+  const radioButtonsProps = {
+    capture: 'My second question',
+    checkInputsIn: [
+      { label: 'One', checked: true },
+      { label: 'Two', checked: false },
+      { label: 'Three', checked: false },
+      { label: 'Four', checked: false },
+    ],
+    typeInput: 'RadioButtons',
+    multi: false,
   }
 
   // console.info('PlayAndSubscribe.screen [72]', { props })
@@ -54,7 +64,8 @@ export const PlayAndSubscribeScreen: Function = (
           </div>
         </div>
         <div className='PlayAndSubscribe__play_right'>
-          <CheckBoxesRadioButtons {...checkBoxesProps} />
+          <CheckRadioGroup {...checkBoxesProps} />
+          <CheckRadioGroup {...radioButtonsProps} />
           <RadioButtons />
         </div>
       </div>

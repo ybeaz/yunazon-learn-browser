@@ -1,22 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import { handleEvents } from '../Hooks/handleEvents'
+import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
-export const CheckBoxesRadioButtons: Function = ({
+export const CheckRadioGroup: Function = ({
   capture,
   checkInputsIn,
   typeInput,
   multi,
 }: any): JSX.Element => {
-  const [checkInputs, setCheckInputs] = useState(checkInputsIn)
+  const checkInputsInRef = useRef(getAddedArrIdPrefix(checkInputsIn, 'label'))
+    .current
 
-  const getCheckLines: Function = (checkInputs: any[]): JSX.Element[] => {
+  const [checkInputs, setCheckInputs] = useState(checkInputsInRef)
+
+  const getCheckLines: Function = (
+    checkInputs: any[],
+    multi: boolean
+  ): JSX.Element[] => {
     return checkInputs.map(item => {
       const { label, checked = false, id: labelKey } = item
-      let multi = 'multy'
-
-      // Stopped here to convert this component into checkbox and radiobutton with single and multy features
-      const inputProps = {}
 
       return (
         <label className='container' key={labelKey}>
@@ -25,7 +28,7 @@ export const CheckBoxesRadioButtons: Function = ({
             onChange={event =>
               handleEvents(event, {
                 typeEvent: 'CLICK_CHECK',
-                data: { checkInputs, setCheckInputs, labelKey },
+                data: { checkInputs, setCheckInputs, labelKey, multi },
               })
             }
             type='checkbox'
@@ -41,8 +44,8 @@ export const CheckBoxesRadioButtons: Function = ({
   // console.info('CheckBoxesRadioButtons [40]', { checkInputs })
   return (
     <div className={typeInput}>
-      <div className={`${typeInput}_capture`}>{capture}</div>
-      {getCheckLines(checkInputs)}
+      <div className={`${typeInput}__capture`}>{capture}</div>
+      {getCheckLines(checkInputs, multi)}
     </div>
   )
 }

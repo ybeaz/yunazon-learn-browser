@@ -6,10 +6,14 @@ export const handleEvents: Function = (
 ): void => {
   const output = {
     CLICK_CHECK: () => {
-      const { checkInputs, setCheckInputs, labelKey } = data
-      const checkInputsNext = getArrCheckedChangedById(checkInputs, labelKey)
+      const { checkInputs, setCheckInputs, labelKey, multi } = data
+      const checkInputsNext = getArrCheckedChangedById(
+        checkInputs,
+        labelKey,
+        multi
+      )
       setCheckInputs(checkInputsNext)
-      console.info('handleEvents [12]', { typeEvent, data, checkInputsNext })
+      // console.info('handleEvents [12]', { typeEvent, data, checkInputsNext })
     },
   }
 
