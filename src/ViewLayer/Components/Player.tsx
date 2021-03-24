@@ -14,13 +14,28 @@ const PlayerComponent = () => {
 
   return (
     <div className='Player'>
-      <div className='Player_wrapper'>
-        <div className='Player_wrapper_playerDiv' id='playerDiv'></div>
+      <div className='Player__wrapper video-responsive'>
+        <div className='Player__wrapper_player' id='player'></div>
       </div>
       <div className='Player__panel'>
-        <button onClick={event => playVideoHandler()}>Play</button>
-        <button onClick={event => pauseVideoHandler()}>Pause</button>
-        <button onClick={event => stopVideoHandler()}>Stop</button>
+        <button
+          className='Player__panel_play'
+          onClick={event => playVideoHandler()}
+        >
+          Play
+        </button>
+        <button
+          className='Player__panel_pause'
+          onClick={event => pauseVideoHandler()}
+        >
+          Pause
+        </button>
+        <button
+          className='Player__panel_stop'
+          onClick={event => stopVideoHandler()}
+        >
+          Stop
+        </button>
       </div>
     </div>
   )

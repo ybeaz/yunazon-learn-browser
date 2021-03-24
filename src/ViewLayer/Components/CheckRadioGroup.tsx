@@ -43,8 +43,8 @@ export const CheckRadioGroup: Function = ({
 
   // console.info('CheckBoxesRadioButtons [40]', { checkInputs })
   return (
-    <div className={typeInput}>
-      <div className={`${typeInput}__capture`}>{capture}</div>
+    <div className={`CheckRadioGroup ${typeInput}`}>
+      <div className='CheckRadioGroup__capture'>{capture}</div>
       {getCheckLines(checkInputs, multi)}
     </div>
   )

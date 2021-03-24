@@ -5,8 +5,6 @@ import * as action from '../../DataLayer/index.action'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
 import { CheckRadioGroup } from '../Components/CheckRadioGroup'
-import { RadioButtons } from '../Components/RadioButtons'
-import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
 interface IPlayAndSubScribe {
   routeProps: any
@@ -66,7 +64,6 @@ export const PlayAndSubscribeScreen: Function = (
         <div className='PlayAndSubscribe__play_right'>
           <CheckRadioGroup {...checkBoxesProps} />
           <CheckRadioGroup {...radioButtonsProps} />
-          <RadioButtons />
         </div>
       </div>
 

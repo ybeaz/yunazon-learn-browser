@@ -39,7 +39,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   }
 
   function onYouTubeIframeAPIReady() {
-    const Player = new window['YT'].Player('playerDiv', {
+    const Player = new window['YT'].Player('player', {
       height,
       width,
       videoId,
