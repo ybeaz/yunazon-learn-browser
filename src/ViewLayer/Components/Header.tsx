@@ -1,10 +1,10 @@
 import React from 'react'
 
+import { Button } from './Button'
 import { IconContext } from 'react-icons'
 import { MdPerson, MdMenu, MdSearch } from 'react-icons/md'
-import { IoLogoYoutube } from 'react-icons/io5'
 
-export const Header = () => {
+export const Header: Function = (): JSX.Element => {
   const handleEvent = (e, eventAction) => {
     const { type } = eventAction
     switch (type) {
@@ -19,14 +19,20 @@ export const Header = () => {
     }
   }
 
+  const buttonMdMenuProps = { icon: 'MdMenu', classAdded: 'Button_MdMenu' }
+  const buttonMdSearchProps = {
+    icon: 'MdSearch',
+    classAdded: 'Button_MdSearch',
+  }
+  const buttonMdPersonProps = {
+    icon: 'MdPerson',
+    classAdded: 'Button_MdPerson',
+  }
+
   return (
     <div className='Header'>
       <div className='Header__left'>
-        <div className='Header__left_menu'>
-          <IconContext.Provider value={{ className: 'Header__left_menu_icon' }}>
-            <MdMenu />
-          </IconContext.Provider>
-        </div>
+        <Button {...buttonMdMenuProps} />
         <div className='Header__left_logo'>
           <div className='Header__left_logo_div'>
             <img
@@ -46,27 +52,11 @@ export const Header = () => {
               placeholder='Search...'
             />
           </div>
-          <div className='Header__center_search_div2'>
-            <button className='Header__center_search_div2_button' type='button'>
-              <IconContext.Provider
-                value={{ className: 'Header__center_search_div2_button_icon' }}
-              >
-                <MdSearch />
-              </IconContext.Provider>
-            </button>
-          </div>
+          <Button {...buttonMdSearchProps} />
         </div>
       </div>
       <div className='Header__right'>
-        <div className='Header__right_user'>
-          <button className='Header__right_user_button' type='button'>
-            <IconContext.Provider
-              value={{ className: 'Header__right_user_button_icon' }}
-            >
-              <MdPerson />
-            </IconContext.Provider>
-          </button>
-        </div>
+        <Button {...buttonMdPersonProps} />
       </div>
     </div>
   )

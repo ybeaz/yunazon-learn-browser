@@ -9,15 +9,15 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
 
   const [player, setPlayer] = useState(playerDefault)
 
-  function playVideoHandler(playerIn = player) {
+  function playVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.playVideo()
   }
 
-  function pauseVideoHandler(playerIn = player) {
+  function pauseVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.pauseVideo()
   }
 
-  function stopVideoHandler(playerIn = player) {
+  function stopVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.stopVideo()
   }
 
@@ -25,7 +25,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   function onPlayerReady(event) {}
 
   const onChangePlayerStateHandler = state => {
-    console.info('PlayAndSubscribe.screen [19] ', { state })
+    // console.info('PlayAndSubscribe.screen [19] ', { state })
     if (state.data === 0) {
       console.info('PlayAndSubscribe.screen [21] ', { state })
     }
