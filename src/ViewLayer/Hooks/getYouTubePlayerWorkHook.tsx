@@ -8,17 +8,21 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   }
 
   const [player, setPlayer] = useState(playerDefault)
+  const [isShowingPlay, setIsShowingPlay] = useState(true)
 
   function playVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.playVideo()
+    setIsShowingPlay(false)
   }
 
   function pauseVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.pauseVideo()
+    setIsShowingPlay(true)
   }
 
   function stopVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.stopVideo()
+    setIsShowingPlay(true)
   }
 
   // 4. The API will call this function when the video player is ready.
@@ -76,5 +80,6 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
+    isShowingPlay,
   }
 }

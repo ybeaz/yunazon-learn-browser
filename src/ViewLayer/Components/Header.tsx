@@ -43,11 +43,11 @@ export const Header: Function = (): JSX.Element => {
           <div className='Header__left_logo_brand'>YouRails</div>
         </div>
       </div>
-      <div className='Header__center'>
-        <div className='Header__center_search'>
-          <div className='Header__center_search_div1'>
+      <div className='Header__main'>
+        <div className='Header__main_search'>
+          <div className='Header__main_search_div1'>
             <input
-              className='Header__center_search_div1_input'
+              className='Header__main_search_div1_input'
               type='text'
               placeholder='Search...'
             />

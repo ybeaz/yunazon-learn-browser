@@ -11,6 +11,7 @@ const PlayerComponent = () => {
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
+    isShowingPlay,
   } = getYouTubePlayerWorkHook(videoProps)
 
   const buttonPlayProps = {
@@ -38,27 +39,12 @@ const PlayerComponent = () => {
         <div className='Player__wrapper_player' id='player'></div>
       </div>
       <div className='Player__panel'>
-        <Button {...buttonPlayProps} />
-        <Button {...buttonPauseProps} />
+        {isShowingPlay ? (
+          <Button {...buttonPlayProps} />
+        ) : (
+          <Button {...buttonPauseProps} />
+        )}
         <Button {...buttonStopProps} />
-        {/* <button
-          className='Player__panel_play'
-          onClick={event => playVideoHandler(event)}
-        >
-          Play
-        </button>
-        <button
-          className='Player__panel_pause'
-          onClick={event => pauseVideoHandler()}
-        >
-          Pause
-        </button>
-        <button
-          className='Player__panel_stop'
-          onClick={event => stopVideoHandler()}
-        >
-          Stop
-        </button> */}
       </div>
     </div>
   )
