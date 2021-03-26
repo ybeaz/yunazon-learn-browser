@@ -2,6 +2,7 @@ import React from 'react'
 
 import { IconContext } from 'react-icons'
 import {
+  MdPrint,
   MdForward,
   MdRemoveCircle,
   MdPause,
@@ -12,6 +13,7 @@ import {
 } from 'react-icons/md'
 
 const ICON = {
+  MdPrint,
   MdForward,
   MdRemoveCircle,
   MdPause,
@@ -39,7 +41,7 @@ export const Button: Function = (props: any): JSX.Element => {
       <button
         className={`Button__button ${classAdded}__button`}
         type='button'
-        onClick={e => handleEvents(e, action)}
+        onClick={event => handleEvents(event, action)}
       >
         <IconContext.Provider
           value={{

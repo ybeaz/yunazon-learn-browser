@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { Button } from './Button'
+import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 
 export const QuestionsColumn: Function = (): JSX.Element => {
   const checkBoxesProps = {
@@ -31,6 +32,15 @@ export const QuestionsColumn: Function = (): JSX.Element => {
   const buttonContinueProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward',
+    // handleEvents: () => { },
+    // action: {},
+  }
+
+  const buttonPrintCertProps = {
+    icon: 'MdPrint',
+    classAdded: 'Button_MdForward',
+    handleEvents: getPrintScreenAsPdf,
+    action: { screenType: 'Certificate', userName: 'Vasia Pupkin' },
   }
 
   return (
@@ -41,6 +51,9 @@ export const QuestionsColumn: Function = (): JSX.Element => {
       </div>
       <div className='QuestionsColumn__ok'>
         <Button {...buttonContinueProps} />
+        <div className='QuestionsColumn__print'>
+          <Button {...buttonPrintCertProps} />
+        </div>
       </div>
     </div>
   )

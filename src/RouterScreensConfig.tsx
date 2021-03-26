@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import * as action from './DataLayer/index.action'
-import { PlayAndSubscribeScreen } from './ViewLayer/Screens/PlayAndSubscribe.screen'
-import { Error404Screen } from './ViewLayer/Screens/Error404.screen'
+import { PlayAndSubscribeScreen } from './ViewLayer/Screens/PlayAndSubscribe'
+import { Error404Screen } from './ViewLayer/Screens/Error404'
 import { RootState } from './@types/RootState'
+import { Certificate } from './ViewLayer/Screens/Certificate'
 
 export const RouterScreensConfig = () => {
   const PAGES = {
+    Certificate,
     PlayAndSubscribeScreen,
     Error404Screen,
   }
@@ -42,6 +44,11 @@ export const RouterScreensConfig = () => {
           path: `/home`,
           exact: true,
           page: 'PlayAndSubscribeScreen',
+        },
+        {
+          path: `/certificate`,
+          exact: true,
+          page: 'Certificate',
         },
         {
           path: `${demoPath}/home`,
