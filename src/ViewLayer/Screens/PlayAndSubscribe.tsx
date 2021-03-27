@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import * as action from '../../DataLayer/index.action'
+import { SideNavigation } from '../Components/SideNavigation'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
 import { QuestionsColumn } from '../Components/QuestionsColumn'
@@ -19,6 +20,7 @@ export const PlayAndSubscribeScreen: Function = (
   return (
     <div className='PlayAndSubscribe'>
       <Header />
+      <SideNavigation />
 
       {/* <!-- Navigation Bar --> */}
       {/* <div className='navbar'>

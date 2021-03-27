@@ -1,12 +1,17 @@
 import { RootState } from '../@types/RootState'
 
 export const rootReducer: Function = (
-  store: RootState = { globalVars: {} },
+  store: RootState = { sideNavigationState: false, globalVars: {} },
   action: any
 ): any => {
   const { type } = action
-  // console.info('rootReducer [3]', { action })
   switch (type) {
+    case 'TOGGLE_SIDE_NAVIGATION': {
+      const { sideNavigationState } = store
+      // console.info('rootReducer [11]', { action })
+      return { ...store, sideNavigationState: !sideNavigationState }
+    }
+
     case 'GET_GLOBAL_VARS_SUCCESS': {
       const { data } = action
       const storeNext = { ...store, globalVars: data }

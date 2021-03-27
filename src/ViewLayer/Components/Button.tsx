@@ -30,6 +30,7 @@ export const Button: Function = (props: any): JSX.Element => {
   }
   const {
     icon,
+    capture,
     classAdded,
     handleEvents = handleEventsDefault,
     action = {},
@@ -43,13 +44,19 @@ export const Button: Function = (props: any): JSX.Element => {
         type='button'
         onClick={event => handleEvents(event, action)}
       >
-        <IconContext.Provider
-          value={{
-            className: `Button__button_icon ${classAdded}__button_icon`,
-          }}
-        >
-          <Icon />
-        </IconContext.Provider>
+        {Icon ? (
+          <IconContext.Provider
+            value={{
+              className: `Button__button_in ${classAdded}__button_in`,
+            }}
+          >
+            <Icon />
+          </IconContext.Provider>
+        ) : capture ? (
+          <div className={`Button__button_in ${classAdded}__button_in`}>
+            {capture}
+          </div>
+        ) : null}
       </button>
     </div>
   )

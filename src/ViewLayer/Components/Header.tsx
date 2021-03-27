@@ -1,47 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
-import { IconContext } from 'react-icons'
-import { MdPerson, MdMenu, MdSearch } from 'react-icons/md'
+import { handleEvents } from '../Hooks/handleEvents'
 
 export const Header: Function = (): JSX.Element => {
-  const handleEvent = (e, eventAction) => {
-    const { type } = eventAction
-    switch (type) {
-      case 'TEST_ACTION':
-        {
-          // Do something
-        }
-        break
-      default: {
-        console.info('Header.component [29]', 'unknown event type', type)
-      }
-    }
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    handleEvents,
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
   }
 
-  const buttonMdMenuProps = { icon: 'MdMenu', classAdded: 'Button_MdMenu' }
   const buttonMdSearchProps = {
     icon: 'MdSearch',
     classAdded: 'Button_MdSearch',
+    // handleEvents,
+    // action: { typeEvent: ''}
   }
   const buttonMdPersonProps = {
     icon: 'MdPerson',
     classAdded: 'Button_MdPerson',
+    // handleEvents,
+    // action: { typeEvent: ''}
   }
 
   return (
     <div className='Header'>
       <div className='Header__left'>
         <Button {...buttonMdMenuProps} />
-        <div className='Header__left_logo'>
-          <div className='Header__left_logo_div'>
-            <img
-              className='Header__left_logo_div_img'
-              src='https://ynm.userto.com/filestorage/logoYunazonV13.png'
-            />
-          </div>
-          <div className='Header__left_logo_brand'>YouRails</div>
-        </div>
+        <LogoGroup />
       </div>
       <div className='Header__main'>
         <div className='Header__main_search'>

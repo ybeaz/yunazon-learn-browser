@@ -5,7 +5,7 @@ import makeAsyncScriptLoader from 'react-async-script'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { Button } from './Button'
 
-const PlayerComponent = () => {
+const PlayerComponent: Function = (): JSX.Element => {
   const videoProps = { videoId: 'GQplO4weJTg', width: '640', height: '390' }
   const {
     playVideoHandler,
