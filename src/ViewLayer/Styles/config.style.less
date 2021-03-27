@@ -18,17 +18,6 @@
 @desktop-strict: ~'only screen and (min-width: @{md-min}) and (max-width: @{md-max})';
 @large: ~'only screen and (min-width: @{lg-min})';
 
-// @colorFirstDarker: #000000;
-// @colorFirst: #000000;
-
-// @colorSecondDacker: #ffffff;
-// @colorSecond: #ffffff;
-// @colorSecondLighter2: #ffffff;
-// @colorSecondLighter2: #ffffff;
-// @colorSecondLighter3: #ffffff;
-
-// @colorActive: #ffffff;
-
 @import (css)
   url('https://fonts.googleapis.com/css?family=Open+Sans|Pinyon+Script|Rochester|Roboto|Noto|sans+serif');
 
@@ -37,6 +26,7 @@
   box-sizing: border-box;
   background-clip: content-box;
   margin: 0;
+  -webkit-print-color-adjust: exact;
 }
 
 body {

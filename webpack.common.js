@@ -143,7 +143,7 @@ module.exports = {
   watch: false,
   target: 'web',
   externals: [{ pg: true }],
-  node: {},
+  node: { fs: 'empty' },
   optimization: {
     nodeEnv: 'production',
     flagIncludedChunks: true,

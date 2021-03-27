@@ -21,6 +21,9 @@
   "author": "",
   "license": "ISC",
   "homepage": "https://bitbucket.org/ybeaz/ynazon-app-desktop#readme",
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "yarn lint-staged",
@@ -122,6 +125,7 @@
     "sass-loader": "^8.0.2",
     "semver": "^7.3.2",
     "source-map-loader": "^1.0.0",
+    "styled-components": "^5.2.1",
     "styles-loader": "^3.0.0",
     "terser-webpack-plugin": "4.2.3",
     "ts-loader": "^7.0.5",

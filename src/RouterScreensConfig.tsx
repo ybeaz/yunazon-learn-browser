@@ -6,10 +6,11 @@ import * as action from './DataLayer/index.action'
 import { PlayAndSubscribeScreen } from './ViewLayer/Screens/PlayAndSubscribe'
 import { Error404Screen } from './ViewLayer/Screens/Error404'
 import { RootState } from './@types/RootState'
-import { Certificate } from './ViewLayer/Screens/Certificate'
+import { CertificateStyled, Certificate } from './ViewLayer/Screens/Certificate'
 
 export const RouterScreensConfig = () => {
   const PAGES = {
+    CertificateStyled,
     Certificate,
     PlayAndSubscribeScreen,
     Error404Screen,
@@ -39,11 +40,10 @@ export const RouterScreensConfig = () => {
   const { router } = {
     router: {
       routes: [
-        { path: `/`, exact: true, page: 'PlayAndSubscribeScreen' },
         {
-          path: `/home`,
+          path: `/Certificate-styled`,
           exact: true,
-          page: 'PlayAndSubscribeScreen',
+          page: 'CertificateStyled',
         },
         {
           path: `/certificate`,
@@ -51,10 +51,16 @@ export const RouterScreensConfig = () => {
           page: 'Certificate',
         },
         {
+          path: `/home`,
+          exact: true,
+          page: 'PlayAndSubscribeScreen',
+        },
+        {
           path: `${demoPath}/home`,
           exact: true,
           page: 'PlayAndSubscribeScreen',
         },
+        { path: `/`, exact: true, page: 'PlayAndSubscribeScreen' },
       ],
       redirects: [
         { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },
