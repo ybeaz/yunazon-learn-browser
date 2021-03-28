@@ -1,3 +1,19 @@
 .MatrixHome {
   display: flex;
+  &__plates {
+    display: flex;
+    &_plate {
+      display: flex;
+      padding: 1rem;
+      width: 20rem;
+      height: 12rem;
+      overflow: overlay;
+      &_shield {
+        position: absolute;
+        // border: solid 1px red;
+        width: inherit;
+        height: inherit;
+      }
+    }
+  }
 }

@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import * as action from '../../DataLayer/index.action'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
-import { SideNavigation } from '../Components/SideNavigation'
-import { Header } from '../Components/Header'
+
+import { MainFrame } from '../Components/MainFrame'
 import { Player } from '../Components/Player'
 import { QuestionsColumn } from '../Components/QuestionsColumn'
 
@@ -25,34 +25,10 @@ export const PlayAndSubscribe: Function = (
   // console.info('PlayAndSubscribe.screen [72]', { props })
   return (
     <div className='PlayAndSubscribe'>
-      <Header />
-      <SideNavigation />
-
-      {/* <!-- Navigation Bar --> */}
-      {/* <div className='navbar'>
-        <a href='#'>Link</a>
-        <a href='#'>Link</a>
-        <a href='#'>Link</a>
-        <a href='#'>Link</a>
-      </div> */}
-
-      {/* <!-- The flexible grid (content) --> */}
-      <div className='PlayAndSubscribe__play'>
-        <div className='PlayAndSubscribe__play_left'></div>
-        <div className='PlayAndSubscribe__play_main'>
-          <div className='PlayAndSubscribe__play_main_wrapper'>
-            <Player {...playerProps} />
-          </div>
-        </div>
-        <div className='PlayAndSubscribe__play_right'>
-          <QuestionsColumn />
-        </div>
-      </div>
-
-      {/* <!-- Footer --> */}
-      <div className='PlayAndSubscribe__comments'>
-        <div className='PlayAndSubscribe__comments_in'></div>
-      </div>
+      <MainFrame>
+        <Player {...playerProps} />
+        <QuestionsColumn />
+      </MainFrame>
     </div>
   )
 }

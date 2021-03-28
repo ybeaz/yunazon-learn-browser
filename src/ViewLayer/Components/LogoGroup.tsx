@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 export const LogoGroup: Function = (): JSX.Element => {
   return (
-    <div className='LogoGroup'>
+    <Link
+      className='LogoGroup'
+      to={{
+        pathname: `/home`,
+      }}
+    >
       <div className='LogoGroup__div'>
         <img
           className='LogoGroup__div_img'
@@ -10,6 +16,6 @@ export const LogoGroup: Function = (): JSX.Element => {
         />
       </div>
       <div className='LogoGroup__brand'>YouRails</div>
-    </div>
+    </Link>
   )
 }
