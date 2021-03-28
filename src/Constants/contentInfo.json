@@ -1,14 +1,54 @@
 {
-  "README": {},
+  "README": {
+    "designType": ["CheckBox", "RadioButton"],
+    "multi": [true, false]
+  },
   "content": [
     {
-      "ytID": "GQplO4weJTg"
+      "ytID": "GQplO4weJTg",
+      "questions": []
     },
     {
-      "ytID": "wBvQba1DI1Y"
+      "ytID": "wBvQba1DI1Y",
+      "questions": [
+        {
+          "designType": "RadioButton",
+          "multi": false,
+          "capture": "Согласно текста самодержец Николка",
+          "options": [
+            { "label": "был внешностью красив", "status": false },
+            { "label": "правил так, что было что закусить", "status": true },
+            { "label": "был выдающейся личностью в истории", "status": false },
+            { "label": "не видел дальше носа своего", "status": true }
+          ]
+        },
+        {
+          "designType": "CheckBox",
+          "multi": true,
+          "capture": "Согласно услышанного при товарище Сталине...",
+          "options": [
+            { "label": "колхозы распустили", "status": false },
+            { "label": "строились ТЭЦ", "status": true },
+            { "label": "в лагеря загнали всех", "status": true },
+            { "label": "граждан жизни не лишали", "status": false }
+          ]
+        },
+        {
+          "designType": "CheckBox",
+          "multi": true,
+          "capture": "Согласно песни Микитушка...",
+          "options": [
+            { "label": "наградил Кеннади медалью", "status": false },
+            { "label": "совершил немного дел", "status": false },
+            { "label": "был невысого роста", "status": true },
+            { "label": "пихал (космонавтов) на Луну", "status": true }
+          ]
+        }
+      ]
     },
     {
-      "ytID": "CJMWQZmjglA"
+      "ytID": "CJMWQZmjglA",
+      "questions": []
     }
   ]
 }

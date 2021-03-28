@@ -3,16 +3,22 @@ import React, { useState, useRef } from 'react'
 import { handleEvents } from '../Hooks/handleEvents'
 import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
 
+interface ICheckRadioGroup {
+  designType: string
+  multi: boolean
+  capture: string
+  options: any[]
+}
+
 export const CheckRadioGroup: Function = ({
   capture,
-  checkInputsIn,
-  typeInput,
+  options,
+  designType,
   multi,
-}: any): JSX.Element => {
-  const checkInputsInRef = useRef(getAddedArrIdPrefix(checkInputsIn, 'label'))
-    .current
+}: ICheckRadioGroup): JSX.Element => {
+  const optionsInRef = useRef(getAddedArrIdPrefix(options, 'label')).current
 
-  const [checkInputs, setCheckInputs] = useState(checkInputsInRef)
+  const [checkInputs, setCheckInputs] = useState(optionsInRef)
 
   const getCheckLines: Function = (
     checkInputs: any[],
@@ -43,7 +49,7 @@ export const CheckRadioGroup: Function = ({
 
   // console.info('CheckBoxesRadioButtons [40]', { checkInputs })
   return (
-    <div className={`CheckRadioGroup ${typeInput}`}>
+    <div className={`CheckRadioGroup ${designType}`}>
       <div className='CheckRadioGroup__capture'>{capture}</div>
       {getCheckLines(checkInputs, multi)}
     </div>
