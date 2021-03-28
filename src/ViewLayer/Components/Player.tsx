@@ -1,18 +1,29 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import makeAsyncScriptLoader from 'react-async-script'
 
+import { PlayerPanel } from '../Components/PlayerPanel'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
-import { Button } from './Button'
 
-const PlayerComponent: Function = (): JSX.Element => {
-  const videoProps = { videoId: 'GQplO4weJTg', width: '640', height: '390' }
+interface IPlayerComponent {
+  isShowingPanel: boolean
+  videoId: string
+  width: string
+  height: string
+}
+
+export const Player: Function = (props: IPlayerComponent): JSX.Element => {
+  const { isShowingPanel, videoId, width, height } = props
+
   const {
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
-  } = getYouTubePlayerWorkHook(videoProps)
+  } = getYouTubePlayerWorkHook({
+    videoId,
+    width,
+    height,
+  })
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
@@ -32,27 +43,29 @@ const PlayerComponent: Function = (): JSX.Element => {
     handleEvents: stopVideoHandler,
     action: {},
   }
+  const playerPanelProps = {
+    isShowingPanel,
+    isShowingPlay,
+    buttonPlayProps,
+    buttonPauseProps,
+    buttonStopProps,
+  }
 
   return (
     <div className='Player'>
       <div className='Player__wrapper video-responsive'>
-        <div className='Player__wrapper_player' id='player'></div>
+        <div className='Player__wrapper_player' id={videoId}></div>
       </div>
       <div className='Player__panel'>
-        {isShowingPlay ? (
-          <Button {...buttonPlayProps} />
-        ) : (
-          <Button {...buttonPauseProps} />
-        )}
-        <Button {...buttonStopProps} />
+        <PlayerPanel {...playerPanelProps} />
       </div>
     </div>
   )
 }
 
-const URL = 'https://www.youtube.com/iframe_api'
-const globalName = 'YT'
-export const Player = makeAsyncScriptLoader(URL, {
-  // callbackName: onYouTubeIframeAPIReady,
-  globalName,
-})(PlayerComponent)
+// const URL = 'https://www.youtube.com/iframe_api'
+// const globalYouTubeVar = 'YT'
+// export const Player = makeAsyncScriptLoader(URL, {
+//   // callbackName: onYouTubeIframeAPIReady,
+//   globalYouTubeVar,
+// })(PlayerComponent)

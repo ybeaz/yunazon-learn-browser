@@ -2,20 +2,26 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import * as action from '../../DataLayer/index.action'
+import { RouterScreenProps } from '../../@types/RouterScreenProps'
 import { SideNavigation } from '../Components/SideNavigation'
 import { Header } from '../Components/Header'
 import { Player } from '../Components/Player'
 import { QuestionsColumn } from '../Components/QuestionsColumn'
-interface IPlayAndSubScribe {
-  routeProps: any
-  rootPath: any
-}
 
-export const PlayAndSubscribeScreen: Function = (
-  props: IPlayAndSubScribe = { routeProps: {}, rootPath: '' }
+export const PlayAndSubscribe: Function = (
+  props: RouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const dispatch = useDispatch()
 
+  const contentID = props?.routeProps.match.params.contentID
+  // console.info('PlayAndSubscribe [15]', { contentID, props })
+
+  const playerProps = {
+    isShowingPanel: true,
+    videoId: contentID,
+    width: '640',
+    height: '390',
+  }
   // console.info('PlayAndSubscribe.screen [72]', { props })
   return (
     <div className='PlayAndSubscribe'>
@@ -35,7 +41,7 @@ export const PlayAndSubscribeScreen: Function = (
         <div className='PlayAndSubscribe__play_left'></div>
         <div className='PlayAndSubscribe__play_main'>
           <div className='PlayAndSubscribe__play_main_wrapper'>
-            <Player />
+            <Player {...playerProps} />
           </div>
         </div>
         <div className='PlayAndSubscribe__play_right'>
