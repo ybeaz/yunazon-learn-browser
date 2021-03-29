@@ -24,8 +24,8 @@
       },
       "questions": [
         {
-          "designType": "RadioButton",
-          "multi": false,
+          "designType": "CheckBox",
+          "multi": true,
           "capture": "Согласно текста самодержец Николка",
           "options": [
             { "label": "был внешностью красив", "status": false },

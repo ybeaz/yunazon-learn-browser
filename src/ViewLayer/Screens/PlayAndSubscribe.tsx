@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { RootStore } from '../../@types/RootStore'
-import * as action from '../../DataLayer/index.action'
+import { ModalFrame } from '../Modals/ModalFrame'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
 
 import { MainFrame } from '../Components/MainFrame'
@@ -29,6 +28,7 @@ export const PlayAndSubscribe: Function = (
         <Player {...playerProps} />
         <QuestionColumn {...questionColumnProps} />
       </MainFrame>
+      <ModalFrame />
     </div>
   )
 }
