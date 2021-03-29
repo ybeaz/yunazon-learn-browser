@@ -1,11 +1,28 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import styled from 'styled-components'
 
+import { getDateString } from '../../Shared/getDateString'
 // import './Certificate.less' // imported through index.style.less
 // import { CertificateStyledGlob } from './CertificateStyle' // Not uses, but kept as an example of styled-components
 
 export const Certificate: Function = (props: any): JSX.Element => {
-  const { userName = 'TrueNorth Administrator' } = props
+  const {
+    userName,
+    institution,
+    specTitle,
+    specName,
+    course,
+    contentID,
+  } = props
+  const dateString = getDateString(new Date())
+  // console.info('Certificate [11]', {
+  //   institution,
+  //   specTitle,
+  //   specName,
+  //   course,
+  //   contentID,
+  //   dateString,
+  // })
   return (
     <div className='Certificate'>
       <div className='container pm-certificate-container'>
@@ -15,7 +32,8 @@ export const Certificate: Function = (props: any): JSX.Element => {
         <div className='pm-certificate-border col-xs-12'>
           <div className='row pm-certificate-header'>
             <div className='pm-certificate-title cursive col-xs-12 text-center'>
-              <h2>Buffalo Public Schools Certificate of Completion</h2>
+              <h4>{institution}</h4>
+              <h2>Certificate of Completion</h2>
             </div>
           </div>
 
@@ -39,7 +57,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
                       has earned
                     </span>
                     <span className='pm-credits-text block bold sans'>
-                      PD175: 1.0 Credit Hours
+                      1.0 Credit Hours
                     </span>
                   </div>
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
@@ -64,10 +82,13 @@ export const Certificate: Function = (props: any): JSX.Element => {
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline col-xs-8 text-center'>
                     <span className='pm-credits-text block bold sans'>
-                      BPS PGS Initial PLO for Principals at Cluster Meetings
+                      {course}
                     </span>
                   </div>
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='Certificate__course_code'>
+                    Course code {contentID}
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,18 +98,17 @@ export const Certificate: Function = (props: any): JSX.Element => {
                 <div className='pm-certificate-footer'>
                   <div className='col-xs-4 pm-certified col-xs-4 text-center'>
                     <span className='pm-credits-text block sans'>
-                      Buffalo City School District
+                      Open Internet Education District Academy
                     </span>
                     <span className='pm-empty-space block underline'></span>
                     <span className='bold block'>
-                      Crystal Benton Instructional Specialist II, Staff
-                      Development
+                      {specName} {specTitle}
                     </span>
                   </div>
                   <div className='col-xs-4'>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='col-xs-4 pm-certified col-xs-4 text-center'>
                     <span className='pm-credits-text block sans'>
-                      Date Completed
+                      Date Completed {dateString}
                     </span>
                     <span className='pm-empty-space block underline'></span>
                     <span className='bold block'></span>

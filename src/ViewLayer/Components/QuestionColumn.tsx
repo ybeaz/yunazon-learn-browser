@@ -1,18 +1,37 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getContentInfoByContentID } from '../../Shared/getContentInfoByContentID'
+import { RootStore } from '../../@types/RootStore'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { Button } from './Button'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 
 interface IQuestionColumn {
-  questions: any[]
+  contentID: string
 }
 
 export const QuestionColumn: Function = (
   props: IQuestionColumn
 ): JSX.Element => {
-  const { questions } = props
+  const { contentID } = props
+
+  const store = useSelector((store: RootStore) => store)
+  const { content, userName } = store
+  const {
+    questions,
+    meta: { institution, specTitle, specName },
+    course,
+  } = getContentInfoByContentID(content, contentID)
+  console.info('QuestionColumn [22]', {
+    institution,
+    specTitle,
+    specName,
+    course,
+    questions,
+    content,
+    contentID,
+  })
 
   const getQuestionColumnQuestions: Function = (
     questions: any[]
@@ -35,18 +54,28 @@ export const QuestionColumn: Function = (
     icon: 'MdPrint',
     classAdded: 'Button_MdForward',
     handleEvents: getPrintScreenAsPdf,
-    action: { screenType: 'Certificate', userName: 'Vasia Pupkin' },
+    action: {
+      screenType: 'Certificate',
+      userName,
+      institution,
+      specTitle,
+      specName,
+      course,
+      contentID,
+    },
   }
 
   return (
     <div className='QuestionColumn'>
       {getQuestionColumnQuestions(questions)}
-      <div className='QuestionColumn__ok'>
-        <Button {...buttonContinueProps} />
-        <div className='QuestionColumn__print'>
-          <Button {...buttonPrintCertProps} />
+      {questions.length ? (
+        <div className='QuestionColumn__ok'>
+          <Button {...buttonContinueProps} />
+          <div className='QuestionColumn__print'>
+            <Button {...buttonPrintCertProps} />
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   )
 }

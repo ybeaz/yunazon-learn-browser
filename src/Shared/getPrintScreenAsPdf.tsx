@@ -18,9 +18,11 @@ export const getPrintScreenAsPdf: Function = (
   event: EventListener,
   data: any
 ): void => {
-  const { screenType, userName } = data
+  const { screenType, ...screenToPrintProps } = data
+  const { userName } = screenToPrintProps
+
   const ScreenToPrint = SCREENS[screenType]
-  const screenToPrintProps = { userName }
+
   const userNameNoSpace = userName.split(' ').join('')
   const title = `${userNameNoSpace}Certificate`
 

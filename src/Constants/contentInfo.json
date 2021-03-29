@@ -6,10 +6,22 @@
   "content": [
     {
       "ytID": "GQplO4weJTg",
+      "course": "",
+      "meta": {
+        "institution": "",
+        "specTitle": "",
+        "specName": ""
+      },
       "questions": []
     },
     {
       "ytID": "wBvQba1DI1Y",
+      "course": "Курс \"Исторические деятели России и СССР первой половины XX века\"",
+      "meta": {
+        "institution": "Студия \"Городок\"",
+        "specTitle": "Специалист Oтдела исторических анекдотов",
+        "specName": "Олег Приколов"
+      },
       "questions": [
         {
           "designType": "RadioButton",
@@ -48,6 +60,12 @@
     },
     {
       "ytID": "CJMWQZmjglA",
+      "course": "",
+      "meta": {
+        "institution": "",
+        "specTitle": "",
+        "specName": ""
+      },
       "questions": []
     }
   ]

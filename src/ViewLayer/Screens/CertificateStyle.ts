@@ -198,6 +198,9 @@ export const CertificateStyledString = `
 .Certificate {
   text-align: center;
 }
+.Certificate__course_code {
+  font-size: 12px;
+}
 .Certificate .cursive {
   font-family: 'Pinyon Script', cursive;
 }

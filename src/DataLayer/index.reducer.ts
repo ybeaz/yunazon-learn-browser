@@ -1,11 +1,14 @@
-import { RootState } from '../@types/RootState'
+import { RootStore } from '../@types/RootStore'
+
+const rootStoreDefault = {
+  userName: 'Вася Пупкин',
+  content: [],
+  sideNavigationState: false,
+  globalVars: {},
+}
 
 export const rootReducer: Function = (
-  store: RootState = {
-    content: [],
-    sideNavigationState: false,
-    globalVars: {},
-  },
+  store: RootStore = rootStoreDefault,
   action: any
 ): any => {
   const { type } = action

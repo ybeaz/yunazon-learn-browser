@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { RootState } from './@types/RootState'
+import { RootStore } from './@types/RootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
 import { PlayAndSubscribe } from './ViewLayer/Screens/PlayAndSubscribe'
@@ -19,7 +19,7 @@ export const RouterScreensConfig = () => {
   }
 
   const dispatch = useDispatch()
-  const store = useSelector((store: RootState) => store)
+  const store = useSelector((store: RootStore) => store)
   // console.info('RouterScreensConfig [23]', { store })
 
   useEffect(() => {
@@ -143,7 +143,7 @@ export const RouterScreensConfig = () => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store: RootState) => store)
+      const { globalVars } = useSelector((store: RootStore) => store)
       const { theme } = globalVars
       if (theme) {
         // require('./ViewLayer/Styles/config.style.less')
