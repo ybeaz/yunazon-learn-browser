@@ -22,8 +22,15 @@ const ICON = {
   MdSearch,
   MdPerson,
 }
+interface IButton {
+  icon: any
+  capture: string
+  classAdded: string
+  handleEvents: Function
+  action: any
+}
 
-export const Button: Function = (props: any): JSX.Element => {
+export const Button: Function = (props: IButton): JSX.Element => {
   const handleEventsDefault: Function = (): void => {
     console.info('Button', 'handleEventDefault')
     alert('Sorry \n We are working on this')

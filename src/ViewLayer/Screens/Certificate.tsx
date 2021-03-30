@@ -102,7 +102,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
                     </span>
                     <span className='pm-empty-space block underline'></span>
                     <span className='bold block'>
-                      {specName} {specTitle}
+                      {specName}, {specTitle}
                     </span>
                   </div>
                   <div className='col-xs-4'>{/* <!-- LEAVE EMPTY --> */}</div>

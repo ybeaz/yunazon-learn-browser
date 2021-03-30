@@ -1,6 +1,6 @@
 /* The Modal (background) */
 .ModalFrame {
-  display: none; /* Hidden by default */
+  display: flex; // none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -8,30 +8,57 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: @transition;
 
   &__content {
+    display: flex;
+    justify-content: center;
     position: relative;
-    top: 20%;
-    background-color: #fefefe;
-    margin: auto;
+    top: 15%;
+    color: @colorFirstDarker2;
+    background-color: @colorSecondLighter3;
+    margin: 0 auto;
     border: 1px solid #888;
-    width: 30%;
-    height: 30%;
+    max-width: 70%;
+    min-width: 30rem;
+    height: fit-content;
 
     &_close {
-      color: #aaaaaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      padding: 0 0.5rem 0 0;
+      display: flex;
+      position: absolute;
+      right: 0.5rem;
+      color: @colorSecondLighter4;
+      font-size: @fontSizeH1;
 
       &:hover,
       :focus {
         color: #000;
         text-decoration: none;
         cursor: pointer;
+      }
+    }
+
+    &_form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 2rem 0 2rem 0;
+      width: 80%;
+
+      &_group {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 1rem 0;
+
+        &_label {
+          padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        }
+      }
+      /* Clear floats */
+      &_buttons {
+        display: flex;
+        padding: 1.6rem 0 1.5rem 0;
       }
     }
   }

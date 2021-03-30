@@ -37,7 +37,71 @@
       height: 2.2rem;
       padding-top: 4px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: @fontSize;
+      color: @colorFirstDarker2;
+      background-color: @colorSecond;
+    }
+  }
+}
+
+.Button_MdBackward2 {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  &__button {
+    flex: 1;
+    height: 2rem;
+    background-color: @colorSecondLighter2;
+
+    &:active,
+    &:focus {
+    }
+
+    &_in {
+      height: 1.5rem;
+      width: 1.5rem;
+      color: @colorSecondLighter4;
+      -webkit-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+  }
+}
+
+.Button_MdForward2 {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  &__button {
+    flex: 1;
+    height: 2rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    &_in {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+  }
+}
+
+.Button_sideMenuItems {
+  &__button {
+    background-color: @colorSecond;
+
+    &:active,
+    &:focus {
+    }
+
+    &_in {
+      display: flex;
+      position: relative;
+      height: 2.2rem;
+      padding-top: 4px;
+      cursor: pointer;
+      font-size: @fontSize;
       color: @colorFirstDarker2;
       background-color: @colorSecond;
     }

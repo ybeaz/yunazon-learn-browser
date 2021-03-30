@@ -18,11 +18,19 @@
 @desktop-strict: ~'only screen and (min-width: @{md-min}) and (max-width: @{md-max})';
 @large: ~'only screen and (min-width: @{lg-min})';
 
+@fontSizeH1: 1.7rem;
+@fontSizeH2: 1.3rem;
+@fontSizeH4: 1.15rem;
+@fontSize: 1.05rem;
+
+@transition: 0.5s;
+
 @import (css)
   url('https://fonts.googleapis.com/css?family=Open+Sans|Pinyon+Script|Rochester|Roboto|Noto|sans+serif');
 
 * {
   font-family: Roboto, Noto, sans-serif;
+  font-size: @fontSize;
   box-sizing: border-box;
   background-clip: content-box;
   margin: 0;
