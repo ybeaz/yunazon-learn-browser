@@ -8,7 +8,7 @@ const headers = {
 
 export const getGlobalVarsConnector: Function = (): any => {
   const server: string = 'remote'
-  const pathname: string = '/filestorage/globalVars.json'
+  const pathname: string = '/appBrowser/globalVars.json'
 
   const obj: any = {
     testCapture: 'should return 200 code and data defined',

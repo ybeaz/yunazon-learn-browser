@@ -8,7 +8,7 @@ const headers = {
 
 export const getContentInfoConnector: Function = (): any => {
   const server: string = 'remote'
-  const pathname: string = '/filestorage/contentInfo.json'
+  const pathname: string = '/appBrowser/contentInfo.json'
 
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
