@@ -11,10 +11,10 @@ export const handleEvents: Function = (
       store.dispatch({ type: typeEvent })
     },
     CLICK_CHECK: () => {
-      const { checkInputs, setCheckInputs, labelKey, multi } = data
+      const { checkInputs, setCheckInputs, optionID, multi } = data
       const checkInputsNext = getArrCheckedChangedById(
         checkInputs,
-        labelKey,
+        optionID,
         multi
       )
       setCheckInputs(checkInputsNext)

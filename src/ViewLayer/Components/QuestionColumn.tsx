@@ -23,21 +23,13 @@ export const QuestionColumn: Function = (
     meta: { institution, specTitle, specName },
     course,
   } = getContentInfoByContentID(content, contentID)
-  console.info('QuestionColumn [22]', {
-    institution,
-    specTitle,
-    specName,
-    course,
-    questions,
-    content,
-    contentID,
-  })
 
   const getQuestionColumnQuestions: Function = (
     questions: any[]
   ): JSX.Element => {
-    let output = questions.map((questionProps, i) => {
-      return <CheckRadioGroup key={`CheckRadioGroup-${i}`} {...questionProps} />
+    let output = questions.map((question, i) => {
+      const { questionID } = question
+      return <CheckRadioGroup key={questionID} {...question} />
     })
 
     return <div className='QuestionColumn__questions'>{output}</div>

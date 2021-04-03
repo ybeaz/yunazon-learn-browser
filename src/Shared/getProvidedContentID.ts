@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
  * @param content: any[]
  * @returns content: any[]
  * @test npx ts-node src/Shared/getProvidedContentID.js
+ *      DOES NOT WORK: node --loader ts-node/esm ./rc/Shared/getProvidedContentID.ts
  */
 export const getProvidedContentID = content => {
   return content.map(course => {

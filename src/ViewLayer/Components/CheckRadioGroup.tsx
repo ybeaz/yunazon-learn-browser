@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react'
 
 import { handleEvents } from '../Hooks/handleEvents'
-import { getAddedArrIdPrefix } from '../../Shared/getAddedArrIdPrefix'
-
 interface ICheckRadioGroup {
   designType: string
   multi: boolean
@@ -16,7 +14,7 @@ export const CheckRadioGroup: Function = ({
   designType,
   multi,
 }: ICheckRadioGroup): JSX.Element => {
-  const optionsInRef = useRef(getAddedArrIdPrefix(options, 'label')).current
+  const optionsInRef = useRef(options).current
 
   const [checkInputs, setCheckInputs] = useState(optionsInRef)
 
@@ -25,16 +23,16 @@ export const CheckRadioGroup: Function = ({
     multi: boolean
   ): JSX.Element[] => {
     return checkInputs.map(item => {
-      const { label, checked = false, id: labelKey } = item
+      const { optionID, label, checked = false } = item
 
       return (
-        <label className='container' key={labelKey}>
+        <label className='container' key={optionID}>
           {label}
           <input
             onChange={event =>
               handleEvents(event, {
                 typeEvent: 'CLICK_CHECK',
-                data: { checkInputs, setCheckInputs, labelKey, multi },
+                data: { checkInputs, setCheckInputs, optionID, multi },
               })
             }
             type='checkbox'

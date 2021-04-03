@@ -12,22 +12,24 @@ export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
   const { content } = store
 
   const getPlateMatix: Function = (content: any[]): JSX.Element => {
-    // console.info('MatrixHome [72]', { content })
+    console.info('MatrixHome [15]', { content })
 
     const output = content.map((item, i) => {
+      const { courseID, ytID } = item
       const playerProps = {
         isShowingPanel: false,
-        videoId: item.ytID,
+        videoId: ytID,
         width: '640',
         height: '390',
       }
+
       return (
-        <div className='MatrixHome__plates_plate'>
+        <div className={`MatrixHome__plates_plate`} key={courseID}>
           <Player {...playerProps} />
           <Link
             className='MatrixHome__plates_plate_shield'
             to={{
-              pathname: `/c/${item.ytID}`,
+              pathname: `/c/${ytID}`,
             }}
           />
         </div>
