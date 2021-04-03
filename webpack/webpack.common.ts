@@ -7,19 +7,14 @@
   localhost:3000/demo-js-redux-example.html
 */
 
-import webpack from 'webpack'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import path from 'path'
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
-import WebpackNotifierPlugin from 'webpack-notifier'
 
 export const common = {
   entry: {
     bundle: ['./src/index.tsx'],
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: '[name].min.js',
     publicPath: '/',
   },
@@ -105,33 +100,12 @@ export const common = {
       },
     ],
   },
-  plugins: [
-    new WebpackNotifierPlugin({
-      title: 'Yunazon-learn',
-      excludeWarning: true,
-      alwaysNotify: true,
-    }),
-    new webpack.ProvidePlugin({
-      React: 'react',
-      'react-dom': 'ReactDOM',
-    }),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
-    }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'disabled',
-      generateStatsFile: true,
-      statsOptions: { source: false },
-    }),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new ForkTsCheckerWebpackPlugin(),
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: [],
-    }),
-  ],
   performance: {
     hints: false,
+  },
+  watchOptions: {
+    ignored: ['dist', 'node_modules'],
+    poll: 1000,
   },
   watch: false,
   target: 'web',

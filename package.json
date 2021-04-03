@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "open-cli http://127.0.0.1:3440 & webpack-dev-server --config webpack.dev.ts --color",
-    "dev": "webpack-dev-server --config webpack.dev.ts --color",
-    "build": "webpack -p --config webpack.prod.ts",
+    "start": "open-cli http://127.0.0.1:3440 & webpack-dev-server --config webpack/webpack.dev.ts --color",
+    "dev": "webpack-dev-server --config webpack/webpack.dev.ts --color",
+    "build": "webpack -p --config webpack/webpack.prod.ts",
     "ba": "webpack-bundle-analyzer --port 4200 dist02/stats.json",
     "test": "jest",
     "eject": "react-scripts eject",

@@ -1,4 +1,6 @@
 import { servers as serversConst } from '../Constants/servers.const'
+import { pathNameLoadedVars } from '../Constants/pathNameLoadedVars.const'
+import { isContentInfoLocal } from '../FeatureFlags/index'
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -7,15 +9,14 @@ const headers = {
 }
 
 export const getContentInfoConnector: Function = (): any => {
-  const server: string = 'remote'
-  const pathname: string = '/appBrowser/contentInfo.json'
-
+  const localRemote = isContentInfoLocal()
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
-    pathname,
     method: 'get',
     options: { headers: { ...headers } },
-    url: <string>`${serversConst[server]}${pathname}`,
+    url: <string>(
+      `${serversConst[localRemote]}${pathNameLoadedVars[localRemote]}/contentInfo.json`
+    ),
   }
 
   return obj
