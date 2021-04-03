@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 
+import { getArrShuffled } from '../../Shared/getArrShuffled'
 import { handleEvents } from '../Hooks/handleEvents'
 interface ICheckRadioGroup {
   designType: string
@@ -14,9 +15,11 @@ export const CheckRadioGroup: Function = ({
   designType,
   multi,
 }: ICheckRadioGroup): JSX.Element => {
-  const optionsInRef = useRef(options).current
+  const optionsShuffled = getArrShuffled(options)
+  const optionsInRef = useRef(optionsShuffled).current
 
   const [checkInputs, setCheckInputs] = useState(optionsInRef)
+  console.info('CheckRadioGroup [20]', { checkInputs, optionsInRef, options })
 
   const getCheckLines: Function = (
     checkInputs: any[],
