@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+# Turned off because none support of typescript
 # npx ts-node commitlint.config --edit $1

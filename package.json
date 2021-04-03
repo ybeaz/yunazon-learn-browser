@@ -25,6 +25,23 @@
   "resolutions": {
     "styled-components": "^5"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint-staged",
+      "pre-push": "yarn typecheck && yarn lint",
+      "commit-msg": "npx commitlint HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,scss,less,json,yml,yaml,md,html,graphql}": [
+      "./node_modules/.bin/prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "./node_modules/.bin/eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@babel/cli": "7.13.14",
     "@babel/core": "7.13.14",
