@@ -77,16 +77,6 @@
       ]
     },
     {
-      "ytID": "GQplO4weJTg",
-      "course": "",
-      "meta": {
-        "institution": "",
-        "specTitle": "",
-        "specName": ""
-      },
-      "questions": []
-    },
-    {
       "ytID": "wBvQba1DI1Y",
       "course": "Исторические деятели России и СССР первой половины XX века",
       "meta": {
@@ -129,6 +119,16 @@
           ]
         }
       ]
+    },
+    {
+      "ytID": "GQplO4weJTg",
+      "course": "",
+      "meta": {
+        "institution": "",
+        "specTitle": "",
+        "specName": ""
+      },
+      "questions": []
     },
     {
       "ytID": "CJMWQZmjglA",

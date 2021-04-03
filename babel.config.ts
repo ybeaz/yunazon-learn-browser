@@ -1,4 +1,6 @@
-module.exports = function (api) {
+/* eslint-disable import/no-commonjs */
+
+export default api => {
   api.cache(true)
   return {
     presets: [

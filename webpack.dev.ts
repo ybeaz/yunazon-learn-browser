@@ -1,13 +1,11 @@
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common.js')
-const webpack = require('webpack')
-const path = require('path')
-const ESLintPlugin = require('eslint-webpack-plugin')
-const ErrorOverlayPlugin = require('error-overlay-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+import { common } from './webpack.common'
+import webpack from 'webpack'
+import ESLintPlugin from 'eslint-webpack-plugin'
+import ErrorOverlayPlugin from 'error-overlay-webpack-plugin'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-module.exports = merge(common, {
-  mode: 'development',
+export default {
+  ...common,
   devtool: 'cheap-module-source-map', // 'source-map'
   devServer: {
     hot: true,
@@ -54,4 +52,4 @@ module.exports = merge(common, {
     new ErrorOverlayPlugin(),
     new webpack.HotModuleReplacementPlugin({}),
   ],
-})
+}

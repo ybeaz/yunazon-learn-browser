@@ -7,21 +7,14 @@
   localhost:3000/demo-js-redux-example.html
 */
 
-const webpack = require('webpack')
-const glob = require('glob')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+import webpack from 'webpack'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import path from 'path'
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
+import WebpackNotifierPlugin from 'webpack-notifier'
 
-// var MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-const path = require('path')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const WebpackNotifierPlugin = require('webpack-notifier')
-const TerserPlugin = require('terser-webpack-plugin')
-const styledComponentsTransformer = require('typescript-plugin-styled-components')
-  .default
-const keysTransformer = require('ts-transformer-keys/transformer').default
-
-module.exports = {
+export const common = {
   entry: {
     bundle: ['./src/index.tsx'],
   },

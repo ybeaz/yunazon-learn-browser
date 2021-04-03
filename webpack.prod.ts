@@ -1,9 +1,9 @@
-const { merge } = require('webpack-merge')
-const common = require('./webpack.common.js')
+import { common } from './webpack.common'
 //https://stackoverflow.com/questions/49053215/webpack-4-how-to-configure-minimize
-const TerserPlugin = require('terser-webpack-plugin')
+import TerserPlugin from 'terser-webpack-plugin'
 
-module.exports = merge(common, {
+export default {
+  ...common,
   mode: 'production',
   devtool: 'source-map',
   optimization: {
@@ -41,4 +41,4 @@ module.exports = merge(common, {
     removeEmptyChunks: true,
     mergeDuplicateChunks: true,
   },
-})
+}
