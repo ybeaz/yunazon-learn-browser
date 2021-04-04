@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { handleEvents } from '../Hooks/handleEvents'
 import { getCurrentCourseModule } from '../../Shared/getCurrentCourseModule'
 import { RootStore } from '../../@types/RootStore'
 import { CheckRadioGroup } from './CheckRadioGroup'
@@ -47,8 +48,11 @@ export const QuestionColumn: Function = (
   const buttonContinueProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward',
-    handleEvents: () => {},
-    action: {},
+    handleEvents,
+    action: {
+      typeEvent: 'COUNT_MODULE_QUIZ_SCORE',
+      data: { courseID, moduleID, questions },
+    },
   }
 
   const buttonPrintCertProps = {

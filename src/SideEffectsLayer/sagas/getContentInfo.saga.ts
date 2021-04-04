@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { getCoursesValidated } from '../../Shared/getCoursesValidated'
 import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
@@ -13,7 +14,8 @@ function* getContentInfo() {
     const {
       data: { courses },
     } = yield axios[method](url, {}, options)
-    let coursesNext = getProvidedID(courses)
+    let coursesNext = getCoursesValidated(courses)
+    coursesNext = getProvidedID(coursesNext)
     coursesNext = getProvidedActiveDefault(coursesNext)
     coursesNext = getProdidevAnswerDefault(coursesNext)
     // console.info('getContentInfo.saga [17]', { coursesNext, courses })

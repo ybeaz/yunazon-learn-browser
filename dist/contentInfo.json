@@ -50,7 +50,7 @@
               "options": [
                 {
                   "label": "придти к правильному умозаключению на основе верных предпосылок",
-                  "status": false
+                  "status": true
                 },
                 { "label": "найти истинное решение задачи", "status": false },
                 {
@@ -530,6 +530,7 @@
     },
     {
       "capture": "Исторические деятели России и СССР первой половины XX века",
+      "description": "Кратко и емко в запоминающейся форме о деятелях России и СССР первой половины XX века",
       "meta": {
         "institution": "Студия \"Городок\"",
         "specTitle": "Специалист Oтдела Мировой Истории",
@@ -584,7 +585,8 @@
       ]
     },
     {
-      "capture": "",
+      "capture": "Правильные методы по Clean Code",
+      "description": "Очередная часть из серии лекций по Clean Code. Тема: Как правильно писать методы с точки зрения Clean Code?",
       "meta": {
         "institution": "",
         "specTitle": "",
@@ -593,21 +595,6 @@
       "modules": [
         {
           "ytID": "GQplO4weJTg",
-          "capture": "",
-          "questions": []
-        }
-      ]
-    },
-    {
-      "capture": "",
-      "meta": {
-        "institution": "",
-        "specTitle": "",
-        "specName": ""
-      },
-      "modules": [
-        {
-          "ytID": "CJMWQZmjglA",
           "capture": "",
           "questions": []
         }

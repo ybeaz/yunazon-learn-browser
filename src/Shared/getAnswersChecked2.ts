@@ -1,4 +1,17 @@
-export const getAnswersChecked2 = questions => {
+interface IRESgetAnswersChecked2 {
+  total: number
+  right: number
+  wrong: number
+}
+
+/**
+ * @description Function to count quiz score of the module level
+ * @param questions
+ * @returns
+ */
+export const getAnswersChecked2: Function = (
+  questions: any[]
+): IRESgetAnswersChecked2 => {
   let res = { total: questions.length, right: 0, wrong: 0 }
   questions.forEach(question => {
     let counter = 0

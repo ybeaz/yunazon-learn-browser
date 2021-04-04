@@ -29,7 +29,7 @@ export const PlayAndSubscribe: Function = (
     }
   }, [courses])
 
-  console.info('PlayAndSubscribe [31]', { courses, store })
+  // console.info('PlayAndSubscribe [31]', { courses, store })
 
   const playerProps = {
     isShowingPanel: true,
