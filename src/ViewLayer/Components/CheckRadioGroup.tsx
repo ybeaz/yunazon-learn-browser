@@ -3,13 +3,17 @@ import React, { useState, useRef } from 'react'
 import { getArrShuffled } from '../../Shared/getArrShuffled'
 import { handleEvents } from '../Hooks/handleEvents'
 interface ICheckRadioGroup {
-  designType: string
-  multi: boolean
+  courseID: string
+  questionID: string
   capture: string
   options: any[]
+  designType: string
+  multi: boolean
 }
 
 export const CheckRadioGroup: Function = ({
+  courseID,
+  questionID,
   capture,
   options,
   designType,
@@ -19,7 +23,7 @@ export const CheckRadioGroup: Function = ({
   const optionsInRef = useRef(optionsShuffled).current
 
   const [checkInputs, setCheckInputs] = useState(optionsInRef)
-  console.info('CheckRadioGroup [20]', { checkInputs, optionsInRef, options })
+  // console.info('CheckRadioGroup [20]', { checkInputs, optionsInRef, options })
 
   const getCheckLines: Function = (
     checkInputs: any[],
@@ -35,7 +39,14 @@ export const CheckRadioGroup: Function = ({
             onChange={event =>
               handleEvents(event, {
                 typeEvent: 'CLICK_CHECK',
-                data: { checkInputs, setCheckInputs, optionID, multi },
+                data: {
+                  checkInputs,
+                  setCheckInputs,
+                  courseID,
+                  questionID,
+                  optionID,
+                  multi,
+                },
               })
             }
             type='checkbox'

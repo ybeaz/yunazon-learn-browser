@@ -1,6 +1,6 @@
 export interface RootStore {
   userName: string
-  content: any[]
+  courses: any[]
   sideNavigationState: boolean
   globalVars: any
 }

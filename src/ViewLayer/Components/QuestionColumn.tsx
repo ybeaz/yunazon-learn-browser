@@ -17,19 +17,31 @@ export const QuestionColumn: Function = (
   const { contentID } = props
 
   const store = useSelector((store: RootStore) => store)
-  const { content, userName } = store
+  const { courses, userName } = store
   const {
+    courseID,
     questions,
     meta: { institution, specTitle, specName },
-    course,
-  } = getContentInfoByContentID(content, contentID)
+    capture,
+  } = getContentInfoByContentID(courses, contentID)
+  // console.info('QuestionColumn [26]', {
+  //   courseID,
+  //   courses,
+  //   userName,
+  //   questions,
+  //   meta: { institution, specTitle, specName },
+  //   capture,
+  //   store,
+  //   props,
+  // })
 
   const getQuestionColumnQuestions: Function = (
     questions: any[]
   ): JSX.Element => {
     let output = questions.map((question, i) => {
       const { questionID } = question
-      return <CheckRadioGroup key={questionID} {...question} />
+      const checkRadioGroupProps = { courseID, ...question }
+      return <CheckRadioGroup key={questionID} {...checkRadioGroupProps} />
     })
 
     return <div className='QuestionColumn__questions'>{output}</div>
@@ -52,7 +64,7 @@ export const QuestionColumn: Function = (
       institution,
       specTitle,
       specName,
-      course,
+      capture,
       contentID,
     },
   }

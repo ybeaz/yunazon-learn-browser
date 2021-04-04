@@ -4,25 +4,34 @@ import { v4 as uuidv4 } from 'uuid'
  * @description Function to provide content arr with IDs for courses, questions, options
  * @param content: any[]
  * @returns content: any[]
- * @test npx ts-node src/Shared/getProvidedContentID.js
- *      DOES NOT WORK: node --loader ts-node/esm ./rc/Shared/getProvidedContentID.ts
+ * @test npx ts-node src/Shared/getProvidedID.js
+ *      DOES NOT WORK: node --loader ts-node/esm ./rc/Shared/getProvidedID.ts
  */
-export const getProvidedContentID = content => {
-  return content.map(course => {
-    const { questions } = course
+export const getProvidedID: Function = (courses: any[]): any[] => {
+  return courses.map(course => {
+    const { modules } = course
 
-    const questionsNext = questions.map(question => {
-      const { options } = question
+    const modulesNext = modules.map(module => {
+      const { questions } = module
 
-      const optionNext = options.map(option => {
+      const questionsNext = questions.map(question => {
+        const { options } = question
+
+        const optionNext = options.map(option => {
+          const uuid = uuidv4()
+          return { optionID: uuid, ...option }
+        })
+
         const uuid = uuidv4()
-        return { optionID: uuid, ...option }
+        return { questionID: uuid, ...question, options: optionNext }
       })
+
       const uuid = uuidv4()
-      return { questionID: uuid, ...question, options: optionNext }
+      return { moduleID: uuid, ...module, questions: questionsNext }
     })
+
     const uuid = uuidv4()
-    return { courseID: uuid, ...course, questions: questionsNext }
+    return { courseID: uuid, ...course, modules: modulesNext }
   })
 }
 

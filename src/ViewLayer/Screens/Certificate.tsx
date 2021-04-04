@@ -11,7 +11,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
     institution,
     specTitle,
     specName,
-    course,
+    capture,
     contentID,
   } = props
   const dateString = getDateString(new Date())
@@ -19,7 +19,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
   //   institution,
   //   specTitle,
   //   specName,
-  //   course,
+  //   capture,
   //   contentID,
   //   dateString,
   // })
@@ -82,7 +82,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline col-xs-8 text-center'>
                     <span className='pm-credits-text block bold sans'>
-                      {course}
+                      {capture}
                     </span>
                   </div>
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>

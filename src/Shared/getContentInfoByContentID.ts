@@ -1,6 +1,7 @@
 interface IgetContentInfoByContentID {
+  courseID: string
   ytID: string
-  course: string
+  capture: string
   meta: {
     institution: string
     specTitle: string
@@ -14,8 +15,9 @@ export const getContentInfoByContentID: Function = (
   contentID: string
 ): IgetContentInfoByContentID => {
   const contentInfoDefault = {
+    courseID: 'Undefined',
     ytID: 'Undefined',
-    course: 'No name',
+    capture: 'No name',
     meta: {
       institution: 'No name',
       specTitle: 'No name',

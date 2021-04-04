@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { SELECT_COURSE_MODULE } from '../../DataLayer/index.action'
+import { handleEvents } from '../Hooks/handleEvents'
 import { MainFrame } from '../Components/MainFrame'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
 import { RootStore } from '../../@types/RootStore'
@@ -9,13 +11,14 @@ import { Player } from '../Components/Player'
 
 export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
-  const { content } = store
+  const { courses } = store
 
-  const getPlateMatix: Function = (content: any[]): JSX.Element => {
-    console.info('MatrixHome [15]', { content })
+  const getPlateMatix: Function = (courses: any[]): JSX.Element => {
+    console.info('MatrixHome [15]', { courses })
 
-    const output = content.map((item, i) => {
-      const { courseID, ytID } = item
+    const output = courses.map((item, i) => {
+      const { courseID, modules } = item
+      const { moduleID, ytID } = modules[0]
       const playerProps = {
         isShowingPanel: false,
         videoId: ytID,
@@ -31,6 +34,12 @@ export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
             to={{
               pathname: `/c/${ytID}`,
             }}
+            onClick={event =>
+              handleEvents(
+                event,
+                SELECT_COURSE_MODULE({ courseID, moduleID, ytID })
+              )
+            }
           />
         </div>
       )
@@ -41,7 +50,7 @@ export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
   return (
     <div className='MatrixHome'>
       <MainFrame>
-        {content.length ? <div>{getPlateMatix(content)}</div> : null}
+        {courses.length ? <div>{getPlateMatix(courses)}</div> : null}
         {null}
       </MainFrame>
     </div>
