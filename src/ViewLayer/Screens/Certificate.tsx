@@ -8,12 +8,13 @@ import { getDateString } from '../../Shared/getDateString'
 export const Certificate: Function = (props: any): JSX.Element => {
   const {
     userName,
-    institution,
-    specTitle,
-    specName,
+    meta = { institution: '', specTitle: '', specName: '' },
     capture,
     contentID,
   } = props
+
+  const { institution = '', specTitle = '', specName = '' } = meta
+
   const dateString = getDateString(new Date())
   // console.info('Certificate [11]', {
   //   institution,

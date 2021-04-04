@@ -7,7 +7,6 @@ export const handleEvents: Function = (
 ): void => {
   const { type: typeIn, typeEvent, data } = props
   const type = typeIn ? typeIn : typeEvent
-  console.info('handleEvents [9]', { type, typeEvent, data })
 
   const output = {
     SELECT_COURSE_MODULE: () => {
@@ -47,7 +46,6 @@ export const handleEvents: Function = (
     },
 
     TOGGLE_SIDE_NAVIGATION: () => {
-      // console.info('handleEvents [9]', { typeEvent })
       store.dispatch({ type })
     },
   }

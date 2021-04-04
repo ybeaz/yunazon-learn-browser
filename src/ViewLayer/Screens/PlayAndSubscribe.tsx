@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { SELECT_COURSE_MODULE_CONTENTID } from '../../DataLayer/index.action'
 import { ModalFrame } from '../Modals/ModalFrame'
 import { RootStore } from '../../@types/RootStore'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
@@ -12,9 +13,20 @@ import { QuestionColumn } from '../Components/QuestionColumn'
 export const PlayAndSubscribe: Function = (
   props: RouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
-  const store = useSelector((store: RootStore) => store)
+  const dispatch = useDispatch()
   const contentID = props?.routeProps.match.params.contentID
-  console.info('PlayAndSubscribe [17]', { store })
+  const store = useSelector((store: RootStore) => store)
+  const { courses } = store
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    if (courses.length && isLoaded === false) {
+      dispatch(SELECT_COURSE_MODULE_CONTENTID({ contentID }))
+      setIsLoaded(true)
+    }
+  }, [courses])
+
+  // console.info('PlayAndSubscribe [31]', { store })
 
   const playerProps = {
     isShowingPanel: true,

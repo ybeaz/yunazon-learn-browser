@@ -1,4 +1,5 @@
 import { RootStore } from '../@types/RootStore'
+import { getModuleActiveByContentID } from '../Shared/getModuleActiveByContentID'
 import { getCourseModuleActive } from '../Shared/getCourseModuleActive'
 import { getProvidedActiveDefault } from '../Shared/getProvidedActiveDefault'
 
@@ -16,6 +17,15 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    SELECT_COURSE_MODULE_CONTENTID: () => {
+      const { data } = action
+      const { contentID } = data
+      const { courses } = store
+      let coursesNext = getProvidedActiveDefault(courses)
+      coursesNext = getModuleActiveByContentID(courses, contentID)
+      return { ...store, courses: coursesNext }
+    },
+
     SELECT_COURSE_MODULE: () => {
       const { data } = action
       const { courseID, moduleID } = data

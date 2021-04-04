@@ -14,7 +14,7 @@ export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
   const { courses } = store
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
-    console.info('MatrixHome [15]', { courses })
+    // console.info('MatrixHome [15]', { courses })
 
     const output = courses.map((item, i) => {
       const { courseID, modules } = item

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getContentInfoByContentID } from '../../Shared/getContentInfoByContentID'
+import { getCurrentCourseModule } from '../../Shared/getCurrentCourseModule'
 import { RootStore } from '../../@types/RootStore'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { Button } from './Button'
@@ -18,25 +18,22 @@ export const QuestionColumn: Function = (
 
   const store = useSelector((store: RootStore) => store)
   const { courses, userName } = store
+  const currentCourseModule = getCurrentCourseModule(courses)
+
   const {
-    courseID,
-    questions,
-    meta: { institution, specTitle, specName },
     capture,
-  } = getContentInfoByContentID(courses, contentID)
-  // console.info('QuestionColumn [26]', {
-  //   courseID,
-  //   courses,
-  //   userName,
-  //   questions,
-  //   meta: { institution, specTitle, specName },
-  //   capture,
-  //   store,
-  //   props,
-  // })
+    courseID,
+    moduleID,
+    questions,
+    captureCourse,
+    descriptionCourse,
+    meta,
+  } = currentCourseModule
+
+  // console.info('QuestionColumn [26]', { currentCourseModule })
 
   const getQuestionColumnQuestions: Function = (
-    questions: any[]
+    questions: any[] = []
   ): JSX.Element => {
     let output = questions.map((question, i) => {
       const { questionID } = question
@@ -61,10 +58,9 @@ export const QuestionColumn: Function = (
     action: {
       screenType: 'Certificate',
       userName,
-      institution,
-      specTitle,
-      specName,
-      capture,
+      meta,
+      capture: captureCourse,
+      description: descriptionCourse,
       contentID,
     },
   }

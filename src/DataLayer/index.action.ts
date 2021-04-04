@@ -14,6 +14,11 @@ export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 export const GET_PRODUCT_CARD: any = createRequestTypes('GET_PRODUCT_CARD')
 
 // Synchroneours redux actions
+export const SELECT_COURSE_MODULE_CONTENTID: Function = (data = true): any => ({
+  type: 'SELECT_COURSE_MODULE_CONTENTID',
+  data,
+})
+
 export const SELECT_COURSE_MODULE: Function = (data = true): any => ({
   type: 'SELECT_COURSE_MODULE',
   data,
