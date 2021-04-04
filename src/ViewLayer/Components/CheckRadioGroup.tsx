@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react'
 
+import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
 import { getArrShuffled } from '../../Shared/getArrShuffled'
 import { handleEvents } from '../Hooks/handleEvents'
 interface ICheckRadioGroup {
   courseID: string
+  moduleID: string
   questionID: string
   capture: string
   options: any[]
@@ -12,8 +14,6 @@ interface ICheckRadioGroup {
 }
 
 export const CheckRadioGroup: Function = ({
-  courseID,
-  questionID,
   capture,
   options,
   designType,
@@ -21,16 +21,18 @@ export const CheckRadioGroup: Function = ({
 }: ICheckRadioGroup): JSX.Element => {
   const optionsShuffled = getArrShuffled(options)
   const optionsInRef = useRef(optionsShuffled).current
-
-  const [checkInputs, setCheckInputs] = useState(optionsInRef)
-  // console.info('CheckRadioGroup [20]', { checkInputs, optionsInRef, options })
+  // console.info('CheckRadioGroup [20]', {
+  //   optionsInRef,
+  //   options,
+  // })
 
   const getCheckLines: Function = (
-    checkInputs: any[],
-    multi: boolean
+    options: any[],
+    optionsInRef: any[]
   ): JSX.Element[] => {
-    return checkInputs.map(item => {
-      const { optionID, label, checked = false } = item
+    return optionsInRef.map(item => {
+      const { optionID, label } = item
+      const answer = getAnswerByOptionID(options, optionID)
 
       return (
         <label className='container' key={optionID}>
@@ -39,19 +41,12 @@ export const CheckRadioGroup: Function = ({
             onChange={event =>
               handleEvents(event, {
                 typeEvent: 'CLICK_CHECK',
-                data: {
-                  checkInputs,
-                  setCheckInputs,
-                  courseID,
-                  questionID,
-                  optionID,
-                  multi,
-                },
+                data: { optionID },
               })
             }
             type='checkbox'
             name={'radio'}
-            checked={checked}
+            checked={answer}
           />
           <span className='checkmark'></span>
         </label>
@@ -59,11 +54,10 @@ export const CheckRadioGroup: Function = ({
     })
   }
 
-  // console.info('CheckBoxesRadioButtons [40]', { checkInputs })
   return (
     <div className={`CheckRadioGroup ${designType}`}>
       <div className='CheckRadioGroup__capture'>{capture}</div>
-      {getCheckLines(checkInputs, multi)}
+      {getCheckLines(options, optionsInRef)}
     </div>
   )
 }

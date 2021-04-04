@@ -37,7 +37,7 @@ export const QuestionColumn: Function = (
   ): JSX.Element => {
     let output = questions.map((question, i) => {
       const { questionID } = question
-      const checkRadioGroupProps = { courseID, ...question }
+      const checkRadioGroupProps = { courseID, moduleID, ...question }
       return <CheckRadioGroup key={questionID} {...checkRadioGroupProps} />
     })
 

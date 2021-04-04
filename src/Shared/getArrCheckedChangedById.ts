@@ -1,3 +1,12 @@
+/**
+ * @status NOT USED, migrated on the store level.
+ * @description Function to toggle checkbox using component level useState()
+ * @param arr
+ * @param idChanged
+ * @param multi
+ * @returns
+ */
+
 export const getArrCheckedChangedById: Function = (
   arr: any[],
   idChanged: string,

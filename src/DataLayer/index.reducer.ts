@@ -1,4 +1,5 @@
 import { RootStore } from '../@types/RootStore'
+import { getOptionsClickedByID } from '../Shared/getOptionsClickedByID'
 import { getModuleActiveByContentID } from '../Shared/getModuleActiveByContentID'
 import { getCourseModuleActive } from '../Shared/getCourseModuleActive'
 import { getProvidedActiveDefault } from '../Shared/getProvidedActiveDefault'
@@ -38,15 +39,20 @@ export const rootReducer: Function = (
     CLICK_CHECK: () => {
       const { data } = action
       const { courseID, moduleID, questionID, optionID } = data
-      const storeNext = { ...store, courses: data }
+      const { courses } = store
+
+      const coursesNext = getOptionsClickedByID(courses, optionID)
+
+      const storeNext = { ...store, courses: coursesNext }
       console.info('index.reducer [21]', {
+        storeNext,
         courseID,
         moduleID,
         questionID,
         optionID,
         store,
       })
-      return store
+      return storeNext
     },
 
     GET_CONTENT_DATA_SUCCESS: () => {

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useState, useEffect, useRef } from 'react'
+import { useSelector } from 'react-redux'
 
 import { SELECT_COURSE_MODULE_CONTENTID } from '../../DataLayer/index.action'
+import { handleEvents } from '../Hooks/handleEvents'
 import { ModalFrame } from '../Modals/ModalFrame'
 import { RootStore } from '../../@types/RootStore'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
@@ -13,7 +14,6 @@ import { QuestionColumn } from '../Components/QuestionColumn'
 export const PlayAndSubscribe: Function = (
   props: RouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
-  const dispatch = useDispatch()
   const contentID = props?.routeProps.match.params.contentID
   const store = useSelector((store: RootStore) => store)
   const { courses } = store
@@ -21,12 +21,15 @@ export const PlayAndSubscribe: Function = (
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
-      dispatch(SELECT_COURSE_MODULE_CONTENTID({ contentID }))
+      handleEvents(
+        {},
+        { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { contentID } }
+      )
       setIsLoaded(true)
     }
   }, [courses])
 
-  // console.info('PlayAndSubscribe [31]', { store })
+  console.info('PlayAndSubscribe [31]', { courses, store })
 
   const playerProps = {
     isShowingPanel: true,
