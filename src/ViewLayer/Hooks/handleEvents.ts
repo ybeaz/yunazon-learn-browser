@@ -8,12 +8,16 @@ export const handleEvents: Function = (
 ): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
+  const { dispatch } = store
 
   const output = {
     COUNT_MODULE_QUIZ_SCORE: () => {
       const { questions } = data
       const score = getAnswersChecked2(questions)
-      console.info('handleEvents [13]', { score, data })
+
+      dispatch(action.GET_ANSWERS_DEFAULT())
+
+      // console.info('handleEvents [13]', { score, data })
       const { total, right, wrong } = score
       alert(
         `Вы ответили на \n общее количество вопросов - ${total} \n правильно - ${right} \n не правильно - ${wrong}`
@@ -21,19 +25,19 @@ export const handleEvents: Function = (
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {
-      store.dispatch(action.SELECT_COURSE_MODULE_CONTENTID(data))
+      dispatch(action.SELECT_COURSE_MODULE_CONTENTID(data))
     },
 
     SELECT_COURSE_MODULE: () => {
-      store.dispatch(action.SELECT_COURSE_MODULE(data))
+      dispatch(action.SELECT_COURSE_MODULE(data))
     },
 
     CLICK_CHECK: () => {
-      store.dispatch(action.CLICK_CHECK(data))
+      dispatch(action.CLICK_CHECK(data))
     },
 
     TOGGLE_SIDE_NAVIGATION: () => {
-      store.dispatch(action.TOGGLE_SIDE_NAVIGATION())
+      dispatch(action.TOGGLE_SIDE_NAVIGATION())
     },
   }
 

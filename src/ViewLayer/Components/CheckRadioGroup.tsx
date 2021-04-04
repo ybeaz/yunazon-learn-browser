@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react'
 
 import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
-import { getArrShuffled } from '../../Shared/getArrShuffled'
 import { handleEvents } from '../Hooks/handleEvents'
 interface ICheckRadioGroup {
   courseID: string
@@ -19,18 +18,8 @@ export const CheckRadioGroup: Function = ({
   designType,
   multi,
 }: ICheckRadioGroup): JSX.Element => {
-  const optionsShuffled = getArrShuffled(options)
-  const optionsInRef = useRef(optionsShuffled).current
-  // console.info('CheckRadioGroup [20]', {
-  //   optionsInRef,
-  //   options,
-  // })
-
-  const getCheckLines: Function = (
-    options: any[],
-    optionsInRef: any[]
-  ): JSX.Element[] => {
-    return optionsInRef.map(item => {
+  const getCheckLines: Function = (options: any[]): JSX.Element[] => {
+    return options.map(item => {
       const { optionID, label } = item
       const answer = getAnswerByOptionID(options, optionID)
 
@@ -57,7 +46,7 @@ export const CheckRadioGroup: Function = ({
   return (
     <div className={`CheckRadioGroup ${designType}`}>
       <div className='CheckRadioGroup__capture'>{capture}</div>
-      {getCheckLines(options, optionsInRef)}
+      {getCheckLines(options)}
     </div>
   )
 }

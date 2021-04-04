@@ -4,8 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
  * @description Function to provide content arr with IDs for courses, questions, options
  * @param content: any[]
  * @returns content: any[]
- * @test npx ts-node src/Shared/getProvidedID.js
- *      DOES NOT WORK: node --loader ts-node/esm ./rc/Shared/getProvidedID.ts
  */
 export const getProvidedID: Function = (courses: any[]): any[] => {
   return courses.map(course => {

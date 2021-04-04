@@ -1,4 +1,6 @@
 import { RootStore } from '../@types/RootStore'
+import { getOptionsShuffled } from '../Shared/getOptionsShuffled'
+import { getProdidevAnswerDefault } from '../Shared/getProdidevAnswerDefault'
 import { getOptionsClickedByID } from '../Shared/getOptionsClickedByID'
 import { getModuleActiveByContentID } from '../Shared/getModuleActiveByContentID'
 import { getCourseModuleActive } from '../Shared/getCourseModuleActive'
@@ -18,6 +20,14 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    GET_ANSWERS_DEFAULT: () => {
+      const { courses } = store
+      let coursesNext = getProdidevAnswerDefault(courses)
+      coursesNext = getOptionsShuffled(coursesNext)
+      console.info('index.reducer [24]', { coursesNext, courses })
+      return { ...store, courses: coursesNext }
+    },
+
     SELECT_COURSE_MODULE_CONTENTID: () => {
       const { data } = action
       const { contentID } = data

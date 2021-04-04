@@ -1,9 +1,11 @@
+import { getArrShuffled } from './getArrShuffled'
+
 /**
  * @description Function to add a default answer to each question option
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getProdidevAnswerDefault: Function = (courses: any[]): any[] => {
+export const getOptionsShuffled: Function = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
@@ -13,11 +15,9 @@ export const getProdidevAnswerDefault: Function = (courses: any[]): any[] => {
       const questionsNext = questions.map(question => {
         const { options } = question
 
-        const optionNext = options.map(option => {
-          return { ...option, answer: false }
-        })
+        const optionsNext = getArrShuffled(options)
 
-        return { ...question, options: optionNext }
+        return { ...question, options: optionsNext }
       })
 
       return { ...module, questions: questionsNext }
