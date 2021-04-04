@@ -7,7 +7,8 @@
 
 export const getOptionsClickedByID: Function = (
   courses: any[],
-  optionIDIn: string
+  optionIDIn: string,
+  multi: boolean
 ): any[] => {
   return courses.map(course => {
     const { modules } = course
@@ -19,10 +20,11 @@ export const getOptionsClickedByID: Function = (
         const { options } = question
 
         const optionNext = options.map(option => {
-          let { optionID, answer } = option
-          if (optionID === optionIDIn) answer = !answer
+          const { optionID, answer } = option
+          let answerNext = multi ? answer : false
+          if (optionID === optionIDIn) answerNext = !answer
 
-          return { ...option, answer }
+          return { ...option, answer: answerNext }
         })
 
         return { ...question, options: optionNext }

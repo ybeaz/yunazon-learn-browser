@@ -47,8 +47,8 @@ export const QuestionColumn: Function = (
   const buttonContinueProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward',
-    // handleEvents: () => { },
-    // action: {},
+    handleEvents: () => {},
+    action: {},
   }
 
   const buttonPrintCertProps = {

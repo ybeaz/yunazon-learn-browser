@@ -38,20 +38,10 @@ export const rootReducer: Function = (
 
     CLICK_CHECK: () => {
       const { data } = action
-      const { courseID, moduleID, questionID, optionID } = data
+      const { optionID, multi } = data
       const { courses } = store
-
-      const coursesNext = getOptionsClickedByID(courses, optionID)
-
+      const coursesNext = getOptionsClickedByID(courses, optionID, multi)
       const storeNext = { ...store, courses: coursesNext }
-      console.info('index.reducer [21]', {
-        storeNext,
-        courseID,
-        moduleID,
-        questionID,
-        optionID,
-        store,
-      })
       return storeNext
     },
 

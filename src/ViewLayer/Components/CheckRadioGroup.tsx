@@ -41,7 +41,7 @@ export const CheckRadioGroup: Function = ({
             onChange={event =>
               handleEvents(event, {
                 typeEvent: 'CLICK_CHECK',
-                data: { optionID },
+                data: { optionID, multi },
               })
             }
             type='checkbox'
