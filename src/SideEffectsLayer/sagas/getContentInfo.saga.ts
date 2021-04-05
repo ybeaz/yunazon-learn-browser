@@ -14,11 +14,12 @@ function* getContentInfo() {
     const {
       data: { courses },
     } = yield axios[method](url, {}, options)
+    console.info('getContentInfo.saga [17]', { courses })
     let coursesNext = getCoursesValidated(courses)
     coursesNext = getProvidedID(coursesNext)
     coursesNext = getProvidedActiveDefault(coursesNext)
     coursesNext = getProdidevAnswerDefault(coursesNext)
-    // console.info('getContentInfo.saga [17]', { coursesNext, courses })
+    console.info('getContentInfo.saga [22]', { coursesNext, courses })
     yield put({ type: action.GET_CONTENT_DATA.SUCCESS, data: coursesNext })
   } catch (error) {
     console.info('getContentInfo  [20]', error.name + ': ' + error.message)

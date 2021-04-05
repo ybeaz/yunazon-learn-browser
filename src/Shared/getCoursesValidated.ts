@@ -1,3 +1,5 @@
+import { bool } from 'prop-types'
+
 const noCourseDescription = ({
   courseValidation,
   courseIndex,
@@ -23,28 +25,60 @@ const noCourseCapture = ({ courseValidation, courseIndex, courseCapture }) => {
   return courseValidation
 }
 
-const noQuestions = ({
+const errorQuestions = ({
   courseValidation,
   courseIndex,
   courseCapture,
   moduleIndex,
   questions,
 }) => {
-  if (!questions.length) {
-    courseValidation = [
+  let errors = []
+  let isFound: any
+
+  if (!questions.length) errors = [...errors, 'no-questions']
+
+  isFound = questions.find(
+    question =>
+      !question.capture ||
+      question.capture === '' ||
+      typeof question.capture !== 'string'
+  )
+  if (isFound) errors = [...errors, 'no-quesiton-capture-or-type-error']
+
+  isFound = questions.find(
+    question =>
+      !question.designType ||
+      question.designType === '' ||
+      typeof question.designType !== 'string' ||
+      !(
+        question.designType === 'CheckBox' ||
+        question.designType === 'RadioButton'
+      )
+  )
+  if (isFound) errors = [...errors, 'no-quesiton-designType-or-type-error']
+
+  isFound = questions.find(question => {
+    const output =
+      !question.hasOwnProperty('multi') ||
+      !(question.multi === true || question.multi === false)
+    return output
+  })
+  if (isFound) errors = [...errors, 'no-question-multi-or-type-error']
+
+  if (errors.length) {
+    return [
       ...courseValidation,
       {
-        type: 'no-questions',
+        errors,
         courseIndex,
         courseCapture,
         moduleIndex,
       },
     ]
-  }
-  return courseValidation
+  } else return courseValidation
 }
 
-const noRightOption = ({
+const errorOptions = ({
   courseValidation,
   courseIndex,
   courseCapture,
@@ -53,12 +87,31 @@ const noRightOption = ({
   questionCapture,
   options,
 }) => {
-  const isFound = options.find(option => option.status === true)
-  if (!isFound) {
-    courseValidation = [
+  let errors = []
+  let isFound: any
+
+  isFound = options.find(
+    option =>
+      !option.label || option.label === '' || typeof option.label !== 'string'
+  )
+  if (isFound) errors = [...errors, 'no-option-label-or-type-error']
+
+  isFound = options.find(option => {
+    const output =
+      !option.hasOwnProperty('status') ||
+      !(option.status === true || option.status === false)
+    return output
+  })
+  if (isFound) errors = [...errors, 'no-option-label-or-type-error']
+
+  isFound = options.find(option => option.status === true)
+  if (!isFound) errors = [...errors, 'no-right-option']
+
+  if (errors.length) {
+    return [
       ...courseValidation,
       {
-        type: 'no-right-option',
+        errors,
         courseIndex,
         courseCapture,
         moduleIndex,
@@ -66,8 +119,7 @@ const noRightOption = ({
         questionCapture,
       },
     ]
-  }
-  return courseValidation
+  } else return courseValidation
 }
 
 /**
@@ -100,7 +152,7 @@ export const getCoursesValidated: Function = (courses: any[]): any[] => {
     modules.forEach((module: any, moduleIndex: number) => {
       const { questions } = module
 
-      courseValidation = noQuestions({
+      courseValidation = errorQuestions({
         courseValidation,
         courseIndex,
         courseCapture,
@@ -111,7 +163,7 @@ export const getCoursesValidated: Function = (courses: any[]): any[] => {
       questions.forEach((question, questionIndex) => {
         const { capture: questionCapture, options } = question
 
-        courseValidation = noRightOption({
+        courseValidation = errorOptions({
           courseValidation,
           courseIndex,
           courseCapture,
