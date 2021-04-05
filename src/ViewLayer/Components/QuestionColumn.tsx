@@ -51,23 +51,34 @@ export const QuestionColumn: Function = (
     handleEvents,
     action: {
       typeEvent: 'COUNT_MODULE_QUIZ_SCORE',
-      data: { courseID, moduleID, questions },
+      data: {
+        courseID,
+        moduleID,
+        questions,
+        screenType: 'Certificate',
+        userName,
+        meta,
+        capture: captureCourse,
+        description: descriptionCourse,
+        contentID,
+      },
     },
   }
 
-  const buttonPrintCertProps = {
-    icon: 'MdPrint',
-    classAdded: 'Button_MdForward',
-    handleEvents: getPrintScreenAsPdf,
-    action: {
-      screenType: 'Certificate',
-      userName,
-      meta,
-      capture: captureCourse,
-      description: descriptionCourse,
-      contentID,
-    },
-  }
+  // Remove after 2021-04-05
+  // const buttonPrintCertProps = {
+  //   icon: 'MdPrint',
+  //   classAdded: 'Button_MdForward',
+  //   handleEvents: getPrintScreenAsPdf,
+  //   action: {
+  //     screenType: 'Certificate',
+  //     userName,
+  //     meta,
+  //     capture: captureCourse,
+  //     description: descriptionCourse,
+  //     contentID,
+  //   },
+  // }
 
   return (
     <div className='QuestionColumn'>
@@ -75,9 +86,9 @@ export const QuestionColumn: Function = (
       {questions.length ? (
         <div className='QuestionColumn__ok'>
           <Button {...buttonContinueProps} />
-          <div className='QuestionColumn__print'>
+          {/* Remove after 2021-04-05 <div className='QuestionColumn__print'>
             <Button {...buttonPrintCertProps} />
-          </div>
+          </div> */}
         </div>
       ) : null}
     </div>

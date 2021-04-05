@@ -1,5 +1,6 @@
 import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
+import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 
 export const handleEvents: Function = (
@@ -12,7 +13,15 @@ export const handleEvents: Function = (
 
   const output = {
     COUNT_MODULE_QUIZ_SCORE: () => {
-      const { questions } = data
+      const {
+        screenType,
+        userName,
+        meta,
+        capture,
+        description,
+        contentID,
+        questions,
+      } = data
       const score = getAnswersChecked2(questions)
 
       dispatch(action.GET_ANSWERS_DEFAULT())
@@ -21,6 +30,18 @@ export const handleEvents: Function = (
       const { total, right, wrong } = score
       alert(
         `Вы ответили на \n общее количество вопросов - ${total} \n правильно - ${right} \n не правильно - ${wrong}`
+      )
+
+      getPrintScreenAsPdf(
+        {},
+        {
+          screenType,
+          userName,
+          meta,
+          capture,
+          description,
+          contentID,
+        }
       )
     },
 
