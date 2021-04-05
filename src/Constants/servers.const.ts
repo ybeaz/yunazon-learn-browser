@@ -1,4 +1,5 @@
 export const servers = {
   remote: 'https://yourails.com',
-  local: 'http://127.0.0.1:3440',
+  localWebpack: 'http://127.0.0.1:3440',
+  localServer: 'http://127.0.0.1:3000',
 }

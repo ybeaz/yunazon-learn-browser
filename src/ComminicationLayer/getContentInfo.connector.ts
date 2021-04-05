@@ -1,6 +1,6 @@
 import { servers as serversConst } from '../Constants/servers.const'
 import { pathNameLoadedVars } from '../Constants/pathNameLoadedVars.const'
-import { isContentInfoLocal } from '../FeatureFlags/index'
+import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -9,13 +9,14 @@ const headers = {
 }
 
 export const getContentInfoConnector: Function = (): any => {
-  const localRemote = isContentInfoLocal()
+  const envType = getDetectedEnv()
+  // console.info('getContentInfo.connector [15]', { envType })
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'get',
     options: { headers: { ...headers } },
     url: <string>(
-      `${serversConst[localRemote]}${pathNameLoadedVars[localRemote]}/contentInfo.json`
+      `${serversConst[envType]}${pathNameLoadedVars[envType]}/contentInfo.json`
     ),
   }
 
