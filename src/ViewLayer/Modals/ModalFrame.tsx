@@ -42,19 +42,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
     modalGetScores,
   })
 
-  // const {
-  //   playVideoHandler,
-  //   pauseVideoHandler,
-  //   stopVideoHandler,
-  //   isShowingPlay,
-  // } = getYouTubePlayerWorkHook({
-  //   videoId,
-  //   width,
-  //   height,
-  // })
-
   useEffect(() => {
-    console.info('ModalFrame [56]')
     stopVideoHandler({}, {})
   }, [])
 

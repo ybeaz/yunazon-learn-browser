@@ -32,7 +32,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
 
   const onChangePlayerStateHandler = state => {
     if (state.data === 0) {
-      // console.info('getYouTubePlayerWorkHook [21] Player event on end is captures', { state })
+      // console.info('getYouTubePlayerWorkHook [21] Player event on end is captured', { state })
     }
     setPlayerState(state)
   }
