@@ -24,11 +24,12 @@ export const rootReducer: Function = (
 
   const output = {
     TOGGLE_MODAL_GET_SCORES: () => {
+      const { data } = action
       const { modalsState } = store
       const { modalGetScores } = modalsState
       const nextModalsState = {
         ...modalsState,
-        modalGetScores: !modalGetScores,
+        modalGetScores: data,
       }
 
       console.info('index.reducer [24]', { modalsState, nextModalsState })

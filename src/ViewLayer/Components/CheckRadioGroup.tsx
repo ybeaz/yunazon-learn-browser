@@ -24,20 +24,27 @@ export const CheckRadioGroup: Function = ({
       const answer = getAnswerByOptionID(options, optionID)
 
       return (
-        <label className='container' key={optionID}>
-          {label}
-          <input
-            onChange={event =>
-              handleEvents(event, {
-                typeEvent: 'CLICK_CHECK',
-                data: { optionID, multi },
-              })
-            }
-            type='checkbox'
-            name={'radio'}
-            checked={answer}
-          />
-          <span className='checkmark'></span>
+        <label
+          className={`CheckRadioGroup__label ${designType}__label`}
+          key={optionID}
+        >
+          <div className='CheckRadioGroup__label_capture'>{label}</div>
+          <div
+            className={`CheckRadioGroup__label_checkdiv ${designType}__label_checkdiv`}
+          >
+            <input
+              onChange={event =>
+                handleEvents(event, {
+                  typeEvent: 'CLICK_CHECK',
+                  data: { optionID, multi },
+                })
+              }
+              type='checkbox'
+              name={'radio'}
+              checked={answer}
+            />
+            <span className='checkmark'></span>
+          </div>
         </label>
       )
     })
