@@ -12,7 +12,7 @@ const rootStoreDefault = {
   sideNavigationState: false,
   globalVars: {},
   modalsState: {
-    modalGetScores: false,
+    modalGetScores: true,
   },
 }
 
@@ -32,7 +32,7 @@ export const rootReducer: Function = (
         modalGetScores: data,
       }
 
-      console.info('index.reducer [24]', { modalsState, nextModalsState })
+      // console.info('index.reducer [24]', { modalsState, nextModalsState })
       return { ...store, modalsState: nextModalsState }
     },
 

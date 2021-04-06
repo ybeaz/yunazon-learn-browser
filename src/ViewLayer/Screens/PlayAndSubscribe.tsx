@@ -16,7 +16,10 @@ export const PlayAndSubscribe: Function = (
 ) => {
   const contentID = props?.routeProps.match.params.contentID
   const store = useSelector((store: RootStore) => store)
-  const { courses } = store
+  const {
+    courses,
+    modalsState: { modalGetScores },
+  } = store
   const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
@@ -46,7 +49,7 @@ export const PlayAndSubscribe: Function = (
         <Player {...playerProps} />
         <QuestionColumn {...questionColumnProps} />
       </MainFrame>
-      <ModalFrame />
+      {modalGetScores === true ? <ModalFrame /> : null}
     </div>
   )
 }

@@ -13,41 +13,11 @@ export const handleEvents: Function = (
 
   const output = {
     CLOSE_MODAL_GET_SCORES: () => {
-      console.info('handleEvents [16]', {})
       dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
     },
 
     COUNT_MODULE_QUIZ_SCORE: () => {
-      const {
-        screenType,
-        userName,
-        meta,
-        capture,
-        description,
-        contentID,
-        questions,
-      } = data
-      const score = getAnswersChecked2(questions)
-      const { total, right, wrong } = score
       dispatch(action.TOGGLE_MODAL_GET_SCORES(true))
-      // console.info('handleEvents [13]', { score, data })
-      // alert(
-      //   `Вы ответили на \n общее количество вопросов - ${total} \n правильно - ${right} \n не правильно - ${wrong}`
-      // )
-
-      // getPrintScreenAsPdf(
-      //   {},
-      //   {
-      //     screenType,
-      //     userName,
-      //     meta,
-      //     capture,
-      //     description,
-      //     contentID,
-      //   }
-      // )
-
-      // dispatch(action.GET_ANSWERS_DEFAULT())
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {
