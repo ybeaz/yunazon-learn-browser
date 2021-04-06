@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { PlayerPanel } from '../Components/PlayerPanel'
-import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
+// import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 interface IPlayerComponent {
   isShowingPanel: boolean
@@ -11,19 +11,15 @@ interface IPlayerComponent {
   height: string
 }
 
-export const Player: Function = (props: IPlayerComponent): JSX.Element => {
-  const { isShowingPanel, videoId, width, height } = props
-
+export const Player: Function = (props: any): JSX.Element => {
   const {
+    videoId,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
+    isShowingPanel,
     isShowingPlay,
-  } = getYouTubePlayerWorkHook({
-    videoId,
-    width,
-    height,
-  })
+  } = props
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',

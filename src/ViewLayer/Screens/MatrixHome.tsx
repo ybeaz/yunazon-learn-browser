@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
+import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { SELECT_COURSE_MODULE } from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 import { MainFrame } from '../Components/MainFrame'
@@ -15,15 +17,31 @@ export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
     // console.info('MatrixHome [15]', { courses })
+    const { width, height } = VIDEO_RESOLUTION
 
     const output = courses.map((item, i) => {
       const { courseID, modules } = item
       const { moduleID, ytID } = modules[0]
-      const playerProps = {
-        isShowingPanel: false,
+
+      const { width, height } = VIDEO_RESOLUTION
+      const {
+        playVideoHandler,
+        pauseVideoHandler,
+        stopVideoHandler,
+        isShowingPlay,
+      } = getYouTubePlayerWorkHook({
         videoId: ytID,
-        width: '640',
-        height: '390',
+        width,
+        height,
+      })
+
+      const playerProps = {
+        videoId: ytID,
+        playVideoHandler,
+        pauseVideoHandler,
+        stopVideoHandler,
+        isShowingPlay,
+        isShowingPanel: false,
       }
 
       return (

@@ -1,4 +1,4 @@
-import { servers as serversConst } from '../Constants/servers.const'
+import { SERVERS } from '../Constants/servers.const'
 import { EcomAssetsAll } from './fragments'
 
 const headers = {
@@ -27,7 +27,7 @@ export const getProductCardConnector: Function = ({
       query: `query GetEcomAssets($brandID: String, $productID: String){getEcomAssets(brandID: $brandID, productID: $productID){  ...EcomAssetsAll}} ${EcomAssetsAll}`,
     },
     options: { headers: { ...headers, webtoken: user.webToken } },
-    url: `${serversConst[server]}${pathname}`,
+    url: `${SERVERS[server]}${pathname}`,
   }
 
   return obj

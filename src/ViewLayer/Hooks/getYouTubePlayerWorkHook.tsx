@@ -10,6 +10,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   // console.info('getYouTubePlayerWorkHook [10] ', { videoId, height, width })
   const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
+  const [playerState, setPlayerState] = useState({ data: 1000 })
 
   function playVideoHandler(event = {}, action = {}, playerIn = player) {
     playerIn && playerIn.playVideo()
@@ -31,8 +32,9 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
 
   const onChangePlayerStateHandler = state => {
     if (state.data === 0) {
-      console.info('getYouTubePlayerWorkHook [21] !!! Working', { state })
+      // console.info('getYouTubePlayerWorkHook [21] Player event on end is captures', { state })
     }
+    setPlayerState(state)
   }
 
   async function onYouTubeIframeAPIReady() {
@@ -72,6 +74,10 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   useEffect(() => {
     setTimeout(() => onYouTubeIframeAPIReady(), 500)
   }, [])
+
+  useEffect(() => {
+    if (playerState.data === 0) stopVideoHandler({}, {}, player)
+  }, [playerState.data])
 
   return {
     playVideoHandler,

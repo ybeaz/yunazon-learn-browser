@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
+import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
@@ -10,6 +12,7 @@ import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
 export const ModalFrame: Function = (props: any): JSX.Element => {
+  const { stopVideoHandler } = props
   const store = useSelector((store: RootStore) => store)
   const {
     modalsState: { modalGetScores },
@@ -24,7 +27,11 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result } = score
+  const { ytID: videoId } = moduleActive
+  const { width, height } = VIDEO_RESOLUTION
   console.info('ModalFrame [12]', {
+    videoId,
+    moduleActive,
     questionsWrongAnswered,
     questionsActive,
     result,
@@ -34,6 +41,22 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
     wrong,
     modalGetScores,
   })
+
+  // const {
+  //   playVideoHandler,
+  //   pauseVideoHandler,
+  //   stopVideoHandler,
+  //   isShowingPlay,
+  // } = getYouTubePlayerWorkHook({
+  //   videoId,
+  //   width,
+  //   height,
+  // })
+
+  useEffect(() => {
+    console.info('ModalFrame [56]')
+    stopVideoHandler({}, {})
+  }, [])
 
   const inputNameProps = {
     classAdded: 'Input_name',

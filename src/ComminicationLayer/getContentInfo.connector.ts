@@ -1,5 +1,5 @@
-import { servers as serversConst } from '../Constants/servers.const'
-import { pathNameLoadedVars } from '../Constants/pathNameLoadedVars.const'
+import { SERVERS } from '../Constants/servers.const'
+import { PATH_NAME_LOADED_VARS } from '../Constants/pathNameLoadedVars.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
@@ -16,7 +16,7 @@ export const getContentInfoConnector: Function = (): any => {
     method: 'get',
     options: { headers: { ...headers } },
     url: <string>(
-      `${serversConst[envType]}${pathNameLoadedVars[envType]}/contentInfo.json`
+      `${SERVERS[envType]}${PATH_NAME_LOADED_VARS[envType]}/contentInfo.json`
     ),
   }
 

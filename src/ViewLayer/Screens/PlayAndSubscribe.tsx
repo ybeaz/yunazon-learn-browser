@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
-import { SELECT_COURSE_MODULE_CONTENTID } from '../../DataLayer/index.action'
+import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
+import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
 import { ModalFrame } from '../Modals/ModalFrame'
 import { RootStore } from '../../@types/RootStore'
@@ -32,16 +33,29 @@ export const PlayAndSubscribe: Function = (
     }
   }, [courses])
 
-  // console.info('PlayAndSubscribe [31]', { courses, store })
+  const { width, height } = VIDEO_RESOLUTION
+  const {
+    playVideoHandler,
+    pauseVideoHandler,
+    stopVideoHandler,
+    isShowingPlay,
+  } = getYouTubePlayerWorkHook({
+    videoId: contentID,
+    width,
+    height,
+  })
 
   const playerProps = {
-    isShowingPanel: true,
     videoId: contentID,
-    width: '640',
-    height: '390',
+    isShowingPanel: true,
+    playVideoHandler,
+    pauseVideoHandler,
+    stopVideoHandler,
+    isShowingPlay,
   }
 
   const questionColumnProps = { contentID }
+  const modalFrameProps = { stopVideoHandler }
   //  console.info('PlayAndSubscribe.screen [72]', { props })
   return (
     <div className='PlayAndSubscribe'>
@@ -49,7 +63,7 @@ export const PlayAndSubscribe: Function = (
         <Player {...playerProps} />
         <QuestionColumn {...questionColumnProps} />
       </MainFrame>
-      {modalGetScores === true ? <ModalFrame /> : null}
+      {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
     </div>
   )
 }
