@@ -74,16 +74,18 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
-  ): JSX.Element[] => {
-    return questions.map(question => {
-      const { capture } = question
+  ): JSX.Element => {
+    return (
+      <ul className='ModalFrame__content_inner_qwa_ul'>
+        {questions.map(question => {
+          const { capture } = question
 
-      return (
-        <ul className='ModalFrame__content_inner_qwa_ul'>
-          <li className='ModalFrame__content_inner_qwa_ul_li'>{capture}</li>
-        </ul>
-      )
-    })
+          return (
+            <li className='ModalFrame__content_inner_qwa_ul_li'>{capture}</li>
+          )
+        })}
+      </ul>
+    )
   }
 
   const addClass = !modalGetScores ? '' : 'ModalFrame_display'
@@ -160,7 +162,9 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
 
           {result === 'failure' ? (
             <div className='ModalFrame__content_inner_qwa'>
-              <div>Questions with incorrect answers:</div>
+              <div className='ModalFrame__content_inner_qwa_capture'>
+                Questions with incorrect answers:
+              </div>
               {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
             </div>
           ) : null}
