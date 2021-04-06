@@ -11,6 +11,9 @@ const rootStoreDefault = {
   courses: [],
   sideNavigationState: false,
   globalVars: {},
+  modalsState: {
+    modalGetScores: false,
+  },
 }
 
 export const rootReducer: Function = (
@@ -20,11 +23,22 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    TOGGLE_MODAL_GET_SCORES: () => {
+      const { modalsState } = store
+      const { modalGetScores } = modalsState
+      const nextModalsState = {
+        ...modalsState,
+        modalGetScores: !modalGetScores,
+      }
+
+      console.info('index.reducer [24]', { modalsState, nextModalsState })
+      return { ...store, modalsState: nextModalsState }
+    },
+
     GET_ANSWERS_DEFAULT: () => {
       const { courses } = store
       let coursesNext = getProdidevAnswerDefault(courses)
       coursesNext = getOptionsShuffled(coursesNext)
-      console.info('index.reducer [24]', { coursesNext, courses })
       return { ...store, courses: coursesNext }
     },
 

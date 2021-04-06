@@ -12,6 +12,11 @@ export const handleEvents: Function = (
   const { dispatch } = store
 
   const output = {
+    CLOSE_MODAL_GET_SCORES: () => {
+      console.info('handleEvents [16]', {})
+      dispatch(action.TOGGLE_MODAL_GET_SCORES())
+    },
+
     COUNT_MODULE_QUIZ_SCORE: () => {
       const {
         screenType,
@@ -23,26 +28,26 @@ export const handleEvents: Function = (
         questions,
       } = data
       const score = getAnswersChecked2(questions)
-
-      dispatch(action.GET_ANSWERS_DEFAULT())
-
-      // console.info('handleEvents [13]', { score, data })
       const { total, right, wrong } = score
-      alert(
-        `Вы ответили на \n общее количество вопросов - ${total} \n правильно - ${right} \n не правильно - ${wrong}`
-      )
+      dispatch(action.TOGGLE_MODAL_GET_SCORES())
+      // console.info('handleEvents [13]', { score, data })
+      // alert(
+      //   `Вы ответили на \n общее количество вопросов - ${total} \n правильно - ${right} \n не правильно - ${wrong}`
+      // )
 
-      getPrintScreenAsPdf(
-        {},
-        {
-          screenType,
-          userName,
-          meta,
-          capture,
-          description,
-          contentID,
-        }
-      )
+      // getPrintScreenAsPdf(
+      //   {},
+      //   {
+      //     screenType,
+      //     userName,
+      //     meta,
+      //     capture,
+      //     description,
+      //     contentID,
+      //   }
+      // )
+
+      // dispatch(action.GET_ANSWERS_DEFAULT())
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {

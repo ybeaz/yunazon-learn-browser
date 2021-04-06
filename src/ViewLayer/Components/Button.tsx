@@ -2,6 +2,7 @@ import React from 'react'
 
 import { IconContext } from 'react-icons'
 import {
+  MdClose,
   MdPrint,
   MdForward,
   MdRemoveCircle,
@@ -13,6 +14,7 @@ import {
 } from 'react-icons/md'
 
 const ICON = {
+  MdClose,
   MdPrint,
   MdForward,
   MdRemoveCircle,

@@ -3,4 +3,7 @@ export interface RootStore {
   courses: any[]
   sideNavigationState: boolean
   globalVars: any
+  modalsState: {
+    modalGetScores: boolean
+  }
 }

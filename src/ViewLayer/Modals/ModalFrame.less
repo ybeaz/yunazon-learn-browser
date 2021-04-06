@@ -13,7 +13,8 @@
 
   &__content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     top: 15%;
     color: @colorFirstDarker2;
@@ -27,7 +28,7 @@
     &_close {
       display: flex;
       position: absolute;
-      right: 0.5rem;
+      right: 0.2rem;
       color: @colorSecondLighter4;
       font-size: @fontSizeH1;
 
@@ -39,27 +40,39 @@
       }
     }
 
-    &_form {
+    &_inner {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
-      padding: 2rem 0 2rem 0;
-      width: 80%;
+      padding: 2rem 3rem 2rem 3rem;
 
-      &_group {
+      &_text {
+        display: flex;
+        padding: 2rem 0 2rem 0;
+      }
+
+      &_form {
         display: flex;
         flex-direction: column;
-        padding: 0 0 1rem 0;
 
-        &_label {
-          padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        &_group {
+          display: flex;
+          flex-direction: column;
+          padding: 0 0 1.5rem 0;
+
+          &_label {
+            padding: 0 0 0.5rem 0.15rem;
+          }
         }
-      }
-      /* Clear floats */
-      &_buttons {
-        display: flex;
-        padding: 1.6rem 0 1.5rem 0;
+        /* Clear floats */
+        &_buttons {
+          display: flex;
+          padding: 1rem 0 1.5rem 0;
+        }
       }
     }
   }
+}
+
+.ModalFrame_display {
+  display: flex;
 }

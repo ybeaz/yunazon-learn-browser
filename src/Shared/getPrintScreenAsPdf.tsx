@@ -29,23 +29,27 @@ export const getPrintScreenAsPdf: Function = (
   // Working but not used variants
   // var divContents = renderToString(<ScreenToPrint {...screenToPrintProps} />)
   // var divContents = document.getElementsByTagName('body')[0].innerHTML
-  var divContents = document.createElement('div')
+  const divContents = document.createElement('div')
   ReactDOM.render(<ScreenToPrint {...screenToPrintProps} />, divContents)
 
-  var printWindow = window.open('', '', 'height=400,width=800')
-  printWindow.document.write(`<html><head><title>${title}</title>`)
-  printWindow.document.write('<style>')
-  printWindow.document.write(`${CertificateStyledString}`)
-  printWindow.document.write('</style>')
-  printWindow.document.write('</head><body >')
-  printWindow.document.write(divContents.outerHTML)
-  printWindow.document.write('</body></html>')
-  printWindow.document.close()
+  try {
+    const printWindow = window.open('', '', 'height=400,width=800')
+    printWindow.document.write(`<html><head><title>${title}</title>`)
+    printWindow.document.write('<style>')
+    printWindow.document.write(`${CertificateStyledString}`)
+    printWindow.document.write('</style>')
+    printWindow.document.write('</head><body >')
+    printWindow.document.write(divContents.outerHTML)
+    printWindow.document.write('</body></html>')
+    printWindow.document.close()
 
-  var curURL = window.location.href
-  history.replaceState(history.state, '', '/')
-  printWindow.print()
-  history.replaceState(history.state, '', curURL)
+    const curURL = window.location.href
+    history.replaceState(history.state, '', '/')
+    printWindow.print()
+    history.replaceState(history.state, '', curURL)
+  } catch (error) {
+    console.info('getPrintScreenAsPdf [51]', error.name + ': ' + error.message)
+  }
 
   // printWindow.print()
 }
