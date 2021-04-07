@@ -2,7 +2,31 @@
 
 .CarouselQuestions {
   &__dots {
+    display: flex;
     text-align: center;
+    padding: 0 0 1rem 0;
+
+    /* The dots/bullets/indicators */
+    &_dot {
+      cursor: pointer;
+      margin: 0 0 0 0;
+      background-color: #bbb;
+      height: 5px;
+      flex: 1;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: #717171;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0 0 0;
   }
 
   .mySlides {
@@ -69,23 +93,6 @@
     top: 0;
   }
 
-  /* The dots/bullets/indicators */
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-
-  .active,
-  .dot:hover {
-    background-color: #717171;
-  }
-
   /* Fading animation */
   .fade {
     -webkit-animation-name: fade;
@@ -110,6 +117,10 @@
     to {
       opacity: 1;
     }
+  }
+
+  &_show {
+    display: flex !important;
   }
 
   /* On smaller screens, decrease text size */

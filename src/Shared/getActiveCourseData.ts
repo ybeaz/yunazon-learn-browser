@@ -7,7 +7,7 @@ interface IRgetActiveCourseData {
 /**
  * @description Function to find active module
  * @param courses
- * @returns
+ * @returns IRgetActiveCourseData
  */
 export const getActiveCourseData: Function = (
   courses: any[]

@@ -31,9 +31,26 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
-    SET_QUESTION_SLIDE: () => {},
+    SET_QUESTION_SLIDE: () => {
+      const { data } = action
+      const { componentsState } = store
+      const componentsStateNext = {
+        ...componentsState,
+        questionSlideNumber: data,
+      }
+      return { ...store, componentsState: componentsStateNext }
+    },
 
-    PLUS_QUESTION_SLIDE: () => {},
+    PLUS_QUESTION_SLIDE: () => {
+      const { data } = action
+      const { componentsState } = store
+      const { questionSlideNumber } = componentsState
+      const componentsStateNext = {
+        ...componentsState,
+        questionSlideNumber: questionSlideNumber + data,
+      }
+      return { ...store, componentsState: componentsStateNext }
+    },
 
     ONCHANGE_EMAIL_MODAL: () => {
       const { data } = action

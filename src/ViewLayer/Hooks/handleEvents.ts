@@ -9,6 +9,14 @@ export const handleEvents: Function = (event: Event, props: any): void => {
   const { dispatch } = store
 
   const output = {
+    SET_QUESTION_SLIDE: () => {
+      dispatch(action.SET_QUESTION_SLIDE(data))
+    },
+
+    PLUS_QUESTION_SLIDE: () => {
+      dispatch(action.PLUS_QUESTION_SLIDE(data))
+    },
+
     ONCHANGE_EMAIL_MODAL: () => {
       const { value } = event.target as HTMLTextAreaElement
       dispatch(action.ONCHANGE_EMAIL_MODAL(value))

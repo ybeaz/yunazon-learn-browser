@@ -30,18 +30,6 @@ export const QuestionColumn: Function = (): JSX.Element => {
 
   // console.info('QuestionColumn [26]', { currentCourseModule })
 
-  const getQuestionColumnQuestions: Function = (
-    questions: any[] = []
-  ): JSX.Element => {
-    let output = questions.map((question, i) => {
-      const { questionID } = question
-      const checkRadioGroupProps = { courseID, moduleID, ...question }
-      return <CheckRadioGroup key={questionID} {...checkRadioGroupProps} />
-    })
-
-    return <div className='QuestionColumn__questions'>{output}</div>
-  }
-
   const buttonContinueProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward',
@@ -55,7 +43,6 @@ export const QuestionColumn: Function = (): JSX.Element => {
   return (
     <div className='QuestionColumn'>
       <CarouselQuestions />
-      {getQuestionColumnQuestions(questions)}
       {questions.length ? (
         <div className='QuestionColumn__ok'>
           <Button {...buttonContinueProps} />

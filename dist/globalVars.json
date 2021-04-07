@@ -6,6 +6,9 @@
     "href": "https://userto.com/img/favicon.ico"
   },
   "theme": "Dark",
+  "configuration": {
+    "numberQuestionsInSlide": 1
+  },
   "rus": {
     "something": 1
   }
