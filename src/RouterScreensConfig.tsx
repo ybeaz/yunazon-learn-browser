@@ -26,8 +26,8 @@ export const RouterScreensConfig = () => {
     const getLoadedPlayerScript = () => {
       var tag = document.createElement('script')
       tag.src = 'https://www.youtube.com/iframe_api'
-      const firstScriptTag = document.getElementsByTagName('script')[0]
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+      const parent = document.getElementsByTagName('head')[0]
+      parent.prepend(tag)
     }
 
     const makeDispatchAsyncWrappered = async () => {

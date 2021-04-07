@@ -7,7 +7,11 @@ import { getCourseModuleActive } from '../Shared/getCourseModuleActive'
 import { getProvidedActiveDefault } from '../Shared/getProvidedActiveDefault'
 
 const rootStoreDefault = {
-  userName: 'Вася Пупкин',
+  isLoaded: {
+    isLoadedGlobalVars: false,
+    isLoadedCourses: false,
+  },
+  userName: '',
   courses: [],
   sideNavigationState: false,
   globalVars: {},
@@ -93,7 +97,9 @@ export const rootReducer: Function = (
 
     GET_CONTENT_DATA_SUCCESS: () => {
       const { data } = action
-      const storeNext = { ...store, courses: data }
+      const { isLoaded } = store
+      const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
+      const storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
       return storeNext
     },
 
@@ -104,7 +110,9 @@ export const rootReducer: Function = (
 
     GET_GLOBAL_VARS_SUCCESS: () => {
       const { data } = action
-      const storeNext = { ...store, globalVars: data }
+      const { isLoaded } = store
+      const isLoadedNext = { ...isLoaded, isLoadedGlobalVars: true }
+      const storeNext = { ...store, globalVars: data, isLoaded: isLoadedNext }
       return storeNext
     },
   }

@@ -1,74 +1,35 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
 
-import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
-import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
-import { SELECT_COURSE_MODULE } from '../../DataLayer/index.action'
-import { handleEvents } from '../Hooks/handleEvents'
 import { MainFrame } from '../Components/MainFrame'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
 import { RootStore } from '../../@types/RootStore'
-import { Player } from '../Components/Player'
+import { PlayerPlate } from '../Components/PlayerPlate'
 
 export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
-  const { courses } = store
+  const {
+    courses,
+    isLoaded: { isLoadedGlobalVars, isLoadedCourses },
+  } = store
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
-    // console.info('MatrixHome [15]', { courses })
-    const { width, height } = VIDEO_RESOLUTION
-
-    const output = courses.map((item, i) => {
+    const plates = courses.map((item, i) => {
       const { courseID, modules } = item
       const { moduleID, ytID } = modules[0]
 
-      const { width, height } = VIDEO_RESOLUTION
-      const {
-        playVideoHandler,
-        pauseVideoHandler,
-        stopVideoHandler,
-        isShowingPlay,
-      } = getYouTubePlayerWorkHook({
-        videoId: ytID,
-        width,
-        height,
-      })
-
-      const playerProps = {
-        videoId: ytID,
-        playVideoHandler,
-        pauseVideoHandler,
-        stopVideoHandler,
-        isShowingPlay,
-        isShowingPanel: false,
-      }
-
-      return (
-        <div className={`MatrixHome__plates_plate`} key={courseID}>
-          <Player {...playerProps} />
-          <Link
-            className='MatrixHome__plates_plate_shield'
-            to={{
-              pathname: `/c/${ytID}`,
-            }}
-            onClick={event =>
-              handleEvents(
-                event,
-                SELECT_COURSE_MODULE({ courseID, moduleID, ytID })
-              )
-            }
-          />
-        </div>
-      )
+      const playerPlateProps = { courseID, moduleID, ytID }
+      return <PlayerPlate {...playerPlateProps} />
     })
-    return <div className='MatrixHome__plates'>{output}</div>
+    return <div className='MatrixHome__plates'>{plates}</div>
   }
 
   return (
     <div className='MatrixHome'>
       <MainFrame>
-        {courses.length ? <div>{getPlateMatix(courses)}</div> : null}
+        {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
+          <div>{getPlateMatix(courses)}</div>
+        ) : null}
         {null}
       </MainFrame>
     </div>

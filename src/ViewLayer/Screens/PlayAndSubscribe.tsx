@@ -47,11 +47,11 @@ export const PlayAndSubscribe: Function = (
 
   const playerProps = {
     videoId: contentID,
-    isShowingPanel: true,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
+    isShowingPanel: true,
   }
 
   const questionColumnProps = { contentID }

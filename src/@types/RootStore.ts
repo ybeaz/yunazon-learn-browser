@@ -1,4 +1,8 @@
 export interface RootStore {
+  isLoaded: {
+    isLoadedGlobalVars: boolean
+    isLoadedCourses: boolean
+  }
   userName: string
   courses: any[]
   sideNavigationState: boolean
