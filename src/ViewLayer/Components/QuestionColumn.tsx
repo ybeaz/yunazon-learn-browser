@@ -50,18 +50,8 @@ export const QuestionColumn: Function = (
     classAdded: 'Button_MdForward',
     handleEvents,
     action: {
-      typeEvent: 'COUNT_MODULE_QUIZ_SCORE',
-      data: {
-        courseID,
-        moduleID,
-        questions,
-        screenType: 'Certificate',
-        userName,
-        meta,
-        capture: captureCourse,
-        description: descriptionCourse,
-        contentID,
-      },
+      typeEvent: 'OPEN_MODAL_GET_SCORES',
+      data: {},
     },
   }
 

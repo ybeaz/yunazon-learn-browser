@@ -59,11 +59,15 @@ export const PlayAndSubscribe: Function = (
   //  console.info('PlayAndSubscribe.screen [72]', { props })
   return (
     <div className='PlayAndSubscribe'>
-      <MainFrame>
-        <Player {...playerProps} />
-        <QuestionColumn {...questionColumnProps} />
-      </MainFrame>
-      {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
+      {isLoaded === true ? (
+        <>
+          <MainFrame>
+            <Player {...playerProps} />
+            <QuestionColumn {...questionColumnProps} />
+          </MainFrame>
+          {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
+        </>
+      ) : null}
     </div>
   )
 }

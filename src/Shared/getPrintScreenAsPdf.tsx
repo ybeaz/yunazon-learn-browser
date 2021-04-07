@@ -14,10 +14,7 @@ const SCREENS = {
   Certificate,
 }
 
-export const getPrintScreenAsPdf: Function = (
-  event: EventListener,
-  data: any
-): void => {
+export const getPrintScreenAsPdf: Function = (data: any): void => {
   const { screenType, ...screenToPrintProps } = data
   const { userName } = screenToPrintProps
 

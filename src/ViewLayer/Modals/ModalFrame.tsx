@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
-import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
@@ -15,11 +13,13 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const { stopVideoHandler } = props
   const store = useSelector((store: RootStore) => store)
   const {
-    modalsState: { modalGetScores },
     courses,
+    modalsState: { modalGetScores },
+    forms: { nameModal, emailModal },
   } = store
+
   const {
-    courseActive: { capture },
+    courseActive: { courseID, capture, description, meta },
     moduleActive,
     questionsActive,
   } = getActiveCourseData(courses)
@@ -27,9 +27,11 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result } = score
-  const { ytID: videoId } = moduleActive
-  const { width, height } = VIDEO_RESOLUTION
+  const { moduleID, ytID: videoId } = moduleActive
   console.info('ModalFrame [12]', {
+    courses,
+    nameModal,
+    emailModal,
     videoId,
     moduleActive,
     questionsWrongAnswered,
@@ -50,16 +52,16 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
     classAdded: 'Input_name',
     type: 'text',
     placeholder: 'name...',
-    // handleEvents,
-    // action: { typeEvent: ''}
+    handleEvents,
+    action: { typeEvent: 'ONCHANGE_NAME_MODAL' },
   }
 
   const inputEmailProps = {
     classAdded: 'Input_email',
     type: 'email',
     placeholder: 'email...',
-    // handleEvents,
-    // action: { typeEvent: ''}
+    handleEvents,
+    action: { typeEvent: 'ONCHANGE_EMAIL_MODAL' },
   }
 
   const buttonCloseProps = {
@@ -79,8 +81,21 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const buttonForwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward2',
-    // handleEvents: () => { },
-    // action: {},
+    handleEvents,
+    action: {
+      typeEvent: 'PRINT_SCORES',
+      data: {
+        screenType: 'Certificate',
+        userName: nameModal,
+        userEmail: emailModal,
+        meta,
+        capture,
+        description,
+        courseID,
+        moduleID,
+        contentID: videoId,
+      },
+    },
   }
 
   const getRendedQuestionsWrongAnswered: Function = (
@@ -135,20 +150,20 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
           <div className='ModalFrame__content_inner_text'>{message}</div>
 
           <form className='ModalFrame__content_inner_form'>
-            {result === 'success' ? (
+            {true || result === 'success' ? (
               <>
                 <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
                     Your name
                   </label>
-                  <Input {...inputNameProps} />
+                  <Input {...inputNameProps} value={nameModal} />
                 </div>
 
                 <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
                     Email
                   </label>
-                  <Input {...inputEmailProps} />
+                  <Input {...inputEmailProps} value={emailModal} />
                 </div>
                 {/* <label>
               <b>Password</b>

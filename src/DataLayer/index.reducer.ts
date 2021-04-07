@@ -12,7 +12,11 @@ const rootStoreDefault = {
   sideNavigationState: false,
   globalVars: {},
   modalsState: {
-    modalGetScores: true,
+    modalGetScores: false,
+  },
+  forms: {
+    nameModal: '',
+    emailModal: '',
   },
 }
 
@@ -23,16 +27,33 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    ONCHANGE_EMAIL_MODAL: () => {
+      const { data } = action
+      const { forms } = store
+      const nextForms = {
+        ...forms,
+        emailModal: data,
+      }
+      return { ...store, forms: nextForms }
+    },
+
+    ONCHANGE_NAME_MODAL: () => {
+      const { data } = action
+      const { forms } = store
+      const nextForms = {
+        ...forms,
+        nameModal: data,
+      }
+      return { ...store, forms: nextForms }
+    },
+
     TOGGLE_MODAL_GET_SCORES: () => {
       const { data } = action
       const { modalsState } = store
-      const { modalGetScores } = modalsState
       const nextModalsState = {
         ...modalsState,
         modalGetScores: data,
       }
-
-      // console.info('index.reducer [24]', { modalsState, nextModalsState })
       return { ...store, modalsState: nextModalsState }
     },
 
@@ -67,6 +88,12 @@ export const rootReducer: Function = (
       const { courses } = store
       const coursesNext = getOptionsClickedByID(courses, optionID, multi)
       const storeNext = { ...store, courses: coursesNext }
+      console.info('index.reducer [96]', {
+        coursesNext,
+        courses,
+        storeNext,
+        store,
+      })
       return storeNext
     },
 
@@ -78,7 +105,6 @@ export const rootReducer: Function = (
 
     TOGGLE_SIDE_NAVIGATION: () => {
       const { sideNavigationState } = store
-      // console.info('rootReducer [11]', { action })
       return { ...store, sideNavigationState: !sideNavigationState }
     },
 

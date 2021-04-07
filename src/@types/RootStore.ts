@@ -6,4 +6,8 @@ export interface RootStore {
   modalsState: {
     modalGetScores: boolean
   }
+  forms: {
+    nameModal: string
+    emailModal: string
+  }
 }

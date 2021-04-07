@@ -3,17 +3,55 @@ import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 
-export const handleEvents: Function = (
-  event: EventListener,
-  props: any
-): void => {
+export const handleEvents: Function = (event: Event, props: any): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
   const { dispatch } = store
 
   const output = {
+    ONCHANGE_EMAIL_MODAL: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_EMAIL_MODAL(value))
+    },
+
+    ONCHANGE_NAME_MODAL: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_NAME_MODAL(value))
+    },
+
     CLOSE_MODAL_GET_SCORES: () => {
       dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
+    },
+
+    OPEN_MODAL_GET_SCORES: () => {
+      dispatch(action.TOGGLE_MODAL_GET_SCORES(true))
+    },
+
+    PRINT_SCORES: () => {
+      dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
+
+      const {
+        screenType,
+        userName,
+        userEmail,
+        capture,
+        courseID,
+        moduleID,
+        contentID,
+        meta,
+        description,
+      } = data
+
+      getPrintScreenAsPdf({
+        screenType,
+        userName,
+        meta,
+        capture,
+        description,
+        contentID,
+      })
+
+      dispatch(action.GET_ANSWERS_DEFAULT())
     },
 
     COUNT_MODULE_QUIZ_SCORE: () => {
