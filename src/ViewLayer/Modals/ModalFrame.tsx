@@ -28,21 +28,18 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result } = score
   const { moduleID, ytID: videoId } = moduleActive
-  console.info('ModalFrame [12]', {
-    courses,
-    nameModal,
-    emailModal,
-    videoId,
-    moduleActive,
-    questionsWrongAnswered,
-    questionsActive,
-    result,
-    capture,
-    total,
-    right,
-    wrong,
-    modalGetScores,
-  })
+  // console.info('ModalFrame [12]', {
+  //   courses,
+  //   videoId,
+  //   moduleActive,
+  //   questionsWrongAnswered,
+  //   questionsActive,
+  //   result,
+  //   capture,
+  //   total,
+  //   right,
+  //   wrong,
+  // })
 
   useEffect(() => {
     stopVideoHandler({}, {})
@@ -78,26 +75,6 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
     action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
   }
 
-  const buttonForwardProps = {
-    icon: 'MdForward',
-    classAdded: 'Button_MdForward2',
-    handleEvents,
-    action: {
-      typeEvent: 'PRINT_SCORES',
-      data: {
-        screenType: 'Certificate',
-        userName: nameModal,
-        userEmail: emailModal,
-        meta,
-        capture,
-        description,
-        courseID,
-        moduleID,
-        contentID: videoId,
-      },
-    },
-  }
-
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
   ): JSX.Element => {
@@ -115,29 +92,63 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   }
 
   const addClass = !modalGetScores ? '' : 'ModalFrame_display'
-  const message = {
-    success: (
-      <>
-        <p>Our congratulations!</p>
-        <p>You completed the course</p>
-        <p>"{capture}"</p>
-        <p>
-          and passed the test with {right} question from {total}
-        </p>
-        <p>To receive a certificate, fill the form</p>
-      </>
-    ),
-    failure: (
-      <>
-        <p>You committed to success.</p>
-        <p>
-          and this time anwered {right} question from {total}.
-        </p>
-        <p>This is not enough to complete the course</p>
-        <p>and receive the certificate.</p>
-        <p>You can try once again</p>
-      </>
-    ),
+
+  const scenario = {
+    success: {
+      message: (
+        <>
+          <div className='ModalFrame__content_inner_text_greet'>
+            Congratulations!
+          </div>
+          <p>You completed the course</p>
+          <p>"{capture}"</p>
+          <p>
+            and passed the test with {right} correct answeres from {total}
+          </p>
+          <p>To receive a certificate, fill the form</p>
+        </>
+      ),
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
+        handleEvents,
+        action: {
+          typeEvent: 'PRINT_SCORES',
+          data: {
+            screenType: 'Certificate',
+            userName: nameModal,
+            userEmail: emailModal,
+            meta,
+            capture,
+            description,
+            courseID,
+            moduleID,
+            contentID: videoId,
+          },
+        },
+      },
+    },
+    failure: {
+      message: (
+        <>
+          <div className='ModalFrame__content_inner_text_greet'>
+            You committed to success.
+          </div>
+          <p>
+            and this time anwered {right} question from {total}.
+          </p>
+          <p>This is not enough to complete the course</p>
+          <p>and receive the certificate.</p>
+          <p>You can try once again</p>
+        </>
+      ),
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
+        handleEvents,
+        action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
+      },
+    },
   }[result]
 
   return (
@@ -147,10 +158,12 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
           <Button {...buttonCloseProps} />
         </span>
         <div className='ModalFrame__content_inner'>
-          <div className='ModalFrame__content_inner_text'>{message}</div>
+          <div className='ModalFrame__content_inner_text'>
+            {scenario.message}
+          </div>
 
           <form className='ModalFrame__content_inner_form'>
-            {true || result === 'success' ? (
+            {result === 'success' ? (
               <>
                 <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
@@ -182,7 +195,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
             ) : null}
             <div className='ModalFrame__content_inner_form_buttons'>
               {/* <Button {...buttonCancelProps} /> */}
-              <Button {...buttonForwardProps} />
+              <Button {...scenario.buttonForwardProps} />
             </div>
           </form>
 

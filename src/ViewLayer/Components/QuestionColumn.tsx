@@ -55,30 +55,12 @@ export const QuestionColumn: Function = (
     },
   }
 
-  // Remove after 2021-04-05
-  // const buttonPrintCertProps = {
-  //   icon: 'MdPrint',
-  //   classAdded: 'Button_MdForward',
-  //   handleEvents: getPrintScreenAsPdf,
-  //   action: {
-  //     screenType: 'Certificate',
-  //     userName,
-  //     meta,
-  //     capture: captureCourse,
-  //     description: descriptionCourse,
-  //     contentID,
-  //   },
-  // }
-
   return (
     <div className='QuestionColumn'>
       {getQuestionColumnQuestions(questions)}
       {questions.length ? (
         <div className='QuestionColumn__ok'>
           <Button {...buttonContinueProps} />
-          {/* Remove after 2021-04-05 <div className='QuestionColumn__print'>
-            <Button {...buttonPrintCertProps} />
-          </div> */}
         </div>
       ) : null}
     </div>

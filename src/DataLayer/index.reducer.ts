@@ -88,12 +88,6 @@ export const rootReducer: Function = (
       const { courses } = store
       const coursesNext = getOptionsClickedByID(courses, optionID, multi)
       const storeNext = { ...store, courses: coursesNext }
-      console.info('index.reducer [96]', {
-        coursesNext,
-        courses,
-        storeNext,
-        store,
-      })
       return storeNext
     },
 
