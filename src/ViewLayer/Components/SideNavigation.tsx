@@ -8,7 +8,9 @@ import { handleEvents } from '../Hooks/handleEvents'
 
 export const SideNavigation: Function = (): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
-  const { sideNavigationState } = store
+  const {
+    componentsState: { sideNavigationState },
+  } = store
   // console.info('SideNavigation [6]', { sideNavigationState })
 
   const buttonMdMenuProps = {

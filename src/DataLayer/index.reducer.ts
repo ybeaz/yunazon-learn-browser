@@ -11,12 +11,12 @@ const rootStoreDefault = {
     isLoadedGlobalVars: false,
     isLoadedCourses: false,
   },
-  userName: '',
   courses: [],
-  sideNavigationState: false,
   globalVars: {},
-  modalsState: {
+  componentsState: {
+    questionSlideNumber: 0,
     modalGetScores: false,
+    sideNavigationState: false,
   },
   forms: {
     nameModal: '',
@@ -31,6 +31,10 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    SET_QUESTION_SLIDE: () => {},
+
+    PLUS_QUESTION_SLIDE: () => {},
+
     ONCHANGE_EMAIL_MODAL: () => {
       const { data } = action
       const { forms } = store
@@ -53,12 +57,12 @@ export const rootReducer: Function = (
 
     TOGGLE_MODAL_GET_SCORES: () => {
       const { data } = action
-      const { modalsState } = store
-      const nextModalsState = {
-        ...modalsState,
+      const { componentsState } = store
+      const componentsStateNext = {
+        ...componentsState,
         modalGetScores: data,
       }
-      return { ...store, modalsState: nextModalsState }
+      return { ...store, componentsState: componentsStateNext }
     },
 
     GET_ANSWERS_DEFAULT: () => {
@@ -104,8 +108,13 @@ export const rootReducer: Function = (
     },
 
     TOGGLE_SIDE_NAVIGATION: () => {
-      const { sideNavigationState } = store
-      return { ...store, sideNavigationState: !sideNavigationState }
+      const { componentsState } = store
+      const { sideNavigationState } = componentsState
+      const componentsStateNext = {
+        ...componentsState,
+        sideNavigationState: !sideNavigationState,
+      }
+      return { ...store, componentsState: componentsStateNext }
     },
 
     GET_GLOBAL_VARS_SUCCESS: () => {

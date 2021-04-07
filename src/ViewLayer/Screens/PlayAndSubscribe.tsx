@@ -19,7 +19,7 @@ export const PlayAndSubscribe: Function = (
   const store = useSelector((store: RootStore) => store)
   const {
     courses,
-    modalsState: { modalGetScores },
+    componentsState: { modalGetScores },
   } = store
   const [isLoaded, setIsLoaded] = useState(false)
 

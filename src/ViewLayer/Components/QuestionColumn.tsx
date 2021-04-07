@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { CarouselQuestions } from './CarouselQuestions'
 import { handleEvents } from '../Hooks/handleEvents'
 import { getCurrentCourseModule } from '../../Shared/getCurrentCourseModule'
 import { RootStore } from '../../@types/RootStore'
@@ -12,13 +13,9 @@ interface IQuestionColumn {
   contentID: string
 }
 
-export const QuestionColumn: Function = (
-  props: IQuestionColumn
-): JSX.Element => {
-  const { contentID } = props
-
+export const QuestionColumn: Function = (): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
-  const { courses, userName } = store
+  const { courses } = store
   const currentCourseModule = getCurrentCourseModule(courses)
 
   const {
@@ -57,6 +54,7 @@ export const QuestionColumn: Function = (
 
   return (
     <div className='QuestionColumn'>
+      <CarouselQuestions />
       {getQuestionColumnQuestions(questions)}
       {questions.length ? (
         <div className='QuestionColumn__ok'>

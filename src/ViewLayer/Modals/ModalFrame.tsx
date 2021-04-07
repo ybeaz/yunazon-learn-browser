@@ -14,7 +14,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
     courses,
-    modalsState: { modalGetScores },
+    componentsState: { modalGetScores },
     forms: { nameModal, emailModal },
   } = store
 

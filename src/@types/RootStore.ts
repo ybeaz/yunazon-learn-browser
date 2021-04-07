@@ -3,12 +3,12 @@ export interface RootStore {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean
   }
-  userName: string
   courses: any[]
-  sideNavigationState: boolean
   globalVars: any
-  modalsState: {
+  componentsState: {
+    questionSlideNumber: number
     modalGetScores: boolean
+    sideNavigationState: boolean
   }
   forms: {
     nameModal: string

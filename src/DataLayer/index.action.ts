@@ -14,6 +14,16 @@ export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 export const GET_PRODUCT_CARD: any = createRequestTypes('GET_PRODUCT_CARD')
 
 // Synchroneours redux actions
+export const SET_QUESTION_SLIDE: Function = (data: number): any => ({
+  type: 'SET_QUESTION_SLIDE',
+  data,
+})
+
+export const PLUS_QUESTION_SLIDE: Function = (data: number): any => ({
+  type: 'PLUS_QUESTION_SLIDE',
+  data,
+})
+
 export const ONCHANGE_EMAIL_MODAL: Function = (data: string | number): any => ({
   type: 'ONCHANGE_EMAIL_MODAL',
   data,
