@@ -1,4 +1,6 @@
 import { RootStore } from '../@types/RootStore'
+import { getChunkedArray } from '../Shared/getChunkedArray'
+import { getActiveCourseData } from '../Shared/getActiveCourseData'
 import { getOptionsShuffled } from '../Shared/getOptionsShuffled'
 import { getProdidevAnswerDefault } from '../Shared/getProdidevAnswerDefault'
 import { getOptionsClickedByID } from '../Shared/getOptionsClickedByID'
@@ -43,11 +45,24 @@ export const rootReducer: Function = (
 
     PLUS_QUESTION_SLIDE: () => {
       const { data } = action
-      const { componentsState } = store
+      const { componentsState, courses } = store
       const { questionSlideNumber } = componentsState
+
+      const { questionsActive } = getActiveCourseData(courses)
+      const questionsChunked = getChunkedArray(questionsActive, 2)
+
+      let questionSlideNumberNext = 0
+      const questionSlideNumberPlus = questionSlideNumber + data
+      if (questionSlideNumberPlus > questionsChunked.length - 1) {
+        questionSlideNumberNext = questionsChunked.length - 1
+      } else if (questionSlideNumberPlus < 0) {
+        questionSlideNumberNext
+      } else {
+        questionSlideNumberNext = questionSlideNumberPlus
+      }
       const componentsStateNext = {
         ...componentsState,
-        questionSlideNumber: questionSlideNumber + data,
+        questionSlideNumber: questionSlideNumberNext,
       }
       return { ...store, componentsState: componentsStateNext }
     },

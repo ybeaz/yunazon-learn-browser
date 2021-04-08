@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { Button } from '../Components/Button'
@@ -14,57 +15,10 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     courses,
   } = store
 
-  const arrIn = [
-    {
-      designType: 'CheckBox',
-      multi: true,
-      capture: 'Согласно текста самодержец Николка',
-      numbertext: 1,
-      src: 'https://www.w3schools.com/howto/img_nature_wide.jpg',
-      options: [
-        { label: 'был внешностью красив', status: false },
-        {
-          label: 'правил так, что было что закусить',
-          status: true,
-        },
-        {
-          label: 'был выдающейся личностью в истории',
-          status: false,
-        },
-        { label: 'не видел дальше носа своего', status: true },
-      ],
-    },
-    {
-      designType: 'CheckBox',
-      multi: true,
-      capture: 'Согласно услышанного при товарище Сталине...',
-      numbertext: 2,
-      src: 'https://www.w3schools.com/howto/img_snow_wide.jpg',
-      options: [
-        { label: 'колхозы распустили', status: false },
-        { label: 'строились ТЭЦ', status: true },
-        { label: 'в лагеря загнали всех', status: true },
-        { label: 'граждан жизни не лишали', status: false },
-      ],
-    },
-    {
-      designType: 'CheckBox',
-      multi: true,
-      capture: 'Согласно песни Микитушка...',
-      numbertext: 3,
-      src: 'https://www.w3schools.com/howto/img_mountains_wide.jpg',
-      options: [
-        { label: 'наградил Кеннади медалью', status: false },
-        { label: 'совершил немного дел', status: false },
-        { label: 'был невысого роста', status: true },
-        { label: 'пихал (космонавтов) на Луну', status: true },
-      ],
-    },
-  ]
-
   const { courseActive, moduleActive, questionsActive } = getActiveCourseData(
     courses
   )
+  const questionsChunked = getChunkedArray(questionsActive, 2)
 
   const getDots: Function = (questions: any[]): JSX.Element => {
     const dotsJSX = questions.map((question, index) => {
@@ -86,20 +40,26 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     return <div className='CarouselQuestions__dots'>{dotsJSX}</div>
   }
 
-  const getSlides: Function = (questions: any[]): JSX.Element => {
-    const questionsJSX = questions.map((question, index) => {
+  const getSlidesChunk: Function = (questions: any[]): JSX.Element[] => {
+    return questions.map(question => {
+      return <CheckRadioGroup {...question} />
+    })
+  }
+
+  const getSlides: Function = (questionsChunked: any[]): JSX.Element => {
+    const questionsJSX = questionsChunked.map((questions, index) => {
       const classNameToggleShow =
         index === questionSlideNumber ? 'CarouselQuestions_show' : ''
       return (
-        <div className='slideshow-container'>
-          <div className={`mySlides fade ${classNameToggleShow}`}>
-            <CheckRadioGroup {...question} />
-          </div>
+        <div
+          className={`CarouselQuestions__slideshow_slides fade ${classNameToggleShow}`}
+        >
+          {getSlidesChunk(questions)}
         </div>
       )
     })
 
-    return <div className='slideshow-container'>{questionsJSX}</div>
+    return <div className='CarouselQuestions__slideshow'>{questionsJSX}</div>
   }
 
   const buttonSlideBackwardProps = {
@@ -126,12 +86,12 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
   })
   return (
     <div className='CarouselQuestions'>
-      {getDots(questionsActive)}
+      {getDots(questionsChunked)}
       <div className='CarouselQuestions__buttons'>
         <Button {...buttonSlideBackwardProps} />
         <Button {...buttonSlideForwardProps} />
       </div>
-      {getSlides(questionsActive)}
+      {getSlides(questionsChunked)}
     </div>
   )
 }

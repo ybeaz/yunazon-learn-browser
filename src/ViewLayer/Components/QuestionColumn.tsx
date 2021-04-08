@@ -32,6 +32,7 @@ export const QuestionColumn: Function = (): JSX.Element => {
 
   const buttonContinueProps = {
     icon: 'MdForward',
+    icon2: 'HiOutlineAcademicCap',
     classAdded: 'Button_MdForward',
     handleEvents,
     action: {
