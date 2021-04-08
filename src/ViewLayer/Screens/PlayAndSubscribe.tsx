@@ -10,7 +10,7 @@ import { RouterScreenProps } from '../../@types/RouterScreenProps'
 
 import { MainFrame } from '../Components/MainFrame'
 import { Player } from '../Components/Player'
-import { QuestionColumn } from '../Components/QuestionColumn'
+import { CarouselQuestions } from '../Components/CarouselQuestions'
 
 export const PlayAndSubscribe: Function = (
   props: RouterScreenProps = { routeProps: {}, rootPath: '' }
@@ -54,7 +54,6 @@ export const PlayAndSubscribe: Function = (
     isShowingPanel: true,
   }
 
-  const questionColumnProps = { contentID }
   const modalFrameProps = { stopVideoHandler }
   //  console.info('PlayAndSubscribe.screen [72]', { props })
   return (
@@ -63,7 +62,7 @@ export const PlayAndSubscribe: Function = (
         <>
           <MainFrame>
             <Player {...playerProps} />
-            <QuestionColumn {...questionColumnProps} />
+            <CarouselQuestions />
           </MainFrame>
           {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
         </>

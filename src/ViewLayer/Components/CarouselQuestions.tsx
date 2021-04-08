@@ -76,6 +76,17 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: 1 },
   }
 
+  const buttonToCertificate = {
+    icon: 'MdForward',
+    icon2: 'HiOutlineAcademicCap',
+    classAdded: 'Button_MdForward',
+    handleEvents,
+    action: {
+      typeEvent: 'OPEN_MODAL_GET_SCORES',
+      data: {},
+    },
+  }
+
   console.info('CarouselQuestions [113]', {
     questionSlideNumber,
     questionsActive,
@@ -87,9 +98,16 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
   return (
     <div className='CarouselQuestions'>
       {getDots(questionsChunked)}
-      <div className='CarouselQuestions__buttons'>
-        <Button {...buttonSlideBackwardProps} />
-        <Button {...buttonSlideForwardProps} />
+      <div className='CarouselQuestions__buttons display_left display_toCertificate'>
+        <div className='CarouselQuestions__buttons_backward'>
+          <Button {...buttonSlideBackwardProps} />
+        </div>
+        <div className='CarouselQuestions__buttons_forward'>
+          <Button {...buttonSlideForwardProps} />
+        </div>
+        <div className='CarouselQuestions__buttons_toCertificate'>
+          <Button {...buttonToCertificate} />
+        </div>
       </div>
       {getSlides(questionsChunked)}
     </div>
