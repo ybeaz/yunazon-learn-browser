@@ -2,6 +2,7 @@ import React from 'react'
 
 import { IconContext } from 'react-icons'
 import {
+  MdBlock,
   MdClose,
   MdPrint,
   MdForward,
@@ -14,8 +15,9 @@ import {
 } from 'react-icons/md'
 
 import { HiOutlineAcademicCap } from 'react-icons/hi'
-
+// go/pitchday
 const ICON = {
+  MdBlock,
   HiOutlineAcademicCap,
   MdClose,
   MdPrint,

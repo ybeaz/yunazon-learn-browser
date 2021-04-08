@@ -76,13 +76,23 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: 1 },
   }
 
-  const buttonToCertificate = {
+  const buttonToCertificateProps = {
     icon: 'MdForward',
     icon2: 'HiOutlineAcademicCap',
     classAdded: 'Button_MdForward',
     handleEvents,
     action: {
       typeEvent: 'OPEN_MODAL_GET_SCORES',
+      data: {},
+    },
+  }
+
+  const buttonBlockProps = {
+    icon: 'MdBlock',
+    classAdded: 'Button_MdBlock',
+    handleEvents: () => {},
+    action: {
+      typeEvent: '',
       data: {},
     },
   }
@@ -95,10 +105,12 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     courses,
     store,
   })
+
+  // display_left display_right display_toCertificate display_block
   return (
     <div className='CarouselQuestions'>
       {getDots(questionsChunked)}
-      <div className='CarouselQuestions__buttons display_left display_toCertificate'>
+      <div className='CarouselQuestions__buttons display_left display_block'>
         <div className='CarouselQuestions__buttons_backward'>
           <Button {...buttonSlideBackwardProps} />
         </div>
@@ -106,7 +118,10 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
           <Button {...buttonSlideForwardProps} />
         </div>
         <div className='CarouselQuestions__buttons_toCertificate'>
-          <Button {...buttonToCertificate} />
+          <Button {...buttonToCertificateProps} />
+        </div>
+        <div className='CarouselQuestions__buttons_block'>
+          <Button {...buttonBlockProps} />
         </div>
       </div>
       {getSlides(questionsChunked)}
