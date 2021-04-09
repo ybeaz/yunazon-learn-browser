@@ -18,12 +18,14 @@ export const getOptionsClickedByID: Function = (
 
       const questionsNext = questions.map(question => {
         const { options } = question
+        const isQuestionWithOptionIDIn = options.find(
+          option => option.optionID === optionIDIn
+        )
 
         const optionNext = options.map(option => {
           const { optionID, answer } = option
-          let answerNext = multi ? answer : false
+          let answerNext = multi || !isQuestionWithOptionIDIn ? answer : false
           if (optionID === optionIDIn) answerNext = !answer
-
           return { ...option, answer: answerNext }
         })
 
