@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getButtonsClassString } from '../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
@@ -11,19 +12,27 @@ import { RootStore } from '../../@types/RootStore'
 export const CarouselQuestions: Function = (props: any): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
-    componentsState: { questionSlideNumber },
+    globalVars,
+    componentsState: { questionsSlideNumber },
     courses,
   } = store
+
+  const numberQuestionsInSlide =
+    globalVars?.configuration?.numberQuestionsInSlide || 2
 
   const { courseActive, moduleActive, questionsActive } = getActiveCourseData(
     courses
   )
-  const questionsChunked = getChunkedArray(questionsActive, 2)
+
+  const questionsChunked = getChunkedArray(
+    questionsActive,
+    numberQuestionsInSlide
+  )
 
   const getDots: Function = (questions: any[]): JSX.Element => {
     const dotsJSX = questions.map((question, index) => {
       const classNameToggleHighlight =
-        index === questionSlideNumber ? 'active' : ''
+        index === questionsSlideNumber ? 'active' : ''
       return (
         <span
           className={`CarouselQuestions__dots_dot ${classNameToggleHighlight}`}
@@ -49,7 +58,7 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
   const getSlides: Function = (questionsChunked: any[]): JSX.Element => {
     const questionsJSX = questionsChunked.map((questions, index) => {
       const classNameToggleShow =
-        index === questionSlideNumber ? 'CarouselQuestions_show' : ''
+        index === questionsSlideNumber ? 'CarouselQuestions_show' : ''
       return (
         <div
           className={`CarouselQuestions__slideshow_slides fade ${classNameToggleShow}`}
@@ -61,6 +70,13 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
 
     return <div className='CarouselQuestions__slideshow'>{questionsJSX}</div>
   }
+
+  const buttonsClassString = getButtonsClassString(
+    questionsSlideNumber,
+    questionsChunked.length,
+    questionsActive,
+    questionsChunked
+  )
 
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
@@ -88,8 +104,8 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
   }
 
   const buttonBlockProps = {
-    icon: 'MdBlock',
-    classAdded: 'Button_MdBlock',
+    icon: 'MdForward',
+    classAdded: 'Button_downLeft',
     handleEvents: () => {},
     action: {
       typeEvent: '',
@@ -97,20 +113,11 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     },
   }
 
-  console.info('CarouselQuestions [113]', {
-    questionSlideNumber,
-    questionsActive,
-    moduleActive,
-    courseActive,
-    courses,
-    store,
-  })
-
-  // display_left display_right display_toCertificate display_block
+  // display_left display_right display_toCertificate display_downLeft
   return (
     <div className='CarouselQuestions'>
       {getDots(questionsChunked)}
-      <div className='CarouselQuestions__buttons display_left display_block'>
+      <div className={`CarouselQuestions__buttons ${buttonsClassString}`}>
         <div className='CarouselQuestions__buttons_backward'>
           <Button {...buttonSlideBackwardProps} />
         </div>
@@ -120,7 +127,7 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
         <div className='CarouselQuestions__buttons_toCertificate'>
           <Button {...buttonToCertificateProps} />
         </div>
-        <div className='CarouselQuestions__buttons_block'>
+        <div className='CarouselQuestions__buttons_downLeft'>
           <Button {...buttonBlockProps} />
         </div>
       </div>

@@ -12,7 +12,13 @@ interface IRESgetAnswersChecked2 {
 export const getAnswersChecked2: Function = (
   questions: any[]
 ): IRESgetAnswersChecked2 => {
-  let res = { total: questions.length, right: 0, wrong: 0, result: 'failure' }
+  let res = {
+    total: questions.length,
+    right: 0,
+    wrong: 0,
+    answered: 0,
+    result: 'failure',
+  }
   questions.forEach(question => {
     let counter = 0
     question.options.forEach(option => {
@@ -20,11 +26,15 @@ export const getAnswersChecked2: Function = (
         counter = counter + 1
       }
     })
+
     if (counter === question.options.length) {
       res.right = res.right + 1
     } else {
       res.wrong = res.wrong + 1
     }
+
+    const findAnswer = question.options.find(option => option.answer === true)
+    if (findAnswer) res.answered += 1
   })
   res.result = res.total === res.right ? 'success' : 'failure'
   return res

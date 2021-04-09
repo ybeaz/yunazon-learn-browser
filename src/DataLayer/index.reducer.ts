@@ -16,7 +16,7 @@ const rootStoreDefault = {
   courses: [],
   globalVars: {},
   componentsState: {
-    questionSlideNumber: 0,
+    questionsSlideNumber: 0,
     modalGetScores: false,
     sideNavigationState: false,
   },
@@ -38,21 +38,26 @@ export const rootReducer: Function = (
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
-        questionSlideNumber: data,
+        questionsSlideNumber: data,
       }
       return { ...store, componentsState: componentsStateNext }
     },
 
     PLUS_QUESTION_SLIDE: () => {
       const { data } = action
-      const { componentsState, courses } = store
-      const { questionSlideNumber } = componentsState
+      const { componentsState, courses, globalVars } = store
+      const numberQuestionsInSlide =
+        globalVars?.configuration?.numberQuestionsInSlide || 2
+      const { questionsSlideNumber } = componentsState
 
       const { questionsActive } = getActiveCourseData(courses)
-      const questionsChunked = getChunkedArray(questionsActive, 2)
+      const questionsChunked = getChunkedArray(
+        questionsActive,
+        numberQuestionsInSlide
+      )
 
       let questionSlideNumberNext = 0
-      const questionSlideNumberPlus = questionSlideNumber + data
+      const questionSlideNumberPlus = questionsSlideNumber + data
       if (questionSlideNumberPlus > questionsChunked.length - 1) {
         questionSlideNumberNext = questionsChunked.length - 1
       } else if (questionSlideNumberPlus < 0) {
@@ -62,7 +67,7 @@ export const rootReducer: Function = (
       }
       const componentsStateNext = {
         ...componentsState,
-        questionSlideNumber: questionSlideNumberNext,
+        questionsSlideNumber: questionSlideNumberNext,
       }
       return { ...store, componentsState: componentsStateNext }
     },

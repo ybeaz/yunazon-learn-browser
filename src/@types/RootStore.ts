@@ -6,7 +6,7 @@ export interface RootStore {
   courses: any[]
   globalVars: any
   componentsState: {
-    questionSlideNumber: number
+    questionsSlideNumber: number
     modalGetScores: boolean
     sideNavigationState: boolean
   }
