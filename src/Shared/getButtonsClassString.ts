@@ -40,5 +40,6 @@ export const getButtonsClassString: Function = (
     }
   }
 
-  return `${buttonLeft} ${buttonRight}`
+  if (questionsActive.length) return `${buttonLeft} ${buttonRight}`
+  else return ''
 }

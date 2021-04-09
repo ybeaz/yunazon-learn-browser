@@ -25,7 +25,9 @@ export const getActiveCourseData: Function = (
       module => module.active === true
     )
 
-    const questionsActive = moduleActive ? moduleActive.questions : []
+    const questionsActive = moduleActive?.questions
+      ? moduleActive.questions
+      : []
 
     return {
       courseActive,

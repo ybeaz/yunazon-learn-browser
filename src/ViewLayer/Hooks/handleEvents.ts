@@ -29,6 +29,7 @@ export const handleEvents: Function = (event: Event, props: any): void => {
 
     CLOSE_MODAL_GET_SCORES: () => {
       dispatch(action.GET_ANSWERS_DEFAULT())
+      dispatch(action.SET_QUESTION_SLIDE(0))
       dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
     },
 

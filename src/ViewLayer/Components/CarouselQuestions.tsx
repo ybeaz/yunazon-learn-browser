@@ -113,10 +113,9 @@ export const CarouselQuestions: Function = (props: any): JSX.Element => {
     },
   }
 
-  // display_left display_right display_toCertificate display_downLeft
   return (
     <div className='CarouselQuestions'>
-      {getDots(questionsChunked)}
+      {questionsActive.length ? getDots(questionsChunked) : null}
       <div className={`CarouselQuestions__buttons ${buttonsClassString}`}>
         <div className='CarouselQuestions__buttons_backward'>
           <Button {...buttonSlideBackwardProps} />
