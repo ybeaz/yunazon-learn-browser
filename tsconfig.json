@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
     "checkJs": false,
     "esModuleInterop": true,
     "noEmit": true,

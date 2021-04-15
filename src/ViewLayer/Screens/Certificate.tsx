@@ -15,7 +15,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
 
   const { institution = '', specTitle = '', specName = '' } = meta
 
-  const dateString = getDateString(new Date())
+  const dateString = getDateString({})
   // console.info('Certificate [11]', {
   //   institution,
   //   specTitle,
