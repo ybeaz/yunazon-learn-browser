@@ -33,12 +33,8 @@ export const RouterScreensConfig = () => {
     const makeDispatchAsyncWrappered = async () => {
       await getLoadedPlayerScript()
 
-      await dispatch({
-        type: action.GET_GLOBAL_VARS.REQUEST,
-      })
-      await dispatch({
-        type: action.GET_CONTENT_DATA.REQUEST,
-      })
+      await dispatch(action.GET_GLOBAL_VARS.REQUEST())
+      await dispatch(action.GET_CONTENT_DATA.REQUEST())
     }
 
     makeDispatchAsyncWrappered()

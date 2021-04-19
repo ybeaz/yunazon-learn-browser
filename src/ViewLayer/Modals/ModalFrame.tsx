@@ -26,20 +26,9 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
 
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result } = score
+  const { total, right, wrong, result2 } = score
+  let result = 'success'
   const { moduleID, ytID: videoId } = moduleActive
-  // console.info('ModalFrame [12]', {
-  //   courses,
-  //   videoId,
-  //   moduleActive,
-  //   questionsWrongAnswered,
-  //   questionsActive,
-  //   result,
-  //   capture,
-  //   total,
-  //   right,
-  //   wrong,
-  // })
 
   useEffect(() => {
     stopVideoHandler({}, {})
@@ -113,7 +102,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
         classAdded: 'Button_MdForward2',
         handleEvents,
         action: {
-          typeEvent: 'PRINT_SCORES',
+          typeEvent: 'RETRIVE_DOCUMENT_DATA',
           data: {
             screenType: 'Certificate',
             userName: nameModal,
@@ -172,12 +161,12 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
                   <Input {...inputNameProps} value={nameModal} />
                 </div>
 
-                <div className='ModalFrame__content_inner_form_group'>
+                {/* <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
                     Email
                   </label>
                   <Input {...inputEmailProps} value={emailModal} />
-                </div>
+                </div> */}
                 {/* <label>
               <b>Password</b>
             </label>

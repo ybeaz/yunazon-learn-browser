@@ -2,16 +2,39 @@ const REQUEST = 'REQUEST'
 const SUCCESS = 'SUCCESS'
 const FAILURE = 'FAILURE'
 
-const createRequestTypes = base =>
+/**
+ * @description NOT USED. LEGACY. Function to return object with three props suffixes: _REQUEST, _SUCCESS, _FAILURE
+ * @param base
+ * @returns object of the kind {REQUEST: "RETRIVE_DOCUMENT_DATA_REQUEST", SUCCESS: "RETRIVE_DOCUMENT_DATA_SUCCESS", FAILURE: "RETRIVE_DOCUMENT_DATA_FAILURE"}
+ */
+const createRequestTypesLegacy = base =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
     acc[type] = `${base}_${type}`
     return acc
   }, {})
 
+/**
+ * @description Function to return functions in object accepted data
+ *              with three props suffixes: _REQUEST, _SUCCESS, _FAILURE
+ * @param base => data => return {}
+ * @returns object of the kind {REQUEST: "RETRIVE_DOCUMENT_DATA_REQUEST", SUCCESS: "RETRIVE_DOCUMENT_DATA_SUCCESS", FAILURE: "RETRIVE_DOCUMENT_DATA_FAILURE"}
+ */
+const createRequestTypes = base =>
+  [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
+    acc[type] = (data: any = undefined) => {
+      return data
+        ? { type: `${base}_${type}`, data }
+        : { type: `${base}_${type}` }
+    }
+    return acc
+  }, {})
+
 // Asynchroneous actions for saga
+export const RETRIVE_DOCUMENT_DATA: any = createRequestTypes(
+  'RETRIVE_DOCUMENT_DATA'
+)
 export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
-export const GET_PRODUCT_CARD: any = createRequestTypes('GET_PRODUCT_CARD')
 
 // Synchroneours redux actions
 export const SET_QUESTION_SLIDE: Function = (data: number): any => ({

@@ -31,8 +31,10 @@ export const getCertificateHtml: Function = (data: any): string => {
 
   const certificateHtml =
     `<html><head><title>${title}</title>` +
+    // '<link rel="stylesheet" href="/stylesheets/certificateStyles.css">' +
     `<style>${certificateStyles}</style></head>` +
     `<body>${divContents.outerHTML}</body ></html >`
 
+  console.info('getCertificateHtml [38]', { certificateHtml })
   return certificateHtml
 }

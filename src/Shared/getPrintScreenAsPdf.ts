@@ -22,5 +22,5 @@ export const getPrintScreenAsPdf: Function = (data: any): void => {
     console.info('getPrintScreenAsPdf [51]', error.name + ': ' + error.message)
   }
 
-  // printWindow.print()
+  // printWindow.print() window.print()
 }

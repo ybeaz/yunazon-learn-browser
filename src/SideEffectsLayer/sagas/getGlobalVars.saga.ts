@@ -8,12 +8,12 @@ function* getGlobalVars() {
   try {
     const { method, url, options } = getGlobalVarsConnector()
     const { data: globalVars } = yield axios[method](url, {}, options)
-    yield put({ type: action.GET_GLOBAL_VARS.SUCCESS, data: globalVars })
+    yield put(action.GET_GLOBAL_VARS.SUCCESS(globalVars))
   } catch (error) {
     console.info('getGlobalVars [31]', error.name + ': ' + error.message)
   }
 }
 
 export default function* getGlobalVarsWatcher() {
-  yield takeEvery([action.GET_GLOBAL_VARS.REQUEST], getGlobalVars)
+  yield takeEvery([action.GET_GLOBAL_VARS.REQUEST().type], getGlobalVars)
 }

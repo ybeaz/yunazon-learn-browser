@@ -22,12 +22,12 @@ function* getContentInfo() {
     coursesNext = getProvidedActiveDefault(coursesNext)
     coursesNext = getProdidevAnswerDefault(coursesNext)
     // console.info('getContentInfo.saga [22]', { coursesNext, courses })
-    yield put({ type: action.GET_CONTENT_DATA.SUCCESS, data: coursesNext })
+    yield put(action.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {
     console.info('getContentInfo  [20]', error.name + ': ' + error.message)
   }
 }
 
 export default function* getContentInfoWatcher() {
-  yield takeEvery([action.GET_CONTENT_DATA.REQUEST], getContentInfo)
+  yield takeEvery([action.GET_CONTENT_DATA.REQUEST().type], getContentInfo)
 }
