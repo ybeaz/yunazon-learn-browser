@@ -9,13 +9,8 @@ export const handleEvents: Function = (event: Event, props: any): void => {
   const { dispatch } = store
 
   const output = {
-    RETRIVE_DOCUMENT_DATA: () => {
-      const tmpReq = action.RETRIVE_DOCUMENT_DATA.REQUEST()
-      console.info('handleEvents [14]', {
-        tmpReq,
-        data,
-      })
-      // dispatch(action.RETRIVE_DOCUMENT_DATA.REQUEST(data))
+    RETRIEVE_DOCUMENT_DATA: () => {
+      dispatch(action.RETRIEVE_DOCUMENT_DATA.REQUEST(data))
     },
 
     SET_QUESTION_SLIDE: () => {

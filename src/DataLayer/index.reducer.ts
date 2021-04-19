@@ -33,6 +33,11 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    RETRIEVE_DOCUMENT_DATA_SUCCESS: () => {
+      console.info('index.reducer [37]', { action })
+      return store
+    },
+
     SET_QUESTION_SLIDE: () => {
       const { data } = action
       const { componentsState } = store

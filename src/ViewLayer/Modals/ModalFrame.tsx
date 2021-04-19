@@ -102,7 +102,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
         classAdded: 'Button_MdForward2',
         handleEvents,
         action: {
-          typeEvent: 'RETRIVE_DOCUMENT_DATA',
+          typeEvent: 'RETRIEVE_DOCUMENT_DATA',
           data: {
             screenType: 'Certificate',
             userName: nameModal,
