@@ -12,7 +12,7 @@ interface ICheckRadioGroup {
   multi: boolean
 }
 
-export const CheckRadioGroup: Function = ({
+export const CheckRadioGroup: React.FunctionComponent<any> = ({
   capture,
   options,
   designType,

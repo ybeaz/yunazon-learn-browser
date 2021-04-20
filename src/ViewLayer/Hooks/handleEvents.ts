@@ -1,7 +1,9 @@
+import { push, goBack } from 'react-router-redux'
+
 import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
-import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
+import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
 
 interface Props {
   typeEvent: string
@@ -15,6 +17,20 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    BACK_FROM_DOC_TO_COURSE: () => {
+      console.info('handleEvents [19]', 'We are here')
+      dispatch(goBack())
+    },
+
+    REDIRECT_TO_URL: () => {
+      console.info('handleEvents [26]', { data })
+      dispatch(push(data))
+    },
+
+    PRINT_DOCUMENT: () => {
+      getPrintedDocumentAs()
+    },
+
     FIND_DOCUMENT: () => {
       dispatch(action.FIND_DOCUMENT.REQUEST(data))
     },

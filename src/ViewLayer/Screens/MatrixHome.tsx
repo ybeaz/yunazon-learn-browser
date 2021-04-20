@@ -6,7 +6,9 @@ import { RouterScreenProps } from '../../@types/RouterScreenProps'
 import { RootStore } from '../../@types/RootStore'
 import { PlayerPlate } from '../Components/PlayerPlate'
 
-export const MatrixHome: Function = (props: RouterScreenProps): JSX.Element => {
+export const MatrixHome: React.FunctionComponent<any> = (
+  props: RouterScreenProps
+): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
     courses,

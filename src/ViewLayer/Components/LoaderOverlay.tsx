@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux'
 
 import { RootStore } from '../../@types/RootStore'
 
-export const LoaderOverlay: Function = (props: any): JSX.Element => {
+export const LoaderOverlay: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
     componentsState: { loaderOverlayState },

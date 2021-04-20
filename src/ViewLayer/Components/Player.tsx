@@ -11,7 +11,9 @@ interface IPlayerComponent {
   height: string
 }
 
-export const Player: Function = (props: any): JSX.Element => {
+export const Player: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const {
     videoId,
     playVideoHandler,

@@ -8,7 +8,9 @@ interface IInput {
   action: any
 }
 
-export const Input: Function = (props: IInput): JSX.Element => {
+export const Input: React.FunctionComponent<any> = (
+  props: IInput
+): JSX.Element => {
   const handleEventsDefault: Function = (): void => {
     console.info('Input', 'handleEventDefault')
     alert('Sorry \n We are working on this')

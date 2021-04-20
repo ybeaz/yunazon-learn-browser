@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { withRouter } from 'react-router-dom'
 
+import { getRedirected } from '../Hooks/getRedirected'
+import { Button } from '../Components/Button'
 import { RootStore } from '../../@types/RootStore'
 import { handleEvents } from '../Hooks/handleEvents'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
@@ -9,7 +12,9 @@ import { getDateString } from '../../Shared/getDateString'
 // import './Certificate.less' // imported through index.style.less
 // import { CertificateStyledGlob } from './CertificateStyle' // Not uses, but kept as an example of styled-components
 
-export const Certificate: Function = (props: any): JSX.Element => {
+export const Certificate: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const {
     routeProps: {
       match: {
@@ -42,12 +47,40 @@ export const Certificate: Function = (props: any): JSX.Element => {
 
   const dateString = getDateString({})
 
+  const buttonBackProps = {
+    icon: 'MdForward',
+    classAdded: 'Button_MdBackward3',
+    handleEvents,
+    action: { typeEvent: 'BACK_FROM_DOC_TO_COURSE', data: {} },
+  }
+
+  const buttonPrintProps = {
+    icon: 'MdPrint',
+    classAdded: 'Button_MdPrint',
+    handleEvents,
+    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+  }
+
   console.info('Certificate [20]', {
+    props,
     document: documents[0],
     documentID,
   })
+
+  const handleEvent = () => {
+    props.routeProps.history.go(-1) // .goBack()
+  }
+
   return (
     <div className='Certificate'>
+      <div className='Certificate__navigation'>
+        <div className='Button Certificate_noPrint'>
+          <div onClick={event => handleEvent()}>Click me to back</div>
+          <Button {...buttonBackProps} />
+          <Button {...buttonPrintProps} />
+        </div>
+      </div>
+
       <div className='container pm-certificate-container'>
         <div className='outer-border'></div>
         <div className='inner-border'></div>
@@ -147,6 +180,10 @@ export const Certificate: Function = (props: any): JSX.Element => {
     </div>
   )
 }
+
+// export const Certificate: React.ComponentClass<any> = withRouter(
+//   CertificateOrigin
+// )
 
 // Basic example how styled-componemts work
 const StyledSection = styled.section`
@@ -323,11 +360,3 @@ const StyledSection = styled.section`
     }
   }
 `
-
-export const CertificateStyled = () => {
-  return (
-    <StyledSection>
-      <Certificate />
-    </StyledSection>
-  )
-}

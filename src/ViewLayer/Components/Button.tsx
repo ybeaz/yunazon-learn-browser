@@ -38,7 +38,9 @@ interface IButton {
   action: any
 }
 
-export const Button: Function = (props: IButton): JSX.Element => {
+export const Button: React.FunctionComponent<any> = (
+  props: IButton
+): JSX.Element => {
   const handleEventsDefault: Function = (): void => {
     console.info('Button', 'handleEventDefault')
     alert('Sorry \n We are working on this')

@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import {
+  useHistory,
+  BrowserRouter,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 
 import { RootStore } from './@types/RootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
 import { PlayAndSubscribe } from './ViewLayer/Screens/PlayAndSubscribe'
 import { Error404 } from './ViewLayer/Screens/Error404'
-import { CertificateStyled, Certificate } from './ViewLayer/Screens/Certificate'
+import { Certificate } from './ViewLayer/Screens/Certificate'
 
-export const RouterScreensConfig = () => {
+export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const PAGES = {
     MatrixHome,
-    CertificateStyled,
     Certificate,
     PlayAndSubscribe,
     Error404,
   }
 
+  const history = useHistory()
   const dispatch = useDispatch()
   const store = useSelector((store: RootStore) => store)
   // console.info('RouterScreensConfig [23]', { store })
@@ -160,6 +166,7 @@ export const RouterScreensConfig = () => {
   return (
     <BrowserRouter>
       {getThemeRemotely()}
+
       <Switch>
         {getRoutes()}
         {getRedirects()}

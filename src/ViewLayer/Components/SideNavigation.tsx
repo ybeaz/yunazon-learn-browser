@@ -6,7 +6,7 @@ import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
 import { handleEvents } from '../Hooks/handleEvents'
 
-export const SideNavigation: Function = (): JSX.Element => {
+export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
     componentsState: { sideNavigationState },

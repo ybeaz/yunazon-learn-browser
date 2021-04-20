@@ -13,7 +13,7 @@ import { MainFrame } from '../Components/MainFrame'
 import { Player } from '../Components/Player'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
-export const PlayAndSubscribe: Function = (
+export const PlayAndSubscribe: React.FunctionComponent<any> = (
   props: RouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const contentID = props?.routeProps.match.params.contentID
@@ -55,8 +55,8 @@ export const PlayAndSubscribe: Function = (
     isShowingPanel: true,
   }
 
-  const modalFrameProps = { stopVideoHandler }
-  console.info('PlayAndSubscribe.screen [72]', { store, props })
+  const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }
+
   return (
     <div className='PlayAndSubscribe'>
       {isLoaded === true ? (

@@ -7,7 +7,9 @@ import { Player } from '../Components/Player'
 import * as action from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 
-export const PlayerPlate: Function = (props: any): JSX.Element => {
+export const PlayerPlate: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const { courseID, moduleID, ytID } = props
 
   const { width, height } = VIDEO_RESOLUTION

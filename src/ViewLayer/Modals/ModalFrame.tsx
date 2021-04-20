@@ -9,14 +9,19 @@ import { RootStore } from '../../@types/RootStore'
 import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
-export const ModalFrame: Function = (props: any): JSX.Element => {
+export const ModalFrame: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const { stopVideoHandler } = props
   const store = useSelector((store: RootStore) => store)
   const {
+    documents,
     courses,
     componentsState: { modalGetScores },
     forms: { nameModal, emailModal },
   } = store
+
+  const slug = documents[0]?.slug
 
   const {
     courseActive: { courseID, capture, description, meta },
@@ -33,6 +38,16 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
   useEffect(() => {
     stopVideoHandler({}, {})
   }, [])
+
+  console.info('ModalFrame [44]', { props })
+  useEffect(() => {
+    if (slug) {
+      console.info('ModalFrame [43]', { slug })
+      props.routeProps.history.push(slug)
+    }
+  }, [slug])
+
+  // getRedirected({}, { typeRedirect: 'newLocation', slug })
 
   const inputNameProps = {
     classAdded: 'Input_name',
@@ -201,3 +216,7 @@ export const ModalFrame: Function = (props: any): JSX.Element => {
     </div>
   )
 }
+
+// export const ModalFrame: React.ComponentClass<any> = withRouter(
+//   ModalFrameOrigin
+// )

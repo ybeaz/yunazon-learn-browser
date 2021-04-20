@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { Button } from '../Components/Button'
 
-export const PlayerPanel: Function = (props: any): JSX.Element => {
+export const PlayerPanel: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const {
     isShowingPanel = false,
     isShowingPlay = true,

@@ -9,7 +9,9 @@ import { Button } from '../Components/Button'
 import { handleEvents } from '../Hooks/handleEvents'
 import { RootStore } from '../../@types/RootStore'
 
-export const CarouselQuestions: Function = (props: any): JSX.Element => {
+export const CarouselQuestions: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   const store = useSelector((store: RootStore) => store)
   const {
     globalVars,

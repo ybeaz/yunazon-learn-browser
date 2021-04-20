@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { SideNavigation } from './SideNavigation'
 import { Header } from './Header'
 
-export const MainFrame: Function = (props: any): JSX.Element => {
+export const MainFrame: React.FunctionComponent<any> = (
+  props: any
+): JSX.Element => {
   return (
     <div className='MainFrame'>
       <Header />

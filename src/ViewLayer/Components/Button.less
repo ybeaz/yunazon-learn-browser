@@ -23,6 +23,27 @@
   }
 }
 
+.Button_MdPrint {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  &__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    &_in {
+      height: 1.5rem;
+      width: 1.5rem;
+      .bouncy;
+    }
+  }
+}
+
 .Button_downLeft {
   flex: 1;
   padding: 0 0 0 0;
@@ -107,6 +128,28 @@
       font-size: @fontSize;
       color: @colorFirstDarker2;
       background-color: @colorSecond;
+    }
+  }
+}
+
+.Button_MdBackward3 {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  &__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActiveDacker;
+
+    &:active,
+    &:focus {
+    }
+
+    &_in {
+      height: 1.5rem;
+      width: 1.5rem;
+      -webkit-transform: rotateY(180deg);
+      transform: rotateY(180deg);
     }
   }
 }
@@ -288,5 +331,33 @@
       height: 1.3rem;
       color: @colorSecondLighter4;
     }
+  }
+}
+
+.bouncy {
+  animation: bouncy 10s infinite linear;
+  position: relative;
+}
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
   }
 }

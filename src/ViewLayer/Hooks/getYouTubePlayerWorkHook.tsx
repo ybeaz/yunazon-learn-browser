@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import { useState, useEffect } from 'react'
 
 export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   const playerDefault = {
@@ -7,7 +7,6 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
     stopVideo: () => {},
   }
 
-  // console.info('getYouTubePlayerWorkHook [10] ', { videoId, height, width })
   const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
   const [playerState, setPlayerState] = useState({ data: 1000 })
