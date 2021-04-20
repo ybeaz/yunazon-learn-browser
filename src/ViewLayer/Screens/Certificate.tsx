@@ -1,29 +1,51 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 
+import { RootStore } from '../../@types/RootStore'
+import { handleEvents } from '../Hooks/handleEvents'
+import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { getDateString } from '../../Shared/getDateString'
 // import './Certificate.less' // imported through index.style.less
 // import { CertificateStyledGlob } from './CertificateStyle' // Not uses, but kept as an example of styled-components
 
 export const Certificate: Function = (props: any): JSX.Element => {
   const {
-    userName,
-    meta = { institution: '', specTitle: '', specName: '' },
-    capture,
-    contentID,
+    routeProps: {
+      match: {
+        params: { documentID },
+      },
+    },
   } = props
 
-  const { institution = '', specTitle = '', specName = '' } = meta
+  const store = useSelector((store: RootStore) => store)
+  const { documents } = store
+
+  useEffect(() => {
+    if (!documents.length) {
+      handleEvents({}, { typeEvent: 'TURN_ON_LOADER_OVERLAY' })
+      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
+    } else {
+      handleEvents({}, { typeEvent: 'TURN_OFF_LOADER_OVERLAY' })
+    }
+  }, [documents])
+
+  let props2 = {
+    userName: '',
+    meta: { institution: '', specTitle: '', specName: '' },
+    capture: '',
+    contentID: '',
+  }
+  const {
+    userName,
+    meta: { institution, specTitle, specName },
+    capture,
+    contentID,
+  } = props2
 
   const dateString = getDateString({})
-  // console.info('Certificate [11]', {
-  //   institution,
-  //   specTitle,
-  //   specName,
-  //   capture,
-  //   contentID,
-  //   dateString,
-  // })
+
+  console.info('Certificate [20]', { documentID, props })
   return (
     <div className='Certificate'>
       <div className='container pm-certificate-container'>
@@ -121,6 +143,7 @@ export const Certificate: Function = (props: any): JSX.Element => {
           </div>
         </div>
       </div>
+      <LoaderOverlay />
     </div>
   )
 }

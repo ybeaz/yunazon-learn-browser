@@ -53,6 +53,11 @@ export const RouterScreensConfig = () => {
     router: {
       routes: [
         {
+          path: `/d/:documentID`,
+          strict: true,
+          page: 'Certificate',
+        },
+        {
           path: `/Certificate-styled`,
           exact: true,
           page: 'CertificateStyled',

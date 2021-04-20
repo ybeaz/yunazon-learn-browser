@@ -3,14 +3,33 @@ import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 
-export const handleEvents: Function = (event: Event, props: any): void => {
+interface Props {
+  typeEvent: string
+  type?: string
+  data: any
+}
+
+export const handleEvents: Function = (event: Event, props: Props): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
   const { dispatch } = store
 
   const output = {
-    RETRIEVE_DOCUMENT_DATA: () => {
-      dispatch(action.RETRIEVE_DOCUMENT_DATA.REQUEST(data))
+    FIND_DOCUMENT: () => {
+      console.info('handleEvents [19]', { data })
+      // I stopped here
+    },
+
+    TURN_OFF_LOADER_OVERLAY: () => {
+      dispatch(action.TOGGLE_LOADER_OVERLAY(false))
+    },
+
+    TURN_ON_LOADER_OVERLAY: () => {
+      dispatch(action.TOGGLE_LOADER_OVERLAY(true))
+    },
+
+    ADD_DOCUMENT: () => {
+      dispatch(action.ADD_DOCUMENT.REQUEST(data))
     },
 
     SET_QUESTION_SLIDE: () => {

@@ -5,7 +5,7 @@ const FAILURE = 'FAILURE'
 /**
  * @description NOT USED. LEGACY. Function to return object with three props suffixes: _REQUEST, _SUCCESS, _FAILURE
  * @param base
- * @returns object of the kind {REQUEST: "RETRIVE_DOCUMENT_DATA_REQUEST", SUCCESS: "RETRIVE_DOCUMENT_DATA_SUCCESS", FAILURE: "RETRIVE_DOCUMENT_DATA_FAILURE"}
+ * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
 const createRequestTypesLegacy = base =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
@@ -19,7 +19,7 @@ const createRequestTypesLegacy = base =>
  * @param base => data => return {}
  * @example dispatch(action.GET_CONTENT_DATA.SUCCESS(myObject))
  * @example2 action.GET_CONTENT_DATA.SUCCESS(myObject).type - this returns type string 'GET_CONTENT_DATA_SUCCESS'
- * @returns object of the kind {REQUEST: "RETRIVE_DOCUMENT_DATA_REQUEST", SUCCESS: "RETRIVE_DOCUMENT_DATA_SUCCESS", FAILURE: "RETRIVE_DOCUMENT_DATA_FAILURE"}
+ * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
 const createRequestTypes = base =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
@@ -32,9 +32,7 @@ const createRequestTypes = base =>
   }, {})
 
 // Asynchroneous actions for saga
-export const RETRIEVE_DOCUMENT_DATA: any = createRequestTypes(
-  'RETRIEVE_DOCUMENT_DATA'
-)
+export const ADD_DOCUMENT: any = createRequestTypes('ADD_DOCUMENT')
 export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 

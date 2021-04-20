@@ -8,7 +8,7 @@ const headers = {
   timestamp: +new Date(),
 }
 
-export const retrieveDocumentDataConnector: Function = (
+export const addDocumentConnector: Function = (
   vars: any,
   fragmentName: string
 ): any => {

@@ -45,7 +45,7 @@ export const rootReducer: Function = (
       return { ...store, componentsState: componentsStateNext }
     },
 
-    RETRIEVE_DOCUMENT_DATA_SUCCESS: () => {
+    ADD_DOCUMENT_SUCCESS: () => {
       const { data } = action
       const { documents } = store
       const documentsNext = [...documents, data]

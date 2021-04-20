@@ -2,9 +2,9 @@ import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import * as action from '../../DataLayer/index.action'
-import { retrieveDocumentDataConnector } from '../../ComminicationLayer/retrieveDocumentData.connector'
+import { addDocumentConnector } from '../../ComminicationLayer/addDocument.connector'
 
-function* retrieveDocumentData(dataInput) {
+function* addDocument(dataInput) {
   const {
     data: {
       capture,
@@ -39,12 +39,10 @@ function* retrieveDocumentData(dataInput) {
   }
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const {
-    method,
-    url,
-    data: payloadNext,
-    options,
-  } = retrieveDocumentDataConnector(payload, fragmentName)
+  const { method, url, data: payloadNext, options } = addDocumentConnector(
+    payload,
+    fragmentName
+  )
 
   try {
     yield put(action.TOGGLE_LOADER_OVERLAY(true))
@@ -53,17 +51,14 @@ function* retrieveDocumentData(dataInput) {
         data: { addDocument },
       },
     } = yield axios[method](url, payloadNext, options)
-    console.info('retrieveDocumentData.saga [36]', { addDocument })
-    yield put(action.RETRIEVE_DOCUMENT_DATA.SUCCESS(addDocument))
+    console.info('addDocument.saga [36]', { addDocument })
+    yield put(action.ADD_DOCUMENT.SUCCESS(addDocument))
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
-    console.info('retrieveDocumentData [40]', error.name + ': ' + error.message)
+    console.info('raddDocument [40]', error.name + ': ' + error.message)
   }
 }
 
-export default function* retrieveDocumentDataWatcher() {
-  yield takeEvery(
-    [action.RETRIEVE_DOCUMENT_DATA.REQUEST().type],
-    retrieveDocumentData
-  )
+export default function* addDocumentWatcher() {
+  yield takeEvery([action.ADD_DOCUMENT.REQUEST().type], addDocument)
 }
