@@ -55,7 +55,7 @@ function* addDocument(dataInput) {
     yield put(action.ADD_DOCUMENT.SUCCESS(addDocument))
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
-    console.info('raddDocument [40]', error.name + ': ' + error.message)
+    console.info('addDocument [40]', error.name + ': ' + error.message)
   }
 }
 

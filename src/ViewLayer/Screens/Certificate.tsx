@@ -23,29 +23,29 @@ export const Certificate: Function = (props: any): JSX.Element => {
 
   useEffect(() => {
     if (!documents.length) {
-      handleEvents({}, { typeEvent: 'TURN_ON_LOADER_OVERLAY' })
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    } else {
-      handleEvents({}, { typeEvent: 'TURN_OFF_LOADER_OVERLAY' })
     }
   }, [documents])
 
-  let props2 = {
+  let documentDefault = {
     userName: '',
     meta: { institution: '', specTitle: '', specName: '' },
     capture: '',
     contentID: '',
   }
   const {
-    userName,
-    meta: { institution, specTitle, specName },
-    capture,
-    contentID,
-  } = props2
+    userName = '',
+    meta: { institution = '', specTitle = '', specName = '' },
+    capture = '',
+    contentID = '',
+  } = documents[0] || documentDefault
 
   const dateString = getDateString({})
 
-  console.info('Certificate [20]', { documentID, props })
+  console.info('Certificate [20]', {
+    document: documents[0],
+    documentID,
+  })
   return (
     <div className='Certificate'>
       <div className='container pm-certificate-container'>

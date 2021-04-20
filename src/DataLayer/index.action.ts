@@ -32,6 +32,7 @@ const createRequestTypes = base =>
   }, {})
 
 // Asynchroneous actions for saga
+export const FIND_DOCUMENT: any = createRequestTypes('FIND_DOCUMENT')
 export const ADD_DOCUMENT: any = createRequestTypes('ADD_DOCUMENT')
 export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')

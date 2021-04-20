@@ -16,16 +16,7 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
 
   const output = {
     FIND_DOCUMENT: () => {
-      console.info('handleEvents [19]', { data })
-      // I stopped here
-    },
-
-    TURN_OFF_LOADER_OVERLAY: () => {
-      dispatch(action.TOGGLE_LOADER_OVERLAY(false))
-    },
-
-    TURN_ON_LOADER_OVERLAY: () => {
-      dispatch(action.TOGGLE_LOADER_OVERLAY(true))
+      dispatch(action.FIND_DOCUMENT.REQUEST(data))
     },
 
     ADD_DOCUMENT: () => {
