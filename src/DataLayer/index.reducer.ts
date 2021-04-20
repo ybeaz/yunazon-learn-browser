@@ -19,6 +19,7 @@ const rootStoreDefault = {
     questionsSlideNumber: 0,
     modalGetScores: true,
     sideNavigationState: false,
+    loaderOverlayState: false,
   },
   forms: {
     nameModal: '',
@@ -34,6 +35,16 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    TOGGLE_LOADER_OVERLAY: () => {
+      const { data } = action
+      const { componentsState } = store
+      const componentsStateNext = {
+        ...componentsState,
+        loaderOverlayState: data,
+      }
+      return { ...store, componentsState: componentsStateNext }
+    },
+
     RETRIEVE_DOCUMENT_DATA_SUCCESS: () => {
       const { data } = action
       const { documents } = store

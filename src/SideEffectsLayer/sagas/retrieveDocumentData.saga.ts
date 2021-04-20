@@ -47,6 +47,7 @@ function* retrieveDocumentData(dataInput) {
   } = retrieveDocumentDataConnector(payload, fragmentName)
 
   try {
+    yield put(action.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
         data: { addDocument },
@@ -54,6 +55,7 @@ function* retrieveDocumentData(dataInput) {
     } = yield axios[method](url, payloadNext, options)
     console.info('retrieveDocumentData.saga [36]', { addDocument })
     yield put(action.RETRIEVE_DOCUMENT_DATA.SUCCESS(addDocument))
+    yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     console.info('retrieveDocumentData [40]', error.name + ': ' + error.message)
   }

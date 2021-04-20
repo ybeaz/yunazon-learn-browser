@@ -9,6 +9,7 @@ export interface RootStore {
     questionsSlideNumber: number
     modalGetScores: boolean
     sideNavigationState: boolean
+    loaderOverlayState: boolean
   }
   forms: {
     nameModal: string

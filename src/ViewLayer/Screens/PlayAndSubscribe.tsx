@@ -8,6 +8,7 @@ import { ModalFrame } from '../Modals/ModalFrame'
 import { RootStore } from '../../@types/RootStore'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
 
+import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { MainFrame } from '../Components/MainFrame'
 import { Player } from '../Components/Player'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
@@ -65,6 +66,7 @@ export const PlayAndSubscribe: Function = (
             <CarouselQuestions />
           </MainFrame>
           {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
+          <LoaderOverlay />
         </>
       ) : null}
     </div>
