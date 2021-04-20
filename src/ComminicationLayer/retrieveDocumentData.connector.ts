@@ -1,5 +1,5 @@
 import { SERVERS } from '../Constants/servers.const'
-import { PATH_NAME_LOADED_VARS } from '../Constants/pathNameLoadedVars.const'
+import { FRAGMENTS } from './fragments'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
@@ -8,17 +8,22 @@ const headers = {
   timestamp: +new Date(),
 }
 
-export const retrieveDocumentDataConnector: Function = (vars: any): any => {
-  const envType = getDetectedEnv('localServer')
+export const retrieveDocumentDataConnector: Function = (
+  vars: any,
+  fragmentName: string
+): any => {
+  const envType: string = getDetectedEnv('localServer')
+  const env: string = envType === 'remote' ? 'production' : 'development'
+
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     data: {
       operationName: 'AddDocument',
       variables: {
-        newDocumentInputGraphql: vars,
+        newDocumentInputGraphql: { ...vars, env },
       },
-      query: `mutation AddDocument($newDocumentInputGraphql: NewDocumentInputGraphql!){ addDocument(newDocumentInputGraphql: $newDocumentInputGraphql){ ...DocumentModelGraphqlAll  }} fragment DocumentModelGraphqlAll on DocumentModelGraphql {documentID, slug, courseID, capture, description,  meta { institution, specTitle, specName },  moduleIDs, contentIDs, userName, userEmail, creationDate, lang, env}`,
+      query: `mutation AddDocument($newDocumentInputGraphql: NewDocumentInputGraphql!){ addDocument(newDocumentInputGraphql: $newDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

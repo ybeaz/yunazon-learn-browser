@@ -14,4 +14,5 @@ export interface RootStore {
     nameModal: string
     emailModal: string
   }
+  documents: any[]
 }

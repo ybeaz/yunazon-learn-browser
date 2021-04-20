@@ -55,7 +55,7 @@ export const PlayAndSubscribe: Function = (
   }
 
   const modalFrameProps = { stopVideoHandler }
-  //  console.info('PlayAndSubscribe.screen [72]', { props })
+  console.info('PlayAndSubscribe.screen [72]', { store, props })
   return (
     <div className='PlayAndSubscribe'>
       {isLoaded === true ? (

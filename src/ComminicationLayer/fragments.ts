@@ -1,1 +1,3 @@
-export const EcomAssetsAll = `fragment EcomAssetsAll on EcomAssets {brand, brandID, brandLogoSrc, products { productID, capture, description, description2, features { capture, category, unit, value }, images {alt, src}, realLink } }`
+export const FRAGMENTS = {
+  DocumentModelGraphqlAll: `DocumentModelGraphqlAll on DocumentModelGraphql {documentID, slug, courseID, capture, description,  meta { institution, specTitle, specName },  moduleIDs, contentIDs, userName, userEmail, creationDate, lang, env}`,
+}

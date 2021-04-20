@@ -24,6 +24,7 @@ const rootStoreDefault = {
     nameModal: '',
     emailModal: '',
   },
+  documents: [],
 }
 
 export const rootReducer: Function = (
@@ -34,8 +35,11 @@ export const rootReducer: Function = (
 
   const output = {
     RETRIEVE_DOCUMENT_DATA_SUCCESS: () => {
-      console.info('index.reducer [37]', { action })
-      return store
+      const { data } = action
+      const { documents } = store
+      const documentsNext = [...documents, data]
+      // console.info('index.reducer [40]', { data, documentsNext })
+      return { ...store, documents: documentsNext }
     },
 
     SET_QUESTION_SLIDE: () => {

@@ -5,45 +5,55 @@ import * as action from '../../DataLayer/index.action'
 import { retrieveDocumentDataConnector } from '../../ComminicationLayer/retrieveDocumentData.connector'
 
 function* retrieveDocumentData(dataInput) {
-  const { data: dataIn } = dataInput
+  const {
+    data: {
+      capture,
+      contentID,
+      courseID,
+      description,
+      meta: { institution, specTitle, specName },
+      moduleID,
+      userEmail,
+      userName,
+    },
+  } = dataInput
+
+  const {
+    globalVars: { language },
+  } = yield select(store => store)
 
   let payload = {
-    courseID: 'yn1gT-sexs0',
-    capture: 'Как ведется летоисчисление истории. Жизнь древних людей',
-    description: 'test',
+    courseID,
+    capture,
+    description,
     meta: {
-      institution: 'Лаборатория YouRails',
-      specTitle: 'Преподаватель',
-      specName: 'Ческидова Анна',
+      institution,
+      specTitle,
+      specName,
     },
-    moduleIDs: ['yn1gT-sexs0'],
-    contentIDs: ['yn1gT-sexs0'],
-    userName: 'Ческидов Роман 9',
-    userEmail: 't3531350@yahoo.com',
-    lang: 'ru',
-    env: 'development',
+    moduleIDs: [moduleID],
+    contentIDs: [contentID],
+    userName,
+    userEmail,
+    lang: language,
   }
 
+  const fragmentName = 'DocumentModelGraphqlAll'
+  const {
+    method,
+    url,
+    data: payloadNext,
+    options,
+  } = retrieveDocumentDataConnector(payload, fragmentName)
+
   try {
-    const {
-      method,
-      url,
-      data: payloadNext,
-      options,
-    } = retrieveDocumentDataConnector(payload)
-    console.info('retrieveDocumentData.saga [9]', {
-      method,
-      url,
-      options,
-      dataIn,
-    })
     const {
       data: {
         data: { addDocument },
       },
     } = yield axios[method](url, payloadNext, options)
     console.info('retrieveDocumentData.saga [36]', { addDocument })
-    // yield put(action.RETRIEVE_DOCUMENT_DATA.SUCCESS('addDocument'))
+    yield put(action.RETRIEVE_DOCUMENT_DATA.SUCCESS(addDocument))
   } catch (error) {
     console.info('retrieveDocumentData [40]', error.name + ': ' + error.message)
   }
