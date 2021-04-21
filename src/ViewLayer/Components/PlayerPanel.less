@@ -1,10 +1,42 @@
 .PlayerPanel {
   display: flex;
-  padding: 2rem 0 0 0;
-  &__play {
+  padding: 0.7rem 0 0 0;
+  flex-direction: column;
+
+  .__capture {
+    display: flex;
+    flex-direction: column;
+    color: @colorFirstDarker;
+    font-size: @fontSizeH4;
   }
-  &__pause {
+
+  .__buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 0 0 0;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
   }
-  &__stop {
+}
+
+.PlayerPanel_MatrixHome {
+  .__capture {
+    font-size: @fontSize;
+  }
+
+  .__buttons {
+    display: none;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
   }
 }

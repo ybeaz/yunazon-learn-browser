@@ -7,25 +7,25 @@ export const PlayerPanel: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   const {
-    isShowingPanel = false,
-    isShowingPlay = true,
+    screenType,
+    isShowingPlay = false,
     buttonPlayProps = {},
     buttonPauseProps = {},
     buttonStopProps = {},
   } = props
+  const capture = '11 задание ЕГЭ 2020 по русскому языку: полный разбор'
 
   return (
-    <>
-      {isShowingPanel ? (
-        <div className='PlayerPanel'>
-          {isShowingPlay ? (
-            <Button {...buttonPlayProps} />
-          ) : (
-            <Button {...buttonPauseProps} />
-          )}
-          <Button {...buttonStopProps} />
-        </div>
-      ) : null}
-    </>
+    <div className={`PlayerPanel PlayerPanel_${screenType}`}>
+      <div className='__capture'>{capture}</div>
+      <div className='__buttons'>
+        {isShowingPlay ? (
+          <Button {...buttonPlayProps} />
+        ) : (
+          <Button {...buttonPauseProps} />
+        )}
+        <Button {...buttonStopProps} />
+      </div>
+    </div>
   )
 }

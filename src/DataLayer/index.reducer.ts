@@ -17,7 +17,7 @@ const rootStoreDefault = {
   globalVars: {},
   componentsState: {
     questionsSlideNumber: 0,
-    modalGetScores: true,
+    modalGetScores: false,
     sideNavigationState: false,
     loaderOverlayState: false,
     isDocumentAdded: false,

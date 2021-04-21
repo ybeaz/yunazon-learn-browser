@@ -19,8 +19,16 @@ export const MatrixHome: React.FunctionComponent<any> = (
     const plates = courses.map((item, i) => {
       const { courseID, modules } = item
       const { moduleID, ytID } = modules[0]
+      const screenType = 'MatrixHome'
+      const isShowingPlay = false
 
-      const playerPlateProps = { courseID, moduleID, ytID }
+      const playerPlateProps = {
+        courseID,
+        moduleID,
+        ytID,
+        isShowingPlay,
+        screenType,
+      }
       return <PlayerPlate {...playerPlateProps} />
     })
     return <div className='MatrixHome__plates'>{plates}</div>

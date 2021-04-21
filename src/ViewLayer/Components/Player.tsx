@@ -5,7 +5,6 @@ import { PlayerPanel } from '../Components/PlayerPanel'
 // import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 interface IPlayerComponent {
-  isShowingPanel: boolean
   videoId: string
   width: string
   height: string
@@ -19,7 +18,7 @@ export const Player: React.FunctionComponent<any> = (
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
-    isShowingPanel,
+    screenType,
     isShowingPlay,
   } = props
 
@@ -42,7 +41,7 @@ export const Player: React.FunctionComponent<any> = (
     action: {},
   }
   const playerPanelProps = {
-    isShowingPanel,
+    screenType,
     isShowingPlay,
     buttonPlayProps,
     buttonPauseProps,

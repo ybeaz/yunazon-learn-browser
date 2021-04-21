@@ -10,7 +10,7 @@ import { handleEvents } from '../Hooks/handleEvents'
 export const PlayerPlate: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
-  const { courseID, moduleID, ytID } = props
+  const { courseID, moduleID, ytID, screenType } = props
 
   const { width, height } = VIDEO_RESOLUTION
   const {
@@ -29,8 +29,8 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
+    screenType,
     isShowingPlay,
-    isShowingPanel: false,
   }
 
   return (

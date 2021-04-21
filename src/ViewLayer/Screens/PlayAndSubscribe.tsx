@@ -52,7 +52,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
-    isShowingPanel: true,
+    screenType: 'PlayAndSubscribe',
   }
 
   const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }

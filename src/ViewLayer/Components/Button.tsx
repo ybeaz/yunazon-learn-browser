@@ -59,7 +59,7 @@ export const Button: React.FunctionComponent<any> = (
   return (
     <div className={`Button ${classAdded}`}>
       <button
-        className={`Button__button ${classAdded}__button`}
+        className={`__button`}
         type='button'
         onClick={event => handleEvents(event, action)}
       >
@@ -67,7 +67,7 @@ export const Button: React.FunctionComponent<any> = (
           <>
             <IconContext.Provider
               value={{
-                className: `Button__button_in ${classAdded}__button_in`,
+                className: `_in`,
               }}
             >
               <Icon />
@@ -75,7 +75,7 @@ export const Button: React.FunctionComponent<any> = (
             {icon2 !== null ? (
               <IconContext.Provider
                 value={{
-                  className: `Button__button_in ${classAdded}__button_in`,
+                  className: `_in`,
                 }}
               >
                 <Icon2 />
@@ -83,9 +83,7 @@ export const Button: React.FunctionComponent<any> = (
             ) : null}
           </>
         ) : capture ? (
-          <div className={`Button__button_in ${classAdded}__button_in`}>
-            {capture}
-          </div>
+          <div className={`_in`}>{capture}</div>
         ) : null}
       </button>
     </div>
