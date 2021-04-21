@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-import * as action from '../../DataLayer/index.action'
+import { ShareButtons } from '../Components/ShareButtons'
+import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { RootStore } from '../../@types/RootStore'
 import { handleEvents } from '../Hooks/handleEvents'
@@ -71,10 +72,13 @@ export const Certificate: React.FunctionComponent<any> = (
   return (
     <div className='Certificate'>
       <div className='Certificate__navigation'>
-        <div className='Button Certificate_noPrint'>
-          {/* <div onClick={event => handleEvent()}>Click me to back</div> */}
+        <div className='Certificate__navigation_buttons Certificate_noPrint'>
+          <LogoGroup />
           <Button {...buttonBackProps} />
           <Button {...buttonPrintProps} />
+          <div className='Certificate__navigation_buttons_share'>
+            <ShareButtons />
+          </div>
         </div>
       </div>
 
