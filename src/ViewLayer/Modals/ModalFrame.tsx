@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
+import * as action from '../../DataLayer/index.action'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
@@ -12,12 +14,14 @@ import { Button } from '../Components/Button'
 export const ModalFrame: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
+  let history = useHistory()
+  const dispatch = useDispatch()
   const { stopVideoHandler } = props
   const store = useSelector((store: RootStore) => store)
   const {
     documents,
     courses,
-    componentsState: { modalGetScores },
+    componentsState: { modalGetScores, isDocumentAdded },
     forms: { nameModal, emailModal },
   } = store
 
@@ -39,11 +43,10 @@ export const ModalFrame: React.FunctionComponent<any> = (
     stopVideoHandler({}, {})
   }, [])
 
-  console.info('ModalFrame [44]', { props })
   useEffect(() => {
-    if (slug) {
-      console.info('ModalFrame [43]', { slug })
-      props.routeProps.history.push(slug)
+    if (slug && isDocumentAdded === true) {
+      handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
+      history.push(slug)
     }
   }, [slug])
 

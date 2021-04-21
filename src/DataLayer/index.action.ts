@@ -38,6 +38,11 @@ export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+export const TOGGLE_IS_DOCUMENT_ADDED: Function = (data: number): any => ({
+  type: 'TOGGLE_IS_DOCUMENT_ADDED',
+  data,
+})
+
 export const TOGGLE_LOADER_OVERLAY: Function = (data: number): any => ({
   type: 'TOGGLE_LOADER_OVERLAY',
   data,

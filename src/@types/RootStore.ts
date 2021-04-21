@@ -10,6 +10,7 @@ export interface RootStore {
     modalGetScores: boolean
     sideNavigationState: boolean
     loaderOverlayState: boolean
+    isDocumentAdded: boolean
   }
   forms: {
     nameModal: string

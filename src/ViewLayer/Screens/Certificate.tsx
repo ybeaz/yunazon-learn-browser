@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
-import { getRedirected } from '../Hooks/getRedirected'
+import * as action from '../../DataLayer/index.action'
 import { Button } from '../Components/Button'
 import { RootStore } from '../../@types/RootStore'
 import { handleEvents } from '../Hooks/handleEvents'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { getDateString } from '../../Shared/getDateString'
-// import './Certificate.less' // imported through index.style.less
-// import { CertificateStyledGlob } from './CertificateStyle' // Not uses, but kept as an example of styled-components
 
 export const Certificate: React.FunctionComponent<any> = (
   props: any
@@ -23,8 +21,14 @@ export const Certificate: React.FunctionComponent<any> = (
     },
   } = props
 
+  let history = useHistory()
+  const dispatch = useDispatch()
   const store = useSelector((store: RootStore) => store)
   const { documents } = store
+
+  useEffect(() => {
+    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
+  }, [])
 
   useEffect(() => {
     if (!documents.length) {
@@ -47,11 +51,14 @@ export const Certificate: React.FunctionComponent<any> = (
 
   const dateString = getDateString({})
 
+  const getPageGoBack: Function = (): void => {
+    history.go(-1)
+  }
+
   const buttonBackProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward3',
-    handleEvents,
-    action: { typeEvent: 'BACK_FROM_DOC_TO_COURSE', data: {} },
+    handleEvents: getPageGoBack,
   }
 
   const buttonPrintProps = {
@@ -61,21 +68,11 @@ export const Certificate: React.FunctionComponent<any> = (
     action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
   }
 
-  console.info('Certificate [20]', {
-    props,
-    document: documents[0],
-    documentID,
-  })
-
-  const handleEvent = () => {
-    props.routeProps.history.go(-1) // .goBack()
-  }
-
   return (
     <div className='Certificate'>
       <div className='Certificate__navigation'>
         <div className='Button Certificate_noPrint'>
-          <div onClick={event => handleEvent()}>Click me to back</div>
+          {/* <div onClick={event => handleEvent()}>Click me to back</div> */}
           <Button {...buttonBackProps} />
           <Button {...buttonPrintProps} />
         </div>

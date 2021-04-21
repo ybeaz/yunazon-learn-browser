@@ -17,14 +17,8 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
-    BACK_FROM_DOC_TO_COURSE: () => {
-      console.info('handleEvents [19]', 'We are here')
-      dispatch(goBack())
-    },
-
-    REDIRECT_TO_URL: () => {
-      console.info('handleEvents [26]', { data })
-      dispatch(push(data))
+    TOGGLE_IS_DOCUMENT_ADDED: () => {
+      dispatch(action.TOGGLE_IS_DOCUMENT_ADDED(false))
     },
 
     PRINT_DOCUMENT: () => {

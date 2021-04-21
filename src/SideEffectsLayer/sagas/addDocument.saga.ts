@@ -52,7 +52,7 @@ function* addDocument(dataInput) {
       },
     } = yield axios[method](url, payloadNext, options)
     const { slug } = addDocument
-    console.info('addDocument.saga [36]', { slug, addDocument })
+
     yield put(action.ADD_DOCUMENT.SUCCESS(addDocument))
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

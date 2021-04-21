@@ -20,6 +20,7 @@ const rootStoreDefault = {
     modalGetScores: true,
     sideNavigationState: false,
     loaderOverlayState: false,
+    isDocumentAdded: false,
   },
   forms: {
     nameModal: '',
@@ -45,12 +46,34 @@ export const rootReducer: Function = (
       return { ...store, componentsState: componentsStateNext }
     },
 
+    TOGGLE_IS_DOCUMENT_ADDED: () => {
+      const { data } = action
+      const { componentsState } = store
+      const componentsStateNext = {
+        ...componentsState,
+        isDocumentAdded: data,
+      }
+      // console.info('index.reducer [40]', { data, documentsNext })
+      return {
+        ...store,
+        componentsState: componentsStateNext,
+      }
+    },
+
     ADD_DOCUMENT_SUCCESS: () => {
       const { data } = action
-      const { documents } = store
+      const { documents, componentsState } = store
       const documentsNext = [...documents, data]
+      const componentsStateNext = {
+        ...componentsState,
+        isDocumentAdded: true,
+      }
       // console.info('index.reducer [40]', { data, documentsNext })
-      return { ...store, documents: documentsNext }
+      return {
+        ...store,
+        documents: documentsNext,
+        componentsState: componentsStateNext,
+      }
     },
 
     SET_QUESTION_SLIDE: () => {

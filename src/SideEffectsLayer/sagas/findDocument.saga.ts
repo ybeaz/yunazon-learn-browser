@@ -21,6 +21,7 @@ function* findDocument(dataInput) {
       },
     } = yield axios[method](url, data, options)
     yield put(action.ADD_DOCUMENT.SUCCESS(findDocument))
+
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     console.info('findDocument [40]', error.name + ': ' + error.message)
