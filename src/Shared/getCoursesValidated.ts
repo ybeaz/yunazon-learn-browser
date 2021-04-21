@@ -25,6 +25,64 @@ const noCourseCapture = ({ courseValidation, courseIndex, courseCapture }) => {
   return courseValidation
 }
 
+const errorModules = ({
+  courseValidation,
+  courseIndex,
+  courseCapture,
+  modules,
+}) => {
+  let errors = []
+  let isFound: any
+
+  if (!modules.length) errors = [...errors, 'no-modules']
+
+  isFound = modules.find(
+    (module: any) =>
+      !module.moduleID ||
+      module.moduleID === '' ||
+      typeof module.moduleID !== 'string'
+  )
+  if (isFound) errors = [...errors, 'no-moduleID-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
+      !module.ytID ||
+      module.ytID === '' ||
+      module.ytID.length !== 11 ||
+      typeof module.ytID !== 'string'
+  )
+  if (isFound) errors = [...errors, 'no-module-ytID-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
+      !module.capture ||
+      module.capture === '' ||
+      typeof module.capture !== 'string'
+  )
+  console.info('getCoursesValidated [62]', { isFound })
+  if (isFound) errors = [...errors, 'no-module-capture-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
+      !module.lengthMinutes ||
+      module.lengthMinutes === 0 ||
+      typeof module.lengthMinutes !== 'number'
+  )
+  console.info('getCoursesValidated [70]', { isFound })
+  if (isFound) errors = [...errors, 'no-module-lengthMinutes-or-type-error']
+
+  if (errors.length) {
+    return [
+      ...courseValidation,
+      {
+        errors,
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  } else return courseValidation
+}
+
 const errorQuestions = ({
   courseValidation,
   courseIndex,
@@ -147,6 +205,13 @@ export const getCoursesValidated: Function = (courses: any[]): any[] => {
       courseIndex,
       courseCapture,
       courseDescription,
+    })
+
+    courseValidation = errorModules({
+      courseValidation,
+      courseIndex,
+      courseCapture,
+      modules,
     })
 
     modules.forEach((module: any, moduleIndex: number) => {
