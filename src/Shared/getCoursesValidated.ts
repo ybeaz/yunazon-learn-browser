@@ -59,7 +59,6 @@ const errorModules = ({
       module.capture === '' ||
       typeof module.capture !== 'string'
   )
-  console.info('getCoursesValidated [62]', { isFound })
   if (isFound) errors = [...errors, 'no-module-capture-or-type-error']
 
   isFound = modules.find(
@@ -68,7 +67,6 @@ const errorModules = ({
       module.lengthMinutes === 0 ||
       typeof module.lengthMinutes !== 'number'
   )
-  console.info('getCoursesValidated [70]', { isFound })
   if (isFound) errors = [...errors, 'no-module-lengthMinutes-or-type-error']
 
   if (errors.length) {
