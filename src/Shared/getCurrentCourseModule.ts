@@ -1,5 +1,5 @@
 /**
- * @description Function to detect current/active module
+ * @description Function to detect and return current/active module
  * @returns
  */
 export const getCurrentCourseModule: Function = (courses: any[]): any => {

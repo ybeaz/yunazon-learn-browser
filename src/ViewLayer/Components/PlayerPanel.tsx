@@ -7,17 +7,27 @@ export const PlayerPanel: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   const {
+    captureCourse,
+    durationObj: { duration, units },
     screenType,
     isShowingPlay = false,
     buttonPlayProps = {},
     buttonPauseProps = {},
     buttonStopProps = {},
   } = props
-  const capture = '11 задание ЕГЭ 2020 по русскому языку: полный разбор'
+
+  const callForActionButtonPros = {
+    captureLeft: `${duration} ${units} `,
+    icon: 'MdForward',
+    captureRight: ` сертификат`,
+    classAdded: 'Button_CallForActionMatrix',
+    handleEvents: () => {},
+    action: {},
+  }
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
-      <div className='__capture'>{capture}</div>
+      <div className='__capture'>{captureCourse}</div>
       <div className='__buttons'>
         {isShowingPlay ? (
           <Button {...buttonPlayProps} />
@@ -26,6 +36,7 @@ export const PlayerPanel: React.FunctionComponent<any> = (
         )}
         <Button {...buttonStopProps} />
       </div>
+      <Button {...callForActionButtonPros} />
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { MainFrame } from '../Components/MainFrame'
 import { RouterScreenProps } from '../../@types/RouterScreenProps'
 import { RootStore } from '../../@types/RootStore'
@@ -17,13 +18,15 @@ export const MatrixHome: React.FunctionComponent<any> = (
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
     const plates = courses.map((item, i) => {
-      const { courseID, modules } = item
-      const { moduleID, ytID } = modules[0]
+      const { courseID, capture: captureCourse, modules } = item
+      const { moduleID, ytID, duration } = modules[0]
       const screenType = 'MatrixHome'
       const isShowingPlay = false
 
       const playerPlateProps = {
         courseID,
+        captureCourse,
+        durationObj: getMultipliedTimeStr(duration, 1.5),
         moduleID,
         ytID,
         isShowingPlay,

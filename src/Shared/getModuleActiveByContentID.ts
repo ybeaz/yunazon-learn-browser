@@ -1,3 +1,9 @@
+/**
+ * @description Function to make a course active based on contentID
+ * @param courses
+ * @param contentID
+ * @returns
+ */
 export const getModuleActiveByContentID: Function = (
   courses: any[],
   contentID: string

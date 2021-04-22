@@ -24,7 +24,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
 
   const buttonAboutProps = {
     icon: '',
-    capture: 'About',
+    captureRight: 'About',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
     // action: {
@@ -34,7 +34,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
 
   const buttonServicesProps = {
     icon: '',
-    capture: 'Services',
+    captureRight: 'Services',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
     // action: {
@@ -44,7 +44,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
 
   const buttonContactsProps = {
     icon: '',
-    capture: 'Contacts',
+    captureRight: 'Contacts',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
     // action: {

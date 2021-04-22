@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
+import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
+import { getModuleByContentID } from '../../Shared/getModuleByContentID'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
@@ -23,6 +25,10 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     componentsState: { modalGetScores },
   } = store
   const [isLoaded, setIsLoaded] = useState(false)
+  const [durationObjState, setDurationObjState] = useState({
+    duration: '',
+    units: '',
+  })
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
@@ -31,6 +37,10 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
         { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { contentID } }
       )
       setIsLoaded(true)
+
+      const { duration } = getModuleByContentID(courses, 'ytID', contentID)
+      const durationObj = getMultipliedTimeStr(duration, 1.5)
+      setDurationObjState(durationObj)
     }
   }, [courses])
 
@@ -53,6 +63,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     stopVideoHandler,
     isShowingPlay,
     screenType: 'PlayAndSubscribe',
+    durationObj: durationObjState,
   }
 
   const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }

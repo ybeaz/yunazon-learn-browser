@@ -15,6 +15,8 @@ export const Player: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const {
     videoId,
+    captureCourse,
+    durationObj,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
@@ -41,6 +43,8 @@ export const Player: React.FunctionComponent<any> = (
     action: {},
   }
   const playerPanelProps = {
+    captureCourse,
+    durationObj,
     screenType,
     isShowingPlay,
     buttonPlayProps,

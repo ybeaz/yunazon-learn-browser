@@ -30,12 +30,13 @@ const ICON = {
   MdPerson,
 }
 interface IButton {
-  icon: string
-  icon2: string | null
-  capture: string
-  classAdded: string
-  handleEvents: Function
-  action: any
+  icon?: string
+  icon2?: string | null
+  captureLeft?: string
+  captureRight?: string
+  classAdded?: string
+  handleEvents?: Function
+  action?: any
 }
 
 export const Button: React.FunctionComponent<any> = (
@@ -48,7 +49,8 @@ export const Button: React.FunctionComponent<any> = (
   const {
     icon,
     icon2 = null,
-    capture,
+    captureLeft,
+    captureRight,
     classAdded,
     handleEvents = handleEventsDefault,
     action = {},
@@ -63,6 +65,11 @@ export const Button: React.FunctionComponent<any> = (
         type='button'
         onClick={event => handleEvents(event, action)}
       >
+        {captureLeft ? (
+          <div className={`_in`}>
+            <div className={`_capture_left`}>{captureLeft}</div>
+          </div>
+        ) : null}
         {Icon ? (
           <>
             <IconContext.Provider
@@ -75,15 +82,18 @@ export const Button: React.FunctionComponent<any> = (
             {icon2 !== null ? (
               <IconContext.Provider
                 value={{
-                  className: `_in`,
+                  className: `_icon`,
                 }}
               >
                 <Icon2 />
               </IconContext.Provider>
             ) : null}
           </>
-        ) : capture ? (
-          <div className={`_in`}>{capture}</div>
+        ) : null}
+        {captureRight ? (
+          <div className={`_in`}>
+            <div className={`_capture_right`}>{captureRight}</div>
+          </div>
         ) : null}
       </button>
     </div>

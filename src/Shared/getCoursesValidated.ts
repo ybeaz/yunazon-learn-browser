@@ -63,11 +63,11 @@ const errorModules = ({
 
   isFound = modules.find(
     (module: any) =>
-      !module.lengthMinutes ||
-      module.lengthMinutes === 0 ||
-      typeof module.lengthMinutes !== 'number'
+      !module.duration ||
+      module.duration === 0 ||
+      typeof module.duration !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-module-lengthMinutes-or-type-error']
+  if (isFound) errors = [...errors, 'no-module-duration-or-type-error']
 
   if (errors.length) {
     return [
