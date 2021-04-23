@@ -71,7 +71,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   }
 
   useEffect(() => {
-    setTimeout(() => onYouTubeIframeAPIReady(), 500)
+    setTimeout(() => onYouTubeIframeAPIReady(), 1000)
   }, [])
 
   useEffect(() => {

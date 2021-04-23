@@ -9,7 +9,6 @@ import { handleEvents } from '../Hooks/handleEvents'
 import { ModalFrame } from '../Modals/ModalFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
-
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { MainFrame } from '../Components/MainFrame'
