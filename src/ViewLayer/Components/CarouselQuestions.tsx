@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getRuQuesionString } from '../../Shared/getRuQuesionString'
 import { getButtonsClassString } from '../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
@@ -23,13 +24,12 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   } = props
 
   const {
-    globalVars,
+    globalVars: { language, configuration },
     componentsState: { questionsSlideNumber },
     courses,
   } = store
 
-  const numberQuestionsInSlide =
-    globalVars?.configuration?.numberQuestionsInSlide || 2
+  const numberQuestionsInSlide = configuration?.numberQuestionsInSlide || 2
 
   const { questionsActive } = getActiveCourseData(courses)
 
@@ -91,6 +91,8 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     questionsChunked
   )
 
+  const questionStr = getRuQuesionString(questionsActive.length)
+
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
@@ -131,8 +133,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   }
 
   const buttonStartProps = {
-    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0${questionsActive.length} вопросов`,
-    icon: '',
+    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0
+      ${questionsActive.length} ${questionStr}\u00A0\u00A0`,
+    icon: 'MdForward',
     classAdded: 'Button_startModule',
     handleEvents: () => {},
     action: {

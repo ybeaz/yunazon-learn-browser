@@ -88,7 +88,7 @@ export const Button: React.FunctionComponent<any> = (
             {icon2 !== null ? (
               <IconContext.Provider
                 value={{
-                  className: `_svg`,
+                  className: `_icon`,
                 }}
               >
                 <Icon2 />
