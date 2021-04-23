@@ -46,7 +46,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
         index === questionsSlideNumber ? 'active' : ''
       return (
         <span
-          className={`CarouselQuestions__dots_dot ${classNameToggleHighlight}`}
+          className={`_dot ${classNameToggleHighlight}`}
           onClick={event =>
             handleEvents(event, {
               typeEvent: 'SET_QUESTION_SLIDE',
@@ -57,7 +57,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       )
     })
 
-    return <div className='CarouselQuestions__dots'>{dotsJSX}</div>
+    return <div className='__dots'>{dotsJSX}</div>
   }
 
   const getSlidesChunk: Function = (questions: any[]): JSX.Element[] => {
@@ -68,18 +68,15 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
 
   const getSlides: Function = (questionsChunked: any[]): JSX.Element => {
     const questionsJSX = questionsChunked.map((questions, index) => {
-      const classNameToggleShow =
-        index === questionsSlideNumber ? 'CarouselQuestions_show' : ''
+      const classNameToggleShow = index === questionsSlideNumber ? '_show' : ''
       return (
-        <div
-          className={`CarouselQuestions__slideshow_slides fade ${classNameToggleShow}`}
-        >
+        <div className={`_slides fade ${classNameToggleShow}`}>
           {getSlidesChunk(questions)}
         </div>
       )
     })
 
-    return <div className='CarouselQuestions__slideshow'>{questionsJSX}</div>
+    return <div className='__slideshow'>{questionsJSX}</div>
   }
 
   const {
@@ -144,26 +141,26 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       typeEvent: '',
       data: {},
     },
-    isDisplaying: isButtonBlockProps,
+    isDisplaying: isButtonSlideStart,
   }
 
   return (
-    <div className='CarouselQuestions'>
+    <div className={`CarouselQuestions ${buttonsClassString}`}>
       {questionsActive.length ? getDots(questionsChunked) : null}
-      <div className={`CarouselQuestions__buttons ${buttonsClassString}`}>
-        <div className='CarouselQuestions__buttons_backward'>
+      <div className={`__buttons`}>
+        <div className='_backward'>
           <Button {...buttonSlideBackwardProps} />
         </div>
-        <div className='CarouselQuestions__buttons_forward'>
+        <div className='_forward'>
           <Button {...buttonSlideForwardProps} />
         </div>
-        <div className='CarouselQuestions__buttons_toCertificate'>
+        <div className='_toCertificate'>
           <Button {...buttonToCertificateProps} />
         </div>
-        <div className='CarouselQuestions__buttons_downLeft'>
+        <div className='_downLeft'>
           <Button {...buttonBlockProps} />
         </div>
-        <div className='CarouselQuestions__buttons_startModule'>
+        <div className='_startModule'>
           <Button {...buttonStartProps} />
         </div>
       </div>

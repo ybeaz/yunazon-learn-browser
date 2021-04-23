@@ -6,50 +6,50 @@
   padding: 0 3rem 0 2rem;
   position: relative;
 
-  &__buttons {
+  .__buttons {
     display: flex;
     flex-direction: row;
     flex: 1;
     padding: 1rem 0 0 0;
 
-    &_backward {
+    ._backward {
       display: none;
       flex-direction: row;
       width: 50%;
     }
 
-    &_startModule {
+    ._startModule {
       display: none;
       flex-direction: row;
       width: 100%;
     }
 
-    &_forward {
+    ._forward {
       display: none;
       flex-direction: row;
       width: 50%;
     }
 
-    &_toCertificate {
+    ._toCertificate {
       display: none;
       flex-direction: row;
       width: 50%;
     }
 
-    &_downLeft {
+    ._downLeft {
       display: none;
       flex-direction: row;
       width: 50%;
     }
   }
 
-  &__dots {
+  .__dots {
     display: flex;
     text-align: center;
     padding: 0 0 1rem 0;
 
     /* The dots/bullets/indicators */
-    &_dot {
+    ._dot {
       cursor: pointer;
       margin: 0 0 0 0;
       background-color: #717171;
@@ -65,10 +65,10 @@
     }
   }
 
-  &__slideshow {
+  .__slideshow {
     padding: 1rem 0 0 0;
 
-    &_slides {
+    ._slides {
       flex-direction: column;
       display: none;
     }
@@ -149,7 +149,7 @@
     }
   }
 
-  &_show {
+  ._show {
     display: flex !important;
   }
 
@@ -174,35 +174,45 @@
 
 .display_left {
   justify-content: flex-start;
-  .CarouselQuestions__buttons_backward {
-    display: flex;
+  .__buttons {
+    ._backward {
+      display: flex;
+    }
   }
 }
 
 .display_startModule {
-  justify-content: flex-end;
-  .CarouselQuestions__buttons_startModule {
-    display: flex;
+  .__buttons {
+    justify-content: flex-end;
+    ._startModule {
+      display: flex;
+    }
   }
 }
 
 .display_right {
-  justify-content: flex-end;
-  .CarouselQuestions__buttons_forward {
-    display: flex;
+  .__buttons {
+    justify-content: flex-end;
+    ._forward {
+      display: flex;
+    }
   }
 }
 
 .display_toCertificate {
-  justify-content: flex-end;
-  .CarouselQuestions__buttons_toCertificate {
-    display: flex;
+  .__buttons {
+    justify-content: flex-end;
+    ._toCertificate {
+      display: flex;
+    }
   }
 }
 
 .display_downLeft {
-  justify-content: flex-end;
-  .CarouselQuestions__buttons_downLeft {
-    display: flex;
+  .__buttons {
+    justify-content: flex-end;
+    ._downLeft {
+      display: flex;
+    }
   }
 }

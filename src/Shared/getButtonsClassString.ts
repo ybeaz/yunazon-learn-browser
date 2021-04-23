@@ -64,7 +64,7 @@ export const getButtonsClassString: Function = (
         buttonRight = 'display_right'
       } else {
         isButtonBlockProps = true
-        buttonRight = 'display_startModule'
+        buttonRight = 'display_downLeft'
       }
     }
   }
@@ -77,6 +77,14 @@ export const getButtonsClassString: Function = (
     isButtonToCertificate = false
     isButtonBlockProps = false
     buttonsClassString = ''
+  } else if (questionsAnswered === 0) {
+    isButtonSlideBackward = false
+    isButtonSlideForward = false
+    isButtonToCertificate = false
+    isButtonBlockProps = false
+    isButtonSlideStart = true
+    buttonRight = 'display_startModule'
+    buttonsClassString = `${buttonLeft} ${buttonRight}`
   } else {
     buttonsClassString = `${buttonLeft} ${buttonRight}`
   }
