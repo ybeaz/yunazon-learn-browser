@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { PlayerPanel } from '../Components/PlayerPanel'
-import { IDurationObj } from '../../@types/IDurationObj'
+import { IDurationObj } from '../../Interfaces/IDurationObj'
 // import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 interface IPlayerComponentInput {

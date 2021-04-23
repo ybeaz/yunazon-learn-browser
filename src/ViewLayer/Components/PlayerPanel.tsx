@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IDurationObj } from '../../@types/IDurationObj'
+import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { Button } from '../Components/Button'
 
 interface IPlayerPanelInput {

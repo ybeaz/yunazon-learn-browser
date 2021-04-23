@@ -1,4 +1,4 @@
-import { IRootStore } from '../@types/IRootStore'
+import { IRootStore } from '../Interfaces/IRootStore'
 import { getChunkedArray } from '../Shared/getChunkedArray'
 import { getActiveCourseData } from '../Shared/getActiveCourseData'
 import { getOptionsShuffled } from '../Shared/getOptionsShuffled'

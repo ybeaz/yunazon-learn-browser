@@ -7,8 +7,8 @@ import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { Button } from '../Components/Button'
 import { handleEvents } from '../Hooks/handleEvents'
-import { IRootStore } from '../../@types/IRootStore'
-import { IDurationObj } from '../../@types/IDurationObj'
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { IDurationObj } from '../../Interfaces/IDurationObj'
 interface ICarouselQuestionsInput {
   durationObj: IDurationObj
 }
