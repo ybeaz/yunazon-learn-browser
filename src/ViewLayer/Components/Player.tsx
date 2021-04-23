@@ -6,6 +6,8 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 // import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 interface IPlayerComponentInput {
+  courseCapture: string
+  moduleCapture: string
   videoId: string
   captureCourse: string
   durationObj: IDurationObj
@@ -21,6 +23,8 @@ export const Player: React.FunctionComponent<any> = (
   props: IPlayerComponentInput
 ): JSX.Element => {
   const {
+    courseCapture,
+    moduleCapture,
     videoId,
     captureCourse,
     durationObj,
@@ -51,7 +55,8 @@ export const Player: React.FunctionComponent<any> = (
     action: {},
   }
   const playerPanelProps = {
-    captureCourse,
+    courseCapture,
+    moduleCapture,
     durationObj,
     screenType,
     isShowingPlay,

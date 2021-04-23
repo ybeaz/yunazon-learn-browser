@@ -10,7 +10,8 @@ import { handleEvents } from '../Hooks/handleEvents'
 
 interface IPlayerPlateInput {
   courseID: string
-  captureCourse: string
+  courseCapture: string
+  moduleCapture: string
   durationObj: IDurationObj
   moduleID: string
   ytID: string
@@ -22,7 +23,8 @@ export const PlayerPlate: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const {
     courseID,
-    captureCourse,
+    courseCapture,
+    moduleCapture,
     durationObj,
     moduleID,
     ytID,
@@ -43,7 +45,8 @@ export const PlayerPlate: React.FunctionComponent<any> = (
 
   const playerProps = {
     videoId: ytID,
-    captureCourse,
+    courseCapture,
+    moduleCapture,
     durationObj,
     playVideoHandler,
     pauseVideoHandler,

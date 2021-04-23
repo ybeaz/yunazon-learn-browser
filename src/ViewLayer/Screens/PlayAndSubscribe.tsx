@@ -26,7 +26,9 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     componentsState: { modalGetScores },
   } = store
   const [isLoaded, setIsLoaded] = useState(false)
-  const [durationObjState, setDurationObjState] = useState({
+  const [moduleState, setModuleState] = useState({
+    courseCapture: '',
+    moduleCapture: '',
     duration: '',
     units: '',
   })
@@ -39,12 +41,17 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
       )
       setIsLoaded(true)
 
-      const { duration } = getModuleByContentID(courses, 'ytID', contentID)
+      const {
+        courseCapture,
+        capture: moduleCapture,
+        duration,
+      } = getModuleByContentID(courses, 'ytID', contentID)
+
       const durationObj: IDurationObj = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
-      setDurationObjState(durationObj)
+      setModuleState({ courseCapture, moduleCapture, ...durationObj })
     }
   }, [courses])
 
@@ -60,19 +67,23 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     height,
   })
 
+  const { courseCapture, moduleCapture, duration, units } = moduleState
+
   const playerProps = {
+    courseCapture,
+    moduleCapture,
     videoId: contentID,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
     screenType: 'PlayAndSubscribe',
-    durationObj: durationObjState,
+    durationObj: moduleState,
     isActionButtonDisplaying: false,
   }
 
   const carouselQuestionsProps = {
-    durationObj: durationObjState,
+    durationObj: { duration, units },
   }
 
   const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }

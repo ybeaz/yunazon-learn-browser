@@ -20,8 +20,8 @@ export const MatrixHome: React.FunctionComponent<any> = (
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
     const plates = courses.map((item, i) => {
-      const { courseID, capture: captureCourse, modules } = item
-      const { moduleID, ytID, duration } = modules[0]
+      const { courseID, capture: courseCapture, modules } = item
+      const { moduleID, capture: moduleCapture, ytID, duration } = modules[0]
       const screenType = 'MatrixHome'
       const isShowingPlay = false
 
@@ -31,7 +31,8 @@ export const MatrixHome: React.FunctionComponent<any> = (
       )
       const playerPlateProps = {
         courseID,
-        captureCourse,
+        courseCapture,
+        moduleCapture,
         durationObj,
         moduleID,
         ytID,

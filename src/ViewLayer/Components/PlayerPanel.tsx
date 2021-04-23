@@ -5,7 +5,8 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { Button } from '../Components/Button'
 
 interface IPlayerPanelInput {
-  captureCourse: string
+  courseCapture: string
+  moduleCapture: string
   durationObj: IDurationObj
   screenType: string
   isShowingPlay: boolean
@@ -19,7 +20,8 @@ export const PlayerPanel: React.FunctionComponent<any> = (
   props: IPlayerPanelInput
 ): JSX.Element => {
   const {
-    captureCourse,
+    courseCapture,
+    moduleCapture,
     durationObj: { duration, units },
     screenType,
     isShowingPlay = false,
@@ -39,9 +41,14 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     isDisplaying,
   }
 
+  const capture =
+    screenType === 'PlayAndSubscribe'
+      ? `${courseCapture} ${moduleCapture}`
+      : `${courseCapture}`
+
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
-      <div className='__capture'>{captureCourse}</div>
+      <div className='__capture'>{capture}</div>
       <div className='__buttons'>
         {isShowingPlay ? (
           <Button {...buttonPlayProps} />

@@ -13,12 +13,12 @@ export const getModuleByContentID: Function = (
   let module = {}
 
   courses.forEach(course => {
-    const { modules } = course
+    const { capture: courseCapture, modules } = course
     const moduleFound = modules.find(
       module => module[nameContentID] === contentID
     )
 
-    if (moduleFound) module = moduleFound
+    if (moduleFound) module = { ...moduleFound, courseCapture }
   })
   return module
 }
