@@ -8,7 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { IRootStore } from './@types/IRootStore'
+import { IRootStore } from './Interfaces/IRootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
 import { PlayAndSubscribe } from './ViewLayer/Screens/PlayAndSubscribe'

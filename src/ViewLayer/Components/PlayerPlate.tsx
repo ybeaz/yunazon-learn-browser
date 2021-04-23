@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { IDurationObj } from '../../@types/IDurationObj'
+import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { Player } from '../Components/Player'

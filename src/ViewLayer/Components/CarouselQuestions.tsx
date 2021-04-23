@@ -31,9 +31,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const numberQuestionsInSlide =
     globalVars?.configuration?.numberQuestionsInSlide || 2
 
-  const { courseActive, moduleActive, questionsActive } = getActiveCourseData(
-    courses
-  )
+  const { questionsActive } = getActiveCourseData(courses)
 
   const questionsChunked = getChunkedArray(
     questionsActive,
@@ -133,8 +131,8 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   }
 
   const buttonStartProps = {
-    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0${questionsActive.length} `,
-    icon: 'BsQuestionCircle',
+    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0${questionsActive.length} вопросов`,
+    icon: '',
     classAdded: 'Button_startModule',
     handleEvents: () => {},
     action: {

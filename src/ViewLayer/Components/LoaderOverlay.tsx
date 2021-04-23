@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { IRootStore } from '../../@types/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
 
 export const LoaderOverlay: React.FunctionComponent<any> = (
   props: any

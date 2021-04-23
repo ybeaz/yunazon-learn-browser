@@ -7,7 +7,7 @@ import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswere
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../Hooks/handleEvents'
-import { IRootStore } from '../../@types/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
@@ -35,8 +35,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
 
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result2 } = score
-  let result = 'success'
+  const { total, right, wrong, result } = score
   const { moduleID, ytID: videoId } = moduleActive
 
   useEffect(() => {
@@ -49,8 +48,6 @@ export const ModalFrame: React.FunctionComponent<any> = (
       history.push(slug)
     }
   }, [slug])
-
-  // getRedirected({}, { typeRedirect: 'newLocation', slug })
 
   const inputNameProps = {
     classAdded: 'Input_name',
