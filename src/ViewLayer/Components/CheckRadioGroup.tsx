@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 
+import { getDesignType } from '../../Shared/getDesignType'
 import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
 import { handleEvents } from '../Hooks/handleEvents'
 interface ICheckRadioGroup {
@@ -8,16 +9,16 @@ interface ICheckRadioGroup {
   questionID: string
   capture: string
   options: any[]
-  designType: string
   multi: boolean
 }
 
 export const CheckRadioGroup: React.FunctionComponent<any> = ({
   capture,
   options,
-  designType,
   multi,
 }: ICheckRadioGroup): JSX.Element => {
+  const designType = getDesignType(options)
+
   const getCheckLines: Function = (options: any[]): JSX.Element[] => {
     return options.map(item => {
       const { optionID, label } = item

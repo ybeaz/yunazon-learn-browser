@@ -216,7 +216,3 @@ export const ModalFrame: React.FunctionComponent<any> = (
     </div>
   )
 }
-
-// export const ModalFrame: React.ComponentClass<any> = withRouter(
-//   ModalFrameOrigin
-// )
