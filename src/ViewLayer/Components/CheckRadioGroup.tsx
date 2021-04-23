@@ -25,14 +25,9 @@ export const CheckRadioGroup: React.FunctionComponent<any> = ({
       const answer = getAnswerByOptionID(options, optionID)
 
       return (
-        <label
-          className={`CheckRadioGroup__label ${designType}__label`}
-          key={optionID}
-        >
-          <div className='CheckRadioGroup__label_capture'>{label}</div>
-          <div
-            className={`CheckRadioGroup__label_checkdiv ${designType}__label_checkdiv`}
-          >
+        <label className={`__label`} key={optionID}>
+          <div className='_capture'>{label}</div>
+          <div className={`_checkdiv`}>
             <input
               onChange={event =>
                 handleEvents(event, {
@@ -53,7 +48,7 @@ export const CheckRadioGroup: React.FunctionComponent<any> = ({
 
   return (
     <div className={`CheckRadioGroup ${designType}`}>
-      <div className='CheckRadioGroup__capture'>{capture}</div>
+      <div className='__capture'>{capture}</div>
       {getCheckLines(options)}
     </div>
   )
