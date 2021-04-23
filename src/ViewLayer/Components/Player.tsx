@@ -14,6 +14,7 @@ interface IPlayerComponentInput {
   stopVideoHandler: Function
   screenType: string
   isShowingPlay: boolean
+  isActionButtonDisplaying: boolean
 }
 
 export const Player: React.FunctionComponent<any> = (
@@ -28,6 +29,7 @@ export const Player: React.FunctionComponent<any> = (
     stopVideoHandler,
     screenType,
     isShowingPlay,
+    isActionButtonDisplaying,
   } = props
 
   const buttonPlayProps = {
@@ -56,6 +58,7 @@ export const Player: React.FunctionComponent<any> = (
     buttonPlayProps,
     buttonPauseProps,
     buttonStopProps,
+    isActionButtonDisplaying,
   }
 
   return (

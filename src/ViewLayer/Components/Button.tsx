@@ -14,9 +14,11 @@ import {
   MdSearch,
 } from 'react-icons/md'
 
+import { BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
-// go/pitchday
+
 const ICON = {
+  BsQuestionCircle,
   MdBlock,
   HiOutlineAcademicCap,
   MdClose,

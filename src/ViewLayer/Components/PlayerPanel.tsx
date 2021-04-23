@@ -12,6 +12,7 @@ interface IPlayerPanelInput {
   buttonPlayProps: any
   buttonPauseProps: any
   buttonStopProps: any
+  isActionButtonDisplaying: boolean
 }
 
 export const PlayerPanel: React.FunctionComponent<any> = (
@@ -25,6 +26,7 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     buttonPlayProps = {},
     buttonPauseProps = {},
     buttonStopProps = {},
+    isActionButtonDisplaying: isDisplaying,
   } = props
 
   const callForActionButtonPros = {
@@ -34,6 +36,7 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     classAdded: 'Button_CallForActionMatrix',
     handleEvents: () => {},
     action: {},
+    isDisplaying,
   }
 
   return (

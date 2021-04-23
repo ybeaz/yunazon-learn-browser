@@ -65,6 +65,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     isShowingPlay,
     screenType: 'PlayAndSubscribe',
     durationObj: durationObjState,
+    isActionButtonDisplaying: false,
   }
 
   const carouselQuestionsProps = {

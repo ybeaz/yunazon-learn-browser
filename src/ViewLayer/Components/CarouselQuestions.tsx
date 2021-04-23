@@ -17,6 +17,11 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   props: ICarouselQuestionsInput
 ): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
+
+  const {
+    durationObj: { duration, units },
+  } = props
+
   const {
     globalVars,
     componentsState: { questionsSlideNumber },
@@ -91,15 +96,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     questionsChunked
   )
 
-  console.info('CarouselQuestions [90]', {
-    buttonsClassString,
-    isButtonSlideStart,
-    isButtonSlideBackward,
-    isButtonSlideForward,
-    isButtonToCertificate,
-    isButtonBlockProps,
-  })
-
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
@@ -139,10 +135,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     isDisplaying: isButtonBlockProps,
   }
 
-  // I stopped here
   const buttonStartProps = {
-    captureLeft: 'До сертификата',
-    icon: 'MdForward',
+    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0${questionsActive.length} `,
+    icon: 'BsQuestionCircle',
     classAdded: 'Button_startModule',
     handleEvents: () => {},
     action: {
