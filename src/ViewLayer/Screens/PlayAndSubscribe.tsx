@@ -7,19 +7,20 @@ import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
 import { ModalFrame } from '../Modals/ModalFrame'
-import { RootStore } from '../../@types/RootStore'
-import { RouterScreenProps } from '../../@types/RouterScreenProps'
+import { IRootStore } from '../../@types/IRootStore'
+import { IRouterScreenProps } from '../../@types/IRouterScreenProps'
 
+import { IDurationObj } from '../../@types/IDurationObj'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { MainFrame } from '../Components/MainFrame'
 import { Player } from '../Components/Player'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
 export const PlayAndSubscribe: React.FunctionComponent<any> = (
-  props: RouterScreenProps = { routeProps: {}, rootPath: '' }
+  props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const contentID = props?.routeProps.match.params.contentID
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const {
     courses,
     componentsState: { modalGetScores },
@@ -39,7 +40,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
       setIsLoaded(true)
 
       const { duration } = getModuleByContentID(courses, 'ytID', contentID)
-      const durationObj = getMultipliedTimeStr(duration, 1.5)
+      const durationObj: IDurationObj = getMultipliedTimeStr(duration, 1.5)
       setDurationObjState(durationObj)
     }
   }, [courses])
@@ -66,6 +67,10 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     durationObj: durationObjState,
   }
 
+  const carouselQuestionsProps = {
+    durationObj: durationObjState,
+  }
+
   const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }
 
   return (
@@ -74,7 +79,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
         <>
           <MainFrame>
             <Player {...playerProps} />
-            <CarouselQuestions />
+            <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
           {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
           <LoaderOverlay />

@@ -1,10 +1,21 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { IDurationObj } from '../../@types/IDurationObj'
 import { Button } from '../Components/Button'
 
+interface IPlayerPanelInput {
+  captureCourse: string
+  durationObj: IDurationObj
+  screenType: string
+  isShowingPlay: boolean
+  buttonPlayProps: any
+  buttonPauseProps: any
+  buttonStopProps: any
+}
+
 export const PlayerPanel: React.FunctionComponent<any> = (
-  props: any
+  props: IPlayerPanelInput
 ): JSX.Element => {
   const {
     captureCourse,

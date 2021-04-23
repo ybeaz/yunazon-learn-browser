@@ -2,16 +2,22 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { PlayerPanel } from '../Components/PlayerPanel'
+import { IDurationObj } from '../../@types/IDurationObj'
 // import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
-interface IPlayerComponent {
+interface IPlayerComponentInput {
   videoId: string
-  width: string
-  height: string
+  captureCourse: string
+  durationObj: IDurationObj
+  playVideoHandler: Function
+  pauseVideoHandler: Function
+  stopVideoHandler: Function
+  screenType: string
+  isShowingPlay: boolean
 }
 
 export const Player: React.FunctionComponent<any> = (
-  props: any
+  props: IPlayerComponentInput
 ): JSX.Element => {
   const {
     videoId,

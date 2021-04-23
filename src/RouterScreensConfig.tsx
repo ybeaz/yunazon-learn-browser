@@ -8,7 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { RootStore } from './@types/RootStore'
+import { IRootStore } from './@types/IRootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
 import { PlayAndSubscribe } from './ViewLayer/Screens/PlayAndSubscribe'
@@ -25,7 +25,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   const history = useHistory()
   const dispatch = useDispatch()
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   // console.info('RouterScreensConfig [23]', { store })
 
   useEffect(() => {
@@ -150,7 +150,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store: RootStore) => store)
+      const { globalVars } = useSelector((store: IRootStore) => store)
       const { theme } = globalVars
       if (theme) {
         // require('./ViewLayer/Styles/config.style.less')

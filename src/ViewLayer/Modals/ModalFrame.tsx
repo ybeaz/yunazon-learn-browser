@@ -7,7 +7,7 @@ import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswere
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../Hooks/handleEvents'
-import { RootStore } from '../../@types/RootStore'
+import { IRootStore } from '../../@types/IRootStore'
 import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
@@ -17,7 +17,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
   let history = useHistory()
   const dispatch = useDispatch()
   const { stopVideoHandler } = props
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const {
     documents,
     courses,

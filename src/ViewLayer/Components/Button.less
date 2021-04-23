@@ -19,6 +19,16 @@
     }
     ._in {
       color: @colorFirstDarker2;
+      ._capture_left {
+        padding: 0 0.3rem 0 0;
+      }
+      ._icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+      ._capture_right {
+        padding: 0 0 0 0.3rem;
+      }
     }
   }
 }
@@ -37,12 +47,14 @@
     }
 
     ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
       height: 1.5rem;
       ._capture_left {
-        padding: 0 0.3rem 0 0;
       }
       ._capture_right {
-        padding: 0 0 0 0.3rem;
       }
     }
   }
@@ -62,9 +74,37 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
       .bouncy;
+    }
+  }
+}
+
+.Button_startModule {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      ._capture_left {
+      }
+      ._icon {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+      ._capture_right {
+      }
     }
   }
 }
@@ -84,10 +124,10 @@
 
     ._in {
       color: @colorFirstDarker;
-      height: 1.5rem;
-      width: 1.5rem;
-      -webkit-transform: rotate(135deg);
-      transform: rotate(135deg);
+      ._icon {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
     }
   }
 }
@@ -107,8 +147,8 @@
 
     ._in {
       color: @colorSecondLighter4;
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -127,11 +167,11 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
       color: @colorSecondLighter4;
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg);
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
     }
   }
 }
@@ -145,14 +185,16 @@
     }
 
     ._in {
-      display: flex;
-      position: relative;
-      height: 2.2rem;
-      padding-top: 4px;
-      cursor: pointer;
-      font-size: @fontSize;
       color: @colorFirstDarker2;
       background-color: @colorSecond;
+      ._icon {
+        display: flex;
+        position: relative;
+        height: 2.2rem;
+        padding-top: 4px;
+        cursor: pointer;
+        font-size: @fontSize;
+      }
     }
   }
 }
@@ -171,10 +213,10 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg);
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
     }
   }
 }
@@ -193,10 +235,10 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
-      -webkit-transform: rotateY(180deg);
-      transform: rotateY(180deg);
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
     }
   }
 }
@@ -215,8 +257,8 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -230,14 +272,16 @@
     }
 
     ._in {
-      display: flex;
-      position: relative;
-      height: 2.2rem;
-      padding-top: 4px;
-      cursor: pointer;
-      font-size: @fontSize;
       color: @colorFirstDarker2;
       background-color: @colorSecond;
+      ._icon {
+        display: flex;
+        position: relative;
+        height: 2.2rem;
+        padding-top: 4px;
+        cursor: pointer;
+        font-size: @fontSize;
+      }
     }
   }
 }
@@ -256,8 +300,8 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -273,8 +317,8 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -290,8 +334,8 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -307,8 +351,8 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
+      ._icon {
+      }
     }
   }
 }
@@ -322,10 +366,10 @@
     }
 
     ._in {
-      height: 1.5rem;
-      width: 1.5rem;
       color: @colorFirstDarker;
       background-color: @colorSecond;
+      ._icon {
+      }
     }
   }
 }
@@ -337,10 +381,12 @@
     }
 
     ._in {
-      width: 1.8rem;
-      height: 1.8rem;
       color: @colorSecondLighter4;
       background-color: @colorSecond;
+      ._icon {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
     }
   }
 }
@@ -352,9 +398,11 @@
     &:focus {
     }
     ._in {
-      width: 1.3rem;
-      height: 1.3rem;
       color: @colorSecondLighter4;
+      ._icon {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
     }
   }
 }
@@ -385,4 +433,8 @@
   100% {
     top: 0em;
   }
+}
+
+.Button_none {
+  display: none;
 }

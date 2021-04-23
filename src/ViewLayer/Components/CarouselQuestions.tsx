@@ -7,12 +7,16 @@ import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { Button } from '../Components/Button'
 import { handleEvents } from '../Hooks/handleEvents'
-import { RootStore } from '../../@types/RootStore'
+import { IRootStore } from '../../@types/IRootStore'
+import { IDurationObj } from '../../@types/IDurationObj'
+interface ICarouselQuestionsInput {
+  durationObj: IDurationObj
+}
 
 export const CarouselQuestions: React.FunctionComponent<any> = (
-  props: any
+  props: ICarouselQuestionsInput
 ): JSX.Element => {
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const {
     globalVars,
     componentsState: { questionsSlideNumber },
@@ -73,18 +77,35 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     return <div className='CarouselQuestions__slideshow'>{questionsJSX}</div>
   }
 
-  const buttonsClassString = getButtonsClassString(
+  const {
+    buttonsClassString,
+    isButtonSlideStart,
+    isButtonSlideBackward,
+    isButtonSlideForward,
+    isButtonToCertificate,
+    isButtonBlockProps,
+  } = getButtonsClassString(
     questionsSlideNumber,
     questionsChunked.length,
     questionsActive,
     questionsChunked
   )
 
+  console.info('CarouselQuestions [90]', {
+    buttonsClassString,
+    isButtonSlideStart,
+    isButtonSlideBackward,
+    isButtonSlideForward,
+    isButtonToCertificate,
+    isButtonBlockProps,
+  })
+
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
     handleEvents,
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: -1 },
+    isDisplaying: isButtonSlideBackward,
   }
 
   const buttonSlideForwardProps = {
@@ -92,6 +113,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     classAdded: 'Button_MdForward2',
     handleEvents,
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: 1 },
+    isDisplaying: isButtonSlideForward,
   }
 
   const buttonToCertificateProps = {
@@ -103,6 +125,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       typeEvent: 'OPEN_MODAL_GET_SCORES',
       data: {},
     },
+    isDisplaying: isButtonToCertificate,
   }
 
   const buttonBlockProps = {
@@ -113,6 +136,20 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       typeEvent: '',
       data: {},
     },
+    isDisplaying: isButtonBlockProps,
+  }
+
+  // I stopped here
+  const buttonStartProps = {
+    captureLeft: 'До сертификата',
+    icon: 'MdForward',
+    classAdded: 'Button_startModule',
+    handleEvents: () => {},
+    action: {
+      typeEvent: '',
+      data: {},
+    },
+    isDisplaying: isButtonBlockProps,
   }
 
   return (
@@ -130,6 +167,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
         </div>
         <div className='CarouselQuestions__buttons_downLeft'>
           <Button {...buttonBlockProps} />
+        </div>
+        <div className='CarouselQuestions__buttons_startModule'>
+          <Button {...buttonStartProps} />
         </div>
       </div>
       {getSlides(questionsChunked)}

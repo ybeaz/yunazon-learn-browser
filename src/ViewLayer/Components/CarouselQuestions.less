@@ -17,6 +17,13 @@
       flex-direction: row;
       width: 50%;
     }
+
+    &_startModule {
+      display: none;
+      flex-direction: row;
+      width: 100%;
+    }
+
     &_forward {
       display: none;
       flex-direction: row;
@@ -168,6 +175,13 @@
 .display_left {
   justify-content: flex-start;
   .CarouselQuestions__buttons_backward {
+    display: flex;
+  }
+}
+
+.display_startModule {
+  justify-content: flex-end;
+  .CarouselQuestions__buttons_startModule {
     display: flex;
   }
 }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { RootStore } from '../../@types/RootStore'
+import { IRootStore } from '../../@types/IRootStore'
 import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
 import { handleEvents } from '../Hooks/handleEvents'
 
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const {
     componentsState: { sideNavigationState },
   } = store

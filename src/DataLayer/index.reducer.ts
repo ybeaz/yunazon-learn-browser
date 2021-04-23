@@ -1,4 +1,4 @@
-import { RootStore } from '../@types/RootStore'
+import { IRootStore } from '../@types/IRootStore'
 import { getChunkedArray } from '../Shared/getChunkedArray'
 import { getActiveCourseData } from '../Shared/getActiveCourseData'
 import { getOptionsShuffled } from '../Shared/getOptionsShuffled'
@@ -30,7 +30,7 @@ const rootStoreDefault = {
 }
 
 export const rootReducer: Function = (
-  store: RootStore = rootStoreDefault,
+  store: IRootStore = rootStoreDefault,
   action: any
 ): any => {
   const { type } = action

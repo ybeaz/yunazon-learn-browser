@@ -1,14 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { IDurationObj } from '../../@types/IDurationObj'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { Player } from '../Components/Player'
 import * as action from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 
+interface IPlayerPlateInput {
+  courseID: string
+  captureCourse: string
+  durationObj: IDurationObj
+  moduleID: string
+  ytID: string
+  screenType: string
+}
+
 export const PlayerPlate: React.FunctionComponent<any> = (
-  props: any
+  props: IPlayerPlateInput
 ): JSX.Element => {
   const {
     courseID,

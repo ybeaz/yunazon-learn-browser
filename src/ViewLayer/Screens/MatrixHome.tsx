@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { IDurationObj } from '../../@types/IDurationObj'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { MainFrame } from '../Components/MainFrame'
-import { RouterScreenProps } from '../../@types/RouterScreenProps'
-import { RootStore } from '../../@types/RootStore'
+import { IRouterScreenProps } from '../../@types/IRouterScreenProps'
+import { IRootStore } from '../../@types/IRootStore'
 import { PlayerPlate } from '../Components/PlayerPlate'
 
 export const MatrixHome: React.FunctionComponent<any> = (
-  props: RouterScreenProps
+  props: IRouterScreenProps
 ): JSX.Element => {
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const {
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
@@ -23,10 +24,11 @@ export const MatrixHome: React.FunctionComponent<any> = (
       const screenType = 'MatrixHome'
       const isShowingPlay = false
 
+      const durationObj: IDurationObj = getMultipliedTimeStr(duration, 1.5)
       const playerPlateProps = {
         courseID,
         captureCourse,
-        durationObj: getMultipliedTimeStr(duration, 1.5),
+        durationObj,
         moduleID,
         ytID,
         isShowingPlay,

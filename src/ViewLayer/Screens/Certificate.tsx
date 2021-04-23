@@ -3,16 +3,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
+import { IRouterScreenProps } from '../../@types/IRouterScreenProps'
 import { ShareButtons } from '../Components/ShareButtons'
 import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
-import { RootStore } from '../../@types/RootStore'
+import { IRootStore } from '../../@types/IRootStore'
 import { handleEvents } from '../Hooks/handleEvents'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { getDateString } from '../../Shared/getDateString'
 
 export const Certificate: React.FunctionComponent<any> = (
-  props: any
+  props: IRouterScreenProps
 ): JSX.Element => {
   const {
     routeProps: {
@@ -24,7 +25,7 @@ export const Certificate: React.FunctionComponent<any> = (
 
   let history = useHistory()
   const dispatch = useDispatch()
-  const store = useSelector((store: RootStore) => store)
+  const store = useSelector((store: IRootStore) => store)
   const { documents } = store
 
   useEffect(() => {

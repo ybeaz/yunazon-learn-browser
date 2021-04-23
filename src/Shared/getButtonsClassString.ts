@@ -1,5 +1,14 @@
 import { getAnswersChecked2 } from './getAnswersChecked2'
 
+interface GetButtonsClassString {
+  buttonsClassString: string
+  isButtonSlideStart: boolean
+  isButtonSlideBackward: boolean
+  isButtonSlideForward: boolean
+  isButtonToCertificate: boolean
+  isButtonBlockProps: boolean
+}
+
 /**
  * @description Function to return two control button for navigating quesitons to answer
  * @param questionsSlideNumber
@@ -13,7 +22,7 @@ export const getButtonsClassString: Function = (
   questionsChunkedLen: number,
   questionsActive: any[],
   questionsChunked: any[]
-): string => {
+): GetButtonsClassString => {
   const {
     total: questionsTotal,
     answered: questionsAnswered,
@@ -24,22 +33,60 @@ export const getButtonsClassString: Function = (
     answered: questionsChunkAnswered,
   } = getAnswersChecked2(questionsChunked[questionsSlideNumber])
 
+  let isButtonSlideStart = false
+  let isButtonSlideBackward = false
+  let isButtonSlideForward = false
+  let isButtonToCertificate = false
+  let isButtonBlockProps = false
+
   let buttonLeft = ''
-  if (questionsSlideNumber === 0) buttonLeft = ''
-  else buttonLeft = 'display_left'
+  if (questionsSlideNumber === 0) {
+    isButtonSlideBackward = false
+    buttonLeft = ''
+  } else {
+    isButtonSlideBackward = true
+    buttonLeft = 'display_left'
+  }
 
   let buttonRight = ''
   if (questionsSlideNumber < questionsChunkedLen) {
     if (questionsSlideNumber === questionsChunkedLen - 1) {
-      if (questionsTotal === questionsAnswered)
+      if (questionsTotal === questionsAnswered) {
+        isButtonToCertificate = true
         buttonRight = 'display_toCertificate'
-      else buttonRight = 'display_downLeft'
+      } else {
+        isButtonBlockProps = true
+        buttonRight = 'display_downLeft'
+      }
     } else {
-      if (chunkLen === questionsChunkAnswered) buttonRight = 'display_right'
-      else buttonRight = 'display_downLeft'
+      if (chunkLen === questionsChunkAnswered) {
+        isButtonSlideForward = true
+        buttonRight = 'display_right'
+      } else {
+        isButtonBlockProps = true
+        buttonRight = 'display_startModule'
+      }
     }
   }
 
-  if (questionsActive.length) return `${buttonLeft} ${buttonRight}`
-  else return ''
+  let buttonsClassString = ''
+  if (!questionsActive.length) {
+    isButtonSlideStart = false
+    isButtonSlideBackward = false
+    isButtonSlideForward = false
+    isButtonToCertificate = false
+    isButtonBlockProps = false
+    buttonsClassString = ''
+  } else {
+    buttonsClassString = `${buttonLeft} ${buttonRight}`
+  }
+
+  return {
+    buttonsClassString,
+    isButtonSlideStart,
+    isButtonSlideBackward,
+    isButtonSlideForward,
+    isButtonToCertificate,
+    isButtonBlockProps,
+  }
 }

@@ -1,4 +1,4 @@
-export interface RootStore {
+export interface IRootStore {
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean
