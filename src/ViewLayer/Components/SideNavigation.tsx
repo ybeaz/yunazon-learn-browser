@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IRootStore } from '../../@types/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
 import { handleEvents } from '../Hooks/handleEvents'

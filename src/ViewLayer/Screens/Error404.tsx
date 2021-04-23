@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IRouterScreenProps } from '../../@types/IRouterScreenProps'
+import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 
 export const Error404: React.FunctionComponent<any> = (
   props: IRouterScreenProps

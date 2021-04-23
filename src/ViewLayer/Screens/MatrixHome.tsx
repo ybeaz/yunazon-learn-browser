@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IDurationObj } from '../../@types/IDurationObj'
+import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { MainFrame } from '../Components/MainFrame'
-import { IRouterScreenProps } from '../../@types/IRouterScreenProps'
-import { IRootStore } from '../../@types/IRootStore'
+import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { PlayerPlate } from '../Components/PlayerPlate'
 
 export const MatrixHome: React.FunctionComponent<any> = (
