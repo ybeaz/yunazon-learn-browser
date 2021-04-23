@@ -9,9 +9,10 @@ export const getMultipliedTimeStr = (str, multiplier) => {
     time = timeArr[0] * multiplier
     duration = getMsToTime(time * 1000)
   } else if (timeArr.length === 2) {
-    const seconds = timeArr[0]
-    const minutes = timeArr[1]
+    const minutes = timeArr[0]
+    const seconds = timeArr[1]
     time = (minutes * 60 + seconds) * multiplier
+    console.info('[16]', { time, minutes, seconds, timeArr, str, multiplier })
     duration = getMsToTime(time * 1000)
   } else if (timeArr.length === 3) {
     const seconds = timeArr[0]
@@ -24,6 +25,6 @@ export const getMultipliedTimeStr = (str, multiplier) => {
   }
 
   const units = time < 60 ? 'sec' : time < 60 * 60 ? 'min' : 'hour'
-  // console.info('[29]', { units, time, duration, timeArr, str, multiplier })
+  console.info('[29]', { units, time, duration, timeArr, str, multiplier })
   return { duration, units }
 }

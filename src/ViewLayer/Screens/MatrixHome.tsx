@@ -13,6 +13,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
+    globalVars: { durationMultiplier },
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
   } = store
@@ -24,7 +25,10 @@ export const MatrixHome: React.FunctionComponent<any> = (
       const screenType = 'MatrixHome'
       const isShowingPlay = false
 
-      const durationObj: IDurationObj = getMultipliedTimeStr(duration, 1.5)
+      const durationObj: IDurationObj = getMultipliedTimeStr(
+        duration,
+        durationMultiplier
+      )
       const playerPlateProps = {
         courseID,
         captureCourse,

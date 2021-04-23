@@ -22,6 +22,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
   const contentID = props?.routeProps.match.params.contentID
   const store = useSelector((store: IRootStore) => store)
   const {
+    globalVars: { durationMultiplier },
     courses,
     componentsState: { modalGetScores },
   } = store
@@ -40,7 +41,10 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
       setIsLoaded(true)
 
       const { duration } = getModuleByContentID(courses, 'ytID', contentID)
-      const durationObj: IDurationObj = getMultipliedTimeStr(duration, 1.5)
+      const durationObj: IDurationObj = getMultipliedTimeStr(
+        duration,
+        durationMultiplier
+      )
       setDurationObjState(durationObj)
     }
   }, [courses])
