@@ -81,7 +81,7 @@ export const Certificate: React.FunctionComponent<any> = (
     icon: 'BsLink45Deg',
     classAdded: 'Button_MdPrint',
     handleEvents,
-    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+    action: { typeEvent: 'COPY_URL_TO_CLIPBOARD', data: {} },
   }
 
   return (

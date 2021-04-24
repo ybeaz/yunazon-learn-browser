@@ -1,5 +1,6 @@
 import { push, goBack } from 'react-router-redux'
 
+import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
 import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
@@ -17,6 +18,10 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    COPY_URL_TO_CLIPBOARD: () => {
+      getCopiedUrlToClipboard()
+    },
+
     TOGGLE_IS_DOCUMENT_ADDED: () => {
       dispatch(action.TOGGLE_IS_DOCUMENT_ADDED(false))
     },
