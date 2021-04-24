@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
+import { Header } from '../Components/Header'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { ShareButtons } from '../Components/ShareButtons'
-import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { handleEvents } from '../Hooks/handleEvents'
@@ -72,15 +72,16 @@ export const Certificate: React.FunctionComponent<any> = (
 
   return (
     <div className='Certificate'>
-      <div className='Certificate__navigation'>
-        <div className='Certificate__navigation_buttons Certificate_noPrint'>
-          <LogoGroup />
+      <div className='_buttons Certificate_noPrint'>
+        <Header>
           <Button {...buttonBackProps} />
-          <Button {...buttonPrintProps} />
-          <div className='Certificate__navigation_buttons_share'>
-            <ShareButtons />
+          <div className='__navigation'>
+            <div className='_buttons'>
+              <Button {...buttonPrintProps} />
+              <ShareButtons />
+            </div>
           </div>
-        </div>
+        </Header>
       </div>
 
       <div className='container pm-certificate-container'>

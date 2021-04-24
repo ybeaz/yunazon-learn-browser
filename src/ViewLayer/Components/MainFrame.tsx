@@ -1,15 +1,30 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { SearchGroup } from './SearchGroup'
+import { handleEvents } from '../Hooks/handleEvents'
+import { Button } from './Button'
 import { SideNavigation } from './SideNavigation'
 import { Header } from './Header'
 
 export const MainFrame: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    handleEvents,
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
+  }
+
   return (
     <div className='MainFrame'>
-      <Header />
+      <Header>
+        <Button {...buttonMdMenuProps} />
+        <SearchGroup />
+      </Header>
       <SideNavigation />
 
       {/* <!-- Navigation Bar --> */}
