@@ -18,12 +18,12 @@ export const ShareButtons: React.FunctionComponent<any> = (
   props
 ): JSX.Element => {
   return (
-    <div>
+    <div className='ShareButtons'>
       <FacebookShareButton
         url={'https://www.facebook.com/sharer/sharer.php?u=#url'}
         quote={'Facebook'}
       >
-        <FacebookIcon size={32} />
+        <FacebookIcon size={41} />
       </FacebookShareButton>
     </div>
   )

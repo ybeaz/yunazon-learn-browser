@@ -70,6 +70,20 @@ export const Certificate: React.FunctionComponent<any> = (
     action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
   }
 
+  const buttonEmailProps = {
+    icon: 'MdMailOutline',
+    classAdded: 'Button_MdPrint',
+    handleEvents,
+    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+  }
+
+  const buttonCopyLinkProps = {
+    icon: 'BsLink45Deg',
+    classAdded: 'Button_MdPrint',
+    handleEvents,
+    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+  }
+
   return (
     <div className='Certificate'>
       <div className='_buttons Certificate_noPrint'>
@@ -78,6 +92,8 @@ export const Certificate: React.FunctionComponent<any> = (
           <div className='__navigation'>
             <div className='_buttons'>
               <Button {...buttonPrintProps} />
+              <Button {...buttonEmailProps} />
+              <Button {...buttonCopyLinkProps} />
               <ShareButtons />
             </div>
           </div>

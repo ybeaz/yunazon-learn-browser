@@ -2,6 +2,7 @@ import React from 'react'
 
 import { IconContext } from 'react-icons'
 import {
+  MdMailOutline,
   MdBlock,
   MdClose,
   MdPrint,
@@ -14,10 +15,12 @@ import {
   MdSearch,
 } from 'react-icons/md'
 
-import { BsQuestionCircle } from 'react-icons/bs'
+import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  BsLink45Deg,
+  MdMailOutline,
   BsQuestionCircle,
   MdBlock,
   HiOutlineAcademicCap,
@@ -40,6 +43,8 @@ interface IButton {
   handleEvents?: Function
   action?: any
   isDisplaying?: boolean
+  tooltipText?: string
+  tooltipPosition?: string
 }
 
 export const Button: React.FunctionComponent<any> = (
@@ -58,14 +63,29 @@ export const Button: React.FunctionComponent<any> = (
     handleEvents = handleEventsDefault,
     action = {},
     isDisplaying = true,
+    tooltipText = '',
+    tooltipPosition = '',
   } = props
   const Icon = ICON[icon]
   const Icon2 = ICON[icon2]
 
   const classDisplay = isDisplaying === true ? '' : 'Button_none'
 
+  const classTooltipAdd = {
+    top: '_tooltipTop',
+    right: '_tooltipRight',
+    bottom: '_tooltipBottom',
+    left: '_tooltipLeft',
+  }[tooltipPosition]
+
   return (
     <div className={`Button ${classAdded} ${classDisplay}`}>
+      {tooltipText ? (
+        <span className={`__tooltipText ${classTooltipAdd}`}>
+          {tooltipText}
+        </span>
+      ) : null}
+
       <button
         className={`__button`}
         type='button'
