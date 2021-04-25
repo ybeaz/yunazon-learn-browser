@@ -17,9 +17,9 @@ const rootStoreDefault = {
   globalVars: {},
   componentsState: {
     questionsSlideNumber: 0,
-    modalGetScores: true,
-    sideNavigationState: false,
-    loaderOverlayState: false,
+    isModalFrameVisible: true,
+    isSideNavVisible: false,
+    isLoaderOverlayVisible: false,
     isDocumentAdded: false,
   },
   forms: {
@@ -45,7 +45,7 @@ export const rootReducer: Function = (
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
-        loaderOverlayState: data,
+        isLoaderOverlayVisible: data,
       }
       return { ...store, componentsState: componentsStateNext }
     },
@@ -174,12 +174,12 @@ export const rootReducer: Function = (
       return { ...store, forms: nextForms }
     },
 
-    TOGGLE_MODAL_GET_SCORES: () => {
+    TOGGLE_MODAL_FRAME: () => {
       const { data } = action
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
-        modalGetScores: data,
+        isModalFrameVisible: data,
       }
       return { ...store, componentsState: componentsStateNext }
     },
@@ -228,10 +228,10 @@ export const rootReducer: Function = (
 
     TOGGLE_SIDE_NAVIGATION: () => {
       const { componentsState } = store
-      const { sideNavigationState } = componentsState
+      const { isSideNavVisible } = componentsState
       const componentsStateNext = {
         ...componentsState,
-        sideNavigationState: !sideNavigationState,
+        isSideNavVisible: !isSideNavVisible,
       }
       return { ...store, componentsState: componentsStateNext }
     },

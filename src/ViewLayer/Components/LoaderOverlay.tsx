@@ -8,10 +8,10 @@ export const LoaderOverlay: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
-    componentsState: { loaderOverlayState },
+    componentsState: { isLoaderOverlayVisible },
   } = store
 
-  const classAdd = loaderOverlayState ? 'LoaderOverlay_show' : ''
+  const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
 
   return (
     <div className={`LoaderOverlay ${classAdd}`}>

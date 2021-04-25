@@ -7,9 +7,9 @@ export interface IRootStore {
   globalVars: any
   componentsState: {
     questionsSlideNumber: number
-    modalGetScores: boolean
-    sideNavigationState: boolean
-    loaderOverlayState: boolean
+    isModalFrameVisible: boolean
+    isSideNavVisible: boolean
+    isLoaderOverlayVisible: boolean
     isDocumentAdded: boolean
   }
   forms: {

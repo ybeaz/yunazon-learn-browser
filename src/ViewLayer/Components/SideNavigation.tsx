@@ -9,9 +9,9 @@ import { handleEvents } from '../Hooks/handleEvents'
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
-    componentsState: { sideNavigationState },
+    componentsState: { isSideNavVisible },
   } = store
-  // console.info('SideNavigation [6]', { sideNavigationState })
+  // console.info('SideNavigation [6]', { isSideNavVisible })
 
   const buttonMdMenuProps = {
     icon: 'MdMenu',
@@ -52,7 +52,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     // },
   }
 
-  const classNameAdd = sideNavigationState ? 'SideNavigation_show' : ''
+  const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
 
   return (
     <div className={`SideNavigation ${classNameAdd}`}>

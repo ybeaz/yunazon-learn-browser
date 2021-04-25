@@ -6,6 +6,7 @@ import { getModuleByContentID } from '../../Shared/getModuleByContentID'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
+import { QuestionScores } from '../Components/QuestionScores'
 import { ModalFrame } from '../Frames/ModalFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
@@ -23,7 +24,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
   const {
     globalVars: { durationMultiplier },
     courses,
-    componentsState: { modalGetScores },
+    componentsState: { isModalFrameVisible },
   } = store
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
@@ -86,7 +87,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     durationObj: { duration, units },
   }
 
-  const modalFrameProps = { stopVideoHandler, routeProps: props.routeProps }
+  const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 
   return (
     <div className='PlayAndSubscribe'>
@@ -96,7 +97,11 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
             <Player {...playerProps} />
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
-          {modalGetScores === true ? <ModalFrame {...modalFrameProps} /> : null}
+          {isModalFrameVisible === true ? (
+            <ModalFrame>
+              <QuestionScores {...questionScoresProps} />
+            </ModalFrame>
+          ) : null}
           <LoaderOverlay />
         </>
       ) : null}

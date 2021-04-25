@@ -69,15 +69,15 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
     CLOSE_MODAL_GET_SCORES: () => {
       dispatch(action.GET_ANSWERS_DEFAULT())
       dispatch(action.SET_QUESTION_SLIDE(0))
-      dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
+      dispatch(action.TOGGLE_MODAL_FRAME(false))
     },
 
     OPEN_MODAL_GET_SCORES: () => {
-      dispatch(action.TOGGLE_MODAL_GET_SCORES(true))
+      dispatch(action.TOGGLE_MODAL_FRAME(true))
     },
 
     PRINT_SCORES: () => {
-      dispatch(action.TOGGLE_MODAL_GET_SCORES(false))
+      dispatch(action.TOGGLE_MODAL_FRAME(false))
 
       const {
         screenType,
@@ -104,7 +104,7 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
     },
 
     COUNT_MODULE_QUIZ_SCORE: () => {
-      dispatch(action.TOGGLE_MODAL_GET_SCORES(true))
+      dispatch(action.TOGGLE_MODAL_FRAME(true))
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {

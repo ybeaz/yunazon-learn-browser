@@ -84,8 +84,8 @@ export const ONCHANGE_LAST_NAME_MODAL: Function = (
   data,
 })
 
-export const TOGGLE_MODAL_GET_SCORES: Function = (data: boolean): any => ({
-  type: 'TOGGLE_MODAL_GET_SCORES',
+export const TOGGLE_MODAL_FRAME: Function = (data: boolean): any => ({
+  type: 'TOGGLE_MODAL_FRAME',
   data,
 })
 
