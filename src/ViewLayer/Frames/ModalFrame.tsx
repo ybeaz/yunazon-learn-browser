@@ -15,7 +15,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   let history = useHistory()
-  const dispatch = useDispatch()
+
   const { stopVideoHandler } = props
   const store = useSelector((store: IRootStore) => store)
   const {
@@ -36,7 +36,8 @@ export const ModalFrame: React.FunctionComponent<any> = (
 
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result } = score
+  const { total, right, wrong, result: result2 } = score
+  let result = 'success'
   const { moduleID, ytID: videoId } = moduleActive
 
   useEffect(() => {
@@ -118,9 +119,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
     success: {
       message: (
         <>
-          <div className='ModalFrame__content_inner_text_greet'>
-            Congratulations!
-          </div>
+          <div className='_greet'>Congratulations!</div>
           <p>You completed the course</p>
           <p>"{capture}"</p>
           <p>
@@ -151,9 +150,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
     failure: {
       message: (
         <>
-          <div className='ModalFrame__content_inner_text_greet'>
-            You committed to success.
-          </div>
+          <div className='_greet'>You committed to success.</div>
           <p>
             and this time anwered {right} question from {total}.
           </p>
@@ -173,44 +170,58 @@ export const ModalFrame: React.FunctionComponent<any> = (
 
   return (
     <div id='modalFrame' className={`ModalFrame ${addClass}`}>
-      <div className='ModalFrame__content'>
-        <span className='ModalFrame__content_close'>
+      <div className='__content'>
+        <span className='_close'>
           <Button {...buttonCloseProps} />
         </span>
-        <div className='ModalFrame__content_inner'>
-          <div className='ModalFrame__content_inner_text'>
-            {scenario.message}
-          </div>
+        <div className='_inner'>
+          <div className='_text'>{scenario.message}</div>
 
-          <form className='ModalFrame__content_inner_form'>
+          <form className='_form'>
             {result === 'success' ? (
               <>
-                <div className='ModalFrame__content_inner_form_group'>
-                  <label className='ModalFrame__content_inner_form_group_label'>
-                    Your first name
-                  </label>
+                <div className='_group'>
+                  <label className='_label'>Your first name</label>
                   <Input {...inputFirstNameProps} value={firstName} />
                 </div>
-                <div className='ModalFrame__content_inner_form_group'>
-                  <label className='ModalFrame__content_inner_form_group_label'>
-                    Your middle name
-                  </label>
+                <div className='_group'>
+                  <label className='_label'>Your middle name</label>
                   <Input {...inputMiddleNameProps} value={middleName} />
                 </div>
-                <div className='ModalFrame__content_inner_form_group'>
-                  <label className='ModalFrame__content_inner_form_group_label'>
-                    Your last name
-                  </label>
+                <div className='_group'>
+                  <label className='M_label'>Your last name</label>
                   <Input {...inputLastNameProps} value={lastName} />
                 </div>
+              </>
+            ) : null}
+            <div className='_buttons'>
+              {/* <Button {...buttonCancelProps} /> */}
+              <Button {...scenario.buttonForwardProps} />
+            </div>
+          </form>
 
-                {/* <div className='ModalFrame__content_inner_form_group'>
+          {result === 'failure' ? (
+            <div className='_qwa'>
+              <div className='_capture'>Questions with incorrect answers:</div>
+              {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// For future authorization
+
+/* <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
                     Email
                   </label>
                   <Input {...inputEmailProps} value={emailModal} />
-                </div> */}
-                {/* <label>
+                </div> */
+
+/* <label>
               <b>Password</b>
             </label>
             <input
@@ -222,25 +233,4 @@ export const ModalFrame: React.FunctionComponent<any> = (
             <p>
               By creating an account you agree to our{' '}
               <a href='#'>Terms Privacy</a>.
-            </p> */}
-              </>
-            ) : null}
-            <div className='ModalFrame__content_inner_form_buttons'>
-              {/* <Button {...buttonCancelProps} /> */}
-              <Button {...scenario.buttonForwardProps} />
-            </div>
-          </form>
-
-          {result === 'failure' ? (
-            <div className='ModalFrame__content_inner_qwa'>
-              <div className='ModalFrame__content_inner_qwa_capture'>
-                Questions with incorrect answers:
-              </div>
-              {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
-            </div>
-          ) : null}
-        </div>
-      </div>
-    </div>
-  )
-}
+            </p> */
