@@ -97,11 +97,11 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
             <Player {...playerProps} />
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
-          {isModalFrameVisible === true ? (
-            <ModalFrame>
-              <QuestionScores {...questionScoresProps} />
-            </ModalFrame>
-          ) : null}
+
+          <ModalFrame>
+            <QuestionScores {...questionScoresProps} />
+          </ModalFrame>
+
           <LoaderOverlay />
         </>
       ) : null}

@@ -17,7 +17,7 @@ const rootStoreDefault = {
   globalVars: {},
   componentsState: {
     questionsSlideNumber: 0,
-    isModalFrameVisible: true,
+    isModalFrameVisible: false,
     isSideNavVisible: false,
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
