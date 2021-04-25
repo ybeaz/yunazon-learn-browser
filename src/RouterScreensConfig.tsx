@@ -23,10 +23,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     Error404,
   }
 
-  const history = useHistory()
   const dispatch = useDispatch()
-  const store = useSelector((store: IRootStore) => store)
-  // console.info('RouterScreensConfig [23]', { store })
 
   useEffect(() => {
     const getLoadedPlayerScript = () => {

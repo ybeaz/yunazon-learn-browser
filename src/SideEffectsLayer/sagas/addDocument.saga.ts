@@ -34,7 +34,6 @@ function* addDocument(dataInput) {
     moduleIDs: [moduleID],
     contentIDs: [contentID],
     userName,
-    userEmail,
     lang: language,
   }
 
@@ -51,7 +50,6 @@ function* addDocument(dataInput) {
         data: { addDocument },
       },
     } = yield axios[method](url, payloadNext, options)
-    const { slug } = addDocument
 
     yield put(action.ADD_DOCUMENT.SUCCESS(addDocument))
     yield put(action.TOGGLE_LOADER_OVERLAY(false))

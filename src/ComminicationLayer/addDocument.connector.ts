@@ -21,9 +21,9 @@ export const addDocumentConnector: Function = (
     data: {
       operationName: 'AddDocument',
       variables: {
-        newDocumentInputGraphql: { ...vars, env },
+        addDocumentInputGraphql: { ...vars, env },
       },
-      query: `mutation AddDocument($newDocumentInputGraphql: NewDocumentInputGraphql!){ addDocument(newDocumentInputGraphql: $newDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `mutation AddDocument($addDocumentInputGraphql: AddDocumentInputGraphql!){ addDocument(addDocumentInputGraphql: $addDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

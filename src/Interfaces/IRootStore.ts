@@ -13,7 +13,11 @@ export interface IRootStore {
     isDocumentAdded: boolean
   }
   forms: {
-    nameModal: string
+    userNameModal: {
+      firstName: string
+      middleName: string
+      lastName: string
+    }
     emailModal: string
   }
   documents: any[]

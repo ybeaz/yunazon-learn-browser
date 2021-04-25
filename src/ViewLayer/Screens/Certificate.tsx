@@ -39,13 +39,17 @@ export const Certificate: React.FunctionComponent<any> = (
   }, [documents])
 
   let documentDefault = {
-    userName: '',
+    userName: {
+      firstName: '',
+      middleName: '',
+      lastName: '',
+    },
     meta: { institution: '', specTitle: '', specName: '' },
     capture: '',
     contentID: '',
   }
   const {
-    userName = '',
+    userName: { firstName = '', middleName = '', lastName = '' },
     meta: { institution = '', specTitle = '', specName = '' },
     capture = '',
     contentID = '',
@@ -83,6 +87,10 @@ export const Certificate: React.FunctionComponent<any> = (
     handleEvents,
     action: { typeEvent: 'COPY_URL_TO_CLIPBOARD', data: {} },
   }
+
+  const userName = middleName
+    ? `${lastName} ${firstName} ${middleName}`
+    : `${lastName} ${firstName}`
 
   return (
     <div className='Certificate'>

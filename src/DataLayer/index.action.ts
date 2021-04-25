@@ -63,8 +63,24 @@ export const ONCHANGE_EMAIL_MODAL: Function = (data: string | number): any => ({
   data,
 })
 
-export const ONCHANGE_NAME_MODAL: Function = (data: string | number): any => ({
-  type: 'ONCHANGE_NAME_MODAL',
+export const ONCHANGE_FIRST_NAME_MODAL: Function = (
+  data: string | number
+): any => ({
+  type: 'ONCHANGE_FIRST_NAME_MODAL',
+  data,
+})
+
+export const ONCHANGE_MIDDLE_NAME_MODAL: Function = (
+  data: string | number
+): any => ({
+  type: 'ONCHANGE_MIDDLE_NAME_MODAL',
+  data,
+})
+
+export const ONCHANGE_LAST_NAME_MODAL: Function = (
+  data: string | number
+): any => ({
+  type: 'ONCHANGE_LAST_NAME_MODAL',
   data,
 })
 

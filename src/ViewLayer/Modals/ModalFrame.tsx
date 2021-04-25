@@ -22,9 +22,10 @@ export const ModalFrame: React.FunctionComponent<any> = (
     documents,
     courses,
     componentsState: { modalGetScores, isDocumentAdded },
-    forms: { nameModal, emailModal },
+    forms: { userNameModal, emailModal },
   } = store
 
+  const { firstName, middleName, lastName } = userNameModal
   const slug = documents[0]?.slug
 
   const {
@@ -49,12 +50,28 @@ export const ModalFrame: React.FunctionComponent<any> = (
     }
   }, [slug])
 
-  const inputNameProps = {
+  const inputFirstNameProps = {
     classAdded: 'Input_name',
     type: 'text',
-    placeholder: 'name...',
+    placeholder: 'first name...',
     handleEvents,
-    action: { typeEvent: 'ONCHANGE_NAME_MODAL' },
+    action: { typeEvent: 'ONCHANGE_FIRST_NAME_MODAL' },
+  }
+
+  const inputMiddleNameProps = {
+    classAdded: 'Input_name',
+    type: 'text',
+    placeholder: 'second name...',
+    handleEvents,
+    action: { typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL' },
+  }
+
+  const inputLastNameProps = {
+    classAdded: 'Input_name',
+    type: 'text',
+    placeholder: 'last name...',
+    handleEvents,
+    action: { typeEvent: 'ONCHANGE_LAST_NAME_MODAL' },
   }
 
   const inputEmailProps = {
@@ -120,8 +137,7 @@ export const ModalFrame: React.FunctionComponent<any> = (
           typeEvent: 'ADD_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            userName: nameModal,
-            userEmail: emailModal,
+            userName: userNameModal,
             meta,
             capture,
             description,
@@ -171,9 +187,21 @@ export const ModalFrame: React.FunctionComponent<any> = (
               <>
                 <div className='ModalFrame__content_inner_form_group'>
                   <label className='ModalFrame__content_inner_form_group_label'>
-                    Your name
+                    Your first name
                   </label>
-                  <Input {...inputNameProps} value={nameModal} />
+                  <Input {...inputFirstNameProps} value={firstName} />
+                </div>
+                <div className='ModalFrame__content_inner_form_group'>
+                  <label className='ModalFrame__content_inner_form_group_label'>
+                    Your middle name
+                  </label>
+                  <Input {...inputMiddleNameProps} value={middleName} />
+                </div>
+                <div className='ModalFrame__content_inner_form_group'>
+                  <label className='ModalFrame__content_inner_form_group_label'>
+                    Your last name
+                  </label>
+                  <Input {...inputLastNameProps} value={lastName} />
                 </div>
 
                 {/* <div className='ModalFrame__content_inner_form_group'>

@@ -23,7 +23,11 @@ const rootStoreDefault = {
     isDocumentAdded: false,
   },
   forms: {
-    nameModal: '',
+    userNameModal: {
+      firstName: '',
+      middleName: '',
+      lastName: '',
+    },
     emailModal: '',
   },
   documents: [],
@@ -125,12 +129,47 @@ export const rootReducer: Function = (
       return { ...store, forms: nextForms }
     },
 
-    ONCHANGE_NAME_MODAL: () => {
+    ONCHANGE_FIRST_NAME_MODAL: () => {
       const { data } = action
       const { forms } = store
+      const { userNameModal } = forms
+      const userNameModalNext = {
+        ...userNameModal,
+        firstName: data,
+      }
       const nextForms = {
         ...forms,
-        nameModal: data,
+        userNameModal: userNameModalNext,
+      }
+      return { ...store, forms: nextForms }
+    },
+
+    ONCHANGE_MIDDLE_NAME_MODAL: () => {
+      const { data } = action
+      const { forms } = store
+      const { userNameModal } = forms
+      const userNameModalNext = {
+        ...userNameModal,
+        middleName: data,
+      }
+      const nextForms = {
+        ...forms,
+        userNameModal: userNameModalNext,
+      }
+      return { ...store, forms: nextForms }
+    },
+
+    ONCHANGE_LAST_NAME_MODAL: () => {
+      const { data } = action
+      const { forms } = store
+      const { userNameModal } = forms
+      const userNameModalNext = {
+        ...userNameModal,
+        lastName: data,
+      }
+      const nextForms = {
+        ...forms,
+        userNameModal: userNameModalNext,
       }
       return { ...store, forms: nextForms }
     },

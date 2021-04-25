@@ -51,9 +51,19 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
       dispatch(action.ONCHANGE_EMAIL_MODAL(value))
     },
 
-    ONCHANGE_NAME_MODAL: () => {
+    ONCHANGE_FIRST_NAME_MODAL: () => {
       const { value } = event.target as HTMLTextAreaElement
-      dispatch(action.ONCHANGE_NAME_MODAL(value))
+      dispatch(action.ONCHANGE_FIRST_NAME_MODAL(value))
+    },
+
+    ONCHANGE_MIDDLE_NAME_MODAL: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_MIDDLE_NAME_MODAL(value))
+    },
+
+    ONCHANGE_LAST_NAME_MODAL: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_LAST_NAME_MODAL(value))
     },
 
     CLOSE_MODAL_GET_SCORES: () => {
