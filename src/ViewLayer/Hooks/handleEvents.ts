@@ -18,6 +18,24 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    SEND_EMAIL_DOCUMENT: () => {
+      dispatch(action.SEND_EMAIL_DOCUMENT.REQUEST(data))
+    },
+
+    ONCHANGE_EMAIL_CC: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_EMAIL_CC(value))
+    },
+
+    ONCHANGE_EMAIL_TO: () => {
+      const { value } = event.target as HTMLTextAreaElement
+      dispatch(action.ONCHANGE_EMAIL_TO(value))
+    },
+
+    TOGGLE_MODAL_FRAME: () => {
+      dispatch(action.TOGGLE_MODAL_FRAME(data))
+    },
+
     COPY_URL_TO_CLIPBOARD: () => {
       getCopiedUrlToClipboard()
     },
@@ -44,11 +62,6 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
 
     PLUS_QUESTION_SLIDE: () => {
       dispatch(action.PLUS_QUESTION_SLIDE(data))
-    },
-
-    ONCHANGE_EMAIL_MODAL: () => {
-      const { value } = event.target as HTMLTextAreaElement
-      dispatch(action.ONCHANGE_EMAIL_MODAL(value))
     },
 
     ONCHANGE_FIRST_NAME_MODAL: () => {

@@ -8,8 +8,9 @@ const headers = {
   timestamp: +new Date(),
 }
 
-export const findDocumentConnector: Function = (
+export const sendEmailDocumentConnector: Function = (
   documentID: string,
+  sendTo: string,
   fragmentName: string
 ): any => {
   const envType: string = getDetectedEnv('localServer')
@@ -19,11 +20,12 @@ export const findDocumentConnector: Function = (
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     data: {
-      operationName: 'FindDocument',
+      operationName: 'SendEmailDocument',
       variables: {
         documentID,
+        sendTo,
       },
-      query: `query FindDocument($documentID: String!){findDocument(documentID: $documentID){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `query SendEmailDocument($documentID: String!, $sendTo: String!){sendEmailDocument(documentID: $documentID, sendTo: $sendTo){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

@@ -18,7 +18,8 @@ export interface IRootStore {
       middleName: string
       lastName: string
     }
-    emailModal: string
+    sendTo: string
+    sendCc: string
   }
   documents: any[]
 }

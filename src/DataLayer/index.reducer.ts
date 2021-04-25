@@ -28,7 +28,8 @@ const rootStoreDefault = {
       middleName: '',
       lastName: '',
     },
-    emailModal: '',
+    sendTo: '',
+    sendCc: '',
   },
   documents: [],
 }
@@ -119,12 +120,22 @@ export const rootReducer: Function = (
       return { ...store, componentsState: componentsStateNext }
     },
 
-    ONCHANGE_EMAIL_MODAL: () => {
+    ONCHANGE_EMAIL_CC: () => {
       const { data } = action
       const { forms } = store
       const nextForms = {
         ...forms,
-        emailModal: data,
+        sendCc: data,
+      }
+      return { ...store, forms: nextForms }
+    },
+
+    ONCHANGE_EMAIL_TO: () => {
+      const { data } = action
+      const { forms } = store
+      const nextForms = {
+        ...forms,
+        sendTo: data,
       }
       return { ...store, forms: nextForms }
     },

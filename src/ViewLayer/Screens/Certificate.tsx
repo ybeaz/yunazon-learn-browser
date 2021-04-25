@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
+import { EmalInputs } from '../Components/EmalInputs'
+import { ModalFrame } from '../Frames/ModalFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { ShareButtons } from '../Components/ShareButtons'
@@ -78,7 +80,7 @@ export const Certificate: React.FunctionComponent<any> = (
     icon: 'MdMailOutline',
     classAdded: 'Button_MdPrint',
     handleEvents,
-    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+    action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
   }
 
   const buttonCopyLinkProps = {
@@ -91,6 +93,8 @@ export const Certificate: React.FunctionComponent<any> = (
   const userName = middleName
     ? `${lastName} ${firstName} ${middleName}`
     : `${lastName} ${firstName}`
+
+  const emailInputsProps = { documentID }
 
   return (
     <div className='Certificate'>
@@ -106,6 +110,9 @@ export const Certificate: React.FunctionComponent<any> = (
             </div>
           </div>
         </HeaderFrame>
+        <ModalFrame>
+          <EmalInputs {...emailInputsProps} />
+        </ModalFrame>
       </div>
 
       <div className='container pm-certificate-container'>

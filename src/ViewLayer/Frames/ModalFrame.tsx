@@ -19,14 +19,6 @@ export const ModalFrame: React.FunctionComponent<any> = (
     componentsState: { isModalFrameVisible },
   } = store
 
-  const inputEmailProps = {
-    classAdded: 'Input_email',
-    type: 'email',
-    placeholder: 'email...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_EMAIL_MODAL' },
-  }
-
   const buttonCloseProps = {
     icon: 'MdClose',
     classAdded: 'Button_MdClose',
