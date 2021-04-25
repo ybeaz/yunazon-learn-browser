@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
-import { Header } from '../Components/Header'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { ShareButtons } from '../Components/ShareButtons'
 import { Button } from '../Components/Button'
@@ -95,7 +95,7 @@ export const Certificate: React.FunctionComponent<any> = (
   return (
     <div className='Certificate'>
       <div className='_buttons Certificate_noPrint'>
-        <Header>
+        <HeaderFrame>
           <Button {...buttonBackProps} />
           <div className='__navigation'>
             <div className='_buttons'>
@@ -105,7 +105,7 @@ export const Certificate: React.FunctionComponent<any> = (
               <ShareButtons />
             </div>
           </div>
-        </Header>
+        </HeaderFrame>
       </div>
 
       <div className='container pm-certificate-container'>

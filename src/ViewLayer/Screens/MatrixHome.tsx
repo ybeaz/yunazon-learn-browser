@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
-import { MainFrame } from '../Components/MainFrame'
+import { MainFrame } from '../Frames/MainFrame'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { PlayerPlate } from '../Components/PlayerPlate'

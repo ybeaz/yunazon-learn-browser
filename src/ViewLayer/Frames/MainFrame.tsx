@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { SearchGroup } from './SearchGroup'
+import { SearchGroup } from '../Components/SearchGroup'
 import { handleEvents } from '../Hooks/handleEvents'
-import { Button } from './Button'
-import { SideNavigation } from './SideNavigation'
-import { Header } from './Header'
+import { Button } from '../Components/Button'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 
 export const MainFrame: React.FunctionComponent<any> = (
   props: any
@@ -21,10 +21,10 @@ export const MainFrame: React.FunctionComponent<any> = (
 
   return (
     <div className='MainFrame'>
-      <Header>
+      <HeaderFrame>
         <Button {...buttonMdMenuProps} />
         <SearchGroup />
-      </Header>
+      </HeaderFrame>
       <SideNavigation />
 
       {/* <!-- Navigation Bar --> */}
@@ -36,19 +36,17 @@ export const MainFrame: React.FunctionComponent<any> = (
       </div> */}
 
       {/* <!-- The flexible grid (content) --> */}
-      <div className='MainFrame__middle'>
-        <div className='MainFrame__middle_left'></div>
-        <div className='MainFrame__middle_main'>
-          <div className='MainFrame__middle_main_wrapper'>
-            {props.children[0]}
-          </div>
+      <div className='__middle'>
+        <div className='_left'></div>
+        <div className='_main'>
+          <div className='_wrapper'>{props.children[0]}</div>
         </div>
-        <div className='MainFrame__middle_right'>{props.children[1]}</div>
+        <div className='_right'>{props.children[1]}</div>
       </div>
 
       {/* <!-- Footer --> */}
-      <div className='MainFrame__comments'>
-        <div className='MainFrame__comments_in'></div>
+      <div className='__comments'>
+        <div className='_in'></div>
       </div>
     </div>
   )
