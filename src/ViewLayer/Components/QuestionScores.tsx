@@ -152,16 +152,16 @@ export const QuestionScores: React.FunctionComponent<any> = (
         {result === 'success' ? (
           <>
             <div className='_group'>
-              <label className='_label'>Your first name</label>
+              <label className='M_label'>Your last name*</label>
+              <Input {...inputLastNameProps} value={lastName} />
+            </div>
+            <div className='_group'>
+              <label className='_label'>Your first name*</label>
               <Input {...inputFirstNameProps} value={firstName} />
             </div>
             <div className='_group'>
               <label className='_label'>Your middle name</label>
               <Input {...inputMiddleNameProps} value={middleName} />
-            </div>
-            <div className='_group'>
-              <label className='M_label'>Your last name</label>
-              <Input {...inputLastNameProps} value={lastName} />
             </div>
           </>
         ) : null}

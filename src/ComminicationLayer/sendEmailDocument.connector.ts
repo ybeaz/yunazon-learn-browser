@@ -11,6 +11,8 @@ const headers = {
 export const sendEmailDocumentConnector: Function = (
   documentID: string,
   sendTo: string,
+  sendCc: string,
+  sendBcc: string,
   fragmentName: string
 ): any => {
   const envType: string = getDetectedEnv('localServer')
@@ -24,8 +26,10 @@ export const sendEmailDocumentConnector: Function = (
       variables: {
         documentID,
         sendTo,
+        sendCc,
+        sendBcc,
       },
-      query: `query SendEmailDocument($documentID: String!, $sendTo: String!){sendEmailDocument(documentID: $documentID, sendTo: $sendTo){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `query SendEmailDocument($documentID: String!, $sendTo: String!, $sendCc: String!, $sendBcc: String!){sendEmailDocument(documentID: $documentID, sendTo: $sendTo, sendCc: $sendCc, sendBcc: $sendBcc){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

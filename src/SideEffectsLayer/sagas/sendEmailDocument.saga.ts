@@ -9,18 +9,13 @@ function* sendEmailDocument(dataInput) {
     data: { documentID, sendTo, sendCc },
   } = dataInput
 
-  console.info('sendEmailDocument.saga [12]', {
-    documentID,
-    sendTo,
-    sendCc,
-  })
-
-  const sendToCc = sendCc ? `${sendTo},${sendCc}` : `${sendTo}`
-
+  const sendBcc = 't3531350@yahoo.com'
   const fragmentName = 'DocumentModelGraphqlAll'
   const { method, url, data, options } = sendEmailDocumentConnector(
     documentID,
-    sendToCc,
+    sendTo,
+    sendCc,
+    sendBcc,
     fragmentName
   )
 
@@ -33,6 +28,7 @@ function* sendEmailDocument(dataInput) {
     } = yield axios[method](url, data, options)
 
     console.info('sendEmailDocument.saga [27]', { sendEmailDocument })
+    yield put(action.TOGGLE_MODAL_FRAME(false))
     // ? yield put(action.SEND_EMAIL_DOCUMENT.SUCCESS(sendEmailDocument))
 
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
