@@ -17,6 +17,16 @@ import {
 export const ShareButtons: React.FunctionComponent<any> = (
   props
 ): JSX.Element => {
+  // I stopped here
+  // https://gist.github.com/saippuakauppias/247af51c6ed50503afe4
+  // https://habr.com/ru/post/156185/
+
+  const getShareButtons: Function = (
+    shareButtonArray: any[]
+  ): JSX.Element[] => {
+    return null
+  }
+
   return (
     <div className='ShareButtons'>
       <FacebookShareButton
@@ -25,6 +35,9 @@ export const ShareButtons: React.FunctionComponent<any> = (
       >
         <FacebookIcon size={41} />
       </FacebookShareButton>
+      <VKShareButton url={'https://vk.com/share.php'} title={'VKontakte'}>
+        <VKIcon size={41} />
+      </VKShareButton>
     </div>
   )
 }

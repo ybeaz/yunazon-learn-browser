@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 
@@ -21,7 +22,12 @@ export const HeaderFrame: React.FunctionComponent<any> = (
       </div>
       <div className='__main'>{props.children[1]}</div>
       <div className='__right'>
-        <Button {...buttonMdPersonProps} />
+        <div className='_item'>
+          <Button {...buttonMdPersonProps} />
+        </div>
+        <div className='_item'>
+          <LanguageSelect />
+        </div>
       </div>
     </div>
   )

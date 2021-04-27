@@ -107,6 +107,7 @@
     "jest-resolve": "^26.0.1",
     "jest-watch-typeahead": "^0.6.0",
     "json-loader": "^0.5.7",
+    "language-icons": "^0.3.0",
     "less": "4.1.1",
     "less-loader": "7.3.0",
     "mini-css-extract-plugin": "^0.9.0",

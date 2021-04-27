@@ -12,7 +12,7 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
       <div className='LogoGroup__div'>
         <img
           className='LogoGroup__div_img'
-          src='https://ynm.userto.com/filestorage/logoYunazonV13.png'
+          src='https://yourails.com/imgs/logoYouRailsV13.png'
         />
       </div>
       <div className='LogoGroup__brand'>YouRails</div>
