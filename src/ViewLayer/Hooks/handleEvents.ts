@@ -18,6 +18,10 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    SELECT_LANGUAGE: () => {
+      dispatch(action.SELECT_LANGUAGE(data))
+    },
+
     SEND_EMAIL_DOCUMENT: () => {
       dispatch(action.SEND_EMAIL_DOCUMENT.REQUEST(data))
     },

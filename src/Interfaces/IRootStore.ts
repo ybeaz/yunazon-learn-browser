@@ -22,4 +22,5 @@ export interface IRootStore {
     sendCc: string
   }
   documents: any[]
+  language: string
 }

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { Button } from '../Components/Button'
 
@@ -31,10 +33,13 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     isActionButtonDisplaying: isDisplaying,
   } = props
 
+  const { language } = useSelector((store: IRootStore) => store)
+  const certificate = DICTIONARY.certificate[language]
+
   const callForActionButtonPros = {
     captureLeft: `${duration} ${units} `,
     icon: 'MdForward',
-    captureRight: ` сертификат`,
+    captureRight: ` ${certificate}`,
     classAdded: 'Button_CallForActionMatrix',
     handleEvents: () => {},
     action: {},

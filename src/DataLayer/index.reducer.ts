@@ -32,6 +32,7 @@ const rootStoreDefault = {
     sendCc: '',
   },
   documents: [],
+  language: 'ru',
 }
 
 export const rootReducer: Function = (
@@ -41,6 +42,11 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    SELECT_LANGUAGE: () => {
+      const { data } = action
+      return { ...store, language: data }
+    },
+
     TOGGLE_LOADER_OVERLAY: () => {
       const { data } = action
       const { componentsState } = store

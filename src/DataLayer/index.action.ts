@@ -42,6 +42,11 @@ export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+export const SELECT_LANGUAGE: Function = (data: number): any => ({
+  type: 'SELECT_LANGUAGE',
+  data,
+})
+
 export const ONCHANGE_EMAIL_CC: Function = (data: number): any => ({
   type: 'ONCHANGE_EMAIL_CC',
   data,

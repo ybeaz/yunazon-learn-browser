@@ -18,9 +18,7 @@ function* addDocument(dataInput) {
     },
   } = dataInput
 
-  const {
-    globalVars: { language },
-  } = yield select(store => store)
+  const { language } = yield select(store => store)
 
   let payload = {
     courseID,

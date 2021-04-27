@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { getRuQuesionString } from '../../Shared/getRuQuesionString'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { getQuesionString } from '../../Shared/getQuesionString'
 import { getButtonsClassString } from '../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
@@ -24,9 +25,10 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   } = props
 
   const {
-    globalVars: { language, configuration },
+    globalVars: { configuration },
     componentsState: { questionsSlideNumber },
     courses,
+    language,
   } = store
 
   const numberQuestionsInSlide = configuration?.numberQuestionsInSlide || 2
@@ -91,8 +93,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     questionsChunked
   )
 
-  const questionStr = getRuQuesionString(questionsActive.length)
-
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
@@ -132,8 +132,12 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     isDisplaying: isButtonBlockProps,
   }
 
+  const CertificateDash = DICTIONARY['Certificate-'][language]
+  const min = DICTIONARY.min[language]
+  const questionStr = getQuesionString(language, questionsActive.length)
+
   const buttonStartProps = {
-    captureLeft: `До сертификата ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0
+    captureLeft: `${CertificateDash} ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0
       ${questionsActive.length} ${questionStr}\u00A0\u00A0`,
     icon: 'MdForward',
     classAdded: 'Button_startModule',
