@@ -101,27 +101,6 @@ const errorQuestions = ({
   )
   if (isFound) errors = [...errors, 'no-quesiton-capture-or-type-error']
 
-  // Remove after 2021-05-10
-  // isFound = questions.find(
-  //   question =>
-  //     !question.designType ||
-  //     question.designType === '' ||
-  //     typeof question.designType !== 'string' ||
-  //     !(
-  //       question.designType === 'CheckBox' ||
-  //       question.designType === 'RadioButton'
-  //     )
-  // )
-  // if (isFound) errors = [...errors, 'no-quesiton-designType-or-type-error']
-
-  isFound = questions.find(question => {
-    const output =
-      !question.hasOwnProperty('multi') ||
-      !(question.multi === true || question.multi === false)
-    return output
-  })
-  if (isFound) errors = [...errors, 'no-question-multi-or-type-error']
-
   if (errors.length) {
     return [
       ...courseValidation,
