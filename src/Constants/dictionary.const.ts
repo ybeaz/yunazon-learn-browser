@@ -1,4 +1,72 @@
 export const DICTIONARY = {
+  _: {
+    en: '_',
+    ru: '_',
+  },
+  lastName: {
+    en: 'last name',
+    ru: 'фамилия',
+  },
+  firstName: {
+    en: 'first name',
+    ru: 'имя',
+  },
+  middleName: {
+    en: 'middle name',
+    ru: 'отчество',
+  },
+  ToReceiveCertificate: {
+    en: 'To receive a certificate fill the form',
+    ru: 'Для получения сертификата заполните форму',
+  },
+  correctAnsweresFrom: {
+    en: 'correct answeres from',
+    ru: 'верными ответали из',
+  },
+  andPassedTheTestWith: {
+    en: 'and passed the final test with',
+    ru: 'и прошли финальный тест с',
+  },
+  YouCompletedTheCourse: {
+    en: 'You completed the course',
+    ru: 'Вы закончили курс',
+  },
+  Congratulations: {
+    en: 'Congratulations!',
+    ru: 'Наши поздравления!',
+  },
+  QuestionsWithIncorrectAnswers: {
+    en: 'Questions with incorrect answers:',
+    ru: 'Вопросы с неверными ответами:',
+  },
+  YouCanTryOnceAgain: {
+    en: 'You can try once again',
+    ru: 'Вы можете попробовать снова',
+  },
+  andReceiveTheCertificate: {
+    en: 'and receive the certificate.',
+    ru: 'и получить сертификат.',
+  },
+  ThisIsNotEnough: {
+    en: 'This is not enough to complete the course',
+    ru: 'Это не достаточно, чтобы закончить курс',
+  },
+  from: {
+    en: 'from',
+    ru: 'из',
+  },
+  andThisTimeAnswered: {
+    en: 'and this time answered correcly',
+    ru: 'и в этот раз ответили на',
+  },
+  YouWereCommittedToSuccess: {
+    en: 'You were committed to success.',
+    ru: 'Вы были нацелены на успех',
+  },
+  WeGreetYou: {
+    en: 'We greet you!',
+    ru: 'Приветствуем Вас!',
+  },
   'Certificate-': {
     en: 'Certificate - ',
     ru: 'До сертификата',
@@ -14,9 +82,5 @@ export const DICTIONARY = {
   question: {
     en: 'question',
     ru: 'вопрос',
-  },
-  _: {
-    en: '_',
-    ru: '_',
   },
 }

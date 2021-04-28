@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import * as action from '../../DataLayer/index.action'
+import { getQuesionString } from '../../Shared/getQuesionString'
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
 import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
@@ -19,6 +20,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
   const { stopVideoHandler } = props
   const store = useSelector((store: IRootStore) => store)
   const {
+    language,
     documents,
     courses,
     componentsState: { isDocumentAdded },
@@ -74,17 +76,40 @@ export const QuestionScores: React.FunctionComponent<any> = (
     action: { typeEvent: 'ONCHANGE_LAST_NAME_MODAL' },
   }
 
+  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
+  const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
+  const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
+  const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
+  const Congratulations = DICTIONARY.Congratulations[language]
+
+  const lastNameLabel = DICTIONARY.lastName[language]
+  const firstNameLabel = DICTIONARY.firstName[language]
+  const middleNameLabel = DICTIONARY.middleName[language]
+
+  const QuestionsWithIncorrectAnswers =
+    DICTIONARY.QuestionsWithIncorrectAnswers[language]
+  const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language]
+  const andReceiveTheCertificate = DICTIONARY.andReceiveTheCertificate[language]
+  const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language]
+  const from = DICTIONARY.from[language]
+  const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
+  const YouWereCommittedToSuccess =
+    DICTIONARY.YouWereCommittedToSuccess[language]
+  const WeGreetYou = DICTIONARY.WeGreetYou[language]
+
+  const question = getQuesionString(language, right)
+
   const scenario = {
     success: {
       message: (
         <>
-          <div className='_greet'>Congratulations!</div>
-          <p>You completed the course</p>
+          <div className='_greet'>{Congratulations}</div>
+          <p>{YouCompletedTheCourse}</p>
           <p>"{capture}"</p>
           <p>
-            and passed the test with {right} correct answeres from {total}
+            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>To receive a certificate, fill the form</p>
+          <p>{ToReceiveCertificate}</p>
         </>
       ),
       buttonForwardProps: {
@@ -109,13 +134,13 @@ export const QuestionScores: React.FunctionComponent<any> = (
     failure: {
       message: (
         <>
-          <div className='_greet'>You committed to success.</div>
+          <div className='_greet'>{YouWereCommittedToSuccess}</div>
           <p>
-            and this time anwered {right} question from {total}.
+            {andThisTimeAnswered} {right} {question} {from} {total}.
           </p>
-          <p>This is not enough to complete the course</p>
-          <p>and receive the certificate.</p>
-          <p>You can try once again</p>
+          <p>{ThisIsNotEnough}</p>
+          <p>{andReceiveTheCertificate}</p>
+          <p>{YouCanTryOnceAgain}</p>
         </>
       ),
       buttonForwardProps: {
@@ -151,15 +176,15 @@ export const QuestionScores: React.FunctionComponent<any> = (
         {result === 'success' ? (
           <>
             <div className='_group'>
-              <label className='M_label'>Your last name*</label>
+              <label className='_label'>{lastNameLabel}*</label>
               <Input {...inputLastNameProps} value={lastName} />
             </div>
             <div className='_group'>
-              <label className='_label'>Your first name*</label>
+              <label className='_label'>{firstNameLabel}*</label>
               <Input {...inputFirstNameProps} value={firstName} />
             </div>
             <div className='_group'>
-              <label className='_label'>Your middle name</label>
+              <label className='_label'>{middleNameLabel}</label>
               <Input {...inputMiddleNameProps} value={middleName} />
             </div>
           </>
@@ -171,7 +196,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
       </form>
       {result === 'failure' ? (
         <div className='_qwa'>
-          <div className='_capture'>Questions with incorrect answers:</div>
+          <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
           {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
         </div>
       ) : null}
