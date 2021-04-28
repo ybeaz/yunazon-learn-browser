@@ -176,9 +176,7 @@ export const Certificate: React.FunctionComponent<any> = (
                     </span>
                   </div>
                   <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='Certificate__course_code'>
-                    Course code {contentID}
-                  </div>
+                  <div className='_code'>Course code {contentID}</div>
                 </div>
               </div>
             </div>

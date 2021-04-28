@@ -59,7 +59,7 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     <div className={`PlayerPlate`} key={courseID}>
       <Player {...playerProps} />
       <Link
-        className='PlayerPlate__shield'
+        className='__shield'
         to={{
           pathname: `/c/${ytID}`,
         }}

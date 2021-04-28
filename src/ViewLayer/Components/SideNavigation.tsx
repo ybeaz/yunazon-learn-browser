@@ -56,11 +56,11 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
 
   return (
     <div className={`SideNavigation ${classNameAdd}`}>
-      <div className='SideNavigation__buttonLogoGroup'>
+      <div className='__buttonLogoGroup'>
         <Button {...buttonMdMenuProps} />
         <LogoGroup />
       </div>
-      <div className='SideNavigation__menuGroup'>
+      <div className='__menuGroup'>
         <Button {...buttonAboutProps} />
         <Button {...buttonServicesProps} />
         <Button {...buttonContactsProps} />

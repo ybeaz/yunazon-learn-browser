@@ -9,13 +9,13 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
         pathname: `/home`,
       }}
     >
-      <div className='LogoGroup__div'>
+      <div className='__div'>
         <img
-          className='LogoGroup__div_img'
+          className='_img'
           src='https://yourails.com/imgs/logoYouRailsV13.png'
         />
       </div>
-      <div className='LogoGroup__brand'>YouRails</div>
+      <div className='__brand'>YouRails</div>
     </Link>
   )
 }
