@@ -6,6 +6,7 @@
   .__middle {
     display: flex;
     padding: 0.7rem 0 0 0;
+    flex-direction: row;
 
     ._left {
       display: flex;
@@ -26,6 +27,28 @@
   }
   .__comments {
     ._in {
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    .__middle {
+      flex-direction: column;
+      padding: 0 0 0 0;
+
+      ._left {
+      }
+      ._main {
+        ._wrapper {
+        }
+      }
+      ._right {
+      }
     }
   }
 }

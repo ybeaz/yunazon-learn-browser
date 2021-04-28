@@ -156,13 +156,11 @@ export const QuestionScores: React.FunctionComponent<any> = (
     questions: any[]
   ): JSX.Element => {
     return (
-      <ul className='ModalFrame__content_inner_qwa_ul'>
+      <ul className='_ul'>
         {questions.map(question => {
           const { capture } = question
 
-          return (
-            <li className='ModalFrame__content_inner_qwa_ul_li'>{capture}</li>
-          )
+          return <li className='_li'>{capture}</li>
         })}
       </ul>
     )

@@ -24,6 +24,36 @@
   }
 }
 
+.PlayerPanel_PlayAndSubscribe {
+  .__capture {
+  }
+
+  .__buttons {
+    display: none;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    padding: 0.7rem 1rem 1rem 1rem;
+    .__capture {
+      font-size: @fontSizeS;
+      min-height: 2.5rem;
+    }
+  }
+}
+
 .PlayerPanel_MatrixHome {
   .__capture {
     font-size: @fontSize;

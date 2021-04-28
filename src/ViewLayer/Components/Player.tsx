@@ -68,10 +68,10 @@ export const Player: React.FunctionComponent<any> = (
 
   return (
     <div className='Player'>
-      <div className='Player__wrapper video-responsive'>
-        <div className='Player__wrapper_player' id={videoId}></div>
+      <div className='__wrapper video-responsive'>
+        <div className='_player' id={videoId}></div>
       </div>
-      <div className='Player__panel'>
+      <div className='__panel'>
         <PlayerPanel {...playerPanelProps} />
       </div>
     </div>
