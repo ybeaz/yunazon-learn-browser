@@ -33,6 +33,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
 
   const numberQuestionsInSlide = configuration?.numberQuestionsInSlide || 2
 
+  // I stopped here
+  console.info('CarouselQuestions [34]', { numberQuestionsInSlide })
+
   const { questionsActive } = getActiveCourseData(courses)
 
   const questionsChunked = getChunkedArray(

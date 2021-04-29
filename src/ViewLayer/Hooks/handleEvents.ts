@@ -5,6 +5,7 @@ import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
+import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 interface Props {
   typeEvent: string
@@ -20,6 +21,7 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const output = {
     SELECT_LANGUAGE: () => {
       dispatch(action.SELECT_LANGUAGE(data))
+      getSetObjToLocalStorage({ language: data })
     },
 
     SEND_EMAIL_DOCUMENT: () => {

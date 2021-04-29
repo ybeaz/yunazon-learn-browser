@@ -9,7 +9,7 @@ const noCourseDescription = ({
   if (!courseDescription) {
     courseValidation = [
       ...courseValidation,
-      { type: 'no-course-description', courseIndex, courseCapture },
+      { type: 'course-no-description', courseIndex, courseCapture },
     ]
   }
   return courseValidation
@@ -19,7 +19,7 @@ const noCourseCapture = ({ courseValidation, courseIndex, courseCapture }) => {
   if (!courseCapture) {
     courseValidation = [
       ...courseValidation,
-      { type: 'no-course-capture', courseIndex },
+      { type: 'course-no-capture', courseIndex },
     ]
   }
   return courseValidation
@@ -34,7 +34,7 @@ const errorModules = ({
   let errors = []
   let isFound: any
 
-  if (!modules.length) errors = [...errors, 'no-modules']
+  if (!modules.length) errors = [...errors, 'module-no-modules']
 
   isFound = modules.find(
     (module: any) =>
@@ -42,7 +42,7 @@ const errorModules = ({
       module.moduleID === '' ||
       typeof module.moduleID !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-moduleID-or-type-error']
+  if (isFound) errors = [...errors, 'module-no-moduleID-or-type-error']
 
   isFound = modules.find(
     (module: any) =>
@@ -51,7 +51,7 @@ const errorModules = ({
       module.ytID.length !== 11 ||
       typeof module.ytID !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-module-ytID-or-type-error']
+  if (isFound) errors = [...errors, 'module-no-ytID-or-type-error']
 
   isFound = modules.find(
     (module: any) =>
@@ -59,7 +59,7 @@ const errorModules = ({
       module.capture === '' ||
       typeof module.capture !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-module-capture-or-type-error']
+  if (isFound) errors = [...errors, 'module-no-capture-or-type-error']
 
   isFound = modules.find(
     (module: any) =>
@@ -67,7 +67,7 @@ const errorModules = ({
       module.duration === 0 ||
       typeof module.duration !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-module-duration-or-type-error']
+  if (isFound) errors = [...errors, 'module-no-duration-or-type-error']
 
   if (errors.length) {
     return [
@@ -91,7 +91,7 @@ const errorQuestions = ({
   let errors = []
   let isFound: any
 
-  if (!questions.length) errors = [...errors, 'no-questions']
+  if (!questions.length) errors = [...errors, 'questions-no-questions']
 
   isFound = questions.find(
     question =>
@@ -99,7 +99,7 @@ const errorQuestions = ({
       question.capture === '' ||
       typeof question.capture !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-quesiton-capture-or-type-error']
+  if (isFound) errors = [...errors, 'question-no-capture-or-type-error']
 
   if (errors.length) {
     return [
@@ -130,7 +130,7 @@ const errorOptions = ({
     option =>
       !option.label || option.label === '' || typeof option.label !== 'string'
   )
-  if (isFound) errors = [...errors, 'no-option-label-or-type-error']
+  if (isFound) errors = [...errors, 'option-no-label-or-type-error']
 
   isFound = options.find(option => {
     const output =
@@ -138,10 +138,10 @@ const errorOptions = ({
       !(option.status === true || option.status === false)
     return output
   })
-  if (isFound) errors = [...errors, 'no-option-label-or-type-error']
+  if (isFound) errors = [...errors, 'option-no-status-or-type-error']
 
   isFound = options.find(option => option.status === true)
-  if (!isFound) errors = [...errors, 'no-right-option']
+  if (!isFound) errors = [...errors, 'option-no-right-option']
 
   if (errors.length) {
     return [
@@ -163,7 +163,7 @@ const errorOptions = ({
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getCoursesValidated: Function = (courses: any[]): any[] => {
+export const getValidatedCourses: Function = (courses: any[]): any[] => {
   let courseValidation: any[] = []
 
   courses.forEach((course, courseIndex) => {
@@ -222,7 +222,7 @@ export const getCoursesValidated: Function = (courses: any[]): any[] => {
   })
 
   if (courseValidation.length) {
-    console.error('getCourseValidated [35]', courseValidation)
+    console.error('getCourseValidated 225]', courseValidation)
   }
   return courses
 }

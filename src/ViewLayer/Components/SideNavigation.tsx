@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
@@ -22,8 +23,16 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     },
   }
 
+  const buttonMdPersonProps = {
+    icon: 'MdPerson',
+    captureRight: 'Personal cabinet',
+    classAdded: 'Button_sideMenuItems',
+    // handleEvents,
+    // action: { typeEvent: ''}
+  }
+
   const buttonAboutProps = {
-    icon: '',
+    icon: 'MdFlag',
     captureRight: 'About',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
@@ -33,7 +42,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   }
 
   const buttonServicesProps = {
-    icon: '',
+    icon: 'MdAddShoppingCart',
     captureRight: 'Services',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
@@ -43,7 +52,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   }
 
   const buttonContactsProps = {
-    icon: '',
+    icon: 'MdContactMail',
     captureRight: 'Contacts',
     classAdded: 'Button_sideMenuItems',
     // handleEvents,
@@ -61,9 +70,22 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
         <LogoGroup />
       </div>
       <div className='__menuGroup'>
-        <Button {...buttonAboutProps} />
-        <Button {...buttonServicesProps} />
-        <Button {...buttonContactsProps} />
+        <div className='_groupItem _languageSelect'>
+          <LanguageSelect />
+        </div>
+        <div className='_item'>
+          <Button {...buttonMdPersonProps} />
+        </div>
+
+        <div className='_item'>
+          <Button {...buttonAboutProps} />
+        </div>
+        <div className='_item'>
+          <Button {...buttonServicesProps} />
+        </div>
+        <div className='_item'>
+          <Button {...buttonContactsProps} />
+        </div>
       </div>
     </div>
   )

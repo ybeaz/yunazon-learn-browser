@@ -23,9 +23,6 @@ export const HeaderFrame: React.FunctionComponent<any> = (
       <div className='__main'>{props.children[1]}</div>
       <div className='__right'>
         <div className='_item'>
-          <Button {...buttonMdPersonProps} />
-        </div>
-        <div className='_item'>
           <LanguageSelect />
         </div>
       </div>

@@ -2,6 +2,9 @@ import React from 'react'
 
 import { IconContext } from 'react-icons'
 import {
+  MdContactMail,
+  MdAddShoppingCart,
+  MdFlag,
   MdMailOutline,
   MdBlock,
   MdClose,
@@ -19,6 +22,9 @@ import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  MdContactMail,
+  MdAddShoppingCart,
+  MdFlag,
   BsLink45Deg,
   MdMailOutline,
   BsQuestionCircle,
