@@ -36,6 +36,8 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
+      handleEvents({}, { type: 'TOGGLE_START_COURSE', data: false })
+
       handleEvents(
         {},
         { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { contentID } }
