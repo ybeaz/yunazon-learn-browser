@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { handleEvents } from '../Hooks/handleEvents'
 import { Input } from './Input'
 import { Button } from './Button'
 
@@ -19,7 +18,6 @@ export const SearchGroup: React.FunctionComponent<any> = (
   const buttonMdSearchProps = {
     icon: 'MdSearch',
     classAdded: 'Button_MdSearch',
-    // handleEvents,
     // action: { typeEvent: ''}
   }
 

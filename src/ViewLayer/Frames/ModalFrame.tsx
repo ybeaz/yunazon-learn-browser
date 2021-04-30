@@ -2,13 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import * as action from '../../DataLayer/index.action'
-import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
-import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
-import { getActiveCourseData } from '../../Shared/getActiveCourseData'
-import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
 export const ModalFrame: React.FunctionComponent<any> = (
@@ -22,14 +16,12 @@ export const ModalFrame: React.FunctionComponent<any> = (
   const buttonCloseProps = {
     icon: 'MdClose',
     classAdded: 'Button_MdClose',
-    handleEvents,
     action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
   }
 
   const buttonCancelProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
-    handleEvents,
     action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
   }
 

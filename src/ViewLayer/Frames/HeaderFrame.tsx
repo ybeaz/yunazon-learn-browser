@@ -10,7 +10,6 @@ export const HeaderFrame: React.FunctionComponent<any> = (
   const buttonMdPersonProps = {
     icon: 'MdPerson',
     classAdded: 'Button_MdPerson',
-    // handleEvents,
     // action: { typeEvent: ''}
   }
 

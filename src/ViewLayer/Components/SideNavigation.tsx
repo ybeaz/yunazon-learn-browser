@@ -5,7 +5,6 @@ import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
-import { handleEvents } from '../Hooks/handleEvents'
 
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
@@ -17,7 +16,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const buttonMdMenuProps = {
     icon: 'MdMenu',
     classAdded: 'Button_MdMenu',
-    handleEvents,
     action: {
       typeEvent: 'TOGGLE_SIDE_NAVIGATION',
     },
@@ -27,7 +25,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     icon: 'MdPerson',
     captureRight: 'Personal cabinet',
     classAdded: 'Button_sideMenuItems',
-    // handleEvents,
     // action: { typeEvent: ''}
   }
 
@@ -35,7 +32,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     icon: 'MdFlag',
     captureRight: 'About',
     classAdded: 'Button_sideMenuItems',
-    // handleEvents,
     // action: {
     //   typeEvent: '',
     // },
@@ -45,7 +41,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     icon: 'MdAddShoppingCart',
     captureRight: 'Services',
     classAdded: 'Button_sideMenuItems',
-    // handleEvents,
     // action: {
     //   typeEvent: '',
     // },
@@ -55,7 +50,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     icon: 'MdContactMail',
     captureRight: 'Contacts',
     classAdded: 'Button_sideMenuItems',
-    // handleEvents,
     // action: {
     //   typeEvent: '',
     // },

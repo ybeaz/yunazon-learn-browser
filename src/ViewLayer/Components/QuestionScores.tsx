@@ -114,7 +114,6 @@ export const QuestionScores: React.FunctionComponent<any> = (
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
-        handleEvents,
         action: {
           typeEvent: 'ADD_DOCUMENT',
           data: {
@@ -147,7 +146,6 @@ export const QuestionScores: React.FunctionComponent<any> = (
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
-        handleEvents,
         action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
       },
     },

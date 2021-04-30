@@ -94,7 +94,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
-    handleEvents,
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: -1 },
     isDisplaying: isButtonSlideBackward,
   }
@@ -102,7 +101,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const buttonSlideForwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward2',
-    handleEvents,
     action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: 1 },
     isDisplaying: isButtonSlideForward,
   }
@@ -111,7 +109,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     icon: 'MdForward',
     icon2: 'HiOutlineAcademicCap',
     classAdded: 'Button_MdForward',
-    handleEvents,
     action: {
       typeEvent: 'OPEN_MODAL_GET_SCORES',
       data: {},
@@ -122,7 +119,6 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const buttonBlockProps = {
     icon: 'MdForward',
     classAdded: 'Button_downLeft',
-    handleEvents: () => {},
     action: {
       typeEvent: '',
       data: {},

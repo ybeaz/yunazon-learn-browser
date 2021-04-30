@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
@@ -39,7 +38,6 @@ export const EmalInputs: React.FunctionComponent<any> = (
   const buttonForwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward',
-    handleEvents,
     action: {
       typeEvent: 'SEND_EMAIL_DOCUMENT',
       data: { documentID, sendTo, sendCc },

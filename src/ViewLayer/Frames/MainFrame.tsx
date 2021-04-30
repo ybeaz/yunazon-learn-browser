@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { SearchGroup } from '../Components/SearchGroup'
-import { handleEvents } from '../Hooks/handleEvents'
 import { Button } from '../Components/Button'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -13,7 +12,6 @@ export const MainFrame: React.FunctionComponent<any> = (
   const buttonMdMenuProps = {
     icon: 'MdMenu',
     classAdded: 'Button_MdMenu',
-    handleEvents,
     action: {
       typeEvent: 'TOGGLE_SIDE_NAVIGATION',
     },

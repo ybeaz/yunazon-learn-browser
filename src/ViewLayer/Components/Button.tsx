@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { handleEvents } from '../Hooks/handleEvents'
 import { IconContext } from 'react-icons'
 import {
   MdContactMail,
@@ -46,7 +47,6 @@ interface IButton {
   captureLeft?: string
   captureRight?: string
   classAdded?: string
-  handleEvents?: Function
   action?: any
   isDisplaying?: boolean
   tooltipText?: string
@@ -56,17 +56,12 @@ interface IButton {
 export const Button: React.FunctionComponent<any> = (
   props: IButton
 ): JSX.Element => {
-  const handleEventsDefault: Function = (): void => {
-    console.info('Button', 'handleEventDefault')
-    alert('Sorry \n We are working on this')
-  }
   const {
     icon,
     icon2 = null,
     captureLeft,
     captureRight,
     classAdded,
-    handleEvents = handleEventsDefault,
     action = {},
     isDisplaying = true,
     tooltipText = '',

@@ -72,21 +72,18 @@ export const Certificate: React.FunctionComponent<any> = (
   const buttonPrintProps = {
     icon: 'MdPrint',
     classAdded: 'Button_MdPrint',
-    handleEvents,
     action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
   }
 
   const buttonEmailProps = {
     icon: 'MdMailOutline',
     classAdded: 'Button_MdPrint',
-    handleEvents,
     action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
   }
 
   const buttonCopyLinkProps = {
     icon: 'BsLink45Deg',
     classAdded: 'Button_MdPrint',
-    handleEvents,
     action: { typeEvent: 'COPY_URL_TO_CLIPBOARD', data: {} },
   }
 
