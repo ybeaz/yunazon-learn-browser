@@ -1,12 +1,28 @@
 import { IRootStore } from '../Interfaces/IRootStore'
-import { getChunkedArray } from '../Shared/getChunkedArray'
-import { getActiveCourseData } from '../Shared/getActiveCourseData'
-import { getOptionsShuffled } from '../Shared/getOptionsShuffled'
-import { getProdidevAnswerDefault } from '../Shared/getProdidevAnswerDefault'
-import { getOptionsClickedByID } from '../Shared/getOptionsClickedByID'
-import { getModuleActiveByContentID } from '../Shared/getModuleActiveByContentID'
-import { getCourseModuleActive } from '../Shared/getCourseModuleActive'
-import { getProvidedActiveDefault } from '../Shared/getProvidedActiveDefault'
+
+import { TOGGLE_START_COURSE } from './reducers/TOGGLE_START_COURSE'
+import { ONCHANGE_SEARCH_INPUT } from './reducers/ONCHANGE_SEARCH_INPUT'
+import { CHANGE_NUM_QUESTIONS_IN_SLIDE } from './reducers/CHANGE_NUM_QUESTIONS_IN_SLIDE'
+import { SELECT_LANGUAGE } from './reducers/SELECT_LANGUAGE'
+import { TOGGLE_LOADER_OVERLAY } from './reducers/TOGGLE_LOADER_OVERLAY'
+import { TOGGLE_IS_DOCUMENT_ADDED } from './reducers/TOGGLE_IS_DOCUMENT_ADDED'
+import { ADD_DOCUMENT_SUCCESS } from './reducers/ADD_DOCUMENT_SUCCESS'
+import { SET_QUESTION_SLIDE } from './reducers/SET_QUESTION_SLIDE'
+import { PLUS_QUESTION_SLIDE } from './reducers/PLUS_QUESTION_SLIDE'
+import { ONCHANGE_EMAIL_CC } from './reducers/ONCHANGE_EMAIL_CC'
+import { ONCHANGE_EMAIL_TO } from './reducers/ONCHANGE_EMAIL_TO'
+import { ONCHANGE_FIRST_NAME_MODAL } from './reducers/ONCHANGE_FIRST_NAME_MODAL'
+import { ONCHANGE_MIDDLE_NAME_MODAL } from './reducers/ONCHANGE_MIDDLE_NAME_MODAL'
+import { ONCHANGE_LAST_NAME_MODAL } from './reducers/ONCHANGE_LAST_NAME_MODAL'
+import { TOGGLE_MODAL_FRAME } from './reducers/TOGGLE_MODAL_FRAME'
+import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
+import { SELECT_COURSE_MODULE_CONTENTID } from './reducers/SELECT_COURSE_MODULE_CONTENTID'
+import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
+import { CLICK_CHECK } from './reducers/CLICK_CHECK'
+import { GET_CONTENT_DATA_SUCCESS } from './reducers/GET_CONTENT_DATA_SUCCESS'
+import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
+import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
+import { TEMPLATE } from './reducers/TEMPLATE'
 
 const rootStoreDefault = {
   isLoaded: {
@@ -23,6 +39,7 @@ const rootStoreDefault = {
     isSideNavVisible: false,
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
+    isCourseStarted: false,
   },
   forms: {
     searchInput: '',
@@ -43,211 +60,39 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
-    ONCHANGE_SEARCH_INPUT: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        searchInput: data,
-      }
-      return { ...store, forms: nextForms }
-    },
+    TOGGLE_START_COURSE,
+    ONCHANGE_SEARCH_INPUT,
+    CHANGE_NUM_QUESTIONS_IN_SLIDE,
+    SELECT_LANGUAGE,
+    TOGGLE_LOADER_OVERLAY,
+    TOGGLE_IS_DOCUMENT_ADDED,
+    ADD_DOCUMENT_SUCCESS,
+    SET_QUESTION_SLIDE,
+    PLUS_QUESTION_SLIDE,
+    ONCHANGE_EMAIL_CC,
+    ONCHANGE_EMAIL_TO,
+    ONCHANGE_FIRST_NAME_MODAL,
 
-    CHANGE_NUM_QUESTIONS_IN_SLIDE: () => {
-      const { globalVars } = store
-      const globalVarsNext = { ...globalVars, numberQuestionsInSlide: data }
-      const storeNext = { ...store, globalVars: globalVarsNext }
-      return storeNext
-    },
+    ONCHANGE_MIDDLE_NAME_MODAL,
 
-    SELECT_LANGUAGE: () => {
-      return { ...store, language: data }
-    },
+    ONCHANGE_LAST_NAME_MODAL,
 
-    TOGGLE_LOADER_OVERLAY: () => {
-      const { componentsState } = store
-      const componentsStateNext = {
-        ...componentsState,
-        isLoaderOverlayVisible: data,
-      }
-      return { ...store, componentsState: componentsStateNext }
-    },
+    TOGGLE_MODAL_FRAME,
 
-    TOGGLE_IS_DOCUMENT_ADDED: () => {
-      const { componentsState } = store
-      const componentsStateNext = {
-        ...componentsState,
-        isDocumentAdded: data,
-      }
-      return {
-        ...store,
-        componentsState: componentsStateNext,
-      }
-    },
+    GET_ANSWERS_DEFAULT,
 
-    ADD_DOCUMENT_SUCCESS: () => {
-      const { documents, componentsState } = store
-      const documentsNext = [...documents, data]
-      const componentsStateNext = {
-        ...componentsState,
-        isDocumentAdded: true,
-      }
-      return {
-        ...store,
-        documents: documentsNext,
-        componentsState: componentsStateNext,
-      }
-    },
+    SELECT_COURSE_MODULE_CONTENTID,
 
-    SET_QUESTION_SLIDE: () => {
-      const { componentsState } = store
-      const componentsStateNext = {
-        ...componentsState,
-        questionsSlideNumber: data,
-      }
-      return { ...store, componentsState: componentsStateNext }
-    },
+    SELECT_COURSE_MODULE,
 
-    PLUS_QUESTION_SLIDE: () => {
-      const { componentsState, courses, globalVars } = store
-      const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
-      const { questionsSlideNumber } = componentsState
+    CLICK_CHECK,
 
-      const { questionsActive } = getActiveCourseData(courses)
-      const questionsChunked = getChunkedArray(
-        questionsActive,
-        numberQuestionsInSlide
-      )
+    GET_CONTENT_DATA_SUCCESS,
 
-      let questionSlideNumberNext = 0
-      const questionSlideNumberPlus = questionsSlideNumber + data
-      if (questionSlideNumberPlus > questionsChunked.length - 1) {
-        questionSlideNumberNext = questionsChunked.length - 1
-      } else if (questionSlideNumberPlus < 0) {
-        questionSlideNumberNext
-      } else {
-        questionSlideNumberNext = questionSlideNumberPlus
-      }
-      const componentsStateNext = {
-        ...componentsState,
-        questionsSlideNumber: questionSlideNumberNext,
-      }
-      return { ...store, componentsState: componentsStateNext }
-    },
+    TOGGLE_SIDE_NAVIGATION,
 
-    ONCHANGE_EMAIL_CC: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        sendCc: data,
-      }
-      return { ...store, forms: nextForms }
-    },
-
-    ONCHANGE_EMAIL_TO: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        sendTo: data,
-      }
-      return { ...store, forms: nextForms }
-    },
-
-    ONCHANGE_FIRST_NAME_MODAL: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        firstName: data,
-      }
-      return { ...store, forms: nextForms }
-    },
-
-    ONCHANGE_MIDDLE_NAME_MODAL: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        middleName: data,
-      }
-      return { ...store, forms: nextForms }
-    },
-
-    ONCHANGE_LAST_NAME_MODAL: () => {
-      const { forms } = store
-      const nextForms = {
-        ...forms,
-        lastName: data,
-      }
-      return { ...store, forms: nextForms }
-    },
-
-    TOGGLE_MODAL_FRAME: () => {
-      const { componentsState } = store
-      const componentsStateNext = {
-        ...componentsState,
-        isModalFrameVisible: data,
-      }
-      return { ...store, componentsState: componentsStateNext }
-    },
-
-    GET_ANSWERS_DEFAULT: () => {
-      const { courses } = store
-      let coursesNext = getProdidevAnswerDefault(courses)
-      coursesNext = getOptionsShuffled(coursesNext)
-      return { ...store, courses: coursesNext }
-    },
-
-    SELECT_COURSE_MODULE_CONTENTID: () => {
-      const { contentID } = data
-      const { courses } = store
-      let coursesNext = getProvidedActiveDefault(courses)
-      coursesNext = getModuleActiveByContentID(courses, contentID)
-      return { ...store, courses: coursesNext }
-    },
-
-    SELECT_COURSE_MODULE: () => {
-      const { courseID, moduleID } = data
-      const { courses } = store
-      let coursesNext = getProvidedActiveDefault(courses)
-      coursesNext = getCourseModuleActive(courses, courseID, moduleID)
-      return { ...store, courses: coursesNext }
-    },
-
-    CLICK_CHECK: () => {
-      const { optionID, multi } = data
-      const { courses } = store
-      const coursesNext = getOptionsClickedByID(courses, optionID, multi)
-      const storeNext = { ...store, courses: coursesNext }
-      return storeNext
-    },
-
-    GET_CONTENT_DATA_SUCCESS: () => {
-      const { isLoaded } = store
-      const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
-      const storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
-      return storeNext
-    },
-
-    TOGGLE_SIDE_NAVIGATION: () => {
-      const { componentsState } = store
-      const { isSideNavVisible } = componentsState
-      const componentsStateNext = {
-        ...componentsState,
-        isSideNavVisible: !isSideNavVisible,
-      }
-      return { ...store, componentsState: componentsStateNext }
-    },
-
-    GET_GLOBAL_VARS_SUCCESS: () => {
-      const { globalVars, isLoaded } = store
-      const globalVarsNext = { ...globalVars, ...data }
-      const isLoadedNext = { ...isLoaded, isLoadedGlobalVars: true }
-      const storeNext = {
-        ...store,
-        globalVars: globalVarsNext,
-        isLoaded: isLoadedNext,
-      }
-      return storeNext
-    },
+    GET_GLOBAL_VARS_SUCCESS,
   }
 
-  return output[type] ? output[type]() : store
+  return output[type] ? output[type](store, data) : store
 }

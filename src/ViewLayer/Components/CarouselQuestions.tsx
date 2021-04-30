@@ -26,7 +26,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
 
   const {
     globalVars: { numberQuestionsInSlide },
-    componentsState: { questionsSlideNumber },
+    componentsState: { questionsSlideNumber, isCourseStarted },
     courses,
     language,
   } = store
@@ -88,7 +88,8 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     questionsSlideNumber,
     questionsChunked.length,
     questionsActive,
-    questionsChunked
+    questionsChunked,
+    isCourseStarted
   )
 
   const buttonSlideBackwardProps = {
@@ -135,10 +136,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       ${questionsActive.length} ${questionStr}\u00A0\u00A0`,
     icon: 'MdForward',
     classAdded: 'Button_startModule',
-    handleEvents: () => {},
     action: {
-      typeEvent: '',
-      data: {},
+      typeEvent: 'TOGGLE_START_COURSE',
+      data: true,
     },
     isDisplaying: isButtonSlideStart,
   }

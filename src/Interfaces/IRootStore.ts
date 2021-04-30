@@ -11,6 +11,7 @@ export interface IRootStore {
     isSideNavVisible: boolean
     isLoaderOverlayVisible: boolean
     isDocumentAdded: boolean
+    isCourseStarted: boolean
   }
   forms: {
     searchInput: string

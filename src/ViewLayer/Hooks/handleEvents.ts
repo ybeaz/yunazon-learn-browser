@@ -19,6 +19,10 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    TOGGLE_START_COURSE: () => {
+      dispatch(action.TOGGLE_START_COURSE(data))
+    },
+
     ONCHANGE_SEARCH_INPUT: () => {
       const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_SEARCH_INPUT(value))

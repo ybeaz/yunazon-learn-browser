@@ -42,6 +42,11 @@ export const GET_CONTENT_DATA: any = createRequestTypes('GET_CONTENT_DATA')
 export const GET_GLOBAL_VARS: any = createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+export const TOGGLE_START_COURSE: Function = (data: number): any => ({
+  type: 'TOGGLE_START_COURSE',
+  data,
+})
+
 export const ONCHANGE_SEARCH_INPUT: Function = (data: number): any => ({
   type: 'ONCHANGE_SEARCH_INPUT',
   data,

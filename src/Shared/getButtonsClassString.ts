@@ -21,7 +21,8 @@ export const getButtonsClassString: Function = (
   questionsSlideNumber: number,
   questionsChunkedLen: number,
   questionsActive: any[],
-  questionsChunked: any[]
+  questionsChunked: any[],
+  isCourseStarted: boolean
 ): GetButtonsClassString => {
   const {
     total: questionsTotal,
@@ -81,9 +82,10 @@ export const getButtonsClassString: Function = (
     isButtonSlideBackward = false
     isButtonSlideForward = false
     isButtonToCertificate = false
-    isButtonBlockProps = false
-    isButtonSlideStart = true
-    buttonRight = 'display_startModule'
+    isButtonBlockProps = isCourseStarted === false ? false : true
+    isButtonSlideStart = isCourseStarted === false ? true : false
+    buttonRight =
+      isCourseStarted === false ? 'display_startModule' : 'display_downLeft'
     buttonsClassString = `${buttonLeft} ${buttonRight}`
   } else {
     buttonsClassString = `${buttonLeft} ${buttonRight}`
