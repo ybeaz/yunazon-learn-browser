@@ -24,16 +24,16 @@ export const EmalInputs: React.FunctionComponent<any> = (
     classAdded: 'Input_emailTo',
     type: 'text',
     placeholder: 'email...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_EMAIL_TO' },
+    typeEvent: 'ONCHANGE_EMAIL_TO',
+    storeFormProp: 'sendTo',
   }
 
   const inputEmailCcProps = {
     classAdded: 'Input_emailTo',
     type: 'text',
     placeholder: 'email cc...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_EMAIL_CC' },
+    typeEvent: 'ONCHANGE_EMAIL_CC',
+    storeFormProp: 'sendCc',
   }
 
   const buttonForwardProps = {
@@ -51,11 +51,11 @@ export const EmalInputs: React.FunctionComponent<any> = (
       <form className='_form'>
         <div className='_group'>
           <label className='_label'>Email to send document</label>
-          <Input {...inputEmailToProps} value={sendTo} />
+          <Input {...inputEmailToProps} />
         </div>
         <div className='_group'>
           <label className='_label'>CC email</label>
-          <Input {...inputEmailCcProps} value={sendCc} />
+          <Input {...inputEmailCcProps} />
         </div>
         <div className='_buttons'>
           {/* <Button {...buttonCancelProps} /> */}

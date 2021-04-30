@@ -14,7 +14,9 @@ function* addDocument(dataInput) {
       meta: { institution, specTitle, specName },
       moduleID,
       userEmail,
-      userName,
+      firstName,
+      middleName,
+      lastName,
     },
   } = dataInput
 
@@ -31,7 +33,7 @@ function* addDocument(dataInput) {
     },
     moduleIDs: [moduleID],
     contentIDs: [contentID],
-    userName,
+    userName: { firstName, middleName, lastName },
     lang: language,
   }
 

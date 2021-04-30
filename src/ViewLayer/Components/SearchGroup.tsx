@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { handleEvents } from '../Hooks/handleEvents'
 import { Input } from './Input'
 import { Button } from './Button'
 
@@ -11,8 +12,8 @@ export const SearchGroup: React.FunctionComponent<any> = (
     classAdded: 'Input_search',
     type: 'text',
     placeholder: 'Search...',
-    // handleEvents,
-    // action: { typeEvent: ''}
+    typeEvent: 'ONCHANGE_SEARCH_INPUT',
+    storeFormProp: 'searchInput',
   }
 
   const buttonMdSearchProps = {

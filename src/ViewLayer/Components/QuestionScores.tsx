@@ -24,10 +24,9 @@ export const QuestionScores: React.FunctionComponent<any> = (
     documents,
     courses,
     componentsState: { isDocumentAdded },
-    forms: { userNameModal },
+    forms: { firstName, middleName, lastName },
   } = store
 
-  const { firstName, middleName, lastName } = userNameModal
   const slug = documents[0]?.slug
 
   const {
@@ -56,24 +55,24 @@ export const QuestionScores: React.FunctionComponent<any> = (
     classAdded: 'Input_name',
     type: 'text',
     placeholder: 'first name...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_FIRST_NAME_MODAL' },
+    typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
+    storeFormProp: 'firstName',
   }
 
   const inputMiddleNameProps = {
     classAdded: 'Input_name',
     type: 'text',
     placeholder: 'second name...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL' },
+    typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
+    storeFormProp: 'middleName',
   }
 
   const inputLastNameProps = {
     classAdded: 'Input_name',
     type: 'text',
     placeholder: 'last name...',
-    handleEvents,
-    action: { typeEvent: 'ONCHANGE_LAST_NAME_MODAL' },
+    typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
+    storeFormProp: 'lastName',
   }
 
   const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
@@ -120,7 +119,9 @@ export const QuestionScores: React.FunctionComponent<any> = (
           typeEvent: 'ADD_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            userName: userNameModal,
+            firstName,
+            middleName,
+            lastName,
             meta,
             capture,
             description,
@@ -175,15 +176,15 @@ export const QuestionScores: React.FunctionComponent<any> = (
           <>
             <div className='_group'>
               <label className='_label'>{lastNameLabel}*</label>
-              <Input {...inputLastNameProps} value={lastName} />
+              <Input {...inputLastNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{firstNameLabel}*</label>
-              <Input {...inputFirstNameProps} value={firstName} />
+              <Input {...inputFirstNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{middleNameLabel}</label>
-              <Input {...inputMiddleNameProps} value={middleName} />
+              <Input {...inputMiddleNameProps} />
             </div>
           </>
         ) : null}

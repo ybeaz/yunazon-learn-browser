@@ -13,11 +13,10 @@ export interface IRootStore {
     isDocumentAdded: boolean
   }
   forms: {
-    userNameModal: {
-      firstName: string
-      middleName: string
-      lastName: string
-    }
+    searchInput: string
+    firstName: string
+    middleName: string
+    lastName: string
     sendTo: string
     sendCc: string
   }

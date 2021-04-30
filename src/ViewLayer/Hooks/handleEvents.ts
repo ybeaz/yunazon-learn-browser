@@ -19,6 +19,11 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    ONCHANGE_SEARCH_INPUT: () => {
+      const { value } = event.target as HTMLInputElement
+      dispatch(action.ONCHANGE_SEARCH_INPUT(value))
+    },
+
     SELECT_LANGUAGE: () => {
       dispatch(action.SELECT_LANGUAGE(data))
       getSetObjToLocalStorage({ language: data })
@@ -29,12 +34,12 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
     },
 
     ONCHANGE_EMAIL_CC: () => {
-      const { value } = event.target as HTMLTextAreaElement
+      const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_EMAIL_CC(value))
     },
 
     ONCHANGE_EMAIL_TO: () => {
-      const { value } = event.target as HTMLTextAreaElement
+      const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_EMAIL_TO(value))
     },
 
@@ -71,17 +76,17 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
     },
 
     ONCHANGE_FIRST_NAME_MODAL: () => {
-      const { value } = event.target as HTMLTextAreaElement
+      const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_FIRST_NAME_MODAL(value))
     },
 
     ONCHANGE_MIDDLE_NAME_MODAL: () => {
-      const { value } = event.target as HTMLTextAreaElement
+      const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_MIDDLE_NAME_MODAL(value))
     },
 
     ONCHANGE_LAST_NAME_MODAL: () => {
-      const { value } = event.target as HTMLTextAreaElement
+      const { value } = event.target as HTMLInputElement
       dispatch(action.ONCHANGE_LAST_NAME_MODAL(value))
     },
 

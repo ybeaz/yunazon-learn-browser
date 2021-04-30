@@ -1,28 +1,27 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { handleEvents } from '../Hooks/handleEvents'
+import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface IInput {
   classAdded: string
   type: string
   placeholder: string
-  handleEvents: Function
-  action: any
+  typeEvent: string
+  storeFormProp: string
 }
 
 export const Input: React.FunctionComponent<any> = (
   props: IInput
 ): JSX.Element => {
-  const handleEventsDefault: Function = (): void => {
-    console.info('Input', 'handleEventDefault')
-    alert('Sorry \n We are working on this')
-  }
+  const { classAdded, type, placeholder, typeEvent, storeFormProp } = props
 
-  const {
-    classAdded,
-    type,
-    placeholder,
-    handleEvents = handleEventsDefault,
-    action = {},
-  } = props
+  const store = useSelector((store: IRootStore) => store)
+  const { forms } = store
+  const value = forms[storeFormProp]
+
+  const action = { typeEvent }
 
   return (
     <input
@@ -30,6 +29,7 @@ export const Input: React.FunctionComponent<any> = (
       type={type}
       placeholder={placeholder}
       onChange={event => handleEvents(event, action)}
+      value={value}
     />
   )
 }

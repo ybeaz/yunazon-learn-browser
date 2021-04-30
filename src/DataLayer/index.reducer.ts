@@ -25,11 +25,10 @@ const rootStoreDefault = {
     isDocumentAdded: false,
   },
   forms: {
-    userNameModal: {
-      firstName: '',
-      middleName: '',
-      lastName: '',
-    },
+    searchInput: '',
+    firstName: '',
+    middleName: '',
+    lastName: '',
     sendTo: '',
     sendCc: '',
   },
@@ -41,11 +40,19 @@ export const rootReducer: Function = (
   store: IRootStore = rootStoreDefault,
   action: any
 ): any => {
-  const { type } = action
+  const { type, data } = action
 
   const output = {
+    ONCHANGE_SEARCH_INPUT: () => {
+      const { forms } = store
+      const nextForms = {
+        ...forms,
+        searchInput: data,
+      }
+      return { ...store, forms: nextForms }
+    },
+
     CHANGE_NUM_QUESTIONS_IN_SLIDE: () => {
-      const { data } = action
       const { globalVars } = store
       const globalVarsNext = { ...globalVars, numberQuestionsInSlide: data }
       const storeNext = { ...store, globalVars: globalVarsNext }
@@ -53,12 +60,10 @@ export const rootReducer: Function = (
     },
 
     SELECT_LANGUAGE: () => {
-      const { data } = action
       return { ...store, language: data }
     },
 
     TOGGLE_LOADER_OVERLAY: () => {
-      const { data } = action
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
@@ -68,7 +73,6 @@ export const rootReducer: Function = (
     },
 
     TOGGLE_IS_DOCUMENT_ADDED: () => {
-      const { data } = action
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
@@ -81,7 +85,6 @@ export const rootReducer: Function = (
     },
 
     ADD_DOCUMENT_SUCCESS: () => {
-      const { data } = action
       const { documents, componentsState } = store
       const documentsNext = [...documents, data]
       const componentsStateNext = {
@@ -96,7 +99,6 @@ export const rootReducer: Function = (
     },
 
     SET_QUESTION_SLIDE: () => {
-      const { data } = action
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
@@ -106,7 +108,6 @@ export const rootReducer: Function = (
     },
 
     PLUS_QUESTION_SLIDE: () => {
-      const { data } = action
       const { componentsState, courses, globalVars } = store
       const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
       const { questionsSlideNumber } = componentsState
@@ -134,7 +135,6 @@ export const rootReducer: Function = (
     },
 
     ONCHANGE_EMAIL_CC: () => {
-      const { data } = action
       const { forms } = store
       const nextForms = {
         ...forms,
@@ -144,7 +144,6 @@ export const rootReducer: Function = (
     },
 
     ONCHANGE_EMAIL_TO: () => {
-      const { data } = action
       const { forms } = store
       const nextForms = {
         ...forms,
@@ -154,52 +153,33 @@ export const rootReducer: Function = (
     },
 
     ONCHANGE_FIRST_NAME_MODAL: () => {
-      const { data } = action
       const { forms } = store
-      const { userNameModal } = forms
-      const userNameModalNext = {
-        ...userNameModal,
-        firstName: data,
-      }
       const nextForms = {
         ...forms,
-        userNameModal: userNameModalNext,
+        firstName: data,
       }
       return { ...store, forms: nextForms }
     },
 
     ONCHANGE_MIDDLE_NAME_MODAL: () => {
-      const { data } = action
       const { forms } = store
-      const { userNameModal } = forms
-      const userNameModalNext = {
-        ...userNameModal,
-        middleName: data,
-      }
       const nextForms = {
         ...forms,
-        userNameModal: userNameModalNext,
+        middleName: data,
       }
       return { ...store, forms: nextForms }
     },
 
     ONCHANGE_LAST_NAME_MODAL: () => {
-      const { data } = action
       const { forms } = store
-      const { userNameModal } = forms
-      const userNameModalNext = {
-        ...userNameModal,
-        lastName: data,
-      }
       const nextForms = {
         ...forms,
-        userNameModal: userNameModalNext,
+        lastName: data,
       }
       return { ...store, forms: nextForms }
     },
 
     TOGGLE_MODAL_FRAME: () => {
-      const { data } = action
       const { componentsState } = store
       const componentsStateNext = {
         ...componentsState,
@@ -216,7 +196,6 @@ export const rootReducer: Function = (
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {
-      const { data } = action
       const { contentID } = data
       const { courses } = store
       let coursesNext = getProvidedActiveDefault(courses)
@@ -225,7 +204,6 @@ export const rootReducer: Function = (
     },
 
     SELECT_COURSE_MODULE: () => {
-      const { data } = action
       const { courseID, moduleID } = data
       const { courses } = store
       let coursesNext = getProvidedActiveDefault(courses)
@@ -234,7 +212,6 @@ export const rootReducer: Function = (
     },
 
     CLICK_CHECK: () => {
-      const { data } = action
       const { optionID, multi } = data
       const { courses } = store
       const coursesNext = getOptionsClickedByID(courses, optionID, multi)
@@ -243,7 +220,6 @@ export const rootReducer: Function = (
     },
 
     GET_CONTENT_DATA_SUCCESS: () => {
-      const { data } = action
       const { isLoaded } = store
       const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
       const storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
@@ -261,7 +237,6 @@ export const rootReducer: Function = (
     },
 
     GET_GLOBAL_VARS_SUCCESS: () => {
-      const { data } = action
       const { globalVars, isLoaded } = store
       const globalVarsNext = { ...globalVars, ...data }
       const isLoadedNext = { ...isLoaded, isLoadedGlobalVars: true }
