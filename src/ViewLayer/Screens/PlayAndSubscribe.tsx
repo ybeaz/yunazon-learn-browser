@@ -70,6 +70,14 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
 
   const { courseCapture, moduleCapture, duration, units } = moduleState
 
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
+  }
+
   const playerProps = {
     courseCapture,
     moduleCapture,
@@ -94,6 +102,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
       {isLoaded === true ? (
         <>
           <MainFrame>
+            {null}
             <Player {...playerProps} />
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>

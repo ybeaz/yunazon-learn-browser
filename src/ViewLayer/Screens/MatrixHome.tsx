@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { SearchGroup } from '../Components/SearchGroup'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { MainFrame } from '../Frames/MainFrame'
@@ -52,6 +53,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
   return (
     <div className='MatrixHome'>
       <MainFrame>
+        <SearchGroup />
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
           <div>{getPlateMatix(coursesFiltered)}</div>
         ) : null}
