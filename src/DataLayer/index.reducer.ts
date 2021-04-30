@@ -1,5 +1,6 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
+import { TEMPLATE } from './reducers/TEMPLATE'
 import { TOGGLE_START_COURSE } from './reducers/TOGGLE_START_COURSE'
 import { ONCHANGE_SEARCH_INPUT } from './reducers/ONCHANGE_SEARCH_INPUT'
 import { CHANGE_NUM_QUESTIONS_IN_SLIDE } from './reducers/CHANGE_NUM_QUESTIONS_IN_SLIDE'
@@ -22,36 +23,7 @@ import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_CONTENT_DATA_SUCCESS } from './reducers/GET_CONTENT_DATA_SUCCESS'
 import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
 import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
-import { TEMPLATE } from './reducers/TEMPLATE'
-
-const rootStoreDefault = {
-  isLoaded: {
-    isLoadedGlobalVars: false,
-    isLoadedCourses: false,
-  },
-  courses: [],
-  globalVars: {
-    numberQuestionsInSlide: 2,
-  },
-  componentsState: {
-    questionsSlideNumber: 0,
-    isModalFrameVisible: false,
-    isSideNavVisible: false,
-    isLoaderOverlayVisible: false,
-    isDocumentAdded: false,
-    isCourseStarted: false,
-  },
-  forms: {
-    searchInput: '',
-    firstName: '',
-    middleName: '',
-    lastName: '',
-    sendTo: '',
-    sendCc: '',
-  },
-  documents: [],
-  language: 'ru',
-}
+import { rootStoreDefault } from './rootStoreDefault'
 
 export const rootReducer: Function = (
   store: IRootStore = rootStoreDefault,
@@ -72,25 +44,15 @@ export const rootReducer: Function = (
     ONCHANGE_EMAIL_CC,
     ONCHANGE_EMAIL_TO,
     ONCHANGE_FIRST_NAME_MODAL,
-
     ONCHANGE_MIDDLE_NAME_MODAL,
-
     ONCHANGE_LAST_NAME_MODAL,
-
     TOGGLE_MODAL_FRAME,
-
     GET_ANSWERS_DEFAULT,
-
     SELECT_COURSE_MODULE_CONTENTID,
-
     SELECT_COURSE_MODULE,
-
     CLICK_CHECK,
-
     GET_CONTENT_DATA_SUCCESS,
-
     TOGGLE_SIDE_NAVIGATION,
-
     GET_GLOBAL_VARS_SUCCESS,
   }
 
