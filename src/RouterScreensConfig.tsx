@@ -38,10 +38,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
       await dispatch(action.GET_GLOBAL_VARS.REQUEST())
       await dispatch(action.GET_CONTENT_DATA.REQUEST())
-      const language = localStorage.getItem('language')
-      if (language) {
-        dispatch(action.SELECT_LANGUAGE(language))
-      }
     }
 
     makeDispatchAsyncWrappered()

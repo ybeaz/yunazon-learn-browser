@@ -14,7 +14,9 @@ const rootStoreDefault = {
     isLoadedCourses: false,
   },
   courses: [],
-  globalVars: {},
+  globalVars: {
+    numberQuestionsInSlide: 2,
+  },
   componentsState: {
     questionsSlideNumber: 0,
     isModalFrameVisible: false,
@@ -42,6 +44,14 @@ export const rootReducer: Function = (
   const { type } = action
 
   const output = {
+    CHANGE_NUM_QUESTIONS_IN_SLIDE: () => {
+      const { data } = action
+      const { globalVars } = store
+      const globalVarsNext = { ...globalVars, numberQuestionsInSlide: data }
+      const storeNext = { ...store, globalVars: globalVarsNext }
+      return storeNext
+    },
+
     SELECT_LANGUAGE: () => {
       const { data } = action
       return { ...store, language: data }
@@ -64,7 +74,6 @@ export const rootReducer: Function = (
         ...componentsState,
         isDocumentAdded: data,
       }
-      // console.info('index.reducer [40]', { data, documentsNext })
       return {
         ...store,
         componentsState: componentsStateNext,
@@ -79,7 +88,6 @@ export const rootReducer: Function = (
         ...componentsState,
         isDocumentAdded: true,
       }
-      // console.info('index.reducer [40]', { data, documentsNext })
       return {
         ...store,
         documents: documentsNext,
@@ -100,8 +108,7 @@ export const rootReducer: Function = (
     PLUS_QUESTION_SLIDE: () => {
       const { data } = action
       const { componentsState, courses, globalVars } = store
-      const numberQuestionsInSlide =
-        globalVars?.configuration?.numberQuestionsInSlide || 2
+      const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
       const { questionsSlideNumber } = componentsState
 
       const { questionsActive } = getActiveCourseData(courses)
@@ -255,9 +262,14 @@ export const rootReducer: Function = (
 
     GET_GLOBAL_VARS_SUCCESS: () => {
       const { data } = action
-      const { isLoaded } = store
+      const { globalVars, isLoaded } = store
+      const globalVarsNext = { ...globalVars, ...data }
       const isLoadedNext = { ...isLoaded, isLoadedGlobalVars: true }
-      const storeNext = { ...store, globalVars: data, isLoaded: isLoadedNext }
+      const storeNext = {
+        ...store,
+        globalVars: globalVarsNext,
+        isLoaded: isLoadedNext,
+      }
       return storeNext
     },
   }

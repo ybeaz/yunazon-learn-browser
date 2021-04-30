@@ -25,16 +25,11 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   } = props
 
   const {
-    globalVars: { configuration },
+    globalVars: { numberQuestionsInSlide },
     componentsState: { questionsSlideNumber },
     courses,
     language,
   } = store
-
-  const numberQuestionsInSlide = configuration?.numberQuestionsInSlide || 2
-
-  // I stopped here
-  console.info('CarouselQuestions [34]', { numberQuestionsInSlide })
 
   const { questionsActive } = getActiveCourseData(courses)
 
