@@ -16,6 +16,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
     globalVars: { durationMultiplier },
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
+    forms: { searchInput },
   } = store
 
   const getPlateMatix: Function = (courses: any[]): JSX.Element => {
@@ -44,11 +45,15 @@ export const MatrixHome: React.FunctionComponent<any> = (
     return <div className='MatrixHome__plates'>{plates}</div>
   }
 
+  const coursesFiltered = courses.filter(item =>
+    item.searchString.includes(searchInput)
+  )
+
   return (
     <div className='MatrixHome'>
       <MainFrame>
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
-          <div>{getPlateMatix(courses)}</div>
+          <div>{getPlateMatix(coursesFiltered)}</div>
         ) : null}
         {null}
       </MainFrame>

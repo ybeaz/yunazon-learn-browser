@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
 import { getValidatedCourses } from '../../Shared/getValidatedCourses'
 import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
 import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
@@ -21,6 +22,7 @@ function* getContentInfo() {
     coursesNext = getOptionsShuffled(coursesNext)
     coursesNext = getProvidedActiveDefault(coursesNext)
     coursesNext = getProdidevAnswerDefault(coursesNext)
+    coursesNext = getProvidedSearchString(coursesNext)
     // console.info('getContentInfo.saga [22]', { coursesNext, courses })
     yield put(action.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {
