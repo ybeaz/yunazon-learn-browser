@@ -28,7 +28,7 @@ export const Certificate: React.FunctionComponent<any> = (
   let history = useHistory()
   const dispatch = useDispatch()
   const store = useSelector((store: IRootStore) => store)
-  const { documents } = store
+  const { documents, language } = store
 
   useEffect(() => {
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
@@ -48,16 +48,27 @@ export const Certificate: React.FunctionComponent<any> = (
     },
     meta: { institution: '', specTitle: '', specName: '' },
     capture: '',
+    courseID: '',
     contentID: '',
   }
   const {
     userName: { firstName = '', middleName = '', lastName = '' },
     meta: { institution = '', specTitle = '', specName = '' },
     capture = '',
+    courseID = '',
     contentID = '',
+    creationDate = '',
   } = documents[0] || documentDefault
 
-  const dateString = getDateString({})
+  const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
+
+  const creationDateReadable = getDateString({
+    timestamp: creationDate,
+    style: dateStyle,
+    hours: false,
+    minutes: false,
+    seconds: false,
+  })
 
   const getPageGoBack: Function = (): void => {
     history.go(-1)
@@ -116,30 +127,30 @@ export const Certificate: React.FunctionComponent<any> = (
         <div className='outer-border'></div>
         <div className='inner-border'></div>
 
-        <div className='pm-certificate-border col-xs-12'>
-          <div className='row pm-certificate-header'>
-            <div className='pm-certificate-title cursive col-xs-12 text-center'>
+        <div className='pm-certificate-border'>
+          <div className='pm-certificate-header'>
+            <div className='pm-certificate-title cursive'>
               <h4>{institution}</h4>
               <h2>Certificate of Completion</h2>
             </div>
           </div>
 
-          <div className='row pm-certificate-body'>
+          <div className='pm-certificate-body'>
             <div className='pm-certificate-block'>
-              <div className='col-xs-12'>
-                <div className='row'>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-certificate-name underline margin-0 col-xs-8 text-center'>
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-certificate-name underline margin-0'>
                     <span className='pm-name-text bold'>{userName}</span>
                   </div>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className='col-xs-12'>
-                <div className='row'>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-earned col-xs-8 text-center'>
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-earned'>
                     <span className='pm-earned-text padding-0 block cursive'>
                       has earned
                     </span>
@@ -147,57 +158,65 @@ export const Certificate: React.FunctionComponent<any> = (
                       1.0 Credit Hours
                     </span>
                   </div>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='col-xs-12'></div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''></div>
                 </div>
               </div>
 
-              <div className='col-xs-12'>
-                <div className='row'>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-course-title col-xs-8 text-center'>
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-course-title'>
                     <span className='pm-earned-text block cursive'>
                       while completing the training course entitled
                     </span>
                   </div>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className='col-xs-12'>
-                <div className='row'>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='pm-course-title underline col-xs-8 text-center'>
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-course-title underline'>
                     <span className='pm-credits-text block bold sans'>
                       {capture}
                     </span>
                   </div>
-                  <div className='col-xs-2'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='_code'>Course code {contentID}</div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='_code'>
+                    <span className='_course'>Course id# {courseID}</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className='col-xs-12'>
-              <div className='row'>
+            <div className=''>
+              <div className=''>
                 <div className='pm-certificate-footer'>
-                  <div className='col-xs-4 pm-certified col-xs-4 text-center'>
+                  <div className='pm-certified'>
+                    <div className='pm-stamp'></div>
                     <span className='pm-credits-text block sans'>
-                      Open Internet Education District Academy
+                      "Open Internet Education Academy"
+                    </span>
+                    <span className='pm-credits-text block sans'>
+                      in partnership with "YouRails.com"
                     </span>
                     <span className='pm-empty-space block underline'></span>
-                    <span className='bold block'>
+                    <span className='pm-credits-text bold block sans'>
                       {specName}, {specTitle}
                     </span>
                   </div>
-                  <div className='col-xs-4'>{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className='col-xs-4 pm-certified col-xs-4 text-center'>
-                    <span className='pm-credits-text block sans'>
-                      Date Completed {dateString}
-                    </span>
-                    <span className='pm-empty-space block underline'></span>
-                    <span className='bold block'></span>
-                    <span className='bold block'></span>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-certified'>
+                    <div className='_documentData'>
+                      <span className='_completed'>
+                        Completed {creationDateReadable}
+                      </span>
+                      <span className='_certificate'>
+                        Certificate No {documentID}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
