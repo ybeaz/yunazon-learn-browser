@@ -1,11 +1,34 @@
 import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
+import * as action from '../../DataLayer/index.action'
+
+interface IGetYouTubePlayerWorkHookInput {
+  videoId: string
+  height: string
+  width: string
+}
+
+interface IGetYouTubePlayerWorkHook {
+  onPlayerReady: Function
+  playVideoHandler: Function
+  pauseVideoHandler: Function
+  stopVideoHandler: Function
+  isShowingPlay: boolean
+}
+
+export const getYouTubePlayerWorkHook = ({
+  videoId,
+  height,
+  width,
+}: IGetYouTubePlayerWorkHookInput): IGetYouTubePlayerWorkHook => {
   const playerDefault = {
     playVideo: () => {},
     pauseVideo: () => {},
     stopVideo: () => {},
   }
+
+  const dispatch = useDispatch()
 
   const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
@@ -27,7 +50,11 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   }
 
   // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {}
+  function onPlayerReady(event) {
+    dispatch(
+      action.TOGGLE_MEDIA_LOADED({ mediaKey: videoId, isMediaLoaded: true })
+    )
+  }
 
   const onChangePlayerStateHandler = state => {
     if (state.data === 0) {
@@ -79,6 +106,7 @@ export const getYouTubePlayerWorkHook = ({ videoId, height, width }) => {
   }, [playerState.data])
 
   return {
+    onPlayerReady,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,

@@ -1,7 +1,10 @@
+import { any } from 'prop-types'
+
 export const rootStoreDefault = {
   isLoaded: {
     isLoadedGlobalVars: false,
     isLoadedCourses: false,
+    mediaLoading: {},
   },
   courses: [],
   globalVars: {

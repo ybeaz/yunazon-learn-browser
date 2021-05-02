@@ -2,6 +2,7 @@ export interface IRootStore {
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean
+    mediaLoading: any
   }
   courses: any[]
   globalVars: any

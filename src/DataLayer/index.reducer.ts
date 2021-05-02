@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { TOGGLE_MEDIA_LOADED } from './reducers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_START_COURSE } from './reducers/TOGGLE_START_COURSE'
 import { ONCHANGE_SEARCH_INPUT } from './reducers/ONCHANGE_SEARCH_INPUT'
 import { CHANGE_NUM_QUESTIONS_IN_SLIDE } from './reducers/CHANGE_NUM_QUESTIONS_IN_SLIDE'
@@ -32,6 +33,7 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    TOGGLE_MEDIA_LOADED,
     TOGGLE_START_COURSE,
     ONCHANGE_SEARCH_INPUT,
     CHANGE_NUM_QUESTIONS_IN_SLIDE,

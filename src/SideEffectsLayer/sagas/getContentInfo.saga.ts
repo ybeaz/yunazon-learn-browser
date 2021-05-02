@@ -23,7 +23,7 @@ function* getContentInfo() {
     coursesNext = getProvidedActiveDefault(coursesNext)
     coursesNext = getProdidevAnswerDefault(coursesNext)
     coursesNext = getProvidedSearchString(coursesNext)
-    // console.info('getContentInfo.saga [22]', { coursesNext, courses })
+
     yield put(action.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {
     console.info('getContentInfo  [20]', error.name + ': ' + error.message)

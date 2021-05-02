@@ -1,25 +1,30 @@
 import { bool } from 'prop-types'
 
-const noCourseDescription = ({
+const errorCourses = ({
   courseValidation,
   courseIndex,
+  courseID,
   courseCapture,
   courseDescription,
 }) => {
+  if (!courseID) {
+    courseValidation = [
+      ...courseValidation,
+      { type: 'course-no-courseID', courseIndex, courseCapture },
+    ]
+  }
+
   if (!courseDescription) {
     courseValidation = [
       ...courseValidation,
       { type: 'course-no-description', courseIndex, courseCapture },
     ]
   }
-  return courseValidation
-}
 
-const noCourseCapture = ({ courseValidation, courseIndex, courseCapture }) => {
-  if (!courseCapture) {
+  if (!courseDescription) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-capture', courseIndex },
+      { type: 'course-no-description', courseIndex, courseCapture },
     ]
   }
   return courseValidation
@@ -168,19 +173,16 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
 
   courses.forEach((course, courseIndex) => {
     const {
+      courseID,
       capture: courseCapture,
       description: courseDescription,
       modules,
     } = course
-    courseValidation = noCourseCapture({
-      courseValidation,
-      courseIndex,
-      courseCapture,
-    })
 
-    courseValidation = noCourseDescription({
+    courseValidation = errorCourses({
       courseValidation,
       courseIndex,
+      courseID,
       courseCapture,
       courseDescription,
     })
