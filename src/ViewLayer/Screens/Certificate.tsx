@@ -71,6 +71,7 @@ export const Certificate: React.FunctionComponent<any> = (
   })
 
   const getPageGoBack: Function = (): void => {
+    console.info('Certificate [74]')
     history.go(-1)
   }
 

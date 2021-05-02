@@ -37,7 +37,8 @@ export const QuestionScores: React.FunctionComponent<any> = (
 
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result } = score
+  const { total, right, wrong, result: r } = score
+  let result = 'success'
   const { moduleID, ytID: videoId } = moduleActive
 
   useEffect(() => {

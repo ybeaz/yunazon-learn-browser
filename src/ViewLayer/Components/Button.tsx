@@ -42,7 +42,7 @@ const ICON = {
   MdPerson,
 }
 interface IButton {
-  icon?: string
+  icon?: string | null
   icon2?: string | null
   captureLeft?: string
   captureRight?: string
@@ -51,6 +51,7 @@ interface IButton {
   isDisplaying?: boolean
   tooltipText?: string
   tooltipPosition?: string
+  handleEvents?: Function
 }
 
 export const Button: React.FunctionComponent<any> = (
@@ -66,11 +67,15 @@ export const Button: React.FunctionComponent<any> = (
     isDisplaying = true,
     tooltipText = '',
     tooltipPosition = '',
+    handleEvents: handleEventsCustom,
   } = props
   const Icon = ICON[icon]
   const Icon2 = ICON[icon2]
 
   const classDisplay = isDisplaying === true ? '' : 'Button_none'
+  const handleEventsToUse = handleEventsCustom
+    ? handleEventsCustom
+    : handleEvents
 
   const classTooltipAdd = {
     top: '_tooltipTop',
@@ -90,7 +95,7 @@ export const Button: React.FunctionComponent<any> = (
       <button
         className={`__button`}
         type='button'
-        onClick={event => handleEvents(event, action)}
+        onClick={event => handleEventsToUse(event, action)}
       >
         {captureLeft ? (
           <div className={`_in`}>
