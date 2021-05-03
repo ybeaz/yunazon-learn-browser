@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
@@ -39,6 +40,8 @@ export const PlayerPanel: React.FunctionComponent<any> = (
 
   const { language } = useSelector((store: IRootStore) => store)
   const certificate = DICTIONARY.certificate[language]
+  const succeded = DICTIONARY.succeded[language]
+  const tried = DICTIONARY.tried[language]
 
   const callForActionButtonPros = {
     captureLeft: `${duration} ${units} `,
@@ -48,6 +51,11 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     handleEvents: () => {},
     action: {},
     isDisplaying,
+  }
+
+  const successTriedProps = {
+    tooltipText: `${succeded} / ${tried}`,
+    tooltipPosition: 'top',
   }
 
   const capture =
@@ -60,8 +68,10 @@ export const PlayerPanel: React.FunctionComponent<any> = (
       <div className='__info'>
         <div className='_capture'>{capture}</div>
         <div className='_metaData'>
-          <div className='_successTried'>10 / 14</div>
-          <div className='_difficulty'>***</div>
+          <div className='_successTried'>
+            <SuccessTried {...successTriedProps} />
+          </div>
+          {/* <div className='_difficulty'>***</div> */}
         </div>
       </div>
       <div className='__buttons'>

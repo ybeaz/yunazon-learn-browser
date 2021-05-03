@@ -3,6 +3,14 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  succeded: {
+    en: 'succeded',
+    ru: 'прошли',
+  },
+  tried: {
+    en: 'tried',
+    ru: 'пробовали',
+  },
   lastName: {
     en: 'last name',
     ru: 'фамилия',

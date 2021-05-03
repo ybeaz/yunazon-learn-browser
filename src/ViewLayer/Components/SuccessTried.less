@@ -1,0 +1,58 @@
+.SuccessTried {
+  display: flex;
+  justify-content: flex-end;
+  font-size: @fontSizeS;
+  position: relative;
+
+  ._tooltipTop {
+    width: 120px;
+    left: 50%;
+    margin-top: -3rem;
+    margin-left: -6rem;
+  }
+
+  ._tooltipRight {
+    top: -5px;
+    left: 105%;
+  }
+
+  ._tooltipBottom {
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  ._tooltipLeft {
+    top: -5px;
+    right: 105%;
+  }
+
+  .__tooltipText {
+    visibility: hidden;
+    width: 120px;
+    background: @colorSecondLighter2;
+    color: @colorFirstDarker2;
+    font-size: @fontSizeS;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.3rem;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+  &:hover .__tooltipText {
+    visibility: visible;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
