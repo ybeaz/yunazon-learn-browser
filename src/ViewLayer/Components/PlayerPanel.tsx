@@ -16,6 +16,8 @@ interface IPlayerPanelInput {
   buttonPauseProps: any
   buttonStopProps: any
   isActionButtonDisplaying: boolean
+  index: number
+  modulesTotal: number
 }
 
 export const PlayerPanel: React.FunctionComponent<any> = (
@@ -31,6 +33,8 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     buttonPauseProps = {},
     buttonStopProps = {},
     isActionButtonDisplaying: isDisplaying,
+    index,
+    modulesTotal,
   } = props
 
   const { language } = useSelector((store: IRootStore) => store)
@@ -47,13 +51,19 @@ export const PlayerPanel: React.FunctionComponent<any> = (
   }
 
   const capture =
-    screenType === 'PlayAndSubscribe'
+    screenType === 'PlayAndSubscribe' && modulesTotal > 1
       ? `${courseCapture} ${moduleCapture}`
       : `${courseCapture}`
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
-      <div className='__capture'>{capture}</div>
+      <div className='__info'>
+        <div className='_capture'>{capture}</div>
+        <div className='_metaData'>
+          <div className='_successTried'>10 / 14</div>
+          <div className='_difficulty'>***</div>
+        </div>
+      </div>
       <div className='__buttons'>
         {isShowingPlay ? (
           <Button {...buttonPlayProps} />

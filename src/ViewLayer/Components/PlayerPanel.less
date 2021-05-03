@@ -3,11 +3,30 @@
   padding: 0.7rem 0 0 0;
   flex-direction: column;
 
-  .__capture {
+  .__info {
     display: flex;
-    flex-direction: column;
-    color: @colorFirstDarker;
-    font-size: @fontSizeH4;
+    flex-direction: row;
+    ._capture {
+      display: flex;
+      flex-direction: column;
+      flex: 6;
+      padding: 0 0.5rem 0 0;
+      color: @colorFirstDarker;
+      font-size: @fontSizeH4;
+    }
+    ._metaData {
+      flex-direction: column;
+      display: flex;
+      flex: 1;
+      ._successTried {
+        display: flex;
+        justify-content: flex-end;
+      }
+      ._difficulty {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
   }
 
   .__buttons {
@@ -44,10 +63,12 @@
   @media @desktop, @desktop-strict {
   }
   @media @tablet, @tablet-strict {
-    padding: 0.7rem 1rem 1rem 1rem;
-    .__capture {
-      font-size: @fontSize;
-      min-height: 2.5rem;
+    padding: 0.7rem 0.5rem 1rem 0.5rem;
+    .__info {
+      ._capture {
+        font-size: @fontSize;
+        min-height: 2.5rem;
+      }
     }
   }
   @media @phone-strict {
@@ -59,17 +80,24 @@
   }
   @media @phone {
     padding: 0.7rem 1rem 1rem 1rem;
-    .__capture {
-      font-size: @fontSizeS;
-      min-height: 2.5rem;
+    .__info {
+      ._capture {
+        font-size: @fontSizeS;
+        min-height: 2.5rem;
+      }
     }
   }
 }
 
 .PlayerPanel_MatrixHome {
-  .__capture {
-    font-size: @fontSize;
-    min-height: 2.5rem;
+  .__info {
+    ._capture {
+      font-size: @fontSize;
+      min-height: 2.5rem;
+    }
+    ._metaData {
+      display: none;
+    }
   }
 
   .__buttons {

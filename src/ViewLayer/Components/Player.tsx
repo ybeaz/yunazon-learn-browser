@@ -19,6 +19,8 @@ interface IPlayerComponentInput {
   screenType: string
   isShowingPlay: boolean
   isActionButtonDisplaying: boolean
+  index: number
+  modulesTotal: number
 }
 
 export const Player: React.FunctionComponent<any> = (
@@ -36,6 +38,8 @@ export const Player: React.FunctionComponent<any> = (
     screenType,
     isShowingPlay,
     isActionButtonDisplaying,
+    index,
+    modulesTotal,
   } = props
 
   const store = useSelector((store: IRootStore) => store)
@@ -81,6 +85,8 @@ export const Player: React.FunctionComponent<any> = (
     buttonPauseProps,
     buttonStopProps,
     isActionButtonDisplaying,
+    index,
+    modulesTotal,
   }
 
   let videoVisibleClass = isVisible ? '_blockVisible' : '_blockHided'

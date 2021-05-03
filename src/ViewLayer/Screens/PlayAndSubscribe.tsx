@@ -32,6 +32,8 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     moduleCapture: '',
     duration: '',
     units: '',
+    index: 0,
+    modulesTotal: 0,
   })
 
   useEffect(() => {
@@ -48,13 +50,21 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
         courseCapture,
         capture: moduleCapture,
         duration,
+        index,
+        modulesTotal,
       } = getModuleByContentID(courses, 'ytID', contentID)
 
       const durationObj: IDurationObj = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
-      setModuleState({ courseCapture, moduleCapture, ...durationObj })
+      setModuleState({
+        courseCapture,
+        moduleCapture,
+        index,
+        modulesTotal,
+        ...durationObj,
+      })
     }
   }, [courses])
 
@@ -70,7 +80,14 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     height,
   })
 
-  const { courseCapture, moduleCapture, duration, units } = moduleState
+  const {
+    courseCapture,
+    moduleCapture,
+    duration,
+    units,
+    index,
+    modulesTotal,
+  } = moduleState
 
   const buttonMdMenuProps = {
     icon: 'MdMenu',
@@ -91,6 +108,8 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
     screenType: 'PlayAndSubscribe',
     durationObj: moduleState,
     isActionButtonDisplaying: false,
+    index,
+    modulesTotal,
   }
 
   const carouselQuestionsProps = {
