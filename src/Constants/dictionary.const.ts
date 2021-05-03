@@ -3,6 +3,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  difficulty: {
+    en: 'difficulty',
+    ru: 'сложность',
+  },
   succeded: {
     en: 'succeded',
     ru: 'прошли',

@@ -19,7 +19,11 @@ export const getModuleByContentID: Function = (
       module => module[nameContentID] === contentID
     )
 
-    if (moduleFound) module = { ...moduleFound, courseCapture, modulesTotal }
+    if (moduleFound) {
+      const { questions } = moduleFound
+      const questionsTotal = questions.length
+      module = { ...moduleFound, courseCapture, modulesTotal, questionsTotal }
+    }
   })
   return module
 }

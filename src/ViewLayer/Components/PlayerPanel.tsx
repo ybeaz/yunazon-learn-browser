@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -17,8 +18,9 @@ interface IPlayerPanelInput {
   buttonPauseProps: any
   buttonStopProps: any
   isActionButtonDisplaying: boolean
-  index: number
+  muduleIndex: number
   modulesTotal: number
+  questionsTotal: number
 }
 
 export const PlayerPanel: React.FunctionComponent<any> = (
@@ -34,14 +36,16 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     buttonPauseProps = {},
     buttonStopProps = {},
     isActionButtonDisplaying: isDisplaying,
-    index,
+    muduleIndex,
     modulesTotal,
+    questionsTotal,
   } = props
 
   const { language } = useSelector((store: IRootStore) => store)
   const certificate = DICTIONARY.certificate[language]
   const succeded = DICTIONARY.succeded[language]
   const tried = DICTIONARY.tried[language]
+  const difficulty = DICTIONARY.difficulty[language]
 
   const callForActionButtonPros = {
     captureLeft: `${duration} ${units} `,
@@ -58,6 +62,21 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     tooltipPosition: 'top',
   }
 
+  const numOfBars = 5
+  const maxComplexity = 10
+  const questinsAccepted =
+    questionsTotal <= maxComplexity ? questionsTotal : maxComplexity
+  const curComplexity = (questinsAccepted * numOfBars) / maxComplexity
+
+  const featureBarProps = {
+    number: curComplexity,
+    total: numOfBars,
+    iconMain: 'BsSquareFill',
+    iconHalf: 'BsSquareHalf',
+    iconRest: 'BsSquare',
+    tooltipText: difficulty,
+    tooltipPosition: 'bottom',
+  }
   const capture =
     screenType === 'PlayAndSubscribe' && modulesTotal > 1
       ? `${courseCapture} ${moduleCapture}`
@@ -71,7 +90,9 @@ export const PlayerPanel: React.FunctionComponent<any> = (
           <div className='_successTried'>
             <SuccessTried {...successTriedProps} />
           </div>
-          {/* <div className='_difficulty'>***</div> */}
+          <div className='_difficulty'>
+            <FeatureBar {...featureBarProps} />
+          </div>
         </div>
       </div>
       <div className='__buttons'>
