@@ -19,6 +19,11 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    TOGGLE_MEDIA_LOADED: () => {
+      const { mediaKey, isMediaLoaded } = data
+      dispatch(action.TOGGLE_MEDIA_LOADED({ mediaKey, isMediaLoaded }))
+    },
+
     TOGGLE_START_COURSE: () => {
       dispatch(action.TOGGLE_START_COURSE(data))
     },

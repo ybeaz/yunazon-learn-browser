@@ -1,12 +1,20 @@
 import { getMsToTime } from './getMsToTime'
 
+interface IGetMultipliedTimeStr {
+  duration: string | null
+  units: string
+}
+
 /**
  * @description Function to multiply time and convert it back to string
  * @param str
  * @param multiplier
  * @returns
  */
-export const getMultipliedTimeStr = (str, multiplier) => {
+export const getMultipliedTimeStr: Function = (
+  str: string,
+  multiplier: number
+): IGetMultipliedTimeStr => {
   const timeArr = str.split(':').map(item => parseInt(item, 10))
   let duration = ''
   let time = 0

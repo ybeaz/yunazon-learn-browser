@@ -15,14 +15,14 @@ import { PresentAndSubscribe } from './ViewLayer/Screens/PresentAndSubscribe'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
-export const RouterScreensConfig: React.FunctionComponent<any> = () => {
-  const PAGES = {
-    MatrixHome,
-    Certificate,
-    PresentAndSubscribe,
-    Error404,
-  }
+const PAGES = {
+  MatrixHome,
+  Certificate,
+  PresentAndSubscribe,
+  Error404,
+}
 
+export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {

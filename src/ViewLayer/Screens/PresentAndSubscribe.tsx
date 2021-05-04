@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
+import { getContentComponentName } from '../../Shared/getContentComponentName'
+import { Reader } from '../Components/Reader'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getModuleByContentID } from '../../Shared/getModuleByContentID'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
@@ -16,6 +18,11 @@ import { MainFrame } from '../Frames/MainFrame'
 import { Player } from '../Components/Player'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
+const COMPONENT = {
+  Reader,
+  Player,
+}
+
 export const PresentAndSubscribe: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
@@ -28,6 +35,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   } = store
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
+    ContentComponent: null,
+    contentComponentName: '',
     courseCapture: '',
     moduleCapture: '',
     duration: '',
@@ -50,6 +59,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
       const {
         courseCapture,
         capture: moduleCapture,
+        contentType,
         duration,
         index: muduleIndex,
         modulesTotal,
@@ -60,7 +70,15 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         duration,
         durationMultiplier
       )
+
+      const contentComponentName = getContentComponentName(contentType)
+
+      // I stopped here
+      // const contentComponentName = 'Reader' // getContentComponentName(contentType)
+
       setModuleState({
+        ContentComponent: COMPONENT[contentComponentName],
+        contentComponentName,
         courseCapture,
         moduleCapture,
         muduleIndex,
@@ -78,12 +96,14 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     stopVideoHandler,
     isShowingPlay,
   } = getYouTubePlayerWorkHook({
-    videoId: contentID,
+    contentID,
     width,
     height,
   })
 
   const {
+    ContentComponent,
+    contentComponentName,
     courseCapture,
     moduleCapture,
     duration,
@@ -93,28 +113,34 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     questionsTotal,
   } = moduleState
 
+  const contentComponentProps = {
+    Reader: {
+      href: 'http://arbir.ru/articles/a_3360.htm?1',
+      durationObj: { duration: '10:30', units: 'min' },
+    },
+    Player: {
+      courseCapture,
+      moduleCapture,
+      contentID,
+      playVideoHandler,
+      pauseVideoHandler,
+      stopVideoHandler,
+      isShowingPlay,
+      screenType: 'PresentAndSubscribe',
+      durationObj: moduleState,
+      isActionButtonDisplaying: false,
+      muduleIndex,
+      modulesTotal,
+      questionsTotal,
+    },
+  }
+
   const buttonMdMenuProps = {
     icon: 'MdMenu',
     classAdded: 'Button_MdMenu',
     action: {
       typeEvent: 'TOGGLE_SIDE_NAVIGATION',
     },
-  }
-
-  const playerProps = {
-    courseCapture,
-    moduleCapture,
-    videoId: contentID,
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-    screenType: 'PlayAndSubscribe',
-    durationObj: moduleState,
-    isActionButtonDisplaying: false,
-    muduleIndex,
-    modulesTotal,
-    questionsTotal,
   }
 
   const carouselQuestionsProps = {
@@ -129,7 +155,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         <>
           <MainFrame>
             {null}
-            <Player {...playerProps} />
+            <ContentComponent
+              {...contentComponentProps[contentComponentName]}
+            />
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
 

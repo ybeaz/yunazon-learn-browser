@@ -38,13 +38,13 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     stopVideoHandler,
     isShowingPlay,
   } = getYouTubePlayerWorkHook({
-    videoId: contentID,
+    contentID,
     width,
     height,
   })
 
   const playerProps = {
-    videoId: contentID,
+    contentID,
     courseCapture,
     moduleCapture,
     durationObj,

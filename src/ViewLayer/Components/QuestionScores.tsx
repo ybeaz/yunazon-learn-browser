@@ -39,7 +39,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result: r } = score
   let result = 'success'
-  const { moduleID, contentID: videoId } = moduleActive
+  const { moduleID, contentID } = moduleActive
 
   useEffect(() => {
     stopVideoHandler({}, {})
@@ -127,7 +127,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
             description,
             courseID,
             moduleID,
-            contentID: videoId,
+            contentID,
           },
         },
       },

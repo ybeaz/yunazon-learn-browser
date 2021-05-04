@@ -10,7 +10,7 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 interface IPlayerComponentInput {
   courseCapture: string
   moduleCapture: string
-  videoId: string
+  contentID: string
   captureCourse: string
   durationObj: IDurationObj
   playVideoHandler: Function
@@ -30,7 +30,7 @@ export const Player: React.FunctionComponent<any> = (
   const {
     courseCapture,
     moduleCapture,
-    videoId,
+    contentID,
     captureCourse,
     durationObj,
     playVideoHandler,
@@ -49,15 +49,7 @@ export const Player: React.FunctionComponent<any> = (
     isLoaded: { mediaLoading },
   } = store
 
-  const isVisible = mediaLoading[videoId]
-
-  // const [isVisible, setIsVisible] = useState(false)
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsVisible(true)
-  //   }, 3000)
-  // }, [])
+  const isVisible = mediaLoading[contentID]
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
@@ -98,7 +90,7 @@ export const Player: React.FunctionComponent<any> = (
   return (
     <div className='Player'>
       <div className={`__wrapper video-responsive ${videoVisibleClass}`}>
-        <div className='_player' id={videoId}></div>
+        <div className='_player' id={contentID}></div>
         <div className={`_blurhash ${blurHashClass} _pulse`}>
           <Blurhash
             hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'

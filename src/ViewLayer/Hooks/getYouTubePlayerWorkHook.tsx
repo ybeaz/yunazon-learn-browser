@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as action from '../../DataLayer/index.action'
 
 interface IGetYouTubePlayerWorkHookInput {
-  videoId: string
+  contentID: string
   height: string
   width: string
 }
@@ -18,7 +18,7 @@ interface IGetYouTubePlayerWorkHook {
 }
 
 export const getYouTubePlayerWorkHook = ({
-  videoId,
+  contentID,
   height,
   width,
 }: IGetYouTubePlayerWorkHookInput): IGetYouTubePlayerWorkHook => {
@@ -52,7 +52,7 @@ export const getYouTubePlayerWorkHook = ({
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
     dispatch(
-      action.TOGGLE_MEDIA_LOADED({ mediaKey: videoId, isMediaLoaded: true })
+      action.TOGGLE_MEDIA_LOADED({ mediaKey: contentID, isMediaLoaded: true })
     )
   }
 
@@ -65,10 +65,10 @@ export const getYouTubePlayerWorkHook = ({
 
   async function onYouTubeIframeAPIReady() {
     try {
-      const Player = await new window['YT'].Player(videoId, {
+      const Player = await new window['YT'].Player(contentID, {
         height,
         width,
-        videoId,
+        videoId: contentID,
         title: 'YouTube video player',
         frameBorder: '0',
         allow:
