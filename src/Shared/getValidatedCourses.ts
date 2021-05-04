@@ -57,12 +57,15 @@ const errorModules = ({
 
   isFound = modules.find(
     (module: any) =>
-      !module.ytID ||
-      module.ytID === '' ||
-      module.ytID.length !== 11 ||
-      typeof module.ytID !== 'string'
+      module.contentType === undefined || typeof module.contentType !== 'string'
   )
-  if (isFound) errors = [...errors, 'module-no-ytID-or-type-error']
+  if (isFound) errors = [...errors, 'module-no-contentType-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
+      module.contentID === undefined || typeof module.contentID !== 'string'
+  )
+  if (isFound) errors = [...errors, 'module-no-index-or-type-error']
 
   isFound = modules.find(
     (module: any) =>

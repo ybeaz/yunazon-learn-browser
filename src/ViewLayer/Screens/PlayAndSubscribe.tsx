@@ -54,7 +54,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
         index: muduleIndex,
         modulesTotal,
         questionsTotal,
-      } = getModuleByContentID(courses, 'ytID', contentID)
+      } = getModuleByContentID(courses, 'contentID', contentID)
 
       const durationObj: IDurationObj = getMultipliedTimeStr(
         duration,

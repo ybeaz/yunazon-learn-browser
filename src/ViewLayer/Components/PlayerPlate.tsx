@@ -14,7 +14,7 @@ interface IPlayerPlateInput {
   moduleCapture: string
   durationObj: IDurationObj
   moduleID: string
-  ytID: string
+  contentID: string
   screenType: string
 }
 
@@ -27,7 +27,7 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     moduleCapture,
     durationObj,
     moduleID,
-    ytID,
+    contentID,
     screenType,
   } = props
 
@@ -38,13 +38,13 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     stopVideoHandler,
     isShowingPlay,
   } = getYouTubePlayerWorkHook({
-    videoId: ytID,
+    videoId: contentID,
     width,
     height,
   })
 
   const playerProps = {
-    videoId: ytID,
+    videoId: contentID,
     courseCapture,
     moduleCapture,
     durationObj,
@@ -61,12 +61,12 @@ export const PlayerPlate: React.FunctionComponent<any> = (
       <Link
         className='__shield'
         to={{
-          pathname: `/c/${ytID}`,
+          pathname: `/c/${contentID}`,
         }}
         onClick={event =>
           handleEvents(
             event,
-            action.SELECT_COURSE_MODULE({ courseID, moduleID, ytID })
+            action.SELECT_COURSE_MODULE({ courseID, moduleID, contentID })
           )
         }
       />

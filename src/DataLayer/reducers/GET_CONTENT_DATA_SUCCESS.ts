@@ -12,8 +12,8 @@ export const GET_CONTENT_DATA_SUCCESS: Function = (
   data.forEach(course => {
     const { modules } = course
     modules.forEach(module => {
-      const { ytID } = module
-      const dataToMediaLoaded = { mediaKey: ytID, isMediaLoaded: false }
+      const { contentID: mediaKey } = module
+      const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
       storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)
     })
   })

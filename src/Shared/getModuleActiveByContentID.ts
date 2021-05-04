@@ -12,8 +12,8 @@ export const getModuleActiveByContentID: Function = (
     let active = false
     const { modules } = course
     const modulesNext = modules.map(module => {
-      const { ytID } = module
-      if (ytID === contentID) {
+      const { contentID: contentIdModule } = module
+      if (contentIdModule === contentID) {
         active = true
         return { ...module, active }
       }
