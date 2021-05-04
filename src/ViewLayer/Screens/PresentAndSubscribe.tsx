@@ -115,7 +115,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
   const contentComponentProps = {
     Reader: {
-      href: 'http://arbir.ru/articles/a_3360.htm?1',
+      contentID: 'http://arbir.ru/articles/a_3360.htm?1',
       durationObj: { duration: '10:30', units: 'min' },
     },
     Player: {
