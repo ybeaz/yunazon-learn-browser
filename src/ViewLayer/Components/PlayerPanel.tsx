@@ -78,7 +78,7 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     tooltipPosition: 'bottom',
   }
   const capture =
-    screenType === 'PlayAndSubscribe' && modulesTotal > 1
+    screenType === 'PresentAndSubscribe' && modulesTotal > 1
       ? `${courseCapture} ${moduleCapture}`
       : `${courseCapture}`
 

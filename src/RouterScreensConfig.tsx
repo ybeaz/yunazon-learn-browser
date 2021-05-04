@@ -11,7 +11,7 @@ import {
 import { IRootStore } from './Interfaces/IRootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
-import { PlayAndSubscribe } from './ViewLayer/Screens/PlayAndSubscribe'
+import { PresentAndSubscribe } from './ViewLayer/Screens/PresentAndSubscribe'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
@@ -19,7 +19,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const PAGES = {
     MatrixHome,
     Certificate,
-    PlayAndSubscribe,
+    PresentAndSubscribe,
     Error404,
   }
 
@@ -73,7 +73,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         {
           path: `/c/:contentID`,
           strict: true,
-          page: 'PlayAndSubscribe',
+          page: 'PresentAndSubscribe',
         },
         {
           path: `/home`,

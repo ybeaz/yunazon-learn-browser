@@ -16,7 +16,7 @@ import { MainFrame } from '../Frames/MainFrame'
 import { Player } from '../Components/Player'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
-export const PlayAndSubscribe: React.FunctionComponent<any> = (
+export const PresentAndSubscribe: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const contentID = props?.routeProps.match.params.contentID
@@ -124,7 +124,7 @@ export const PlayAndSubscribe: React.FunctionComponent<any> = (
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 
   return (
-    <div className='PlayAndSubscribe'>
+    <div className='PresentAndSubscribe'>
       {isLoaded === true ? (
         <>
           <MainFrame>
