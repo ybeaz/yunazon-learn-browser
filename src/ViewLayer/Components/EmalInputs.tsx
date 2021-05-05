@@ -20,7 +20,7 @@ export const EmalInputs: React.FunctionComponent<any> = (
   } = store
 
   const inputEmailToProps = {
-    classAdded: 'Input_emailTo',
+    classAdded: 'Input_email',
     type: 'text',
     placeholder: 'email...',
     typeEvent: 'ONCHANGE_EMAIL_TO',
@@ -28,7 +28,7 @@ export const EmalInputs: React.FunctionComponent<any> = (
   }
 
   const inputEmailCcProps = {
-    classAdded: 'Input_emailTo',
+    classAdded: 'Input_email',
     type: 'text',
     placeholder: 'email cc...',
     typeEvent: 'ONCHANGE_EMAIL_CC',
@@ -48,11 +48,11 @@ export const EmalInputs: React.FunctionComponent<any> = (
     <div className='EmalInputs'>
       <form className='_form'>
         <div className='_group'>
-          <label className='_label'>Email to send document</label>
+          <label className='_label'>Email to send document*</label>
           <Input {...inputEmailToProps} />
         </div>
         <div className='_group'>
-          <label className='_label'>CC email</label>
+          <label className='_label'>Email CC</label>
           <Input {...inputEmailCcProps} />
         </div>
         <div className='_buttons'>

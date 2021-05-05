@@ -12,7 +12,7 @@ export const rootStoreDefault = {
   },
   componentsState: {
     questionsSlideNumber: 0,
-    isModalFrameVisible: false,
+    isModalFrameVisible: true,
     isSideNavVisible: false,
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,

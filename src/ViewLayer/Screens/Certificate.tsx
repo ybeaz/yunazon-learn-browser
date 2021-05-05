@@ -26,7 +26,6 @@ export const Certificate: React.FunctionComponent<any> = (
   } = props
 
   let history = useHistory()
-  const dispatch = useDispatch()
   const store = useSelector((store: IRootStore) => store)
   const { documents, language } = store
 
