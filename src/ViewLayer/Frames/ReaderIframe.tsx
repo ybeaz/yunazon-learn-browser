@@ -22,6 +22,8 @@ export const ReaderIframe: React.FunctionComponent<any> = (
         <iframe
           className='_reader'
           src={`${contentID}`}
+          width='640'
+          height='340'
           onLoad={event =>
             handleEvents(event, {
               typeEvent: 'TOGGLE_MEDIA_LOADED',

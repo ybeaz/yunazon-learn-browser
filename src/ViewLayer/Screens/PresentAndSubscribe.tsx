@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
-import { ReaderIframe } from '../Components/ReaderIframe'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
@@ -17,7 +16,8 @@ import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { MainFrame } from '../Frames/MainFrame'
-import { PlayerIframe } from '../Components/PlayerIframe'
+import { ReaderIframe } from '../Frames/ReaderIframe'
+import { PlayerIframe } from '../Frames/PlayerIframe'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
 const COMPONENT = {
@@ -40,7 +40,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
-    ContentComponent: null,
+    CONTENT_ASSIGNED_COMPONENT: null,
     contentComponentName: '',
     courseCapture: '',
     moduleCapture: '',
@@ -82,7 +82,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
       const contentComponentName = getContentComponentName(contentType)
 
       setModuleState({
-        ContentComponent: COMPONENT[contentComponentName],
+        CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName],
         contentComponentName,
         courseCapture,
         moduleCapture,
@@ -96,7 +96,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   }, [courses])
 
   const {
-    ContentComponent,
+    CONTENT_ASSIGNED_COMPONENT,
     contentComponentName,
     courseCapture,
     moduleCapture,
@@ -178,10 +178,12 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         <>
           <MainFrame>
             {null}
-            <ContentComponent {...contentComponentProps[contentComponentName]}>
+            <CONTENT_ASSIGNED_COMPONENT
+              {...contentComponentProps[contentComponentName]}
+            >
               <LoaderBlurhash isVisible={isVisible} />
               <PlayerPanel {...playerPanelProps} />
-            </ContentComponent>
+            </CONTENT_ASSIGNED_COMPONENT>
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
 

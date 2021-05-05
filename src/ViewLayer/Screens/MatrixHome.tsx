@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { SearchGroup } from '../Components/SearchGroup'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { MainFrame } from '../Frames/MainFrame'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { PlayerPlate } from '../Components/PlayerPlate'
+import { ContentPlate } from '../Components/ContentPlate'
 
 export const MatrixHome: React.FunctionComponent<any> = (
   props: IRouterScreenProps
@@ -26,17 +27,20 @@ export const MatrixHome: React.FunctionComponent<any> = (
       const {
         moduleID,
         capture: moduleCapture,
+        contentType,
         contentID,
         duration,
       } = modules[0]
       const screenType = 'MatrixHome'
       const isShowingPlay = false
+      const contentComponentName = getContentComponentName(contentType)
 
       const durationObj: IDurationObj = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
-      const playerPlateProps = {
+      const contentPlateProps = {
+        contentComponentName,
         courseID,
         courseCapture,
         moduleCapture,
@@ -46,7 +50,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
         isShowingPlay,
         screenType,
       }
-      return <PlayerPlate {...playerPlateProps} />
+      return <ContentPlate {...contentPlateProps} />
     })
     return <div className='MatrixHome__plates'>{plates}</div>
   }

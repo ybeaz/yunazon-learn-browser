@@ -8,11 +8,18 @@ import { LoaderBlurhash } from './LoaderBlurhash'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
-import { PlayerIframe } from '../Components/PlayerIframe'
+import { ReaderIframe } from '../Frames/ReaderIframe'
+import { PlayerIframe } from '../Frames/PlayerIframe'
 import * as action from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 
-interface IPlayerPlateInput {
+const COMPONENT = {
+  ReaderIframe,
+  PlayerIframe,
+}
+
+interface IContentPlateInput {
+  contentComponentName: string
   courseID: string
   courseCapture: string
   moduleCapture: string
@@ -22,10 +29,11 @@ interface IPlayerPlateInput {
   screenType: string
 }
 
-export const PlayerPlate: React.FunctionComponent<any> = (
-  props: IPlayerPlateInput
+export const ContentPlate: React.FunctionComponent<any> = (
+  props: IContentPlateInput
 ): JSX.Element => {
   const {
+    contentComponentName,
     courseID,
     courseCapture,
     moduleCapture,
@@ -42,38 +50,43 @@ export const PlayerPlate: React.FunctionComponent<any> = (
   const isVisible = mediaLoading[contentID]
 
   const { width, height } = VIDEO_RESOLUTION
-  const {
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-  } = getYouTubePlayerWorkHook({
-    contentComponentName: 'PlayerIframe',
+  const { isShowingPlay } = getYouTubePlayerWorkHook({
+    contentComponentName: 'PlayerIframe', // Stopped here
     contentID,
     width,
     height,
   })
 
-  const playerProps = {
-    contentID,
-    isVisible,
+  const contentComponentProps = {
+    ReaderIframe: {
+      contentID,
+      isVisible,
+    },
+    PlayerIframe: {
+      contentID,
+      isVisible,
+    },
   }
 
   const playerPanelProps = {
     courseCapture,
     moduleCapture,
     durationObj,
-    screenType: 'MatrixHome',
+    screenType,
     isShowingPlay,
     isActionButtonDisplaying: true,
   }
 
+  const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]
+
   return (
-    <div className={`PlayerPlate`} key={courseID}>
-      <PlayerIframe {...playerProps}>
+    <div className={`ContentPlate`} key={courseID}>
+      <CONTENT_ASSIGNED_COMPONENT
+        {...contentComponentProps[contentComponentName]}
+      >
         <LoaderBlurhash isVisible={isVisible} />
         <PlayerPanel {...playerPanelProps} />
-      </PlayerIframe>
+      </CONTENT_ASSIGNED_COMPONENT>
       <Link
         className='__shield'
         to={{

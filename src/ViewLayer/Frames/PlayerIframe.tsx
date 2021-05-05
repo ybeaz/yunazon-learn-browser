@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Blurhash } from 'react-blurhash'
 
-import { LoaderBlurhash } from './LoaderBlurhash'
+import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
@@ -23,7 +23,7 @@ export const PlayerIframe: React.FunctionComponent<any> = (
 
   return (
     <div className='PlayerIframe'>
-      <div className={`__wrapper video-responsive ${isVisibleClass}`}>
+      <div className={`__wrapper ${isVisibleClass}`}>
         <div className='_player' id={contentID}></div>
         {props.children[0]}
       </div>
