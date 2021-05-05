@@ -6,7 +6,6 @@ import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { ReaderIframe } from '../Components/ReaderIframe'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
-import { getModuleByContentID } from '../../Shared/getModuleByContentID'
 import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
@@ -127,7 +126,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   const contentComponentProps = {
     ReaderIframe: {
       contentID,
-      durationObj: { duration: '10:30', units: 'min' },
+      isVisible,
     },
     PlayerIframe: {
       contentID,

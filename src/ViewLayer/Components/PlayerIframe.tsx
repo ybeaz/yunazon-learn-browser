@@ -19,11 +19,11 @@ export const PlayerIframe: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const { contentID, isVisible } = props
 
-  let videoVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
+  let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
 
   return (
     <div className='PlayerIframe'>
-      <div className={`__wrapper video-responsive ${videoVisibleClass}`}>
+      <div className={`__wrapper video-responsive ${isVisibleClass}`}>
         <div className='_player' id={contentID}></div>
         {props.children[0]}
       </div>

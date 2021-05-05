@@ -5,19 +5,33 @@ import { handleEvents } from '../Hooks/handleEvents'
 
 interface IReaderInput {
   contentID: string
-  durationObj: any
+  isVisible: boolean
+  children: React.ReactChildren
 }
 
 export const ReaderIframe: React.FunctionComponent<any> = (
   props: IReaderInput
 ): JSX.Element => {
-  const { contentID } = props
+  const { contentID, isVisible } = props
+
+  let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
 
   return (
     <div className='ReaderIframe'>
-      <div className='__wrapper'>
-        <iframe className='_reader' src={`${contentID}`}></iframe>
+      <div className={`__wrapper ${isVisibleClass}`}>
+        <iframe
+          className='_reader'
+          src={`${contentID}`}
+          onLoad={event =>
+            handleEvents(event, {
+              typeEvent: 'TOGGLE_MEDIA_LOADED',
+              data: { mediaKey: contentID, isMediaLoaded: true },
+            })
+          }
+        ></iframe>
+        {props.children[0]}
       </div>
+      <div className='__panel'>{props.children[1]}</div>
     </div>
   )
 }
