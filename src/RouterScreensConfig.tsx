@@ -71,7 +71,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           page: 'Certificate',
         },
         {
-          path: `/c/:contentID`,
+          path: `/c/:courseID`,
           strict: true,
           page: 'PresentAndSubscribe',
         },

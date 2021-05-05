@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 import { getContentComponentName } from '../../Shared/getContentComponentName'
-import { Reader } from '../Components/Reader'
+import { ReaderIframe } from '../Components/ReaderIframe'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getModuleByContentID } from '../../Shared/getModuleByContentID'
+import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
@@ -15,33 +16,35 @@ import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { MainFrame } from '../Frames/MainFrame'
-import { Player } from '../Components/Player'
+import { PlayerIframe } from '../Components/PlayerIframe'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 
 const COMPONENT = {
-  Reader,
-  Player,
+  ReaderIframe,
+  PlayerIframe,
 }
 
 export const PresentAndSubscribe: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
-  const contentID = props?.routeProps.match.params.contentID
+  const courseID = props?.routeProps.match.params.courseID
+
   const store = useSelector((store: IRootStore) => store)
   const {
     globalVars: { durationMultiplier },
     courses,
     componentsState: { isModalFrameVisible },
   } = store
+
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
     ContentComponent: null,
     contentComponentName: '',
     courseCapture: '',
     moduleCapture: '',
-    duration: '',
-    units: '',
-    muduleIndex: 0,
+    contentID: '',
+    durationObj: {},
+    moduleIndex: 0,
     modulesTotal: 0,
     questionsTotal: 0,
   })
@@ -50,9 +53,11 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     if (courses.length && isLoaded === false) {
       handleEvents({}, { type: 'TOGGLE_START_COURSE', data: false })
 
+      const index = 0
+
       handleEvents(
         {},
-        { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { contentID } }
+        { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { courseID, index } }
       )
       setIsLoaded(true)
 
@@ -60,11 +65,12 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         courseCapture,
         capture: moduleCapture,
         contentType,
+        contentID,
         duration,
-        index: muduleIndex,
+        index: moduleIndex,
         modulesTotal,
         questionsTotal,
-      } = getModuleByContentID(courses, 'contentID', contentID)
+      } = getModuleByCourseIDIndex({ courses, courseID, index })
 
       const durationObj: IDurationObj = getMultipliedTimeStr(
         duration,
@@ -73,52 +79,52 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
       const contentComponentName = getContentComponentName(contentType)
 
-      // I stopped here
-      // const contentComponentName = 'Reader' // getContentComponentName(contentType)
-
       setModuleState({
         ContentComponent: COMPONENT[contentComponentName],
         contentComponentName,
         courseCapture,
         moduleCapture,
-        muduleIndex,
+        contentID,
+        moduleIndex,
         modulesTotal,
         questionsTotal,
-        ...durationObj,
+        durationObj,
       })
     }
   }, [courses])
-
-  const { width, height } = VIDEO_RESOLUTION
-  const {
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-  } = getYouTubePlayerWorkHook({
-    contentID,
-    width,
-    height,
-  })
 
   const {
     ContentComponent,
     contentComponentName,
     courseCapture,
     moduleCapture,
-    duration,
-    units,
-    muduleIndex,
+    contentID,
+    durationObj,
+    moduleIndex,
     modulesTotal,
     questionsTotal,
   } = moduleState
 
+  const { width, height } = VIDEO_RESOLUTION
+  const {
+    onPlayerReady,
+    playVideoHandler,
+    pauseVideoHandler,
+    stopVideoHandler,
+    isShowingPlay,
+  } = getYouTubePlayerWorkHook({
+    contentComponentName,
+    contentID,
+    width,
+    height,
+  })
+
   const contentComponentProps = {
-    Reader: {
-      contentID: 'http://arbir.ru/articles/a_3360.htm?1',
+    ReaderIframe: {
+      contentID,
       durationObj: { duration: '10:30', units: 'min' },
     },
-    Player: {
+    PlayerIframe: {
       courseCapture,
       moduleCapture,
       contentID,
@@ -127,9 +133,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
       stopVideoHandler,
       isShowingPlay,
       screenType: 'PresentAndSubscribe',
-      durationObj: moduleState,
+      durationObj,
       isActionButtonDisplaying: false,
-      muduleIndex,
+      moduleIndex,
       modulesTotal,
       questionsTotal,
     },
@@ -143,9 +149,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     },
   }
 
-  const carouselQuestionsProps = {
-    durationObj: { duration, units },
-  }
+  const carouselQuestionsProps = { durationObj }
 
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 

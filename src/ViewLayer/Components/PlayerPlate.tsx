@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
-import { Player } from '../Components/Player'
+import { PlayerIframe } from '../Components/PlayerIframe'
 import * as action from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 
@@ -38,6 +38,7 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     stopVideoHandler,
     isShowingPlay,
   } = getYouTubePlayerWorkHook({
+    contentComponentName: 'PlayerIframe',
     contentID,
     width,
     height,
@@ -57,11 +58,11 @@ export const PlayerPlate: React.FunctionComponent<any> = (
 
   return (
     <div className={`PlayerPlate`} key={courseID}>
-      <Player {...playerProps} />
+      <PlayerIframe {...playerProps} />
       <Link
         className='__shield'
         to={{
-          pathname: `/c/${contentID}`,
+          pathname: `/c/${courseID}`,
         }}
         onClick={event =>
           handleEvents(

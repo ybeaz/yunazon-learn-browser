@@ -7,8 +7,9 @@ export const getContentComponentName: Function = (
   componentType: string
 ): string => {
   const output = {
-    htmlPage: 'Reader',
-    ytID: 'Player',
+    urlArbir: 'ReaderIframe',
+    htmlPage: 'ReaderIframe',
+    ytID: 'PlayerIframe',
   }
 
   return output[componentType] ? output[componentType] : null

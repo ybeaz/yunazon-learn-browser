@@ -42,7 +42,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
   const { moduleID, contentID } = moduleActive
 
   useEffect(() => {
-    stopVideoHandler({}, {})
+    stopVideoHandler && stopVideoHandler({}, {})
   }, [])
 
   useEffect(() => {

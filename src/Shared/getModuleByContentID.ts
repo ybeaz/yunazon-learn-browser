@@ -7,13 +7,13 @@
  */
 export const getModuleByContentID: Function = (
   courses: any[],
-  nameContentID: string,
+  nameContentID: string = 'contentID',
   contentID: string
 ): any => {
   let module = {}
 
   courses.forEach(course => {
-    const { capture: courseCapture, modules } = course
+    const { courseID, capture: courseCapture, modules } = course
     const modulesTotal = modules.length
     const moduleFound = modules.find(
       module => module[nameContentID] === contentID
@@ -22,7 +22,13 @@ export const getModuleByContentID: Function = (
     if (moduleFound) {
       const { questions } = moduleFound
       const questionsTotal = questions.length
-      module = { ...moduleFound, courseCapture, modulesTotal, questionsTotal }
+      module = {
+        ...moduleFound,
+        courseID,
+        courseCapture,
+        modulesTotal,
+        questionsTotal,
+      }
     }
   })
   return module

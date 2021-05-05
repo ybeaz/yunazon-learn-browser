@@ -18,7 +18,7 @@ interface IPlayerPanelInput {
   buttonPauseProps: any
   buttonStopProps: any
   isActionButtonDisplaying: boolean
-  muduleIndex: number
+  moduleIndex: number
   modulesTotal: number
   questionsTotal: number
 }
@@ -36,7 +36,7 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     buttonPauseProps = {},
     buttonStopProps = {},
     isActionButtonDisplaying: isDisplaying,
-    muduleIndex,
+    moduleIndex,
     modulesTotal,
     questionsTotal,
   } = props

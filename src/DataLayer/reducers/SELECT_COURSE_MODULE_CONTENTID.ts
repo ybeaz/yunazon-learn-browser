@@ -1,14 +1,14 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
-import { getModuleActiveByContentID } from '../../Shared/getModuleActiveByContentID'
+import { getModuleActiveByCourseIDIndex } from '../../Shared/getModuleActiveByCourseIDIndex'
 
 export const SELECT_COURSE_MODULE_CONTENTID: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
-  const { contentID } = data
+  const { courseID, index } = data
   const { courses } = store
   let coursesNext = getProvidedActiveDefault(courses)
-  coursesNext = getModuleActiveByContentID(courses, contentID)
+  coursesNext = getModuleActiveByCourseIDIndex({ courses, courseID, index })
   return { ...store, courses: coursesNext }
 }

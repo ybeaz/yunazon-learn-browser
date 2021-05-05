@@ -8,13 +8,13 @@ interface IReaderInput {
   durationObj: any
 }
 
-export const Reader: React.FunctionComponent<any> = (
+export const ReaderIframe: React.FunctionComponent<any> = (
   props: IReaderInput
 ): JSX.Element => {
   const { contentID } = props
 
   return (
-    <div className='Reader'>
+    <div className='ReaderIframe'>
       <div className='__wrapper'>
         <iframe className='_reader' src={`${contentID}`}></iframe>
       </div>

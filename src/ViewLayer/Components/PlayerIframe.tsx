@@ -19,12 +19,12 @@ interface IPlayerComponentInput {
   screenType: string
   isShowingPlay: boolean
   isActionButtonDisplaying: boolean
-  muduleIndex: number
+  moduleIndex: number
   modulesTotal: number
   questionsTotal: number
 }
 
-export const Player: React.FunctionComponent<any> = (
+export const PlayerIframe: React.FunctionComponent<any> = (
   props: IPlayerComponentInput
 ): JSX.Element => {
   const {
@@ -39,7 +39,7 @@ export const Player: React.FunctionComponent<any> = (
     screenType,
     isShowingPlay,
     isActionButtonDisplaying,
-    muduleIndex,
+    moduleIndex,
     modulesTotal,
     questionsTotal,
   } = props
@@ -79,7 +79,7 @@ export const Player: React.FunctionComponent<any> = (
     buttonPauseProps,
     buttonStopProps,
     isActionButtonDisplaying,
-    muduleIndex,
+    moduleIndex,
     modulesTotal,
     questionsTotal,
   }
@@ -88,7 +88,7 @@ export const Player: React.FunctionComponent<any> = (
   let blurHashClass = !isVisible ? '_blockVisible' : '_blockHided'
 
   return (
-    <div className='Player'>
+    <div className='PlayerIframe'>
       <div className={`__wrapper video-responsive ${videoVisibleClass}`}>
         <div className='_player' id={contentID}></div>
         <div className={`_blurhash ${blurHashClass} _pulse`}>
@@ -112,7 +112,7 @@ export const Player: React.FunctionComponent<any> = (
 
 // const URL = 'https://www.youtube.com/iframe_api'
 // const globalYouTubeVar = 'YT'
-// export const Player = makeAsyncScriptLoader(URL, {
+// export const PlayerIframe = makeAsyncScriptLoader(URL, {
 //   // callbackName: onYouTubeIframeAPIReady,
 //   globalYouTubeVar,
 // })(PlayerComponent)

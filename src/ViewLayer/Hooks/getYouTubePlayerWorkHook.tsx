@@ -4,24 +4,36 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as action from '../../DataLayer/index.action'
 
 interface IGetYouTubePlayerWorkHookInput {
+  contentComponentName: string
   contentID: string
   height: string
   width: string
 }
 
 interface IGetYouTubePlayerWorkHook {
-  onPlayerReady: Function
-  playVideoHandler: Function
-  pauseVideoHandler: Function
-  stopVideoHandler: Function
+  onPlayerReady: Function | undefined
+  playVideoHandler: Function | undefined
+  pauseVideoHandler: Function | undefined
+  stopVideoHandler: Function | undefined
   isShowingPlay: boolean
 }
 
 export const getYouTubePlayerWorkHook = ({
+  contentComponentName,
   contentID,
   height,
   width,
 }: IGetYouTubePlayerWorkHookInput): IGetYouTubePlayerWorkHook => {
+  // if (contentComponentName !== 'PlayerIframe') {
+  //   return {
+  //     onPlayerReady: undefined,
+  //     playVideoHandler: undefined,
+  //     pauseVideoHandler: undefined,
+  //     stopVideoHandler: undefined,
+  //     isShowingPlay: false,
+  //   }
+  // }
+
   const playerDefault = {
     playVideo: () => {},
     pauseVideo: () => {},
@@ -58,51 +70,54 @@ export const getYouTubePlayerWorkHook = ({
 
   const onChangePlayerStateHandler = state => {
     if (state.data === 0) {
-      // console.info('getYouTubePlayerWorkHook [21] Player event on end is captured', { state })
+      // console.info('getYouTubePlayerWorkHook [21] PlayerIframe event on end is captured', { state })
     }
     setPlayerState(state)
   }
 
   async function onYouTubeIframeAPIReady() {
-    try {
-      const Player = await new window['YT'].Player(contentID, {
-        height,
-        width,
-        videoId: contentID,
-        title: 'YouTube video player',
-        frameBorder: '0',
-        allow:
-          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-        allowFullScreen: true,
-        autoplay: 1,
-        autohide: 2,
-        border: 0,
-        wmode: 'opaque',
-        enablejsapi: 1,
-        modestbranding: 1,
-        controls: 1,
-        showinfo: 0,
-        rel: 0,
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onChangePlayerStateHandler,
-        },
-      })
-      setPlayer(Player)
-    } catch (error) {
-      console.error(
-        'getYouTubePlayerWorkHook [68]',
-        error.name + ': ' + error.message
-      )
+    if (contentComponentName === 'PlayerIframe') {
+      try {
+        const Player = await new window['YT'].Player(contentID, {
+          height,
+          width,
+          videoId: contentID,
+          title: 'YouTube video player',
+          frameBorder: '0',
+          allow:
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+          allowFullScreen: true,
+          autoplay: 1,
+          autohide: 2,
+          border: 0,
+          wmode: 'opaque',
+          enablejsapi: 1,
+          modestbranding: 1,
+          controls: 1,
+          showinfo: 0,
+          rel: 0,
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onChangePlayerStateHandler,
+          },
+        })
+        setPlayer(Player)
+      } catch (error) {
+        console.error(
+          'getYouTubePlayerWorkHook [68]',
+          error.name + ': ' + error.message
+        )
+      }
     }
   }
 
   useEffect(() => {
     setTimeout(() => onYouTubeIframeAPIReady(), 1000)
-  }, [])
+  }, [contentID])
 
   useEffect(() => {
-    if (playerState.data === 0) stopVideoHandler({}, {}, player)
+    if (stopVideoHandler && playerState.data === 0)
+      stopVideoHandler({}, {}, player)
   }, [playerState.data])
 
   return {
