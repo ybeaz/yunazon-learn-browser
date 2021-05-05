@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
+import { PlayerPanel } from '../Components/PlayerPanel'
+import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { ReaderIframe } from '../Components/ReaderIframe'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
@@ -34,6 +36,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     globalVars: { durationMultiplier },
     courses,
     componentsState: { isModalFrameVisible },
+    isLoaded: { mediaLoading },
   } = store
 
   const [isLoaded, setIsLoaded] = useState(false)
@@ -105,6 +108,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     questionsTotal,
   } = moduleState
 
+  const isVisible = mediaLoading[contentID]
+
   const { width, height } = VIDEO_RESOLUTION
   const {
     onPlayerReady,
@@ -125,28 +130,43 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
       durationObj: { duration: '10:30', units: 'min' },
     },
     PlayerIframe: {
-      courseCapture,
-      moduleCapture,
       contentID,
-      playVideoHandler,
-      pauseVideoHandler,
-      stopVideoHandler,
-      isShowingPlay,
-      screenType: 'PresentAndSubscribe',
-      durationObj,
-      isActionButtonDisplaying: false,
-      moduleIndex,
-      modulesTotal,
-      questionsTotal,
+      isVisible,
     },
   }
 
-  const buttonMdMenuProps = {
-    icon: 'MdMenu',
-    classAdded: 'Button_MdMenu',
-    action: {
-      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
-    },
+  const buttonPlayProps = {
+    icon: 'MdPlayArrow',
+    classAdded: 'Button_MdPlayArrow',
+    handleEvents: playVideoHandler,
+    action: {},
+  }
+  const buttonPauseProps = {
+    icon: 'MdPause',
+    classAdded: 'Button_MdPause',
+    handleEvents: pauseVideoHandler,
+    action: {},
+  }
+  const buttonStopProps = {
+    icon: 'MdRemoveCircle',
+    classAdded: 'Button_MdRemoveCircle',
+    handleEvents: stopVideoHandler,
+    action: {},
+  }
+
+  const playerPanelProps = {
+    courseCapture,
+    moduleCapture,
+    durationObj,
+    screenType: 'PresentAndSubscribe',
+    isShowingPlay,
+    buttonPlayProps,
+    buttonPauseProps,
+    buttonStopProps,
+    isActionButtonDisplaying: false,
+    moduleIndex,
+    modulesTotal,
+    questionsTotal,
   }
 
   const carouselQuestionsProps = { durationObj }
@@ -159,9 +179,10 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         <>
           <MainFrame>
             {null}
-            <ContentComponent
-              {...contentComponentProps[contentComponentName]}
-            />
+            <ContentComponent {...contentComponentProps[contentComponentName]}>
+              <LoaderBlurhash isVisible={isVisible} />
+              <PlayerPanel {...playerPanelProps} />
+            </ContentComponent>
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
 

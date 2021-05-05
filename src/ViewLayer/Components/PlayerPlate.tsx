@@ -1,6 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
+import { PlayerPanel } from './PlayerPanel'
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { LoaderBlurhash } from './LoaderBlurhash'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
@@ -31,6 +35,12 @@ export const PlayerPlate: React.FunctionComponent<any> = (
     screenType,
   } = props
 
+  const store = useSelector((store: IRootStore) => store)
+  const {
+    isLoaded: { mediaLoading },
+  } = store
+  const isVisible = mediaLoading[contentID]
+
   const { width, height } = VIDEO_RESOLUTION
   const {
     playVideoHandler,
@@ -46,19 +56,24 @@ export const PlayerPlate: React.FunctionComponent<any> = (
 
   const playerProps = {
     contentID,
+    isVisible,
+  }
+
+  const playerPanelProps = {
     courseCapture,
     moduleCapture,
     durationObj,
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    screenType,
+    screenType: 'MatrixHome',
     isShowingPlay,
+    isActionButtonDisplaying: true,
   }
 
   return (
     <div className={`PlayerPlate`} key={courseID}>
-      <PlayerIframe {...playerProps} />
+      <PlayerIframe {...playerProps}>
+        <LoaderBlurhash isVisible={isVisible} />
+        <PlayerPanel {...playerPanelProps} />
+      </PlayerIframe>
       <Link
         className='__shield'
         to={{

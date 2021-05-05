@@ -14,13 +14,13 @@ interface IPlayerPanelInput {
   durationObj: IDurationObj
   screenType: string
   isShowingPlay: boolean
-  buttonPlayProps: any
-  buttonPauseProps: any
-  buttonStopProps: any
+  buttonPlayProps?: any
+  buttonPauseProps?: any
+  buttonStopProps?: any
   isActionButtonDisplaying: boolean
-  moduleIndex: number
-  modulesTotal: number
-  questionsTotal: number
+  moduleIndex?: number
+  modulesTotal?: number
+  questionsTotal?: number
 }
 
 export const PlayerPanel: React.FunctionComponent<any> = (
@@ -36,9 +36,9 @@ export const PlayerPanel: React.FunctionComponent<any> = (
     buttonPauseProps = {},
     buttonStopProps = {},
     isActionButtonDisplaying: isDisplaying,
-    moduleIndex,
-    modulesTotal,
-    questionsTotal,
+    moduleIndex = 0,
+    modulesTotal = 1,
+    questionsTotal = 0,
   } = props
 
   const { language } = useSelector((store: IRootStore) => store)
