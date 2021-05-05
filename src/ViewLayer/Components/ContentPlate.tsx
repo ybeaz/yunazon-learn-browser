@@ -93,10 +93,10 @@ export const ContentPlate: React.FunctionComponent<any> = (
           pathname: `/c/${courseID}`,
         }}
         onClick={event =>
-          handleEvents(
-            event,
-            action.SELECT_COURSE_MODULE({ courseID, moduleID, contentID })
-          )
+          handleEvents(event, {
+            typeEvent: 'SELECT_COURSE_MODULE',
+            data: { courseID, moduleID, contentID },
+          })
         }
       />
     </div>

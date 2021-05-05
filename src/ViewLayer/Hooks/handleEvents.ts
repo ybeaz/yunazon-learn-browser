@@ -163,5 +163,6 @@ export const handleEvents: Function = (event: Event, props: Props): void => {
         typeStore,
         typeEvent,
         type,
+        data,
       })
 }

@@ -93,7 +93,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         durationObj,
       })
     }
-  }, [courses])
+  }, [mediaLoading, courses])
 
   const {
     CONTENT_ASSIGNED_COMPONENT,

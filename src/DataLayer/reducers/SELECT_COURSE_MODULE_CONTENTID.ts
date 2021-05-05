@@ -1,4 +1,5 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
 import { getModuleActiveByCourseIDIndex } from '../../Shared/getModuleActiveByCourseIDIndex'
 
@@ -8,7 +9,19 @@ export const SELECT_COURSE_MODULE_CONTENTID: Function = (
 ): IRootStore => {
   const { courseID, index } = data
   const { courses } = store
+
+  let storeNext: IRootStore = { ...store }
+  courses.forEach(course => {
+    const { modules } = course
+    modules.forEach(module => {
+      const { contentID: mediaKey } = module
+      const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
+      storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)
+    })
+  })
+
   let coursesNext = getProvidedActiveDefault(courses)
   coursesNext = getModuleActiveByCourseIDIndex({ courses, courseID, index })
-  return { ...store, courses: coursesNext }
+  storeNext = { ...storeNext, courses: coursesNext }
+  return storeNext
 }
