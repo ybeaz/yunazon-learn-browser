@@ -5,8 +5,12 @@ import { Button } from '../Components/Button'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 
+interface IMainFrameInput {
+  children: React.ReactChildren
+}
+
 export const MainFrame: React.FunctionComponent<any> = (
-  props: any
+  props: IMainFrameInput
 ): JSX.Element => {
   const buttonMdMenuProps = {
     icon: 'MdMenu',

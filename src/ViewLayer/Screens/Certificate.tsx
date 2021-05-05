@@ -118,7 +118,7 @@ export const Certificate: React.FunctionComponent<any> = (
             </div>
           </div>
         </HeaderFrame>
-        <ModalFrame>
+        <ModalFrame childName={'EmalInputs'}>
           <EmalInputs {...emailInputsProps} />
         </ModalFrame>
       </div>

@@ -54,14 +54,30 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+  }
+}
+
+.ModalFrame_display {
+  display: flex;
+}
+
+@media @phone, @phone-strict {
+  .ModalFrame_EmalInputs {
+    .__content {
+      left: 1rem;
+      max-width: 90%;
+      min-width: 0;
+      margin: 0;
+    }
+  }
+}
+
+@media @phone, @phone-strict {
+  .ModalFrame_QuestionScores {
     .__content {
       top: 1rem;
       max-width: 90%;
       min-width: 0;
     }
   }
-}
-
-.ModalFrame_display {
-  display: flex;
 }

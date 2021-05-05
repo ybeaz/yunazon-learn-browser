@@ -189,7 +189,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
 
-          <ModalFrame>
+          <ModalFrame childName={'QuestionScores'}>
             <QuestionScores {...questionScoresProps} />
           </ModalFrame>
 

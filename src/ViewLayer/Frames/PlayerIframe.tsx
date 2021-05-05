@@ -1,12 +1,4 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Blurhash } from 'react-blurhash'
-
-import { LoaderBlurhash } from '../Components/LoaderBlurhash'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { PlayerPanel } from '../Components/PlayerPanel'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
-// import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 
 interface IPlayerComponentInput {
   contentID: string

@@ -4,8 +4,12 @@ import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 
+interface IHeaderFrameInput {
+  children: React.ReactChildren
+}
+
 export const HeaderFrame: React.FunctionComponent<any> = (
-  props: any
+  props: IHeaderFrameInput
 ): JSX.Element => {
   const buttonMdPersonProps = {
     icon: 'MdPerson',

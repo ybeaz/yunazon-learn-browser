@@ -5,9 +5,16 @@ import { useHistory } from 'react-router-dom'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Button } from '../Components/Button'
 
+interface IModalFrameInput {
+  childName: string
+  children: React.ReactChildren
+}
+
 export const ModalFrame: React.FunctionComponent<any> = (
-  props: any
+  props: IModalFrameInput
 ): JSX.Element => {
+  const { childName } = props
+
   const store = useSelector((store: IRootStore) => store)
   const {
     componentsState: { isModalFrameVisible },
@@ -28,7 +35,10 @@ export const ModalFrame: React.FunctionComponent<any> = (
   const addClass = !isModalFrameVisible ? '' : 'ModalFrame_display'
 
   return (
-    <div id='modalFrame' className={`ModalFrame ${addClass}`}>
+    <div
+      id='modalFrame'
+      className={`ModalFrame ${addClass} ModalFrame_${childName}`}
+    >
       <div className='__content'>
         <span className='_close'>
           <Button {...buttonCloseProps} />
