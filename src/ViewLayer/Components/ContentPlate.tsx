@@ -51,7 +51,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
 
   const { width, height } = VIDEO_RESOLUTION
   const { isShowingPlay } = getYouTubePlayerWorkHook({
-    contentComponentName: 'PlayerIframe', // Stopped here
+    contentComponentName,
     contentID,
     width,
     height,

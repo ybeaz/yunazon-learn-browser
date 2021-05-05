@@ -29,6 +29,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const courseID = props?.routeProps.match.params.courseID
+  const screenType = 'PresentAndSubscribe'
 
   const store = useSelector((store: IRootStore) => store)
   const {
@@ -127,6 +128,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     ReaderIframe: {
       contentID,
       isVisible,
+      screenType,
     },
     PlayerIframe: {
       contentID,
@@ -157,7 +159,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     courseCapture,
     moduleCapture,
     durationObj,
-    screenType: 'PresentAndSubscribe',
+    screenType,
     isShowingPlay,
     buttonPlayProps,
     buttonPauseProps,
