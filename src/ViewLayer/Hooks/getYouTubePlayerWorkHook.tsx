@@ -100,6 +100,8 @@ export const getYouTubePlayerWorkHook = ({
             onReady: onPlayerReady,
             onStateChange: onChangePlayerStateHandler,
           },
+          host: 'https://www.youtube.com',
+          origin: window.location.host,
         })
         setPlayer(Player)
       } catch (error) {
