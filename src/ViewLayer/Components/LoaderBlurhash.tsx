@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Blurhash } from 'react-blurhash'
-
-import { IRootStore } from '../../Interfaces/IRootStore'
 
 export const LoaderBlurhash: React.FunctionComponent<any> = (
   props: any

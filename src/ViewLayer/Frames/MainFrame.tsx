@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
 import { Button } from '../Components/Button'
 import { SideNavigation } from '../Components/SideNavigation'

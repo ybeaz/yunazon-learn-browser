@@ -2,8 +2,6 @@ import React from 'react'
 
 import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
-import { Button } from '../Components/Button'
-
 interface IHeaderFrameInput {
   children: React.ReactChildren
 }

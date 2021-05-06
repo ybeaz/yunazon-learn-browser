@@ -10,7 +10,6 @@ import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { ReaderIframe } from '../Frames/ReaderIframe'
 import { PlayerIframe } from '../Frames/PlayerIframe'
-import * as action from '../../DataLayer/index.action'
 import { handleEvents } from '../Hooks/handleEvents'
 
 const COMPONENT = {

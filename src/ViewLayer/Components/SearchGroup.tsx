@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
 import { Input } from './Input'
 import { Button } from './Button'
