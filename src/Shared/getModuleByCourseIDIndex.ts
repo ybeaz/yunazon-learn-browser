@@ -19,9 +19,23 @@ export const getModuleByCourseIDIndex: Function = ({
   let output = {}
 
   const course = courses.find(course => course.courseID === courseIDIn)
-  const { courseID, capture: courseCapture, modules } = course
+  const {
+    courseID,
+    capture: courseCapture,
+    description: courseDescription,
+    language,
+    modules,
+  } = course
   const modulesTotal = modules.length
   const module = modules.find(module => module.index === index)
+
+  let moduleCapture = module.capture
+  let moduleDescription = module.description
+
+  if (modules.length === 1) {
+    moduleCapture = courseCapture
+    moduleDescription = courseDescription
+  }
 
   if (module) {
     const { questions } = module
@@ -30,6 +44,9 @@ export const getModuleByCourseIDIndex: Function = ({
       ...module,
       courseID,
       courseCapture,
+      language,
+      moduleCapture,
+      moduleDescription,
       modulesTotal,
       questionsTotal,
     }

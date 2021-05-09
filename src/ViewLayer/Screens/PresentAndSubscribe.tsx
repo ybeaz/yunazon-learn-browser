@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
@@ -29,6 +30,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const courseID = props?.routeProps.match.params.courseID
+
+  const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
   const screenType = 'PresentAndSubscribe'
 
   const store = useSelector((store: IRootStore) => store)
@@ -44,7 +47,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     CONTENT_ASSIGNED_COMPONENT: null,
     contentComponentName: '',
     courseCapture: '',
+    language: '',
     moduleCapture: '',
+    moduleDescription: '',
     contentID: '',
     durationObj: {},
     moduleIndex: 0,
@@ -66,7 +71,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
       const {
         courseCapture,
-        capture: moduleCapture,
+        language,
+        moduleCapture,
+        moduleDescription,
         contentType,
         contentID,
         duration,
@@ -86,7 +93,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName],
         contentComponentName,
         courseCapture,
+        language,
         moduleCapture,
+        moduleDescription,
         contentID,
         moduleIndex,
         modulesTotal,
@@ -100,7 +109,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     CONTENT_ASSIGNED_COMPONENT,
     contentComponentName,
     courseCapture,
+    language,
     moduleCapture,
+    moduleDescription,
     contentID,
     durationObj,
     moduleIndex,
@@ -178,6 +189,13 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     <div className='PresentAndSubscribe'>
       {isLoaded === true ? (
         <>
+          <Helmet>
+            <html lang={language} />
+            <meta charSet='utf-8' />
+            <title>{moduleCapture}</title>
+            <link rel='canonical' href={canonicalUrl} />
+            <meta name='description' content={moduleDescription} />
+          </Helmet>
           <MainFrame>
             {null}
             <CONTENT_ASSIGNED_COMPONENT

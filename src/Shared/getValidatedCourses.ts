@@ -6,27 +6,48 @@ const errorCourses = ({
   courseID,
   courseCapture,
   courseDescription,
+  language,
 }) => {
-  if (!courseID) {
+  if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-courseID', courseIndex, courseCapture },
+      { type: 'course-no-courseID-or-type-error', courseIndex, courseCapture },
     ]
   }
 
-  if (!courseDescription) {
+  if (
+    !courseCapture ||
+    typeof courseCapture !== 'string' ||
+    courseCapture.length < 12
+  ) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-description', courseIndex, courseCapture },
+      { type: 'course-no-capture-or-type-error', courseIndex, courseCapture },
     ]
   }
 
-  if (!courseDescription) {
+  if (
+    !courseDescription ||
+    typeof courseDescription !== 'string' ||
+    courseDescription.length < 64
+  ) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-description', courseIndex, courseCapture },
+      {
+        type: 'course-no-description-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
     ]
   }
+
+  if (!language || typeof language !== 'string' || language.length < 2) {
+    courseValidation = [
+      ...courseValidation,
+      { type: 'course-no-language-or-type-error', courseIndex, courseCapture },
+    ]
+  }
+
   return courseValidation
 }
 
@@ -185,6 +206,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       courseID,
       capture: courseCapture,
       description: courseDescription,
+      language,
       modules,
     } = course
 
@@ -194,6 +216,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       courseID,
       courseCapture,
       courseDescription,
+      language,
     })
 
     courseValidation = errorModules({

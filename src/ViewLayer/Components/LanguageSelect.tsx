@@ -28,7 +28,7 @@ export const LanguageSelect: React.FunctionComponent<any> = (
         <div className='__option'>
           <img
             className={`_svgImage ${classAdd}`}
-            src={`https://yourails.com/imgs/${svgFile}`}
+            src={`https://yourails.com/images/${svgFile}`}
             onClick={event =>
               handleEvents(event, { typeEvent: 'SELECT_LANGUAGE', data: code })
             }

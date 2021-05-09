@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
+import { SITE_META_DATA } from '../../Constants/siteMetaData'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { SearchGroup } from '../Components/SearchGroup'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
@@ -13,6 +15,13 @@ import { ContentPlate } from '../Components/ContentPlate'
 export const MatrixHome: React.FunctionComponent<any> = (
   props: IRouterScreenProps
 ): JSX.Element => {
+  const {
+    titleSite,
+    descriptionSite,
+    canonicalUrlSite,
+    langSite,
+  } = SITE_META_DATA
+
   const store = useSelector((store: IRootStore) => store)
   const {
     globalVars: { durationMultiplier },
@@ -61,6 +70,13 @@ export const MatrixHome: React.FunctionComponent<any> = (
 
   return (
     <div className='MatrixHome'>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrlSite} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
       <MainFrame>
         <SearchGroup />
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (

@@ -24,16 +24,6 @@ export const getYouTubePlayerWorkHook = ({
   height,
   width,
 }: IGetYouTubePlayerWorkHookInput): IGetYouTubePlayerWorkHook => {
-  // if (contentComponentName !== 'PlayerIframe') {
-  //   return {
-  //     onPlayerReady: undefined,
-  //     playVideoHandler: undefined,
-  //     pauseVideoHandler: undefined,
-  //     stopVideoHandler: undefined,
-  //     isShowingPlay: false,
-  //   }
-  // }
-
   const playerDefault = {
     playVideo: () => {},
     pauseVideo: () => {},
@@ -78,32 +68,35 @@ export const getYouTubePlayerWorkHook = ({
   async function onYouTubeIframeAPIReady() {
     if (contentComponentName === 'PlayerIframe') {
       try {
-        const Player = await new window['YT'].Player(contentID, {
-          height,
-          width,
-          videoId: contentID,
-          title: 'YouTube video player',
-          frameBorder: '0',
-          allow:
-            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
-          allowFullScreen: true,
-          autoplay: 1,
-          autohide: 2,
-          border: 0,
-          wmode: 'opaque',
-          enablejsapi: 1,
-          modestbranding: 1,
-          controls: 1,
-          showinfo: 0,
-          rel: 0,
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onChangePlayerStateHandler,
-          },
-          host: 'https://www.youtube.com',
-          origin: window.location.host,
+        window['YT'].ready(function () {
+          const Player = new window['YT'].Player(contentID, {
+            height,
+            width,
+            videoId: contentID,
+            title: 'YouTube video player',
+            frameBorder: '0',
+            allow:
+              'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+            allowFullScreen: true,
+            autoplay: 1,
+            autohide: 2,
+            border: 0,
+            wmode: 'opaque',
+            enablejsapi: 1,
+            modestbranding: 1,
+            controls: 1,
+            showinfo: 0,
+            rel: 0,
+            events: {
+              onReady: onPlayerReady,
+              onStateChange: onChangePlayerStateHandler,
+            },
+            host: 'https://www.youtube.com',
+            origin: window.location.host,
+          })
+
+          setPlayer(Player)
         })
-        setPlayer(Player)
       } catch (error) {
         console.error(
           'getYouTubePlayerWorkHook [68]',
