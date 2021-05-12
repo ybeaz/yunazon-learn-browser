@@ -37,8 +37,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
 
   const score = getAnswersChecked2(questionsActive)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result: r } = score
-  let result = 'success'
+  const { total, right, wrong, result } = score
   const { moduleID, contentID } = moduleActive
 
   useEffect(() => {

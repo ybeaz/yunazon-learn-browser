@@ -11,11 +11,11 @@ import path from 'path'
 
 export const common = {
   entry: {
-    bundle: ['./src/index.tsx'],
+    yr: ['./src/index.tsx'],
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: '[name].min.js',
+    filename: '[name]Client.min.js',
     publicPath: '/',
   },
   resolve: {

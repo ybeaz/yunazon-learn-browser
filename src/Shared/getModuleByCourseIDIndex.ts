@@ -14,7 +14,7 @@ interface IGetModuleByCourseIDIndexInput {
 export const getModuleByCourseIDIndex: Function = ({
   courses,
   courseID: courseIDIn,
-  index,
+  index = 0,
 }: IGetModuleByCourseIDIndexInput): any => {
   let output = {}
 
@@ -32,7 +32,7 @@ export const getModuleByCourseIDIndex: Function = ({
   let moduleCapture = module.capture
   let moduleDescription = module.description
 
-  if (modules.length === 1) {
+  if (modulesTotal === 1) {
     moduleCapture = courseCapture
     moduleDescription = courseDescription
   }

@@ -16,7 +16,7 @@ function* getContentInfo() {
     const {
       data: { courses },
     } = yield axios[method](url, {}, options)
-    // console.info('getContentInfo.saga [17]', { courses })
+    // console.info('getContentInfo.saga [17]', { general, courses })
     let coursesNext = getValidatedCourses(courses)
     coursesNext = getProvidedID(coursesNext)
     coursesNext = getOptionsShuffled(coursesNext)
