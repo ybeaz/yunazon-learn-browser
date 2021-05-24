@@ -28,4 +28,5 @@ export const rootStoreDefault = {
   },
   documents: [],
   language: 'ru',
+  analyticsID: null,
 }

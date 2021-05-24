@@ -6,6 +6,10 @@ interface IAction {
 }
 
 // Asynchroneous actions for saga
+export const SAVE_ANALYTICS: ICreateRequestTypes = createRequestTypes(
+  'SAVE_ANALYTICS'
+)
+
 export const SEND_EMAIL_DOCUMENT: ICreateRequestTypes = createRequestTypes(
   'SEND_EMAIL_DOCUMENT'
 )

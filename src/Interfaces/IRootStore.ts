@@ -24,4 +24,5 @@ export interface IRootStore {
   }
   documents: any[]
   language: string
+  analyticsID: string
 }

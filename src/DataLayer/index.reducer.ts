@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SAVE_ANALYTICS_SUCCESS } from './reducers/SAVE_ANALYTICS_SUCCESS'
 import { TOGGLE_MEDIA_LOADED } from './reducers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_START_COURSE } from './reducers/TOGGLE_START_COURSE'
 import { ONCHANGE_SEARCH_INPUT } from './reducers/ONCHANGE_SEARCH_INPUT'
@@ -33,6 +34,7 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    SAVE_ANALYTICS_SUCCESS,
     TOGGLE_MEDIA_LOADED,
     TOGGLE_START_COURSE,
     ONCHANGE_SEARCH_INPUT,
