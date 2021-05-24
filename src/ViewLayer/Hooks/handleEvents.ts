@@ -7,18 +7,70 @@ import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
+import { cookie } from '../../Shared/cookie'
+import { mediaSizeCrossBrowser } from '../../Shared/mediaSizeCrossBrowser'
+import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName'
+
 interface Props {
   typeEvent: string
   type?: string
   data: any
 }
 
-export const handleEvents: Function = (event: Event, props: Props): void => {
+export const handleEvents: Function = (event: any, props: Props): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
   const { dispatch } = store
 
   const output = {
+    SAVE_EVENT: () => {
+      const { type, name, value: valueIn, level } = data
+      const { hostname, pathname } = location
+      const dataNext: any = {
+        event: {
+          type,
+          ...(name && { name }),
+          ...((valueIn || event?.target?.value) && {
+            value: valueIn || event?.target?.value,
+          }),
+          ...(level && { level }),
+          pathname,
+        },
+      }
+
+      dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
+    },
+
+    SAVE_INIT_DATA: () => {
+      let analyticsID: string = cookie.get(COOKIE_ANALYTICSID_NAME)
+      const { href, hostname, pathname, search } = location
+
+      if (analyticsID && analyticsID !== 'null') {
+        dispatch(action.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
+        cookie.set(COOKIE_ANALYTICSID_NAME, analyticsID, {
+          domain: hostname,
+          days: 0.5,
+        })
+      } else {
+        const { width, height } = mediaSizeCrossBrowser(global)
+        const { referrer } = document
+
+        const dataNext: any = {
+          initData: {
+            width,
+            height,
+            search,
+            pathname,
+            hostname,
+            href,
+            referrer,
+          },
+        }
+
+        dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
+      }
+    },
+
     TOGGLE_MEDIA_LOADED: () => {
       const { mediaKey, isMediaLoaded } = data
       dispatch(action.TOGGLE_MEDIA_LOADED({ mediaKey, isMediaLoaded }))
