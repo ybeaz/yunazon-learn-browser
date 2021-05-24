@@ -3,7 +3,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import * as action from '../../DataLayer/index.action'
-import { getGlobalVarsConnector } from '../../ComminicationLayer/getGlobalVars.connector'
+import { getGlobalVarsConnector } from '../../CommunicationLayer/getGlobalVars.connector'
 
 function* getGlobalVars() {
   try {

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import * as action from '../../DataLayer/index.action'
-import { findDocumentConnector } from '../../ComminicationLayer/findDocument.connector'
+import { findDocumentConnector } from '../../CommunicationLayer/findDocument.connector'
 
 function* findDocument(dataInput) {
   const { data: documentID } = dataInput

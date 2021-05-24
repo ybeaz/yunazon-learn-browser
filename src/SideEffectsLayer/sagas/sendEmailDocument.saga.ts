@@ -2,7 +2,7 @@ import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import * as action from '../../DataLayer/index.action'
-import { sendEmailDocumentConnector } from '../../ComminicationLayer/sendEmailDocument.connector'
+import { sendEmailDocumentConnector } from '../../CommunicationLayer/sendEmailDocument.connector'
 
 function* sendEmailDocument(dataInput) {
   const {

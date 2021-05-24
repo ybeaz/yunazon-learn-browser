@@ -23,7 +23,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch } = store
 
   const output = {
-    SAVE_EVENT: () => {
+    SAVE_ANALYTICS_EVENT: () => {
       const { type, name, value: valueIn, level } = data
       const { hostname, pathname } = location
       const dataNext: any = {
@@ -41,7 +41,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
     },
 
-    SAVE_INIT_DATA: () => {
+    SAVE_ANALYTICS_INIT_DATA: () => {
       let analyticsID: string = cookie.get(COOKIE_ANALYTICSID_NAME)
       const { href, hostname, pathname, search } = location
 

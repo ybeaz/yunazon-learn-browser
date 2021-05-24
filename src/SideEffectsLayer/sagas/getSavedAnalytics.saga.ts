@@ -4,7 +4,7 @@ import axios from 'axios'
 import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName'
 import { cookie } from '../../Shared/cookie'
 import { IAnalyticsInput } from '../../Interfaces/IAnalyticsInput'
-import { getSavedAnalyticsConnector } from '../../ComminicationLayer/getSavedAnalytics.connector'
+import { getSavedAnalyticsConnector } from '../../CommunicationLayer/getSavedAnalytics.connector'
 import * as action from '../../DataLayer/index.action'
 
 interface IGetSavedAnalytics {

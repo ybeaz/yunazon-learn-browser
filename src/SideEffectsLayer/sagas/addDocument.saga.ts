@@ -2,7 +2,7 @@ import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import * as action from '../../DataLayer/index.action'
-import { addDocumentConnector } from '../../ComminicationLayer/addDocument.connector'
+import { addDocumentConnector } from '../../CommunicationLayer/addDocument.connector'
 
 function* addDocument(dataInput) {
   const {

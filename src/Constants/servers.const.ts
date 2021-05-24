@@ -1,7 +1,7 @@
 export const SERVERS_ANALYTICS = {
   remote: 'https://analytics.userto.com',
   localWebpack: 'http://127.0.0.1:8082',
-  localServer: '',
+  localServer: 'http://127.0.0.1:8082',
 }
 
 export const SERVERS = {

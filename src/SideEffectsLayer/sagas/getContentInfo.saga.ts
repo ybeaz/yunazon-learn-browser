@@ -8,7 +8,7 @@ import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
 import * as action from '../../DataLayer/index.action'
-import { getContentInfoConnector } from '../../ComminicationLayer/getContentInfo.connector'
+import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfo.connector'
 
 function* getContentInfo() {
   try {

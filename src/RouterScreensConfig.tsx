@@ -8,6 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 
+import { handleEvents } from './ViewLayer/Hooks/handleEvents'
 import { IRootStore } from './Interfaces/IRootStore'
 import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
@@ -38,6 +39,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
       await dispatch(action.GET_GLOBAL_VARS.REQUEST())
       await dispatch(action.GET_CONTENT_DATA.REQUEST())
+      handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
     }
 
     makeDispatchAsyncWrappered()
