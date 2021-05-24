@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { handleEvents } from '../Hooks/handleEvents'
+import { getSavedAnanlyticsEvent } from '../Hooks/getSavedAnanlyticsEvent'
 
 export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
-  const saveAnalyticsEvent = {
-    type: 'SAVE_ANALYTICS_EVENT',
-    data: { type: 'click', name: 'logo clicked' },
-  }
-
   return (
     <Link
       className='LogoGroup'
       to={{
         pathname: `/home`,
       }}
-      onClick={() => handleEvents({}, saveAnalyticsEvent)}
+      onClick={() =>
+        getSavedAnanlyticsEvent({ type: 'click', name: 'logo clicked' })
+      }
     >
       <div className='__div'>
         <img
