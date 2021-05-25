@@ -6,8 +6,9 @@
 6 - click button to enter name after success
 5 - click button to return after failure
 4 - click button for final submit
-3 - click button to move forward 2. - click button to start
+3 - click button to move forward
 
+2. - click button to start
 1. - click plate to select a course
 
 Example: getSavedAnanlyticsEvent({ type: 'click', name: 'logo clicked' })
