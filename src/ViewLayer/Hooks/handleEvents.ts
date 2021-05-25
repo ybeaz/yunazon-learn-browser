@@ -1,5 +1,6 @@
 import { push, goBack } from 'react-router-redux'
 
+import { getSavedAnanlyticsEvent } from './getSavedAnanlyticsEvent'
 import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
 import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
@@ -23,6 +24,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch } = store
 
   const output = {
+    CLICK_LOGO_GROUP: () => {
+      const azProps = {
+        type: 'click',
+        name: 'logo clicked',
+      }
+      getSavedAnanlyticsEvent(event, azProps)
+    },
+
     SAVE_ANALYTICS_EVENT: () => {
       const { type, name, value: valueIn, level } = data
       const { hostname, pathname } = location
@@ -77,7 +86,18 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     TOGGLE_START_COURSE: () => {
-      dispatch(action.TOGGLE_START_COURSE(data))
+      const { isStarting, courseCapture } = data
+
+      const azProps = {
+        type: 'click',
+        name: 'module started',
+        value: `{'courseCapture':'${courseCapture}'}`,
+        level: 2,
+      }
+      event?.preventDefault &&
+        isStarting &&
+        getSavedAnanlyticsEvent(event, azProps)
+      dispatch(action.TOGGLE_START_COURSE(isStarting))
     },
 
     ONCHANGE_SEARCH_INPUT: () => {
@@ -197,6 +217,16 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     SELECT_COURSE_MODULE: () => {
+      const { courseCapture, courseID, moduleID, contentID } = data
+
+      const azProps = {
+        type: 'click',
+        name: 'plate clicked',
+        value: `{'courseCapture':'${courseCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
+        level: 1,
+      }
+      getSavedAnanlyticsEvent(event, azProps)
+
       dispatch(action.SELECT_COURSE_MODULE(data))
     },
 

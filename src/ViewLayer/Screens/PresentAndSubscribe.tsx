@@ -59,7 +59,10 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
-      handleEvents({}, { type: 'TOGGLE_START_COURSE', data: false })
+      handleEvents(
+        {},
+        { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
+      )
 
       const index = 0
 

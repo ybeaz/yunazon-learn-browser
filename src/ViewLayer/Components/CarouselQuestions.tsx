@@ -31,7 +31,10 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     language,
   } = store
 
-  const { questionsActive } = getActiveCourseData(courses)
+  const {
+    courseActive: { capture: courseCapture },
+    questionsActive,
+  } = getActiveCourseData(courses)
 
   const questionsChunked = getChunkedArray(
     questionsActive,
@@ -138,7 +141,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     classAdded: 'Button_startModule',
     action: {
       typeEvent: 'TOGGLE_START_COURSE',
-      data: true,
+      data: { isStarting: true, courseCapture },
     },
     isDisplaying: isButtonSlideStart,
   }

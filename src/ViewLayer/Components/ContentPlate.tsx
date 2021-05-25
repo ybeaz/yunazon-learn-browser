@@ -94,7 +94,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
         onClick={event =>
           handleEvents(event, {
             typeEvent: 'SELECT_COURSE_MODULE',
-            data: { courseID, moduleID, contentID },
+            data: { courseCapture, courseID, moduleID, contentID },
           })
         }
       />

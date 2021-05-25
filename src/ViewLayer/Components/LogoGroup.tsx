@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import { getSavedAnanlyticsEvent } from '../Hooks/getSavedAnanlyticsEvent'
+import { handleEvents } from '../Hooks/handleEvents'
 
 export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
   return (
@@ -10,9 +10,7 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
       to={{
         pathname: `/home`,
       }}
-      onClick={() =>
-        getSavedAnanlyticsEvent({ type: 'click', name: 'logo clicked' })
-      }
+      onClick={() => handleEvents({}, { typeEvent: 'CLICK_LOGO_GROUP' })}
     >
       <div className='__div'>
         <img
