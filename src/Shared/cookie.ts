@@ -12,7 +12,7 @@ export const cookie = {
   },
 
   set: (name: string, value: string, opts: any = {}) => {
-    document.cookie = name + '=' + encodeURIComponent('') + { 'max-age': -1 }
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;'
 
     if (opts.days) {
       opts['max-age'] = opts.days * 60 * 60 * 24
@@ -26,7 +26,7 @@ export const cookie = {
       (str, [k, v]) => `${str}; ${k}=${v}`,
       ''
     )
-    document.cookie = name + '=' + encodeURIComponent(value) + optsStr
+    document.cookie = `${name}=${encodeURIComponent(value)};${optsStr}`
   },
 
   delete: (name: string, opts: any) =>
