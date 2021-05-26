@@ -2,6 +2,20 @@ import { IAzProps } from '../Interfaces/IAzProps'
 
 export const getAzProps: Function = (type: string): IAzProps => {
   const output = {
+    FROM_CERTIFICATE_WENT_BACK: () => {
+      return {
+        type: 'click',
+        name: 'from certificate went back',
+      }
+    },
+
+    LOGO_CLICKED: () => {
+      return {
+        type: 'click',
+        name: 'logo clicked',
+      }
+    },
+
     MODULE_STARTED: (options: any) => {
       const { courseCapture } = options
 

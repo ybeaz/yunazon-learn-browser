@@ -31,7 +31,7 @@ export const Certificate: React.FunctionComponent<any> = (
 
   useEffect(() => {
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-  }, [])
+  }, [documents])
 
   useEffect(() => {
     if (!documents.length) {
@@ -69,15 +69,10 @@ export const Certificate: React.FunctionComponent<any> = (
     seconds: false,
   })
 
-  const getPageGoBack: Function = (): void => {
-    console.info('Certificate [74]')
-    history.go(-1)
-  }
-
   const buttonBackProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward3',
-    handleEvents: getPageGoBack,
+    action: { typeEvent: 'GO_BACK_FROM_CERTIFICATE', data: { history } },
   }
 
   const buttonPrintProps = {

@@ -21,12 +21,19 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch, getState } = store
 
   const output = {
+    GO_BACK_FROM_CERTIFICATE: () => {
+      getSavedAnanlyticsEvent(
+        event,
+        getAzProps('FROM_CERTIFICATE_WENT_BACK')(data)
+      )
+
+      const { history } = data
+      history.go(-1)
+      console.info('handleEvents [27]', { history })
+    },
+
     CLICK_LOGO_GROUP: () => {
-      const azProps = {
-        type: 'click',
-        name: 'logo clicked',
-      }
-      getSavedAnanlyticsEvent(event, azProps)
+      getSavedAnanlyticsEvent(event, getAzProps('LOGO_CLICKED')())
     },
 
     SAVE_ANALYTICS_INIT_DATA: () => {
@@ -85,7 +92,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     TOGGLE_IS_DOCUMENT_ADDED: () => {
-      dispatch(action.TOGGLE_IS_DOCUMENT_ADDED(false))
+      dispatch(action.TOGGLE_IS_DOCUMENT_ADDED(data))
     },
 
     PRINT_DOCUMENT: () => {
@@ -99,6 +106,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     ADD_DOCUMENT: () => {
       const { courses } = getState()
       const options = getResultDataFromStore(courses)
+
       event?.preventDefault &&
         getSavedAnanlyticsEvent(
           event,

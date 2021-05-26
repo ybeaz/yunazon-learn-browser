@@ -1,5 +1,7 @@
 import webpack from 'webpack'
+import path from 'path'
 
+import { WebpackDeduplicationPlugin } from 'webpack-deduplication-plugin'
 import CompressionPlugin from 'compression-webpack-plugin'
 import DuplicatePackageCheckerPlugin from 'duplicate-package-checker-webpack-plugin'
 import ESLintPlugin from 'eslint-webpack-plugin'
@@ -28,6 +30,10 @@ export const prodPlugins = [
   new CompressionPlugin({
     algorithm: 'gzip',
     test: /\.js$|\.css$|\.html$/,
+  }),
+  new WebpackDeduplicationPlugin({
+    cacheDir: path.resolve(__dirname, '../dist'),
+    rootPath: path.resolve(__dirname, '../'),
   }),
 ]
 

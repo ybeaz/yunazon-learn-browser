@@ -27,7 +27,8 @@ export const QuestionScores: React.FunctionComponent<any> = (
     forms: { firstName, middleName, lastName },
   } = store
 
-  const slug = documents[0]?.slug
+  const documentsLen = documents.length
+  const slug = documentsLen && documents[documentsLen - 1]?.slug
 
   const {
     courseActive: { courseID, capture: courseCapture, description, meta },
