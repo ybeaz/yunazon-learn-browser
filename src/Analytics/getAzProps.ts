@@ -2,10 +2,57 @@ import { IAzProps } from '../Interfaces/IAzProps'
 
 export const getAzProps: Function = (type: string): IAzProps => {
   const output = {
-    FROM_CERTIFICATE_WENT_BACK: () => {
+    CLICK_SOCIAL_NET_BUTTON: (options: any) => {
+      const { netTitle, documentCapture, documentID, courseID, contentID } =
+        options
+
+      return {
+        type: 'click',
+        name: 'social net button clicked',
+        value: `{'netTitle':'${netTitle}','documentCapture':'${documentCapture}','documentID':'${documentID}','courseID':'${courseID}','contentID':'${contentID}'}`,
+        level: 5,
+      }
+    },
+
+    DOCUMENT_LINK_COPIED: (options: any) => {
+      const { documentCapture, documentID, courseID, contentID } = options
+
+      return {
+        type: 'click',
+        name: 'document link copied',
+        value: `{'documentCapture':'${documentCapture}','documentID':'${documentID}','courseID':'${courseID}','contentID':'${contentID}'}`,
+        level: 5,
+      }
+    },
+
+    DOCUMENT_EMAIL_SENT: (options: any) => {
+      const { documentID, sendTo, sendCc } = options
+
+      return {
+        type: 'click',
+        name: 'document email sent',
+        value: `{'documentID':'${documentID}','sendTo':'${sendTo}','sendCc':'${sendCc}'}`,
+        level: 5,
+      }
+    },
+
+    DOCUMENT_PRINTED: (options: any) => {
+      const { documentCapture, documentID, courseID, contentID } = options
+
+      return {
+        type: 'click',
+        name: 'document printed',
+        value: `{'documentCapture':'${documentCapture}','documentID':'${documentID}','courseID':'${courseID}','contentID':'${contentID}'}`,
+        level: 5,
+      }
+    },
+
+    FROM_CERTIFICATE_WENT_BACK: options => {
+      const { documentCapture } = options
       return {
         type: 'click',
         name: 'from certificate went back',
+        value: `{'documentCapture':'${documentCapture}'}`,
       }
     },
 

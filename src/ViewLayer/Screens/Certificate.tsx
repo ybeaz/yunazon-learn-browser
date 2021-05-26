@@ -28,13 +28,14 @@ export const Certificate: React.FunctionComponent<any> = (
   let history = useHistory()
   const store = useSelector((store: IRootStore) => store)
   const { documents, language } = store
+  const documentsLen = documents.length
 
   useEffect(() => {
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
   }, [documents])
 
   useEffect(() => {
-    if (!documents.length) {
+    if (!documentsLen) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
   }, [documents])
@@ -53,11 +54,11 @@ export const Certificate: React.FunctionComponent<any> = (
   const {
     userName: { firstName = '', middleName = '', lastName = '' },
     meta: { institution = '', specTitle = '', specName = '' },
-    capture = '',
+    capture: documentCapture = '',
     courseID = '',
     contentID = '',
     creationDate = '',
-  } = documents[0] || documentDefault
+  } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
@@ -72,25 +73,34 @@ export const Certificate: React.FunctionComponent<any> = (
   const buttonBackProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward3',
-    action: { typeEvent: 'GO_BACK_FROM_CERTIFICATE', data: { history } },
+    action: {
+      typeEvent: 'GO_BACK_FROM_CERTIFICATE',
+      data: { history, documentCapture },
+    },
   }
 
   const buttonPrintProps = {
     icon: 'MdPrint',
-    classAdded: 'Button_MdPrint',
-    action: { typeEvent: 'PRINT_DOCUMENT', data: {} },
+    classAdded: 'Button_UseCertificate',
+    action: {
+      typeEvent: 'PRINT_DOCUMENT',
+      data: { documentCapture, documentID, courseID, contentID },
+    },
   }
 
   const buttonEmailProps = {
     icon: 'MdMailOutline',
-    classAdded: 'Button_MdPrint',
+    classAdded: 'Button_UseCertificate',
     action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
   }
 
   const buttonCopyLinkProps = {
     icon: 'BsLink45Deg',
-    classAdded: 'Button_MdPrint',
-    action: { typeEvent: 'COPY_URL_TO_CLIPBOARD', data: {} },
+    classAdded: 'Button_UseCertificate',
+    action: {
+      typeEvent: 'COPY_URL_TO_CLIPBOARD',
+      data: { documentCapture, documentID, courseID, contentID },
+    },
   }
 
   const userName = middleName
@@ -175,7 +185,7 @@ export const Certificate: React.FunctionComponent<any> = (
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline'>
                     <span className='pm-credits-text block bold sans'>
-                      {capture}
+                      {documentCapture}
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>

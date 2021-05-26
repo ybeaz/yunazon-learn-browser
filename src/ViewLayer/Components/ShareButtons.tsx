@@ -14,6 +14,8 @@ import {
   TelegramIcon,
 } from 'react-share'
 
+import { handleEvents } from '../Hooks/handleEvents'
+
 interface INetShareData {
   ButtonComponent: any
   url: string
@@ -63,8 +65,7 @@ const netShareData: INetShareData[] = [
   },
   {
     ButtonComponent: LinkedinShareButton,
-    url:
-      'https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com%2Fsharing%2Fshare-offsite%2F%3Furl%3D%22%22',
+    url: 'https://www.linkedin.com/sharing/share-offsite/?url=https://www.linkedin.com%2Fsharing%2Fshare-offsite%2F%3Furl%3D%22%22',
     netTitleField: 'title',
     netTitle: 'Linkedin',
     IconComponent: LinkedinIcon,
@@ -106,7 +107,15 @@ export const ShareButtons: React.FunctionComponent<any> = (
       const buttonProps = { url, [netTitleField]: netTitle }
       const iconProps = { size: iconSize }
       return (
-        <ButtonComponent {...buttonProps}>
+        <ButtonComponent
+          {...buttonProps}
+          onClick={event =>
+            handleEvents(event, {
+              typeEvent: 'CLICK_SOCIAL_NET_BUTTON',
+              data: { buttonProps: item },
+            })
+          }
+        >
           <IconComponent {...iconProps} />
         </ButtonComponent>
       )

@@ -2,7 +2,7 @@
 
 ## Levels of service usage
 
-7 - click buttons to "consume" results
+5 - click buttons to "consume" results
 
 4 - click button to enter name after success
 1 - click button to return after failure

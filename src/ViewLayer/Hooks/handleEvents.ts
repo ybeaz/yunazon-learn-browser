@@ -21,6 +21,25 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch, getState } = store
 
   const output = {
+    CLICK_SOCIAL_NET_BUTTON: () => {
+      const { buttonProps } = data
+      const { documents } = getState()
+      const documentsLen = documents.length
+      const documentLast = documentsLen && documents[documentsLen - 1]
+      const options = documentLast && {
+        netTitle: buttonProps.netTitle,
+        documentCapture: documentLast.capture,
+        documentID: documentLast.documentID,
+        courseID: documentLast.courseID,
+        contentID: documentLast.contentIDs[0],
+      }
+
+      getSavedAnanlyticsEvent(
+        event,
+        getAzProps('CLICK_SOCIAL_NET_BUTTON')(options)
+      )
+    },
+
     GO_BACK_FROM_CERTIFICATE: () => {
       getSavedAnanlyticsEvent(
         event,
@@ -29,7 +48,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
       const { history } = data
       history.go(-1)
-      console.info('handleEvents [27]', { history })
     },
 
     CLICK_LOGO_GROUP: () => {
@@ -70,6 +88,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     SEND_EMAIL_DOCUMENT: () => {
+      getSavedAnanlyticsEvent(event, getAzProps('DOCUMENT_EMAIL_SENT')(data))
+
       dispatch(action.SEND_EMAIL_DOCUMENT.REQUEST(data))
     },
 
@@ -88,6 +108,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     COPY_URL_TO_CLIPBOARD: () => {
+      getSavedAnanlyticsEvent(event, getAzProps('DOCUMENT_LINK_COPIED')(data))
+
       getCopiedUrlToClipboard()
     },
 
@@ -96,6 +118,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     PRINT_DOCUMENT: () => {
+      getSavedAnanlyticsEvent(event, getAzProps('DOCUMENT_PRINTED')(data))
+
       getPrintedDocumentAs()
     },
 
