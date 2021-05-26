@@ -146,8 +146,13 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     PLUS_QUESTION_SLIDE: () => {
       const { step } = data
-      const { courses } = getState()
-      const options = getResultDataFromStore(courses)
+      const {
+        courses,
+        componentsState: { questionsSlideNumber },
+      } = getState()
+
+      const { courseCapture } = getResultDataFromStore(courses)
+      const options = { courseCapture, questionsSlideNumber }
       event?.preventDefault &&
         step === 1 &&
         getSavedAnanlyticsEvent(
