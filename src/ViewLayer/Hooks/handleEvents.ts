@@ -1,16 +1,13 @@
-import { push, goBack } from 'react-router-redux'
-
-import { getSavedAnanlyticsEvent } from './getSavedAnanlyticsEvent'
+import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
+import { getAzProps } from '../../Analytics/getAzProps'
+import { getResultDataFromStore } from './getResultDataFromStore'
+import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
 import { store } from '../../DataLayer/store'
 import * as action from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
-
-import { cookie } from '../../Shared/cookie'
-import { mediaSizeCrossBrowser } from '../../Shared/mediaSizeCrossBrowser'
-import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName'
 
 interface Props {
   typeEvent: string
@@ -21,7 +18,7 @@ interface Props {
 export const handleEvents: Function = (event: any, props: Props): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
-  const { dispatch } = store
+  const { dispatch, getState } = store
 
   const output = {
     CLICK_LOGO_GROUP: () => {
@@ -32,52 +29,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       getSavedAnanlyticsEvent(event, azProps)
     },
 
-    SAVE_ANALYTICS_EVENT: () => {
-      const { type, name, value: valueIn, level } = data
-      const { hostname, pathname } = location
-      const dataNext: any = {
-        event: {
-          type,
-          ...(name && { name }),
-          ...((valueIn || event?.target?.value) && {
-            value: valueIn || event?.target?.value,
-          }),
-          ...(level && { level }),
-          pathname,
-        },
-      }
-
-      dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
-    },
-
     SAVE_ANALYTICS_INIT_DATA: () => {
-      let analyticsID: string = cookie.get(COOKIE_ANALYTICSID_NAME)
-      const { href, hostname, pathname, search } = location
-
-      if (analyticsID && analyticsID !== 'null') {
-        dispatch(action.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
-        cookie.set(COOKIE_ANALYTICSID_NAME, analyticsID, {
-          domain: hostname,
-          days: 0.5,
-        })
-      } else {
-        const { width, height } = mediaSizeCrossBrowser(global)
-        const { referrer } = document
-
-        const dataNext: any = {
-          initData: {
-            width,
-            height,
-            search,
-            pathname,
-            hostname,
-            href,
-            referrer,
-          },
-        }
-
-        dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
-      }
+      getSavedAnanlyticsInitData()
     },
 
     TOGGLE_MEDIA_LOADED: () => {
@@ -87,16 +40,13 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     TOGGLE_START_COURSE: () => {
       const { isStarting, courseCapture } = data
-
-      const azProps = {
-        type: 'click',
-        name: 'module started',
-        value: `{'courseCapture':'${courseCapture}'}`,
-        level: 2,
-      }
       event?.preventDefault &&
         isStarting &&
-        getSavedAnanlyticsEvent(event, azProps)
+        getSavedAnanlyticsEvent(
+          event,
+          getAzProps('MODULE_STARTED')({ courseCapture })
+        )
+
       dispatch(action.TOGGLE_START_COURSE(isStarting))
     },
 
@@ -106,6 +56,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     SELECT_LANGUAGE: () => {
+      getSavedAnanlyticsEvent(event, getAzProps('LANGUAGE_SELECTED')(data))
+
       dispatch(action.SELECT_LANGUAGE(data))
       getSetObjToLocalStorage({ language: data })
     },
@@ -145,6 +97,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     ADD_DOCUMENT: () => {
+      const { courses } = getState()
+      const options = getResultDataFromStore(courses)
+      event?.preventDefault &&
+        getSavedAnanlyticsEvent(
+          event,
+          getAzProps('PERSONAL_DATA_SUBMITTED')(options)
+        )
+
       dispatch(action.ADD_DOCUMENT.REQUEST(data))
     },
 
@@ -153,6 +113,16 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     PLUS_QUESTION_SLIDE: () => {
+      const { step } = data
+      const { courses } = getState()
+      const options = getResultDataFromStore(courses)
+      event?.preventDefault &&
+        step === 1 &&
+        getSavedAnanlyticsEvent(
+          event,
+          getAzProps('QUESTIONS_STEPPED_FORWARD')(options)
+        )
+
       dispatch(action.PLUS_QUESTION_SLIDE(data))
     },
 
@@ -172,12 +142,22 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLOSE_MODAL_GET_SCORES: () => {
+      const { courses } = getState()
+      const options = getResultDataFromStore(courses)
+      event?.preventDefault &&
+        getSavedAnanlyticsEvent(event, getAzProps('WENT_BACK')(options))
+
       dispatch(action.GET_ANSWERS_DEFAULT())
       dispatch(action.SET_QUESTION_SLIDE(0))
       dispatch(action.TOGGLE_MODAL_FRAME(false))
     },
 
     OPEN_MODAL_GET_SCORES: () => {
+      const { courses } = getState()
+      const options = getResultDataFromStore(courses)
+      event?.preventDefault &&
+        getSavedAnanlyticsEvent(event, getAzProps('RESULTS_SUBMITTED')(options))
+
       dispatch(action.TOGGLE_MODAL_FRAME(true))
     },
 
@@ -217,15 +197,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     SELECT_COURSE_MODULE: () => {
-      const { courseCapture, courseID, moduleID, contentID } = data
-
-      const azProps = {
-        type: 'click',
-        name: 'plate clicked',
-        value: `{'courseCapture':'${courseCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
-        level: 1,
-      }
-      getSavedAnanlyticsEvent(event, azProps)
+      getSavedAnanlyticsEvent(event, getAzProps('COURSE_PLATE_CLICKED')(data))
 
       dispatch(action.SELECT_COURSE_MODULE(data))
     },
@@ -236,6 +208,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     TOGGLE_SIDE_NAVIGATION: () => {
       dispatch(action.TOGGLE_SIDE_NAVIGATION())
+
+      getSavedAnanlyticsEvent(event, getAzProps('SIDE_PANEL_TOGGLED')())
     },
   }
 

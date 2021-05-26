@@ -10,7 +10,10 @@ export const cookie = {
     )[1]
     if (c) return decodeURIComponent(c)
   },
+
   set: (name: string, value: string, opts: any = {}) => {
+    document.cookie = name + '=' + encodeURIComponent('') + { 'max-age': -1 }
+
     if (opts.days) {
       opts['max-age'] = opts.days * 60 * 60 * 24
       delete opts.days
@@ -25,6 +28,7 @@ export const cookie = {
     )
     document.cookie = name + '=' + encodeURIComponent(value) + optsStr
   },
+
   delete: (name: string, opts: any) =>
     cookie.set(name, '', { 'max-age': -1, ...opts }),
   // path & domain must match cookie being deleted

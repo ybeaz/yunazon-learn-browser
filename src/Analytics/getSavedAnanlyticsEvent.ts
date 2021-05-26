@@ -1,9 +1,11 @@
-import { store } from '../../DataLayer/store'
-import * as action from '../../DataLayer/index.action'
+import { store } from '../DataLayer/store'
+import * as action from '../DataLayer/index.action'
+
+import { IAzProps } from '../Interfaces/IAzProps'
 
 export const getSavedAnanlyticsEvent: Function = (
   event: any,
-  props: any
+  props: IAzProps
 ): void => {
   const { type, name, value: valueIn, level } = props
   const { hostname, pathname } = location

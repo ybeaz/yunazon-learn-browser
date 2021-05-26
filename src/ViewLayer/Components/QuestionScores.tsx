@@ -30,7 +30,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
   const slug = documents[0]?.slug
 
   const {
-    courseActive: { courseID, capture, description, meta },
+    courseActive: { courseID, capture: courseCapture, description, meta },
     moduleActive,
     questionsActive,
   } = getActiveCourseData(courses)
@@ -104,7 +104,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
         <>
           <div className='_greet'>{Congratulations}</div>
           <p>{YouCompletedTheCourse}</p>
-          <p>"{capture}"</p>
+          <p>"{courseCapture}"</p>
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
@@ -122,7 +122,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
             middleName,
             lastName,
             meta,
-            capture,
+            capture: courseCapture,
             description,
             courseID,
             moduleID,
@@ -146,7 +146,9 @@ export const QuestionScores: React.FunctionComponent<any> = (
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
-        action: { typeEvent: 'CLOSE_MODAL_GET_SCORES' },
+        action: {
+          typeEvent: 'CLOSE_MODAL_GET_SCORES',
+        },
       },
     },
   }[result]
@@ -157,9 +159,9 @@ export const QuestionScores: React.FunctionComponent<any> = (
     return (
       <ul className='_ul'>
         {questions.map(question => {
-          const { capture } = question
+          const { capture: questionCapture } = question
 
-          return <li className='_li'>{capture}</li>
+          return <li className='_li'>{questionCapture}</li>
         })}
       </ul>
     )

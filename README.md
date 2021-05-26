@@ -3,24 +3,25 @@
 ## Levels of service usage
 
 7 - click buttons to "consume" results
-6 - click button to enter name after success
-5 - click button to return after failure
-4 - click button for final submit
-3 - click button to move forward
 
-2. - click button to start
-1. - click plate to select a course
+4 - click button to enter name after success
+1 - click button to return after failure
+3 - click button for final submit
+2 - click button to start, module started, module step forward
+1 - click plate to select a course
 
 Example: getSavedAnanlyticsEvent({ type: 'click', name: 'logo clicked' })
 Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ## Plan
 
-Extend the course template with question limit for a course
-Extend the course template with rate to pass test
-
 ## Done
 
+2021-05-01 SEO
+2021-05-01 Pagination by two-three questions
+2021-05-01 Cc to manager, share in social networks
+2021-05-01 Not print
+2021-05-01 Rejected. Grey out not related questions
 2021-04-20 Assign a special way to load PresentAndSubscribe without connection to router
 2021-04-20 SEO, Move II, SSR Server Side Rendering with schema.org
 2021-04-20 SEO Move I, register in search engines, provide with basic meta tags

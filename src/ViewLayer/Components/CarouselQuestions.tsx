@@ -98,14 +98,20 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const buttonSlideBackwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdBackward2',
-    action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: -1 },
+    action: {
+      typeEvent: 'PLUS_QUESTION_SLIDE',
+      data: { step: -1 },
+    },
     isDisplaying: isButtonSlideBackward,
   }
 
   const buttonSlideForwardProps = {
     icon: 'MdForward',
     classAdded: 'Button_MdForward2',
-    action: { typeEvent: 'PLUS_QUESTION_SLIDE', data: 1 },
+    action: {
+      typeEvent: 'PLUS_QUESTION_SLIDE',
+      data: { step: 1 },
+    },
     isDisplaying: isButtonSlideForward,
   }
 
@@ -115,7 +121,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     classAdded: 'Button_MdForward',
     action: {
       typeEvent: 'OPEN_MODAL_GET_SCORES',
-      data: {},
+      data: { courseCapture },
     },
     isDisplaying: isButtonToCertificate,
   }
@@ -141,7 +147,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     classAdded: 'Button_startModule',
     action: {
       typeEvent: 'TOGGLE_START_COURSE',
-      data: { isStarting: true, courseCapture },
+      data: { isStarting: true },
     },
     isDisplaying: isButtonSlideStart,
   }
