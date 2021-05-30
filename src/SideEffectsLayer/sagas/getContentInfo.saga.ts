@@ -28,6 +28,8 @@ function* getContentInfo() {
       .exec(getProvidedSearchString)
       .done()
 
+    console.info('getContentInfo.saga [31]', { coursesNext, courses })
+
     yield put(action.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {
     console.info('getContentInfo  [20]', error.name + ': ' + error.message)

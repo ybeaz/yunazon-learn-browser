@@ -5,7 +5,7 @@ interface IRgetActiveCourseData {
 }
 
 /**
- * @description Function to find active module
+ * @description Function to find isActiveTemp module
  * @param courses
  * @returns IRgetActiveCourseData
  */
@@ -19,10 +19,10 @@ export const getActiveCourseData: Function = (
   }
 
   try {
-    const courseActive = courses.find(course => course.active === true)
+    const courseActive = courses.find(course => course.isActiveTemp === true)
 
     const moduleActive = courseActive.modules.find(
-      module => module.active === true
+      module => module.isActiveTemp === true
     )
 
     const questionsActive = moduleActive?.questions

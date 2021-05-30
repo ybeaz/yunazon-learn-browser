@@ -1,9 +1,9 @@
 /**
- * @description Function to detect and return current/active module
+ * @description Function to detect and return current/isActiveTemp module
  * @returns
  */
 export const getCurrentCourseModule: Function = (courses: any[]): any => {
-  const courseCurrent = courses.find(course => course.active === true)
+  const courseCurrent = courses.find(course => course.isActiveTemp === true)
   let moduleCurrentNext: any = { questions: [] }
   if (courseCurrent) {
     const {
@@ -13,7 +13,7 @@ export const getCurrentCourseModule: Function = (courses: any[]): any => {
       meta,
     } = courseCurrent
     moduleCurrentNext = courseCurrent.modules.find(
-      (module: any) => module.active === true
+      (module: any) => module.isActiveTemp === true
     )
 
     moduleCurrentNext = {
