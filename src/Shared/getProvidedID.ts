@@ -24,11 +24,9 @@ export const getProvidedID: Function = (courses: any[]): any[] => {
         return { questionID: nanoID, ...question, options: optionNext }
       })
 
-      const nanoID = nanoid()
       return { ...module, questions: questionsNext }
     })
 
-    const nanoID = nanoid()
     return { ...course, modules: modulesNext }
   })
 }
