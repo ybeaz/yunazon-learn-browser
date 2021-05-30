@@ -8,9 +8,21 @@ export const getProvidedActiveDefault: Function = (courses: any[]): any[] => {
     const { modules } = course
 
     const modulesNext = modules.map(module => {
-      return { ...module, isActiveTemp: false }
+      const { questions } = module
+
+      const questionsNext = questions.map(question => {
+        const { options } = question
+
+        const optionNext = options.map(option => {
+          return { ...option }
+        })
+
+        return { ...question, options: optionNext, isActiveTemp: true }
+      })
+
+      return { ...module, questionsNext, isActiveTemp: true }
     })
 
-    return { ...course, modules: modulesNext, isActiveTemp: false }
+    return { ...course, modules: modulesNext, isActiveTemp: true }
   })
 }

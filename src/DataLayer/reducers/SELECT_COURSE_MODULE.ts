@@ -1,6 +1,6 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
-import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
+import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getCourseModuleActive } from '../../Shared/getCourseModuleActive'
 
 export const SELECT_COURSE_MODULE: Function = (
@@ -20,7 +20,7 @@ export const SELECT_COURSE_MODULE: Function = (
     })
   })
 
-  let coursesNext = getProvidedActiveDefault(courses)
+  let coursesNext = getProvidedSelectedDefault(courses)
   coursesNext = getCourseModuleActive(courses, courseID, moduleID)
   storeNext = { ...storeNext, courses: coursesNext }
 

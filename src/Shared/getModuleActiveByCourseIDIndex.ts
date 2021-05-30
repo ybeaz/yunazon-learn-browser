@@ -5,7 +5,7 @@ interface IGetModuleActiveByCourseIDIndexInput {
 }
 
 /**
- * @description Function to make a course isActiveTemp based on contentID
+ * @description Function to make a course isSelected based on contentID
  * @param courses
  * @param contentID
  * @returns
@@ -16,16 +16,16 @@ export const getModuleActiveByCourseIDIndex: Function = ({
   index: indexIn,
 }: IGetModuleActiveByCourseIDIndexInput): any[] => {
   return courses.map(course => {
-    let isActiveTemp = false
+    let isSelected = false
     const { courseID, modules } = course
     const modulesNext = modules.map(module => {
       const { index } = module
       if (courseID === courseIDIn && index === indexIn) {
-        isActiveTemp = true
-        return { ...module, isActiveTemp }
+        isSelected = true
+        return { ...module, isSelected }
       }
       return module
     })
-    return { ...course, modules: modulesNext, isActiveTemp }
+    return { ...course, modules: modulesNext, isSelected }
   })
 }

@@ -7,7 +7,7 @@ import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
 import { getValidatedCourses } from '../../Shared/getValidatedCourses'
 import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
 import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
-import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
+import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
 import * as action from '../../DataLayer/index.action'
 import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfo.connector'
@@ -22,7 +22,7 @@ function* getContentInfo() {
     let coursesNext = getProcessedArgsInChain(courses)
       .exec(getValidatedCourses)
       .exec(getProvidedID)
-      .exec(getProvidedActiveDefault)
+      .exec(getProvidedSelectedDefault)
       .exec(getProdidevAnswerDefault)
       .exec(getOptionsShuffled)
       .exec(getProvidedSearchString)
