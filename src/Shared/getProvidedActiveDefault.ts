@@ -5,24 +5,30 @@
  */
 export const getProvidedActiveDefault: Function = (courses: any[]): any[] => {
   return courses.map(course => {
-    const { modules } = course
+    const { isActive: isActiveCourse, modules } = course
 
     const modulesNext = modules.map(module => {
-      const { questions } = module
+      const { isActive: isActiveModule, questions } = module
 
       const questionsNext = questions.map(question => {
-        const { options } = question
+        const { isActive: isActiveQuestion, options } = question
 
         const optionNext = options.map(option => {
           return { ...option }
         })
 
-        return { ...question, options: optionNext, isActiveTemp: true }
+        const isActiveTemp =
+          isActiveCourse === true &&
+          isActiveModule === true &&
+          isActiveQuestion === true
+            ? true
+            : false
+        return { ...question, options: optionNext, isActiveTemp }
       })
 
-      return { ...module, questionsNext, isActiveTemp: true }
+      return { ...module, questionsNext }
     })
 
-    return { ...course, modules: modulesNext, isActiveTemp: true }
+    return { ...course, modules: modulesNext }
   })
 }
