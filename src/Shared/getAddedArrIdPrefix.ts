@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
+import { nanoid } from 'nanoid'
 
 /**
  * @description NOT USED anymore, but getProvidedContentID(...) instead
@@ -11,8 +11,8 @@ export const getAddedArrIdPrefix: Function = (
   prefix: string
 ): any[] => {
   return arr.map(item => {
-    const uuid = uuidv4()
-    const id = `${prefix}-${uuid}`
+    const nanoID = nanoid()
+    const id = `${prefix}-${nanoID}`
     return { ...item, id }
   })
 }

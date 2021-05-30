@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid'
+import { nanoid } from 'nanoid'
 
 /**
  * @description Function to provide content arr with IDs for courses, questions, options
@@ -16,19 +16,19 @@ export const getProvidedID: Function = (courses: any[]): any[] => {
         const { options } = question
 
         const optionNext = options.map(option => {
-          const uuid = uuidv4()
-          return { optionID: uuid, ...option }
+          const nanoID = nanoid()
+          return { optionID: nanoID, ...option }
         })
 
-        const uuid = uuidv4()
-        return { questionID: uuid, ...question, options: optionNext }
+        const nanoID = nanoid()
+        return { questionID: nanoID, ...question, options: optionNext }
       })
 
-      const uuid = uuidv4()
-      return { moduleID: uuid, ...module, questions: questionsNext }
+      const nanoID = nanoid()
+      return { ...module, questions: questionsNext }
     })
 
-    const uuid = uuidv4()
-    return { courseID: uuid, ...course, modules: modulesNext }
+    const nanoID = nanoid()
+    return { ...course, modules: modulesNext }
   })
 }

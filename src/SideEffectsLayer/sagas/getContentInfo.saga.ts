@@ -22,9 +22,9 @@ function* getContentInfo() {
     let coursesNext = getProcessedArgsInChain(courses)
       .exec(getValidatedCourses)
       .exec(getProvidedID)
-      .exec(getOptionsShuffled)
       .exec(getProvidedActiveDefault)
       .exec(getProdidevAnswerDefault)
+      .exec(getOptionsShuffled)
       .exec(getProvidedSearchString)
       .done()
 
