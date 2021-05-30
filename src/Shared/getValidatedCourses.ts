@@ -7,6 +7,7 @@ const errorCourses = ({
   courseCapture,
   courseDescription,
   language,
+  meta,
 }) => {
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
     courseValidation = [
@@ -45,6 +46,66 @@ const errorCourses = ({
     courseValidation = [
       ...courseValidation,
       { type: 'course-no-language-or-type-error', courseIndex, courseCapture },
+    ]
+  }
+
+  const { institution, specTitle, specName, email, isSendingBc } = meta
+  if (
+    !institution ||
+    typeof institution !== 'string' ||
+    institution.length < 2
+  ) {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-meta-institution-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  }
+
+  if (!specTitle || typeof specTitle !== 'string' || specTitle.length < 2) {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-meta-specTitle-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  }
+
+  if (!specName || typeof specName !== 'string' || specName.length < 2) {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-meta-specName-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  }
+
+  if (!email || typeof email !== 'string' || email.length < 2) {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-meta-email-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  }
+
+  if (typeof isSendingBc !== 'boolean') {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-meta-isSendingBc-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
     ]
   }
 
@@ -207,6 +268,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       capture: courseCapture,
       description: courseDescription,
       language,
+      meta,
       modules,
     } = course
 
@@ -217,6 +279,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       courseCapture,
       courseDescription,
       language,
+      meta,
     })
 
     courseValidation = errorModules({
