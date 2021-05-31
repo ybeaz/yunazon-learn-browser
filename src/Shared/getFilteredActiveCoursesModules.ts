@@ -1,9 +1,11 @@
 /**
- * @description Function to add isActiveTemp status default to courses and modules
+ * @description Function to filter NOT isActive courses, modules and questions
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getFilteredActive: Function = (courses: any[]): any[] => {
+export const getFilteredActiveCoursesModules: Function = (
+  courses: any[]
+): any[] => {
   return courses.filter(course => {
     const { isActive: isActiveCourse, modules } = course
     let res = true
