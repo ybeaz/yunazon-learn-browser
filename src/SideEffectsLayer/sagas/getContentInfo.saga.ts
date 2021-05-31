@@ -3,6 +3,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
 
+import { getReducedQuestionsByNum } from '../../Shared/getReducedQuestionsByNum'
 import { getFilteredActive } from '../../Shared/getFilteredActive'
 import { getProvidedActiveDefault } from '../../Shared/getProvidedActiveDefault'
 import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
@@ -24,6 +25,7 @@ function* getContentInfo() {
     let coursesNext = getProcessedArgsInChain(courses)
       .exec(getValidatedCourses)
       .exec(getFilteredActive)
+      .exec(getReducedQuestionsByNum)
       .exec(getProvidedID)
       .exec(getProvidedActiveDefault)
       .exec(getProvidedSelectedDefault)
@@ -32,7 +34,7 @@ function* getContentInfo() {
       .exec(getProvidedSearchString)
       .done()
 
-    console.info('getContentInfo.saga [31]', { coursesNext, courses })
+    // console.info('getContentInfo.saga [31]', { coursesNext, courses })
 
     yield put(action.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {

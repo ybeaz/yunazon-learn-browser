@@ -26,7 +26,7 @@ export const getProvidedActiveDefault: Function = (courses: any[]): any[] => {
         return { ...question, options: optionNext, isActiveTemp }
       })
 
-      return { ...module, questionsNext }
+      return { ...module, questions: questionsNext }
     })
 
     return { ...course, modules: modulesNext }

@@ -1,12 +1,15 @@
 import { bool } from 'prop-types'
 
-const errorCourses = ({
+const errorCourse = ({
   courseValidation,
   courseIndex,
   courseID,
   courseCapture,
   courseDescription,
   language,
+  isActive,
+  questionNumber,
+  toPass,
   meta,
 }) => {
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
@@ -46,6 +49,35 @@ const errorCourses = ({
     courseValidation = [
       ...courseValidation,
       { type: 'course-no-language-or-type-error', courseIndex, courseCapture },
+    ]
+  }
+
+  if (typeof isActive !== 'boolean') {
+    courseValidation = [
+      ...courseValidation,
+      { type: 'course-no-isActive-or-type-error', courseIndex, courseCapture },
+    ]
+  }
+
+  if (
+    !questionNumber ||
+    typeof questionNumber !== 'number' ||
+    questionNumber <= 1
+  ) {
+    courseValidation = [
+      ...courseValidation,
+      {
+        type: 'course-no-questionNumber-or-type-error',
+        courseIndex,
+        courseCapture,
+      },
+    ]
+  }
+
+  if (!toPass || typeof toPass !== 'number' || toPass > 1 || toPass <= 0) {
+    courseValidation = [
+      ...courseValidation,
+      { type: 'course-no-toPass-or-type-error', courseIndex, courseCapture },
     ]
   }
 
@@ -139,6 +171,12 @@ const errorModules = ({
 
   isFound = modules.find(
     (module: any) =>
+      module.isActive === undefined || typeof module.isActive !== 'boolean'
+  )
+  if (isFound) errors = [...errors, 'module-no-isActive-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
       module.contentType === undefined || typeof module.contentType !== 'string'
   )
   if (isFound) errors = [...errors, 'module-no-contentType-or-type-error']
@@ -196,6 +234,12 @@ const errorQuestions = ({
       typeof question.capture !== 'string'
   )
   if (isFound) errors = [...errors, 'question-no-capture-or-type-error']
+
+  isFound = questions.find(
+    question =>
+      question.isActive === undefined || typeof question.isActive !== 'boolean'
+  )
+  if (isFound) errors = [...errors, 'question-no-isActive-or-type-error']
 
   if (errors.length) {
     return [
@@ -268,17 +312,23 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       capture: courseCapture,
       description: courseDescription,
       language,
+      isActive,
+      questionNumber,
+      toPass,
       meta,
       modules,
     } = course
 
-    courseValidation = errorCourses({
+    courseValidation = errorCourse({
       courseValidation,
       courseIndex,
       courseID,
       courseCapture,
       courseDescription,
       language,
+      isActive,
+      questionNumber,
+      toPass,
       meta,
     })
 
