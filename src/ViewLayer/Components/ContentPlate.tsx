@@ -77,6 +77,8 @@ export const ContentPlate: React.FunctionComponent<any> = (
   }
 
   const slug = courseCapture.split(' ').join('-')
+  const pathname = `/c/${courseID}/${slug}`
+
   const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]
 
   return (
@@ -89,9 +91,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
       </CONTENT_ASSIGNED_COMPONENT>
       <Link
         className='__shield'
-        to={{
-          pathname: `/c/${courseID}/${slug}`,
-        }}
+        to={{ pathname }}
         onClick={event =>
           handleEvents(event, {
             typeEvent: 'SELECT_COURSE_MODULE',

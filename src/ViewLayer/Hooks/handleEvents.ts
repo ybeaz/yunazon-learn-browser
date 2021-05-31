@@ -24,8 +24,11 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const output = {
     REDUCE_QUESTIONS_NUMBER: () => {
       const { courseID, index } = data
-      const { qn } = getParsedUrlQuery()
-      const isReducing = qn === 'all' || qn === 'inf' ? false : true
+      const { qn, nq } = getParsedUrlQuery()
+      const isReducing =
+        qn === 'all' || qn === 'inf' || nq === 'all' || nq === 'inf'
+          ? false
+          : true
 
       dispatch(action.REDUCE_QUESTIONS_NUMBER({ courseID, index, isReducing }))
     },
