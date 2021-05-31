@@ -1,22 +1,39 @@
 import { getLimitedArrayElemsRandomly } from './getLimitedArrayElemsRandomly'
 
+interface IOptions {
+  courseIDIn: string
+  indexIn: number
+}
+
 /**
  * @description Function to reduce course questions by number, pick up randomly
  */
-export const getReducedQuestionsByNum: Function = (courses: any[]): any[] => {
+export const getReducedQuestionsByNum: Function = (
+  courses: any[],
+  { courseIDIn, indexIn }: IOptions = { courseIDIn: 'all', indexIn: 0 }
+): any[] => {
   return courses.map(course => {
-    const { questionNumber, modules } = course
+    const { courseID, questionNumber, modules } = course
 
-    const modulesNext = modules.map(module => {
-      const { questions } = module
+    let modulesNext = modules
 
-      let questionsNext = questions
-      if (typeof questionNumber === 'number') {
-        questionsNext = getLimitedArrayElemsRandomly(questions, questionNumber)
-      }
-      return { ...module, questions: questionsNext }
-    })
+    if (courseIDIn === undefined || courseIDIn === courseID) {
+      modulesNext = modules.map(module => {
+        const { index, questions } = module
 
+        let questionsNext = questions
+        if (
+          (courseIDIn === undefined || indexIn === index) &&
+          typeof questionNumber === 'number'
+        ) {
+          questionsNext = getLimitedArrayElemsRandomly(
+            questions,
+            questionNumber
+          )
+        }
+        return { ...module, questions: questionsNext }
+      })
+    }
     return { ...course, modules: modulesNext }
   })
 }

@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
+import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getQuesionString } from '../../Shared/getQuesionString'
 import { getButtonsClassString } from '../../Shared/getButtonsClassString'
@@ -21,20 +22,22 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const store = useSelector((store: IRootStore) => store)
 
   const {
-    durationObj: { duration, units },
-  } = props
-
-  const {
-    globalVars: { numberQuestionsInSlide },
+    globalVars: { numberQuestionsInSlide, durationMultiplier },
     componentsState: { questionsSlideNumber, isCourseStarted },
     courses,
     language,
   } = store
 
   const {
-    courseActive: { capture: courseCapture },
+    courseActive: { capture: courseCapture, questionNumber },
+    moduleActive: { duration: durationIn },
     questionsActive,
   } = getActiveCourseData(courses)
+
+  const { duration, units }: IDurationObj = getMultipliedTimeStr(
+    durationIn,
+    durationMultiplier
+  )
 
   const questionsChunked = getChunkedArray(
     questionsActive,

@@ -1,3 +1,4 @@
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
 import { getAzProps } from '../../Analytics/getAzProps'
 import { getResultDataFromStore } from './getResultDataFromStore'
@@ -21,6 +22,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch, getState } = store
 
   const output = {
+    REDUCE_QUESTIONS_NUMBER: () => {
+      const { courseID, index } = data
+      const { qn } = getParsedUrlQuery()
+      const isReducing = qn === 'all' || qn === 'inf' ? false : true
+
+      dispatch(action.REDUCE_QUESTIONS_NUMBER({ courseID, index, isReducing }))
+    },
+
     CLICK_SOCIAL_NET_BUTTON: () => {
       const { buttonProps } = data
       const { documents } = getState()

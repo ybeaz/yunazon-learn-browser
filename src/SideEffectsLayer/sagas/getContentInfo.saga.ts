@@ -3,7 +3,6 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
 
-import { getReducedQuestionsByNum } from '../../Shared/getReducedQuestionsByNum'
 import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
 import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
@@ -26,7 +25,6 @@ function* getContentInfo() {
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
-      .exec(getReducedQuestionsByNum)
       .exec(getProvidedID)
       .exec(getProvidedSelectedDefault)
       .exec(getProdidevAnswerDefault)

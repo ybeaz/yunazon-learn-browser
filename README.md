@@ -44,3 +44,7 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 2021-03-09 Setup globalVars fetching
 2021-03-08 Setup router, final (or one of the final :) move
 2021-03-06 Setup environment and render "Hello World"
+
+## Features and options
+
+`?qn=all` adding this to the url address string enbable all questions to answer instead of limit of questionNumber - course prop

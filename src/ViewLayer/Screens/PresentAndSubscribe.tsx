@@ -70,6 +70,15 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
         {},
         { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { courseID, index } }
       )
+
+      handleEvents(
+        {},
+        {
+          type: 'REDUCE_QUESTIONS_NUMBER',
+          data: { courseID, index },
+        }
+      )
+
       setIsLoaded(true)
 
       const {

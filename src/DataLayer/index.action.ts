@@ -6,27 +6,27 @@ interface IAction {
 }
 
 // Asynchroneous actions for saga
-export const SAVE_ANALYTICS: ICreateRequestTypes = createRequestTypes(
-  'SAVE_ANALYTICS'
-)
+export const SAVE_ANALYTICS: ICreateRequestTypes =
+  createRequestTypes('SAVE_ANALYTICS')
 
 export const SEND_EMAIL_DOCUMENT: ICreateRequestTypes = createRequestTypes(
   'SEND_EMAIL_DOCUMENT'
 )
-export const FIND_DOCUMENT: ICreateRequestTypes = createRequestTypes(
-  'FIND_DOCUMENT'
-)
-export const ADD_DOCUMENT: ICreateRequestTypes = createRequestTypes(
-  'ADD_DOCUMENT'
-)
-export const GET_CONTENT_DATA: ICreateRequestTypes = createRequestTypes(
-  'GET_CONTENT_DATA'
-)
-export const GET_GLOBAL_VARS: ICreateRequestTypes = createRequestTypes(
-  'GET_GLOBAL_VARS'
-)
+export const FIND_DOCUMENT: ICreateRequestTypes =
+  createRequestTypes('FIND_DOCUMENT')
+export const ADD_DOCUMENT: ICreateRequestTypes =
+  createRequestTypes('ADD_DOCUMENT')
+export const GET_CONTENT_DATA: ICreateRequestTypes =
+  createRequestTypes('GET_CONTENT_DATA')
+export const GET_GLOBAL_VARS: ICreateRequestTypes =
+  createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+export const REDUCE_QUESTIONS_NUMBER: Function = (data: number): IAction => ({
+  type: 'REDUCE_QUESTIONS_NUMBER',
+  data,
+})
+
 export const TOGGLE_MEDIA_LOADED: Function = (data: number): IAction => ({
   type: 'TOGGLE_MEDIA_LOADED',
   data,
