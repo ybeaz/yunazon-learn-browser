@@ -19,10 +19,12 @@ export const getReducedQuestionsByNum: Function = (
 ): any[] => {
   return courses.map(course => {
     const { courseID, questionNumber, modules } = course
-    const questionNumberNext =
+    let questionNumberNext =
       questionNumberIn && typeof questionNumberIn === 'number'
         ? questionNumberIn
         : questionNumber
+
+    questionNumberNext = questionNumberNext > 1 ? questionNumberNext : 2
 
     let modulesNext = modules
 

@@ -31,8 +31,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       const isReducing = questionNumber === 'all' || qn === 'inf' ? false : true
       let questionNumberIn =
         isParsableInt(questionNumber) && parseInt(questionNumber, 10)
-      questionNumberIn =
-        questionNumberIn && questionNumberIn > 1 ? questionNumberIn : 2
 
       dispatch(
         action.REDUCE_QUESTIONS_NUMBER({

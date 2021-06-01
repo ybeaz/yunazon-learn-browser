@@ -17,6 +17,9 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 ## Done
 
 2021-05-31 Implement question limit and pass rate with default and custom settings
+2021-05-31 Extend a course template with question limit for a course. For that to add a questions attribute isActive: type boolean
+2021-05-31 Extend a course template with rate to pass test
+2021-05-29 Extend a question template with attribute isActive: type boolean === false don't show up by default
 2021-05-15 Tracking user data is implemented: server API, client support, but not display support
 2021-05-01 SEO
 2021-05-01 Pagination by two-three questions
