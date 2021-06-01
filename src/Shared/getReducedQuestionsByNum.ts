@@ -3,6 +3,7 @@ import { getLimitedArrayElemsRandomly } from './getLimitedArrayElemsRandomly'
 interface IOptions {
   courseIDIn: string
   indexIn: number
+  questionNumberIn: number | undefined
 }
 
 /**
@@ -10,10 +11,18 @@ interface IOptions {
  */
 export const getReducedQuestionsByNum: Function = (
   courses: any[],
-  { courseIDIn, indexIn }: IOptions = { courseIDIn: 'all', indexIn: 0 }
+  { courseIDIn, indexIn, questionNumberIn }: IOptions = {
+    courseIDIn: 'all',
+    indexIn: 0,
+    questionNumberIn: undefined,
+  }
 ): any[] => {
   return courses.map(course => {
     const { courseID, questionNumber, modules } = course
+    const questionNumberNext =
+      questionNumberIn && typeof questionNumberIn === 'number'
+        ? questionNumberIn
+        : questionNumber
 
     let modulesNext = modules
 
@@ -24,11 +33,11 @@ export const getReducedQuestionsByNum: Function = (
         let questionsNext = questions
         if (
           (courseIDIn === undefined || indexIn === index) &&
-          typeof questionNumber === 'number'
+          typeof questionNumberNext === 'number'
         ) {
           questionsNext = getLimitedArrayElemsRandomly(
             questions,
-            questionNumber
+            questionNumberNext
           )
         }
         return { ...module, questions: questionsNext }

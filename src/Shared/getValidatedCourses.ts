@@ -9,7 +9,7 @@ const errorCourse = ({
   language,
   isActive,
   questionNumber,
-  toPass,
+  passRate,
   meta,
 }) => {
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
@@ -74,10 +74,15 @@ const errorCourse = ({
     ]
   }
 
-  if (!toPass || typeof toPass !== 'number' || toPass > 1 || toPass <= 0) {
+  if (
+    !passRate ||
+    typeof passRate !== 'number' ||
+    passRate > 1 ||
+    passRate <= 0
+  ) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-toPass-or-type-error', courseIndex, courseCapture },
+      { type: 'course-no-passRate-or-type-error', courseIndex, courseCapture },
     ]
   }
 
@@ -314,7 +319,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       language,
       isActive,
       questionNumber,
-      toPass,
+      passRate,
       meta,
       modules,
     } = course
@@ -328,7 +333,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
       language,
       isActive,
       questionNumber,
-      toPass,
+      passRate,
       meta,
     })
 

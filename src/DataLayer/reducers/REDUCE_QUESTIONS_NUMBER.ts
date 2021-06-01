@@ -9,12 +9,16 @@ export const REDUCE_QUESTIONS_NUMBER: Function = (
 ): IRootStore => {
   const { courses } = store
 
-  const { courseID, index, isReducing } = data
+  const { courseID, index, isReducing, questionNumberIn } = data
 
   let coursesNext = courses
 
   if (isReducing) {
-    coursesNext = getReducedQuestionsByNum(courses, { courseID, index })
+    coursesNext = getReducedQuestionsByNum(courses, {
+      courseID,
+      index,
+      questionNumberIn,
+    })
   }
 
   return { ...store, courses: coursesNext }

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { isParsableFloat } from '../../Shared/isParsableFloat'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getQuesionString } from '../../Shared/getQuesionString'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
@@ -31,12 +33,25 @@ export const QuestionScores: React.FunctionComponent<any> = (
   const slug = documentsLen && documents[documentsLen - 1]?.slug
 
   const {
-    courseActive: { courseID, capture: courseCapture, description, meta },
+    courseActive: {
+      passRate,
+      courseID,
+      capture: courseCapture,
+      description,
+      meta,
+    },
     moduleActive,
     questionsActive,
   } = getActiveCourseData(courses)
 
-  const score = getAnswersChecked2(questionsActive)
+  const { rp, pr } = getParsedUrlQuery()
+  let passRateIn = rp || pr
+  passRateIn =
+    passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
+  passRateIn = passRateIn ? passRateIn : passRate
+  passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
+
+  const score = getAnswersChecked2(questionsActive, passRateIn)
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result } = score
   const { moduleID, contentID } = moduleActive

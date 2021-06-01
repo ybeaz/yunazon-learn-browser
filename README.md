@@ -16,6 +16,8 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ## Done
 
+2021-05-31 Implement question limit and pass rate with default and custom settings
+2021-05-15 Tracking user data is implemented: server API, client support, but not display support
 2021-05-01 SEO
 2021-05-01 Pagination by two-three questions
 2021-05-01 Cc to manager, share in social networks
@@ -47,4 +49,6 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ## Features and options
 
-`?qn=all` adding this to the url address string enbable all questions to answer instead of limit of questionNumber - course prop
+`?qn=4` Adding `qn` or `nq` limit the number of questions in the test. If `typeof` `qn` or `nq` `string` (for instance `?qn=all`) then the limit becomes equal the total number of questions. If `qn` or `nq` are not set, then `questionNumber` prop is applied by default. `qn` stands for question number.
+
+`?pr=0.75` Adding `pr` or `rp` sets custom pass rate to pass tests. It means that if you answered correctly on 3 question of 4 then with pass rate 0.75 you have passed the test. If `pr` or `rp` are not set, then `passRate` prop is applied by default. `pr` stands for pass rate.

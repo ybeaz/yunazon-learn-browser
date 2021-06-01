@@ -1,3 +1,4 @@
+import { isParsableInt } from '../../Shared/isParsableInt'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -25,12 +26,22 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     REDUCE_QUESTIONS_NUMBER: () => {
       const { courseID, index } = data
       const { qn, nq } = getParsedUrlQuery()
-      const isReducing =
-        qn === 'all' || qn === 'inf' || nq === 'all' || nq === 'inf'
-          ? false
-          : true
+      const questionNumber = qn || nq
 
-      dispatch(action.REDUCE_QUESTIONS_NUMBER({ courseID, index, isReducing }))
+      const isReducing = questionNumber === 'all' || qn === 'inf' ? false : true
+      let questionNumberIn =
+        isParsableInt(questionNumber) && parseInt(questionNumber, 10)
+      questionNumberIn =
+        questionNumberIn && questionNumberIn > 1 ? questionNumberIn : 2
+
+      dispatch(
+        action.REDUCE_QUESTIONS_NUMBER({
+          courseID,
+          index,
+          isReducing,
+          questionNumberIn,
+        })
+      )
     },
 
     CLICK_SOCIAL_NET_BUTTON: () => {

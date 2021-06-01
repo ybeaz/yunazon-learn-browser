@@ -7,10 +7,12 @@ interface IRESgetAnswersChecked2 {
 /**
  * @description Function to count quiz score of the module level
  * @param questions
+ * @param passRateIn
  * @returns
  */
 export const getAnswersChecked2: Function = (
-  questions: any[]
+  questions: any[],
+  passRateIn: number = 1
 ): IRESgetAnswersChecked2 => {
   let res = {
     total: questions.length,
@@ -36,6 +38,7 @@ export const getAnswersChecked2: Function = (
     const findAnswer = question.options.find(option => option.answer === true)
     if (findAnswer) res.answered += 1
   })
-  res.result = res.total === res.right ? 'success' : 'failure'
+  res.result = res.total <= res.right / passRateIn ? 'success' : 'failure'
+
   return res
 }
