@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { EmalInputs } from '../Components/EmalInputs'
 import { ModalFrame } from '../Frames/ModalFrame'
@@ -89,6 +90,8 @@ export const Certificate: React.FunctionComponent<any> = (
       typeEvent: 'GO_BACK_FROM_CERTIFICATE',
       data: { history, courseCapture },
     },
+    tooltipText: DICTIONARY['backToCourse'][language],
+    tooltipPosition: 'bottom',
   }
 
   const buttonPrintProps = {
@@ -98,12 +101,16 @@ export const Certificate: React.FunctionComponent<any> = (
       typeEvent: 'PRINT_DOCUMENT',
       data: { courseCapture, documentID, courseID, contentID },
     },
+    tooltipText: DICTIONARY['sendToPrint'][language],
+    tooltipPosition: 'bottom',
   }
 
   const buttonEmailProps = {
     icon: 'MdMailOutline',
     classAdded: 'Button_UseCertificate',
     action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
+    tooltipText: DICTIONARY['sendToEmail'][language],
+    tooltipPosition: 'bottom',
   }
 
   const buttonCopyLinkProps = {
@@ -113,6 +120,8 @@ export const Certificate: React.FunctionComponent<any> = (
       typeEvent: 'COPY_URL_TO_CLIPBOARD',
       data: { courseCapture, documentID, courseID, contentID },
     },
+    tooltipText: DICTIONARY['copyLinkToClipboard'][language],
+    tooltipPosition: 'bottom',
   }
 
   const userName = middleName

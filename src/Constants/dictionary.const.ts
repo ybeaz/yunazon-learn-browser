@@ -3,6 +3,22 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  copyLinkToClipboard: {
+    en: 'copy link',
+    ru: 'скопировать ссылку',
+  },
+  sendToEmail: {
+    en: 'sent it to email',
+    ru: 'послать на email',
+  },
+  sendToPrint: {
+    en: 'send it to print or save as pdf',
+    ru: 'послать на печать или сохранить как pdf',
+  },
+  backToCourse: {
+    en: 'back to course',
+    ru: 'обратно к курсу',
+  },
   difficulty: {
     en: 'difficulty',
     ru: 'сложность',

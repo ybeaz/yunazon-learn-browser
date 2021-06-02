@@ -48,9 +48,9 @@ interface IButton {
   captureRight?: string
   classAdded?: string
   action?: any
-  isDisplaying?: boolean
+  isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string
-  tooltipPosition?: string
+  tooltipPosition?: string // options: ['top','right','bottom','left']
   handleEvents?: Function
 }
 
