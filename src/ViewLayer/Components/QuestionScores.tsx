@@ -30,7 +30,7 @@ export const QuestionScores: React.FunctionComponent<any> = (
   } = store
 
   const documentsLen = documents.length
-  const slug = documentsLen && documents[documentsLen - 1]?.slug
+  const pathName = documentsLen && documents[documentsLen - 1]?.pathName
 
   const {
     courseActive: {
@@ -61,11 +61,11 @@ export const QuestionScores: React.FunctionComponent<any> = (
   }, [])
 
   useEffect(() => {
-    if (slug && isDocumentAdded === true) {
+    if (pathName && isDocumentAdded === true) {
       handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
-      history.push(slug)
+      history.push(pathName)
     }
-  }, [slug])
+  }, [pathName])
 
   const inputFirstNameProps = {
     classAdded: 'Input_name',

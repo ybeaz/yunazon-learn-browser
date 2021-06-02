@@ -6,10 +6,15 @@ import { sendEmailDocumentConnector } from '../../CommunicationLayer/sendEmailDo
 
 function* sendEmailDocument(dataInput) {
   const {
-    data: { documentID, sendTo, sendCc },
+    data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
   } = dataInput
 
-  const sendBcc = 't3531350@yahoo.com'
+  const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
+  console.info('sendEmailDocument.saga [13]', {
+    sendBcc,
+    emailBcc,
+    isSendingBcc,
+  })
   const fragmentName = 'DocumentModelGraphqlAll'
   const { method, url, data, options } = sendEmailDocumentConnector(
     documentID,
@@ -33,7 +38,8 @@ function* sendEmailDocument(dataInput) {
 
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
-    console.info('sendEmailDocument [40]', error.name + ': ' + error.message)
+    yield put(action.TOGGLE_LOADER_OVERLAY(false))
+    yield put(action.TOGGLE_MODAL_FRAME(false))
   }
 }
 

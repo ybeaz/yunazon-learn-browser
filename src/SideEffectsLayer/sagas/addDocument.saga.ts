@@ -11,7 +11,7 @@ function* addDocument(dataInput) {
       contentID,
       courseID,
       description,
-      meta: { institution, specTitle, specName },
+      meta,
       moduleID,
       userEmail,
       firstName,
@@ -26,11 +26,7 @@ function* addDocument(dataInput) {
     courseID,
     capture,
     description,
-    meta: {
-      institution,
-      specTitle,
-      specName,
-    },
+    meta,
     moduleIDs: [moduleID],
     contentIDs: [contentID],
     userName: { firstName, middleName, lastName },
@@ -38,10 +34,12 @@ function* addDocument(dataInput) {
   }
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const { method, url, data: payloadNext, options } = addDocumentConnector(
-    payload,
-    fragmentName
-  )
+  const {
+    method,
+    url,
+    data: payloadNext,
+    options,
+  } = addDocumentConnector(payload, fragmentName)
 
   try {
     yield put(action.TOGGLE_LOADER_OVERLAY(true))

@@ -15,9 +15,22 @@ export const EmalInputs: React.FunctionComponent<any> = (
   const { documentID } = props
 
   const store = useSelector((store: IRootStore) => store)
+
   const {
+    documents,
     forms: { sendTo, sendCc },
   } = store
+
+  const documentsLen = documents.length
+  let documentDefault = {
+    meta: {
+      email: '',
+      isSendingBcc: false,
+    },
+  }
+  const {
+    meta: { email: emailBcc = '', isSendingBcc = false },
+  } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const inputEmailToProps = {
     classAdded: 'Input_email',
@@ -40,7 +53,7 @@ export const EmalInputs: React.FunctionComponent<any> = (
     classAdded: 'Button_MdForward',
     action: {
       typeEvent: 'SEND_EMAIL_DOCUMENT',
-      data: { documentID, sendTo, sendCc },
+      data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
     },
   }
 

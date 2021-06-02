@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import { getSlug } from '../../Shared/getSlug'
 import { PlayerPanel } from './PlayerPanel'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { LoaderBlurhash } from './LoaderBlurhash'
@@ -76,7 +77,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
     isActionButtonDisplaying: true,
   }
 
-  const slug = courseCapture.split(' ').join('-')
+  const slug = getSlug(courseCapture)
   const pathname = `/c/${courseID}/${slug}`
 
   const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]

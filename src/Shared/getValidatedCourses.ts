@@ -86,7 +86,7 @@ const errorCourse = ({
     ]
   }
 
-  const { institution, specTitle, specName, email, isSendingBc } = meta
+  const { institution, specTitle, specName, email, isSendingBcc } = meta
   if (
     !institution ||
     typeof institution !== 'string' ||
@@ -135,11 +135,11 @@ const errorCourse = ({
     ]
   }
 
-  if (typeof isSendingBc !== 'boolean') {
+  if (typeof isSendingBcc !== 'boolean') {
     courseValidation = [
       ...courseValidation,
       {
-        type: 'course-no-meta-isSendingBc-or-type-error',
+        type: 'course-no-meta-isSendingBcc-or-type-error',
         courseIndex,
         courseCapture,
       },

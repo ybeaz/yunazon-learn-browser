@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 
+import { getSlug } from '../../Shared/getSlug'
 import { EmalInputs } from '../Components/EmalInputs'
 import { ModalFrame } from '../Frames/ModalFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -46,18 +47,29 @@ export const Certificate: React.FunctionComponent<any> = (
       middleName: '',
       lastName: '',
     },
-    meta: { institution: '', specTitle: '', specName: '' },
+    meta: {
+      institution: '',
+      specTitle: '',
+      specName: '',
+    },
     capture: '',
     courseID: '',
     contentID: '',
   }
   const {
-    userName: { firstName = '', middleName = '', lastName = '' },
+    userName: {
+      firstName = '',
+      middleName = '',
+      lastName = '',
+      email = '',
+      isSendingBcc = false,
+    },
     meta: { institution = '', specTitle = '', specName = '' },
-    capture: documentCapture = '',
+    capture: courseCapture = '',
     courseID = '',
     contentID = '',
     creationDate = '',
+    pathName: documentPathName,
   } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
@@ -75,7 +87,7 @@ export const Certificate: React.FunctionComponent<any> = (
     classAdded: 'Button_MdBackward3',
     action: {
       typeEvent: 'GO_BACK_FROM_CERTIFICATE',
-      data: { history, documentCapture },
+      data: { history, courseCapture },
     },
   }
 
@@ -84,7 +96,7 @@ export const Certificate: React.FunctionComponent<any> = (
     classAdded: 'Button_UseCertificate',
     action: {
       typeEvent: 'PRINT_DOCUMENT',
-      data: { documentCapture, documentID, courseID, contentID },
+      data: { courseCapture, documentID, courseID, contentID },
     },
   }
 
@@ -99,7 +111,7 @@ export const Certificate: React.FunctionComponent<any> = (
     classAdded: 'Button_UseCertificate',
     action: {
       typeEvent: 'COPY_URL_TO_CLIPBOARD',
-      data: { documentCapture, documentID, courseID, contentID },
+      data: { courseCapture, documentID, courseID, contentID },
     },
   }
 
@@ -108,6 +120,9 @@ export const Certificate: React.FunctionComponent<any> = (
     : `${lastName} ${firstName}`
 
   const emailInputsProps = { documentID }
+
+  const slug = getSlug(courseCapture)
+  const coursePathName = `/c/${courseID}/${slug}`
 
   return (
     <div className='Certificate'>
@@ -185,12 +200,21 @@ export const Certificate: React.FunctionComponent<any> = (
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline'>
                     <span className='pm-credits-text block bold sans'>
-                      {documentCapture}
+                      {courseCapture}
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='_code'>
-                    <span className='_course'>Course id# {courseID}</span>
+                    <span className='_course'>
+                      Course link/id#{' '}
+                      <a
+                        className='_courseLink'
+                        href={coursePathName}
+                        target='_blank'
+                      >
+                        {courseID}
+                      </a>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -219,9 +243,19 @@ export const Certificate: React.FunctionComponent<any> = (
                         Completed {creationDateReadable}
                       </span>
                       <span className='_certificate'>
-                        Certificate No {documentID}
+                        Certificate link/ No
+                        <a
+                          className='_documentLink'
+                          href={documentPathName}
+                          target='_blank'
+                        >
+                          {documentID}
+                        </a>
                       </span>
                     </div>
+                    {/* <div className='_documentLink'>
+                      <span className='_link'>Link {documentLink}</span>
+                    </div> */}
                   </div>
                 </div>
               </div>

@@ -7,9 +7,12 @@ import { useHistory } from 'react-router-dom'
  * @methods (full list) push(location), replace(location), go(number), goBack(), goForward()
  * @example getRedirected({}, { typeRedirect: 'back' })
  */
-export const getRedirected: Function = (e, { typeRedirect, slug }): void => {
+export const getRedirected: Function = (
+  e,
+  { typeRedirect, pathName }
+): void => {
   const history = useHistory()
-  if (typeRedirect === 'newLocation' && slug) history.push(slug)
+  if (typeRedirect === 'newLocation' && pathName) history.push(pathName)
   else if (typeRedirect === 'back') history.back()
   else if (typeRedirect === 'forward') history.forward()
 }
