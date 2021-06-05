@@ -3,6 +3,26 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  Home: {
+    en: 'Home',
+    ru: 'На главную',
+  },
+  PersonalСabinet: {
+    en: 'Personal cabinet',
+    ru: 'Личный кабинет',
+  },
+  About: {
+    en: 'About',
+    ru: 'О нас',
+  },
+  Services: {
+    en: 'Services',
+    ru: 'Услуги',
+  },
+  Contacts: {
+    en: 'Contacts',
+    ru: 'Контакты',
+  },
   weAreWorkingOnThis: {
     en: 'Sorry for inconvenience\nwe are working on this',
     ru: 'Извините за неудобства\nмы работаем над этим',

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { LogoGroup } from './LogoGroup'
@@ -10,6 +11,7 @@ import { Button } from './Button'
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
+    language,
     componentsState: { isSideNavVisible },
   } = store
   let history = useHistory()
@@ -25,31 +27,31 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const buttonPropsArr = [
     {
       icon: 'MdHome',
-      captureRight: 'Home',
+      captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_HOME', data: { history } },
     },
     {
       icon: 'MdPerson',
-      captureRight: 'Personal cabinet',
+      captureRight: DICTIONARY.PersonalСabinet[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
     {
       icon: 'MdFlag',
-      captureRight: 'About',
+      captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
     {
       icon: 'MdAddShoppingCart',
-      captureRight: 'Services',
+      captureRight: DICTIONARY.Services[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
     {
       icon: 'MdContactMail',
-      captureRight: 'Contacts',
+      captureRight: DICTIONARY.Contacts[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
