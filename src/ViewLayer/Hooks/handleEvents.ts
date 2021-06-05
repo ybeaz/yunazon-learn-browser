@@ -1,3 +1,4 @@
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { isParsableInt } from '../../Shared/isParsableInt'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
@@ -23,6 +24,18 @@ export const handleEvents: Function = (event: any, props: Props): void => {
   const { dispatch, getState } = store
 
   const output = {
+    DEV_STAGE: () => {
+      const { language } = getState()
+      const message = DICTIONARY.weAreWorkingOnThis[language]
+      alert(message)
+    },
+
+    GO_HOME: () => {
+      const { history } = data
+      history.push('/home')
+      dispatch(action.TOGGLE_SIDE_NAVIGATION())
+    },
+
     REDUCE_QUESTIONS_NUMBER: () => {
       const { courseID, index } = data
       const { qn, nq } = getParsedUrlQuery()

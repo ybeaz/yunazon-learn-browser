@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -11,7 +12,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const {
     componentsState: { isSideNavVisible },
   } = store
-  // console.info('SideNavigation [6]', { isSideNavVisible })
+  let history = useHistory()
 
   const buttonMdMenuProps = {
     icon: 'MdMenu',
@@ -21,38 +22,47 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     },
   }
 
-  const buttonMdPersonProps = {
-    icon: 'MdPerson',
-    captureRight: 'Personal cabinet',
-    classAdded: 'Button_sideMenuItems',
-    // action: { typeEvent: ''}
-  }
+  const buttonPropsArr = [
+    {
+      icon: 'MdHome',
+      captureRight: 'Home',
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'GO_HOME', data: { history } },
+    },
+    {
+      icon: 'MdPerson',
+      captureRight: 'Personal cabinet',
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'DEV_STAGE' },
+    },
+    {
+      icon: 'MdFlag',
+      captureRight: 'About',
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'DEV_STAGE' },
+    },
+    {
+      icon: 'MdAddShoppingCart',
+      captureRight: 'Services',
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'DEV_STAGE' },
+    },
+    {
+      icon: 'MdContactMail',
+      captureRight: 'Contacts',
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'DEV_STAGE' },
+    },
+  ]
 
-  const buttonAboutProps = {
-    icon: 'MdFlag',
-    captureRight: 'About',
-    classAdded: 'Button_sideMenuItems',
-    // action: {
-    //   typeEvent: '',
-    // },
-  }
-
-  const buttonServicesProps = {
-    icon: 'MdAddShoppingCart',
-    captureRight: 'Services',
-    classAdded: 'Button_sideMenuItems',
-    // action: {
-    //   typeEvent: '',
-    // },
-  }
-
-  const buttonContactsProps = {
-    icon: 'MdContactMail',
-    captureRight: 'Contacts',
-    classAdded: 'Button_sideMenuItems',
-    // action: {
-    //   typeEvent: '',
-    // },
+  const getButtons: Function = (buttonPropsArr: any[]): JSX.Element[] => {
+    return buttonPropsArr.map(buttonProps => {
+      return (
+        <div className='_item'>
+          <Button {...buttonProps} />
+        </div>
+      )
+    })
   }
 
   const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
@@ -67,19 +77,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
         <div className='_groupItem _languageSelect'>
           <LanguageSelect />
         </div>
-        <div className='_item'>
-          <Button {...buttonMdPersonProps} />
-        </div>
-
-        <div className='_item'>
-          <Button {...buttonAboutProps} />
-        </div>
-        <div className='_item'>
-          <Button {...buttonServicesProps} />
-        </div>
-        <div className='_item'>
-          <Button {...buttonContactsProps} />
-        </div>
+        {getButtons(buttonPropsArr)}
       </div>
     </div>
   )

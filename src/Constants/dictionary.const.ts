@@ -3,6 +3,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  weAreWorkingOnThis: {
+    en: 'Sorry for inconvenience\nwe are working on this',
+    ru: 'Извините за неудобства\nмы работаем над этим',
+  },
   copyLinkToClipboard: {
     en: 'copy link',
     ru: 'скопировать ссылку',

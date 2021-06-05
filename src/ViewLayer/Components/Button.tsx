@@ -3,6 +3,7 @@ import React from 'react'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IconContext } from 'react-icons'
 import {
+  MdHome,
   MdContactMail,
   MdAddShoppingCart,
   MdFlag,
@@ -23,6 +24,7 @@ import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  MdHome,
   MdContactMail,
   MdAddShoppingCart,
   MdFlag,
