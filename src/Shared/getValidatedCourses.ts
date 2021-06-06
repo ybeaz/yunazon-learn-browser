@@ -1,5 +1,3 @@
-import { bool } from 'prop-types'
-
 const errorCourse = ({
   courseValidation,
   courseIndex,

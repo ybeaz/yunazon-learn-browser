@@ -3,7 +3,7 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["prettier/@typescript-eslint", "plugin:prettier/recommended"],
+  "extends": [""],
   "plugins": [
     "@typescript-eslint",
     "eslint-plugin-react",

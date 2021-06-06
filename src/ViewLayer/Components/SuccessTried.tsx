@@ -1,4 +1,3 @@
-import { string } from 'prop-types'
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 
 import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'

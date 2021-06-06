@@ -1,5 +1,3 @@
-import { any } from 'prop-types'
-
 export const rootStoreDefault = {
   isLoaded: {
     isLoadedGlobalVars: false,
