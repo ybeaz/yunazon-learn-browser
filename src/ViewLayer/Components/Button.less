@@ -22,13 +22,13 @@
   }
 
   ._tooltipLeft {
+    width: 120px;
     top: -5px;
     right: 105%;
   }
 
   .__tooltipText {
     visibility: hidden;
-    width: 120px;
     background: @colorSecondLighter2;
     color: @colorFirstDarker2;
     text-align: center;
@@ -39,6 +39,10 @@
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
+  }
+
+  .__tooltipTextVisible {
+    visibility: visible;
   }
 
   &:hover .__tooltipText {
@@ -132,6 +136,31 @@
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;
+
+  ._tooltipBottom {
+    width: 100%;
+    top: 110%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  ._text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ._line1 {
+      display: flex;
+      padding: 0 0 0.5rem 0;
+      font-size: @fontSizeS;
+    }
+
+    ._line2 {
+      display: flex;
+      font-style: italic;
+    }
+  }
+
   .__button {
     flex: 1;
     height: 2.5rem;

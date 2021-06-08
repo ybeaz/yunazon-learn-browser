@@ -140,9 +140,10 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   }
 
   const CertificateDash = DICTIONARY['Certificate-'][language]
-  const min = DICTIONARY.min[language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
+  const youCanCheckYourUnderstanding =
+    DICTIONARY.youCanCheckYourUnderstanding[language]
   const buttonStartProps = {
     captureLeft: `${CertificateDash} ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0
       ${questionsActive.length} ${questionStr}\u00A0\u00A0`,
@@ -153,8 +154,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
       data: { isStarting: true, courseCapture, courseID, moduleID, contentID },
     },
     isDisplaying: isButtonSlideStart,
-    tooltipText: 'Вы можете проверить свое понимание и получить сертификат',
+    tooltipText: youCanCheckYourUnderstanding,
     tooltipPosition: 'bottom',
+    isTooltipVisible: true,
   }
 
   return (
