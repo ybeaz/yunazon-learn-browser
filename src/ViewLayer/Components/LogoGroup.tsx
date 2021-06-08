@@ -18,7 +18,7 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
           src='https://yourails.com/images/logoYouRailsV13.png'
         />
       </div>
-      <div className='__brand'>YouRails</div>
+      <div className='__brand'>YouRails Academy</div>
     </Link>
   )
 }
