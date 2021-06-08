@@ -98,12 +98,17 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     TOGGLE_START_COURSE: () => {
-      const { isStarting, courseCapture } = data
+      const { isStarting, courseCapture, courseID, moduleID, contentID } = data
       event?.preventDefault &&
         isStarting &&
         getSavedAnanlyticsEvent(
           event,
-          getAzProps('MODULE_STARTED')({ courseCapture })
+          getAzProps('MODULE_STARTED')({
+            courseCapture,
+            courseID,
+            moduleID,
+            contentID,
+          })
         )
 
       dispatch(action.TOGGLE_START_COURSE(isStarting))

@@ -29,8 +29,8 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   } = store
 
   const {
-    courseActive: { capture: courseCapture, questionNumber },
-    moduleActive: { duration: durationIn },
+    courseActive: { capture: courseCapture, courseID, questionNumber },
+    moduleActive: { duration: durationIn, moduleID, contentID },
     questionsActive,
   } = getActiveCourseData(courses)
 
@@ -150,9 +150,11 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     classAdded: 'Button_startModule',
     action: {
       typeEvent: 'TOGGLE_START_COURSE',
-      data: { isStarting: true },
+      data: { isStarting: true, courseCapture, courseID, moduleID, contentID },
     },
     isDisplaying: isButtonSlideStart,
+    tooltipText: 'Вы можете проверить свое понимание и получить сертификат',
+    tooltipPosition: 'bottom',
   }
 
   return (
@@ -175,7 +177,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
           <Button {...buttonStartProps} />
         </div>
       </div>
-      {getSlides(questionsChunked)}
+      {isCourseStarted && getSlides(questionsChunked)}
     </div>
   )
 }

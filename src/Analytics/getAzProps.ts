@@ -78,12 +78,12 @@ export const getAzProps: Function = (type: string): IAzProps => {
     },
 
     MODULE_STARTED: (options: any) => {
-      const { courseCapture } = options
+      const { courseCapture, courseID, moduleID, contentID } = options
 
       return {
         type: 'click',
         name: 'module started',
-        value: `{'courseCapture':'${courseCapture}'}`,
+        value: `{'courseCapture':'${courseCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
         level: 2,
       }
     },

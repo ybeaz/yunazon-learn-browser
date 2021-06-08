@@ -149,9 +149,19 @@
       padding: 0 1rem 0 1rem;
       ._capture_left {
       }
+      @media @tablet, @tablet-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
+      @media @phone, @phone-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
       ._icon {
-        -webkit-transform: rotate(135deg);
-        transform: rotate(135deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
       }
       ._capture_right {
       }
