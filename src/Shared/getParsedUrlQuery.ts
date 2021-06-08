@@ -1,3 +1,8 @@
+/**
+ * @description Function parse and return object fron url query string
+ * @param url
+ * @returns
+ */
 export const getParsedUrlQuery: Function = (url: string): any => {
   if (!url) url = location.search
   var query = url.substr(1)
