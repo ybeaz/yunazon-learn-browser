@@ -39,10 +39,7 @@
   }
   @media @tablet, @tablet-strict {
   }
-  @media @phone-strict {
-    padding: 1rem 0rem 1rem 1rem;
-  }
-  @media @phone {
+  @media @phone, @phone-strict {
     padding: 1rem 0rem 1rem 1rem;
 
     .__left {
@@ -53,6 +50,20 @@
 
     .__right {
       display: none;
+    }
+  }
+}
+
+.HeaderFrame_PresentAndSubscribe {
+  @media @phone, @phone-strict {
+    .__left {
+    }
+
+    .__main {
+      display: none;
+    }
+
+    .__right {
     }
   }
 }

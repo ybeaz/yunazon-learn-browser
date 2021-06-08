@@ -147,6 +147,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     height,
   })
 
+  const mainFrameProps = { contentComponentName }
+
   const contentComponentProps = {
     ReaderIframe: {
       contentID,
@@ -208,7 +210,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
             <link rel='canonical' href={canonicalUrl} />
             <meta name='description' content={moduleDescription} />
           </Helmet>
-          <MainFrame>
+          <MainFrame {...mainFrameProps}>
             {null}
             <CONTENT_ASSIGNED_COMPONENT
               {...contentComponentProps[contentComponentName]}

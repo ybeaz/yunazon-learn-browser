@@ -5,12 +5,16 @@ import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 
 interface IMainFrameInput {
+  contentComponentName: string
   children: React.ReactChildren
 }
 
 export const MainFrame: React.FunctionComponent<any> = (
   props: IMainFrameInput
 ): JSX.Element => {
+  const { contentComponentName } = props
+  const headerFrameProps = { contentComponentName }
+
   const buttonMdMenuProps = {
     icon: 'MdMenu',
     classAdded: 'Button_MdMenu',
@@ -21,7 +25,7 @@ export const MainFrame: React.FunctionComponent<any> = (
 
   return (
     <div className='MainFrame'>
-      <HeaderFrame>
+      <HeaderFrame {...headerFrameProps}>
         <Button {...buttonMdMenuProps} />
         {props.children[0]}
       </HeaderFrame>
