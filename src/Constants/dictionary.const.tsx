@@ -6,12 +6,12 @@ export const DICTIONARY = {
     ru: '_',
   },
   pleaseWait: {
-    en: 'Please wait or refresh the window',
-    ru: 'Пожалуйста подождите или перезагрузите окно',
+    en: 'Loading ... Please wait or select the course',
+    ru: 'Загружаю ... Пожалуйста подождите или выберите курс',
   },
   pleaseRefreshWindow: {
-    en: 'Please refresh window or wait',
-    ru: 'Пожлуйста перезагрузите окно или подождите',
+    en: 'Loading ... Please refresh window or wait',
+    ru: 'Загружаю ... Пожалуйста перезагрузите окно или подождите',
   },
   youCanCheckYourUnderstanding: {
     en: (

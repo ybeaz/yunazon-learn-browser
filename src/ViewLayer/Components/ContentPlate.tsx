@@ -89,7 +89,8 @@ export const ContentPlate: React.FunctionComponent<any> = (
     isVisible,
     textTooltip,
     isTextTooltip: true,
-    delay: 9000,
+    delay: 10000,
+    contentComponentName: 'MatrixHome',
   }
 
   return (

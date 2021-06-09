@@ -10,6 +10,7 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
     textTooltip,
     isTextTooltip = false,
     delay = 500000,
+    contentComponentName,
   } = props
 
   const [isTextVisible, setIsTextVisible] = useState(false)
@@ -21,7 +22,7 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
   let blurHashClass = !isVisible ? '_blockVisible' : '_blockHided'
 
   return (
-    <div className='LoaderBlurhash'>
+    <div className={`LoaderBlurhash LoaderBlurhash_${contentComponentName}`}>
       <div className={`__blurhash ${blurHashClass} _pulse`}>
         <Blurhash
           hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'

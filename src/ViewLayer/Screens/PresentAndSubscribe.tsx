@@ -37,6 +37,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
   const store = useSelector((store: IRootStore) => store)
   const {
+    language: languageStore,
     globalVars: { durationMultiplier },
     courses,
     componentsState: { isLoaderOverlayVisible, isModalFrameVisible },
@@ -196,12 +197,14 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     questionsTotal,
   }
 
-  const textTooltip = DICTIONARY['pleaseRefreshWindow'][language]
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
+
   const loaderBlurhashProps = {
     isVisible,
     textTooltip,
     isTextTooltip: true,
     delay: 5000,
+    contentComponentName,
   }
   const carouselQuestionsProps = { durationObj }
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
