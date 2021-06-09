@@ -145,8 +145,12 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const youCanCheckYourUnderstanding =
     DICTIONARY.youCanCheckYourUnderstanding[language]
   const buttonStartProps = {
-    captureLeft: `${CertificateDash} ${duration} ${units}\u00A0\u00A0/\u00A0\u00A0
-      ${questionsActive.length} ${questionStr}\u00A0\u00A0`,
+    captureLeft: (
+      <div>
+        <div>{`${CertificateDash} ${duration} ${units} /`}</div>
+        <div>{`${questionsActive.length} ${questionStr}`}</div>
+      </div>
+    ),
     icon: 'MdForward',
     classAdded: 'Button_startModule',
     action: {

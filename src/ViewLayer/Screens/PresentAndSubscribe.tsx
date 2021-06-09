@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
@@ -195,7 +196,13 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     questionsTotal,
   }
 
-  const loaderBlurhashProps = { isTextUsed: true, isVisible }
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][language]
+  const loaderBlurhashProps = {
+    isVisible,
+    textTooltip,
+    isTextTooltip: true,
+    delay: 5000,
+  }
   const carouselQuestionsProps = { durationObj }
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 

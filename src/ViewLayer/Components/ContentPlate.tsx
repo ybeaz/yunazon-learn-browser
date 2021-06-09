@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { PlayerPanel } from './PlayerPanel'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -45,6 +46,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
 
   const store = useSelector((store: IRootStore) => store)
   const {
+    language,
     isLoaded: { mediaLoading },
   } = store
   const isVisible = mediaLoading[contentID]
@@ -82,12 +84,20 @@ export const ContentPlate: React.FunctionComponent<any> = (
 
   const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]
 
+  const textTooltip = DICTIONARY['pleaseWait'][language]
+  const loaderBlurhashProps = {
+    isVisible,
+    textTooltip,
+    isTextTooltip: true,
+    delay: 9000,
+  }
+
   return (
     <div className={`ContentPlate`} key={courseID}>
       <CONTENT_ASSIGNED_COMPONENT
         {...contentComponentProps[contentComponentName]}
       >
-        <LoaderBlurhash isVisible={isVisible} />
+        <LoaderBlurhash {...loaderBlurhashProps} />
         <PlayerPanel {...playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
       <Link

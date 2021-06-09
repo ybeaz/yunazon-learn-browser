@@ -1,25 +1,22 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Blurhash } from 'react-blurhash'
 
 export const LoaderBlurhash: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
-  const { isVisible, isTextUsed = false } = props
+  const {
+    isVisible,
+    textTooltip,
+    isTextTooltip = false,
+    delay = 500000,
+  } = props
 
-  const store = useSelector((store: IRootStore) => store)
-
-  const { language } = store
-
-  const pleaseRefreshWindow = DICTIONARY['pleaseRefreshWindow'][language]
   const [isTextVisible, setIsTextVisible] = useState(false)
 
   setTimeout(() => {
     setIsTextVisible(true)
-  }, 5000)
+  }, delay)
 
   let blurHashClass = !isVisible ? '_blockVisible' : '_blockHided'
 
@@ -35,8 +32,8 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
           punch={1}
         />
       </div>
-      {isTextUsed && !isVisible && isTextVisible && (
-        <div className='__text'>{pleaseRefreshWindow}</div>
+      {isTextTooltip && !isVisible && isTextVisible && (
+        <div className='__text'>{textTooltip}</div>
       )}
     </div>
   )

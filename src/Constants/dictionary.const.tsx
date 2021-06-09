@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  pleaseWait: {
+    en: 'Please wait or refresh the window',
+    ru: 'Пожалуйста подождите или перезагрузите окно',
+  },
   pleaseRefreshWindow: {
     en: 'Please refresh window or wait',
     ru: 'Пожлуйста перезагрузите окно или подождите',
