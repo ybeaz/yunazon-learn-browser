@@ -86,7 +86,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
 
   const textTooltip = DICTIONARY['pleaseWait'][language]
   const loaderBlurhashProps = {
-    isVisible,
+    isVisibleBlurHash: !isVisible,
     textTooltip,
     isTextTooltip: true,
     delay: 10000,

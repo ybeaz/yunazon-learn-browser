@@ -6,7 +6,7 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   const {
-    isVisible,
+    isVisibleBlurHash,
     textTooltip,
     isTextTooltip = false,
     delay = 500000,
@@ -19,11 +19,13 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
     setIsTextVisible(true)
   }, delay)
 
-  let blurHashClass = !isVisible ? '_blockVisible' : '_blockHided'
+  let blurHashClass = isVisibleBlurHash ? '_blockVisible' : '_blockHided'
 
   return (
-    <div className={`LoaderBlurhash LoaderBlurhash_${contentComponentName}`}>
-      <div className={`__blurhash ${blurHashClass} _pulse`}>
+    <div
+      className={`LoaderBlurhash LoaderBlurhash_${contentComponentName} ${blurHashClass}`}
+    >
+      <div className={`__blurhash _pulse`}>
         <Blurhash
           hash='LEHV6nWB2yk8pyo0adR*.7kCMdnj'
           width={'100%'}
@@ -33,7 +35,7 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
           punch={1}
         />
       </div>
-      {isTextTooltip && !isVisible && isTextVisible && (
+      {isTextTooltip && isVisibleBlurHash && isTextVisible && (
         <div className='__text'>{textTooltip}</div>
       )}
     </div>

@@ -200,7 +200,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
 
   const loaderBlurhashProps = {
-    isVisible,
+    isVisibleBlurHash: !isVisible,
     textTooltip,
     isTextTooltip: true,
     delay: 5000,
