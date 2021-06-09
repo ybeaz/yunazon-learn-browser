@@ -139,7 +139,7 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     isDisplaying: isButtonBlockProps,
   }
 
-  const CertificateDash = DICTIONARY['Certificate-'][language]
+  const CertificateDash = DICTIONARY['Certificate'][language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
   const youCanCheckYourUnderstanding =
@@ -147,8 +147,9 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
   const buttonStartProps = {
     captureLeft: (
       <div>
-        <div>{`${CertificateDash} ${duration} ${units} /`}</div>
-        <div>{`${questionsActive.length} ${questionStr}`}</div>
+        <div>{`${CertificateDash}\u00A0\u00A0\u00A0-\u00A0\u00A0\u00A0${questionsActive.length} ${questionStr}`}</div>
+        {/* <div>{`${CertificateDash} ${duration} ${units} /`}</div>
+        <div>{`${questionsActive.length} ${questionStr}`}</div> */}
       </div>
     ),
     icon: 'MdForward',

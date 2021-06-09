@@ -147,8 +147,8 @@ export const DICTIONARY = {
     en: 'We greet you!',
     ru: 'Приветствуем Вас!',
   },
-  'Certificate-': {
-    en: 'Certificate - ',
+  Certificate: {
+    en: 'Certificate',
     ru: 'До сертификата',
   },
   certificate: {
