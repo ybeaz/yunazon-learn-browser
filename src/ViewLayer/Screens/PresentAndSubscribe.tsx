@@ -38,7 +38,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   const {
     globalVars: { durationMultiplier },
     courses,
-    componentsState: { isModalFrameVisible },
+    componentsState: { isLoaderOverlayVisible, isModalFrameVisible },
     isLoaded: { mediaLoading },
   } = store
 
@@ -195,8 +195,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     questionsTotal,
   }
 
+  const loaderBlurhashProps = { isTextUsed: true, isVisible }
   const carouselQuestionsProps = { durationObj }
-
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 
   return (
@@ -215,7 +215,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
             <CONTENT_ASSIGNED_COMPONENT
               {...contentComponentProps[contentComponentName]}
             >
-              <LoaderBlurhash isVisible={isVisible} />
+              <LoaderBlurhash {...loaderBlurhashProps} />
               <PlayerPanel {...playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
             <CarouselQuestions {...carouselQuestionsProps} />
@@ -225,7 +225,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
             <QuestionScores {...questionScoresProps} />
           </ModalFrame>
 
-          <LoaderOverlay />
+          <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>
       ) : null}
     </div>

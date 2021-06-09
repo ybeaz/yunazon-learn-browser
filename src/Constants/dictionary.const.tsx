@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  pleaseRefreshWindow: {
+    en: 'Please refresh window or wait',
+    ru: 'Пожлуйста перезагрузите окно или подождите',
+  },
   youCanCheckYourUnderstanding: {
     en: (
       <div className='_text'>

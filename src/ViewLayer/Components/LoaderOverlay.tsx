@@ -1,15 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
-
 export const LoaderOverlay: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
-  const store = useSelector((store: IRootStore) => store)
-  const {
-    componentsState: { isLoaderOverlayVisible },
-  } = store
+  const { isLoaderOverlayVisible } = props
 
   const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
 
