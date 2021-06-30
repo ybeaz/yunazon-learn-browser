@@ -30,6 +30,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
+    CREATE_COURSE() {
+      const options = data
+      getSavedAnanlyticsEvent(
+        event,
+        getAzProps('CLICK_ADD_COURSE_BUTTON')(options)
+      )
+      this.DEV_STAGE()
+    },
+
     GO_HOME: () => {
       const { history } = data
       history.push('/home')
@@ -60,6 +69,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       const { documents } = getState()
       const documentsLen = documents.length
       const documentLast = documentsLen && documents[documentsLen - 1]
+
       const options = documentLast && {
         netTitle: buttonProps.netTitle,
         documentCapture: documentLast.capture,
@@ -79,9 +89,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         event,
         getAzProps('FROM_CERTIFICATE_WENT_BACK')(data)
       )
-
-      const { history } = data
-      history.go(-1)
     },
 
     CLICK_LOGO_GROUP: () => {

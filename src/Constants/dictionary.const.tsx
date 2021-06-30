@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  reateCourseQuiz: {
+    en: 'Create course / quiz',
+    ru: 'Создать курс / викторину',
+  },
   pleaseWait: {
     en: 'Loading ... Please wait or select the course',
     ru: 'Загружаю ... Пожалуйста подождите или выберите курс',

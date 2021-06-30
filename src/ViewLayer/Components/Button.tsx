@@ -3,6 +3,8 @@ import React from 'react'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IconContext } from 'react-icons'
 import {
+  MdAddBox,
+  MdQueue,
   MdHome,
   MdContactMail,
   MdAddShoppingCart,
@@ -24,6 +26,8 @@ import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  MdAddBox,
+  MdQueue,
   MdHome,
   MdContactMail,
   MdAddShoppingCart,
@@ -53,7 +57,7 @@ interface IButton {
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string
   tooltipPosition?: string // options: ['top','right','bottom','left']
-  isTooltipVisible?: boolean // is tooltipls visible anyway? [true, false] by default: false
+  isUnderlined?: boolean
   handleEvents?: Function
 }
 
@@ -70,7 +74,7 @@ export const Button: React.FunctionComponent<any> = (
     isDisplaying = true,
     tooltipText = '',
     tooltipPosition = '',
-    isTooltipVisible = false,
+    isUnderlined = false,
     handleEvents: handleEventsCustom,
   } = props
   const Icon = ICON[icon]
@@ -81,21 +85,19 @@ export const Button: React.FunctionComponent<any> = (
     ? handleEventsCustom
     : handleEvents
 
-  let classTooltipAdd = {
+  const classTooltipAdd = {
     top: '_tooltipTop',
     right: '_tooltipRight',
     bottom: '_tooltipBottom',
     left: '_tooltipLeft',
   }[tooltipPosition]
 
-  classTooltipAdd = isTooltipVisible
-    ? `${classTooltipAdd} __tooltipTextVisible`
-    : classTooltipAdd
-
   return (
     <div className={`Button ${classAdded} ${classDisplay}`}>
       {tooltipText ? (
-        <div className={`__tooltipText ${classTooltipAdd}`}>{tooltipText}</div>
+        <span className={`__tooltipText ${classTooltipAdd}`}>
+          {tooltipText}
+        </span>
       ) : null}
 
       <button
@@ -134,6 +136,7 @@ export const Button: React.FunctionComponent<any> = (
           </div>
         ) : null}
       </button>
+      {isUnderlined && <hr className='__underlined' />}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
@@ -137,7 +138,9 @@ export const Certificate: React.FunctionComponent<any> = (
     <div className='Certificate'>
       <div className='_buttons Certificate_noPrint'>
         <HeaderFrame>
-          <Button {...buttonBackProps} />
+          <Link to={{ pathname: '/home' }}>
+            <Button {...buttonBackProps} />
+          </Link>
           <div className='__navigation'>
             <div className='_buttons'>
               <Button {...buttonPrintProps} />

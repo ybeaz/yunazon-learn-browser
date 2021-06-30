@@ -2,6 +2,28 @@ import { IAzProps } from '../Interfaces/IAzProps'
 
 export const getAzProps: Function = (type: string): IAzProps => {
   const output = {
+    // NOT USED
+    VISIT_TOPIC: (options: any) => {
+      const { netTitle, documentCapture, documentID, courseID, contentID } =
+        options
+
+      return {
+        type: 'mouseleave',
+        name: 'element leave topic',
+      }
+    },
+
+    CLICK_ADD_COURSE_BUTTON: (options: any) => {
+      const { contentComponentName } = options
+
+      return {
+        type: 'click',
+        name: 'add course button clicked',
+        value: `{'contentComponentName':'${contentComponentName}'}`,
+        level: 5,
+      }
+    },
+
     CLICK_SOCIAL_NET_BUTTON: (options: any) => {
       const { netTitle, documentCapture, documentID, courseID, contentID } =
         options
