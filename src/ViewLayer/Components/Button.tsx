@@ -57,6 +57,7 @@ interface IButton {
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string
   tooltipPosition?: string // options: ['top','right','bottom','left']
+  isTooltipVisible?: boolean
   isUnderlined?: boolean
   handleEvents?: Function
 }
@@ -74,6 +75,7 @@ export const Button: React.FunctionComponent<any> = (
     isDisplaying = true,
     tooltipText = '',
     tooltipPosition = '',
+    isTooltipVisible = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
   } = props
@@ -85,12 +87,16 @@ export const Button: React.FunctionComponent<any> = (
     ? handleEventsCustom
     : handleEvents
 
-  const classTooltipAdd = {
+  let classTooltipAdd = {
     top: '_tooltipTop',
     right: '_tooltipRight',
     bottom: '_tooltipBottom',
     left: '_tooltipLeft',
   }[tooltipPosition]
+
+  classTooltipAdd = isTooltipVisible
+    ? `${classTooltipAdd} __tooltipTextVisible`
+    : classTooltipAdd
 
   return (
     <div className={`Button ${classAdded} ${classDisplay}`}>

@@ -1,7 +1,8 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
-import { REDUCE_QUESTIONS_NUMBER } from './reducers/REDUCE_QUESTIONS_NUMBER'
+import { GET_INITIAL_QUERY_SETTING } from './reducers/GET_INITIAL_QUERY_SETTING'
+import { GET_COURSE_QUERY_PR_QN } from './reducers/GET_COURSE_QUERY_PR_QN'
 import { SAVE_ANALYTICS_SUCCESS } from './reducers/SAVE_ANALYTICS_SUCCESS'
 import { TOGGLE_MEDIA_LOADED } from './reducers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_START_COURSE } from './reducers/TOGGLE_START_COURSE'
@@ -35,7 +36,8 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
-    REDUCE_QUESTIONS_NUMBER,
+    GET_INITIAL_QUERY_SETTING,
+    GET_COURSE_QUERY_PR_QN,
     SAVE_ANALYTICS_SUCCESS,
     TOGGLE_MEDIA_LOADED,
     TOGGLE_START_COURSE,

@@ -76,7 +76,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
       handleEvents(
         {},
         {
-          type: 'REDUCE_QUESTIONS_NUMBER',
+          type: 'GET_COURSE_QUERY_PR_QN',
           data: { courseID, index },
         }
       )

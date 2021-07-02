@@ -4,21 +4,23 @@ interface IOptions {
   courseIDIn: string
   indexIn: number
   questionNumberIn: number | undefined
+  passRateIn: number | undefined
 }
 
 /**
  * @description Function to reduce course questions by number, pick up randomly
  */
-export const getReducedQuestionsByNum: Function = (
+export const getCoursePassParamsSet: Function = (
   courses: any[],
-  { courseIDIn, indexIn, questionNumberIn }: IOptions = {
+  { courseIDIn, indexIn, questionNumberIn, passRateIn }: IOptions = {
     courseIDIn: 'all',
     indexIn: 0,
     questionNumberIn: undefined,
+    passRateIn: undefined,
   }
 ): any[] => {
   return courses.map(course => {
-    const { courseID, questionNumber, modules } = course
+    const { courseID, questionNumber, modules, passRate } = course
     let questionNumberNext =
       questionNumberIn && typeof questionNumberIn === 'number'
         ? questionNumberIn
@@ -45,6 +47,9 @@ export const getReducedQuestionsByNum: Function = (
         return { ...module, questions: questionsNext }
       })
     }
-    return { ...course, modules: modulesNext }
+
+    const passRateNext = !!passRateIn ? passRateIn : passRate
+
+    return { ...course, passRate: passRateNext, modules: modulesNext }
   })
 }

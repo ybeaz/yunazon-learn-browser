@@ -15,12 +15,8 @@ import { ContentPlate } from '../Components/ContentPlate'
 export const MatrixHome: React.FunctionComponent<any> = (
   props: IRouterScreenProps
 ): JSX.Element => {
-  const {
-    titleSite,
-    descriptionSite,
-    canonicalUrlSite,
-    langSite,
-  } = SITE_META_DATA
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
+    SITE_META_DATA
 
   const store = useSelector((store: IRootStore) => store)
   const {

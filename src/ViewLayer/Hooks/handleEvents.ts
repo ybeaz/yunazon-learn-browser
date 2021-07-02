@@ -45,21 +45,49 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(action.TOGGLE_SIDE_NAVIGATION())
     },
 
-    REDUCE_QUESTIONS_NUMBER: () => {
+    GET_INITIAL_QUERY_SETTING: () => {
+      const { si, search, searchInput, ln, language } = getParsedUrlQuery()
+
+      const searchInputIn = !!si
+        ? si
+        : !!search
+        ? search
+        : !!searchInput
+        ? searchInput
+        : undefined
+      const languageIn = !!ln ? ln : !!language ? language : undefined
+
+      dispatch(
+        action.GET_INITIAL_QUERY_SETTING({
+          languageIn,
+          searchInputIn,
+        })
+      )
+    },
+
+    GET_COURSE_QUERY_PR_QN: () => {
       const { courseID, index } = data
-      const { qn, nq } = getParsedUrlQuery()
-      const questionNumber = qn || nq
+      const { pr, rp, qn, nq } = getParsedUrlQuery()
+
+      const passRateIn = !!pr
+        ? parseFloat(pr)
+        : !!rp
+        ? parseFloat(rp)
+        : undefined
+      const questionNumber = !!qn ? qn : !!nq ? nq : undefined
 
       const isReducing = questionNumber === 'all' || qn === 'inf' ? false : true
+
       let questionNumberIn =
         isParsableInt(questionNumber) && parseInt(questionNumber, 10)
 
       dispatch(
-        action.REDUCE_QUESTIONS_NUMBER({
+        action.GET_COURSE_QUERY_PR_QN({
           courseID,
           index,
           isReducing,
           questionNumberIn,
+          passRateIn,
         })
       )
     },

@@ -22,8 +22,13 @@ export const GET_GLOBAL_VARS: ICreateRequestTypes =
   createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
-export const REDUCE_QUESTIONS_NUMBER: Function = (data: number): IAction => ({
-  type: 'REDUCE_QUESTIONS_NUMBER',
+export const GET_INITIAL_QUERY_SETTING: Function = (data: number): IAction => ({
+  type: 'GET_INITIAL_QUERY_SETTING',
+  data,
+})
+
+export const GET_COURSE_QUERY_PR_QN: Function = (data: number): IAction => ({
+  type: 'GET_COURSE_QUERY_PR_QN',
   data,
 })
 

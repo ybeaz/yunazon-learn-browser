@@ -52,6 +52,10 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ## Features and options
 
-`?qn=4` Adding `qn` or `nq` limit the number of questions in the test. If `typeof` `qn` or `nq` `string` (for instance `?qn=all`) then the limit becomes equal the total number of questions. If `qn` or `nq` are not set, then `questionNumber` prop is applied by default. `qn` stands for question number.
+`?si=anything` Adding `si` or `search` or `searchInput` set initial `searchInput` for the app. If `si` is not set, then `searchInput` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`.
 
-`?pr=0.75` Adding `pr` or `rp` sets custom pass rate to pass tests. It means that if you answered correctly on 3 question of 4 then with pass rate 0.75 you have passed the test. If `pr` or `rp` are not set, then `passRate` prop is applied by default. `pr` stands for pass rate.
+`?ln=en` Adding `ln` or `language` set initial language for the app. If `ln` is not set, then `language` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`.
+
+`?qn=4` Adding `qn` or `nq` limit the number of questions in the test. If `typeof` `qn` or `nq` `string` (for instance `?qn=all`) then the limit becomes equal the total number of questions. If `qn` or `nq` are not set, then `questionNumber` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`. `qn` stands for question number.
+
+`?pr=0.75` Adding `pr` or `rp` sets custom pass rate to pass tests. It means that if you answered correctly on 3 question of 4 then with pass rate 0.75 you have passed the test. If `pr` or `rp` are not set, then `passRate` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`. `pr` stands for pass rate.

@@ -1,23 +1,24 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { getReducedQuestionsByNum } from '../../Shared/getReducedQuestionsByNum'
+import { getCoursePassParamsSet } from '../../Shared/getCoursePassParamsSet'
 import { getLimitedArrayElemsRandomly } from '../../Shared/getLimitedArrayElemsRandomly'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
-export const REDUCE_QUESTIONS_NUMBER: Function = (
+export const GET_COURSE_QUERY_PR_QN: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
   const { courses } = store
 
-  const { courseID, index, isReducing, questionNumberIn } = data
+  const { courseID, index, isReducing, questionNumberIn, passRateIn } = data
 
   let coursesNext = courses
 
   if (isReducing) {
-    coursesNext = getReducedQuestionsByNum(courses, {
+    coursesNext = getCoursePassParamsSet(courses, {
       courseID,
       index,
       questionNumberIn,
+      passRateIn,
     })
   }
 

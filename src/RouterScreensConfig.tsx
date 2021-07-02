@@ -39,7 +39,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
       await dispatch(action.GET_GLOBAL_VARS.REQUEST())
       await dispatch(action.GET_CONTENT_DATA.REQUEST())
-      handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
+      await handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
+      await handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
     }
 
     makeDispatchAsyncWrappered()
