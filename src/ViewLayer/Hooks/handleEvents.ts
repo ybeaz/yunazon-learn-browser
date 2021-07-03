@@ -318,6 +318,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     TOGGLE_SIDE_NAVIGATION: () => {
+      event.stopPropagation()
+
       dispatch(action.TOGGLE_SIDE_NAVIGATION())
 
       getSavedAnanlyticsEvent(event, getAzProps('SIDE_PANEL_TOGGLED')())

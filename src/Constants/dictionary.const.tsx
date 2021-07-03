@@ -5,7 +5,7 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
-  reateCourseQuiz: {
+  createCourseQuiz: {
     en: 'Create course / quiz',
     ru: 'Создать курс / викторину',
   },

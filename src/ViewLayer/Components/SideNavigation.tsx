@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { handleEvents } from '../Hooks/handleEvents'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -30,6 +31,15 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_HOME', data: { history } },
+    },
+    {
+      icon: 'MdQueue',
+      captureRight: DICTIONARY.createCourseQuiz[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'CREATE_COURSE',
+        data: { contentComponentName: 'contentComponentName' },
+      },
     },
     {
       icon: 'MdPerson',
@@ -70,16 +80,23 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
 
   return (
-    <div className={`SideNavigation ${classNameAdd}`}>
-      <div className='__buttonLogoGroup'>
-        <Button {...buttonMdMenuProps} />
-        <LogoGroup />
-      </div>
-      <div className='__menuGroup'>
-        <div className='_groupItem _languageSelect'>
-          <LanguageSelect />
+    <div
+      className={`SideNavigation ${classNameAdd}`}
+      onClick={event =>
+        handleEvents(event, { typeEvent: 'TOGGLE_SIDE_NAVIGATION' })
+      }
+    >
+      <div className='__content'>
+        <div className='__buttonLogoGroup'>
+          <Button {...buttonMdMenuProps} />
+          <LogoGroup />
         </div>
-        {getButtons(buttonPropsArr)}
+        <div className='__menuGroup'>
+          <div className='_groupItem _languageSelect'>
+            <LanguageSelect />
+          </div>
+          {getButtons(buttonPropsArr)}
+        </div>
       </div>
     </div>
   )

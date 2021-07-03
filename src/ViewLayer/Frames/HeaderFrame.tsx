@@ -24,9 +24,9 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     // action: { typeEvent: ''}
   }
 
-  const createCourseQuiz = DICTIONARY.reateCourseQuiz[language]
+  const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
   const buttonAddCourseProps = {
-    icon: 'MdQueue', // 'MdAddBox',
+    icon: 'MdQueue',
     classAdded: 'Button_AddCourse',
     tooltipText: createCourseQuiz,
     tooltipPosition: 'bottom',
