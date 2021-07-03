@@ -37,7 +37,7 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'CREATE_COURSE',
-        data: { contentComponentName: 'contentComponentName' },
+        data: { contentComponentName: 'SideNavigation' },
       },
     },
     {
