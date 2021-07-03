@@ -6,7 +6,6 @@ import { handleEvents } from '../Hooks/handleEvents'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { LogoGroup } from './LogoGroup'
 import { Button } from './Button'
 
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
@@ -87,10 +86,6 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
       }
     >
       <div className='__content'>
-        <div className='__buttonLogoGroup'>
-          <Button {...buttonMdMenuProps} />
-          <LogoGroup />
-        </div>
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
             <LanguageSelect />
