@@ -33,6 +33,14 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
   }
 
+  const buttonPersonalCabinet = {
+    icon: 'MdPerson',
+    classAdded: 'Button_personalCabinet',
+    tooltipText: DICTIONARY.PersonalСabinet[language],
+    tooltipPosition: 'bottom',
+    action: { typeEvent: 'DEV_STAGE' },
+  }
+
   const classAddHeaderFrame =
     contentComponentName === 'ReaderIframe' ||
     contentComponentName === 'PlayerIframe'
@@ -49,6 +57,9 @@ export const HeaderFrame: React.FunctionComponent<any> = (
       <div className='__right'>
         <div className='_itemButtonAddCourse'>
           <Button {...buttonAddCourseProps} />
+        </div>
+        <div className='_itemButtonPersonalCabinet'>
+          <Button {...buttonPersonalCabinet} />
         </div>
         <div className='_itemLanguageSelect'>
           <LanguageSelect />
