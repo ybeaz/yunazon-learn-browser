@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Button } from '../Components/Button'
 
@@ -38,6 +39,9 @@ export const ModalFrame: React.FunctionComponent<any> = (
     <div
       id='modalFrame'
       className={`ModalFrame ${addClass} ModalFrame_${childName}`}
+      onClick={event =>
+        handleEvents(event, { typeEvent: 'TOGGLE_MODAL_FRAME', data: false })
+      }
     >
       <div className='__content'>
         <span className='_close'>

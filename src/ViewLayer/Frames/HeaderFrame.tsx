@@ -1,6 +1,8 @@
 import React from 'react'
-
 import { useSelector } from 'react-redux'
+
+import { EmalInputs } from '../Components/EmalInputs'
+import { ModalFrame } from '../Frames/ModalFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Button } from '../Components/Button'
@@ -38,7 +40,7 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     classAdded: 'Button_personalCabinet',
     tooltipText: DICTIONARY.PersonalСabinet[language],
     tooltipPosition: 'bottom',
-    action: { typeEvent: 'DEV_STAGE' },
+    action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
   }
 
   const classAddHeaderFrame =
@@ -46,6 +48,8 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     contentComponentName === 'PlayerIframe'
       ? 'HeaderFrame_PresentAndSubscribe'
       : ''
+
+  const emailInputsProps = { documentID: 1234567 }
 
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
@@ -65,6 +69,9 @@ export const HeaderFrame: React.FunctionComponent<any> = (
           <LanguageSelect />
         </div>
       </div>
+      <ModalFrame childName={'EmalInputs'}>
+        <EmalInputs {...emailInputsProps} />
+      </ModalFrame>
     </div>
   )
 }
