@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { EmalInputs } from '../Components/EmalInputs'
-import { ModalFrame } from '../Frames/ModalFrame'
+import { ModalFrames } from '../Frames/ModalFrames'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Button } from '../Components/Button'
@@ -35,12 +35,15 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
   }
 
-  const buttonPersonalCabinet = {
+  const buttonAuthUser = {
     icon: 'MdPerson',
     classAdded: 'Button_personalCabinet',
     tooltipText: DICTIONARY.PersonalСabinet[language],
     tooltipPosition: 'bottom',
-    action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
+    action: {
+      typeEvent: 'SET_MODAL_FRAMES',
+      data: [{ childName: 'AuthUser', isActive: true, childProps: {} }],
+    },
   }
 
   const classAddHeaderFrame =
@@ -62,16 +65,14 @@ export const HeaderFrame: React.FunctionComponent<any> = (
         <div className='_itemButtonAddCourse'>
           <Button {...buttonAddCourseProps} />
         </div>
-        <div className='_itemButtonPersonalCabinet'>
-          <Button {...buttonPersonalCabinet} />
+        <div className='_itemButtonAuthUser'>
+          <Button {...buttonAuthUser} />
         </div>
         <div className='_itemLanguageSelect'>
           <LanguageSelect />
         </div>
       </div>
-      <ModalFrame childName={'EmalInputs'}>
-        <EmalInputs {...emailInputsProps} />
-      </ModalFrame>
+      <ModalFrames />
     </div>
   )
 }

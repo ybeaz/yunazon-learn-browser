@@ -15,6 +15,7 @@ export const rootStoreDefault = {
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
     isCourseStarted: false,
+    modalFrames: [],
   },
   forms: {
     searchInput: '',

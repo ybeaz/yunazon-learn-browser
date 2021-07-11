@@ -177,6 +177,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(action.ONCHANGE_EMAIL_TO(value))
     },
 
+    SET_MODAL_FRAMES: () => {
+      dispatch(action.SET_MODAL_FRAMES(data))
+    },
+
     TOGGLE_MODAL_FRAME: () => {
       dispatch(action.TOGGLE_MODAL_FRAME(data))
     },

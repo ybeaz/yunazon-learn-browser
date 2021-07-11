@@ -22,6 +22,11 @@ export const GET_GLOBAL_VARS: ICreateRequestTypes =
   createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+export const SET_MODAL_FRAMES: Function = (data: number): IAction => ({
+  type: 'SET_MODAL_FRAMES',
+  data,
+})
+
 export const GET_INITIAL_QUERY_SETTING: Function = (data: number): IAction => ({
   type: 'GET_INITIAL_QUERY_SETTING',
   data,

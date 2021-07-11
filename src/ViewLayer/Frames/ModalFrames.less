@@ -1,0 +1,82 @@
+/* The Modal (background) */
+.ModalFrame {
+  display: none; // [flex, none]; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  transition: @transition;
+
+  .__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 15%;
+    color: @colorFirstDarker2;
+    background-color: @colorSecondLighter3;
+    margin: 0 auto;
+    border: 1px solid #888;
+    max-width: 70%;
+    min-width: 30rem;
+    height: fit-content;
+
+    ._close {
+      display: flex;
+      position: absolute;
+      right: 0.2rem;
+      color: @colorSecondLighter4;
+      font-size: @fontSizeH1;
+
+      &:hover,
+      :focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    ._inner {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 3rem 2rem 3rem;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
+
+.ModalFrame_display {
+  display: flex;
+}
+
+@media @phone, @phone-strict {
+  .ModalFrame_EmalInputs {
+    .__content {
+      left: 1rem;
+      max-width: 90%;
+      min-width: 0;
+    }
+  }
+}
+
+@media @phone, @phone-strict {
+  .ModalFrame_QuestionScores {
+    .__content {
+      top: 1rem;
+      max-width: 90%;
+      min-width: 0;
+    }
+  }
+}

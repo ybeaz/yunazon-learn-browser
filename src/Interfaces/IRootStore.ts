@@ -13,6 +13,7 @@ export interface IRootStore {
     isLoaderOverlayVisible: boolean
     isDocumentAdded: boolean
     isCourseStarted: boolean
+    modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
   forms: {
     searchInput: string
