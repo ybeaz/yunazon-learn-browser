@@ -30,6 +30,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
+    STOP_PROPAGATION: () => {
+      // event.persist()
+      // event.nativeEvent.stopImmediatePropagation()
+      event.stopPropagation()
+    },
+
     CREATE_COURSE() {
       const options = data
       getSavedAnanlyticsEvent(
@@ -181,10 +187,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(action.SET_MODAL_FRAMES(data))
     },
 
-    TOGGLE_MODAL_FRAME: () => {
-      dispatch(action.TOGGLE_MODAL_FRAME(data))
-    },
-
     COPY_URL_TO_CLIPBOARD: () => {
       getSavedAnanlyticsEvent(event, getAzProps('DOCUMENT_LINK_COPIED')(data))
 
@@ -208,7 +210,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     ADD_DOCUMENT: () => {
       const { courses } = getState()
       const options = getResultDataFromStore(courses)
-
       event?.preventDefault &&
         getSavedAnanlyticsEvent(
           event,
@@ -264,21 +265,18 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
       dispatch(action.GET_ANSWERS_DEFAULT())
       dispatch(action.SET_QUESTION_SLIDE(0))
-      dispatch(action.TOGGLE_MODAL_FRAME(false))
-    },
-
-    OPEN_MODAL_GET_SCORES: () => {
-      const { courses } = getState()
-      const options = getResultDataFromStore(courses)
-      event?.preventDefault &&
-        getSavedAnanlyticsEvent(event, getAzProps('RESULTS_SUBMITTED')(options))
-
-      dispatch(action.TOGGLE_MODAL_FRAME(true))
+      dispatch(
+        action.SET_MODAL_FRAMES([
+          {
+            childName: 'QuestionScores',
+            isActive: false,
+            childProps: {},
+          },
+        ])
+      )
     },
 
     PRINT_SCORES: () => {
-      dispatch(action.TOGGLE_MODAL_FRAME(false))
-
       const {
         screenType,
         userName,
@@ -301,10 +299,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       })
 
       dispatch(action.GET_ANSWERS_DEFAULT())
-    },
-
-    COUNT_MODULE_QUIZ_SCORE: () => {
-      dispatch(action.TOGGLE_MODAL_FRAME(true))
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {

@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
-import { EmalInputs } from '../Components/EmalInputs'
-import { ModalFrame } from '../Frames/ModalFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { ShareButtons } from '../Components/ShareButtons'
@@ -109,7 +107,16 @@ export const Certificate: React.FunctionComponent<any> = (
   const buttonEmailProps = {
     icon: 'MdMailOutline',
     classAdded: 'Button_UseCertificate',
-    action: { typeEvent: 'TOGGLE_MODAL_FRAME', data: true },
+    action: {
+      typeEvent: 'SET_MODAL_FRAMES',
+      data: [
+        {
+          childName: 'EmalInputs',
+          isActive: true,
+          childProps: { documentID },
+        },
+      ],
+    },
     tooltipText: DICTIONARY['sendToEmail'][language],
     tooltipPosition: 'bottom',
   }
@@ -129,7 +136,7 @@ export const Certificate: React.FunctionComponent<any> = (
     ? `${lastName} ${firstName} ${middleName}`
     : `${lastName} ${firstName}`
 
-  const emailInputsProps = { documentID }
+  // const emailInputsProps = { documentID }
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/c/${courseID}/${slug}`
@@ -150,9 +157,9 @@ export const Certificate: React.FunctionComponent<any> = (
             </div>
           </div>
         </HeaderFrame>
-        <ModalFrame childName={'EmalInputs'}>
+        {/* <ModalFrame childName={'EmalInputs'}>
           <EmalInputs {...emailInputsProps} />
-        </ModalFrame>
+        </ModalFrame> */}
       </div>
 
       <div className='container pm-certificate-container'>

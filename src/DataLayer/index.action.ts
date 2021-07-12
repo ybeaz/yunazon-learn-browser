@@ -115,11 +115,6 @@ export const ONCHANGE_LAST_NAME_MODAL: Function = (
   data,
 })
 
-export const TOGGLE_MODAL_FRAME: Function = (data: boolean): IAction => ({
-  type: 'TOGGLE_MODAL_FRAME',
-  data,
-})
-
 export const GET_ANSWERS_DEFAULT: Function = (): IAction => ({
   type: 'GET_ANSWERS_DEFAULT',
 })

@@ -1,8 +1,8 @@
 /* The Modal (background) */
-.ModalFrame {
+.ModalFrames {
   display: none; // [flex, none]; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -57,12 +57,12 @@
   }
 }
 
-.ModalFrame_display {
+.ModalFrames_display {
   display: flex;
 }
 
 @media @phone, @phone-strict {
-  .ModalFrame_EmalInputs {
+  .ModalFrames_EmalInputs {
     .__content {
       left: 1rem;
       max-width: 90%;
@@ -72,7 +72,7 @@
 }
 
 @media @phone, @phone-strict {
-  .ModalFrame_QuestionScores {
+  .ModalFrames_QuestionScores {
     .__content {
       top: 1rem;
       max-width: 90%;

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { QuestionScores } from '../Components/QuestionScores'
+import { EmalInputs } from '../Components/EmalInputs'
 import { AuthUser } from '../Components/AuthUser'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -9,6 +11,8 @@ import { Button } from '../Components/Button'
 
 const CHILDREN = {
   AuthUser,
+  EmalInputs,
+  QuestionScores,
 }
 
 interface IModalFramesInput {}
@@ -36,18 +40,23 @@ export const ModalFrames: React.FunctionComponent<any> = (
         action: closeAction,
       }
 
-      const addClass = !isActive ? '' : 'ModalFrame_display'
+      const addClass = !isActive ? '' : 'ModalFrames_display'
       return (
         <div
-          id='modalFrame'
-          className={`ModalFrame ${addClass} ModalFrame_${childName}`}
+          id='modalFrames'
+          className={`ModalFrames ${addClass} ModalFrames_${childName}`}
           onClick={event => handleEvents(event, closeAction)}
         >
           <div className='__content'>
             <span className='_close'>
               <Button {...buttonCloseProps} />
             </span>
-            <div className='_inner'>
+            <div
+              className='_inner'
+              onClick={event =>
+                handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
+              }
+            >
               <CHILD {...childProps} />
             </div>
           </div>

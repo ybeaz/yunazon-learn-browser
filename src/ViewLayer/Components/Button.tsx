@@ -109,7 +109,7 @@ export const Button: React.FunctionComponent<any> = (
       <button
         className={`__button`}
         type='button'
-        onClick={event => handleEventsToUse(event, action)}
+        onClickCapture={event => handleEventsToUse(event, action)}
       >
         {captureLeft ? (
           <div className={`_in`}>

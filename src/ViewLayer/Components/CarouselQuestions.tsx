@@ -123,8 +123,14 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     icon2: 'HiOutlineAcademicCap',
     classAdded: 'Button_MdForward',
     action: {
-      typeEvent: 'OPEN_MODAL_GET_SCORES',
-      data: { courseCapture },
+      typeEvent: 'SET_MODAL_FRAMES',
+      data: [
+        {
+          childName: 'QuestionScores',
+          isActive: true,
+          childProps: { courseCapture },
+        },
+      ],
     },
     isDisplaying: isButtonToCertificate,
   }

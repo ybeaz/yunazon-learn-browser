@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { EmalInputs } from '../Components/EmalInputs'
 import { ModalFrames } from '../Frames/ModalFrames'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -19,12 +18,6 @@ export const HeaderFrame: React.FunctionComponent<any> = (
   const { contentComponentName } = props
 
   const { language } = useSelector((store: IRootStore) => store)
-
-  const buttonMdPersonProps = {
-    icon: 'MdPerson',
-    classAdded: 'Button_MdPerson',
-    // action: { typeEvent: ''}
-  }
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
   const buttonAddCourseProps = {
@@ -51,8 +44,6 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     contentComponentName === 'PlayerIframe'
       ? 'HeaderFrame_PresentAndSubscribe'
       : ''
-
-  const emailInputsProps = { documentID: 1234567 }
 
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>

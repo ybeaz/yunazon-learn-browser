@@ -85,7 +85,12 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
         handleEvents(event, { typeEvent: 'TOGGLE_SIDE_NAVIGATION' })
       }
     >
-      <div className='__content'>
+      <div
+        className='__content'
+        onClick={event =>
+          handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
+        }
+      >
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
             <LanguageSelect />

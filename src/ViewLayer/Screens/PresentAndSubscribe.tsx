@@ -11,8 +11,6 @@ import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { handleEvents } from '../Hooks/handleEvents'
-import { QuestionScores } from '../Components/QuestionScores'
-import { ModalFrame } from '../Frames/ModalFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
@@ -230,11 +228,6 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
             </CONTENT_ASSIGNED_COMPONENT>
             <CarouselQuestions {...carouselQuestionsProps} />
           </MainFrame>
-
-          <ModalFrame childName={'QuestionScores'}>
-            <QuestionScores {...questionScoresProps} />
-          </ModalFrame>
-
           <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>
       ) : null}

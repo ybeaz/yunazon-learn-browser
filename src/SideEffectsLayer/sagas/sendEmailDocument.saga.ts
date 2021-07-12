@@ -28,13 +28,27 @@ function* sendEmailDocument(dataInput) {
       },
     } = yield axios[method](url, data, options)
 
-    yield put(action.TOGGLE_MODAL_FRAME(false))
-    // ? yield put(action.SEND_EMAIL_DOCUMENT.SUCCESS(sendEmailDocument))
-
+    yield put(
+      action.SET_MODAL_FRAMES([
+        {
+          childName: 'EmalInputs',
+          isActive: false,
+          childProps: {},
+        },
+      ])
+    )
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
+    yield put(
+      action.SET_MODAL_FRAMES([
+        {
+          childName: 'EmalInputs',
+          isActive: false,
+          childProps: {},
+        },
+      ])
+    )
     yield put(action.TOGGLE_LOADER_OVERLAY(false))
-    yield put(action.TOGGLE_MODAL_FRAME(false))
   }
 }
 
