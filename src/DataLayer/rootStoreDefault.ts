@@ -15,7 +15,7 @@ export const rootStoreDefault = {
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
     isCourseStarted: false,
-    modalFrames: [],
+    modalFrames: [{ childName: 'AuthUser', isActive: true, childProps: {} }],
   },
   forms: {
     searchInput: '',
