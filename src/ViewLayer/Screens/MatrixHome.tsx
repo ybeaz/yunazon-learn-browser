@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { SITE_META_DATA } from '../../Constants/siteMetaData'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { SearchGroup } from '../Components/SearchGroup'
@@ -15,6 +16,8 @@ import { ContentPlate } from '../Components/ContentPlate'
 export const MatrixHome: React.FunctionComponent<any> = (
   props: IRouterScreenProps
 ): JSX.Element => {
+  getInitialTeachContentLoading()
+
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
 

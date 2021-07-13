@@ -1,16 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  useHistory,
-  BrowserRouter,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { handleEvents } from './ViewLayer/Hooks/handleEvents'
 import { IRootStore } from './Interfaces/IRootStore'
-import * as action from './DataLayer/index.action'
 import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
 import { PresentAndSubscribe } from './ViewLayer/Screens/PresentAndSubscribe'
 import { Error404 } from './ViewLayer/Screens/Error404'
@@ -26,25 +18,7 @@ const PAGES = {
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const getLoadedPlayerScript = () => {
-      var tag = document.createElement('script')
-      tag.src = 'https://www.youtube.com/iframe_api'
-      const parent = document.getElementsByTagName('head')[0]
-      parent.prepend(tag)
-    }
-
-    const makeDispatchAsyncWrappered = async () => {
-      await getLoadedPlayerScript()
-
-      await dispatch(action.GET_GLOBAL_VARS.REQUEST())
-      await dispatch(action.GET_CONTENT_DATA.REQUEST())
-      await handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
-      await handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
-    }
-
-    makeDispatchAsyncWrappered()
-  }, [])
+  // getInitialTeachContentLoading()
 
   const demoHostName = 'r1.userto.com'
   const demoPath = '/demo-youtube-learn.html'

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
@@ -32,6 +33,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
 
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
   const screenType = 'PresentAndSubscribe'
+
+  getInitialTeachContentLoading()
 
   const store = useSelector((store: IRootStore) => store)
   const {
