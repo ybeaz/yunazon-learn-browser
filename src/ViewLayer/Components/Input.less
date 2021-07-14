@@ -1,52 +1,89 @@
 .Input {
-  color: @colorFirstDarker2;
-  background-color: @colorSecondDacker;
-  border-color: @colorSecondLighter2;
   display: flex;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 0 0 2px;
-  padding: 2px 0.7rem 2px 0.7rem;
-  text-size-adjust: 100%;
-  font-weight: 400;
-  font-size: @fontSize;
-  line-height: 24px;
-  letter-spacing: -0.3px;
-  direction: ltr;
-  border-width: 1px;
-  border-style: solid;
-  -webkit-appearance: none;
-  background-clip: border-box;
-  cursor: text;
-  &:active,
-  &:focus {
+  width: -webkit-fill-available;
+
+  .__input {
     color: @colorFirstDarker2;
-    border-color: @colorActive;
-    border-radius: 0px;
-    outline: none;
+    background-color: @colorSecondDacker;
+    border-color: @colorSecondLighter2;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 0 0 2px;
+    padding: 2px 0.7rem 2px 0.7rem;
     text-size-adjust: 100%;
+    font-weight: 400;
+    font-size: @fontSize;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+    direction: ltr;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    background-clip: border-box;
+    cursor: text;
+    &:active,
+    &:focus {
+      color: @colorFirstDarker2;
+      border-color: @colorActive;
+      border-radius: 0px;
+      outline: none;
+      text-size-adjust: 100%;
+    }
+  }
+}
+
+.Input_passwordAuth {
+  padding: 0.5rem 0;
+
+  .__input {
+    cursor: text;
+    padding: 0.5rem 0.75rem;
+    background: @colorSecondLighter2;
+    &:active,
+    &:focus {
+    }
+  }
+}
+
+.Input_usernameAuth {
+  padding: 0.5rem 0;
+
+  .__input {
+    cursor: text;
+    padding: 0.5rem 0.75rem;
+    background: @colorSecondLighter2;
+    &:active,
+    &:focus {
+    }
   }
 }
 
 .Input_email {
-  cursor: text;
-  padding: 0.5rem 0.7rem 0.5rem 0.7rem;
-  &:active,
-  &:focus {
+  .__input {
+    cursor: text;
+    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    &:active,
+    &:focus {
+    }
   }
 }
 
 .Input_name {
-  cursor: text;
-  padding: 0.5rem 0.7rem 0.5rem 0.7rem;
-  &:active,
-  &:focus {
+  .__input {
+    cursor: text;
+    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    &:active,
+    &:focus {
+    }
   }
 }
 
 .Input_search {
-  cursor: text;
-  &:active,
-  &:focus {
+  .__input {
+    cursor: text;
+    &:active,
+    &:focus {
+    }
   }
 }

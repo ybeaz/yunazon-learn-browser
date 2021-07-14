@@ -5,6 +5,54 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  orSignInManually: {
+    en: 'Or sign in manually:',
+    ru: 'Или авторизуйтесь через эл. адрес',
+  },
+  or: {
+    en: 'or',
+    ru: 'или',
+  },
+  loginSocialMediaEmail: {
+    en: 'Login with Social Media or Email',
+    ru: 'Авторизация через соцсети или эл. адрес',
+  },
+  forgetPassword: {
+    en: 'Forget password',
+    ru: 'Забыл пароль',
+  },
+  signUp: {
+    en: 'Sign Up',
+    ru: 'Регистрация',
+  },
+  loginWithFacebook: {
+    en: 'Login with Facebook',
+    ru: 'Логин с Facebook',
+  },
+  loginWithTwitter: {
+    en: 'Login with Twitter',
+    ru: 'Логин с Twitter',
+  },
+  loginWithGoogle: {
+    en: 'Login with Google',
+    ru: 'Логин с Google',
+  },
+  username: {
+    en: 'Username',
+    ru: 'Имя пользователя',
+  },
+  email: {
+    en: 'Email',
+    ru: 'Эл. адрес',
+  },
+  password: {
+    en: 'Password',
+    ru: 'Пароль',
+  },
+  login: {
+    en: 'Login',
+    ru: 'Логин',
+  },
   createCourseQuiz: {
     en: 'Create course / quiz',
     ru: 'Создать курс / викторину',

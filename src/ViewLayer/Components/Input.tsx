@@ -24,12 +24,14 @@ export const Input: React.FunctionComponent<any> = (
   const action = { typeEvent }
 
   return (
-    <input
-      className={`Input ${classAdded}`}
-      type={type}
-      placeholder={placeholder}
-      onChange={event => handleEvents(event, action)}
-      value={value}
-    />
+    <div className={`Input ${classAdded}`}>
+      <input
+        className={`__input`}
+        type={type}
+        placeholder={placeholder}
+        onChange={event => handleEvents(event, action)}
+        value={value}
+      />
+    </div>
   )
 }
