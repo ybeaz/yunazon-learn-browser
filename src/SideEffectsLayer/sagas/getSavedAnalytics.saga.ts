@@ -5,7 +5,7 @@ import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName'
 import { cookie } from '../../Shared/cookie'
 import { IAnalyticsInput } from '../../Interfaces/IAnalyticsInput'
 import { getSavedAnalyticsConnector } from '../../CommunicationLayer/getSavedAnalytics.connector'
-import * as action from '../../DataLayer/index.action'
+import { actionAsync } from '../../DataLayer/index.action'
 
 interface IGetSavedAnalytics {
   type: string
@@ -40,7 +40,7 @@ function* getSavedAnalytics(payload: IGetSavedAnalytics) {
       },
     } = yield axios[method](url, payloadNext, options)
 
-    yield put(action.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
+    yield put(actionAsync.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
 
     if (analyticsID && analyticsID !== 'null') {
       const { hostname } = location
@@ -55,5 +55,5 @@ function* getSavedAnalytics(payload: IGetSavedAnalytics) {
 }
 
 export default function* getSavedAnalyticsWatcher() {
-  yield takeEvery(action.SAVE_ANALYTICS.REQUEST().type, getSavedAnalytics)
+  yield takeEvery(actionAsync.SAVE_ANALYTICS.REQUEST().type, getSavedAnalytics)
 }

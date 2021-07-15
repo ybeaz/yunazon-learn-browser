@@ -8,6 +8,10 @@ export interface ICreateRequestTypes {
   FAILURE: Function
 }
 
+export interface ICreateAsyncAction {
+  [key: string]: ICreateRequestTypes
+}
+
 /**
  * @description Function to return functions in object accepted data
  *              with three props suffixes: _REQUEST, _SUCCESS, _FAILURE
@@ -17,9 +21,7 @@ export interface ICreateRequestTypes {
  * @example3 action.GET_CONTENT_DATA.SUCCESS(myObject).type - this returns type string 'GET_CONTENT_DATA_SUCCESS'
  * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
-export const createRequestTypes: Function = (
-  base: string
-): ICreateRequestTypes =>
+const createRequestTypes: Function = (base: string): ICreateRequestTypes =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc: any, type: string): any => {
     acc[type] = (data: any = undefined) => {
       return data
@@ -28,6 +30,22 @@ export const createRequestTypes: Function = (
     }
     return acc
   }, {})
+
+/**
+ * @description Function to create asyncronous actions
+ * @param actions
+ * @returns
+ */
+export const createAsyncAction: Function = (
+  actions: string[]
+): ICreateAsyncAction => {
+  return actions.reduce((actions, currentAction) => {
+    const currentActionNext = {
+      [currentAction]: createRequestTypes(currentAction),
+    }
+    return { ...actions, ...currentActionNext }
+  }, {})
+}
 
 /**
  * @description NOT USED. LEGACY. Function to return object with three props suffixes: _REQUEST, _SUCCESS, _FAILURE

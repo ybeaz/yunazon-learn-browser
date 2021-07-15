@@ -7,7 +7,7 @@ import { getResultDataFromStore } from './getResultDataFromStore'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
 import { store } from '../../DataLayer/store'
-import * as action from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
@@ -44,12 +44,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     ONCHANGE_EMAIL_AUTH: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_EMAIL_AUTH(value))
+      dispatch(actionSync.ONCHANGE_EMAIL_AUTH(value))
     },
 
     ONCHANGE_PASSWORD_AUTH: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_PASSWORD_AUTH(value))
+      dispatch(actionSync.ONCHANGE_PASSWORD_AUTH(value))
     },
 
     CLICK_AUTH_LOGIN: () => {
@@ -82,7 +82,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     GO_HOME: () => {
       const { history } = data
       history.push('/home')
-      dispatch(action.TOGGLE_SIDE_NAVIGATION())
+      dispatch(actionSync.TOGGLE_SIDE_NAVIGATION())
     },
 
     GET_INITIAL_QUERY_SETTING: () => {
@@ -98,7 +98,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       const languageIn = !!ln ? ln : !!language ? language : undefined
 
       dispatch(
-        action.GET_INITIAL_QUERY_SETTING({
+        actionSync.GET_INITIAL_QUERY_SETTING({
           languageIn,
           searchInputIn,
         })
@@ -122,7 +122,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         isParsableInt(questionNumber) && parseInt(questionNumber, 10)
 
       dispatch(
-        action.GET_COURSE_QUERY_PR_QN({
+        actionSync.GET_COURSE_QUERY_PR_QN({
           courseID,
           index,
           isReducing,
@@ -169,7 +169,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     TOGGLE_MEDIA_LOADED: () => {
       const { mediaKey, isMediaLoaded } = data
-      dispatch(action.TOGGLE_MEDIA_LOADED({ mediaKey, isMediaLoaded }))
+      dispatch(actionSync.TOGGLE_MEDIA_LOADED({ mediaKey, isMediaLoaded }))
     },
 
     TOGGLE_START_COURSE: () => {
@@ -186,39 +186,39 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           })
         )
 
-      dispatch(action.TOGGLE_START_COURSE(isStarting))
+      dispatch(actionSync.TOGGLE_START_COURSE(isStarting))
     },
 
     ONCHANGE_SEARCH_INPUT: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_SEARCH_INPUT(value))
+      dispatch(actionSync.ONCHANGE_SEARCH_INPUT(value))
     },
 
     SELECT_LANGUAGE: () => {
       getSavedAnanlyticsEvent(event, getAzProps('LANGUAGE_SELECTED')(data))
 
-      dispatch(action.SELECT_LANGUAGE(data))
+      dispatch(actionSync.SELECT_LANGUAGE(data))
       getSetObjToLocalStorage({ language: data })
     },
 
     SEND_EMAIL_DOCUMENT: () => {
       getSavedAnanlyticsEvent(event, getAzProps('DOCUMENT_EMAIL_SENT')(data))
 
-      dispatch(action.SEND_EMAIL_DOCUMENT.REQUEST(data))
+      dispatch(actionAsync.SEND_EMAIL_DOCUMENT.REQUEST(data))
     },
 
     ONCHANGE_EMAIL_CC: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_EMAIL_CC(value))
+      dispatch(actionSync.ONCHANGE_EMAIL_CC(value))
     },
 
     ONCHANGE_EMAIL_TO: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_EMAIL_TO(value))
+      dispatch(actionSync.ONCHANGE_EMAIL_TO(value))
     },
 
     SET_MODAL_FRAMES: () => {
-      dispatch(action.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
     },
 
     COPY_URL_TO_CLIPBOARD: () => {
@@ -228,7 +228,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     TOGGLE_IS_DOCUMENT_ADDED: () => {
-      dispatch(action.TOGGLE_IS_DOCUMENT_ADDED(data))
+      dispatch(actionSync.TOGGLE_IS_DOCUMENT_ADDED(data))
     },
 
     PRINT_DOCUMENT: () => {
@@ -238,7 +238,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     FIND_DOCUMENT: () => {
-      dispatch(action.FIND_DOCUMENT.REQUEST(data))
+      dispatch(actionAsync.FIND_DOCUMENT.REQUEST(data))
     },
 
     ADD_DOCUMENT: () => {
@@ -250,11 +250,11 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           getAzProps('PERSONAL_DATA_SUBMITTED')(options)
         )
 
-      dispatch(action.ADD_DOCUMENT.REQUEST(data))
+      dispatch(actionAsync.ADD_DOCUMENT.REQUEST(data))
     },
 
     SET_QUESTION_SLIDE: () => {
-      dispatch(action.SET_QUESTION_SLIDE(data))
+      dispatch(actionSync.SET_QUESTION_SLIDE(data))
     },
 
     PLUS_QUESTION_SLIDE: () => {
@@ -273,22 +273,22 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           getAzProps('QUESTIONS_STEPPED_FORWARD')(options)
         )
 
-      dispatch(action.PLUS_QUESTION_SLIDE(data))
+      dispatch(actionSync.PLUS_QUESTION_SLIDE(data))
     },
 
     ONCHANGE_FIRST_NAME_MODAL: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_FIRST_NAME_MODAL(value))
+      dispatch(actionSync.ONCHANGE_FIRST_NAME_MODAL(value))
     },
 
     ONCHANGE_MIDDLE_NAME_MODAL: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_MIDDLE_NAME_MODAL(value))
+      dispatch(actionSync.ONCHANGE_MIDDLE_NAME_MODAL(value))
     },
 
     ONCHANGE_LAST_NAME_MODAL: () => {
       const { value } = event.target as HTMLInputElement
-      dispatch(action.ONCHANGE_LAST_NAME_MODAL(value))
+      dispatch(actionSync.ONCHANGE_LAST_NAME_MODAL(value))
     },
 
     CLOSE_MODAL_GET_SCORES: () => {
@@ -297,10 +297,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       event?.preventDefault &&
         getSavedAnanlyticsEvent(event, getAzProps('WENT_BACK')(options))
 
-      dispatch(action.GET_ANSWERS_DEFAULT())
-      dispatch(action.SET_QUESTION_SLIDE(0))
+      dispatch(actionSync.GET_ANSWERS_DEFAULT())
+      dispatch(actionSync.SET_QUESTION_SLIDE(0))
       dispatch(
-        action.SET_MODAL_FRAMES([
+        actionSync.SET_MODAL_FRAMES([
           {
             childName: 'QuestionScores',
             isActive: false,
@@ -332,27 +332,27 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         contentID,
       })
 
-      dispatch(action.GET_ANSWERS_DEFAULT())
+      dispatch(actionSync.GET_ANSWERS_DEFAULT())
     },
 
     SELECT_COURSE_MODULE_CONTENTID: () => {
-      dispatch(action.SELECT_COURSE_MODULE_CONTENTID(data))
+      dispatch(actionSync.SELECT_COURSE_MODULE_CONTENTID(data))
     },
 
     SELECT_COURSE_MODULE: () => {
       getSavedAnanlyticsEvent(event, getAzProps('COURSE_PLATE_CLICKED')(data))
 
-      dispatch(action.SELECT_COURSE_MODULE(data))
+      dispatch(actionSync.SELECT_COURSE_MODULE(data))
     },
 
     CLICK_CHECK: () => {
-      dispatch(action.CLICK_CHECK(data))
+      dispatch(actionSync.CLICK_CHECK(data))
     },
 
     TOGGLE_SIDE_NAVIGATION: () => {
       event.stopPropagation()
 
-      dispatch(action.TOGGLE_SIDE_NAVIGATION())
+      dispatch(actionSync.TOGGLE_SIDE_NAVIGATION())
 
       getSavedAnanlyticsEvent(event, getAzProps('SIDE_PANEL_TOGGLED')())
     },

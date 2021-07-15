@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import * as action from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { addDocumentConnector } from '../../CommunicationLayer/addDocument.connector'
 
 function* addDocument(dataInput) {
@@ -42,20 +42,20 @@ function* addDocument(dataInput) {
   } = addDocumentConnector(payload, fragmentName)
 
   try {
-    yield put(action.TOGGLE_LOADER_OVERLAY(true))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
         data: { addDocument },
       },
     } = yield axios[method](url, payloadNext, options)
 
-    yield put(action.ADD_DOCUMENT.SUCCESS(addDocument))
-    yield put(action.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionAsync.ADD_DOCUMENT.SUCCESS(addDocument))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     console.info('addDocument [40]', error.name + ': ' + error.message)
   }
 }
 
 export default function* addDocumentWatcher() {
-  yield takeEvery([action.ADD_DOCUMENT.REQUEST().type], addDocument)
+  yield takeEvery([actionAsync.ADD_DOCUMENT.REQUEST().type], addDocument)
 }

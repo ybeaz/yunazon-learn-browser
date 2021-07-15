@@ -1,5 +1,5 @@
 import { store } from '../DataLayer/store'
-import * as action from '../DataLayer/index.action'
+import { actionAsync } from '../DataLayer/index.action'
 
 import { cookie } from '../Shared/cookie'
 import { mediaSizeCrossBrowser } from '../Shared/mediaSizeCrossBrowser'
@@ -12,7 +12,7 @@ export const getSavedAnanlyticsInitData: Function = () => {
   const { href, hostname, pathname, search } = location
 
   if (analyticsID && analyticsID !== 'null') {
-    dispatch(action.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
+    dispatch(actionAsync.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
     cookie.set(COOKIE_ANALYTICSID_NAME, analyticsID, {
       domain: hostname,
       days: 1,
@@ -33,6 +33,6 @@ export const getSavedAnanlyticsInitData: Function = () => {
       },
     }
 
-    dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
+    dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { handleEvents } from './handleEvents'
-import * as action from '../../DataLayer/index.action'
+import { actionAsync } from '../../DataLayer/index.action'
 
 /**
  * @description Make initial call for data and pupulate it to the store
@@ -22,8 +22,8 @@ export const getInitialTeachContentLoading: Function = (): void => {
     const makeDispatchAsyncWrappered = async () => {
       await getLoadedPlayerScript()
 
-      await dispatch(action.GET_GLOBAL_VARS.REQUEST())
-      await dispatch(action.GET_CONTENT_DATA.REQUEST())
+      await dispatch(actionAsync.GET_GLOBAL_VARS.REQUEST())
+      await dispatch(actionAsync.GET_CONTENT_DATA.REQUEST())
       await handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
       await handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
     }

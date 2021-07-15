@@ -1,5 +1,5 @@
 import { store } from '../DataLayer/store'
-import * as action from '../DataLayer/index.action'
+import { actionAsync } from '../DataLayer/index.action'
 
 import { IAzProps } from '../Interfaces/IAzProps'
 
@@ -21,5 +21,5 @@ export const getSavedAnanlyticsEvent: Function = (
     },
   }
 
-  store.dispatch(action.SAVE_ANALYTICS.REQUEST(dataNext))
+  store.dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
 }

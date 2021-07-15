@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import * as action from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { sendEmailDocumentConnector } from '../../CommunicationLayer/sendEmailDocument.connector'
 
 function* sendEmailDocument(dataInput) {
@@ -21,7 +21,7 @@ function* sendEmailDocument(dataInput) {
   )
 
   try {
-    yield put(action.TOGGLE_LOADER_OVERLAY(true))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
         data: { sendEmailDocument },
@@ -29,7 +29,7 @@ function* sendEmailDocument(dataInput) {
     } = yield axios[method](url, data, options)
 
     yield put(
-      action.SET_MODAL_FRAMES([
+      actionSync.SET_MODAL_FRAMES([
         {
           childName: 'EmalInputs',
           isActive: false,
@@ -37,10 +37,10 @@ function* sendEmailDocument(dataInput) {
         },
       ])
     )
-    yield put(action.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(
-      action.SET_MODAL_FRAMES([
+      actionSync.SET_MODAL_FRAMES([
         {
           childName: 'EmalInputs',
           isActive: false,
@@ -48,13 +48,13 @@ function* sendEmailDocument(dataInput) {
         },
       ])
     )
-    yield put(action.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   }
 }
 
 export default function* sendEmailDocumentWatcher() {
   yield takeEvery(
-    [action.SEND_EMAIL_DOCUMENT.REQUEST().type],
+    [actionAsync.SEND_EMAIL_DOCUMENT.REQUEST().type],
     sendEmailDocument
   )
 }

@@ -1,164 +1,48 @@
-import { createRequestTypes, ICreateRequestTypes } from './createRequestTypes'
-
-interface IAction {
-  type: string
-  data?: any
-}
+import { createSyncActions, ICreateSyncAction } from './createActionsSync'
+import { createAsyncAction, ICreateAsyncAction } from './createActionsAsync'
 
 // Asynchroneous actions for saga
-export const SAVE_ANALYTICS: ICreateRequestTypes =
-  createRequestTypes('SAVE_ANALYTICS')
-
-export const SEND_EMAIL_DOCUMENT: ICreateRequestTypes = createRequestTypes(
-  'SEND_EMAIL_DOCUMENT'
-)
-export const FIND_DOCUMENT: ICreateRequestTypes =
-  createRequestTypes('FIND_DOCUMENT')
-export const ADD_DOCUMENT: ICreateRequestTypes =
-  createRequestTypes('ADD_DOCUMENT')
-export const GET_CONTENT_DATA: ICreateRequestTypes =
-  createRequestTypes('GET_CONTENT_DATA')
-export const GET_GLOBAL_VARS: ICreateRequestTypes =
-  createRequestTypes('GET_GLOBAL_VARS')
+const ACTION_ASYNC = [
+  'SAVE_ANALYTICS',
+  'SEND_EMAIL_DOCUMENT',
+  'FIND_DOCUMENT',
+  'ADD_DOCUMENT',
+  'GET_CONTENT_DATA',
+  'GET_GLOBAL_VARS',
+]
 
 // Synchroneours redux actions
+const ACTIONS_SYNC = [
+  'ONCHANGE_EMAIL_AUTH',
+  'ONCHANGE_PASSWORD_AUTH',
+  'SET_MODAL_FRAMES',
+  'GET_INITIAL_QUERY_SETTING',
+  'GET_COURSE_QUERY_PR_QN',
+  'TOGGLE_MEDIA_LOADED',
+  'TOGGLE_START_COURSE',
+  'ONCHANGE_SEARCH_INPUT',
+  'CHANGE_NUM_QUESTIONS_IN_SLIDE',
+  'SELECT_LANGUAGE',
+  'ONCHANGE_EMAIL_CC',
+  'ONCHANGE_EMAIL_TO',
+  'TOGGLE_IS_DOCUMENT_ADDED',
+  'TOGGLE_LOADER_OVERLAY',
+  'SET_QUESTION_SLIDE',
+  'PLUS_QUESTION_SLIDE',
+  'ONCHANGE_FIRST_NAME_MODAL',
+  'ONCHANGE_MIDDLE_NAME_MODAL',
+  'ONCHANGE_LAST_NAME_MODAL',
+  'GET_ANSWERS_DEFAULT',
+  'SELECT_COURSE_MODULE_CONTENTID',
+  'SELECT_COURSE_MODULE',
+  'CLICK_CHECK',
+  'TOGGLE_SIDE_NAVIGATION',
+]
 
-export const ACTIONS = {
-  ONCHANGE_EMAIL_AUTH: (data: number): IAction => ({
-    type: 'ONCHANGE_EMAIL_AUTH',
-    data,
-  }),
-}
+export const actionSync: ICreateSyncAction = createSyncActions(ACTIONS_SYNC)
+export const actionAsync: ICreateAsyncAction = createAsyncAction(ACTION_ASYNC)
 
-export const ONCHANGE_EMAIL_AUTH: Function = (data: number): IAction => ({
-  type: 'ONCHANGE_EMAIL_AUTH',
-  data,
-})
-
-export const ONCHANGE_PASSWORD_AUTH: Function = (data: number): IAction => ({
-  type: 'ONCHANGE_PASSWORD_AUTH',
-  data,
-})
-
-export const SET_MODAL_FRAMES: Function = (data: number): IAction => ({
-  type: 'SET_MODAL_FRAMES',
-  data,
-})
-
-export const GET_INITIAL_QUERY_SETTING: Function = (data: number): IAction => ({
-  type: 'GET_INITIAL_QUERY_SETTING',
-  data,
-})
-
-export const GET_COURSE_QUERY_PR_QN: Function = (data: number): IAction => ({
-  type: 'GET_COURSE_QUERY_PR_QN',
-  data,
-})
-
-export const TOGGLE_MEDIA_LOADED: Function = (data: number): IAction => ({
-  type: 'TOGGLE_MEDIA_LOADED',
-  data,
-})
-
-export const TOGGLE_START_COURSE: Function = (data: number): IAction => ({
-  type: 'TOGGLE_START_COURSE',
-  data,
-})
-
-export const ONCHANGE_SEARCH_INPUT: Function = (data: number): IAction => ({
-  type: 'ONCHANGE_SEARCH_INPUT',
-  data,
-})
-
-export const CHANGE_NUM_QUESTIONS_IN_SLIDE: Function = (
-  data: number
-): IAction => ({
-  type: 'CHANGE_NUM_QUESTIONS_IN_SLIDE',
-  data,
-})
-
-export const SELECT_LANGUAGE: Function = (data: number): IAction => ({
-  type: 'SELECT_LANGUAGE',
-  data,
-})
-
-export const ONCHANGE_EMAIL_CC: Function = (data: number): IAction => ({
-  type: 'ONCHANGE_EMAIL_CC',
-  data,
-})
-
-export const ONCHANGE_EMAIL_TO: Function = (data: number): IAction => ({
-  type: 'ONCHANGE_EMAIL_TO',
-  data,
-})
-
-export const TOGGLE_IS_DOCUMENT_ADDED: Function = (data: number): IAction => ({
-  type: 'TOGGLE_IS_DOCUMENT_ADDED',
-  data,
-})
-
-export const TOGGLE_LOADER_OVERLAY: Function = (data: number): IAction => ({
-  type: 'TOGGLE_LOADER_OVERLAY',
-  data,
-})
-
-export const SET_QUESTION_SLIDE: Function = (data: number): IAction => ({
-  type: 'SET_QUESTION_SLIDE',
-  data,
-})
-
-export const PLUS_QUESTION_SLIDE: Function = (data: number): IAction => ({
-  type: 'PLUS_QUESTION_SLIDE',
-  data,
-})
-
-export const ONCHANGE_FIRST_NAME_MODAL: Function = (
-  data: string | number
-): IAction => ({
-  type: 'ONCHANGE_FIRST_NAME_MODAL',
-  data,
-})
-
-export const ONCHANGE_MIDDLE_NAME_MODAL: Function = (
-  data: string | number
-): IAction => ({
-  type: 'ONCHANGE_MIDDLE_NAME_MODAL',
-  data,
-})
-
-export const ONCHANGE_LAST_NAME_MODAL: Function = (
-  data: string | number
-): IAction => ({
-  type: 'ONCHANGE_LAST_NAME_MODAL',
-  data,
-})
-
-export const GET_ANSWERS_DEFAULT: Function = (): IAction => ({
-  type: 'GET_ANSWERS_DEFAULT',
-})
-
-export const SELECT_COURSE_MODULE_CONTENTID: Function = (
-  data: any = true
-): IAction => ({
-  type: 'SELECT_COURSE_MODULE_CONTENTID',
-  data,
-})
-
-export const SELECT_COURSE_MODULE: Function = (data: any = true): IAction => ({
-  type: 'SELECT_COURSE_MODULE',
-  data,
-})
-
-export const CLICK_CHECK: Function = (data: any = true): IAction => ({
-  type: 'CLICK_CHECK',
-  data,
-})
-
-export const TOGGLE_SIDE_NAVIGATION: Function = (): IAction => ({
-  type: 'TOGGLE_SIDE_NAVIGATION',
-})
-
-export const TEST_ACTION: Function = (data: any = true): IAction => ({
-  type: 'TEST_ACTION',
-  data,
-})
+// export const TEST_ACTION: Function = (data: any = true): IAction => ({
+//   type: 'TEST_ACTION',
+//   data,
+// })

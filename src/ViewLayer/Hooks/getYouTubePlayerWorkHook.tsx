@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import * as action from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 
 interface IGetYouTubePlayerWorkHookInput {
   contentComponentName: string
@@ -54,7 +54,10 @@ export const getYouTubePlayerWorkHook = ({
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
     dispatch(
-      action.TOGGLE_MEDIA_LOADED({ mediaKey: contentID, isMediaLoaded: true })
+      actionSync.TOGGLE_MEDIA_LOADED({
+        mediaKey: contentID,
+        isMediaLoaded: true,
+      })
     )
   }
 

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import * as action from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { findDocumentConnector } from '../../CommunicationLayer/findDocument.connector'
 
 function* findDocument(dataInput) {
@@ -14,20 +14,20 @@ function* findDocument(dataInput) {
   )
 
   try {
-    yield put(action.TOGGLE_LOADER_OVERLAY(true))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
         data: { findDocument },
       },
     } = yield axios[method](url, data, options)
-    yield put(action.ADD_DOCUMENT.SUCCESS(findDocument))
+    yield put(actionAsync.ADD_DOCUMENT.SUCCESS(findDocument))
 
-    yield put(action.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     console.info('findDocument [40]', error.name + ': ' + error.message)
   }
 }
 
 export default function* findDocumentWatcher() {
-  yield takeEvery([action.FIND_DOCUMENT.REQUEST().type], findDocument)
+  yield takeEvery([actionAsync.FIND_DOCUMENT.REQUEST().type], findDocument)
 }
