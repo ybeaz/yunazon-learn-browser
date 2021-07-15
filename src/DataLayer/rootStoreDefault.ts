@@ -15,11 +15,20 @@ export const rootStoreDefault = {
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
     isCourseStarted: false,
-    modalFrames: [{ childName: 'AuthUser', isActive: true, childProps: {} }],
+    modalFrames: [
+      {
+        childName: 'AuthUser',
+        isActive: true,
+        childProps: {
+          scenario: { branch: 'signIn', step: '' },
+        },
+      },
+    ],
   },
   forms: {
     emailAuth: '',
     passwordAuth: '',
+    passwordAuth2: '',
     searchInput: '',
     firstName: '',
     middleName: '',

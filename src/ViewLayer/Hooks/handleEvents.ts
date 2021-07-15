@@ -52,11 +52,16 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(actionSync.ONCHANGE_PASSWORD_AUTH(value))
     },
 
-    CLICK_AUTH_LOGIN: () => {
+    ONCHANGE_PASSWORD_AUTH_2: () => {
+      const { value } = event.target as HTMLInputElement
+      dispatch(actionSync.ONCHANGE_PASSWORD_AUTH_2(value))
+    },
+
+    CLICK_AUTH_LOGIN_SIGNUP: () => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
     },
 
-    CLICK_SING_UP: () => {
+    CLICK_SIGNUP: () => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
     },
 

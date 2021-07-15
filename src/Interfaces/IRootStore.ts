@@ -18,6 +18,7 @@ export interface IRootStore {
   forms: {
     emailAuth: string
     passwordAuth: string
+    passwordAuth2: string
     searchInput: string
     firstName: string
     middleName: string

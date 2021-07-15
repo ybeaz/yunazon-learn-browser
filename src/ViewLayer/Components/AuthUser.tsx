@@ -7,8 +7,14 @@ import { Button } from './Button'
 import { Input } from './Input'
 
 export const AuthUser: React.FunctionComponent<any> = (
-  props: any
+  props: any = {
+    scenario: { branch: '', step: '' },
+  }
 ): JSX.Element => {
+  const {
+    scenario: { branch, step },
+  } = props
+
   const { language } = useSelector((store: IRootStore) => store)
 
   const buttonAuthFacebook = {
@@ -57,12 +63,20 @@ export const AuthUser: React.FunctionComponent<any> = (
     storeFormProp: 'passwordAuth',
   }
 
-  const buttonAuthLogin = {
+  const inputPasswordAuth2Props = {
+    classAdded: 'Input_passwordAuth',
+    type: 'text',
+    placeholder: DICTIONARY.password[language],
+    typeEvent: 'ONCHANGE_PASSWORD_AUTH_2',
+    storeFormProp: 'passwordAuth2',
+  }
+
+  const buttonAuthLoginSignUp = {
     icon: '',
     captureLeft: DICTIONARY.login[language],
-    classAdded: 'Button_AuthLogin',
+    classAdded: 'Button_AuthLoginSignUp',
     action: {
-      typeEvent: 'CLICK_AUTH_LOGIN',
+      typeEvent: 'CLICK_AUTH_LOGIN_SIGNUP',
       data: {},
     },
   }
@@ -72,7 +86,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.signUp[language],
     classAdded: 'Button_SignUp',
     action: {
-      typeEvent: 'CLICK_SING_UP',
+      typeEvent: 'CLICK_SIGNUP',
       data: {},
     },
   }
@@ -87,26 +101,50 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
+  const SCENARIO = {
+    signIn: {
+      signInStatus: true,
+      title: DICTIONARY.loginSocialMediaEmail[language],
+    },
+    signUp: {
+      signUpStatus: false,
+      title: DICTIONARY.signUp[language],
+      step0: {},
+      step2: {},
+    },
+  }
+
+  const { title } = SCENARIO[branch]
+  console.info('AuthUser [108]', {
+    branch,
+    title,
+    props,
+    isSignIn: branch === 'signIn',
+  })
+
   return (
     <div className='AuthUser'>
       <div className='container'>
         <form className='form'>
           <div className='row'>
-            <h2 className='header2'>
-              {DICTIONARY.loginSocialMediaEmail[language]}
-            </h2>
+            <h2 className='header2'>{title}</h2>
           </div>
           <div className='row'>
-            <div className='col'>
-              <Button {...buttonAuthFacebook} />
-              <Button {...buttonAuthTwitter} />
-              <Button {...buttonAuthGoogle} />
-            </div>
+            {branch === 'signIn' && (
+              <>
+                <div className='col'>
+                  <Button {...buttonAuthFacebook} />
+                  <Button {...buttonAuthTwitter} />
+                  <Button {...buttonAuthGoogle} />
+                </div>
 
-            <div className='vl'>
-              <span className='vl-innertext'>{DICTIONARY.or[language]}</span>
-            </div>
-
+                <div className='vl'>
+                  <span className='vl-innertext'>
+                    {DICTIONARY.or[language]}
+                  </span>
+                </div>
+              </>
+            )}
             <div className='col'>
               <div className='hide-md-lg'>
                 <p>{DICTIONARY.orSignInManually[language]}</p>
@@ -114,8 +152,9 @@ export const AuthUser: React.FunctionComponent<any> = (
 
               <Input {...inputEmailAuthProps} />
               <Input {...inputPasswordAuthProps} />
+              {branch === 'signUp' && <Input {...inputPasswordAuth2Props} />}
 
-              <Button {...buttonAuthLogin} />
+              <Button {...buttonAuthLoginSignUp} />
             </div>
           </div>
         </form>
