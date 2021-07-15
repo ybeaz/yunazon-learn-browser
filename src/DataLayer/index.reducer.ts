@@ -1,6 +1,8 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { ONCHANGE_EMAIL_AUTH } from './reducers/ONCHANGE_EMAIL_AUTH'
+import { ONCHANGE_PASSWORD_AUTH } from './reducers/ONCHANGE_PASSWORD_AUTH'
 import { SET_MODAL_FRAMES } from './reducers/SET_MODAL_FRAMES'
 import { GET_INITIAL_QUERY_SETTING } from './reducers/GET_INITIAL_QUERY_SETTING'
 import { GET_COURSE_QUERY_PR_QN } from './reducers/GET_COURSE_QUERY_PR_QN'
@@ -36,6 +38,8 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    ONCHANGE_EMAIL_AUTH,
+    ONCHANGE_PASSWORD_AUTH,
     SET_MODAL_FRAMES,
     GET_INITIAL_QUERY_SETTING,
     GET_COURSE_QUERY_PR_QN,

@@ -16,6 +16,8 @@ export interface IRootStore {
     modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
   forms: {
+    emailAuth: string
+    passwordAuth: string
     searchInput: string
     firstName: string
     middleName: string

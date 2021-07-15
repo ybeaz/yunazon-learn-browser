@@ -18,6 +18,8 @@ export const rootStoreDefault = {
     modalFrames: [{ childName: 'AuthUser', isActive: true, childProps: {} }],
   },
   forms: {
+    emailAuth: '',
+    passwordAuth: '',
     searchInput: '',
     firstName: '',
     middleName: '',

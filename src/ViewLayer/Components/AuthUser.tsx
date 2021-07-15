@@ -16,7 +16,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.loginWithFacebook[language],
     classAdded: 'Button_AuthFacebook',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_AUTH_FACEBOOK',
       data: {},
     },
   }
@@ -26,7 +26,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.loginWithTwitter[language],
     classAdded: 'Button_AuthTwitter',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_AUTH_TWITTER',
       data: {},
     },
   }
@@ -36,7 +36,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.loginWithGoogle[language],
     classAdded: 'Button_AuthGoogle',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_AUTH_GOOGLE',
       data: {},
     },
   }
@@ -62,7 +62,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.login[language],
     classAdded: 'Button_AuthLogin',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_AUTH_LOGIN',
       data: {},
     },
   }
@@ -72,7 +72,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.signUp[language],
     classAdded: 'Button_SignUp',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_SING_UP',
       data: {},
     },
   }
@@ -82,7 +82,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.forgetPassword[language],
     classAdded: 'Button_ForgetPassword',
     action: {
-      typeEvent: 'DEV_STAGE',
+      typeEvent: 'CLICK_FORGET_PASSWORD',
       data: {},
     },
   }

@@ -22,6 +22,24 @@ export const GET_GLOBAL_VARS: ICreateRequestTypes =
   createRequestTypes('GET_GLOBAL_VARS')
 
 // Synchroneours redux actions
+
+export const ACTIONS = {
+  ONCHANGE_EMAIL_AUTH: (data: number): IAction => ({
+    type: 'ONCHANGE_EMAIL_AUTH',
+    data,
+  }),
+}
+
+export const ONCHANGE_EMAIL_AUTH: Function = (data: number): IAction => ({
+  type: 'ONCHANGE_EMAIL_AUTH',
+  data,
+})
+
+export const ONCHANGE_PASSWORD_AUTH: Function = (data: number): IAction => ({
+  type: 'ONCHANGE_PASSWORD_AUTH',
+  data,
+})
+
 export const SET_MODAL_FRAMES: Function = (data: number): IAction => ({
   type: 'SET_MODAL_FRAMES',
   data,

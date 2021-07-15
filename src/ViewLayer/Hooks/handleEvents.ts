@@ -30,6 +30,40 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
+    CLICK_AUTH_FACEBOOK: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    CLICK_AUTH_TWITTER: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    CLICK_AUTH_GOOGLE: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    ONCHANGE_EMAIL_AUTH: () => {
+      const { value } = event.target as HTMLInputElement
+      dispatch(action.ONCHANGE_EMAIL_AUTH(value))
+    },
+
+    ONCHANGE_PASSWORD_AUTH: () => {
+      const { value } = event.target as HTMLInputElement
+      dispatch(action.ONCHANGE_PASSWORD_AUTH(value))
+    },
+
+    CLICK_AUTH_LOGIN: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    CLICK_SING_UP: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    CLICK_FORGET_PASSWORD: () => {
+      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
     STOP_PROPAGATION: () => {
       // event.persist()
       // event.nativeEvent.stopImmediatePropagation()
