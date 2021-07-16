@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  Next: {
+    en: 'Next',
+    ru: 'Далее',
+  },
   orSignInManually: {
     en: 'Or sign in manually:',
     ru: 'Или авторизуйтесь через эл. адрес',

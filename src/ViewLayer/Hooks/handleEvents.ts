@@ -57,8 +57,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(actionSync.ONCHANGE_PASSWORD_AUTH_2(value))
     },
 
-    CLICK_AUTH_LOGIN_SIGNUP: () => {
-      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    SEND_AUTH_LOGIN: () => {
+      dispatch(actionAsync.SEND_AUTH_SIGNIN.REQUEST())
+    },
+
+    SEND_AUTH_SIGNUP: () => {
+      dispatch(actionAsync.SEND_AUTH_SIGNUP.REQUEST())
     },
 
     CLICK_SIGNUP: () => {

@@ -1,16 +1,6 @@
 import { createSyncActions, ICreateSyncAction } from './createActionsSync'
 import { createAsyncAction, ICreateAsyncAction } from './createActionsAsync'
 
-// Asynchroneous actions for saga
-const ACTION_ASYNC = [
-  'SAVE_ANALYTICS',
-  'SEND_EMAIL_DOCUMENT',
-  'FIND_DOCUMENT',
-  'ADD_DOCUMENT',
-  'GET_CONTENT_DATA',
-  'GET_GLOBAL_VARS',
-]
-
 // Synchroneours redux actions
 const ACTIONS_SYNC = [
   'ONCHANGE_EMAIL_AUTH',
@@ -40,9 +30,22 @@ const ACTIONS_SYNC = [
   'TOGGLE_SIDE_NAVIGATION',
 ]
 
+// Asynchroneous actions for saga
+const ACTION_ASYNC = [
+  'SEND_AUTH_SIGNIN',
+  'SEND_AUTH_SIGNUP',
+  'SAVE_ANALYTICS',
+  'SEND_EMAIL_DOCUMENT',
+  'FIND_DOCUMENT',
+  'ADD_DOCUMENT',
+  'GET_CONTENT_DATA',
+  'GET_GLOBAL_VARS',
+]
+
 export const actionSync: ICreateSyncAction = createSyncActions(ACTIONS_SYNC)
 export const actionAsync: ICreateAsyncAction = createAsyncAction(ACTION_ASYNC)
 
+// Example of the sync action
 // export const TEST_ACTION: Function = (data: any = true): IAction => ({
 //   type: 'TEST_ACTION',
 //   data,

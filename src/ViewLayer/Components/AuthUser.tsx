@@ -17,6 +17,21 @@ export const AuthUser: React.FunctionComponent<any> = (
 
   const { language } = useSelector((store: IRootStore) => store)
 
+  const SCENARIO = {
+    signIn: {
+      signInStatus: true,
+      title: DICTIONARY.loginSocialMediaEmail[language],
+      scenarioTypeEvent: 'SEND_AUTH_LOGIN',
+    },
+    signUp: {
+      signUpStatus: false,
+      title: DICTIONARY.signUp[language],
+      scenarioTypeEvent: 'SEND_AUTH_SIGNUP',
+    },
+  }
+
+  const { title, scenarioTypeEvent } = SCENARIO[branch]
+
   const buttonAuthFacebook = {
     icon: '',
     captureLeft: DICTIONARY.loginWithFacebook[language],
@@ -71,12 +86,12 @@ export const AuthUser: React.FunctionComponent<any> = (
     storeFormProp: 'passwordAuth2',
   }
 
-  const buttonAuthLoginSignUp = {
+  const buttonAuthSignInUp = {
     icon: '',
-    captureLeft: DICTIONARY.login[language],
-    classAdded: 'Button_AuthLoginSignUp',
+    captureLeft: DICTIONARY.Next[language],
+    classAdded: 'Button_AuthSignInUp',
     action: {
-      typeEvent: 'CLICK_AUTH_LOGIN_SIGNUP',
+      typeEvent: scenarioTypeEvent,
       data: {},
     },
   }
@@ -101,20 +116,6 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
-  const SCENARIO = {
-    signIn: {
-      signInStatus: true,
-      title: DICTIONARY.loginSocialMediaEmail[language],
-    },
-    signUp: {
-      signUpStatus: false,
-      title: DICTIONARY.signUp[language],
-      step0: {},
-      step2: {},
-    },
-  }
-
-  const { title } = SCENARIO[branch]
   console.info('AuthUser [108]', {
     branch,
     title,
@@ -154,22 +155,26 @@ export const AuthUser: React.FunctionComponent<any> = (
               <Input {...inputPasswordAuthProps} />
               {branch === 'signUp' && <Input {...inputPasswordAuth2Props} />}
 
-              <Button {...buttonAuthLoginSignUp} />
+              <Button {...buttonAuthSignInUp} />
             </div>
           </div>
         </form>
       </div>
 
-      <div className='bottomContainer'>
-        <div className='row'>
-          <div className='col'>
-            <Button {...buttonSignUp} />
+      {branch === 'signIn' && (
+        <>
+          <div className='bottomContainer'>
+            <div className='row'>
+              <div className='col'>
+                <Button {...buttonSignUp} />
+              </div>
+              <div className='col'>
+                <Button {...buttonForgetPassword} />
+              </div>
+            </div>
           </div>
-          <div className='col'>
-            <Button {...buttonForgetPassword} />
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   )
 }
