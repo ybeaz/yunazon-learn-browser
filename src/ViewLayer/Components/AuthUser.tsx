@@ -21,7 +21,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     signIn: {
       signInStatus: true,
       title: DICTIONARY.loginSocialMediaEmail[language],
-      scenarioTypeEvent: 'SEND_AUTH_LOGIN',
+      scenarioTypeEvent: 'SEND_AUTH_SIGNIN',
     },
     signUp: {
       signUpStatus: false,
