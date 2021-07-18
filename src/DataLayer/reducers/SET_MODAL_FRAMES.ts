@@ -9,9 +9,12 @@ export const SET_MODAL_FRAMES: Function = (
   const { componentsState } = store
   const { modalFrames } = componentsState
 
-  let modaleFramesNext = [...modalFrames, ...data]
-  modaleFramesNext = getUniqArrDeep(modaleFramesNext)
-  modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
+  let modaleFramesNext = []
+  if (data.length > 0) {
+    modaleFramesNext = [...modalFrames, ...data]
+    modaleFramesNext = getUniqArrDeep(modaleFramesNext)
+    modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
+  }
 
   const componentsStateNext = {
     ...componentsState,

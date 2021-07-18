@@ -35,7 +35,13 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     tooltipPosition: 'bottom',
     action: {
       typeEvent: 'SET_MODAL_FRAMES',
-      data: [{ childName: 'AuthUser', isActive: true, childProps: {} }],
+      data: [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signIn', step: '' } },
+        },
+      ],
     },
   }
 

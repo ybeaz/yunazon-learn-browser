@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  Back: {
+    en: 'Back',
+    ru: 'Назад',
+  },
   Next: {
     en: 'Next',
     ru: 'Далее',
@@ -21,11 +25,15 @@ export const DICTIONARY = {
     en: 'Login with Social Media or Email',
     ru: 'Авторизация через соцсети или эл. адрес',
   },
-  forgetPassword: {
+  InputYourEmailToResetPassword: {
+    en: 'Input your email to reset password',
+    ru: 'Введите ваш эл. адрес',
+  },
+  ForgetPassword: {
     en: 'Forget password',
     ru: 'Забыл пароль',
   },
-  signUp: {
+  SignUp: {
     en: 'Sign Up',
     ru: 'Регистрация',
   },
@@ -45,15 +53,19 @@ export const DICTIONARY = {
     en: 'Username',
     ru: 'Имя пользователя',
   },
-  email: {
+  Email: {
     en: 'Email',
     ru: 'Эл. адрес',
   },
-  password: {
+  Password: {
     en: 'Password',
     ru: 'Пароль',
   },
-  login: {
+  RepeatPassword: {
+    en: 'Repeat password',
+    ru: 'Повторите пароль',
+  },
+  Login: {
     en: 'Login',
     ru: 'Логин',
   },

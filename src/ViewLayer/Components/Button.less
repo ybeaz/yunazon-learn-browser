@@ -157,7 +157,39 @@
 
 .Button_AuthSignInUp {
   flex: 1;
-  padding: 0.5rem 0 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 0.1rem;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_AuthSignInUpBack {
+  flex: 1;
+  padding: 0.5rem 0.1rem 0.5rem 0;
   align-items: center;
   .__button {
     flex: 1;

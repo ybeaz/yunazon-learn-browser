@@ -65,12 +65,44 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(actionAsync.SEND_AUTH_SIGNUP.REQUEST())
     },
 
-    CLICK_SIGNUP: () => {
+    SEND_AUTH_FORGET_PASSWORD: () => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
     },
 
+    CLICK_SIGNUP: () => {
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signUp', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+    },
+
     CLICK_FORGET_PASSWORD: () => {
-      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'forgetPassword', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+    },
+
+    CLICK_AUTH_SIGN_IN_UP_BACK: () => {
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signIn', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
     },
 
     STOP_PROPAGATION: () => {

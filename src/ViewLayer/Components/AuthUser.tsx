@@ -15,18 +15,23 @@ export const AuthUser: React.FunctionComponent<any> = (
     scenario: { branch, step },
   } = props
 
-  const { language } = useSelector((store: IRootStore) => store)
+  const {
+    componentsState: { modalFrames },
+    language,
+  } = useSelector((store: IRootStore) => store)
 
   const SCENARIO = {
     signIn: {
-      signInStatus: true,
       title: DICTIONARY.loginSocialMediaEmail[language],
       scenarioTypeEvent: 'SEND_AUTH_SIGNIN',
     },
     signUp: {
-      signUpStatus: false,
-      title: DICTIONARY.signUp[language],
+      title: DICTIONARY.SignUp[language],
       scenarioTypeEvent: 'SEND_AUTH_SIGNUP',
+    },
+    forgetPassword: {
+      title: DICTIONARY.InputYourEmailToResetPassword[language],
+      scenarioTypeEvent: 'SEND_AUTH_FORGET_PASSWORD',
     },
   }
 
@@ -65,7 +70,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   const inputEmailAuthProps = {
     classAdded: 'Input_usernameAuth',
     type: 'text',
-    placeholder: DICTIONARY.email[language],
+    placeholder: DICTIONARY.Email[language],
     typeEvent: 'ONCHANGE_EMAIL_AUTH',
     storeFormProp: 'emailAuth',
   }
@@ -73,7 +78,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   const inputPasswordAuthProps = {
     classAdded: 'Input_passwordAuth',
     type: 'text',
-    placeholder: DICTIONARY.password[language],
+    placeholder: DICTIONARY.Password[language],
     typeEvent: 'ONCHANGE_PASSWORD_AUTH',
     storeFormProp: 'passwordAuth',
   }
@@ -81,7 +86,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   const inputPasswordAuth2Props = {
     classAdded: 'Input_passwordAuth',
     type: 'text',
-    placeholder: DICTIONARY.password[language],
+    placeholder: DICTIONARY.RepeatPassword[language],
     typeEvent: 'ONCHANGE_PASSWORD_AUTH_2',
     storeFormProp: 'passwordAuth2',
   }
@@ -98,17 +103,16 @@ export const AuthUser: React.FunctionComponent<any> = (
 
   const buttonSignUp = {
     icon: '',
-    captureLeft: DICTIONARY.signUp[language],
+    captureLeft: DICTIONARY.SignUp[language],
     classAdded: 'Button_SignUp',
     action: {
       typeEvent: 'CLICK_SIGNUP',
-      data: {},
     },
   }
 
   const buttonForgetPassword = {
     icon: '',
-    captureLeft: DICTIONARY.forgetPassword[language],
+    captureLeft: DICTIONARY.ForgetPassword[language],
     classAdded: 'Button_ForgetPassword',
     action: {
       typeEvent: 'CLICK_FORGET_PASSWORD',
@@ -116,7 +120,18 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
+  const buttonAuthBack = {
+    icon: '',
+    captureLeft: DICTIONARY.Back[language],
+    classAdded: 'Button_AuthSignInUpBack',
+    action: {
+      typeEvent: 'CLICK_AUTH_SIGN_IN_UP_BACK',
+      data: {},
+    },
+  }
+
   console.info('AuthUser [108]', {
+    modalFrames,
     branch,
     title,
     props,
@@ -152,10 +167,17 @@ export const AuthUser: React.FunctionComponent<any> = (
               </div>
 
               <Input {...inputEmailAuthProps} />
-              <Input {...inputPasswordAuthProps} />
+              {(branch === 'signIn' || branch === 'signUp') && (
+                <Input {...inputPasswordAuthProps} />
+              )}
               {branch === 'signUp' && <Input {...inputPasswordAuth2Props} />}
 
-              <Button {...buttonAuthSignInUp} />
+              <div className='_signInUpWrapper'>
+                {(branch === 'signUp' || branch === 'forgetPassword') && (
+                  <Button {...buttonAuthBack} />
+                )}
+                <Button {...buttonAuthSignInUp} />
+              </div>
             </div>
           </div>
         </form>
