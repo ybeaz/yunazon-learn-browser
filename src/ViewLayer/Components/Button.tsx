@@ -22,10 +22,14 @@ import {
   MdSearch,
 } from 'react-icons/md'
 
+import { FaFacebookF, FaTwitter, FaGooglePlusG } from 'react-icons/fa'
 import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  FaFacebookF,
+  FaTwitter,
+  FaGooglePlusG,
   MdAddBox,
   MdQueue,
   MdHome,

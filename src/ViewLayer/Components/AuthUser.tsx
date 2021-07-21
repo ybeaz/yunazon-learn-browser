@@ -38,8 +38,8 @@ export const AuthUser: React.FunctionComponent<any> = (
   const { title, scenarioTypeEvent } = SCENARIO[branch]
 
   const buttonAuthFacebook = {
-    icon: '',
-    captureLeft: DICTIONARY.loginWithFacebook[language],
+    icon: 'FaFacebookF',
+    captureRight: DICTIONARY.loginWithFacebook[language],
     classAdded: 'Button_AuthFacebook',
     action: {
       typeEvent: 'CLICK_AUTH_FACEBOOK',
@@ -48,8 +48,8 @@ export const AuthUser: React.FunctionComponent<any> = (
   }
 
   const buttonAuthTwitter = {
-    icon: '',
-    captureLeft: DICTIONARY.loginWithTwitter[language],
+    icon: 'FaTwitter',
+    captureRight: DICTIONARY.loginWithTwitter[language],
     classAdded: 'Button_AuthTwitter',
     action: {
       typeEvent: 'CLICK_AUTH_TWITTER',
@@ -58,8 +58,8 @@ export const AuthUser: React.FunctionComponent<any> = (
   }
 
   const buttonAuthGoogle = {
-    icon: '',
-    captureLeft: DICTIONARY.loginWithGoogle[language],
+    icon: 'FaGooglePlusG',
+    captureRight: DICTIONARY.loginWithGoogle[language],
     classAdded: 'Button_AuthGoogle',
     action: {
       typeEvent: 'CLICK_AUTH_GOOGLE',
