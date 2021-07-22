@@ -46,6 +46,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     CLICK_AUTH_GOOGLE: () => {
       const handleCredentialResponse = async (...args) => {
+        // TODO: implement actionAsync to send auth JWT to server and retun user data
         console.info('testGAuth [38]', { args })
         dispatch(actionSync.SET_MODAL_FRAMES([]))
       }

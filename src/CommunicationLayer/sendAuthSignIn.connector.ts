@@ -9,8 +9,8 @@ const headers = {
 }
 
 export const sendAuthSignInConnector: Function = (
-  documentID: string,
-  fragmentName: string
+  emailAuth: string,
+  passwordAuth: string
 ): any => {
   const envType: string = getDetectedEnv('localServer')
   const env: string = envType === 'remote' ? 'production' : 'development'
@@ -21,9 +21,10 @@ export const sendAuthSignInConnector: Function = (
     data: {
       operationName: 'FindDocument',
       variables: {
-        documentID,
+        email: 'test1',
+        password: '123456',
       },
-      query: `query FindDocument($documentID: String!){findDocument(documentID: $documentID){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `query AuthLoginPass($email:String, $password:String){authLoginPass(email:$email,password:$password){status, email, uid, userName, webToken, roles}}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

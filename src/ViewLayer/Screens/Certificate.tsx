@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
+import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -25,6 +26,8 @@ export const Certificate: React.FunctionComponent<any> = (
       },
     },
   } = props
+
+  getInitialTeachContentLoading()
 
   let history = useHistory()
   const store = useSelector((store: IRootStore) => store)
@@ -140,6 +143,7 @@ export const Certificate: React.FunctionComponent<any> = (
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/c/${courseID}/${slug}`
+  // console.info('Certificate [143]', { documents, language, coursePathName })
 
   return (
     <div className='Certificate'>

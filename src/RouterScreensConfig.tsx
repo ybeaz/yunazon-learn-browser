@@ -125,10 +125,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       const { globalVars } = useSelector((store: IRootStore) => store)
       const { theme } = globalVars
       if (theme) {
-        // require('./ViewLayer/Styles/config.style.less')
         require(`./ViewLayer/Styles/theme${theme}.less`)
         document.getElementsByTagName('body')[0].style.display = 'flex'
-        // require('./ViewLayer/Styles/index.style.less')
       }
     } catch (error) {
       console.info('RouterScreensConfig [115]', { msg: error.message })
