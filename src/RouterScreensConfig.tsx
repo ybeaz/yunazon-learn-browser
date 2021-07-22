@@ -18,8 +18,6 @@ const PAGES = {
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const dispatch = useDispatch()
 
-  // getInitialTeachContentLoading()
-
   const demoHostName = 'r1.userto.com'
   const demoPath = '/demo-youtube-learn.html'
   const rootPath = location.hostname === demoHostName ? demoPath : ''

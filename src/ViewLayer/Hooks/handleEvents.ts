@@ -12,6 +12,12 @@ import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
+declare global {
+  interface Window {
+    google: any
+  }
+}
+
 interface Props {
   typeEvent: string
   type?: string
@@ -39,7 +45,21 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_GOOGLE: () => {
-      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+      const handleCredentialResponse = async (...args) => {
+        console.info('testGAuth [38]', { args })
+        dispatch(actionSync.SET_MODAL_FRAMES([]))
+      }
+
+      try {
+        window.google.accounts.id.initialize({
+          client_id:
+            '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
+          callback: handleCredentialResponse,
+        })
+        window.google.accounts.id.prompt()
+      } catch (error) {
+        console.error('handleEvents [62]', { message: error.message })
+      }
     },
 
     ONCHANGE_EMAIL_AUTH: () => {

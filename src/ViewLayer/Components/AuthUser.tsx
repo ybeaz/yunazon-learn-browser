@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Button } from './Button'
@@ -14,6 +15,8 @@ export const AuthUser: React.FunctionComponent<any> = (
   const {
     scenario: { branch, step },
   } = props
+
+  getInitializedGoogleOAuth()
 
   const {
     componentsState: { modalFrames },
@@ -129,14 +132,6 @@ export const AuthUser: React.FunctionComponent<any> = (
       data: {},
     },
   }
-
-  console.info('AuthUser [108]', {
-    modalFrames,
-    branch,
-    title,
-    props,
-    isSignIn: branch === 'signIn',
-  })
 
   return (
     <div className='AuthUser'>

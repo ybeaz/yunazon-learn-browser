@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
 import { handleEvents } from './handleEvents'
 import { actionAsync } from '../../DataLayer/index.action'
 
@@ -11,16 +12,13 @@ export const getInitialTeachContentLoading: Function = (): void => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const getLoadedPlayerScript = () => {
-      var tag = document.createElement('script')
-      tag.id = 'youtube_com_iframe_api'
-      tag.src = 'https://www.youtube.com/iframe_api'
-      const parent = document.getElementsByTagName('head')[0]
-      parent.prepend(tag)
+    const scriptProps = {
+      src: 'https://www.youtube.com/iframe_api',
+      id: 'youtube_com_iframe_api',
     }
 
     const makeDispatchAsyncWrappered = async () => {
-      await getLoadedPlayerScript()
+      await getPrependedExternalScript(scriptProps)
 
       await dispatch(actionAsync.GET_GLOBAL_VARS.REQUEST())
       await dispatch(actionAsync.GET_CONTENT_DATA.REQUEST())
@@ -28,7 +26,6 @@ export const getInitialTeachContentLoading: Function = (): void => {
       await handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
     }
 
-    if (!document.getElementById('youtube_com_iframe_api'))
-      makeDispatchAsyncWrappered()
+    if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()
   }, [])
 }
