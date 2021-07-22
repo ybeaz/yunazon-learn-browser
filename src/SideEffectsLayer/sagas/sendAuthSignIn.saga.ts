@@ -24,9 +24,11 @@ function* sendAuthSignIn() {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { sendAuthSignIn },
+        data: data2, // : { sendAuthSignIn },
       },
     } = yield axios[method](url, data, options)
+
+    console.info('sendAuthSignIn.saga [31]', { data2 })
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

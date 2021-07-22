@@ -1,4 +1,4 @@
-import { SERVERS } from '../Constants/servers.const'
+import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS } from './fragments'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
@@ -12,7 +12,7 @@ export const sendAuthSignInConnector: Function = (
   emailAuth: string,
   passwordAuth: string
 ): any => {
-  const envType: string = getDetectedEnv('localServer')
+  const envType: string = getDetectedEnv()
   const env: string = envType === 'remote' ? 'production' : 'development'
 
   const obj: any = {

@@ -15,7 +15,7 @@ export const sendEmailDocumentConnector: Function = (
   sendBcc: string,
   fragmentName: string
 ): any => {
-  const envType: string = getDetectedEnv('localServer')
+  const envType: string = getDetectedEnv()
   const env: string = envType === 'remote' ? 'production' : 'development'
 
   const obj: any = {

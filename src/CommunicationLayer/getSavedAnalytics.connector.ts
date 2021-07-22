@@ -1,5 +1,5 @@
 import { IAnalyticsInput } from '../Interfaces/IAnalyticsInput'
-import { SERVERS_ANALYTICS } from '../Constants/servers.const'
+import { SERVERS_ANALYTICS as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { getAssetHash } from '../Shared/getAssetHash'
 
@@ -14,7 +14,7 @@ export const getSavedAnalyticsConnector: Function = (
 ): any => {
   const hash256 = getAssetHash(props)
   const envType = getDetectedEnv()
-  const url = <string>`${SERVERS_ANALYTICS[envType]}/graphql`
+  const url = <string>`${SERVERS[envType]}/graphql`
 
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
