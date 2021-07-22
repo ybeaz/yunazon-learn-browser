@@ -18,7 +18,7 @@ export const sendAuthSignUpConnector: Function = (
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
-    data: {
+    payload: {
       operationName: 'FindDocument',
       variables: {},
       query: `query FindDocument($documentID: String!){findDocument(documentID: $documentID){}}`,

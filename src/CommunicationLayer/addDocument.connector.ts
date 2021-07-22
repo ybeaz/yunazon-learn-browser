@@ -18,7 +18,7 @@ export const addDocumentConnector: Function = (
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
-    data: {
+    payload: {
       operationName: 'AddDocument',
       variables: {
         addDocumentInputGraphql: { ...vars, env },

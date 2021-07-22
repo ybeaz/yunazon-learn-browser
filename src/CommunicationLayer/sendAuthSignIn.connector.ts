@@ -18,7 +18,7 @@ export const sendAuthSignInConnector: Function = (
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
-    data: {
+    payload: {
       operationName: 'FindDocument',
       variables: {
         email: 'test1',

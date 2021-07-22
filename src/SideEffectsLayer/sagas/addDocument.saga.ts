@@ -37,7 +37,7 @@ function* addDocument(dataInput) {
   const {
     method,
     url,
-    data: payloadNext,
+    payload: payloadNext,
     options,
   } = addDocumentConnector(payload, fragmentName)
 

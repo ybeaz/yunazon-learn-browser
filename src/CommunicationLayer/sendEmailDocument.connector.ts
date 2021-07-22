@@ -21,7 +21,7 @@ export const sendEmailDocumentConnector: Function = (
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
-    data: {
+    payload: {
       operationName: 'SendEmailDocument',
       variables: {
         documentID,

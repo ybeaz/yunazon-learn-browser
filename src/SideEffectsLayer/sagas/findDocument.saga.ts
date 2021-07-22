@@ -8,7 +8,7 @@ function* findDocument(dataInput) {
   const { data: documentID } = dataInput
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const { method, url, data, options } = findDocumentConnector(
+  const { method, url, payload, options } = findDocumentConnector(
     documentID,
     fragmentName
   )
@@ -19,7 +19,7 @@ function* findDocument(dataInput) {
       data: {
         data: { findDocument },
       },
-    } = yield axios[method](url, data, options)
+    } = yield axios[method](url, payload, options)
     yield put(actionAsync.ADD_DOCUMENT.SUCCESS(findDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
