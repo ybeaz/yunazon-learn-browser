@@ -15,7 +15,7 @@ function* sendAuthSignUp() {
     action: actionAsync.SEND_AUTH_SIGNUP.REQUEST().type,
   })
 
-  const { method, url, data, options } = sendAuthSignUpConnector(
+  const { method, url, payload, options } = sendAuthSignUpConnector(
     emailAuth,
     passwordAuth
   )
@@ -26,8 +26,9 @@ function* sendAuthSignUp() {
       data: {
         data: { sendAuthSignUp },
       },
-    } = yield axios[method](url, data, options)
+    } = yield axios[method](url, payload, options)
 
+    yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

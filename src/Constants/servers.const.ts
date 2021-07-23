@@ -1,7 +1,7 @@
 export const SERVERS_AUTH = {
   remote: 'https://un.userto.com',
-  localWebpack: 'http://127.0.0.1:3010',
-  localServer: 'http://127.0.0.1:3010',
+  localWebpack: 'http://127.0.0.1:4020',
+  localServer: 'http://127.0.0.1:4020',
 }
 
 export const SERVERS_ANALYTICS = {

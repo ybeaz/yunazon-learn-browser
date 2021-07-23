@@ -1,13 +1,5 @@
 export const rootStoreDefault = {
-  isLoaded: {
-    isLoadedGlobalVars: false,
-    isLoadedCourses: false,
-    mediaLoading: {},
-  },
-  courses: [],
-  globalVars: {
-    numberQuestionsInSlide: 2,
-  },
+  analyticsID: null,
   componentsState: {
     questionsSlideNumber: 0,
     isModalFrameVisible: false,
@@ -25,6 +17,11 @@ export const rootStoreDefault = {
       },
     ],
   },
+  courses: [],
+  documents: [],
+  globalVars: {
+    numberQuestionsInSlide: 2,
+  },
   forms: {
     emailAuth: '',
     passwordAuth: '',
@@ -36,7 +33,15 @@ export const rootStoreDefault = {
     sendTo: '',
     sendCc: '',
   },
-  documents: [],
+  isLoaded: {
+    isLoadedGlobalVars: false,
+    isLoadedCourses: false,
+    mediaLoading: {},
+  },
   language: 'ru',
-  analyticsID: null,
+  user: {
+    roles: undefined,
+    uid: undefined,
+    userName: undefined,
+  },
 }

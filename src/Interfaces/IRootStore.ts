@@ -1,11 +1,5 @@
 export interface IRootStore {
-  isLoaded: {
-    isLoadedGlobalVars: boolean
-    isLoadedCourses: boolean
-    mediaLoading: any
-  }
-  courses: any[]
-  globalVars: any
+  analyticsID: string
   componentsState: {
     questionsSlideNumber: number
     isModalFrameVisible: boolean
@@ -15,6 +9,9 @@ export interface IRootStore {
     isCourseStarted: boolean
     modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
+  courses: any[]
+  documents: any[]
+  globalVars: any
   forms: {
     emailAuth: string
     passwordAuth: string
@@ -26,7 +23,15 @@ export interface IRootStore {
     sendTo: string
     sendCc: string
   }
-  documents: any[]
+  isLoaded: {
+    isLoadedGlobalVars: boolean
+    isLoadedCourses: boolean
+    mediaLoading: any
+  }
   language: string
-  analyticsID: string
+  user: {
+    roles: undefined | string
+    uid: undefined | string
+    userName: undefined | string
+  }
 }

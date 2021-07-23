@@ -9,13 +9,7 @@ function* sendAuthSignIn() {
     forms: { emailAuth, passwordAuth },
   } = yield select(store => store)
 
-  console.info('sendAuthSignIn.saga [11]', {
-    emailAuth,
-    passwordAuth,
-    action: actionAsync.SEND_AUTH_SIGNIN.REQUEST().type,
-  })
-
-  const { method, url, data, options } = sendAuthSignInConnector(
+  const { method, url, payload, options } = sendAuthSignInConnector(
     emailAuth,
     passwordAuth
   )
@@ -24,12 +18,13 @@ function* sendAuthSignIn() {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: data2, // : { sendAuthSignIn },
+        data: { authLoginPass },
       },
-    } = yield axios[method](url, data, options)
+    } = yield axios[method](url, payload, options)
 
-    console.info('sendAuthSignIn.saga [31]', { data2 })
+    console.info('sendAuthSignIn.saga [31]', { authLoginPass })
 
+    yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

@@ -1,3 +1,6 @@
+import { print, DocumentNode } from 'graphql'
+import gql from 'graphql-tag'
+
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS } from './fragments'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
@@ -13,18 +16,31 @@ export const sendAuthSignInConnector: Function = (
   passwordAuth: string
 ): any => {
   const envType: string = getDetectedEnv()
-  const env: string = envType === 'remote' ? 'production' : 'development'
+
+  const queryAst: DocumentNode = gql`
+    query AuthLoginPass($email: String, $password: String) {
+      authLoginPass(email: $email, password: $password) {
+        status
+        email
+        uid
+        userName
+        webToken
+        roles
+      }
+    }
+  `
+  const query = print(queryAst as DocumentNode)
 
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'FindDocument',
+      operationName: 'AuthLoginPass',
       variables: {
-        email: 'test1',
-        password: '123456',
+        email: emailAuth,
+        password: passwordAuth,
       },
-      query: `query AuthLoginPass($email:String, $password:String){authLoginPass(email:$email,password:$password){status, email, uid, userName, webToken, roles}}`,
+      query,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,
