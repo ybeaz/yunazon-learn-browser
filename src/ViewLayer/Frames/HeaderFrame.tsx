@@ -17,7 +17,7 @@ export const HeaderFrame: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const { contentComponentName } = props
 
-  const { language } = useSelector((store: IRootStore) => store)
+  const { user, language } = useSelector((store: IRootStore) => store)
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
   const buttonAddCourseProps = {
@@ -28,22 +28,34 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
   }
 
-  const buttonAuthUser = {
-    icon: 'MdPerson',
-    classAdded: 'Button_personalCabinet',
-    tooltipText: DICTIONARY.PersonalСabinet[language],
-    tooltipPosition: 'bottom',
-    action: {
-      typeEvent: 'SET_MODAL_FRAMES',
-      data: [
-        {
-          childName: 'AuthUser',
-          isActive: true,
-          childProps: { scenario: { branch: 'signIn', step: '' } },
-        },
-      ],
-    },
-  }
+  const buttonAuthUser = (user => {
+    const { status, userName } = user
+
+    const classAdded =
+      status === 'success'
+        ? `Button_personalCabinet Button_personalCabinet_authorized`
+        : 'Button_personalCabinet'
+
+    let tooltipText = DICTIONARY.PersonalСabinet[language]
+    tooltipText = status === 'success' && userName
+
+    return {
+      icon: 'MdPerson',
+      classAdded,
+      tooltipText,
+      tooltipPosition: 'bottom',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'AuthUser',
+            isActive: true,
+            childProps: { scenario: { branch: 'signIn', step: '' } },
+          },
+        ],
+      },
+    }
+  })(user)
 
   const classAddHeaderFrame =
     contentComponentName === 'ReaderIframe' ||

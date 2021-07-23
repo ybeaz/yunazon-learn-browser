@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { sendAuthSignInConnector } from '../../CommunicationLayer/sendAuthSignIn.connector'
 
@@ -22,7 +23,8 @@ function* sendAuthSignIn() {
       },
     } = yield axios[method](url, payload, options)
 
-    yield put(actionAsync.SEND_AUTH_SIGNIN.SUCCESS(authLoginPass))
+    yield put(actionSync.SET_USER(authLoginPass))
+    getSetObjToLocalStorage({ user: JSON.stringify(authLoginPass) })
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

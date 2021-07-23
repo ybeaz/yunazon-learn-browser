@@ -3,6 +3,7 @@ import { createAsyncAction, ICreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC = [
+  'SET_USER',
   'CLICK_SIGNUP',
   'ONCHANGE_EMAIL_AUTH',
   'ONCHANGE_PASSWORD_AUTH',

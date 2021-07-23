@@ -1,6 +1,6 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const SEND_AUTH_SIGNIN_SUCCESS: Function = (
+export const SET_USER: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {

@@ -16,6 +16,14 @@ function* getGlobalVars() {
       yield put(actionSync.SELECT_LANGUAGE(language))
     }
 
+    const userString = localStorage.getItem('user')
+    if (typeof userString === 'string') {
+      console.info('getGlobalVars.saga [20]', { userString })
+      const user = JSON.parse(userString)
+
+      yield put(actionSync.SET_USER(user))
+    }
+
     const { width } = getSizeWindow()
     if (width <= 480) {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))

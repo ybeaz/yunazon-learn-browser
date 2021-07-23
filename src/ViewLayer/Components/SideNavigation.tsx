@@ -11,6 +11,7 @@ import { Button } from './Button'
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
+    user: { status },
     language,
     componentsState: { isSideNavVisible },
   } = store
@@ -43,7 +44,10 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
     {
       icon: 'MdPerson',
       captureRight: DICTIONARY.PersonalСabinet[language],
-      classAdded: 'Button_sideMenuItems',
+      classAdded:
+        status === 'success'
+          ? 'Button_sideMenuItems Button_personalCabinet_authorized'
+          : 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
     {
