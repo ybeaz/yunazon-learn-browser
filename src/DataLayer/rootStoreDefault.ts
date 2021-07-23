@@ -32,6 +32,7 @@ export const rootStoreDefault = {
     numberQuestionsInSlide: 2,
   },
   forms: {
+    userNameAuth: '',
     emailAuth: '',
     passwordAuth: '',
     passwordAuth2: '',

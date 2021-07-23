@@ -2,6 +2,7 @@ import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
 import { SET_USER } from './reducers/SET_USER'
+import { ONCHANGE_USER_NAME_AUTH } from './reducers/ONCHANGE_USER_NAME_AUTH'
 import { ONCHANGE_PASSWORD_AUTH_2 } from './reducers/ONCHANGE_PASSWORD_AUTH_2'
 import { ONCHANGE_EMAIL_AUTH } from './reducers/ONCHANGE_EMAIL_AUTH'
 import { ONCHANGE_PASSWORD_AUTH } from './reducers/ONCHANGE_PASSWORD_AUTH'
@@ -41,6 +42,7 @@ export const rootReducer: Function = (
 
   const output = {
     SET_USER,
+    ONCHANGE_USER_NAME_AUTH,
     ONCHANGE_EMAIL_AUTH,
     ONCHANGE_PASSWORD_AUTH,
     ONCHANGE_PASSWORD_AUTH_2,

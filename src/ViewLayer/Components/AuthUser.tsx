@@ -75,6 +75,14 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
+  const inputUserNameAuthProps = {
+    classAdded: 'Input_usernameAuth',
+    type: 'text',
+    placeholder: DICTIONARY.Name[language],
+    typeEvent: 'ONCHANGE_USER_NAME_AUTH',
+    storeFormProp: 'userNameAuth',
+  }
+
   const inputEmailAuthProps = {
     classAdded: 'Input_usernameAuth',
     type: 'text',
@@ -168,6 +176,7 @@ export const AuthUser: React.FunctionComponent<any> = (
                 <p>{DICTIONARY.orSignInManually[language]}</p>
               </div>
 
+              {branch === 'signUp' && <Input {...inputUserNameAuthProps} />}
               {branch !== 'signOut' && <Input {...inputEmailAuthProps} />}
               {(branch === 'signIn' || branch === 'signUp') && (
                 <Input {...inputPasswordAuthProps} />

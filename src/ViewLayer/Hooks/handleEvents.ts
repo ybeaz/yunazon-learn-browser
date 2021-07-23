@@ -64,6 +64,11 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       }
     },
 
+    ONCHANGE_USER_NAME_AUTH: () => {
+      const { value } = event.target as HTMLInputElement
+      dispatch(actionSync.ONCHANGE_USER_NAME_AUTH(value))
+    },
+
     ONCHANGE_EMAIL_AUTH: () => {
       const { value } = event.target as HTMLInputElement
       dispatch(actionSync.ONCHANGE_EMAIL_AUTH(value))

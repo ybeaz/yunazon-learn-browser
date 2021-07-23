@@ -22,6 +22,7 @@ export interface IRootStore {
   documents: any[]
   globalVars: any
   forms: {
+    userNameAuth: string
     emailAuth: string
     passwordAuth: string
     passwordAuth2: string

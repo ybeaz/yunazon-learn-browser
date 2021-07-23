@@ -5,6 +5,7 @@ import { createAsyncAction, ICreateAsyncAction } from './createActionsAsync'
 const ACTIONS_SYNC = [
   'SET_USER',
   'CLICK_SIGNUP',
+  'ONCHANGE_USER_NAME_AUTH',
   'ONCHANGE_EMAIL_AUTH',
   'ONCHANGE_PASSWORD_AUTH',
   'ONCHANGE_PASSWORD_AUTH_2',
