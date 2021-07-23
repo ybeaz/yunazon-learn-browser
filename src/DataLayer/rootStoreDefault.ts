@@ -40,8 +40,11 @@ export const rootStoreDefault = {
   },
   language: 'ru',
   user: {
+    email: undefined,
     roles: undefined,
     uid: undefined,
+    status: undefined,
     userName: undefined,
+    webToken: undefined,
   },
 }

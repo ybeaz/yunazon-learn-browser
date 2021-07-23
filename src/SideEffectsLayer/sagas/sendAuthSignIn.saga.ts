@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { sendAuthSignInConnector } from '../../CommunicationLayer/sendAuthSignIn.connector'
@@ -22,8 +22,7 @@ function* sendAuthSignIn() {
       },
     } = yield axios[method](url, payload, options)
 
-    console.info('sendAuthSignIn.saga [31]', { authLoginPass })
-
+    yield put(actionAsync.SEND_AUTH_SIGNIN.SUCCESS(authLoginPass))
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

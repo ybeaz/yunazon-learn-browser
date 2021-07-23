@@ -30,8 +30,11 @@ export interface IRootStore {
   }
   language: string
   user: {
-    roles: undefined | string
+    email?: undefined | string
+    roles?: undefined | string
     uid: undefined | string
-    userName: undefined | string
+    status?: undefined | string
+    userName?: undefined | string
+    webToken?: undefined | string
   }
 }

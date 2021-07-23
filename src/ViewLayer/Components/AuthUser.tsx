@@ -21,6 +21,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   const {
     componentsState: { modalFrames },
     language,
+    user,
   } = useSelector((store: IRootStore) => store)
 
   const SCENARIO = {
@@ -132,6 +133,8 @@ export const AuthUser: React.FunctionComponent<any> = (
       data: {},
     },
   }
+
+  console.info('AuthUser [136]', { user })
 
   return (
     <div className='AuthUser'>

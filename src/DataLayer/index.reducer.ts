@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SEND_AUTH_SIGNIN_SUCCESS } from './reducers/SEND_AUTH_SIGNIN_SUCCESS'
 import { ONCHANGE_PASSWORD_AUTH_2 } from './reducers/ONCHANGE_PASSWORD_AUTH_2'
 import { ONCHANGE_EMAIL_AUTH } from './reducers/ONCHANGE_EMAIL_AUTH'
 import { ONCHANGE_PASSWORD_AUTH } from './reducers/ONCHANGE_PASSWORD_AUTH'
@@ -39,6 +40,7 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    SEND_AUTH_SIGNIN_SUCCESS,
     ONCHANGE_EMAIL_AUTH,
     ONCHANGE_PASSWORD_AUTH,
     ONCHANGE_PASSWORD_AUTH_2,
