@@ -1,3 +1,4 @@
+import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { isParsableInt } from '../../Shared/isParsableInt'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
@@ -88,6 +89,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     SEND_AUTH_FORGET_PASSWORD: () => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    },
+
+    AUTH_SIGNOUT: () => {
+      dispatch(actionSync.SET_USER(userStoreDefault))
+      getSetObjToLocalStorage({ user: null })
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     CLICK_SIGNUP: () => {

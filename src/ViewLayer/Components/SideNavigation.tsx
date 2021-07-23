@@ -11,10 +11,13 @@ import { Button } from './Button'
 export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
-    user: { status },
+    user,
     language,
     componentsState: { isSideNavVisible },
   } = store
+
+  const status = user?.status
+
   let history = useHistory()
 
   const buttonMdMenuProps = {

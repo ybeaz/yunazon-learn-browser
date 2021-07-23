@@ -25,6 +25,10 @@ export const AuthUser: React.FunctionComponent<any> = (
   } = useSelector((store: IRootStore) => store)
 
   const SCENARIO = {
+    signOut: {
+      title: DICTIONARY.SignOut[language],
+      scenarioTypeEvent: 'AUTH_SIGNOUT',
+    },
     signIn: {
       title: DICTIONARY.loginSocialMediaEmail[language],
       scenarioTypeEvent: 'SEND_AUTH_SIGNIN',
@@ -95,7 +99,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     storeFormProp: 'passwordAuth2',
   }
 
-  const buttonAuthSignInUp = {
+  const buttonAuthSignInUpOut = {
     icon: '',
     captureLeft: DICTIONARY.Next[language],
     classAdded: 'Button_AuthSignInUp',
@@ -134,7 +138,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
-  console.info('AuthUser [136]', { user })
+  console.info('AuthUser [136]', { user, branch })
 
   return (
     <div className='AuthUser'>
@@ -164,7 +168,7 @@ export const AuthUser: React.FunctionComponent<any> = (
                 <p>{DICTIONARY.orSignInManually[language]}</p>
               </div>
 
-              <Input {...inputEmailAuthProps} />
+              {branch !== 'signOut' && <Input {...inputEmailAuthProps} />}
               {(branch === 'signIn' || branch === 'signUp') && (
                 <Input {...inputPasswordAuthProps} />
               )}
@@ -174,7 +178,7 @@ export const AuthUser: React.FunctionComponent<any> = (
                 {(branch === 'signUp' || branch === 'forgetPassword') && (
                   <Button {...buttonAuthBack} />
                 )}
-                <Button {...buttonAuthSignInUp} />
+                <Button {...buttonAuthSignInUpOut} />
               </div>
             </div>
           </div>
@@ -198,26 +202,3 @@ export const AuthUser: React.FunctionComponent<any> = (
     </div>
   )
 }
-
-// For future authorization
-
-/* <div classNameName='ModalFrame__content_inner_form_group'>
-                  <label classNameName='ModalFrame__content_inner_form_group_label'>
-                    Email
-                  </label>
-                  <Input {...inputEmailProps} value={emailModal} />
-                </div> */
-
-/* <label>
-              <b>Password</b>
-            </label>
-            <input
-              type='password'
-              placeholder='Enter Password'
-              name='psw'
-              required
-            />
-            <p>
-              By creating an account you agree to our{' '}
-              <a href='#'>Terms Privacy</a>.
-            </p> */

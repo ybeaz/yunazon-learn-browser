@@ -1,3 +1,12 @@
+export const userStoreDefault = {
+  email: undefined,
+  roles: undefined,
+  uid: undefined,
+  status: undefined,
+  userName: undefined,
+  webToken: undefined,
+}
+
 export const rootStoreDefault = {
   analyticsID: null,
   componentsState: {
@@ -39,12 +48,5 @@ export const rootStoreDefault = {
     mediaLoading: {},
   },
   language: 'ru',
-  user: {
-    email: undefined,
-    roles: undefined,
-    uid: undefined,
-    status: undefined,
-    userName: undefined,
-    webToken: undefined,
-  },
+  user: userStoreDefault,
 }

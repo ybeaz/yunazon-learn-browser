@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  SignOut: {
+    en: 'Sign out',
+    ru: 'Выйти',
+  },
   Back: {
     en: 'Back',
     ru: 'Назад',

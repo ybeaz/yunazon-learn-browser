@@ -1,3 +1,12 @@
+export interface IUser {
+  email: undefined | string
+  roles: undefined | string
+  uid: undefined | string
+  status: undefined | string
+  userName: undefined | string
+  webToken: undefined | string
+}
+
 export interface IRootStore {
   analyticsID: string
   componentsState: {
@@ -29,12 +38,5 @@ export interface IRootStore {
     mediaLoading: any
   }
   language: string
-  user: {
-    email?: undefined | string
-    roles?: undefined | string
-    uid: undefined | string
-    status?: undefined | string
-    userName?: undefined | string
-    webToken?: undefined | string
-  }
+  user: IUser
 }
