@@ -2,7 +2,6 @@ import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {

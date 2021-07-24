@@ -5,6 +5,7 @@ export const userStoreDefault = {
   status: undefined,
   userName: undefined,
   webToken: undefined,
+  phone: undefined,
 }
 
 export const rootStoreDefault = {

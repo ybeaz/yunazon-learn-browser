@@ -5,6 +5,7 @@ export interface IUser {
   status: undefined | string
   userName: undefined | string
   webToken: undefined | string
+  phone?: undefined | number
 }
 
 export interface IRootStore {
