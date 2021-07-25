@@ -33,7 +33,7 @@ export const HeaderFrame: React.FunctionComponent<any> = (
     const childProps =
       status === 'success'
         ? { scenario: { branch: 'signOut', step: '' } }
-        : { scenario: { branch: 'signIn', step: '' } }
+        : { scenario: { branch: 'signInManually', step: '' } }
 
     return {
       icon: 'MdPerson',

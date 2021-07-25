@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev:start": "open-cli http://127.0.0.1:3440 & concurrently --kill-others --raw --success=first 'webpack-dev-server --config webpack/webpack.dev.ts --color'",
-    "dev": "concurrently --kill-others --raw --success=first 'webpack-dev-server --config webpack/webpack.dev.ts --color'",
+    "dev": "HTTPS=true concurrently --kill-others --raw --success=first 'webpack-dev-server --config webpack/webpack.dev.ts --color'",
     "build": "concurrently --kill-others --raw --success=first 'webpack -p --config webpack/webpack.prod.ts'",
     "ba": "webpack-bundle-analyzer --port 4200 dist/stats.json",
     "test": "jest",

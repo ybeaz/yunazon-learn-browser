@@ -12,7 +12,7 @@
       display: flex;
       flex-direction: column;
       background: @colorSecondLighter4;
-      padding: 0 0 1.9rem 0;
+      padding: 2rem 0;
 
       .row {
         display: flex;
@@ -22,7 +22,7 @@
         .header2 {
           text-align: center;
           color: @colorFirstDarker;
-          padding: 1.5rem 0 1.5rem 0;
+          padding: 1rem 0 1.5rem 0;
         }
 
         .vl {
@@ -54,6 +54,11 @@
             color: white;
           }
 
+          .vkontakte {
+            background-color: #45668e;
+            color: white;
+          }
+
           .twitter {
             background-color: #55acee;
             color: white;
@@ -72,6 +77,29 @@
             display: flex;
             flex-direction: row;
             padding: 0.2rem 0 0 0;
+
+            ._signInWithFacebook {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding: 0 0 0 2px;
+            }
+
+            ._wrapperSignInWith {
+              display: flex;
+              flex-direction: column;
+              flex: 1;
+
+              ._signInWith {
+                display: flex;
+                flex: 1;
+              }
+            }
+
+            ._hidden {
+              display: none;
+              visibility: hidden;
+            }
           }
         }
       }

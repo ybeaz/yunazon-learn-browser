@@ -37,31 +37,60 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
-    CLICK_AUTH_FACEBOOK: () => {
-      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+    AUTH_FACEBOOK: () => {
+      console.info('handleEvents [41]', { data })
     },
 
-    CLICK_AUTH_TWITTER: () => {
+    AUTH_GOOGLE: () => {
+      // TODO: implement actionAsync to send auth JWT to server and retun user data
+      console.info('handleEvents [45]', { data })
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+    },
+
+    CLICK_AUTH_FACEBOOK: () => {
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signInWithFacebook', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+    },
+
+    CLICK_AUTH_VKONTAKTE: () => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
     },
 
     CLICK_AUTH_GOOGLE: () => {
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signInWithGoogle', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+
       const handleCredentialResponse = async (...args) => {
-        // TODO: implement actionAsync to send auth JWT to server and retun user data
-        console.info('testGAuth [38]', { args })
-        dispatch(actionSync.SET_MODAL_FRAMES([]))
+        handleEvents({}, { typeEvent: 'AUTH_GOOGLE', data: args })
       }
 
-      try {
-        window.google.accounts.id.initialize({
-          client_id:
-            '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
-          callback: handleCredentialResponse,
-        })
-        window.google.accounts.id.prompt()
-      } catch (error) {
-        console.error('handleEvents [62]', { message: error.message })
-      }
+      setTimeout(() => {
+        try {
+          const initializeLog = window.google.accounts.id.initialize({
+            client_id:
+              '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
+            prompt_parent_id: 'g_id_onload',
+            callback: handleCredentialResponse,
+          })
+          window.google.accounts.id.prompt()
+        } catch (error) {
+          console.error('handleEvents [71]', { message: error.message })
+        }
+      }, 100)
     },
 
     ONCHANGE_USER_NAME_AUTH: () => {
@@ -108,7 +137,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         {
           childName: 'AuthUser',
           isActive: true,
-          childProps: { scenario: { branch: 'signUp', step: '' } },
+          childProps: { scenario: { branch: 'signUpManually', step: '' } },
         },
       ]
       dispatch(actionSync.SET_MODAL_FRAMES(data))
@@ -132,7 +161,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         {
           childName: 'AuthUser',
           isActive: true,
-          childProps: { scenario: { branch: 'signIn', step: '' } },
+          childProps: { scenario: { branch: 'signInManually', step: '' } },
         },
       ]
       dispatch(actionSync.SET_MODAL_FRAMES(data))

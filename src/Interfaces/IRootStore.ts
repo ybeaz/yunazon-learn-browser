@@ -1,4 +1,5 @@
 export interface IUser {
+  loginSource: undefined | string
   email: undefined | string
   roles: undefined | string
   uid: undefined | string

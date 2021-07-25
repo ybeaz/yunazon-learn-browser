@@ -49,6 +49,10 @@ export const DICTIONARY = {
     en: 'Login with Facebook',
     ru: 'Логин с Facebook',
   },
+  loginWithVkontakte: {
+    en: 'Login with Vkontakte',
+    ru: 'Логин с ВКонтакте',
+  },
   loginWithTwitter: {
     en: 'Login with Twitter',
     ru: 'Логин с Twitter',

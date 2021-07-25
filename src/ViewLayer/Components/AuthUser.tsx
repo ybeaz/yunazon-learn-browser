@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getInitializedFacebookOAuth } from '../Hooks/getInitializedFacebookOAuth'
 import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -17,6 +18,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   } = props
 
   getInitializedGoogleOAuth()
+  getInitializedFacebookOAuth()
 
   const {
     componentsState: { modalFrames },
@@ -29,11 +31,11 @@ export const AuthUser: React.FunctionComponent<any> = (
       title: DICTIONARY.SignOut[language],
       scenarioTypeEvent: 'AUTH_SIGNOUT',
     },
-    signIn: {
+    signInManually: {
       title: DICTIONARY.loginSocialMediaEmail[language],
       scenarioTypeEvent: 'SEND_AUTH_SIGNIN',
     },
-    signUp: {
+    signUpManually: {
       title: DICTIONARY.SignUp[language],
       scenarioTypeEvent: 'SEND_AUTH_SIGNUP',
     },
@@ -41,12 +43,20 @@ export const AuthUser: React.FunctionComponent<any> = (
       title: DICTIONARY.InputYourEmailToResetPassword[language],
       scenarioTypeEvent: 'SEND_AUTH_FORGET_PASSWORD',
     },
+    signInWithGoogle: {
+      title: '',
+      scenarioTypeEvent: '',
+    },
+    signInWithFacebook: {
+      title: '',
+      scenarioTypeEvent: '',
+    },
   }
 
   const { title, scenarioTypeEvent } = SCENARIO[branch]
 
   const buttonAuthFacebook = {
-    icon: 'FaFacebookF',
+    icon: 'FaFacebook',
     captureRight: DICTIONARY.loginWithFacebook[language],
     classAdded: 'Button_AuthFacebook',
     action: {
@@ -55,12 +65,12 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
-  const buttonAuthTwitter = {
-    icon: 'FaTwitter',
-    captureRight: DICTIONARY.loginWithTwitter[language],
-    classAdded: 'Button_AuthTwitter',
+  const buttonAuthVkontakte = {
+    icon: 'FaVk',
+    captureRight: DICTIONARY.loginWithVkontakte[language],
+    classAdded: 'Button_AuthVkontakte',
     action: {
-      typeEvent: 'CLICK_AUTH_TWITTER',
+      typeEvent: 'CLICK_AUTH_VKONTAKTE',
       data: {},
     },
   }
@@ -146,21 +156,29 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
   }
 
-  console.info('AuthUser [136]', { user, branch })
+  const facebookButtonShowUp = branch === 'signInWithFacebook' ? '' : '_hidden'
+  const googleButtonShowUp = branch === 'signInWithGoogle' ? '' : '_hidden'
+
+  // console.info('AuthUser [155]', { facebookButtonShowUp, branch })
 
   return (
     <div className='AuthUser'>
       <div className='container'>
         <form className='form'>
+          {(branch === 'signInManually' ||
+            branch === 'signUpManually' ||
+            branch === 'forgetPassword' ||
+            branch === 'signOut') && (
+            <div className='row'>
+              <h2 className='header2'>{title}</h2>
+            </div>
+          )}
           <div className='row'>
-            <h2 className='header2'>{title}</h2>
-          </div>
-          <div className='row'>
-            {branch === 'signIn' && (
+            {branch === 'signInManually' && (
               <>
                 <div className='col'>
                   <Button {...buttonAuthFacebook} />
-                  <Button {...buttonAuthTwitter} />
+                  <Button {...buttonAuthVkontakte} />
                   <Button {...buttonAuthGoogle} />
                 </div>
 
@@ -176,37 +194,71 @@ export const AuthUser: React.FunctionComponent<any> = (
                 <p>{DICTIONARY.orSignInManually[language]}</p>
               </div>
 
-              {branch === 'signUp' && <Input {...inputUserNameAuthProps} />}
-              {branch !== 'signOut' && <Input {...inputEmailAuthProps} />}
-              {(branch === 'signIn' || branch === 'signUp') && (
+              {branch === 'signUpManually' && (
+                <Input {...inputUserNameAuthProps} />
+              )}
+              {(branch == 'signInManually' ||
+                branch === 'signUpManually' ||
+                branch === 'forgetPassword') && (
+                <Input {...inputEmailAuthProps} />
+              )}
+              {(branch === 'signInManually' || branch === 'signUpManually') && (
                 <Input {...inputPasswordAuthProps} />
               )}
-              {branch === 'signUp' && <Input {...inputPasswordAuth2Props} />}
+              {branch === 'signUpManually' && (
+                <Input {...inputPasswordAuth2Props} />
+              )}
 
               <div className='_signInUpWrapper'>
-                {(branch === 'signUp' || branch === 'forgetPassword') && (
-                  <Button {...buttonAuthBack} />
+                {(branch === 'signUpManually' ||
+                  branch === 'forgetPassword' ||
+                  branch === 'signOut') && <Button {...buttonAuthBack} />}
+
+                {(branch === 'signInManually' ||
+                  branch === 'signUpManually' ||
+                  branch === 'forgetPassword' ||
+                  branch === 'signOut') && (
+                  <Button {...buttonAuthSignInUpOut} />
                 )}
-                <Button {...buttonAuthSignInUpOut} />
+
+                {/* {branch === 'signInWithGoogle' && ( */}
+                <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
+                  <div id='g_id_onload' className='_signInWith'></div>
+                  <Button {...buttonAuthBack} />
+                </div>
+                {/* )} */}
+
+                {/* {branch === 'signInWithFacebook' && ( */}
+                <div className={`_wrapperSignInWith ${facebookButtonShowUp}`}>
+                  <div
+                    className='fb-login-button'
+                    data-width=''
+                    data-size='large'
+                    data-button-type='login_with'
+                    data-layout='default'
+                    data-auto-logout-link='false'
+                    data-use-continue-as='false'
+                  ></div>
+                  <Button {...buttonAuthBack} />
+                </div>
+                {/* )} */}
               </div>
             </div>
           </div>
         </form>
       </div>
 
-      {branch === 'signIn' && (
-        <>
-          <div className='bottomContainer'>
-            <div className='row'>
-              <div className='col'>
-                <Button {...buttonSignUp} />
-              </div>
-              <div className='col'>
-                <Button {...buttonForgetPassword} />
-              </div>
+      {branch === 'signInManually' && (
+        <div className='bottomContainer'>
+          <div className='row'>
+            <div className='col'>
+              <Button {...buttonSignUp} />
+            </div>
+            <div className='col'>
+              <Button {...buttonForgetPassword} />
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   )

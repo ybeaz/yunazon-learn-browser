@@ -23,8 +23,12 @@ function* sendAuthSignIn() {
       },
     } = yield axios[method](url, payload, options)
 
-    yield put(actionSync.SET_USER(authLoginPass))
-    getSetObjToLocalStorage({ user: JSON.stringify(authLoginPass) })
+    yield put(
+      actionSync.SET_USER({ ...authLoginPass, loginSource: 'un.userto.com' })
+    )
+    getSetObjToLocalStorage({
+      user: JSON.stringify({ ...authLoginPass, loginSource: 'un.userto.com' }),
+    })
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

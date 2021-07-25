@@ -1,4 +1,5 @@
 export const userStoreDefault = {
+  loginSource: undefined,
   email: undefined,
   roles: undefined,
   uid: undefined,
@@ -22,7 +23,7 @@ export const rootStoreDefault = {
         childName: 'AuthUser',
         isActive: true,
         childProps: {
-          scenario: { branch: 'signIn', step: '' },
+          scenario: { branch: 'signInManually', step: '' },
         },
       },
     ],
