@@ -27,6 +27,7 @@ export const getInitializedVKontakteOAuth: Function = (
         await window.VK.init({ apiId: 7910953 })
         // @ts-ignore
         await window.VK.Widgets.Auth('vk_auth', {
+          width: '300px',
           onAuth: function (data) {
             handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
           },
