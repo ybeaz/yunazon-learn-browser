@@ -1,6 +1,9 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_OAUTH_FB_SCRIPT_STATE } from './reducers/SET_OAUTH_FB_SCRIPT_STATE'
+import { SET_OAUTH_VK_SCRIPT_STATE } from './reducers/SET_OAUTH_VK_SCRIPT_STATE'
+import { SET_OAUTH_GOOGLE_SCRIPT_STATE } from './reducers/SET_OAUTH_GOOGLE_SCRIPT_STATE'
 import { SET_USER } from './reducers/SET_USER'
 import { ONCHANGE_USER_NAME_AUTH } from './reducers/ONCHANGE_USER_NAME_AUTH'
 import { ONCHANGE_PASSWORD_AUTH_2 } from './reducers/ONCHANGE_PASSWORD_AUTH_2'
@@ -41,6 +44,9 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    SET_OAUTH_FB_SCRIPT_STATE,
+    SET_OAUTH_VK_SCRIPT_STATE,
+    SET_OAUTH_GOOGLE_SCRIPT_STATE,
     SET_USER,
     ONCHANGE_USER_NAME_AUTH,
     ONCHANGE_EMAIL_AUTH,

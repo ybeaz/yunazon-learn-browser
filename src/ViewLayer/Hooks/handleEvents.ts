@@ -37,13 +37,33 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
+    SET_OAUTH_FB_SCRIPT_STATE: () => {
+      dispatch(actionSync.SET_OAUTH_FB_SCRIPT_STATE(data))
+    },
+
+    SET_OAUTH_VK_SCRIPT_STATE: () => {
+      dispatch(actionSync.SET_OAUTH_VK_SCRIPT_STATE(data))
+    },
+
+    SET_OAUTH_GOOGLE_SCRIPT_STATE: () => {
+      dispatch(actionSync.SET_OAUTH_GOOGLE_SCRIPT_STATE(data))
+    },
+
     AUTH_FACEBOOK: () => {
-      console.info('handleEvents [41]', { data })
+      // TODO: implement actionAsync to send auth JWT to server and retun user data
+      console.info('handleEvents OAuth Facebook [53]', { data })
+      if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
+    },
+
+    AUTH_VKONTAKTE: () => {
+      // TODO: implement actionAsync to send auth JWT to server and retun user data
+      console.info('handleEvents OAuth VKontakte [57]', { data })
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_GOOGLE: () => {
       // TODO: implement actionAsync to send auth JWT to server and retun user data
-      console.info('handleEvents [45]', { data })
+      console.info('handleEvents Google [64]', { data })
       dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
@@ -60,7 +80,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_VKONTAKTE: () => {
-      handleEvents({}, { typeEvent: 'DEV_STAGE' })
+      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: true,
+          childProps: { scenario: { branch: 'signInWithVkontakte', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
     },
 
     CLICK_AUTH_GOOGLE: () => {
@@ -74,18 +102,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       ]
       dispatch(actionSync.SET_MODAL_FRAMES(data))
 
-      const handleCredentialResponse = async (...args) => {
-        handleEvents({}, { typeEvent: 'AUTH_GOOGLE', data: args })
-      }
-
       setTimeout(() => {
         try {
-          const initializeLog = window.google.accounts.id.initialize({
-            client_id:
-              '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
-            prompt_parent_id: 'g_id_onload',
-            callback: handleCredentialResponse,
-          })
           window.google.accounts.id.prompt()
         } catch (error) {
           console.error('handleEvents [71]', { message: error.message })

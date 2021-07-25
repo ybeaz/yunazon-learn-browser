@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { getInitializedVKontakteOAuth } from '../Hooks/getInitializedVKontakteOAuth'
 import { getInitializedFacebookOAuth } from '../Hooks/getInitializedFacebookOAuth'
 import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -17,11 +18,12 @@ export const AuthUser: React.FunctionComponent<any> = (
     scenario: { branch, step },
   } = props
 
+  getInitializedFacebookOAuth(branch)
+  getInitializedVKontakteOAuth(branch)
   getInitializedGoogleOAuth()
-  getInitializedFacebookOAuth()
 
   const {
-    componentsState: { modalFrames },
+    componentsState: { isOAuthGoogleScriptLoaded },
     language,
     user,
   } = useSelector((store: IRootStore) => store)
@@ -43,11 +45,15 @@ export const AuthUser: React.FunctionComponent<any> = (
       title: DICTIONARY.InputYourEmailToResetPassword[language],
       scenarioTypeEvent: 'SEND_AUTH_FORGET_PASSWORD',
     },
-    signInWithGoogle: {
+    signInWithFacebook: {
       title: '',
       scenarioTypeEvent: '',
     },
-    signInWithFacebook: {
+    signInWithVkontakte: {
+      title: '',
+      scenarioTypeEvent: '',
+    },
+    signInWithGoogle: {
       title: '',
       scenarioTypeEvent: '',
     },
@@ -157,9 +163,13 @@ export const AuthUser: React.FunctionComponent<any> = (
   }
 
   const facebookButtonShowUp = branch === 'signInWithFacebook' ? '' : '_hidden'
+  const vkontakteButtonShowUp =
+    branch === 'signInWithVkontakte' ? '' : '_hidden'
   const googleButtonShowUp = branch === 'signInWithGoogle' ? '' : '_hidden'
 
-  // console.info('AuthUser [155]', { facebookButtonShowUp, branch })
+  // console.info('AuthUser [155]', {
+  //   branch,
+  // })
 
   return (
     <div className='AuthUser'>
@@ -221,14 +231,6 @@ export const AuthUser: React.FunctionComponent<any> = (
                   <Button {...buttonAuthSignInUpOut} />
                 )}
 
-                {/* {branch === 'signInWithGoogle' && ( */}
-                <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
-                  <div id='g_id_onload' className='_signInWith'></div>
-                  <Button {...buttonAuthBack} />
-                </div>
-                {/* )} */}
-
-                {/* {branch === 'signInWithFacebook' && ( */}
                 <div className={`_wrapperSignInWith ${facebookButtonShowUp}`}>
                   <div
                     className='fb-login-button'
@@ -239,9 +241,21 @@ export const AuthUser: React.FunctionComponent<any> = (
                     data-auto-logout-link='false'
                     data-use-continue-as='false'
                   ></div>
+
                   <Button {...buttonAuthBack} />
                 </div>
-                {/* )} */}
+
+                <div className={`_wrapperSignInWith ${vkontakteButtonShowUp}`}>
+                  <div id='vk_auth'></div>
+                  <Button {...buttonAuthBack} />
+                </div>
+
+                <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
+                  {isOAuthGoogleScriptLoaded && (
+                    <div id='g_id_onload' className='_signInWith'></div>
+                  )}
+                  <Button {...buttonAuthBack} />
+                </div>
               </div>
             </div>
           </div>

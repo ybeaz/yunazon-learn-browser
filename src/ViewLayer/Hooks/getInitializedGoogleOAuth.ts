@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import { timeout } from '../../Shared/timeout'
+import { handleEvents } from './handleEvents'
 import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
 
 declare global {
@@ -21,8 +23,29 @@ export const getInitializedGoogleOAuth: Function = (): void => {
       defer: true,
     }
 
+    const handleCredentialResponse = async (...args) => {
+      handleEvents({}, { typeEvent: 'AUTH_GOOGLE', data: args })
+    }
+
     const makeDispatchAsyncWrappered = async () => {
-      await getPrependedExternalScript(scriptProps)
+      try {
+        await getPrependedExternalScript(scriptProps)
+        await timeout(1000)
+        await window.google.accounts.id.initialize({
+          client_id:
+            '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
+          prompt_parent_id: 'g_id_onload',
+          callback: handleCredentialResponse,
+        })
+        handleEvents(
+          {},
+          { typeEvent: 'SET_OAUTH_GOOGLE_SCRIPT_STATE', data: true }
+        )
+      } catch (error) {
+        console.info('getInitializedGoogleOAuth [34]', {
+          message: error.message,
+        })
+      }
     }
 
     if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()

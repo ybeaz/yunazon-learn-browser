@@ -18,6 +18,9 @@ export interface IRootStore {
     isLoaderOverlayVisible: boolean
     isDocumentAdded: boolean
     isCourseStarted: boolean
+    isOAuthFacebookScriptLoaded: boolean
+    isOAuthVKontakteScriptLoaded: boolean
+    isOAuthGoogleScriptLoaded: boolean
     modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
   courses: any[]

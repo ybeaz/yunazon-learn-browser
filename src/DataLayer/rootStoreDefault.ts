@@ -18,6 +18,9 @@ export const rootStoreDefault = {
     isLoaderOverlayVisible: false,
     isDocumentAdded: false,
     isCourseStarted: false,
+    isOAuthFacebookScriptLoaded: false,
+    isOAuthVKontakteScriptLoaded: false,
+    isOAuthGoogleScriptLoaded: false,
     modalFrames: [
       {
         childName: 'AuthUser',
