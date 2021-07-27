@@ -18,8 +18,8 @@ export const sendAuthSignUpConnector: Function = (
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
-    query Register($authInput: AuthInput) {
-      register(authInput: $authInput) {
+    query GetRegistered($authInput: AuthInput) {
+      getRegistered(authInput: $authInput) {
         status
         uid
         userName
@@ -35,7 +35,7 @@ export const sendAuthSignUpConnector: Function = (
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'Register',
+      operationName: 'GetRegistered',
       variables: {
         authInput: {
           userName: userNameAuth,

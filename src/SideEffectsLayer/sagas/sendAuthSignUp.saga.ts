@@ -20,15 +20,15 @@ function* sendAuthSignUp() {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { register },
+        data: { getRegistered },
       },
     } = yield axios[method](url, payload, options)
 
     yield put(
-      actionSync.SET_USER({ ...register, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...getRegistered, loginSource: 'un.userto.com' })
     )
     getSetObjToLocalStorage({
-      user: JSON.stringify({ ...register, loginSource: 'un.userto.com' }),
+      user: JSON.stringify({ ...getRegistered, loginSource: 'un.userto.com' }),
     })
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

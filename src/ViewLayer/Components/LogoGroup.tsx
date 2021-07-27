@@ -15,6 +15,10 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
       <div className='__div'>
         <img
           className='_img'
+          src='https://yourails.com/images/logoYouRails.png'
+        />
+        <img
+          className='_img'
           src='https://yourails.com/images/logoYouRailsV13.png'
         />
       </div>

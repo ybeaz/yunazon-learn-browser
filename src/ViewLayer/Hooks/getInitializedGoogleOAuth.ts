@@ -14,6 +14,7 @@ declare global {
  * @description Make initial call for data and pupulate it to the store
  * @link https://console.cloud.google.com/apis/credentials?project=yourails-210718
  * @link https://developers.google.com/identity/gsi/web/guides/use-one-tap-js-api
+ * @link https://developers.google.com/identity/sign-in/web/backend-auth#verify-the-integrity-of-the-id-token
  */
 export const getInitializedGoogleOAuth: Function = (): void => {
   useEffect(() => {
