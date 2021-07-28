@@ -10,22 +10,20 @@ const headers = {
   timestamp: +new Date(),
 }
 
-export const sendAuthSignUpConnector: Function = (
-  userNameAuth: string,
-  emailAuth: string,
-  passwordAuth: string
-): any => {
+export const getAuthWebTokenConnector: Function = (webToken: string): any => {
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
-    query GetRegistered($authInput: AuthInput) {
-      getRegistered(authInput: $authInput) {
+    query GetAuthWebToken($webToken: String) {
+      getAuthWebToken(webToken: $webToken) {
+        path
         status
+        email
         uid
         userName
-        email
-        phone
         webToken
+        roles
+        picture
       }
     }
   `
@@ -35,14 +33,9 @@ export const sendAuthSignUpConnector: Function = (
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'GetRegistered',
+      operationName: 'GetAuthWebToken',
       variables: {
-        authInput: {
-          userName: userNameAuth,
-          email: emailAuth,
-          password: passwordAuth,
-          phone: 0,
-        },
+        webToken,
       },
       query,
     },

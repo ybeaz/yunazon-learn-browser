@@ -3,14 +3,14 @@ import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { sendAuthSignUpConnector } from '../../CommunicationLayer/sendAuthSignUp.connector'
+import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegistered.connector'
 
-function* sendAuthSignUp() {
+function* getAuthRegistered() {
   const {
     forms: { userNameAuth, emailAuth, passwordAuth, passwordAuth2 },
   } = yield select(store => store)
 
-  const { method, url, payload, options } = sendAuthSignUpConnector(
+  const { method, url, payload, options } = getAuthRegisteredConnector(
     userNameAuth,
     emailAuth,
     passwordAuth
@@ -27,9 +27,10 @@ function* sendAuthSignUp() {
     yield put(
       actionSync.SET_USER({ ...getRegistered, loginSource: 'un.userto.com' })
     )
-    getSetObjToLocalStorage({
-      user: JSON.stringify({ ...getRegistered, loginSource: 'un.userto.com' }),
-    })
+
+    const { webToken } = getRegistered
+    getSetObjToLocalStorage({ authWebToken: webToken })
+
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
@@ -37,6 +38,9 @@ function* sendAuthSignUp() {
   }
 }
 
-export default function* sendAuthSignUpWatcher() {
-  yield takeEvery([actionAsync.SEND_AUTH_SIGNUP.REQUEST().type], sendAuthSignUp)
+export default function* getAuthRegisteredWatcher() {
+  yield takeEvery(
+    [actionAsync.GET_AUTH_SIGN_UP.REQUEST().type],
+    getAuthRegistered
+  )
 }

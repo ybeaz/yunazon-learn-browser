@@ -16,12 +16,12 @@ function* getGlobalVars() {
       yield put(actionSync.SELECT_LANGUAGE(language))
     }
 
-    const userString = localStorage.getItem('user')
-    if (typeof userString === 'string') {
-      console.info('getGlobalVars.saga [20]', { userString })
-      const user = JSON.parse(userString)
-
-      yield put(actionSync.SET_USER(user))
+    const authWebToken = localStorage.getItem('authWebToken')
+    if (typeof authWebToken === 'string') {
+      console.info('getGlobalVars.saga [20]', { authWebToken })
+      yield put(
+        actionAsync.GET_AUTH_WEB_TOKEN.REQUEST({ webToken: authWebToken })
+      )
     }
 
     const { width } = getSizeWindow()

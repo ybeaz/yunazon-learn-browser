@@ -131,12 +131,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(actionSync.ONCHANGE_PASSWORD_AUTH_2(value))
     },
 
-    SEND_AUTH_SIGNIN: () => {
-      dispatch(actionAsync.SEND_AUTH_SIGNIN.REQUEST())
+    GET_AUTH_SIGN_IN: () => {
+      dispatch(actionAsync.GET_AUTH_SIGN_IN.REQUEST())
     },
 
-    SEND_AUTH_SIGNUP: () => {
-      dispatch(actionAsync.SEND_AUTH_SIGNUP.REQUEST())
+    GET_AUTH_SIGN_UP: () => {
+      dispatch(actionAsync.GET_AUTH_SIGN_UP.REQUEST())
     },
 
     SEND_AUTH_FORGET_PASSWORD: () => {
@@ -145,7 +145,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     AUTH_SIGNOUT: () => {
       dispatch(actionSync.SET_USER(userStoreDefault))
-      getSetObjToLocalStorage({ user: null })
+      getSetObjToLocalStorage({ authWebToken: null })
       dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 

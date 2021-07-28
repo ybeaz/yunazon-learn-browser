@@ -35,11 +35,11 @@ export const AuthUser: React.FunctionComponent<any> = (
     },
     signInManually: {
       title: DICTIONARY.loginSocialMediaEmail[language],
-      scenarioTypeEvent: 'SEND_AUTH_SIGNIN',
+      scenarioTypeEvent: 'GET_AUTH_SIGN_IN',
     },
     signUpManually: {
       title: DICTIONARY.SignUp[language],
-      scenarioTypeEvent: 'SEND_AUTH_SIGNUP',
+      scenarioTypeEvent: 'GET_AUTH_SIGN_UP',
     },
     forgetPassword: {
       title: DICTIONARY.InputYourEmailToResetPassword[language],
