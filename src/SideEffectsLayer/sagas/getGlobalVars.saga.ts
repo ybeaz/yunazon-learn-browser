@@ -18,7 +18,6 @@ function* getGlobalVars() {
 
     const authWebToken = localStorage.getItem('authWebToken')
     if (typeof authWebToken === 'string') {
-      console.info('getGlobalVars.saga [20]', { authWebToken })
       yield put(
         actionAsync.GET_AUTH_WEB_TOKEN.REQUEST({ webToken: authWebToken })
       )

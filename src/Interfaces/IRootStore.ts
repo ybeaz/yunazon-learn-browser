@@ -5,7 +5,7 @@ export interface IUser {
   uid: undefined | string
   status: undefined | string
   userName: undefined | string
-  webToken: undefined | string
+  webToken: null | string
   phone?: undefined | number
 }
 

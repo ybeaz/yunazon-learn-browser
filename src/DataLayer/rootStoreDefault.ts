@@ -5,7 +5,7 @@ export const userStoreDefault = {
   uid: undefined,
   status: undefined,
   userName: undefined,
-  webToken: undefined,
+  webToken: null,
   phone: undefined,
 }
 

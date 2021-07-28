@@ -38,6 +38,7 @@ const ACTIONS_SYNC = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC = [
+  'GET_OAUTH_GOOGLE',
   'GET_AUTH_WEB_TOKEN',
   'GET_AUTH_SIGN_IN',
   'GET_AUTH_SIGN_UP',

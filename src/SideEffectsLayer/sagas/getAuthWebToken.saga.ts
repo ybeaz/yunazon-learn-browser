@@ -4,10 +4,11 @@ import { takeEvery, put } from 'redux-saga/effects'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthWebTokenConnector } from '../../CommunicationLayer/getAuthWebToken.connector'
 
-function* getAuthWebToken(args) {
+function* getAuthWebToken(args: any) {
   const {
     data: { webToken },
   } = args
+
   const { method, url, payload, options } = getAuthWebTokenConnector(webToken)
 
   try {

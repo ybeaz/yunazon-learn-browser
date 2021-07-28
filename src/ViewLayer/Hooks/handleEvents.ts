@@ -62,9 +62,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_GOOGLE: () => {
-      // TODO: implement actionAsync to send auth JWT to server and retun user data
-      console.info('handleEvents Google [64]', { data })
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      const [{ clientId, credential, select_by }] = data
+      dispatch(
+        actionAsync.GET_OAUTH_GOOGLE.REQUEST({
+          clientId,
+          credential,
+          select_by,
+        })
+      )
     },
 
     CLICK_AUTH_FACEBOOK: () => {
@@ -145,7 +150,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     AUTH_SIGN_OUT: () => {
       dispatch(actionSync.SET_USER(userStoreDefault))
-      getSetObjToLocalStorage({ authWebToken: null })
       dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 

@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegistered.connector'
 
@@ -27,9 +26,6 @@ function* getAuthRegistered() {
     yield put(
       actionSync.SET_USER({ ...getRegistered, loginSource: 'un.userto.com' })
     )
-
-    const { webToken } = getRegistered
-    getSetObjToLocalStorage({ authWebToken: webToken })
 
     yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

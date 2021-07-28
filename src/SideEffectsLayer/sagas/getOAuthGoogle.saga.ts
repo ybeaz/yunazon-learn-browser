@@ -2,28 +2,29 @@ import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.connector'
+import { getOAuthGoogleConnector } from '../../CommunicationLayer/getOAuthGoogle.connector'
 
-function* getAuthSignIn() {
+function* getOAuthGoogle(args: any) {
   const {
-    forms: { emailAuth, passwordAuth },
-  } = yield select(store => store)
+    data: { clientId, credential, select_by },
+  } = args
 
-  const { method, url, payload, options } = getAuthSignInConnector(
-    emailAuth,
-    passwordAuth
+  const { method, url, payload, options } = getOAuthGoogleConnector(
+    clientId,
+    credential,
+    select_by
   )
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { getAuthLoginPass },
+        data: { getOAuthGoogle },
       },
     } = yield axios[method](url, payload, options)
 
     yield put(
-      actionSync.SET_USER({ ...getAuthLoginPass, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...getOAuthGoogle, loginSource: 'un.userto.com' })
     )
 
     yield put(actionSync.SET_MODAL_FRAMES([]))
@@ -33,6 +34,6 @@ function* getAuthSignIn() {
   }
 }
 
-export default function* getAuthSignInWatcher() {
-  yield takeEvery([actionAsync.GET_AUTH_SIGN_IN.REQUEST().type], getAuthSignIn)
+export default function* getOAuthGoogleWatcher() {
+  yield takeEvery([actionAsync.GET_OAUTH_GOOGLE.REQUEST().type], getOAuthGoogle)
 }
