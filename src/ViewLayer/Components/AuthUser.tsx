@@ -31,7 +31,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   const SCENARIO = {
     signOut: {
       title: DICTIONARY.SignOut[language],
-      scenarioTypeEvent: 'AUTH_SIGNOUT',
+      scenarioTypeEvent: 'AUTH_SIGN_OUT',
     },
     signInManually: {
       title: DICTIONARY.loginSocialMediaEmail[language],
@@ -138,7 +138,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     captureLeft: DICTIONARY.SignUp[language],
     classAdded: 'Button_SignUp',
     action: {
-      typeEvent: 'CLICK_SIGNUP',
+      typeEvent: 'CLICK_SIGN_UP',
     },
   }
 

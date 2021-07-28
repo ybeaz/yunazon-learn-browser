@@ -143,13 +143,13 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       handleEvents({}, { typeEvent: 'DEV_STAGE' })
     },
 
-    AUTH_SIGNOUT: () => {
+    AUTH_SIGN_OUT: () => {
       dispatch(actionSync.SET_USER(userStoreDefault))
       getSetObjToLocalStorage({ authWebToken: null })
       dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
-    CLICK_SIGNUP: () => {
+    CLICK_SIGN_UP: () => {
       dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
