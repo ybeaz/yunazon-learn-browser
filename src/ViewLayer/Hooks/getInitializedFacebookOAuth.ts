@@ -19,7 +19,7 @@ declare global {
 export const getInitializedFacebookOAuth: Function = (branch: string): void => {
   useEffect(() => {
     const scriptProps = {
-      src: 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v11.0&appId=1654554724606416&autoLogAppEvents=1',
+      src: 'https://connect.facebook.net/en_US/sdk.js#appId=4763706043658984&cookie=1&status=1&xfbml=1&version=v11.0&autoLogAppEvents=1',
       id: 'fb-root',
       defer: true,
       crossOrigin: 'anonymous',
@@ -35,9 +35,8 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
     const makeDispatchAsyncWrappered = async () => {
       try {
         await getPrependedExternalScript(scriptProps)
-        await getPrependedExternalScript(scriptProps2)
         await timeout(1000)
-        await window.FB.getLoginStatus(function (response) {
+        window.FB.getLoginStatus(function (response) {
           handleEvents({}, { typeEvent: 'AUTH_FACEBOOK', data: response })
         })
         handleEvents({}, { typeEvent: 'SET_OAUTH_FB_SCRIPT_STATE', data: true })
