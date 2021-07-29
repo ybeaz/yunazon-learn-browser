@@ -106,7 +106,7 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         uid: 36823445,
       }
 
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
+      // dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_GOOGLE: () => {
