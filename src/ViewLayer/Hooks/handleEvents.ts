@@ -50,36 +50,24 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_FACEBOOK: () => {
-      window.FB.api(
-        '/me',
-        'POST',
-        {
-          fields:
-            'id,first_name,last_name,middle_name,name,name_format,picture,short_name',
-        },
-        function (response) {
-          if (response && !response.error) {
-            console.info('handleEvents OAuth Facebook [76]', { response })
+      console.info('handleEvents OAuth Facebook [76]', { data })
 
-            const resExample = {
-              first_name: 'Roman',
-              id: '4517874708264717',
-              last_name: 'Ch',
-              name: 'Roman Ch',
-              name_format: '{first} {last}',
-              picture: {
-                data: {
-                  height: 50,
-                  is_silhouette: false,
-                  url: 'https://platform-lookaside.fbsbx.com/platform/prof…&width=50&ext=1630121681&hash=AeSSYfrS-fCfdwnHkuE',
-                  width: 50,
-                },
-              },
-              short_name: 'Roman',
-            }
-          }
-        }
-      )
+      const resExample = {
+        first_name: 'Roman',
+        id: '4517874708264717',
+        last_name: 'Ch',
+        name: 'Roman Ch',
+        name_format: '{first} {last}',
+        picture: {
+          data: {
+            height: 50,
+            is_silhouette: false,
+            url: 'https://platform-lookaside.fbsbx.com/platform/prof…&width=50&ext=1630121681&hash=AeSSYfrS-fCfdwnHkuE',
+            width: 50,
+          },
+        },
+        short_name: 'Roman',
+      }
 
       // if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
     },

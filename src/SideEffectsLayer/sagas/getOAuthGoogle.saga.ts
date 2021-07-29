@@ -19,12 +19,12 @@ function* getOAuthGoogle(args: any) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { getOAuthGoogle },
+        data: { oAuthGoogle },
       },
     } = yield axios[method](url, payload, options)
 
     yield put(
-      actionSync.SET_USER({ ...getOAuthGoogle, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...oAuthGoogle, loginSource: 'un.userto.com' })
     )
 
     yield put(actionSync.SET_MODAL_FRAMES([]))

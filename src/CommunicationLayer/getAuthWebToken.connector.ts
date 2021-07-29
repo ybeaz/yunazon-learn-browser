@@ -14,8 +14,8 @@ export const getAuthWebTokenConnector: Function = (webToken: string): any => {
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
-    query GetAuthWebToken($webToken: String) {
-      getAuthWebToken(webToken: $webToken) {
+    query AuthWebToken($webToken: String) {
+      authWebToken(webToken: $webToken) {
         path
         status
         email
@@ -33,7 +33,7 @@ export const getAuthWebTokenConnector: Function = (webToken: string): any => {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'GetAuthWebToken',
+      operationName: 'AuthWebToken',
       variables: {
         webToken,
       },

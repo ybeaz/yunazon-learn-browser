@@ -14,11 +14,11 @@ function* getAuthWebToken(args: any) {
   try {
     const {
       data: {
-        data: { getAuthWebToken },
+        data: { authWebToken },
       },
     } = yield axios[method](url, payload, options)
     yield put(
-      actionSync.SET_USER({ ...getAuthWebToken, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...authWebToken, loginSource: 'un.userto.com' })
     )
   } catch (error) {
     console.info('getAuthWebToken.saga [25]', { message: error.message })

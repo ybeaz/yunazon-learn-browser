@@ -18,8 +18,8 @@ export const getOAuthGoogleConnector: Function = (
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
-    query GetOAuthGoogle($oAuthGoogleInput: OAuthGoogleInput) {
-      getOAuthGoogle(oAuthGoogleInput: $oAuthGoogleInput) {
+    query OAuthGoogle($oAuthGoogleInput: OAuthGoogleInput) {
+      oAuthGoogle(oAuthGoogleInput: $oAuthGoogleInput) {
         status
         path
         uid
@@ -39,7 +39,7 @@ export const getOAuthGoogleConnector: Function = (
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'GetOAuthGoogle',
+      operationName: 'OAuthGoogle',
       variables: {
         oAuthGoogleInput: {
           clientId,

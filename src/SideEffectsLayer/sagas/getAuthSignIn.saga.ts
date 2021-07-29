@@ -18,12 +18,12 @@ function* getAuthSignIn() {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { getAuthLoginPass },
+        data: { authLoginPass },
       },
     } = yield axios[method](url, payload, options)
 
     yield put(
-      actionSync.SET_USER({ ...getAuthLoginPass, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...authLoginPass, loginSource: 'un.userto.com' })
     )
 
     yield put(actionSync.SET_MODAL_FRAMES([]))

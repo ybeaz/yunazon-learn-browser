@@ -19,12 +19,12 @@ function* getAuthRegistered() {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     const {
       data: {
-        data: { getRegistered },
+        data: { register },
       },
     } = yield axios[method](url, payload, options)
 
     yield put(
-      actionSync.SET_USER({ ...getRegistered, loginSource: 'un.userto.com' })
+      actionSync.SET_USER({ ...register, loginSource: 'un.userto.com' })
     )
 
     yield put(actionSync.SET_MODAL_FRAMES([]))

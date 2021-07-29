@@ -17,8 +17,8 @@ export const getAuthSignInConnector: Function = (
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
-    query GetAuthLoginPass($email: String, $password: String) {
-      getAuthLoginPass(email: $email, password: $password) {
+    query AuthLoginPass($email: String, $password: String) {
+      authLoginPass(email: $email, password: $password) {
         status
         email
         uid
@@ -34,7 +34,7 @@ export const getAuthSignInConnector: Function = (
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'GetAuthLoginPass',
+      operationName: 'AuthLoginPass',
       variables: {
         email: emailAuth,
         password: passwordAuth,
