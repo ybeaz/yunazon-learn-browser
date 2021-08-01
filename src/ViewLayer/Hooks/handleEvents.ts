@@ -1,17 +1,17 @@
-import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { isParsableInt } from '../../Shared/isParsableInt'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
 import { getAzProps } from '../../Analytics/getAzProps'
+import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
+import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 import { getResultDataFromStore } from './getResultDataFromStore'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
-import { getCopiedUrlToClipboard } from '../../Shared/getCopiedUrlToClipboard'
-import { store } from '../../DataLayer/store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
-import { getPrintedDocumentAs } from '../../Shared/getPrintedDocumentAs'
+import { getSavedAnanlyticsInitData } from '../../Analytics/getSavedAnanlyticsInitData'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
+import { isParsableInt } from '../../Shared/isParsableInt'
+import { store } from '../../DataLayer/store'
+import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
 declare global {
   interface Window {
@@ -51,6 +51,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     AUTH_FACEBOOK: () => {
       console.info('handleEvents OAuth Facebook [76]', { data })
+      const {
+        last_name: familyName,
+        first_name: givenName,
+        picture: {
+          data: { url: picture },
+        },
+        id: uidExternal,
+        name: userName,
+      } = data
 
       const resExample = {
         first_name: 'Roman',
@@ -69,12 +78,28 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         short_name: 'Roman',
       }
 
+      dispatch(
+        actionAsync.GET_OAUTH_UI_DATA.REQUEST({
+          familyName,
+          givenName,
+          picture,
+          uidExternal,
+          userName,
+        })
+      )
       // if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_VKONTAKTE: () => {
       // TODO: implement actionAsync to send auth JWT to server and retun user data
       console.info('handleEvents OAuth VKontakte [57]', { data })
+
+      const {
+        last_name: familyName,
+        first_name: givenName,
+        photo: picture,
+        uid: uidExternal,
+      } = data
 
       const dataExample = {
         first_name: 'Роман',
@@ -94,6 +119,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         uid: 36823445,
       }
 
+      dispatch(
+        actionAsync.GET_OAUTH_UI_DATA.REQUEST({
+          familyName,
+          givenName,
+          picture,
+          uidExternal: uidExternal.toString(),
+          userName: `${givenName} ${familyName}`,
+        })
+      )
       // dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 

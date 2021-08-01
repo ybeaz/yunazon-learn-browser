@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { ModalFrames } from '../Frames/ModalFrames'
-import { IUser, IRootStore } from '../../Interfaces/IRootStore'
-import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Button } from '../Components/Button'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
+import { ModalFrames } from '../Frames/ModalFrames'
 interface IHeaderFrameInput {
   contentComponentName: string
   children: React.ReactChildren

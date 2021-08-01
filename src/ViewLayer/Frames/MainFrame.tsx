@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 
 import { Button } from '../Components/Button'
-import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
+import { SideNavigation } from '../Components/SideNavigation'
 
 interface IMainFrameInput {
   contentComponentName: string

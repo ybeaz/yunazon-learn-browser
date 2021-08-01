@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { QuestionScores } from '../Components/QuestionScores'
-import { EmalInputs } from '../Components/EmalInputs'
 import { AuthUser } from '../Components/AuthUser'
+import { Button } from '../Components/Button'
+import { EmalInputs } from '../Components/EmalInputs'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button } from '../Components/Button'
+import { QuestionScores } from '../Components/QuestionScores'
 
 const CHILDREN = {
   AuthUser,

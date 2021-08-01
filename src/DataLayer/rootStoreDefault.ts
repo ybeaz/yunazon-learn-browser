@@ -1,12 +1,16 @@
 export const userStoreDefault = {
-  loginSource: undefined,
   email: undefined,
+  familyName: undefined,
+  givenName: undefined,
+  loginSource: undefined,
+  phone: undefined,
+  picture: undefined,
   roles: undefined,
-  uid: undefined,
   status: undefined,
+  uid: undefined,
+  uidExternal: undefined,
   userName: undefined,
   webToken: null,
-  phone: undefined,
 }
 
 export const rootStoreDefault = {

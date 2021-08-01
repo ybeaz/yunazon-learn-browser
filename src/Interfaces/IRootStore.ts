@@ -1,12 +1,16 @@
 export interface IUser {
-  loginSource: undefined | string
   email: undefined | string
+  familyName: undefined | string
+  givenName: undefined | string
+  loginSource: undefined | string
+  phone?: undefined | number
+  picture?: undefined | string
   roles: undefined | string
-  uid: undefined | string
   status: undefined | string
+  uid: undefined | string
+  uidExternal: undefined | string
   userName: undefined | string
   webToken: null | string
-  phone?: undefined | number
 }
 
 export interface IRootStore {
