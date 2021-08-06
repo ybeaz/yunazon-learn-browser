@@ -20,8 +20,9 @@ export const getOAuthGoogleConnector: Function = (
   const queryAst: DocumentNode = gql`
     query OAuthGoogle($oAuthGoogleInput: OAuthGoogleInput) {
       oAuthGoogle(oAuthGoogleInput: $oAuthGoogleInput) {
-        status
         path
+        status
+        message
         uid
         userName
         email

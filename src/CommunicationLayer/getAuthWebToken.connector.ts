@@ -18,6 +18,7 @@ export const getAuthWebTokenConnector: Function = (webToken: string): any => {
       authWebToken(webToken: $webToken) {
         path
         status
+        message
         email
         uid
         userName

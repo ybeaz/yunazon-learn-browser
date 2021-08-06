@@ -19,7 +19,9 @@ export const getAuthSignInConnector: Function = (
   const queryAst: DocumentNode = gql`
     query AuthLoginPass($email: String, $password: String) {
       authLoginPass(email: $email, password: $password) {
+        path
         status
+        message
         email
         uid
         userName

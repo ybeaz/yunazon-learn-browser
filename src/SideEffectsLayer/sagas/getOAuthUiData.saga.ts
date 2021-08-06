@@ -4,7 +4,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOAuthUiDataConnector } from '../../CommunicationLayer/getOAuthUiData.connector'
 
-function* getOAuthGoogle(args: any) {
+function* getOAuthUiData(args: any) {
   const {
     data: { familyName, givenName, picture, uidExternal, userName },
   } = args
@@ -49,6 +49,6 @@ function* getOAuthGoogle(args: any) {
 export default function* getOAuthUiDataWatcher() {
   yield takeEvery(
     [actionAsync.GET_OAUTH_UI_DATA.REQUEST().type],
-    getOAuthGoogle
+    getOAuthUiData
   )
 }

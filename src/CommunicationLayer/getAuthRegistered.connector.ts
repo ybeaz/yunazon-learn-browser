@@ -20,7 +20,9 @@ export const getAuthRegisteredConnector: Function = (
   const queryAst: DocumentNode = gql`
     query Register($authInput: AuthInput) {
       register(authInput: $authInput) {
+        path
         status
+        message
         uid
         userName
         email

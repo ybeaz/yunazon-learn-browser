@@ -22,17 +22,18 @@ export const getOAuthUiDataConnector: Function = ({
   const queryAst: DocumentNode = gql`
     query OAuthUiData($authInput: AuthInput) {
       oAuthUiData(authInput: $authInput) {
-        email
-        familyName
-        givenName
         path
-        phone
-        picture
         status
+        message
         uid
         uidExternal
         uidExternal
         userName
+        email
+        phone
+        picture
+        givenName
+        familyName
         webToken
       }
     }

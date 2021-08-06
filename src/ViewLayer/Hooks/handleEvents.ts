@@ -61,22 +61,22 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         name: userName,
       } = data
 
-      const resExample = {
-        first_name: 'Roman',
-        id: '4517874708264717',
-        last_name: 'Ch',
-        name: 'Roman Ch',
-        name_format: '{first} {last}',
-        picture: {
-          data: {
-            height: 50,
-            is_silhouette: false,
-            url: 'https://platform-lookaside.fbsbx.com/platform/prof…&width=50&ext=1630121681&hash=AeSSYfrS-fCfdwnHkuE',
-            width: 50,
-          },
-        },
-        short_name: 'Roman',
-      }
+      // const resExample = {
+      //   first_name: 'Roman',
+      //   id: '4517874708264717',
+      //   last_name: 'Ch',
+      //   name: 'Roman Ch',
+      //   name_format: '{first} {last}',
+      //   picture: {
+      //     data: {
+      //       height: 50,
+      //       is_silhouette: false,
+      //       url: 'https://platform-lookaside.fbsbx.com/platform/prof…&width=50&ext=1630121681&hash=AeSSYfrS-fCfdwnHkuE',
+      //       width: 50,
+      //     },
+      //   },
+      //   short_name: 'Roman',
+      // }
 
       dispatch(
         actionAsync.GET_OAUTH_UI_DATA.REQUEST({
@@ -87,11 +87,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           userName,
         })
       )
-      // if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
+      if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_VKONTAKTE: () => {
-      // TODO: implement actionAsync to send auth JWT to server and retun user data
       console.info('handleEvents OAuth VKontakte [57]', { data })
 
       const {
@@ -128,7 +127,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           userName: `${givenName} ${familyName}`,
         })
       )
-      // dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_GOOGLE: () => {
