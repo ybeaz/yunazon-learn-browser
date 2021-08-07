@@ -19,20 +19,33 @@ export const getInitializedVKontakteOAuth: Function = (
       defer: true,
     }
 
+    // <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+    // <script type="text/javascript">
+    //   VK.init({apiId: 7910949});
+    // </script>
+
+    // <!-- VK Widget -->
+    // <div id="vk_auth"></div>
+    // <script type="text/javascript">
+    //   VK.Widgets.Auth("vk_auth", {"onAuth":function(data) {alert('user '+data['uid']+' authorized');}});
+    // </script>
+
     const makeDispatchAsyncWrappered = async () => {
       try {
         await getPrependedExternalScript(scriptProps)
         await timeout(1000)
+        handleEvents({}, { typeEvent: 'SET_OAUTH_VK_SCRIPT_STATE', data: true })
+
         // @ts-ignore
-        await window.VK.init({ apiId: 7910953 })
+        window.VK.init({ apiId: 7910949 })
         // @ts-ignore
-        await window.VK.Widgets.Auth('vk_auth', {
+        window.VK.Widgets.Auth('vk_auth', {
           width: '300px',
           onAuth: function (data) {
-            handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
+            console.info('getInitializedVKontakteOAuth [32]', { data })
+            // handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
           },
         })
-        handleEvents({}, { typeEvent: 'SET_OAUTH_VK_SCRIPT_STATE', data: true })
       } catch (error) {
         console.info('getInitializedVKontakteOAuth [34]', {
           message: error.message,

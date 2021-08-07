@@ -49,8 +49,8 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
     const makeDispatchAsyncWrappered = async () => {
       try {
         await getPrependedExternalScript(scriptProps)
-
         await timeout(1000)
+        handleEvents({}, { typeEvent: 'SET_OAUTH_FB_SCRIPT_STATE', data: true })
 
         window.FB.getLoginStatus(function (response) {
           if (response.status === 'connected') {
@@ -72,10 +72,11 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
         }, true)
 
         window.FB.Event.subscribe('auth.login', function (response) {
-          // console.info('getInitializedFacebookOAuth [75]', {
-          //   case: 'auth.login',
-          //   response,
-          // })
+          console.info('getInitializedFacebookOAuth [75]', {
+            case: 'auth.login',
+            response,
+            'response.status': response.status,
+          })
           if (response.status === 'connected') getFbApiResponse()
         })
 
@@ -85,8 +86,6 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
           //   response,
           // })
         })
-
-        handleEvents({}, { typeEvent: 'SET_OAUTH_FB_SCRIPT_STATE', data: true })
       } catch (error) {
         console.info('getInitializedFacebookOAuth [34]', {
           message: error.message,
