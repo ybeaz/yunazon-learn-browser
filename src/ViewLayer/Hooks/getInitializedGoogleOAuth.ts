@@ -29,6 +29,7 @@ export const getInitializedGoogleOAuth: Function = (): void => {
     }
 
     const makeDispatchAsyncWrappered = async () => {
+      console.info('getInitializedGoogleOAuth [32]', {})
       try {
         await getPrependedExternalScript(scriptProps)
         await timeout(1000)
@@ -49,6 +50,7 @@ export const getInitializedGoogleOAuth: Function = (): void => {
       }
     }
 
-    if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()
+    // if (!document.getElementById(scriptProps.id))
+    makeDispatchAsyncWrappered()
   }, [])
 }

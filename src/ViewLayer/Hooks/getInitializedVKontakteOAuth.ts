@@ -21,6 +21,7 @@ export const getInitializedVKontakteOAuth: Function = (
 
     const makeDispatchAsyncWrappered = async () => {
       try {
+        console.info('getInitializedVKontakteOAuth [24]', {})
         await getPrependedExternalScript(scriptProps)
         await timeout(1000)
         handleEvents({}, { typeEvent: 'SET_OAUTH_VK_SCRIPT_STATE', data: true })

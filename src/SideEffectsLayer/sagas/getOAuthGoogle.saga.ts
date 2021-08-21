@@ -23,6 +23,7 @@ function* getOAuthGoogle(args: any) {
       },
     } = yield axios[method](url, payload, options)
 
+    console.info('getOAuthGoogle.saga [26]', { oAuthGoogle })
     yield put(
       actionSync.SET_USER({ ...oAuthGoogle, loginSource: 'un.userto.com' })
     )
