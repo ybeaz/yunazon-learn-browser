@@ -3,6 +3,7 @@ import { createAsyncAction, ICreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC = [
+  'SET_OAUTH_STATE',
   'SET_OAUTH_FB_SCRIPT_STATE',
   'SET_OAUTH_VK_SCRIPT_STATE',
   'SET_OAUTH_GOOGLE_SCRIPT_STATE',

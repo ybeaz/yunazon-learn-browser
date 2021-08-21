@@ -41,7 +41,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     language: languageStore,
     globalVars: { durationMultiplier },
     courses,
-    componentsState: { isLoaderOverlayVisible, isModalFrameVisible },
+    componentsState: { isLoaderOverlayVisible, oAuthStage, modalFrames },
     isLoaded: { mediaLoading },
   } = store
 
@@ -209,6 +209,8 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
   }
   const carouselQuestionsProps = { durationObj }
   const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
+
+  console.info('PresentAndSubscribe [213]', { modalFrames, oAuthStage })
 
   return (
     <div className='PresentAndSubscribe'>

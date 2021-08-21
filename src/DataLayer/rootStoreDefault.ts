@@ -25,6 +25,7 @@ export const rootStoreDefault = {
     isOAuthFacebookScriptLoaded: false,
     isOAuthVKontakteScriptLoaded: false,
     isOAuthGoogleScriptLoaded: false,
+    oAuthStage: null,
     modalFrames: [
       {
         childName: 'AuthUser',

@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_OAUTH_STATE } from './reducers/SET_OAUTH_STATE'
 import { SET_OAUTH_FB_SCRIPT_STATE } from './reducers/SET_OAUTH_FB_SCRIPT_STATE'
 import { SET_OAUTH_VK_SCRIPT_STATE } from './reducers/SET_OAUTH_VK_SCRIPT_STATE'
 import { SET_OAUTH_GOOGLE_SCRIPT_STATE } from './reducers/SET_OAUTH_GOOGLE_SCRIPT_STATE'
@@ -44,6 +45,7 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    SET_OAUTH_STATE,
     SET_OAUTH_FB_SCRIPT_STATE,
     SET_OAUTH_VK_SCRIPT_STATE,
     SET_OAUTH_GOOGLE_SCRIPT_STATE,

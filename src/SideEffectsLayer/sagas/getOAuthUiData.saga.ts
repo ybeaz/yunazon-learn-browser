@@ -9,14 +9,6 @@ function* getOAuthUiData(args: any) {
     data: { familyName, givenName, picture, uidExternal, userName },
   } = args
 
-  console.info('getOAuthUiData [12]', {
-    familyName,
-    givenName,
-    picture,
-    uidExternal,
-    userName,
-  })
-
   const { method, url, payload, options } = getOAuthUiDataConnector({
     familyName,
     givenName,
@@ -24,7 +16,6 @@ function* getOAuthUiData(args: any) {
     uidExternal,
     userName,
   })
-  console.info('getOAuthUiData [19]', { method, url, payload, options })
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
