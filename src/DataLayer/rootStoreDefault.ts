@@ -25,12 +25,13 @@ export const rootStoreDefault = {
     isOAuthFacebookScriptLoaded: false,
     isOAuthVKontakteScriptLoaded: false,
     isOAuthGoogleScriptLoaded: false,
+    oAuthStage: null,
     modalFrames: [
       {
         childName: 'AuthUser',
         isActive: true,
         childProps: {
-          scenario: { branch: 'signInManually', step: '' },
+          scenario: { branch: 'signInManually', step: '' }, // signInWithVkontakte signInWithFacebook signInWithGoogle signInManually
         },
       },
     ],
