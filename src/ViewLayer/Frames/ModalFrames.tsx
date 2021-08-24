@@ -22,7 +22,7 @@ export const ModalFrames: React.FunctionComponent<any> = (
 ): JSX.Element => {
   const store = useSelector((store: IRootStore) => store)
   const {
-    componentsState: { modalFrames: children },
+    componentsState: { modalFrames },
   } = store
 
   const getChildren: Function = (children: any[]): JSX.Element[] => {
@@ -41,6 +41,9 @@ export const ModalFrames: React.FunctionComponent<any> = (
       }
 
       const addClass = !isActive ? '' : 'ModalFrames_display'
+
+      console.info('ModalFrames [44]', { modalFrames })
+
       return (
         <div
           id='modalFrames'
@@ -65,5 +68,5 @@ export const ModalFrames: React.FunctionComponent<any> = (
     })
   }
 
-  return <>{getChildren(children)}</>
+  return <>{getChildren(modalFrames)}</>
 }

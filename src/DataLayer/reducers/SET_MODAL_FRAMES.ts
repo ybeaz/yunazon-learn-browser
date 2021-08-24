@@ -10,21 +10,25 @@ export const SET_MODAL_FRAMES: Function = (
   const { componentsState } = store
   const { modalFrames } = componentsState
 
-  // let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
-  // if (data.length > 0) {
-  //   // modaleFramesNext = [...modalFrames, ...data]
-  //   modaleFramesNext = getUniqArrDeep(modalFrames)
-  //   // modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
-  //   modaleFramesNext = getReducedArrByElem(modaleFramesNext, data[0])
-  //   modaleFramesNext = [...modaleFramesNext, ...data]
-  // }
-
   let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
   if (data.length > 0) {
-    modaleFramesNext = [...modalFrames, ...data]
-    modaleFramesNext = getUniqArrDeep(modaleFramesNext)
+    // modaleFramesNext = [...modalFrames, ...data]
+    modaleFramesNext = getUniqArrDeep(modalFrames)
     modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
+    // modaleFramesNext = getReducedArrByElem(modaleFramesNext, data[0])
+    // modaleFramesNext = [...modaleFramesNext, ...data]
   }
+
+  console.info('SET_MODAL_FRAMES [22]', { modaleFramesNext })
+
+  // I stopped here. The issue is when called the AuthUser container is not specified for OAuth services
+
+  // let modaleFramesNext = [] // modalFrames.map(item => ({ ...item, isActive: false }))
+  // if (data.length > 0) {
+  //   modaleFramesNext = [...modalFrames, ...data]
+  //   modaleFramesNext = getUniqArrDeep(modaleFramesNext)
+  //   modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
+  // }
 
   const componentsStateNext = {
     ...componentsState,

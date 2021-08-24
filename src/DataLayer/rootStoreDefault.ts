@@ -31,6 +31,20 @@ export const rootStoreDefault = {
         childName: 'AuthUser',
         isActive: true,
         childProps: {
+          scenario: { branch: 'signInWithVkontakte', step: '' },
+        },
+      },
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: {
+          scenario: { branch: 'signInWithFacebook', step: '' },
+        },
+      },
+      {
+        childName: 'AuthUser',
+        isActive: true,
+        childProps: {
           scenario: { branch: 'signInManually', step: '' }, // signInWithVkontakte signInWithFacebook signInWithGoogle signInManually
         },
       },
