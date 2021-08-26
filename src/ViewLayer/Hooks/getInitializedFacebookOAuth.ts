@@ -77,7 +77,14 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
             response,
             'response.status': response.status,
           })
-          if (response.status === 'connected') getFbApiResponse()
+          if (response.status === 'connected') {
+            console.info('getInitializedFacebookOAuth [91]', {
+              case: 'auth.login',
+              response,
+              'response.status': response.status,
+            })
+            getFbApiResponse()
+          }
         })
 
         window.FB.Event.subscribe('auth.logout', function (response) {

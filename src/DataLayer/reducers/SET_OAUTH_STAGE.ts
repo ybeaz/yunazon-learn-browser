@@ -9,5 +9,6 @@ export const SET_OAUTH_STAGE: Function = (
     ...componentsState,
     oAuthStage: data,
   }
+  console.info('SET_OAUTH_STAGE [12]', { data })
   return { ...store, componentsState: componentsStateNext }
 }
