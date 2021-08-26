@@ -171,10 +171,6 @@ export const AuthUser: React.FunctionComponent<any> = (
     branch === 'signInWithVkontakte' ? '' : '_hidden'
   const googleButtonShowUp = branch === 'signInWithGoogle' ? '' : '_hidden'
 
-  console.info('AuthUser [155]', {
-    branch,
-  })
-
   return (
     <div className='AuthUser'>
       <div className='container'>
@@ -236,7 +232,6 @@ export const AuthUser: React.FunctionComponent<any> = (
                 )}
 
                 <div className={`_wrapperSignInWith ${facebookButtonShowUp}`}>
-                  {/* {branch === 'signInWithFacebook' && ( */}
                   <div
                     className='fb-login-button'
                     data-width=''
@@ -246,13 +241,12 @@ export const AuthUser: React.FunctionComponent<any> = (
                     data-auto-logout-link='false'
                     data-use-continue-as='false'
                   ></div>
-                  {/* )} */}
 
                   <Button {...buttonAuthBack} />
                 </div>
 
                 <div className={`_wrapperSignInWith ${vkontakteButtonShowUp}`}>
-                  {branch === 'signInWithVkontakte' && <div id='vk_auth'></div>}
+                  {isOAuthVKontakteScriptLoaded && <div id='vk_auth'></div>}
                   <Button {...buttonAuthBack} />
                 </div>
 

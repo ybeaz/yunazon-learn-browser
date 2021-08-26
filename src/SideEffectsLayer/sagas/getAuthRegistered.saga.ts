@@ -27,7 +27,6 @@ function* getAuthRegistered() {
       actionSync.SET_USER({ ...register, loginSource: 'un.userto.com' })
     )
 
-    yield put(actionSync.SET_MODAL_FRAMES([]))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

@@ -1,7 +1,8 @@
 import { getUniqArrDeep } from '../../Shared/getUniqArrDeep'
-import { getFilteredArrByIsActive } from '../../Shared/getFilteredArrByIsActive'
-import { getReducedArrByElem } from '../../Shared/getReducedArrByElem'
+import { getUpdatedArrByArrInput } from '../../Shared/getUpdatedArrByArrInput'
 import { IRootStore } from '../../Interfaces/IRootStore'
+// import { getFilteredArrByIsActive } from '../../Shared/getFilteredArrByIsActive'
+// import { getReducedArrByElem } from '../../Shared/getReducedArrByElem'
 
 export const SET_MODAL_FRAMES: Function = (
   store: IRootStore,
@@ -12,23 +13,13 @@ export const SET_MODAL_FRAMES: Function = (
 
   let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
   if (data.length > 0) {
-    // modaleFramesNext = [...modalFrames, ...data]
     modaleFramesNext = getUniqArrDeep(modalFrames)
-    modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
-    // modaleFramesNext = getReducedArrByElem(modaleFramesNext, data[0])
-    // modaleFramesNext = [...modaleFramesNext, ...data]
+    modaleFramesNext = getUpdatedArrByArrInput(
+      modaleFramesNext,
+      data,
+      'childName'
+    )
   }
-
-  console.info('SET_MODAL_FRAMES [22]', { modaleFramesNext })
-
-  // I stopped here. The issue is when called the AuthUser container is not specified for OAuth services
-
-  // let modaleFramesNext = [] // modalFrames.map(item => ({ ...item, isActive: false }))
-  // if (data.length > 0) {
-  //   modaleFramesNext = [...modalFrames, ...data]
-  //   modaleFramesNext = getUniqArrDeep(modaleFramesNext)
-  //   modaleFramesNext = getFilteredArrByIsActive(modaleFramesNext, 'childName')
-  // }
 
   const componentsStateNext = {
     ...componentsState,
