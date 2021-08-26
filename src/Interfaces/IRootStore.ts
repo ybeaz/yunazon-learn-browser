@@ -25,6 +25,7 @@ export interface IRootStore {
     isOAuthFacebookScriptLoaded: boolean
     isOAuthVKontakteScriptLoaded: boolean
     isOAuthGoogleScriptLoaded: boolean
+    oAuthStage: string | null
     modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   }
   courses: any[]

@@ -93,8 +93,6 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
       }
     }
 
-    if (!document.getElementById(scriptProps.id)) {
-      makeDispatchAsyncWrappered()
-    }
+    if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()
   }, [branch])
 }

@@ -23,7 +23,11 @@ export const AuthUser: React.FunctionComponent<any> = (
   getInitializedGoogleOAuth()
 
   const {
-    componentsState: { isOAuthGoogleScriptLoaded },
+    componentsState: {
+      isOAuthGoogleScriptLoaded,
+      isOAuthFacebookScriptLoaded,
+      isOAuthVKontakteScriptLoaded,
+    },
     language,
     user,
   } = useSelector((store: IRootStore) => store)
@@ -167,10 +171,6 @@ export const AuthUser: React.FunctionComponent<any> = (
     branch === 'signInWithVkontakte' ? '' : '_hidden'
   const googleButtonShowUp = branch === 'signInWithGoogle' ? '' : '_hidden'
 
-  // console.info('AuthUser [155]', {
-  //   branch,
-  // })
-
   return (
     <div className='AuthUser'>
       <div className='container'>
@@ -246,14 +246,15 @@ export const AuthUser: React.FunctionComponent<any> = (
                 </div>
 
                 <div className={`_wrapperSignInWith ${vkontakteButtonShowUp}`}>
-                  <div id='vk_auth'></div>
+                  {isOAuthVKontakteScriptLoaded && <div id='vk_auth'></div>}
                   <Button {...buttonAuthBack} />
                 </div>
 
                 <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
-                  {isOAuthGoogleScriptLoaded && (
-                    <div id='g_id_onload' className='_signInWith'></div>
-                  )}
+                  {isOAuthGoogleScriptLoaded &&
+                    branch === 'signInWithGoogle' && (
+                      <div id='g_id_onload' className='_signInWith'></div>
+                    )}
                   <Button {...buttonAuthBack} />
                 </div>
               </div>

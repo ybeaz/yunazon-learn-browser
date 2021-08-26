@@ -87,7 +87,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
           userName,
         })
       )
-      if (data.status !== 'unknown') dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     AUTH_VKONTAKTE: () => {
@@ -141,7 +140,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_FACEBOOK: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
@@ -153,7 +151,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_VKONTAKTE: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
@@ -165,7 +162,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_GOOGLE: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
@@ -218,11 +214,9 @@ export const handleEvents: Function = (event: any, props: Props): void => {
 
     AUTH_SIGN_OUT: () => {
       dispatch(actionSync.SET_USER(userStoreDefault))
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
     },
 
     CLICK_SIGN_UP: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
@@ -234,7 +228,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_FORGET_PASSWORD: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
@@ -246,7 +239,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_SIGN_IN_UP_BACK: () => {
-      dispatch(actionSync.SET_MODAL_FRAMES([]))
       const data = [
         {
           childName: 'AuthUser',
