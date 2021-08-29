@@ -50,12 +50,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_FACEBOOK: () => {
-      console.info('handleEvents signInWithFacebook [53]', { data })
       const {
         componentsState: { oAuthStage },
       } = getState()
       if (oAuthStage !== 'signInWithFacebook') return
-      console.info('handleEvents signInWithFacebook [58]', { oAuthStage, data })
 
       const {
         last_name: familyName,
@@ -96,7 +94,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_VKONTAKTE: () => {
-      console.info('handleEvents signInWithVkontakte [193]', { data })
       const {
         componentsState: { oAuthStage },
       } = getState()
@@ -143,13 +140,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_GOOGLE: () => {
-      // Stopped here
-      console.info('handleEvents signInWithGoogle [132]', { data })
       const {
         componentsState: { oAuthStage },
       } = getState()
       if (oAuthStage !== 'signInWithGoogle') return
-      console.info('handleEvents signInWithGoogle [137]', { oAuthStage, data })
 
       const [{ clientId, credential, select_by }] = data
       dispatch(
@@ -241,6 +235,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_SIGN_OUT: () => {
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: false,
+          childProps: { scenario: { branch: 'signOut', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+
       dispatch(actionSync.SET_USER(userStoreDefault))
     },
 

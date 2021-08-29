@@ -27,6 +27,19 @@ function* getOAuthGoogle(args: any) {
       actionSync.SET_USER({ ...oAuthGoogle, loginSource: 'un.userto.com' })
     )
 
+    const data = [
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: { scenario: { branch: 'signInWithGoogle', step: '' } },
+      },
+    ]
+    yield put(actionSync.SET_MODAL_FRAMES(data))
+
+    yield put(
+      actionSync.SET_USER({ ...oAuthGoogle, loginSource: 'un.userto.com' })
+    )
+
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

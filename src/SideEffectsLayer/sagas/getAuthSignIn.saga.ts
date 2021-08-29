@@ -22,6 +22,15 @@ function* getAuthSignIn() {
       },
     } = yield axios[method](url, payload, options)
 
+    const data = [
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: { scenario: { branch: 'signInManually', step: '' } },
+      },
+    ]
+    yield put(actionSync.SET_MODAL_FRAMES(data))
+
     yield put(
       actionSync.SET_USER({ ...authLoginPass, loginSource: 'un.userto.com' })
     )
