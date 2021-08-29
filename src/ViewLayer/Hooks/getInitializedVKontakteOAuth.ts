@@ -43,7 +43,7 @@ export const getInitializedVKontakteOAuth: Function = (
           width: '300px',
           onAuth: function (data) {
             console.info('getInitializedVKontakteOAuth [32]', { data })
-            // handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
+            handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
           },
         })
       } catch (error) {

@@ -24,9 +24,8 @@ export const getInitializedGoogleOAuth: Function = (): void => {
       defer: true,
     }
 
-    const handleCredentialResponse = async (...args) => {
+    const handleCredentialResponse = async (...args) =>
       handleEvents({}, { typeEvent: 'AUTH_GOOGLE', data: args })
-    }
 
     const makeDispatchAsyncWrappered = async () => {
       try {

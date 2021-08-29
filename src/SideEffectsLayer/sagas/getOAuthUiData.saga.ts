@@ -34,7 +34,20 @@ function* getOAuthUiData(args: any) {
       },
     } = yield axios[method](url, payload, options)
 
-    console.info('getOAuthUiData [27]', { oAuthUiData })
+    const data = [
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: { scenario: { branch: 'signInWithFacebook', step: '' } },
+      },
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: { scenario: { branch: 'signInWithVkontakte', step: '' } },
+      },
+    ]
+    yield put(actionSync.SET_MODAL_FRAMES(data))
+
     yield put(
       actionSync.SET_USER({ ...oAuthUiData, loginSource: 'un.userto.com' })
     )

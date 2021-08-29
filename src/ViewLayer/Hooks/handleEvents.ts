@@ -50,7 +50,11 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_FACEBOOK: () => {
-      console.info('handleEvents OAuth Facebook [76]', { data })
+      const {
+        componentsState: { oAuthStage },
+      } = getState()
+      if (oAuthStage !== 'signInWithFacebook') return
+
       const {
         last_name: familyName,
         first_name: givenName,
@@ -90,7 +94,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_VKONTAKTE: () => {
-      console.info('handleEvents OAuth VKontakte [57]', { data })
+      const {
+        componentsState: { oAuthStage },
+      } = getState()
+      if (oAuthStage !== 'signInWithVkontakte') return
+      console.info('handleEvents signInWithVkontakte [98]', {
+        oAuthStage,
+        data,
+      })
 
       const {
         last_name: familyName,
@@ -99,23 +110,23 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         uid: uidExternal,
       } = data
 
-      const dataExample = {
-        first_name: 'Роман',
-        hash: '1cbcfa851256b76737c355ebd2cd779b',
-        last_name: 'Ческидов',
-        photo:
-          'https://sun6-21.userapi.com/s/v1/if1/afL13qbgr9g5v1YLZNMAGgx2eY_NFdBlN2QjAxyYXyoDcb8Ay8-V00YUJOpWiRTG0-U21sTQ.jpg?size=400x0&amp;quality=96&amp;crop=42,345,875,893&amp;ava=1',
-        photo_rec:
-          'https://sun6-21.userapi.com/s/v1/if1/t02T5kJSs9DzY4SAwLr4sbiE6NEvsrzhbcC_k5X3M6ZqMo0oErfH8W-V_K0VgP-d5lPa0ji-.jpg?size=100x0&amp;quality=96&amp;crop=59,375,788,788&amp;ava=1',
-        session: {
-          expire: 1627513816,
-          mid: 36823445,
-          secret: '70f51c998b',
-          sid: '658e0c483a0e6bfb998cf921eb1603ca0e2c9e15d6934d693caffbea9df2b0d360fe3ff9cfb9777bea4c5',
-          sig: '2bf1}ba46679fcc68257356730e8270af',
-        },
-        uid: 36823445,
-      }
+      // const dataExample = {
+      //   first_name: 'Роман',
+      //   hash: '1cbcfa851256b76737c355ebd2cd779b',
+      //   last_name: 'Ческидов',
+      //   photo:
+      //     'https://sun6-21.userapi.com/s/v1/if1/afL13qbgr9g5v1YLZNMAGgx2eY_NFdBlN2QjAxyYXyoDcb8Ay8-V00YUJOpWiRTG0-U21sTQ.jpg?size=400x0&amp;quality=96&amp;crop=42,345,875,893&amp;ava=1',
+      //   photo_rec:
+      //     'https://sun6-21.userapi.com/s/v1/if1/t02T5kJSs9DzY4SAwLr4sbiE6NEvsrzhbcC_k5X3M6ZqMo0oErfH8W-V_K0VgP-d5lPa0ji-.jpg?size=100x0&amp;quality=96&amp;crop=59,375,788,788&amp;ava=1',
+      //   session: {
+      //     expire: 1627513816,
+      //     mid: 36823445,
+      //     secret: '70f51c998b',
+      //     sid: '658e0c483a0e6bfb998cf921eb1603ca0e2c9e15d6934d693caffbea9df2b0d360fe3ff9cfb9777bea4c5',
+      //     sig: '2bf1}ba46679fcc68257356730e8270af',
+      //   },
+      //   uid: 36823445,
+      // }
 
       dispatch(
         actionAsync.GET_OAUTH_UI_DATA.REQUEST({
@@ -129,6 +140,11 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_GOOGLE: () => {
+      const {
+        componentsState: { oAuthStage },
+      } = getState()
+      if (oAuthStage !== 'signInWithGoogle') return
+
       const [{ clientId, credential, select_by }] = data
       dispatch(
         actionAsync.GET_OAUTH_GOOGLE.REQUEST({
@@ -140,6 +156,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_FACEBOOK: () => {
+      dispatch(actionSync.SET_OAUTH_STAGE('signInWithFacebook'))
+
       const data = [
         {
           childName: 'AuthUser',
@@ -151,6 +169,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_VKONTAKTE: () => {
+      dispatch(actionSync.SET_OAUTH_STAGE('signInWithVkontakte'))
+
       const data = [
         {
           childName: 'AuthUser',
@@ -162,6 +182,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_GOOGLE: () => {
+      dispatch(actionSync.SET_OAUTH_STAGE('signInWithGoogle'))
+
       const data = [
         {
           childName: 'AuthUser',
@@ -213,6 +235,15 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_SIGN_OUT: () => {
+      const data = [
+        {
+          childName: 'AuthUser',
+          isActive: false,
+          childProps: { scenario: { branch: 'signOut', step: '' } },
+        },
+      ]
+      dispatch(actionSync.SET_MODAL_FRAMES(data))
+
       dispatch(actionSync.SET_USER(userStoreDefault))
     },
 
@@ -239,6 +270,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_AUTH_SIGN_IN_UP_BACK: () => {
+      dispatch(actionSync.SET_OAUTH_STAGE('signInManually'))
+
       const data = [
         {
           childName: 'AuthUser',
