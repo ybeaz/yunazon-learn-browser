@@ -38,7 +38,6 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
             'id,first_name,last_name,middle_name,name,name_format,picture,short_name',
         },
         function (response) {
-          console.info('getInitializedFacebookOAuth [40]', { response })
           if (response && !response.error) {
             handleEvents({}, { typeEvent: 'AUTH_FACEBOOK', data: response })
           }
@@ -72,17 +71,7 @@ export const getInitializedFacebookOAuth: Function = (branch: string): void => {
         }, true)
 
         window.FB.Event.subscribe('auth.login', function (response) {
-          console.info('getInitializedFacebookOAuth [75]', {
-            case: 'auth.login',
-            response,
-            'response.status': response.status,
-          })
           if (response.status === 'connected') {
-            console.info('getInitializedFacebookOAuth [91]', {
-              case: 'auth.login',
-              response,
-              'response.status': response.status,
-            })
             getFbApiResponse()
           }
         })

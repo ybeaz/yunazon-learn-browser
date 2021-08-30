@@ -29,7 +29,7 @@ export const rootStoreDefault = {
     modalFrames: [
       {
         childName: 'AuthUser',
-        isActive: true,
+        isActive: false,
         childProps: {
           scenario: { branch: 'signInManually', step: '' }, // signInWithVkontakte signInWithFacebook signInWithGoogle signInManually
         },

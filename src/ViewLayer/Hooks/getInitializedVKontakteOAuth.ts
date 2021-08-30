@@ -42,7 +42,6 @@ export const getInitializedVKontakteOAuth: Function = (
         window.VK.Widgets.Auth('vk_auth', {
           width: '300px',
           onAuth: function (data) {
-            console.info('getInitializedVKontakteOAuth [32]', { data })
             handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
           },
         })

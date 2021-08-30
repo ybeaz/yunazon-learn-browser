@@ -98,10 +98,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         componentsState: { oAuthStage },
       } = getState()
       if (oAuthStage !== 'signInWithVkontakte') return
-      console.info('handleEvents signInWithVkontakte [98]', {
-        oAuthStage,
-        data,
-      })
 
       const {
         last_name: familyName,
@@ -243,6 +239,10 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         },
       ]
       dispatch(actionSync.SET_MODAL_FRAMES(data))
+
+      window.FB.logout(function (response) {
+        // console.info('handleEvents [248]', 'FB logout', { response })
+      })
 
       dispatch(actionSync.SET_USER(userStoreDefault))
     },
