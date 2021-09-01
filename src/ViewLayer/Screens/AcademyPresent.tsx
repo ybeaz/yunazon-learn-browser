@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
@@ -26,13 +26,13 @@ const COMPONENT = {
   PlayerIframe,
 }
 
-export const PresentAndSubscribe: React.FunctionComponent<any> = (
+export const AcademyPresent: React.FunctionComponent<any> = (
   props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
 ) => {
   const courseID = props?.routeProps.match.params.courseID
 
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
-  const screenType = 'PresentAndSubscribe'
+  const screenType = 'AcademyPresent'
 
   getInitialTeachContentLoading()
 
@@ -41,7 +41,7 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     language: languageStore,
     globalVars: { durationMultiplier },
     courses,
-    componentsState: { isLoaderOverlayVisible, isModalFrameVisible },
+    componentsState: { isLoaderOverlayVisible },
     isLoaded: { mediaLoading },
   } = store
 
@@ -208,10 +208,9 @@ export const PresentAndSubscribe: React.FunctionComponent<any> = (
     contentComponentName,
   }
   const carouselQuestionsProps = { durationObj }
-  const questionScoresProps = { stopVideoHandler, routeProps: props.routeProps }
 
   return (
-    <div className='PresentAndSubscribe'>
+    <div className='AcademyPresent'>
       {isLoaded === true ? (
         <>
           <Helmet>

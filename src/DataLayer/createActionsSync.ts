@@ -3,7 +3,7 @@ interface IAction {
   data?: any
 }
 
-export interface ICreateSyncAction {
+export interface CreateSyncAction {
   [key: string]: Function
 }
 
@@ -14,14 +14,14 @@ export interface ICreateSyncAction {
  */
 export const createSyncActions: Function = (
   actions: string[]
-): ICreateSyncAction => {
-  return actions.reduce((actions, currentAction) => {
+): CreateSyncAction => {
+  return actions.reduce((actionsSync, currentAction) => {
     const currentActionNext = {
       [currentAction]: (data: any): IAction => ({
         type: currentAction,
         data,
       }),
     }
-    return { ...actions, ...currentActionNext }
+    return { ...actionsSync, ...currentActionNext }
   }, {})
 }

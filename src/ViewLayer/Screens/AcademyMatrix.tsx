@@ -13,7 +13,7 @@ import { MainFrame } from '../Frames/MainFrame'
 import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData'
 
-export const MatrixHome: React.FunctionComponent<any> = (
+export const AcademyMatrix: React.FunctionComponent<any> = (
   props: IRouterScreenProps
 ): JSX.Element => {
   getInitialTeachContentLoading()
@@ -39,7 +39,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
         contentID,
         duration,
       } = modules[0]
-      const screenType = 'MatrixHome'
+      const screenType = 'AcademyMatrix'
       const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
@@ -60,7 +60,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
       }
       return <ContentPlate {...contentPlateProps} />
     })
-    return <div className='MatrixHome__plates'>{plates}</div>
+    return <div className='AcademyMatrix__plates'>{plates}</div>
   }
 
   const coursesFiltered = courses.filter(item =>
@@ -68,7 +68,7 @@ export const MatrixHome: React.FunctionComponent<any> = (
   )
 
   return (
-    <div className='MatrixHome'>
+    <div className='AcademyMatrix'>
       <Helmet>
         <html lang={langSite} />
         <meta charSet='utf-8' />

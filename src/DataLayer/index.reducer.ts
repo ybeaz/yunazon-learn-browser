@@ -40,7 +40,7 @@ import { rootStoreDefault } from './rootStoreDefault'
 
 export const rootReducer: Function = (
   store: IRootStore = rootStoreDefault,
-  action: any
+  action: any = { type: 'DEFAULT' }
 ): any => {
   const { type, data } = action
 

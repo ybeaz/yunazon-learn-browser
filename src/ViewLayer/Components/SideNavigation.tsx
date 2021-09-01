@@ -20,20 +20,18 @@ export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
 
   let history = useHistory()
 
-  const buttonMdMenuProps = {
-    icon: 'MdMenu',
-    classAdded: 'Button_MdMenu',
-    action: {
-      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
-    },
-  }
-
   const buttonPropsArr = [
     {
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_HOME', data: { history } },
+    },
+    {
+      icon: 'HiOutlineAcademicCap',
+      captureRight: DICTIONARY.Academy[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history } },
     },
     {
       icon: 'MdQueue',

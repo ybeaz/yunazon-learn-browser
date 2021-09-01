@@ -71,7 +71,7 @@ export const HeaderFrame: React.FunctionComponent<any> = (
   const classAddHeaderFrame =
     contentComponentName === 'ReaderIframe' ||
     contentComponentName === 'PlayerIframe'
-      ? 'HeaderFrame_PresentAndSubscribe'
+      ? 'HeaderFrame_AcademyPresent'
       : ''
 
   return (

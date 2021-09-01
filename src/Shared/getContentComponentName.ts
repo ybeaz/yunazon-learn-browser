@@ -1,5 +1,5 @@
 /**
- * @description Function to return name of the main component for PresentAndSubscribe screen
+ * @description Function to return name of the main component for AcademyPresent screen
  * @param componentType
  * @returns
  */

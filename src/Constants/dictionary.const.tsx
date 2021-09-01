@@ -5,6 +5,10 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  Academy: {
+    en: 'Academy',
+    ru: 'Академия',
+  },
   Name: {
     en: 'Name',
     ru: 'Имя',

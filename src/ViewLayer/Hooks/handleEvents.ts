@@ -303,6 +303,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       dispatch(actionSync.TOGGLE_SIDE_NAVIGATION())
     },
 
+    GO_ACADEMY_SCREEN: () => {
+      const { history } = data
+      history.push('/academy')
+      dispatch(actionSync.TOGGLE_SIDE_NAVIGATION())
+    },
+
     GET_INITIAL_QUERY_SETTING: () => {
       const { si, search, searchInput, ln, language } = getParsedUrlQuery()
 

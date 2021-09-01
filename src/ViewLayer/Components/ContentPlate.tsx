@@ -90,7 +90,7 @@ export const ContentPlate: React.FunctionComponent<any> = (
     textTooltip,
     isTextTooltip: true,
     delay: 10000,
-    contentComponentName: 'MatrixHome',
+    contentComponentName: 'AcademyMatrix',
   }
 
   return (

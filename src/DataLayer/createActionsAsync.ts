@@ -2,14 +2,14 @@ const REQUEST = 'REQUEST'
 const SUCCESS = 'SUCCESS'
 const FAILURE = 'FAILURE'
 
-export interface ICreateRequestTypes {
+export interface CreateRequestTypes {
   REQUEST: Function
   SUCCESS: Function
   FAILURE: Function
 }
 
-export interface ICreateAsyncAction {
-  [key: string]: ICreateRequestTypes
+export interface CreateAsyncAction {
+  [key: string]: CreateRequestTypes
 }
 
 /**
@@ -21,7 +21,7 @@ export interface ICreateAsyncAction {
  * @example3 action.GET_CONTENT_DATA.SUCCESS(myObject).type - this returns type string 'GET_CONTENT_DATA_SUCCESS'
  * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
-const createRequestTypes: Function = (base: string): ICreateRequestTypes =>
+const createRequestTypes: Function = (base: string): CreateRequestTypes =>
   [REQUEST, SUCCESS, FAILURE].reduce((acc: any, type: string): any => {
     acc[type] = (data: any = undefined) => {
       return data
@@ -38,12 +38,12 @@ const createRequestTypes: Function = (base: string): ICreateRequestTypes =>
  */
 export const createAsyncAction: Function = (
   actions: string[]
-): ICreateAsyncAction => {
-  return actions.reduce((actions, currentAction) => {
+): CreateAsyncAction => {
+  return actions.reduce((actionsAsync, currentAction) => {
     const currentActionNext = {
       [currentAction]: createRequestTypes(currentAction),
     }
-    return { ...actions, ...currentActionNext }
+    return { ...actionsAsync, ...currentActionNext }
   }, {})
 }
 

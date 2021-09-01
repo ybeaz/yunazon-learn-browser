@@ -1,31 +1,24 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { IRootStore } from './Interfaces/IRootStore'
-import { MatrixHome } from './ViewLayer/Screens/MatrixHome'
-import { PresentAndSubscribe } from './ViewLayer/Screens/PresentAndSubscribe'
+import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
+import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
 const PAGES = {
-  MatrixHome,
+  AcademyMatrix,
   Certificate,
-  PresentAndSubscribe,
+  AcademyPresent,
   Error404,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
-  const dispatch = useDispatch()
-
   const demoHostName = 'r1.userto.com'
   const demoPath = '/demo-youtube-learn.html'
   const rootPath = location.hostname === demoHostName ? demoPath : ''
-
-  const isDemoHost =
-    location.hostname === demoHostName ||
-    location.pathname.endsWith('/demo-earthquake-zen-garden-js.html')
-  const slash = isDemoHost ? '/' : ''
 
   const { router } = {
     router: {
@@ -48,19 +41,24 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         {
           path: `/c/:courseID`,
           strict: true,
-          page: 'PresentAndSubscribe',
+          page: 'AcademyPresent',
         },
         {
           path: `/home`,
           exact: true,
-          page: 'MatrixHome',
+          page: 'AcademyMatrix',
+        },
+        {
+          path: `/academy`,
+          exact: true,
+          page: 'AcademyMatrix',
         },
         {
           path: `${demoPath}/home`,
           exact: true,
-          page: 'MatrixHome',
+          page: 'AcademyMatrix',
         },
-        { path: `/`, exact: true, page: 'MatrixHome' },
+        { path: `/`, exact: true, page: 'AcademyMatrix' },
       ],
       redirects: [
         { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },
@@ -95,7 +93,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   const getRedirects: Function = (): JSX.Element[] =>
     redirects.map(redirect => {
-      const { from: fromPath, to: toPath, exact } = redirect
+      const { from: fromPath, to: toPath } = redirect
       const from = `${fromPath}`
       const to = `${toPath}`
       return (() => {

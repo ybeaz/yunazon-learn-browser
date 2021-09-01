@@ -17,9 +17,7 @@ export const ReaderIframe: React.FunctionComponent<any> = (
   let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
 
   const classAdded =
-    screenType === 'PresentAndSubscribe'
-      ? 'ReaderIframe_PresentAndSubscribe'
-      : ''
+    screenType === 'AcademyPresent' ? 'ReaderIframe_AcademyPresent' : ''
 
   return (
     <div className={`ReaderIframe ${classAdded}`}>
