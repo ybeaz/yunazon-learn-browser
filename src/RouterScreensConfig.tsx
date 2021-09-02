@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { IRootStore } from './Interfaces/IRootStore'
+import { ExchangeItPresent } from './ViewLayer/Screens/ExchangeItPresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
 const PAGES = {
+  ExchangeItPresent,
   AcademyMatrix,
   Certificate,
   AcademyPresent,
@@ -44,21 +46,21 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           page: 'AcademyPresent',
         },
         {
-          path: `/home`,
-          exact: true,
-          page: 'AcademyMatrix',
-        },
-        {
           path: `/academy`,
           exact: true,
           page: 'AcademyMatrix',
         },
         {
+          path: `/home`,
+          exact: true,
+          page: 'ExchangeItPresent',
+        },
+        {
           path: `${demoPath}/home`,
           exact: true,
-          page: 'AcademyMatrix',
+          page: 'ExchangeItPresent',
         },
-        { path: `/`, exact: true, page: 'AcademyMatrix' },
+        { path: `/`, exact: true, page: 'ExchangeItPresent' },
       ],
       redirects: [
         { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },
@@ -122,6 +124,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       document.getElementsByTagName('body')[0].style.display = 'none'
       const { globalVars } = useSelector((store: IRootStore) => store)
       const { theme } = globalVars
+
       if (theme) {
         require(`./ViewLayer/Styles/theme${theme}.less`)
         document.getElementsByTagName('body')[0].style.display = 'flex'
@@ -131,10 +134,10 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
+  getThemeRemotely()
+
   return (
     <BrowserRouter>
-      {getThemeRemotely()}
-
       <Switch>
         {getRoutes()}
         {getRedirects()}

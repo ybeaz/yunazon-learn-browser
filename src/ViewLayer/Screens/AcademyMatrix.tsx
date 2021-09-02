@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { ContentPlate } from '../Components/ContentPlate'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
@@ -16,12 +17,13 @@ import { SITE_META_DATA } from '../../Constants/siteMetaData'
 export const AcademyMatrix: React.FunctionComponent<any> = (
   props: IRouterScreenProps
 ): JSX.Element => {
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
 
-  const store = useSelector((store: IRootStore) => store)
+  const store = useSelector((store2: IRootStore) => store2)
   const {
     globalVars: { durationMultiplier },
     courses,
@@ -29,8 +31,8 @@ export const AcademyMatrix: React.FunctionComponent<any> = (
     forms: { searchInput },
   } = store
 
-  const getPlateMatix: Function = (courses: any[]): JSX.Element => {
-    const plates = courses.map((item, i) => {
+  const getPlateMatix: Function = (courses2: any[]): JSX.Element => {
+    const plates = courses2.map((item, i) => {
       const { courseID, capture: courseCapture, modules } = item
       const {
         moduleID,

@@ -65,23 +65,6 @@ export const handleEvents: Function = (event: any, props: Props): void => {
         name: userName,
       } = data
 
-      // const resExample = {
-      //   first_name: 'Roman',
-      //   id: '4517874708264717',
-      //   last_name: 'Ch',
-      //   name: 'Roman Ch',
-      //   name_format: '{first} {last}',
-      //   picture: {
-      //     data: {
-      //       height: 50,
-      //       is_silhouette: false,
-      //       url: 'https://platform-lookaside.fbsbx.com/platform/prof…&width=50&ext=1630121681&hash=AeSSYfrS-fCfdwnHkuE',
-      //       width: 50,
-      //     },
-      //   },
-      //   short_name: 'Roman',
-      // }
-
       dispatch(
         actionAsync.GET_OAUTH_UI_DATA.REQUEST({
           familyName,
@@ -154,40 +137,40 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     CLICK_AUTH_FACEBOOK: () => {
       dispatch(actionSync.SET_OAUTH_STAGE('signInWithFacebook'))
 
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'signInWithFacebook', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
     },
 
     CLICK_AUTH_VKONTAKTE: () => {
       dispatch(actionSync.SET_OAUTH_STAGE('signInWithVkontakte'))
 
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'signInWithVkontakte', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
     },
 
     CLICK_AUTH_GOOGLE: () => {
       dispatch(actionSync.SET_OAUTH_STAGE('signInWithGoogle'))
 
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'signInWithGoogle', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
 
       setTimeout(() => {
         try {
@@ -231,14 +214,14 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     AUTH_SIGN_OUT: () => {
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: false,
           childProps: { scenario: { branch: 'signOut', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
 
       window.FB.logout(function (response) {
         // console.info('handleEvents [248]', 'FB logout', { response })
@@ -248,43 +231,41 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     CLICK_SIGN_UP: () => {
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'signUpManually', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
     },
 
     CLICK_FORGET_PASSWORD: () => {
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'forgetPassword', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
     },
 
     CLICK_AUTH_SIGN_IN_UP_BACK: () => {
       dispatch(actionSync.SET_OAUTH_STAGE('signInManually'))
 
-      const data = [
+      const data2 = [
         {
           childName: 'AuthUser',
           isActive: true,
           childProps: { scenario: { branch: 'signInManually', step: '' } },
         },
       ]
-      dispatch(actionSync.SET_MODAL_FRAMES(data))
+      dispatch(actionSync.SET_MODAL_FRAMES(data2))
     },
 
     STOP_PROPAGATION: () => {
-      // event.persist()
-      // event.nativeEvent.stopImmediatePropagation()
       event.stopPropagation()
     },
 
@@ -535,17 +516,8 @@ export const handleEvents: Function = (event: any, props: Props): void => {
     },
 
     PRINT_SCORES: () => {
-      const {
-        screenType,
-        userName,
-        userEmail,
-        capture,
-        courseID,
-        moduleID,
-        contentID,
-        meta,
-        description,
-      } = data
+      const { screenType, userName, capture, contentID, meta, description } =
+        data
 
       getPrintScreenAsPdf({
         screenType,

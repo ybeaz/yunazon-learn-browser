@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
@@ -34,9 +35,10 @@ export const AcademyPresent: React.FunctionComponent<any> = (
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
   const screenType = 'AcademyPresent'
 
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 
-  const store = useSelector((store: IRootStore) => store)
+  const store = useSelector((store2: IRootStore) => store2)
   const {
     language: languageStore,
     globalVars: { durationMultiplier },
