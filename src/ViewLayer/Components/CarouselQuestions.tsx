@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getQuesionString } from '../../Shared/getQuesionString'
 import { getButtonsClassString } from '../../Shared/getButtonsClassString'
@@ -11,33 +10,22 @@ import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { Button } from '../Components/Button'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
-interface ICarouselQuestionsInput {
-  durationObj: IDurationObj
-}
 
-export const CarouselQuestions: React.FunctionComponent<any> = (
-  props: ICarouselQuestionsInput
-): JSX.Element => {
-  const store = useSelector((store: IRootStore) => store)
+export const CarouselQuestions: React.FunctionComponent = () => {
+  const store = useSelector((store2: IRootStore) => store2)
 
   const {
-    globalVars: { numberQuestionsInSlide, durationMultiplier },
+    globalVars: { numberQuestionsInSlide },
     componentsState: { questionsSlideNumber, isCourseStarted },
     courses,
     language,
   } = store
 
   const {
-    courseActive: { capture: courseCapture, courseID, questionNumber },
-    moduleActive: { duration: durationIn, moduleID, contentID },
+    courseActive: { capture: courseCapture, courseID },
+    moduleActive: { moduleID, contentID },
     questionsActive,
   } = getActiveCourseData(courses)
-
-  const { duration, units }: IDurationObj = getMultipliedTimeStr(
-    durationIn,
-    durationMultiplier
-  )
 
   const questionsChunked = getChunkedArray(
     questionsActive,
@@ -70,8 +58,8 @@ export const CarouselQuestions: React.FunctionComponent<any> = (
     })
   }
 
-  const getSlides: Function = (questionsChunked: any[]): JSX.Element => {
-    const questionsJSX = questionsChunked.map((questions, index) => {
+  const getSlides: Function = (questionsChunked2: any[]): JSX.Element => {
+    const questionsJSX = questionsChunked2.map((questions, index) => {
       const classNameToggleShow = index === questionsSlideNumber ? '_show' : ''
       return (
         <div className={`_slides fade ${classNameToggleShow}`}>

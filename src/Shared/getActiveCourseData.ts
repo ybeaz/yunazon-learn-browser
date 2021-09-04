@@ -1,4 +1,4 @@
-interface IRgetActiveCourseData {
+interface GetActiveCourseData {
   courseActive: any
   moduleActive: any
   questionsActive: any[]
@@ -11,7 +11,7 @@ interface IRgetActiveCourseData {
  */
 export const getActiveCourseData: Function = (
   courses: any[]
-): IRgetActiveCourseData => {
+): GetActiveCourseData => {
   const res = {
     courseActive: {},
     moduleActive: {},

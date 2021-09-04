@@ -1,7 +1,5 @@
-interface IGetModuleByCourseIDIndexInput {
-  courses: any
-  courseID: string
-  index: number
+interface GetModuleByCourseIDIndexInterface {
+  (args: { courses: any; courseID: string; index: number }): any
 }
 
 /**
@@ -11,11 +9,11 @@ interface IGetModuleByCourseIDIndexInput {
  * @param contentID
  * @returns
  */
-export const getModuleByCourseIDIndex: Function = ({
+export const getModuleByCourseIDIndex: GetModuleByCourseIDIndexInterface = ({
   courses,
   courseID: courseIDIn,
   index = 0,
-}: IGetModuleByCourseIDIndexInput): any => {
+}) => {
   let output = {}
 
   const course = courses.find(course => course.courseID === courseIDIn)

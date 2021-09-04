@@ -14,9 +14,7 @@ import { MainFrame } from '../Frames/MainFrame'
 import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData'
 
-export const AcademyMatrix: React.FunctionComponent<any> = (
-  props: IRouterScreenProps
-): JSX.Element => {
+export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 

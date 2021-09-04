@@ -14,13 +14,11 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { Input } from '../Components/Input'
 import { Button } from '../Components/Button'
 
-export const QuestionScores: React.FunctionComponent<any> = (
-  props: any
-): JSX.Element => {
+export const QuestionScores: React.FunctionComponent<any> = props => {
   let history = useHistory()
 
   const { stopVideoHandler } = props
-  const store = useSelector((store: IRootStore) => store)
+  const store = useSelector((store2: IRootStore) => store2)
   const {
     language,
     documents,

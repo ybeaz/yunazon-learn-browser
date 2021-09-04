@@ -1,4 +1,4 @@
-interface IRESgetAnswersChecked2 {
+interface GetAnswersChecked2 {
   total: number
   right: number
   wrong: number
@@ -13,7 +13,7 @@ interface IRESgetAnswersChecked2 {
 export const getAnswersChecked2: Function = (
   questions: any[],
   passRateIn: number = 1
-): IRESgetAnswersChecked2 => {
+): GetAnswersChecked2 => {
   let res = {
     total: questions.length,
     right: 0,

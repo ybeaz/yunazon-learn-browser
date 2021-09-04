@@ -27,9 +27,9 @@ const COMPONENT = {
   PlayerIframe,
 }
 
-export const AcademyPresent: React.FunctionComponent<any> = (
-  props: IRouterScreenProps = { routeProps: {}, rootPath: '' }
-) => {
+export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
+  props = { routeProps: {}, rootPath: '' }
+): JSX.Element => {
   const courseID = props?.routeProps.match.params.courseID
 
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
@@ -56,7 +56,7 @@ export const AcademyPresent: React.FunctionComponent<any> = (
     moduleCapture: '',
     moduleDescription: '',
     contentID: '',
-    durationObj: {},
+    durationObj: { duration: '', units: '' },
     moduleIndex: 0,
     modulesTotal: 0,
     questionsTotal: 0,
@@ -140,7 +140,6 @@ export const AcademyPresent: React.FunctionComponent<any> = (
 
   const { width, height } = VIDEO_RESOLUTION
   const {
-    onPlayerReady,
     playVideoHandler,
     pauseVideoHandler,
     stopVideoHandler,
@@ -209,7 +208,6 @@ export const AcademyPresent: React.FunctionComponent<any> = (
     delay: 5000,
     contentComponentName,
   }
-  const carouselQuestionsProps = { durationObj }
 
   return (
     <div className='AcademyPresent'>
@@ -230,7 +228,7 @@ export const AcademyPresent: React.FunctionComponent<any> = (
               <LoaderBlurhash {...loaderBlurhashProps} />
               <PlayerPanel {...playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
-            <CarouselQuestions {...carouselQuestionsProps} />
+            <CarouselQuestions />
           </MainFrame>
           <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>

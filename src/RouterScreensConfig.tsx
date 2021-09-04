@@ -60,7 +60,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           exact: true,
           page: 'ExchangeItPresent',
         },
-        { path: `/`, exact: true, page: 'ExchangeItPresent' },
+        { path: `/`, exact: true, page: 'AcademyMatrix' },
       ],
       redirects: [
         { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },

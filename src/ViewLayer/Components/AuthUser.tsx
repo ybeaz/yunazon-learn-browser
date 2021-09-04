@@ -15,7 +15,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   }
 ): JSX.Element => {
   const {
-    scenario: { branch, step },
+    scenario: { branch },
   } = props
 
   getInitializedFacebookOAuth(branch)
@@ -25,11 +25,9 @@ export const AuthUser: React.FunctionComponent<any> = (
   const {
     componentsState: {
       isOAuthGoogleScriptLoaded,
-      isOAuthFacebookScriptLoaded,
       isOAuthVKontakteScriptLoaded,
     },
     language,
-    user,
   } = useSelector((store: IRootStore) => store)
 
   const SCENARIO = {

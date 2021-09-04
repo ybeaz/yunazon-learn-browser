@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react'
 import { getDesignType } from '../../Shared/getDesignType'
 import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
 import { handleEvents } from '../Hooks/handleEvents'
-interface ICheckRadioGroupInput {
+interface CheckRadioGroupArgs {
   courseID: string
   moduleID: string
   questionID: string
@@ -11,14 +11,14 @@ interface ICheckRadioGroupInput {
   options: any[]
 }
 
-export const CheckRadioGroup: React.FunctionComponent<any> = ({
+export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupArgs> = ({
   capture,
   options,
-}: ICheckRadioGroupInput): JSX.Element => {
+}) => {
   const { designType, multi } = getDesignType(options)
 
-  const getCheckLines: Function = (options: any[]): JSX.Element[] => {
-    return options.map(item => {
+  const getCheckLines: Function = (options2: any[]): JSX.Element[] => {
+    return options2.map(item => {
       const { optionID, label } = item
       const answer = getAnswerByOptionID(options, optionID)
 

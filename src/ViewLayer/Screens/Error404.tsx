@@ -1,10 +1,6 @@
 import React from 'react'
 
-import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
-
-export const Error404: React.FunctionComponent<any> = (
-  props: IRouterScreenProps
-): JSX.Element => {
+export const Error404: React.FunctionComponent = (): JSX.Element => {
   return (
     <div className='Error404'>
       <div className=''>

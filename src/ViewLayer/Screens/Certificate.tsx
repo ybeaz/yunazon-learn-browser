@@ -16,8 +16,8 @@ import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
 import { ShareButtons } from '../Components/ShareButtons'
 
-export const Certificate: React.FunctionComponent<any> = (
-  props: IRouterScreenProps
+export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
+  props
 ): JSX.Element => {
   const {
     routeProps: {

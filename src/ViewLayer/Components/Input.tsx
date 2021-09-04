@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-interface IInput {
+interface InputArgs {
   classAdded: string
   type: string
   placeholder: string
@@ -12,12 +12,10 @@ interface IInput {
   storeFormProp: string
 }
 
-export const Input: React.FunctionComponent<any> = (
-  props: IInput
-): JSX.Element => {
+export const Input: React.FunctionComponent<InputArgs> = props => {
   const { classAdded, type, placeholder, typeEvent, storeFormProp } = props
 
-  const store = useSelector((store: IRootStore) => store)
+  const store = useSelector((store2: IRootStore) => store2)
   const { forms } = store
   const value = forms[storeFormProp]
 

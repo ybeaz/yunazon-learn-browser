@@ -1,7 +1,5 @@
-interface IGetModuleActiveByCourseIDIndexInput {
-  courses: any
-  courseID: string
-  index: number
+interface GetModuleActiveByCourseIDIndexInputInterface {
+  (args: { courses: any; courseID: string; index: number }): any[]
 }
 
 /**
@@ -10,22 +8,19 @@ interface IGetModuleActiveByCourseIDIndexInput {
  * @param contentID
  * @returns
  */
-export const getModuleActiveByCourseIDIndex: Function = ({
-  courses,
-  courseID: courseIDIn,
-  index: indexIn,
-}: IGetModuleActiveByCourseIDIndexInput): any[] => {
-  return courses.map(course => {
-    let isSelected = false
-    const { courseID, modules } = course
-    const modulesNext = modules.map(module => {
-      const { index } = module
-      if (courseID === courseIDIn && index === indexIn) {
-        isSelected = true
-        return { ...module, isSelected }
-      }
-      return module
+export const getModuleActiveByCourseIDIndex: GetModuleActiveByCourseIDIndexInputInterface =
+  ({ courses, courseID: courseIDIn, index: indexIn }) => {
+    return courses.map(course => {
+      let isSelected = false
+      const { courseID, modules } = course
+      const modulesNext = modules.map(module => {
+        const { index } = module
+        if (courseID === courseIDIn && index === indexIn) {
+          isSelected = true
+          return { ...module, isSelected }
+        }
+        return module
+      })
+      return { ...course, modules: modulesNext, isSelected }
     })
-    return { ...course, modules: modulesNext, isSelected }
-  })
-}
+  }

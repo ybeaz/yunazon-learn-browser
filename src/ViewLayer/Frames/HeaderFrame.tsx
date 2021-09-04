@@ -7,16 +7,14 @@ import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
-interface IHeaderFrameInput {
-  contentComponentName: string
-  children: React.ReactChildren
+interface HeaderFrameArgs {
+  contentComponentName?: string
+  children: any[]
 }
 
-export const HeaderFrame: React.FunctionComponent<any> = (
-  props: IHeaderFrameInput
-): JSX.Element => {
+export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   const { contentComponentName } = props
-  const { user, language } = useSelector((store: IRootStore) => store)
+  const { user, language } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user: IUser): any => {
     const status = user?.status

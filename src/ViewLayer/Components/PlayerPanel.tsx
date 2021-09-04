@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
@@ -8,7 +8,7 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { Button } from '../Components/Button'
 
-interface IPlayerPanelInput {
+interface PlayerPanelArgs {
   courseCapture: string
   moduleCapture: string
   durationObj: IDurationObj
@@ -23,9 +23,7 @@ interface IPlayerPanelInput {
   questionsTotal?: number
 }
 
-export const PlayerPanel: React.FunctionComponent<any> = (
-  props: IPlayerPanelInput
-): JSX.Element => {
+export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
   const {
     courseCapture,
     moduleCapture,

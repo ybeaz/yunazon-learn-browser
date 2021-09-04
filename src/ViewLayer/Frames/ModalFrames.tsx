@@ -15,14 +15,10 @@ const CHILDREN = {
   QuestionScores,
 }
 
-interface IModalFramesInput {}
-
-export const ModalFrames: React.FunctionComponent<any> = (
-  props: IModalFramesInput
-): JSX.Element => {
-  const store = useSelector((store: IRootStore) => store)
+export const ModalFrames: React.FunctionComponent = (): JSX.Element => {
+  const store = useSelector((store2: IRootStore) => store2)
   const {
-    componentsState: { oAuthStage, modalFrames },
+    componentsState: { modalFrames },
   } = store
 
   const getChildren: Function = (children: any[]): JSX.Element[] => {

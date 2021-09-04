@@ -2,16 +2,14 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 
 import { handleEvents } from '../Hooks/handleEvents'
 
-interface IReaderInput {
+interface ReaderArgs {
   contentID: string
   isVisible: boolean
   screenType?: string
   children: React.ReactChildren
 }
 
-export const ReaderIframe: React.FunctionComponent<any> = (
-  props: IReaderInput
-): JSX.Element => {
+export const ReaderIframe: React.FunctionComponent<ReaderArgs> = props => {
   const { contentID, isVisible, screenType } = props
 
   let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'

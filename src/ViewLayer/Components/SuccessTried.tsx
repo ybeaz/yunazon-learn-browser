@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 
 import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'
-interface ISuccessTriedInput {
+interface SuccessTriedArgs {
   tooltipText: string
   tooltipPosition: string
 }
 
-export const SuccessTried: React.FunctionComponent<any> = (
-  props: ISuccessTriedInput
+export const SuccessTried: React.FunctionComponent<SuccessTriedArgs> = (
+  props
 ): JSX.Element => {
   const { tooltipText, tooltipPosition } = props
 

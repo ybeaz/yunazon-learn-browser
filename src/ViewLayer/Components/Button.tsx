@@ -52,10 +52,10 @@ const ICON = {
   MdSearch,
   MdPerson,
 }
-interface IButton {
+interface ButtonArgs {
   icon?: string | null
   icon2?: string | null
-  captureLeft?: string
+  captureLeft?: string | JSX.Element
   captureRight?: string
   classAdded?: string
   action?: any
@@ -67,9 +67,7 @@ interface IButton {
   handleEvents?: Function
 }
 
-export const Button: React.FunctionComponent<any> = (
-  props: IButton
-): JSX.Element => {
+export const Button: React.FunctionComponent<ButtonArgs> = props => {
   const {
     icon,
     icon2 = null,

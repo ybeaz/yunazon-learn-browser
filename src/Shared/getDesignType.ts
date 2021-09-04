@@ -1,6 +1,5 @@
-interface IgetDesignType {
-  designType: string
-  multi: boolean
+interface GetDesignTypeInterface {
+  (options: any): { designType: string; multi: boolean }
 }
 
 /**
@@ -8,7 +7,7 @@ interface IgetDesignType {
  * @param options
  * @returns
  */
-export const getDesignType: Function = (options: any): IgetDesignType => {
+export const getDesignType: GetDesignTypeInterface = options => {
   const optionsTrue = options.reduce(
     (accumulator: number, currentValue: any) =>
       accumulator + +currentValue.status,

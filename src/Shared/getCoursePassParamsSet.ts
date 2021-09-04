@@ -1,24 +1,29 @@
 import { getLimitedArrayElemsRandomly } from './getLimitedArrayElemsRandomly'
 
-interface IOptions {
-  courseIDIn: string
-  indexIn: number
-  questionNumberIn: number | undefined
-  passRateIn: number | undefined
+interface GetCoursePassParamsSetInterface {
+  (
+    courses: any[],
+    options: {
+      courseIDIn: string
+      indexIn: number
+      questionNumberIn: number | undefined
+      passRateIn: number | undefined
+    }
+  ): any[]
 }
 
 /**
  * @description Function to reduce course questions by number, pick up randomly
  */
-export const getCoursePassParamsSet: Function = (
+export const getCoursePassParamsSet: GetCoursePassParamsSetInterface = (
   courses: any[],
-  { courseIDIn, indexIn, questionNumberIn, passRateIn }: IOptions = {
+  { courseIDIn, indexIn, questionNumberIn, passRateIn } = {
     courseIDIn: 'all',
     indexIn: 0,
     questionNumberIn: undefined,
     passRateIn: undefined,
   }
-): any[] => {
+) => {
   return courses.map(course => {
     const { courseID, questionNumber, modules, passRate } = course
     let questionNumberNext =

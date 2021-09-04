@@ -4,16 +4,14 @@ import { Button } from '../Components/Button'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 
-interface IMainFrameInput {
-  contentComponentName: string
-  children: React.ReactChildren
+interface MainFrameArgs {
+  contentComponentName?: string
+  children: any[]
 }
 
-export const MainFrame: React.FunctionComponent<any> = (
-  props: IMainFrameInput
-): JSX.Element => {
-  const { contentComponentName } = props
-  const headerFrameProps = { contentComponentName }
+export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
+  const { contentComponentName, children } = props
+  const headerFrameProps = { contentComponentName, children }
 
   const buttonMdMenuProps = {
     icon: 'MdMenu',

@@ -1,6 +1,5 @@
-interface IGetStringifyToAzClass {
-  obj: any
-  prefix: string
+interface GetStringifyToAzClassInterface {
+  (args: { obj: any; prefix: string }): string
 }
 
 /**
@@ -9,10 +8,10 @@ interface IGetStringifyToAzClass {
  * @returns string
  * @example "az_{'a':1,'b':'some value'}"
  */
-export const getStringifyToAzClass: Function = ({
+export const getStringifyToAzClass: GetStringifyToAzClassInterface = ({
   obj,
   prefix = 'az_',
-}: IGetStringifyToAzClass): string => {
+}) => {
   const az0 = JSON.stringify(obj)
   const az1 = az0.replace(/\"/g, "'")
   return `${prefix}${az1}`

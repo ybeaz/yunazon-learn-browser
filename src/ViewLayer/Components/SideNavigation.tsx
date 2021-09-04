@@ -8,8 +8,8 @@ import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Button } from './Button'
 
-export const SideNavigation: React.FunctionComponent<any> = (): JSX.Element => {
-  const store = useSelector((store: IRootStore) => store)
+export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
+  const store = useSelector((store2: IRootStore) => store2)
   const {
     user,
     language,
