@@ -15,8 +15,7 @@ export const getMultipliedTimeStr: GetMultipliedTimeStrInterface = (
   multiplier
 ) => {
   const timeArr = str.split(':').map(item => {
-    const res = parseInt(item, 10)
-    return res
+    return parseInt(item, 10)
   })
   let duration = ''
   let time = 0
