@@ -5,6 +5,25 @@ export const DICTIONARY = {
     en: '_',
     ru: '_',
   },
+  PleaseReloadThePage: {
+    en: (
+      <div>
+        Please reload the page and
+        <br />
+        try with Google again or
+        <br />
+        or proceed with another option
+      </div>
+    ),
+    ru: (
+      <div>
+        Перезагрузите страницу и<br />
+        попобуйте с Гуугл снова или
+        <br />
+        попробуйте другую опцию
+      </div>
+    ),
+  },
   Academy: {
     en: 'Academy',
     ru: 'Академия',

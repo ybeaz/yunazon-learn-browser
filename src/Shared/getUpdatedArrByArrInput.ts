@@ -10,13 +10,9 @@ export const getUpdatedArrByArrInput: Function = (
   if (arr.length === 0) return []
   if (arrInput.length === 0) return arr
 
-  const arrFiltered = arr.filter(item => {
-    const outcome = !!arrInput.find(item2 => {
-      return item2[updateByProp] !== item[updateByProp]
-    })
-
-    return outcome
-  })
+  const arrFiltered = arr.filter(
+    item => !!arrInput.find(item2 => item2[updateByProp] !== item[updateByProp])
+  )
 
   return [...arrFiltered, ...arrInput]
 }

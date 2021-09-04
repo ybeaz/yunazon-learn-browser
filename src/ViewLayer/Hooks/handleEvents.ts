@@ -1,3 +1,4 @@
+import { getOpenedUrlInNewTab } from '../../Shared/getOpenedUrlInNewTab'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -124,7 +125,31 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       } = getState()
       if (oAuthStage !== 'signInWithGoogle') return
 
-      const [{ clientId, credential, select_by }] = data
+      const [response] = data
+
+      if (response === null) {
+        const data2 = [
+          {
+            childName: 'AuthUser',
+            isActive: true,
+            childProps: {
+              scenario: {
+                branch: 'signInWithGoogle',
+                step: 'opt_out_or_no_session',
+              },
+            },
+          },
+        ]
+        dispatch(actionSync.SET_MODAL_FRAMES(data2))
+
+        window.google.accounts.id.prompt((notification: any) => {
+          console.log('handleEvents [147]', notification)
+        })
+        getOpenedUrlInNewTab('https://accounts.google.com/')
+        return
+      }
+
+      const { clientId, credential, select_by } = response
       dispatch(
         actionAsync.GET_OAUTH_GOOGLE.REQUEST({
           clientId,

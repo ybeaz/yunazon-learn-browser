@@ -12,7 +12,7 @@
       "editor.suggest.insertMode": "replace"
     },
     "js/ts.implicitProjectConfig.strictNullChecks": true,
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 1,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.detectIndentation": false,
     "editor.tabSize": 2,

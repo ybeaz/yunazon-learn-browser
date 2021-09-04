@@ -15,7 +15,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   }
 ): JSX.Element => {
   const {
-    scenario: { branch },
+    scenario: { branch, step },
   } = props
 
   getInitializedFacebookOAuth(branch)
@@ -249,10 +249,13 @@ export const AuthUser: React.FunctionComponent<any> = (
                 </div>
 
                 <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
-                  {isOAuthGoogleScriptLoaded &&
-                    branch === 'signInWithGoogle' && (
-                      <div id='g_id_onload' className='_signInWith'></div>
-                    )}
+                  {/* {isOAuthGoogleScriptLoaded &&
+                    branch === 'signInWithGoogle' && ( */}
+                  <div id='g_id_onload' className='_signInWith'></div>
+                  {/* )} */}
+                  {step === 'opt_out_or_no_session' && (
+                    <div>{DICTIONARY.PleaseReloadThePage[language]}</div>
+                  )}
                   <Button {...buttonAuthBack} />
                 </div>
               </div>

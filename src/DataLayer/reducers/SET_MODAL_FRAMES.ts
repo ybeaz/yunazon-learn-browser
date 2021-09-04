@@ -1,8 +1,6 @@
 import { getUniqArrDeep } from '../../Shared/getUniqArrDeep'
 import { getUpdatedArrByArrInput } from '../../Shared/getUpdatedArrByArrInput'
 import { IRootStore } from '../../Interfaces/IRootStore'
-// import { getFilteredArrByIsActive } from '../../Shared/getFilteredArrByIsActive'
-// import { getReducedArrByElem } from '../../Shared/getReducedArrByElem'
 
 export const SET_MODAL_FRAMES: Function = (
   store: IRootStore,
