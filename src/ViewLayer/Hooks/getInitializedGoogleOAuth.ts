@@ -39,8 +39,8 @@ export const getInitializedGoogleOAuth: Function = (): void => {
             '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
           prompt_parent_id: 'g_id_onload',
           cancel_on_tap_outside: false,
+          callback: handleCredentialResponse,
           native_callback: handleCredentialResponse,
-          // callback: handleCredentialResponse,
           // ux_mode: 'redirect',
         })
         // window.google.accounts.id.prompt(notification => {
