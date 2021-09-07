@@ -5,12 +5,13 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 
 interface MainFrameArgs {
+  screenType?: string
   contentComponentName?: string
   children: any[]
 }
 
 export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
-  const { contentComponentName, children } = props
+  const { screenType, contentComponentName, children } = props
   const headerFrameProps = { contentComponentName, children }
 
   const buttonMdMenuProps = {
@@ -21,8 +22,10 @@ export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
     },
   }
 
+  const classAdded = screenType ? `MainFrame_${screenType}` : ''
+
   return (
-    <div className='MainFrame'>
+    <div className={`MainFrame ${classAdded}`}>
       <HeaderFrame {...headerFrameProps}>
         <Button {...buttonMdMenuProps} />
         {props.children[0]}
@@ -39,11 +42,11 @@ export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
 
       {/* <!-- The flexible grid (content) --> */}
       <div className='__middle'>
-        <div className='_left'></div>
+        <div className='_left'>{props.children[1]}</div>
         <div className='_main'>
-          <div className='_wrapper'>{props.children[1]}</div>
+          <div className='_wrapper'>{props.children[2]}</div>
         </div>
-        <div className='_right'>{props.children[2]}</div>
+        <div className='_right'>{props.children[3]}</div>
       </div>
 
       {/* <!-- Footer --> */}

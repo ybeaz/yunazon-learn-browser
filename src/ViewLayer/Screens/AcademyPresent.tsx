@@ -222,6 +222,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
           </Helmet>
           <MainFrame {...mainFrameProps}>
             {null}
+            {null}
             <CONTENT_ASSIGNED_COMPONENT
               {...contentComponentProps[contentComponentName]}
             >

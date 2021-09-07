@@ -9,7 +9,6 @@ import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLo
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { MainFrame } from '../Frames/MainFrame'
 import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData'
@@ -78,6 +77,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
       </Helmet>
       <MainFrame>
         <SearchGroup />
+        {null}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
           <div>{getPlateMatix(coursesFiltered)}</div>
         ) : null}

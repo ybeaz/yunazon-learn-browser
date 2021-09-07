@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { IRootStore } from './Interfaces/IRootStore'
-import { ExchangeItPresent } from './ViewLayer/Screens/ExchangeItPresent'
+import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
 const PAGES = {
-  ExchangeItPresent,
+  SkillsExchangePresent,
   AcademyMatrix,
   Certificate,
   AcademyPresent,
@@ -53,12 +53,12 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         {
           path: `/home`,
           exact: true,
-          page: 'ExchangeItPresent',
+          page: 'SkillsExchangePresent',
         },
         {
           path: `${demoPath}/home`,
           exact: true,
-          page: 'ExchangeItPresent',
+          page: 'SkillsExchangePresent',
         },
         { path: `/`, exact: true, page: 'AcademyMatrix' },
       ],
@@ -71,8 +71,14 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   const { routes, redirects } = router
 
-  const getRoutes = () =>
-    routes.map((route, i) => {
+  interface GetRoutesArg {
+    path: string
+    exact: boolean
+    page: string
+  }
+
+  const getRoutes = routesArg =>
+    routesArg.map(route => {
       const { path, exact, page } = route
       const Page = PAGES[page]
       return (
@@ -93,8 +99,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       )
     })
 
-  const getRedirects: Function = (): JSX.Element[] =>
-    redirects.map(redirect => {
+  const getRedirects: Function = (redirectsArg): JSX.Element[] =>
+    redirectsArg.map(redirect => {
       const { from: fromPath, to: toPath } = redirect
       const from = `${fromPath}`
       const to = `${toPath}`
@@ -139,8 +145,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {getRoutes()}
-        {getRedirects()}
+        {getRoutes(routes)}
+        {getRedirects(redirects)}
         {getError404Route()}
       </Switch>
     </BrowserRouter>

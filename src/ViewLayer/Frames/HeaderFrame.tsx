@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Button } from '../Components/Button'
@@ -16,9 +16,9 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   const { contentComponentName } = props
   const { user, language } = useSelector((store2: IRootStore) => store2)
 
-  const getButtonAuthUser = (user: IUser): any => {
-    const status = user?.status
-    const userName = user?.userName
+  const getButtonAuthUser = (user2: IUser): any => {
+    const status = user2?.status
+    const userName = user2?.userName
 
     const classAdded =
       status === 'success'
