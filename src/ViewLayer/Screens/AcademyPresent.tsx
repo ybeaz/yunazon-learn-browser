@@ -87,37 +87,37 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
       setIsLoaded(true)
 
       const {
-        courseCapture,
-        language,
-        moduleCapture,
-        moduleDescription,
+        courseCapture: courseCapture2,
+        language: language2,
+        moduleCapture: moduleCapture2,
+        moduleDescription: moduleDescription2,
         contentType,
-        contentID,
+        contentID: contentID2,
         duration,
-        index: moduleIndex,
-        modulesTotal,
-        questionsTotal,
+        index: moduleIndex2,
+        modulesTotal: modulesTotal2,
+        questionsTotal: questionsTotal2,
       } = getModuleByCourseIDIndex({ courses, courseID, index })
 
-      const durationObj: IDurationObj = getMultipliedTimeStr(
+      const durationObj2: IDurationObj = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
 
-      const contentComponentName = getContentComponentName(contentType)
+      const contentComponentName2 = getContentComponentName(contentType)
 
       setModuleState({
-        CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName],
-        contentComponentName,
-        courseCapture,
-        language,
-        moduleCapture,
-        moduleDescription,
-        contentID,
-        moduleIndex,
-        modulesTotal,
-        questionsTotal,
-        durationObj,
+        CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
+        contentComponentName: contentComponentName2,
+        courseCapture: courseCapture2,
+        language: language2,
+        moduleCapture: moduleCapture2,
+        moduleDescription: moduleDescription2,
+        contentID: contentID2,
+        moduleIndex: moduleIndex2,
+        modulesTotal: modulesTotal2,
+        questionsTotal: questionsTotal2,
+        durationObj: durationObj2,
       })
     }
   }, [mediaLoading, courses])

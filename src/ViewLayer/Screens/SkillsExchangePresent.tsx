@@ -30,7 +30,6 @@ export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresen
       contentComponentName: 'CatalogSEP',
     }
 
-    console.info('SkillsExchangePresent [16]', { canonicalUrl, mainFrameProps })
     return (
       <div className='SkillsExchangePresent'>
         <Helmet>
