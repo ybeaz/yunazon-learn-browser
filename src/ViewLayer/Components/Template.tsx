@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-export const Template: React.FunctionComponent<any> = (
-  props: any
+interface TemplateArgs {}
+
+export const Template: React.FunctionComponent<TemplateArgs> = (
+  props: TemplateArgs
 ): JSX.Element => {
   return <div className='Template'>null</div>
 }

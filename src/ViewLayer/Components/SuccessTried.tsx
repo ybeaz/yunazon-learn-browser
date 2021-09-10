@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import React, { useRef } from 'react'
 
 import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'
 interface SuccessTriedArgs {

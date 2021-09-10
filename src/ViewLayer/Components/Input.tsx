@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { handleEvents } from '../Hooks/handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import React, { useState } from 'react'
 
 import { Blurhash } from 'react-blurhash'
 

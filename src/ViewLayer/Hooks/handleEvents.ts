@@ -38,6 +38,12 @@ export const handleEvents: Function = (event: any, props: Props): void => {
       alert(message)
     },
 
+    SELECT_ON_CHANGE: () => {
+      console.info('handleEvents [42]', {
+        'event.target.value': event.target.value,
+      })
+    },
+
     SET_OAUTH_FB_SCRIPT_STATE: () => {
       dispatch(actionSync.SET_OAUTH_FB_SCRIPT_STATE(data))
     },
