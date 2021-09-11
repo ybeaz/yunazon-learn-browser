@@ -25,10 +25,11 @@ export const Select: React.FunctionComponent<SelectArgs> = (
 ): JSX.Element => {
   const { size, options } = props
 
+  const [optionsState, setOptionsState] = useState(options)
   const [sizeState, setSizeState] = useState(0)
 
-  const getOptions = (optionsIn2: Option[]): React.ReactElement[] => {
-    return optionsIn2.map((option: Option) => {
+  const getOptions = (optionsIn: Option[]): React.ReactElement[] => {
+    return optionsIn.map((option: Option) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
       const optionProps = {
@@ -49,6 +50,14 @@ export const Select: React.FunctionComponent<SelectArgs> = (
       SELECT_ON_MOUSE_DOWN: () => options.length > size && setSizeState(size),
       SELECT_ON_CHANGE: () => {
         setSizeState(0)
+
+        const optionsStateNext = optionsState.map(option => {
+          const { value } = option
+          const selectedNext = value === event.target.value ? true : false
+          return { ...option, selected: selectedNext }
+        })
+
+        setOptionsState(optionsStateNext)
         handleEvents(event, { typeEvent: 'SELECT_ON_CHANGE' })
       },
       SELECT_ON_BLUR: () => setSizeState(0),
@@ -78,7 +87,7 @@ export const Select: React.FunctionComponent<SelectArgs> = (
           handleComponentEvents(event, { typeEvent: 'SELECT_ON_BLUR' })
         }
       >
-        {getOptions(options)}
+        {getOptions(optionsState)}
       </select>
     </div>
   )
