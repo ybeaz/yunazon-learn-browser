@@ -16,6 +16,9 @@ import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfo
 
 function* getContentInfo() {
   try {
+    const { courses: coursesPrev } = yield select(store => store)
+    if (coursesPrev.length) return
+
     const { method, url, options } = getContentInfoConnector()
     const {
       data: { courses },
@@ -31,8 +34,6 @@ function* getContentInfo() {
       .exec(getOptionsShuffled)
       .exec(getProvidedSearchString)
       .done()
-
-    // console.info('getContentInfo.saga [31]', { coursesNext, courses })
 
     yield put(actionAsync.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error) {

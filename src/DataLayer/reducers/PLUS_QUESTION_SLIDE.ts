@@ -22,7 +22,7 @@ export const PLUS_QUESTION_SLIDE: Function = (
   if (questionSlideNumberPlus > questionsChunked.length - 1) {
     questionSlideNumberNext = questionsChunked.length - 1
   } else if (questionSlideNumberPlus < 0) {
-    questionSlideNumberNext
+    questionSlideNumberNext = 0
   } else {
     questionSlideNumberNext = questionSlideNumberPlus
   }

@@ -30,7 +30,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   getInitialTeachContentLoading()
 
   let history = useHistory()
-  const store = useSelector((store: IRootStore) => store)
+  const store = useSelector((store2: IRootStore) => store2)
   const { documents, language } = store
   const documentsLen = documents.length
 

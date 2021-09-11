@@ -28,7 +28,7 @@ export const AuthUser: React.FunctionComponent<any> = (
       isOAuthVKontakteScriptLoaded,
     },
     language,
-  } = useSelector((store: IRootStore) => store)
+  } = useSelector((store2: IRootStore) => store2)
 
   const SCENARIO = {
     signOut: {

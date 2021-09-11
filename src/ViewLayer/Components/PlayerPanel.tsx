@@ -39,7 +39,7 @@ export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
     questionsTotal = 0,
   } = props
 
-  const { language } = useSelector((store: IRootStore) => store)
+  const { language } = useSelector((store2: IRootStore) => store2)
   const certificate = DICTIONARY.certificate[language]
   const succeded = DICTIONARY.succeded[language]
   const tried = DICTIONARY.tried[language]

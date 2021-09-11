@@ -128,7 +128,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store: IRootStore) => store)
+      const { globalVars } = useSelector((store2: IRootStore) => store2)
       const { theme } = globalVars
 
       if (theme) {
