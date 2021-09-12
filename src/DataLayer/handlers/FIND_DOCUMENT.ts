@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionAsync } from '../../DataLayer/index.action'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const FIND_DOCUMENT = (event: any, data: any): void => {
   dispatch(actionAsync.FIND_DOCUMENT.REQUEST(data))

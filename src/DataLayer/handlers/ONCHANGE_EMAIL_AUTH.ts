@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const ONCHANGE_EMAIL_AUTH = (event: any, data: any): void => {
   const { value } = event.target as HTMLInputElement

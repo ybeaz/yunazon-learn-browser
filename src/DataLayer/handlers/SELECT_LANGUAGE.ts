@@ -1,10 +1,10 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const SELECT_LANGUAGE = (event: any, data: any): void => {
   getSavedAnanlyticsEvent(event, getAzProps('LANGUAGE_SELECTED')(data))

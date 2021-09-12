@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const CLICK_AUTH_SIGN_IN_UP_BACK = (event: any, data: any): void => {
   dispatch(actionSync.SET_OAUTH_STAGE('signInManually'))

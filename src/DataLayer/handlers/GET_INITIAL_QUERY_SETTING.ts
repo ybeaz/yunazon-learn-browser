@@ -1,8 +1,8 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const GET_INITIAL_QUERY_SETTING = (event: any, data: any): void => {
   const { si, search, searchInput, ln, language } = getParsedUrlQuery()

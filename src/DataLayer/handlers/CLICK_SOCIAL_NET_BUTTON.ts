@@ -1,9 +1,8 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
 
-const { dispatch, getState } = store
+const { getState } = store
 
 export const CLICK_SOCIAL_NET_BUTTON = (event: any, data: any): void => {
   const { buttonProps } = data

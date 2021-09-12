@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionSync } from '../../DataLayer/index.action'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const TOGGLE_MEDIA_LOADED = (event: any, data: any): void => {
   const { mediaKey, isMediaLoaded } = data

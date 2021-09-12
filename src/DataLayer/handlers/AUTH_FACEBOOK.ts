@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
