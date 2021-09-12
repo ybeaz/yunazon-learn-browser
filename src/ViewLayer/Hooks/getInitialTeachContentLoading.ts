@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
-import { handleEvents } from './handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 /**
  * @description Make initial call for data and pupulate it to the store
@@ -16,8 +16,8 @@ export const getInitialTeachContentLoading: Function = (): void => {
     const makeDispatchAsyncWrappered = async () => {
       await getPrependedExternalScript(scriptProps)
 
-      await handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
-      await handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
+      handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
+      handleEvents({}, { typeEvent: 'GET_INITIAL_QUERY_SETTING' })
     }
 
     if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()

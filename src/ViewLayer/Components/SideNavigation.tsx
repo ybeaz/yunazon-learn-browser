@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'

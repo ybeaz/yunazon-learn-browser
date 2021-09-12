@@ -1,5 +1,5 @@
 export interface HandleEventsProps {
-  typeEvent: string
+  typeEvent?: string
   type?: string
   data?: any
 }

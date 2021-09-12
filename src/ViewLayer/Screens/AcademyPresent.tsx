@@ -10,7 +10,7 @@ import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLo
 import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'

@@ -1,6 +1,6 @@
 # README
 
-## Levels of service usage
+## Levels of Academy service usage
 
 5 - click buttons to "consume" results
 4 - click button to enter name after success

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { timeout } from '../../Shared/timeout'
-import { handleEvents } from './handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
 
 /**

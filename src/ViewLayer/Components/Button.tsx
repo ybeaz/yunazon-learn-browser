@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IconContext } from 'react-icons'
 import {
   MdAddBox,

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 const languageArr = [
   { code: 'ru', svgFile: 'ru.svg' },

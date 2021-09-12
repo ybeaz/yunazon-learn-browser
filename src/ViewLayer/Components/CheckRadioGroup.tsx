@@ -2,7 +2,7 @@ import React from 'react'
 
 import { getDesignType } from '../../Shared/getDesignType'
 import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 interface CheckRadioGroupArgs {
   courseID: string
   moduleID: string
