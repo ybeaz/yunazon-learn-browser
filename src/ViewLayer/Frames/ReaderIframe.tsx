@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface ReaderArgs {
   contentID: string

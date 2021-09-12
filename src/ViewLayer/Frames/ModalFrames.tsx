@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { AuthUser } from '../Components/AuthUser'
 import { Button } from '../Components/Button'
 import { EmalInputs } from '../Components/EmalInputs'
-import { handleEvents } from '../Hooks/handleEvents'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { QuestionScores } from '../Components/QuestionScores'
 
