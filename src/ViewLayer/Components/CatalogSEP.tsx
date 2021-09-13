@@ -9,62 +9,64 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     {
       text: '-other-',
       value: '-other-',
-      defaultSelected: true,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Volvo',
       value: 'Volvo',
-      defaultSelected: false,
+      // defaultSelected: true,
       selected: false,
     },
     {
       text: 'Saab',
       value: 'Saab',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Opel',
       value: 'Opel',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Audi',
       value: 'Audi',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Volvo2',
       value: 'Volvo2',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Saab2',
       value: 'Saab2',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Opel2',
       value: 'Opel2',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
     {
       text: 'Audi2',
       value: 'Audi2',
-      defaultSelected: false,
+      // defaultSelected: false,
       selected: false,
     },
   ]
 
   const selectProps = {
-    size: 5,
+    sizeOnBlur: 1,
+    size: 6,
     options: optionsIn,
+    multiple: true,
   }
 
   return (
