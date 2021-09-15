@@ -1,7 +1,7 @@
-export const CATEGORIES_TO_EXCHANGE = {
-  _: {
-    en: '_',
-    ru: '_',
+export const CATEGORIES_TO_EXCHANGE: any = {
+  notSelected: {
+    en: 'not selected',
+    ru: 'не выбрано',
   },
   HTML: {
     en: 'HTML',

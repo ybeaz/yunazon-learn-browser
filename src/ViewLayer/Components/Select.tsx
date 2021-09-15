@@ -1,33 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
+import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
+import { ISelectOption } from '../../Interfaces/ISelectOption'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-interface PropsEvent {
-  data?: any
-  typeEvent: string
-}
-
-interface Option {
-  defaultSelected?: boolean
-  selected: boolean
-  text?: string
-  value?: string
-}
-
-interface SelectArgs {
+export { ISelectOption } from '../../Interfaces/ISelectOption'
+interface ISelectArgs {
   multiple?: boolean
-  options: Option[]
+  options: ISelectOption[]
   size: number
   sizeOnBlur: number
 }
 
-interface GetOptionsNextInterface {
-  (options: Option[], arrSelected: string[]): Option[]
+interface IGetOptionsNext {
+  (options: ISelectOption[], arrSelected: string[]): ISelectOption[]
 }
 
-export const Select: React.FunctionComponent<SelectArgs> = (
-  props: SelectArgs
+export const Select: React.FunctionComponent<ISelectArgs> = (
+  props: ISelectArgs
 ): JSX.Element => {
   const { size, sizeOnBlur, options, multiple } = props
 
@@ -36,8 +27,12 @@ export const Select: React.FunctionComponent<SelectArgs> = (
   const [onBlurState, setOnBlurState] = useState(false)
   const [sizeState, setSizeState] = useState(sizeOnBlur)
 
-  const getOptions = (optionsIn: Option[]): React.ReactElement[] => {
-    return optionsIn.map((option: Option) => {
+  useEffect(() => {
+    setOptionsState(options)
+  }, [options])
+
+  const getOptions = (optionsIn: ISelectOption[]): React.ReactElement[] => {
+    return optionsIn.map((option: ISelectOption) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
       const optionProps = {
@@ -51,9 +46,10 @@ export const Select: React.FunctionComponent<SelectArgs> = (
     })
   }
 
-  const getOptionsNext: GetOptionsNextInterface = (options2, arrSelected) => {
-    let output = options2.map((option: Option) => {
+  const getOptionsNext: IGetOptionsNext = (options2, arrSelected) => {
+    let output = options2.map((option: ISelectOption, i: number) => {
       const { value, selected } = option
+
       let selectedNext = false
       if (multiple) {
         if (selected) {
@@ -71,12 +67,21 @@ export const Select: React.FunctionComponent<SelectArgs> = (
       }
     })
 
-    const optionsStateSelected = optionsState.filter(
-      item => item.selected === true
-    )
-    if (optionsStateSelected.length === 1 && arrSelected.length === 0) {
-      output = options.map((item, i) =>
-        i === 0 ? { ...item, selected: true } : item
+    const optionsSelected = output.filter(item => item.selected === true)
+
+    // Case if nothing is selected
+    // if (optionsSelected.length === 1 && arrSelected.length === 0) {
+    //   output = options.map((item, i) =>
+    //     i === 0 ? { ...item, selected: true } : item
+    //   )
+    // }
+
+    console.info('Select [79]', { optionsSelected, output, arrSelected })
+
+    // Case if user tryes to select "0" option
+    if (optionsSelected.length > 1) {
+      output = output.map((item, i) =>
+        i === 0 ? { ...item, selected: false } : item
       )
     }
 
@@ -95,10 +100,7 @@ export const Select: React.FunctionComponent<SelectArgs> = (
       optionsStateSelected.length === 1 &&
       event.target.value === optionsStateSelected[0].value
     ) {
-      const optionsStateNext = options.map((item, i) =>
-        i === 0 ? { ...item, selected: true } : item
-      )
-      setOptionsState(optionsStateNext)
+      setOptionsState(options)
     } else {
       onBlurState && setOptionsState(optionsState2)
       setOnBlurState(false)
@@ -126,23 +128,40 @@ export const Select: React.FunctionComponent<SelectArgs> = (
     })
   }
 
-  const SELECT_ON_BLUR = (): void => {
-    const optionsSelected = optionsState.filter(item => item.selected === true)
-    const sizeSelected = optionsSelected.length ? optionsSelected.length : 1
+  const SELECT_ON_MOUSE_ENTER = (): void => {
+    options.length > size && setSizeState(size)
+
+    if (onBlurState) {
+      onBlurState && setOptionsState(optionsState2)
+      setOnBlurState(false)
+    }
+  }
+
+  const SELECT_ON_MOUSE_LEAVE = (): void => {
+    let optionsNext = optionsState.filter(item => item.selected === true)
+    if (optionsState.filter(item => item.selected === true).length === 0) {
+      optionsNext = options.filter((item, i) => i === 0)
+    }
+
+    const sizeSelected = optionsNext.length ? optionsNext.length : 1
 
     setOnBlurState(true)
     setSizeState(sizeSelected)
     setOptionsState2(optionsState)
-    setOptionsState(optionsSelected)
+    setOptionsState(optionsNext)
   }
 
-  const handleComponentEvents = (event: any, propsEvent: PropsEvent): void => {
+  const handleComponentEvents = (
+    event: any,
+    propsEvent: IHandleEventsProps
+  ): void => {
     const { typeEvent, data } = propsEvent
 
     const output = {
       SELECT_ON_MOUSE_DOWN,
       SELECT_ON_CHANGE,
-      SELECT_ON_BLUR,
+      SELECT_ON_MOUSE_ENTER,
+      SELECT_ON_MOUSE_LEAVE,
     }
 
     output[typeEvent]
@@ -156,7 +175,7 @@ export const Select: React.FunctionComponent<SelectArgs> = (
   return (
     <div className='Select'>
       <select
-        className='__selectTag'
+        className='__selectTag _scrollbar'
         name='select_component'
         size={sizeState}
         multiple={multiple}
@@ -166,9 +185,15 @@ export const Select: React.FunctionComponent<SelectArgs> = (
         onChange={(event: any) =>
           handleComponentEvents(event, { typeEvent: 'SELECT_ON_CHANGE' })
         }
-        onBlur={(event: any) =>
-          handleComponentEvents(event, { typeEvent: 'SELECT_ON_BLUR' })
+        onMouseEnter={(event: any) =>
+          handleComponentEvents(event, { typeEvent: 'SELECT_ON_MOUSE_ENTER' })
         }
+        onMouseLeave={(event: any) =>
+          handleComponentEvents(event, {
+            typeEvent: 'SELECT_ON_MOUSE_LEAVE',
+          })
+        }
+        onBlur={(event: any) => () => {}}
       >
         {getOptions(optionsState)}
       </select>

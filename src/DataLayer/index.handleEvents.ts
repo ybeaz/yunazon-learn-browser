@@ -1,4 +1,4 @@
-import { HandleEventsProps } from '../Interfaces/HandleEventsProps'
+import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
 import { ADD_DOCUMENT } from './handlers/ADD_DOCUMENT'
@@ -59,7 +59,7 @@ import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
 
 interface HandleEventsInterface {
-  (event: any, props: HandleEventsProps): void
+  (event: any, props: IHandleEventsProps): void
 }
 
 export const handleEvents: HandleEventsInterface = (event, props): void => {
