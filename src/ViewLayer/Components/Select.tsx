@@ -24,17 +24,17 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   const [optionsState, setOptionsState] = useState(options)
   const [optionsState2, setOptionsState2] = useState(options)
-  const [onBlurState, setOnBlurState] = useState(false)
+  const [onBlurState, setOnBlurState] = useState(true)
   const [sizeState, setSizeState] = useState(sizeOnBlur)
 
   useEffect(() => {
     setOptionsState(options)
     setOptionsState2(options)
-    setOnBlurState(false)
+    setOnBlurState(true)
     setSizeState(sizeOnBlur)
   }, [options])
 
-  const getOptions = (optionsIn: ISelectOption[]): React.ReactElement[] => {
+  const getOptionsJsx = (optionsIn: ISelectOption[]): React.ReactElement[] => {
     return optionsIn.map((option: ISelectOption) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
@@ -72,16 +72,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
     const optionsSelected = output.filter(item => item.selected === true)
 
-    // Case if nothing is selected
-    // if (optionsSelected.length === 1 && arrSelected.length === 0) {
-    //   output = options.map((item, i) =>
-    //     i === 0 ? { ...item, selected: true } : item
-    //   )
-    // }
-
-    console.info('Select [79]', { optionsSelected, output, arrSelected })
-
-    // Case if user tryes to select "0" option
     if (optionsSelected.length > 1) {
       output = output.map((item, i) =>
         i === 0 ? { ...item, selected: false } : item
@@ -175,10 +165,12 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
         })
   }
 
+  const classScrollbar = !onBlurState ? '_scrollbar' : ''
+
   return (
     <div className='Select'>
       <select
-        className='__selectTag _scrollbar'
+        className={`__selectTag ${classScrollbar}`}
         name='select_component'
         size={sizeState}
         multiple={multiple}
@@ -198,7 +190,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
         }
         onBlur={(event: any) => () => {}}
       >
-        {getOptions(optionsState)}
+        {getOptionsJsx(optionsState)}
       </select>
     </div>
   )
