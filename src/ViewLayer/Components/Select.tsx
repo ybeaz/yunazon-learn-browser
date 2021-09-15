@@ -29,6 +29,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   useEffect(() => {
     setOptionsState(options)
+    setOptionsState2(options)
+    setOnBlurState(false)
+    setSizeState(sizeOnBlur)
   }, [options])
 
   const getOptions = (optionsIn: ISelectOption[]): React.ReactElement[] => {
