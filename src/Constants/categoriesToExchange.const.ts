@@ -1,7 +1,11 @@
-export const CATEGORIES_TO_EXCHANGE: any = {
+export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
   notSelected: {
     en: 'not selected',
     ru: 'не выбрано',
+  },
+  AllSkills: {
+    en: 'All skills',
+    ru: 'Все навыки',
   },
   HTML: {
     en: 'HTML',

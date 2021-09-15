@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const DICTIONARY = {
+export const DICTIONARY: Record<string, any> = {
   _: {
     en: '_',
     ru: '_',

@@ -1,4 +1,32 @@
 .CatalogSEP {
+  display: flex;
+  flex-direction: column;
+
+  .__titleScreen {
+    display: flex;
+  }
+
+  .__searchForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0 1rem 0;
+
+    ._row {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 1rem 0;
+
+      ._col {
+        display: flex;
+        padding: 0 0 0.2rem 0;
+      }
+
+      ._titleForm {
+        display: flex;
+      }
+    }
+  }
+
   @media @large {
   }
   @media @desktop, @desktop-strict {

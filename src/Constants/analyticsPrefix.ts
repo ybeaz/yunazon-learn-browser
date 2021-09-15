@@ -1,1 +1,1 @@
-export const ANALYTICS_PREFIX = 'az_'
+export const ANALYTICS_PREFIX: string = 'az_'
