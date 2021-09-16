@@ -3,9 +3,12 @@ import { nanoid } from 'nanoid'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
-import { ISelectOption } from '../../Interfaces/ISelectOption'
-
-export { ISelectOption } from '../../Interfaces/ISelectOption'
+export interface ISelectOption {
+  defaultSelected?: boolean
+  selected: boolean
+  text?: string
+  value?: string
+}
 interface ISelectArgs {
   multiple?: boolean
   options: ISelectOption[]

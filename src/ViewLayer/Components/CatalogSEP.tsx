@@ -78,7 +78,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     sizeOnBlur: 1,
     size: 6,
     options: exchangeSkillOptions,
-    multiple: true,
+    multiple: false,
     typeEvent: 'SELECT_SKILLS_REQ',
   }
 
