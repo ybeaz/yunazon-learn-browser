@@ -12,7 +12,7 @@ export const SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {
     event.target.selectedOptions &&
     Array.from(event.target.selectedOptions, (option: any) => option.value)
 
-  console.info('handleEvents [42]', {
+  console.info('SELECT_SKILLS_OFFERED [15]', {
     data,
     arrSelected,
   })

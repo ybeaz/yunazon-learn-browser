@@ -102,14 +102,6 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     typeEvent: 'SELECT_SKILLS_REQ_LANG',
   }
 
-  console.info('CatalogSEP [85] ', {
-    selectLanguageProps,
-    exchangeSkillOptions,
-    language,
-    selectCountryProps,
-    CATEGORIES_TO_EXCHANGE,
-  })
-
   return (
     <div className='CatalogSEP'>
       <div className='__titleScreen'>
