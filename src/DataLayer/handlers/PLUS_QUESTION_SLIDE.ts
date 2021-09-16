@@ -1,4 +1,5 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -6,7 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const PLUS_QUESTION_SLIDE = (event: any, data: any): void => {
+export const PLUS_QUESTION_SLIDE: IActionEvent = (event, data) => {
   const { step } = data
   const {
     courses,

@@ -1,9 +1,10 @@
 import { store } from '../store'
-import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const AUTH_VKONTAKTE = (event: any, data: any): void => {
+export const AUTH_VKONTAKTE: IActionEvent = (event, data) => {
   const {
     componentsState: { oAuthStage },
   } = getState()

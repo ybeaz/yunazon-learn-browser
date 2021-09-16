@@ -1,10 +1,11 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync } from '../../DataLayer/index.action'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 
 const { dispatch } = store
 
-export const GET_INITIAL_QUERY_SETTING = (event: any, data: any): void => {
+export const GET_INITIAL_QUERY_SETTING: IActionEvent = (event, data) => {
   const { si, search, searchInput, ln, language } = getParsedUrlQuery()
 
   const searchInputIn = !!si

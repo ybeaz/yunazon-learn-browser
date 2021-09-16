@@ -1,9 +1,10 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
-export const CLICK_AUTH_FACEBOOK = (event: any, data: any): void => {
+export const CLICK_AUTH_FACEBOOK: IActionEvent = (event, data) => {
   dispatch(actionSync.SET_OAUTH_STAGE('signInWithFacebook'))
 
   const data2 = [

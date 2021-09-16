@@ -1,16 +1,17 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOpenedUrlInNewTab } from '../../Shared/getOpenedUrlInNewTab'
 
 const { dispatch, getState } = store
 
-export const AUTH_GOOGLE = (event: any, data: any): void => {
+export const AUTH_GOOGLE: IActionEvent = (event, data) => {
   const {
     componentsState: { oAuthStage },
   } = getState()
   if (oAuthStage !== 'signInWithGoogle') return
 
-  const [response] = data
+  const response = data[0]
 
   if (response === null) {
     const data2 = [

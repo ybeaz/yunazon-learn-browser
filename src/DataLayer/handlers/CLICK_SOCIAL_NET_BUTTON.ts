@@ -1,10 +1,11 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
 
 const { getState } = store
 
-export const CLICK_SOCIAL_NET_BUTTON = (event: any, data: any): void => {
+export const CLICK_SOCIAL_NET_BUTTON: IActionEvent = (event, data) => {
   const { buttonProps } = data
   const { documents } = getState()
   const documentsLen = documents.length

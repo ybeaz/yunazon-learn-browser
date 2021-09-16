@@ -1,9 +1,10 @@
 import { store } from '../store'
+import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
-export const CLICK_FORGET_PASSWORD = (event: any, data: any): void => {
+export const CLICK_FORGET_PASSWORD: IActionEvent = (event, data) => {
   const data2 = [
     {
       childName: 'AuthUser',

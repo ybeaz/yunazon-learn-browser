@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
 import { ISelectOption } from '../../Interfaces/ISelectOption'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 export { ISelectOption } from '../../Interfaces/ISelectOption'
 interface ISelectArgs {
@@ -11,6 +11,7 @@ interface ISelectArgs {
   options: ISelectOption[]
   size: number
   sizeOnBlur: number
+  typeEvent: string
 }
 
 interface IGetOptionsNext {
@@ -20,7 +21,7 @@ interface IGetOptionsNext {
 export const Select: React.FunctionComponent<ISelectArgs> = (
   props: ISelectArgs
 ): JSX.Element => {
-  const { size, sizeOnBlur, options, multiple } = props
+  const { size, sizeOnBlur, options, multiple, typeEvent } = props
 
   const [optionsState, setOptionsState] = useState(options)
   const [optionsState2, setOptionsState2] = useState(options)
@@ -116,7 +117,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       .map(item => item.value)
 
     handleEvents(event, {
-      typeEvent: 'SELECT_ON_CHANGE',
+      typeEvent,
       data: dataSelected,
     })
   }

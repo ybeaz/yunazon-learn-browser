@@ -7,4 +7,4 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const TEMPLATE: IActionEvent = (event, data) => {}
+export const SELECT_SKILLS_REQ: IActionEvent = (event, data) => {}

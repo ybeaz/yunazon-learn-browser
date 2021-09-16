@@ -1,4 +1,17 @@
-export const LANGUAGES: Record<string, any> = {
+export interface ILanguage {
+  '639-1'?: string
+  '639-2'?: string
+  '639-2/B'?: string
+  de: string[]
+  en: string[]
+  fr: string[]
+  ru: string[]
+  wikiUrl: string
+}
+
+export type ILanguages = Record<string, ILanguage>
+
+export const LANGUAGES: ILanguages = {
   eng: {
     '639-1': 'en',
     '639-2': 'eng',
@@ -7,7 +20,6 @@ export const LANGUAGES: Record<string, any> = {
     fr: ['anglais'],
     ru: ['Английский'],
     wikiUrl: 'https://en.wikipedia.org/wiki/English_language',
-    isActive: true,
   },
   mdr: {
     '639-2': 'mdr',
