@@ -67,7 +67,9 @@ interface ButtonArgs {
   handleEvents?: Function
 }
 
-export const Button: React.FunctionComponent<ButtonArgs> = props => {
+export const Button: React.FunctionComponent<ButtonArgs> = (
+  props: ButtonArgs
+): React.ReactElement => {
   const {
     icon,
     icon2 = null,

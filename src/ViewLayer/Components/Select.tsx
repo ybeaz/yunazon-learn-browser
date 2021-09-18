@@ -16,6 +16,8 @@ interface ISelectArgs {
   size: number
   sizeOnBlur: number
   typeEvent: string
+  componentId: string
+  openOmMouseEnter?: boolean
 }
 
 interface IGetOptionsNext {
@@ -31,6 +33,8 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     options,
     multiple,
     typeEvent: typeEventIn,
+    componentId,
+    openOmMouseEnter = false,
   } = props
 
   const animationRef = useRef(`_animationOut`)
@@ -43,8 +47,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   const getInjectedAnimationToSelect = (props2: {
     size2: number
     hBase2: number
+    delay2: number
   }): void => {
-    const { size2, hBase2 } = props2
+    const { size2, hBase2, delay2 } = props2
     const iterator = Array(12).fill(true)
 
     const hInInit = String(hBase2 * size2)
@@ -63,12 +68,12 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
       keyframesStyleArr.push(
         ...[
-          `._animationIn${i} { animation-duration: 0.6s; animation-name: in${i}; animation-direction: alternate; }`,
+          `._animationIn${i} { animation-duration: ${delay2}s; animation-name: in${i}; animation-direction: alternate; }`,
           `@-webkit-keyframes in${i} {
             0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
           }`,
 
-          `._animationOut${i} { animation-duration: 0.6s; animation-name: out${i}; animation-direction: alternate; }`,
+          `._animationOut${i} { animation-duration: ${delay2}s; animation-name: out${i}; animation-direction: alternate; }`,
           `@-webkit-keyframes out${i} {
             0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
           }`,
@@ -82,7 +87,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   useEffect(() => {
-    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25 })
+    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25, delay2: 0.6 })
   }, [])
 
   useEffect(() => {
@@ -142,24 +147,17 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     return output
   }
 
-  const SELECT_ON_MOUSE_DOWN = (event: any): void => {
+  const SELECT_ON_MOUSE_DOWN = (): void => {
     options.length > sizeIn && setSizeState(sizeIn)
-
-    const optionsStateSelected = optionsState.filter(
-      item => item.selected === true
-    )
-
-    if (
-      !onBlurState &&
-      optionsStateSelected.length === 1 &&
-      event.target.value === optionsStateSelected[0].value
-    ) {
-      setOptionsState(options)
-    } else {
+    if (onBlurState) {
       onBlurState && setOptionsState(optionsState2)
-      // onBlurRef.current = true
+      onBlurRef.current = true
       setOnBlurState(false)
     }
+  }
+
+  const SELECT_ON_MOUSE_ENTER = (): void => {
+    // if (openOmMouseEnter) SELECT_ON_MOUSE_DOWN()
   }
 
   const SELECT_ON_CHANGE = (event: any): void => {
@@ -183,17 +181,9 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     })
   }
 
-  const SELECT_ON_MOUSE_ENTER = (): void => {
-    options.length > sizeIn && setSizeState(sizeIn)
-
-    if (onBlurState) {
-      onBlurState && setOptionsState(optionsState2)
-      onBlurRef.current = true
-      setOnBlurState(false)
-    }
-  }
-
   const SELECT_ON_MOUSE_LEAVE = (): void => {
+    if (onBlurRef.current === false) return
+
     let optionsNext = optionsState.filter(item => item.selected === true)
     if (optionsState.filter(item => item.selected === true).length === 0) {
       optionsNext = options.filter((item, i) => i === 0)
@@ -221,6 +211,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       SELECT_ON_MOUSE_LEAVE,
     }
 
+    // console.info('Select [225]', { typeEvent2, componentId })
     output[typeEvent2]
       ? output[typeEvent2](event)
       : console.log('Select handleComponentEvents [error]', 'strange type', {
@@ -261,8 +252,12 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   const classBackground = onBlurState && optionsStateLen ? '_background' : ''
 
   return (
-    <div className={`Select ${selectAddAmimation} ${classBackground}`}>
+    <div
+      className={`Select ${selectAddAmimation} ${classBackground}`}
+      id={componentId}
+    >
       <select
+        id='select'
         className={`__selectTag ${classScrollbar} ${classBackground}`}
         name='select_component'
         size={size}
@@ -281,7 +276,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
             typeEvent: 'SELECT_ON_MOUSE_LEAVE',
           })
         }
-        onBlur={(event: any) => () => {}}
       >
         {getOptionsJsx(optionsState)}
       </select>
