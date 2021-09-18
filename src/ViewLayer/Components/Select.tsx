@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
+import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
 export interface ISelectOption {
@@ -24,16 +25,70 @@ interface IGetOptionsNext {
 export const Select: React.FunctionComponent<ISelectArgs> = (
   props: ISelectArgs
 ): JSX.Element => {
-  const { size, sizeOnBlur, options, multiple, typeEvent } = props
+  const {
+    size: sizeIn,
+    sizeOnBlur,
+    options,
+    multiple,
+    typeEvent: typeEventIn,
+  } = props
 
+  const animationRef = useRef(`_animationOut`)
+  const onBlurRef = useRef(true)
   const [optionsState, setOptionsState] = useState(options)
   const [optionsState2, setOptionsState2] = useState(options)
   const [onBlurState, setOnBlurState] = useState(true)
   const [sizeState, setSizeState] = useState(sizeOnBlur)
 
+  const getInjectedAnimationToSelect = (props2: {
+    size2: number
+    hBase2: number
+  }): void => {
+    const { size2, hBase2 } = props2
+    const iterator = Array(12).fill(true)
+
+    const hInInit = String(hBase2 * size2)
+
+    let keyframesStyleArr = [
+      `._animationIn { min-height: ${hInInit}rem; height: ${hInInit}rem; }`,
+    ]
+
+    iterator.forEach((item, i) => {
+      const f = i > 1 ? i : 1
+      const hOut = String(hBase2 * f)
+      const hIn =
+        hBase2 * f <= hBase2 * size2
+          ? String(hBase2 * size2)
+          : String(hBase2 * f)
+
+      keyframesStyleArr.push(
+        ...[
+          `._animationIn${i} { animation-duration: 0.6s; animation-name: in${i}; animation-direction: alternate; }`,
+          `@-webkit-keyframes in${i} {
+            0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
+          }`,
+
+          `._animationOut${i} { animation-duration: 0.6s; animation-name: out${i}; animation-direction: alternate; }`,
+          `@-webkit-keyframes out${i} {
+            0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
+          }`,
+        ]
+      )
+    })
+
+    keyframesStyleArr.forEach((item, i) =>
+      getCreatedStyleElement.sheet.insertRule(item, i)
+    )
+  }
+
+  useEffect(() => {
+    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25 })
+  }, [])
+
   useEffect(() => {
     setOptionsState(options)
     setOptionsState2(options)
+    onBlurRef.current = onBlurState
     setOnBlurState(true)
     setSizeState(sizeOnBlur)
   }, [options])
@@ -42,13 +97,15 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     return optionsIn.map((option: ISelectOption) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
+
       const optionProps = {
         key: nanoID,
-        className: '_option',
+        className: `_option`,
         value,
         defaultSelected,
         selected,
       }
+
       return <option {...optionProps}>{text}</option>
     })
   }
@@ -76,7 +133,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
     const optionsSelected = output.filter(item => item.selected === true)
 
-    if (optionsSelected.length > 1) {
+    if (multiple && optionsSelected.length > 1) {
       output = output.map((item, i) =>
         i === 0 ? { ...item, selected: false } : item
       )
@@ -86,7 +143,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   const SELECT_ON_MOUSE_DOWN = (event: any): void => {
-    options.length > size && setSizeState(size)
+    options.length > sizeIn && setSizeState(sizeIn)
 
     const optionsStateSelected = optionsState.filter(
       item => item.selected === true
@@ -100,12 +157,13 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       setOptionsState(options)
     } else {
       onBlurState && setOptionsState(optionsState2)
+      // onBlurRef.current = true
       setOnBlurState(false)
     }
   }
 
   const SELECT_ON_CHANGE = (event: any): void => {
-    setSizeState(size)
+    setSizeState(sizeIn)
 
     const arrSelected = event.target.selectedOptions
       ? Array.from(event.target.selectedOptions, (option: any) => option.value)
@@ -120,16 +178,17 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       .map(item => item.value)
 
     handleEvents(event, {
-      typeEvent,
+      typeEvent: typeEventIn,
       data: dataSelected,
     })
   }
 
   const SELECT_ON_MOUSE_ENTER = (): void => {
-    options.length > size && setSizeState(size)
+    options.length > sizeIn && setSizeState(sizeIn)
 
     if (onBlurState) {
       onBlurState && setOptionsState(optionsState2)
+      onBlurRef.current = true
       setOnBlurState(false)
     }
   }
@@ -142,6 +201,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
     const sizeSelected = optionsNext.length ? optionsNext.length : 1
 
+    onBlurRef.current = false
     setOnBlurState(true)
     setSizeState(sizeSelected)
     setOptionsState2(optionsState)
@@ -152,7 +212,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     event: any,
     propsEvent: IHandleEventsProps
   ): void => {
-    const { typeEvent, data } = propsEvent
+    const { typeEvent: typeEvent2, data } = propsEvent
 
     const output = {
       SELECT_ON_MOUSE_DOWN,
@@ -161,22 +221,51 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       SELECT_ON_MOUSE_LEAVE,
     }
 
-    output[typeEvent]
-      ? output[typeEvent](event)
+    output[typeEvent2]
+      ? output[typeEvent2](event)
       : console.log('Select handleComponentEvents [error]', 'strange type', {
-          typeEvent,
+          typeEvent2,
           data,
         })
   }
 
+  const optionsStateLen = optionsState.filter(
+    item => item.selected === true
+  ).length
+
+  const getAddAnimationClass = (
+    onBlur: boolean,
+    optionsLen: number
+  ): string => {
+    let output = `_animationOut${0}`
+
+    if (!onBlur && animationRef.current === '_animationOut') {
+      output = `_animationIn${optionsLen}`
+      animationRef.current = '_animationIn'
+    } else if (!onBlur && animationRef.current === '_animationIn') {
+      output =
+        optionsLen <= sizeIn ? `_animationIn` : `_animationIn${optionsLen}`
+      animationRef.current = '_animationIn'
+    } else if (onBlur) {
+      output = `_animationOut${optionsLen}`
+      animationRef.current = '_animationOut'
+    }
+
+    return output
+  }
+
+  const selectAddAmimation = getAddAnimationClass(onBlurState, optionsStateLen)
+  const size = optionsStateLen < sizeIn ? sizeState : optionsStateLen
   const classScrollbar = !onBlurState ? '_scrollbar' : ''
 
+  const classBackground = onBlurState && optionsStateLen ? '_background' : ''
+
   return (
-    <div className='Select'>
+    <div className={`Select ${selectAddAmimation} ${classBackground}`}>
       <select
-        className={`__selectTag ${classScrollbar}`}
+        className={`__selectTag ${classScrollbar} ${classBackground}`}
         name='select_component'
-        size={sizeState}
+        size={size}
         multiple={multiple}
         onMouseDown={(event: any) =>
           handleComponentEvents(event, { typeEvent: 'SELECT_ON_MOUSE_DOWN' })

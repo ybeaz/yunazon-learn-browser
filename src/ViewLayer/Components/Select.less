@@ -1,19 +1,58 @@
+@optionSelectedBackground: rgb(206, 206, 206); // #a6d7fa;
+
 .Select {
   display: flex;
 
   .__selectTag {
-    min-width: 10rem;
+    width: 15rem;
     border: 0px;
     outline: 0px;
+    text-indent: 1px;
+
+    -webkit-appearance: button;
+    // -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none;
+    -webkit-appearance: none;
+    box-shadow: inset;
+    user-select: none;
+    -webkit-autofill,
+    -webkit-autofill:hover,
+    -webkit-autofill:focus {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      background: @optionSelectedBackground !important;
+      background-color: @optionSelectedBackground;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
 
     ._option {
       display: flex;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:checked,
+      &:valid,
+      &::selection {
+        background: @optionSelectedBackground !important;
+        background-color: @optionSelectedBackground;
+      }
     }
+  }
+
+  ._background {
+    background: @optionSelectedBackground !important;
+    background-color: @optionSelectedBackground;
   }
 
   ._scrollbar {
     &::-webkit-scrollbar {
       -webkit-appearance: none;
+      -moz-appearance: none;
       width: 7px;
     }
 

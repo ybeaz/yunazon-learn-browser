@@ -12,8 +12,8 @@ export const SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {
     event.target.selectedOptions &&
     Array.from(event.target.selectedOptions, (option: any) => option.value)
 
-  console.info('SELECT_SKILLS_OFFERED [15]', {
-    data,
-    arrSelected,
-  })
+  // console.info('SELECT_SKILLS_OFFERED [15]', {
+  //   data,
+  //   arrSelected,
+  // })
 }

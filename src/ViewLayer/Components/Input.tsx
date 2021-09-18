@@ -12,7 +12,9 @@ interface InputArgs {
   storeFormProp: string
 }
 
-export const Input: React.FunctionComponent<InputArgs> = props => {
+export const Input: React.FunctionComponent<InputArgs> = (
+  props: InputArgs
+): React.ReactElement => {
   const { classAdded, type, placeholder, typeEvent, storeFormProp } = props
 
   const store = useSelector((store2: IRootStore) => store2)

@@ -6,6 +6,7 @@ export interface ICountry {
 }
 
 export const COUNTRIES: ICountry[] = [
+  { id: 0, name: 'not selected', alpha2: 'ns', alpha3: 'nsd' },
   { id: 4, name: 'Afghanistan', alpha2: 'af', alpha3: 'afg' },
   { id: 8, name: 'Albania', alpha2: 'al', alpha3: 'alb' },
   { id: 12, name: 'Algeria', alpha2: 'dz', alpha3: 'dza' },

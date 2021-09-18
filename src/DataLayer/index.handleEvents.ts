@@ -1,4 +1,5 @@
 import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
+import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
 import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
@@ -69,7 +70,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
 
-  const output = {
+  const output: Record<string, IActionEvent> = {
     TEMPLATE,
     SELECT_SKILLS_OFFERED,
     SELECT_SKILLS_REQ,
