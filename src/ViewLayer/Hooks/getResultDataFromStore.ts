@@ -15,8 +15,7 @@ export const getResultDataFromStore: Function = (
   courses: any[]
 ): IGetResultDataFromStore => {
   const {
-    courseActive: { courseID, capture: courseCapture },
-    moduleActive,
+    courseActive: { capture: courseCapture },
     questionsActive,
   } = getActiveCourseData(courses)
   const { result } = getAnswersChecked2(questionsActive)

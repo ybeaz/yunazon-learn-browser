@@ -12,7 +12,7 @@ function* sendEmailDocument(dataInput) {
   const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const { method, url, data, options } = sendEmailDocumentConnector(
+  const { method, url, payload, options } = sendEmailDocumentConnector(
     documentID,
     sendTo,
     sendCc,
@@ -26,7 +26,7 @@ function* sendEmailDocument(dataInput) {
       data: {
         data: { sendEmailDocument },
       },
-    } = yield axios[method](url, data, options)
+    } = yield axios[method](url, payload, options)
 
     yield put(
       actionSync.SET_MODAL_FRAMES([

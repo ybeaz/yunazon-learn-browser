@@ -13,17 +13,20 @@ export const getActiveCourseData: Function = (
   courses: any[]
 ): GetActiveCourseData => {
   const res = {
-    courseActive: {},
+    courseActive: { courseID: '', capture: '' },
     moduleActive: {},
     questionsActive: [],
   }
 
   try {
-    const courseActive = courses.find(course => course.isSelected === true)
+    const courseActive = courses.find(course => course.isSelected === true) || {
+      courseID: '',
+      capture: '',
+    }
 
-    const moduleActive = courseActive.modules.find(
-      module => module.isSelected === true
-    )
+    const moduleActive = courseActive?.modules
+      ? courseActive?.modules.find(module => module.isSelected === true)
+      : {}
 
     const questionsActive = moduleActive?.questions
       ? moduleActive.questions

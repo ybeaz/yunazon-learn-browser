@@ -130,7 +130,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       document.getElementsByTagName('body')[0].style.display = 'none'
       const { globalVars } = useSelector((store2: IRootStore) => store2)
       const { theme } = globalVars
-
       if (theme) {
         require(`./ViewLayer/Styles/theme${theme}.less`)
         document.getElementsByTagName('body')[0].style.display = 'flex'

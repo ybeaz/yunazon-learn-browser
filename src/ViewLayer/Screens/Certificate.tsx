@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
+import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { Button } from '../Components/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getDateString } from '../../Shared/getDateString'
@@ -27,6 +28,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     },
   } = props
 
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 
   let history = useHistory()
@@ -139,11 +141,8 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     ? `${lastName} ${firstName} ${middleName}`
     : `${lastName} ${firstName}`
 
-  // const emailInputsProps = { documentID }
-
   const slug = getSlug(courseCapture)
   const coursePathName = `/c/${courseID}/${slug}`
-  // console.info('Certificate [143]', { documents, language, coursePathName })
 
   return (
     <div className='Certificate'>
