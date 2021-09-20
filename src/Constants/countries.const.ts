@@ -3,10 +3,33 @@ export interface ICountry {
   name: string
   alpha2: string
   alpha3: string
+  dictionary?: {
+    en: string
+    ru: string
+  }
 }
 
 export const COUNTRIES: ICountry[] = [
-  { id: 0, name: 'not selected', alpha2: 'ns', alpha3: 'nsd' },
+  {
+    id: 840,
+    name: 'United States of America',
+    alpha2: 'us',
+    alpha3: 'usa',
+    dictionary: {
+      en: 'United States of America',
+      ru: 'Соединенные Штаты Америки',
+    },
+  },
+  {
+    id: 643,
+    name: 'Russian Federation',
+    alpha2: 'ru',
+    alpha3: 'rus',
+    dictionary: {
+      en: 'Russian Federation',
+      ru: 'Российская Федерация',
+    },
+  },
   { id: 4, name: 'Afghanistan', alpha2: 'af', alpha3: 'afg' },
   { id: 8, name: 'Albania', alpha2: 'al', alpha3: 'alb' },
   { id: 12, name: 'Algeria', alpha2: 'dz', alpha3: 'dza' },

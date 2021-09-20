@@ -12,15 +12,6 @@ export interface ILanguage {
 export type ILanguages = Record<string, ILanguage>
 
 export const LANGUAGES: ILanguages = {
-  notSelected: {
-    '639-1': 'en',
-    '639-2': 'eng',
-    de: ['nicht ausgewählt'],
-    en: ['not selected'],
-    fr: ['non séléctionné'],
-    ru: ['не выбрано'],
-    wikiUrl: '',
-  },
   eng: {
     '639-1': 'en',
     '639-2': 'eng',

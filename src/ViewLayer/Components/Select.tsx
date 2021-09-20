@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
+import { getUniqArrBy } from '../../Shared/getUniqArrBy'
 import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
@@ -17,7 +18,7 @@ interface ISelectArgs {
   sizeOnBlur: number
   typeEvent: string
   componentId: string
-  openOmMouseEnter?: boolean
+  language: string
 }
 
 interface IGetOptionsNext {
@@ -30,12 +31,14 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   const {
     size: sizeIn,
     sizeOnBlur,
-    options,
+    options: optionsIn,
     multiple,
     typeEvent: typeEventIn,
     componentId,
-    openOmMouseEnter = false,
+    language,
   } = props
+
+  const options = getUniqArrBy(['value'], optionsIn)
 
   const animationRef = useRef(`_animationOut`)
   const onBlurRef = useRef(true)
@@ -88,18 +91,19 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   useEffect(() => {
     getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25, delay2: 0.6 })
-  }, [])
 
-  useEffect(() => {
     setOptionsState(options)
     setOptionsState2(options)
     onBlurRef.current = onBlurState
     setOnBlurState(true)
     setSizeState(sizeOnBlur)
-  }, [options])
+  }, [language])
 
-  const getOptionsJsx = (optionsIn: ISelectOption[]): React.ReactElement[] => {
-    return optionsIn.map((option: ISelectOption) => {
+  const getOptionsSelected = (options2: ISelectOption[]): ISelectOption[] =>
+    options2.filter(item => item.selected === true)
+
+  const getOptionsJsx = (options2: ISelectOption[]): React.ReactElement[] => {
+    return options2.map((option: ISelectOption) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
 
@@ -147,38 +151,30 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     return output
   }
 
-  const SELECT_ON_MOUSE_DOWN = (): void => {
+  const SELECT_ON_MOUSE_DOWN = (event: any): void => {
     options.length > sizeIn && setSizeState(sizeIn)
     if (onBlurState) {
       onBlurState && setOptionsState(optionsState2)
       onBlurRef.current = true
       setOnBlurState(false)
     }
+
+    // Case clicking to remove the only selected option
+    const optionsSelected = getOptionsSelected(optionsState)
+    if (
+      !onBlurState &&
+      optionsSelected.length === 1 &&
+      optionsSelected[0].value === event.target.value
+    ) {
+      const optionsStateNext = getOptionsNext(optionsState, [
+        event.target.value,
+      ])
+      setOptionsState(optionsStateNext)
+    }
   }
 
   const SELECT_ON_MOUSE_ENTER = (): void => {
     // if (openOmMouseEnter) SELECT_ON_MOUSE_DOWN()
-  }
-
-  const SELECT_ON_CHANGE = (event: any): void => {
-    setSizeState(sizeIn)
-
-    const arrSelected = event.target.selectedOptions
-      ? Array.from(event.target.selectedOptions, (option: any) => option.value)
-      : [event.target.value]
-
-    const optionsStateNext = getOptionsNext(optionsState, arrSelected)
-
-    setOptionsState(optionsStateNext)
-
-    const dataSelected = optionsStateNext
-      .filter((item, i) => i !== 0 && item.selected === true)
-      .map(item => item.value)
-
-    handleEvents(event, {
-      typeEvent: typeEventIn,
-      data: dataSelected,
-    })
   }
 
   const SELECT_ON_MOUSE_LEAVE = (): void => {
@@ -196,6 +192,30 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setSizeState(sizeSelected)
     setOptionsState2(optionsState)
     setOptionsState(optionsNext)
+  }
+
+  const SELECT_ON_CHANGE = (event: any): void => {
+    setSizeState(sizeIn)
+
+    const arrSelected = event.target.selectedOptions
+      ? Array.from(event.target.selectedOptions, (option: any) => option.value)
+      : [event.target.value]
+
+    if (!multiple) {
+      SELECT_ON_MOUSE_LEAVE()
+    }
+
+    const optionsStateNext = getOptionsNext(optionsState, arrSelected)
+    setOptionsState(optionsStateNext)
+
+    const dataSelected = optionsStateNext
+      .filter((item, i) => i !== 0 && item.selected === true)
+      .map(item => item.value)
+
+    handleEvents(event, {
+      typeEvent: typeEventIn,
+      data: dataSelected,
+    })
   }
 
   const handleComponentEvents = (
@@ -220,9 +240,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
         })
   }
 
-  const optionsStateLen = optionsState.filter(
-    item => item.selected === true
-  ).length
+  const optionsSelectedLen = getOptionsSelected(optionsState).length
 
   const getAddAnimationClass = (
     onBlur: boolean,
@@ -245,11 +263,16 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     return output
   }
 
-  const selectAddAmimation = getAddAnimationClass(onBlurState, optionsStateLen)
-  const size = optionsStateLen < sizeIn ? sizeState : optionsStateLen
+  const selectAddAmimation = getAddAnimationClass(
+    onBlurState,
+    optionsSelectedLen
+  )
+  const size = optionsSelectedLen < sizeIn ? sizeState : optionsSelectedLen
   const classScrollbar = !onBlurState ? '_scrollbar' : ''
 
-  const classBackground = onBlurState && optionsStateLen ? '_background' : ''
+  const classBackground = onBlurState && optionsSelectedLen ? '_background' : ''
+
+  // console.info('Select [258]', { optionsSelectedLen })
 
   return (
     <div

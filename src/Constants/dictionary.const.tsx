@@ -1,9 +1,15 @@
 import React from 'react'
 
-export const DICTIONARY: Record<string, any> = {
+export type IDictionary = Record<string, any>
+
+export const DICTIONARY: IDictionary = {
   _: {
     en: '_',
     ru: '_',
+  },
+  notSelected: {
+    en: 'not selected',
+    ru: 'не выбрано',
   },
   PleaseReloadThePage: {
     en: (

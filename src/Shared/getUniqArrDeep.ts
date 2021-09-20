@@ -3,8 +3,11 @@
  * @param arr: any[]
  * @returns arr: any[]
  */
+export interface IGetUniqArrDeep {
+  (arr: any[]): any[]
+}
 
-export const getUniqArrDeep: Function = (arr: any[]): any[] => {
+export const getUniqArrDeep: IGetUniqArrDeep = arr => {
   const arrStr = arr.map(item => JSON.stringify(item))
   return [...new Set(arrStr)].map(item => JSON.parse(item))
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { DICTIONARY, IDictionary } from '../../Constants/dictionary.const'
+import { AGE, IAge } from '../../Constants/age.const'
 import { Button } from './Button'
 import { Input } from './Input'
 import { Select, ISelectOption } from './Select'
@@ -11,15 +13,31 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { nanoid } from 'nanoid'
 
 interface IGetExchangeSkillOptions {
-  (categories: any, language: string): ISelectOption[]
+  (
+    categories: any,
+    language: string,
+    defaultOption: ISelectOption
+  ): ISelectOption[]
 }
 
 interface IGetCountriesOptions {
-  (countries: ICountry[]): ISelectOption[]
+  (
+    countries: ICountry[],
+    language: string,
+    defaultOption: ISelectOption
+  ): ISelectOption[]
 }
 
 interface IGetLanguagesOptions {
-  (languages: ILanguages, language: string): ISelectOption[]
+  (
+    languages: ILanguages,
+    language: string,
+    defaultOption: ISelectOption
+  ): ISelectOption[]
+}
+
+interface IGetAgeOptions {
+  (age: IAge, defaultOption: ISelectOption): ISelectOption[]
 }
 
 export const CatalogSEP: React.FunctionComponent<any> = (
@@ -29,30 +47,42 @@ export const CatalogSEP: React.FunctionComponent<any> = (
 
   const getExchangeSkillOptions: IGetExchangeSkillOptions = (
     categories,
-    language2
+    language2,
+    defaultOption2
   ) => {
-    return Object.keys(categories).map(key => {
+    const exchangeSkillsMapped = Object.keys(categories).map(key => {
       return {
         text: categories[key][language2],
         value: key,
         selected: false,
       }
     })
+    return [defaultOption2, ...exchangeSkillsMapped]
   }
 
-  const getCountriesOptions: IGetCountriesOptions = countries => {
-    return countries.map(item => {
-      const { name, alpha3 } = item
+  const getCountriesOptions: IGetCountriesOptions = (
+    countries,
+    language2,
+    defaultOption2
+  ) => {
+    const countriesMapped = countries.map(item => {
+      const { name, alpha3, dictionary } = item
+      const text = dictionary ? dictionary[language2] : name
       return {
         selected: false,
-        text: name,
+        text,
         value: alpha3,
       }
     })
+    return [defaultOption2, ...countriesMapped]
   }
 
-  const getLanguagesOptions: IGetLanguagesOptions = (languages2, language2) => {
-    return Object.keys(languages2).map((ln: string) => {
+  const getLanguagesOptions: IGetLanguagesOptions = (
+    languages2,
+    language2,
+    defaultOption2
+  ) => {
+    const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
       const [text] = languages2[ln][language2]
       return {
         text,
@@ -60,14 +90,41 @@ export const CatalogSEP: React.FunctionComponent<any> = (
         selected: false,
       }
     })
+    return [defaultOption2, ...lagnguagesMapped]
   }
 
+  const getAgeOptions: IGetAgeOptions = (age2, defaultOption2) => {
+    const ageMapped = age2.map((number2: number) => {
+      return {
+        text: String(number2),
+        value: String(number2),
+        selected: false,
+      }
+    })
+    return [defaultOption2, ...ageMapped]
+  }
+
+  const defaultOption = {
+    text: DICTIONARY.notSelected[language],
+    value: 'notSelected',
+    selected: false,
+  }
   const exchangeSkillOptions = getExchangeSkillOptions(
     CATEGORIES_TO_EXCHANGE,
-    language
+    language,
+    defaultOption
   )
-  const languagesOptions = getLanguagesOptions(LANGUAGES, language)
-  const countriesOptions = getCountriesOptions(COUNTRIES)
+  const languagesOptions = getLanguagesOptions(
+    LANGUAGES,
+    language,
+    defaultOption
+  )
+  const countriesOptions = getCountriesOptions(
+    COUNTRIES,
+    language,
+    defaultOption
+  )
+  const ageOptions = getAgeOptions(AGE, defaultOption)
 
   const childrenProps = {
     selectSkillsOfferedProps: {
@@ -76,6 +133,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: exchangeSkillOptions,
       multiple: true,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_OFFERED',
     },
     selectSkillsRequiredProps: {
@@ -84,6 +142,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: exchangeSkillOptions,
       multiple: false,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ',
     },
     selectCountryProps: {
@@ -92,6 +151,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: countriesOptions,
       multiple: true,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ_COUNTRY',
     },
     selectLanguageProps: {
@@ -100,21 +160,26 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: languagesOptions,
       multiple: true,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ_LANG',
     },
-    inputAgeFromProps: {
-      classAdded: 'string',
-      type: 'string',
-      placeholder: 'optional',
-      typeEvent: 'string',
-      storeFormProp: 'string',
+    selectAgeFromProps: {
+      sizeOnBlur: 1,
+      size: 6,
+      options: ageOptions,
+      multiple: false,
+      componentId: nanoid(),
+      language,
+      typeEvent: 'SELECT_SKILLS_REQ_AGE_FROM',
     },
-    inputAgeToProps: {
-      classAdded: 'string',
-      type: 'string',
-      placeholder: 'optional',
-      typeEvent: 'string',
-      storeFormProp: 'string',
+    selectAgeToProps: {
+      sizeOnBlur: 1,
+      size: 6,
+      options: ageOptions,
+      multiple: false,
+      componentId: nanoid(),
+      language,
+      typeEvent: 'SELECT_SKILLS_REQ_AGE_TO',
     },
     selectGenderProps: {
       sizeOnBlur: 1,
@@ -122,6 +187,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: [],
       multiple: false,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ_GENDER',
     },
     selectMediaProps: {
@@ -130,6 +196,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: [],
       multiple: true,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ_MEDIA',
     },
     inputDescriptionContainsProps: {
@@ -145,6 +212,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       options: [],
       multiple: false,
       componentId: nanoid(),
+      language,
       typeEvent: 'SELECT_SKILLS_REQ_SORT_BY',
     },
     buttonSearchProps: {
@@ -177,7 +245,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>
-            Find a skill exchange partner who has 1:
+            Find a skill exchange partner who has:
           </div>
           <div className='_col'>
             <Select {...childrenProps.selectSkillsRequiredProps} />
@@ -199,10 +267,10 @@ export const CatalogSEP: React.FunctionComponent<any> = (
           <div className='_col _titleForm'>Age:</div>
           <div className='_col'>
             <div className='_ageInput'>
-              <Input {...childrenProps.inputAgeFromProps} />
+              <Select {...childrenProps.selectAgeFromProps} />
             </div>
             <div className='_ageInput'>
-              <Input {...childrenProps.inputAgeToProps} />
+              <Select {...childrenProps.selectAgeToProps} />
             </div>
           </div>
         </div>
