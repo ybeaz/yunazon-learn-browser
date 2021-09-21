@@ -141,8 +141,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       typeEvent: 'SELECT_SKILLS_OFFERED',
     },
     selectSkillsRequiredProps: {
-      classAdded: 'Select_skillsRequired',
-      sizeOnBlur: 1,
+      classAdded: 'Select_skillsOffered', // 'Select_skillsRequired',
+      sizeOnBlur: 2,
       size: 6,
       options: exchangeSkillOptions,
       multiple: false,
@@ -191,15 +191,15 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       typeEvent: 'SELECT_SKILLS_REQ_AGE_TO',
     },
     inputAgeFromRequiredProps: {
-      classAdded: 'Input_ageFromRequired',
-      type: 'string',
+      classAdded: 'Input_ageFromToRequired',
+      type: 'text',
       placeholder: 'optional',
       typeEvent: 'string',
       storeFormProp: 'string',
     },
     inputAgeToRequiredProps: {
-      classAdded: 'Input_ageToRequired',
-      type: 'string',
+      classAdded: 'Input_ageFromToRequired',
+      type: 'text',
       placeholder: 'optional',
       typeEvent: 'string',
       storeFormProp: 'string',
@@ -226,7 +226,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     },
     inputDescriptionRequiredProps: {
       classAdded: 'Input_descriptionRequired',
-      type: 'string',
+      type: 'text',
       placeholder: 'optional',
       typeEvent: 'string',
       storeFormProp: 'string',
@@ -257,6 +257,11 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     },
   }
 
+  const classCol01 = '_col_1 _titleForm'
+  const classCol02 = '_col_1'
+
+  console.info('CatalogSEP [260]')
+
   return (
     <div className='CatalogSEP'>
       <div className='__titleScreen'>
@@ -264,71 +269,67 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       </div>
       <form className='__searchForm'>
         <div className='_row'>
-          <div className='_col _titleForm'>You are suggesting to exchange:</div>
-          <div className='_col'>
+          <div className={classCol01}>You are suggesting to exchange:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectSkillsOfferedProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>
+          <div className={classCol01}>
             Find a skill exchange partner who has:
           </div>
-          <div className='_col'>
+          <div className={classCol02}>
             <Select {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Country:</div>
-          <div className='_col'>
+          <div className={classCol01}>Country:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Speaking language:</div>
-          <div className='_col'>
+          <div className={classCol01}>Speaking language:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Age:</div>
-          <div className='_col'>
-            <div className='_ageInput'>
-              <Input {...childrenProps.inputAgeFromRequiredProps} />
-            </div>
-            <div className='_ageInput'>
-              <Input {...childrenProps.inputAgeToRequiredProps} />
-            </div>
+          <div className={classCol01}>Age:</div>
+          <div className={classCol02}>
+            <Input {...childrenProps.inputAgeFromRequiredProps} />
+            <Input {...childrenProps.inputAgeToRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Gender:</div>
-          <div className='_col'>
+          <div className={classCol01}>Gender:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectGenderRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Prefered media or mean:</div>
-          <div className='_col'>
+          <div className={classCol01}>Prefered media or mean:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Description contains:</div>
-          <div className='_col'>
+          <div className={classCol01}>Description contains:</div>
+          <div className={classCol02}>
             <div className='_description'>
               <Input {...childrenProps.inputDescriptionRequiredProps} />
             </div>
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'>Sort results by:</div>
-          <div className='_col'>
+          <div className={classCol01}>Sort results by:</div>
+          <div className={classCol02}>
             <Select {...childrenProps.selectSortByProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className='_col _titleForm'></div>
-          <div className='_col'>
+          <div className={classCol01}></div>
+          <div className={classCol02}>
             <Button {...childrenProps.buttonSearchSepProps} />
           </div>
         </div>

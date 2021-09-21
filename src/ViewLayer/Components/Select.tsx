@@ -12,6 +12,7 @@ export interface ISelectOption {
   value?: string
 }
 interface ISelectArgs {
+  classAdded: string
   multiple?: boolean
   options: ISelectOption[]
   size: number
@@ -29,6 +30,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   props: ISelectArgs
 ): JSX.Element => {
   const {
+    classAdded,
     size: sizeIn,
     sizeOnBlur,
     options: optionsIn,
@@ -90,7 +92,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   useEffect(() => {
-    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25, delay2: 0.6 })
+    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.6, delay2: 0.6 })
 
     setOptionsState(options)
     setOptionsState2(options)
@@ -267,21 +269,23 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     onBlurState,
     optionsSelectedLen
   )
-  const size = optionsSelectedLen < sizeIn ? sizeState : optionsSelectedLen
-  const classScrollbar = !onBlurState ? '_scrollbar' : ''
+  let size = optionsSelectedLen < sizeIn ? sizeState : optionsSelectedLen
+  size = !multiple && sizeState === 1 ? 2 : size
 
+  const classScrollbar = !onBlurState ? '_scrollbar' : ''
+  const classHeightFixed = !multiple && onBlurState ? '_heightFixed' : ''
   const classBackground = onBlurState && optionsSelectedLen ? '_background' : ''
 
-  // console.info('Select [258]', { optionsSelectedLen })
+  // console.info('Select [258]', { size, optionsSelectedLen, sizeIn, sizeState })
 
   return (
     <div
-      className={`Select ${selectAddAmimation} ${classBackground}`}
+      className={`Select ${classAdded} ${selectAddAmimation} ${classBackground}`}
       id={componentId}
     >
       <select
         id='select'
-        className={`__selectTag ${classScrollbar} ${classBackground}`}
+        className={`__selectTag ${classScrollbar} ${classHeightFixed} ${classBackground}`}
         name='select_component'
         size={size}
         multiple={multiple}

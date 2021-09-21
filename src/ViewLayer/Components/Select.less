@@ -3,9 +3,12 @@
 .Select {
   display: flex;
   height: fit-content;
+  flex: 1;
+  width: 100%;
 
   .__selectTag {
-    width: 15rem;
+    flex: 1;
+    width: 100%;
     border: 0px;
     outline: 0px;
     text-indent: 1px;
@@ -32,6 +35,7 @@
 
     ._option {
       display: flex;
+      padding: 0.2rem 0.5rem;
 
       &:hover,
       &:focus,
@@ -43,6 +47,10 @@
         background-color: @optionSelectedBackground;
       }
     }
+  }
+
+  ._heightFixed {
+    height: 1.6rem;
   }
 
   ._background {
@@ -73,4 +81,31 @@
   }
   @media @phone, @phone-strict {
   }
+}
+
+.Select_ageFromRequired {
+}
+
+.Select_ageToRequired {
+}
+
+.Select_countryRequired {
+}
+
+.Select_genderRequired {
+}
+
+.Select_languageRequired {
+}
+
+.Select_mediaRequired {
+}
+
+.Select_skillsOffered {
+}
+
+.Select_skillsRequired {
+}
+
+.Select_SortByProps {
 }
