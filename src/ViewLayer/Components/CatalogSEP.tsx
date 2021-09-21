@@ -12,6 +12,9 @@ import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.con
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { nanoid } from 'nanoid'
 
+/**
+ * @description Component Catalog for Skills Exchange Page (SEP)
+ */
 interface IGetExchangeSkillOptions {
   (
     categories: any,
@@ -128,6 +131,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
 
   const childrenProps = {
     selectSkillsOfferedProps: {
+      classAdded: 'Select_skillsOffered',
       sizeOnBlur: 1,
       size: 6,
       options: exchangeSkillOptions,
@@ -137,6 +141,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       typeEvent: 'SELECT_SKILLS_OFFERED',
     },
     selectSkillsRequiredProps: {
+      classAdded: 'Select_skillsRequired',
       sizeOnBlur: 1,
       size: 6,
       options: exchangeSkillOptions,
@@ -145,7 +150,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ',
     },
-    selectCountryProps: {
+    selectCountryRequiredProps: {
+      classAdded: 'Select_countryRequired',
       sizeOnBlur: 1,
       size: 6,
       options: countriesOptions,
@@ -154,7 +160,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_COUNTRY',
     },
-    selectLanguageProps: {
+    selectLanguageRequiredProps: {
+      classAdded: 'Select_languageRequired',
       sizeOnBlur: 1,
       size: 6,
       options: languagesOptions,
@@ -163,7 +170,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_LANG',
     },
-    selectAgeFromProps: {
+    selectAgeFromRequiredProps: {
+      classAdded: 'Select_ageFromRequired',
       sizeOnBlur: 1,
       size: 6,
       options: ageOptions,
@@ -172,7 +180,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_AGE_FROM',
     },
-    selectAgeToProps: {
+    selectAgeToRequiredProps: {
+      classAdded: 'Select_ageToRequired',
       sizeOnBlur: 1,
       size: 6,
       options: ageOptions,
@@ -181,7 +190,22 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_AGE_TO',
     },
-    selectGenderProps: {
+    inputAgeFromRequiredProps: {
+      classAdded: 'Input_ageFromRequired',
+      type: 'string',
+      placeholder: 'optional',
+      typeEvent: 'string',
+      storeFormProp: 'string',
+    },
+    inputAgeToRequiredProps: {
+      classAdded: 'Input_ageToRequired',
+      type: 'string',
+      placeholder: 'optional',
+      typeEvent: 'string',
+      storeFormProp: 'string',
+    },
+    selectGenderRequiredProps: {
+      classAdded: 'Select_genderRequired',
       sizeOnBlur: 1,
       size: 4,
       options: [],
@@ -190,7 +214,8 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_GENDER',
     },
-    selectMediaProps: {
+    selectMediaRequiredProps: {
+      classAdded: 'Select_mediaRequired',
       sizeOnBlur: 1,
       size: 6,
       options: [],
@@ -199,14 +224,15 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_MEDIA',
     },
-    inputDescriptionContainsProps: {
-      classAdded: 'string',
+    inputDescriptionRequiredProps: {
+      classAdded: 'Input_descriptionRequired',
       type: 'string',
       placeholder: 'optional',
       typeEvent: 'string',
       storeFormProp: 'string',
     },
     selectSortByProps: {
+      classAdded: 'Select_SortByProps',
       sizeOnBlur: 1,
       size: 4,
       options: [],
@@ -215,12 +241,12 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       language,
       typeEvent: 'SELECT_SKILLS_REQ_SORT_BY',
     },
-    buttonSearchProps: {
+    buttonSearchSepProps: {
+      classAdded: 'Button_searchSep',
       icon: null,
       icon2: null,
       captureLeft: 'Search',
       captureRight: '',
-      classAdded: '',
       action: {},
       isDisplaying: true,
       tooltipText: '',
@@ -254,43 +280,43 @@ export const CatalogSEP: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className='_col _titleForm'>Country:</div>
           <div className='_col'>
-            <Select {...childrenProps.selectCountryProps} />
+            <Select {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>Speaking language:</div>
           <div className='_col'>
-            <Select {...childrenProps.selectLanguageProps} />
+            <Select {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>Age:</div>
           <div className='_col'>
             <div className='_ageInput'>
-              <Select {...childrenProps.selectAgeFromProps} />
+              <Input {...childrenProps.inputAgeFromRequiredProps} />
             </div>
             <div className='_ageInput'>
-              <Select {...childrenProps.selectAgeToProps} />
+              <Input {...childrenProps.inputAgeToRequiredProps} />
             </div>
           </div>
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>Gender:</div>
           <div className='_col'>
-            <Select {...childrenProps.selectGenderProps} />
+            <Select {...childrenProps.selectGenderRequiredProps} />
           </div>
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>Prefered media or mean:</div>
           <div className='_col'>
-            <Select {...childrenProps.selectMediaProps} />
+            <Select {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
         <div className='_row'>
           <div className='_col _titleForm'>Description contains:</div>
           <div className='_col'>
             <div className='_description'>
-              <Input {...childrenProps.inputDescriptionContainsProps} />
+              <Input {...childrenProps.inputDescriptionRequiredProps} />
             </div>
           </div>
         </div>
@@ -303,7 +329,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className='_col _titleForm'></div>
           <div className='_col'>
-            <Button {...childrenProps.buttonSearchProps} />
+            <Button {...childrenProps.buttonSearchSepProps} />
           </div>
         </div>
       </form>
