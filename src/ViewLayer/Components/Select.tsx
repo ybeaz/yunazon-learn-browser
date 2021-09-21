@@ -54,9 +54,24 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     hBase2: number
     delay2: number
   }): void => {
-    const { size2, hBase2, delay2 } = props2
+    const { size2, hBase2: hBase2In, delay2 } = props2
     const iterator = Array(12).fill(true)
 
+    const k = {
+      '1': 0.1,
+      '2': 0.1,
+      '3': 0.14,
+      '4': 0.18,
+      '5': 0.21,
+      '6': 0.26,
+      '7': 0.33,
+      '8': 0.41,
+    }
+
+    const factorK = 0.18 // k[String(size2)]
+
+    const hBase2 = factorK * size2
+    console.info('Select [74]', { size2, factorK, hBase2 })
     const hInInit = String(hBase2 * size2)
 
     let keyframesStyleArr = [
@@ -64,27 +79,31 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     ]
 
     iterator.forEach((item, i) => {
-      const f = i > 1 ? i : 1
-      const hOut = String(hBase2 * f)
-      const hIn =
-        hBase2 * f <= hBase2 * size2
-          ? String(hBase2 * size2)
-          : String(hBase2 * f)
+      if (i < size2) {
+        const f = i > 1 ? i : 1
+        const hOut = String(hBase2 * f)
+        const hIn =
+          hBase2 * f <= hBase2 * size2
+            ? String(hBase2 * size2)
+            : String(hBase2 * f)
 
-      keyframesStyleArr.push(
-        ...[
-          `._animationIn${i} { animation-duration: ${delay2}s; animation-name: in${i}; animation-direction: alternate; }`,
-          `@-webkit-keyframes in${i} {
+        keyframesStyleArr.push(
+          ...[
+            `._animationIn${i} { animation-duration: ${delay2}s; animation-name: in${i}; animation-direction: alternate; }`,
+            `@-webkit-keyframes in${i} {
             0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
           }`,
 
-          `._animationOut${i} { animation-duration: ${delay2}s; animation-name: out${i}; animation-direction: alternate; }`,
-          `@-webkit-keyframes out${i} {
+            `._animationOut${i} { animation-duration: ${delay2}s; animation-name: out${i}; animation-direction: alternate; }`,
+            `@-webkit-keyframes out${i} {
             0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
           }`,
-        ]
-      )
+          ]
+        )
+      }
     })
+
+    // const getStyleElement = getCreatedStyleElement
 
     keyframesStyleArr.forEach((item, i) =>
       getCreatedStyleElement.sheet.insertRule(item, i)
@@ -92,7 +111,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   useEffect(() => {
-    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.6, delay2: 0.6 })
+    getInjectedAnimationToSelect({ size2: sizeIn, hBase2: 1.25, delay2: 0.6 })
 
     setOptionsState(options)
     setOptionsState2(options)

@@ -1,3 +1,8 @@
 export type IAge = number[]
 
-export const AGE: IAge = [14, 15, 16, 17, 18, 19, 20, 21]
+const arr = new Array(60).fill(true)
+const arrNum = arr.map((item, i) => {
+  return i + 14
+})
+
+export const AGE: IAge = arrNum
