@@ -41,6 +41,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   } = props
 
   const options = getUniqArrBy(['value'], optionsIn)
+  const uniqClassStr = 'componentId'
 
   const animationRef = useRef(`_animationOut`)
   const onBlurRef = useRef(true)
@@ -75,7 +76,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     const hInInit = String(hBase2 * size2)
 
     let keyframesStyleArr = [
-      `._animationIn { min-height: ${hInInit}rem; height: ${hInInit}rem; }`,
+      `._animationIn_${uniqClassStr}_ { min-height: ${hInInit}rem; height: ${hInInit}rem; }`,
     ]
 
     iterator.forEach((item, i) => {
@@ -89,13 +90,13 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
         keyframesStyleArr.push(
           ...[
-            `._animationIn${i} { animation-duration: ${delay2}s; animation-name: in${i}; animation-direction: alternate; }`,
-            `@-webkit-keyframes in${i} {
+            `._animationIn_${uniqClassStr}_${i} { animation-duration: ${delay2}s; animation-name: in_${componentId}_${i}; animation-direction: alternate; }`,
+            `@-webkit-keyframes in_${componentId}_${i} {
             0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
           }`,
 
-            `._animationOut${i} { animation-duration: ${delay2}s; animation-name: out${i}; animation-direction: alternate; }`,
-            `@-webkit-keyframes out${i} {
+            `._animationOut_${uniqClassStr}_${i} { animation-duration: ${delay2}s; animation-name: out_${componentId}_${i}; animation-direction: alternate; }`,
+            `@-webkit-keyframes out_${componentId}_${i} {
             0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
           }`,
           ]
@@ -267,17 +268,19 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     onBlur: boolean,
     optionsLen: number
   ): string => {
-    let output = `_animationOut${0}`
+    let output = `_animationOut_${uniqClassStr}_${0}`
 
     if (!onBlur && animationRef.current === '_animationOut') {
-      output = `_animationIn${optionsLen}`
+      output = `_animationIn_${uniqClassStr}_${optionsLen}`
       animationRef.current = '_animationIn'
     } else if (!onBlur && animationRef.current === '_animationIn') {
       output =
-        optionsLen <= sizeIn ? `_animationIn` : `_animationIn${optionsLen}`
+        optionsLen <= sizeIn
+          ? `_animationIn_${uniqClassStr}_`
+          : `_animationIn_${uniqClassStr}_${optionsLen}`
       animationRef.current = '_animationIn'
     } else if (onBlur) {
-      output = `_animationOut${optionsLen}`
+      output = `_animationOut${optionsLen}_${uniqClassStr}_`
       animationRef.current = '_animationOut'
     }
 
