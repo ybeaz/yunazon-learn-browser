@@ -15,6 +15,6 @@ export const GENDER: IGender = {
   },
   other: {
     en: 'other',
-    ru: 'другой',
+    ru: 'другое',
   },
 }

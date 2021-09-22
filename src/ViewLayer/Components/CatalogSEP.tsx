@@ -123,14 +123,14 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     language2,
     defaultOption2
   ) => {
-    const gendersMapped = Object.keys(dictionary2).map((elem2: string) => {
+    const dictionaryMapped = Object.keys(dictionary2).map((elem2: string) => {
       return {
-        text: elem2,
-        value: dictionary2[elem2][language2],
+        text: dictionary2[elem2][language2],
+        value: elem2,
         selected: false,
       }
     })
-    return [defaultOption2, ...gendersMapped]
+    return [defaultOption2, ...dictionaryMapped]
   }
 
   const defaultOption = {
@@ -138,24 +138,31 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     value: 'notSelected',
     selected: false,
   }
+
   const exchangeSkillOptions = getExchangeSkillOptions(
     CATEGORIES_TO_EXCHANGE,
     language,
     defaultOption
   )
+
   const languagesOptions = getLanguagesOptions(
     LANGUAGES,
     language,
     defaultOption
   )
+
   const countriesOptions = getCountriesOptions(
     COUNTRIES,
     language,
     defaultOption
   )
+
   const ageOptions = getAgeOptions(AGE, defaultOption)
+
   const genderOptions = getStdDictionaryOptions(GENDER, language, defaultOption)
+
   const mediaOptions = getStdDictionaryOptions(MEDIA, language, defaultOption)
+
   const sortByOptions = getStdDictionaryOptions(
     SORT_BY,
     language,
@@ -292,8 +299,6 @@ export const CatalogSEP: React.FunctionComponent<any> = (
 
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1'
-
-  console.info('CatalogSEP [260]')
 
   return (
     <div className='CatalogSEP'>
