@@ -302,9 +302,9 @@ export const CatalogSEP: React.FunctionComponent<any> = (
 
   return (
     <div className='CatalogSEP'>
-      <div className='__titleScreen'>
+      <h1 className='__titleScreen'>
         {DICTIONARY['Members Search - Find a Skill Exchange Partner'][language]}
-      </div>
+      </h1>
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>
