@@ -7,6 +7,70 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  'Multi choice': {
+    en: 'Multi choice',
+    ru: 'Мульти выбор',
+  },
+  optional: {
+    en: 'optional',
+    ru: 'опционно',
+  },
+  Search: {
+    en: 'Search',
+    ru: 'Поиск',
+  },
+  'Sort results by': {
+    en: 'Sort results by',
+    ru: 'Отрортировать результаты по',
+  },
+  'Description contains': {
+    en: 'Description contains',
+    ru: 'Описание содержит',
+  },
+  'Prefered media or mean': {
+    en: 'Prefered media or mean',
+    ru: 'Способ коммуникации',
+  },
+  Gender: {
+    en: 'Gender',
+    ru: 'Пол',
+  },
+  to: {
+    en: 'to',
+    ru: 'до',
+  },
+  fromStart: {
+    en: 'from',
+    ru: 'от',
+  },
+  Age: {
+    en: 'Age',
+    ru: 'Возраст',
+  },
+  'Speaking language': {
+    en: 'Speaking language',
+    ru: 'Язык общения',
+  },
+  Country: {
+    en: 'Country',
+    ru: 'Страна',
+  },
+  'Find a skill exchange partner who has': {
+    en: 'Find a skill exchange partner who has',
+    ru: 'Найдите участника со знаниями',
+  },
+  'You are suggesting to exchange': {
+    en: 'You are suggesting to exchange',
+    ru: 'Вы предлагаете для обмена',
+  },
+  'Members Search - Find a Skill Exchange Partner': {
+    en: 'Members Search - Find a Skill Exchange Partner',
+    ru: 'Поиск Пользователей - Найдите Партнера по Обмену Знаниями',
+  },
+  'multi choice': {
+    en: 'multi choice',
+    ru: 'множественный выбор',
+  },
   notSelected: {
     en: 'not selected',
     ru: 'не выбрано',

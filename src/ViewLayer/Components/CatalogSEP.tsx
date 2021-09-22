@@ -1,10 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DICTIONARY, IDictionary } from '../../Constants/dictionary.const'
-import { SORT_BY, ISortBy } from '../../Constants/sortBy.const'
-import { MEDIA, IMedia } from '../../Constants/media.const'
-import { GENDER, IGender } from '../../Constants/gender.const'
+import { SORT_BY } from '../../Constants/sortBy.const'
+import { MEDIA } from '../../Constants/media.const'
+import { GENDER } from '../../Constants/gender.const'
 import { AGE, IAge } from '../../Constants/age.const'
 import { Button } from './Button'
 import { Input } from './Input'
@@ -233,14 +234,14 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     inputAgeFromRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
-      placeholder: 'optional',
+      placeholder: DICTIONARY['optional'][language],
       typeEvent: 'string',
       storeFormProp: 'string',
     },
     inputAgeToRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
-      placeholder: 'optional',
+      placeholder: DICTIONARY['optional'][language],
       typeEvent: 'string',
       storeFormProp: 'string',
     },
@@ -267,7 +268,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
     inputDescriptionRequiredProps: {
       classAdded: 'Input_descriptionRequired',
       type: 'text',
-      placeholder: 'optional',
+      placeholder: DICTIONARY['optional'][language],
       typeEvent: 'string',
       storeFormProp: 'string',
     },
@@ -285,15 +286,14 @@ export const CatalogSEP: React.FunctionComponent<any> = (
       classAdded: 'Button_searchSep',
       icon: null,
       icon2: null,
-      captureLeft: 'Search',
+      captureLeft: DICTIONARY['Search'][language],
       captureRight: '',
-      action: {},
+      action: { typeEvent: 'DEV_STAGE' },
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
       isTooltipVisible: false,
       isUnderlined: false,
-      handleEvents: () => {},
     },
   }
 
@@ -303,66 +303,80 @@ export const CatalogSEP: React.FunctionComponent<any> = (
   return (
     <div className='CatalogSEP'>
       <div className='__titleScreen'>
-        Members Search - Find a Skill Exchange Partner
+        {DICTIONARY['Members Search - Find a Skill Exchange Partner'][language]}
       </div>
       <form className='__searchForm'>
         <div className='_row'>
-          <div className={classCol01}>You are suggesting to exchange</div>
+          <div className={classCol01}>
+            {DICTIONARY['You are suggesting to exchange'][language]}
+            {' *'}
+          </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectSkillsOfferedProps} />
           </div>
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            Find a skill exchange partner who has
+            {DICTIONARY['Find a skill exchange partner who has'][language]}
           </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Country</div>
+          <div className={classCol01}>
+            {DICTIONARY['Country'][language]}
+            {' *'}
+          </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Speaking language</div>
+          <div className={classCol01}>
+            {DICTIONARY['Speaking language'][language]}
+            {' *'}
+          </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Age</div>
+          <div className={classCol01}>{DICTIONARY['Age'][language]}</div>
           <div className={classCol02}>
-            <span>from:&nbsp;&nbsp;</span>
+            <span>{DICTIONARY['from'][language]}:&nbsp;&nbsp;</span>
             <Input {...childrenProps.inputAgeFromRequiredProps} />
-            <span>&nbsp;&nbsp;to:&nbsp;&nbsp;</span>
+            <span>&nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;</span>
             <Input {...childrenProps.inputAgeToRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Gender</div>
+          <div className={classCol01}>{DICTIONARY['Gender'][language]}</div>
           <div className={classCol02}>
             <Select {...childrenProps.selectGenderRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Prefered media or mean</div>
+          <div className={classCol01}>
+            {DICTIONARY['Prefered media or mean'][language]}
+            {' *'}
+          </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Description contains</div>
+          <div className={classCol01}>
+            {DICTIONARY['Description contains'][language]}
+          </div>
           <div className={classCol02}>
-            <div className='_description'>
-              <Input {...childrenProps.inputDescriptionRequiredProps} />
-            </div>
+            <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className='_row'>
-          <div className={classCol01}>Sort results by</div>
+          <div className={classCol01}>
+            {DICTIONARY['Sort results by'][language]}
+          </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectSortByProps} />
           </div>
@@ -371,6 +385,12 @@ export const CatalogSEP: React.FunctionComponent<any> = (
           <div className={classCol01}></div>
           <div className={classCol02}>
             <Button {...childrenProps.buttonSearchSepProps} />
+          </div>
+        </div>
+        <div className='_row'>
+          <div className={classCol01}>
+            {'* '}
+            {DICTIONARY['Multi choice'][language]}
           </div>
         </div>
       </form>
