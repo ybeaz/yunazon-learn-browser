@@ -344,7 +344,7 @@ export const CatalogSEP: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className={classCol01}>{DICTIONARY['Age'][language]}</div>
           <div className={classCol02}>
-            <span>{DICTIONARY['from'][language]}:&nbsp;&nbsp;</span>
+            <span>{DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;</span>
             <Input {...childrenProps.inputAgeFromRequiredProps} />
             <span>&nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;</span>
             <Input {...childrenProps.inputAgeToRequiredProps} />
