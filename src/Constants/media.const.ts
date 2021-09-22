@@ -2,8 +2,12 @@ export type IMedia = Record<string, { en: string; ru: string }>
 
 export const MEDIA: IMedia = {
   offline: {
-    en: 'offline',
-    ru: '',
+    en: 'meet in person',
+    ru: 'встреча лично',
+  },
+  anyOnline: {
+    en: 'any online tool',
+    ru: 'любой способ онлайн',
   },
   Zoom: {
     en: 'Zoom',
@@ -23,6 +27,6 @@ export const MEDIA: IMedia = {
   },
   other: {
     en: 'other',
-    ru: 'другой',
+    ru: 'другое',
   },
 }

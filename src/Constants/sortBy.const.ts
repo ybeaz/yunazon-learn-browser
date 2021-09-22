@@ -2,12 +2,12 @@ export type ISortBy = Record<string, { en: string; ru: string }>
 
 export const SORT_BY: ISortBy = {
   ascending: {
-    en: 'ascending',
-    ru: 'возрастание',
+    en: 'ascending by date',
+    ru: 'возрастание по дате',
   },
   descending: {
-    en: 'descending',
-    ru: 'убывание',
+    en: 'descending by date',
+    ru: 'убывание по дате',
   },
   other: {
     en: 'no sorting',
