@@ -4,17 +4,17 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import { rootReducer } from './index.reducer'
-import indexSaga from '../SideEffectsLayer/index.saga'
+import indexSaga from './index.saga'
 
-const configureStore: Function = (rootReducer): Store => {
+const configureStore: Function = (rootReducer2): Store => {
   const sagaMiddleware = createSagaMiddleware()
   const middlewares: any[] = [thunk, sagaMiddleware]
-  const store = createStore(
-    rootReducer,
+  const store2 = createStore(
+    rootReducer2,
     composeWithDevTools(applyMiddleware(...middlewares))
   )
   sagaMiddleware.run(indexSaga)
-  return store
+  return store2
 }
 
 export const store = configureStore(rootReducer)
