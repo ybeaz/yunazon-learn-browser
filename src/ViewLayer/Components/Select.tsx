@@ -111,7 +111,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   useEffect(() => {
-    getInjectedAnimationToSelect({ size2: sizeIn, delay2: 0.6 })
+    getInjectedAnimationToSelect({ size2: sizeIn, delay2: 1.6 })
 
     setOptionsState(options)
     setOptionsState2(options)
@@ -326,6 +326,13 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       >
         {getOptionsJsx(optionsState)}
       </select>
+      {multiple && !onBlurState && (
+        <div
+          className={`__Ok ${classScrollbar} ${classHeightFixed} ${classBackground}`}
+        >
+          Ok
+        </div>
+      )}
     </div>
   )
 }
