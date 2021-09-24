@@ -4,7 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { isParsableInt } from '../../Shared/isParsableInt'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
 export const GET_COURSE_QUERY_PR_QN: IActionEvent = (event, data) => {
   const { courseID, index } = data

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+import less from 'less'
 
 import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
@@ -128,10 +129,18 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store2: IRootStore) => store2)
-      const { theme } = globalVars
+      const {
+        globalVars: { theme },
+      } = useSelector((store2: IRootStore) => store2)
       if (theme) {
-        require(`./ViewLayer/Styles/theme${theme}.less`)
+        // require(`./ViewLayer/Styles/theme${theme}.less`)
+
+        less.render('div{color: blue;}')
+        // var parser = less.render() // (`./ViewLayer/Styles/theme${theme}.less`)
+        // toparse = '.foo {color: red;}';
+
+        // console.info('RouterScreensConfig [133]', { theme })
+
         document.getElementsByTagName('body')[0].style.display = 'flex'
       }
     } catch (error) {
@@ -139,7 +148,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
-  getThemeRemotely()
+  // getThemeRemotely()
 
   return (
     <BrowserRouter>

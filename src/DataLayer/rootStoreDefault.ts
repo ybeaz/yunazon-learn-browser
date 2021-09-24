@@ -39,7 +39,7 @@ export const rootStoreDefault = {
   courses: [],
   documents: [],
   globalVars: {
-    theme: 'Dark',
+    theme: 'Light',
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },

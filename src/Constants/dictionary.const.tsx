@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  'Toggle site theme': {
+    en: 'Toggle site theme',
+    ru: 'Переключить стиль сайта',
+  },
   'Multi choice': {
     en: 'Multi choice',
     ru: 'Мульти выбор',

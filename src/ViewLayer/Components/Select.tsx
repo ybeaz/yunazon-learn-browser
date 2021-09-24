@@ -116,7 +116,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setOptionsState(options)
     setOptionsState2(options)
     onBlurRef.current = onBlurState
-    console.info('Select [119]')
     setOnBlurState(true)
     setSizeState(sizeOnBlur)
   }, [language])

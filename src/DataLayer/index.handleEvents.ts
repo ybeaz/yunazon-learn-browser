@@ -2,10 +2,6 @@ import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
-import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
-import { SELECT_SKILLS_REQ } from './handlers/SELECT_SKILLS_REQ'
-import { SELECT_SKILLS_REQ_COUNTRY } from './handlers/SELECT_SKILLS_REQ_COUNTRY'
-import { SELECT_SKILLS_REQ_LANG } from './handlers/SELECT_SKILLS_REQ_LANG'
 import { ADD_DOCUMENT } from './handlers/ADD_DOCUMENT'
 import { AUTH_FACEBOOK } from './handlers/AUTH_FACEBOOK'
 import { AUTH_GOOGLE } from './handlers/AUTH_GOOGLE'
@@ -49,6 +45,10 @@ import { SAVE_ANALYTICS_INIT_DATA } from './handlers/SAVE_ANALYTICS_INIT_DATA'
 import { SELECT_COURSE_MODULE } from './handlers/SELECT_COURSE_MODULE'
 import { SELECT_COURSE_MODULE_CONTENTID } from './handlers/SELECT_COURSE_MODULE_CONTENTID'
 import { SELECT_LANGUAGE } from './handlers/SELECT_LANGUAGE'
+import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
+import { SELECT_SKILLS_REQ } from './handlers/SELECT_SKILLS_REQ'
+import { SELECT_SKILLS_REQ_COUNTRY } from './handlers/SELECT_SKILLS_REQ_COUNTRY'
+import { SELECT_SKILLS_REQ_LANG } from './handlers/SELECT_SKILLS_REQ_LANG'
 import { SEND_AUTH_FORGET_PASSWORD } from './handlers/SEND_AUTH_FORGET_PASSWORD'
 import { SEND_EMAIL_DOCUMENT } from './handlers/SEND_EMAIL_DOCUMENT'
 import { SET_MODAL_FRAMES } from './handlers/SET_MODAL_FRAMES'
@@ -61,6 +61,7 @@ import { TOGGLE_IS_DOCUMENT_ADDED } from './handlers/TOGGLE_IS_DOCUMENT_ADDED'
 import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
+import { TOGGLE_THEME } from './handlers/TOGGLE_THEME'
 
 export interface IHandleEventsInterface {
   (event: any, props: IHandleEventsProps): void
@@ -71,11 +72,6 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
   const type = typeStore ? typeStore : typeEvent
 
   const output: Record<string, IActionEvent> = {
-    TEMPLATE,
-    SELECT_SKILLS_OFFERED,
-    SELECT_SKILLS_REQ,
-    SELECT_SKILLS_REQ_COUNTRY,
-    SELECT_SKILLS_REQ_LANG,
     ADD_DOCUMENT,
     AUTH_FACEBOOK,
     AUTH_GOOGLE,
@@ -119,6 +115,10 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
     SELECT_LANGUAGE,
+    SELECT_SKILLS_OFFERED,
+    SELECT_SKILLS_REQ_COUNTRY,
+    SELECT_SKILLS_REQ_LANG,
+    SELECT_SKILLS_REQ,
     SEND_AUTH_FORGET_PASSWORD,
     SEND_EMAIL_DOCUMENT,
     SET_MODAL_FRAMES,
@@ -126,6 +126,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     SET_OAUTH_GOOGLE_SCRIPT_STATE,
     SET_OAUTH_VK_SCRIPT_STATE,
     SET_QUESTION_SLIDE,
+    TOGGLE_THEME,
     STOP_PROPAGATION,
     TOGGLE_IS_DOCUMENT_ADDED,
     TOGGLE_MEDIA_LOADED,

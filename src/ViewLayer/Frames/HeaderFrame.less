@@ -21,31 +21,34 @@
     flex: 3;
     justify-content: flex-end;
 
-    ._itemButtonAddCourse {
+    ._itemButton {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
+    }
+
+    ._itemButtonAddCourse {
+      ._itemButton;
       padding: 0 0.5rem 0 0;
     }
 
     ._itemButtonAuthUser {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      ._itemButton;
       padding: 0 0.5rem 0 0;
     }
 
     ._itemLanguageSelect {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      ._itemButton;
 
       &:nth-child(1) {
         padding: 0 0 0 0;
       }
+    }
+
+    ._itemButtonThemeToggle {
+      ._itemButton;
+      padding: 0 0.5rem 0.25rem 0.5rem;
     }
   }
 
