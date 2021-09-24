@@ -1,13 +1,22 @@
-.ThemeLight {
-  @import (less) '../Styles/themeLight.less';
-  // background: lightgreen;
+@import '../Styles/themeLight.less';
 
-  @media @large {
-  }
-  @media @desktop, @desktop-strict {
-  }
-  @media @tablet, @tablet-strict {
-  }
-  @media @phone, @phone-strict {
+body {
+  display: flex;
+  color: @colorFirstDarker;
+  // background-color: @colorSecond;
+
+  background: lightgreen;
+
+  .ThemeLight {
+    // background: lightgreen;
+
+    @media @large {
+    }
+    @media @desktop, @desktop-strict {
+    }
+    @media @tablet, @tablet-strict {
+    }
+    @media @phone, @phone-strict {
+    }
   }
 }

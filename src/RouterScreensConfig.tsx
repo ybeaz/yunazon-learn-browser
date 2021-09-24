@@ -135,7 +135,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       if (theme) {
         // require(`./ViewLayer/Styles/theme${theme}.less`)
 
-        less.render('div{color: blue;}')
+        // less.render('div{color: blue;}')
         // var parser = less.render() // (`./ViewLayer/Styles/theme${theme}.less`)
         // toparse = '.foo {color: red;}';
 
