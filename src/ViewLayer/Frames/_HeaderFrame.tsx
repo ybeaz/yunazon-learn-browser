@@ -66,15 +66,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
   }
 
-  const toggleTheme = DICTIONARY['Toggle site theme'][language]
-  const buttonThemeToggle = {
-    icon: 'FaYinYang',
-    classAdded: 'Button_ThemeToggle',
-    tooltipText: toggleTheme,
-    tooltipPosition: 'bottom',
-    action: { typeEvent: 'TOGGLE_THEME' },
-  }
-
   const classAddHeaderFrame =
     contentComponentName === 'ReaderIframe' ||
     contentComponentName === 'PlayerIframe'
@@ -97,9 +88,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
         </div>
         <div className='_itemLanguageSelect'>
           <LanguageSelect />
-        </div>
-        <div className='_itemButtonThemeToggle'>
-          <Button {...buttonThemeToggle} />
         </div>
       </div>
       <ModalFrames />

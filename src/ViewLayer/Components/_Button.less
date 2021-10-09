@@ -1,0 +1,870 @@
+.Button {
+  display: flex;
+  position: relative;
+
+  ._tooltipTop {
+    width: 120px;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  ._tooltipRight {
+    top: -5px;
+    left: 105%;
+  }
+
+  ._tooltipBottom {
+    width: 120px;
+    top: 110%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  ._tooltipLeft {
+    width: 120px;
+    top: -5px;
+    right: 105%;
+  }
+
+  .__tooltipText {
+    visibility: hidden;
+    background: @colorSecondLighter2;
+    color: @colorFirstDarker2;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: @fontSizeS;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .__tooltipTextVisible {
+    visibility: visible;
+  }
+
+  &:hover .__tooltipText {
+    visibility: visible;
+  }
+
+  .__button {
+    background-color: @colorSecondLighter3;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    &:active,
+    &:focus {
+      color: @colorFirstDarker2;
+      border-color: @colorActive;
+      outline: none;
+      text-size-adjust: 100%;
+    }
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      color: @colorFirstDarker2;
+      ._capture_left {
+        padding: 0 0.3rem 0 0;
+      }
+      ._icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+      ._capture_right {
+        padding: 0 0 0 0.3rem;
+      }
+    }
+  }
+
+  .__underlined {
+    display: flex;
+    width: 95%;
+  }
+}
+
+.Button_searchSep {
+  .Button_startModule;
+}
+
+.Button_ForgetPassword {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorSecondLighter4;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_SignUp {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorSecondLighter4;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_AuthSignInUp {
+  flex: 1;
+  padding: 0.5rem 0 0.5rem 0.1rem;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_AuthSignInUpBack {
+  flex: 1;
+  padding: 0.5rem 0.1rem 0.5rem 0;
+  align-items: center;
+  width: 100%;
+
+  .__button {
+    flex: 1;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_AuthGoogle {
+  flex: 1;
+  padding: 0.5rem 0 0.5rem 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: #dd4b39;
+    justify-content: start;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+    ._in:first-child {
+      padding: 1.3rem 0 1.3rem 0.5rem;
+    }
+  }
+}
+
+.Button_AuthVkontakte {
+  flex: 1;
+  padding: 0.5rem 0 0.5rem 0;
+  align-items: center;
+
+  .__button {
+    flex: 1;
+    background-color: #45668e;
+    justify-content: start;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+      ._capture_right {
+      }
+    }
+    ._in:first-child {
+      padding: 1.3rem 0 1.3rem 0.5rem;
+    }
+  }
+}
+
+.Button_AuthFacebook {
+  flex: 1;
+  padding: 0.5rem 0 0.5rem 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: #3b5998;
+    justify-content: start;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      padding: 1.3rem 0;
+
+      ._capture_left {
+      }
+      ._icon {
+        height: 1.5rem;
+        width: 1.5rem;
+      }
+      ._capture_right {
+      }
+    }
+    ._in:first-child {
+      padding: 1.3rem 0 1.3rem 0.4rem;
+    }
+  }
+}
+
+.Button_AddCourse {
+  flex: 1;
+  padding: 0 0 0.5rem 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorSecond;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_personalCabinet_authorized {
+  .__button {
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._capture_left {
+      }
+      ._icon {
+        color: #04aa6d;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_personalCabinet {
+  flex: 1;
+  padding: 0 0 0.5rem 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    background-color: @colorSecond;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_CallForActionMatrix {
+  flex: 1;
+  padding: 0.5rem 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      ._capture_left {
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_UseCertificate {
+  flex: 1;
+  padding: 0 0 0 0.35rem;
+  align-items: center;
+  .__button {
+    height: 2.5rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      padding: 0 0.5rem;
+      // .bouncy;
+    }
+  }
+}
+
+.Button_startModule {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+
+  ._tooltipBottom {
+    width: 100%;
+    top: 110%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  ._text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ._line1 {
+      display: flex;
+      padding: 0 0 0.5rem 0;
+      font-size: @fontSizeS;
+    }
+
+    ._line2 {
+      display: flex;
+      font-style: italic;
+    }
+  }
+
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActive;
+    justify-content: space-evenly;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0 1rem 0 1rem;
+      ._capture_left {
+      }
+      @media @tablet, @tablet-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
+      @media @phone, @phone-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
+      ._icon {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_downLeft {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorSecondLighter3;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorFirstDarker;
+      ._icon {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg);
+      }
+    }
+  }
+}
+
+.Button_MdBlock {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorSecondLighter2;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorSecondLighter4;
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_MdClose {
+  flex: 1;
+  padding: 0.5rem 0.5rem 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2rem;
+    background-color: @colorSecondLighter3;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorSecondLighter4;
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
+
+.Button_sideMenuItems {
+  .__button {
+    background-color: @colorSecond;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorFirstDarker2;
+      background-color: @colorSecond;
+      ._icon {
+        display: flex;
+        position: relative;
+        height: 2.2rem;
+        padding-top: 4px;
+        cursor: pointer;
+        font-size: @fontSize;
+      }
+    }
+  }
+}
+
+.Button_MdBackward3 {
+  flex: 1;
+  padding: 0 1rem 0 0;
+  align-items: center;
+
+  ._tooltipBottom {
+    width: 120px;
+    top: 110%;
+    left: 100%;
+    margin-left: -60px;
+  }
+
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActiveDacker;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
+
+.Button_MdBackward2 {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActiveDacker;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+      }
+    }
+  }
+}
+
+.Button_MdForward2 {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    background-color: @colorActive;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_sideMenuItems {
+  .__button {
+    background-color: @colorSecond;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorFirstDarker2;
+      background-color: @colorSecond;
+      ._icon {
+        display: flex;
+        position: relative;
+        height: 2.2rem;
+        padding-top: 4px;
+        cursor: pointer;
+        font-size: @fontSize;
+      }
+    }
+  }
+}
+
+.Button_MdForward {
+  padding: 0 0 0 0;
+  align-items: center;
+  flex: 1;
+  .__button {
+    width: 100%;
+    height: 2.5rem;
+    color: @colorFirstDarker2;
+    background-color: @colorActive;
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      padding: 0 1rem 0 0;
+      ._icon {
+        margin: 0 0 0 1rem;
+      }
+    }
+  }
+}
+
+.Button_MdPlayArrow {
+  padding-right: 1.4em;
+  align-items: center;
+  .__button {
+    width: 4rem;
+    height: 2rem;
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_MdPause {
+  padding-right: 1.4em;
+  align-items: center;
+  .__button {
+    width: 4rem;
+    height: 2rem;
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_MdRemoveCircle {
+  padding-right: 1.4em;
+  align-items: center;
+  .__button {
+    width: 4rem;
+    height: 2rem;
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_MdMenu {
+  padding-right: 0.5em;
+  align-items: center;
+  .__button {
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorFirstDarker;
+      background-color: @colorSecond;
+      ._icon {
+      }
+    }
+  }
+}
+
+.Button_MdPerson {
+  .__button {
+    background-color: @colorSecond;
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: @colorSecondLighter4;
+      ._icon {
+        width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+  }
+}
+
+.Button_MdSearch {
+  .__button {
+    width: 4.5rem;
+    &:active,
+    &:focus {
+    }
+    ._in {
+      color: @colorSecondLighter4;
+      ._icon {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+  }
+  @media @phone, @phone-strict {
+    .__button {
+      width: 2rem;
+    }
+  }
+}
+
+.bouncy {
+  animation: bouncy 10s infinite linear;
+  position: relative;
+}
+@keyframes bouncy {
+  0% {
+    top: 0em;
+  }
+  40% {
+    top: 0em;
+  }
+  43% {
+    top: -0.9em;
+  }
+  46% {
+    top: 0em;
+  }
+  48% {
+    top: -0.4em;
+  }
+  50% {
+    top: 0em;
+  }
+  100% {
+    top: 0em;
+  }
+}
+
+.Button_none {
+  display: none;
+}
