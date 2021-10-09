@@ -133,7 +133,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       const { theme } = globalVars
       if (theme) {
         // require(`./ViewLayer/Styles/theme${theme}.less`)
-        require(`./ViewLayer/Styles/themeDark.less`)
+        // require(`./ViewLayer/Styles/themeDark.less`)
         document.getElementsByTagName('body')[0].style.display = 'flex'
       }
     } catch (error) {
