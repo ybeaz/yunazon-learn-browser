@@ -157,7 +157,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   } = useSelector((store2: IRootStore) => store2)
 
   const myTheme = {
-    background: theme === 'Light' ? 'lightgreen' : 'blue',
+    background: theme === 'Light' ? 'lightgreen' : 'bluelight',
     color: theme === 'Light' ? 'black' : 'grey',
     colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
   }
@@ -165,15 +165,15 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   console.info('RouterScreensConfig [157]', { myTheme, theme })
 
   return (
-    // <ThemeProvider theme={myTheme}>
-    //   <GlobalStyle />
-    <BrowserRouter>
-      <Switch>
-        {getRoutes(routes)}
-        {getRedirects(redirects)}
-        {getError404Route()}
-      </Switch>
-    </BrowserRouter>
-    // </ThemeProvider>
+    <ThemeProvider theme={myTheme}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Switch>
+          {getRoutes(routes)}
+          {getRedirects(redirects)}
+          {getError404Route()}
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
