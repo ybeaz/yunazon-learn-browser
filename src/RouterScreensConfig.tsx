@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import less from 'less'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
@@ -133,13 +133,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         globalVars: { theme },
       } = useSelector((store2: IRootStore) => store2)
       if (theme) {
-        // require(`./ViewLayer/Styles/theme${theme}.less`)
-
-        // less.render('div{color: blue;}')
-        // var parser = less.render() // (`./ViewLayer/Styles/theme${theme}.less`)
-        // toparse = '.foo {color: red;}';
-
-        // console.info('RouterScreensConfig [133]', { theme })
+        // require(`./ViewLayer/Styles/index.style.less`)
+        require(`./ViewLayer/Styles/themeDark.less`)
 
         document.getElementsByTagName('body')[0].style.display = 'flex'
       }
@@ -148,9 +143,30 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
-  // getThemeRemotely()
+  getThemeRemotely()
+
+  const GlobalStyle = createGlobalStyle`
+  body {
+    color: @color;
+    background: @background;
+  }
+`
+
+  const {
+    globalVars: { theme },
+  } = useSelector((store2: IRootStore) => store2)
+
+  const myTheme = {
+    background: theme === 'Light' ? 'lightgreen' : 'blue',
+    color: theme === 'Light' ? 'black' : 'grey',
+    colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
+  }
+
+  console.info('RouterScreensConfig [157]', { myTheme, theme })
 
   return (
+    // <ThemeProvider theme={myTheme}>
+    //   <GlobalStyle />
     <BrowserRouter>
       <Switch>
         {getRoutes(routes)}
@@ -158,5 +174,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         {getError404Route()}
       </Switch>
     </BrowserRouter>
+    // </ThemeProvider>
   )
 }
