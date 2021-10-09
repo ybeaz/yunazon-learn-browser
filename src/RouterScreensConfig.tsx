@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
+import { ThemeProvider, createGlobalStyle, css } from 'styled-components'
 
 import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
@@ -158,6 +158,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     background: theme === 'Light' ? 'lightgreen' : 'lightblue',
     color: theme === 'Light' ? 'black' : 'grey',
     colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
+    colorTest: theme === 'Light' ? 'orange' : 'purple',
   }
 
   console.info('RouterScreensConfig [157]', { myTheme, theme })
