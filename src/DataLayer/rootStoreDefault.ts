@@ -39,7 +39,9 @@ export const rootStoreDefault = {
   courses: [],
   documents: [],
   globalVars: {
+    theme: 'Light',
     numberQuestionsInSlide: 2,
+    durationMultiplier: 1,
   },
   forms: {
     userNameAuth: '',
