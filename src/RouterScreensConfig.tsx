@@ -126,23 +126,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     )
   }
 
-  const getThemeRemotely: Function = () => {
-    try {
-      document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store2: IRootStore) => store2)
-      const { theme } = globalVars
-      if (theme) {
-        // require(`./ViewLayer/Styles/theme${theme}.less`)
-        require(`./ViewLayer/Styles/themeDark.less`)
-        document.getElementsByTagName('body')[0].style.display = 'flex'
-      }
-    } catch (error) {
-      console.info('RouterScreensConfig [115]', { msg: error.message })
-    }
-  }
-
-  // getThemeRemotely()
-
   return (
     <GlobalTheme>
       <BrowserRouter>
