@@ -15,6 +15,7 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
       require(`./themeDark.less`)
+      // require(`./index.style.less`)
       document.getElementsByTagName('body')[0].style.display = 'flex'
     } catch (error) {
       console.info('RouterScreensConfig [115]', { msg: error.message })
@@ -75,20 +76,42 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
         Light: '',
         Dark: 'rgb(62, 166, 255)',
       },
+      colorTest: {
+        Light: 'black',
+        Dark: 'grey',
+      },
+      backgroundTest: {
+        Light: 'lightgreen',
+        Dark: 'lightblue',
+      },
     },
-
-    background: theme === 'Light' ? 'lightgreen' : 'lightblue',
-    color: theme === 'Light' ? 'black' : 'grey',
-    colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
   }
 
+  const getColor = (props2: any, color: string): string =>
+    props2.theme.colors[color][theme]
+
   const GlobalStyleTheme = createGlobalStyle`
-    .CatalogSEP .__titleScreen {
-      color: ${props2 => props2.theme.colors.colorActive[theme]};
+    .AuthUser .form {
+      background: ${props2 => getColor(props2, 'colorSecondLighter4')};
     }
+    .AuthUser .header2 {
+      color: ${props2 => getColor(props2, 'colorFirstDarker')};
+    }
+    .AuthUser .vl-innertext {
+      color: ${props2 => getColor(props2, 'colorFirstDarker')};
+      background: ${props2 => getColor(props2, 'colorSecondLighter4')};
+    }
+    .AuthUser .bottomContainer {
+      background-color: ${props2 => getColor(props2, 'colorSecondLighter4')};
+    }
+
+    .Select .__Ok {
+      background: ${props2 => getColor(props2, 'colorActive')};
+    }
+
     body {
-      color: ${props2 => props2.theme.color};
-      background: ${props2 => props2.theme.background};
+      color: ${props2 => getColor(props2, 'colorTest')};
+      background: ${props2 => getColor(props2, 'backgroundTest')};
     }
 `
 

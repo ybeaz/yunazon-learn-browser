@@ -21,8 +21,9 @@ declare module 'styled-components' {
       colorActive: Dictionary
       colorActiveDacker: Dictionary
       colorBoxes: Dictionary
+
+      colorTest: Dictionary
+      backgroundTest: Dictionary
     }
-    color: string
-    background: string
   }
 }
