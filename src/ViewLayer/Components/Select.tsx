@@ -116,7 +116,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setOptionsState(options)
     setOptionsState2(options)
     onBlurRef.current = onBlurState
-    console.info('Select [119]')
     setOnBlurState(true)
     setSizeState(sizeOnBlur)
   }, [language])
@@ -252,7 +251,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       SELECT_ON_MOUSE_LEAVE,
     }
 
-    // console.info('Select [225]', { typeEvent2, componentId })
+    console.info('Select [225]', { typeEvent2, componentId })
     output[typeEvent2]
       ? output[typeEvent2](event)
       : console.log('Select handleComponentEvents [error]', 'strange type', {

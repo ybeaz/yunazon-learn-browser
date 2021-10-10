@@ -141,20 +141,13 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
-  // getThemeRemotely()
+  getThemeRemotely()
 
-  // const {
-  //   globalVars: { theme },
-  // } = useSelector((store2: IRootStore) => store2)
+  const {
+    globalVars: { theme },
+  } = useSelector((store2: IRootStore) => store2)
 
-  // console.info('RouterScreensConfig [157]', { theme })
-
-  // const THEME = {
-  //   ThemeLight,
-  //   ThemeDark,
-  // }
-
-  // const Theme = THEME[`Theme${theme}`]
+  console.info('RouterScreensConfig [157]', { theme })
 
   return (
     <BrowserRouter>
