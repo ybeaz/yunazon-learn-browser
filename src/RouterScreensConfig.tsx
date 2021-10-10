@@ -1,8 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
+import { GlobalTheme } from './ViewLayer/Styles/GlobalTheme'
 import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
@@ -141,30 +141,10 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
-  getThemeRemotely()
-
-  const GlobalStyle = createGlobalStyle`
-    body {
-      color: ${props => props.theme.color};
-      background: ${props => props.theme.background};
-    }
-  `
-
-  const {
-    globalVars: { theme },
-  } = useSelector((store2: IRootStore) => store2)
-
-  const globalTheme = {
-    background: theme === 'Light' ? 'lightgreen' : 'lightblue',
-    color: theme === 'Light' ? 'black' : 'grey',
-    colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
-  }
-
-  console.info('RouterScreensConfig [157]', { globalTheme, theme })
+  // getThemeRemotely()
 
   return (
-    <ThemeProvider theme={globalTheme}>
-      <GlobalStyle />
+    <GlobalTheme>
       <BrowserRouter>
         <Switch>
           {getRoutes(routes)}
@@ -172,6 +152,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           {getError404Route()}
         </Switch>
       </BrowserRouter>
-    </ThemeProvider>
+    </GlobalTheme>
   )
 }
