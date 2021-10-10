@@ -1,7 +1,7 @@
+// @ts-ignore
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import { ThemeProvider, createGlobalStyle, css } from 'styled-components'
 
 import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
@@ -141,38 +141,28 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     }
   }
 
-  getThemeRemotely()
+  // getThemeRemotely()
 
-  const GlobalStyle = createGlobalStyle`
-  body {
-    color: @color;
-    background: @background;
-  }
-`
+  // const {
+  //   globalVars: { theme },
+  // } = useSelector((store2: IRootStore) => store2)
 
-  const {
-    globalVars: { theme },
-  } = useSelector((store2: IRootStore) => store2)
+  // console.info('RouterScreensConfig [157]', { theme })
 
-  const myTheme = {
-    background: theme === 'Light' ? 'lightgreen' : 'lightblue',
-    color: theme === 'Light' ? 'black' : 'grey',
-    colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
-    colorTest: theme === 'Light' ? 'orange' : 'purple',
-  }
+  // const THEME = {
+  //   ThemeLight,
+  //   ThemeDark,
+  // }
 
-  console.info('RouterScreensConfig [157]', { myTheme, theme })
+  // const Theme = THEME[`Theme${theme}`]
 
   return (
-    <ThemeProvider theme={myTheme}>
-      <GlobalStyle />
-      <BrowserRouter>
-        <Switch>
-          {getRoutes(routes)}
-          {getRedirects(redirects)}
-          {getError404Route()}
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Switch>
+        {getRoutes(routes)}
+        {getRedirects(redirects)}
+        {getError404Route()}
+      </Switch>
+    </BrowserRouter>
   )
 }

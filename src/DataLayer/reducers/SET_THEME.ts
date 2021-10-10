@@ -6,5 +6,6 @@ export const SET_THEME: Function = (
 ): IRootStore => {
   const { globalVars } = store
   const globalVarsNext = { ...globalVars, theme: data }
+  console.info('SET_THEME [9]', { data })
   return { ...store, globalVars: globalVarsNext }
 }

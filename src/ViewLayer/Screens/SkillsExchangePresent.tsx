@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { ThemeLight } from '../Styles/ThemeLight'
+import { ThemeDark } from '../Styles/ThemeDark'
 import { CatalogSEP } from '../Components/CatalogSEP'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
@@ -30,21 +32,36 @@ export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresen
       contentComponentName: 'CatalogSEP',
     }
 
+    const {
+      globalVars: { theme },
+    } = useSelector((store2: IRootStore) => store2)
+
+    console.info('SkillsExchangePresent [39]', { theme })
+
+    const THEME = {
+      ThemeLight,
+      ThemeDark,
+    }
+
+    const Theme = THEME[`Theme${theme}`]
+
     return (
-      <div className='SkillsExchangePresent'>
-        <Helmet>
-          <html lang={languageStore} />
-          <meta charSet='utf-8' />
-          <title>{moduleCapture}</title>
-          <link rel='canonical' href={canonicalUrl} />
-          <meta name='description' content={moduleDescription} />
-        </Helmet>
-        <MainFrame {...mainFrameProps}>
-          {null}
-          {null}
-          <CatalogSEP />
-          {null}
-        </MainFrame>
-      </div>
+      <Theme>
+        <div className='SkillsExchangePresent'>
+          <Helmet>
+            <html lang={languageStore} />
+            <meta charSet='utf-8' />
+            <title>{moduleCapture}</title>
+            <link rel='canonical' href={canonicalUrl} />
+            <meta name='description' content={moduleDescription} />
+          </Helmet>
+          <MainFrame {...mainFrameProps}>
+            {null}
+            {null}
+            <CatalogSEP />
+            {null}
+          </MainFrame>
+        </div>
+      </Theme>
     )
   }

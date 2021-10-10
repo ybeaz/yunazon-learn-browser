@@ -9,5 +9,6 @@ export const TOGGLE_THEME: IActionEvent = event => {
     globalVars: { theme },
   } = getState()
   const data = theme === 'Dark' ? 'Light' : 'Dark'
+  console.info('TOGGLE_THEME [12]', { data })
   dispatch(actionSync.SET_THEME(data))
 }
