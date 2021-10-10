@@ -30,45 +30,45 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
   const globalTheme = {
     colors: {
       colorFirstDarker2: {
-        Light: '',
+        Light: 'rgb(16, 16, 16)',
         Dark: 'rgba(255, 255, 255, 0.8)',
       },
       colorFirstDarker: {
-        Light: '',
+        Light: 'rgb(24, 24, 24)',
         Dark: 'rgba(255, 255, 255, 0.9)',
       },
       colorFirst: {
-        Light: '',
+        Light: 'rgb(32, 32, 32)',
         Dark: 'rgb(255, 255, 255)',
       },
 
       colorSecondDacker: {
-        Light: '',
+        Light: 'rgba(255, 255, 255, 0.9)',
         Dark: 'rgb(24, 24, 24)',
       },
       colorSecond: {
-        Light: '',
+        Light: 'rgb(255, 255, 255)',
         Dark: 'rgb(32, 32, 32)',
       },
       colorSecondLighter2: {
-        Light: '',
+        Light: 'rgb(255, 255, 255)',
         Dark: 'rgb(50, 50, 50)',
       },
       colorSecondLighter3: {
-        Light: '',
+        Light: 'rgb(55, 55, 55)',
         Dark: 'rgb(55, 55, 55)',
       },
       colorSecondLighter4: {
-        Light: '',
+        Light: 'rgb(111, 111, 111)',
         Dark: 'rgb(111, 111, 111)',
       },
 
       colorActive: {
-        Light: 'yellow',
+        Light: 'rgb(56, 94, 182)',
         Dark: 'rgb(56, 94, 182)',
       },
       colorActiveDacker: {
-        Light: '',
+        Light: 'rgb(22, 37, 61)',
         Dark: 'rgb(22, 37, 61)',
       },
       colorBoxes: {

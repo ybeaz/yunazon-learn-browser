@@ -47,8 +47,8 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   const animationRef = useRef(`_animationOut`)
   const onBlurRef = useRef(true)
-  const [optionsState, setOptionsState] = useState(options)
-  const [optionsState2, setOptionsState2] = useState(options)
+  const [optionsState, setOptionsState] = useState([])
+  const [optionsState2, setOptionsState2] = useState([])
   const [onBlurState, setOnBlurState] = useState(true)
   const [sizeState, setSizeState] = useState(sizeOnBlur)
 
@@ -84,7 +84,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
       if (i < size2) {
         const f = i > 1 ? i : 1
         const hOut = String(hBase2 * f)
-        const hIn =
+        let hIn =
           hBase2 * f <= hBase2 * size2
             ? String(hBase2 * size2)
             : String(hBase2 * f)
@@ -93,13 +93,13 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
           ...[
             `._animationIn_${uniqClassStr}_${i} { animation-duration: ${delay2}s; animation-name: in_${componentId}_${i}; animation-direction: alternate; }`,
             `@-webkit-keyframes in_${componentId}_${i} {
-            0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
-          }`,
+              0% { min-height: ${hOut}rem; height: ${hOut}rem; } 100% { min-height: ${hIn}rem; height: ${hIn}rem; }
+            }`,
 
             `._animationOut_${uniqClassStr}_${i} { animation-duration: ${delay2}s; animation-name: out_${componentId}_${i}; animation-direction: alternate; }`,
             `@-webkit-keyframes out_${componentId}_${i} {
-            0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
-          }`,
+              0% { min-height: ${hIn}rem; height: ${hIn}rem; } 100% { min-height: ${hOut}rem; height: ${hOut}rem; }
+            }`,
           ]
         )
       }
@@ -116,7 +116,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setOptionsState(options)
     setOptionsState2(options)
     onBlurRef.current = onBlurState
-    console.info('Select [119]')
     setOnBlurState(true)
     setSizeState(sizeOnBlur)
   }, [language])
