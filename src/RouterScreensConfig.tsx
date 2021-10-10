@@ -144,26 +144,26 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   getThemeRemotely()
 
   const GlobalStyle = createGlobalStyle`
-  body {
-    color: @color;
-    background: @background;
-  }
-`
+    body {
+      color: ${props => props.theme.color};
+      background: ${props => props.theme.background};
+    }
+  `
 
   const {
     globalVars: { theme },
   } = useSelector((store2: IRootStore) => store2)
 
-  const myTheme = {
+  const globalTheme = {
     background: theme === 'Light' ? 'lightgreen' : 'lightblue',
     color: theme === 'Light' ? 'black' : 'grey',
     colorActive: 'red', // theme === 'Light' ? 'blue' : 'red',
   }
 
-  console.info('RouterScreensConfig [157]', { myTheme, theme })
+  console.info('RouterScreensConfig [157]', { globalTheme, theme })
 
   return (
-    <ThemeProvider theme={myTheme}>
+    <ThemeProvider theme={globalTheme}>
       <GlobalStyle />
       <BrowserRouter>
         <Switch>
