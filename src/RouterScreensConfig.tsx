@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { GlobalTheme } from './ViewLayer/Styles/GlobalTheme'
-import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
@@ -127,14 +125,12 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   }
 
   return (
-    <GlobalTheme>
-      <BrowserRouter>
-        <Switch>
-          {getRoutes(routes)}
-          {getRedirects(redirects)}
-          {getError404Route()}
-        </Switch>
-      </BrowserRouter>
-    </GlobalTheme>
+    <BrowserRouter>
+      <Switch>
+        {getRoutes(routes)}
+        {getRedirects(redirects)}
+        {getError404Route()}
+      </Switch>
+    </BrowserRouter>
   )
 }

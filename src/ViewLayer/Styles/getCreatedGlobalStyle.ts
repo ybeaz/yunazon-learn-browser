@@ -11,6 +11,8 @@ export const getCreatedGlobalStyle = () => {
   const getColor = (props2: any, color: string): string =>
     props2.theme.colors[color][theme]
 
+  console.info('getCreatedGlobalStyle [14]', { theme })
+
   return createGlobalStyle`
     .AuthUser .form {
       background: ${props2 => getColor(props2, 'colorSecondLighter4')};
