@@ -25,7 +25,6 @@
 
     ._capture {
       display: flex;
-      color: @colorFirstDarker2;
     }
 
     ._checkdiv {
@@ -47,18 +46,14 @@
         left: 0;
         height: 28px;
         width: 28px;
-        background-color: @colorSecond;
-        border: solid 1.5px @colorFirstDarker;
       }
 
       /* On mouse-over, add a grey background color */
       &:hover input ~ .checkmark {
-        background-color: @colorSecondLighter2;
       }
 
       /* When the checkbox is checked, add a blue background */
       input:checked ~ .checkmark {
-        background: @colorBoxes;
       }
 
       /* Create the checkmark/indicator (hidden when not checked) */
@@ -137,7 +132,6 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: @colorFirstDarker;
       }
     }
   }

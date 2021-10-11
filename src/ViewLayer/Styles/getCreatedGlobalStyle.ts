@@ -237,9 +237,46 @@ export const getCreatedGlobalStyle = () => {
       color: ${props2 => getColor(props2, 'colorSecondLighter4')};
     }
 
+    .CheckRadioGroup ._capture {
+      color: ${props2 => getColor(props2, 'colorFirstDarker2')};
+    }
+
+    .CheckRadioGroup .checkmark {
+      background-color: ${props2 => getColor(props2, 'colorSecond')};
+      border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker')};
+    }
+
+    .CheckRadioGroup ._checkdiv:hover input ~ .checkmark {
+      background-color: ${props2 => getColor(props2, 'colorSecondLighter2')};
+    }
+    
+
+    .CheckRadioGroup input:checked ~ .checkmark {
+      background: ${props2 => getColor(props2, 'colorBoxes')};
+    }
+
+    .RadioButton .checkmark:after {
+      background: ${props2 => getColor(props2, 'colorFirstDarker')};
+    }
+
+    .HeaderFrame {
+      background-color: ${props2 => getColor(props2, 'colorSecond')};
+    }
+
+    .ModalFrames .__content {
+      color: ${props2 => getColor(props2, 'colorFirstDarker2')};
+      background-color: ${props2 => getColor(props2, 'colorSecondLighter3')};
+    }
+    
+    .ModalFrames ._close {
+      color: ${props2 => getColor(props2, 'colorSecondLighter4')};
+    }
+
+
     body {
-      color: ${props2 => getColor(props2, 'colorTest')};
-      background: ${props2 => getColor(props2, 'backgroundTest')};
+      display: flex;
+      color: ${props2 => getColor(props2, 'colorFirstDarker')};
+      background: ${props2 => getColor(props2, 'colorSecond')};
     }
   `
 }
