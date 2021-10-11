@@ -11,6 +11,7 @@ declare module 'styled-components' {
       colorFirstDarker2: Dictionary
       colorFirstDarker: Dictionary
       colorFirst: Dictionary
+      colorFirstLighter: Dictionary
 
       colorSecondDacker: Dictionary
       colorSecond: Dictionary

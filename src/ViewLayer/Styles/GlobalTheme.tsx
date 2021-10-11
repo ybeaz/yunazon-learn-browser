@@ -26,50 +26,58 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
   const globalTheme = {
     colors: {
       colorFirstDarker2: {
-        Light: 'rgb(16, 16, 16)',
-        Dark: 'rgba(255, 255, 255, 0.8)',
+        Light: 'rgba(32, 32, 32, 0.7)',
+        Dark: 'rgba(255, 255, 255, 0.7)',
       },
       colorFirstDarker: {
-        Light: 'rgb(24, 24, 24)',
-        Dark: 'rgba(255, 255, 255, 0.9)',
+        Light: 'rgba(32, 32, 32, 0.8)',
+        Dark: 'rgba(255, 255, 255, 0.8)',
       },
       colorFirst: {
-        Light: 'rgb(32, 32, 32)',
-        Dark: 'rgb(255, 255, 255)',
+        Light: 'rgba(32, 32, 32, 0.9)',
+        Dark: 'rgba(255, 255, 255, 0.9)',
+      },
+      colorFirstLighter: {
+        Light: 'rgba(32, 32, 32, 0.8)',
+        Dark: 'rgba(255, 255, 255, 0.8)',
+      },
+      colorModalBackground: {
+        Light: 'rgba(32, 32, 32, 0.4)',
+        Dark: 'rgba(0, 0, 0, 0.4)',
       },
 
       colorSecondDacker: {
-        Light: 'rgba(255, 255, 255, 0.9)',
-        Dark: 'rgb(24, 24, 24)',
+        Light: 'rgba(255, 255, 255, 0.8)',
+        Dark: 'rgba(32, 32, 32, 0.8)',
       },
       colorSecond: {
-        Light: 'rgb(255, 255, 255)',
-        Dark: 'rgb(32, 32, 32)',
+        Light: 'rgba(255, 255, 255, 1)',
+        Dark: 'rgba(32, 32, 32, 1)',
       },
       colorSecondLighter2: {
-        Light: 'rgb(255, 255, 255)',
-        Dark: 'rgb(50, 50, 50)',
+        Light: 'rgba(255, 255, 255, 0.9)',
+        Dark: 'rgba(32, 32, 32, 0.9)',
       },
       colorSecondLighter3: {
-        Light: 'rgb(55, 55, 55)',
-        Dark: 'rgb(55, 55, 55)',
+        Light: 'rgba(255, 255, 255, 0.8)',
+        Dark: 'rgba(32, 32, 32, 0.8)',
       },
       colorSecondLighter4: {
-        Light: 'rgb(111, 111, 111)',
-        Dark: 'rgb(111, 111, 111)',
+        Light: 'rgba(255, 255, 255, 0.7)',
+        Dark: 'rgba(32, 32, 32, 0.7)',
       },
 
       colorActive: {
-        Light: 'rgb(56, 94, 182)',
-        Dark: 'rgb(56, 94, 182)',
+        Light: 'rgba(56, 94, 182, 1)',
+        Dark: 'rgba(56, 94, 182, 1)',
       },
       colorActiveDacker: {
-        Light: 'rgb(22, 37, 61)',
-        Dark: 'rgb(22, 37, 61)',
+        Light: 'rgba(22, 37, 61, 1)',
+        Dark: 'rgba(22, 37, 61, 1)',
       },
       colorBoxes: {
         Light: '',
-        Dark: 'rgb(62, 166, 255)',
+        Dark: 'rgba(62, 166, 255, 1)',
       },
       colorTest: {
         Light: 'black',
