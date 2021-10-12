@@ -39,10 +39,16 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
         Dark: [0, 0, 12.5],
       },
 
+      colorGrey: {
+        Light: [0, 0, 44],
+        Dark: [0, 0, 44],
+      },
+
       colorActive: {
         Light: [222, 52.9, 46.7], // RBG [56, 94, 182]
         Dark: [222, 52.9, 46.7],
       },
+
       colorBoxes: {
         Light: [208, 100, 62.2], // RBG [62, 166, 255]
         Dark: [208, 100, 62.2],
@@ -50,7 +56,16 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
     },
   }
 
-  const GlobalStyle = getCreatedGlobalStyle()
+  const brightness = {
+    darker: -3,
+    middle: 0,
+    lighter: 3,
+    lighter2: 6,
+    lighter3: 9,
+    lighter4: 12,
+  }
+
+  const GlobalStyle = getCreatedGlobalStyle(brightness)
 
   return (
     <ThemeProvider theme={globalTheme}>

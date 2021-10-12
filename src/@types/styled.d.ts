@@ -11,6 +11,8 @@ declare module 'styled-components' {
       colorFirst: Dictionary
       colorSecond: Dictionary
 
+      colorGrey: Dictionary
+
       colorActive: Dictionary
       colorBoxes: Dictionary
     }

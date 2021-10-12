@@ -3,32 +3,28 @@ import { createGlobalStyle } from 'styled-components'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const getCreatedGlobalStyle = () => {
+interface IGetCreatedGlobalStyleArgs {
+  darker: number
+  middle: number
+  lighter: number
+  lighter2: number
+  lighter3: number
+  lighter4: number
+}
+
+export const getCreatedGlobalStyle = (
+  brightness: IGetCreatedGlobalStyleArgs
+) => {
+  const { darker, middle, lighter, lighter2, lighter3, lighter4 } = brightness
+
   const {
     globalVars: { theme },
   } = useSelector((store2: IRootStore) => store2)
 
-  let darker = -3
-  let middle = 0
-  let lighter = 3
-  let lighter2 = 6
-  let lighter3 = 9
-  let lighter4 = 12
-
-  // if (theme === 'Light') {
-  //   const factor = -1.5
-  //   darker = darker * factor
-  //   middle = middle * factor
-  //   lighter = lighter * factor
-  //   lighter2 = lighter2 * factor
-  //   lighter3 = lighter3 * factor
-  //   lighter4 = lighter4 * factor
-  // }
-
   const getColor = (
     props2: any,
     color2: string,
-    dif: number,
+    brightness2: number,
     theme2: string = theme
   ): string => {
     let colorNext = color2
@@ -52,13 +48,13 @@ export const getCreatedGlobalStyle = () => {
     }
 
     const [hue, saturation, value] = props2.theme.colors[colorNext][theme2]
-    const valueNext = value + dif
+    const valueNext = value + brightness2
 
     console.info('getCreatedGlobalStyle [40]', {
       value,
       theme2,
       colorNext,
-      dif,
+      brightness2,
       hue,
       saturation,
     })
@@ -103,8 +99,6 @@ export const getCreatedGlobalStyle = () => {
       color: ${props2 => getColor(props2, 'colorFirstDarker', darker)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecondDarker', darker)};
-      border-color: ${props2 =>
-        getColor(props2, 'colorSecondLighter2', lighter2)};
     }
 
     .Input .__input:active,
@@ -147,13 +141,11 @@ export const getCreatedGlobalStyle = () => {
     }
 
     .Input_passwordAuth .__input {
-      background: ${props2 =>
-        getColor(props2, 'colorSecondLighter2', lighter2)};
+      background: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Input_usernameAuth .__input {
-      background: ${props2 =>
-        getColor(props2, 'colorSecondLighter2', lighter2)};
+      background: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Input_search .__input {
@@ -206,8 +198,7 @@ export const getCreatedGlobalStyle = () => {
     }
 
     .Button_ForgetPassword .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecondLighter4', lighter4)};
+      background-color: ${props2 => getColor(props2, 'colorGrey', middle)};
     }
 
     .Button_ForgetPassword ._in {
@@ -215,8 +206,7 @@ export const getCreatedGlobalStyle = () => {
     }
 
     .Button_SignUp .__button {
-        background-color: ${props2 =>
-          getColor(props2, 'colorSecondLighter4', lighter4)};
+        background-color: ${props2 => getColor(props2, 'colorGrey', middle)};
     }
 
     .Button_SignUp ._in {
@@ -233,6 +223,10 @@ export const getCreatedGlobalStyle = () => {
 
     .Button_AuthSignInUpBack .__button {
       background-color: ${props2 => getColor(props2, 'colorActive', middle)};
+    }
+
+    .Button_AuthSignInUpBack ._in {
+      color: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Button_AuthGoogle .__button {
@@ -295,11 +289,11 @@ export const getCreatedGlobalStyle = () => {
 
     .Button_MdClose .__button {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecondLighter3', lighter3)};
+        getColor(props2, 'colorSecond', lighter4, 'Dark')};
     }
 
     .Button_MdClose ._in {
-      color: ${props2 => getColor(props2, 'colorSecondLighter4', lighter4)};
+      color: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Button_sideMenuItems .__button {
@@ -363,6 +357,25 @@ export const getCreatedGlobalStyle = () => {
 
     .Button_MdSearch ._in {
       color: ${props2 => getColor(props2, 'colorFirstLighter', lighter)};
+    }
+
+    .ModalFrames .__content {
+      background-color: ${props2 =>
+        getColor(props2, 'colorSecond', lighter4, 'Dark')};
+    }
+
+
+    .AuthUser .form, .AuthUser .bottomContainer {
+      background: ${props2 => getColor(props2, 'colorGrey', middle)};
+    }
+    
+    .AuthUser .header2 {
+      color: ${props2 => getColor(props2, 'colorFirst', darker, 'Dark')};
+    }
+
+    .AuthUser .vl-innertext {
+      background: ${props2 => getColor(props2, 'colorGrey', middle)};
+      color: ${props2 => getColor(props2, 'colorFirst', darker, 'Dark')};
     }
 
     .CheckRadioGroup ._capture {
