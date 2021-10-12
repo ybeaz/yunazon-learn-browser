@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { IRootStore } from './Interfaces/IRootStore'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
@@ -124,22 +123,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       />
     )
   }
-
-  const getThemeRemotely: Function = () => {
-    try {
-      document.getElementsByTagName('body')[0].style.display = 'none'
-      const { globalVars } = useSelector((store2: IRootStore) => store2)
-      const { theme } = globalVars
-      if (theme) {
-        require(`./ViewLayer/Styles/theme${theme}.less`)
-        document.getElementsByTagName('body')[0].style.display = 'flex'
-      }
-    } catch (error) {
-      console.info('RouterScreensConfig [115]', { msg: error.message })
-    }
-  }
-
-  getThemeRemotely()
 
   return (
     <BrowserRouter>

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 
 import { store } from './DataLayer/store'
+import { GlobalTheme } from './ViewLayer/Styles/GlobalTheme'
 import { RouterScreensConfig } from './RouterScreensConfig'
 
 export const initializeBrowserApp = () => {
@@ -10,7 +11,9 @@ export const initializeBrowserApp = () => {
 
   ReactDOM.hydrate(
     <Provider store={store}>
-      <RouterScreensConfig />
+      <GlobalTheme>
+        <RouterScreensConfig />
+      </GlobalTheme>
     </Provider>,
     rootElement
   )

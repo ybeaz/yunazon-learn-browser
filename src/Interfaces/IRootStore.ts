@@ -30,7 +30,11 @@ export interface IRootStore {
   }
   courses: any[]
   documents: any[]
-  globalVars: any
+  globalVars: {
+    theme: string
+    numberQuestionsInSlide: number
+    durationMultiplier: number
+  }
   forms: {
     userNameAuth: string
     emailAuth: string

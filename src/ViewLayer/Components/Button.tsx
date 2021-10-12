@@ -22,11 +22,18 @@ import {
   MdSearch,
 } from 'react-icons/md'
 
-import { FaFacebook, FaVk, FaTwitter, FaGooglePlusG } from 'react-icons/fa'
+import {
+  FaYinYang,
+  FaFacebook,
+  FaVk,
+  FaTwitter,
+  FaGooglePlusG,
+} from 'react-icons/fa'
 import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 const ICON = {
+  FaYinYang,
   FaFacebook,
   FaVk,
   FaTwitter,
@@ -130,7 +137,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
             >
               <Icon />
             </IconContext.Provider>
-            {icon2 !== null ? (
+            {icon2 && (
               <IconContext.Provider
                 value={{
                   className: `_icon`,
@@ -138,7 +145,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
               >
                 <Icon2 />
               </IconContext.Provider>
-            ) : null}
+            )}
           </div>
         ) : null}
         {captureRight ? (

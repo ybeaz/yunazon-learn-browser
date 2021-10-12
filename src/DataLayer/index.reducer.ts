@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_THEME } from './reducers/SET_THEME'
 import { SET_OAUTH_STAGE } from './reducers/SET_OAUTH_STAGE'
 import { SET_OAUTH_FB_SCRIPT_STATE } from './reducers/SET_OAUTH_FB_SCRIPT_STATE'
 import { SET_OAUTH_VK_SCRIPT_STATE } from './reducers/SET_OAUTH_VK_SCRIPT_STATE'
@@ -45,6 +46,7 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    SET_THEME,
     SET_OAUTH_STAGE,
     SET_OAUTH_FB_SCRIPT_STATE,
     SET_OAUTH_VK_SCRIPT_STATE,

@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_THEME',
   'SET_OAUTH_STAGE',
   'SET_OAUTH_FB_SCRIPT_STATE',
   'SET_OAUTH_VK_SCRIPT_STATE',
