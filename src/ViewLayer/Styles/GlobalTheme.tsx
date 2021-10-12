@@ -3,6 +3,11 @@ import { ThemeProvider } from 'styled-components'
 
 import { getCreatedGlobalStyle } from './getCreatedGlobalStyle'
 
+/**
+ * @description Component to provide Global theme
+ * @link to convert RGB to HSV https://www.rapidtables.com/convert/color/rgb-to-hsl.html
+ */
+
 interface GlobalThemeArgs {
   children: any
 }
@@ -24,72 +29,43 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
 
   const globalTheme = {
     colors: {
-      colorFirstDarker2: {
-        Light: 'rgba(32, 32, 32, 0.7)',
-        Dark: 'rgba(255, 255, 255, 0.7)',
-      },
-      colorFirstDarker: {
-        Light: 'rgba(32, 32, 32, 0.8)',
-        Dark: 'rgba(255, 255, 255, 0.8)',
-      },
       colorFirst: {
-        Light: 'rgba(32, 32, 32, 0.9)',
-        Dark: 'rgba(255, 255, 255, 0.9)',
-      },
-      colorFirstLighter: {
-        Light: 'rgba(32, 32, 32, 0.8)',
-        Dark: 'rgba(255, 255, 255, 0.8)',
-      },
-      colorModalBackground: {
-        Light: 'rgba(32, 32, 32, 0.4)',
-        Dark: 'rgba(0, 0, 0, 0.4)',
+        Light: [0, 0, 12.5], // RBG [32, 32, 32]
+        Dark: [0, 0, 87.5], // RGB [255, 255, 255]
       },
 
-      colorSecondDacker: {
-        Light: 'rgba(255, 255, 255, 0.8)',
-        Dark: 'rgba(32, 32, 32, 0.8)',
-      },
       colorSecond: {
-        Light: 'rgba(255, 255, 255, 1)',
-        Dark: 'rgba(32, 32, 32, 1)',
+        Light: [0, 0, 99],
+        Dark: [0, 0, 12.5],
       },
-      colorSecondLighter2: {
-        Light: 'rgba(255, 255, 255, 0.9)',
-        Dark: 'rgba(32, 32, 32, 0.9)',
-      },
-      colorSecondLighter3: {
-        Light: 'rgba(255, 255, 255, 0.8)',
-        Dark: 'rgba(32, 32, 32, 0.8)',
-      },
-      colorSecondLighter4: {
-        Light: 'rgba(255, 255, 255, 0.7)',
-        Dark: 'rgba(32, 32, 32, 0.7)',
+
+      colorGrey: {
+        Light: [0, 0, 44],
+        Dark: [0, 0, 44],
       },
 
       colorActive: {
-        Light: 'rgba(56, 94, 182, 1)',
-        Dark: 'rgba(56, 94, 182, 1)',
+        Light: [222, 52.9, 46.7], // RBG [56, 94, 182]
+        Dark: [222, 52.9, 46.7],
       },
-      colorActiveDacker: {
-        Light: 'rgba(22, 37, 61, 1)',
-        Dark: 'rgba(22, 37, 61, 1)',
-      },
+
       colorBoxes: {
-        Light: '',
-        Dark: 'rgba(62, 166, 255, 1)',
-      },
-      colorTest: {
-        Light: 'black',
-        Dark: 'grey',
-      },
-      backgroundTest: {
-        Light: 'lightgreen',
-        Dark: 'lightblue',
+        Light: [208, 100, 62.2], // RBG [62, 166, 255]
+        Dark: [208, 100, 62.2],
       },
     },
   }
 
-  const GlobalStyle = getCreatedGlobalStyle()
+  const brightness = {
+    darker: -3,
+    middle: 0,
+    lighter: 3,
+    lighter2: 6,
+    lighter3: 9,
+    lighter4: 12,
+  }
+
+  const GlobalStyle = getCreatedGlobalStyle(brightness)
 
   return (
     <ThemeProvider theme={globalTheme}>

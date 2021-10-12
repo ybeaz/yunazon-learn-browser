@@ -3,6 +3,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
 
+import { getCutCoursesList } from '../../Shared/getCutCoursesList'
 import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
 import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
@@ -25,6 +26,7 @@ function* getContentInfo() {
     } = yield axios[method](url, {}, options)
 
     let coursesNext = getProcessedArgsInChain(courses)
+      .exec(getCutCoursesList)
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
