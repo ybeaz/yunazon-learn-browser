@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux'
+
 import { createGlobalStyle } from 'styled-components'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { getBuiltColor } from './getBuiltColor'
 
 interface IGetCreatedGlobalStyleArgs {
   darker: number
@@ -21,45 +23,7 @@ export const getCreatedGlobalStyle = (
     globalVars: { theme },
   } = useSelector((store2: IRootStore) => store2)
 
-  const getColor = (
-    props2: any,
-    color2: string,
-    brightness2: number,
-    theme2: string = theme
-  ): string => {
-    let colorNext = color2
-
-    if (
-      color2 === 'colorFirstDarker' ||
-      color2 === 'colorFirst' ||
-      color2 === 'colorFirstLighter'
-    ) {
-      colorNext = 'colorFirst'
-    } else if (
-      color2 === 'colorSecondDarker' ||
-      color2 === 'colorSecond' ||
-      color2 === 'colorSecondLighter2' ||
-      color2 === 'colorSecondLighter3' ||
-      color2 === 'colorSecondLighter4'
-    ) {
-      colorNext = 'colorSecond'
-    } else if (color2 === 'colorActiveDarker') {
-      colorNext = 'colorActive'
-    }
-
-    const [hue, saturation, value] = props2.theme.colors[colorNext][theme2]
-    const valueNext = value + brightness2
-
-    console.info('getCreatedGlobalStyle [40]', {
-      value,
-      theme2,
-      colorNext,
-      brightness2,
-      hue,
-      saturation,
-    })
-    return `hsl(${hue}, ${saturation}%, ${valueNext}%)`
-  }
+  const getColor = getBuiltColor(theme)
 
   return createGlobalStyle`
 
