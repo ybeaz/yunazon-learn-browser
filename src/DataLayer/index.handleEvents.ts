@@ -2,6 +2,7 @@ import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { SET_THEME } from './handlers/SET_THEME'
 import { TOGGLE_THEME } from './handlers/TOGGLE_THEME'
 import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
 import { SELECT_SKILLS_REQ } from './handlers/SELECT_SKILLS_REQ'
@@ -73,6 +74,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TOGGLE_THEME,
+    SET_THEME,
     TEMPLATE,
     SELECT_SKILLS_OFFERED,
     SELECT_SKILLS_REQ,

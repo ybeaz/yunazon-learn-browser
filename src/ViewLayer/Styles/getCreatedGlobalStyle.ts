@@ -15,6 +15,11 @@ export const getCreatedGlobalStyle = () => {
   ): string => props2.theme.colors[color2][theme2]
 
   return createGlobalStyle`
+
+    .Select .__selectTag {
+      border: solid 1px ${props2 => getColor(props2, 'colorSecond', 'Dark')};
+    }
+
     .Select .__Ok {
       background: ${props2 => getColor(props2, 'colorActive')};
     }
@@ -309,7 +314,6 @@ export const getCreatedGlobalStyle = () => {
     }
 
     body {
-      display: flex;
       color: ${props2 => getColor(props2, 'colorFirstDarker')};
       background: ${props2 => getColor(props2, 'colorSecond')};
     }
