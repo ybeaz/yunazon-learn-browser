@@ -28,7 +28,6 @@ export const getBuiltColor =
 
     const [hue, saturation, value] = props2.theme.colors[colorNext][theme2]
     const valueNext = value + brightness2
-    console.info('getBuiltColor [31]', { colorNext, theme2 })
 
     return `hsl(${hue}, ${saturation}%, ${valueNext}%)`
   }
