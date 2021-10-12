@@ -148,7 +148,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     <div className='Certificate'>
       <div className='_buttons Certificate_noPrint'>
         <HeaderFrame>
-          <Link to={{ pathname: '/home' }}>
+          <Link to={{ pathname: '/academy' }}>
             <Button {...buttonBackProps} />
           </Link>
           <div className='__navigation'>

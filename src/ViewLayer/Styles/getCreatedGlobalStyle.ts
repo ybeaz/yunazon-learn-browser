@@ -233,6 +233,10 @@ export const getCreatedGlobalStyle = (
       background-color: ${props2 => getColor(props2, 'colorActive', middle)};
     }
 
+    .Button_UseCertificate ._in {
+      color: ${props2 => getColor(props2, 'colorFirst', darker, 'Dark')};
+    }
+
     .Button_downLeft .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorSecondLighter3', lighter3)};
@@ -270,8 +274,11 @@ export const getCreatedGlobalStyle = (
     }
 
     .Button_MdBackward3 .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActiveDarker', darker)};
+      background-color: ${props2 => getColor(props2, 'colorActive', darker)};
+    }
+
+    .Button_MdBackward3 ._in {
+      color: ${props2 => getColor(props2, 'colorFirst', darker, 'Dark')};
     }
 
     .Button_MdBackward2 .__button {
