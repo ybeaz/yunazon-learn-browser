@@ -8,6 +8,18 @@ interface IRoute {
 
 export const routes: IRoute[] = [
   {
+    path: `/home`,
+    exact: true,
+    page: 'SkillsExchangePresent',
+    themeDafault: 'Light',
+  },
+  {
+    path: `/demo-youtube-learn.html/home`,
+    exact: true,
+    page: 'SkillsExchangePresent',
+    themeDafault: 'Light',
+  },
+  {
     path: `/d/:documentID`,
     strict: true,
     page: 'Certificate',
@@ -32,22 +44,15 @@ export const routes: IRoute[] = [
     themeDafault: 'Dark',
   },
   {
-    path: `/academy`,
+    path: `/`,
     exact: true,
     page: 'AcademyMatrix',
     themeDafault: 'Dark',
   },
   {
-    path: `/home`,
+    path: '/academy',
     exact: true,
-    page: 'SkillsExchangePresent',
-    themeDafault: 'Light',
+    page: 'AcademyMatrix',
+    themeDafault: 'Dark',
   },
-  {
-    path: `/demo-youtube-learn.html/home`,
-    exact: true,
-    page: 'SkillsExchangePresent',
-    themeDafault: 'Light',
-  },
-  { path: `/`, exact: true, page: 'AcademyMatrix', themeDafault: 'Dark' },
 ]

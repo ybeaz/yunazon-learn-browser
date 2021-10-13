@@ -28,26 +28,28 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         strict?: boolean
         exact?: boolean
         page: string
+        themeDafault: string
       }[]
     ): JSX.Element[]
   }
 
   const getRoutes: IGetRoutes = routesArg =>
     routesArg.map(route => {
-      const { path, exact, page } = route
+      const { path, exact, page, themeDafault } = route
       const Page = PAGES[page]
       return (
         <Route
           exact={exact}
           path={path}
           render={routeProps => {
-            // console.info('RouterProvider [65] a route', {
+            const pageProps = { rootPath, routeProps, themeDafault }
+            // console.info('RouterScreensConfig [44]', {
+            //   pageProps,
             //   rootPath,
             //   routeProps,
             //   hostname: location.hostname,
             //   location,
             // })
-            const pageProps = { rootPath, routeProps }
             return <Page {...pageProps} />
           }}
         />

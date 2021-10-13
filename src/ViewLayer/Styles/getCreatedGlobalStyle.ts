@@ -23,6 +23,8 @@ export const getCreatedGlobalStyle = (
     globalVars: { theme },
   } = useSelector((store2: IRootStore) => store2)
 
+  if (!theme) return null
+
   const getColor = getBuiltColor(theme)
 
   return createGlobalStyle`

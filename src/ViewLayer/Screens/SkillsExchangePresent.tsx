@@ -14,6 +14,7 @@ interface SkillsExchangePresentProps {
       pathname: string
     }
   }
+  themeDafault: string
 }
 
 export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresentProps> =
@@ -22,6 +23,11 @@ export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresen
 
     const store = useSelector((store2: IRootStore) => store2)
     const { language: languageStore } = store
+
+    const { themeDafault } = props
+    useEffect(() => {
+      handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
+    }, [])
 
     const moduleCapture = 'Exchange your skills, save your time'
     const moduleDescription = 'Exchange your skills, save your time'
