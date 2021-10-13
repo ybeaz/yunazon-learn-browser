@@ -1,7 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
+import { routes } from './Constants/routes'
 import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
@@ -21,62 +21,18 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const demoPath = '/demo-youtube-learn.html'
   const rootPath = location.hostname === demoHostName ? demoPath : ''
 
-  const { router } = {
-    router: {
-      routes: [
-        {
-          path: `/d/:documentID`,
-          strict: true,
-          page: 'Certificate',
-        },
-        {
-          path: `/Certificate-styled`,
-          exact: true,
-          page: 'CertificateStyled',
-        },
-        {
-          path: `/certificate`,
-          exact: true,
-          page: 'Certificate',
-        },
-        {
-          path: `/c/:courseID`,
-          strict: true,
-          page: 'AcademyPresent',
-        },
-        {
-          path: `/academy`,
-          exact: true,
-          page: 'AcademyMatrix',
-        },
-        {
-          path: `/home`,
-          exact: true,
-          page: 'SkillsExchangePresent',
-        },
-        {
-          path: `${demoPath}/home`,
-          exact: true,
-          page: 'SkillsExchangePresent',
-        },
-        { path: `/`, exact: true, page: 'AcademyMatrix' },
-      ],
-      redirects: [
-        { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },
-        { from: `/home2`, to: `home`, exact: true },
-      ],
-    },
+  interface IGetRoutes {
+    (
+      routesArg: {
+        path: string
+        strict?: boolean
+        exact?: boolean
+        page: string
+      }[]
+    ): JSX.Element[]
   }
 
-  const { routes, redirects } = router
-
-  interface GetRoutesArg {
-    path: string
-    exact: boolean
-    page: string
-  }
-
-  const getRoutes = routesArg =>
+  const getRoutes: IGetRoutes = routesArg =>
     routesArg.map(route => {
       const { path, exact, page } = route
       const Page = PAGES[page]
@@ -98,7 +54,22 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       )
     })
 
-  const getRedirects: Function = (redirectsArg): JSX.Element[] =>
+  const redirects = [
+    { from: `${demoPath}`, to: `${demoPath}/home`, exact: true },
+    { from: `/home2`, to: `home`, exact: true },
+  ]
+  interface IGetRedirects {
+    (
+      redirectsArg: {
+        from: string
+        to: string
+        strict?: boolean
+        exact?: boolean
+      }[]
+    ): JSX.Element[]
+  }
+
+  const getRedirects: IGetRedirects = redirectsArg =>
     redirectsArg.map(redirect => {
       const { from: fromPath, to: toPath } = redirect
       const from = `${fromPath}`
