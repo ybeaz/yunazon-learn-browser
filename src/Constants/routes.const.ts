@@ -10,7 +10,7 @@ export const routes: IRoute[] = [
   {
     path: `/home`,
     exact: true,
-    page: 'SkillsExchangeSearchChRP',
+    page: 'SkillsExchangeSearch',
     themeDafault: 'Light',
   },
   {

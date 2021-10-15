@@ -8,7 +8,7 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 
-interface SkillsExchangePresentProps {
+interface SkillsExchangeSearchProps {
   routeProps: {
     location: {
       pathname: string
@@ -17,10 +17,8 @@ interface SkillsExchangePresentProps {
   themeDafault: string
 }
 
-export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresentProps> =
+export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
   (props): JSX.Element => {
-    getEffectedRequests(['GET_GLOBAL_VARS'])
-
     const store = useSelector((store2: IRootStore) => store2)
     const { language: languageStore } = store
 
@@ -33,12 +31,12 @@ export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresen
     const moduleDescription = 'Exchange your skills, save your time'
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
     const mainFrameProps = {
-      screenType: 'SkillsExchangePresent',
+      screenType: 'SkillsExchangeSearch',
       contentComponentName: 'CatalogSEP',
     }
 
     return (
-      <div className='SkillsExchangePresent'>
+      <div className='SkillsExchangeSearch'>
         <Helmet>
           <html lang={languageStore} />
           <meta charSet='utf-8' />
@@ -49,7 +47,7 @@ export const SkillsExchangePresent: React.FunctionComponent<SkillsExchangePresen
         <MainFrame {...mainFrameProps}>
           {null}
           {null}
-          <CatalogSEP />
+          SkillsExchangeSearch
           {null}
         </MainFrame>
       </div>
