@@ -1,15 +1,15 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
-import { routes } from './Constants/routes'
-import { SkillsExchangePresent } from './ViewLayer/Screens/SkillsExchangePresent'
+import { routes } from './Constants/routes.const'
+import { SkillsExchangeSearchChRP } from './ViewLayer/Screens/SkillsExchangeSearchChRP'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
 import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
 const PAGES = {
-  SkillsExchangePresent,
+  SkillsExchangeSearchChRP,
   AcademyMatrix,
   Certificate,
   AcademyPresent,
