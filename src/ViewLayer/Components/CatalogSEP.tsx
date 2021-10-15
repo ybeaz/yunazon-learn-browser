@@ -16,6 +16,10 @@ import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.con
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { nanoid } from 'nanoid'
 
+import { Select as SelectAntd } from 'antd'
+import 'antd/dist/antd.css'
+const { Option: OptionAntd } = SelectAntd
+
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
@@ -54,6 +58,9 @@ interface IGetStdDictionaryOptions {
     defaultOption: ISelectOption
   ): ISelectOption[]
 }
+
+// I stopped here to extend exchanging Select to SelectAntd
+// https://ant.design/components/select/#components-select-demo-optgroup
 
 export const CatalogSep: React.FunctionComponent<any> = (
   props: any
@@ -300,6 +307,8 @@ export const CatalogSep: React.FunctionComponent<any> = (
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1'
 
+  const stubOnAction = () => console.info('CatalogSep [306]')
+
   return (
     <div className='CatalogSep'>
       <h1 className='__titleScreen'>
@@ -312,7 +321,23 @@ export const CatalogSep: React.FunctionComponent<any> = (
             {' *'}
           </div>
           <div className={classCol02}>
-            <Select {...childrenProps.selectSkillsOfferedProps} />
+            <SelectAntd
+              showSearch
+              style={{ width: 200 }}
+              placeholder='Select a person'
+              optionFilterProp='children'
+              onChange={stubOnAction}
+              onFocus={stubOnAction}
+              onBlur={stubOnAction}
+              onSearch={stubOnAction}
+              filterOption={(input, option) =>
+                // @ts-ignore
+                option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+              }
+            >
+              <OptionAntd value='lucy'>Lucy</OptionAntd>
+              <OptionAntd value='john'>John</OptionAntd>
+            </SelectAntd>
           </div>
         </div>
         <div className='_row'>
