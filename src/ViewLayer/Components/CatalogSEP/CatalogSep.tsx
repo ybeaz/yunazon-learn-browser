@@ -1,17 +1,22 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { getStdDictionaryOptions } from './getStdDictionaryOptions'
+import { getAgeOptions } from './getAgeOptions'
+import { getLanguagesOptions } from './getLanguagesOptions'
+import { getCountriesOptions } from './getCountriesOptions'
+import { getExchangeSkillOptions } from './getExchangeSkillOptions'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { DICTIONARY, IDictionary } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SORT_BY } from '../../../Constants/sortBy.const'
 import { MEDIA } from '../../../Constants/media.const'
 import { GENDER } from '../../../Constants/gender.const'
-import { AGE, IAge } from '../../../Constants/age.const'
+import { AGE } from '../../../Constants/age.const'
 import { Button } from './../Button'
 import { Input } from './../Input'
-import { Select, ISelectOption } from './../Select'
-import { LANGUAGES, ILanguages } from '../../../Constants/languages.const'
-import { COUNTRIES, ICountry } from '../../../Constants/countries.const'
+import { Select } from './../Select'
+import { LANGUAGES } from '../../../Constants/languages.const'
+import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
 import { nanoid } from 'nanoid'
@@ -23,123 +28,11 @@ const { Option: OptionAntd } = SelectAntd
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
-interface IGetExchangeSkillOptions {
-  (
-    categories: any,
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
-}
-
-interface IGetCountriesOptions {
-  (
-    countries: ICountry[],
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
-}
-
-interface IGetLanguagesOptions {
-  (
-    languages: ILanguages,
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
-}
-
-interface IGetAgeOptions {
-  (age: IAge, defaultOption: ISelectOption): ISelectOption[]
-}
-
-interface IGetStdDictionaryOptions {
-  (
-    dictionary: IDictionary,
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
-}
-
-// I stopped here to extend exchanging Select to SelectAntd
-// https://ant.design/components/select/#components-select-demo-optgroup
 
 export const CatalogSep: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   const { language } = useSelector((store2: IRootStore) => store2)
-
-  const getExchangeSkillOptions: IGetExchangeSkillOptions = (
-    categories,
-    language2,
-    defaultOption2
-  ) => {
-    const exchangeSkillsMapped = Object.keys(categories).map(key => {
-      return {
-        text: categories[key][language2],
-        value: key,
-        selected: false,
-      }
-    })
-    return [defaultOption2, ...exchangeSkillsMapped]
-  }
-
-  const getCountriesOptions: IGetCountriesOptions = (
-    countries,
-    language2,
-    defaultOption2
-  ) => {
-    const countriesMapped = countries.map(item => {
-      const { name, alpha3, dictionary } = item
-      const text = dictionary ? dictionary[language2] : name
-      return {
-        selected: false,
-        text,
-        value: alpha3,
-      }
-    })
-    return [defaultOption2, ...countriesMapped]
-  }
-
-  const getLanguagesOptions: IGetLanguagesOptions = (
-    languages2,
-    language2,
-    defaultOption2
-  ) => {
-    const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
-      const [text] = languages2[ln][language2]
-      return {
-        text,
-        value: ln,
-        selected: false,
-      }
-    })
-    return [defaultOption2, ...lagnguagesMapped]
-  }
-
-  const getAgeOptions: IGetAgeOptions = (age2, defaultOption2) => {
-    const ageMapped = age2.map((number2: number) => {
-      return {
-        text: String(number2),
-        value: String(number2),
-        selected: false,
-      }
-    })
-    return [defaultOption2, ...ageMapped]
-  }
-
-  const getStdDictionaryOptions: IGetStdDictionaryOptions = (
-    dictionary2,
-    language2,
-    defaultOption2
-  ) => {
-    const dictionaryMapped = Object.keys(dictionary2).map((elem2: string) => {
-      return {
-        text: dictionary2[elem2][language2],
-        value: elem2,
-        selected: false,
-      }
-    })
-    return [defaultOption2, ...dictionaryMapped]
-  }
 
   const defaultOption = {
     text: DICTIONARY.notSelected[language],
