@@ -1,19 +1,19 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { DICTIONARY, IDictionary } from '../../Constants/dictionary.const'
-import { SORT_BY } from '../../Constants/sortBy.const'
-import { MEDIA } from '../../Constants/media.const'
-import { GENDER } from '../../Constants/gender.const'
-import { AGE, IAge } from '../../Constants/age.const'
-import { Button } from './Button'
-import { Input } from './Input'
-import { Select, ISelectOption } from './Select'
-import { LANGUAGES, ILanguages } from '../../Constants/languages.const'
-import { COUNTRIES, ICountry } from '../../Constants/countries.const'
-import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { DICTIONARY, IDictionary } from '../../../Constants/dictionary.const'
+import { SORT_BY } from '../../../Constants/sortBy.const'
+import { MEDIA } from '../../../Constants/media.const'
+import { GENDER } from '../../../Constants/gender.const'
+import { AGE, IAge } from '../../../Constants/age.const'
+import { Button } from './../Button'
+import { Input } from './../Input'
+import { Select, ISelectOption } from './../Select'
+import { LANGUAGES, ILanguages } from '../../../Constants/languages.const'
+import { COUNTRIES, ICountry } from '../../../Constants/countries.const'
+import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
+import { IRootStore } from '../../../Interfaces/IRootStore'
 import { nanoid } from 'nanoid'
 
 import { Select as SelectAntd } from 'antd'
@@ -147,42 +147,16 @@ export const CatalogSep: React.FunctionComponent<any> = (
     selected: false,
   }
 
-  const exchangeSkillOptions = getExchangeSkillOptions(
-    CATEGORIES_TO_EXCHANGE,
-    language,
-    defaultOption
-  )
-
-  const languagesOptions = getLanguagesOptions(
-    LANGUAGES,
-    language,
-    defaultOption
-  )
-
-  const countriesOptions = getCountriesOptions(
-    COUNTRIES,
-    language,
-    defaultOption
-  )
-
-  const ageOptions = getAgeOptions(AGE, defaultOption)
-
-  const genderOptions = getStdDictionaryOptions(GENDER, language, defaultOption)
-
-  const mediaOptions = getStdDictionaryOptions(MEDIA, language, defaultOption)
-
-  const sortByOptions = getStdDictionaryOptions(
-    SORT_BY,
-    language,
-    defaultOption
-  )
-
   const childrenProps = {
     selectSkillsOfferedProps: {
       classAdded: 'Select_skillsOffered',
       sizeOnBlur: 1,
       size: 6,
-      options: exchangeSkillOptions,
+      options: getExchangeSkillOptions(
+        CATEGORIES_TO_EXCHANGE,
+        language,
+        defaultOption
+      ),
       multiple: true,
       componentId: nanoid(),
       language,
@@ -192,7 +166,11 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_skillsOffered', // 'Select_skillsRequired',
       sizeOnBlur: 2,
       size: 6,
-      options: exchangeSkillOptions,
+      options: getExchangeSkillOptions(
+        CATEGORIES_TO_EXCHANGE,
+        language,
+        defaultOption
+      ),
       multiple: false,
       componentId: nanoid(),
       language,
@@ -202,7 +180,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_countryRequired',
       sizeOnBlur: 1,
       size: 6,
-      options: countriesOptions,
+      options: getCountriesOptions(COUNTRIES, language, defaultOption),
       multiple: true,
       componentId: nanoid(),
       language,
@@ -212,7 +190,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_languageRequired',
       sizeOnBlur: 1,
       size: 6,
-      options: languagesOptions,
+      options: getLanguagesOptions(LANGUAGES, language, defaultOption),
       multiple: true,
       componentId: nanoid(),
       language,
@@ -222,7 +200,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_ageFromRequired',
       sizeOnBlur: 1,
       size: 6,
-      options: ageOptions,
+      options: getAgeOptions(AGE, defaultOption),
       multiple: false,
       componentId: nanoid(),
       language,
@@ -232,7 +210,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_ageToRequired',
       sizeOnBlur: 1,
       size: 6,
-      options: ageOptions,
+      options: getAgeOptions(AGE, defaultOption),
       multiple: false,
       componentId: nanoid(),
       language,
@@ -256,7 +234,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_genderRequired',
       sizeOnBlur: 1,
       size: 4,
-      options: genderOptions,
+      options: getStdDictionaryOptions(GENDER, language, defaultOption),
       multiple: false,
       componentId: nanoid(),
       language,
@@ -266,7 +244,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_mediaRequired',
       sizeOnBlur: 1,
       size: 6,
-      options: mediaOptions,
+      options: getStdDictionaryOptions(MEDIA, language, defaultOption),
       multiple: true,
       componentId: nanoid(),
       language,
@@ -283,7 +261,7 @@ export const CatalogSep: React.FunctionComponent<any> = (
       classAdded: 'Select_SortByProps',
       sizeOnBlur: 1,
       size: 4,
-      options: sortByOptions,
+      options: getStdDictionaryOptions(SORT_BY, language, defaultOption),
       multiple: false,
       componentId: nanoid(),
       language,
@@ -345,6 +323,18 @@ export const CatalogSep: React.FunctionComponent<any> = (
             {DICTIONARY['Find a skill exchange partner who has'][language]}
           </div>
           <div className={classCol02}>
+            <SelectAntd
+              mode='multiple'
+              allowClear
+              style={{ width: '100%' }}
+              placeholder='Please select'
+              defaultValue={[]}
+              onChange={stubOnAction}
+            >
+              <OptionAntd value='lucy'>Lucy</OptionAntd>
+              <OptionAntd value='john'>John</OptionAntd>
+            </SelectAntd>
+
             <Select {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
