@@ -1,12 +1,13 @@
 import { ILanguages } from '../../../Constants/languages.const'
-import { ISelectOption } from './../Select'
+import { IDictionary } from '../../../Constants/dictionary.const'
+import { ISelectOptionAntD } from '../../../Interfaces/ISelectOptionAntD'
 
 interface IGetLanguagesOptions {
   (
-    languages: ILanguages,
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    languages2: ILanguages,
+    language2: string,
+    defaultOption2: IDictionary
+  ): ISelectOptionAntD[]
 }
 
 /**
@@ -19,11 +20,13 @@ export const getLanguagesOptions: IGetLanguagesOptions = (
 ) => {
   const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
     const [text] = languages2[ln][language2]
-    return {
-      text,
-      value: ln,
-      selected: false,
-    }
+    return { label: text, value: ln }
   })
-  return [defaultOption2, ...lagnguagesMapped]
+
+  const defaultOptionNext = {
+    label: defaultOption2[language2],
+    value: defaultOption2['en'],
+  }
+
+  return [defaultOptionNext, ...lagnguagesMapped]
 }

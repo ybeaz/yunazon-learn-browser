@@ -1,8 +1,8 @@
 import { Select as SelectAntd } from 'antd'
 
 import { IDictionary } from '../../../Constants/dictionary.const'
-import { ISelectOption } from '../../../Interfaces/ISelectOption'
 import { ISelectOptionAntD } from '../../../Interfaces/ISelectOptionAntD'
+import { ISelectOption } from '../../../Interfaces/ISelectOption'
 
 const { Option: OptionAntd } = SelectAntd
 

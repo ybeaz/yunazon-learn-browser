@@ -1,8 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { getStdDictionaryOptions2 } from './getStdDictionaryOptions2'
-import { getAgeOptions } from './getAgeOptions'
 import { getLanguagesOptions } from './getLanguagesOptions'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -11,10 +9,8 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SORT_BY } from '../../../Constants/sortBy.const'
 import { MEDIA } from '../../../Constants/media.const'
 import { GENDER } from '../../../Constants/gender.const'
-import { AGE } from '../../../Constants/age.const'
 import { Button } from './../Button'
 import { Input } from './../Input'
-import { Select } from './../Select'
 import { LANGUAGES } from '../../../Constants/languages.const'
 import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
@@ -30,12 +26,6 @@ import 'antd/dist/antd.css'
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const { language } = useSelector((store2: IRootStore) => store2)
-
-  const defaultOption2 = {
-    text: DICTIONARY.notSelected[language],
-    value: 'notSelected',
-    selected: false,
-  }
 
   const defaultOption = DICTIONARY.notSelected
 
@@ -85,24 +75,38 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       style: { width: '100%' },
     },
     selectCountryRequiredProps: {
-      classAdded: 'Select_countryRequired',
-      sizeOnBlur: 1,
-      size: 6,
-      options: getCountriesOptions(COUNTRIES, language, defaultOption2),
-      multiple: true,
+      allowClear: true,
       componentId: nanoid(),
-      language,
-      typeEvent: 'SELECT_SKILLS_REQ_COUNTRY',
+      defaultValue: [],
+      filterOption: (input, option) =>
+        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: stubOnAction,
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getCountriesOptions(COUNTRIES, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
     },
     selectLanguageRequiredProps: {
-      classAdded: 'Select_languageRequired',
-      sizeOnBlur: 1,
-      size: 6,
-      options: getLanguagesOptions(LANGUAGES, language, defaultOption2),
-      multiple: true,
+      allowClear: true,
       componentId: nanoid(),
-      language,
-      typeEvent: 'SELECT_SKILLS_REQ_LANG',
+      defaultValue: [],
+      filterOption: (input, option) =>
+        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: stubOnAction,
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getLanguagesOptions(LANGUAGES, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
     },
     inputAgeFromRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
@@ -223,7 +227,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             {' *'}
           </div>
           <div className={classCol02}>
-            <Select {...childrenProps.selectCountryRequiredProps} />
+            <SelectAntd {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
         <div className='_row'>
@@ -232,7 +236,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             {' *'}
           </div>
           <div className={classCol02}>
-            <Select {...childrenProps.selectLanguageRequiredProps} />
+            <SelectAntd {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>
         <div className='_row'>

@@ -1,12 +1,13 @@
-import { ISelectOption } from './../Select'
 import { ICountry } from '../../../Constants/countries.const'
+import { IDictionary } from '../../../Constants/dictionary.const'
+import { ISelectOptionAntD } from '../../../Interfaces/ISelectOptionAntD'
 
 interface IGetCountriesOptions {
   (
     countries: ICountry[],
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: IDictionary
+  ): ISelectOptionAntD[]
 }
 
 /**
@@ -20,11 +21,13 @@ export const getCountriesOptions: IGetCountriesOptions = (
   const countriesMapped = countries.map(item => {
     const { name, alpha3, dictionary } = item
     const text = dictionary ? dictionary[language2] : name
-    return {
-      selected: false,
-      text,
-      value: alpha3,
-    }
+    return { label: text, value: alpha3 }
   })
-  return [defaultOption2, ...countriesMapped]
+
+  const defaultOptionNext = {
+    label: defaultOption2[language2],
+    value: defaultOption2['en'],
+  }
+
+  return [defaultOptionNext, ...countriesMapped]
 }
