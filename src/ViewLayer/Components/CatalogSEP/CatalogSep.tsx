@@ -29,9 +29,7 @@ const { Option: OptionAntd } = SelectAntd
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
 
-export const CatalogSep: React.FunctionComponent<any> = (
-  props: any
-): JSX.Element => {
+export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
   const defaultOption = {
@@ -206,8 +204,11 @@ export const CatalogSep: React.FunctionComponent<any> = (
                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
               }
             >
-              <OptionAntd value='lucy'>Lucy</OptionAntd>
-              <OptionAntd value='john'>John</OptionAntd>
+              {getExchangeSkillOptions(
+                CATEGORIES_TO_EXCHANGE,
+                language,
+                defaultOption
+              )}
             </SelectAntd>
           </div>
         </div>
@@ -224,11 +225,12 @@ export const CatalogSep: React.FunctionComponent<any> = (
               defaultValue={[]}
               onChange={stubOnAction}
             >
-              <OptionAntd value='lucy'>Lucy</OptionAntd>
-              <OptionAntd value='john'>John</OptionAntd>
+              {getExchangeSkillOptions(
+                CATEGORIES_TO_EXCHANGE,
+                language,
+                defaultOption
+              )}
             </SelectAntd>
-
-            <Select {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
         <div className='_row'>
