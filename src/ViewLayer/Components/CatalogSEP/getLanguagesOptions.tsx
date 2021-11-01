@@ -9,6 +9,9 @@ interface IGetLanguagesOptions {
   ): ISelectOption[]
 }
 
+/**
+ * @description Funciton to get array of JSX option elements - language options
+ */
 export const getLanguagesOptions: IGetLanguagesOptions = (
   languages2,
   language2,

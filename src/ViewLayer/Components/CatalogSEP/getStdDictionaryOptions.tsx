@@ -1,25 +1,70 @@
+import { Select as SelectAntd } from 'antd'
+
 import { IDictionary } from '../../../Constants/dictionary.const'
-import { ISelectOption } from './../Select'
+import { ISelectOption } from '../../../Interfaces/ISelectOption'
+import { ISelectOptionAntD } from '../../../Interfaces/ISelectOptionAntD'
+
+const { Option: OptionAntd } = SelectAntd
 
 interface IGetStdDictionaryOptions {
   (
-    dictionary: IDictionary,
-    language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    categories: any,
+    language2: string,
+    defaultOption2: IDictionary
+  ): ISelectOptionAntD[]
 }
 
+/**
+ * @description Funciton to get array of objects from standard distionary of objects
+ */
 export const getStdDictionaryOptions: IGetStdDictionaryOptions = (
-  dictionary2,
+  categories,
   language2,
   defaultOption2
 ) => {
-  const dictionaryMapped = Object.keys(dictionary2).map((elem2: string) => {
-    return {
-      text: dictionary2[elem2][language2],
-      value: elem2,
-      selected: false,
-    }
+  const stdDictionaryOptionsMapped = Object.keys(categories).map(key => {
+    return { label: categories[key][language2], value: key }
   })
-  return [defaultOption2, ...dictionaryMapped]
+
+  const defaultStdOptionNext = {
+    label: defaultOption2[language2],
+    value: defaultOption2['en'],
+  }
+
+  return [defaultStdOptionNext, ...stdDictionaryOptionsMapped]
 }
+
+/**
+ * @description Function to return array of JSX Elements - options
+ */
+
+type IOptionFCAntd = typeof SelectAntd.Option
+
+interface IGetStdDictionaryOptionsJsxElements {
+  (
+    categories: any,
+    language: string,
+    defaultOption: ISelectOption
+  ): IOptionFCAntd[]
+}
+
+export const getStdDictionaryOptionsJsxElements: IGetStdDictionaryOptionsJsxElements =
+  (categories, language2, defaultOption2): IOptionFCAntd[] => {
+    const exchangeSkillsMapped = Object.keys(categories).map(key => {
+      return (
+        <OptionAntd key={key} value={key} isSelectOption={false}>
+          {categories[key][language2]}
+        </OptionAntd>
+      )
+    })
+
+    const { text, value, selected } = defaultOption2
+    const defaultOptionNext = (
+      <OptionAntd key={value} value={value} isSelectOption={selected}>
+        {text}
+      </OptionAntd>
+    )
+
+    // @ts-ignore
+    return [defaultOptionNext, ...exchangeSkillsMapped]
+  }
