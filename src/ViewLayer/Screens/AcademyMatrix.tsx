@@ -66,6 +66,11 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
     item.searchString.includes(searchInput)
   )
 
+  const mainFrameProps = {
+    contentComponentName: 'AcademyMatrix',
+    brandName: 'YourRails Academy',
+  }
+
   return (
     <div className='AcademyMatrix'>
       <Helmet>
@@ -75,7 +80,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
         <link rel='canonical' href={canonicalUrlSite} />
         <meta name='description' content={descriptionSite} />
       </Helmet>
-      <MainFrame>
+      <MainFrame {...mainFrameProps}>
         <SearchGroup />
         {null}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (

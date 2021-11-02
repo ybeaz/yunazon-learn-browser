@@ -151,7 +151,10 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     height,
   })
 
-  const mainFrameProps = { contentComponentName }
+  const mainFrameProps = {
+    contentComponentName,
+    brandName: 'YourRails Academy',
+  }
 
   const contentComponentProps = {
     ReaderIframe: {

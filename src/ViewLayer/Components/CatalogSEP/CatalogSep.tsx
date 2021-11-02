@@ -38,7 +38,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       defaultValue: [],
       filterOption: (input, option) =>
         option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
-      mode: null,
+      mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
       onFocus: stubOnAction,
@@ -59,7 +59,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       defaultValue: [],
       filterOption: (input, option) =>
         option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
-      mode: 'multiple' as 'multiple' | 'tags',
+      mode: null,
       onBlur: stubOnAction,
       onChange: stubOnAction,
       onFocus: stubOnAction,
@@ -216,18 +216,10 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Find a skill exchange partner who has'][language]}
-          </div>
-          <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
-          </div>
-        </div>
-        <div className='_row'>
-          <div className={classCol01}>
-            {DICTIONARY['Country'][language]}
             {' *'}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectCountryRequiredProps} />
+            <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
         <div className='_row'>
@@ -237,6 +229,21 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectLanguageRequiredProps} />
+          </div>
+        </div>
+        <div className='_row'>
+          <div className={classCol01}>
+            {DICTIONARY['Communication media'][language]}
+            {' *'}
+          </div>
+          <div className={classCol02}>
+            <SelectAntd {...childrenProps.selectMediaRequiredProps} />
+          </div>
+        </div>
+        <div className='_row'>
+          <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
+          <div className={classCol02}>
+            <SelectAntd {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
         <div className='_row'>
@@ -254,15 +261,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectGenderRequiredProps} />
-          </div>
-        </div>
-        <div className='_row'>
-          <div className={classCol01}>
-            {DICTIONARY['Prefered media or mean'][language]}
-            {' *'}
-          </div>
-          <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
         <div className='_row'>
@@ -290,7 +288,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className='_row'>
           <div className={classCol01}>
             {'* '}
-            {DICTIONARY['Multi choice'][language]}
+            {DICTIONARY['Required'][language]}
           </div>
         </div>
       </form>

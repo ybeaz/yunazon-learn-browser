@@ -5,14 +5,15 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 
 interface MainFrameArgs {
+  brandName: string
   screenType?: string
   contentComponentName?: string
   children: any[]
 }
 
 export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
-  const { screenType, contentComponentName, children } = props
-  const headerFrameProps = { contentComponentName, children }
+  const { brandName, screenType, contentComponentName, children } = props
+  const headerFrameProps = { brandName, contentComponentName, children }
 
   const buttonMdMenuProps = {
     icon: 'MdMenu',

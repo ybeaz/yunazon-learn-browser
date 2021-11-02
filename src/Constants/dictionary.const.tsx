@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Required: {
+    en: 'Required',
+    ru: 'Обязательно выбрать',
+  },
   'Toggle site theme': {
     en: 'Toggle site theme',
     ru: 'Переключить стиль сайта',
@@ -30,6 +34,10 @@ export const DICTIONARY: IDictionary = {
   'Description contains': {
     en: 'Description contains',
     ru: 'Описание содержит',
+  },
+  'Communication media': {
+    en: 'Communication media',
+    ru: 'Способ коммуникации',
   },
   'Select media': { en: 'Select media', ru: 'Выберете способ коммуникации' },
   'Prefered media or mean': {

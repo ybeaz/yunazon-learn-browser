@@ -12,8 +12,6 @@ export const ColorGalery: React.FunctionComponent<ColorGaleryArgs> = (
 
   const colorsKeys = Object.keys(colors)
 
-  const colorArr = ['red', 'green', 'blue']
-
   const getColorPlates = (theme, color, brightnessObj) => {
     return Object.keys(brightnessObj).map(brightnessKey => {
       const props2 = {

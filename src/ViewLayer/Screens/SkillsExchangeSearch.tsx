@@ -34,6 +34,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearch',
       contentComponentName: 'CatalogSep',
+      brandName: 'YourRails',
     }
 
     return (
