@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { ColorGalery } from '../Components/ColorGalery'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { CatalogSep } from '../Components/CatalogSep/CatalogSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -48,7 +49,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           {null}
           {null}
           <CatalogSep />
-          {null}
+          <ColorGalery />
         </MainFrame>
       </div>
     )
