@@ -10,13 +10,13 @@ export const routes: IRoute[] = [
   {
     path: `/home`,
     exact: true,
-    page: 'SkillsExchangePresent',
+    page: 'SkillsExchangeSearch',
     themeDafault: 'Light',
   },
   {
-    path: `/demo-youtube-learn.html/home`,
+    path: `/exchange-search-2`,
     exact: true,
-    page: 'SkillsExchangePresent',
+    page: 'SkillsExchangeSearchChRP',
     themeDafault: 'Light',
   },
   {
@@ -44,13 +44,19 @@ export const routes: IRoute[] = [
     themeDafault: 'Dark',
   },
   {
-    path: `/`,
+    path: '/academy',
     exact: true,
     page: 'AcademyMatrix',
     themeDafault: 'Dark',
   },
   {
-    path: '/academy',
+    path: `/demo-youtube-learn.html/home`,
+    exact: true,
+    page: 'AcademyMatrix',
+    themeDafault: 'Dark',
+  },
+  {
+    path: `/`,
     exact: true,
     page: 'AcademyMatrix',
     themeDafault: 'Dark',

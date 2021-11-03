@@ -62,7 +62,6 @@ export const common = {
       },
       {
         test: /\.(css|less)$/i,
-        exclude: [/node_modules/],
         use: [
           {
             loader: 'style-loader', // creates style nodes from JS strings

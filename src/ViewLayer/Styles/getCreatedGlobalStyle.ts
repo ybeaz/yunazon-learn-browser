@@ -6,6 +6,9 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { getBuiltColor } from './getBuiltColor'
 
 interface IGetCreatedGlobalStyleArgs {
+  darker4: number
+  darker3: number
+  darker2: number
   darker: number
   middle: number
   lighter: number
@@ -17,7 +20,17 @@ interface IGetCreatedGlobalStyleArgs {
 export const getCreatedGlobalStyle = (
   brightness: IGetCreatedGlobalStyleArgs
 ) => {
-  const { darker, middle, lighter, lighter2, lighter3, lighter4 } = brightness
+  const {
+    darker4,
+    darker3,
+    darker2,
+    darker,
+    middle,
+    lighter,
+    lighter2,
+    lighter3,
+    lighter4,
+  } = brightness
 
   const {
     globalVars: { theme },
@@ -74,36 +87,59 @@ export const getCreatedGlobalStyle = (
     }
 
     .Input_ageFromToRequired .__input {
-      color: ${props2 => getColor(props2, 'colorSecond', middle)};
-      background: ${props2 =>
-        getColor(props2, 'colorFirstLighter', lighter, 'Dark')};
-      border-color: ${props2 =>
-        getColor(props2, 'colorSecond', middle, 'Dark')};
+      color: ${props2 => getColor(props2, 'colorFirst', lighter)};
+      background: ${props2 => getColor(props2, 'colorSecond', lighter)};
+      border-color: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
-      color: ${props2 => getColor(props2, 'colorSecond', middle)};
+      color: ${props2 => getColor(props2, 'colorFirst', lighter4)};
       background: ${props2 =>
-        getColor(props2, 'colorFirstLighter', lighter, 'Dark')};
-      border-color: ${props2 =>
-        getColor(props2, 'colorSecond', middle, 'Dark')};
+        getColor(props2, 'colorSecond', lighter, 'Light')};
+      border-color: ${props2 => getColor(props2, 'colorBoxes', middle, 'Dark')};
+    }
+
+    .Input_ageFromToRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
+      opacity: 1; /* Firefox */
+    }
+    
+    .Input_ageFromToRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
+    }
+    
+    .Input_ageFromToRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
     }
 
     .Input_descriptionRequired .__input {
-      color: ${props2 => getColor(props2, 'colorSecond', middle)};
+      color: ${props2 => getColor(props2, 'colorFirst', lighter4)};
       background: ${props2 =>
-        getColor(props2, 'colorFirstLighter', lighter, 'Dark')};
-      border-color: ${props2 =>
-        getColor(props2, 'colorSecond', middle, 'Dark')};
+        getColor(props2, 'colorSecond', lighter, 'Light')};
+      border-color: ${props2 => getColor(props2, 'colorFirst', middle, 'Dark')};
     }
 
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
-      color: ${props2 => getColor(props2, 'colorSecond', middle)};
-      background: ${props2 => getColor(props2, 'colorSecond', middle)};
-      border-color: ${props2 =>
-        getColor(props2, 'colorSecond', middle, 'Dark')};
+      color: ${props2 => getColor(props2, 'colorFirst', lighter4)};
+      background: ${props2 =>
+        getColor(props2, 'colorSecond', lighter, 'Light')};
+      border-color: ${props2 => getColor(props2, 'colorBoxes', middle, 'Dark')};
+    }
+
+
+    .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
+      opacity: 1; /* Firefox */
+    }
+    
+    .Input_descriptionRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
+    }
+    
+    .Input_descriptionRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
+      color: ${props2 => getColor(props2, 'colorFirst', darker4, 'Dark')};
     }
 
     .Input_passwordAuth .__input {

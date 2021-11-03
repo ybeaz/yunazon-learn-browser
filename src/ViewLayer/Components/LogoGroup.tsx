@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
+interface LogoGroupArgs {
+  brandName: string
+}
+
+export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
+  props
+): JSX.Element => {
+  const { brandName } = props
+
   return (
     <Link
       className='LogoGroup'
@@ -18,7 +26,7 @@ export const LogoGroup: React.FunctionComponent<any> = (): JSX.Element => {
           src='https://yourails.com/images/logoYouRails.png'
         />
       </div>
-      <div className='__brand'>YouRails Academy</div>
+      <div className='__brand'>{brandName}</div>
     </Link>
   )
 }

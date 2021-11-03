@@ -8,12 +8,13 @@ import { LanguageSelect } from '../Components/LanguageSelect'
 import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
+  brandName?: string
   contentComponentName?: string
   children: any[]
 }
 
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
-  const { contentComponentName } = props
+  const { brandName, contentComponentName } = props
   const { user, language } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user2: IUser): any => {
@@ -85,7 +86,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='__left'>
         {props.children[0]}
-        <LogoGroup />
+        <LogoGroup brandName={brandName} />
       </div>
       <div className='__main'>{props.children[1]}</div>
       <div className='__right'>

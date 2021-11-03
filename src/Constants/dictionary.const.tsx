@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Required: {
+    en: 'Required',
+    ru: 'Обязательно выбрать',
+  },
   'Toggle site theme': {
     en: 'Toggle site theme',
     ru: 'Переключить стиль сайта',
@@ -31,9 +35,18 @@ export const DICTIONARY: IDictionary = {
     en: 'Description contains',
     ru: 'Описание содержит',
   },
+  'Communication media': {
+    en: 'Communication media',
+    ru: 'Способ коммуникации',
+  },
+  'Select media': { en: 'Select media', ru: 'Выберете способ коммуникации' },
   'Prefered media or mean': {
     en: 'Prefered media or mean',
-    ru: 'Способ коммуникации',
+    ru: 'Предпочтительный способ коммуникации',
+  },
+  'Prefered gender': {
+    en: 'Prefered gender',
+    ru: 'Предпочтения по полу',
   },
   Gender: {
     en: 'Gender',
@@ -78,6 +91,10 @@ export const DICTIONARY: IDictionary = {
   notSelected: {
     en: 'not selected',
     ru: 'не выбрано',
+  },
+  select: {
+    en: 'select',
+    ru: 'выберете',
   },
   PleaseReloadThePage: {
     en: (
