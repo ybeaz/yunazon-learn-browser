@@ -74,6 +74,12 @@ interface ButtonArgs {
   handleEvents?: Function
 }
 
+export const ButtonTest: React.FunctionComponent<ButtonArgs> = (
+  props: ButtonArgs
+): JSX.Element => {
+  return <div className='Button'>Button</div>
+}
+
 export const Button: React.FunctionComponent<ButtonArgs> = (
   props: ButtonArgs
 ): React.ReactElement => {

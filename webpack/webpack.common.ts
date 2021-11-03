@@ -19,7 +19,10 @@ export const common = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.less'],
+    alias: {
+      '@ant-design/icons/lib/dist$': path.resolve(__dirname, './src/icons.js'),
+    },
   },
   module: {
     rules: [

@@ -22,7 +22,6 @@ export const prodPlugins = [
       NODE_ENV: JSON.stringify('production'),
     },
   }),
-  new DuplicatePackageCheckerPlugin(),
   new webpack.optimize.AggressiveMergingPlugin(), //Merge chunks
   new CleanWebpackPlugin({
     cleanOnceBeforeBuildPatterns: [],
@@ -31,6 +30,7 @@ export const prodPlugins = [
     algorithm: 'gzip',
     test: /\.js$|\.css$|\.html$/,
   }),
+  new DuplicatePackageCheckerPlugin(),
   new WebpackDeduplicationPlugin({
     cacheDir: path.resolve(__dirname, '../dist'),
     rootPath: path.resolve(__dirname, '../'),
