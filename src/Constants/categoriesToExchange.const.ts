@@ -3,6 +3,14 @@ export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
     en: 'all skills',
     ru: 'все навыки',
   },
+  'Windows installation': {
+    en: 'Windows installation',
+    ru: 'Установка Windows',
+  },
+  'Find otolaryngologist': {
+    en: 'Find otolaryngologist',
+    ru: 'Найти отолариголога',
+  },
   HTML: {
     en: 'HTML',
     ru: 'HTML',

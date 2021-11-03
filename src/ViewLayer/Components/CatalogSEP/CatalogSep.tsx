@@ -31,13 +31,16 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
 
   const stubOnAction = () => console.info('CatalogSep [306]')
 
+  const filterOption = (input, option) =>
+    option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+    option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
+
   const childrenProps = {
     selectSkillsOfferedProps: {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -57,8 +60,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: null,
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -78,8 +80,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -95,8 +96,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -126,8 +126,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [], // defaultOption['en']
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: null,
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -143,8 +142,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
@@ -167,8 +165,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       allowClear: true,
       componentId: nanoid(),
       defaultValue: SORT_BY['descending'][language],
-      filterOption: (input, option) =>
-        option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0,
+      filterOption,
       mode: null,
       onBlur: stubOnAction,
       onChange: stubOnAction,
