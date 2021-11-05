@@ -2,6 +2,17 @@ import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { SEP_SELECT_SKILLS_OFFERED } from './handlers/SEP_SELECT_SKILLS_OFFERED'
+import { SEP_SELECT_SKILLS_REQUIRED } from './handlers/SEP_SELECT_SKILLS_REQUIRED'
+import { SEP_SELECT_COUNTRY_REQUIRED } from './handlers/SEP_SELECT_COUNTRY_REQUIRED'
+import { SEP_SELECT_LANGUAGE_REQUIRED } from './handlers/SEP_SELECT_LANGUAGE_REQUIRED'
+import { SEP_INPUT_AGE_FROM_REQUIRED } from './handlers/SEP_INPUT_AGE_FROM_REQUIRED'
+import { SEP_INPUT_AGE_TO_REQUIRED } from './handlers/SEP_INPUT_AGE_TO_REQUIRED'
+import { SEP_SELECT_GENDER_REQUIRED } from './handlers/SEP_SELECT_GENDER_REQUIRED'
+import { SEP_SELECT_MEDIA_REQUIRED } from './handlers/SEP_SELECT_MEDIA_REQUIRED'
+import { SEP_INPUT_DESCRIPTION_REQUIRED } from './handlers/SEP_INPUT_DESCRIPTION_REQUIRED'
+import { SEP_SELECT_SORT_BY } from './handlers/SEP_SELECT_SORT_BY'
+import { SEP_CLICK_BUTTON_SEARCH } from './handlers/SEP_CLICK_BUTTON_SEARCH'
 import { SET_THEME } from './handlers/SET_THEME'
 import { TOGGLE_THEME } from './handlers/TOGGLE_THEME'
 import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
@@ -73,9 +84,20 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
   const type = typeStore ? typeStore : typeEvent
 
   const output: Record<string, IActionEvent> = {
+    TEMPLATE,
+    SEP_SELECT_SKILLS_OFFERED,
+    SEP_SELECT_SKILLS_REQUIRED,
+    SEP_SELECT_COUNTRY_REQUIRED,
+    SEP_SELECT_LANGUAGE_REQUIRED,
+    SEP_INPUT_AGE_FROM_REQUIRED,
+    SEP_INPUT_AGE_TO_REQUIRED,
+    SEP_SELECT_GENDER_REQUIRED,
+    SEP_SELECT_MEDIA_REQUIRED,
+    SEP_INPUT_DESCRIPTION_REQUIRED,
+    SEP_SELECT_SORT_BY,
+    SEP_CLICK_BUTTON_SEARCH,
     TOGGLE_THEME,
     SET_THEME,
-    TEMPLATE,
     SELECT_SKILLS_OFFERED,
     SELECT_SKILLS_REQ,
     SELECT_SKILLS_REQ_COUNTRY,
