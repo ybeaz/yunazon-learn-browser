@@ -11,7 +11,7 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { SearchGroup } from '../Components/SearchGroup'
-import { SITE_META_DATA } from '../../Constants/siteMetaData'
+import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 
 export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])

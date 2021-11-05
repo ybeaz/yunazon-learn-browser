@@ -3,7 +3,7 @@ import { actionAsync } from '../DataLayer/index.action'
 
 import { cookie } from '../Shared/cookie'
 import { mediaSizeCrossBrowser } from '../Shared/mediaSizeCrossBrowser'
-import { COOKIE_ANALYTICSID_NAME } from '../Constants/cookieAnalyticsIDName'
+import { COOKIE_ANALYTICSID_NAME } from '../Constants/cookieAnalyticsIDName.const'
 
 const { dispatch } = store
 

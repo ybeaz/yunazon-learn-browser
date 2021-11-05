@@ -1,7 +1,7 @@
 import { select, put, takeEvery, call } from 'redux-saga/effects'
 import axios from 'axios'
 
-import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName'
+import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName.const'
 import { cookie } from '../../Shared/cookie'
 import { IAnalyticsInput } from '../../Interfaces/IAnalyticsInput'
 import { getSavedAnalyticsConnector } from '../../CommunicationLayer/getSavedAnalytics.connector'
