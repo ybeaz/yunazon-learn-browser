@@ -31,7 +31,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
 
   const defaultOption = DICTIONARY.notSelected
 
-  const stubOnAction = () => console.info('CatalogSep [306]')
+  const stubOnAction = () => {}
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
