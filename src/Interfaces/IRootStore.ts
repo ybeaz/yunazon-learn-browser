@@ -34,6 +34,7 @@ export interface IRootStore {
     theme: string
     numberQuestionsInSlide: number
     durationMultiplier: number
+    isShownPalette: boolean
   }
   forms: {
     userNameAuth: string

@@ -42,6 +42,7 @@ export const rootStoreDefault = {
     theme: 'Dark',
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
+    isShownPalette: false,
   },
   forms: {
     userNameAuth: '',
