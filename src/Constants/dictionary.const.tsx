@@ -80,6 +80,10 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
+  'Members Search - Fast Skill Exchange': {
+    en: 'Members Search - Fast Skill Exchange',
+    ru: 'Поиск Пользователей - Быстрый Обмен Знаниями',
+  },
   'Members Search - Find a Skill Exchange Partner': {
     en: 'Members Search - Find a Skill Exchange Partner',
     ru: 'Поиск Пользователей - Найдите Партнера по Обмену Знаниями',

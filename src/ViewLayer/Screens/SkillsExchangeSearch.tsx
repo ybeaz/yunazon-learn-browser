@@ -20,6 +20,8 @@ interface SkillsExchangeSearchProps {
 
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
   (props): JSX.Element => {
+    getEffectedRequests(['GET_GLOBAL_VARS'])
+
     const store = useSelector((store2: IRootStore) => store2)
     const {
       language: languageStore,
