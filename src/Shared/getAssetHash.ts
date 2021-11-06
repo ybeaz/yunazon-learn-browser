@@ -1,6 +1,6 @@
 import Hashes from 'jshashes'
 
-import { ASSET_MODEL_HASH } from '../constants/assetModelHash'
+import { ASSET_MODEL_HASH } from '../constants/assetModelHash.const'
 import { arrReduceObjPropsConsistent } from './arrReduceObjPropsConsistent'
 
 /**

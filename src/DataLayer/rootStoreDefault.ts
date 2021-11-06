@@ -42,6 +42,7 @@ export const rootStoreDefault = {
     theme: 'Dark',
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
+    isShownPalette: false,
   },
   forms: {
     userNameAuth: '',
@@ -54,6 +55,18 @@ export const rootStoreDefault = {
     lastName: '',
     sendTo: '',
     sendCc: '',
+    catalogSep: {
+      selectSkillsOffered: [],
+      selectSkillsRequired: '',
+      selectCountryRequired: [],
+      selectLanguageRequired: [],
+      inputAgeFromRequired: 0,
+      inputAgeToRequired: 100,
+      selectGenderRequired: [],
+      selectMediaRequired: [],
+      inputDescriptionRequired: '',
+      selectSortBy: '',
+    },
   },
   isLoaded: {
     isLoadedGlobalVars: false,

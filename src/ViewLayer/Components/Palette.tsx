@@ -3,10 +3,10 @@ import React from 'react'
 import { GLOBAL_THEME, BRIGHTNESS } from '../../Constants/globalTheme.const'
 import { getBuiltColor } from '../Styles/getBuiltColor'
 
-interface ColorGaleryArgs {}
+interface PaletteArgs {}
 
-export const ColorGalery: React.FunctionComponent<ColorGaleryArgs> = (
-  props: ColorGaleryArgs
+export const Palette: React.FunctionComponent<PaletteArgs> = (
+  props: PaletteArgs
 ) => {
   const { colors } = GLOBAL_THEME
 
@@ -42,7 +42,7 @@ export const ColorGalery: React.FunctionComponent<ColorGaleryArgs> = (
   }
 
   return (
-    <div className='ColorGalery'>
+    <div className='Palette'>
       <div className='__themeTitle'>Dark</div>
       <div className='__theme'>{getColorsRow('Dark', colorsKeys)}</div>
 

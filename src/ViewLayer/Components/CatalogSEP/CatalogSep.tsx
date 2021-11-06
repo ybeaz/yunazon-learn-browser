@@ -25,11 +25,13 @@ import 'antd/dist/antd.css'
  */
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language, forms } = useSelector((store2: IRootStore) => store2)
+
+  console.info('CatalogSep [30]', { forms })
 
   const defaultOption = DICTIONARY.notSelected
 
-  const stubOnAction = () => console.info('CatalogSep [306]')
+  const stubOnAction = () => {}
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -43,7 +45,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_SKILLS_OFFERED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -63,7 +69,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -83,7 +93,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_COUNTRY_REQUIRED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -99,7 +113,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -112,15 +130,15 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'string',
-      storeFormProp: 'string',
+      typeEvent: 'SEP_INPUT_AGE_FROM_REQUIRED',
+      storeFormProp: 'SEP_INPUT_AGE_FROM_REQUIRED',
     },
     inputAgeToRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'string',
-      storeFormProp: 'string',
+      typeEvent: 'SEP_INPUT_AGE_TO_REQUIRED',
+      storeFormProp: 'SEP_INPUT_AGE_TO_REQUIRED',
     },
     selectGenderRequiredProps: {
       allowClear: true,
@@ -129,7 +147,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_GENDER_REQUIRED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -145,7 +167,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_MEDIA_REQUIRED', data: values }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -158,8 +184,8 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       classAdded: 'Input_descriptionRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'string',
-      storeFormProp: 'string',
+      typeEvent: 'SEP_INPUT_DESCRIPTION_REQUIRED',
+      storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
     },
     selectSortByProps: {
       allowClear: true,
@@ -168,7 +194,8 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents({}, { typeEvent: 'SEP_SELECT_SORT_BY', data: values }),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -183,7 +210,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       icon2: null,
       captureLeft: DICTIONARY['Search'][language],
       captureRight: '',
-      action: { typeEvent: 'DEV_STAGE' },
+      action: { typeEvent: 'SEP_CLICK_BUTTON_SEARCH' },
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',

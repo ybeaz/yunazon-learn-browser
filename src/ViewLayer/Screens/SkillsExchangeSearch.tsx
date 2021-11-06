@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { ColorGalery } from '../Components/ColorGalery'
+import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { CatalogSep } from '../Components/CatalogSep/CatalogSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -21,7 +21,10 @@ interface SkillsExchangeSearchProps {
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
   (props): JSX.Element => {
     const store = useSelector((store2: IRootStore) => store2)
-    const { language: languageStore } = store
+    const {
+      language: languageStore,
+      globalVars: { isShownPalette },
+    } = store
 
     const { themeDafault } = props
     useEffect(() => {
@@ -50,7 +53,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           {null}
           {null}
           <CatalogSep />
-          <ColorGalery />
+          {isShownPalette && <Palette />}
         </MainFrame>
       </div>
     )
