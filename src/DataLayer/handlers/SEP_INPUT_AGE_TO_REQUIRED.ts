@@ -7,4 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_INPUT_AGE_TO_REQUIRED: IActionEvent = (event, data) => {}
+export const SEP_INPUT_AGE_TO_REQUIRED: IActionEvent = (event, data) =>
+  dispatch(actionSync.SEP_INPUT_AGE_TO_REQUIRED(data))

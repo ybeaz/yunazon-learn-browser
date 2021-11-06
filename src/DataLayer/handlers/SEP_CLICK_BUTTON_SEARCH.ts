@@ -7,4 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {}
+export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) =>
+  dispatch(actionSync.SEP_CLICK_BUTTON_SEARCH(data))

@@ -7,4 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_SELECT_SORT_BY: IActionEvent = (event, data) => {}
+export const SEP_SELECT_SORT_BY: IActionEvent = (event, data) =>
+  dispatch(actionSync.SEP_SELECT_SORT_BY(data))

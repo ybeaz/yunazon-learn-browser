@@ -4,5 +4,9 @@ export const SEP_SELECT_SKILLS_REQUIRED: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
-  return store
+  const { forms } = store
+  const { catalogSep } = forms
+  const catalogSepNext = { ...catalogSep, selectSkillsRequired: data }
+  const formsNext = { ...forms, catalogSep: catalogSepNext }
+  return { ...store, forms: formsNext }
 }

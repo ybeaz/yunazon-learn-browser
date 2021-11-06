@@ -7,4 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {}
+export const SEP_SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {
+  console.info('SEP_SELECT_SKILLS_OFFERED [13]', { event, data })
+  dispatch(actionSync.SEP_SELECT_SKILLS_OFFERED(data))
+}

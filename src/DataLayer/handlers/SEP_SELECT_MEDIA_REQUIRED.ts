@@ -7,4 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_SELECT_MEDIA_REQUIRED: IActionEvent = (event, data) => {}
+export const SEP_SELECT_MEDIA_REQUIRED: IActionEvent = (event, data) =>
+  dispatch(actionSync.SEP_SELECT_MEDIA_REQUIRED(data))

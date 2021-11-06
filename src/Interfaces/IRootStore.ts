@@ -47,6 +47,18 @@ export interface IRootStore {
     lastName: string
     sendTo: string
     sendCc: string
+    catalogSep: {
+      selectSkillsOffered: string[]
+      selectSkillsRequired: string
+      selectCountryRequired: string[]
+      selectLanguageRequired: string[]
+      inputAgeFromRequired: number
+      inputAgeToRequired: number
+      selectGenderRequired: string[]
+      selectMediaRequired: string[]
+      inputDescriptionRequired: string
+      selectSortBy: string
+    }
   }
   isLoaded: {
     isLoadedGlobalVars: boolean
