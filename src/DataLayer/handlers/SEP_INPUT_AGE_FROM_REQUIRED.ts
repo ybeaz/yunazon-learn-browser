@@ -5,7 +5,7 @@ import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent
 import { getAzProps } from '../../Analytics/getAzProps'
 import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromStore'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
-export const SEP_INPUT_AGE_FROM_REQUIRED: IActionEvent = (event, data) =>
-  dispatch(actionSync.SEP_INPUT_AGE_FROM_REQUIRED(data))
+export const SEP_INPUT_AGE_FROM_REQUIRED: IActionEvent = event =>
+  dispatch(actionSync.SEP_INPUT_AGE_FROM_REQUIRED(event.target.value))
