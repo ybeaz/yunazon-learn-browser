@@ -71,6 +71,12 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
    2. Add a specific new component to `CHILDREN` object in the `ModalFrames` component
    3. Add an object to the array that controls modal window appearance to state tree `state`: { `componentsState`: {
       `modalFrames`: [ ... ]
+4. A developer is better to use `Template` for creating
+   1. functional Components
+   2. handlers
+   3. reducers
+   4. sagas
+   5. connectors
 
 ## MongoDB collections
 
