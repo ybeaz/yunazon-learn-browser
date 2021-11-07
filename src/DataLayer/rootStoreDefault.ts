@@ -28,6 +28,11 @@ export const rootStoreDefault = {
     oAuthStage: null,
     modalFrames: [
       {
+        childName: 'SkillExchangeIntro',
+        isActive: true,
+        childProps: {},
+      },
+      {
         childName: 'AuthUser',
         isActive: false,
         childProps: {
