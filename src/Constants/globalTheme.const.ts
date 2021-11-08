@@ -1,28 +1,32 @@
+/**
+ * @description This is a theme definition. Pay attention [0, 0, 12.5] means [hue, saturation, lightness]
+ */
+
 export const GLOBAL_THEME = {
   colors: {
     colorFirst: {
-      Light: [0, 0, 12.5], // RBG [32, 32, 32]
-      Dark: [0, 0, 87.5], // RGB [255, 255, 255]
+      Light: ['hsla', 0, 0, 12.5, 1], // RBG [32, 32, 32]
+      Dark: ['hsla', 0, 0, 87.5, 1], // RGB [255, 255, 255]
     },
 
     colorSecond: {
-      Light: [0, 0, 99], // Vars: [25, 35, 50]   [0, 0, 99]
-      Dark: [0, 0, 12.5],
+      Light: ['hsla', 0, 0, 99, 1], // Vars: [216, 33, 15]   [0, 0, 99]
+      Dark: ['hsla', 0, 0, 12.5, 1],
     },
 
     colorGrey: {
-      Light: [0, 0, 44],
-      Dark: [0, 0, 44],
+      Light: ['hsla', 0, 0, 44, 1],
+      Dark: ['hsla', 0, 0, 44, 1],
     },
 
     colorActive: {
-      Light: [222, 52.9, 46.7], // RBG [56, 94, 182]
-      Dark: [222, 52.9, 46.7],
+      Light: ['hsla', 222, 52.9, 46.7, 1], // RBG [56, 94, 182]
+      Dark: ['hsla', 222, 52.9, 46.7, 1],
     },
 
     colorBoxes: {
-      Light: [208, 100, 62.2], // RBG [62, 166, 255]
-      Dark: [208, 100, 62.2],
+      Light: ['hsla', 208, 100, 62.2, 1], // RBG [62, 166, 255]
+      Dark: ['hsla', 208, 100, 62.2, 1],
     },
   },
 }

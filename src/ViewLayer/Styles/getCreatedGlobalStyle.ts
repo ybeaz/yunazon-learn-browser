@@ -369,6 +369,12 @@ export const getCreatedGlobalStyle = (
     }
 
     .ModalFrames .__content {
+      background-color: ${props2 => getColor(props2, 'colorSecond', lighter4)};
+    }
+
+
+
+    .ModalFrames .__content {
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', lighter4, 'Dark')};
     }

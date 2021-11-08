@@ -1,8 +1,8 @@
 import 'styled-components'
 
 interface Dictionary {
-  Light: number[]
-  Dark: number[]
+  Light: [string, number, number, number, number]
+  Dark: [string, number, number, number, number]
 }
 // and extend them!
 declare module 'styled-components' {

@@ -3,7 +3,7 @@ export const getBuiltColor =
   (
     props2: any,
     color2: string,
-    brightness2: number,
+    lightness2: number,
     theme2: string = theme
   ): string => {
     let colorNext = color2
@@ -26,8 +26,10 @@ export const getBuiltColor =
       colorNext = 'colorActive'
     }
 
-    const [hue, saturation, value] = props2.theme.colors[colorNext][theme2]
-    const valueNext = value + brightness2
+    const [colorFormat, redOrHue, greenOrSaturation, blueOrLightness, alpha] =
+      props2.theme.colors[colorNext][theme2]
+    const blueOrLightnessNext = blueOrLightness + lightness2
 
-    return `hsl(${hue}, ${saturation}%, ${valueNext}%)`
+    // console.info('getBuiltColor [32]', {hue, saturation, lightness})
+    return `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alpha})`
   }
