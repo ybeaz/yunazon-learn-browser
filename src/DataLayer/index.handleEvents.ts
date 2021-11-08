@@ -2,6 +2,7 @@ import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { SEP_INTRO_IN } from './handlers/SEP_INTRO_IN'
 import { SEP_SELECT_SKILLS_OFFERED } from './handlers/SEP_SELECT_SKILLS_OFFERED'
 import { SEP_SELECT_SKILLS_REQUIRED } from './handlers/SEP_SELECT_SKILLS_REQUIRED'
 import { SEP_SELECT_COUNTRY_REQUIRED } from './handlers/SEP_SELECT_COUNTRY_REQUIRED'
@@ -85,6 +86,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    SEP_INTRO_IN,
     SEP_SELECT_SKILLS_OFFERED,
     SEP_SELECT_SKILLS_REQUIRED,
     SEP_SELECT_COUNTRY_REQUIRED,

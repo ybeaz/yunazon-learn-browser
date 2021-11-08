@@ -31,6 +31,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const { themeDafault } = props
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
+      handleEvents({}, { typeEvent: 'SEP_INTRO_IN' })
     }, [])
 
     const moduleCapture = 'Exchange your skills, save your time'

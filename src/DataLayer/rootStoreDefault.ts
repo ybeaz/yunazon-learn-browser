@@ -28,11 +28,11 @@ export const rootStoreDefault = {
     isOAuthGoogleScriptLoaded: false,
     oAuthStage: null,
     modalFrames: [
-      {
-        childName: 'SkillExchangeIntro',
-        isActive: true,
-        childProps: {},
-      },
+      // {
+      //   childName: 'SkillExchangeIntro',
+      //   isActive: true,
+      //   childProps: {},
+      // },
       {
         childName: 'AuthUser',
         isActive: false,
