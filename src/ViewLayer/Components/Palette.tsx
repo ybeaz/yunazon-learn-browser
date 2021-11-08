@@ -17,7 +17,7 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (
       const props2 = {
         theme: GLOBAL_THEME,
       }
-      const getColor = getBuiltColor(theme)
+      const getColor = getBuiltColor(theme, 1, 1)
       const background = getColor(props2, color, brightnessObj[brightnessKey])
 
       return (

@@ -34,15 +34,15 @@ export const GLOBAL_THEME: DefaultTheme = {
 }
 
 export const ALPHAS = {
-  darker4: -0.1,
-  darker3: -0.075,
-  darker2: -0.05,
-  darker: -0.025,
-  middle: 0.1,
-  lighter: +0.1,
-  lighter2: +0.2,
-  lighter3: +0.4,
-  lighter4: +0.6,
+  darker4: +0.1,
+  darker3: +0.075,
+  darker2: +0.05,
+  darker: +0.025,
+  middle: 0,
+  lighter: -0.1,
+  lighter2: -0.2,
+  lighter3: -0.4,
+  lighter4: -0.6,
 }
 
 export const BRIGHTNESS = {

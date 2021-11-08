@@ -1,10 +1,11 @@
 export const getBuiltColor =
-  (theme: string) =>
+  (themeIn: string, alphaIn: number, lightnessIn: number) =>
   (
     props2: any,
     color2: string,
-    lightness2: number,
-    theme2: string = theme
+    alpha2: number = alphaIn,
+    lightness2: number = lightnessIn,
+    theme2: string = themeIn
   ): string => {
     let colorNext = color2
 
@@ -28,8 +29,21 @@ export const getBuiltColor =
 
     const [colorFormat, redOrHue, greenOrSaturation, blueOrLightness, alpha] =
       props2.theme.colors[colorNext][theme2]
-    const blueOrLightnessNext = blueOrLightness + lightness2
 
-    // console.info('getBuiltColor [32]', {hue, saturation, lightness})
-    return `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alpha})`
+    const blueOrLightnessNext = blueOrLightness + lightness2
+    const alphaNext = alpha + alpha2
+
+    if (color2 === 'colorFirst' && alpha2 === 0 && lightness2 === 0) {
+      console.info('getBuiltColor [32]', {
+        colorFormat,
+        colorNext,
+        redOrHue,
+        greenOrSaturation,
+        blueOrLightnessNext,
+        alphaNext,
+        color: `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alphaNext})`,
+      })
+    }
+
+    return `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alphaNext})`
   }
