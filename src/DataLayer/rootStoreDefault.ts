@@ -16,6 +16,7 @@ export const userStoreDefault = {
 export const rootStoreDefault = {
   analyticsID: null,
   componentsState: {
+    isShownPalette: true,
     questionsSlideNumber: 0,
     isModalFrameVisible: false,
     isSideNavVisible: false,
@@ -47,7 +48,6 @@ export const rootStoreDefault = {
     theme: 'Dark',
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
-    isShownPalette: false,
   },
   forms: {
     userNameAuth: '',

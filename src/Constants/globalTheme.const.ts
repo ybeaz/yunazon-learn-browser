@@ -6,7 +6,7 @@ export const GLOBAL_THEME = {
     },
 
     colorSecond: {
-      Light: [0, 0, 99],
+      Light: [0, 0, 99], // Vars: [25, 35, 50]   [0, 0, 99]
       Dark: [0, 0, 12.5],
     },
 

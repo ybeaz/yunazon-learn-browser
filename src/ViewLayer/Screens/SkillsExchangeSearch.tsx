@@ -25,7 +25,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const store = useSelector((store2: IRootStore) => store2)
     const {
       language: languageStore,
-      globalVars: { isShownPalette },
+      componentsState: { isShownPalette },
     } = store
 
     const { themeDafault } = props
