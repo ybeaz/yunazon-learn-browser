@@ -1,6 +1,6 @@
 import 'styled-components'
 
-interface Dictionary {
+interface ColorTupple {
   Light: [string, number, number, number, number]
   Dark: [string, number, number, number, number]
 }
@@ -8,13 +8,13 @@ interface Dictionary {
 declare module 'styled-components' {
   export interface DefaultTheme {
     colors: {
-      colorFirst: Dictionary
-      colorSecond: Dictionary
+      colorFirst: ColorTupple
+      colorSecond: ColorTupple
 
-      colorGrey: Dictionary
+      colorGrey: ColorTupple
 
-      colorActive: Dictionary
-      colorBoxes: Dictionary
+      colorActive: ColorTupple
+      colorBoxes: ColorTupple
     }
   }
 }

@@ -1,8 +1,10 @@
+import { DefaultTheme } from '../Interfaces/IColors'
+
 /**
  * @description This is a theme definition. Pay attention [0, 0, 12.5] means [hue, saturation, lightness]
  */
 
-export const GLOBAL_THEME = {
+export const GLOBAL_THEME: DefaultTheme = {
   colors: {
     colorFirst: {
       Light: ['hsla', 0, 0, 12.5, 1], // RBG [32, 32, 32]
@@ -29,6 +31,18 @@ export const GLOBAL_THEME = {
       Dark: ['hsla', 208, 100, 62.2, 1],
     },
   },
+}
+
+export const ALPHAS = {
+  darker4: -0.1,
+  darker3: -0.075,
+  darker2: -0.05,
+  darker: -0.025,
+  middle: 0.1,
+  lighter: +0.1,
+  lighter2: +0.2,
+  lighter3: +0.4,
+  lighter4: +0.6,
 }
 
 export const BRIGHTNESS = {
