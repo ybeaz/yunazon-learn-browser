@@ -64,14 +64,20 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ### Architecture / evelopment notes
 
-1. Input values. Passing input values from input component is implemented by event.target.value in handleEvents function of the related property name in `src/DataLayer/index.handleEvents.ts`
-2. Passing actions. Passing an action is made through the secuence `Component` => `handleEvents` => `dispatch` => `reducer`
-3. Adding an modal window is made by the following:
+1. Manage theme `GLOBAL_THEME.colors` and `BRIGHTNESS`
+   1. Setup colors in `src/Constants/globalTheme.const.ts`
+   2. Configure default theme in `rootStoreDefault.globalVars.theme` in `src/DataLayer/rootStoreDefault.ts`
+   3. Global theme has been added with `<GlobalTheme>` in `src/initializeBrowserApp.tsx`, and then with `getCreatedGlobalStyle` in `src/ViewLayer/Styles/getCreatedGlobalStyle.ts`
+   4. Change default theme on the screen level such has been done in `useEffect(...)` in `SkillExchangeSeach.tsx`
+   5. Add a custom theme to the element in `getCreatedGlobalStyle` in `src/ViewLayer/Styles/getCreatedGlobalStyle.ts`
+2. Input values. Passing input values from input component is implemented by event.target.value in handleEvents function of the related property name in `src/DataLayer/index.handleEvents.ts`
+3. Passing actions. Passing an action is made through the secuence `Component` => `handleEvents` => `dispatch` => `reducer`
+4. Adding an modal window is made by the following:
    1. Add `ModalFrames` component to `HeaderFrame` component (once)
    2. Add a specific new component to `CHILDREN` object in the `ModalFrames` component
    3. Add an object to the array that controls modal window appearance to state tree `state`: { `componentsState`: {
       `modalFrames`: [ ... ]
-4. A developer is better to use `Template` for creating
+5. A developer is better to use `Template` for creating
    1. functional Components
    2. handlers
    3. reducers
