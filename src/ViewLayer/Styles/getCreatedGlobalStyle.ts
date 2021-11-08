@@ -39,7 +39,7 @@ export const getCreatedGlobalStyle = (
 
   if (!theme) return null
 
-  const getColor = getBuiltColor(theme, 0.9, middle)
+  const getColor = getBuiltColor(theme, 1, middle)
 
   return createGlobalStyle`
 

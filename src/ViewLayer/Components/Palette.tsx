@@ -12,13 +12,18 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (
 
   const colorsKeys = Object.keys(colors)
 
-  const getColorPlates = (theme, color, brightnessObj) => {
+  const getColorPlates = (theme3, color3, alpha3, brightnessObj) => {
     return Object.keys(brightnessObj).map(brightnessKey => {
       const props2 = {
         theme: GLOBAL_THEME,
       }
-      const getColor = getBuiltColor(theme, 1, 1)
-      const background = getColor(props2, color, brightnessObj[brightnessKey])
+      const getColor = getBuiltColor(theme3, 1, 1)
+      const background = getColor(
+        props2,
+        color3,
+        alpha3,
+        brightnessObj[brightnessKey]
+      )
 
       return (
         <div className='_colorPlate' style={{ background }}>
@@ -28,13 +33,15 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (
     })
   }
 
-  const getColorsRow = (theme, colorsKeys2) => {
-    return colorsKeys2.map(color => {
+  const ALPHAS = 1
+
+  const getColorsRow = (theme2, colorsKeys2) => {
+    return colorsKeys2.map(color2 => {
       return (
         <div className='_colorColumnWrapper'>
-          <div className='_colorTitle'>{color}</div>
+          <div className='_colorTitle'>{color2}</div>
           <div className='_colorColumn'>
-            {getColorPlates(theme, color, BRIGHTNESS)}
+            {getColorPlates(theme2, color2, ALPHAS, BRIGHTNESS)}
           </div>
         </div>
       )
