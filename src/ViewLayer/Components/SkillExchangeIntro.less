@@ -19,6 +19,25 @@
     flex-direction: column;
     padding: 1rem 5rem;
 
+    ._row {
+      display: flex;
+      flex-direction: row;
+      padding: 2rem 0;
+
+      ._col {
+        display: flex;
+
+        ._text {
+          color: white;
+          padding: 1rem 2rem;
+          text-align: center;
+        }
+      }
+      ._col:empty {
+        padding: 0px;
+      }
+    }
+
     ._text {
       display: flex;
       text-align: left;
@@ -36,6 +55,18 @@
       ._action {
       }
     }
+  }
+
+  ._bg_color_1 {
+    background-color: yellowgreen;
+  }
+
+  ._bg_color_2 {
+    background-color: red;
+  }
+
+  ._bg_color_3 {
+    background-color: blueviolet;
   }
 
   @media @large {

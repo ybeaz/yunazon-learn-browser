@@ -31,6 +31,18 @@ export const DICTIONARY: IDictionary = {
       </>
     ),
   },
+  Get_intro_knowledge_and_answers: {
+    en: 'Get intro knowledge and answers in new areas',
+    ru: 'Получайте вводные знания и ответы в новых областях',
+  },
+  Share_your_knowledge_and_skills: {
+    en: 'Share your knowledge and skills',
+    ru: 'Делитесь своими знаниями и умениями и',
+  },
+  Make_friends_in_different_regions: {
+    en: 'Make friends in different regions and countries',
+    ru: 'Заводите другей из разных регионов и стран',
+  },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
     making friends in different regions and countries',

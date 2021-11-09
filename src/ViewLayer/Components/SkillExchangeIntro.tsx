@@ -20,8 +20,22 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         </h2>
 
         <div className='__textBlock'>
-          <div className='_text'>
-            {DICTIONARY['Get_started_in_any_knowledge'][language]}
+          <div className='_row'>
+            <div className='_col _bg_color_1'>
+              <div className='_text'>
+                {DICTIONARY['Get_intro_knowledge_and_answers'][language]}
+              </div>
+            </div>
+            <div className='_col _bg_color_2'>
+              <div className='_text'>
+                {DICTIONARY['Share_your_knowledge_and_skills'][language]}
+              </div>
+            </div>
+            <div className='_col _bg_color_3'>
+              <div className='_text'>
+                {DICTIONARY['Make_friends_in_different_regions'][language]}
+              </div>
+            </div>
           </div>
           <div className='_text'>
             {DICTIONARY['You_can_find_a_user'][language]}
