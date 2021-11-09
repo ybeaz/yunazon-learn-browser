@@ -34,15 +34,16 @@ export const DICTIONARY: IDictionary = {
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
     making friends in different regions and countries',
-    ru: 'Начните в любой области знаний быстро, поделитесь своими знаниями и заводите другей из различных регионов и стран',
+    ru: 'Начинайте в любой области знаний быстро, \
+    делитесь своими умениями и заводите другей из разных регионов и стран',
   },
   You_can_find_a_user: {
     en: 'You can find a user to answer your question by selecting',
-    ru: 'Вы можете найти пользователя для ответа на ваш вопрос выбрав',
+    ru: 'Вы можете найти пользователя для ответа на ваши вопросы выбрав',
   },
   required_knowledge: {
     en: 'required knowledge',
-    ru: 'требуемое знание',
+    ru: 'требуемые знания',
   },
   language_of_communication: {
     en: 'language of communication',
