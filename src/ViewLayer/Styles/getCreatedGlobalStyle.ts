@@ -417,19 +417,20 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .ModalFrames .__content {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecond', middle, lighter4)};
+        theme === 'Dark'
+          ? getColor(props2, 'colorSecond', middle, lighter4)
+          : getColor(props2, 'colorSecond', medial, middle)};
     }
 
     .AuthUser .form, .AuthUser .bottomContainer {
       background: ${props2 =>
         theme === 'Dark'
           ? getColor(props2, 'colorGrey', medial, middle)
-          : getColor(props2, 'colorGrey', medial, middle)};
+          : getColor(props2, 'colorSecond', medial, middle)};
     }
     
     .AuthUser .header2 {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, darker, 'Dark')};
+      color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
     }
 
     .AuthUser .vl-innertext {
