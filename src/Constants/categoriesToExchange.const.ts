@@ -1,5 +1,5 @@
 export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
-  AllSkills: {
+  all_skills: {
     en: 'all skills',
     ru: 'все навыки',
   },

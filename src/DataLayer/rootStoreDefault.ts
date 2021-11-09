@@ -16,7 +16,7 @@ export const userStoreDefault = {
 export const rootStoreDefault = {
   analyticsID: null,
   componentsState: {
-    isShownPalette: true,
+    isShownPalette: false,
     questionsSlideNumber: 0,
     isModalFrameVisible: false,
     isSideNavVisible: false,
@@ -28,11 +28,11 @@ export const rootStoreDefault = {
     isOAuthGoogleScriptLoaded: false,
     oAuthStage: null,
     modalFrames: [
-      // {
-      //   childName: 'SkillExchangeIntro',
-      //   isActive: true,
-      //   childProps: {},
-      // },
+      {
+        childName: 'SkillExchangeIntro',
+        isActive: false,
+        childProps: {},
+      },
       {
         childName: 'AuthUser',
         isActive: false,

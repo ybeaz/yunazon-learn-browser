@@ -44,10 +44,13 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   if (!theme) return null
 
-  console.info('getCreatedGlobalStyle [47]', { theme })
   const getColor = getBuiltColor(theme, 1, middle)
 
   return createGlobalStyle`
+
+    .SkillExchangeIntro .__title02 {
+      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+    }
 
     .Select .__selectTag {
       border: solid 1px ${props2 =>
