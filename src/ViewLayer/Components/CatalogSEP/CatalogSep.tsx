@@ -25,9 +25,7 @@ import 'antd/dist/antd.css'
  */
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
-  const { language, forms } = useSelector((store2: IRootStore) => store2)
-
-  console.info('CatalogSep [30]', { forms })
+  const { language } = useSelector((store2: IRootStore) => store2)
 
   const defaultOption = DICTIONARY.notSelected
 
@@ -41,7 +39,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOfferedProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: [],
+      defaultValue: CATEGORIES_TO_EXCHANGE['all_skills'][language],
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,

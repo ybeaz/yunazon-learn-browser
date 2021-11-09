@@ -16,6 +16,7 @@ export interface IUser {
 export interface IRootStore {
   analyticsID: string
   componentsState: {
+    isShownPalette: boolean
     questionsSlideNumber: number
     isModalFrameVisible: boolean
     isSideNavVisible: boolean
@@ -34,7 +35,6 @@ export interface IRootStore {
     theme: string
     numberQuestionsInSlide: number
     durationMultiplier: number
-    isShownPalette: boolean
   }
   forms: {
     userNameAuth: string

@@ -7,6 +7,67 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Welcome_to_Online_Skills_Exchange_Community: {
+    en: 'Welcome to Online Skills Exchange Community!',
+    ru: 'Добро пожаловать в Онлайн Сообщество Обмена Знаниями',
+  },
+  Over_3_million_members: {
+    en: (
+      <>
+        Over 3 million members
+        <br />
+        from over 175 countries
+        <br />
+        practicing more than 11000 skills to exchange!
+      </>
+    ),
+    ru: (
+      <>
+        Более чем 3 миллиона пользователей
+        <br />
+        из 175 стран готовы предложить
+        <br />
+        более 11000 умений для обмена
+      </>
+    ),
+  },
+  Get_started_in_any_knowledge: {
+    en: 'Get started in any knowledge area quickly, share your skills while \
+    making friends in different regions and countries',
+    ru: 'Начинайте в любой области знаний быстро, \
+    делитесь своими умениями и заводите другей из разных регионов и стран',
+  },
+  You_can_find_a_user: {
+    en: 'You can find a user to answer your question by selecting',
+    ru: 'Вы можете найти пользователя для ответа на ваши вопросы выбрав',
+  },
+  required_knowledge: {
+    en: 'required knowledge',
+    ru: 'требуемые знания',
+  },
+  language_of_communication: {
+    en: 'language of communication',
+    ru: 'язык коммуникации',
+  },
+  mean_of_communication: {
+    en: 'mean of communication',
+    ru: 'способ связи',
+  },
+  other_criteria: {
+    en: 'other criteria',
+    ru: 'другие критерии',
+  },
+  You_will_have_a_chance_to_hear: {
+    en: 'You will have a chance to hear an explanation of the topic your are \
+    interested in and you will help with what you know better',
+    ru: 'Вы получите шанс услышать объяснение предмета своего интереса и помочь в том, что вы знаете лучше',
+  },
+  We_also_host_video_lessons_tests: {
+    en: 'We also host video lessons-tests from our members \
+    that open possibility to prove knowledge and get a certificate',
+    ru: 'Мы также хостим видео усроки-тесты от наших пользователей, \
+    что открытвает возможность подтвердить знаний и получить сертификат',
+  },
   Required: {
     en: 'Required',
     ru: 'Обязательно выбрать',

@@ -52,6 +52,8 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
 ## Features and options
 
+### Parameters for courses
+
 `?si=anything` Adding `si` or `search` or `searchInput` set initial `searchInput` for the app. If `si` is not set, then `searchInput` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`.
 
 `?ln=en` Adding `ln` or `language` set initial language for the app. If `ln` is not set, then `language` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`.
@@ -59,6 +61,29 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 `?qn=4` Adding `qn` or `nq` limit the number of questions in the test. If `typeof` `qn` or `nq` `string` (for instance `?qn=all`) then the limit becomes equal the total number of questions. If `qn` or `nq` are not set, then `questionNumber` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`. `qn` stands for question number.
 
 `?pr=0.75` Adding `pr` or `rp` sets custom pass rate to pass tests. It means that if you answered correctly on 3 question of 4 then with pass rate 0.75 you have passed the test. If `pr` or `rp` are not set, then `passRate` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`. `pr` stands for pass rate.
+
+### Architecture / evelopment notes
+
+1. Manage color themes `GLOBAL_THEME.colors`, `BRIGHTNESS` and `ALPHAS`
+   1. Setup colors in `src/Constants/globalTheme.const.ts` Pay attention [0, 0, 12.5, 1] means for HSLA [hue, saturation, lightness, alphas] and for RGBA [red, green, blue, alpha]
+   2. Set a default theme in `rootStoreDefault.globalVars.theme` in `src/DataLayer/rootStoreDefault.ts`
+   3. Global theme has been added with `<GlobalTheme>` in `src/initializeBrowserApp.tsx`, and then with `getCreatedGlobalStyle` in `src/ViewLayer/Styles/getCreatedGlobalStyle.ts`
+   4. Change default theme on the screen level such has been done in `useEffect(...)` in `SkillExchangeSeach.tsx`
+   5. Add a custom theme color to the element in `getCreatedGlobalStyle` in `src/ViewLayer/Styles/getCreatedGlobalStyle.ts`
+   6. You can specify a separate colors for each theme as it is done for example for `.ModalFrames .__content`
+2. Input values. Passing input values from input component is implemented by event.target.value in handleEvents function of the related property name in `src/DataLayer/index.handleEvents.ts`
+3. Passing actions. Passing an action is made through the secuence `Component` => `handleEvents` => `dispatch` => `reducer`
+4. Adding an modal window is made by the following:
+   1. Add `ModalFrames` component to `HeaderFrame` component (once)
+   2. Add a specific new component to `CHILDREN` object in the `ModalFrames` component
+   3. Add an object to the array that controls modal window appearance to state tree `state`: { `componentsState`: {
+      `modalFrames`: [ ... ]
+5. A developer is better to use `Template` for creating
+   1. functional Components
+   2. handlers
+   3. reducers
+   4. sagas
+   5. connectors
 
 ## MongoDB collections
 
