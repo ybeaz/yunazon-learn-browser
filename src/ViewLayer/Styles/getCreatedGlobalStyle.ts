@@ -465,7 +465,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .RadioButton .checkmark:after {
       background: ${props2 =>
-        getColor(props2, 'colorFirstDarker', medial, darker)};
+        getColor(props2, 'colorFirstDarker', medial, darker, 'Dark')};
     }
 
     .HeaderFrame {
