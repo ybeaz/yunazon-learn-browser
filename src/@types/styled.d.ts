@@ -10,11 +10,8 @@ declare module 'styled-components' {
     colors: {
       colorFirst: ColorTupple
       colorSecond: ColorTupple
-
       colorGrey: ColorTupple
-
       colorActive: ColorTupple
-      colorBoxes: ColorTupple
     }
   }
 }

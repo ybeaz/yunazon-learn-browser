@@ -44,6 +44,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   if (!theme) return null
 
+  console.info('getCreatedGlobalStyle [47]', { theme })
   const getColor = getBuiltColor(theme, 1, middle)
 
   return createGlobalStyle`
@@ -106,7 +107,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background: ${props2 =>
         getColor(props2, 'colorSecond', lighter, medial, 'Light')};
       border-color: ${props2 =>
-        getColor(props2, 'colorBoxes', medial, middle, 'Dark')};
+        getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
 
     .Input_ageFromToRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -139,7 +140,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background: ${props2 =>
         getColor(props2, 'colorSecond', medial, lighter, 'Light')};
       border-color: ${props2 =>
-        getColor(props2, 'colorBoxes', medial, middle, 'Dark')};
+        getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
 
 
@@ -335,12 +336,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .Button_MdClose .__button {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, lighter4, 'Dark')};
+        getColor(props2, 'colorSecond', medial, lighter4)};
     }
 
     .Button_MdClose ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .Button_sideMenuItems .__button {
@@ -417,17 +417,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .ModalFrames .__content {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, lighter4)};
+        getColor(props2, 'colorSecond', middle, lighter4)};
     }
-
-    .ModalFrames .__content {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, lighter4, 'Dark')};
-    }
-
 
     .AuthUser .form, .AuthUser .bottomContainer {
-      background: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
+      background: ${props2 =>
+        theme === 'Dark'
+          ? getColor(props2, 'colorGrey', medial, middle)
+          : getColor(props2, 'colorGrey', medial, middle)};
     }
     
     .AuthUser .header2 {
@@ -459,7 +456,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     
 
     .CheckRadioGroup input:checked ~ .checkmark {
-      background: ${props2 => getColor(props2, 'colorBoxes', medial, middle)};
+      background: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .RadioButton .checkmark:after {

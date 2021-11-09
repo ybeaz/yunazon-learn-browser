@@ -1,11 +1,11 @@
 export const getBuiltColor =
-  (themeIn: string, alphaIn: number, lightnessIn: number) =>
+  (themeFor: string, alphaIn: number, lightnessIn: number) =>
   (
     props2: any,
     color2: string,
     alpha2: number = alphaIn,
     lightness2: number = lightnessIn,
-    theme2: string = themeIn
+    themeFrom2: string = themeFor
   ): string => {
     let colorNext = color2
 
@@ -28,7 +28,7 @@ export const getBuiltColor =
     }
 
     const [colorFormat, redOrHue, greenOrSaturation, blueOrLightness, alpha] =
-      props2.theme.colors[colorNext][theme2]
+      props2.theme.colors[colorNext][themeFrom2]
 
     const blueOrLightnessNext = blueOrLightness + lightness2
     const alphaNext = alpha + alpha2
@@ -36,22 +36,22 @@ export const getBuiltColor =
     const percent = colorFormat === 'hsla' ? '%' : ''
     const color = `${colorFormat}(${redOrHue}, ${greenOrSaturation}${percent}, ${blueOrLightnessNext}${percent}, ${alphaNext})`
 
-    if (colorFormat === 'rgba' && color2 === 'colorGrey') {
-      console.info('getBuiltColor [32]', {
-        colorFormat,
-        color,
-        alpha,
-        alpha2,
-        alphaNext,
-        percent,
-        colorNext,
-        redOrHue,
-        greenOrSaturation,
-        blueOrLightness,
-        lightness2,
-        blueOrLightnessNext,
-      })
-    }
+    // if (colorFormat === 'rgba' && color2 === 'colorGrey') {
+    //   console.info('getBuiltColor [32]', {
+    //     colorFormat,
+    //     color,
+    //     alpha,
+    //     alpha2,
+    //     alphaNext,
+    //     percent,
+    //     colorNext,
+    //     redOrHue,
+    //     greenOrSaturation,
+    //     blueOrLightness,
+    //     lightness2,
+    //     blueOrLightnessNext,
+    //   })
+    // }
 
     return color
   }

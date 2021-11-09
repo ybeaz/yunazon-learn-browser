@@ -7,11 +7,8 @@ export interface DefaultTheme {
   colors: {
     colorFirst: ColorTupple
     colorSecond: ColorTupple
-
     colorGrey: ColorTupple
-
     colorActive: ColorTupple
-    colorBoxes: ColorTupple
   }
 }
 
@@ -32,18 +29,13 @@ export const GLOBAL_THEME: DefaultTheme = {
     },
 
     colorGrey: {
-      Light: ['rgba', 25, 35, 50, 1],
-      Dark: ['hsla', 0, 0, 44, 1],
+      Light: ['rgba', 25, 35, 50, 0.6],
+      Dark: ['hsla', 0, 0, 44, 0.6],
     },
 
     colorActive: {
       Light: ['hsla', 222, 52.9, 46.7, 1], // RBG [56, 94, 182]
       Dark: ['hsla', 222, 52.9, 46.7, 1],
-    },
-
-    colorBoxes: {
-      Light: ['hsla', 208, 100, 62.2, 1], // RBG [62, 166, 255]
-      Dark: ['hsla', 208, 100, 62.2, 1],
     },
   },
 }
@@ -60,7 +52,7 @@ export interface ILightness {
   lighter4: number
 }
 
-export const LIGHTNESS = {
+export const LIGHTNESS: ILightness = {
   darker4: -12,
   darker3: -9,
   darker2: -6,
@@ -84,7 +76,7 @@ export interface IAlphas {
   opaciter4: number
 }
 
-export const ALPHAS = {
+export const ALPHAS: IAlphas = {
   clearer4: +0.1,
   clearer3: +0.075,
   clearer2: +0.05,
