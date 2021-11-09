@@ -33,17 +33,25 @@ export const getBuiltColor =
     const blueOrLightnessNext = blueOrLightness + lightness2
     const alphaNext = alpha + alpha2
 
-    if (color2 === 'colorFirst' && alpha2 === 0 && lightness2 === 0) {
+    const percent = colorFormat === 'hsla' ? '%' : ''
+    const color = `${colorFormat}(${redOrHue}, ${greenOrSaturation}${percent}, ${blueOrLightnessNext}${percent}, ${alphaNext})`
+
+    if (colorFormat === 'rgba' && color2 === 'colorGrey') {
       console.info('getBuiltColor [32]', {
         colorFormat,
+        color,
+        alpha,
+        alpha2,
+        alphaNext,
+        percent,
         colorNext,
         redOrHue,
         greenOrSaturation,
+        blueOrLightness,
+        lightness2,
         blueOrLightnessNext,
-        alphaNext,
-        color: `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alphaNext})`,
       })
     }
 
-    return `${colorFormat}(${redOrHue}, ${greenOrSaturation}%, ${blueOrLightnessNext}%, ${alphaNext})`
+    return color
   }

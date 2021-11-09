@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 import {
   GLOBAL_THEME,
+  LIGHTNESS,
   ALPHAS,
-  BRIGHTNESS,
 } from '../../Constants/globalTheme.const'
 import { getBuiltColor } from '../Styles/getBuiltColor'
 
@@ -12,7 +12,7 @@ interface PaletteArgs {}
 export const Palette: React.FunctionComponent<PaletteArgs> = (
   props: PaletteArgs
 ) => {
-  const [paramState, setParamState] = useState('lightness')
+  const [paramState, setParamState] = useState('alpha')
 
   const handleLocalEvents = (event, data) => {
     const { typeLocalEvent } = data
@@ -75,7 +75,7 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (
               theme2,
               color2,
               ALPHAS,
-              BRIGHTNESS
+              LIGHTNESS
             )}
           </div>
         </div>
