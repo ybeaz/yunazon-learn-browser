@@ -58,7 +58,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             {DICTIONARY['You_will_have_a_chance_to_hear'][language]}
           </div>
           <div className='_text'>
-            {DICTIONARY['We_also_host_video_lessons_tests'][language]}
+            {DICTIONARY['You_can_also_host_or_take_video_lessons'][language]}
           </div>
         </div>
       </div>

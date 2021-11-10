@@ -74,11 +74,11 @@ export const DICTIONARY: IDictionary = {
     interested in and you will help with what you know better',
     ru: 'Вы получите шанс услышать объяснение предмета своего интереса и помочь в том, что вы знаете лучше',
   },
-  We_also_host_video_lessons_tests: {
-    en: 'We also host video lessons-tests from our members \
+  You_can_also_host_or_take_video_lessons: {
+    en: 'You can also host or take video lessons-tests from our members \
     that open possibility to prove knowledge and get a certificate',
-    ru: 'Мы также хостим видео усроки-тесты от наших пользователей, \
-    что открытвает возможность подтвердить знаний и получить сертификат',
+    ru: 'Вы также можете разместить или пройти видео уроки-тесты, \
+    что открывает возможность подтвердить знания и получить сертификат',
   },
   Required: {
     en: 'Required',
