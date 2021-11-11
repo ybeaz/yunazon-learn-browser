@@ -36,22 +36,5 @@ export const getBuiltColor =
     const percent = colorFormat === 'hsla' ? '%' : ''
     const color = `${colorFormat}(${redOrHue}, ${greenOrSaturation}${percent}, ${blueOrLightnessNext}${percent}, ${alphaNext})`
 
-    // if (colorFormat === 'rgba' && color2 === 'colorGrey') {
-    //   console.info('getBuiltColor [32]', {
-    //     colorFormat,
-    //     color,
-    //     alpha,
-    //     alpha2,
-    //     alphaNext,
-    //     percent,
-    //     colorNext,
-    //     redOrHue,
-    //     greenOrSaturation,
-    //     blueOrLightness,
-    //     lightness2,
-    //     blueOrLightnessNext,
-    //   })
-    // }
-
     return color
   }

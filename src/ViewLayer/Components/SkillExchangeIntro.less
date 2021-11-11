@@ -12,30 +12,31 @@
     display: flex;
     justify-content: center;
     font-size: @fontSizeH2;
+    margin: 0;
   }
 
   .__textBlock {
     display: flex;
     flex-direction: column;
-    padding: 1rem 5rem;
+    padding: 0rem 5rem;
 
     ._row {
       display: flex;
       flex-direction: row;
       padding: 2rem 0;
+    }
 
-      ._col {
-        display: flex;
+    ._col {
+      display: flex;
 
-        ._text {
-          color: white;
-          padding: 1rem 2rem;
-          text-align: center;
-        }
+      ._text {
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
       }
-      ._col:empty {
-        padding: 0px;
-      }
+    }
+    ._col:empty {
+      padding: 0px;
     }
 
     ._text {
@@ -50,9 +51,13 @@
       justify-content: start;
       align-items: start;
       margin: 0;
-      padding: 0.3rem 10rem;
+      padding: 0.3rem 10%;
+      list-style: none;
 
       ._action {
+        &:before {
+          content: '✓ ';
+        }
       }
     }
   }
@@ -76,5 +81,17 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    .__textBlock {
+      padding: 0rem 0rem;
+
+      ._row {
+        display: flex;
+        flex-direction: column;
+      }
+
+      ._text {
+        padding: 0.3rem 1rem;
+      }
+    }
   }
 }

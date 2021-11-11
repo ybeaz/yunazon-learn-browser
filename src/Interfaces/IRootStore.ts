@@ -16,6 +16,7 @@ export interface IUser {
 export interface IRootStore {
   analyticsID: string
   componentsState: {
+    isShownSkillExchangeIntro: boolean
     isShownPalette: boolean
     questionsSlideNumber: number
     isModalFrameVisible: boolean
