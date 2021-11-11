@@ -25,13 +25,14 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const store = useSelector((store2: IRootStore) => store2)
     const {
       language: languageStore,
-      componentsState: { isShownPalette },
+      componentsState: { isShownSkillExchangeIntro, isShownPalette },
     } = store
 
     const { themeDafault } = props
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
-      handleEvents({}, { typeEvent: 'SEP_INTRO_IN' })
+      isShownSkillExchangeIntro &&
+        handleEvents({}, { typeEvent: 'SEP_INTRO_IN' })
     }, [])
 
     const moduleCapture = 'Exchange your skills, save your time'
