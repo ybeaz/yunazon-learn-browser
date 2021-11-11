@@ -19,7 +19,6 @@
     margin: 0 auto;
     border: 1px solid #888;
     max-width: 70%;
-    min-width: 30rem;
     height: fit-content;
 
     ._close {
@@ -52,6 +51,14 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    .__content {
+      max-width: 90%;
+      min-width: 0;
+
+      ._inner {
+        padding: 2rem 0rem;
+      }
+    }
   }
 }
 
@@ -63,8 +70,6 @@
   .ModalFrames_EmalInputs {
     .__content {
       left: 1rem;
-      max-width: 90%;
-      min-width: 0;
     }
   }
 }
@@ -73,8 +78,6 @@
   .ModalFrames_QuestionScores {
     .__content {
       top: 1rem;
-      max-width: 90%;
-      min-width: 0;
     }
   }
 }
