@@ -218,7 +218,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   }
 
   const classCol01 = '_col_1 _titleForm'
-  const classCol02 = '_col_1'
+  const classCol02 = '_col_1 _selectElement'
 
   return (
     <div className='CatalogSep'>
@@ -271,9 +271,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className='_row'>
           <div className={classCol01}>{DICTIONARY['Age'][language]}</div>
           <div className={classCol02}>
-            <span>{DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;</span>
+            <div className='_range'>
+              {DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;
+            </div>
             <Input {...childrenProps.inputAgeFromRequiredProps} />
-            <span>&nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;</span>
+            <div className='_range'>
+              &nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;
+            </div>
             <Input {...childrenProps.inputAgeToRequiredProps} />
           </div>
         </div>

@@ -48,6 +48,21 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .CatalogSep, .CatalogSep .__titleScreen {
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+      background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+    }
+
+    .CatalogSep .__searchForm ._row ._selectElement{
+      background-color: ${props2 =>
+        getColor(props2, 'colorSecond', 1, middle, 'Light')};
+    }
+
+    .CatalogSep .__searchForm ._row ._selectElement ._range {
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+      background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+    }
+
     .SkillExchangeIntro .__title02 {
       color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
@@ -97,12 +112,15 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Input_ageFromToRequired .__input {
+    .Input_ageFromToRequired .__input, .Input_descriptionRequired .__input  {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
-      background: ${props2 => getColor(props2, 'colorSecond', medial, lighter)};
+      background-color: ${props2 =>
+        getColor(props2, 'colorSecond', lighter, medial, 'Light')};
       border-color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
+        theme === 'Dark'
+          ? getColor(props2, 'colorFirst', medial, lighter4, 'Dark')
+          : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
+      }
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
@@ -129,14 +147,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
 
-    .Input_descriptionRequired .__input {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
-      background: ${props2 =>
-        getColor(props2, 'colorSecond', lighter, medial, 'Light')};
-      border-color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
@@ -145,7 +155,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       border-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
-
 
     .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props2 =>
