@@ -1,7 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { nanoid } from 'nanoid'
+import { Select as SelectAntd } from 'antd'
+import 'antd/dist/antd.css'
 
-import { getLanguagesOptions } from './getLanguagesOptions'
+import { getLanguagesOptions } from '../../../Shared/getLanguagesOptions'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -15,10 +18,6 @@ import { LANGUAGES } from '../../../Constants/languages.const'
 import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
-import { nanoid } from 'nanoid'
-
-import { Select as SelectAntd } from 'antd'
-import 'antd/dist/antd.css'
 
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
