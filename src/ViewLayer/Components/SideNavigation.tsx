@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { LanguageSelect } from './LanguageSelect'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -83,6 +84,12 @@ export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
 
   const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
 
+  const languageSelectProps = {
+    languages: LANGUAGES_APP,
+    defaultLanguage: language,
+    mode: null,
+  }
+
   return (
     <div
       className={`SideNavigation ${classNameAdd}`}
@@ -98,7 +105,7 @@ export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
       >
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
-            <LanguageSelect />
+            <LanguageSelect {...languageSelectProps} />
           </div>
           {getButtons(buttonPropsArr)}
         </div>

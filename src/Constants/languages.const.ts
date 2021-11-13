@@ -1,18 +1,11 @@
+import { ILanguages } from '../Interfaces/ILanguages'
+
 export const SVG_FILE_DIR: string = 'https://yourails.com/images/languages/'
-export interface ILanguage {
-  '639-1'?: string
-  '639-2'?: string
-  '639-2/B'?: string
-  de: string[]
-  en: string[]
-  fr: string[]
-  ru: string[]
-  svgFile: string
-  wikiUrl: string
-}
 
-export type ILanguages = Record<string, ILanguage>
-
+/**
+ * @description Const to define languages to select
+ * @reference See src/Constants/languagesAll.const.ts
+ */
 export const LANGUAGES: ILanguages = {
   eng: {
     '639-1': 'en',
@@ -161,7 +154,7 @@ export const LANGUAGES: ILanguages = {
     '639-2': 'ukr',
     de: ['Ukrainisch'],
     en: ['Ukrainian'],
-    fr: ['Ukrainien'],
+    fr: ['ukrainien'],
     ru: ['Украинский'],
     svgFile: 'uk.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Ukrainian_language',

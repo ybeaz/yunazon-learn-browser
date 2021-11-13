@@ -1,14 +1,11 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import {
-  getLanguagesOptions,
-  getLanguagesOptionsJsx,
-} from '../../Shared/getLanguagesOptions'
-import { LANGUAGES, SVG_FILE_DIR } from '../../Constants/languages.const'
+import { ILanguages } from '../../Interfaces/ILanguages'
+import { getLanguagesOptionsJsx } from '../../Shared/getLanguagesOptions'
+import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -18,10 +15,18 @@ const languageArr = [
   { code: 'en', svgFile: 'en.svg' },
 ]
 
-export const LanguageSelect: React.FunctionComponent = () => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+interface LanguageSelectArgs {
+  languages: ILanguages
+  defaultLanguage?: null | string
+  mode?: null | 'multiple' | 'tags'
+}
 
-  const defaultOption = DICTIONARY.notSelected
+export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
+  props: LanguageSelectArgs
+): JSX.Element => {
+  const { languages, defaultLanguage, mode } = props
+
+  const { language } = useSelector((store2: IRootStore) => store2)
 
   const stubOnAction = () => console.info('LanguageSelect [26]')
 
@@ -30,35 +35,10 @@ export const LanguageSelect: React.FunctionComponent = () => {
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
   const lagnguagesMapped = getLanguagesOptionsJsx(
-    LANGUAGES,
+    languages,
     language,
     SVG_FILE_DIR
   )
-
-  // const selectLanguageRequiredProps = {
-  //   allowClear: true,
-  //   componentId: nanoid(),
-  //   defaultValue: ['eng'],
-  //   filterOption,
-  //   mode: null,
-  //   onBlur: stubOnAction,
-  //   onChange: (values: string[]) =>
-  //     handleEvents(
-  //       {},
-  //       { typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED', data: values }
-  //     ),
-  //   onFocus: stubOnAction,
-  //   onSearch: stubOnAction,
-  //   optionFilterProp: 'children',
-  //   options: getLanguagesOptions(
-  //     LANGUAGES,
-  //     language,
-  //     defaultOption,
-  //   ),
-  //   placeholder: DICTIONARY['select'][language],
-  //   showSearch: true,
-  //   style: { width: '100%', height: '-webkit-fill-available' },
-  // }
 
   const getLanguageIcons: Function = (
     languageArr2: any[],
@@ -93,11 +73,12 @@ export const LanguageSelect: React.FunctionComponent = () => {
       <SelectAntd
         labelInValue
         // @ts-ignore
-        defaultValue={{ value: 'en' }}
+        defaultValue={{ value: defaultLanguage }}
         filterOption={filterOption}
         placeholder={DICTIONARY['select'][language]}
         showSearch={true}
         className='__selectAntd'
+        mode={mode}
         onBlur={stubOnAction}
         onChange={(values: any) =>
           handleEvents(
@@ -110,7 +91,6 @@ export const LanguageSelect: React.FunctionComponent = () => {
       >
         {lagnguagesMapped}
       </SelectAntd>
-      {getLanguageIcons(languageArr, language)}
     </div>
   )
 }

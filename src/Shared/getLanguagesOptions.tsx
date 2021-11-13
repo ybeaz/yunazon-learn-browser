@@ -1,7 +1,8 @@
+import React from 'react'
 import { Select as SelectAntd } from 'antd'
 
 import { ImageSvg } from '../ViewLayer/Components/ImageSvg'
-import { ILanguages } from '../Constants/languages.const'
+import { ILanguages } from '../Interfaces/ILanguages'
 import { IDictionary } from '../Constants/dictionary.const'
 import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
 
@@ -24,7 +25,6 @@ export const getLanguagesOptions: IGetLanguagesOptions = (
   defaultOption2
 ) => {
   const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
-    console.info('getLanguagesOptions [29]', { languages2, ln, language2 })
     const [label] = languages2[ln][language2]
     return { label, value: ln }
   })
@@ -37,13 +37,33 @@ export const getLanguagesOptions: IGetLanguagesOptions = (
   return [defaultOptionNext, ...lagnguagesMapped]
 }
 
+// type OptionAntd = typeof OptionFC
+interface IGetLanguagesOptionsJsx {
+  (
+    languages2: ILanguages,
+    language2: string,
+    svgFileDir2: string
+  ): JSX.Element[]
+}
+
 /**
  * @description Funciton to get array of JSX option elements - language options
  */
-export const getLanguagesOptionsJsx = (languages2, language2, svgFileDir2) => {
+export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
+  languages2,
+  language2,
+  svgFileDir2
+) => {
   return Object.keys(languages2).map((ln: string) => {
     const value = languages2[ln]['639-1']
     const [label] = languages2[ln][language2]
+    const twoChar6391 = languages2[ln]['639-1']
+
+    let labelNext = label
+    labelNext = languages2[ln][twoChar6391]
+      ? languages2[ln][twoChar6391]
+      : labelNext
+
     const { svgFile } = languages2[ln]
 
     const imageSvgProps = {
@@ -52,9 +72,9 @@ export const getLanguagesOptionsJsx = (languages2, language2, svgFileDir2) => {
     }
 
     return (
-      <Option className='_optionsAntd' value={value}>
+      <Option className='_optionsAntd' value={value} isSelectOption={true}>
         <ImageSvg {...imageSvgProps} />
-        {label}
+        {labelNext}
       </Option>
     )
   })

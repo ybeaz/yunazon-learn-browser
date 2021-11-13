@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Button } from '../Components/Button'
+import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { LanguageSelect } from '../Components/LanguageSelect'
@@ -82,6 +83,12 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       ? 'HeaderFrame_AcademyPresent'
       : ''
 
+  const languageSelectProps = {
+    languages: LANGUAGES_APP,
+    defaultLanguage: language,
+    mode: null,
+  }
+
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='__left'>
@@ -97,7 +104,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           <Button {...buttonAuthUser} />
         </div>
         <div className='_itemLanguageSelect'>
-          <LanguageSelect />
+          <LanguageSelect {...languageSelectProps} />
         </div>
         <div className='_itemButtonThemeToggle'>
           <Button {...buttonThemeToggle} />
