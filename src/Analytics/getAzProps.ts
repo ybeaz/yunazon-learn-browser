@@ -152,7 +152,7 @@ export const getAzProps: Function = (type: string): IAzProps => {
       name: 'side panel toggled',
     }),
 
-    LANGUAGE_SELECTED: (options: string) => {
+    APP_LANGUAGE_SELECTED: (options: string) => {
       return {
         type: 'click',
         name: 'language selected',

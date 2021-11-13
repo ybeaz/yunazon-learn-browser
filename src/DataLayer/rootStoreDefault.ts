@@ -16,7 +16,7 @@ export const userStoreDefault = {
 export const rootStoreDefault = {
   analyticsID: null,
   componentsState: {
-    isShownSkillExchangeIntro: true,
+    isShownSkillExchangeIntro: false,
     isShownPalette: false,
     questionsSlideNumber: 0,
     isModalFrameVisible: false,

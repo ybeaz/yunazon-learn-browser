@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: row;
 
+  .__selectAntd {
+    display: flex;
+    flex-direction: row;
+    height: -webkit-fill-available;
+  }
+
   .__option {
     display: flex;
     flex-direction: column;
@@ -41,5 +47,23 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+  }
+}
+
+.LanguageSelect
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  padding: 0 11px 0 0;
+}
+
+.LanguageSelect .__selectAntd .ant-select-selection-item {
+  display: flex;
+}
+
+.ant-select-item {
+  padding: 5px;
+
+  .ant-select-item-option-content {
+    display: flex;
   }
 }

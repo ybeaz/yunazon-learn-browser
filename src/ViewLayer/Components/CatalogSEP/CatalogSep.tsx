@@ -14,7 +14,7 @@ import { MEDIA } from '../../../Constants/media.const'
 import { GENDER } from '../../../Constants/gender.const'
 import { Button } from './../Button'
 import { Input } from './../Input'
-import { LANGUAGES } from '../../../Constants/languages.const'
+import { LANGUAGES, SVG_FILE_DIR } from '../../../Constants/languages.const'
 import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
@@ -83,26 +83,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    selectCountryRequiredProps: {
-      allowClear: true,
-      componentId: nanoid(),
-      defaultValue: [],
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_COUNTRY_REQUIRED', data: values }
-        ),
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      optionFilterProp: 'children',
-      options: getCountriesOptions(COUNTRIES, language, defaultOption),
-      placeholder: DICTIONARY['select'][language],
-      showSearch: true,
-      style: { width: '100%' },
-    },
     selectLanguageRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
@@ -119,6 +99,26 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       onSearch: stubOnAction,
       optionFilterProp: 'children',
       options: getLanguagesOptions(LANGUAGES, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
+    },
+    selectCountryRequiredProps: {
+      allowClear: true,
+      componentId: nanoid(),
+      defaultValue: [],
+      filterOption,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_COUNTRY_REQUIRED', data: values }
+        ),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getCountriesOptions(COUNTRIES, language, defaultOption),
       placeholder: DICTIONARY['select'][language],
       showSearch: true,
       style: { width: '100%' },

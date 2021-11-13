@@ -25,7 +25,8 @@ export const LANGUAGES: ILanguages = {
     wikiUrl: 'https://en.wikipedia.org/wiki/English_language',
   },
   zho: {
-    '639-2': 'zh',
+    '639-1': 'zh',
+    '639-2': 'zho',
     de: ['Chinesisch'],
     en: ['Chinese'],
     fr: ['Chinoise'],
@@ -154,5 +155,15 @@ export const LANGUAGES: ILanguages = {
     ru: ['Корейский'],
     svgFile: 'ko.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Korean_language',
+  },
+  ukr: {
+    '639-1': 'uk',
+    '639-2': 'ukr',
+    de: ['Ukrainisch'],
+    en: ['Ukrainian'],
+    fr: ['Ukrainien'],
+    ru: ['Украинский'],
+    svgFile: 'uk.svg',
+    wikiUrl: 'https://en.wikipedia.org/wiki/Ukrainian_language',
   },
 }
