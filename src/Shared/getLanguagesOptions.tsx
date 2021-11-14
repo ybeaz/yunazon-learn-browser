@@ -12,7 +12,8 @@ interface IGetLanguagesOptionsJsx {
   (
     languages2: ILanguages,
     language2: string,
-    svgFileDir2: string
+    svgFileDir2: string,
+    classAdded: string
   ): JSX.Element[]
 }
 
@@ -22,7 +23,8 @@ interface IGetLanguagesOptionsJsx {
 export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
   languages2,
   language2,
-  svgFileDir2
+  svgFileDir2,
+  classAdded2
 ) => {
   return Object.keys(languages2).map((ln: string) => {
     const value = languages2[ln]['639-1']
@@ -37,12 +39,16 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
     const { svgFile } = languages2[ln]
 
     const imageSvgProps = {
-      classAdded: 'ImageSvg_languagesOptions',
+      classAdded: `ImageSvg_languagesOptions ${classAdded2}`,
       src: `${svgFileDir2}${svgFile}`,
     }
 
     return (
-      <Option className='_optionsAntd' value={value} isSelectOption={true}>
+      <Option
+        className={`_optionsAntd ${classAdded2}`}
+        value={value}
+        isSelectOption={true}
+      >
         <ImageSvg {...imageSvgProps} />
         {labelNext}
       </Option>

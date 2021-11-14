@@ -48,6 +48,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .SelectLanguage.SelectLanguage__AppLanguage {
+      background: ${props2 =>
+        getColor(props2, 'colorSecond', medial, middle, 'Light')};
+    }
+
     .CatalogSep, .CatalogSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};

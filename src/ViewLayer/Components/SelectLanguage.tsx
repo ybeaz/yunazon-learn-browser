@@ -18,12 +18,13 @@ interface SelectLanguageArgs {
   defaultLanguage: null | string
   mode: 'multiple' | 'tags'
   typeEvent: string
+  classAdded: string
 }
 
 export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   props: SelectLanguageArgs
 ): JSX.Element => {
-  const { languages, defaultLanguage, mode, typeEvent } = props
+  const { classAdded, languages, defaultLanguage, mode, typeEvent } = props
 
   const stubOnAction = () => {}
 
@@ -34,11 +35,12 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   const lagnguagesMapped = getLanguagesOptionsJsx(
     languages,
     defaultLanguage,
-    SVG_FILE_DIR
+    SVG_FILE_DIR,
+    classAdded
   )
 
   return (
-    <div className='SelectLanguage'>
+    <div className={`SelectLanguage ${classAdded}`}>
       <SelectAntd
         labelInValue
         // @ts-ignore

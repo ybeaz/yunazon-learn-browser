@@ -71,7 +71,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
   const buttonThemeToggle = {
-    icon: 'FaYinYang',
+    icon: 'CgDarkMode',
     classAdded: 'Button_ThemeToggle',
     tooltipText: toggleTheme,
     tooltipPosition: 'bottom',
@@ -89,6 +89,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     defaultLanguage: language,
     mode: null,
     typeEvent: 'APP_SELECT_LANGUAGE',
+    classAdded: 'SelectLanguage__AppLanguage',
   }
 
   return (
