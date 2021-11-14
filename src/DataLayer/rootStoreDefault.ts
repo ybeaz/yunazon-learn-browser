@@ -79,6 +79,6 @@ export const rootStoreDefault = {
     isLoadedCourses: false,
     mediaLoading: {},
   },
-  language: 'ru',
+  language: localStorage.getItem('language') || 'ru',
   user: userStoreDefault,
 }

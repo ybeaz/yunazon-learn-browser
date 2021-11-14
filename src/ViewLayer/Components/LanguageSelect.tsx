@@ -1,5 +1,4 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
@@ -7,7 +6,6 @@ import { ILanguages } from '../../Interfaces/ILanguages'
 import { getLanguagesOptionsJsx } from '../../Shared/getLanguagesOptions'
 import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 const languageArr = [
@@ -27,9 +25,7 @@ export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
 ): JSX.Element => {
   const { languages, defaultLanguage, mode, typeEvent } = props
 
-  const { language } = useSelector((store2: IRootStore) => store2)
-
-  const stubOnAction = () => console.info('LanguageSelect [26]')
+  const stubOnAction = () => {}
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -37,46 +33,20 @@ export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
 
   const lagnguagesMapped = getLanguagesOptionsJsx(
     languages,
-    language,
+    defaultLanguage,
     SVG_FILE_DIR
   )
-
-  // const getLanguageIcons: Function = (
-  //   languageArr2: any[],
-  //   language2: string
-  // ): JSX.Element[] => {
-  //   return languageArr2.map(lang => {
-  //     const { code, svgFile } = lang
-
-  //     const classAdd = code === language2 ? '' : '_blur'
-  //     const classAdd2 = code === language2 ? '_underlineActive' : ''
-
-  //     return (
-  //       <div className='__option'>
-  //         <img
-  //           className={`_svgImage ${classAdd}`}
-  //           src={`${SVG_FILE_DIR}${svgFile}`}
-  //           onClick={event =>
-  //             handleEvents(event, {
-  //               typeEvent: 'APP_SELECT_LANGUAGE',
-  //               data: code,
-  //             })
-  //           }
-  //         />
-  //         <span className={`_underline ${classAdd2}`}></span>
-  //       </div>
-  //     )
-  //   })
-  // }
 
   return (
     <div className='LanguageSelect'>
       <SelectAntd
         labelInValue
         // @ts-ignore
-        defaultValue={{ value: defaultLanguage }}
+        defaultValue={{
+          value: defaultLanguage,
+        }}
         filterOption={filterOption}
-        placeholder={DICTIONARY['select'][language]}
+        placeholder={DICTIONARY['select'][defaultLanguage]}
         showSearch={true}
         className='__selectAntd'
         mode={mode}

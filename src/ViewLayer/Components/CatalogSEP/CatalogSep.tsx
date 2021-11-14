@@ -258,6 +258,14 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
           </div>
           <div className={classCol02}>
             <LanguageSelect {...languageSelectProps} />
+          </div>
+        </div>
+        <div className='_row'>
+          <div className={classCol01}>
+            {DICTIONARY['Speaking language'][language]}
+            {' *'}
+          </div>
+          <div className={classCol02}>
             <SelectAntd {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>

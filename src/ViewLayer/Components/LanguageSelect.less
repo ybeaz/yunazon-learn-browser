@@ -1,11 +1,13 @@
 .LanguageSelect {
   display: flex;
   flex-direction: row;
+  width: 100%;
 
   .__selectAntd {
     display: flex;
     flex-direction: row;
     height: -webkit-fill-available;
+    width: 100%;
   }
 
   .__option {
@@ -66,4 +68,12 @@
   .ant-select-item-option-content {
     display: flex;
   }
+}
+
+.LanguageSelect .ant-select-selection-item-content {
+  display: flex;
+}
+
+.LanguageSelect .ant-select-selector {
+  width: -webkit-fill-available;
 }
