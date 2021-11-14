@@ -44,6 +44,8 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       brandName: 'YourRails',
     }
 
+    console.info('SkillsExchangeSearch [47]', { store })
+
     return (
       <div className='SkillsExchangeSearch'>
         <Helmet>

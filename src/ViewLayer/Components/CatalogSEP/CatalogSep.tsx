@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import { LanguageSelect } from '../LanguageSelect'
+import { SelectLanguage } from '../SelectLanguage'
 import { getLanguagesOptions } from '../../../Shared/getLanguagesOptions'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -27,6 +27,36 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
+  const defaultOptions = {
+    selectSkillsOffered: 'all_skills',
+    selectLanguageRequired: language,
+    selectSortByProps: 'descending',
+  }
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      {
+        typeEvent: 'SEP_SELECT_SKILLS_OFFERED',
+        data: defaultOptions.selectSkillsOffered,
+      }
+    )
+    handleEvents(
+      {},
+      {
+        typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
+        data: [{ value: defaultOptions.selectLanguageRequired }],
+      }
+    )
+    handleEvents(
+      {},
+      {
+        typeEvent: 'SEP_SELECT_SORT_BY',
+        data: defaultOptions.selectSortByProps,
+      }
+    )
+  }, [language])
+
   const defaultOption = DICTIONARY.notSelected
 
   const stubOnAction = () => {}
@@ -39,7 +69,8 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOfferedProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: CATEGORIES_TO_EXCHANGE['all_skills'][language],
+      defaultValue:
+        CATEGORIES_TO_EXCHANGE[defaultOptions.selectSkillsOffered][language],
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -84,26 +115,26 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    selectLanguageRequiredProps: {
-      allowClear: true,
-      componentId: nanoid(),
-      defaultValue: [],
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED', data: values }
-        ),
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      optionFilterProp: 'children',
-      options: getLanguagesOptions(LANGUAGES, language, defaultOption),
-      placeholder: DICTIONARY['select'][language],
-      showSearch: true,
-      style: { width: '100%' },
-    },
+    // selectLanguageRequiredProps: {
+    //   allowClear: true,
+    //   componentId: nanoid(),
+    //   defaultValue: [],
+    //   filterOption,
+    //   mode: 'multiple' as 'multiple' | 'tags',
+    //   onBlur: stubOnAction,
+    //   onChange: (values: string[]) =>
+    //     handleEvents(
+    //       {},
+    //       { typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED', data: values }
+    //     ),
+    //   onFocus: stubOnAction,
+    //   onSearch: stubOnAction,
+    //   optionFilterProp: 'children',
+    //   options: getLanguagesOptions(LANGUAGES, language, defaultOption),
+    //   placeholder: DICTIONARY['select'][language],
+    //   showSearch: true,
+    //   style: { width: '100%' },
+    // },
     selectCountryRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
@@ -217,11 +248,12 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     },
   }
 
-  const languageSelectProps = {
+  const selectLanguageProps = {
     languages: LANGUAGES,
     defaultLanguage: language,
     mode: 'multiple' as 'multiple' | 'tags',
     typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
+    classAdded: 'SelectLanguage__CatalogSep',
   }
 
   const classCol01 = '_col_1 _titleForm'
@@ -257,16 +289,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             {' *'}
           </div>
           <div className={classCol02}>
-            <LanguageSelect {...languageSelectProps} />
-          </div>
-        </div>
-        <div className='_row'>
-          <div className={classCol01}>
-            {DICTIONARY['Speaking language'][language]}
-            {' *'}
-          </div>
-          <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectLanguageRequiredProps} />
+            <SelectLanguage {...selectLanguageProps} />
           </div>
         </div>
         <div className='_row'>

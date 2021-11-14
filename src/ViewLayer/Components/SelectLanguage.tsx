@@ -13,15 +13,15 @@ const languageArr = [
   { code: 'en', svgFile: 'en.svg' },
 ]
 
-interface LanguageSelectArgs {
+interface SelectLanguageArgs {
   languages: ILanguages
   defaultLanguage: null | string
   mode: 'multiple' | 'tags'
   typeEvent: string
 }
 
-export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
-  props: LanguageSelectArgs
+export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
+  props: SelectLanguageArgs
 ): JSX.Element => {
   const { languages, defaultLanguage, mode, typeEvent } = props
 
@@ -38,7 +38,7 @@ export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
   )
 
   return (
-    <div className='LanguageSelect'>
+    <div className='SelectLanguage'>
       <SelectAntd
         labelInValue
         // @ts-ignore

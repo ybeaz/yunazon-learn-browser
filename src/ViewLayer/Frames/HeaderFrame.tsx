@@ -6,7 +6,7 @@ import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
-import { LanguageSelect } from '../Components/LanguageSelect'
+import { SelectLanguage } from '../Components/SelectLanguage'
 import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -84,7 +84,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       ? 'HeaderFrame_AcademyPresent'
       : ''
 
-  const languageSelectProps = {
+  const selectLanguageProps = {
     languages: LANGUAGES_APP,
     defaultLanguage: language,
     mode: null,
@@ -106,7 +106,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           <Button {...buttonAuthUser} />
         </div>
         <div className='_itemLanguageSelect'>
-          <LanguageSelect {...languageSelectProps} />
+          <SelectLanguage {...selectLanguageProps} />
         </div>
         <div className='_itemButtonThemeToggle'>
           <Button {...buttonThemeToggle} />
