@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { LanguageSelect } from '../LanguageSelect'
 import { getLanguagesOptions } from '../../../Shared/getLanguagesOptions'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -216,6 +217,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     },
   }
 
+  const languageSelectProps = {
+    languages: LANGUAGES,
+    defaultLanguage: language,
+    mode: 'multiple' as 'multiple' | 'tags',
+    typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
+  }
+
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1 _selectElement'
 
@@ -249,6 +257,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             {' *'}
           </div>
           <div className={classCol02}>
+            <LanguageSelect {...languageSelectProps} />
             <SelectAntd {...childrenProps.selectLanguageRequiredProps} />
           </div>
         </div>

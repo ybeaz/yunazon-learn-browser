@@ -8,36 +8,6 @@ import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
 
 const { Option } = SelectAntd
 
-interface IGetLanguagesOptions {
-  (
-    languages2: ILanguages,
-    language2: string,
-    defaultOption2: IDictionary
-  ): ISelectOptionAntD[]
-}
-
-/**
- * @description Funciton to get array of option objects - language options
- */
-export const getLanguagesOptions: IGetLanguagesOptions = (
-  languages2,
-  language2,
-  defaultOption2
-) => {
-  const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
-    const [label] = languages2[ln][language2]
-    return { label, value: ln }
-  })
-
-  const defaultOptionNext = {
-    label: defaultOption2[language2],
-    value: defaultOption2['en'],
-  }
-
-  return [defaultOptionNext, ...lagnguagesMapped]
-}
-
-// type OptionAntd = typeof OptionFC
 interface IGetLanguagesOptionsJsx {
   (
     languages2: ILanguages,
@@ -78,4 +48,33 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
       </Option>
     )
   })
+}
+
+interface IGetLanguagesOptions {
+  (
+    languages2: ILanguages,
+    language2: string,
+    defaultOption2: IDictionary
+  ): ISelectOptionAntD[]
+}
+
+/**
+ * @description Funciton to get array of option objects - language options
+ */
+export const getLanguagesOptions: IGetLanguagesOptions = (
+  languages2,
+  language2,
+  defaultOption2
+) => {
+  const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
+    const [label] = languages2[ln][language2]
+    return { label, value: ln }
+  })
+
+  const defaultOptionNext = {
+    label: defaultOption2[language2],
+    value: defaultOption2['en'],
+  }
+
+  return [defaultOptionNext, ...lagnguagesMapped]
 }

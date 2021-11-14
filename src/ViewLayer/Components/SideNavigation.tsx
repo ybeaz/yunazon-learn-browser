@@ -88,6 +88,7 @@ export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
     languages: LANGUAGES_APP,
     defaultLanguage: language,
     mode: null,
+    typeEvent: 'APP_SELECT_LANGUAGE',
   }
 
   return (

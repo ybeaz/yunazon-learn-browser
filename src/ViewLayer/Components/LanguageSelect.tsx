@@ -17,14 +17,15 @@ const languageArr = [
 
 interface LanguageSelectArgs {
   languages: ILanguages
-  defaultLanguage?: null | string
-  mode?: null | 'multiple' | 'tags'
+  defaultLanguage: null | string
+  mode: 'multiple' | 'tags'
+  typeEvent: string
 }
 
 export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
   props: LanguageSelectArgs
 ): JSX.Element => {
-  const { languages, defaultLanguage, mode } = props
+  const { languages, defaultLanguage, mode, typeEvent } = props
 
   const { language } = useSelector((store2: IRootStore) => store2)
 
@@ -40,33 +41,33 @@ export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
     SVG_FILE_DIR
   )
 
-  const getLanguageIcons: Function = (
-    languageArr2: any[],
-    language2: string
-  ): JSX.Element[] => {
-    return languageArr2.map(lang => {
-      const { code, svgFile } = lang
+  // const getLanguageIcons: Function = (
+  //   languageArr2: any[],
+  //   language2: string
+  // ): JSX.Element[] => {
+  //   return languageArr2.map(lang => {
+  //     const { code, svgFile } = lang
 
-      const classAdd = code === language2 ? '' : '_blur'
-      const classAdd2 = code === language2 ? '_underlineActive' : ''
+  //     const classAdd = code === language2 ? '' : '_blur'
+  //     const classAdd2 = code === language2 ? '_underlineActive' : ''
 
-      return (
-        <div className='__option'>
-          <img
-            className={`_svgImage ${classAdd}`}
-            src={`${SVG_FILE_DIR}${svgFile}`}
-            onClick={event =>
-              handleEvents(event, {
-                typeEvent: 'APP_SELECT_LANGUAGE',
-                data: code,
-              })
-            }
-          />
-          <span className={`_underline ${classAdd2}`}></span>
-        </div>
-      )
-    })
-  }
+  //     return (
+  //       <div className='__option'>
+  //         <img
+  //           className={`_svgImage ${classAdd}`}
+  //           src={`${SVG_FILE_DIR}${svgFile}`}
+  //           onClick={event =>
+  //             handleEvents(event, {
+  //               typeEvent: 'APP_SELECT_LANGUAGE',
+  //               data: code,
+  //             })
+  //           }
+  //         />
+  //         <span className={`_underline ${classAdd2}`}></span>
+  //       </div>
+  //     )
+  //   })
+  // }
 
   return (
     <div className='LanguageSelect'>
@@ -81,10 +82,7 @@ export const LanguageSelect: React.FunctionComponent<LanguageSelectArgs> = (
         mode={mode}
         onBlur={stubOnAction}
         onChange={(values: any) =>
-          handleEvents(
-            {},
-            { typeEvent: 'APP_SELECT_LANGUAGE', data: values.value }
-          )
+          handleEvents({}, { typeEvent, data: values })
         }
         onFocus={stubOnAction}
         onSearch={stubOnAction}

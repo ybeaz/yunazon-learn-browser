@@ -7,5 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_SELECT_LANGUAGE_REQUIRED: IActionEvent = (event, data) =>
-  dispatch(actionSync.SEP_SELECT_LANGUAGE_REQUIRED(data))
+export const SEP_SELECT_LANGUAGE_REQUIRED: IActionEvent = (event, data) => {
+  console.info('SEP_SELECT_LANGUAGE_REQUIRED [11]', { data, value: data.value })
+  dispatch(actionSync.SEP_SELECT_LANGUAGE_REQUIRED(data.value))
+}
