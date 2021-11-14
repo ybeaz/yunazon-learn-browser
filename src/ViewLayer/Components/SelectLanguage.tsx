@@ -42,6 +42,7 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   return (
     <div className={`SelectLanguage ${classAdded}`}>
       <SelectAntd
+        // defaultOpen
         labelInValue
         // @ts-ignore
         defaultValue={{
