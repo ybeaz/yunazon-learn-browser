@@ -264,7 +264,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const classCol02 = '_col_1 _selectElement'
   const classAdvancedSearch = isSepAdvancedSearch ? '' : '_hideRow'
 
-  const ButtonSearchText = isSepAdvancedSearch
+  const linkAdvancedSearchText = isSepAdvancedSearch
     ? DICTIONARY['Basic_search'][language]
     : DICTIONARY['Advanced_search'][language]
 
@@ -363,7 +363,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
                 handleEvents({}, { typeEvent: 'TOGGLE_IS_ADVANCED_SEARCH' })
               }
             >
-              {ButtonSearchText}
+              {linkAdvancedSearchText}
             </div>
           </div>
         </div>
