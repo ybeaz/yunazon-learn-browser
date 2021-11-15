@@ -346,8 +346,14 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className='_row'>
           <div className={classCol01}></div>
-          <div className={classCol02}>
+          <div className={`${classCol02} _submitGroup`}>
             <Button {...childrenProps.buttonSearchSepProps} />
+            <div
+              className='_linkAdvacedSearch'
+              onClick={event => (() => console.info('CatalogSep [354]'))()}
+            >
+              Advanced search
+            </div>
           </div>
         </div>
         <div className='_row'>
