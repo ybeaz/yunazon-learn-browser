@@ -25,11 +25,15 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
  */
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const {
+    language,
+    componentsState: { isSepAdvancedSearch },
+  } = useSelector((store2: IRootStore) => store2)
 
   const defaultOptions = {
     selectSkillsOffered: 'all_skills',
     selectLanguageRequired: language,
+    selectMediaRequired: 'instant_online',
     selectSortByProps: 'descending',
   }
 
@@ -115,6 +119,26 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
+    selectMediaRequiredProps: {
+      allowClear: true,
+      componentId: nanoid(),
+      defaultValue: MEDIA[defaultOptions.selectMediaRequired][language],
+      filterOption,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_MEDIA_REQUIRED', data: values }
+        ),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getStdDictionaryOptions(MEDIA, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
+    },
     // selectLanguageRequiredProps: {
     //   allowClear: true,
     //   componentId: nanoid(),
@@ -189,26 +213,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    selectMediaRequiredProps: {
-      allowClear: true,
-      componentId: nanoid(),
-      defaultValue: [],
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_MEDIA_REQUIRED', data: values }
-        ),
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      optionFilterProp: 'children',
-      options: getStdDictionaryOptions(MEDIA, language, defaultOption),
-      placeholder: DICTIONARY['select'][language],
-      showSearch: true,
-      style: { width: '100%' },
-    },
     inputDescriptionRequiredProps: {
       classAdded: 'Input_descriptionRequired',
       type: 'text',
@@ -258,6 +262,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
 
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1 _selectElement'
+  const classAdvancedSearch = isSepAdvancedSearch ? '' : ''
+  console.info('CatalogSep [265]', {
+    MEDIA,
+    MEDIA_default: MEDIA[defaultOptions.selectMediaRequired][language],
+    classAdvancedSearch,
+    isSepAdvancedSearch,
+  })
 
   return (
     <div className='CatalogSep'>
@@ -350,7 +361,9 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <Button {...childrenProps.buttonSearchSepProps} />
             <div
               className='_linkAdvacedSearch'
-              onClick={event => (() => console.info('CatalogSep [354]'))()}
+              onClick={event =>
+                handleEvents({}, { typeEvent: 'TOGGLE_IS_ADVANCED_SEARCH' })
+              }
             >
               Advanced search
             </div>

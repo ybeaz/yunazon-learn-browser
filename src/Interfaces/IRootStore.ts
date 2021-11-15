@@ -16,6 +16,7 @@ export interface IUser {
 export interface IRootStore {
   analyticsID: string
   componentsState: {
+    isSepAdvancedSearch: boolean
     isShownSkillExchangeIntro: boolean
     isShownPalette: boolean
     questionsSlideNumber: number
