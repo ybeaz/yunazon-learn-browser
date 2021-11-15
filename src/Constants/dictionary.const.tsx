@@ -7,6 +7,14 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Basic_search: {
+    en: 'Basic search',
+    ru: 'Простой поиск',
+  },
+  Advanced_search: {
+    en: 'Advanced search',
+    ru: 'Расширенный поиск',
+  },
   Welcome_to_Online_Skills_Exchange_Community: {
     en: 'Welcome to Online Skills Exchange Community!',
     ru: 'Добро пожаловать в Онлайн Сообщество Обмена Знаниями',

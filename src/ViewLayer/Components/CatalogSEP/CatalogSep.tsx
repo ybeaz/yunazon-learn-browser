@@ -262,13 +262,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
 
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1 _selectElement'
-  const classAdvancedSearch = isSepAdvancedSearch ? '' : ''
-  console.info('CatalogSep [265]', {
-    MEDIA,
-    MEDIA_default: MEDIA[defaultOptions.selectMediaRequired][language],
-    classAdvancedSearch,
-    isSepAdvancedSearch,
-  })
+  const classAdvancedSearch = isSepAdvancedSearch ? '' : '_hideRow'
+
+  const ButtonSearchText = isSepAdvancedSearch
+    ? DICTIONARY['Basic_search'][language]
+    : DICTIONARY['Advanced_search'][language]
 
   return (
     <div className='CatalogSep'>
@@ -303,7 +301,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectLanguage {...selectLanguageProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Communication media'][language]}
             {' *'}
@@ -312,13 +310,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>{DICTIONARY['Age'][language]}</div>
           <div className={classCol02}>
             <div className='_range'>
@@ -331,7 +329,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <Input {...childrenProps.inputAgeToRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Prefered gender'][language]}
           </div>
@@ -339,7 +337,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectGenderRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Description contains'][language]}
           </div>
@@ -347,7 +345,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Sort results by'][language]}
           </div>
@@ -365,7 +363,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
                 handleEvents({}, { typeEvent: 'TOGGLE_IS_ADVANCED_SEARCH' })
               }
             >
-              Advanced search
+              {ButtonSearchText}
             </div>
           </div>
         </div>
