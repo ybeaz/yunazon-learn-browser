@@ -48,6 +48,18 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .SelectLanguage__AppLanguage {
+      background: ${props2 =>
+        getColor(props2, 'colorSecond', medial, middle, 'Light')};
+    }
+
+    .SelectLanguage .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+      border-color: ${props2 =>
+        theme === 'Dark'
+          ? getColor(props2, 'colorSecond', medial, middle)
+          : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
+    }
+
     .CatalogSep, .CatalogSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};

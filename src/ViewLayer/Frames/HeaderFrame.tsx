@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { Button } from '../Components/Button'
+import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
-import { LanguageSelect } from '../Components/LanguageSelect'
+import { SelectLanguage } from '../Components/SelectLanguage'
 import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -69,7 +71,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
   const buttonThemeToggle = {
-    icon: 'FaYinYang',
+    icon: 'CgDarkMode',
     classAdded: 'Button_ThemeToggle',
     tooltipText: toggleTheme,
     tooltipPosition: 'bottom',
@@ -81,6 +83,14 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentComponentName === 'PlayerIframe'
       ? 'HeaderFrame_AcademyPresent'
       : ''
+
+  const selectLanguageProps = {
+    languages: LANGUAGES_APP,
+    defaultLanguage: language,
+    mode: null,
+    typeEvent: 'APP_SELECT_LANGUAGE',
+    classAdded: 'SelectLanguage__AppLanguage',
+  }
 
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
@@ -97,7 +107,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           <Button {...buttonAuthUser} />
         </div>
         <div className='_itemLanguageSelect'>
-          <LanguageSelect />
+          <SelectLanguage {...selectLanguageProps} />
         </div>
         <div className='_itemButtonThemeToggle'>
           <Button {...buttonThemeToggle} />

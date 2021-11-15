@@ -1,6 +1,14 @@
-.LanguageSelect {
+.SelectLanguage {
   display: flex;
   flex-direction: row;
+  width: 100%;
+
+  .__selectAntd {
+    display: flex;
+    flex-direction: row;
+    height: -webkit-fill-available;
+    width: 100%;
+  }
 
   .__option {
     display: flex;
@@ -42,4 +50,31 @@
   }
   @media @phone, @phone-strict {
   }
+}
+
+.SelectLanguage
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  padding: 0 11px 0 0;
+  border-radius: 0;
+}
+
+.SelectLanguage .__selectAntd .ant-select-selection-item {
+  display: flex;
+}
+
+.ant-select-item {
+  padding: 5px;
+
+  .ant-select-item-option-content {
+    display: flex;
+  }
+}
+
+.SelectLanguage .ant-select-selection-item-content {
+  display: flex;
+}
+
+.SelectLanguage .ant-select-selector {
+  width: -webkit-fill-available;
 }

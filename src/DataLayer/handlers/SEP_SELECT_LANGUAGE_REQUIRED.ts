@@ -7,5 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_SELECT_LANGUAGE_REQUIRED: IActionEvent = (event, data) =>
-  dispatch(actionSync.SEP_SELECT_LANGUAGE_REQUIRED(data))
+export const SEP_SELECT_LANGUAGE_REQUIRED: IActionEvent = (event, data) => {
+  const dataNext = data.map(item => item.value)
+  dispatch(actionSync.SEP_SELECT_LANGUAGE_REQUIRED(dataNext))
+}

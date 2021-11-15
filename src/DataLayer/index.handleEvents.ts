@@ -62,7 +62,7 @@ import { PRINT_SCORES } from './handlers/PRINT_SCORES'
 import { SAVE_ANALYTICS_INIT_DATA } from './handlers/SAVE_ANALYTICS_INIT_DATA'
 import { SELECT_COURSE_MODULE } from './handlers/SELECT_COURSE_MODULE'
 import { SELECT_COURSE_MODULE_CONTENTID } from './handlers/SELECT_COURSE_MODULE_CONTENTID'
-import { SELECT_LANGUAGE } from './handlers/SELECT_LANGUAGE'
+import { APP_SELECT_LANGUAGE } from './handlers/APP_SELECT_LANGUAGE'
 import { SEND_AUTH_FORGET_PASSWORD } from './handlers/SEND_AUTH_FORGET_PASSWORD'
 import { SEND_EMAIL_DOCUMENT } from './handlers/SEND_EMAIL_DOCUMENT'
 import { SET_MODAL_FRAMES } from './handlers/SET_MODAL_FRAMES'
@@ -146,7 +146,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     SAVE_ANALYTICS_INIT_DATA,
     SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
-    SELECT_LANGUAGE,
+    APP_SELECT_LANGUAGE,
     SEND_AUTH_FORGET_PASSWORD,
     SEND_EMAIL_DOCUMENT,
     SET_MODAL_FRAMES,

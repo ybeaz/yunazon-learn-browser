@@ -1,16 +1,11 @@
-export interface ILanguage {
-  '639-1'?: string
-  '639-2'?: string
-  '639-2/B'?: string
-  de: string[]
-  en: string[]
-  fr: string[]
-  ru: string[]
-  wikiUrl: string
-}
+import { ILanguages } from '../Interfaces/ILanguages'
 
-export type ILanguages = Record<string, ILanguage>
+export const SVG_FILE_DIR: string = 'https://yourails.com/images/languages/'
 
+/**
+ * @description Const to define languages to select
+ * @reference See src/Constants/languagesAll.const.ts
+ */
 export const LANGUAGES: ILanguages = {
   eng: {
     '639-1': 'en',
@@ -19,14 +14,17 @@ export const LANGUAGES: ILanguages = {
     en: ['English'],
     fr: ['anglais'],
     ru: ['Английский'],
+    svgFile: 'en.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/English_language',
   },
-  mdr: {
-    '639-2': 'mdr',
-    de: ['Mandaresisch'],
-    en: ['Mandar'],
-    fr: ['mandar'],
-    ru: ['Китайский Мандарин'],
+  zho: {
+    '639-1': 'zh',
+    '639-2': 'zho',
+    de: ['Chinesisch'],
+    en: ['Chinese'],
+    fr: ['Chinoise'],
+    ru: ['Китайский'],
+    svgFile: 'zh.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Mandar_language',
   },
   hin: {
@@ -36,6 +34,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Hindi'],
     fr: ['hindi'],
     ru: ['Хинди'],
+    svgFile: 'hi.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Hindi_language',
   },
   spa: {
@@ -45,6 +44,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Spanish', 'Castilian'],
     fr: ['espagnol', 'castillan'],
     ru: ['Испанский'],
+    svgFile: 'es.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Spanish_language',
   },
   ara: {
@@ -54,6 +54,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Arabic'],
     fr: ['arabe'],
     ru: ['Арабский'],
+    svgFile: 'ar.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Arabic_language',
   },
   ben: {
@@ -63,6 +64,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Bengali'],
     fr: ['bengali'],
     ru: ['Бенгали'],
+    svgFile: 'bn.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Bengali_language',
   },
   fra: {
@@ -73,6 +75,7 @@ export const LANGUAGES: ILanguages = {
     en: ['French'],
     fr: ['français'],
     ru: ['Французский'],
+    svgFile: 'fr.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/French_language',
   },
   rus: {
@@ -82,6 +85,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Russian'],
     fr: ['russe'],
     ru: ['Русский'],
+    svgFile: 'ru.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Russian_language',
   },
   por: {
@@ -91,6 +95,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Portuguese'],
     fr: ['portugais'],
     ru: ['Португальский'],
+    svgFile: 'pt.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Portuguese_language',
   },
   urd: {
@@ -100,6 +105,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Urdu'],
     fr: ['ourdou'],
     ru: ['Урду'],
+    svgFile: 'ur.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Urdu_language',
   },
   ind: {
@@ -109,6 +115,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Indonesian'],
     fr: ['indonésien'],
     ru: ['Индонезийский'],
+    svgFile: 'id.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Indonesian_language',
   },
   deu: {
@@ -119,6 +126,7 @@ export const LANGUAGES: ILanguages = {
     en: ['German'],
     fr: ['allemand'],
     ru: ['Немецкий'],
+    svgFile: 'de.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/German_language',
   },
   jpn: {
@@ -128,6 +136,7 @@ export const LANGUAGES: ILanguages = {
     en: ['Japanese'],
     fr: ['japonais'],
     ru: ['Японский'],
+    svgFile: 'ja.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Japanese_language',
   },
   kor: {
@@ -137,6 +146,17 @@ export const LANGUAGES: ILanguages = {
     en: ['Korean'],
     fr: ['coréen'],
     ru: ['Корейский'],
+    svgFile: 'ko.svg',
     wikiUrl: 'https://en.wikipedia.org/wiki/Korean_language',
+  },
+  ukr: {
+    '639-1': 'uk',
+    '639-2': 'ukr',
+    de: ['Ukrainisch'],
+    en: ['Ukrainian'],
+    fr: ['ukrainien'],
+    ru: ['Украинский'],
+    svgFile: 'uk.svg',
+    wikiUrl: 'https://en.wikipedia.org/wiki/Ukrainian_language',
   },
 }
