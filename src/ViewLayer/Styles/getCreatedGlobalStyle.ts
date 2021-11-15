@@ -48,6 +48,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .CatalogSep .__searchForm ._row ._linkAdvacedSearch {
+      color: ${props2 =>
+        getColor(props2, 'colorActive', opaciter2, middle, 'Light')};
+    }
+
     .SelectLanguage__AppLanguage {
       background: ${props2 =>
         getColor(props2, 'colorSecond', medial, middle, 'Light')};

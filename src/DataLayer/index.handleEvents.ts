@@ -2,6 +2,7 @@ import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { TOGGLE_IS_ADVANCED_SEARCH } from './handlers/TOGGLE_IS_ADVANCED_SEARCH'
 import { SEP_INTRO_IN } from './handlers/SEP_INTRO_IN'
 import { SEP_SELECT_SKILLS_OFFERED } from './handlers/SEP_SELECT_SKILLS_OFFERED'
 import { SEP_SELECT_SKILLS_REQUIRED } from './handlers/SEP_SELECT_SKILLS_REQUIRED'
@@ -86,6 +87,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    TOGGLE_IS_ADVANCED_SEARCH,
     SEP_INTRO_IN,
     SEP_SELECT_SKILLS_OFFERED,
     SEP_SELECT_SKILLS_REQUIRED,

@@ -25,11 +25,15 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
  */
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const {
+    language,
+    componentsState: { isSepAdvancedSearch },
+  } = useSelector((store2: IRootStore) => store2)
 
   const defaultOptions = {
     selectSkillsOffered: 'all_skills',
     selectLanguageRequired: language,
+    selectMediaRequired: 'instant_online',
     selectSortByProps: 'descending',
   }
 
@@ -115,6 +119,26 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
+    selectMediaRequiredProps: {
+      allowClear: true,
+      componentId: nanoid(),
+      defaultValue: MEDIA[defaultOptions.selectMediaRequired][language],
+      filterOption,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_MEDIA_REQUIRED', data: values }
+        ),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getStdDictionaryOptions(MEDIA, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
+    },
     // selectLanguageRequiredProps: {
     //   allowClear: true,
     //   componentId: nanoid(),
@@ -189,26 +213,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    selectMediaRequiredProps: {
-      allowClear: true,
-      componentId: nanoid(),
-      defaultValue: [],
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_MEDIA_REQUIRED', data: values }
-        ),
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      optionFilterProp: 'children',
-      options: getStdDictionaryOptions(MEDIA, language, defaultOption),
-      placeholder: DICTIONARY['select'][language],
-      showSearch: true,
-      style: { width: '100%' },
-    },
     inputDescriptionRequiredProps: {
       classAdded: 'Input_descriptionRequired',
       type: 'text',
@@ -258,6 +262,11 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
 
   const classCol01 = '_col_1 _titleForm'
   const classCol02 = '_col_1 _selectElement'
+  const classAdvancedSearch = isSepAdvancedSearch ? '' : '_hideRow'
+
+  const ButtonSearchText = isSepAdvancedSearch
+    ? DICTIONARY['Basic_search'][language]
+    : DICTIONARY['Advanced_search'][language]
 
   return (
     <div className='CatalogSep'>
@@ -292,7 +301,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectLanguage {...selectLanguageProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Communication media'][language]}
             {' *'}
@@ -301,13 +310,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectMediaRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectCountryRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>{DICTIONARY['Age'][language]}</div>
           <div className={classCol02}>
             <div className='_range'>
@@ -320,7 +329,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <Input {...childrenProps.inputAgeToRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Prefered gender'][language]}
           </div>
@@ -328,7 +337,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectGenderRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Description contains'][language]}
           </div>
@@ -336,7 +345,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
-        <div className='_row'>
+        <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Sort results by'][language]}
           </div>
@@ -346,8 +355,16 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className='_row'>
           <div className={classCol01}></div>
-          <div className={classCol02}>
+          <div className={`${classCol02} _submitGroup`}>
             <Button {...childrenProps.buttonSearchSepProps} />
+            <div
+              className='_linkAdvacedSearch'
+              onClick={event =>
+                handleEvents({}, { typeEvent: 'TOGGLE_IS_ADVANCED_SEARCH' })
+              }
+            >
+              {ButtonSearchText}
+            </div>
           </div>
         </div>
         <div className='_row'>

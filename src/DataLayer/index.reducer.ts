@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_IS_ADVANCED_SEARCH } from './reducers/SET_IS_ADVANCED_SEARCH'
 import { SEP_SELECT_SKILLS_OFFERED } from './reducers/SEP_SELECT_SKILLS_OFFERED'
 import { SEP_SELECT_SKILLS_REQUIRED } from './reducers/SEP_SELECT_SKILLS_REQUIRED'
 import { SEP_SELECT_COUNTRY_REQUIRED } from './reducers/SEP_SELECT_COUNTRY_REQUIRED'
@@ -56,6 +57,8 @@ export const rootReducer: Function = (
   const { type, data } = action
 
   const output = {
+    TEMPLATE,
+    SET_IS_ADVANCED_SEARCH,
     SEP_SELECT_SKILLS_OFFERED,
     SEP_SELECT_SKILLS_REQUIRED,
     SEP_SELECT_COUNTRY_REQUIRED,

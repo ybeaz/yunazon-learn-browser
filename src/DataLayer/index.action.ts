@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_IS_ADVANCED_SEARCH',
   'SEP_SELECT_SKILLS_OFFERED',
   'SEP_SELECT_SKILLS_REQUIRED',
   'SEP_SELECT_COUNTRY_REQUIRED',
