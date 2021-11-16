@@ -153,6 +153,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Country',
     ru: 'Страна',
   },
+  Knowledge_info_you_are_looking_for: {
+    en: 'Knowledge/info you are looking for',
+    ru: 'Знания/информация, которую вы ищите',
+  },
   'Find a skill exchange partner who has': {
     en: 'Find a skill exchange partner who has',
     ru: 'Найдите участника со знаниями',
@@ -162,8 +166,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Вы предлагаете для обмена',
   },
   'Members Search - Fast Skill Exchange': {
-    en: 'Members Search - Fast Skill Exchange',
-    ru: 'Поиск Пользователей - Быстрый Обмен Знаниями',
+    en: 'Fast Knowledge Exchange',
+    ru: 'Быстрый Обмен Знаниями',
   },
   'Members Search - Find a Skill Exchange Partner': {
     en: 'Members Search - Find a Skill Exchange Partner',

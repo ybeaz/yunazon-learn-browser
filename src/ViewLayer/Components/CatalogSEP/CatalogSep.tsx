@@ -31,9 +31,12 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   } = useSelector((store2: IRootStore) => store2)
 
   const defaultOptions = {
-    selectSkillsOffered: 'all_skills',
+    selectSkillsOffered: {
+      en: 'all skills',
+      ru: 'все навыки',
+    },
     selectLanguageRequired: language,
-    selectMediaRequired: 'instant_online',
+    selectMediaRequired: 'messenger',
     selectSortByProps: 'descending',
   }
 
@@ -73,8 +76,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOfferedProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue:
-        CATEGORIES_TO_EXCHANGE[defaultOptions.selectSkillsOffered][language],
+      defaultValue: defaultOptions.selectSkillsOffered[language],
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -285,7 +287,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['Find a skill exchange partner who has'][language]}
+            {DICTIONARY['Knowledge_info_you_are_looking_for'][language]}
             {' *'}
           </div>
           <div className={classCol02}>

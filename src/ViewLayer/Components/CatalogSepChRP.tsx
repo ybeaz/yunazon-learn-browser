@@ -1,7 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DICTIONARY, IDictionary } from '../../Constants/dictionary.const'
 import { SORT_BY } from '../../Constants/sortBy.const'
 import { MEDIA } from '../../Constants/media.const'
@@ -318,7 +317,7 @@ export const CatalogSepChRP: React.FunctionComponent<any> = (
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['Find a skill exchange partner who has'][language]}
+            {DICTIONARY['Knowledge_info_you_are_looking_for'][language]}
           </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectSkillsRequiredProps} />

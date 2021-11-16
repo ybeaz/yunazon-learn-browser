@@ -3,8 +3,8 @@ export interface IUser {
   familyName: undefined | string
   givenName: undefined | string
   loginSource: undefined | string
-  phone?: undefined | number
-  picture?: undefined | string
+  phone: undefined | number
+  picture: undefined | string
   roles: undefined | string
   status: undefined | string
   uid: undefined | string

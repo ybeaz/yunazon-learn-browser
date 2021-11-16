@@ -1,6 +1,10 @@
 export type IGender = Record<string, { en: string; ru: string }>
 
 export const GENDER: IGender = {
+  any: {
+    en: 'any',
+    ru: 'любой',
+  },
   female: {
     en: 'female',
     ru: 'женщина',
@@ -8,10 +12,6 @@ export const GENDER: IGender = {
   male: {
     en: 'male',
     ru: 'мужчина',
-  },
-  both: {
-    en: 'both',
-    ru: 'все',
   },
   other: {
     en: 'other',
