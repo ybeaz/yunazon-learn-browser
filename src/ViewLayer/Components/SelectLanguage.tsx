@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
 import { ILanguages } from '../../Interfaces/ILanguages'
-import {
-  getLanguagesOptionsJsx,
-  getLanguagesOptions,
-} from '../../Shared/getLanguagesOptions'
+import { getLanguagesOptionsJsx } from '../../Shared/getLanguagesOptions'
 import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -17,12 +14,20 @@ interface SelectLanguageArgs {
   mode: 'multiple' | 'tags'
   typeEvent: string
   classAdded: string
+  languagesSelected: { value: string }[]
 }
 
 export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   props: SelectLanguageArgs
 ): JSX.Element => {
-  const { classAdded, LANGUAGES, language, mode, typeEvent } = props
+  const {
+    languagesSelected,
+    classAdded,
+    LANGUAGES,
+    language,
+    mode,
+    typeEvent,
+  } = props
 
   const stubOnAction = () => {}
 
@@ -42,10 +47,7 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
       <SelectAntd
         // defaultOpen
         labelInValue
-        value={[
-          { label: 'ru', value: language },
-          { label: 'hi', value: 'hi' },
-        ]}
+        value={languagesSelected}
         filterOption={filterOption}
         placeholder={DICTIONARY['select'][language]}
         showSearch={true}

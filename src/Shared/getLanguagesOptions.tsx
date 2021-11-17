@@ -26,11 +26,6 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
   svgFileDir,
   classAdded
 ) => {
-  console.info('getLanguagesOptions [29]', {
-    language,
-    LANGUAGES,
-  })
-
   return Object.keys(LANGUAGES).map((ln: string) => {
     const value = LANGUAGES[ln]['639-1']
     const [label] = LANGUAGES[ln][language]
@@ -38,7 +33,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
     let labelNext = label
     labelNext = LANGUAGES[ln][twoChar6391]
-      ? LANGUAGES[ln][twoChar6391]
+      ? labelNext // LANGUAGES[ln][twoChar6391]
       : labelNext
 
     const { svgFile } = LANGUAGES[ln]
@@ -67,25 +62,6 @@ interface IGetLanguagesOptions {
     languages: string[],
     defaultOption2: IDictionary
   ): ISelectOptionAntD[]
-}
-
-/**
- * @description Funciton to get array of option objects - language options
- */
-export const getLanguagesOptions: IGetLanguagesOptions = (
-  LANGUAGES,
-  languages
-) => {
-  const lagnguagesMapped = Object.keys(LANGUAGES).map((ln: string) => {
-    const [label] = LANGUAGES[ln]['en']
-    return { label, value: ln }
-  })
-
-  const lagnguagesMappedNext = lagnguagesMapped.filter(itemMapped => {
-    return languages.includes(itemMapped.value)
-  })
-
-  return lagnguagesMappedNext
 }
 
 interface IGetLanguagesOptions2 {

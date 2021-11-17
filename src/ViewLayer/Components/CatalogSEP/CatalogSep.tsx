@@ -90,22 +90,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
-  // const [_, forceUpdate] = useReducer(() => null, language)
-
-  const handleLocalEvents: IHandleEventsInterface = (event2, props2) => {
-    const { typeEvent, data } = props2
-
-    const output = {
-      SEP_SELECT_SKILLS_OFFERED: (event2, data) => {
-        console.info('CatalogSep [81]', { data })
-        handleEvents({}, { typeEvent: 'SEP_SELECT_SKILLS_OFFERED', data })
-        // forceUpdate()
-      },
-    }
-
-    output[typeEvent] && output[typeEvent](event2, data)
-  }
-
   const childrenProps = {
     selectSkillsOfferedProps: {
       allowClear: true,
@@ -115,7 +99,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: (values: string[]) =>
-        handleLocalEvents(
+        handleEvents(
           {},
           { typeEvent: 'SEP_SELECT_SKILLS_OFFERED', data: values }
         ),
@@ -198,7 +182,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectCountryRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: [],
+      value: selectCountryRequired,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -294,6 +278,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     mode: 'multiple' as 'multiple' | 'tags',
     typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
     classAdded: 'SelectLanguage__CatalogSep',
+    languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
   }
 
   const classCol01 = '_col_1 _titleForm'
@@ -304,7 +289,9 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     ? DICTIONARY['Basic_search'][language]
     : DICTIONARY['Advanced_search'][language]
 
-  console.info('CatalogSep [291] => updated', { catalogSep })
+  // console.info('CatalogSep [291] => updated', {
+  //   catalogSep,
+  // })
 
   return (
     <div className='CatalogSep'>
