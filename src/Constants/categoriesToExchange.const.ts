@@ -411,4 +411,8 @@ export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
     ru: 'Рекламное сообщество',
   },
   Discussion_news: { en: 'Discussion news', ru: 'Обсуждение новостей' },
+  all_skills: {
+    en: 'all skills',
+    ru: 'все навыки',
+  },
 }

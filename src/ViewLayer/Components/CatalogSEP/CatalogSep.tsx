@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { IHandleEventsInterface } from '../../../Interfaces/IHandleEventsInterface'
 import { SelectLanguage } from '../SelectLanguage'
-import { getLanguagesOptions } from '../../../Shared/getLanguagesOptions'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -15,7 +15,7 @@ import { MEDIA } from '../../../Constants/media.const'
 import { GENDER } from '../../../Constants/gender.const'
 import { Button } from './../Button'
 import { Input } from './../Input'
-import { LANGUAGES, SVG_FILE_DIR } from '../../../Constants/languages.const'
+import { LANGUAGES } from '../../../Constants/languages.const'
 import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
@@ -26,17 +26,28 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
 
 export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const {
+    forms: { catalogSep },
     language,
     componentsState: { isSepAdvancedSearch },
   } = useSelector((store2: IRootStore) => store2)
 
+  const {
+    inputAgeFromRequired,
+    inputAgeToRequired,
+    inputDescriptionRequired,
+    selectCountryRequired,
+    selectGenderRequired,
+    selectLanguageRequired,
+    selectMediaRequired,
+    selectSkillsOffered,
+    selectSkillsRequired,
+    selectSortBy,
+  } = catalogSep
+
   const defaultOptions = {
-    selectSkillsOffered: {
-      en: 'all skills',
-      ru: 'все навыки',
-    },
+    selectSkillsOffered: 'all_skills',
     selectLanguageRequired: language,
-    selectMediaRequired: 'messenger',
+    selectMediaRequired: 'messenger_and_voice',
     selectSortByProps: 'descending',
   }
 
@@ -46,6 +57,13 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       {
         typeEvent: 'SEP_SELECT_SKILLS_OFFERED',
         data: defaultOptions.selectSkillsOffered,
+      }
+    )
+    handleEvents(
+      {},
+      {
+        typeEvent: 'SEP_SELECT_MEDIA_REQUIRED',
+        data: defaultOptions.selectMediaRequired,
       }
     )
     handleEvents(
@@ -62,7 +80,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         data: defaultOptions.selectSortByProps,
       }
     )
-  }, [language])
+  }, [])
 
   const defaultOption = DICTIONARY.notSelected
 
@@ -76,7 +94,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOfferedProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: defaultOptions.selectSkillsOffered[language],
+      value: selectSkillsOffered,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -87,7 +105,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
-      optionFilterProp: 'children',
+      // optionFilterProp: 'children',
       options: getStdDictionaryOptions(
         CATEGORIES_TO_EXCHANGE,
         language,
@@ -98,7 +116,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       style: { width: '100%' },
     },
     selectSkillsRequiredProps: {
-      allowClear: true,
+      // allowClear: true,
       componentId: nanoid(),
       defaultValue: [],
       filterOption,
@@ -124,7 +142,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectMediaRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: MEDIA[defaultOptions.selectMediaRequired][language],
+      value: selectMediaRequired,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -164,7 +182,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectCountryRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: [],
+      value: selectCountryRequired,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -196,7 +214,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       storeFormProp: 'SEP_INPUT_AGE_TO_REQUIRED',
     },
     selectGenderRequiredProps: {
-      allowClear: true,
+      // allowClear: true,
       componentId: nanoid(),
       defaultValue: [], // defaultOption['en']
       filterOption,
@@ -223,9 +241,9 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
     },
     selectSortByProps: {
-      allowClear: true,
+      // allowClear: true,
       componentId: nanoid(),
-      defaultValue: SORT_BY['descending'][language],
+      value: selectSortBy ? [selectSortBy] : [],
       filterOption,
       mode: null,
       onBlur: stubOnAction,
@@ -255,11 +273,12 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   }
 
   const selectLanguageProps = {
-    languages: LANGUAGES,
-    defaultLanguage: language,
+    LANGUAGES,
+    language, // selectLanguageRequired
     mode: 'multiple' as 'multiple' | 'tags',
     typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
     classAdded: 'SelectLanguage__CatalogSep',
+    languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
   }
 
   const classCol01 = '_col_1 _titleForm'
@@ -269,6 +288,10 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
   const linkAdvancedSearchText = isSepAdvancedSearch
     ? DICTIONARY['Basic_search'][language]
     : DICTIONARY['Advanced_search'][language]
+
+  // console.info('CatalogSep [291] => updated', {
+  //   catalogSep,
+  // })
 
   return (
     <div className='CatalogSep'>
@@ -282,7 +305,9 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             {' *'}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectSkillsOfferedProps} />
+            {language && (
+              <SelectAntd {...childrenProps.selectSkillsOfferedProps} />
+            )}
           </div>
         </div>
         <div className='_row'>

@@ -85,11 +85,12 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       : ''
 
   const selectLanguageProps = {
-    languages: LANGUAGES_APP,
-    defaultLanguage: language,
+    LANGUAGES: LANGUAGES_APP,
+    language,
     mode: null,
     typeEvent: 'APP_SELECT_LANGUAGE',
     classAdded: 'SelectLanguage__AppLanguage',
+    languagesSelected: [{ value: language }],
   }
 
   return (

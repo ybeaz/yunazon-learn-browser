@@ -10,9 +10,9 @@ const { Option } = SelectAntd
 
 interface IGetLanguagesOptionsJsx {
   (
-    languages2: ILanguages,
-    language2: string,
-    svgFileDir2: string,
+    LANGUAGES: ILanguages,
+    language: string,
+    svgFileDir: string,
     classAdded: string
   ): JSX.Element[]
 }
@@ -21,31 +21,31 @@ interface IGetLanguagesOptionsJsx {
  * @description Funciton to get array of JSX option elements - language options
  */
 export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
-  languages2,
-  language2,
-  svgFileDir2,
-  classAdded2
+  LANGUAGES,
+  language,
+  svgFileDir,
+  classAdded
 ) => {
-  return Object.keys(languages2).map((ln: string) => {
-    const value = languages2[ln]['639-1']
-    const [label] = languages2[ln][language2]
-    const twoChar6391 = languages2[ln]['639-1']
+  return Object.keys(LANGUAGES).map((ln: string) => {
+    const value = LANGUAGES[ln]['639-1']
+    const [label] = LANGUAGES[ln][language]
+    const twoChar6391 = LANGUAGES[ln]['639-1']
 
     let labelNext = label
-    labelNext = languages2[ln][twoChar6391]
-      ? languages2[ln][twoChar6391]
+    labelNext = LANGUAGES[ln][twoChar6391]
+      ? labelNext // LANGUAGES[ln][twoChar6391]
       : labelNext
 
-    const { svgFile } = languages2[ln]
+    const { svgFile } = LANGUAGES[ln]
 
     const imageSvgProps = {
-      classAdded: `ImageSvg_languagesOptions ${classAdded2}`,
-      src: `${svgFileDir2}${svgFile}`,
+      classAdded: `ImageSvg_languagesOptions ${classAdded}`,
+      src: `${svgFileDir}${svgFile}`,
     }
 
     return (
       <Option
-        className={`_optionsAntd ${classAdded2}`}
+        className={`_optionsAntd ${classAdded}`}
         value={value}
         isSelectOption={true}
       >
@@ -58,6 +58,14 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
 interface IGetLanguagesOptions {
   (
+    LANGUAGES: ILanguages,
+    languages: string[],
+    defaultOption2: IDictionary
+  ): ISelectOptionAntD[]
+}
+
+interface IGetLanguagesOptions2 {
+  (
     languages2: ILanguages,
     language2: string,
     defaultOption2: IDictionary
@@ -67,7 +75,7 @@ interface IGetLanguagesOptions {
 /**
  * @description Funciton to get array of option objects - language options
  */
-export const getLanguagesOptions: IGetLanguagesOptions = (
+export const getLanguagesOptions2: IGetLanguagesOptions2 = (
   languages2,
   language2,
   defaultOption2

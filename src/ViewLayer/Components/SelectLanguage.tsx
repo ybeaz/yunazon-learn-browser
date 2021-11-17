@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
@@ -8,23 +8,26 @@ import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-const languageArr = [
-  { code: 'ru', svgFile: 'ru.svg' },
-  { code: 'en', svgFile: 'en.svg' },
-]
-
 interface SelectLanguageArgs {
-  languages: ILanguages
-  defaultLanguage: null | string
+  LANGUAGES: ILanguages
+  language: null | string
   mode: 'multiple' | 'tags'
   typeEvent: string
   classAdded: string
+  languagesSelected: { value: string }[]
 }
 
 export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   props: SelectLanguageArgs
 ): JSX.Element => {
-  const { classAdded, languages, defaultLanguage, mode, typeEvent } = props
+  const {
+    languagesSelected,
+    classAdded,
+    LANGUAGES,
+    language,
+    mode,
+    typeEvent,
+  } = props
 
   const stubOnAction = () => {}
 
@@ -33,8 +36,8 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
   const lagnguagesMapped = getLanguagesOptionsJsx(
-    languages,
-    defaultLanguage,
+    LANGUAGES,
+    language,
     SVG_FILE_DIR,
     classAdded
   )
@@ -44,12 +47,9 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
       <SelectAntd
         // defaultOpen
         labelInValue
-        // @ts-ignore
-        defaultValue={{
-          value: defaultLanguage,
-        }}
+        value={languagesSelected}
         filterOption={filterOption}
-        placeholder={DICTIONARY['select'][defaultLanguage]}
+        placeholder={DICTIONARY['select'][language]}
         showSearch={true}
         className='__selectAntd'
         mode={mode}
