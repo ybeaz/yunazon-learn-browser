@@ -1,4 +1,4 @@
-import { IHandleEventsProps } from '../Interfaces/IHandleEventsProps'
+import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
@@ -76,10 +76,6 @@ import { TOGGLE_IS_DOCUMENT_ADDED } from './handlers/TOGGLE_IS_DOCUMENT_ADDED'
 import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
-
-export interface IHandleEventsInterface {
-  (event: any, props: IHandleEventsProps): void
-}
 
 export const handleEvents: IHandleEventsInterface = (event, props): void => {
   const { type: typeStore, typeEvent, data } = props
