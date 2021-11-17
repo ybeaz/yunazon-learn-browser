@@ -3,7 +3,10 @@ import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
 import { ILanguages } from '../../Interfaces/ILanguages'
-import { getLanguagesOptionsJsx } from '../../Shared/getLanguagesOptions'
+import {
+  getLanguagesOptionsJsx,
+  getLanguagesOptions,
+} from '../../Shared/getLanguagesOptions'
 import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -39,9 +42,10 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
       <SelectAntd
         // defaultOpen
         labelInValue
-        value={{
-          value: language,
-        }}
+        value={[
+          { label: 'ru', value: language },
+          { label: 'hi', value: 'hi' },
+        ]}
         filterOption={filterOption}
         placeholder={DICTIONARY['select'][language]}
         showSearch={true}

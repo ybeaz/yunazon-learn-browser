@@ -63,6 +63,33 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
 interface IGetLanguagesOptions {
   (
+    LANGUAGES: ILanguages,
+    languages: string[],
+    defaultOption2: IDictionary
+  ): ISelectOptionAntD[]
+}
+
+/**
+ * @description Funciton to get array of option objects - language options
+ */
+export const getLanguagesOptions: IGetLanguagesOptions = (
+  LANGUAGES,
+  languages
+) => {
+  const lagnguagesMapped = Object.keys(LANGUAGES).map((ln: string) => {
+    const [label] = LANGUAGES[ln]['en']
+    return { label, value: ln }
+  })
+
+  const lagnguagesMappedNext = lagnguagesMapped.filter(itemMapped => {
+    return languages.includes(itemMapped.value)
+  })
+
+  return lagnguagesMappedNext
+}
+
+interface IGetLanguagesOptions2 {
+  (
     languages2: ILanguages,
     language2: string,
     defaultOption2: IDictionary
@@ -72,7 +99,7 @@ interface IGetLanguagesOptions {
 /**
  * @description Funciton to get array of option objects - language options
  */
-export const getLanguagesOptions: IGetLanguagesOptions = (
+export const getLanguagesOptions2: IGetLanguagesOptions2 = (
   languages2,
   language2,
   defaultOption2
