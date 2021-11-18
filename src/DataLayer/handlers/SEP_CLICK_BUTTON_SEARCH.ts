@@ -26,10 +26,4 @@ export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
   }
 
   history.push(path)
-  console.info('SEP_CLICK_BUTTON_SEARCH [28]', {
-    history,
-    selectSkillsRequired,
-  })
-
-  handleEvents({}, { typeEvent: 'DEV_STAGE' })
 }
