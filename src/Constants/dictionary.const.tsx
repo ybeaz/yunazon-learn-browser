@@ -7,6 +7,30 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Our_contacts: {
+    en: 'Our contacts',
+    ru: 'Наши контакты',
+  },
+  Tel: {
+    en: 'Tel',
+    ru: 'Тел',
+  },
+  This_functionality_is_under_development: {
+    en: 'This functionality is under development',
+    ru: 'Функциональность сервиса находится в стадии разработки.',
+  },
+  We_are_currently_looking_for_support_and_feedback: {
+    en: 'We are currently looking for support and feedback.',
+    ru: 'В настоящее время мы ищем поддержку и отзывы.',
+  },
+  If_you_have_any_ideas_or_opinions: {
+    en: 'If you have any ideas or opinions about this service,',
+    ru: 'Если у вас есть идеи или мнения об этой услуге,',
+  },
+  please_share_them_with_us: {
+    en: 'please, share them with us',
+    ru: 'пожалуйста, поделитесь ими с нами',
+  },
   Please_fill_required_fields: {
     en: 'Please fill required fields',
     ru: 'Пожалуйста, заполните обязательные поля',

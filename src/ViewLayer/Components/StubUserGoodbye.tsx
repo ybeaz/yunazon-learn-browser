@@ -1,30 +1,40 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+
 interface StubUserGoodbyeArgs {}
 
 export const StubUserGoodbye: React.FunctionComponent<StubUserGoodbyeArgs> = (
   props: StubUserGoodbyeArgs
 ): JSX.Element => {
+  const { language } = useSelector((store2: IRootStore) => store2)
+
   return (
     <div className='StubUserGoodbye'>
-      <h1 className='_h1'>Present funcitonality is under development</h1>
+      <h1 className='_h1'>
+        {DICTIONARY.This_functionality_is_under_development[language]}
+      </h1>
       <div className='_text'>
-        Currently we are looking for support and feedback{' '}
+        {DICTIONARY.We_are_currently_looking_for_support_and_feedback[language]}
       </div>
       <div className='_text'>
-        If you have ideas or oppinions about this service,
+        {DICTIONARY.If_you_have_any_ideas_or_opinions[language]}
       </div>
-      <div className='_text'>please, share them with us</div>
+      <div className='_text'>
+        {DICTIONARY.please_share_them_with_us[language]}
+      </div>
       <br />
-      <div className='_text'>Our contacts:</div>
+      <div className='_text'>{DICTIONARY.Our_contacts[language]}:</div>
       <div className='_text'>
-        Email:{' '}
+        {DICTIONARY.Email[language]}
+        {': '}
         <a href='mailto: akruglov2000@gmail.com' target='_blank'>
           akruglov2000@gmail.com
         </a>
       </div>
-      <div className='_text'>Tel: +1 650 7 410014</div>
+      <div className='_text'>{DICTIONARY.Tel[language]}: +1 650 7 410014</div>
     </div>
   )
 }
