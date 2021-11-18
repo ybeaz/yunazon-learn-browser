@@ -12,6 +12,6 @@ export const getRedirected: Function = (
 ): void => {
   const history = useHistory()
   if (typeRedirect === 'newLocation' && pathName) history.push(pathName)
-  else if (typeRedirect === 'back') history.back()
-  else if (typeRedirect === 'forward') history.forward()
+  else if (typeRedirect === 'back') history.goBack()
+  else if (typeRedirect === 'forward') history.goForward()
 }

@@ -1,5 +1,6 @@
 import React, { useReducer, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
@@ -30,6 +31,8 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     language,
     componentsState: { isSepAdvancedSearch },
   } = useSelector((store2: IRootStore) => store2)
+
+  const history = useHistory()
 
   const {
     inputAgeFromRequired,
@@ -263,7 +266,10 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       icon2: null,
       captureLeft: DICTIONARY['Search'][language],
       captureRight: '',
-      action: { typeEvent: 'SEP_CLICK_BUTTON_SEARCH' },
+      action: {
+        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+        data: { history, path: '/goodbye' },
+      },
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
@@ -289,10 +295,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     ? DICTIONARY['Basic_search'][language]
     : DICTIONARY['Advanced_search'][language]
 
-  // console.info('CatalogSep [291] => updated', {
-  //   catalogSep,
-  // })
-
   return (
     <div className='CatalogSep'>
       <h1 className='__titleScreen'>
@@ -312,7 +314,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['Knowledge_info_you_are_looking_for'][language]}
+            {DICTIONARY['Category_info_you_are_looking_for'][language]}
             {' *'}
           </div>
           <div className={classCol02}>
