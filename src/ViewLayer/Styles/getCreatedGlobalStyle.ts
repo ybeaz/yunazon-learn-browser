@@ -70,7 +70,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .CatalogSep .__searchForm ._row ._selectElement{
+    .CatalogSep .__searchForm ._row ._selectElement {
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', 1, middle, 'Light')};
     }
@@ -78,6 +78,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .CatalogSep .__searchForm ._row ._selectElement ._range {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+    }
+
+    .CatalogSep .__searchForm ._row ._selectElement._submitGroup {
+      background-color: unset;
     }
 
     .SkillExchangeIntro .__title02 {
