@@ -12,7 +12,7 @@ import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
   contentComponentName?: string
-  children: any[]
+  children: React.ReactElement[]
 }
 
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {

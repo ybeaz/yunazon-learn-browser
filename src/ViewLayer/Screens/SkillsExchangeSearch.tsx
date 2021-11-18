@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { CatalogSep } from '../Components/CatalogSep/CatalogSep'
@@ -44,21 +45,27 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       brandName: 'YourRails',
     }
 
+    const backgroundImageProps = {
+      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    }
+
     return (
-      <div className='SkillsExchangeSearch'>
-        <Helmet>
-          <html lang={languageStore} />
-          <meta charSet='utf-8' />
-          <title>{moduleCapture}</title>
-          <link rel='canonical' href={canonicalUrl} />
-          <meta name='description' content={moduleDescription} />
-        </Helmet>
-        <MainFrame {...mainFrameProps}>
-          {null}
-          {null}
-          <CatalogSep />
-          {isShownPalette && <Palette />}
-        </MainFrame>
-      </div>
+      <BackgroundImage {...backgroundImageProps}>
+        <div className='SkillsExchangeSearch'>
+          <Helmet>
+            <html lang={languageStore} />
+            <meta charSet='utf-8' />
+            <title>{moduleCapture}</title>
+            <link rel='canonical' href={canonicalUrl} />
+            <meta name='description' content={moduleDescription} />
+          </Helmet>
+          <MainFrame {...mainFrameProps}>
+            {null}
+            {null}
+            <CatalogSep />
+            {isShownPalette && <Palette />}
+          </MainFrame>
+        </div>
+      </BackgroundImage>
     )
   }
