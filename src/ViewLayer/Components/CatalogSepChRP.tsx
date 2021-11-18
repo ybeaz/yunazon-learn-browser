@@ -317,7 +317,7 @@ export const CatalogSepChRP: React.FunctionComponent<any> = (
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['Knowledge_info_you_are_looking_for'][language]}
+            {DICTIONARY['Category_info_you_are_looking_for'][language]}
           </div>
           <div className={classCol02}>
             <Select {...childrenProps.selectSkillsRequiredProps} />

@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Please_fill_required_fields: {
+    en: 'Please fill required fields',
+    ru: 'Пожалуйста, заполните обязательные поля',
+  },
   Basic_search: {
     en: 'Basic search',
     ru: 'Простой поиск',
@@ -152,6 +156,10 @@ export const DICTIONARY: IDictionary = {
   Country: {
     en: 'Country',
     ru: 'Страна',
+  },
+  Category_info_you_are_looking_for: {
+    en: 'Category/info you are looking for',
+    ru: 'Категория/информация, которую вы ищите',
   },
   Knowledge_info_you_are_looking_for: {
     en: 'Knowledge/info you are looking for',

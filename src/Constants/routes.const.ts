@@ -8,6 +8,12 @@ interface IRoute {
 
 export const routes: IRoute[] = [
   {
+    path: `/goodbye`,
+    exact: true,
+    page: 'StubForUserResearch',
+    themeDafault: 'Light',
+  },
+  {
     path: `/home`,
     exact: true,
     page: 'SkillsExchangeSearch',
