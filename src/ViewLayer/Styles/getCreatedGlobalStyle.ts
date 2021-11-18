@@ -65,7 +65,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
           : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
     }
 
-    .CatalogSep, .CatalogSep .__titleScreen {
+    .CatalogSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }

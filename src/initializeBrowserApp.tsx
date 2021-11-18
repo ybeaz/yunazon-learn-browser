@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom'
 
@@ -10,11 +10,13 @@ export const initializeBrowserApp = () => {
   const rootElement = document.getElementById('root')
 
   ReactDOM.hydrate(
-    <Provider store={store}>
-      <GlobalTheme>
-        <RouterScreensConfig />
-      </GlobalTheme>
-    </Provider>,
+    <StrictMode>
+      <Provider store={store}>
+        <GlobalTheme>
+          <RouterScreensConfig />
+        </GlobalTheme>
+      </Provider>
+    </StrictMode>,
     rootElement
   )
 }
