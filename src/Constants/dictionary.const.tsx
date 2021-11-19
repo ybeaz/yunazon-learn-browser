@@ -43,9 +43,13 @@ export const DICTIONARY: IDictionary = {
     en: 'Advanced search',
     ru: 'Расширенный поиск',
   },
-  Welcome_to_Online_Skills_Exchange_Community: {
-    en: 'Welcome to Online Skills Exchange Community!',
-    ru: 'Добро пожаловать в Онлайн Сообщество Обмена Знаниями',
+  Welcome_to_Experience_Exchange_Service: {
+    en: 'Welcome to Experience Exchange Service!',
+    ru: 'Добро пожаловать в Сервис Обмена Опытом',
+  },
+  Welcome_to_Knowledge_Exchange_Community: {
+    en: 'Welcome to Knowledge Exchange Community!',
+    ru: 'Добро пожаловать в Сообщество Обмена Знаниями',
   },
   Over_3_million_members: {
     en: (
@@ -86,8 +90,8 @@ export const DICTIONARY: IDictionary = {
     делитесь своими умениями и заводите другей из разных регионов и стран',
   },
   You_can_find_a_user: {
-    en: 'You can find a user to answer your question by selecting',
-    ru: 'Вы можете найти пользователя для ответа на ваши вопросы выбрав',
+    en: 'You can find a user to answer your question by',
+    ru: 'Вы можете найти пользователя для ответа на ваши вопросы по критериям',
   },
   required_knowledge: {
     en: 'required knowledge',
@@ -111,10 +115,10 @@ export const DICTIONARY: IDictionary = {
     ru: 'Вы получите шанс услышать объяснение предмета своего интереса и помочь в том, что вы знаете лучше',
   },
   You_can_also_host_or_take_video_lessons: {
-    en: 'You can also host or take video lessons-tests from our members \
-    that open possibility to prove knowledge and get a certificate',
-    ru: 'Вы также можете разместить или пройти видео уроки-тесты, \
-    что открывает возможность подтвердить знания и получить сертификат',
+    en: 'You can also host or take video lessons-tests from our members and\
+    to prove knowledge and get a certificate',
+    ru: 'Вы также можете разместить или пройти видео уроки-тесты и \
+    подтвердить знания и получить сертификат',
   },
   Required: {
     en: 'Required',
@@ -196,6 +200,10 @@ export const DICTIONARY: IDictionary = {
   'You are suggesting to exchange': {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
+  },
+  Fast_Knowledge_and_Experience_Exchange: {
+    en: 'Fast Knowledge and Experience Exchange',
+    ru: 'Быстрый Обмен Знаниями и Опытом',
   },
   'Members Search - Fast Skill Exchange': {
     en: 'Fast Knowledge Exchange',

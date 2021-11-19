@@ -1,59 +1,7 @@
 import React from 'react'
 
+import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IconContext } from 'react-icons'
-import {
-  MdAddBox,
-  MdQueue,
-  MdHome,
-  MdContactMail,
-  MdAddShoppingCart,
-  MdFlag,
-  MdMailOutline,
-  MdBlock,
-  MdClose,
-  MdPrint,
-  MdForward,
-  MdRemoveCircle,
-  MdPause,
-  MdPlayArrow,
-  MdPerson,
-  MdMenu,
-  MdSearch,
-} from 'react-icons/md'
-
-import { FaFacebook, FaVk, FaTwitter, FaGooglePlusG } from 'react-icons/fa'
-import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
-import { HiOutlineAcademicCap } from 'react-icons/hi'
-import { CgDarkMode } from 'react-icons/cg'
-
-const ICON = {
-  CgDarkMode,
-  FaFacebook,
-  FaVk,
-  FaTwitter,
-  FaGooglePlusG,
-  MdAddBox,
-  MdQueue,
-  MdHome,
-  MdContactMail,
-  MdAddShoppingCart,
-  MdFlag,
-  BsLink45Deg,
-  MdMailOutline,
-  BsQuestionCircle,
-  MdBlock,
-  HiOutlineAcademicCap,
-  MdClose,
-  MdPrint,
-  MdForward,
-  MdRemoveCircle,
-  MdPause,
-  MdPlayArrow,
-  MdMenu,
-  MdSearch,
-  MdPerson,
-}
 interface ButtonArgs {
   icon?: string | null
   icon2?: string | null
@@ -92,8 +40,6 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
     isUnderlined = false,
     handleEvents: handleEventsCustom,
   } = props
-  const Icon = ICON[icon]
-  const Icon2 = ICON[icon2]
 
   const classDisplay = isDisplaying === true ? '' : 'Button_none'
   const handleEventsToUse = handleEventsCustom
@@ -110,6 +56,12 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
   classTooltipAdd = isTooltipVisible
     ? `${classTooltipAdd} __tooltipTextVisible`
     : classTooltipAdd
+
+  const iconReactProps = {
+    icon,
+    icon2,
+    classAdded: '_in',
+  }
 
   return (
     <div className={`Button ${classAdded} ${classDisplay}`}>
@@ -129,26 +81,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
             <div className={`_capture_left`}>{captureLeft}</div>
           </div>
         ) : null}
-        {Icon ? (
-          <div className={`_in`}>
-            <IconContext.Provider
-              value={{
-                className: `_icon`,
-              }}
-            >
-              <Icon />
-            </IconContext.Provider>
-            {icon2 && (
-              <IconContext.Provider
-                value={{
-                  className: `_icon`,
-                }}
-              >
-                <Icon2 />
-              </IconContext.Provider>
-            )}
-          </div>
-        ) : null}
+        <IconReact {...iconReactProps} />
         {captureRight ? (
           <div className={`_in`}>
             <div className={`_capture_right`}>{captureRight}</div>
