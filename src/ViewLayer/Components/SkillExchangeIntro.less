@@ -45,6 +45,11 @@
       padding: 0.3rem 0;
     }
 
+    ._textAcademy {
+      ._text;
+      padding: 1rem 0;
+    }
+
     ._listActions {
       display: flex;
       flex-direction: column;
@@ -55,8 +60,26 @@
       list-style: none;
 
       ._action {
-        &:before {
-          content: '✓ ';
+        display: flex;
+
+        // &:before {
+        //   content: '✓ ';
+        // }
+
+        &:nth-child(2) {
+          padding: 0 0 0 5%;
+        }
+
+        &:nth-child(3) {
+          padding: 0 0 0 10%;
+        }
+
+        &:nth-child(4) {
+          padding: 0 0 0 15%;
+        }
+
+        ._textLi {
+          padding: 0 0 0 0.5rem;
         }
       }
     }
