@@ -6,6 +6,15 @@ export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
     en: 'Auto parts and repair',
     ru: 'Автозапчасти и ремонт',
   },
+  Bankruptcy: { en: 'Bankruptcy', ru: 'Банкротство' },
+  Bankruptcy_of_individuals: {
+    en: 'Bankruptcy of individuals',
+    ru: 'Банкротство физических лиц',
+  },
+  Insolvency_manager: {
+    en: 'Insolvency manager',
+    ru: 'Арбитражное управление',
+  },
   Car_audio_and_multimedia: {
     en: 'Car audio and multimedia',
     ru: 'Автозвук и мультимедиа',

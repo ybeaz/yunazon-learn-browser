@@ -67,7 +67,7 @@ export const DICTIONARY: IDictionary = {
         <br />
         из 175 стран готовы предложить
         <br />
-        более 11000 умений для обмена
+        более 11000 знаний и умений для обмена
       </>
     ),
   },
@@ -81,7 +81,7 @@ export const DICTIONARY: IDictionary = {
   },
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
-    ru: 'Заводите другей из разных регионов и стран',
+    ru: 'Заводите другей из разных областей и стран',
   },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
@@ -91,7 +91,7 @@ export const DICTIONARY: IDictionary = {
   },
   You_can_find_a_user: {
     en: 'You can find a user to answer your question by',
-    ru: 'Вы можете найти пользователя для ответа на ваши вопросы по критериям',
+    ru: 'Вы можете найти пользователя для ответа на ваши вопросы, выбирая',
   },
   required_knowledge: {
     en: 'required knowledge',
