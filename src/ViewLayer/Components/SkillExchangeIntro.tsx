@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { Button } from './Button'
 import { IconReact } from './IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -34,6 +35,25 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       classAdded: 'IconReact_BiSelectMultiple',
     }
 
+    const buttonGoProps = {
+      classAdded: 'Button_goIntroSep',
+      icon: null,
+      icon2: null,
+      captureLeft: DICTIONARY['Search'][language],
+      captureRight: '',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          { childName: 'SkillExchangeIntro', isActive: false, childProps: {} },
+        ],
+      },
+      isDisplaying: true,
+      tooltipText: '',
+      tooltipPosition: '',
+      isTooltipVisible: false,
+      isUnderlined: false,
+    }
+
     return (
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
@@ -46,7 +66,9 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <h2 className='__title02'>
           {DICTIONARY['Over_3_million_members'][language]}
         </h2>
-
+        <div className='_button'>
+          <Button {...buttonGoProps} />
+        </div>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _bg_color_1'>
@@ -97,6 +119,9 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           <div className='_textAcademy'>
             {DICTIONARY['You_can_also_host_or_take_video_lessons'][language]}
           </div>
+        </div>
+        <div className='_button'>
+          <Button {...buttonGoProps} />
         </div>
       </div>
     )
