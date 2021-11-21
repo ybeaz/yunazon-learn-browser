@@ -43,6 +43,14 @@ export const DICTIONARY: IDictionary = {
     en: 'Advanced search',
     ru: 'Расширенный поиск',
   },
+  Knowledge_and_experience: {
+    en: 'Knowledge and experience',
+    ru: 'Знания и опыт',
+  },
+  directly_from_people: {
+    en: 'directly from people',
+    ru: 'напрямую от людей',
+  },
   Knowledge_and_experience_directly_from_people: {
     en: 'Knowledge and experience directly from people',
     ru: 'Знания и опыт напрямую от людей',
