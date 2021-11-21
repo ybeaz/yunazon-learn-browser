@@ -35,11 +35,11 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       classAdded: 'IconReact_BiSelectMultiple',
     }
 
-    const buttonGoProps = {
-      classAdded: 'Button_goIntroSep',
-      icon: null,
+    const buttonContinueProps = {
+      classAdded: 'Button_сontinueIntroSep',
+      icon: 'MdForward',
       icon2: null,
-      captureLeft: DICTIONARY['Search'][language],
+      captureLeft: DICTIONARY['Continue'][language],
       captureRight: '',
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
@@ -67,7 +67,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           {DICTIONARY['Over_3_million_members'][language]}
         </h2>
         <div className='_button'>
-          <Button {...buttonGoProps} />
+          <Button {...buttonContinueProps} />
         </div>
         <div className='__textBlock'>
           <div className='_row'>
@@ -121,7 +121,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           </div>
         </div>
         <div className='_button'>
-          <Button {...buttonGoProps} />
+          <Button {...buttonContinueProps} />
         </div>
       </div>
     )

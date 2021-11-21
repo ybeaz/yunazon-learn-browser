@@ -89,15 +89,76 @@
   .Button_startModule;
 }
 
-.Button_goIntroSep {
-  .Button_searchSep;
-
+.Button_сontinueIntroSep {
   display: flex;
+  flex: 1;
   justify-content: center;
+  padding: 0 0 0 0;
+  align-items: center;
+
+  ._tooltipBottom {
+    width: 100%;
+    top: 110%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  ._text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ._line1 {
+      display: flex;
+      padding: 0 0 0.5rem 0;
+      font-size: @fontSizeS;
+    }
+
+    ._line2 {
+      display: flex;
+      font-style: italic;
+    }
+  }
 
   .__button {
     display: flex;
-    max-width: 50%;
+    max-width: 35%;
+    min-width: fit-content;
+    justify-content: none;
+    flex: 1;
+    height: 2.5rem;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0 0 0 0;
+      ._capture_left {
+        padding: 0 0 0 1rem;
+      }
+      @media @tablet, @tablet-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
+      @media @phone, @phone-strict {
+        ._capture_left {
+          font-size: @fontSizeS;
+        }
+      }
+      ._icon {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      ._capture_right {
+      }
+    }
   }
 }
 

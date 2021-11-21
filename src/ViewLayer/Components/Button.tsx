@@ -60,7 +60,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
   const iconReactProps = {
     icon,
     icon2,
-    classAdded: '_in',
+    classAdded: `_in IconReact_${classAdded}`,
   }
 
   return (
@@ -77,13 +77,13 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
         onClickCapture={event => handleEventsToUse(event, action)}
       >
         {captureLeft ? (
-          <div className={`_in`}>
+          <div className='_in'>
             <div className={`_capture_left`}>{captureLeft}</div>
           </div>
         ) : null}
         <IconReact {...iconReactProps} />
         {captureRight ? (
-          <div className={`_in`}>
+          <div className='_in'>
             <div className={`_capture_right`}>{captureRight}</div>
           </div>
         ) : null}

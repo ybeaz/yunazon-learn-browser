@@ -246,7 +246,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorSecondLighter2', medial, lighter2)};
     }
 
-    .Button_goIntroSep .__button {
+    .Button_сontinueIntroSep .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }

@@ -144,6 +144,10 @@ export const DICTIONARY: IDictionary = {
     en: 'optional',
     ru: 'опционно',
   },
+  Continue: {
+    en: 'Continue',
+    ru: 'Продолжить',
+  },
   Search: {
     en: 'Search',
     ru: 'Поиск',
