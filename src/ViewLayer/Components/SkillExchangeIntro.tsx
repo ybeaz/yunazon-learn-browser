@@ -37,7 +37,11 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
     return (
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
-          {DICTIONARY['Welcome_to_Experience_Exchange_Service'][language]}
+          {
+            DICTIONARY['Knowledge_and_experience_directly_from_people'][
+              language
+            ]
+          }
         </h1>
         <h2 className='__title02'>
           {DICTIONARY['Over_3_million_members'][language]}
@@ -52,12 +56,12 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
             <div className='_col _bg_color_2'>
               <div className='_text'>
-                {DICTIONARY['Share_your_knowledge_and_skills'][language]}
+                {DICTIONARY['Make_friends_in_different_regions'][language]}
               </div>
             </div>
             <div className='_col _bg_color_3'>
               <div className='_text'>
-                {DICTIONARY['Make_friends_in_different_regions'][language]}
+                {DICTIONARY['Share_your_knowledge_and_skills'][language]}
               </div>
             </div>
           </div>
@@ -68,7 +72,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             <li className='_action'>
               <IconReact {...aiOutlineQuestionCircleProps} />
               <div className='_textLi'>
-                {DICTIONARY['required_knowledge'][language]}
+                {DICTIONARY['required_information'][language]}
               </div>
             </li>
             <li className='_action'>
@@ -91,9 +95,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </li>
           </ul>
           <div className='_textAcademy'>
-            <div className='_textLi'>
-              {DICTIONARY['You_can_also_host_or_take_video_lessons'][language]}
-            </div>
+            {DICTIONARY['You_can_also_host_or_take_video_lessons'][language]}
           </div>
         </div>
       </div>
