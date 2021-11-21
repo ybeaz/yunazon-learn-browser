@@ -54,6 +54,11 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       isUnderlined: false,
     }
 
+    const buttonNextProps = {
+      ...buttonContinueProps,
+      captureLeft: DICTIONARY['Next'][language],
+    }
+
     return (
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
@@ -66,9 +71,6 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <h2 className='__title02'>
           {DICTIONARY['Over_3_million_members'][language]}
         </h2>
-        <div className='_button'>
-          <Button {...buttonContinueProps} />
-        </div>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _bg_color_1'>
@@ -87,6 +89,13 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className='_button'>
+          <Button {...buttonContinueProps} />
+        </div>
+
+        <div className='__textBlock'>
           <div className='_text'>
             {DICTIONARY['You_can_find_a_user'][language]}
           </div>
@@ -121,7 +130,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           </div>
         </div>
         <div className='_button'>
-          <Button {...buttonContinueProps} />
+          <Button {...buttonNextProps} />
         </div>
       </div>
     )
