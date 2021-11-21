@@ -85,6 +85,9 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge_and_skills'][language]}
               </div>
+              <br className='_mobileBreak' />
+              <br className='_mobileBreak' />
+              <br className='_mobileBreak' />
             </div>
           </div>
         </div>
