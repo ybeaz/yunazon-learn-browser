@@ -87,6 +87,14 @@ export const DICTIONARY: IDictionary = {
     en: 'Get intro answers ane knowledge in new areas',
     ru: 'Получайте ответы и знания в новых областях',
   },
+  Share_your_knowledge: {
+    en: 'Share your experience',
+    ru: 'Делитесь своим опытом',
+  },
+  and_skills: {
+    en: 'and skills',
+    ru: 'и умениями',
+  },
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',

@@ -63,7 +63,6 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
           {DICTIONARY['Knowledge_and_experience'][language]}{' '}
-          <br className='_mobileBreak' />
           {DICTIONARY['directly_from_people'][language]}
         </h1>
         <h2 className='__title02'>
@@ -83,11 +82,10 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
             <div className='_col _bg_color_3'>
               <div className='_text'>
-                {DICTIONARY['Share_your_knowledge_and_skills'][language]}
+                {DICTIONARY['Share_your_knowledge'][language]}{' '}
+                <br className='_mobileBreak' />
+                {DICTIONARY['and_skills'][language]}
               </div>
-              <br className='_mobileBreak' />
-              <br className='_mobileBreak' />
-              <br className='_mobileBreak' />
             </div>
           </div>
         </div>
