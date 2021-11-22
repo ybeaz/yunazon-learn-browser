@@ -304,6 +304,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Category_info_you_are_looking_for'][language]}
+            {' *'}
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
