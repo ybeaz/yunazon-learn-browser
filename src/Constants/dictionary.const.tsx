@@ -25,7 +25,7 @@ export const DICTIONARY: IDictionary = {
   },
   If_you_have_any_ideas_or_opinions: {
     en: 'If you have any ideas or opinions about this service,',
-    ru: 'Если у вас есть идеи или мнения об этой услуге,',
+    ru: 'Если у вас есть идеи или мнения о сервисе,',
   },
   please_share_them_with_us: {
     en: 'please, share them with us',
