@@ -83,14 +83,14 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             <div className='_col _bg_color_3'>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge'][language]}{' '}
-                <br className='_mobileBreak' />
+                <br className='_mobileVisible' />
                 {DICTIONARY['and_skills'][language]}
               </div>
             </div>
           </div>
         </div>
 
-        <div className='_button'>
+        <div className='_button _mobileVisible'>
           <Button {...buttonContinueProps} />
         </div>
 
@@ -124,9 +124,6 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               </div>
             </li>
           </ul>
-          <div className='_textAcademy'>
-            {DICTIONARY['You_can_also_host_or_take_video_lessons'][language]}
-          </div>
         </div>
         <div className='_button'>
           <Button {...buttonNextProps} />

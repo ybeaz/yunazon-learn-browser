@@ -84,8 +84,8 @@ export const DICTIONARY: IDictionary = {
     ),
   },
   Get_intro_knowledge_and_answers: {
-    en: 'Get intro answers ane knowledge in new areas',
-    ru: 'Получайте ответы и знания в новых областях',
+    en: 'Get intro answers ane knowledge in real time',
+    ru: 'Получайте ответы и знания в реальном времени',
   },
   Share_your_knowledge: {
     en: 'Share your experience',

@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import { IHandleEventsInterface } from '../../../Interfaces/IHandleEventsInterface'
+import { Image } from '../Image'
 import { SelectLanguage } from '../SelectLanguage'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -303,19 +303,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['You are suggesting to exchange'][language]}
-            {' *'}
-          </div>
-          <div className={classCol02}>
-            {language && (
-              <SelectAntd {...childrenProps.selectSkillsOfferedProps} />
-            )}
-          </div>
-        </div>
-        <div className='_row'>
-          <div className={classCol01}>
             {DICTIONARY['Category_info_you_are_looking_for'][language]}
-            {' *'}
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
@@ -324,7 +312,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Speaking language'][language]}
-            {' *'}
           </div>
           <div className={classCol02}>
             <SelectLanguage {...selectLanguageProps} />
@@ -333,7 +320,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
             {DICTIONARY['Communication media'][language]}
-            {' *'}
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectMediaRequiredProps} />
@@ -376,6 +362,16 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
+            {DICTIONARY['You are suggesting to exchange'][language]}
+          </div>
+          <div className={classCol02}>
+            {language && (
+              <SelectAntd {...childrenProps.selectSkillsOfferedProps} />
+            )}
+          </div>
+        </div>
+        <div className={`_row ${classAdvancedSearch}`}>
+          <div className={classCol01}>
             {DICTIONARY['Sort results by'][language]}
           </div>
           <div className={classCol02}>
@@ -396,13 +392,21 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
             </div>
           </div>
         </div>
-        <div className='_row'>
+        {/* <div className='_row'>
           <div className={classCol01}>
             {'* '}
             {DICTIONARY['Required'][language]}
           </div>
-        </div>
+        </div> */}
       </form>
+      {/* <div>
+        <Image
+          classAdded={''}
+          src={
+            'https://yourails.com/images/square-collage-happy-multicultural-people-faces-colorful-backgrounds-square-collage-happy-people-faces-multicultural-211122.jpg'
+          }
+        />
+      </div> */}
     </div>
   )
 }
