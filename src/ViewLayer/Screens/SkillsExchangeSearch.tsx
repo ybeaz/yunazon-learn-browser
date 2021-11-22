@@ -50,23 +50,23 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     }
 
     return (
-      <BackgroundImage {...backgroundImageProps}>
-        <div className='SkillsExchangeSearch'>
-          <Helmet>
-            <html lang={languageStore} />
-            <meta charSet='utf-8' />
-            <title>{moduleCapture}</title>
-            <link rel='canonical' href={canonicalUrl} />
-            <meta name='description' content={moduleDescription} />
-          </Helmet>
-          <MainFrame {...mainFrameProps}>
-            {null}
-            {null}
-            <SearchGroupSep />
-            {isShownPalette && <Palette />}
-            {null}
-          </MainFrame>
-        </div>
-      </BackgroundImage>
+      <div className='SkillsExchangeSearch'>
+        <Helmet>
+          <html lang={languageStore} />
+          <meta charSet='utf-8' />
+          <title>{moduleCapture}</title>
+          <link rel='canonical' href={canonicalUrl} />
+          <meta name='description' content={moduleDescription} />
+        </Helmet>
+        <MainFrame {...mainFrameProps}>
+          {null}
+          {null}
+          <SearchGroupSep />
+          {isShownPalette && <Palette />}
+          <BackgroundImage {...backgroundImageProps}>
+            <div></div>
+          </BackgroundImage>
+        </MainFrame>
+      </div>
     )
   }
