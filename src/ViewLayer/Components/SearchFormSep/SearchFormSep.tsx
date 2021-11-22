@@ -25,7 +25,7 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
 
-export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
+export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   const {
     forms: { catalogSep },
     language,
@@ -283,7 +283,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     language, // selectLanguageRequired
     mode: 'multiple' as 'multiple' | 'tags',
     typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
-    classAdded: 'SelectLanguage__CatalogSep',
+    classAdded: 'SelectLanguage__SearchFormSep',
     languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
   }
 
@@ -296,7 +296,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     : DICTIONARY['Advanced_search'][language]
 
   return (
-    <div className='CatalogSep'>
+    <div className='SearchFormSep'>
       <h1 className='__titleScreen'>
         {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
       </h1>

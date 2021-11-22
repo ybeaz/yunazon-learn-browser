@@ -48,7 +48,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
-    .CatalogSep .__searchForm ._row ._linkAdvacedSearch {
+    .SearchFormSep .__searchForm ._row ._linkAdvacedSearch {
       color: ${props2 =>
         getColor(props2, 'colorActive', opaciter2, middle, 'Light')};
     }
@@ -65,22 +65,22 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
           : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
     }
 
-    .CatalogSep .__titleScreen {
+    .SearchFormSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .CatalogSep .__searchForm ._row ._selectElement {
+    .SearchFormSep .__searchForm ._row ._selectElement {
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', 1, middle, 'Light')};
     }
 
-    .CatalogSep .__searchForm ._row ._selectElement ._range {
+    .SearchFormSep .__searchForm ._row ._selectElement ._range {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .CatalogSep .__searchForm ._row ._selectElement._submitGroup {
+    .SearchFormSep .__searchForm ._row ._selectElement._submitGroup {
       background-color: unset;
     }
 

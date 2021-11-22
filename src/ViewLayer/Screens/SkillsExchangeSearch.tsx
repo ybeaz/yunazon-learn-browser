@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { CatalogSep } from '../Components/CatalogSep/CatalogSep'
+import { SearchFormSep } from '../Components/SearchFormSep/SearchFormSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -41,7 +41,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearch',
-      contentComponentName: 'CatalogSep',
+      contentComponentName: 'SearchFormSep',
       brandName: 'YourRails',
     }
 
@@ -62,7 +62,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           <MainFrame {...mainFrameProps}>
             {null}
             {null}
-            <CatalogSep />
+            <SearchFormSep />
             {isShownPalette && <Palette />}
           </MainFrame>
         </div>

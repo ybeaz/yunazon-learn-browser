@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { CatalogSepChRP } from '../Components/CatalogSepChRP'
+import { SearchFormSepChRP } from '../Components/SearchFormSepChRP'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -34,7 +34,7 @@ export const SkillsExchangeSearchChRP: React.FunctionComponent<SkillsExchangeSea
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearchChRP',
-      contentComponentName: 'CatalogSepChRP',
+      contentComponentName: 'SearchFormSepChRP',
       brandName: 'YourRails',
     }
 
@@ -50,7 +50,7 @@ export const SkillsExchangeSearchChRP: React.FunctionComponent<SkillsExchangeSea
         <MainFrame {...mainFrameProps}>
           {null}
           {null}
-          <CatalogSepChRP />
+          <SearchFormSepChRP />
           {null}
         </MainFrame>
       </div>
