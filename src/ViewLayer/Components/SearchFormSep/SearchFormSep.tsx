@@ -27,7 +27,7 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
 
 export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   const {
-    forms: { catalogSep },
+    forms: { searchFormSep },
     language,
     componentsState: { isSepAdvancedSearch },
   } = useSelector((store2: IRootStore) => store2)
@@ -45,7 +45,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOffered,
     selectSkillsRequired,
     selectSortBy,
-  } = catalogSep
+  } = searchFormSep
 
   const defaultOptions = {
     selectSkillsOffered: 'all_skills',

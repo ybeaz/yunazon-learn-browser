@@ -5,8 +5,8 @@ export const SEP_SELECT_MEDIA_REQUIRED: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { catalogSep } = forms
-  const catalogSepNext = { ...catalogSep, selectMediaRequired: data }
-  const formsNext = { ...forms, catalogSep: catalogSepNext }
+  const { searchFormSep } = forms
+  const searchFormSepNext = { ...searchFormSep, selectMediaRequired: data }
+  const formsNext = { ...forms, searchFormSep: searchFormSepNext }
   return { ...store, forms: formsNext }
 }

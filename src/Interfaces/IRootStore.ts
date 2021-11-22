@@ -49,7 +49,7 @@ export interface IRootStore {
     lastName: string
     sendTo: string
     sendCc: string
-    catalogSep: {
+    searchFormSep: {
       selectSkillsOffered: string[]
       selectSkillsRequired: string
       selectCountryRequired: string[]
