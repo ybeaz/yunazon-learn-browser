@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select as SelectAntd } from 'antd'
 
-import { ImageSvg } from '../ViewLayer/Components/ImageSvg'
+import { Image } from '../ViewLayer/Components/Image'
 import { ILanguages } from '../Interfaces/ILanguages'
 import { IDictionary } from '../Constants/dictionary.const'
 import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
@@ -38,8 +38,8 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
     const { svgFile } = LANGUAGES[ln]
 
-    const imageSvgProps = {
-      classAdded: `ImageSvg_languagesOptions ${classAdded}`,
+    const imageProps = {
+      classAdded: `Image_languagesOptions ${classAdded}`,
       src: `${svgFileDir}${svgFile}`,
     }
 
@@ -49,7 +49,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
         value={value}
         isSelectOption={true}
       >
-        <ImageSvg {...imageSvgProps} />
+        <Image {...imageProps} />
         {labelNext}
       </Option>
     )

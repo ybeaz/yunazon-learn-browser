@@ -11,8 +11,14 @@
   .__title02 {
     display: flex;
     justify-content: center;
-    font-size: @fontSizeH2;
+    font-size: @fontSizeS;
+    font-weight: bold;
     margin: 0;
+  }
+
+  ._button {
+    display: flex;
+    padding: 3rem 0 2rem 0;
   }
 
   .__textBlock {
@@ -24,19 +30,19 @@
       display: flex;
       flex-direction: row;
       padding: 2rem 0;
-    }
 
-    ._col {
-      display: flex;
+      ._col {
+        display: flex;
 
-      ._text {
-        color: white;
-        padding: 1rem 2rem;
-        text-align: center;
+        ._text {
+          color: white;
+          padding: 1rem 2rem;
+          text-align: center;
+        }
       }
-    }
-    ._col:empty {
-      padding: 0px;
+      ._col:empty {
+        padding: 0px;
+      }
     }
 
     ._text {
@@ -47,7 +53,7 @@
 
     ._textAcademy {
       ._text;
-      padding: 1rem 0;
+      padding: 2rem 1rem 1rem 1rem;
     }
 
     ._listActions {
@@ -86,15 +92,19 @@
   }
 
   ._bg_color_1 {
-    background-color: yellowgreen;
-  }
-
-  ._bg_color_2 {
     background-color: red;
   }
 
-  ._bg_color_3 {
+  ._bg_color_2 {
     background-color: blueviolet;
+  }
+
+  ._bg_color_3 {
+    background-color: yellowgreen;
+  }
+
+  ._mobileVisible {
+    display: none;
   }
 
   @media @large {
@@ -104,12 +114,20 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._mobileVisible {
+      display: flex;
+    }
+
     .__textBlock {
       padding: 0rem 0rem;
 
       ._row {
         display: flex;
         flex-direction: column;
+
+        ._col {
+          justify-content: center;
+        }
       }
 
       ._text {

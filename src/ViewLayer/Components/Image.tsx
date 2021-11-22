@@ -1,16 +1,16 @@
 import React from 'react'
 
-interface ImageSvgArgs {
+interface ImageArgs {
   classAdded: string
   src: string
 }
 
-export const ImageSvg: React.FunctionComponent<ImageSvgArgs> = (
-  props: ImageSvgArgs
+export const Image: React.FunctionComponent<ImageArgs> = (
+  props: ImageArgs
 ): JSX.Element => {
   const { classAdded, src } = props
   return (
-    <div className={`ImageSvg ${classAdded}`}>
+    <div className={`Image ${classAdded}`}>
       <img className={`_image`} src={src} />
     </div>
   )

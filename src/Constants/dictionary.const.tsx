@@ -25,7 +25,7 @@ export const DICTIONARY: IDictionary = {
   },
   If_you_have_any_ideas_or_opinions: {
     en: 'If you have any ideas or opinions about this service,',
-    ru: 'Если у вас есть идеи или мнения об этой услуге,',
+    ru: 'Если у вас есть идеи или мнения о сервисе,',
   },
   please_share_them_with_us: {
     en: 'please, share them with us',
@@ -42,6 +42,18 @@ export const DICTIONARY: IDictionary = {
   Advanced_search: {
     en: 'Advanced search',
     ru: 'Расширенный поиск',
+  },
+  Knowledge_and_experience: {
+    en: 'Knowledge and experience',
+    ru: 'Знания и опыт',
+  },
+  directly_from_people: {
+    en: 'directly from people',
+    ru: 'напрямую от людей',
+  },
+  Knowledge_and_experience_directly_from_people: {
+    en: 'Knowledge and experience directly from people',
+    ru: 'Знания и опыт напрямую от людей',
   },
   Welcome_to_Experience_Exchange_Service: {
     en: 'Welcome to Experience Exchange Service!',
@@ -63,7 +75,7 @@ export const DICTIONARY: IDictionary = {
     ),
     ru: (
       <>
-        Более чем 3 миллиона пользователей
+        3 миллиона пользователей
         <br />
         из 175 стран готовы предложить
         <br />
@@ -72,16 +84,24 @@ export const DICTIONARY: IDictionary = {
     ),
   },
   Get_intro_knowledge_and_answers: {
-    en: 'Get intro knowledge and answers in new areas',
-    ru: 'Получайте вводные знания и ответы в новых областях',
+    en: 'Get intro answers ane knowledge in real time',
+    ru: 'Получайте ответы и знания в реальном времени',
+  },
+  Share_your_knowledge: {
+    en: 'Share your experience',
+    ru: 'Делитесь своим опытом',
+  },
+  and_skills: {
+    en: 'and skills',
+    ru: 'и умениями',
   },
   Share_your_knowledge_and_skills: {
-    en: 'Share your knowledge and skills',
-    ru: 'Делитесь своими знаниями и умениями и',
+    en: 'Share your experience and skills',
+    ru: 'Делитесь своим опытом и умениями',
   },
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
-    ru: 'Заводите другей из разных областей и стран',
+    ru: 'Заводите друзей из разных областей и стран',
   },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
@@ -90,8 +110,12 @@ export const DICTIONARY: IDictionary = {
     делитесь своими умениями и заводите другей из разных регионов и стран',
   },
   You_can_find_a_user: {
-    en: 'You can find a user to answer your question by',
-    ru: 'Вы можете найти пользователя для ответа на ваши вопросы, выбирая',
+    en: 'You can find a friend and get answers your questions by',
+    ru: 'Вы можете найти друга и получить ответы на ваши вопросы, выбирая',
+  },
+  required_information: {
+    en: 'required information',
+    ru: 'требуемую информацию',
   },
   required_knowledge: {
     en: 'required knowledge',
@@ -115,9 +139,9 @@ export const DICTIONARY: IDictionary = {
     ru: 'Вы получите шанс услышать объяснение предмета своего интереса и помочь в том, что вы знаете лучше',
   },
   You_can_also_host_or_take_video_lessons: {
-    en: 'You can also host or take video lessons-tests from our members and\
+    en: 'You can also host or take video lessons-tests from our members, \
     to prove knowledge and get a certificate',
-    ru: 'Вы также можете разместить или пройти видео уроки-тесты и \
+    ru: 'Вы также можете разместить или пройти видео уроки-тесты, \
     подтвердить знания и получить сертификат',
   },
   Required: {
@@ -135,6 +159,10 @@ export const DICTIONARY: IDictionary = {
   optional: {
     en: 'optional',
     ru: 'опционно',
+  },
+  Continue: {
+    en: 'Continue',
+    ru: 'Продолжить',
   },
   Search: {
     en: 'Search',
