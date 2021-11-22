@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { SearchFormSep } from '../Components/SearchFormSep/SearchFormSep'
+import { SearchGroupSep } from '../Components/SearchGroupSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -62,8 +62,9 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           <MainFrame {...mainFrameProps}>
             {null}
             {null}
-            <SearchFormSep />
+            <SearchGroupSep />
             {isShownPalette && <Palette />}
+            {null}
           </MainFrame>
         </div>
       </BackgroundImage>

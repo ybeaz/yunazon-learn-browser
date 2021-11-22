@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Button } from '../Components/Button'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { FooterFrame } from './FooterFrame'
+import { HeaderFrame } from './HeaderFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 
 interface MainFrameArgs {
@@ -54,6 +55,7 @@ export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
       <div className='__comments'>
         <div className='_in'></div>
       </div>
+      <FooterFrame>{props.children[4]}</FooterFrame>
     </div>
   )
 }

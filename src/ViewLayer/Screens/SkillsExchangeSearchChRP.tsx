@@ -52,6 +52,7 @@ export const SkillsExchangeSearchChRP: React.FunctionComponent<SkillsExchangeSea
           {null}
           <SearchFormSepChRP />
           {null}
+          {null}
         </MainFrame>
       </div>
     )

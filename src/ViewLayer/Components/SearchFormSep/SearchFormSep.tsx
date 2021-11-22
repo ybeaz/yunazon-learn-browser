@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import { Image } from '../Image'
 import { SelectLanguage } from '../SelectLanguage'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -297,9 +296,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
 
   return (
     <div className='SearchFormSep'>
-      <h1 className='__titleScreen'>
-        {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
-      </h1>
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>
@@ -400,14 +396,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
           </div>
         </div> */}
       </form>
-      {/* <div>
-        <Image
-          classAdded={''}
-          src={
-            'https://yourails.com/images/square-collage-happy-multicultural-people-faces-colorful-backgrounds-square-collage-happy-people-faces-multicultural-211122.jpg'
-          }
-        />
-      </div> */}
     </div>
   )
 }

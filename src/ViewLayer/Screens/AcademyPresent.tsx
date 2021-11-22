@@ -233,6 +233,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
               <PlayerPanel {...playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
             <CarouselQuestions />
+            {null}
           </MainFrame>
           <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>
