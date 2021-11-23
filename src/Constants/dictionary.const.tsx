@@ -16,8 +16,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Каждый защищен',
   },
   There_are_people_for_all_major_topics: {
-    en: 'There are people for all major topics.',
-    ru: 'Есть пользователи по многим темам.',
+    en: 'There are people for many themes.',
+    ru: 'Есть пользователи по многим направлениям.',
   },
   You_don_t_need_to_wait: {
     en: "You don't need to wait",

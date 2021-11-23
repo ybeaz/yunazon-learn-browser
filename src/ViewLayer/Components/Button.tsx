@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { IAction } from '../../Interfaces/IAction'
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 interface ButtonArgs {
@@ -8,7 +9,7 @@ interface ButtonArgs {
   captureLeft?: string | JSX.Element
   captureRight?: string
   classAdded?: string
-  action?: any
+  action?: IAction
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string
   tooltipPosition?: string // options: ['top','right','bottom','left']

@@ -55,19 +55,31 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       isUnderlined: false,
     }
 
+    const buttonNextProps = {
+      ...buttonContinueProps,
+      captureLeft: DICTIONARY['Next'][language],
+    }
+
     const collageImageFace = {
       classAdded: 'Image_collageImageFace',
       src: 'https://yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          { childName: 'SkillExchangeIntro', isActive: false, childProps: {} },
+        ],
+      },
     }
 
     const collageImageIndustries = {
       classAdded: 'Image_collageImageIndustries',
       src: 'https://yourails.com/images/collage-icon-industries-211122-YxY-51.jpg',
-    }
-
-    const buttonNextProps = {
-      ...buttonContinueProps,
-      captureLeft: DICTIONARY['Next'][language],
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          { childName: 'SkillExchangeIntro', isActive: false, childProps: {} },
+        ],
+      },
     }
 
     return (
