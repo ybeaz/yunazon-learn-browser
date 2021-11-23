@@ -7,6 +7,30 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Users_are_ready_to_start_a_conversation: {
+    en: 'Users are ready to start a conversation on topics of mutual interests.',
+    ru: 'Пользователи готовы начать общаться по темам взаимных интересов.',
+  },
+  Everybody_is_protected: {
+    en: 'Everybody is protected',
+    ru: 'Каждый защищен',
+  },
+  There_are_people_for_all_major_topics: {
+    en: 'There are people for all major topics.',
+    ru: 'Есть пользователи по многим темам.',
+  },
+  You_don_t_need_to_wait: {
+    en: "You don't need to wait",
+    ru: 'Вам не нужно ждать',
+  },
+  You_can_find_a_person_of_your_interests: {
+    en: 'You can find a person of your interests',
+    ru: 'Вы можете найти человека по вашим интересам,',
+  },
+  who_is_ready_to_answer_your_question_right_now: {
+    en: 'who is ready to answer your question right now',
+    ru: 'который готов ответить на ваш вопрос прямо сейчас',
+  },
   Our_contacts: {
     en: 'Our contacts',
     ru: 'Наши контакты',

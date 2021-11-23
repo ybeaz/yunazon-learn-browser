@@ -135,26 +135,39 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               </div>
             </li>
           </ul>
-          <div className='_row p_2_0'>
-            <div className='_col _center _p_0_1'>
+          <div className='_row'>
+            <div className='_col _center p_2_1_0_1'>
               <h2 className='_titleSection'>
-                Users are ready to start a conversation about your topic.
-                Everybody is protected
+                {
+                  DICTIONARY['Users_are_ready_to_start_a_conversation'][
+                    language
+                  ]
+                }{' '}
+                {DICTIONARY['Everybody_is_protected'][language]}
               </h2>
               <Image {...collageImageFace} />
             </div>
-            <div className='_col _center _p_0_1'>
+            <div className='_col _center p_2_1_0_1'>
               <h2 className='_titleSection'>
-                There are people for all major topics. You don't need to wait
+                {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
+                {DICTIONARY['You_don_t_need_to_wait'][language]}
               </h2>
               <Image {...collageImageIndustries} />
             </div>
           </div>
-          <div className='_row p_2_0'>
-            <div className='_col _center'>
+          <div className='_row'>
+            <div className='_col _center p_2_1_0_1'>
               <h2 className='_titleSection'>
-                You can find a person of your interests who is ready to answer
-                your question right now
+                {
+                  DICTIONARY['You_can_find_a_person_of_your_interests'][
+                    language
+                  ]
+                }{' '}
+                {
+                  DICTIONARY['who_is_ready_to_answer_your_question_right_now'][
+                    language
+                  ]
+                }
               </h2>
             </div>
           </div>
