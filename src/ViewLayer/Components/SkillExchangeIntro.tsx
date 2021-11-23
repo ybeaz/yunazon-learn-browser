@@ -193,4 +193,5 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
 
 /*
   Showing your image is your preference. Everybody is protected
+  Messeging or voice chatting don't need to show your image
 */

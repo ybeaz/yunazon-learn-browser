@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep/SearchFormSep'
@@ -18,10 +19,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
       </h1>
       <SearchFormSep />
+      <CategoryCatalog />
     </div>
   )
 }
-
-/*
-Messeging or voice chatting don't need to show your image
-*/
