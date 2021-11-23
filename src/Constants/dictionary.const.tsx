@@ -94,7 +94,7 @@ export const DICTIONARY: IDictionary = {
         <br />
         from over 175 countries
         <br />
-        practicing more than 11000 skills to exchange!
+        offers more than 11000 skills to exchange!
       </>
     ),
     ru: (
