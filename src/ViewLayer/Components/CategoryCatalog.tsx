@@ -3,30 +3,35 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { IconReact } from './IconReact'
 
+interface ICategory {
+  iconName: string
+}
+interface IGetCategorisJsx {
+  (categories: ICategory[]): ReactElement[]
+}
+
 interface CategoryCatalogArgs {}
 
 export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   props: CategoryCatalogArgs
 ): JSX.Element => {
-  const categories = [
-    'AiOutlineQuestionCircle',
-    'BiSelectMultiple',
-    'BsLink45Deg',
-    'BsQuestionCircle',
-    'CgDarkMode',
-    'FaFacebook',
-    'FaGooglePlusG',
-    'FaTwitter',
+  const categories: ICategory[] = [
+    { iconName: 'BsHouseDoor' },
+    { iconName: 'AiOutlineShoppingCart' },
+    { iconName: 'AiOutlineMedicineBox' },
+    { iconName: 'AiFillCar' },
+    { iconName: 'MdFlightTakeoff' },
+    { iconName: 'MdBusinessCenter' },
+    { iconName: 'MdOutlineMeetingRoom' },
+    { iconName: 'MdComputer' },
   ]
 
-  interface IGetCategorisJsx {
-    (categories: string[]): ReactElement[]
-  }
+  const getCategorisJsx: IGetCategorisJsx = categories2 =>
+    categories2.map((item: ICategory) => {
+      const { iconName } = item
 
-  const getCategorisJsx: IGetCategorisJsx = categories =>
-    categories.map((item: string) => {
       const iconReactProps = {
-        icon: item,
+        icon: iconName,
         icon2: null,
         classAdded: 'IconReact_CategoryCatalog',
       }

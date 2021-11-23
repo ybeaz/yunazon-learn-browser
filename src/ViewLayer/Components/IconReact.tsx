@@ -2,6 +2,10 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 
 import {
+  MdComputer,
+  MdOutlineMeetingRoom,
+  MdBusinessCenter,
+  MdFlightTakeoff,
   MdAddBox,
   MdAddShoppingCart,
   MdBlock,
@@ -22,15 +26,28 @@ import {
   MdSearch,
 } from 'react-icons/md'
 
-import { AiOutlineQuestionCircle } from 'react-icons/ai'
+import {
+  AiFillCar,
+  AiOutlineMedicineBox,
+  AiOutlineShoppingCart,
+  AiOutlineQuestionCircle,
+} from 'react-icons/ai'
 import { BiSelectMultiple } from 'react-icons/bi'
-import { BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
+import { BsHouseDoor, BsLink45Deg, BsQuestionCircle } from 'react-icons/bs'
 import { CgDarkMode } from 'react-icons/cg'
 import { FaFacebook, FaVk, FaTwitter, FaGooglePlusG } from 'react-icons/fa'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 import { IoChatbubblesOutline } from 'react-icons/io5'
 
 const ICON = {
+  MdComputer,
+  MdOutlineMeetingRoom,
+  MdBusinessCenter,
+  MdFlightTakeoff,
+  AiFillCar,
+  AiOutlineMedicineBox,
+  AiOutlineShoppingCart,
+  BsHouseDoor,
   AiOutlineQuestionCircle,
   BiSelectMultiple,
   BsLink45Deg,
