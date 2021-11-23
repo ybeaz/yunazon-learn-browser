@@ -1,0 +1,64 @@
+/* Generation mixins for padding. Examples p_x_y_z_k */
+@steps: {
+  0: 0rem;
+  1: 1rem;
+  2: 2rem;
+  3: 3rem;
+};
+
+@cssParams: {
+  p: padding;
+  m: margin;
+};
+
+@padding: padding;
+
+each(@cssParams, .(@valueP, @keyP, @indexP) {
+  each(@steps, .(@valueX, @keyX, @indexX) {
+    each(@steps, .(@valueY, @keyY, @indexY) {
+      .@{keyP}_@{keyY}_@{keyX} {
+        @{valueP}: @valueY @valueX;
+      }
+    })
+  })
+})
+
+each(@cssParams, .(@valueP, @keyP, @indexP) {
+  each(@steps, .(@valueL, @keyL, @indexL) {
+    each(@steps, .(@valueB, @keyB, @indexB) {
+      each(@steps, .(@valueR, @keyR, @indexR) {
+        each(@steps, .(@valueT, @keyT, @indexT) {
+          .@{keyP}_@{keyT}_@{keyR}_@{keyB}_@{keyL} {
+            @{valueP}: @valueT @valueR @valueB @valueL;
+          }
+        })
+      })
+    })
+  })
+})
+
+// .forEachX(@indexX) when (@indexX > 0) {
+//   @axisX: extract(@steps, @indexX);
+
+//   .forEachY(@indexY) when (@indexY > 0) {
+//     @axisY: extract(@steps, @indexY);
+
+//     .p_@{indexY}_0 {
+//       @{padding}: @axisY @axisX;
+//     }
+
+//     .forEachY(@indexY - 1);
+//   }
+//   .forEachY(length(@steps));
+
+//   .forEachX(@indexX - 1);
+// }
+
+// .forEachX(length(@steps));
+
+
+// each(@colors, {
+//   .example_module.@{key} {
+//     background: @value;
+//   }
+// });

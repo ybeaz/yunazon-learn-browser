@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { Image } from './Image'
 import { Button } from './Button'
 import { IconReact } from './IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -54,6 +55,16 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       isUnderlined: false,
     }
 
+    const collageImageFace = {
+      classAdded: 'Image_collageImageFace',
+      src: 'https://yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+    }
+
+    const collageImageIndustries = {
+      classAdded: 'Image_collageImageIndustries',
+      src: 'https://yourails.com/images/collage-icon-industries-211122-YxY-51.jpg',
+    }
+
     const buttonNextProps = {
       ...buttonContinueProps,
       captureLeft: DICTIONARY['Next'][language],
@@ -69,7 +80,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           {DICTIONARY['Over_3_million_members'][language]}
         </h2>
         <div className='__textBlock'>
-          <div className='_row'>
+          <div className='_row p_2_0'>
             <div className='_col _bg_color_1'>
               <div className='_text'>
                 {DICTIONARY['Get_intro_knowledge_and_answers'][language]}
@@ -124,6 +135,29 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               </div>
             </li>
           </ul>
+          <div className='_row p_2_0'>
+            <div className='_col _center _p_0_1'>
+              <h2 className='_titleSection'>
+                Users are ready to start a conversation about your topic.
+                Everybody is protected
+              </h2>
+              <Image {...collageImageFace} />
+            </div>
+            <div className='_col _center _p_0_1'>
+              <h2 className='_titleSection'>
+                There are people for all major topics. You don't need to wait
+              </h2>
+              <Image {...collageImageIndustries} />
+            </div>
+          </div>
+          <div className='_row p_2_0'>
+            <div className='_col _center'>
+              <h2 className='_titleSection'>
+                You can find a person of your interests who is ready to answer
+                your question right now
+              </h2>
+            </div>
+          </div>
         </div>
         <div className='_button'>
           <Button {...buttonNextProps} />
@@ -131,3 +165,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       </div>
     )
   }
+
+/*
+  Showing your image is your preference. Everybody is protected
+*/
