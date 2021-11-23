@@ -55,7 +55,7 @@ interface IGetStdDictionaryOptions {
   ): ISelectOption[]
 }
 
-export const CatalogSepChRP: React.FunctionComponent<any> = (
+export const SearchFormSepChRP: React.FunctionComponent<any> = (
   props: any
 ): JSX.Element => {
   const { language } = useSelector((store2: IRootStore) => store2)
@@ -301,7 +301,7 @@ export const CatalogSepChRP: React.FunctionComponent<any> = (
   const classCol02 = '_col_1'
 
   return (
-    <div className='CatalogSepChRP'>
+    <div className='SearchFormSepChRP'>
       <h1 className='__titleScreen'>
         {DICTIONARY['Members Search - Find a Skill Exchange Partner'][language]}
       </h1>

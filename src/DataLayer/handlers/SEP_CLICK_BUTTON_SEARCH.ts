@@ -15,7 +15,7 @@ export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
   const {
     language,
     forms: {
-      catalogSep: { selectSkillsRequired },
+      searchFormSep: { selectSkillsRequired },
     },
   } = getState()
 

@@ -87,6 +87,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
           <div>{getPlateMatix(coursesFiltered)}</div>
         ) : null}
         {null}
+        {null}
       </MainFrame>
     </div>
   )

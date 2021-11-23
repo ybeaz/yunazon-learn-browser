@@ -5,7 +5,6 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import { Image } from '../Image'
 import { SelectLanguage } from '../SelectLanguage'
 import { getCountriesOptions } from './getCountriesOptions'
 import { getStdDictionaryOptions } from './getStdDictionaryOptions'
@@ -25,9 +24,9 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
 
-export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
+export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   const {
-    forms: { catalogSep },
+    forms: { searchFormSep },
     language,
     componentsState: { isSepAdvancedSearch },
   } = useSelector((store2: IRootStore) => store2)
@@ -45,7 +44,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsOffered,
     selectSkillsRequired,
     selectSortBy,
-  } = catalogSep
+  } = searchFormSep
 
   const defaultOptions = {
     selectSkillsOffered: 'all_skills',
@@ -283,7 +282,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     language, // selectLanguageRequired
     mode: 'multiple' as 'multiple' | 'tags',
     typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
-    classAdded: 'SelectLanguage__CatalogSep',
+    classAdded: 'SelectLanguage__SearchFormSep',
     languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
   }
 
@@ -296,10 +295,7 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
     : DICTIONARY['Advanced_search'][language]
 
   return (
-    <div className='CatalogSep'>
-      <h1 className='__titleScreen'>
-        {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
-      </h1>
+    <div className='SearchFormSep'>
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>
@@ -400,14 +396,6 @@ export const CatalogSep: React.FunctionComponent<any> = (props: any) => {
           </div>
         </div> */}
       </form>
-      {/* <div>
-        <Image
-          classAdded={''}
-          src={
-            'https://yourails.com/images/square-collage-happy-multicultural-people-faces-colorful-backgrounds-square-collage-happy-people-faces-multicultural-211122.jpg'
-          }
-        />
-      </div> */}
     </div>
   )
 }

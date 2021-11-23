@@ -1,12 +1,6 @@
-.CatalogSepChRP {
+.SearchFormSep {
   display: flex;
   flex-direction: column;
-
-  .__titleScreen {
-    display: flex;
-    justify-content: center;
-    font-size: @fontSizeH2;
-  }
 
   .__searchForm {
     display: flex;
@@ -36,6 +30,32 @@
       ._titleElem {
         display: flex;
       }
+
+      ._selectElement {
+        display: flex;
+
+        ._range {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+
+        ._linkAdvacedSearch {
+          flex: 1;
+          text-align: center;
+          cursor: pointer;
+          line-height: 1;
+        }
+      }
+
+      ._submitGroup {
+        display: flex;
+      }
+    }
+
+    ._hideRow {
+      display: none;
     }
   }
 
@@ -46,5 +66,12 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    padding: 0 2rem;
+
+    .__searchForm {
+      ._row {
+        flex-direction: column;
+      }
+    }
   }
 }

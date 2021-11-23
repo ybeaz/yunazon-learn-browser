@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { CatalogSep } from '../Components/CatalogSep/CatalogSep'
+import { SearchGroupSep } from '../Components/SearchGroupSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -41,7 +41,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearch',
-      contentComponentName: 'CatalogSep',
+      contentComponentName: 'SearchFormSep',
       brandName: 'YourRails',
     }
 
@@ -50,22 +50,23 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     }
 
     return (
-      <BackgroundImage {...backgroundImageProps}>
-        <div className='SkillsExchangeSearch'>
-          <Helmet>
-            <html lang={languageStore} />
-            <meta charSet='utf-8' />
-            <title>{moduleCapture}</title>
-            <link rel='canonical' href={canonicalUrl} />
-            <meta name='description' content={moduleDescription} />
-          </Helmet>
-          <MainFrame {...mainFrameProps}>
-            {null}
-            {null}
-            <CatalogSep />
-            {isShownPalette && <Palette />}
-          </MainFrame>
-        </div>
-      </BackgroundImage>
+      <div className='SkillsExchangeSearch'>
+        <Helmet>
+          <html lang={languageStore} />
+          <meta charSet='utf-8' />
+          <title>{moduleCapture}</title>
+          <link rel='canonical' href={canonicalUrl} />
+          <meta name='description' content={moduleDescription} />
+        </Helmet>
+        <MainFrame {...mainFrameProps}>
+          {null}
+          {null}
+          <SearchGroupSep />
+          {isShownPalette && <Palette />}
+          <BackgroundImage {...backgroundImageProps}>
+            <div></div>
+          </BackgroundImage>
+        </MainFrame>
+      </div>
     )
   }

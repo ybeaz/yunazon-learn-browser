@@ -40,6 +40,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
             {null}
             <StubUserGoodbye />
             {null}
+            {null}
           </MainFrame>
         </div>
       </BackgroundImage>

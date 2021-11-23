@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { Image } from './Image'
 import { Button } from './Button'
 import { IconReact } from './IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -59,6 +60,28 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       captureLeft: DICTIONARY['Next'][language],
     }
 
+    const collageImageFace = {
+      classAdded: 'Image_collageImageFace',
+      src: 'https://yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          { childName: 'SkillExchangeIntro', isActive: false, childProps: {} },
+        ],
+      },
+    }
+
+    const collageImageIndustries = {
+      classAdded: 'Image_collageImageIndustries',
+      src: 'https://yourails.com/images/collage-icon-industries-211122-YxY-51.jpg',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          { childName: 'SkillExchangeIntro', isActive: false, childProps: {} },
+        ],
+      },
+    }
+
     return (
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
@@ -69,7 +92,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           {DICTIONARY['Over_3_million_members'][language]}
         </h2>
         <div className='__textBlock'>
-          <div className='_row'>
+          <div className='_row p_2_0'>
             <div className='_col _bg_color_1'>
               <div className='_text'>
                 {DICTIONARY['Get_intro_knowledge_and_answers'][language]}
@@ -124,6 +147,42 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               </div>
             </li>
           </ul>
+          <div className='_row'>
+            <div className='_col _center p_2_1_0_1'>
+              <h2 className='_titleSection'>
+                {
+                  DICTIONARY['Users_are_ready_to_start_a_conversation'][
+                    language
+                  ]
+                }{' '}
+                {DICTIONARY['Everybody_is_protected'][language]}
+              </h2>
+              <Image {...collageImageFace} />
+            </div>
+            <div className='_col _center p_2_1_0_1'>
+              <h2 className='_titleSection'>
+                {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
+                {DICTIONARY['You_don_t_need_to_wait'][language]}
+              </h2>
+              <Image {...collageImageIndustries} />
+            </div>
+          </div>
+          <div className='_row'>
+            <div className='_col _center p_2_1_0_1'>
+              <h2 className='_titleSection'>
+                {
+                  DICTIONARY['You_can_find_a_person_of_your_interests'][
+                    language
+                  ]
+                }{' '}
+                {
+                  DICTIONARY['who_is_ready_to_answer_your_question_right_now'][
+                    language
+                  ]
+                }
+              </h2>
+            </div>
+          </div>
         </div>
         <div className='_button'>
           <Button {...buttonNextProps} />
@@ -131,3 +190,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       </div>
     )
   }
+
+/*
+  Showing your image is your preference. Everybody is protected
+*/

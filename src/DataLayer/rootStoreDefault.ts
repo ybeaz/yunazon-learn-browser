@@ -62,7 +62,7 @@ export const rootStoreDefault = {
     lastName: '',
     sendTo: '',
     sendCc: '',
-    catalogSep: {
+    searchFormSep: {
       selectSkillsOffered: [],
       selectSkillsRequired: '',
       selectCountryRequired: [],

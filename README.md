@@ -90,6 +90,8 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
    3. reducers
    4. sagas
    5. connectors
+7. Using predefined mixins
+   1. `src/ViewLayer/Styles/mixins.style.less` defines a set of mixins for paddings and margins with a pattern `.p_y_x`, `.p_t_r_b_l`, `.m_y_x`, `.m_t_r_b_l`
 
 ## MongoDB collections
 
