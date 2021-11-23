@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { ReactElement } from 'react'
+import { useHistory } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
+import { IAction } from '../../Interfaces/IAction'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { ICONS_SIMPLE } from '../../Constants/iconsSimpleShort.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { ICategory } from '../../Interfaces/ICategory'
 import { Button } from './Button'
 
 interface IGetCategorisJsx {
-  (categories: ICategory[]): ReactElement[]
+  (categories: ICategory[], language: string): ReactElement[]
 }
 
 interface CategoryCatalogArgs {}
@@ -15,7 +18,10 @@ interface CategoryCatalogArgs {}
 export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   props: CategoryCatalogArgs
 ): JSX.Element => {
-  const getCategorisJsx: IGetCategorisJsx = categories2 =>
+  const history = useHistory()
+  const { language } = useSelector((store2: IRootStore) => store2)
+
+  const getCategorisJsx: IGetCategorisJsx = (categories2, language2) =>
     categories2.map((item: ICategory) => {
       const { icon } = item
 
@@ -23,6 +29,12 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
         icon,
         icon2: null,
         classAdded: 'Button_CategoryCatalog',
+        tooltipText: item[language2],
+        tooltipPosition: 'bottom',
+        action: {
+          typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+          data: { history, path: '/goodbye' },
+        } as IAction,
       }
 
       return <Button {...buttonProps} />
@@ -41,6 +53,8 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   const categoriesNext = [...CATEGORIES, ...categoriesFromIcons]
 
   return (
-    <div className='CategoryCatalog'>{getCategorisJsx(categoriesNext)}</div>
+    <div className='CategoryCatalog'>
+      {getCategorisJsx(categoriesNext, language)}
+    </div>
   )
 }
