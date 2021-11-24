@@ -16,8 +16,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Каждый защищен',
   },
   There_are_people_for_all_major_topics: {
-    en: 'There are people for many themes.',
-    ru: 'Есть пользователи по многим направлениям.',
+    en: 'People with knowledge of many themes are already here.',
+    ru: 'Пользователи по многим темам уже здесь.',
   },
   You_don_t_need_to_wait: {
     en: "You don't need to wait",
@@ -94,7 +94,7 @@ export const DICTIONARY: IDictionary = {
         <br />
         from over 175 countries
         <br />
-        practicing more than 11000 skills to exchange!
+        offers more than 11000 skills to exchange!
       </>
     ),
     ru: (
@@ -108,7 +108,7 @@ export const DICTIONARY: IDictionary = {
     ),
   },
   Get_intro_knowledge_and_answers: {
-    en: 'Get intro answers ane knowledge in real time',
+    en: 'Get intro answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
   },
   Share_your_knowledge: {
