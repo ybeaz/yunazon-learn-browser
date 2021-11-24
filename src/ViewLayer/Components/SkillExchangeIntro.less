@@ -5,20 +5,21 @@
   .__title01 {
     display: flex;
     justify-content: center;
+    text-align: center;
     font-size: @fontSizeH1;
   }
 
   .__title02 {
     display: flex;
     justify-content: center;
-    font-size: @fontSizeS;
+    font-size: @fontSize;
     font-weight: bold;
+    padding: 0 0 1rem 0;
     margin: 0;
   }
 
   ._button {
     display: flex;
-    padding: 1rem 0 2rem 0;
   }
 
   .__textBlock {
@@ -33,17 +34,25 @@
       ._col {
         display: flex;
         flex-direction: column;
-        flex: 1;
+        justify-content: start;
 
-        ._text {
-          color: white;
-          padding: 1rem 2rem;
-          text-align: center;
+        ._h2 {
+          display: flex;
+          font-size: @fontSizeH2;
         }
 
-        ._titleSection {
+        ._text {
           display: flex;
-          font-size: @fontSize;
+        }
+
+        ._iconAndText {
+          display: flex;
+
+          ._text {
+            display: flex;
+            text-align: start;
+            padding: 0 0.3rem;
+          }
         }
       }
       ._col:empty {
@@ -108,15 +117,55 @@
   }
 
   ._bg_color_1 {
-    background-color: red;
+    background: linear-gradient(
+      312.55deg,
+      rgba(102, 153, 255, 0.15) 0%,
+      rgba(0, 60, 197, 0.15) 100%
+    );
   }
 
   ._bg_color_2 {
-    background-color: blueviolet;
+    background: linear-gradient(
+      332.72deg,
+      rgba(68, 208, 161, 0.15) 0%,
+      rgba(102, 153, 255, 0.15) 100%
+    );
   }
 
   ._bg_color_3 {
-    background-color: yellowgreen;
+    background: linear-gradient(
+      152.46deg,
+      rgba(255, 202, 94, 0.15) 0%,
+      rgba(68, 208, 161, 0.15) 100%
+    );
+  }
+
+  ._bg_color_4 {
+    background: linear-gradient(
+      338.54deg,
+      rgba(255, 180, 0, 0.15) 0%,
+      rgba(153, 0, 153, 0.15) 100%
+    );
+  }
+
+  ._bg_color_5 {
+    background: linear-gradient(216deg, #f0ddf1, #dde6f2);
+  }
+
+  ._asym_corners {
+    border-radius: 1rem 3rem 1rem 3rem;
+    margin: 0 0.5rem;
+  }
+
+  ._flex_1 {
+    flex: 1;
+  }
+
+  ._bordered {
+    border: solid 1px lightgrey;
+    justify-content: center;
+    border-radius: 0.5rem;
+    ._bg_color_5;
   }
 
   ._mobileVisible {
@@ -142,7 +191,7 @@
         flex-direction: column;
 
         ._col {
-          justify-content: center;
+          margin: 0.2rem 0.5rem;
         }
       }
 

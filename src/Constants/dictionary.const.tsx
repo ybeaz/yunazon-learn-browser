@@ -7,6 +7,14 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Enjoy_good_company_while_receiving_and_giving_help: {
+    en: 'Enjoy good company while receiving and giving help',
+    ru: 'Наслаждайтесь хорошей компанией, получая и оказывая помощь',
+  },
+  real_people_is_talking_to_you: {
+    en: 'Here, real people is talking to you, not chat bots.',
+    ru: 'Здесь с вами говорят живые люди, а не чат боты.',
+  },
   Users_are_ready_to_start_a_conversation: {
     en: 'Users are ready to start a conversation on topics of mutual interests.',
     ru: 'Пользователи готовы начать общаться по темам взаимных интересов.',
@@ -111,6 +119,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Get intro answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
   },
+  Get_answers_and_knowledge_in_real_time: {
+    en: 'Get answers and knowledge in real time',
+    ru: 'Получайте ответы и знания в реальном времени',
+  },
   Share_your_knowledge: {
     en: 'Share your experience',
     ru: 'Делитесь своим опытом',
@@ -123,9 +135,17 @@ export const DICTIONARY: IDictionary = {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
   },
+  Make_acquaintances_by_interests: {
+    en: 'Make new acquaintances by interests',
+    ru: 'Приобретайте новые знакомства по интересам',
+  },
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
+  },
+  Communicate_and_practice_foreign_languages: {
+    en: 'Communicate and practice foreign languages',
+    ru: 'Общайтесь и практикуйте иностранные языки',
   },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \

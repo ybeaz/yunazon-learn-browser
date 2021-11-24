@@ -1,4 +1,11 @@
 import {
+  MdOutlineBorderInner,
+  MdConnectWithoutContact,
+  MdDevicesOther,
+  MdPhonelinkSetup,
+  MdOpenInBrowser,
+  MdArrowRight,
+  MdKeyboardArrowRight,
   MdSportsBar,
   MdDesignServices,
   MdFastfood,
@@ -50,6 +57,7 @@ import {
 } from 'react-icons/bs'
 import { CgDarkMode } from 'react-icons/cg'
 import {
+  FaMountain,
   FaPhp,
   FaLinux,
   FaTheaterMasks,
@@ -71,14 +79,23 @@ import {
   IoChatbubblesOutline,
 } from 'react-icons/io5'
 
+import { RiVoiceprintFill } from 'react-icons/ri'
+
 import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
-  FaPhp,
+  FaMountain,
+  MdOutlineBorderInner,
+  MdConnectWithoutContact,
+  RiVoiceprintFill,
+  MdDevicesOther,
+  MdPhonelinkSetup,
+  MdOpenInBrowser,
+  MdArrowRight,
+  MdKeyboardArrowRight,
   IoLogoPython,
   IoLogoJavascript,
-  FaLinux,
   BsMicrosoft,
   AiFillApple,
   FaTheaterMasks,
