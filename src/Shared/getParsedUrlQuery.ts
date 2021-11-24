@@ -5,7 +5,10 @@
  */
 export const getParsedUrlQuery: Function = (url: string): any => {
   if (!url) url = location.search
-  var query = url.substr(1)
+  if (!url.length) return {}
+
+  var query = url.substring(1)
+
   var result = {}
   query.split('&').forEach(function (part) {
     var item = part.split('=')

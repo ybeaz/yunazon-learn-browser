@@ -120,7 +120,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     selectSkillsRequiredProps: {
       // allowClear: true,
       componentId: nanoid(),
-      defaultValue: [],
+      value: [selectSkillsRequired],
       filterOption,
       mode: null,
       onBlur: stubOnAction,

@@ -71,10 +71,10 @@ import {
   IoChatbubblesOutline,
 } from 'react-icons/io5'
 
-import { ICONS_SIMPLE } from './iconsSimpleShort.const'
+import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
-  ...ICONS_SIMPLE,
+  ...ICONS_PROGRAMMING,
   FaPhp,
   IoLogoPython,
   IoLogoJavascript,

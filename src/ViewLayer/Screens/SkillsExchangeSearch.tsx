@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -14,6 +15,7 @@ interface SkillsExchangeSearchProps {
   routeProps: {
     location: {
       pathname: string
+      search: string
     }
   }
   themeDafault: string
@@ -29,11 +31,25 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       componentsState: { isShownSkillExchangeIntro, isShownPalette },
     } = store
 
-    const { themeDafault } = props
+    const {
+      routeProps: {
+        location: { search },
+      },
+      themeDafault,
+    } = props
+
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
+
       isShownSkillExchangeIntro &&
         handleEvents({}, { typeEvent: 'SEP_INTRO_IN' })
+
+      const query = getParsedUrlQuery(search)
+      query.ssr &&
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: query.ssr }
+        )
     }, [])
 
     const moduleCapture = 'Exchange your skills, save your time'
