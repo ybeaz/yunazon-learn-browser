@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { ICONS_SIMPLE } from '../../Constants/iconsSimpleShort.const'
+import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { ICategory } from '../../Interfaces/ICategory'
 import { Button } from './Button'
@@ -41,14 +41,16 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
     })
 
   const getCategoriesFromIcons = icons => {
-    return Object.keys(icons).map(iconName => ({
-      icon: iconName,
-      en: '',
-      ru: '',
-    }))
+    return Object.keys(icons)
+      .sort((a, b) => a.localeCompare(b))
+      .map(iconName => ({
+        icon: iconName,
+        en: iconName.slice(2),
+        ru: iconName.slice(2),
+      }))
   }
 
-  const categoriesFromIcons = getCategoriesFromIcons(ICONS_SIMPLE)
+  const categoriesFromIcons = getCategoriesFromIcons(ICONS_PROGRAMMING)
 
   const categoriesNext = [...CATEGORIES, ...categoriesFromIcons]
 
