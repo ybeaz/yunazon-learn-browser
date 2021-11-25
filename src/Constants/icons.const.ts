@@ -79,10 +79,14 @@ import {
 
 import { RiVoiceprintFill } from 'react-icons/ri'
 
+import { SiAppstore, SiGoogleplay } from 'react-icons/si'
+
 import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  SiAppstore,
+  SiGoogleplay,
   FaRegSmileWink,
   MdOutlineBorderInner,
   MdConnectWithoutContact,

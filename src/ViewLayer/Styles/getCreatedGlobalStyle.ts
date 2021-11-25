@@ -241,11 +241,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
-    .Button.Button_ThemeToggle .__button {
-      background: ${props2 =>
-        getColor(props2, 'colorSecondLighter2', medial, lighter2)};
-    }
-
     .Button_сontinueIntroSep .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
@@ -328,16 +323,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirst', medial, middle, 'Dark')};
     }
 
-    .Button_AddCourse .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle)};
-    }
-
-    .Button_personalCabinet .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle)};
-    }
-
     .Button_CallForActionMatrix .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
@@ -418,10 +403,21 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Button_MdMenu ._in {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+    .Button_MdMenu .__button,
+    .Button_AddCourse .__button,
+    .Button_personalCabinet .__button,
+    .Button_ThemeToggle .__button {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle)};
+        theme === 'Dark'
+          ? getColor(props2, 'colorSecond', medial, middle)
+          : 'rgb(245, 246, 250)'};
+    }
+
+    .Button_MdMenu ._in,
+    .Button_AddCourse ._in,
+    .Button_personalCabinet ._in,
+    Button_ThemeToggle ._in {
+      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
     .Button_MdPerson .__button {
@@ -505,7 +501,9 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .HeaderFrame {
       background-color: ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle)};
+        theme === 'Dark'
+          ? getColor(props2, 'colorSecond', medial, middle)
+          : 'rgb(245, 246, 250)'};
     }
 
     body {

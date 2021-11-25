@@ -95,23 +95,25 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
 
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
-      <div className='__left'>
-        {props.children[0]}
-        <LogoGroup brandName={brandName} />
-      </div>
-      <div className='__main'>{props.children[1]}</div>
-      <div className='__right'>
-        <div className='_itemButtonAddCourse'>
-          <Button {...buttonAddCourseProps} />
+      <div className='_content'>
+        <div className='__left'>
+          {props.children[0]}
+          <LogoGroup brandName={brandName} />
         </div>
-        <div className='_itemButtonAuthUser'>
-          <Button {...buttonAuthUser} />
-        </div>
-        <div className='_itemLanguageSelect'>
-          <SelectLanguage {...selectLanguageProps} />
-        </div>
-        <div className='_itemButtonThemeToggle'>
-          <Button {...buttonThemeToggle} />
+        <div className='__main'>{props.children[1]}</div>
+        <div className='__right'>
+          <div className='_itemButtonAddCourse'>
+            <Button {...buttonAddCourseProps} />
+          </div>
+          <div className='_itemButtonAuthUser'>
+            <Button {...buttonAuthUser} />
+          </div>
+          <div className='_itemLanguageSelect'>
+            <SelectLanguage {...selectLanguageProps} />
+          </div>
+          <div className='_itemButtonThemeToggle'>
+            <Button {...buttonThemeToggle} />
+          </div>
         </div>
       </div>
       <ModalFrames />

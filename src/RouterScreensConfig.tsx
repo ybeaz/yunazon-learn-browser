@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { routes } from './Constants/routes.const'
@@ -34,7 +34,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         page: string
         themeDafault: string
       }[]
-    ): JSX.Element[]
+    ): ReactElement[]
   }
 
   const getRoutes: IGetRoutes = routesArg =>

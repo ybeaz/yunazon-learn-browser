@@ -1,55 +1,60 @@
 .HeaderFrame {
   display: flex;
-  flex-direction: row;
-  padding: 1rem 0 1rem 0;
 
-  .__left {
+  ._content {
     display: flex;
-    flex: 2;
-    align-items: start;
-  }
+    flex: 1;
+    flex-direction: row;
+    padding: 0.7rem 1rem;
 
-  .__main {
-    display: flex;
-    flex: 6;
-    justify-content: center;
-    align-items: start;
-  }
-
-  .__right {
-    display: flex;
-    flex: 3;
-    justify-content: flex-end;
-    align-items: start;
-
-    ._itemButton {
+    .__left {
       display: flex;
-      flex-direction: row;
+      flex: 2;
+      align-items: center;
+    }
+
+    .__main {
+      display: flex;
+      flex: 6;
       justify-content: center;
       align-items: center;
     }
 
-    ._itemButtonAddCourse {
-      ._itemButton;
-      padding: 0 0.5rem 0 0;
-    }
+    .__right {
+      display: flex;
+      flex: 3;
+      justify-content: flex-end;
+      align-items: center;
 
-    ._itemButtonAuthUser {
-      ._itemButton;
-      padding: 0 0.5rem 0 0;
-    }
-
-    ._itemLanguageSelect {
-      ._itemButton;
-
-      &:nth-child(1) {
-        padding: 0 0 0 0;
+      ._itemButton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
       }
-    }
 
-    ._itemButtonThemeToggle {
-      ._itemButton;
-      padding: 0 0.5rem 0.25rem 0.5rem;
+      ._itemButtonAddCourse {
+        ._itemButton;
+        padding: 0 0.5rem 0 0;
+      }
+
+      ._itemButtonAuthUser {
+        ._itemButton;
+        padding: 0 0.5rem 0 0;
+      }
+
+      ._itemLanguageSelect {
+        ._itemButton;
+
+        &:nth-child(1) {
+          padding: 0 0 0 0;
+        }
+      }
+
+      ._itemButtonThemeToggle {
+        ._itemButton;
+        padding: 0 0.5rem 0.25rem 0.5rem;
+      }
     }
   }
 
@@ -58,45 +63,54 @@
   @media @desktop, @desktop-strict {
   }
   @media @tablet, @tablet-strict {
-    padding: 1rem 1rem 1rem 1rem;
+    ._content {
+      padding: 1rem 1rem 1rem 1rem;
+    }
   }
   @media @phone, @phone-strict {
-    padding: 1rem 0rem 1rem 1rem;
+    ._content {
+      padding: 1rem 1rem 1rem 1rem;
 
-    .__left {
-    }
+      .__left {
+      }
 
-    .__main {
-    }
+      .__main {
+        flex: 0;
+      }
 
-    .__right {
-      display: none;
+      .__right {
+        display: none;
+      }
     }
   }
 }
 
 .HeaderFrame_AcademyPresent {
   @media @tablet, @tablet-strict {
-    padding: 1rem 1rem 1rem 1rem;
-    .__left {
-    }
+    ._content {
+      display: flex;
+      padding: 1rem 1rem 1rem 1rem;
 
-    .__main {
-      display: none;
-    }
+      .__left {
+      }
 
-    .__right {
-    }
-  }
-  @media @phone, @phone-strict {
-    .__left {
-    }
+      .__main {
+        display: none;
+      }
 
-    .__main {
-      display: none;
+      .__right {
+      }
     }
+    @media @phone, @phone-strict {
+      .__left {
+      }
 
-    .__right {
+      .__main {
+        display: none;
+      }
+
+      .__right {
+      }
     }
   }
 }
