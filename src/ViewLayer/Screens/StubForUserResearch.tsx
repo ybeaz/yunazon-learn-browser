@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, ReactElement } from 'react'
 
+import { LogoGroup } from '../Components/LogoGroup'
+import { FooterFrame } from '../Frames/FooterFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame'
 import { BackgroundImage } from '../Frames/BackgroundImage'
@@ -22,8 +24,9 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
     }, [])
 
-    const backgroundImageProps = {
-      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    const headerFrameProps = {
+      brandName: 'YourRails',
+      contentComponentName: '',
     }
 
     const mainFrameProps = {
@@ -32,9 +35,37 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       brandName: 'YourRails',
     }
 
+    const backgroundImageProps = {
+      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    }
+
     return (
-      <BackgroundImage {...backgroundImageProps}>
-        <div className='StubForUserResearch'>
+      <div className='StubForUserResearch'>
+        <MainFrame {...mainFrameProps}>
+          {/* header */}
+          <HeaderFrame {...headerFrameProps}>
+            {null}
+            <LogoGroup brandName={'YourRails'} />
+          </HeaderFrame>
+          {/* middle-left */}
+          {null}
+          {/* middle-main */}
+          <StubUserGoodbye />
+          {/* middle-right */}
+          {null}
+          {/* footer */}
+          <FooterFrame>
+            <BackgroundImage {...backgroundImageProps}>
+              <div></div>
+            </BackgroundImage>
+          </FooterFrame>
+        </MainFrame>
+      </div>
+    )
+  }
+
+/*
+
           <MainFrame {...mainFrameProps}>
             {null}
             {null}
@@ -42,7 +73,5 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
             {null}
             {null}
           </MainFrame>
-        </div>
-      </BackgroundImage>
-    )
-  }
+
+*/

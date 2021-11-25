@@ -2,6 +2,10 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { LogoGroup } from '../Components/LogoGroup'
+import { Button } from '../Components/Button'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { ContentPlate } from '../Components/ContentPlate'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
@@ -16,6 +20,8 @@ import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
+
+  const screenType = 'AcademyMatrix'
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
@@ -38,7 +44,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
         contentID,
         duration,
       } = modules[0]
-      const screenType = 'AcademyMatrix'
+
       const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
@@ -66,9 +72,21 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
     item.searchString.includes(searchInput)
   )
 
+  const headerFrameProps = {
+    brandName: 'YourRails',
+    contentComponentName: 'SearchFormSep',
+  }
+
   const mainFrameProps = {
-    contentComponentName: 'AcademyMatrix',
-    brandName: 'YourRails Academy',
+    screenType,
+  }
+
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
   }
 
   return (
@@ -81,6 +99,27 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
         <meta name='description' content={descriptionSite} />
       </Helmet>
       <MainFrame {...mainFrameProps}>
+        {/* header */}
+        <HeaderFrame {...headerFrameProps}>
+          <Button {...buttonMdMenuProps} />
+          <LogoGroup brandName={'YourRails Academy'} />
+          <SearchGroup />
+        </HeaderFrame>
+        {/* middle-left */}
+        {null}
+        {/* middle-main */}
+        {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
+          <div>{getPlateMatix(coursesFiltered)}</div>
+        ) : null}
+        {/* middle-right */}
+        {null}
+        {/* footer */}
+        {null}
+      </MainFrame>
+      <SideNavigation />
+
+      {/* 
+      <MainFrame {...mainFrameProps}>
         <SearchGroup />
         {null}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
@@ -88,7 +127,8 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
         ) : null}
         {null}
         {null}
-      </MainFrame>
+      </MainFrame> 
+      */}
     </div>
   )
 }

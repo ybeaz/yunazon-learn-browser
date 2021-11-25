@@ -68,6 +68,7 @@
       flex-direction: row;
       ._capture_left {
         padding: 0 0.3rem 0 0;
+        line-height: 1.1;
       }
       ._icon {
         height: 1.5rem;
@@ -75,6 +76,7 @@
       }
       ._capture_right {
         padding: 0 0 0 0.3rem;
+        line-height: 1.1;
       }
     }
   }
@@ -85,9 +87,41 @@
   }
 }
 
+.Button_SiAppstore {
+  flex: 1;
+  padding: 0;
+  align-items: center;
+  .__button {
+    padding: 0 0.5rem;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      ._capture_left {
+      }
+      ._icon {
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_SiGoogleplay {
+  .Button_SiAppstore;
+}
+
 .Button_CategoryCatalog {
   flex: 1;
-  padding: 0 0 0 0;
+  padding: 0;
   align-items: center;
   .__button {
     &:active,
@@ -104,8 +138,8 @@
       ._capture_left {
       }
       ._icon {
-        height: 5rem;
-        width: 5rem;
+        height: 4rem;
+        width: 4rem;
       }
       ._capture_right {
       }

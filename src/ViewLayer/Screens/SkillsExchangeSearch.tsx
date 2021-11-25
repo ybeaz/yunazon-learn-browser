@@ -2,6 +2,11 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { LogoGroup } from '../Components/LogoGroup'
+import { Button } from '../Components/Button'
+import { FooterFrame } from '../Frames/FooterFrame'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
@@ -55,10 +60,22 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const moduleCapture = 'Exchange your skills, save your time'
     const moduleDescription = 'Exchange your skills, save your time'
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
+
+    const headerFrameProps = {
+      brandName: 'YourRails',
+      contentComponentName: 'SearchFormSep',
+    }
+
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearch',
-      contentComponentName: 'SearchFormSep',
-      brandName: 'YourRails',
+    }
+
+    const buttonMdMenuProps = {
+      icon: 'MdMenu',
+      classAdded: 'Button_MdMenu',
+      action: {
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+      },
     }
 
     const backgroundImageProps = {
@@ -75,14 +92,25 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           <meta name='description' content={moduleDescription} />
         </Helmet>
         <MainFrame {...mainFrameProps}>
+          {/* header */}
+          <HeaderFrame {...headerFrameProps}>
+            <Button {...buttonMdMenuProps} />
+            <LogoGroup brandName={'YourRails'} />
+          </HeaderFrame>
+          {/* middle-left */}
           {null}
-          {null}
+          {/* middle-main */}
           <SearchGroupSep />
+          {/* middle-right */}
           {isShownPalette && <Palette />}
-          <BackgroundImage {...backgroundImageProps}>
-            <div></div>
-          </BackgroundImage>
+          {/* footer */}
+          <FooterFrame>
+            <BackgroundImage {...backgroundImageProps}>
+              <div></div>
+            </BackgroundImage>
+          </FooterFrame>
         </MainFrame>
+        <SideNavigation />
       </div>
     )
   }

@@ -7,7 +7,6 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
-import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
@@ -98,9 +97,9 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       <div className='_content'>
         <div className='__left'>
           {props.children[0]}
-          <LogoGroup brandName={brandName} />
+          {props.children[1]}
         </div>
-        <div className='__main'>{props.children[1]}</div>
+        <div className='__main'>{props.children[2]}</div>
         <div className='__right'>
           <div className='_itemButtonAddCourse'>
             <Button {...buttonAddCourseProps} />

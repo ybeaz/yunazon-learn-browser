@@ -2,6 +2,10 @@ import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { LogoGroup } from '../Components/LogoGroup'
+import { Button } from '../Components/Button'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -151,11 +155,6 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     height,
   })
 
-  const mainFrameProps = {
-    contentComponentName,
-    brandName: 'YourRails Academy',
-  }
-
   const contentComponentProps = {
     ReaderIframe: {
       contentID,
@@ -212,6 +211,23 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     contentComponentName,
   }
 
+  const headerFrameProps = {
+    brandName: 'YourRails',
+    contentComponentName: 'SearchFormSep',
+  }
+
+  const mainFrameProps = {
+    screenType,
+  }
+
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
+  }
+
   return (
     <div className='AcademyPresent'>
       {isLoaded === true ? (
@@ -224,17 +240,26 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
             <meta name='description' content={moduleDescription} />
           </Helmet>
           <MainFrame {...mainFrameProps}>
+            {/* header */}
+            <HeaderFrame {...headerFrameProps}>
+              <Button {...buttonMdMenuProps} />
+              <LogoGroup brandName={'YourRails Academy'} />
+            </HeaderFrame>
+            {/* middle-left */}
             {null}
-            {null}
+            {/* middle-main */}
             <CONTENT_ASSIGNED_COMPONENT
               {...contentComponentProps[contentComponentName]}
             >
               <LoaderBlurhash {...loaderBlurhashProps} />
               <PlayerPanel {...playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
+            {/* middle-right */}
             <CarouselQuestions />
+            {/* footer */}
             {null}
           </MainFrame>
+          <SideNavigation />
           <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>
       ) : null}
