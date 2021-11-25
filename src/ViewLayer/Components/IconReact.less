@@ -23,14 +23,53 @@
   }
 }
 
+.IconReact_FaRegSmileWink {
+  padding: 0.2rem 0 0 0;
+}
+
+.IconReact_MdPause {
+  .IconReact_FaRegSmileWink;
+}
+
+.IconReact_MdOutlineBorderInner {
+  .IconReact_FaRegSmileWink;
+}
+
+.IconReact_RiVoiceprintFill {
+  .IconReact_FaRegSmileWink;
+}
+
+.IconReact_MdDevicesOther {
+  .IconReact_FaRegSmileWink;
+  ._icon {
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+}
+
 .IconReact_ArrowRight {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
 
   ._icon {
     height: 5rem;
     width: 5rem;
+    margin: -1rem;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._icon {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
   }
 }
 

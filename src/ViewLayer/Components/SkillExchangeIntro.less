@@ -14,8 +14,6 @@
     justify-content: center;
     font-size: @fontSize;
     font-weight: bold;
-    padding: 0 0 1rem 0;
-    margin: 0;
   }
 
   ._button {
@@ -154,7 +152,6 @@
 
   ._asym_corners {
     border-radius: 1rem 3rem 1rem 3rem;
-    margin: 0 0.5rem;
   }
 
   ._flex_1 {
@@ -170,6 +167,30 @@
 
   ._mobileVisible {
     display: none;
+  }
+
+  ._p6_Media {
+    padding: 2rem 0 2rem 0;
+  }
+
+  ._p5_Media {
+    padding: 2rem 0 0 0;
+  }
+
+  ._p4_Media {
+    padding: 0 1rem 0 0;
+  }
+
+  ._p3_Media {
+    padding: 0 0 0 1rem;
+  }
+
+  ._p2_Media {
+    padding: 1rem 0 0 30%;
+  }
+
+  ._p1_Media {
+    padding: 1rem 0 0 0;
   }
 
   @media @large {
@@ -196,8 +217,32 @@
       }
 
       ._text {
-        padding: 0.3rem 1rem;
+        padding: 0.3rem 0;
       }
+    }
+
+    ._p6_Media {
+      padding: 1rem 0 2rem 0;
+    }
+
+    ._p5_Media {
+      padding: 3rem 0 0 0;
+    }
+
+    ._p4_Media {
+      padding: 0 0 1rem 0;
+    }
+
+    ._p3_Media {
+      padding: 0 0 0 0;
+    }
+
+    ._p2_Media {
+      padding: 1rem 0 0 0;
+    }
+
+    ._p1_Media {
+      padding: 0 0 0 0;
     }
   }
 }

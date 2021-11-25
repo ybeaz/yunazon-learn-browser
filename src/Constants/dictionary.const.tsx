@@ -16,8 +16,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Наслаждайтесь хорошей компанией, получая и оказывая помощь',
   },
   real_people_is_talking_to_you: {
-    en: 'Here, real people is talking to you, not chat bots.',
-    ru: 'Здесь с вами говорят живые люди, а не чат боты.',
+    en: 'Here, real people is talking to you, not chat bots or robots.',
+    ru: 'Здесь с вами говорят живые люди, а не чат боты или роботы.',
   },
   Users_are_ready_to_start_a_conversation: {
     en: 'Users are ready to start a conversation on topics of mutual interests.',

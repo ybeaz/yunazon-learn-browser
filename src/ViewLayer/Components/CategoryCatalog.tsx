@@ -56,7 +56,10 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
 
   return (
     <div className='CategoryCatalog'>
-      {getCategorisJsx(categoriesNext, language)}
+      <h2 className='_title padding: p_2_0_1_0'>Catalog of Topics</h2>
+      <div className='_catalogIcons'>
+        {getCategorisJsx(categoriesNext, language)}
+      </div>
     </div>
   )
 }

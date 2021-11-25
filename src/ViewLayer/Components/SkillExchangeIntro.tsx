@@ -128,9 +128,16 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           {DICTIONARY['Knowledge_and_experience'][language]}{' '}
           {DICTIONARY['directly_from_people'][language]}
         </h1>
-        <h2 className='__title02'>
-          {DICTIONARY['Over_3_million_members'][language]}
-        </h2>
+
+        <div className='__textBlock'>
+          <div className='_row'>
+            <div className='_col _p2_Media'>
+              <h2 className='__title02'>
+                {DICTIONARY['Over_3_million_members'][language]}
+              </h2>
+            </div>
+          </div>
+        </div>
 
         <div className='__textBlock'>
           <div className='_row p_2_0_0_0'>
@@ -146,18 +153,18 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
           </div>
           <div className='_row p_2_0'>
-            <div className='_col _flex_1 _bg_color_1 _asym_corners p_1_2'>
+            <div className='_col _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_2 _asym_corners p_1_2'>
+            <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge'][language]}{' '}
                 {DICTIONARY['and_skills'][language]}
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_3 _asym_corners p_1_2'>
+            <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Make_acquaintances_by_interests'][language]}
               </div>
@@ -178,12 +185,12 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         </div>
 
         <div className='__textBlock'>
-          <div className='_row p_2_0_0_0'>
+          <div className='_row _p5_Media'>
             <div className='_col'>
               <h2 className='_h2'>How does it work?</h2>
             </div>
           </div>
-          <div className='_row p_2_0'>
+          <div className='_row _p6_Media'>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>Choose</div>
               <div className='_iconAndText'>
@@ -257,20 +264,20 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         </div>
 
         <div className='__textBlock'>
-          <div className='_row p_2_0_0_0'>
+          <div className='_row _p1_Media'>
             <div className='_col'>
               <h2 className='_h2'>Features</h2>
             </div>
           </div>
           <div className='_row'>
-            <div className='_col _flex_1 _center p_2_1_0_0'>
+            <div className='_col _flex_1 _center _p4_Media'>
               <h2 className='_text'>
                 {DICTIONARY['real_people_is_talking_to_you'][language]}{' '}
                 {DICTIONARY['Everybody_is_protected'][language]}
               </h2>
               <Image {...collageImageFace} />
             </div>
-            <div className='_col _flex_1 _center p_2_0_0_1'>
+            <div className='_col _flex_1 _center _p3_Media'>
               <h2 className='_text'>
                 {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
                 {DICTIONARY['You_don_t_need_to_wait'][language]}
