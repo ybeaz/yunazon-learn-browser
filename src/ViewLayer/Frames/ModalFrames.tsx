@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
@@ -16,13 +16,13 @@ const CHILDREN = {
   QuestionScores,
 }
 
-export const ModalFrames: React.FunctionComponent = (): JSX.Element => {
+export const ModalFrames: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: IRootStore) => store2)
   const {
     componentsState: { modalFrames },
   } = store
 
-  const getChildren: Function = (children: any[]): JSX.Element[] => {
+  const getChildren: Function = (children: any[]): ReactElement[] => {
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]

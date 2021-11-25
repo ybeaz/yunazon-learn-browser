@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, ReactElement } from 'react'
 
 import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'
 interface SuccessTriedArgs {
@@ -8,7 +8,7 @@ interface SuccessTriedArgs {
 
 export const SuccessTried: React.FunctionComponent<SuccessTriedArgs> = (
   props
-): JSX.Element => {
+): ReactElement => {
   const { tooltipText, tooltipPosition } = props
 
   const classTooltipAdd = {

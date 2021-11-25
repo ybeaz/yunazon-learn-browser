@@ -10,7 +10,7 @@ interface SearchGroupSepArgs {}
 
 export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   props: SearchGroupSepArgs
-): JSX.Element => {
+): ReactElement => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
   return (

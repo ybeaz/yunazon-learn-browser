@@ -8,7 +8,7 @@ interface StubUserGoodbyeArgs {}
 
 export const StubUserGoodbye: React.FunctionComponent<StubUserGoodbyeArgs> = (
   props: StubUserGoodbyeArgs
-): JSX.Element => {
+): ReactElement => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
   return (

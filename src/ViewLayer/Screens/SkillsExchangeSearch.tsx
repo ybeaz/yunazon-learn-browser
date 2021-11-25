@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
@@ -22,7 +22,7 @@ interface SkillsExchangeSearchProps {
 }
 
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
-  (props): JSX.Element => {
+  (props): ReactElement => {
     getEffectedRequests(['GET_GLOBAL_VARS'])
 
     const store = useSelector((store2: IRootStore) => store2)

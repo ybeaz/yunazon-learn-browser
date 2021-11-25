@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { IconContext } from 'react-icons'
 import { BsSquareFill, BsSquareHalf, BsSquare } from 'react-icons/bs'
@@ -11,7 +11,7 @@ const ICON = {
 
 export const FeatureBar: React.FunctionComponent<any> = (
   props: any
-): JSX.Element => {
+): ReactElement => {
   const {
     number = 2.5,
     total = 5,
@@ -39,7 +39,7 @@ export const FeatureBar: React.FunctionComponent<any> = (
     IconMain,
     IconHalf,
     IconRest
-  ): JSX.Element => {
+  ): ReactElement => {
     const icons = new Array(total).fill('true').map((item, index) => {
       let Icon = IconRest
       const base = total - index - 1

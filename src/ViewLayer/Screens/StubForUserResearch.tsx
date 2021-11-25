@@ -16,7 +16,7 @@ interface StubForUserResearchArgs {
 }
 
 export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArgs> =
-  (props: StubForUserResearchArgs): JSX.Element => {
+  (props: StubForUserResearchArgs): ReactElement => {
     const { themeDafault } = props
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import {
@@ -19,7 +19,7 @@ interface GlobalThemeArgs {
 
 export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
   props: GlobalThemeArgs
-): JSX.Element => {
+): ReactElement => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'

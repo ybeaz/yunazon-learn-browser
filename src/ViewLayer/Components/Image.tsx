@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { IAction } from '../../Interfaces/IAction'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -12,7 +12,7 @@ interface ImageArgs {
 
 export const Image: React.FunctionComponent<ImageArgs> = (
   props: ImageArgs
-): JSX.Element => {
+): ReactElement => {
   const { classAdded, src, handleEvents: handleEventsCustom, action } = props
 
   let handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents

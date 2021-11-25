@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { DICTIONARY, IDictionary } from '../../Constants/dictionary.const'
@@ -57,7 +57,7 @@ interface IGetStdDictionaryOptions {
 
 export const SearchFormSepChRP: React.FunctionComponent<any> = (
   props: any
-): JSX.Element => {
+): ReactElement => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
   const getExchangeSkillOptions: IGetExchangeSkillOptions = (

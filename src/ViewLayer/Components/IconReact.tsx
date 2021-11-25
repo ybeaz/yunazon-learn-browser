@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { IconContext } from 'react-icons'
 
 import { ICONS } from '../../Constants/icons.const'
@@ -11,7 +11,7 @@ interface IconReactArgs {
 
 export const IconReact: React.FunctionComponent<IconReactArgs> = (
   props: IconReactArgs
-): JSX.Element => {
+): ReactElement => {
   const { icon, icon2, classAdded } = props
 
   const Icon = ICONS[icon]

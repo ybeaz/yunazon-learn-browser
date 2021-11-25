@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
@@ -29,7 +29,7 @@ const COMPONENT = {
 
 export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
   props = { routeProps: {}, rootPath: '' }
-): JSX.Element => {
+): ReactElement => {
   const courseID = props?.routeProps.match.params.courseID
 
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`

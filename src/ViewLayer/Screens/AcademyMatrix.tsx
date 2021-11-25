@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
@@ -13,7 +13,7 @@ import { MainFrame } from '../Frames/MainFrame'
 import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 
-export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
+export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 
@@ -28,7 +28,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
     forms: { searchInput },
   } = store
 
-  const getPlateMatix: Function = (courses2: any[]): JSX.Element => {
+  const getPlateMatix: Function = (courses2: any[]): ReactElement => {
     const plates = courses2.map((item, i) => {
       const { courseID, capture: courseCapture, modules } = item
       const {

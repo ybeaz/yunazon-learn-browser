@@ -17,7 +17,7 @@ interface CategoryCatalogArgs {}
 
 export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   props: CategoryCatalogArgs
-): JSX.Element => {
+): ReactElement => {
   const history = useHistory()
   const { language } = useSelector((store2: IRootStore) => store2)
 

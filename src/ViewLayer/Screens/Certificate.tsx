@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -19,7 +19,7 @@ import { ShareButtons } from '../Components/ShareButtons'
 
 export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   props
-): JSX.Element => {
+): ReactElement => {
   const {
     routeProps: {
       match: {

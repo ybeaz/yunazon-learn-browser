@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { getInitializedVKontakteOAuth } from '../Hooks/getInitializedVKontakteOAuth'
@@ -13,7 +13,7 @@ export const AuthUser: React.FunctionComponent<any> = (
   props: any = {
     scenario: { branch: '', step: '' },
   }
-): JSX.Element => {
+): ReactElement => {
   const {
     scenario: { branch, step },
   } = props

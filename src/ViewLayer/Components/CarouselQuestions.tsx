@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -32,7 +32,7 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     numberQuestionsInSlide
   )
 
-  const getDots: Function = (questions: any[]): JSX.Element => {
+  const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
       const classNameToggleHighlight =
         index === questionsSlideNumber ? 'active' : ''
@@ -52,13 +52,13 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     return <div className='__dots'>{dotsJSX}</div>
   }
 
-  const getSlidesChunk: Function = (questions: any[]): JSX.Element[] => {
+  const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
     return questions.map(question => {
       return <CheckRadioGroup {...question} />
     })
   }
 
-  const getSlides: Function = (questionsChunked2: any[]): JSX.Element => {
+  const getSlides: Function = (questionsChunked2: any[]): ReactElement => {
     const questionsJSX = questionsChunked2.map((questions, index) => {
       const classNameToggleShow = index === questionsSlideNumber ? '_show' : ''
       return (

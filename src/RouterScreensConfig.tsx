@@ -72,7 +72,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         strict?: boolean
         exact?: boolean
       }[]
-    ): JSX.Element[]
+    ): ReactElement[]
   }
 
   const getRedirects: IGetRedirects = redirectsArg =>
@@ -90,7 +90,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       })()
     })
 
-  const getError404Route: Function = (): JSX.Element => {
+  const getError404Route: Function = (): ReactElement => {
     return (
       <Route
         component={() => {

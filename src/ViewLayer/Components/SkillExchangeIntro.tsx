@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Image } from './Image'
@@ -10,7 +10,7 @@ import { DICTIONARY } from '../../Constants/dictionary.const'
 interface SkillExchangeIntroArgs {}
 
 export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs> =
-  (props: SkillExchangeIntroArgs): JSX.Element => {
+  (props: SkillExchangeIntroArgs): ReactElement => {
     const { language } = useSelector((store2: IRootStore) => store2)
 
     const mdOutlineBorderInnerProps = {

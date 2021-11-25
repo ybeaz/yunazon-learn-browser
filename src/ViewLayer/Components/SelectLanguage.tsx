@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
@@ -19,7 +19,7 @@ interface SelectLanguageArgs {
 
 export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
   props: SelectLanguageArgs
-): JSX.Element => {
+): ReactElement => {
   const {
     languagesSelected,
     classAdded,

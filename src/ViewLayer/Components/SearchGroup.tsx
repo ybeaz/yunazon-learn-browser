@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { Input } from './Input'
 import { Button } from './Button'
 
 export const SearchGroup: React.FunctionComponent<any> = (
   props: any
-): JSX.Element => {
+): ReactElement => {
   const inputSearchProps = {
     classAdded: 'Input_search',
     type: 'text',

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ import { SelectLanguage } from './SelectLanguage'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Button } from './Button'
 
-export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
+export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: IRootStore) => store2)
   const {
     user,
@@ -72,7 +72,7 @@ export const SideNavigation: React.FunctionComponent = (): JSX.Element => {
     },
   ]
 
-  const getButtons: Function = (buttonPropsArr: any[]): JSX.Element[] => {
+  const getButtons: Function = (buttonPropsArr: any[]): ReactElement[] => {
     return buttonPropsArr.map(buttonProps => {
       return (
         <div className='_item'>

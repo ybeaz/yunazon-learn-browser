@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
@@ -169,7 +169,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
-  ): JSX.Element => {
+  ): ReactElement => {
     return (
       <ul className='_ul'>
         {questions.map(question => {
