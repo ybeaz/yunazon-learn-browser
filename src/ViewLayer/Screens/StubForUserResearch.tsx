@@ -63,15 +63,3 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       </div>
     )
   }
-
-/*
-
-          <MainFrame {...mainFrameProps}>
-            {null}
-            {null}
-            <StubUserGoodbye />
-            {null}
-            {null}
-          </MainFrame>
-
-*/

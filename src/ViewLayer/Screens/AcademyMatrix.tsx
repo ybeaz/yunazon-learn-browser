@@ -117,18 +117,6 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
         {null}
       </MainFrame>
       <SideNavigation />
-
-      {/* 
-      <MainFrame {...mainFrameProps}>
-        <SearchGroup />
-        {null}
-        {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
-          <div>{getPlateMatix(coursesFiltered)}</div>
-        ) : null}
-        {null}
-        {null}
-      </MainFrame> 
-      */}
     </div>
   )
 }
