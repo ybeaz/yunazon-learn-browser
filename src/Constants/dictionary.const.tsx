@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Enjoy_good_company_while_receiving_information_and_giving_help: {
+    en: 'Enjoy good company while receiving information and giving help',
+    ru: 'Наслаждайтесь хорошей компанией, получая информацию и оказывая помощь',
+  },
   Enjoy_good_company_while_receiving_and_giving_help: {
     en: 'Enjoy good company while receiving and giving help',
     ru: 'Наслаждайтесь хорошей компанией, получая и оказывая помощь',

@@ -57,9 +57,7 @@ import {
 } from 'react-icons/bs'
 import { CgDarkMode } from 'react-icons/cg'
 import {
-  FaMountain,
-  FaPhp,
-  FaLinux,
+  FaRegSmileWink,
   FaTheaterMasks,
   FaHeadSideMask,
   FaCat,
@@ -85,7 +83,7 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
-  FaMountain,
+  FaRegSmileWink,
   MdOutlineBorderInner,
   MdConnectWithoutContact,
   RiVoiceprintFill,

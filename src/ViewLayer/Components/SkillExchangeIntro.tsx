@@ -24,9 +24,9 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
       classAdded: 'IconReact_MdPause',
     }
     const continueProps = {
-      icon: 'FaMountain',
+      icon: 'FaRegSmileWink',
       icon2: null,
-      classAdded: 'IconReact_FaMountain',
+      classAdded: 'IconReact_FaRegSmileWink',
     }
     const riVoiceprintFillProps = {
       icon: 'RiVoiceprintFill',
@@ -138,7 +138,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <h2 className='_h2'>
                 {
                   DICTIONARY[
-                    'Enjoy_good_company_while_receiving_and_giving_help'
+                    'Enjoy_good_company_while_receiving_information_and_giving_help'
                   ][language]
                 }
                 :
@@ -242,7 +242,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <div className='_text'>Manage involvment</div>
               <div className='_iconAndText'>
                 <IconReact {...continueProps} />
-                <div className='_text'>proceed</div>
+                <div className='_text'>enjoy</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...mdPauseProps} />
