@@ -70,7 +70,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       isButtonThemeToggle: true,
       isSeachGroup: false,
       isButtonBack: false,
-      isActionsGroup: false,
+      isPageActionsGroup: false,
       isButtonsShare: true,
       isInstallMobileAppGroup: true,
     }

@@ -80,7 +80,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
     isButtonThemeToggle: true,
     isSeachGroup: true,
     isButtonBack: false,
-    isActionsGroup: false,
+    isPageActionsGroup: false,
     isButtonsShare: false,
     isInstallMobileAppGroup: false,
   }

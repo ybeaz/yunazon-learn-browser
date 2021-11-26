@@ -222,7 +222,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     isButtonThemeToggle: true,
     isSeachGroup: false,
     isButtonBack: false,
-    isActionsGroup: false,
+    isPageActionsGroup: false,
     isButtonsShare: false,
     isInstallMobileAppGroup: false,
   }

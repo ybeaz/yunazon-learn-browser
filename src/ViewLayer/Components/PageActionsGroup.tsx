@@ -5,15 +5,15 @@ import { Button } from '../Components/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-interface PageActionsArgs {
+interface PageActionsGroupArgs {
   courseCapture?: string
   documentID?: string
   courseID?: string
   contentID?: string
 }
 
-export const PageActions: React.FunctionComponent<PageActionsArgs> = (
-  props: PageActionsArgs
+export const PageActionsGroup: React.FunctionComponent<PageActionsGroupArgs> = (
+  props: PageActionsGroupArgs
 ): ReactElement => {
   const { courseCapture, documentID, courseID, contentID } = props
 

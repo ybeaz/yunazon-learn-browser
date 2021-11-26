@@ -35,7 +35,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       isButtonThemeToggle: true,
       isSeachGroup: false,
       isButtonBack: false,
-      isActionsGroup: false,
+      isPageActionsGroup: false,
       isButtonsShare: false,
       isInstallMobileAppGroup: false,
     }

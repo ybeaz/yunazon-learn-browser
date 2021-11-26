@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
-import { PageActions } from '../Components/PageActions'
+import { PageActionsGroup } from '../Components/PageActionsGroup'
 import { ShareButtons } from '../Components/ShareButtons'
 import { SearchGroup } from '../Components/SearchGroup'
 import { LogoGroup } from '../Components/LogoGroup'
@@ -28,7 +28,7 @@ interface HeaderFrameArgs {
   isButtonThemeToggle: boolean
   isSeachGroup: boolean
   isButtonBack: boolean
-  isActionsGroup: boolean
+  isPageActionsGroup: boolean
   isButtonsShare: boolean
   isInstallMobileAppGroup: boolean
 }
@@ -49,7 +49,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     isButtonThemeToggle,
     isSeachGroup,
     isButtonBack,
-    isActionsGroup,
+    isPageActionsGroup,
     isButtonsShare,
   } = props
 
@@ -155,18 +155,32 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentID,
   }
 
+  /*
+isButtonSideMenu
+isLogoGroup
+isButtonAddCourse
+isButtonAuthUser
+selectLanguage
+isButtonThemeToggle
+isSeachGroup
+// isButtonBack
+// isPageActionsGroup
+*/
+
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='_content'>
         <div className='__left'>
-          <Link to={{ pathname: '/academy' }}>
-            <Button {...buttonBackProps} />
-          </Link>
+          {isButtonBack && (
+            <Link to={{ pathname: '/academy' }}>
+              <Button {...buttonBackProps} />
+            </Link>
+          )}
 
           <Button {...buttonMdMenuProps} />
-          <LogoGroup brandName={'YourRails'} />
+          <LogoGroup brandName={brandName} />
 
-          <PageActions {...pageActionsProps} />
+          {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
 
           <ShareButtons />
         </div>
