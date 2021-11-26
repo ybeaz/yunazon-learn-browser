@@ -218,7 +218,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     isLogoGroup: true,
     isButtonAddCourse: true,
     isButtonAuthUser: true,
-    selectLanguage: true,
+    isSelectLanguage: true,
     isButtonThemeToggle: true,
     isSeachGroup: false,
     isButtonBack: false,

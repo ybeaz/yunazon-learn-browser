@@ -76,7 +76,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
     isLogoGroup: true,
     isButtonAddCourse: true,
     isButtonAuthUser: true,
-    selectLanguage: true,
+    isSelectLanguage: true,
     isButtonThemeToggle: true,
     isSeachGroup: true,
     isButtonBack: false,

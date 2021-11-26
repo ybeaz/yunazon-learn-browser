@@ -24,7 +24,7 @@ interface HeaderFrameArgs {
   isLogoGroup: boolean
   isButtonAddCourse: boolean
   isButtonAuthUser: boolean
-  selectLanguage: boolean
+  isSelectLanguage: boolean
   isButtonThemeToggle: boolean
   isSeachGroup: boolean
   isButtonBack: boolean
@@ -45,7 +45,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     isLogoGroup,
     isButtonAddCourse,
     isButtonAuthUser,
-    selectLanguage,
+    isSelectLanguage,
     isButtonThemeToggle,
     isSeachGroup,
     isButtonBack,
@@ -160,9 +160,9 @@ isButtonSideMenu
 isLogoGroup
 isButtonAddCourse
 isButtonAuthUser
-selectLanguage
-isButtonThemeToggle
-isSeachGroup
+isSelectLanguage
+// isButtonThemeToggle
+// isSeachGroup
 // isButtonBack
 // isPageActionsGroup
 */
@@ -184,9 +184,7 @@ isSeachGroup
 
           <ShareButtons />
         </div>
-        <div className='__main'>
-          <SearchGroup />
-        </div>
+        <div className='__main'>{isSeachGroup && <SearchGroup />}</div>
         <div className='__right'>
           <InstallMobileAppGroup />
           <div className='_itemButtonAddCourse'>
@@ -195,12 +193,16 @@ isSeachGroup
           <div className='_itemButtonAuthUser'>
             <Button {...buttonAuthUser} />
           </div>
-          <div className='_itemLanguageSelect'>
-            <SelectLanguage {...selectLanguageProps} />
-          </div>
-          <div className='_itemButtonThemeToggle'>
-            <Button {...buttonThemeToggle} />
-          </div>
+          {isSelectLanguage && (
+            <div className='_itemLanguageSelect'>
+              <SelectLanguage {...selectLanguageProps} />
+            </div>
+          )}
+          {isButtonThemeToggle && (
+            <div className='_itemButtonThemeToggle'>
+              <Button {...buttonThemeToggle} />
+            </div>
+          )}
         </div>
       </div>
       <ModalFrames />

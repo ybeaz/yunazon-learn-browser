@@ -31,7 +31,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,
-      selectLanguage: true,
+      isSelectLanguage: true,
       isButtonThemeToggle: true,
       isSeachGroup: false,
       isButtonBack: false,
