@@ -61,7 +61,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
 
     const headerFrameProps = {
       brandName: 'YourRails',
-      contentComponentName: 'SearchFormSep',
+      contentComponentName: 'SkillsExchangeSearch',
       isButtonSideMenu: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
@@ -71,7 +71,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       isSeachGroup: false,
       isButtonBack: false,
       isPageActionsGroup: false,
-      isButtonsShare: true,
+      isButtonsShare: false,
       isInstallMobileAppGroup: true,
     }
 

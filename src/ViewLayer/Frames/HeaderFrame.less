@@ -1,6 +1,13 @@
 .HeaderFrame {
   display: flex;
 
+  ._itemButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
   ._content {
     display: flex;
     flex: 1;
@@ -26,11 +33,8 @@
       justify-content: flex-end;
       align-items: center;
 
-      ._itemButton {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
+      ._itemInstallMobileAppGroup {
+        display: none;
       }
 
       ._itemButtonAddCourse {
@@ -63,54 +67,45 @@
   @media @desktop, @desktop-strict {
   }
   @media @tablet, @tablet-strict {
-    ._content {
-      padding: 1rem 1rem 1rem 1rem;
-    }
   }
   @media @phone, @phone-strict {
     ._content {
-      padding: 1rem 1rem 1rem 1rem;
-
       .__left {
       }
 
       .__main {
-        flex: 0;
+        flex: none;
+
+        ._itemSearchGroup {
+          display: none;
+        }
       }
 
       .__right {
-        display: none;
+        flex: none;
+
+        ._itemInstallMobileAppGroup {
+          ._itemButton;
+        }
+        ._itemButtonAddCourse {
+          display: none;
+        }
+        ._itemButtonAuthUser {
+          display: none;
+        }
+        ._itemLanguageSelect {
+          display: none;
+        }
+        ._itemButtonThemeToggle {
+          display: none;
+        }
       }
     }
   }
 }
 
 .HeaderFrame_AcademyPresent {
-  @media @tablet, @tablet-strict {
-    ._content {
-      display: flex;
-      padding: 1rem 1rem 1rem 1rem;
+}
 
-      .__left {
-      }
-
-      .__main {
-        display: none;
-      }
-
-      .__right {
-      }
-    }
-    @media @phone, @phone-strict {
-      .__left {
-      }
-
-      .__main {
-        display: none;
-      }
-
-      .__right {
-      }
-    }
-  }
+.HeaderFrame_SkillsExchangeSearch {
 }

@@ -119,7 +119,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentComponentName === 'ReaderIframe' ||
     contentComponentName === 'PlayerIframe'
       ? 'HeaderFrame_AcademyPresent'
-      : ''
+      : `HeaderFrame_${contentComponentName}`
 
   const selectLanguageProps = {
     LANGUAGES: LANGUAGES_APP,
@@ -170,9 +170,19 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
         </div>
-        <div className='__main'>{isSeachGroup && <SearchGroup />}</div>
+        <div className='__main'>
+          {isSeachGroup && (
+            <div className='_itemSearchGroup'>
+              <SearchGroup />
+            </div>
+          )}
+        </div>
         <div className='__right'>
-          {isInstallMobileAppGroup && <InstallMobileAppGroup />}
+          {isInstallMobileAppGroup && (
+            <div className='_itemInstallMobileAppGroup'>
+              <InstallMobileAppGroup />
+            </div>
+          )}
           {isButtonAddCourse && (
             <div className='_itemButtonAddCourse'>
               <Button {...buttonAddCourseProps} />

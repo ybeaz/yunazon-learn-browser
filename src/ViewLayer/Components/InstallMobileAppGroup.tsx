@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -9,6 +10,8 @@ interface InstallMobileAppGroupArgs {}
 
 export const InstallMobileAppGroup: React.FunctionComponent<InstallMobileAppGroupArgs> =
   (props: InstallMobileAppGroupArgs): ReactElement => {
+    const history = useHistory()
+
     const { language } = useSelector((store2: IRootStore) => store2)
 
     const buttonSiAppstoreProps: ButtonArgs = {
