@@ -37,6 +37,7 @@ import {
 } from 'react-icons/md'
 
 import {
+  AiOutlineShareAlt,
   AiFillApple,
   AiOutlineGift,
   AiOutlineIdcard,
@@ -46,8 +47,11 @@ import {
   AiOutlineShoppingCart,
   AiOutlineQuestionCircle,
 } from 'react-icons/ai'
+
 import { BiBuildingHouse, BiCookie, BiSelectMultiple } from 'react-icons/bi'
+
 import {
+  BsPiggyBank,
   BsMicrosoft,
   BsFlower2,
   BsFillPiggyBankFill,
@@ -55,7 +59,9 @@ import {
   BsLink45Deg,
   BsQuestionCircle,
 } from 'react-icons/bs'
+
 import { CgDarkMode } from 'react-icons/cg'
+
 import {
   FaRegSmileWink,
   FaTheaterMasks,
@@ -70,7 +76,9 @@ import {
   FaTwitter,
   FaGooglePlusG,
 } from 'react-icons/fa'
-import { HiOutlineAcademicCap } from 'react-icons/hi'
+
+import { HiUsers, HiOutlineAcademicCap } from 'react-icons/hi'
+
 import {
   IoLogoPython,
   IoLogoJavascript,
@@ -85,6 +93,9 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  HiUsers,
+  AiOutlineShareAlt,
+  BsPiggyBank,
   SiAppstore,
   SiGoogleplay,
   FaRegSmileWink,

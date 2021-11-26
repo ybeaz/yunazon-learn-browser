@@ -13,67 +13,91 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
   (props: SkillExchangeIntroArgs): ReactElement => {
     const { language } = useSelector((store2: IRootStore) => store2)
 
-    const mdOutlineBorderInnerProps = {
+    const iconMdOutlineBorderInnerProps = {
       icon: 'MdOutlineBorderInner',
       icon2: null,
       classAdded: 'IconReact_MdOutlineBorderInner',
     }
-    const mdPauseProps = {
+    const iconMdPauseProps = {
       icon: 'MdPause',
       icon2: null,
       classAdded: 'IconReact_MdPause',
     }
-    const continueProps = {
+    const iconContinueProps = {
       icon: 'FaRegSmileWink',
       icon2: null,
       classAdded: 'IconReact_FaRegSmileWink',
     }
-    const riVoiceprintFillProps = {
+    const iconRiVoiceprintFillProps = {
       icon: 'RiVoiceprintFill',
       icon2: null,
       classAdded: 'IconReact_RiVoiceprintFill',
     }
-    const mdDevicesOtherProps = {
+    const iconMdDevicesOtherProps = {
       icon: 'MdDevicesOther',
       icon2: null,
       classAdded: 'IconReact_MdDevicesOther',
     }
-    const mdPhonelinkSetupProps = {
+    const iconMdPhonelinkSetupProps = {
       icon: 'MdPhonelinkSetup',
       icon2: null,
       classAdded: 'IconReact_MdPhonelinkSetup',
     }
-    const mdOpenInBrowserProps = {
+    const iconMdOpenInBrowserProps = {
       icon: 'MdOpenInBrowser',
       icon2: null,
       classAdded: 'IconReact_MdOpenInBrowser',
     }
-    const mdArrowForwardIosProps = {
+    const iconMdArrowForwardIosProps = {
       icon: 'MdArrowRight',
       icon2: null,
       classAdded: 'IconReact_ArrowRight',
     }
-    const aiOutlineQuestionCircleProps = {
+    const iconAiOutlineQuestionCircleProps = {
       icon: 'AiOutlineQuestionCircle',
       icon2: null,
       classAdded: 'IconReact_AiOutlineQuestionCircle',
     }
-    const MdLanguageProps = {
+    const iconMdLanguageProps = {
       icon: 'MdLanguage',
       icon2: null,
       classAdded: 'IconReact_MdLanguage',
     }
 
-    const ioChatbubblesOutlineProps = {
+    const iconIoChatbubblesOutlineProps = {
       icon: 'IoChatbubblesOutline',
       icon2: null,
       classAdded: 'IconReact_IoChatbubblesOutline',
     }
 
-    const biSelectMultipleProps = {
+    const iconBiSelectMultipleProps = {
       icon: 'BiSelectMultiple',
       icon2: null,
       classAdded: 'IconReact_BiSelectMultiple',
+    }
+
+    const iconBsPiggyBankProps = {
+      icon: 'BsPiggyBank',
+      icon2: null,
+      classAdded: 'IconReact_BsPiggyBank',
+    }
+
+    const iconAiOutlineShareAltProps = {
+      icon: 'AiOutlineShareAlt',
+      icon2: null,
+      classAdded: 'IconReact_AiOutlineShareAlt',
+    }
+
+    const iconHiUsersProps = {
+      icon: 'HiUsers',
+      icon2: null,
+      classAdded: 'IconReact_HiUsers',
+    }
+
+    const iconMdLanguageProps2 = {
+      icon: 'MdLanguage',
+      icon2: null,
+      classAdded: 'IconReact_MdLanguage2',
     }
 
     const buttonContinueProps = {
@@ -157,16 +181,25 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <div className='_text'>
                 {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
               </div>
+              <div className='_iconValue'>
+                <IconReact {...iconBsPiggyBankProps} />
+              </div>
             </div>
             <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge'][language]}{' '}
                 {DICTIONARY['and_skills'][language]}
               </div>
+              <div className='_iconValue'>
+                <IconReact {...iconAiOutlineShareAltProps} />
+              </div>
             </div>
             <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Make_acquaintances_by_interests'][language]}
+              </div>
+              <div className='_iconValue'>
+                <IconReact {...iconHiUsersProps} />
               </div>
             </div>
             <div className='_col _flex_1 _bg_color_4 _asym_corners p_1_2'>
@@ -176,6 +209,9 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
                     language
                   ]
                 }
+              </div>
+              <div className='_iconValue'>
+                <IconReact {...iconMdLanguageProps2} />
               </div>
             </div>
           </div>
@@ -194,33 +230,33 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>Choose</div>
               <div className='_iconAndText'>
-                <IconReact {...mdOpenInBrowserProps} />
+                <IconReact {...iconMdOpenInBrowserProps} />
                 <div className='_text'>browser app</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...mdPhonelinkSetupProps} />
+                <IconReact {...iconMdPhonelinkSetupProps} />
                 <div className='_text'>mobile app</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...mdDevicesOtherProps} />
+                <IconReact {...iconMdDevicesOtherProps} />
                 <div className='_text'>other</div>
               </div>
             </div>
             <div className='_col'>
-              <IconReact {...mdArrowForwardIosProps} />
+              <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>Select</div>
               <div className='_iconAndText'>
-                <IconReact {...aiOutlineQuestionCircleProps} />
+                <IconReact {...iconAiOutlineQuestionCircleProps} />
                 <div className='_text'>category</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...MdLanguageProps} />
+                <IconReact {...iconMdLanguageProps} />
                 <div className='_text'>language</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...biSelectMultipleProps} />
+                <IconReact {...iconBiSelectMultipleProps} />
                 <div className='_text'>
                   {DICTIONARY['other_criteria'][language]}
                 </div>
@@ -228,35 +264,35 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
 
             <div className='_col'>
-              <IconReact {...mdArrowForwardIosProps} />
+              <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>Ask and offer help</div>
               <div className='_iconAndText'>
-                <IconReact {...ioChatbubblesOutlineProps} />
+                <IconReact {...iconIoChatbubblesOutlineProps} />
                 <div className='_text'>messeging</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...riVoiceprintFillProps} />
+                <IconReact {...iconRiVoiceprintFillProps} />
                 <div className='_text'>voice conversation</div>
               </div>
             </div>
 
             <div className='_col'>
-              <IconReact {...mdArrowForwardIosProps} />
+              <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>Manage involvment</div>
               <div className='_iconAndText'>
-                <IconReact {...continueProps} />
+                <IconReact {...iconContinueProps} />
                 <div className='_text'>enjoy</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...mdPauseProps} />
+                <IconReact {...iconMdPauseProps} />
                 <div className='_text'>pause</div>
               </div>
               <div className='_iconAndText'>
-                <IconReact {...mdOutlineBorderInnerProps} />
+                <IconReact {...iconMdOutlineBorderInnerProps} />
                 <div className='_text'>limit</div>
               </div>
             </div>
