@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
+import { ShareButtons } from '../Components/ShareButtons'
+import { SearchGroup } from '../Components/SearchGroup'
+import { LogoGroup } from '../Components/LogoGroup'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
@@ -11,11 +15,42 @@ import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
   contentComponentName?: string
-  children: React.ReactElement[]
+  courseCapture?: string
+  documentID?: string
+  courseID?: string
+  contentID?: string
+  isButtonSideMenu: boolean
+  isLogoGroup: boolean
+  isButtonAddCourse: boolean
+  isButtonAuthUser: boolean
+  selectLanguage: boolean
+  isButtonThemeToggle: boolean
+  isSeachGroup: boolean
+  isButtonBack: boolean
+  isActionsGroup: boolean
+  isButtonsShare: boolean
 }
 
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
-  const { brandName, contentComponentName } = props
+  const {
+    brandName,
+    contentComponentName,
+    courseCapture = '',
+    documentID = '',
+    courseID = '',
+    contentID = '',
+    isButtonSideMenu,
+    isLogoGroup,
+    isButtonAddCourse,
+    isButtonAuthUser,
+    selectLanguage,
+    isButtonThemeToggle,
+    isSeachGroup,
+    isButtonBack,
+    isActionsGroup,
+    isButtonsShare,
+  } = props
+
   const { user, language } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user2: IUser): any => {
@@ -92,14 +127,88 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     languagesSelected: [{ value: language }],
   }
 
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
+  }
+
+  const buttonBackProps = {
+    icon: 'MdForward',
+    classAdded: 'Button_MdBackward3',
+    action: {
+      typeEvent: 'GO_BACK_FROM_CERTIFICATE',
+      data: { history, courseCapture },
+    },
+    tooltipText: DICTIONARY['backToCourse'][language],
+    tooltipPosition: 'bottom',
+  }
+
+  const buttonPrintProps = {
+    icon: 'MdPrint',
+    classAdded: 'Button_UseCertificate',
+    action: {
+      typeEvent: 'PRINT_DOCUMENT',
+      data: { courseCapture, documentID, courseID, contentID },
+    },
+    tooltipText: DICTIONARY['sendToPrint'][language],
+    tooltipPosition: 'bottom',
+  }
+
+  const buttonEmailProps = {
+    icon: 'MdMailOutline',
+    classAdded: 'Button_UseCertificate',
+    action: {
+      typeEvent: 'SET_MODAL_FRAMES',
+      data: [
+        {
+          childName: 'EmalInputs',
+          isActive: true,
+          childProps: { documentID },
+        },
+      ],
+    },
+    tooltipText: DICTIONARY['sendToEmail'][language],
+    tooltipPosition: 'bottom',
+  }
+
+  const buttonCopyLinkProps = {
+    icon: 'BsLink45Deg',
+    classAdded: 'Button_UseCertificate',
+    action: {
+      typeEvent: 'COPY_URL_TO_CLIPBOARD',
+      data: { courseCapture, documentID, courseID, contentID },
+    },
+    tooltipText: DICTIONARY['copyLinkToClipboard'][language],
+    tooltipPosition: 'bottom',
+  }
+
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='_content'>
         <div className='__left'>
-          {props.children[0]}
-          {props.children[1]}
+          <Link to={{ pathname: '/academy' }}>
+            <Button {...buttonBackProps} />
+          </Link>
+
+          <Button {...buttonMdMenuProps} />
+          <LogoGroup brandName={'YourRails'} />
+
+          <div className='__actions'>
+            <div className='_buttons'>
+              <Button {...buttonPrintProps} />
+              <Button {...buttonEmailProps} />
+              <Button {...buttonCopyLinkProps} />
+            </div>
+          </div>
+
+          <ShareButtons />
         </div>
-        <div className='__main'>{props.children[2]}</div>
+        <div className='__main'>
+          <SearchGroup />
+        </div>
         <div className='__right'>
           <div className='_itemButtonAddCourse'>
             <Button {...buttonAddCourseProps} />

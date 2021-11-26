@@ -2,8 +2,6 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { LogoGroup } from '../Components/LogoGroup'
-import { Button } from '../Components/Button'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -64,18 +62,20 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const headerFrameProps = {
       brandName: 'YourRails',
       contentComponentName: 'SearchFormSep',
+      isButtonSideMenu: true,
+      isLogoGroup: true,
+      isButtonAddCourse: true,
+      isButtonAuthUser: true,
+      selectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isActionsGroup: false,
+      isButtonsShare: true,
     }
 
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearch',
-    }
-
-    const buttonMdMenuProps = {
-      icon: 'MdMenu',
-      classAdded: 'Button_MdMenu',
-      action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION',
-      },
     }
 
     const backgroundImageProps = {
@@ -93,10 +93,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
         </Helmet>
         <MainFrame {...mainFrameProps}>
           {/* header */}
-          <HeaderFrame {...headerFrameProps}>
-            <Button {...buttonMdMenuProps} />
-            <LogoGroup brandName={'YourRails'} />
-          </HeaderFrame>
+          <HeaderFrame {...headerFrameProps} />
           {/* middle-left */}
           {null}
           {/* middle-main */}

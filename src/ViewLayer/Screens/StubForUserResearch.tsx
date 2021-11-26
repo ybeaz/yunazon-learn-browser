@@ -27,6 +27,16 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     const headerFrameProps = {
       brandName: 'YourRails',
       contentComponentName: '',
+      isButtonSideMenu: true,
+      isLogoGroup: true,
+      isButtonAddCourse: false,
+      isButtonAuthUser: true,
+      selectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isActionsGroup: false,
+      isButtonsShare: false,
     }
 
     const mainFrameProps = {
@@ -43,10 +53,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       <div className='StubForUserResearch'>
         <MainFrame {...mainFrameProps}>
           {/* header */}
-          <HeaderFrame {...headerFrameProps}>
-            {null}
-            <LogoGroup brandName={'YourRails'} />
-          </HeaderFrame>
+          <HeaderFrame {...headerFrameProps} />
           {/* middle-left */}
           {null}
           {/* middle-main */}

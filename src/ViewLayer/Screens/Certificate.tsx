@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import React, { useEffect, ReactElement } from 'react'
@@ -15,7 +14,6 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderOverlay } from '../Components/LoaderOverlay'
-import { ShareButtons } from '../Components/ShareButtons'
 
 export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   props
@@ -87,56 +85,6 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     seconds: false,
   })
 
-  const buttonBackProps = {
-    icon: 'MdForward',
-    classAdded: 'Button_MdBackward3',
-    action: {
-      typeEvent: 'GO_BACK_FROM_CERTIFICATE',
-      data: { history, courseCapture },
-    },
-    tooltipText: DICTIONARY['backToCourse'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const buttonPrintProps = {
-    icon: 'MdPrint',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'PRINT_DOCUMENT',
-      data: { courseCapture, documentID, courseID, contentID },
-    },
-    tooltipText: DICTIONARY['sendToPrint'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const buttonEmailProps = {
-    icon: 'MdMailOutline',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'SET_MODAL_FRAMES',
-      data: [
-        {
-          childName: 'EmalInputs',
-          isActive: true,
-          childProps: { documentID },
-        },
-      ],
-    },
-    tooltipText: DICTIONARY['sendToEmail'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const buttonCopyLinkProps = {
-    icon: 'BsLink45Deg',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'COPY_URL_TO_CLIPBOARD',
-      data: { courseCapture, documentID, courseID, contentID },
-    },
-    tooltipText: DICTIONARY['copyLinkToClipboard'][language],
-    tooltipPosition: 'bottom',
-  }
-
   const userName = middleName
     ? `${lastName} ${firstName} ${middleName}`
     : `${lastName} ${firstName}`
@@ -144,25 +92,29 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   const slug = getSlug(courseCapture)
   const coursePathName = `/c/${courseID}/${slug}`
 
+  const headerFrameProps = {
+    brandName: 'YourRails',
+    contentComponentName: 'SearchFormSep',
+    courseCapture,
+    documentID,
+    courseID,
+    contentID,
+    isButtonSideMenu: true,
+    isLogoGroup: true,
+    isButtonAddCourse: true,
+    isButtonAuthUser: true,
+    selectLanguage: true,
+    isButtonThemeToggle: true,
+    isSeachGroup: false,
+    isButtonBack: true,
+    isActionsGroup: true,
+    isButtonsShare: true,
+  }
+
   return (
     <div className='Certificate'>
       <div className='_buttons Certificate_noPrint'>
-        <HeaderFrame>
-          <Link to={{ pathname: '/academy' }}>
-            <Button {...buttonBackProps} />
-          </Link>
-          <div className='__navigation'>
-            <div className='_buttons'>
-              <Button {...buttonPrintProps} />
-              <Button {...buttonEmailProps} />
-              <Button {...buttonCopyLinkProps} />
-              <ShareButtons />
-            </div>
-          </div>
-        </HeaderFrame>
-        {/* <ModalFrame childName={'EmalInputs'}>
-          <EmalInputs {...emailInputsProps} />
-        </ModalFrame> */}
+        <HeaderFrame {...headerFrameProps} />
       </div>
 
       <div className='container pm-certificate-container'>

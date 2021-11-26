@@ -2,8 +2,6 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { LogoGroup } from '../Components/LogoGroup'
-import { Button } from '../Components/Button'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -14,7 +12,6 @@ import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
-import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 
 export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
@@ -73,20 +70,22 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   )
 
   const headerFrameProps = {
-    brandName: 'YourRails',
+    brandName: 'YourRails Academy',
     contentComponentName: 'SearchFormSep',
+    isButtonSideMenu: true,
+    isLogoGroup: true,
+    isButtonAddCourse: true,
+    isButtonAuthUser: true,
+    selectLanguage: true,
+    isButtonThemeToggle: true,
+    isSeachGroup: true,
+    isButtonBack: false,
+    isActionsGroup: false,
+    isButtonsShare: false,
   }
 
   const mainFrameProps = {
     screenType,
-  }
-
-  const buttonMdMenuProps = {
-    icon: 'MdMenu',
-    classAdded: 'Button_MdMenu',
-    action: {
-      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
-    },
   }
 
   return (
@@ -100,11 +99,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
       </Helmet>
       <MainFrame {...mainFrameProps}>
         {/* header */}
-        <HeaderFrame {...headerFrameProps}>
-          <Button {...buttonMdMenuProps} />
-          <LogoGroup brandName={'YourRails Academy'} />
-          <SearchGroup />
-        </HeaderFrame>
+        <HeaderFrame {...headerFrameProps} />
         {/* middle-left */}
         {null}
         {/* middle-main */}

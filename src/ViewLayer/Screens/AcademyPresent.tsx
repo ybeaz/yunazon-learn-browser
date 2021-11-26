@@ -212,20 +212,22 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
   }
 
   const headerFrameProps = {
-    brandName: 'YourRails',
+    brandName: 'YourRails Academy',
     contentComponentName: 'SearchFormSep',
+    isButtonSideMenu: true,
+    isLogoGroup: true,
+    isButtonAddCourse: true,
+    isButtonAuthUser: true,
+    selectLanguage: true,
+    isButtonThemeToggle: true,
+    isSeachGroup: false,
+    isButtonBack: false,
+    isActionsGroup: false,
+    isButtonsShare: false,
   }
 
   const mainFrameProps = {
     screenType,
-  }
-
-  const buttonMdMenuProps = {
-    icon: 'MdMenu',
-    classAdded: 'Button_MdMenu',
-    action: {
-      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
-    },
   }
 
   return (
@@ -241,10 +243,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
           </Helmet>
           <MainFrame {...mainFrameProps}>
             {/* header */}
-            <HeaderFrame {...headerFrameProps}>
-              <Button {...buttonMdMenuProps} />
-              <LogoGroup brandName={'YourRails Academy'} />
-            </HeaderFrame>
+            <HeaderFrame {...headerFrameProps} />
             {/* middle-left */}
             {null}
             {/* middle-main */}
