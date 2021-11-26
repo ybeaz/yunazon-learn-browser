@@ -2,10 +2,81 @@ import React from 'react'
 
 export type IDictionary = Record<string, any>
 
+/*
+ */
+
 export const DICTIONARY: IDictionary = {
   _: {
     en: '_',
     ru: '_',
+  },
+  Service_works_simply: {
+    en: 'Service works simply:',
+    ru: 'Сервис работает просто:',
+  },
+  Choose: {
+    en: 'Choose',
+    ru: 'Выберете',
+  },
+  browser_app: {
+    en: 'browser app',
+    ru: 'страницу в браузере',
+  },
+  mobile_app: {
+    en: 'mobile app',
+    ru: 'мобильное приложение',
+  },
+  other: {
+    en: 'other',
+    ru: 'другое',
+  },
+  Select: {
+    en: 'Select',
+    ru: 'Подберите',
+  },
+  category: {
+    en: 'category',
+    ru: 'категорию',
+  },
+  language: {
+    en: 'language',
+    ru: 'язык',
+  },
+  Ask_and_offer_help: {
+    en: 'Ask and offer help',
+    ru: '_',
+  },
+  Ask_question_and_begin_the_talk: {
+    en: 'Ask question and begin the talk',
+    ru: 'Задайте вопрос и начните беседу',
+  },
+  messaging: {
+    en: 'messaging',
+    ru: 'сообщения',
+  },
+  voice: {
+    en: 'voice',
+    ru: 'голос',
+  },
+  Manage: {
+    en: 'Manage',
+    ru: 'Управляйте',
+  },
+  enjoy: {
+    en: 'enjoy',
+    ru: 'получайте удовольствие',
+  },
+  pause: {
+    en: 'pause',
+    ru: 'пауза',
+  },
+  configure: {
+    en: 'configure',
+    ru: 'настройки',
+  },
+  Features: {
+    en: 'Features',
+    ru: 'Мы предусмотрели',
   },
   Enjoy_good_company_while_receiving_information_and_giving_help: {
     en: 'Enjoy good company while receiving information and giving help',

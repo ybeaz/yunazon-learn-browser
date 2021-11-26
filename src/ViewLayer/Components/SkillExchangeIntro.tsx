@@ -223,37 +223,43 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <div className='__textBlock'>
           <div className='_row _p5_Media'>
             <div className='_col'>
-              <h2 className='_h2'>How does it work?</h2>
+              <h2 className='_h2'>
+                {DICTIONARY['Service_works_simply'][language]}
+              </h2>
             </div>
           </div>
           <div className='_row _p6_Media'>
             <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>Choose</div>
+              <div className='_text'>{DICTIONARY['Choose'][language]}</div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdOpenInBrowserProps} />
-                <div className='_text'>browser app</div>
+                <div className='_text'>
+                  {DICTIONARY['browser_app'][language]}
+                </div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdPhonelinkSetupProps} />
-                <div className='_text'>mobile app</div>
+                <div className='_text'>
+                  {DICTIONARY['mobile_app'][language]}
+                </div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdDevicesOtherProps} />
-                <div className='_text'>other</div>
+                <div className='_text'>{DICTIONARY['other'][language]}</div>
               </div>
             </div>
             <div className='_col'>
               <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>Select</div>
+              <div className='_text'>{DICTIONARY['Select'][language]}</div>
               <div className='_iconAndText'>
                 <IconReact {...iconAiOutlineQuestionCircleProps} />
-                <div className='_text'>category</div>
+                <div className='_text'>{DICTIONARY['category'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdLanguageProps} />
-                <div className='_text'>language</div>
+                <div className='_text'>{DICTIONARY['language'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconBiSelectMultipleProps} />
@@ -267,14 +273,16 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>Ask and offer help</div>
+              <div className='_text'>
+                {DICTIONARY['Ask_question_and_begin_the_talk'][language]}
+              </div>
               <div className='_iconAndText'>
                 <IconReact {...iconIoChatbubblesOutlineProps} />
-                <div className='_text'>messeging</div>
+                <div className='_text'>{DICTIONARY['messaging'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconRiVoiceprintFillProps} />
-                <div className='_text'>voice conversation</div>
+                <div className='_text'>{DICTIONARY['voice'][language]}</div>
               </div>
             </div>
 
@@ -282,18 +290,18 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
               <IconReact {...iconMdArrowForwardIosProps} />
             </div>
             <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>Manage involvment</div>
+              <div className='_text'>{DICTIONARY['Manage'][language]}</div>
               <div className='_iconAndText'>
                 <IconReact {...iconContinueProps} />
-                <div className='_text'>enjoy</div>
+                <div className='_text'>{DICTIONARY['enjoy'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdPauseProps} />
-                <div className='_text'>pause</div>
+                <div className='_text'>{DICTIONARY['pause'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...iconMdOutlineBorderInnerProps} />
-                <div className='_text'>limit</div>
+                <div className='_text'>{DICTIONARY['configure'][language]}</div>
               </div>
             </div>
           </div>
@@ -302,7 +310,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <div className='__textBlock'>
           <div className='_row _p1_Media'>
             <div className='_col'>
-              <h2 className='_h2'>Features</h2>
+              <h2 className='_h2'>{DICTIONARY['Features'][language]}</h2>
             </div>
           </div>
           <div className='_row'>
@@ -348,5 +356,5 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
 
 /*
   Showing your image is your preference. Everybody is protected
-  Messeging or voice chatting don't need to show your image
+  messaging or voice chatting don't need to show your image
 */
