@@ -22,7 +22,7 @@ export const InstallMobileAppGroup: React.FunctionComponent<InstallMobileAppGrou
       tooltipPosition: 'bottom',
       action: {
         typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: { history, path: '/see-you' },
+        data: { history, path: '/see-you', source: 'installAppStore' },
       } as IAction,
     }
 
@@ -34,7 +34,7 @@ export const InstallMobileAppGroup: React.FunctionComponent<InstallMobileAppGrou
       tooltipPosition: 'bottom',
       action: {
         typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: { history, path: '/see-you' },
+        data: { history, path: '/see-you', source: 'installGooglePlay' },
       } as IAction,
     }
 

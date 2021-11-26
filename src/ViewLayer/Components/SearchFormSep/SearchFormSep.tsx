@@ -267,7 +267,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       captureRight: '',
       action: {
         typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: { history, path: '/see-you' },
+        data: { history, path: '/see-you', source: 'searchForm' },
       },
       isDisplaying: true,
       tooltipText: '',

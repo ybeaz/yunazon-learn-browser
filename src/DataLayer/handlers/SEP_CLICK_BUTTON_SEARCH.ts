@@ -10,7 +10,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 const { dispatch, getState } = store
 
 export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
-  const { history, path } = data
+  const { history, path, source, value } = data
 
   const {
     language,
@@ -19,7 +19,7 @@ export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
     },
   } = getState()
 
-  if (!selectSkillsRequired) {
+  if (!selectSkillsRequired && source === 'searchForm') {
     const message = DICTIONARY.Please_fill_required_fields[language]
     alert(message)
     return
