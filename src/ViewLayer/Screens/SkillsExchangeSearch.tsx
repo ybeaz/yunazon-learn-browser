@@ -2,6 +2,7 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { Image } from '../Components/Image'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -79,8 +80,9 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       screenType: 'SkillsExchangeSearch',
     }
 
-    const backgroundImageProps = {
-      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    const imageBottomProps = {
+      classAdded: 'Image_bottom',
+      src: 'https://yourails.com/images/city.svg',
     }
 
     return (
@@ -103,9 +105,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           {isShownPalette && <Palette />}
           {/* footer */}
           <FooterFrame>
-            <BackgroundImage {...backgroundImageProps}>
-              <div></div>
-            </BackgroundImage>
+            <Image {...imageBottomProps} />
           </FooterFrame>
         </MainFrame>
         <SideNavigation />

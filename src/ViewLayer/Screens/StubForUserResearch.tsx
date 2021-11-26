@@ -1,11 +1,10 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { LogoGroup } from '../Components/LogoGroup'
+import { Image } from '../Components/Image'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame'
-import { BackgroundImage } from '../Frames/BackgroundImage'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface StubForUserResearchArgs {
@@ -46,8 +45,9 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       brandName: 'YourRails',
     }
 
-    const backgroundImageProps = {
-      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    const imageBottomProps = {
+      classAdded: 'Image_bottom',
+      src: 'https://yourails.com/images/city.svg',
     }
 
     return (
@@ -63,9 +63,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
           {null}
           {/* footer */}
           <FooterFrame>
-            <BackgroundImage {...backgroundImageProps}>
-              <div></div>
-            </BackgroundImage>
+            <Image {...imageBottomProps} />
           </FooterFrame>
         </MainFrame>
       </div>

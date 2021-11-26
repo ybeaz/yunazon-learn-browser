@@ -16,16 +16,15 @@ export const StubUserGoodbye: React.FunctionComponent<StubUserGoodbyeArgs> = (
       <h1 className='_h1'>
         {DICTIONARY.This_functionality_is_under_development[language]}
       </h1>
-      <div className='_text'>
+      <div className='_text p_1_0_0_0'>
         {DICTIONARY.We_are_currently_looking_for_support_and_feedback[language]}
       </div>
       <div className='_text'>
         {DICTIONARY.If_you_have_any_ideas_or_opinions[language]}
       </div>
-      <div className='_text'>
+      <div className='_text p_1_0_0_0'>
         {DICTIONARY.please_share_them_with_us[language]}
       </div>
-      <br />
       <div className='_text'>{DICTIONARY.Our_contacts[language]}:</div>
       <div className='_text'>
         {DICTIONARY.Email[language]}

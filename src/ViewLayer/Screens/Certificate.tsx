@@ -101,7 +101,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     contentID,
     isButtonSideMenu: true,
     isLogoGroup: true,
-    isButtonAddCourse: true,
+    isButtonAddCourse: false,
     isButtonAuthUser: true,
     isSelectLanguage: true,
     isButtonThemeToggle: true,

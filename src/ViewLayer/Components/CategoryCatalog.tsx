@@ -33,7 +33,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
         tooltipPosition: 'bottom',
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-          data: { history, path: '/goodbye' },
+          data: { history, path: '/see-you' },
         } as IAction,
       }
 
