@@ -41,16 +41,17 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     documentID = '',
     courseID = '',
     contentID = '',
-    isButtonSideMenu,
-    isLogoGroup,
     isButtonAddCourse,
     isButtonAuthUser,
-    isSelectLanguage,
-    isButtonThemeToggle,
-    isSeachGroup,
     isButtonBack,
-    isPageActionsGroup,
+    isButtonSideMenu,
     isButtonsShare,
+    isButtonThemeToggle,
+    isInstallMobileAppGroup,
+    isLogoGroup,
+    isPageActionsGroup,
+    isSeachGroup,
+    isSelectLanguage,
   } = props
 
   const { user, language } = useSelector((store2: IRootStore) => store2)
@@ -155,18 +156,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentID,
   }
 
-  /*
-isButtonSideMenu
-isLogoGroup
-isButtonAddCourse
-isButtonAuthUser
-isSelectLanguage
-// isButtonThemeToggle
-// isSeachGroup
-// isButtonBack
-// isPageActionsGroup
-*/
-
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='_content'>
@@ -176,23 +165,24 @@ isSelectLanguage
               <Button {...buttonBackProps} />
             </Link>
           )}
-
-          <Button {...buttonMdMenuProps} />
-          <LogoGroup brandName={brandName} />
-
+          {isButtonSideMenu && <Button {...buttonMdMenuProps} />}
+          {isLogoGroup && <LogoGroup brandName={brandName} />}
           {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
-
-          <ShareButtons />
+          {isButtonsShare && <ShareButtons />}
         </div>
         <div className='__main'>{isSeachGroup && <SearchGroup />}</div>
         <div className='__right'>
-          <InstallMobileAppGroup />
-          <div className='_itemButtonAddCourse'>
-            <Button {...buttonAddCourseProps} />
-          </div>
-          <div className='_itemButtonAuthUser'>
-            <Button {...buttonAuthUser} />
-          </div>
+          {isInstallMobileAppGroup && <InstallMobileAppGroup />}
+          {isButtonAddCourse && (
+            <div className='_itemButtonAddCourse'>
+              <Button {...buttonAddCourseProps} />
+            </div>
+          )}
+          {isButtonAuthUser && (
+            <div className='_itemButtonAuthUser'>
+              <Button {...buttonAuthUser} />
+            </div>
+          )}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...selectLanguageProps} />
