@@ -109,6 +109,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     isButtonBack: true,
     isActionsGroup: true,
     isButtonsShare: true,
+    isInstallMobileAppGroup: false,
   }
 
   return (

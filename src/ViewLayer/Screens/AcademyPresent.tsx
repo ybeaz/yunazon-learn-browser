@@ -224,6 +224,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     isButtonBack: false,
     isActionsGroup: false,
     isButtonsShare: false,
+    isInstallMobileAppGroup: false,
   }
 
   const mainFrameProps = {

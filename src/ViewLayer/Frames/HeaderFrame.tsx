@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
 import { PageActions } from '../Components/PageActions'
 import { ShareButtons } from '../Components/ShareButtons'
 import { SearchGroup } from '../Components/SearchGroup'
@@ -29,6 +30,7 @@ interface HeaderFrameArgs {
   isButtonBack: boolean
   isActionsGroup: boolean
   isButtonsShare: boolean
+  isInstallMobileAppGroup: boolean
 }
 
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
@@ -172,6 +174,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           <SearchGroup />
         </div>
         <div className='__right'>
+          <InstallMobileAppGroup />
           <div className='_itemButtonAddCourse'>
             <Button {...buttonAddCourseProps} />
           </div>

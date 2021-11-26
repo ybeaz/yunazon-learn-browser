@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { InstallMobileApp } from './InstallMobileApp'
 import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -20,7 +19,6 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
       </h1>
       <SearchFormSep />
-      <InstallMobileApp />
       <CategoryCatalog />
     </div>
   )

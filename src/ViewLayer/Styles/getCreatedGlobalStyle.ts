@@ -403,6 +403,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
+    .Button_SiGoogleplay .__button,
+    .Button_SiAppstore .__button,
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
     .Button_personalCabinet .__button,
@@ -413,10 +415,12 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
           : 'rgb(245, 246, 250)'};
     }
 
+    .Button_SiGoogleplay ._in,
+    .Button_SiAppstore ._in,
     .Button_MdMenu ._in,
     .Button_AddCourse ._in,
     .Button_personalCabinet ._in,
-    Button_ThemeToggle ._in {
+    .Button_ThemeToggle ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 

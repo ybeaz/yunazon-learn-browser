@@ -72,6 +72,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       isButtonBack: false,
       isActionsGroup: false,
       isButtonsShare: true,
+      isInstallMobileAppGroup: true,
     }
 
     const mainFrameProps = {

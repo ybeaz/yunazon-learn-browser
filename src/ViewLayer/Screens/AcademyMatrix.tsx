@@ -82,6 +82,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
     isButtonBack: false,
     isActionsGroup: false,
     isButtonsShare: false,
+    isInstallMobileAppGroup: false,
   }
 
   const mainFrameProps = {

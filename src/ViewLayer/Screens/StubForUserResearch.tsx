@@ -37,6 +37,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       isButtonBack: false,
       isActionsGroup: false,
       isButtonsShare: false,
+      isInstallMobileAppGroup: false,
     }
 
     const mainFrameProps = {
