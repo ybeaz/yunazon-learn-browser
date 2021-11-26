@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { PageActions } from '../Components/PageActions'
 import { ShareButtons } from '../Components/ShareButtons'
 import { SearchGroup } from '../Components/SearchGroup'
 import { LogoGroup } from '../Components/LogoGroup'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -146,43 +146,11 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     tooltipPosition: 'bottom',
   }
 
-  const buttonPrintProps = {
-    icon: 'MdPrint',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'PRINT_DOCUMENT',
-      data: { courseCapture, documentID, courseID, contentID },
-    },
-    tooltipText: DICTIONARY['sendToPrint'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const buttonEmailProps = {
-    icon: 'MdMailOutline',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'SET_MODAL_FRAMES',
-      data: [
-        {
-          childName: 'EmalInputs',
-          isActive: true,
-          childProps: { documentID },
-        },
-      ],
-    },
-    tooltipText: DICTIONARY['sendToEmail'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const buttonCopyLinkProps = {
-    icon: 'BsLink45Deg',
-    classAdded: 'Button_UseCertificate',
-    action: {
-      typeEvent: 'COPY_URL_TO_CLIPBOARD',
-      data: { courseCapture, documentID, courseID, contentID },
-    },
-    tooltipText: DICTIONARY['copyLinkToClipboard'][language],
-    tooltipPosition: 'bottom',
+  const pageActionsProps = {
+    courseCapture,
+    documentID,
+    courseID,
+    contentID,
   }
 
   return (
@@ -196,13 +164,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           <Button {...buttonMdMenuProps} />
           <LogoGroup brandName={'YourRails'} />
 
-          <div className='__actions'>
-            <div className='_buttons'>
-              <Button {...buttonPrintProps} />
-              <Button {...buttonEmailProps} />
-              <Button {...buttonCopyLinkProps} />
-            </div>
-          </div>
+          <PageActions {...pageActionsProps} />
 
           <ShareButtons />
         </div>
