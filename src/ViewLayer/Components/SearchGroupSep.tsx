@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 
 import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -10,13 +10,13 @@ interface SearchGroupSepArgs {}
 
 export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   props: SearchGroupSepArgs
-): JSX.Element => {
+): ReactElement => {
   const { language } = useSelector((store2: IRootStore) => store2)
 
   return (
     <div className='SearchGroupSep'>
       <h1 className='__titleScreen'>
-        {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
+        {DICTIONARY['Knowledge_Exchange_and_Useful_Contacts'][language]}
       </h1>
       <SearchFormSep />
       <CategoryCatalog />

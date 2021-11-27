@@ -17,9 +17,36 @@
   }
 }
 
+.Image_bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  flex: 1;
+  padding: 3rem 2rem 2rem 0;
+
+  ._image {
+    width: 50%;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    padding: 1rem 1rem 1rem 0;
+
+    ._image {
+      width: 75%;
+    }
+  }
+}
+
 .Image_collageImageIndustries {
   ._image {
     width: 100%;
+    opacity: 0.67;
   }
 }
 

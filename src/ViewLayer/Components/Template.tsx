@@ -5,6 +5,6 @@ interface TemplateArgs {}
 
 export const Template: React.FunctionComponent<TemplateArgs> = (
   props: TemplateArgs
-): JSX.Element => {
+): ReactElement => {
   return <div className='Template'>null</div>
 }

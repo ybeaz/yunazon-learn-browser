@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { getDesignType } from '../../Shared/getDesignType'
 import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
@@ -17,7 +17,7 @@ export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupArgs> = ({
 }) => {
   const { designType, multi } = getDesignType(options)
 
-  const getCheckLines: Function = (options2: any[]): JSX.Element[] => {
+  const getCheckLines: Function = (options2: any[]): ReactElement[] => {
     return options2.map(item => {
       const { optionID, label } = item
       const answer = getAnswerByOptionID(options, optionID)

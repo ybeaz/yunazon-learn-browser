@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 export const LoaderOverlay: React.FunctionComponent<any> = (
   props: any
-): JSX.Element => {
+): ReactElement => {
   const { isLoaderOverlayVisible } = props
 
   const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''

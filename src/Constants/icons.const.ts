@@ -1,4 +1,11 @@
 import {
+  MdHomeRepairService,
+  MdConnectWithoutContact,
+  MdDevicesOther,
+  MdPhonelinkSetup,
+  MdOpenInBrowser,
+  MdArrowRight,
+  MdKeyboardArrowRight,
   MdSportsBar,
   MdDesignServices,
   MdFastfood,
@@ -30,6 +37,8 @@ import {
 } from 'react-icons/md'
 
 import {
+  AiOutlineSetting,
+  AiOutlineShareAlt,
   AiFillApple,
   AiOutlineGift,
   AiOutlineIdcard,
@@ -39,8 +48,17 @@ import {
   AiOutlineShoppingCart,
   AiOutlineQuestionCircle,
 } from 'react-icons/ai'
-import { BiBuildingHouse, BiCookie, BiSelectMultiple } from 'react-icons/bi'
+
 import {
+  BiVideoPlus,
+  BiBuildingHouse,
+  BiCookie,
+  BiSelectMultiple,
+} from 'react-icons/bi'
+
+import {
+  BsFillPersonCheckFill,
+  BsPiggyBank,
   BsMicrosoft,
   BsFlower2,
   BsFillPiggyBankFill,
@@ -48,10 +66,14 @@ import {
   BsLink45Deg,
   BsQuestionCircle,
 } from 'react-icons/bs'
+
 import { CgDarkMode } from 'react-icons/cg'
+
 import {
-  FaPhp,
-  FaLinux,
+  FaUsers,
+  FaUserCheck,
+  FaUsersCog,
+  FaRegSmileWink,
   FaTheaterMasks,
   FaHeadSideMask,
   FaCat,
@@ -64,21 +86,47 @@ import {
   FaTwitter,
   FaGooglePlusG,
 } from 'react-icons/fa'
-import { HiOutlineAcademicCap } from 'react-icons/hi'
+
+import { HiUsers, HiOutlineAcademicCap } from 'react-icons/hi'
+
 import {
+  IoLanguageSharp,
   IoLogoPython,
   IoLogoJavascript,
   IoChatbubblesOutline,
 } from 'react-icons/io5'
 
+import { RiVoiceprintFill } from 'react-icons/ri'
+
+import { SiAppstore, SiGoogleplay } from 'react-icons/si'
+
 import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
-  FaPhp,
+  BiVideoPlus,
+  FaUsers,
+  MdHomeRepairService,
+  IoLanguageSharp,
+  FaUserCheck,
+  FaUsersCog,
+  BsFillPersonCheckFill,
+  HiUsers,
+  AiOutlineShareAlt,
+  BsPiggyBank,
+  SiAppstore,
+  SiGoogleplay,
+  FaRegSmileWink,
+  AiOutlineSetting,
+  MdConnectWithoutContact,
+  RiVoiceprintFill,
+  MdDevicesOther,
+  MdPhonelinkSetup,
+  MdOpenInBrowser,
+  MdArrowRight,
+  MdKeyboardArrowRight,
   IoLogoPython,
   IoLogoJavascript,
-  FaLinux,
   BsMicrosoft,
   AiFillApple,
   FaTheaterMasks,

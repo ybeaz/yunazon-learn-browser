@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -9,7 +9,7 @@ interface LogoGroupArgs {
 
 export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
   props
-): JSX.Element => {
+): ReactElement => {
   const { brandName } = props
 
   return (

@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 import { IAction } from '../../Interfaces/IAction'
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-interface ButtonArgs {
+export interface ButtonArgs {
   icon?: string | null
   icon2?: string | null
-  captureLeft?: string | JSX.Element
+  captureLeft?: string | ReactElement
   captureRight?: string
   classAdded?: string
   action?: IAction
@@ -20,7 +20,7 @@ interface ButtonArgs {
 
 export const ButtonTest: React.FunctionComponent<ButtonArgs> = (
   props: ButtonArgs
-): JSX.Element => {
+): ReactElement => {
   return <div className='Button'>Button</div>
 }
 

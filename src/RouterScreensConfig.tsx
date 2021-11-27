@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { routes } from './Constants/routes.const'
@@ -34,7 +34,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         page: string
         themeDafault: string
       }[]
-    ): JSX.Element[]
+    ): ReactElement[]
   }
 
   const getRoutes: IGetRoutes = routesArg =>
@@ -72,7 +72,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
         strict?: boolean
         exact?: boolean
       }[]
-    ): JSX.Element[]
+    ): ReactElement[]
   }
 
   const getRedirects: IGetRedirects = redirectsArg =>
@@ -90,7 +90,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
       })()
     })
 
-  const getError404Route: Function = (): JSX.Element => {
+  const getError404Route: Function = (): ReactElement => {
     return (
       <Route
         component={() => {

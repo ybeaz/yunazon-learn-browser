@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
 import { getUniqArrBy } from '../../Shared/getUniqArrBy'
@@ -28,7 +28,7 @@ interface IGetOptionsNext {
 
 export const Select: React.FunctionComponent<ISelectArgs> = (
   props: ISelectArgs
-): JSX.Element => {
+): ReactElement => {
   const {
     classAdded,
     size: sizeIn,

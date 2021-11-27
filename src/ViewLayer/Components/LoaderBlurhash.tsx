@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, ReactElement } from 'react'
 
 import { Blurhash } from 'react-blurhash'
 
 export const LoaderBlurhash: React.FunctionComponent<any> = (
   props: any
-): JSX.Element => {
+): ReactElement => {
   const {
     isVisibleBlurHash,
     textTooltip,

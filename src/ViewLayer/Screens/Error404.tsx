@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-export const Error404: React.FunctionComponent = (): JSX.Element => {
+export const Error404: React.FunctionComponent = (): ReactElement => {
   return (
     <div className='Error404'>
       <div className=''>

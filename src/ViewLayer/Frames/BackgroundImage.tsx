@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 interface BackgroundImageArgs {
   classAdded: string
@@ -7,7 +7,7 @@ interface BackgroundImageArgs {
 
 export const BackgroundImage: React.FunctionComponent<BackgroundImageArgs> = (
   props: BackgroundImageArgs
-): JSX.Element => {
+): ReactElement => {
   const { classAdded } = props
 
   return <div className={`BackgroundImage ${classAdded}`}>{props.children}</div>

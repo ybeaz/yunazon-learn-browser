@@ -1,7 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { Image } from '../Components/Image'
+import { FooterFrame } from '../Frames/FooterFrame'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
@@ -22,7 +26,7 @@ interface SkillsExchangeSearchProps {
 }
 
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
-  (props): JSX.Element => {
+  (props): ReactElement => {
     getEffectedRequests(['GET_GLOBAL_VARS'])
 
     const store = useSelector((store2: IRootStore) => store2)
@@ -55,14 +59,30 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const moduleCapture = 'Exchange your skills, save your time'
     const moduleDescription = 'Exchange your skills, save your time'
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
-    const mainFrameProps = {
-      screenType: 'SkillsExchangeSearch',
-      contentComponentName: 'SearchFormSep',
+
+    const headerFrameProps = {
       brandName: 'YourRails',
+      contentComponentName: 'SkillsExchangeSearch',
+      isButtonSideMenu: true,
+      isLogoGroup: true,
+      isButtonAddCourse: true,
+      isButtonAuthUser: true,
+      isSelectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isPageActionsGroup: false,
+      isButtonsShare: false,
+      isInstallMobileAppGroup: true,
     }
 
-    const backgroundImageProps = {
-      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    const mainFrameProps = {
+      screenType: 'SkillsExchangeSearch',
+    }
+
+    const imageBottomProps = {
+      classAdded: 'Image_bottom',
+      src: 'https://yourails.com/images/city.svg',
     }
 
     return (
@@ -75,14 +95,20 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           <meta name='description' content={moduleDescription} />
         </Helmet>
         <MainFrame {...mainFrameProps}>
+          {/* header */}
+          <HeaderFrame {...headerFrameProps} />
+          {/* middle-left */}
           {null}
-          {null}
+          {/* middle-main */}
           <SearchGroupSep />
+          {/* middle-right */}
           {isShownPalette && <Palette />}
-          <BackgroundImage {...backgroundImageProps}>
-            <div></div>
-          </BackgroundImage>
+          {/* footer */}
+          <FooterFrame>
+            <Image {...imageBottomProps} />
+          </FooterFrame>
         </MainFrame>
+        <SideNavigation />
       </div>
     )
   }

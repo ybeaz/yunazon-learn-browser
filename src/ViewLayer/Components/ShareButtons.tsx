@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -86,14 +86,14 @@ const netShareData: INetShareData[] = [
 
 export const ShareButtons: React.FunctionComponent<any> = (
   props
-): JSX.Element => {
+): ReactElement => {
   // I stopped here
   // https://gist.github.com/saippuakauppias/247af51c6ed50503afe4
   // https://habr.com/ru/post/156185/
 
   const getNetShareButtons: Function = (
     netShareData: INetShareData[]
-  ): JSX.Element[] => {
+  ): ReactElement[] => {
     return netShareData.map(item => {
       const {
         ButtonComponent,

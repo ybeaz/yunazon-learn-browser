@@ -1,22 +1,59 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
+import { PageActionsGroup } from '../Components/PageActionsGroup'
+import { ShareButtons } from '../Components/ShareButtons'
+import { SearchGroup } from '../Components/SearchGroup'
+import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
-import { LogoGroup } from '../Components/LogoGroup'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
   contentComponentName?: string
-  children: React.ReactElement[]
+  courseCapture?: string
+  documentID?: string
+  courseID?: string
+  contentID?: string
+  isButtonSideMenu: boolean
+  isLogoGroup: boolean
+  isButtonAddCourse: boolean
+  isButtonAuthUser: boolean
+  isSelectLanguage: boolean
+  isButtonThemeToggle: boolean
+  isSeachGroup: boolean
+  isButtonBack: boolean
+  isPageActionsGroup: boolean
+  isButtonsShare: boolean
+  isInstallMobileAppGroup: boolean
 }
 
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
-  const { brandName, contentComponentName } = props
+  const {
+    brandName,
+    contentComponentName,
+    courseCapture = '',
+    documentID = '',
+    courseID = '',
+    contentID = '',
+    isButtonAddCourse,
+    isButtonAuthUser,
+    isButtonBack,
+    isButtonSideMenu,
+    isButtonsShare,
+    isButtonThemeToggle,
+    isInstallMobileAppGroup,
+    isLogoGroup,
+    isPageActionsGroup,
+    isSeachGroup,
+    isSelectLanguage,
+  } = props
+
   const { user, language } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user2: IUser): any => {
@@ -82,7 +119,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentComponentName === 'ReaderIframe' ||
     contentComponentName === 'PlayerIframe'
       ? 'HeaderFrame_AcademyPresent'
-      : ''
+      : `HeaderFrame_${contentComponentName}`
 
   const selectLanguageProps = {
     LANGUAGES: LANGUAGES_APP,
@@ -93,25 +130,79 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     languagesSelected: [{ value: language }],
   }
 
+  const buttonMdMenuProps = {
+    icon: 'MdMenu',
+    classAdded: 'Button_MdMenu',
+    action: {
+      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+    },
+  }
+
+  const buttonBackProps = {
+    icon: 'MdForward',
+    classAdded: 'Button_MdBackward3',
+    action: {
+      typeEvent: 'GO_BACK_FROM_CERTIFICATE',
+      data: { history, courseCapture },
+    },
+    tooltipText: DICTIONARY['backToCourse'][language],
+    tooltipPosition: 'bottom',
+  }
+
+  const pageActionsProps = {
+    courseCapture,
+    documentID,
+    courseID,
+    contentID,
+  }
+
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
-      <div className='__left'>
-        {props.children[0]}
-        <LogoGroup brandName={brandName} />
-      </div>
-      <div className='__main'>{props.children[1]}</div>
-      <div className='__right'>
-        <div className='_itemButtonAddCourse'>
-          <Button {...buttonAddCourseProps} />
+      <div className='_content'>
+        <div className='__left'>
+          {isButtonBack && (
+            <Link to={{ pathname: '/academy' }}>
+              <Button {...buttonBackProps} />
+            </Link>
+          )}
+          {isButtonSideMenu && <Button {...buttonMdMenuProps} />}
+          {isLogoGroup && <LogoGroup brandName={brandName} />}
+          {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
+          {isButtonsShare && <ShareButtons />}
         </div>
-        <div className='_itemButtonAuthUser'>
-          <Button {...buttonAuthUser} />
+        <div className='__main'>
+          {isSeachGroup && (
+            <div className='_itemSearchGroup'>
+              <SearchGroup />
+            </div>
+          )}
         </div>
-        <div className='_itemLanguageSelect'>
-          <SelectLanguage {...selectLanguageProps} />
-        </div>
-        <div className='_itemButtonThemeToggle'>
-          <Button {...buttonThemeToggle} />
+        <div className='__right'>
+          {isInstallMobileAppGroup && (
+            <div className='_itemInstallMobileAppGroup'>
+              <InstallMobileAppGroup />
+            </div>
+          )}
+          {isButtonAddCourse && (
+            <div className='_itemButtonAddCourse'>
+              <Button {...buttonAddCourseProps} />
+            </div>
+          )}
+          {isButtonAuthUser && (
+            <div className='_itemButtonAuthUser'>
+              <Button {...buttonAuthUser} />
+            </div>
+          )}
+          {isSelectLanguage && (
+            <div className='_itemLanguageSelect'>
+              <SelectLanguage {...selectLanguageProps} />
+            </div>
+          )}
+          {isButtonThemeToggle && (
+            <div className='_itemButtonThemeToggle'>
+              <Button {...buttonThemeToggle} />
+            </div>
+          )}
         </div>
       </div>
       <ModalFrames />

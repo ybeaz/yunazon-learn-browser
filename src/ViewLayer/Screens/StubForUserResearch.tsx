@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, ReactElement } from 'react'
 
+import { Image } from '../Components/Image'
+import { FooterFrame } from '../Frames/FooterFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame'
-import { BackgroundImage } from '../Frames/BackgroundImage'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface StubForUserResearchArgs {
@@ -16,14 +17,26 @@ interface StubForUserResearchArgs {
 }
 
 export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArgs> =
-  (props: StubForUserResearchArgs): JSX.Element => {
+  (props: StubForUserResearchArgs): ReactElement => {
     const { themeDafault } = props
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
     }, [])
 
-    const backgroundImageProps = {
-      classAdded: 'BackgroundImage_SkillsExchangeSearch',
+    const headerFrameProps = {
+      brandName: 'YourRails',
+      contentComponentName: '',
+      isButtonSideMenu: true,
+      isLogoGroup: true,
+      isButtonAddCourse: false,
+      isButtonAuthUser: true,
+      isSelectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isPageActionsGroup: false,
+      isButtonsShare: false,
+      isInstallMobileAppGroup: false,
     }
 
     const mainFrameProps = {
@@ -32,17 +45,27 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       brandName: 'YourRails',
     }
 
+    const imageBottomProps = {
+      classAdded: 'Image_bottom',
+      src: 'https://yourails.com/images/city.svg',
+    }
+
     return (
-      <BackgroundImage {...backgroundImageProps}>
-        <div className='StubForUserResearch'>
-          <MainFrame {...mainFrameProps}>
-            {null}
-            {null}
-            <StubUserGoodbye />
-            {null}
-            {null}
-          </MainFrame>
-        </div>
-      </BackgroundImage>
+      <div className='StubForUserResearch'>
+        <MainFrame {...mainFrameProps}>
+          {/* header */}
+          <HeaderFrame {...headerFrameProps} />
+          {/* middle-left */}
+          {null}
+          {/* middle-main */}
+          <StubUserGoodbye />
+          {/* middle-right */}
+          {null}
+          {/* footer */}
+          <FooterFrame>
+            <Image {...imageBottomProps} />
+          </FooterFrame>
+        </MainFrame>
+      </div>
     )
   }

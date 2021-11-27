@@ -7,6 +7,6 @@ interface FooterFrameArgs {
 
 export const FooterFrame: React.FunctionComponent<FooterFrameArgs> = (
   props: FooterFrameArgs
-): JSX.Element => {
+): ReactElement => {
   return <div className='FooterFrame'>{props.children}</div>
 }

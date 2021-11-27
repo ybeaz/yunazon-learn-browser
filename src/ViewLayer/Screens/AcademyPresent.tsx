@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { LogoGroup } from '../Components/LogoGroup'
+import { Button } from '../Components/Button'
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -29,7 +33,7 @@ const COMPONENT = {
 
 export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
   props = { routeProps: {}, rootPath: '' }
-): JSX.Element => {
+): ReactElement => {
   const courseID = props?.routeProps.match.params.courseID
 
   const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
@@ -151,11 +155,6 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     height,
   })
 
-  const mainFrameProps = {
-    contentComponentName,
-    brandName: 'YourRails Academy',
-  }
-
   const contentComponentProps = {
     ReaderIframe: {
       contentID,
@@ -212,6 +211,26 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     contentComponentName,
   }
 
+  const headerFrameProps = {
+    brandName: 'YourRails Academy',
+    contentComponentName: 'SearchFormSep',
+    isButtonSideMenu: true,
+    isLogoGroup: true,
+    isButtonAddCourse: true,
+    isButtonAuthUser: true,
+    isSelectLanguage: true,
+    isButtonThemeToggle: true,
+    isSeachGroup: false,
+    isButtonBack: false,
+    isPageActionsGroup: false,
+    isButtonsShare: false,
+    isInstallMobileAppGroup: false,
+  }
+
+  const mainFrameProps = {
+    screenType,
+  }
+
   return (
     <div className='AcademyPresent'>
       {isLoaded === true ? (
@@ -224,17 +243,23 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
             <meta name='description' content={moduleDescription} />
           </Helmet>
           <MainFrame {...mainFrameProps}>
+            {/* header */}
+            <HeaderFrame {...headerFrameProps} />
+            {/* middle-left */}
             {null}
-            {null}
+            {/* middle-main */}
             <CONTENT_ASSIGNED_COMPONENT
               {...contentComponentProps[contentComponentName]}
             >
               <LoaderBlurhash {...loaderBlurhashProps} />
               <PlayerPanel {...playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
+            {/* middle-right */}
             <CarouselQuestions />
+            {/* footer */}
             {null}
           </MainFrame>
+          <SideNavigation />
           <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
         </>
       ) : null}

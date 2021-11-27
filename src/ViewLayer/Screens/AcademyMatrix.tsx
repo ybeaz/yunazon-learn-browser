@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { SideNavigation } from '../Components/SideNavigation'
+import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { ContentPlate } from '../Components/ContentPlate'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
@@ -10,12 +12,13 @@ import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
-import { SearchGroup } from '../Components/SearchGroup'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 
-export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
+export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
+
+  const screenType = 'AcademyMatrix'
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
@@ -28,7 +31,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
     forms: { searchInput },
   } = store
 
-  const getPlateMatix: Function = (courses2: any[]): JSX.Element => {
+  const getPlateMatix: Function = (courses2: any[]): ReactElement => {
     const plates = courses2.map((item, i) => {
       const { courseID, capture: courseCapture, modules } = item
       const {
@@ -38,7 +41,7 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
         contentID,
         duration,
       } = modules[0]
-      const screenType = 'AcademyMatrix'
+
       const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
@@ -66,9 +69,24 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
     item.searchString.includes(searchInput)
   )
 
-  const mainFrameProps = {
-    contentComponentName: 'AcademyMatrix',
+  const headerFrameProps = {
     brandName: 'YourRails Academy',
+    contentComponentName: 'SearchFormSep',
+    isButtonSideMenu: true,
+    isLogoGroup: true,
+    isButtonAddCourse: true,
+    isButtonAuthUser: true,
+    isSelectLanguage: true,
+    isButtonThemeToggle: true,
+    isSeachGroup: true,
+    isButtonBack: false,
+    isPageActionsGroup: false,
+    isButtonsShare: false,
+    isInstallMobileAppGroup: false,
+  }
+
+  const mainFrameProps = {
+    screenType,
   }
 
   return (
@@ -81,14 +99,20 @@ export const AcademyMatrix: React.FunctionComponent = (): JSX.Element => {
         <meta name='description' content={descriptionSite} />
       </Helmet>
       <MainFrame {...mainFrameProps}>
-        <SearchGroup />
+        {/* header */}
+        <HeaderFrame {...headerFrameProps} />
+        {/* middle-left */}
         {null}
+        {/* middle-main */}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
           <div>{getPlateMatix(coursesFiltered)}</div>
         ) : null}
+        {/* middle-right */}
         {null}
+        {/* footer */}
         {null}
       </MainFrame>
+      <SideNavigation />
     </div>
   )
 }

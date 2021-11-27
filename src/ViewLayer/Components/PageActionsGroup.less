@@ -1,12 +1,11 @@
-.SearchGroupSep {
+.PageActions {
   display: flex;
-  flex-direction: column;
-  padding: 1rem 0;
 
-  .__titleScreen {
+  flex-direction: row;
+  ._buttons {
     display: flex;
-    justify-content: center;
-    font-size: @fontSizeH2;
+    flex-direction: row;
+    align-items: center;
   }
 
   @media @large {
@@ -14,9 +13,7 @@
   @media @desktop, @desktop-strict {
   }
   @media @tablet, @tablet-strict {
-    padding: 1rem;
   }
   @media @phone, @phone-strict {
-    padding: 1rem;
   }
 }

@@ -17,7 +17,7 @@ interface CategoryCatalogArgs {}
 
 export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   props: CategoryCatalogArgs
-): JSX.Element => {
+): ReactElement => {
   const history = useHistory()
   const { language } = useSelector((store2: IRootStore) => store2)
 
@@ -33,7 +33,12 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
         tooltipPosition: 'bottom',
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-          data: { history, path: '/goodbye' },
+          data: {
+            history,
+            path: '/see-you',
+            source: 'categories',
+            value: item['en'],
+          },
         } as IAction,
       }
 
@@ -56,7 +61,10 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
 
   return (
     <div className='CategoryCatalog'>
-      {getCategorisJsx(categoriesNext, language)}
+      <h2 className='_title padding: p_2_0_1_0'>Catalog of Topics</h2>
+      <div className='_catalogIcons'>
+        {getCategorisJsx(categoriesNext, language)}
+      </div>
     </div>
   )
 }

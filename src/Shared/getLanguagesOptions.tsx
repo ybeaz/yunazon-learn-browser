@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 
 import { Image } from '../ViewLayer/Components/Image'
@@ -14,7 +14,7 @@ interface IGetLanguagesOptionsJsx {
     language: string,
     svgFileDir: string,
     classAdded: string
-  ): JSX.Element[]
+  ): ReactElement[]
 }
 
 /**
