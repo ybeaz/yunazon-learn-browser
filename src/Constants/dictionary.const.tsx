@@ -15,8 +15,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Получить чат лист',
   },
   A_list_to_chat_is_created: {
-    en: 'A list to chat is created from people who marked having an experience in this field',
-    ru: 'Список для чата создается из людей, которые отметили, что имеют опыт в этой области',
+    en: 'The chat list is created from people who indicated they have experience in the field',
+    ru: 'Список для чата создается из людей, которые отметили, что имеют опыт в указанной области',
   },
   Service_works_simply: {
     en: 'Service works simply:',
