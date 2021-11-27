@@ -308,7 +308,7 @@ export const SearchFormSepChRP: React.FunctionComponent<any> = (
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['You are suggesting to exchange'][language]}
+            {DICTIONARY['You_are_suggesting_to_exchange'][language]}
             {' *'}
           </div>
           <div className={classCol02}>

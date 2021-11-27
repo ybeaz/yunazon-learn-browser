@@ -359,7 +359,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
-            {DICTIONARY['You are suggesting to exchange'][language]}
+            {DICTIONARY['You_are_suggesting_to_exchange'][language]}
           </div>
           <div className={classCol02}>
             {language && (

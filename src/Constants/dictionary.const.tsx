@@ -10,13 +10,45 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Get_chat_list: {
+    en: 'Get chat list',
+    ru: 'Получить чат лист',
+  },
+  A_list_to_chat_is_created: {
+    en: 'A list to chat is created from people who marked having an experience in this field',
+    ru: 'Список для чата создается из людей, которые отметили, что имеют опыт в этой области',
+  },
   Service_works_simply: {
     en: 'Service works simply:',
     ru: 'Сервис работает просто:',
   },
   Choose: {
     en: 'Choose',
-    ru: 'Выберете',
+    ru: 'Выбрать',
+  },
+  person: {
+    en: 'a person',
+    ru: 'собеседника(цу)',
+  },
+  by_ageGroup: {
+    en: 'by age group',
+    ru: 'по возрастой группе',
+  },
+  reputation: {
+    en: 'by reputation',
+    ru: 'по репутации',
+  },
+  gender: {
+    en: 'gender',
+    ru: 'собеседника(цу)',
+  },
+  age: {
+    en: 'age',
+    ru: 'возраст',
+  },
+  by_country: {
+    en: 'by country',
+    ru: 'по стране',
   },
   browser_app: {
     en: 'browser app',
@@ -30,9 +62,13 @@ export const DICTIONARY: IDictionary = {
     en: 'other',
     ru: 'другое',
   },
+  topic: {
+    en: 'topic',
+    ru: 'тему',
+  },
   Select: {
     en: 'Select',
-    ru: 'Подберите',
+    ru: 'Подобрать',
   },
   category: {
     en: 'category',
@@ -46,9 +82,13 @@ export const DICTIONARY: IDictionary = {
     en: 'Ask and offer help',
     ru: '_',
   },
+  Ask_question_and_extend_contacts: {
+    en: 'Ask question and extend contacts',
+    ru: 'Задать вопрос и расширить контакты',
+  },
   Ask_question_and_begin_the_talk: {
     en: 'Ask question and begin the talk',
-    ru: 'Задайте вопрос и начните беседу',
+    ru: 'Задать вопрос и начать беседу',
   },
   messaging: {
     en: 'messaging',
@@ -58,13 +98,17 @@ export const DICTIONARY: IDictionary = {
     en: 'voice',
     ru: 'голос',
   },
+  video: {
+    en: 'video',
+    ru: 'видео',
+  },
   Manage: {
     en: 'Manage',
-    ru: 'Управляйте',
+    ru: 'Управлять',
   },
   enjoy: {
     en: 'enjoy',
-    ru: 'получайте удовольствие',
+    ru: 'ответы и общение',
   },
   pause: {
     en: 'pause',
@@ -77,6 +121,10 @@ export const DICTIONARY: IDictionary = {
   Features: {
     en: 'Features',
     ru: 'Мы предусмотрели',
+  },
+  Communicate_in_good_company_receiving_information_and_giving_help: {
+    en: 'Communicate in good company receiving information and giving help',
+    ru: 'Общайтесь в хорошей компании, получая информацию и оказывая помощь',
   },
   Enjoy_good_company_while_receiving_information_and_giving_help: {
     en: 'Enjoy good company while receiving information and giving help',
@@ -158,18 +206,6 @@ export const DICTIONARY: IDictionary = {
     en: 'directly from people',
     ru: 'напрямую от людей',
   },
-  Knowledge_and_experience_directly_from_people: {
-    en: 'Knowledge and experience directly from people',
-    ru: 'Знания и опыт напрямую от людей',
-  },
-  Welcome_to_Experience_Exchange_Service: {
-    en: 'Welcome to Experience Exchange Service!',
-    ru: 'Добро пожаловать в Сервис Обмена Опытом',
-  },
-  Welcome_to_Knowledge_Exchange_Community: {
-    en: 'Welcome to Knowledge Exchange Community!',
-    ru: 'Добро пожаловать в Сообщество Обмена Знаниями',
-  },
   Over_3_million_members: {
     en: (
       <>
@@ -177,7 +213,7 @@ export const DICTIONARY: IDictionary = {
         <br />
         from over 175 countries
         <br />
-        offers more than 11000 skills to exchange!
+        offers more than 11000 skills
       </>
     ),
     ru: (
@@ -186,7 +222,7 @@ export const DICTIONARY: IDictionary = {
         <br />
         из 175 стран готовы предложить
         <br />
-        более 11000 знаний и умений для обмена
+        более 11000 знаний и умений
       </>
     ),
   },
@@ -209,6 +245,10 @@ export const DICTIONARY: IDictionary = {
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
+  },
+  Meet_and_add_contacts_by_interests: {
+    en: 'Meet and add contacts by interests',
+    ru: 'Знакомьтесь и добавляйте контакты по интересам',
   },
   Make_acquaintances_by_interests: {
     en: 'Make new acquaintances by interests',
@@ -340,13 +380,45 @@ export const DICTIONARY: IDictionary = {
     en: 'Knowledge/info you are looking for',
     ru: 'Знания/информация, которую вы ищите',
   },
-  'Find a skill exchange partner who has': {
+  Find_a_skill_exchange_partner_who_has: {
     en: 'Find a skill exchange partner who has',
     ru: 'Найдите участника со знаниями',
   },
-  'You are suggesting to exchange': {
+  You_are_suggesting_to_exchange: {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
+  },
+  Knowledge_Exchange_and_Useful_Contacts: {
+    en: 'Knowledge Exchange and Useful Contacts',
+    ru: 'Обмен знаниями и полезные контакты',
+  },
+  Knowledge_Exchange_and_Contacts_to_Experience: {
+    en: 'Knowledge Exchange and Contacts to Experience',
+    ru: 'Обмен знаниями и контакты для получения опыта',
+  },
+  Knowledge_Exchange_and_Connection_to_People: {
+    en: 'Knowledge Exchange and Connection to People',
+    ru: 'Обмен знаниями и контакты',
+  },
+  Knowledge_Exchange_and_Professional_Contacts: {
+    en: 'Knowledge Exchange and Professional Contacts',
+    ru: 'Обмен знаниями и профессиональные контакты',
+  },
+  Knowledge_Exchange_and_Contacts: {
+    en: 'Knowledge Exchange and Contacts',
+    ru: 'Обмен знаниями и контакты',
+  },
+  Knowledge_and_experience_directly_from_people: {
+    en: 'Knowledge and experience directly from people',
+    ru: 'Знания и опыт напрямую от людей',
+  },
+  Welcome_to_Experience_Exchange_Service: {
+    en: 'Welcome to Experience Exchange Service!',
+    ru: 'Добро пожаловать в Сервис Обмена Опытом',
+  },
+  Welcome_to_Knowledge_Exchange_Community: {
+    en: 'Welcome to Knowledge Exchange Community!',
+    ru: 'Добро пожаловать в Сообщество Обмена Знаниями',
   },
   Fast_Knowledge_and_Experience_Exchange: {
     en: 'Fast Knowledge and Experience Exchange',

@@ -16,7 +16,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   return (
     <div className='SearchGroupSep'>
       <h1 className='__titleScreen'>
-        {DICTIONARY['Fast_Knowledge_and_Experience_Exchange'][language]}
+        {DICTIONARY['Knowledge_Exchange_and_Useful_Contacts'][language]}
       </h1>
       <SearchFormSep />
       <CategoryCatalog />

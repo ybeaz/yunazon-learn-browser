@@ -1,5 +1,5 @@
 import {
-  MdOutlineBorderInner,
+  MdHomeRepairService,
   MdConnectWithoutContact,
   MdDevicesOther,
   MdPhonelinkSetup,
@@ -37,6 +37,7 @@ import {
 } from 'react-icons/md'
 
 import {
+  AiOutlineSetting,
   AiOutlineShareAlt,
   AiFillApple,
   AiOutlineGift,
@@ -48,9 +49,15 @@ import {
   AiOutlineQuestionCircle,
 } from 'react-icons/ai'
 
-import { BiBuildingHouse, BiCookie, BiSelectMultiple } from 'react-icons/bi'
+import {
+  BiVideoPlus,
+  BiBuildingHouse,
+  BiCookie,
+  BiSelectMultiple,
+} from 'react-icons/bi'
 
 import {
+  BsFillPersonCheckFill,
   BsPiggyBank,
   BsMicrosoft,
   BsFlower2,
@@ -63,6 +70,9 @@ import {
 import { CgDarkMode } from 'react-icons/cg'
 
 import {
+  FaUsers,
+  FaUserCheck,
+  FaUsersCog,
   FaRegSmileWink,
   FaTheaterMasks,
   FaHeadSideMask,
@@ -80,6 +90,7 @@ import {
 import { HiUsers, HiOutlineAcademicCap } from 'react-icons/hi'
 
 import {
+  IoLanguageSharp,
   IoLogoPython,
   IoLogoJavascript,
   IoChatbubblesOutline,
@@ -93,13 +104,20 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  BiVideoPlus,
+  FaUsers,
+  MdHomeRepairService,
+  IoLanguageSharp,
+  FaUserCheck,
+  FaUsersCog,
+  BsFillPersonCheckFill,
   HiUsers,
   AiOutlineShareAlt,
   BsPiggyBank,
   SiAppstore,
   SiGoogleplay,
   FaRegSmileWink,
-  MdOutlineBorderInner,
+  AiOutlineSetting,
   MdConnectWithoutContact,
   RiVoiceprintFill,
   MdDevicesOther,
