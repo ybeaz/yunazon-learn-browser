@@ -203,28 +203,46 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _p2_Media'>
-              <h2 className='__title02'>
-                {DICTIONARY['Over_3_million_members'][language]}
-              </h2>
+              <div className='_title02'>
+                {DICTIONARY['_3_million_members'][language]}
+              </div>
+              <div className='_title02'>
+                {DICTIONARY['_175_countries'][language]}
+              </div>
+              <div className='_title02'>
+                {DICTIONARY['_11000_knowledges_and_skills'][language]}
+              </div>
             </div>
           </div>
         </div>
 
         <div className='__textBlock'>
-          <div className='_row p_2_0_0_0'>
+          {/* <div className='_row p_2_0_0_0'>
             <div className='_col'>
               <h2 className='_h2'>
                 {
                   DICTIONARY[
-                    'Communicate_in_good_company_receiving_information_and_giving_help'
+                    'Communicate_receiving_information_and_giving_help'
                   ][language]
                 }
                 :
               </h2>
             </div>
-          </div>
+          </div> */}
           <div className='_row p_2_0'>
             <div className='_col _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
+              <div className='_text'>
+                {
+                  DICTIONARY['Find_and_add_people_contacts_by_interests'][
+                    language
+                  ]
+                }
+              </div>
+              <div className='_iconValue'>
+                <IconReact {...iconHiUsersProps} />
+              </div>
+            </div>
+            <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
               </div>
@@ -232,21 +250,13 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
                 <IconReact {...iconBsPiggyBankProps} />
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
+            <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge'][language]}{' '}
                 {DICTIONARY['and_skills'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...iconAiOutlineShareAltProps} />
-              </div>
-            </div>
-            <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
-              <div className='_text'>
-                {DICTIONARY['Meet_and_add_contacts_by_interests'][language]}
-              </div>
-              <div className='_iconValue'>
-                <IconReact {...iconHiUsersProps} />
               </div>
             </div>
             <div className='_col _flex_1 _bg_color_4 _asym_corners p_1_2'>
@@ -322,6 +332,22 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
 
             <div className='_col _flex_1 _bordered p_1_1'>
+              <div className='_text'>
+                {DICTIONARY['Get_chat_list'][language]}
+              </div>
+              <div className='_iconAndText'>
+                <IconReact {...iconFaUsersProps} />
+                <div className='_text'>
+                  {DICTIONARY['A_list_to_chat_is_created'][language]}
+                </div>
+              </div>
+            </div>
+
+            <div className='_col'>
+              <IconReact {...iconMdArrowForwardIosProps} />
+            </div>
+
+            <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>{DICTIONARY['Select'][language]}</div>
               <div className='_iconAndText'>
                 <IconReact {...iconBsFillPersonCheckFillProps} />
@@ -343,22 +369,6 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
                 <IconReact {...iconMdHomeRepairServiceProps} />
                 <div className='_text'>
                   {DICTIONARY['reputation'][language]}
-                </div>
-              </div>
-            </div>
-
-            <div className='_col'>
-              <IconReact {...iconMdArrowForwardIosProps} />
-            </div>
-
-            <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>
-                {DICTIONARY['Get_chat_list'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...iconFaUsersProps} />
-                <div className='_text'>
-                  {DICTIONARY['A_list_to_chat_is_created'][language]}
                 </div>
               </div>
             </div>
@@ -408,20 +418,20 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         </div>
 
         <div className='__textBlock'>
-          <div className='_row _p6_Media'>
+          <div className='_row'>
             <div className='_col'>
               <h2 className='_h2'>{DICTIONARY['Features'][language]}</h2>
             </div>
           </div>
-          <div className='_row _p4_Media'>
-            <div className='_col _flex_1 _center _p4_Media'>
+          <div className='_row _p6_Media'>
+            <div className='_col _flex_1 _center _p4_Media _m1_Media'>
               <h2 className='_text'>
                 {DICTIONARY['real_people_is_talking_to_you'][language]}{' '}
                 {DICTIONARY['Everybody_is_protected'][language]}
               </h2>
               <Image {...collageImageFace} />
             </div>
-            <div className='_col _flex_1 _center _p3_Media'>
+            <div className='_col _flex_1 _center _p3_Media _m1_Media'>
               <h2 className='_text'>
                 {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
                 {DICTIONARY['You_don_t_need_to_wait'][language]}
@@ -439,7 +449,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
                   ]
                 }{' '}
                 {
-                  DICTIONARY['who_is_ready_to_answer_your_question_right_now'][
+                  DICTIONARY['who_is_ready_to_answer_your_topic_right_now'][
                     language
                   ]
                 }
