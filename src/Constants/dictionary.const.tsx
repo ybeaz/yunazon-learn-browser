@@ -10,17 +10,21 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Catalog_of_Topics: {
+    en: 'Catalog of Topics',
+    ru: 'Каталог тем',
+  },
   Get_chat_list: {
     en: 'Get chat list',
     ru: 'Получить чат лист',
   },
   A_list_to_chat_is_created: {
-    en: 'The chat list is created from people who indicated they have experience in the field',
-    ru: 'Список для чата создается из людей, которые отметили, что имеют опыт в указанной области',
+    en: 'The chat list is created from people who indicated experience in the field',
+    ru: 'Чат лист создается из людей, кто указал опыт в указанной области',
   },
   Service_works_simply: {
-    en: 'Service works simply:',
-    ru: 'Сервис работает просто:',
+    en: 'Service works simply',
+    ru: 'Сервис работает просто',
   },
   Choose: {
     en: 'Choose',
@@ -120,7 +124,11 @@ export const DICTIONARY: IDictionary = {
   },
   Features: {
     en: 'Features',
-    ru: 'Мы предусмотрели',
+    ru: 'Свойства',
+  },
+  Communicate_receiving_information_and_giving_help: {
+    en: 'Communicate receiving information and giving help',
+    ru: 'Общайтесь, получая информацию и оказывая помощь',
   },
   Communicate_in_good_company_receiving_information_and_giving_help: {
     en: 'Communicate in good company receiving information and giving help',
@@ -157,6 +165,10 @@ export const DICTIONARY: IDictionary = {
   You_can_find_a_person_of_your_interests: {
     en: 'You can find a person of your interests',
     ru: 'Вы можете найти человека по вашим интересам,',
+  },
+  who_is_ready_to_answer_your_topic_right_now: {
+    en: 'who is ready to answer your topic right now',
+    ru: 'который готов ответить по вашей теме прямо сейчас',
   },
   who_is_ready_to_answer_your_question_right_now: {
     en: 'who is ready to answer your question right now',
@@ -206,6 +218,18 @@ export const DICTIONARY: IDictionary = {
     en: 'directly from people',
     ru: 'напрямую от людей',
   },
+  _3_million_members: {
+    en: '3 million members',
+    ru: '3 миллиона пользователей',
+  },
+  _175_countries: {
+    en: '175 countries & territories',
+    ru: '175 стран и территорий',
+  },
+  _11000_knowledges_and_skills: {
+    en: '11000 knowledges & skills ',
+    ru: '11000 знаний и умений',
+  },
   Over_3_million_members: {
     en: (
       <>
@@ -245,6 +269,10 @@ export const DICTIONARY: IDictionary = {
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
+  },
+  Find_and_add_people_contacts_by_interests: {
+    en: 'Find and add people contacts by interests',
+    ru: 'Находите и добавляйте людей по интересам',
   },
   Meet_and_add_contacts_by_interests: {
     en: 'Meet and add contacts by interests',
