@@ -62,7 +62,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
 
     const headerFrameProps = {
-      brandName: `Werails ${DICTIONARY['We_Know'][language]}`,
+      brandName: `YouRails ${DICTIONARY['You_Know'][language]}`,
       logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
       contentComponentName: 'SkillsExchangeSearch',
       isButtonSideMenu: true,

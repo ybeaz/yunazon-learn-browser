@@ -416,9 +416,9 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
-  We_Know: {
-    en: ' - We Know!',
-    ru: ' - Мы знаем!',
+  You_Know: {
+    en: ' - You Know!',
+    ru: ' - Вы знаете!',
   },
   Topics_People_Connections: {
     en: ' - Topics People Connections',

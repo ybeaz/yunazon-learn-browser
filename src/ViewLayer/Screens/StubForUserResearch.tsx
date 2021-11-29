@@ -25,7 +25,8 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
 
     const headerFrameProps = {
       brandName: 'YouRails',
-      contentComponentName: '',
+      logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
+      contentComponentName: 'StubForUserResearch',
       isButtonSideMenu: true,
       isLogoGroup: true,
       isButtonAddCourse: false,

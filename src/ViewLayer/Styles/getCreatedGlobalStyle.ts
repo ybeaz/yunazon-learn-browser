@@ -50,6 +50,12 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .LogoGroup_SkillsExchangeSearch .__div,
+    .LogoGroup_SkillsExchangeSearch .__div ._img {
+      background-color: ${props2 =>
+        getColor(props2, 'colorActive', medial, middle)};
+    }
+
     .SearchFormSep .__searchForm ._row ._linkAdvacedSearch {
       color: ${props2 =>
         getColor(props2, 'colorActive', opaciter2, middle, 'Light')};

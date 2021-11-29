@@ -6,16 +6,17 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 interface LogoGroupArgs {
   brandName: string
   logoPath: string
+  contentComponentName: string
 }
 
 export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
   props
 ): ReactElement => {
-  const { logoPath, brandName } = props
+  const { contentComponentName, logoPath, brandName } = props
 
   return (
     <Link
-      className='LogoGroup'
+      className={`LogoGroup LogoGroup_${contentComponentName}`}
       to={{
         pathname: `/home`,
       }}

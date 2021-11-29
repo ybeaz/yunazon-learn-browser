@@ -213,6 +213,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
 
   const headerFrameProps = {
     brandName: 'YouRails Academy',
+    logoPath: 'https://yourails.com/images/logoYouRails.png',
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,
