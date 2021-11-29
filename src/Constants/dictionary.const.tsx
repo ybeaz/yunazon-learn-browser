@@ -401,8 +401,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Страна',
   },
   Category_info_you_are_looking_for: {
-    en: 'Category/info you are looking for',
-    ru: 'Категория/информация, которую вы ищите',
+    en: 'Category/ informaion',
+    ru: 'Категория/ информация',
   },
   Knowledge_info_you_are_looking_for: {
     en: 'Knowledge/info you are looking for',

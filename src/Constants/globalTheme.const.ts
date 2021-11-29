@@ -1,5 +1,6 @@
 export interface ColorTupple {
   Light: [string, number, number, number, number]
+  Green: [string, number, number, number, number]
   Dark: [string, number, number, number, number]
 }
 // and extend them!
@@ -20,21 +21,25 @@ export const GLOBAL_THEME: DefaultTheme = {
   colors: {
     colorFirst: {
       Light: ['rgba', 25, 35, 50, 0.9], // HSLA ['hsla', 0, 0, 12.5, 1], RBG [32, 32, 32]
+      Green: ['rgba', 25, 35, 50, 0.9],
       Dark: ['hsla', 0, 0, 87.5, 1], // RGB [255, 255, 255]
     },
 
     colorSecond: {
       Light: ['rgba', 252, 252, 252, 1], // Vars: ['hsla', 0, 0, 99, 1]   [0, 0, 99]
+      Green: ['rgba', 252, 252, 252, 1],
       Dark: ['hsla', 0, 0, 12.5, 1],
     },
 
     colorGrey: {
       Light: ['rgba', 25, 35, 50, 0.6],
+      Green: ['rgba', 25, 35, 50, 0.6],
       Dark: ['hsla', 0, 0, 44, 0.6],
     },
 
     colorActive: {
       Light: ['hsla', 222, 52.9, 46.7, 1], // RBG [56, 94, 182]
+      Green: ['hsla', 222, 52.9, 46.7, 1],
       Dark: ['hsla', 222, 52.9, 46.7, 1],
     },
   },
