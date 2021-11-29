@@ -5,6 +5,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface LogoGroupArgs {
   brandName: string
+  moto: string
   logoPath: string
   contentComponentName: string
 }
@@ -12,7 +13,7 @@ interface LogoGroupArgs {
 export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
   props
 ): ReactElement => {
-  const { contentComponentName, logoPath, brandName } = props
+  const { moto, contentComponentName, logoPath, brandName } = props
 
   return (
     <Link
@@ -25,7 +26,10 @@ export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
       <div className='__div'>
         <img className='_img' src={logoPath} />
       </div>
-      <div className='__brand'>{brandName}</div>
+      <div className='__brandMoto'>
+        <div className='_brand'>{brandName}</div>
+        <div className='_moto'>{moto}</div>
+      </div>
     </Link>
   )
 }

@@ -50,6 +50,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .LogoGroup_StubForUserResearch .__div,
+    .LogoGroup_StubForUserResearch .__div ._img,
     .LogoGroup_SkillsExchangeSearch .__div,
     .LogoGroup_SkillsExchangeSearch .__div ._img {
       background-color: ${props2 =>

@@ -15,6 +15,7 @@ import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
+  moto?: string
   logoPath?: string
   contentComponentName?: string
   courseCapture?: string
@@ -37,6 +38,7 @@ interface HeaderFrameArgs {
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   const {
     brandName,
+    moto,
     logoPath,
     contentComponentName,
     courseCapture = '',
@@ -162,6 +164,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
 
   const logoGroupProps = {
     brandName,
+    moto,
     logoPath,
     contentComponentName,
   }

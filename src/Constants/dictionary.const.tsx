@@ -416,6 +416,10 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
+  Together_we_know: {
+    en: 'Together we know',
+    ru: 'Вместе мы знаем',
+  },
   You_Know: {
     en: ' - You Know!',
     ru: ' - Вы знаете!',
