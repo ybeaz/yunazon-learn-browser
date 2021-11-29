@@ -38,7 +38,7 @@ export const GLOBAL_THEME: DefaultTheme = {
     },
 
     colorActive: {
-      Light: ['hsla', 222, 52.9, 46.7, 1], // RBG [56, 94, 182]
+      Light: ['rgba', 56, 94, 182, 1], // RBG [56, 94, 182]
       Green: ['hsla', 222, 52.9, 46.7, 1],
       Dark: ['hsla', 222, 52.9, 46.7, 1],
     },

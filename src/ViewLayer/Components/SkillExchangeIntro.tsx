@@ -196,6 +196,10 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
     return (
       <div className='SkillExchangeIntro'>
         <h1 className='__title01'>
+          {DICTIONARY['Knowledge_Exchange_and_Useful_Contacts'][language]}
+        </h1>
+
+        <h1 className='__title02'>
           {DICTIONARY['Knowledge_and_experience'][language]}{' '}
           {DICTIONARY['directly_from_people'][language]}
         </h1>
@@ -203,13 +207,13 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _p2_Media'>
-              <div className='_title02'>
+              <div className='_statistics'>
                 {DICTIONARY['_3_million_members'][language]}
               </div>
-              <div className='_title02'>
+              <div className='_statistics'>
                 {DICTIONARY['_175_countries'][language]}
               </div>
-              <div className='_title02'>
+              <div className='_statistics'>
                 {DICTIONARY['_11000_knowledges_and_skills'][language]}
               </div>
             </div>

@@ -86,7 +86,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background-color: unset;
     }
 
-    .SkillExchangeIntro ._title02 {
+    .SkillExchangeIntro ._statistics {
       color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 

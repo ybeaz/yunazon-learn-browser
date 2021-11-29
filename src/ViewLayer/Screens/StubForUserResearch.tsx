@@ -24,7 +24,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     }, [])
 
     const headerFrameProps = {
-      brandName: 'YourRails',
+      brandName: 'YouRails',
       contentComponentName: '',
       isButtonSideMenu: true,
       isLogoGroup: true,
@@ -42,7 +42,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     const mainFrameProps = {
       screenType: 'StubForUserResearch',
       contentComponentName: 'none',
-      brandName: 'YourRails',
+      brandName: 'YouRails',
     }
 
     const imageBottomProps = {

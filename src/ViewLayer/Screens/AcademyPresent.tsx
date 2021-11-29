@@ -212,7 +212,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
   }
 
   const headerFrameProps = {
-    brandName: 'YourRails Academy',
+    brandName: 'YouRails Academy',
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,

@@ -401,8 +401,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Страна',
   },
   Category_info_you_are_looking_for: {
-    en: 'Category/ informaion',
-    ru: 'Категория/ информация',
+    en: 'Category/ topic',
+    ru: 'Категория/ тема',
   },
   Knowledge_info_you_are_looking_for: {
     en: 'Knowledge/info you are looking for',
@@ -415,6 +415,14 @@ export const DICTIONARY: IDictionary = {
   You_are_suggesting_to_exchange: {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
+  },
+  We_Know: {
+    en: ' - We Know!',
+    ru: ' - Мы знаем!',
+  },
+  Topics_People_Connections: {
+    en: ' - Topics People Connections',
+    ru: ' - Темы Связи с людьми',
   },
   Knowledge_Exchange_and_Useful_Contacts: {
     en: 'Knowledge Exchange and Useful Contacts',

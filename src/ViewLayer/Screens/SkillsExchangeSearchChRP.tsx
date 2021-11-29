@@ -35,7 +35,7 @@ export const SkillsExchangeSearchChRP: React.FunctionComponent<SkillsExchangeSea
     const mainFrameProps = {
       screenType: 'SkillsExchangeSearchChRP',
       contentComponentName: 'SearchFormSepChRP',
-      brandName: 'YourRails',
+      brandName: 'YouRails',
     }
 
     return (

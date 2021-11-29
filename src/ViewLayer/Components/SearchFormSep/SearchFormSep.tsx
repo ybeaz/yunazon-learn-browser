@@ -261,10 +261,10 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     },
     buttonSearchSepProps: {
       classAdded: 'Button_searchSep',
-      icon: null,
+      icon: 'FaUsers',
       icon2: null,
-      captureLeft: DICTIONARY['Search'][language],
-      captureRight: '',
+      captureLeft: '',
+      captureRight: DICTIONARY['Search'][language],
       action: {
         typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
         data: { history, path: '/see-you', source: 'searchForm' },

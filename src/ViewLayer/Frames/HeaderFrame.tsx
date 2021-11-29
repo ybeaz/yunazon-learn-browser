@@ -15,6 +15,7 @@ import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
   brandName?: string
+  logoPath?: string
   contentComponentName?: string
   courseCapture?: string
   documentID?: string
@@ -36,6 +37,7 @@ interface HeaderFrameArgs {
 export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   const {
     brandName,
+    logoPath,
     contentComponentName,
     courseCapture = '',
     documentID = '',
@@ -156,6 +158,11 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     contentID,
   }
 
+  const logoGroupProps = {
+    brandName,
+    logoPath,
+  }
+
   return (
     <div className={`HeaderFrame ${classAddHeaderFrame}`}>
       <div className='_content'>
@@ -166,7 +173,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
             </Link>
           )}
           {isButtonSideMenu && <Button {...buttonMdMenuProps} />}
-          {isLogoGroup && <LogoGroup brandName={brandName} />}
+          {isLogoGroup && <LogoGroup {...logoGroupProps} />}
           {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
         </div>

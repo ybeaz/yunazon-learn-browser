@@ -2,12 +2,12 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Image } from '../Components/Image'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { BackgroundImage } from '../Frames/BackgroundImage'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SearchGroupSep } from '../Components/SearchGroupSep'
@@ -27,6 +27,7 @@ interface SkillsExchangeSearchProps {
 
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
   (props): ReactElement => {
+    const { language } = useSelector((store2: IRootStore) => store2)
     getEffectedRequests(['GET_GLOBAL_VARS'])
 
     const store = useSelector((store2: IRootStore) => store2)
@@ -61,7 +62,8 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
 
     const headerFrameProps = {
-      brandName: 'YourRails',
+      brandName: `Werails ${DICTIONARY['We_Know'][language]}`,
+      logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
       contentComponentName: 'SkillsExchangeSearch',
       isButtonSideMenu: true,
       isLogoGroup: true,
