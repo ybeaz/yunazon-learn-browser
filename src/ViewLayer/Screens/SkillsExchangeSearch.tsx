@@ -33,7 +33,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const store = useSelector((store2: IRootStore) => store2)
     const {
       language: languageStore,
-      componentsState: { isShownSkillExchangeIntro, isShownPalette },
+      componentsState: { isShownPalette },
     } = store
 
     const {
@@ -46,10 +46,13 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
 
-      isShownSkillExchangeIntro &&
-        handleEvents({}, { typeEvent: 'SEP_INTRO_IN' })
-
       const query = getParsedUrlQuery(search)
+      query.intro &&
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_INTRO_IN', data: { intro: query.intro } }
+        )
+
       query.ssr &&
         handleEvents(
           {},

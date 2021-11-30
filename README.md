@@ -65,6 +65,7 @@ I. for courses
 
 II. For Skills Exchange Project (SEP)
 `?ssr=xyz` value to `selectSkillsRequired` form field
+`?intro=xyz` value to set true and select component as an into for the page, one of the CHILDREN from `src/ViewLayer/Frames/ModalFrames.tsx`. Example: `?intro=SkillExchangeIntro`
 
 ### Architecture / evelopment notes
 
