@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { nanoid } from 'nanoid'
@@ -25,13 +25,17 @@ import { IRootStore } from '../../../Interfaces/IRootStore'
  */
 
 export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
+  const history = useHistory()
+
   const {
     forms: { searchFormSep },
     language,
     componentsState: { isSepAdvancedSearch },
   } = useSelector((store2: IRootStore) => store2)
 
-  const history = useHistory()
+  const [categoriesToExchangeState, setCategoriesToExchangeState] = useState(
+    CATEGORIES_TO_EXCHANGE
+  )
 
   const {
     inputAgeFromRequired,
@@ -84,6 +88,17 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     )
   }, [])
 
+  useEffect(() => {
+    const categoriesToExchangeStateNext = {
+      [selectSkillsRequired]: {
+        en: selectSkillsRequired,
+        ru: selectSkillsRequired,
+      },
+      ...CATEGORIES_TO_EXCHANGE,
+    }
+    setCategoriesToExchangeState(categoriesToExchangeStateNext)
+  }, [selectSkillsRequired])
+
   const defaultOption = DICTIONARY.notSelected
 
   const stubOnAction = () => {}
@@ -118,7 +133,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       style: { width: '100%' },
     },
     selectSkillsRequiredProps: {
-      // allowClear: true,
+      allowClear: true,
       componentId: nanoid(),
       value: [selectSkillsRequired],
       filterOption,
@@ -130,10 +145,14 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
           { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: values }
         ),
       onFocus: stubOnAction,
-      onSearch: stubOnAction,
+      onSearch: (searchValue: string) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: searchValue }
+        ),
       optionFilterProp: 'children',
       options: getStdDictionaryOptions(
-        CATEGORIES_TO_EXCHANGE,
+        categoriesToExchangeState,
         language,
         defaultOption
       ),
@@ -161,26 +180,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    // selectLanguageRequiredProps: {
-    //   allowClear: true,
-    //   componentId: nanoid(),
-    //   defaultValue: [],
-    //   filterOption,
-    //   mode: 'multiple' as 'multiple' | 'tags',
-    //   onBlur: stubOnAction,
-    //   onChange: (values: string[]) =>
-    //     handleEvents(
-    //       {},
-    //       { typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED', data: values }
-    //     ),
-    //   onFocus: stubOnAction,
-    //   onSearch: stubOnAction,
-    //   optionFilterProp: 'children',
-    //   options: getLanguagesOptions(LANGUAGES, language, defaultOption),
-    //   placeholder: DICTIONARY['select'][language],
-    //   showSearch: true,
-    //   style: { width: '100%' },
-    // },
     selectCountryRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
@@ -216,7 +215,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       storeFormProp: 'SEP_INPUT_AGE_TO_REQUIRED',
     },
     selectGenderRequiredProps: {
-      // allowClear: true,
+      allowClear: true,
       componentId: nanoid(),
       defaultValue: [], // defaultOption['en']
       filterOption,
@@ -243,7 +242,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
     },
     selectSortByProps: {
-      // allowClear: true,
+      allowClear: true,
       componentId: nanoid(),
       value: selectSortBy ? [selectSortBy] : [],
       filterOption,

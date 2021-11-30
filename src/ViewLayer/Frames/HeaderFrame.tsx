@@ -58,8 +58,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     isSelectLanguage,
   } = props
 
-  console.info('HeaderFrame [59]', { contentComponentName })
-
   const { user, language } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user2: IUser): any => {
