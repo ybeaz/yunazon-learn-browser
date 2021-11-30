@@ -14,13 +14,13 @@ export const routes: IRoute[] = [
     themeDafault: 'Light',
   },
   {
-    path: `/home`,
+    path: `/sep`,
     exact: true,
     page: 'SkillsExchangeSearch',
     themeDafault: 'Light',
   },
   {
-    path: `/exchange-search-2`,
+    path: `/sep-2`,
     exact: true,
     page: 'SkillsExchangeSearchChRP',
     themeDafault: 'Light',

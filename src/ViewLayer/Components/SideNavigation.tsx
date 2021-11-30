@@ -26,7 +26,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_HOME', data: { history, path: '/home' } },
+      action: { typeEvent: 'GO_HOME', data: { history, path: '/sep' } },
     },
     {
       icon: 'HiOutlineAcademicCap',

@@ -7,10 +7,10 @@ import { IconReact } from './IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
-interface SkillExchangeIntroArgs {}
+interface SkillExchangeIntro2Args {}
 
-export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs> =
-  (props: SkillExchangeIntroArgs): ReactElement => {
+export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Args> =
+  (props: SkillExchangeIntro2Args): ReactElement => {
     const { language } = useSelector((store2: IRootStore) => store2)
 
     const propsOut = {
@@ -109,7 +109,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           typeEvent: 'SET_MODAL_FRAMES',
           data: [
             {
-              childName: 'SkillExchangeIntro',
+              childName: 'SkillExchangeIntro2',
               isActive: false,
               childProps: {},
             },
@@ -131,7 +131,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           typeEvent: 'SET_MODAL_FRAMES',
           data: [
             {
-              childName: 'SkillExchangeIntro',
+              childName: 'SkillExchangeIntro2',
               isActive: false,
               childProps: {},
             },
@@ -150,7 +150,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           typeEvent: 'SET_MODAL_FRAMES',
           data: [
             {
-              childName: 'SkillExchangeIntro',
+              childName: 'SkillExchangeIntro2',
               isActive: false,
               childProps: {},
             },
@@ -165,7 +165,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
           typeEvent: 'SET_MODAL_FRAMES',
           data: [
             {
-              childName: 'SkillExchangeIntro',
+              childName: 'SkillExchangeIntro2',
               isActive: false,
               childProps: {},
             },
@@ -175,7 +175,7 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
     }
 
     return (
-      <div className='SkillExchangeIntro'>
+      <div className='SkillExchangeIntro2'>
         <h1 className='__title01'>
           {DICTIONARY['Knowledge_Exchange_and_Useful_Contacts'][language]}
         </h1>

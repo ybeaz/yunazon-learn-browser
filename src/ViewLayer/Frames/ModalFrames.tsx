@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { SkillExchangeIntro2 } from '../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
 import { AuthUser } from '../Components/AuthUser'
 import { Button } from '../Components/Button'
@@ -10,6 +11,7 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { QuestionScores } from '../Components/QuestionScores'
 
 const CHILDREN = {
+  SkillExchangeIntro2,
   SkillExchangeIntro,
   AuthUser,
   EmalInputs,
