@@ -108,30 +108,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
   const childrenProps = {
-    selectSkillsOfferedProps: {
-      allowClear: true,
-      componentId: nanoid(),
-      value: selectSkillsOffered,
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_SKILLS_OFFERED', data: values }
-        ),
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      // optionFilterProp: 'children',
-      options: getStdDictionaryOptions(
-        CATEGORIES_TO_EXCHANGE,
-        language,
-        defaultOption
-      ),
-      placeholder: DICTIONARY['select'][language],
-      showSearch: true,
-      style: { width: '100%' },
-    },
     selectSkillsRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
@@ -159,6 +135,13 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       placeholder: DICTIONARY['select'][language],
       showSearch: true,
       style: { width: '100%' },
+    },
+    inputDescriptionRequiredProps: {
+      classAdded: 'Input_descriptionRequired',
+      type: 'text',
+      placeholder: DICTIONARY['optional'][language],
+      typeEvent: 'SEP_INPUT_DESCRIPTION_REQUIRED',
+      storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
     },
     selectMediaRequiredProps: {
       allowClear: true,
@@ -234,12 +217,29 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       showSearch: true,
       style: { width: '100%' },
     },
-    inputDescriptionRequiredProps: {
-      classAdded: 'Input_descriptionRequired',
-      type: 'text',
-      placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'SEP_INPUT_DESCRIPTION_REQUIRED',
-      storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
+    selectSkillsOfferedProps: {
+      allowClear: true,
+      componentId: nanoid(),
+      value: selectSkillsOffered,
+      filterOption,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents(
+          {},
+          { typeEvent: 'SEP_SELECT_SKILLS_OFFERED', data: values }
+        ),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      // optionFilterProp: 'children',
+      options: getStdDictionaryOptions(
+        CATEGORIES_TO_EXCHANGE,
+        language,
+        defaultOption
+      ),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
     },
     selectSortByProps: {
       allowClear: true,
@@ -305,6 +305,14 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
+        <div className={`_row`}>
+          <div className={classCol01}>
+            {DICTIONARY['Specific_topic'][language]}
+          </div>
+          <div className={classCol02}>
+            <Input {...childrenProps.inputDescriptionRequiredProps} />
+          </div>
+        </div>
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Speaking language'][language]}
@@ -346,14 +354,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
           </div>
           <div className={classCol02}>
             <SelectAntd {...childrenProps.selectGenderRequiredProps} />
-          </div>
-        </div>
-        <div className={`_row ${classAdvancedSearch}`}>
-          <div className={classCol01}>
-            {DICTIONARY['Description contains'][language]}
-          </div>
-          <div className={classCol02}>
-            <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>

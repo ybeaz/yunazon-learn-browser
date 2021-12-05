@@ -143,6 +143,62 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
         isTooltipVisible: false,
         isUnderlined: false,
       },
+      illustration_5_1_1: {
+        classAdded: 'Image_illustration',
+        src: 'https://yourails.com/images/illustrations/illustration_5_1_1.png',
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'SkillExchangeIntro2',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
+      },
+      illustration_5_2_1: {
+        classAdded: 'Image_illustration',
+        src: 'https://yourails.com/images/illustrations/illustration_5_2_1.png',
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'SkillExchangeIntro2',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
+      },
+      illustration_5_3_1: {
+        classAdded: 'Image_illustration',
+        src: 'https://yourails.com/images/illustrations/illustration_5_3_1.png',
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'SkillExchangeIntro2',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
+      },
+      illustration_5_4_1: {
+        classAdded: 'Image_illustration',
+        src: 'https://yourails.com/images/illustrations/illustration_5_4_1.png',
+        action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'SkillExchangeIntro2',
+              isActive: false,
+              childProps: {},
+            },
+          ],
+        },
+      },
       collageImageFaceProps: {
         classAdded: 'Image_collageImageFace',
         src: 'https://yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
@@ -259,10 +315,60 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
           </div>
           <div className='_row _p6_Media'>
+            <div className='_col _flex_1'>
+              <div className='_text'>
+                {DICTIONARY['Select'][language]} {DICTIONARY['topic'][language]}{' '}
+                {DICTIONARY['clarify_the_question'][language]}
+              </div>
+              <div className='_iconAndText'>
+                <Image {...propsOut.illustration_5_1_1} />
+              </div>
+            </div>
+
+            <div className='_col _flex_1'>
+              <div className='_text'>
+                {DICTIONARY['Get_users_by_topic'][language]}
+              </div>
+              <div className='_iconAndText'>
+                <Image {...propsOut.illustration_5_2_1} />
+              </div>
+            </div>
+
+            <div className='_col _flex_1'>
+              <div className='_text'>
+                {DICTIONARY['Use_filters'][language]}{' '}
+                {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
+                {DICTIONARY['person'][language]}
+              </div>
+              <div className='_iconAndText'>
+                <Image {...propsOut.illustration_5_3_1} />
+              </div>
+            </div>
+
+            <div className='_col _flex_1'>
+              <div className='_text'>
+                {DICTIONARY['Say_hello_and_hear_new_things'][language]}
+              </div>
+              <div className='_iconAndText'>
+                <Image {...propsOut.illustration_5_4_1} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className='__textBlock'>
+          <div className='_row _p5_Media'>
+            <div className='_col'>
+              <h2 className='_h2'>
+                {DICTIONARY['Service_works_simply'][language]}
+              </h2>
+            </div>
+          </div>
+          <div className='_row _p6_Media'>
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>
-                {DICTIONARY['Choose'][language]} {DICTIONARY['topic'][language]}
-                {' *'}
+                {DICTIONARY['Select'][language]} {DICTIONARY['topic'][language]}{' '}
+                {DICTIONARY['clarify_the_question'][language]}
               </div>
               <div className='_iconAndText'>
                 <IconReact {...propsOut.iconAiOutlineQuestionCircleProps} />
@@ -286,7 +392,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
 
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>
-                {DICTIONARY['Get_chat_list'][language]}
+                {DICTIONARY['Get_users_by_topic'][language]}
               </div>
               <div className='_iconAndText'>
                 <IconReact {...propsOut.iconFaUsersProps} />
@@ -301,27 +407,31 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
 
             <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>{DICTIONARY['Select'][language]}</div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconBsFillPersonCheckFillProps} />
-                <div className='_text'>{DICTIONARY['person'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconMdLanguageProps} />
-                <div className='_text'>
-                  {DICTIONARY['by_country'][language]}
-                </div>
+              <div className='_text'>
+                {DICTIONARY['Use_filters'][language]}{' '}
+                {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
+                {DICTIONARY['person'][language]} {DICTIONARY['by'][language]}
               </div>
               <div className='_iconAndText'>
                 <IconReact {...propsOut.iconFaUsersCogProps} />
-                <div className='_text'>
-                  {DICTIONARY['by_ageGroup'][language]}
-                </div>
+                <div className='_text'>{DICTIONARY['ageGroup'][language]}</div>
+              </div>
+              <div className='_iconAndText'>
+                <IconReact {...propsOut.iconBsFillPersonCheckFillProps} />
+                <div className='_text'>{DICTIONARY['gender'][language]}</div>
               </div>
               <div className='_iconAndText'>
                 <IconReact {...propsOut.iconMdHomeRepairServiceProps} />
                 <div className='_text'>
                   {DICTIONARY['reputation'][language]}
+                </div>
+              </div>
+              <div className='_iconAndText'>
+                <IconReact {...propsOut.iconMdLanguageProps} />
+                <div className='_text'>
+                  {DICTIONARY['geography'][language]}
+                  {'/ '}
+                  {DICTIONARY['country'][language]}
                 </div>
               </div>
             </div>
@@ -332,7 +442,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
 
             <div className='_col _flex_1 _bordered p_1_1'>
               <div className='_text'>
-                {DICTIONARY['Ask_question_and_extend_contacts'][language]}
+                {DICTIONARY['Say_hello_and_hear_new_things'][language]}
               </div>
               <div className='_iconAndText'>
                 <IconReact {...propsOut.iconIoChatbubblesOutlineProps} />

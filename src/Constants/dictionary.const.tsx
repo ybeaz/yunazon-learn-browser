@@ -14,45 +14,77 @@ export const DICTIONARY: IDictionary = {
     en: 'Catalog of Topics',
     ru: 'Каталог тем',
   },
+  Get_users_by_topic: {
+    en: 'Get users by topic',
+    ru: 'Получить пользователей по теме',
+  },
+  Get_user_list: {
+    en: 'Get user list',
+    ru: 'Получить список пользователей',
+  },
   Get_chat_list: {
     en: 'Get chat list',
     ru: 'Получить чат лист',
   },
   A_list_to_chat_is_created: {
-    en: 'The chat list is created from people who indicated experience in the field',
-    ru: 'Чат лист создается из людей, кто указал опыт в указанной области',
+    en: 'Chat list is created from people with experience in the field',
+    ru: 'Чат лист создается из людей с опытом в указанной области',
   },
   Service_works_simply: {
     en: 'Service works simply',
     ru: 'Сервис работает просто',
   },
+  Select: {
+    en: 'Select',
+    ru: 'Подобрать',
+  },
   Choose: {
     en: 'Choose',
     ru: 'Выбрать',
+  },
+  choose: {
+    en: 'choose',
+    ru: 'выбрать',
+  },
+  clarify_the_question: {
+    en: 'clarify the question',
+    ru: 'уточнить вопрос',
+  },
+  Use_filters: {
+    en: 'Use filters',
+    ru: 'Использовать фильтры',
+  },
+  and_begin_to_chat: {
+    en: 'and begin to chat',
+    ru: 'и начать чат',
   },
   person: {
     en: 'a person',
     ru: 'собеседника(цу)',
   },
-  by_ageGroup: {
-    en: 'by age group',
-    ru: 'по возрастой группе',
+  ageGroup: {
+    en: 'age group',
+    ru: 'возрастой группе',
   },
   reputation: {
-    en: 'by reputation',
-    ru: 'по репутации',
+    en: 'reputation',
+    ru: 'репутации',
   },
   gender: {
     en: 'gender',
-    ru: 'собеседника(цу)',
+    ru: 'полу',
   },
   age: {
     en: 'age',
     ru: 'возраст',
   },
-  by_country: {
-    en: 'by country',
-    ru: 'по стране',
+  geography: {
+    en: 'geography',
+    ru: 'географии',
+  },
+  country: {
+    en: 'country',
+    ru: 'стране',
   },
   browser_app: {
     en: 'browser app',
@@ -70,10 +102,6 @@ export const DICTIONARY: IDictionary = {
     en: 'topic',
     ru: 'тему',
   },
-  Select: {
-    en: 'Select',
-    ru: 'Подобрать',
-  },
   category: {
     en: 'category',
     ru: 'категорию',
@@ -85,6 +113,10 @@ export const DICTIONARY: IDictionary = {
   Ask_and_offer_help: {
     en: 'Ask and offer help',
     ru: '_',
+  },
+  Say_hello_and_hear_new_things: {
+    en: 'Say hello and hear new things',
+    ru: 'Поприветствовать и услышать новое',
   },
   Ask_question_and_extend_contacts: {
     en: 'Ask question and extend contacts',
@@ -358,6 +390,14 @@ export const DICTIONARY: IDictionary = {
   'Sort results by': {
     en: 'Sort results by',
     ru: 'Отрортировать результаты по',
+  },
+  Specific_topic: {
+    en: 'Specific topic',
+    ru: 'Тема детально',
+  },
+  Specific_question: {
+    en: 'Specific question',
+    ru: 'Вопрос детально',
   },
   'Description contains': {
     en: 'Description contains',
@@ -744,5 +784,13 @@ export const DICTIONARY: IDictionary = {
   question: {
     en: 'question',
     ru: 'вопрос',
+  },
+  by: {
+    en: 'by',
+    ru: 'по',
+  },
+  and: {
+    en: 'and',
+    ru: 'и',
   },
 }
