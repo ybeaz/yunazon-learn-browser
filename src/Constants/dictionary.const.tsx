@@ -10,49 +10,98 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Online: {
+    en: 'Online',
+    ru: 'Онлайн',
+  },
   Catalog_of_Topics: {
     en: 'Catalog of Topics',
     ru: 'Каталог тем',
+  },
+  Receive_users_by_topic: {
+    en: 'Display users by topic',
+    ru: 'Вывести по теме пользователей',
+  },
+  Get_users_by_topic: {
+    en: 'Get users by topic',
+    ru: 'Получить пользователей по теме',
+  },
+  Get_user_list: {
+    en: 'Get user list',
+    ru: 'Получить список пользователей',
   },
   Get_chat_list: {
     en: 'Get chat list',
     ru: 'Получить чат лист',
   },
   A_list_to_chat_is_created: {
-    en: 'The chat list is created from people who indicated experience in the field',
-    ru: 'Чат лист создается из людей, кто указал опыт в указанной области',
+    en: 'Chat list is created from people with experience in the field',
+    ru: 'Чат лист создается из людей с опытом в указанной области',
   },
   Service_works_simply: {
     en: 'Service works simply',
     ru: 'Сервис работает просто',
   },
+  Select: {
+    en: 'Select',
+    ru: 'Подобрать',
+  },
   Choose: {
     en: 'Choose',
     ru: 'Выбрать',
+  },
+  choose: {
+    en: 'choose',
+    ru: 'выбрать',
+  },
+  clarify_the_question: {
+    en: 'clarify the question',
+    ru: 'уточнить вопрос',
+  },
+  if_needed: {
+    en: 'if needed',
+    ru: 'если нужно',
+  },
+  optionaly: {
+    en: 'optionaly',
+    ru: 'не обязательно',
+  },
+
+  Use_filters: {
+    en: 'Use filters',
+    ru: 'Использовать фильтры',
+  },
+  and_begin_to_chat: {
+    en: 'and begin to chat',
+    ru: 'и начать чат',
   },
   person: {
     en: 'a person',
     ru: 'собеседника(цу)',
   },
-  by_ageGroup: {
-    en: 'by age group',
-    ru: 'по возрастой группе',
+  ageGroup: {
+    en: 'age group',
+    ru: 'возрастой группе',
   },
   reputation: {
-    en: 'by reputation',
-    ru: 'по репутации',
+    en: 'reputation',
+    ru: 'репутации',
   },
   gender: {
     en: 'gender',
-    ru: 'собеседника(цу)',
+    ru: 'полу',
   },
   age: {
     en: 'age',
     ru: 'возраст',
   },
-  by_country: {
-    en: 'by country',
-    ru: 'по стране',
+  geography: {
+    en: 'geography',
+    ru: 'географии',
+  },
+  country: {
+    en: 'country',
+    ru: 'стране',
   },
   browser_app: {
     en: 'browser app',
@@ -70,10 +119,6 @@ export const DICTIONARY: IDictionary = {
     en: 'topic',
     ru: 'тему',
   },
-  Select: {
-    en: 'Select',
-    ru: 'Подобрать',
-  },
   category: {
     en: 'category',
     ru: 'категорию',
@@ -85,6 +130,10 @@ export const DICTIONARY: IDictionary = {
   Ask_and_offer_help: {
     en: 'Ask and offer help',
     ru: '_',
+  },
+  Say_hello_and_hear_new_things: {
+    en: 'Say hello and hear new things',
+    ru: 'Поприветствовать и услышать новое',
   },
   Ask_question_and_extend_contacts: {
     en: 'Ask question and extend contacts',
@@ -286,9 +335,9 @@ export const DICTIONARY: IDictionary = {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
   },
-  Communicate_and_practice_foreign_languages: {
-    en: 'Communicate and practice foreign languages',
-    ru: 'Общайтесь и практикуйте иностранные языки',
+  Communicate_practice_foreign_languages: {
+    en: 'Communicate, practice foreign languages',
+    ru: 'Общайтесь, практикуйте иностранные языки',
   },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
@@ -359,6 +408,14 @@ export const DICTIONARY: IDictionary = {
     en: 'Sort results by',
     ru: 'Отрортировать результаты по',
   },
+  Specific_topic: {
+    en: 'Specific topic/ question',
+    ru: 'Тема/ вопрос детально',
+  },
+  Specific_question: {
+    en: 'Specific question',
+    ru: 'Вопрос детально',
+  },
   'Description contains': {
     en: 'Description contains',
     ru: 'Описание содержит',
@@ -401,8 +458,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Страна',
   },
   Category_info_you_are_looking_for: {
-    en: 'Category/info you are looking for',
-    ru: 'Категория/информация, которую вы ищите',
+    en: 'Category/ topic',
+    ru: 'Категория/ тема',
   },
   Knowledge_info_you_are_looking_for: {
     en: 'Knowledge/info you are looking for',
@@ -416,9 +473,25 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
+  Together_we_know: {
+    en: 'Together we know',
+    ru: 'Вместе мы знаем',
+  },
+  You_Know: {
+    en: ' - You Know!',
+    ru: ' - Вы знаете!',
+  },
+  Topics_People_Connections: {
+    en: ' - Topics People Connections',
+    ru: ' - Темы Связи с людьми',
+  },
   Knowledge_Exchange_and_Useful_Contacts: {
     en: 'Knowledge Exchange and Useful Contacts',
     ru: 'Обмен знаниями и полезные контакты',
+  },
+  Useful_and_interesting_contacts: {
+    en: 'Useful and interesting contacts',
+    ru: 'Полезные и интересные контакты',
   },
   Knowledge_Exchange_and_Contacts_to_Experience: {
     en: 'Knowledge Exchange and Contacts to Experience',
@@ -732,5 +805,13 @@ export const DICTIONARY: IDictionary = {
   question: {
     en: 'question',
     ru: 'вопрос',
+  },
+  by: {
+    en: 'by',
+    ru: 'по',
+  },
+  and: {
+    en: 'and',
+    ru: 'и',
   },
 }

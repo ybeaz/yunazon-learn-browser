@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { SkillExchangeIntro2 } from '../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
 import { AuthUser } from '../Components/AuthUser'
 import { Button } from '../Components/Button'
@@ -10,6 +11,7 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { QuestionScores } from '../Components/QuestionScores'
 
 const CHILDREN = {
+  SkillExchangeIntro2,
   SkillExchangeIntro,
   AuthUser,
   EmalInputs,
@@ -26,6 +28,9 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
+
+      if (!CHILD) return null
+
       const closeAction = {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [{ childName, isActive: false, childProps }],

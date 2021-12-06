@@ -93,7 +93,8 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   const coursePathName = `/c/${courseID}/${slug}`
 
   const headerFrameProps = {
-    brandName: 'YourRails',
+    brandName: 'YouRails',
+    logoPath: 'https://yourails.com/images/logoYouRails.png',
     contentComponentName: 'SearchFormSep',
     courseCapture,
     documentID,

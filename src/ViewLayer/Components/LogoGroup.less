@@ -8,25 +8,54 @@
     align-items: center;
     ._img {
       display: flex;
-      width: 2em !important;
+      width: 2rem;
+      height: auto;
     }
   }
   .__background {
-    background-image: url('https://yourails.com/images/logoYouRailsV13.png');
     width: -webkit-fill-available;
   }
-  .__brand {
-    font-weight: 700;
-    padding-left: 0.3em;
-    align-items: center;
+  .__brandMoto {
     display: flex;
-    letter-spacing: -1px;
-    font-size: 1.1em;
-    letter-spacing: -1px;
-    transition: all 0.3s ease;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
+    flex-direction: column;
+    line-height: 1;
+
+    ._brand {
+      display: flex;
+      font-weight: 700;
+      padding-left: 0.3em;
+      align-items: center;
+      display: flex;
+      letter-spacing: -1px;
+      font-size: 1.1em;
+      letter-spacing: -1px;
+      transition: all 0.3s ease;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+    }
+
+    ._moto {
+      display: flex;
+      padding-left: 0.4em;
+      font-size: @fontSizeS;
+    }
+  }
+}
+
+.LogoGroup_StubForUserResearch,
+.LogoGroup_SkillsExchangeSearch {
+  display: flex;
+
+  .__div {
+    display: flex;
+    border-radius: 50%;
+
+    ._img {
+      display: flex;
+      padding: 0.33rem;
+      border-radius: 50%;
+    }
   }
 }

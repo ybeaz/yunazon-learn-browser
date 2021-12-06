@@ -1,4 +1,4 @@
-.CategoryCatalog {
+.UsersOnline {
   display: flex;
   flex-direction: column;
 
@@ -7,10 +7,11 @@
     font-size: @fontSizeH3;
   }
 
-  ._catalogIcons {
+  ._images {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    overflow: hidden;
+    max-height: 10vw;
   }
 
   @media @large {
@@ -20,5 +21,8 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._images {
+      max-height: 20vw;
+    }
   }
 }

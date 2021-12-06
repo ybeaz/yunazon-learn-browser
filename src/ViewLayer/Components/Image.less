@@ -1,6 +1,5 @@
 .Image {
   display: flex;
-  margin: 0 0.25rem 0 0;
 
   ._image {
     vertical-align: middle;
@@ -43,14 +42,44 @@
   }
 }
 
+.Image_UsersOnline {
+  display: flex;
+  width: fit-content;
+  margin: 0 0.2rem 0.2rem 0;
+
+  ._image {
+    width: 5vw;
+    border-radius: 1px;
+    // opacity: 0.67;
+  }
+
+  @media @phone, @phone-strict {
+    ._image {
+      width: 10vw;
+    }
+  }
+}
+
 .Image_collageImageIndustries {
+  margin: 0 0.25rem 0 0;
+
   ._image {
     width: 100%;
     opacity: 0.67;
   }
 }
 
+.Image_illustration {
+  margin: 0 0.25rem 0 0;
+
+  ._image {
+    max-width: 100%;
+  }
+}
+
 .Image_collageImageFace {
+  margin: 0 0.25rem 0 0;
+
   ._image {
     opacity: 80%;
     width: 100%;
@@ -60,18 +89,24 @@
 }
 
 .SelectLanguage__SearchFormSep .Image_languagesOptions {
+  margin: 0 0.25rem 0 0;
+
   ._image {
     width: 1.3rem;
   }
 }
 
 .SelectLanguage__SearchFormSep .SelectLanguage__AppLanguage {
+  margin: 0 0.25rem 0 0;
+
   ._image {
     width: 1.5rem;
   }
 }
 
 .Image.Image_languagesOptions.SelectLanguage__AppLanguage {
+  margin: 0 0.25rem 0 0;
+
   ._image {
     width: 1.5rem;
   }

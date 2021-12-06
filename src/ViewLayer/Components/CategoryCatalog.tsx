@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAction } from '../../Interfaces/IAction'

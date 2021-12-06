@@ -6,6 +6,8 @@ import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { getBuiltColor } from './getBuiltColor'
 
+const condition = (arrThemes, arrColors) => {}
+
 interface IGetCreatedGlobalStyle {
   (lightness: ILightness, alphas: IAlphas): any
 }
@@ -48,6 +50,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   return createGlobalStyle`
 
+    .LogoGroup_StubForUserResearch .__div,
+    .LogoGroup_StubForUserResearch .__div ._img,
+    .LogoGroup_SkillsExchangeSearch .__div,
+    .LogoGroup_SkillsExchangeSearch .__div ._img {
+      background-color: ${props2 =>
+        getColor(props2, 'colorActive', medial, middle)};
+    }
+
     .SearchFormSep .__searchForm ._row ._linkAdvacedSearch {
       color: ${props2 =>
         getColor(props2, 'colorActive', opaciter2, middle, 'Light')};
@@ -60,10 +70,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .SelectLanguage .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
       border-color: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorSecond', medial, middle)
-          : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
-    }
+        ({
+          Dark: getColor(props2, 'colorSecond', medial, middle),
+          Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
+        }[theme])};}
 
     .SearchFormSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
@@ -84,7 +94,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background-color: unset;
     }
 
-    .SkillExchangeIntro ._title02 {
+    .SkillExchangeIntro ._statistics {
       color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 
@@ -138,10 +148,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', lighter, medial, 'Light')};
       border-color: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorFirst', medial, lighter4, 'Dark')
-          : getColor(props2, 'colorGrey', opaciter4, middle, 'Light')};
-      }
+        ({
+          Dark: getColor(props2, 'colorFirst', medial, lighter4, 'Dark'),
+          Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
+        }[theme])};}
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
@@ -410,10 +420,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_personalCabinet .__button,
     .Button_ThemeToggle .__button {
       background-color: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorSecond', medial, middle)
-          : 'rgb(245, 246, 250)'};
-    }
+        ({
+          Dark: getColor(props2, 'colorSecond', medial, middle),
+          Light: 'rgb(245, 246, 250)',
+        }[theme])};}
 
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
@@ -455,17 +465,17 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .ModalFrames .__content {
       background-color: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorSecond', middle, lighter4)
-          : getColor(props2, 'colorSecond', medial, middle)};
-    }
+        ({
+          Dark: getColor(props2, 'colorSecond', middle, lighter4),
+          Light: getColor(props2, 'colorSecond', medial, middle),
+        }[theme])};}
 
     .AuthUser .form, .AuthUser .bottomContainer {
       background: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorGrey', medial, middle)
-          : getColor(props2, 'colorSecond', medial, middle)};
-    }
+        ({
+          Dark: getColor(props2, 'colorGrey', medial, middle),
+          Light: getColor(props2, 'colorSecond', medial, middle),
+        }[theme])};}
     
     .AuthUser .header2 {
       color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
@@ -505,10 +515,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
     .HeaderFrame {
       background-color: ${props2 =>
-        theme === 'Dark'
-          ? getColor(props2, 'colorSecond', medial, middle)
-          : 'rgb(245, 246, 250)'};
-    }
+        ({
+          Dark: getColor(props2, 'colorSecond', medial, middle),
+          Light: 'rgb(245, 246, 250)',
+        }[theme])};}
 
     body {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};

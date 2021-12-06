@@ -5,28 +5,31 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface LogoGroupArgs {
   brandName: string
+  moto: string
+  logoPath: string
+  contentComponentName: string
 }
 
 export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
   props
 ): ReactElement => {
-  const { brandName } = props
+  const { moto, contentComponentName, logoPath, brandName } = props
 
   return (
     <Link
-      className='LogoGroup'
+      className={`LogoGroup LogoGroup_${contentComponentName}`}
       to={{
-        pathname: `/home`,
+        pathname: `/sep`,
       }}
       onClick={() => handleEvents({}, { typeEvent: 'CLICK_LOGO_GROUP' })}
     >
       <div className='__div'>
-        <img
-          className='_img'
-          src='https://yourails.com/images/logoYouRails.png'
-        />
+        <img className='_img' src={logoPath} />
       </div>
-      <div className='__brand'>{brandName}</div>
+      <div className='__brandMoto'>
+        <div className='_brand'>{brandName}</div>
+        <div className='_moto'>{moto}</div>
+      </div>
     </Link>
   )
 }

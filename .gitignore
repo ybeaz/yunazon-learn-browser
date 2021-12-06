@@ -60,3 +60,4 @@ Thumbs.db
 # Others
 archive/
 workspace.code-workspace
+.vscode/
