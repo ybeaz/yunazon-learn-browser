@@ -324,7 +324,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
                   {DICTIONARY['clarify_the_question'][language]}
                 </div>
                 <div className='_text'>
-                  {DICTIONARY['Get_users_by_topic'][language]}
+                  {DICTIONARY['Receive_users_by_topic'][language]}
                 </div>
               </div>
 
@@ -341,8 +341,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             <div className='_col _flex_1'>
               <div className='_capturesImage'>
                 <div className='_text'>
-                  {DICTIONARY['Use_filters'][language]}{' '}
-                  {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
+                  {DICTIONARY['Choose'][language]}{' '}
                   {DICTIONARY['person'][language]}
                 </div>
                 <div className='_text'>

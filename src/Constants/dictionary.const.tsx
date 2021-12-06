@@ -18,6 +18,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Catalog of Topics',
     ru: 'Каталог тем',
   },
+  Receive_users_by_topic: {
+    en: 'Display users by topic',
+    ru: 'Вывести по теме пользователей',
+  },
   Get_users_by_topic: {
     en: 'Get users by topic',
     ru: 'Получить пользователей по теме',
@@ -405,8 +409,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Отрортировать результаты по',
   },
   Specific_topic: {
-    en: 'Specific topic',
-    ru: 'Тема детально',
+    en: 'Specific topic/ question',
+    ru: 'Тема/ вопрос детально',
   },
   Specific_question: {
     en: 'Specific question',
