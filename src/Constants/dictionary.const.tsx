@@ -50,6 +50,15 @@ export const DICTIONARY: IDictionary = {
     en: 'clarify the question',
     ru: 'уточнить вопрос',
   },
+  if_needed: {
+    en: 'if needed',
+    ru: 'если нужно',
+  },
+  optionaly: {
+    en: 'optionaly',
+    ru: 'не обязательно',
+  },
+
   Use_filters: {
     en: 'Use filters',
     ru: 'Использовать фильтры',

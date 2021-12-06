@@ -259,7 +259,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
 
         <div className='__textBlock'>
           <div className='_row p_2_0'>
-            <div className='_col _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
+            <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {
                   DICTIONARY['Find_and_add_people_contacts_by_interests'][
@@ -271,7 +271,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
                 <IconReact {...propsOut.iconHiUsersProps} />
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
+            <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
               </div>
@@ -279,7 +279,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
                 <IconReact {...propsOut.iconBsPiggyBankProps} />
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
+            <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {DICTIONARY['Share_your_knowledge'][language]}{' '}
                 {DICTIONARY['and_skills'][language]}
@@ -288,7 +288,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
                 <IconReact {...propsOut.iconAiOutlineShareAltProps} />
               </div>
             </div>
-            <div className='_col _flex_1 _bg_color_4 _asym_corners p_1_2'>
+            <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
                 {
                   DICTIONARY['Communicate_and_practice_foreign_languages'][
@@ -316,145 +316,46 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
           <div className='_row _p6_Media'>
             <div className='_col _flex_1'>
-              <div className='_text'>
-                {DICTIONARY['Select'][language]} {DICTIONARY['topic'][language]}{' '}
-                {DICTIONARY['clarify_the_question'][language]}
+              <div className='_capturesImage'>
+                <div className='_text'>
+                  {DICTIONARY['Select'][language]}{' '}
+                  {DICTIONARY['topic'][language]}
+                  {', '}
+                  {DICTIONARY['clarify_the_question'][language]}
+                </div>
+                <div className='_text'>
+                  {DICTIONARY['Get_users_by_topic'][language]}
+                </div>
               </div>
-              <div className='_iconAndText'>
-                <Image {...propsOut.illustration_5_1_1} />
+
+              <div className='_images'>
+                <div className='_image'>
+                  <Image {...propsOut.illustration_5_1_1} />
+                </div>
+                <div className='_image'>
+                  <Image {...propsOut.illustration_5_2_1} />
+                </div>
               </div>
             </div>
 
             <div className='_col _flex_1'>
-              <div className='_text'>
-                {DICTIONARY['Get_users_by_topic'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <Image {...propsOut.illustration_5_2_1} />
-              </div>
-            </div>
-
-            <div className='_col _flex_1'>
-              <div className='_text'>
-                {DICTIONARY['Use_filters'][language]}{' '}
-                {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
-                {DICTIONARY['person'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <Image {...propsOut.illustration_5_3_1} />
-              </div>
-            </div>
-
-            <div className='_col _flex_1'>
-              <div className='_text'>
-                {DICTIONARY['Say_hello_and_hear_new_things'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <Image {...propsOut.illustration_5_4_1} />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className='__textBlock'>
-          <div className='_row _p5_Media'>
-            <div className='_col'>
-              <h2 className='_h2'>
-                {DICTIONARY['Service_works_simply'][language]}
-              </h2>
-            </div>
-          </div>
-          <div className='_row _p6_Media'>
-            <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>
-                {DICTIONARY['Select'][language]} {DICTIONARY['topic'][language]}{' '}
-                {DICTIONARY['clarify_the_question'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconAiOutlineQuestionCircleProps} />
-                <div className='_text'>{DICTIONARY['category'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconIoLanguageSharpProps} />
-                <div className='_text'>{DICTIONARY['language'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconBiSelectMultipleProps} />
+              <div className='_capturesImage'>
                 <div className='_text'>
-                  {DICTIONARY['other_criteria'][language]}
+                  {DICTIONARY['Use_filters'][language]}{' '}
+                  {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
+                  {DICTIONARY['person'][language]}
+                </div>
+                <div className='_text'>
+                  {DICTIONARY['Say_hello_and_hear_new_things'][language]}
                 </div>
               </div>
-            </div>
-
-            <div className='_col'>
-              <IconReact {...propsOut.iconMdArrowForwardIosProps} />
-            </div>
-
-            <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>
-                {DICTIONARY['Get_users_by_topic'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconFaUsersProps} />
-                <div className='_text'>
-                  {DICTIONARY['A_list_to_chat_is_created'][language]}
+              <div className='_images'>
+                <div className='_image'>
+                  <Image {...propsOut.illustration_5_3_1} />
                 </div>
-              </div>
-            </div>
-
-            <div className='_col'>
-              <IconReact {...propsOut.iconMdArrowForwardIosProps} />
-            </div>
-
-            <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>
-                {DICTIONARY['Use_filters'][language]}{' '}
-                {DICTIONARY['and'][language]} {DICTIONARY['choose'][language]}{' '}
-                {DICTIONARY['person'][language]} {DICTIONARY['by'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconFaUsersCogProps} />
-                <div className='_text'>{DICTIONARY['ageGroup'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconBsFillPersonCheckFillProps} />
-                <div className='_text'>{DICTIONARY['gender'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconMdHomeRepairServiceProps} />
-                <div className='_text'>
-                  {DICTIONARY['reputation'][language]}
+                <div className='_image'>
+                  <Image {...propsOut.illustration_5_4_1} />
                 </div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconMdLanguageProps} />
-                <div className='_text'>
-                  {DICTIONARY['geography'][language]}
-                  {'/ '}
-                  {DICTIONARY['country'][language]}
-                </div>
-              </div>
-            </div>
-
-            <div className='_col'>
-              <IconReact {...propsOut.iconMdArrowForwardIosProps} />
-            </div>
-
-            <div className='_col _flex_1 _bordered p_1_1'>
-              <div className='_text'>
-                {DICTIONARY['Say_hello_and_hear_new_things'][language]}
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconIoChatbubblesOutlineProps} />
-                <div className='_text'>{DICTIONARY['messaging'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconRiVoiceprintFillProps} />
-                <div className='_text'>{DICTIONARY['voice'][language]}</div>
-              </div>
-              <div className='_iconAndText'>
-                <IconReact {...propsOut.iconBiVideoPlusProps} />
-                <div className='_text'>{DICTIONARY['video'][language]}</div>
               </div>
             </div>
           </div>
