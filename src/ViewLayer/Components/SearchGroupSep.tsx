@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { UsersOnline } from './UsersOnline'
 import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -16,6 +17,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   return (
     <div className='SearchGroupSep'>
       <SearchFormSep />
+      <UsersOnline />
       <CategoryCatalog />
     </div>
   )

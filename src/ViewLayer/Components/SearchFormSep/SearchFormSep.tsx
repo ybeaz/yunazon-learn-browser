@@ -260,7 +260,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     },
     buttonSearchSepProps: {
       classAdded: 'Button_searchSep',
-      icon: 'FaUsers',
+      icon: null, // 'FaUsers'
       icon2: null,
       captureLeft: DICTIONARY['Search'][language],
       captureRight: '',

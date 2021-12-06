@@ -10,6 +10,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Online: {
+    en: 'Online',
+    ru: 'Онлайн',
+  },
   Catalog_of_Topics: {
     en: 'Catalog of Topics',
     ru: 'Каталог тем',
@@ -480,6 +484,10 @@ export const DICTIONARY: IDictionary = {
   Knowledge_Exchange_and_Useful_Contacts: {
     en: 'Knowledge Exchange and Useful Contacts',
     ru: 'Обмен знаниями и полезные контакты',
+  },
+  Useful_and_interesting_contacts: {
+    en: 'Useful and interesting contacts',
+    ru: 'Полезные и интересные контакты',
   },
   Knowledge_Exchange_and_Contacts_to_Experience: {
     en: 'Knowledge Exchange and Contacts to Experience',
