@@ -290,11 +290,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
-                {
-                  DICTIONARY['Communicate_and_practice_foreign_languages'][
-                    language
-                  ]
-                }
+                {DICTIONARY['Communicate_practice_foreign_languages'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconMdLanguageProps2} />

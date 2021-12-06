@@ -335,9 +335,9 @@ export const DICTIONARY: IDictionary = {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
   },
-  Communicate_and_practice_foreign_languages: {
-    en: 'Communicate and practice foreign languages',
-    ru: 'Общайтесь и практикуйте иностранные языки',
+  Communicate_practice_foreign_languages: {
+    en: 'Communicate, practice foreign languages',
+    ru: 'Общайтесь, практикуйте иностранные языки',
   },
   Get_started_in_any_knowledge: {
     en: 'Get started in any knowledge area quickly, share your skills while \
