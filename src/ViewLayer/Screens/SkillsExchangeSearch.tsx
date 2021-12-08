@@ -71,7 +71,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       contentComponentName: 'SkillsExchangeSearch',
       isButtonSideMenu: true,
       isLogoGroup: true,
-      isButtonAddCourse: true,
+      isButtonAddCourse: false,
       isButtonAuthUser: true,
       isSelectLanguage: true,
       isButtonThemeToggle: true,
