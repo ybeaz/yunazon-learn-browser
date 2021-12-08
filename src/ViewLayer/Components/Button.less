@@ -87,6 +87,76 @@
   }
 }
 
+.Button_MdArrowRight2 {
+  position: absolute;
+  bottom: 0.5rem;
+  right: -1.5rem;
+
+  .__button {
+    padding: 0 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      ._capture_left {
+      }
+      ._icon {
+        width: 3.5vw;
+        height: 3.5vw;
+      }
+      ._capture_right {
+      }
+    }
+  }
+
+  @media @phone, @phone-strict {
+    bottom: -0.1rem;
+    right: 0rem;
+
+    .__button {
+      ._in {
+        ._icon {
+          width: 19vw;
+          height: 19vw;
+        }
+      }
+    }
+  }
+}
+
+.Button_MdArrowRight3 {
+  .Button_MdArrowRight2;
+  bottom: 0rem;
+  right: 0rem;
+
+  .__button {
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._capture_left {
+      }
+      ._icon {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
 .Button_SiAppstore {
   flex: 1;
   padding: 0;

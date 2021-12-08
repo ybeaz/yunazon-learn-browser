@@ -11,6 +11,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    max-height: 16vw;
+    overflow: hidden;
+    position: relative;
   }
 
   @media @large {
@@ -20,5 +23,8 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._catalogIcons {
+      max-height: 57vw;
+    }
   }
 }

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { Button } from './Button'
+import { IconReact } from './IconReact'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -66,13 +68,36 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
       return <Image {...imageProps} />
     })
 
-  const propsOut = {}
+  const propsOut = {
+    iconMdArrowForwardIosProps: {
+      icon: 'MdArrowRight',
+      icon2: null,
+      classAdded: 'IconReact_ArrowRight2',
+    },
+    buttonMdArrowForwardIosProps: {
+      icon: 'MdArrowRight',
+      icon2: null,
+      captureLeft: '',
+      captureRight: '',
+      classAdded: 'Button_MdArrowRight2',
+      action: {},
+      isDisplaying: true,
+      tooltipText: '',
+      tooltipPosition: 'bottom',
+      isTooltipVisible: false,
+      isUnderlined: false,
+    },
+  }
+
   return (
     <div className='UsersOnline'>
       <h2 className='_title padding: p_2_0_1_0'>
         {DICTIONARY['Online'][language]}
       </h2>
-      <div className='_images'>{getUsersJsx(USERS_MAMBA_FACES, language)}</div>
+      <div className='_images'>
+        {getUsersJsx(USERS_MAMBA_FACES, language)}
+        <Button {...propsOut.buttonMdArrowForwardIosProps} />
+      </div>
     </div>
   )
 }
