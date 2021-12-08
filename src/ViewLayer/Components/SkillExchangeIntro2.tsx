@@ -232,6 +232,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
 
     return (
       <div className='SkillExchangeIntro2'>
+        {/* Titles */}
         <h1 className='__title01'>
           {DICTIONARY['Knowledge_and_experience'][language]}{' '}
           {DICTIONARY['directly_from_people'][language]}
@@ -241,6 +242,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           {DICTIONARY['Useful_and_interesting_contacts'][language]}
         </h1>
 
+        {/* Numbers */}
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _p2_Media'>
@@ -257,6 +259,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
         </div>
 
+        {/* Functions */}
         <div className='__textBlock'>
           <div className='_row p_2_0'>
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
@@ -290,7 +293,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Communicate_practice_foreign_languages'][language]}
+                {DICTIONARY['Chat_meet_new_people'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconMdLanguageProps2} />
@@ -302,6 +305,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           <Button {...propsOut.buttonContinueProps} />
         </div>
 
+        {/* How it works */}
         <div className='__textBlock'>
           <div className='_row _p5_Media'>
             <div className='_col'>
@@ -356,6 +360,32 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
         </div>
 
+        {/* Cases */}
+        {false && (
+          <div className='__textBlock'>
+            <div className='_row'>
+              <div className='_col'>
+                <h2 className='_h2'>
+                  {DICTIONARY['Our_Members_Success_Stories'][language]}
+                </h2>
+              </div>
+            </div>
+            <div className='_row'>
+              <div className='_col'>
+                <div className='_image'>
+                  <Image {...propsOut.collageImageFaceProps} />
+                </div>
+                <div className='_text'>
+                  {' '}
+                  Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
+                  Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Features */}
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col'>

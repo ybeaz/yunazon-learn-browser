@@ -1,5 +1,6 @@
 .Input {
   display: flex;
+  position: relative;
   width: -webkit-fill-available;
 
   .__input {
@@ -26,6 +27,34 @@
       text-size-adjust: 100%;
     }
   }
+
+  ._iconClose {
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    z-index: 1;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-top: -9px;
+    margin-right: 2px;
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1;
+    text-align: center;
+    text-transform: none;
+    background: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: color 0.3s ease, opacity 0.15s ease;
+    text-rendering: auto;
+  }
+}
+
+.Input:hover ._iconClose {
+  // .ant-select-clear
+  opacity: 1;
 }
 
 .Input_ageFromToRequired {

@@ -2,13 +2,21 @@ import React from 'react'
 
 export type IDictionary = Record<string, any>
 
-/*
- */
+// Какое знание хотите получить
+// Ваш вопрос
+// Ответим на все
+// Ищите на yourails
+// Вместе знаем все
+// Лица круглые
 
 export const DICTIONARY: IDictionary = {
   _: {
     en: '_',
     ru: '_',
+  },
+  Our_Members_Success_Stories: {
+    en: 'Our Members Success Stories',
+    ru: 'Успешные истории пользователей',
   },
   Online: {
     en: 'Online',
@@ -334,6 +342,10 @@ export const DICTIONARY: IDictionary = {
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
+  },
+  Chat_meet_new_people: {
+    en: 'Chat and meet new people',
+    ru: 'Общайтесь, узнавайте новых людей',
   },
   Communicate_practice_foreign_languages: {
     en: 'Communicate, practice foreign languages',

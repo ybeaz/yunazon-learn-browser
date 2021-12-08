@@ -37,6 +37,7 @@ import {
 } from 'react-icons/md'
 
 import {
+  AiFillCloseCircle,
   AiOutlineSetting,
   AiOutlineShareAlt,
   AiFillApple,
@@ -104,6 +105,7 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  AiFillCloseCircle,
   BiVideoPlus,
   FaUsers,
   MdHomeRepairService,

@@ -141,7 +141,8 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_DESCRIPTION_REQUIRED',
-      storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputDescriptionRequired',
     },
     selectMediaRequiredProps: {
       allowClear: true,
@@ -188,14 +189,16 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_AGE_FROM_REQUIRED',
-      storeFormProp: 'SEP_INPUT_AGE_FROM_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputAgeFromRequired',
     },
     inputAgeToRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_AGE_TO_REQUIRED',
-      storeFormProp: 'SEP_INPUT_AGE_TO_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputAgeToRequired',
     },
     selectGenderRequiredProps: {
       allowClear: true,
