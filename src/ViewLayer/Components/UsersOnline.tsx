@@ -80,7 +80,15 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_MdArrowRight2',
-      action: {},
+      action: {
+        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+        data: {
+          history,
+          path: '/see-you',
+          source: 'usersOnlineNext',
+          value: 'next',
+        },
+      } as IAction,
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: 'bottom',

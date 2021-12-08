@@ -67,7 +67,15 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_MdArrowRight3',
-      action: {},
+      action: {
+        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+        data: {
+          history,
+          path: '/see-you',
+          source: 'categoriesNext',
+          value: 'next',
+        },
+      } as IAction,
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: 'bottom',
