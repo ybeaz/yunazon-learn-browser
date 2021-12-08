@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
 import { Button } from './Button'
-import { IconReact } from './IconReact'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -90,8 +89,8 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
         },
       } as IAction,
       isDisplaying: true,
-      tooltipText: '',
-      tooltipPosition: 'bottom',
+      tooltipText: DICTIONARY['Next'][language],
+      tooltipPosition: 'top',
       isTooltipVisible: false,
       isUnderlined: false,
     },
