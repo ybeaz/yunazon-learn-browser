@@ -308,20 +308,20 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
-        <div className={`_row`}>
-          <div className={classCol01}>
-            {DICTIONARY['Specific_topic'][language]}
-          </div>
-          <div className={classCol02}>
-            <Input {...childrenProps.inputDescriptionRequiredProps} />
-          </div>
-        </div>
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Speaking language'][language]}
           </div>
           <div className={classCol02}>
             <SelectLanguage {...selectLanguageProps} />
+          </div>
+        </div>
+        <div className={`_row ${classAdvancedSearch}`}>
+          <div className={classCol01}>
+            {DICTIONARY['Specific_topic'][language]}
+          </div>
+          <div className={classCol02}>
+            <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>

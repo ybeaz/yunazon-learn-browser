@@ -66,7 +66,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
 
     const headerFrameProps = {
       brandName: `YouRails`,
-      moto: DICTIONARY['Together_we_know'][language],
+      moto: DICTIONARY['Together_know_everything'][language],
       logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
       contentComponentName: 'SkillsExchangeSearch',
       isButtonSideMenu: true,

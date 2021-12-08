@@ -485,6 +485,10 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
+  Together_know_everything: {
+    en: 'Together know everything',
+    ru: 'Вместе знаем все',
+  },
   Together_we_know: {
     en: 'Together we know',
     ru: 'Вместе мы знаем',

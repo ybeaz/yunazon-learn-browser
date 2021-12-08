@@ -21,7 +21,7 @@ export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
   },
   Washing_machine: { en: 'Washing machine', ru: 'Стиральная машина' },
   Photoshop: { en: 'Photoshop', ru: 'Фотошоп' },
-  Metal_ladder: { en: 'Metal ladder', ru: '_' },
+  Metal_ladder: { en: 'Metal ladder', ru: 'Лестницы из металла' },
   Buying_and_selling_cars: {
     en: 'Buying and selling cars',
     ru: 'Покупка и продажа автомобилей',
