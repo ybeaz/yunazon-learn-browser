@@ -22,16 +22,19 @@ export const StubUserGoodbye: React.FunctionComponent<StubUserGoodbyeArgs> = (
       <div className='_text'>
         {DICTIONARY.If_you_have_any_ideas_or_opinions[language]}
       </div>
-      <div className='_text p_1_0_0_0'>
-        {DICTIONARY.please_share_them_with_us[language]}
+      <div className='_text'>
+        {DICTIONARY.dont_hesitate_to_share_with_us[language]}
       </div>
-      <div className='_text'>{DICTIONARY.Our_contacts[language]}:</div>
+      <div className='_text p_1_0'>{DICTIONARY.Our_contacts[language]}:</div>
       <div className='_text'>
         {DICTIONARY.Email[language]}
         {': '}
         <a href='mailto: akruglov2000@gmail.com' target='_blank'>
           akruglov2000@gmail.com
         </a>
+      </div>
+      <div className='_text'>
+        {DICTIONARY.WhatsApp[language]}: +7 912 66 19279
       </div>
       <div className='_text'>{DICTIONARY.Tel[language]}: +1 650 7 410014</div>
     </div>

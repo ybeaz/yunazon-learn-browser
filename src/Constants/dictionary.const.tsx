@@ -235,6 +235,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Our contacts',
     ru: 'Наши контакты',
   },
+  WhatsApp: {
+    en: 'WhatsApp',
+    ru: 'WhatsApp',
+  },
   Tel: {
     en: 'Tel',
     ru: 'Тел',
@@ -248,8 +252,12 @@ export const DICTIONARY: IDictionary = {
     ru: 'В настоящее время мы ищем поддержку и отзывы.',
   },
   If_you_have_any_ideas_or_opinions: {
-    en: 'If you have any ideas or opinions about this service,',
-    ru: 'Если у вас есть идеи или мнения о сервисе,',
+    en: 'If you have any ideas, opinions or suggesions,',
+    ru: 'Если у вас есть идеи, мнения или предложения,',
+  },
+  dont_hesitate_to_share_with_us: {
+    en: "don't hesitate to share them with us",
+    ru: 'делитесь с нами вашими мыслями',
   },
   please_share_them_with_us: {
     en: 'please, share them with us',
@@ -422,7 +430,7 @@ export const DICTIONARY: IDictionary = {
   },
   Matter_of_interest: {
     en: 'Matter of interest/ question',
-    ru: 'Интересующий вопрос',
+    ru: 'Интересующий вопрос/ тема',
   },
   Specific_topic: {
     en: 'Specific topic/ question',
