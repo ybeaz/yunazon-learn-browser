@@ -252,12 +252,12 @@ export const DICTIONARY: IDictionary = {
     ru: 'В настоящее время мы ищем поддержку и отзывы.',
   },
   If_you_have_any_ideas_or_opinions: {
-    en: 'If you have any ideas, opinions or suggesions,',
-    ru: 'Если у вас есть идеи, мнения или предложения,',
+    en: 'If you have any ideas, opinion or suggesions,',
+    ru: 'Если у вас есть идеи, мнение или предложения,',
   },
   dont_hesitate_to_share_with_us: {
     en: "don't hesitate to share them with us",
-    ru: 'делитесь с нами вашими мыслями',
+    ru: 'делитесь вашими мыслями',
   },
   please_share_them_with_us: {
     en: 'please, share them with us',
