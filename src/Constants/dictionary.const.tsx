@@ -420,6 +420,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Sort results by',
     ru: 'Отрортировать результаты по',
   },
+  Matter_of_interest: {
+    en: 'Matter of interest/ question',
+    ru: 'Интересующий вопрос',
+  },
   Specific_topic: {
     en: 'Specific topic/ question',
     ru: 'Тема/ вопрос детально',

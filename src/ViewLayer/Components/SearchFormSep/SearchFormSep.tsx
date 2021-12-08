@@ -89,6 +89,8 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   }, [])
 
   useEffect(() => {
+    if (!selectSkillsRequired.length) return
+
     const categoriesToExchangeStateNext = {
       [selectSkillsRequired]: {
         en: selectSkillsRequired,
@@ -318,7 +320,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
-            {DICTIONARY['Specific_topic'][language]}
+            {DICTIONARY['Matter_of_interest'][language]}
           </div>
           <div className={classCol02}>
             <Input {...childrenProps.inputDescriptionRequiredProps} />
