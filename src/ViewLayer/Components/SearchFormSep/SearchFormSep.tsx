@@ -20,6 +20,11 @@ import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
 
+interface IaddedProps {
+  defaultValue?: string[]
+  value?: string[]
+}
+
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
@@ -89,15 +94,17 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   }, [])
 
   useEffect(() => {
-    if (!selectSkillsRequired.length) return
-
-    const categoriesToExchangeStateNext = {
+    let categoriesToExchangeStateNext = {
       [selectSkillsRequired]: {
         en: selectSkillsRequired,
         ru: selectSkillsRequired,
       },
       ...CATEGORIES_TO_EXCHANGE,
     }
+
+    if (!selectSkillsRequired || !selectSkillsRequired.length)
+      categoriesToExchangeStateNext = CATEGORIES_TO_EXCHANGE
+
     setCategoriesToExchangeState(categoriesToExchangeStateNext)
   }, [selectSkillsRequired])
 
@@ -109,11 +116,19 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
+  let selectSkillsRequiredAddedProps: IaddedProps = { defaultValue: [] }
+
+  if (selectSkillsRequired && selectSkillsRequired.length) {
+    selectSkillsRequiredAddedProps = {
+      value: [selectSkillsRequired],
+    }
+  }
+
   const childrenProps = {
     selectSkillsRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: [selectSkillsRequired],
+      ...selectSkillsRequiredAddedProps,
       filterOption,
       mode: null,
       onBlur: stubOnAction,
