@@ -102,22 +102,8 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   }, [user])
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
-  const buttonAddCourseProps = {
-    icon: 'MdQueue',
-    classAdded: 'Button_AddCourse',
-    tooltipText: createCourseQuiz,
-    tooltipPosition: 'bottom',
-    action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
-  }
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
-  const buttonThemeToggle = {
-    icon: 'CgDarkMode',
-    classAdded: 'Button_ThemeToggle',
-    tooltipText: toggleTheme,
-    tooltipPosition: 'bottom',
-    action: { typeEvent: 'TOGGLE_THEME' },
-  }
 
   const classAddHeaderFrame =
     contentComponentName === 'ReaderIframe' ||
@@ -125,60 +111,78 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       ? 'HeaderFrame_AcademyPresent'
       : `HeaderFrame_${contentComponentName}`
 
-  const selectLanguageProps = {
-    LANGUAGES: LANGUAGES_APP,
-    language,
-    mode: null,
-    typeEvent: 'APP_SELECT_LANGUAGE',
-    classAdded: 'SelectLanguage__AppLanguage',
-    languagesSelected: [{ value: language }],
-  }
-
-  const buttonMdMenuProps = {
-    icon: 'MdMenu',
-    classAdded: 'Button_MdMenu',
-    action: {
-      typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+  const propsOut = {
+    selectLanguageProps: {
+      LANGUAGES: LANGUAGES_APP,
+      language,
+      mode: null,
+      typeEvent: 'APP_SELECT_LANGUAGE',
+      classAdded: 'SelectLanguage__AppLanguage',
+      languagesSelected: [{ value: language }],
     },
-  }
-
-  const buttonBackProps = {
-    icon: 'MdForward',
-    classAdded: 'Button_MdBackward3',
-    action: {
-      typeEvent: 'GO_BACK_FROM_CERTIFICATE',
-      data: { history, courseCapture },
+    buttonMdMenuProps: {
+      icon: 'MdMenu',
+      classAdded: 'Button_MdMenu',
+      action: {
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+      },
     },
-    tooltipText: DICTIONARY['backToCourse'][language],
-    tooltipPosition: 'bottom',
-  }
-
-  const pageActionsProps = {
-    courseCapture,
-    documentID,
-    courseID,
-    contentID,
-  }
-
-  const logoGroupProps = {
-    brandName,
-    moto,
-    logoPath,
-    contentComponentName,
+    buttonBackProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdBackward3',
+      action: {
+        typeEvent: 'GO_BACK_FROM_CERTIFICATE',
+        data: { history, courseCapture },
+      },
+      tooltipText: DICTIONARY['backToCourse'][language],
+      tooltipPosition: 'bottom',
+    },
+    buttonAddCourseProps: {
+      icon: 'MdQueue',
+      classAdded: 'Button_AddCourse',
+      tooltipText: createCourseQuiz,
+      tooltipPosition: 'bottom',
+      action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
+    },
+    buttonAuthUserProps: buttonAuthUser,
+    buttonThemeToggleProps: {
+      icon: 'CgDarkMode',
+      classAdded: 'Button_ThemeToggle',
+      tooltipText: toggleTheme,
+      tooltipPosition: 'bottom',
+      action: { typeEvent: 'TOGGLE_THEME' },
+    },
+    pageActionsProps: {
+      courseCapture,
+      documentID,
+      courseID,
+      contentID,
+    },
+    logoGroupProps: {
+      brandName,
+      moto,
+      logoPath,
+      contentComponentName,
+    },
   }
 
   return (
-    <div className={`HeaderFrame ${classAddHeaderFrame}`}>
+    <div
+      id={`id_header_${contentComponentName}`}
+      className={`HeaderFrame ${classAddHeaderFrame}`}
+    >
       <div className='_content'>
         <div className='__left'>
           {isButtonBack && (
             <Link to={{ pathname: '/academy' }}>
-              <Button {...buttonBackProps} />
+              <Button {...propsOut.buttonBackProps} />
             </Link>
           )}
-          {isButtonSideMenu && <Button {...buttonMdMenuProps} />}
-          {isLogoGroup && <LogoGroup {...logoGroupProps} />}
-          {isPageActionsGroup && <PageActionsGroup {...pageActionsProps} />}
+          {isButtonSideMenu && <Button {...propsOut.buttonMdMenuProps} />}
+          {isLogoGroup && <LogoGroup {...propsOut.logoGroupProps} />}
+          {isPageActionsGroup && (
+            <PageActionsGroup {...propsOut.pageActionsProps} />
+          )}
           {isButtonsShare && <ShareButtons />}
         </div>
         <div className='__main'>
@@ -196,22 +200,22 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
           )}
           {isButtonAddCourse && (
             <div className='_itemButtonAddCourse'>
-              <Button {...buttonAddCourseProps} />
+              <Button {...propsOut.buttonAddCourseProps} />
             </div>
           )}
           {isButtonAuthUser && (
             <div className='_itemButtonAuthUser'>
-              <Button {...buttonAuthUser} />
+              <Button {...propsOut.buttonAuthUserProps} />
             </div>
           )}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
-              <SelectLanguage {...selectLanguageProps} />
+              <SelectLanguage {...propsOut.selectLanguageProps} />
             </div>
           )}
           {isButtonThemeToggle && (
             <div className='_itemButtonThemeToggle'>
-              <Button {...buttonThemeToggle} />
+              <Button {...propsOut.buttonThemeToggleProps} />
             </div>
           )}
         </div>

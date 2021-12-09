@@ -13,24 +13,24 @@ export const ServiceFunctionsSep: React.FunctionComponent<ServiceFunctionsSepArg
 
     const propsOut = {
       iconFunction1Props: {
-        icon: 'BsPersonPlus',
+        icon: 'BsFillPersonPlusFill',
         icon2: null,
-        classAdded: 'IconReact_HiUsers',
+        classAdded: 'IconReact_Function1',
       },
       iconFunction2Props: {
         icon: 'FaExchangeAlt',
         icon2: null,
-        classAdded: 'IconReact_BsPiggyBank',
+        classAdded: 'IconReact_Function2',
       },
       iconFunction3Props: {
         icon: 'FaChalkboardTeacher',
         icon2: null,
-        classAdded: 'IconReact_AiOutlineShareAlt',
+        classAdded: 'IconReact_Function3',
       },
       iconFunction4Props: {
         icon: 'MdLanguage',
         icon2: null,
-        classAdded: 'IconReact_MdLanguage2',
+        classAdded: 'IconReact_Function4',
       },
     }
 

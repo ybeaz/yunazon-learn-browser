@@ -26,17 +26,9 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_BackToTop',
-      action: {
-        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: {
-          history,
-          path: '/see-you',
-          source: 'categoriesNext',
-          value: 'next',
-        },
-      } as IAction,
+      action: {} as IAction,
       isDisplaying: true,
-      tooltipText: DICTIONARY['Next'][language],
+      tooltipText: DICTIONARY['Up'][language],
       tooltipPosition: 'top',
       isTooltipVisible: false,
       isUnderlined: false,
@@ -72,7 +64,9 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         </>
       )}
 
-      <Button {...propsOut.buttonBackToTopProps} />
+      <a href='/sep#id_header_SkillsExchangeSearch'>
+        <Button {...propsOut.buttonBackToTopProps} />
+      </a>
     </div>
   )
 }

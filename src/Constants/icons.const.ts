@@ -58,7 +58,7 @@ import {
 } from 'react-icons/bi'
 
 import {
-  BsPersonPlus,
+  BsFillPersonPlusFill,
   BsFillPersonCheckFill,
   BsPiggyBank,
   BsMicrosoft,
@@ -110,7 +110,7 @@ export const ICONS = {
   ...ICONS_PROGRAMMING,
   FaExchangeAlt,
   FaChalkboardTeacher,
-  BsPersonPlus,
+  BsFillPersonPlusFill,
   AiFillCloseCircle,
   BiVideoPlus,
   FaUsers,
