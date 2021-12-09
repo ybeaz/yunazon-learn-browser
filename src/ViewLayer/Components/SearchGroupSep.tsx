@@ -37,10 +37,14 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       <h2 className='_titleSection'>{DICTIONARY['Here_you'][language]}</h2>
       <ServiceFunctionsSep />
 
-      <h2 className='_titleSection'>
-        {DICTIONARY['Success_Stories'][language]}
-      </h2>
-      <SuccessfulCasesSep />
+      {false && (
+        <>
+          <h2 className='_titleSection'>
+            {DICTIONARY['Success_Stories'][language]}
+          </h2>
+          <SuccessfulCasesSep />
+        </>
+      )}
     </div>
   )
 }
