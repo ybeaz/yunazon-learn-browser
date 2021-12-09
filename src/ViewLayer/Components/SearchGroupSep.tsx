@@ -1,6 +1,8 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { Button } from './Button'
+import { IAction } from '../../Interfaces/IAction'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
 import { ServiceFunctionsSep } from './ServiceFunctionsSep'
 import { HowItWorksSep } from './HowItWorksSep'
@@ -16,6 +18,30 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   props: SearchGroupSepArgs
 ): ReactElement => {
   const { language } = useSelector((store2: IRootStore) => store2)
+
+  const propsOut = {
+    buttonBackToTopProps: {
+      icon: 'MdArrowRight',
+      icon2: null,
+      captureLeft: '',
+      captureRight: '',
+      classAdded: 'Button_BackToTop',
+      action: {
+        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+        data: {
+          history,
+          path: '/see-you',
+          source: 'categoriesNext',
+          value: 'next',
+        },
+      } as IAction,
+      isDisplaying: true,
+      tooltipText: DICTIONARY['Next'][language],
+      tooltipPosition: 'top',
+      isTooltipVisible: false,
+      isUnderlined: false,
+    },
+  }
 
   return (
     <div className='SearchGroupSep'>
@@ -45,6 +71,8 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
           <SuccessfulCasesSep />
         </>
       )}
+
+      <Button {...propsOut.buttonBackToTopProps} />
     </div>
   )
 }
