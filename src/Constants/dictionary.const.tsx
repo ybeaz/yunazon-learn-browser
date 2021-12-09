@@ -344,8 +344,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'и умениями',
   },
   Become_an_expert_for_others: {
-    en: 'Can become an expert for others',
-    ru: 'Можете стать экспертом для других',
+    en: 'Become an expert for others',
+    ru: 'Становитесь экспертом для других',
   },
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',

@@ -72,6 +72,7 @@ import {
 import { CgDarkMode } from 'react-icons/cg'
 
 import {
+  FaUserNinja,
   FaExchangeAlt,
   FaChalkboardTeacher,
   FaUsers,
@@ -108,6 +109,7 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  FaUserNinja,
   FaExchangeAlt,
   FaChalkboardTeacher,
   BsFillPersonPlusFill,
