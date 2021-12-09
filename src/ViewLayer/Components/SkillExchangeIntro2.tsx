@@ -265,7 +265,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {
-                  DICTIONARY['Find_and_add_people_contacts_by_interests'][
+                  DICTIONARY['Expand_your_circle_of_friends_by_interests'][
                     language
                   ]
                 }
@@ -276,7 +276,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
+                {DICTIONARY['Get_answers_and_knowledge_from_people'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconBsPiggyBankProps} />
@@ -284,8 +284,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Share_your_knowledge'][language]}{' '}
-                {DICTIONARY['and_skills'][language]}
+                {DICTIONARY['Become_an_expert_for_others'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconAiOutlineShareAltProps} />
@@ -293,7 +292,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Chat_meet_new_people'][language]}
+                {DICTIONARY['Chat_on_interests_in_all_languages'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconMdLanguageProps2} />

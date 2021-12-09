@@ -1,6 +1,9 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { SuccessfulCasesSep } from './SuccessfulCasesSep'
+import { ServiceFunctionsSep } from './ServiceFunctionsSep'
+import { HowItWorksSep } from './HowItWorksSep'
 import { UsersOnline } from './UsersOnline'
 import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -19,6 +22,9 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       <SearchFormSep />
       <UsersOnline />
       <CategoryCatalog />
+      <HowItWorksSep />
+      <ServiceFunctionsSep />
+      <SuccessfulCasesSep />
     </div>
   )
 }

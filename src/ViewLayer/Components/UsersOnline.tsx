@@ -98,9 +98,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
 
   return (
     <div className='UsersOnline'>
-      <h2 className='_title padding: p_2_0_1_0'>
-        {DICTIONARY['Online'][language]}
-      </h2>
+      <h2 className='_title p_2_0_1_0'>{DICTIONARY['Online'][language]}</h2>
       <div className='_images'>
         {getUsersJsx(USERS_MAMBA_FACES, language)}
         <Button {...propsOut.buttonMdArrowForwardIosProps} />

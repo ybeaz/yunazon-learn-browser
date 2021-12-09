@@ -86,7 +86,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
 
   return (
     <div className='CategoryCatalog'>
-      <h2 className='_title padding: p_2_0_1_0'>
+      <h2 className='_title p_2_0_1_0'>
         {DICTIONARY['Catalog_of_Topics'][language]}
       </h2>
       <div className='_catalogIcons'>

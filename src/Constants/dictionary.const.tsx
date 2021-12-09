@@ -315,6 +315,10 @@ export const DICTIONARY: IDictionary = {
       </>
     ),
   },
+  Here_you: {
+    en: 'Here you',
+    ru: 'Здесь вы',
+  },
   Get_intro_knowledge_and_answers: {
     en: 'Get intro answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
@@ -322,6 +326,10 @@ export const DICTIONARY: IDictionary = {
   Get_answers_and_knowledge_in_real_time: {
     en: 'Get answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
+  },
+  Get_answers_and_knowledge_from_people: {
+    en: 'Get answers and knowledge from people',
+    ru: 'Получаете ответы и знания от людей',
   },
   Share_your_knowledge: {
     en: 'Share your experience',
@@ -331,9 +339,17 @@ export const DICTIONARY: IDictionary = {
     en: 'and skills',
     ru: 'и умениями',
   },
+  Become_an_expert_for_others: {
+    en: 'Become an expert for others',
+    ru: 'Становитесь экспертом для других',
+  },
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
+  },
+  Expand_your_circle_of_friends_by_interests: {
+    en: 'Expand your circle of friends by interests',
+    ru: 'Расширяете круг знакомых по интересам',
   },
   Find_and_add_people_contacts_by_interests: {
     en: 'Find and add people contacts by interests',
@@ -350,6 +366,10 @@ export const DICTIONARY: IDictionary = {
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
+  },
+  Chat_on_interests_in_all_languages: {
+    en: 'Chat on interests in all languages',
+    ru: 'Общаетесь по интересам на всех языках',
   },
   Chat_meet_new_people: {
     en: 'Chat and meet new people',

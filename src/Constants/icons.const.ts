@@ -58,6 +58,7 @@ import {
 } from 'react-icons/bi'
 
 import {
+  BsPersonPlus,
   BsFillPersonCheckFill,
   BsPiggyBank,
   BsMicrosoft,
@@ -71,6 +72,8 @@ import {
 import { CgDarkMode } from 'react-icons/cg'
 
 import {
+  FaExchangeAlt,
+  FaChalkboardTeacher,
   FaUsers,
   FaUserCheck,
   FaUsersCog,
@@ -105,6 +108,9 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  FaExchangeAlt,
+  FaChalkboardTeacher,
+  BsPersonPlus,
   AiFillCloseCircle,
   BiVideoPlus,
   FaUsers,
