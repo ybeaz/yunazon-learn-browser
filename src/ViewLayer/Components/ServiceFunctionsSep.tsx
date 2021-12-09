@@ -23,7 +23,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<ServiceFunctionsSepArg
         classAdded: 'IconReact_Function2',
       },
       iconFunction3Props: {
-        icon: 'FaChalkboardTeacher',
+        icon: 'FaUserNinja',
         icon2: null,
         classAdded: 'IconReact_Function3',
       },
