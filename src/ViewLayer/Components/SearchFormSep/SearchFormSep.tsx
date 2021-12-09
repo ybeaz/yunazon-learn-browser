@@ -20,6 +20,11 @@ import { COUNTRIES } from '../../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../../Interfaces/IRootStore'
 
+interface IaddedProps {
+  defaultValue?: string[]
+  value?: string[]
+}
+
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
@@ -89,13 +94,17 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
   }, [])
 
   useEffect(() => {
-    const categoriesToExchangeStateNext = {
+    let categoriesToExchangeStateNext = {
       [selectSkillsRequired]: {
         en: selectSkillsRequired,
         ru: selectSkillsRequired,
       },
       ...CATEGORIES_TO_EXCHANGE,
     }
+
+    if (!selectSkillsRequired || !selectSkillsRequired.length)
+      categoriesToExchangeStateNext = CATEGORIES_TO_EXCHANGE
+
     setCategoriesToExchangeState(categoriesToExchangeStateNext)
   }, [selectSkillsRequired])
 
@@ -107,11 +116,19 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
+  let selectSkillsRequiredAddedProps: IaddedProps = { defaultValue: [] }
+
+  if (selectSkillsRequired && selectSkillsRequired.length) {
+    selectSkillsRequiredAddedProps = {
+      value: [selectSkillsRequired],
+    }
+  }
+
   const childrenProps = {
     selectSkillsRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: [selectSkillsRequired],
+      ...selectSkillsRequiredAddedProps,
       filterOption,
       mode: null,
       onBlur: stubOnAction,
@@ -141,7 +158,8 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_DESCRIPTION_REQUIRED',
-      storeFormProp: 'SEP_INPUT_DESCRIPTION_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputDescriptionRequired',
     },
     selectMediaRequiredProps: {
       allowClear: true,
@@ -188,14 +206,16 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_AGE_FROM_REQUIRED',
-      storeFormProp: 'SEP_INPUT_AGE_FROM_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputAgeFromRequired',
     },
     inputAgeToRequiredProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'SEP_INPUT_AGE_TO_REQUIRED',
-      storeFormProp: 'SEP_INPUT_AGE_TO_REQUIRED',
+      storeFormGroup: 'searchFormSep',
+      storeFormProp: 'inputAgeToRequired',
     },
     selectGenderRequiredProps: {
       allowClear: true,
@@ -305,20 +325,20 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
             <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
           </div>
         </div>
-        <div className={`_row`}>
-          <div className={classCol01}>
-            {DICTIONARY['Specific_topic'][language]}
-          </div>
-          <div className={classCol02}>
-            <Input {...childrenProps.inputDescriptionRequiredProps} />
-          </div>
-        </div>
         <div className='_row'>
           <div className={classCol01}>
             {DICTIONARY['Speaking language'][language]}
           </div>
           <div className={classCol02}>
             <SelectLanguage {...selectLanguageProps} />
+          </div>
+        </div>
+        <div className={`_row ${classAdvancedSearch}`}>
+          <div className={classCol01}>
+            {DICTIONARY['Matter_of_interest'][language]}
+          </div>
+          <div className={classCol02}>
+            <Input {...childrenProps.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>

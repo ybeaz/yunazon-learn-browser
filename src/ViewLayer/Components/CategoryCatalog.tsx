@@ -60,13 +60,35 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
 
   const categoriesNext = [...CATEGORIES, ...categoriesFromIcons]
 
+  const propsOut = {
+    buttonMdArrowForwardIosProps: {
+      icon: 'MdArrowRight',
+      icon2: null,
+      captureLeft: '',
+      captureRight: '',
+      classAdded: 'Button_MdArrowRight3',
+      action: {
+        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+        data: {
+          history,
+          path: '/see-you',
+          source: 'categoriesNext',
+          value: 'next',
+        },
+      } as IAction,
+      isDisplaying: true,
+      tooltipText: DICTIONARY['Next'][language],
+      tooltipPosition: 'top',
+      isTooltipVisible: false,
+      isUnderlined: false,
+    },
+  }
+
   return (
     <div className='CategoryCatalog'>
-      <h2 className='_title padding: p_2_0_1_0'>
-        {DICTIONARY['Catalog_of_Topics'][language]}
-      </h2>
       <div className='_catalogIcons'>
         {getCategorisJsx(categoriesNext, language)}
+        <Button {...propsOut.buttonMdArrowForwardIosProps} />
       </div>
     </div>
   )

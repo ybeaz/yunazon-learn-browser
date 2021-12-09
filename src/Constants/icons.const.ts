@@ -37,6 +37,7 @@ import {
 } from 'react-icons/md'
 
 import {
+  AiFillCloseCircle,
   AiOutlineSetting,
   AiOutlineShareAlt,
   AiFillApple,
@@ -57,6 +58,7 @@ import {
 } from 'react-icons/bi'
 
 import {
+  BsFillPersonPlusFill,
   BsFillPersonCheckFill,
   BsPiggyBank,
   BsMicrosoft,
@@ -70,6 +72,8 @@ import {
 import { CgDarkMode } from 'react-icons/cg'
 
 import {
+  FaExchangeAlt,
+  FaChalkboardTeacher,
   FaUsers,
   FaUserCheck,
   FaUsersCog,
@@ -104,6 +108,10 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  FaExchangeAlt,
+  FaChalkboardTeacher,
+  BsFillPersonPlusFill,
+  AiFillCloseCircle,
   BiVideoPlus,
   FaUsers,
   MdHomeRepairService,

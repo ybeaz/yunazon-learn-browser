@@ -19,7 +19,9 @@ export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
     en: 'Car audio and multimedia',
     ru: 'Автозвук и мультимедиа',
   },
+  Washing_machine: { en: 'Washing machine', ru: 'Стиральная машина' },
   Photoshop: { en: 'Photoshop', ru: 'Фотошоп' },
+  Metal_ladder: { en: 'Metal ladder', ru: 'Лестницы из металла' },
   Buying_and_selling_cars: {
     en: 'Buying and selling cars',
     ru: 'Покупка и продажа автомобилей',

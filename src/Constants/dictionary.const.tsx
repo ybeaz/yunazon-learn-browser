@@ -2,13 +2,25 @@ import React from 'react'
 
 export type IDictionary = Record<string, any>
 
-/*
- */
+// Какое знание хотите получить
+// Ваш вопрос
+// Ответим на все
+// Ищите на yourails
+// Вместе знаем все
+// Лица круглые
 
 export const DICTIONARY: IDictionary = {
   _: {
     en: '_',
     ru: '_',
+  },
+  Up: {
+    en: 'Up',
+    ru: 'Наверх',
+  },
+  Success_Stories: {
+    en: 'Success Stories',
+    ru: 'Успешные истории',
   },
   Online: {
     en: 'Online',
@@ -227,6 +239,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Our contacts',
     ru: 'Наши контакты',
   },
+  WhatsApp: {
+    en: 'WhatsApp',
+    ru: 'WhatsApp',
+  },
   Tel: {
     en: 'Tel',
     ru: 'Тел',
@@ -240,8 +256,12 @@ export const DICTIONARY: IDictionary = {
     ru: 'В настоящее время мы ищем поддержку и отзывы.',
   },
   If_you_have_any_ideas_or_opinions: {
-    en: 'If you have any ideas or opinions about this service,',
-    ru: 'Если у вас есть идеи или мнения о сервисе,',
+    en: 'If you have any ideas, opinion or suggesions,',
+    ru: 'Если у вас есть идеи, мнение или предложения,',
+  },
+  dont_hesitate_to_share_with_us: {
+    en: "don't hesitate to share them with us",
+    ru: 'делитесь вашими мыслями',
   },
   please_share_them_with_us: {
     en: 'please, share them with us',
@@ -299,6 +319,10 @@ export const DICTIONARY: IDictionary = {
       </>
     ),
   },
+  Here_you: {
+    en: 'Here you',
+    ru: 'Здесь вы',
+  },
   Get_intro_knowledge_and_answers: {
     en: 'Get intro answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
@@ -306,6 +330,10 @@ export const DICTIONARY: IDictionary = {
   Get_answers_and_knowledge_in_real_time: {
     en: 'Get answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
+  },
+  Get_answers_and_knowledge_from_people: {
+    en: 'Get answers and knowledge from people',
+    ru: 'Получаете ответы и знания от людей',
   },
   Share_your_knowledge: {
     en: 'Share your experience',
@@ -315,9 +343,17 @@ export const DICTIONARY: IDictionary = {
     en: 'and skills',
     ru: 'и умениями',
   },
+  Become_an_expert_for_others: {
+    en: 'Can become an expert for others',
+    ru: 'Можете стать экспертом для других',
+  },
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
+  },
+  Expand_your_circle_of_friends_by_interests: {
+    en: 'Expand your circle of friends by interests',
+    ru: 'Расширяете круг знакомых по интересам',
   },
   Find_and_add_people_contacts_by_interests: {
     en: 'Find and add people contacts by interests',
@@ -334,6 +370,14 @@ export const DICTIONARY: IDictionary = {
   Make_friends_in_different_regions: {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
+  },
+  Chat_on_your_topics_in_all_languages: {
+    en: 'Chat on your topics in all languages',
+    ru: 'Общаетесь по вашим темам на всех языках',
+  },
+  Chat_meet_new_people: {
+    en: 'Chat and meet new people',
+    ru: 'Общайтесь, узнавайте новых людей',
   },
   Communicate_practice_foreign_languages: {
     en: 'Communicate, practice foreign languages',
@@ -408,6 +452,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Sort results by',
     ru: 'Отрортировать результаты по',
   },
+  Matter_of_interest: {
+    en: 'Matter of interest/ question',
+    ru: 'Интересующий вопрос/ тема',
+  },
   Specific_topic: {
     en: 'Specific topic/ question',
     ru: 'Тема/ вопрос детально',
@@ -472,6 +520,10 @@ export const DICTIONARY: IDictionary = {
   You_are_suggesting_to_exchange: {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
+  },
+  Together_know_everything: {
+    en: 'Together know everything',
+    ru: 'Вместе знаем все',
   },
   Together_we_know: {
     en: 'Together we know',

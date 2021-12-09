@@ -30,7 +30,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
       isButtonSideMenu: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
-      isButtonAuthUser: true,
+      isButtonAuthUser: false,
       isSelectLanguage: true,
       isButtonThemeToggle: true,
       isSeachGroup: false,

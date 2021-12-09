@@ -232,6 +232,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
 
     return (
       <div className='SkillExchangeIntro2'>
+        {/* Titles */}
         <h1 className='__title01'>
           {DICTIONARY['Knowledge_and_experience'][language]}{' '}
           {DICTIONARY['directly_from_people'][language]}
@@ -241,6 +242,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           {DICTIONARY['Useful_and_interesting_contacts'][language]}
         </h1>
 
+        {/* Numbers */}
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _p2_Media'>
@@ -257,12 +259,13 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
         </div>
 
+        {/* Functions */}
         <div className='__textBlock'>
           <div className='_row p_2_0'>
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
                 {
-                  DICTIONARY['Find_and_add_people_contacts_by_interests'][
+                  DICTIONARY['Expand_your_circle_of_friends_by_interests'][
                     language
                   ]
                 }
@@ -273,7 +276,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Get_answers_and_knowledge_in_real_time'][language]}
+                {DICTIONARY['Get_answers_and_knowledge_from_people'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconBsPiggyBankProps} />
@@ -281,8 +284,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Share_your_knowledge'][language]}{' '}
-                {DICTIONARY['and_skills'][language]}
+                {DICTIONARY['Become_an_expert_for_others'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconAiOutlineShareAltProps} />
@@ -290,7 +292,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Communicate_practice_foreign_languages'][language]}
+                {DICTIONARY['Chat_on_your_topics_in_all_languages'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconMdLanguageProps2} />
@@ -302,6 +304,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           <Button {...propsOut.buttonContinueProps} />
         </div>
 
+        {/* How it works */}
         <div className='__textBlock'>
           <div className='_row _p5_Media'>
             <div className='_col'>
@@ -356,6 +359,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
         </div>
 
+        {/* Features */}
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col'>

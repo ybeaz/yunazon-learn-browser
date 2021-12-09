@@ -64,31 +64,31 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const moduleDescription = 'Exchange your skills, save your time'
     const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
 
-    const headerFrameProps = {
-      brandName: `YouRails`,
-      moto: DICTIONARY['Together_we_know'][language],
-      logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
-      contentComponentName: 'SkillsExchangeSearch',
-      isButtonSideMenu: true,
-      isLogoGroup: true,
-      isButtonAddCourse: true,
-      isButtonAuthUser: true,
-      isSelectLanguage: true,
-      isButtonThemeToggle: true,
-      isSeachGroup: false,
-      isButtonBack: false,
-      isPageActionsGroup: false,
-      isButtonsShare: false,
-      isInstallMobileAppGroup: true,
-    }
-
-    const mainFrameProps = {
-      screenType: 'SkillsExchangeSearch',
-    }
-
-    const imageBottomProps = {
-      classAdded: 'Image_bottom',
-      src: 'https://yourails.com/images/city.svg',
+    const propsOut = {
+      headerFrameProps: {
+        brandName: `YouRails`,
+        moto: DICTIONARY['Together_know_everything'][language],
+        logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
+        contentComponentName: 'SkillsExchangeSearch',
+        isButtonSideMenu: true,
+        isLogoGroup: true,
+        isButtonAddCourse: false,
+        isButtonAuthUser: true,
+        isSelectLanguage: true,
+        isButtonThemeToggle: true,
+        isSeachGroup: false,
+        isButtonBack: false,
+        isPageActionsGroup: false,
+        isButtonsShare: false,
+        isInstallMobileAppGroup: true,
+      },
+      mainFrameProps: {
+        screenType: 'SkillsExchangeSearch',
+      },
+      imageBottomProps: {
+        classAdded: 'Image_bottom',
+        src: 'https://yourails.com/images/city.svg',
+      },
     }
 
     return (
@@ -100,9 +100,9 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           <link rel='canonical' href={canonicalUrl} />
           <meta name='description' content={moduleDescription} />
         </Helmet>
-        <MainFrame {...mainFrameProps}>
+        <MainFrame {...propsOut.mainFrameProps}>
           {/* header */}
-          <HeaderFrame {...headerFrameProps} />
+          <HeaderFrame {...propsOut.headerFrameProps} />
           {/* middle-left */}
           {null}
           {/* middle-main */}
@@ -111,7 +111,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           {isShownPalette && <Palette />}
           {/* footer */}
           <FooterFrame>
-            <Image {...imageBottomProps} />
+            <Image {...propsOut.imageBottomProps} />
           </FooterFrame>
         </MainFrame>
         <SideNavigation />

@@ -256,6 +256,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
+    .Button_BackToTop .__button,
     .Button_searchSep .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};

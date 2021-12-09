@@ -87,6 +87,180 @@
   }
 }
 
+.Button_BackToTop {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  position: absolute;
+  bottom: 1.5rem;
+  right: -6rem;
+
+  ._tooltipBottom {
+    width: 100%;
+    top: 110%;
+    left: 0%;
+    margin-left: 0px;
+  }
+
+  ._text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    ._line1 {
+      display: flex;
+      padding: 0 0 0.5rem 0;
+      font-size: @fontSizeS;
+    }
+
+    ._line2 {
+      display: flex;
+      font-style: italic;
+    }
+  }
+
+  .__button {
+    flex: 1;
+    justify-content: space-evenly;
+    border-radius: 50%;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+
+      ._capture_left {
+      }
+
+      ._icon {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+        height: 3rem;
+        width: 3rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+
+  @media @tablet, @tablet-strict {
+    ._capture_left {
+      font-size: @fontSizeS;
+    }
+  }
+  @media @phone, @phone-strict {
+    bottom: -3rem;
+    right: 2rem;
+
+    ._capture_left {
+      font-size: @fontSizeS;
+    }
+  }
+}
+
+.Button_MdArrowRight2 {
+  position: absolute;
+  bottom: 0rem;
+  right: -1.5rem;
+
+  .__button {
+    padding: 0 0.5rem;
+    background-color: white;
+    border-radius: 50%;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      ._capture_left {
+      }
+      ._icon {
+        width: 3.5vw;
+        height: 3.5vw;
+      }
+      ._capture_right {
+      }
+    }
+  }
+
+  @media @phone, @phone-strict {
+    bottom: -0.1rem;
+    right: 0rem;
+
+    .__button {
+      ._in {
+        ._icon {
+          width: 9vw;
+          height: 9vw;
+        }
+      }
+    }
+  }
+}
+
+.Button_MdArrowRight3 {
+  position: absolute;
+  background-color: white;
+  bottom: -0.5rem;
+  right: 0.5rem;
+  width: fit-content;
+
+  .__button {
+    background-color: white;
+    border-radius: 0%;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      ._capture_left {
+      }
+      ._icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+      ._capture_right {
+      }
+    }
+  }
+
+  @media @phone, @phone-strict {
+    bottom: -0.1rem;
+    right: 0rem;
+
+    .__button {
+      ._in {
+        ._icon {
+          width: 3.5rem;
+          height: 3.5rem;
+        }
+      }
+    }
+  }
+}
+
 .Button_SiAppstore {
   flex: 1;
   padding: 0;
@@ -132,14 +306,14 @@
       justify-content: center;
       align-items: center;
       flex-direction: row;
-      padding: 0.5rem;
+      padding: 0 0.5rem 0.5rem 0;
 
       ._capture_left {
       }
       ._icon {
         height: 4rem;
         width: 4rem;
-        opacity: 85%;
+        opacity: 90%;
       }
       ._capture_right {
       }
@@ -205,22 +379,24 @@
 
       ._capture_left {
       }
-      @media @tablet, @tablet-strict {
-        ._capture_left {
-          font-size: @fontSizeS;
-        }
-      }
-      @media @phone, @phone-strict {
-        ._capture_left {
-          font-size: @fontSizeS;
-        }
-      }
+
       ._icon {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
       }
       ._capture_right {
       }
+    }
+  }
+
+  @media @tablet, @tablet-strict {
+    ._capture_left {
+      font-size: @fontSizeS;
+    }
+  }
+  @media @phone, @phone-strict {
+    ._capture_left {
+      font-size: @fontSizeS;
     }
   }
 }
