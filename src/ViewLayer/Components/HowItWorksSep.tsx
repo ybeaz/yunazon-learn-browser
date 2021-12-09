@@ -75,9 +75,6 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
 
   return (
     <div className='HowItWorksSep'>
-      <h2 className='_title p_2_0_1_0'>
-        {DICTIONARY['Service_works_simply'][language]}
-      </h2>
       <div className='__textBlock'>
         <div className='_row'>
           <div className='_col _flex_1'>

@@ -20,10 +20,26 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   return (
     <div className='SearchGroupSep'>
       <SearchFormSep />
+
+      <h2 className='_titleSection'>{DICTIONARY['Online'][language]}</h2>
       <UsersOnline />
+
+      <h2 className='_titleSection'>
+        {DICTIONARY['Catalog_of_Topics'][language]}
+      </h2>
       <CategoryCatalog />
+
+      <h2 className='_titleSection'>
+        {DICTIONARY['Service_works_simply'][language]}
+      </h2>
       <HowItWorksSep />
+
+      <h2 className='_titleSection'>{DICTIONARY['Here_you'][language]}</h2>
       <ServiceFunctionsSep />
+
+      <h2 className='_titleSection'>
+        {DICTIONARY['Success_Stories'][language]}
+      </h2>
       <SuccessfulCasesSep />
     </div>
   )

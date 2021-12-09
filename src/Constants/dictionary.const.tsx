@@ -14,9 +14,9 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
-  Our_Members_Success_Stories: {
-    en: 'Our Members Success Stories',
-    ru: 'Успешные истории пользователей',
+  Success_Stories: {
+    en: 'Success Stories',
+    ru: 'Успешные истории',
   },
   Online: {
     en: 'Online',

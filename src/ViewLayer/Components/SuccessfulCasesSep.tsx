@@ -32,9 +32,6 @@ export const SuccessfulCasesSep: React.FunctionComponent<SuccessfulCasesSepArgs>
 
     return (
       <div className='SuccessfulCasesSep'>
-        <h2 className='_title p_2_0_1_0'>
-          {DICTIONARY['Our_Members_Success_Stories'][language]}
-        </h2>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col'>

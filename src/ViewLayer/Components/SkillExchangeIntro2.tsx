@@ -359,31 +359,6 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           </div>
         </div>
 
-        {/* Cases */}
-        {false && (
-          <div className='__textBlock'>
-            <div className='_row'>
-              <div className='_col'>
-                <h2 className='_h2'>
-                  {DICTIONARY['Our_Members_Success_Stories'][language]}
-                </h2>
-              </div>
-            </div>
-            <div className='_row'>
-              <div className='_col'>
-                <div className='_image'>
-                  <Image {...propsOut.collageImageFaceProps} />
-                </div>
-                <div className='_text'>
-                  {' '}
-                  Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
-                  Bla bla bla Bla bla bla Bla bla bla Bla bla bla Bla bla bla
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Features */}
         <div className='__textBlock'>
           <div className='_row'>

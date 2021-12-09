@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Image } from './Image'
-import { Button } from './Button'
 import { IconReact } from './IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -38,7 +36,6 @@ export const ServiceFunctionsSep: React.FunctionComponent<ServiceFunctionsSepArg
 
     return (
       <div className='ServiceFunctionsSep'>
-        <h2 className='_title p_2_0_1_0'>{DICTIONARY['Here_you'][language]}</h2>
         <div className='__textBlock'>
           <div className='_row'>
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>

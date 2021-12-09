@@ -86,9 +86,6 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
 
   return (
     <div className='CategoryCatalog'>
-      <h2 className='_title p_2_0_1_0'>
-        {DICTIONARY['Catalog_of_Topics'][language]}
-      </h2>
       <div className='_catalogIcons'>
         {getCategorisJsx(categoriesNext, language)}
         <Button {...propsOut.buttonMdArrowForwardIosProps} />
