@@ -71,7 +71,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<ServiceFunctionsSepArg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Chat_on_interests_in_all_languages'][language]}
+                {DICTIONARY['Chat_on_your_topics_in_all_languages'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconFunction4Props} />

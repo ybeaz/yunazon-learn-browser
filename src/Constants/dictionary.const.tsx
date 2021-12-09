@@ -367,9 +367,9 @@ export const DICTIONARY: IDictionary = {
     en: 'Make friends in different regions and countries',
     ru: 'Заводите друзей из разных областей и стран',
   },
-  Chat_on_interests_in_all_languages: {
-    en: 'Chat on interests in all languages',
-    ru: 'Общаетесь по интересам на всех языках',
+  Chat_on_your_topics_in_all_languages: {
+    en: 'Chat on your topics in all languages',
+    ru: 'Общаетесь по вашим темам на всех языках',
   },
   Chat_meet_new_people: {
     en: 'Chat and meet new people',
