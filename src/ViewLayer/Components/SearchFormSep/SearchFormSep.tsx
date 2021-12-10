@@ -25,12 +25,20 @@ interface IaddedProps {
   value?: string[]
 }
 
+interface ISearchFormSepArgs {
+  position: string
+}
+
 /**
  * @description Component Catalog for Skills Exchange Page (SEP)
  */
 
-export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
+export const SearchFormSep: React.FunctionComponent<any> = (
+  props: ISearchFormSepArgs
+) => {
   const history = useHistory()
+
+  const { position } = props
 
   const {
     forms: { searchFormSep },
@@ -313,8 +321,11 @@ export const SearchFormSep: React.FunctionComponent<any> = (props: any) => {
     ? DICTIONARY['Basic_search'][language]
     : DICTIONARY['Advanced_search'][language]
 
+  const addedClass =
+    position === 'top' ? 'SearchFormSep_top' : 'SearchFormSep_bottom'
+
   return (
-    <div className='SearchFormSep'>
+    <div className={`SearchFormSep ${addedClass}`}>
       <form className='__searchForm'>
         <div className='_row'>
           <div className={classCol01}>

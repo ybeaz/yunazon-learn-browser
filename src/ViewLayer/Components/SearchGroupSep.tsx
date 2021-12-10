@@ -33,11 +33,17 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       isTooltipVisible: false,
       isUnderlined: false,
     },
+    searchFormSepTopProps: {
+      position: 'top',
+    },
+    searchFormSepBottomProps: {
+      position: 'bottom',
+    },
   }
 
   return (
     <div className='SearchGroupSep'>
-      <SearchFormSep />
+      <SearchFormSep {...propsOut.searchFormSepTopProps} />
 
       <h2 className='_titleSection'>{DICTIONARY['Online'][language]}</h2>
       <UsersOnline />
@@ -63,6 +69,8 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
           <SuccessfulCasesSep />
         </>
       )}
+
+      <SearchFormSep {...propsOut.searchFormSepBottomProps} />
 
       <a href='/sep#id_header_SkillsExchangeSearch'>
         <Button {...propsOut.buttonBackToTopProps} />
