@@ -384,8 +384,8 @@ export const DICTIONARY: IDictionary = {
     ru: 'Заводите друзей из разных областей и стран',
   },
   Chat_on_your_topics_in_all_languages: {
-    en: 'Chat on your topics in all languages',
-    ru: 'Общаетесь по вашим темам на всех языках',
+    en: 'Chat on your topics in native and other languages',
+    ru: 'Общаетесь по вашим темам на родном и других языках',
   },
   Chat_meet_new_people: {
     en: 'Chat and meet new people',
