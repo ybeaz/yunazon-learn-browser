@@ -331,6 +331,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Get answers and knowledge in real time',
     ru: 'Получайте ответы и знания в реальном времени',
   },
+  Get_answers_to_your_questions_and_information: {
+    en: 'Get answers to your questions and information',
+    ru: 'Получаете ответы на ваши вопросы и информацию',
+  },
   Get_answers_and_knowledge_from_people: {
     en: 'Get answers and knowledge from people',
     ru: 'Получаете ответы и знания от людей',
@@ -344,12 +348,20 @@ export const DICTIONARY: IDictionary = {
     ru: 'и умениями',
   },
   Become_an_expert_for_others: {
-    en: 'Become an expert for others',
-    ru: 'Становитесь экспертом для других',
+    en: 'Become an expert for others in your field',
+    ru: 'Становитесь экспертом для других в своей области',
   },
   Share_your_knowledge_and_skills: {
     en: 'Share your experience and skills',
     ru: 'Делитесь своим опытом и умениями',
+  },
+  Find_people_by_knowledge_and_skills: {
+    en: 'Find people by knowledge and skills quickly',
+    ru: 'Быстро находите людей по знаниям и умениям',
+  },
+  open_for_contacts: {
+    en: 'open for contacts',
+    ru: 'открытых для контактов',
   },
   Expand_your_circle_of_friends_by_interests: {
     en: 'Expand your circle of friends by interests',

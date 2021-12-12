@@ -217,7 +217,11 @@ export const SkillExchangeIntro: React.FunctionComponent<SkillExchangeIntroArgs>
             </div>
             <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Get_answers_and_knowledge_from_people'][language]}
+                {
+                  DICTIONARY['Get_answers_to_your_questions_and_information'][
+                    language
+                  ]
+                }
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconBsPiggyBankProps} />
