@@ -17,6 +17,13 @@ interface SearchGroupSepArgs {}
 export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   props: SearchGroupSepArgs
 ): ReactElement => {
+  const flags = {
+    isHowItWorksSep: true,
+    isServiceFunctionsSep: true,
+    isSuccessfulCasesSep: false,
+    isSearchFormSepBottom: false,
+  }
+
   const { language } = useSelector((store2: IRootStore) => store2)
 
   const propsOut = {
@@ -53,15 +60,23 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       </h2>
       <CategoryCatalog />
 
-      <h2 className='_titleSection'>
-        {DICTIONARY['Service_works_simply'][language]}
-      </h2>
-      <HowItWorksSep />
+      {flags.isHowItWorksSep && (
+        <>
+          <h2 className='_titleSection'>
+            {DICTIONARY['Service_works_simply'][language]}
+          </h2>
+          <HowItWorksSep />
+        </>
+      )}
 
-      <h2 className='_titleSection'>{DICTIONARY['Here_you'][language]}</h2>
-      <ServiceFunctionsSep />
+      {flags.isServiceFunctionsSep && (
+        <>
+          <h2 className='_titleSection'>{DICTIONARY['Here_you'][language]}</h2>
+          <ServiceFunctionsSep />
+        </>
+      )}
 
-      {false && (
+      {flags.isSuccessfulCasesSep && (
         <>
           <h2 className='_titleSection'>
             {DICTIONARY['Success_Stories'][language]}
@@ -70,7 +85,9 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         </>
       )}
 
-      <SearchFormSep {...propsOut.searchFormSepBottomProps} />
+      {flags.isSearchFormSepBottom && (
+        <SearchFormSep {...propsOut.searchFormSepBottomProps} />
+      )}
 
       <a href='/sep#id_header_SkillsExchangeSearch'>
         <Button {...propsOut.buttonBackToTopProps} />

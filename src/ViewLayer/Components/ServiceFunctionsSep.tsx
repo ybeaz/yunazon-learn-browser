@@ -38,24 +38,24 @@ export const ServiceFunctionsSep: React.FunctionComponent<ServiceFunctionsSepArg
       <div className='ServiceFunctionsSep'>
         <div className='__textBlock'>
           <div className='_row'>
-            <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
-              <div className='_text'>
-                {DICTIONARY['Get_answers_and_knowledge_from_people'][language]}
-              </div>
-              <div className='_iconValue'>
-                <IconReact {...propsOut.iconFunction2Props} />
-              </div>
-            </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
+                {DICTIONARY['Find_people_by_knowledge_and_skills'][language]}
+              </div>
+              <div className='_iconValue'>
+                <IconReact {...propsOut.iconFunction1Props} />
+              </div>
+            </div>
+            <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
+              <div className='_text'>
                 {
-                  DICTIONARY['Expand_your_circle_of_friends_by_interests'][
+                  DICTIONARY['Get_answers_to_your_questions_and_information'][
                     language
                   ]
                 }
               </div>
               <div className='_iconValue'>
-                <IconReact {...propsOut.iconFunction1Props} />
+                <IconReact {...propsOut.iconFunction2Props} />
               </div>
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>

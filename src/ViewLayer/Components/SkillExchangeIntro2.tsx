@@ -264,11 +264,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
           <div className='_row p_2_0'>
             <div className='_col _m_0p5 _flex_1 _bg_color_1 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {
-                  DICTIONARY['Expand_your_circle_of_friends_by_interests'][
-                    language
-                  ]
-                }
+                {DICTIONARY['Find_people_by_knowledge_and_skills'][language]}
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconHiUsersProps} />
@@ -276,7 +272,11 @@ export const SkillExchangeIntro2: React.FunctionComponent<SkillExchangeIntro2Arg
             </div>
             <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
               <div className='_text'>
-                {DICTIONARY['Get_answers_and_knowledge_from_people'][language]}
+                {
+                  DICTIONARY['Get_answers_to_your_questions_and_information'][
+                    language
+                  ]
+                }
               </div>
               <div className='_iconValue'>
                 <IconReact {...propsOut.iconBsPiggyBankProps} />
