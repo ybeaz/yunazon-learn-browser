@@ -10,9 +10,9 @@ const { dispatch, getState } = store
 export const SEP_INTRO_IN: IActionEvent = (event, data) => {
   const data2 = [
     {
-      childName: data.intro,
+      childName: data,
       isActive: true,
-      childProps: { 'data.intro': data.intro },
+      childProps: { intro: data },
     },
   ]
   dispatch(actionSync.SET_MODAL_FRAMES(data2))

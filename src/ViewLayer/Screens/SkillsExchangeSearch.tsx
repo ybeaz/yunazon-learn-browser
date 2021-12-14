@@ -42,22 +42,15 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       },
       themeDafault,
     } = props
+    const { sfb, scs, sfs, hiw, intro, ssr } = getParsedUrlQuery(search)
 
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
 
-      const query = getParsedUrlQuery(search)
-      query.intro &&
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_INTRO_IN', data: { intro: query.intro } }
-        )
+      intro && handleEvents({}, { typeEvent: 'SEP_INTRO_IN', data: intro })
 
-      query.ssr &&
-        handleEvents(
-          {},
-          { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: query.ssr }
-        )
+      ssr &&
+        handleEvents({}, { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: ssr })
     }, [])
 
     const moduleCapture = 'Exchange your skills, save your time'
@@ -85,6 +78,12 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
       mainFrameProps: {
         screenType: 'SkillsExchangeSearch',
       },
+      searchGroupSepProps: {
+        sfb: sfb === 'true',
+        scs: scs === 'true',
+        sfs: sfs === 'true',
+        hiw: hiw === 'true',
+      },
       imageBottomProps: {
         classAdded: 'Image_bottom',
         src: 'https://yourails.com/images/city.svg',
@@ -106,7 +105,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
           {/* middle-left */}
           {null}
           {/* middle-main */}
-          <SearchGroupSep />
+          <SearchGroupSep {...propsOut.searchGroupSepProps} />
           {/* middle-right */}
           {isShownPalette && <Palette />}
           {/* footer */}

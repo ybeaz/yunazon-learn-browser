@@ -12,16 +12,23 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep/SearchFormSep'
 
-interface SearchGroupSepArgs {}
+interface SearchGroupSepArgs {
+  sfb: boolean
+  scs: boolean
+  sfs: boolean
+  hiw: boolean
+}
 
 export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   props: SearchGroupSepArgs
 ): ReactElement => {
+  const { sfb, scs, sfs, hiw } = props
+
   const flags = {
-    isHowItWorksSep: true,
-    isServiceFunctionsSep: true,
-    isSuccessfulCasesSep: false,
-    isSearchFormSepBottom: false,
+    isHowItWorksSep: hiw,
+    isServiceFunctionsSep: sfs,
+    isSuccessfulCasesSep: scs,
+    isSearchFormSepBottom: sfb,
   }
 
   const { language } = useSelector((store2: IRootStore) => store2)
