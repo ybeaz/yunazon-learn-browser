@@ -63,7 +63,12 @@ I. for courses
 
 `?pr=0.75` Adding `pr` or `rp` sets custom pass rate to pass tests. It means that if you answered correctly on 3 question of 4 then with pass rate 0.75 you have passed the test. If `pr` or `rp` are not set, then `passRate` prop is applied from default settings `src/DataLayer/rootStoreDefault.ts`. `pr` stands for pass rate.
 
-II. For Skills Exchange Project (SEP)
+II. For Skills Exchange Project (SEP) isSearchFormSepBottom
+Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sfb=true`
+`?sfb=true` value to control whether to display `SearchFormSep` in the bottom of the mobile page or not
+`?scs=true` value to control whether to display `SuccessfulCasesSep` or not
+`?sfs=true` value to control whether to display `ServiceFunctionsSep` or not
+`?hiw=true` value to control whether to display `HowItWorksSep` or not
 `?ssr=xyz` value to `selectSkillsRequired` form field
 `?intro=xyz` value to set true and select component as an into for the page, one of the CHILDREN from `src/ViewLayer/Frames/ModalFrames.tsx`. Example: `?intro=SkillExchangeIntro`
 
