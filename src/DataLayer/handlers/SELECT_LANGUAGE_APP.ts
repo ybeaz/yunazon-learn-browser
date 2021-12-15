@@ -7,10 +7,10 @@ import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 const { dispatch } = store
 
-export const APP_SELECT_LANGUAGE: IActionEvent = (event, data) => {
+export const SELECT_LANGUAGE_APP: IActionEvent = (event, data) => {
   const dataNext = data.value
 
   getSavedAnanlyticsEvent(event, getAzProps('APP_LANGUAGE_SELECTED')(dataNext))
-  dispatch(actionSync.APP_SELECT_LANGUAGE(dataNext))
+  dispatch(actionSync.SELECT_LANGUAGE_APP(dataNext))
   getSetObjToLocalStorage({ language: dataNext })
 }

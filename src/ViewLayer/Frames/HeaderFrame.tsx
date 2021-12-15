@@ -116,7 +116,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       LANGUAGES: LANGUAGES_APP,
       language,
       mode: null,
-      typeEvent: 'APP_SELECT_LANGUAGE',
+      typeEvent: 'SELECT_LANGUAGE_APP',
       classAdded: 'SelectLanguage__AppLanguage',
       languagesSelected: [{ value: language }],
     },

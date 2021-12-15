@@ -1,17 +1,16 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const GET_INITIAL_QUERY_SETTING: Function = (
+export const SET_SEARCH_INPUT: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
-  const { language, forms } = store
+  const { forms } = store
 
-  const { languageIn, searchInputIn } = data
-  const languageNext = !!languageIn ? languageIn : language
+  const { searchInputIn } = data
 
   const { searchInput } = forms
   const searchInputNext = !!searchInputIn ? searchInputIn : searchInput
   const formsNext = { ...forms, searchInput: searchInputNext }
 
-  return { ...store, language: languageNext, forms: formsNext }
+  return { ...store, forms: formsNext }
 }

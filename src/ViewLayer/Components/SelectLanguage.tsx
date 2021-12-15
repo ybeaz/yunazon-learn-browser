@@ -42,26 +42,26 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
     classAdded
   )
 
+  const propsOut = {
+    selectAntdProps: {
+      defaultOpen: false,
+      labelInValue: true,
+      value: languagesSelected,
+      filterOption: filterOption,
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      className: '__selectAntd',
+      mode: mode,
+      onBlur: stubOnAction,
+      onChange: (values: any) => handleEvents({}, { typeEvent, data: values }),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+    },
+  }
+
   return (
     <div className={`SelectLanguage ${classAdded}`}>
-      <SelectAntd
-        // defaultOpen
-        labelInValue
-        value={languagesSelected}
-        filterOption={filterOption}
-        placeholder={DICTIONARY['select'][language]}
-        showSearch={true}
-        className='__selectAntd'
-        mode={mode}
-        onBlur={stubOnAction}
-        onChange={(values: any) =>
-          handleEvents({}, { typeEvent, data: values })
-        }
-        onFocus={stubOnAction}
-        onSearch={stubOnAction}
-      >
-        {lagnguagesMapped}
-      </SelectAntd>
+      <SelectAntd {...propsOut.selectAntdProps}>{lagnguagesMapped}</SelectAntd>
     </div>
   )
 }
