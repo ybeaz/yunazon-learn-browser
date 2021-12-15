@@ -3,12 +3,14 @@ import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { actionSync } from '../../DataLayer/index.action'
 
-const { dispatch } = store
+const { dispatch, getState } = store
 
 export const SELECT_LANGUAGE_APP_INIT: IActionEvent = (event, data) => {
-  const { ln, language } = getParsedUrlQuery()
+  const { language } = getState()
 
-  const languageOut = !!ln ? ln : !!language ? language : undefined
+  const { ln, language: lnLong } = getParsedUrlQuery()
+
+  const languageOut = !!ln ? ln : !!lnLong ? lnLong : language
 
   dispatch(actionSync.SELECT_LANGUAGE_APP(languageOut))
 }

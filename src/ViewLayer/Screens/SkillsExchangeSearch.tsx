@@ -46,6 +46,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
 
     useEffect(() => {
       handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
+      handleEvents({}, { typeEvent: 'SELECT_LANGUAGE_APP_INIT' })
 
       intro && handleEvents({}, { typeEvent: 'SEP_INTRO_IN', data: intro })
 

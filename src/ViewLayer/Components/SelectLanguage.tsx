@@ -42,8 +42,6 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
     classAdded
   )
 
-  console.info('SelectLanguage [45]', { language })
-
   const propsOut = {
     selectAntdProps: {
       defaultOpen: false,
