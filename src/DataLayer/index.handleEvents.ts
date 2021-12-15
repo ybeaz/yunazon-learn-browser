@@ -2,6 +2,8 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { SET_SEARCH_INPUT } from './handlers/SET_SEARCH_INPUT'
+import { SELECT_LANGUAGE_APP_INIT } from './handlers/SELECT_LANGUAGE_APP_INIT'
 import { TOGGLE_IS_ADVANCED_SEARCH } from './handlers/TOGGLE_IS_ADVANCED_SEARCH'
 import { SEP_INTRO_IN } from './handlers/SEP_INTRO_IN'
 import { SEP_SELECT_SKILLS_OFFERED } from './handlers/SEP_SELECT_SKILLS_OFFERED'
@@ -43,7 +45,6 @@ import { FIND_DOCUMENT } from './handlers/FIND_DOCUMENT'
 import { GET_AUTH_SIGN_IN } from './handlers/GET_AUTH_SIGN_IN'
 import { GET_AUTH_SIGN_UP } from './handlers/GET_AUTH_SIGN_UP'
 import { GET_COURSE_QUERY_PR_QN } from './handlers/GET_COURSE_QUERY_PR_QN'
-import { GET_INITIAL_QUERY_SETTING } from './handlers/GET_INITIAL_QUERY_SETTING'
 import { GO_ACADEMY_SCREEN } from './handlers/GO_ACADEMY_SCREEN'
 import { GO_BACK_FROM_CERTIFICATE } from './handlers/GO_BACK_FROM_CERTIFICATE'
 import { GO_HOME } from './handlers/GO_HOME'
@@ -63,7 +64,7 @@ import { PRINT_SCORES } from './handlers/PRINT_SCORES'
 import { SAVE_ANALYTICS_INIT_DATA } from './handlers/SAVE_ANALYTICS_INIT_DATA'
 import { SELECT_COURSE_MODULE } from './handlers/SELECT_COURSE_MODULE'
 import { SELECT_COURSE_MODULE_CONTENTID } from './handlers/SELECT_COURSE_MODULE_CONTENTID'
-import { APP_SELECT_LANGUAGE } from './handlers/APP_SELECT_LANGUAGE'
+import { SELECT_LANGUAGE_APP } from './handlers/SELECT_LANGUAGE_APP'
 import { SEND_AUTH_FORGET_PASSWORD } from './handlers/SEND_AUTH_FORGET_PASSWORD'
 import { SEND_EMAIL_DOCUMENT } from './handlers/SEND_EMAIL_DOCUMENT'
 import { SET_MODAL_FRAMES } from './handlers/SET_MODAL_FRAMES'
@@ -83,6 +84,8 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    SET_SEARCH_INPUT,
+    SELECT_LANGUAGE_APP_INIT,
     TOGGLE_IS_ADVANCED_SEARCH,
     SEP_INTRO_IN,
     SEP_SELECT_SKILLS_OFFERED,
@@ -124,7 +127,6 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     GET_AUTH_SIGN_IN,
     GET_AUTH_SIGN_UP,
     GET_COURSE_QUERY_PR_QN,
-    GET_INITIAL_QUERY_SETTING,
     GO_ACADEMY_SCREEN,
     GO_BACK_FROM_CERTIFICATE,
     GO_HOME,
@@ -144,7 +146,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     SAVE_ANALYTICS_INIT_DATA,
     SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
-    APP_SELECT_LANGUAGE,
+    SELECT_LANGUAGE_APP,
     SEND_AUTH_FORGET_PASSWORD,
     SEND_EMAIL_DOCUMENT,
     SET_MODAL_FRAMES,

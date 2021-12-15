@@ -111,12 +111,14 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       ? 'HeaderFrame_AcademyPresent'
       : `HeaderFrame_${contentComponentName}`
 
+  console.info('HeaderFrame [115]', { language })
+
   const propsOut = {
     selectLanguageProps: {
       LANGUAGES: LANGUAGES_APP,
       language,
       mode: null,
-      typeEvent: 'APP_SELECT_LANGUAGE',
+      typeEvent: 'SELECT_LANGUAGE_APP',
       classAdded: 'SelectLanguage__AppLanguage',
       languagesSelected: [{ value: language }],
     },

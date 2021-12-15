@@ -13,7 +13,7 @@ function* getGlobalVars() {
 
     const language = localStorage.getItem('language')
     if (language) {
-      yield put(actionSync.APP_SELECT_LANGUAGE(language))
+      yield put(actionSync.SELECT_LANGUAGE_APP(language))
     }
 
     const authWebToken = localStorage.getItem('authWebToken')
