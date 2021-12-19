@@ -106,7 +106,7 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
 ## To run the project
 
 1. Build Docker image from `docker-compose-mongodb.yml`
-   - See here `/Users/admin/Dev/manuals/Docker.md`
+   - See here [`Docker.md`](https://github.com/ybeaz/manuals/blob/main/Docker.md)
 2. Run Server
    - in server directory run `yarn dev`
 3. Run application
