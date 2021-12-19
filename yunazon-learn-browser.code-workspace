@@ -68,8 +68,9 @@
     "python.linting.pylintPath": "pylint",
     "python.linting.pylintEnabled": true,
     "python.languageServer": "Pylance",
+    "python.formatting.yapfPath": "yapf",
     "[python]": {
-      "editor.defaultFormatter": "ms-python.python",
+      "editor.defaultFormatter": null,
       "editor.formatOnSave": true
     },
     "search.exclude": {
