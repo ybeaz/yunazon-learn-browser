@@ -5,30 +5,26 @@
     }
   ],
   "settings": {
-    "js/ts.implicitProjectConfig.strictNullChecks": true,
-    "window.zoomLevel": 1,
+    "apollographql.trace.server": "messages",
+    "breadcrumbs.enabled": true,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.detectIndentation": false,
-    "editor.tabSize": 2,
-    "editor.insertSpaces": true,
-    "editor.wordWrap": "off",
-    "editor.showFoldingControls": "always",
+    "editor.find.autoFindInSelection": "always",
     "editor.folding": true,
     "editor.foldingStrategy": "indentation",
+    "editor.fontLigatures": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.insertSpaces": true,
+    "editor.largeFileOptimizations": false,
     "editor.renderWhitespace": "all",
-    "files.autoSave": "off",
-    "php.validate.run": "onType",
-    "npm.scriptExplorerAction": "run",
-    "breadcrumbs.enabled": true,
-    "search.exclude": {
-      "**/.git": true,
-      "**/bin": true,
-      "**/dist": true,
-      "**/public": true
-    },
-    "javascript.validate.enable": true,
-    "editor.find.autoFindInSelection": true,
+    "editor.showFoldingControls": "always",
     "editor.suggestSelection": "first",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "off",
+    "files.associations": {},
+    "files.autoSave": "off",
     "files.exclude": {
       "**/.classpath": true,
       "**/.factorypath": true,
@@ -36,14 +32,22 @@
       "**/.settings": true,
       "**/node_modules": true
     },
-    "apollographql.trace.server": "messages",
+    "git.autofetch": true,
+    "html.format.contentUnformatted": "",
+    "html.format.unformatted": "",
     "[html]": {
       "editor.defaultFormatter": "vscode.html-language-features",
       "editor.formatOnSave": true
     },
+
+    "javascript.suggest.completeFunctionCalls": true,
+    "javascript.validate.enable": true,
+    "javascript.updateImportsOnFileMove.enabled": "never",
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "js/ts.implicitProjectConfig.strictNullChecks": true,
+    "json.schemas": [],
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.quickSuggestions": {
@@ -51,44 +55,41 @@
       },
       "editor.suggest.insertMode": "replace"
     },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[python]": {
-      "editor.defaultFormatter": "ms-python.python",
-      "editor.formatOnSave": true
-    },
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    "npm.scriptExplorerAction": "run",
+    "php.validate.run": "onType",
+    "prettier.endOfLine": "auto",
+    "python.analysis.extraPaths": [],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.autoComplete.extraPaths": [],
     "python.formatting.provider": "yapf",
     "python.linting.lintOnSave": true,
     "python.linting.enabled": true,
     "python.linting.pylintPath": "pylint",
     "python.linting.pylintEnabled": true,
     "python.languageServer": "Pylance",
-    "files.associations": {},
-    "typescript.locale": "en",
-    "javascript.updateImportsOnFileMove.enabled": "never",
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "editor.largeFileOptimizations": false,
-    "python.autoComplete.extraPaths": [],
-    "python.analysis.extraPaths": [],
-    "jupyter.sendSelectionToInteractiveWindow": true,
-    "json.schemas": [],
-    "terminal.integrated.env.windows": {},
-    "git.autofetch": true,
-    "prettier.endOfLine": "auto",
-    "html.format.unformatted": "",
-    "html.format.contentUnformatted": "",
-    "workbench.editorAssociations": {},
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.python",
+      "editor.formatOnSave": true
+    },
+    "search.exclude": {
+      "**/.git": true,
+      "**/bin": true,
+      "**/dist": true,
+      "**/public": true
+    },
     "task.slowProviderWarning": false,
-    "python.analysis.typeCheckingMode": "basic",
-    "editor.fontLigatures": false,
+    "terminal.integrated.env.windows": {},
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "javascript.suggest.completeFunctionCalls": true,
-    "typescript.suggest.completeFunctionCalls": true
+    "typescript.suggest.completeFunctionCalls": true,
+    "typescript.locale": "en",
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "window.zoomLevel": 1,
+    "workbench.editorAssociations": {}
   }
 }

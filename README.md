@@ -72,7 +72,7 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
 `?ssr=xyz` value to `selectSkillsRequired` form field
 `?intro=xyz` value to set true and select component as an into for the page, one of the CHILDREN from `src/ViewLayer/Frames/ModalFrames.tsx`. Example: `?intro=SkillExchangeIntro`
 
-### Architecture / evelopment notes
+### Architecture / development notes
 
 1. Add a new screen:
    1. Use `Template.tsx` and `Template.less` from `Components` for a new screen
@@ -102,6 +102,15 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
    5. connectors
 7. Using predefined mixins
    1. `src/ViewLayer/Styles/mixins.style.less` defines a set of mixins for paddings and margins with a pattern `.p_y_x`, `.p_t_r_b_l`, `.m_y_x`, `.m_t_r_b_l`
+
+## To run the project
+
+1. Build Docker image from `docker-compose-mongodb.yml`
+   - See here `/Users/admin/Dev/manuals/Docker.md`
+2. Run Server
+   - in server directory run `yarn dev`
+3. Run application
+   - here run `yarn dev:start` and to restart run `yarn dev`
 
 ## MongoDB collections
 
