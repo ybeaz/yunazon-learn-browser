@@ -50,10 +50,14 @@ import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
 import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
 import { rootStoreDefault } from './rootStoreDefault'
 
-export const rootReducer: Function = (
-  store: IRootStore = rootStoreDefault,
-  action: any = { type: 'DEFAULT' }
-): any => {
+export interface IIndexReducer {
+  (store: IRootStore, action: any): any
+}
+
+export const indexReducer: IIndexReducer = (
+  store = rootStoreDefault,
+  action = { type: 'DEFAULT' }
+) => {
   const { type, data } = action
 
   const output = {
