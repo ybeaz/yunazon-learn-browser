@@ -8,6 +8,12 @@ interface IRoute {
 
 export const routes: IRoute[] = [
   {
+    path: `/profile`,
+    exact: true,
+    page: 'Profile',
+    themeDafault: 'Light',
+  },
+  {
     path: `/see-you`,
     exact: true,
     page: 'StubForUserResearch',

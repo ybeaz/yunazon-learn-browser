@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 import { routes } from './Constants/routes.const'
+import { Profile } from './ViewLayer/Screens/Profile'
 import { StubForUserResearch } from './ViewLayer/Screens/StubForUserResearch'
 import { SkillsExchangeSearch } from './ViewLayer/Screens/SkillsExchangeSearch'
 import { SkillsExchangeSearchChRP } from './ViewLayer/Screens/SkillsExchangeSearchChRP'
@@ -11,6 +12,7 @@ import { Error404 } from './ViewLayer/Screens/Error404'
 import { Certificate } from './ViewLayer/Screens/Certificate'
 
 const PAGES = {
+  Profile,
   StubForUserResearch,
   SkillsExchangeSearch,
   SkillsExchangeSearchChRP,
@@ -47,13 +49,13 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           path={path}
           render={routeProps => {
             const pageProps = { rootPath, routeProps, themeDafault }
-            // console.info('RouterScreensConfig [44]', {
-            //   pageProps,
-            //   rootPath,
-            //   routeProps,
-            //   hostname: location.hostname,
-            //   location,
-            // })
+            console.info('RouterScreensConfig [52]', {
+              pageProps,
+              rootPath,
+              routeProps,
+              hostname: location.hostname,
+              location,
+            })
             return <Page {...pageProps} />
           }}
         />
