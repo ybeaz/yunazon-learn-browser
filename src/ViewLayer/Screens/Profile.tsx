@@ -46,7 +46,9 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
   }, [])
 
   const propsOut = {
-    mainFrameProps: {},
+    mainFrameProps: {
+      screenType: 'Profile',
+    },
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],

@@ -49,13 +49,13 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
           path={path}
           render={routeProps => {
             const pageProps = { rootPath, routeProps, themeDafault }
-            console.info('RouterScreensConfig [52]', {
-              pageProps,
-              rootPath,
-              routeProps,
-              hostname: location.hostname,
-              location,
-            })
+            // console.info('RouterScreensConfig [52]', {
+            //   pageProps,
+            //   rootPath,
+            //   routeProps,
+            //   hostname: location.hostname,
+            //   location,
+            // })
             return <Page {...pageProps} />
           }}
         />
