@@ -66,6 +66,20 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     questionsTotal: 0,
   })
 
+  const {
+    CONTENT_ASSIGNED_COMPONENT,
+    contentComponentName,
+    courseCapture,
+    language,
+    moduleCapture,
+    moduleDescription,
+    contentID,
+    durationObj,
+    moduleIndex,
+    modulesTotal,
+    questionsTotal,
+  } = moduleState
+
   useEffect(() => {
     if (courses.length && isLoaded === false) {
       handleEvents(
@@ -125,20 +139,6 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
       })
     }
   }, [mediaLoading, courses])
-
-  const {
-    CONTENT_ASSIGNED_COMPONENT,
-    contentComponentName,
-    courseCapture,
-    language,
-    moduleCapture,
-    moduleDescription,
-    contentID,
-    durationObj,
-    moduleIndex,
-    modulesTotal,
-    questionsTotal,
-  } = moduleState
 
   const isVisible = mediaLoading[contentID]
 
