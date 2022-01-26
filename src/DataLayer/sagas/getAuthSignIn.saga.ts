@@ -32,7 +32,10 @@ function* getAuthSignIn() {
     yield put(actionSync.SET_MODAL_FRAMES(data))
 
     yield put(
-      actionSync.SET_USER({ ...authLoginPass, loginSource: 'un.userto.com' })
+      actionSync.SET_USER_PROFILE({
+        ...authLoginPass,
+        loginSource: 'un.userto.com',
+      })
     )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

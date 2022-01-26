@@ -6,12 +6,12 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface InputArgs {
-  classAdded: string
-  type: string
-  placeholder: string
-  typeEvent: string
-  storeFormProp: string
-  storeFormGroup?: string
+  classAdded: string // class to add to customize the standard input class
+  type: string // type of html tag, for example, <input type='text' >
+  placeholder: string // placeholder text
+  typeEvent: string // typeEvent to trigger the proper action
+  storeFormProp: string // name of the property in store.form that stores data
+  storeFormGroup?: string // sub property in store.form to keep data
 }
 
 export const Input: React.FunctionComponent<InputArgs> = (

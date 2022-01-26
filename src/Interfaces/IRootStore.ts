@@ -1,4 +1,4 @@
-export interface IUser {
+export interface IProfile {
   email: undefined | string
   familyName: undefined | string
   givenName: undefined | string
@@ -13,23 +13,38 @@ export interface IUser {
   webToken: null | string
 }
 
+interface ISearchFormSep {
+  selectSkillsOffered: string[]
+  selectSkillsRequired: string
+  selectCountryRequired: string[]
+  selectLanguageRequired: string[]
+  inputAgeFromRequired: number
+  inputAgeToRequired: number
+  selectGenderRequired: string[]
+  selectMediaRequired: string[]
+  inputDescriptionRequired: string
+  selectSortBy: string
+}
+
+interface IComponentsState {
+  isSepAdvancedSearch: boolean
+  isShownPalette: boolean
+  questionsSlideNumber: number
+  isModalFrameVisible: boolean
+  isSideNavVisible: boolean
+  isLoaderOverlayVisible: boolean
+  isDocumentAdded: boolean
+  isCourseStarted: boolean
+  isOAuthFacebookScriptLoaded: boolean
+  isOAuthVKontakteScriptLoaded: boolean
+  isOAuthGoogleScriptLoaded: boolean
+  oAuthStage: string | null
+  modalFrames: { childName: string; isActive: boolean; childProps: any }[]
+}
+
 export interface IRootStore {
   analyticsID: string
-  componentsState: {
-    isSepAdvancedSearch: boolean
-    isShownPalette: boolean
-    questionsSlideNumber: number
-    isModalFrameVisible: boolean
-    isSideNavVisible: boolean
-    isLoaderOverlayVisible: boolean
-    isDocumentAdded: boolean
-    isCourseStarted: boolean
-    isOAuthFacebookScriptLoaded: boolean
-    isOAuthVKontakteScriptLoaded: boolean
-    isOAuthGoogleScriptLoaded: boolean
-    oAuthStage: string | null
-    modalFrames: { childName: string; isActive: boolean; childProps: any }[]
-  }
+  componentsState: IComponentsState
   courses: any[]
   documents: any[]
   globalVars: {
@@ -48,18 +63,8 @@ export interface IRootStore {
     lastName: string
     sendTo: string
     sendCc: string
-    searchFormSep: {
-      selectSkillsOffered: string[]
-      selectSkillsRequired: string
-      selectCountryRequired: string[]
-      selectLanguageRequired: string[]
-      inputAgeFromRequired: number
-      inputAgeToRequired: number
-      selectGenderRequired: string[]
-      selectMediaRequired: string[]
-      inputDescriptionRequired: string
-      selectSortBy: string
-    }
+    searchFormSep: ISearchFormSep
+    profile: IProfile
   }
   isLoaded: {
     isLoadedGlobalVars: boolean
@@ -67,5 +72,4 @@ export interface IRootStore {
     mediaLoading: any
   }
   language: string
-  user: IUser
 }

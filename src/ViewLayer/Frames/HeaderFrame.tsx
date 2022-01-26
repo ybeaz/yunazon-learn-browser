@@ -10,7 +10,7 @@ import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IUser, IRootStore } from '../../Interfaces/IRootStore'
+import { IProfile, IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -58,9 +58,12 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     isSelectLanguage,
   } = props
 
-  const { user, language } = useSelector((store2: IRootStore) => store2)
+  const {
+    forms: { profile },
+    language,
+  } = useSelector((store2: IRootStore) => store2)
 
-  const getButtonAuthUser = (user2: IUser): any => {
+  const getButtonAuthUser = (user2: IProfile): any => {
     const status = user2?.status
     const userName = user2?.userName
 
@@ -95,11 +98,13 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     }
   }
 
-  const [buttonAuthUser, setButtonAuthUser] = useState(getButtonAuthUser(user))
+  const [buttonAuthUser, setButtonAuthUser] = useState(
+    getButtonAuthUser(profile)
+  )
 
   useEffect(() => {
-    setButtonAuthUser(getButtonAuthUser(user))
-  }, [user])
+    setButtonAuthUser(getButtonAuthUser(profile))
+  }, [profile])
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 

@@ -12,12 +12,12 @@ import { Button } from './Button'
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: IRootStore) => store2)
   const {
-    user,
+    forms: { profile },
     language,
     componentsState: { isSideNavVisible },
   } = store
 
-  const status = user?.status
+  const status = profile?.status
 
   let history = useHistory()
 
@@ -72,8 +72,8 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     },
   ]
 
-  const getButtons: Function = (buttonPropsArr: any[]): ReactElement[] => {
-    return buttonPropsArr.map(buttonProps => {
+  const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
+    return buttonPropsArr2.map(buttonProps => {
       return (
         <div className='_item'>
           <Button {...buttonProps} />

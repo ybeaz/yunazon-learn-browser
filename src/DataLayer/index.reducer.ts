@@ -18,7 +18,7 @@ import { SET_OAUTH_STAGE } from './reducers/SET_OAUTH_STAGE'
 import { SET_OAUTH_FB_SCRIPT_STATE } from './reducers/SET_OAUTH_FB_SCRIPT_STATE'
 import { SET_OAUTH_VK_SCRIPT_STATE } from './reducers/SET_OAUTH_VK_SCRIPT_STATE'
 import { SET_OAUTH_GOOGLE_SCRIPT_STATE } from './reducers/SET_OAUTH_GOOGLE_SCRIPT_STATE'
-import { SET_USER } from './reducers/SET_USER'
+import { SET_USER_PROFILE } from './reducers/SET_USER_PROFILE'
 import { ONCHANGE_USER_NAME_AUTH } from './reducers/ONCHANGE_USER_NAME_AUTH'
 import { ONCHANGE_PASSWORD_AUTH_2 } from './reducers/ONCHANGE_PASSWORD_AUTH_2'
 import { ONCHANGE_EMAIL_AUTH } from './reducers/ONCHANGE_EMAIL_AUTH'
@@ -79,7 +79,7 @@ export const indexReducer: IIndexReducer = (
     SET_OAUTH_FB_SCRIPT_STATE,
     SET_OAUTH_VK_SCRIPT_STATE,
     SET_OAUTH_GOOGLE_SCRIPT_STATE,
-    SET_USER,
+    SET_USER_PROFILE,
     ONCHANGE_USER_NAME_AUTH,
     ONCHANGE_EMAIL_AUTH,
     ONCHANGE_PASSWORD_AUTH,
