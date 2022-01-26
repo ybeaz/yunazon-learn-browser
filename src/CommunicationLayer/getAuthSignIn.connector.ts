@@ -11,7 +11,7 @@ const headers = {
 }
 
 export const getAuthSignInConnector: Function = (
-  emailAuth: string,
+  userEmail: string,
   passwordAuth: string
 ): any => {
   const envType: string = getDetectedEnv()
@@ -38,7 +38,7 @@ export const getAuthSignInConnector: Function = (
     payload: {
       operationName: 'AuthLoginPass',
       variables: {
-        email: emailAuth,
+        email: userEmail,
         password: passwordAuth,
       },
       query,

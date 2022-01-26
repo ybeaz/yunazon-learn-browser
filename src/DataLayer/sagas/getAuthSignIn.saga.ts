@@ -1,16 +1,19 @@
 import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.connector'
 
 function* getAuthSignIn() {
   const {
-    forms: { emailAuth, passwordAuth },
-  } = yield select(store => store)
+    forms: {
+      profile: { emailUser, passwordAuth },
+    },
+  } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthSignInConnector(
-    emailAuth,
+    emailUser,
     passwordAuth
   )
 

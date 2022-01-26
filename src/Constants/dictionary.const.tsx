@@ -790,15 +790,15 @@ export const DICTIONARY: IDictionary = {
     en: 'tried',
     ru: 'пробовали',
   },
-  lastName: {
+  userNameLast: {
     en: 'last name',
     ru: 'фамилия',
   },
-  firstName: {
+  userNameFirst: {
     en: 'first name',
     ru: 'имя',
   },
-  middleName: {
+  userNameMiddle: {
     en: 'middle name',
     ru: 'отчество',
   },

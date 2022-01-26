@@ -1,19 +1,44 @@
+// export interface IProfileLeg {
+//   email: undefined | string
+//   familyName: undefined | string
+//   givenName: undefined | string
+//   loginSource: undefined | string
+//   phone: undefined | number
+//   picture: undefined | string
+//   roles: undefined | string
+//   status: undefined | string
+//   uid: undefined | string
+//   uidExternal: undefined | string
+//   userName: undefined | string
+//   webToken: null | string
+// }
+
+// * email
+// * emailAuth: string
+// * userNameAuth: string
+// * firstName: string
+// * middleName: string
+// * lastName: string
+// * familyName: undefined | string
+// * givenName: undefined | string
 export interface IProfile {
-  email: undefined | string
-  familyName: undefined | string
-  givenName: undefined | string
   loginSource: undefined | string
+  passwordAuth: string
+  passwordAuth2: string
   phone: undefined | number
   picture: undefined | string
-  roles: undefined | string
+  roles: undefined | string[]
   status: undefined | string
   uid: undefined | string
   uidExternal: undefined | string
-  userName: undefined | string
+  userEmail: undefined | string
+  userNameFirst: string
+  userNameLast: string
+  userNameMiddle: string
   webToken: null | string
 }
 
-interface ISearchFormSep {
+export interface ISearchFormSep {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
   selectCountryRequired: string[]
@@ -26,7 +51,7 @@ interface ISearchFormSep {
   selectSortBy: string
 }
 
-interface IComponentsState {
+export interface IComponentsState {
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
@@ -42,6 +67,14 @@ interface IComponentsState {
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
 }
 
+export interface IForms {
+  searchInput: string
+  sendTo: string
+  sendCc: string
+  searchFormSep: ISearchFormSep
+  profile: IProfile
+}
+
 export interface IRootStore {
   analyticsID: string
   componentsState: IComponentsState
@@ -52,20 +85,7 @@ export interface IRootStore {
     numberQuestionsInSlide: number
     durationMultiplier: number
   }
-  forms: {
-    userNameAuth: string
-    emailAuth: string
-    passwordAuth: string
-    passwordAuth2: string
-    searchInput: string
-    firstName: string
-    middleName: string
-    lastName: string
-    sendTo: string
-    sendCc: string
-    searchFormSep: ISearchFormSep
-    profile: IProfile
-  }
+  forms: IForms
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean

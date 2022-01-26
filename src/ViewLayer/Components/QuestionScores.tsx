@@ -24,7 +24,9 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     documents,
     courses,
     componentsState: { isDocumentAdded },
-    forms: { firstName, middleName, lastName },
+    forms: {
+      profile: { userNameFirst, userNameMiddle, userNameLast },
+    },
   } = store
 
   const documentsLen = documents.length
@@ -70,7 +72,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     type: 'text',
     placeholder: 'first name...',
     typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
-    storeFormProp: 'firstName',
+    storeFormProp: 'userNameFirst',
   }
 
   const inputMiddleNameProps = {
@@ -78,7 +80,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     type: 'text',
     placeholder: 'second name...',
     typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
-    storeFormProp: 'middleName',
+    storeFormProp: 'userNameMiddle',
   }
 
   const inputLastNameProps = {
@@ -86,7 +88,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     type: 'text',
     placeholder: 'last name...',
     typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
-    storeFormProp: 'lastName',
+    storeFormProp: 'userNameLast',
   }
 
   const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
@@ -95,9 +97,9 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
   const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
   const Congratulations = DICTIONARY.Congratulations[language]
 
-  const lastNameLabel = DICTIONARY.lastName[language]
-  const firstNameLabel = DICTIONARY.firstName[language]
-  const middleNameLabel = DICTIONARY.middleName[language]
+  const lastNameLabel = DICTIONARY.userNameLast[language]
+  const firstNameLabel = DICTIONARY.userNameFirst[language]
+  const middleNameLabel = DICTIONARY.userNameMiddle[language]
 
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
@@ -108,7 +110,6 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess =
     DICTIONARY.YouWereCommittedToSuccess[language]
-  const WeGreetYou = DICTIONARY.WeGreetYou[language]
 
   const question = getQuesionString(language, right)
 
@@ -132,9 +133,9 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
           typeEvent: 'ADD_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            firstName,
-            middleName,
-            lastName,
+            userNameFirst,
+            userNameMiddle,
+            userNameLast,
             meta,
             capture: courseCapture,
             description,
