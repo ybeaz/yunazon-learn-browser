@@ -1,19 +1,42 @@
-export const profileStoreDefault = {
-  email: undefined,
-  familyName: undefined,
-  givenName: undefined,
+import {
+  IComponentsState,
+  ISearchFormSep,
+  IProfile,
+  IForms,
+  IRootStore,
+} from '../Interfaces/IRootStore'
+
+export const profileStoreDefault: IProfile = {
   loginSource: undefined,
+  passwordAuth: '',
+  passwordAuth2: '',
   phone: undefined,
   picture: undefined,
-  roles: undefined,
+  roles: [],
   status: undefined,
   uid: undefined,
   uidExternal: undefined,
-  userName: undefined,
+  userEmail: undefined,
+  userNameFirst: '',
+  userNameLast: '',
+  userNameMiddle: '',
   webToken: null,
+
+  // userEmail: undefined,
+  // familyName: undefined,
+  // givenName: undefined,
+  // loginSource: undefined,
+  // phone: undefined,
+  // picture: undefined,
+  // roles: undefined,
+  // status: undefined,
+  // uid: undefined,
+  // uidExternal: undefined,
+  // userName: undefined,
+  // webToken: null,
 }
 
-export const searchFormSepDefault = {
+export const searchFormSepDefault: ISearchFormSep = {
   selectSkillsOffered: [],
   selectSkillsRequired: '',
   selectCountryRequired: [],
@@ -26,7 +49,7 @@ export const searchFormSepDefault = {
   selectSortBy: '',
 }
 
-export const componentsStateDefault = {
+export const componentsStateDefault: IComponentsState = {
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
@@ -55,22 +78,15 @@ export const componentsStateDefault = {
   ],
 }
 
-export const formsDefault = {
-  userNameAuth: '',
-  emailAuth: '',
-  passwordAuth: '',
-  passwordAuth2: '',
+export const formsDefault: IForms = {
   searchInput: '',
-  firstName: '',
-  middleName: '',
-  lastName: '',
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,
   profile: profileStoreDefault,
 }
 
-export const rootStoreDefault = {
+export const rootStoreDefault: IRootStore = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],
