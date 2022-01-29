@@ -2,6 +2,7 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { GET_AVATAR_PATH } from './handlers/GET_AVATAR_PATH'
 import { SET_SEARCH_INPUT } from './handlers/SET_SEARCH_INPUT'
 import { SELECT_LANGUAGE_APP_INIT } from './handlers/SELECT_LANGUAGE_APP_INIT'
 import { TOGGLE_IS_ADVANCED_SEARCH } from './handlers/TOGGLE_IS_ADVANCED_SEARCH'
@@ -84,6 +85,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    GET_AVATAR_PATH,
     SET_SEARCH_INPUT,
     SELECT_LANGUAGE_APP_INIT,
     TOGGLE_IS_ADVANCED_SEARCH,

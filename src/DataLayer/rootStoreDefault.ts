@@ -11,7 +11,7 @@ export const profileStoreDefault: IProfile = {
   passwordAuth: '',
   passwordAuth2: '',
   phone: undefined,
-  picture: undefined,
+  avatar: undefined,
   roles: [],
   status: undefined,
   uid: undefined,
@@ -21,19 +21,6 @@ export const profileStoreDefault: IProfile = {
   userNameLast: '',
   userNameMiddle: '',
   webToken: null,
-
-  // userEmail: undefined,
-  // familyName: undefined,
-  // givenName: undefined,
-  // loginSource: undefined,
-  // phone: undefined,
-  // picture: undefined,
-  // roles: undefined,
-  // status: undefined,
-  // uid: undefined,
-  // uidExternal: undefined,
-  // userName: undefined,
-  // webToken: null,
 }
 
 export const searchFormSepDefault: ISearchFormSep = {

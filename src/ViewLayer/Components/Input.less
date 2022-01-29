@@ -50,11 +50,33 @@
     transition: color 0.3s ease, opacity 0.15s ease;
     text-rendering: auto;
   }
+
+  &:hover ._iconClose {
+    // .ant-select-clear
+    opacity: 1;
+  }
 }
 
-.Input:hover ._iconClose {
-  // .ant-select-clear
-  opacity: 1;
+.Input_ProfileBody_avatar {
+  padding: 0;
+
+  .__input {
+    padding: 0;
+    border: none;
+    color: transparent;
+
+    &:active,
+    &:focus {
+    }
+
+    &::-webkit-file-upload-button {
+      cursor: pointer;
+    }
+  }
+
+  &:hover ._iconClose {
+    opacity: 0;
+  }
 }
 
 .Input_ageFromToRequired {

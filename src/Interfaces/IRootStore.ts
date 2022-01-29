@@ -26,7 +26,7 @@ export interface IProfile {
   passwordAuth: string
   passwordAuth2: string
   phone: undefined | number
-  picture: undefined | string
+  avatar: undefined | string
   roles: undefined | string[]
   status: undefined | string
   uid: undefined | string

@@ -143,6 +143,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
+    .Input_ProfileBody_avatar .__input,
+    .Input_ProfileBody_avatar .__input:active,
+    .Input_ProfileBody_avatar .__input:focus {
+      color: ${props2 => 'transparent'};
+      border: ${props2 => 'none'};
+      border-color: ${props2 => 'none'};
+    }
+
     .Input_ageFromToRequired .__input, .Input_descriptionRequired .__input  {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
       background-color: ${props2 =>

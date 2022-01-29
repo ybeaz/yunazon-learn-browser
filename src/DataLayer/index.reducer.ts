@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { GET_AVATAR_PATH } from './reducers/GET_AVATAR_PATH'
 import { SET_SEARCH_INPUT } from './reducers/SET_SEARCH_INPUT'
 import { SET_IS_ADVANCED_SEARCH } from './reducers/SET_IS_ADVANCED_SEARCH'
 import { SEP_SELECT_SKILLS_OFFERED } from './reducers/SEP_SELECT_SKILLS_OFFERED'
@@ -62,6 +63,7 @@ export const indexReducer: IIndexReducer = (
 
   const output = {
     TEMPLATE,
+    GET_AVATAR_PATH,
     SET_SEARCH_INPUT,
     SET_IS_ADVANCED_SEARCH,
     SEP_SELECT_SKILLS_OFFERED,
