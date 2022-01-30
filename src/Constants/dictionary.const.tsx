@@ -509,9 +509,9 @@ export const DICTIONARY: IDictionary = {
     en: 'Age',
     ru: 'Возраст',
   },
-  'Speaking language': {
-    en: 'Speaking language',
-    ru: 'Язык общения',
+  Speaking_languages: {
+    en: 'Speaking languages',
+    ru: 'Языки общения',
   },
   Country: {
     en: 'Country',

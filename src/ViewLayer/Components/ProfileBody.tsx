@@ -106,7 +106,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       componentId: nanoid(),
       value: userCountry,
       filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
+      mode: null,
       onBlur: stubOnAction,
       onChange: (values: string[]) =>
         handleEvents({}, { typeEvent: 'SELECT_USER_COUNTRY', data: values }),
@@ -145,7 +145,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         </div>
       </div>
       <div className={`_row`}>
-        <div className={classCol01}>{DICTIONARY['Name'][language]}</div>
+        <div className={classCol01}>
+          {DICTIONARY['Name'][language]}
+          {' *'}
+        </div>
         <div className={classCol02}>
           <Input {...propsOut.inputUserNameFirstProps} />
         </div>
@@ -159,24 +162,28 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           <SelectAntd {...propsOut.selectSkillsExpertizeProps} />
         </div>
       </div>
-      <div className={`_row`}>
-        <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
-        <div className={classCol02}>
-          <Input {...propsOut.inputUserInfoAboutProps} />
-        </div>
-      </div>
       <div className='_row'>
         <div className={classCol01}>
-          {DICTIONARY['Speaking language'][language]}
+          {DICTIONARY['Speaking_languages'][language]}
+          {' *'}
         </div>
         <div className={classCol02}>
           <SelectLanguage {...propsOut.selectUserLanguagesProps} />
         </div>
       </div>
       <div className={`_row`}>
-        <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
+        <div className={classCol01}>
+          {DICTIONARY['Country'][language]}
+          {' *'}
+        </div>
         <div className={classCol02}>
           <SelectAntd {...propsOut.selectUserCountryProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
+        <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
+        <div className={classCol02}>
+          <Input {...propsOut.inputUserInfoAboutProps} />
         </div>
       </div>
     </div>

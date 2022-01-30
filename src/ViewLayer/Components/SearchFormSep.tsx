@@ -333,7 +333,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         </div>
         <div className='_row'>
           <div className={classCol01}>
-            {DICTIONARY['Speaking language'][language]}
+            {DICTIONARY['Speaking_languages'][language]}
           </div>
           <div className={classCol02}>
             <SelectLanguage {...propsOut.selectLanguageProps} />
