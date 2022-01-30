@@ -27,7 +27,6 @@ interface SkillsExchangeSearchProps {
 
 export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchProps> =
   (props): ReactElement => {
-    const { language } = useSelector((store2: IRootStore) => store2)
     getEffectedRequests(['GET_GLOBAL_VARS'])
 
     const store = useSelector((store2: IRootStore) => store2)
@@ -61,7 +60,7 @@ export const SkillsExchangeSearch: React.FunctionComponent<SkillsExchangeSearchP
     const propsOut = {
       headerFrameProps: {
         brandName: `YouRails`,
-        moto: DICTIONARY['Together_know_everything'][language],
+        moto: DICTIONARY['Together_know_everything'][languageStore],
         logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
         contentComponentName: 'SkillsExchangeSearch',
         isButtonSideMenu: true,

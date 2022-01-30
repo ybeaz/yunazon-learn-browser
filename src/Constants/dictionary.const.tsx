@@ -14,6 +14,14 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  tell_about_yourself: {
+    en: 'tell about yourself',
+    ru: 'расскажите о себе',
+  },
+  Save: {
+    en: 'Save',
+    ru: 'Сохранить',
+  },
   Up: {
     en: 'Up',
     ru: 'Наверх',
@@ -509,9 +517,9 @@ export const DICTIONARY: IDictionary = {
     en: 'Age',
     ru: 'Возраст',
   },
-  'Speaking language': {
-    en: 'Speaking language',
-    ru: 'Язык общения',
+  Speaking_languages: {
+    en: 'Speaking languages',
+    ru: 'Языки общения',
   },
   Country: {
     en: 'Country',
@@ -631,6 +639,10 @@ export const DICTIONARY: IDictionary = {
   Academy: {
     en: 'Academy',
     ru: 'Академия',
+  },
+  name: {
+    en: 'name',
+    ru: 'имя',
   },
   Name: {
     en: 'Name',
@@ -790,15 +802,27 @@ export const DICTIONARY: IDictionary = {
     en: 'tried',
     ru: 'пробовали',
   },
-  lastName: {
+  Profile: {
+    en: 'Profile',
+    ru: 'Профиль',
+  },
+  About_me: {
+    en: 'About me',
+    ru: 'Обо мне',
+  },
+  Expertise: {
+    en: 'Expertise',
+    ru: 'Экспертиза',
+  },
+  userNameLast: {
     en: 'last name',
     ru: 'фамилия',
   },
-  firstName: {
+  userNameFirst: {
     en: 'first name',
     ru: 'имя',
   },
-  middleName: {
+  userNameMiddle: {
     en: 'middle name',
     ru: 'отчество',
   },

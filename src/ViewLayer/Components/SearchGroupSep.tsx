@@ -10,7 +10,7 @@ import { UsersOnline } from './UsersOnline'
 import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { SearchFormSep } from './SearchFormSep/SearchFormSep'
+import { SearchFormSep } from './SearchFormSep'
 
 interface SearchGroupSepArgs {
   sfb: boolean

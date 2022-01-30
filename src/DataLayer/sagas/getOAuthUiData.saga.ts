@@ -6,12 +6,12 @@ import { getOAuthUiDataConnector } from '../../CommunicationLayer/getOAuthUiData
 
 function* getOAuthUiData(args: any) {
   const {
-    data: { familyName, givenName, picture, uidExternal, userName },
+    data: { userNameLast, userNameFirst, picture, uidExternal, userName },
   } = args
 
   const { method, url, payload, options } = getOAuthUiDataConnector({
-    familyName,
-    givenName,
+    userNameLast,
+    userNameFirst,
     picture,
     uidExternal,
     userName,
@@ -40,7 +40,10 @@ function* getOAuthUiData(args: any) {
     yield put(actionSync.SET_MODAL_FRAMES(data))
 
     yield put(
-      actionSync.SET_USER({ ...oAuthUiData, loginSource: 'un.userto.com' })
+      actionSync.SET_USER_PROFILE({
+        ...oAuthUiData,
+        loginSource: 'un.userto.com',
+      })
     )
 
     yield put(actionSync.SET_MODAL_FRAMES([]))

@@ -14,9 +14,9 @@ function* addDocument(dataInput) {
       meta,
       moduleID,
       userEmail,
-      firstName,
-      middleName,
-      lastName,
+      userNameFirst,
+      userNameMiddle,
+      userNameLast,
     },
   } = dataInput
 
@@ -29,7 +29,11 @@ function* addDocument(dataInput) {
     meta,
     moduleIDs: [moduleID],
     contentIDs: [contentID],
-    userName: { firstName, middleName, lastName },
+    userName: {
+      firstName: userNameFirst,
+      middleName: userNameMiddle,
+      lastName: userNameLast,
+    },
     lang: language,
   }
 

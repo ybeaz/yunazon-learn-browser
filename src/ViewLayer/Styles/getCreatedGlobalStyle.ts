@@ -143,7 +143,18 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Input_ageFromToRequired .__input, .Input_descriptionRequired .__input  {
+    .Input_ProfileBody_avatar .__input,
+    .Input_ProfileBody_avatar .__input:active,
+    .Input_ProfileBody_avatar .__input:focus {
+      color: ${props2 => 'transparent'};
+      border: ${props2 => 'none'};
+      border-color: ${props2 => 'none'};
+    }
+
+    .Input_userInfoAbout .__input,
+    .Input_userNameFirst .__input,
+    .Input_ageFromToRequired .__input, 
+    .Input_descriptionRequired .__input  {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', lighter, medial, 'Light')};
@@ -178,6 +189,9 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
 
+    .Input_userInfoAbout .__input:active,
+    .Input_userNameFirst .__input:active,
+    .Input_userNameFirst .__input:focus,
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
@@ -187,17 +201,23 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle, 'Dark')};
     }
 
+    .Input_userInfoAbout .__input::placeholder,
+    .Input_userNameFirst .__input::placeholder,
     .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
       opacity: 1; /* Firefox */
     }
     
+    .Input_userInfoAbout .__input:-ms-input-placeholder,
+    .Input_userNameFirst .__input:-ms-input-placeholder,
     .Input_descriptionRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
     
+    .Input_userInfoAbout .__input::-ms-input-placeholder,
+    .Input_userNameFirst .__input::-ms-input-placeholder,
     .Input_descriptionRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
@@ -457,6 +477,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_MdSearch ._in {
       color: ${props2 =>
         getColor(props2, 'colorFirstLighter', medial, lighter)};
+    }
+
+    .Button_Avatar ._in {
+      color: ${props2 => getColor(props2, 'colorGrey', medial, lighter4)};
     }
 
     .ModalFrames {

@@ -3,6 +3,12 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SELECT_USER_LANGUAGES',
+  'SELECT_USER_COUNTRY',
+  'ONCHANGE_USER_NAME_FIRST',
+  'ONCHANGE_USER_INFO_ABOUT',
+  'SELECT_SKILLS_EXPERTISE',
+  'GET_AVATAR_PATH',
   'SELECT_LANGUAGE_APP',
   'CHANGE_NUM_QUESTIONS_IN_SLIDE',
   'CLICK_CHECK',
@@ -43,7 +49,7 @@ const ACTIONS_SYNC: string[] = [
   'SET_QUESTION_SLIDE',
   'SET_SEARCH_INPUT',
   'SET_THEME',
-  'SET_USER',
+  'SET_USER_PROFILE',
   'TOGGLE_IS_DOCUMENT_ADDED',
   'TOGGLE_LOADER_OVERLAY',
   'TOGGLE_MEDIA_LOADED',

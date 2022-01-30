@@ -1,6 +1,12 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SELECT_USER_LANGUAGES } from './reducers/SELECT_USER_LANGUAGES'
+import { SELECT_USER_COUNTRY } from './reducers/SELECT_USER_COUNTRY'
+import { ONCHANGE_USER_NAME_FIRST } from './reducers/ONCHANGE_USER_NAME_FIRST'
+import { ONCHANGE_USER_INFO_ABOUT } from './reducers/ONCHANGE_USER_INFO_ABOUT'
+import { SELECT_SKILLS_EXPERTISE } from './reducers/SELECT_SKILLS_EXPERTISE'
+import { GET_AVATAR_PATH } from './reducers/GET_AVATAR_PATH'
 import { SET_SEARCH_INPUT } from './reducers/SET_SEARCH_INPUT'
 import { SET_IS_ADVANCED_SEARCH } from './reducers/SET_IS_ADVANCED_SEARCH'
 import { SEP_SELECT_SKILLS_OFFERED } from './reducers/SEP_SELECT_SKILLS_OFFERED'
@@ -18,7 +24,7 @@ import { SET_OAUTH_STAGE } from './reducers/SET_OAUTH_STAGE'
 import { SET_OAUTH_FB_SCRIPT_STATE } from './reducers/SET_OAUTH_FB_SCRIPT_STATE'
 import { SET_OAUTH_VK_SCRIPT_STATE } from './reducers/SET_OAUTH_VK_SCRIPT_STATE'
 import { SET_OAUTH_GOOGLE_SCRIPT_STATE } from './reducers/SET_OAUTH_GOOGLE_SCRIPT_STATE'
-import { SET_USER } from './reducers/SET_USER'
+import { SET_USER_PROFILE } from './reducers/SET_USER_PROFILE'
 import { ONCHANGE_USER_NAME_AUTH } from './reducers/ONCHANGE_USER_NAME_AUTH'
 import { ONCHANGE_PASSWORD_AUTH_2 } from './reducers/ONCHANGE_PASSWORD_AUTH_2'
 import { ONCHANGE_EMAIL_AUTH } from './reducers/ONCHANGE_EMAIL_AUTH'
@@ -62,6 +68,12 @@ export const indexReducer: IIndexReducer = (
 
   const output = {
     TEMPLATE,
+    SELECT_USER_LANGUAGES,
+    SELECT_USER_COUNTRY,
+    ONCHANGE_USER_NAME_FIRST,
+    ONCHANGE_USER_INFO_ABOUT,
+    SELECT_SKILLS_EXPERTISE,
+    GET_AVATAR_PATH,
     SET_SEARCH_INPUT,
     SET_IS_ADVANCED_SEARCH,
     SEP_SELECT_SKILLS_OFFERED,
@@ -79,7 +91,7 @@ export const indexReducer: IIndexReducer = (
     SET_OAUTH_FB_SCRIPT_STATE,
     SET_OAUTH_VK_SCRIPT_STATE,
     SET_OAUTH_GOOGLE_SCRIPT_STATE,
-    SET_USER,
+    SET_USER_PROFILE,
     ONCHANGE_USER_NAME_AUTH,
     ONCHANGE_EMAIL_AUTH,
     ONCHANGE_PASSWORD_AUTH,

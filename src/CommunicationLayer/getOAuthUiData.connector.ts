@@ -11,8 +11,8 @@ const headers = {
 }
 
 export const getOAuthUiDataConnector: Function = ({
-  familyName,
-  givenName,
+  userNameLast,
+  userNameFirst,
   picture,
   uidExternal,
   userName,
@@ -47,8 +47,8 @@ export const getOAuthUiDataConnector: Function = ({
       operationName: 'OAuthUiData',
       variables: {
         authInput: {
-          familyName,
-          givenName,
+          familyName: userNameLast,
+          givenName: userNameFirst,
           picture,
           uidExternal,
           userName,

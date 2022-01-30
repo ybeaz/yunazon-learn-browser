@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { nanoid } from 'nanoid'
 
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface InputArgs {
-  classAdded: string
-  type: string
-  placeholder: string
-  typeEvent: string
-  storeFormProp: string
-  storeFormGroup?: string
+  tagName?: string // input tag, may be 'input' or 'textarea'
+  classAdded: string // class to add to customize the standard input class
+  type?: string // type of html tag, for example, <input type='text' >
+  placeholder: string // placeholder text
+  typeEvent: string // typeEvent to trigger the proper action
+  storeFormProp?: string // name of the property in store.form that stores data
+  storeFormGroup?: string // sub property in store.form to keep data
+  accept?: string // accepted files' format for type='file', for example, 'image/png, image/jpeg, image/jpg'
 }
 
 export const Input: React.FunctionComponent<InputArgs> = (
   props: InputArgs
 ): React.ReactElement => {
   const {
+    tagName = 'input',
     classAdded,
     type,
     placeholder,
     typeEvent,
     storeFormGroup,
     storeFormProp,
+    accept,
   } = props
 
   const store = useSelector((store2: IRootStore) => store2)
@@ -40,15 +45,40 @@ export const Input: React.FunctionComponent<InputArgs> = (
     classAdded: `IconReact_Input`,
   }
 
+  const nanoId = nanoid()
+
+  const inputFileRef = useRef(null)
+
+  // TODO Make click programmaticaly from another element to change default label
+  // https://stackoverflow.com/questions/32433594/how-to-trigger-input-file-event-reactjs-by-another-dom
+  const handleClick = () => {
+    inputFileRef.current.type = type
+    inputFileRef.current.onInput()
+  }
+
   return (
     <div className={`Input ${classAdded}`}>
-      <input
-        className={`__input`}
-        type={type}
-        placeholder={placeholder}
-        onChange={event => handleEvents(event, action)}
-        value={value}
-      />
+      <form className='__form'>
+        {tagName === 'input' && (
+          <input
+            className={`__input _hidden`}
+            ref={inputFileRef}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            accept={accept}
+            onInput={event => handleEvents(event, action)}
+          />
+        )}
+        {tagName === 'textarea' && (
+          <textarea
+            className={`__input`}
+            placeholder={placeholder}
+            onChange={event => handleEvents(event, action)}
+            value={value}
+          />
+        )}
+      </form>
       <span
         className='_iconClose'
         onClick={event => handleEvents({ target: { value: '' } }, action)}

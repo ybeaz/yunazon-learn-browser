@@ -1,12 +1,17 @@
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const SET_USER: Function = (
+export const SET_USER_PROFILE: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
   const { webToken } = data
 
   getSetObjToLocalStorage({ authWebToken: webToken })
-  return { ...store, user: data }
+
+  const { forms } = store
+
+  const formsNext = { ...forms, profile: data }
+
+  return { ...store, forms: formsNext }
 }

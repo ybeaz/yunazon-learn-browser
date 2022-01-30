@@ -7,8 +7,9 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {
-  const arrSelected =
-    event.target.selectedOptions &&
-    Array.from(event.target.selectedOptions, (option: any) => option.value)
+export const CLICK_SAVE_PROFILE: IActionEvent = (event, data) => {
+  const {
+    forms: { profile },
+  } = getState()
+  console.info('CLICK_SAVE_PROFILE [11]', { profile })
 }

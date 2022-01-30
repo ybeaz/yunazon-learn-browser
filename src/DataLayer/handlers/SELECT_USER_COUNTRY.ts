@@ -7,8 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SELECT_SKILLS_OFFERED: IActionEvent = (event, data) => {
-  const arrSelected =
-    event.target.selectedOptions &&
-    Array.from(event.target.selectedOptions, (option: any) => option.value)
-}
+export const SELECT_USER_COUNTRY: IActionEvent = (event, data) =>
+  dispatch(actionSync.SELECT_USER_COUNTRY(data))

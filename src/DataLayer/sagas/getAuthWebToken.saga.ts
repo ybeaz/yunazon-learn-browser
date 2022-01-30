@@ -18,7 +18,10 @@ function* getAuthWebToken(args: any) {
       },
     } = yield axios[method](url, payload, options)
     yield put(
-      actionSync.SET_USER({ ...authWebToken, loginSource: 'un.userto.com' })
+      actionSync.SET_USER_PROFILE({
+        ...authWebToken,
+        loginSource: 'un.userto.com',
+      })
     )
   } catch (error) {
     console.info('getAuthWebToken.saga [25]', { message: error.message })
