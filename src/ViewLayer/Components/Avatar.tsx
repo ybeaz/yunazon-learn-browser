@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Button } from './Button'
-import { Image } from './Image'
 import { Input } from './Input'
 
 interface AvatarArgs {}
@@ -17,8 +16,6 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
       profile: { avatar },
     },
   } = useSelector((store: IRootStore) => store)
-
-  console.info('Avatar [20]', { avatar })
 
   const propsOut = {
     buttonAvatarProps: {

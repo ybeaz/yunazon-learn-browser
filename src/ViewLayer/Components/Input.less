@@ -3,29 +3,37 @@
   position: relative;
   width: -webkit-fill-available;
 
-  .__input {
+  .__form {
     display: flex;
     width: 100%;
-    max-width: 100%;
-    margin: 0 0 0 0;
-    padding: 2px 0.7rem 2px 0.7rem;
-    text-size-adjust: 100%;
-    font-weight: 400;
-    font-size: @fontSize;
-    line-height: 24px;
-    letter-spacing: -0.3px;
-    direction: ltr;
-    border-width: 1px;
-    border-style: solid;
-    -webkit-appearance: none;
-    background-clip: border-box;
-    cursor: text;
-    &:active,
-    &:focus {
-      border-radius: 0px;
-      outline: none;
+
+    .__input {
+      display: flex;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 0 0 0;
+      padding: 2px 0.7rem 2px 0.7rem;
       text-size-adjust: 100%;
+      font-weight: 400;
+      font-size: @fontSize;
+      line-height: 24px;
+      letter-spacing: -0.3px;
+      direction: ltr;
+      border-width: 1px;
+      border-style: solid;
+      -webkit-appearance: none;
+      background-clip: border-box;
+      cursor: text;
+      &:active,
+      &:focus {
+        border-radius: 0px;
+        outline: none;
+        text-size-adjust: 100%;
+      }
     }
+  }
+  ._hidden {
+    display: none;
   }
 
   ._iconClose {
@@ -65,17 +73,19 @@
   display: flex;
   padding: 0 0 0 1rem;
 
-  .__input {
-    padding: 0;
-    border: none;
-    color: transparent;
+  .__form {
+    .__input {
+      padding: 0;
+      border: none;
+      color: transparent;
 
-    &:active,
-    &:focus {
-    }
+      &:active,
+      &:focus {
+      }
 
-    &::-webkit-file-upload-button {
-      cursor: pointer;
+      &::-webkit-file-upload-button {
+        cursor: pointer;
+      }
     }
   }
 
@@ -88,14 +98,16 @@
   display: flex;
   width: 49%;
 
-  .__input {
-    cursor: text;
-    padding: 0.1rem 0.5rem;
-    border-radius: 0.2rem;
-    height: 2rem;
+  .__form {
+    .__input {
+      cursor: text;
+      padding: 0.1rem 0.5rem;
+      border-radius: 0.2rem;
+      height: 2rem;
 
-    &:active,
-    &:focus {
+      &:active,
+      &:focus {
+      }
     }
   }
 }
@@ -108,11 +120,13 @@
 .Input_passwordAuth {
   padding: 0.5rem 0;
 
-  .__input {
-    cursor: text;
-    padding: 0.5rem 0.75rem;
-    &:active,
-    &:focus {
+  .__form {
+    .__input {
+      cursor: text;
+      padding: 0.5rem 0.75rem;
+      &:active,
+      &:focus {
+      }
     }
   }
 }
@@ -120,40 +134,48 @@
 .Input_usernameAuth {
   padding: 0.5rem 0;
 
-  .__input {
-    cursor: text;
-    padding: 0.5rem 0.75rem;
-    &:active,
-    &:focus {
+  .__form {
+    .__input {
+      cursor: text;
+      padding: 0.5rem 0.75rem;
+      &:active,
+      &:focus {
+      }
     }
   }
 }
 
 .Input_email {
-  .__input {
-    cursor: text;
-    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
-    &:active,
-    &:focus {
+  .__form {
+    .__input {
+      cursor: text;
+      padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+      &:active,
+      &:focus {
+      }
     }
   }
 }
 
 .Input_name {
-  .__input {
-    cursor: text;
-    padding: 0.5rem 0.7rem 0.5rem 0.7rem;
-    &:active,
-    &:focus {
+  .__form {
+    .__input {
+      cursor: text;
+      padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+      &:active,
+      &:focus {
+      }
     }
   }
 }
 
 .Input_search {
-  .__input {
-    cursor: text;
-    &:active,
-    &:focus {
+  .__form {
+    .__input {
+      cursor: text;
+      &:active,
+      &:focus {
+      }
     }
   }
 }

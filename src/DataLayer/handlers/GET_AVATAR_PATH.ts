@@ -8,7 +8,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 const { dispatch, getState } = store
 
 const getBase64 = (event, dispatchFunc) => {
-  const file = event.target.files[0]
+  const file = event && event?.target?.files[0]
   if (!file) return
 
   const reader = new FileReader()

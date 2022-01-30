@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
+import { nanoid } from 'nanoid'
 
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -44,26 +45,40 @@ export const Input: React.FunctionComponent<InputArgs> = (
     classAdded: `IconReact_Input`,
   }
 
+  const nanoId = nanoid()
+
+  const inputFileRef = useRef(null)
+
+  // TODO Make click programmaticaly from another element to change default label
+  // https://stackoverflow.com/questions/32433594/how-to-trigger-input-file-event-reactjs-by-another-dom
+  const handleClick = () => {
+    inputFileRef.current.type = type
+    inputFileRef.current.onInput()
+  }
+
   return (
     <div className={`Input ${classAdded}`}>
-      {tagName === 'input' && (
-        <input
-          className={`__input`}
-          type={type}
-          placeholder={placeholder}
-          onChange={event => handleEvents(event, action)}
-          value={value}
-          accept={accept}
-        />
-      )}
-      {tagName === 'textarea' && (
-        <textarea
-          className={`__input`}
-          placeholder={placeholder}
-          onChange={event => handleEvents(event, action)}
-          value={value}
-        />
-      )}
+      <form className='__form'>
+        {tagName === 'input' && (
+          <input
+            className={`__input _hidden`}
+            ref={inputFileRef}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            accept={accept}
+            onInput={event => handleEvents(event, action)}
+          />
+        )}
+        {tagName === 'textarea' && (
+          <textarea
+            className={`__input`}
+            placeholder={placeholder}
+            onChange={event => handleEvents(event, action)}
+            value={value}
+          />
+        )}
+      </form>
       <span
         className='_iconClose'
         onClick={event => handleEvents({ target: { value: '' } }, action)}

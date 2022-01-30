@@ -42,7 +42,7 @@ export const searchFormSepDefault: ISearchFormSep = {
 
 export const componentsStateDefault: IComponentsState = {
   isSepAdvancedSearch: false,
-  isShownPalette: true,
+  isShownPalette: false,
   questionsSlideNumber: 0,
   isModalFrameVisible: false,
   isSideNavVisible: false,

@@ -14,6 +14,14 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  tell_about_yourself: {
+    en: 'tell about yourself',
+    ru: 'расскажите о себе',
+  },
+  Save: {
+    en: 'Save',
+    ru: 'Сохранить',
+  },
   Up: {
     en: 'Up',
     ru: 'Наверх',
@@ -631,6 +639,10 @@ export const DICTIONARY: IDictionary = {
   Academy: {
     en: 'Academy',
     ru: 'Академия',
+  },
+  name: {
+    en: 'name',
+    ru: 'имя',
   },
   Name: {
     en: 'Name',

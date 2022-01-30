@@ -14,6 +14,7 @@ import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { Button } from './Button'
 import { Input } from './Input'
 
 interface ProfileBodyArgs {}
@@ -43,25 +44,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const stubOnAction = () => {}
 
   const propsOut = {
-    imageAvatarDefaultProps: {
-      classAdded: 'Image_ProfileBody_avatar_default',
-      src: avatar,
-    },
-    imageAvatarProps: {
-      classAdded: 'Image_ProfileBody_avatar',
-      src: avatar,
-    },
-    inputAvatarFileProps: {
-      classAdded: 'Input_ProfileBody_avatar',
-      type: 'file',
-      placeholder: '',
-      typeEvent: 'GET_AVATAR_PATH',
-      accept: 'image/png, image/jpeg, image/jpg',
-    },
     inputUserNameFirstProps: {
       classAdded: 'Input_userNameFirst',
       type: 'text',
-      placeholder: 'name',
+      placeholder: DICTIONARY['name'][language],
       typeEvent: 'ONCHANGE_USER_NAME_FIRST',
       storeFormProp: 'userNameFirst',
       storeFormGroup: 'profile',
@@ -100,7 +86,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     inputUserInfoAboutProps: {
       tagName: 'textarea',
       classAdded: 'Input_userInfoAbout',
-      placeholder: 'about',
+      placeholder: DICTIONARY['tell_about_yourself'][language],
       typeEvent: 'ONCHANGE_USER_INFO_ABOUT',
       storeFormProp: 'userInfoAbout',
       storeFormGroup: 'profile',
@@ -122,18 +108,23 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       showSearch: true,
       style: { width: '100%' },
     },
+    buttonSaveProfileProps: {
+      classAdded: 'Button_searchSep',
+      icon: null,
+      icon2: null,
+      captureLeft: DICTIONARY['Save'][language],
+      captureRight: '',
+      action: { typeEvent: 'CLICK_SAVE_PROFILE' },
+      isDisplaying: true,
+      tooltipText: '',
+      tooltipPosition: '',
+      isTooltipVisible: false,
+      isUnderlined: false,
+    },
   }
 
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
-
-  console.info('ProfileBody [91]', {
-    userLanguages,
-    userCountry,
-    userNameFirst,
-    userInfoAbout,
-    userSkillsExpertise,
-  })
 
   return (
     <div className='ProfileBody'>
@@ -186,6 +177,12 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
         <div className={classCol02}>
           <Input {...propsOut.inputUserInfoAboutProps} />
+        </div>
+      </div>
+      <div className='_row'>
+        <div className={classCol01}></div>
+        <div className={`${classCol02} _submitGroup`}>
+          <Button {...propsOut.buttonSaveProfileProps} />
         </div>
       </div>
     </div>
