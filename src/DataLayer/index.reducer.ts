@@ -1,6 +1,8 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { ONCHANGE_USER_NAME_FIRST } from './reducers/ONCHANGE_USER_NAME_FIRST'
+import { ONCHANGE_USER_INFO_ABOUT } from './reducers/ONCHANGE_USER_INFO_ABOUT'
 import { SELECT_SKILLS_EXPERTISE } from './reducers/SELECT_SKILLS_EXPERTISE'
 import { GET_AVATAR_PATH } from './reducers/GET_AVATAR_PATH'
 import { SET_SEARCH_INPUT } from './reducers/SET_SEARCH_INPUT'
@@ -64,6 +66,8 @@ export const indexReducer: IIndexReducer = (
 
   const output = {
     TEMPLATE,
+    ONCHANGE_USER_NAME_FIRST,
+    ONCHANGE_USER_INFO_ABOUT,
     SELECT_SKILLS_EXPERTISE,
     GET_AVATAR_PATH,
     SET_SEARCH_INPUT,

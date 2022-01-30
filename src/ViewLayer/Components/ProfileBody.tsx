@@ -21,7 +21,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const {
     language,
     forms: {
-      profile: { avatar, skillsExpertise },
+      profile: { userNameFirst, userInfoAbout, skillsExpertise, avatar },
     },
   } = useSelector((store: IRootStore) => store)
 
@@ -44,11 +44,11 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       typeEvent: 'GET_AVATAR_PATH',
       accept: 'image/png, image/jpeg, image/jpg',
     },
-    inputNameProps: {
+    inputUserNameFirstProps: {
       classAdded: 'Input_ProfileBody_userNameFirst',
       type: 'text',
       placeholder: 'name',
-      typeEvent: 'string',
+      typeEvent: 'ONCHANGE_USER_NAME_FIRST',
       storeFormProp: 'userNameFirst',
       storeFormGroup: 'profile',
     },
@@ -75,17 +75,29 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       showSearch: true,
       style: { width: '100%' },
     },
+    inputUserInfoAboutProps: {
+      tagName: 'textarea',
+      classAdded: 'Input_ProfileBody_userInfoAbout',
+      placeholder: 'about',
+      typeEvent: 'ONCHANGE_USER_INFO_ABOUT',
+      storeFormProp: 'userInfoAbout',
+      storeFormGroup: 'profile',
+    },
   }
 
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
 
-  console.info('ProfileBody [27]', { skillsExpertise })
+  console.info('ProfileBody [91]', {
+    userNameFirst,
+    userInfoAbout,
+    skillsExpertise,
+  })
 
   return (
     <div className='ProfileBody'>
       <div className={`_row`}>
-        <h2 className='_title'>Profile</h2>
+        <h2 className='_title'>{DICTIONARY['Profile'][language]}</h2>
       </div>
       <div className={`_row`}>
         <div className={classCol01}>
@@ -96,20 +108,24 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         </div>
       </div>
       <div className={`_row`}>
-        <div className={classCol01}>
-          {DICTIONARY['Communication media'][language]}
-        </div>
+        <div className={classCol01}>{DICTIONARY['Name'][language]}</div>
         <div className={classCol02}>
-          <Input {...propsOut.inputNameProps} />
+          <Input {...propsOut.inputUserNameFirstProps} />
         </div>
       </div>
       <div className='_row'>
         <div className={classCol01}>
-          {DICTIONARY['Category_info_you_are_looking_for'][language]}
+          {DICTIONARY['Expertise'][language]}
           {' *'}
         </div>
         <div className={classCol02}>
           <SelectAntd {...propsOut.selectSkillsExpertizeProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
+        <div className={classCol01}>{DICTIONARY['About'][language]}</div>
+        <div className={classCol02}>
+          <Input {...propsOut.inputUserInfoAboutProps} />
         </div>
       </div>
     </div>

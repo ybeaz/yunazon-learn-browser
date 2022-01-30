@@ -2,6 +2,8 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { ONCHANGE_USER_NAME_FIRST } from './handlers/ONCHANGE_USER_NAME_FIRST'
+import { ONCHANGE_USER_INFO_ABOUT } from './handlers/ONCHANGE_USER_INFO_ABOUT'
 import { SELECT_SKILLS_EXPERTISE } from './handlers/SELECT_SKILLS_EXPERTISE'
 import { GET_AVATAR_PATH } from './handlers/GET_AVATAR_PATH'
 import { SET_SEARCH_INPUT } from './handlers/SET_SEARCH_INPUT'
@@ -86,6 +88,8 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    ONCHANGE_USER_NAME_FIRST,
+    ONCHANGE_USER_INFO_ABOUT,
     SELECT_SKILLS_EXPERTISE,
     GET_AVATAR_PATH,
     SET_SEARCH_INPUT,

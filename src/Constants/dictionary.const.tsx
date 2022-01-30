@@ -790,6 +790,18 @@ export const DICTIONARY: IDictionary = {
     en: 'tried',
     ru: 'пробовали',
   },
+  Profile: {
+    en: 'Profile',
+    ru: 'Профиль',
+  },
+  About_me: {
+    en: 'About me',
+    ru: 'обо мне',
+  },
+  Expertise: {
+    en: 'Expertise',
+    ru: 'Экспертиза',
+  },
   userNameLast: {
     en: 'last name',
     ru: 'фамилия',
