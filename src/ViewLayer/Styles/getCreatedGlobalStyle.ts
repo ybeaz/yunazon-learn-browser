@@ -479,6 +479,10 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirstLighter', medial, lighter)};
     }
 
+    .Button_Avatar ._in {
+      color: ${props2 => getColor(props2, 'colorGrey', medial, lighter4)};
+    }
+
     .ModalFrames {
       background-color: ${props2 =>
         getColor(props2, 'colorGrey', medial, middle)};

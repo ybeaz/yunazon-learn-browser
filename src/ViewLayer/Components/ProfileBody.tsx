@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { Avatar } from './Avatar'
 import { SelectLanguage } from './SelectLanguage'
 import { getCountriesOptions } from '../../shared/getCountriesOptions'
 import { COUNTRIES } from '../../Constants/countries.const'
@@ -11,7 +12,6 @@ import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from './Image'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Input } from './Input'
@@ -43,6 +43,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const stubOnAction = () => {}
 
   const propsOut = {
+    imageAvatarDefaultProps: {
+      classAdded: 'Image_ProfileBody_avatar_default',
+      src: avatar,
+    },
     imageAvatarProps: {
       classAdded: 'Image_ProfileBody_avatar',
       src: avatar,
@@ -137,11 +141,9 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         <h2 className='_title'>{DICTIONARY['Profile'][language]}</h2>
       </div>
       <div className={`_row`}>
-        <div className={classCol01}>
-          <Image {...propsOut.imageAvatarProps} />
-        </div>
+        <div className={classCol01}></div>
         <div className={classCol02}>
-          <Input {...propsOut.inputAvatarFileProps} />
+          <Avatar />
         </div>
       </div>
       <div className={`_row`}>
