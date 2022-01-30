@@ -55,7 +55,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       accept: 'image/png, image/jpeg, image/jpg',
     },
     inputUserNameFirstProps: {
-      classAdded: 'Input_ProfileBody_userNameFirst',
+      classAdded: 'Input_userNameFirst',
       type: 'text',
       placeholder: 'name',
       typeEvent: 'ONCHANGE_USER_NAME_FIRST',
@@ -95,7 +95,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     },
     inputUserInfoAboutProps: {
       tagName: 'textarea',
-      classAdded: 'Input_ProfileBody_userInfoAbout',
+      classAdded: 'Input_userInfoAbout',
       placeholder: 'about',
       typeEvent: 'ONCHANGE_USER_INFO_ABOUT',
       storeFormProp: 'userInfoAbout',
