@@ -5,25 +5,21 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
-import { SelectLanguage } from '../SelectLanguage'
-import { getCountriesOptions } from './getCountriesOptions'
-import { getStdDictionaryOptions } from './getStdDictionaryOptions'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { SORT_BY } from '../../../Constants/sortBy.const'
-import { MEDIA } from '../../../Constants/media.const'
-import { GENDER } from '../../../Constants/gender.const'
-import { Button } from './../Button'
-import { Input } from './../Input'
-import { LANGUAGES } from '../../../Constants/languages.const'
-import { COUNTRIES } from '../../../Constants/countries.const'
-import { CATEGORIES_TO_EXCHANGE } from '../../../Constants/categoriesToExchange.const'
-import { IRootStore } from '../../../Interfaces/IRootStore'
-
-interface IaddedProps {
-  defaultValue?: string[]
-  value?: string[]
-}
+import { IAddedProps } from '../../Interfaces/IAddedProps'
+import { SelectLanguage } from './SelectLanguage'
+import { getCountriesOptions } from '../../shared/getCountriesOptions'
+import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SORT_BY } from '../../Constants/sortBy.const'
+import { MEDIA } from '../../Constants/media.const'
+import { GENDER } from '../../Constants/gender.const'
+import { Button } from './Button'
+import { Input } from './Input'
+import { LANGUAGES } from '../../Constants/languages.const'
+import { COUNTRIES } from '../../Constants/countries.const'
+import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
+import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface ISearchFormSepArgs {
   position: string
@@ -124,7 +120,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
-  let selectSkillsRequiredAddedProps: IaddedProps = { defaultValue: [] }
+  let selectSkillsRequiredAddedProps: IAddedProps = { defaultValue: [] }
 
   if (selectSkillsRequired && selectSkillsRequired.length) {
     selectSkillsRequiredAddedProps = {
@@ -313,7 +309,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
   }
 
-  const classCol01 = '_col_1 _titleForm'
+  const classCol01 = '_col_1'
   const classCol02 = '_col_1 _selectElement'
   const classAdvancedSearch = isSepAdvancedSearch ? '' : '_hideRow'
 

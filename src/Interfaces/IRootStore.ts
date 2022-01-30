@@ -36,6 +36,7 @@ export interface IProfile {
   userNameLast: string
   userNameMiddle: string
   webToken: null | string
+  skillsExpertise: string[]
 }
 
 export interface ISearchFormSep {

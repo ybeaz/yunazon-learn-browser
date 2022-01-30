@@ -1,6 +1,6 @@
-import { ICountry } from '../../../Constants/countries.const'
-import { IDictionary } from '../../../Constants/dictionary.const'
-import { ISelectOptionAntD } from '../../../Interfaces/ISelectOptionAntD'
+import { ICountry } from '../Constants/countries.const'
+import { IDictionary } from '../Constants/dictionary.const'
+import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
 
 interface IGetCountriesOptions {
   (

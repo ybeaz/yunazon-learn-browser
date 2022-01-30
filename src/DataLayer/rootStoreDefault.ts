@@ -21,6 +21,7 @@ export const profileStoreDefault: IProfile = {
   userNameLast: '',
   userNameMiddle: '',
   webToken: null,
+  skillsExpertise: [],
 }
 
 export const searchFormSepDefault: ISearchFormSep = {
