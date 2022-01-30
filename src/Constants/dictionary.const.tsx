@@ -796,7 +796,7 @@ export const DICTIONARY: IDictionary = {
   },
   About_me: {
     en: 'About me',
-    ru: 'обо мне',
+    ru: 'Обо мне',
   },
   Expertise: {
     en: 'Expertise',

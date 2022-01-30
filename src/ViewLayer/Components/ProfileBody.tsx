@@ -4,9 +4,12 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { SelectLanguage } from './SelectLanguage'
+import { getCountriesOptions } from '../../shared/getCountriesOptions'
+import { COUNTRIES } from '../../Constants/countries.const'
+import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
-import { IAddedProps } from '../../Interfaces/IAddedProps'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Image } from './Image'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -21,7 +24,14 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const {
     language,
     forms: {
-      profile: { userNameFirst, userInfoAbout, skillsExpertise, avatar },
+      profile: {
+        userLanguages,
+        userCountry,
+        userNameFirst,
+        userInfoAbout,
+        userSkillsExpertise,
+        avatar,
+      },
     },
   } = useSelector((store: IRootStore) => store)
 
@@ -55,7 +65,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     selectSkillsExpertizeProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: skillsExpertise,
+      value: userSkillsExpertise,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -75,6 +85,14 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       showSearch: true,
       style: { width: '100%' },
     },
+    selectUserLanguagesProps: {
+      LANGUAGES,
+      language,
+      mode: 'multiple' as 'multiple' | 'tags',
+      typeEvent: 'SELECT_USER_LANGUAGES',
+      classAdded: 'SelectUserLanguages__ProfileBody',
+      languagesSelected: userLanguages.map(item => ({ value: item })),
+    },
     inputUserInfoAboutProps: {
       tagName: 'textarea',
       classAdded: 'Input_ProfileBody_userInfoAbout',
@@ -83,15 +101,34 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       storeFormProp: 'userInfoAbout',
       storeFormGroup: 'profile',
     },
+    selectUserCountryProps: {
+      allowClear: true,
+      componentId: nanoid(),
+      value: userCountry,
+      filterOption,
+      mode: 'multiple' as 'multiple' | 'tags',
+      onBlur: stubOnAction,
+      onChange: (values: string[]) =>
+        handleEvents({}, { typeEvent: 'SELECT_USER_COUNTRY', data: values }),
+      onFocus: stubOnAction,
+      onSearch: stubOnAction,
+      optionFilterProp: 'children',
+      options: getCountriesOptions(COUNTRIES, language, defaultOption),
+      placeholder: DICTIONARY['select'][language],
+      showSearch: true,
+      style: { width: '100%' },
+    },
   }
 
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
 
   console.info('ProfileBody [91]', {
+    userLanguages,
+    userCountry,
     userNameFirst,
     userInfoAbout,
-    skillsExpertise,
+    userSkillsExpertise,
   })
 
   return (
@@ -123,9 +160,23 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         </div>
       </div>
       <div className={`_row`}>
-        <div className={classCol01}>{DICTIONARY['About'][language]}</div>
+        <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
         <div className={classCol02}>
           <Input {...propsOut.inputUserInfoAboutProps} />
+        </div>
+      </div>
+      <div className='_row'>
+        <div className={classCol01}>
+          {DICTIONARY['Speaking language'][language]}
+        </div>
+        <div className={classCol02}>
+          <SelectLanguage {...propsOut.selectUserLanguagesProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
+        <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
+        <div className={classCol02}>
+          <SelectAntd {...propsOut.selectUserCountryProps} />
         </div>
       </div>
     </div>

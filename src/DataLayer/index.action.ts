@@ -3,6 +3,8 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SELECT_USER_LANGUAGES',
+  'SELECT_USER_COUNTRY',
   'ONCHANGE_USER_NAME_FIRST',
   'ONCHANGE_USER_INFO_ABOUT',
   'SELECT_SKILLS_EXPERTISE',

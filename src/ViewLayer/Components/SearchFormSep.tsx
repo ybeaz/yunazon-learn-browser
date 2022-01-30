@@ -8,6 +8,7 @@ import 'antd/dist/antd.css'
 import { IAddedProps } from '../../Interfaces/IAddedProps'
 import { SelectLanguage } from './SelectLanguage'
 import { getCountriesOptions } from '../../shared/getCountriesOptions'
+import { COUNTRIES } from '../../Constants/countries.const'
 import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -17,7 +18,6 @@ import { GENDER } from '../../Constants/gender.const'
 import { Button } from './Button'
 import { Input } from './Input'
 import { LANGUAGES } from '../../Constants/languages.const'
-import { COUNTRIES } from '../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
@@ -128,7 +128,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     }
   }
 
-  const childrenProps = {
+  const propsOut = {
     selectSkillsRequiredProps: {
       allowClear: true,
       componentId: nanoid(),
@@ -156,6 +156,14 @@ export const SearchFormSep: React.FunctionComponent<any> = (
       placeholder: DICTIONARY['select'][language],
       showSearch: true,
       style: { width: '100%' },
+    },
+    selectLanguageProps: {
+      LANGUAGES,
+      language, // selectLanguageRequired
+      mode: 'multiple' as 'multiple' | 'tags',
+      typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
+      classAdded: 'SelectLanguage__SearchFormSep',
+      languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
     },
     inputDescriptionRequiredProps: {
       classAdded: 'Input_descriptionRequired',
@@ -300,15 +308,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     },
   }
 
-  const selectLanguageProps = {
-    LANGUAGES,
-    language, // selectLanguageRequired
-    mode: 'multiple' as 'multiple' | 'tags',
-    typeEvent: 'SEP_SELECT_LANGUAGE_REQUIRED',
-    classAdded: 'SelectLanguage__SearchFormSep',
-    languagesSelected: selectLanguageRequired.map(item => ({ value: item })),
-  }
-
   const classCol01 = '_col_1'
   const classCol02 = '_col_1 _selectElement'
   const classAdvancedSearch = isSepAdvancedSearch ? '' : '_hideRow'
@@ -329,7 +328,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {' *'}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectSkillsRequiredProps} />
+            <SelectAntd {...propsOut.selectSkillsRequiredProps} />
           </div>
         </div>
         <div className='_row'>
@@ -337,7 +336,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Speaking language'][language]}
           </div>
           <div className={classCol02}>
-            <SelectLanguage {...selectLanguageProps} />
+            <SelectLanguage {...propsOut.selectLanguageProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -345,7 +344,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Matter_of_interest'][language]}
           </div>
           <div className={classCol02}>
-            <Input {...childrenProps.inputDescriptionRequiredProps} />
+            <Input {...propsOut.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -353,13 +352,13 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Communication media'][language]}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectMediaRequiredProps} />
+            <SelectAntd {...propsOut.selectMediaRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>{DICTIONARY['Country'][language]}</div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectCountryRequiredProps} />
+            <SelectAntd {...propsOut.selectCountryRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -368,11 +367,11 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             <div className='_range'>
               {DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...childrenProps.inputAgeFromRequiredProps} />
+            <Input {...propsOut.inputAgeFromRequiredProps} />
             <div className='_range'>
               &nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...childrenProps.inputAgeToRequiredProps} />
+            <Input {...propsOut.inputAgeToRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -380,7 +379,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Prefered gender'][language]}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectGenderRequiredProps} />
+            <SelectAntd {...propsOut.selectGenderRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -388,9 +387,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['You_are_suggesting_to_exchange'][language]}
           </div>
           <div className={classCol02}>
-            {language && (
-              <SelectAntd {...childrenProps.selectSkillsOfferedProps} />
-            )}
+            {language && <SelectAntd {...propsOut.selectSkillsOfferedProps} />}
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -398,13 +395,13 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Sort results by'][language]}
           </div>
           <div className={classCol02}>
-            <SelectAntd {...childrenProps.selectSortByProps} />
+            <SelectAntd {...propsOut.selectSortByProps} />
           </div>
         </div>
         <div className='_row'>
           <div className={classCol01}></div>
           <div className={`${classCol02} _submitGroup`}>
-            <Button {...childrenProps.buttonSearchSepProps} />
+            <Button {...propsOut.buttonSearchSepProps} />
             <div
               className='_linkAdvacedSearch'
               onClick={event =>

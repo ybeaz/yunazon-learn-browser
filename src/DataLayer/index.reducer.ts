@@ -1,6 +1,8 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SELECT_USER_LANGUAGES } from './reducers/SELECT_USER_LANGUAGES'
+import { SELECT_USER_COUNTRY } from './reducers/SELECT_USER_COUNTRY'
 import { ONCHANGE_USER_NAME_FIRST } from './reducers/ONCHANGE_USER_NAME_FIRST'
 import { ONCHANGE_USER_INFO_ABOUT } from './reducers/ONCHANGE_USER_INFO_ABOUT'
 import { SELECT_SKILLS_EXPERTISE } from './reducers/SELECT_SKILLS_EXPERTISE'
@@ -66,6 +68,8 @@ export const indexReducer: IIndexReducer = (
 
   const output = {
     TEMPLATE,
+    SELECT_USER_LANGUAGES,
+    SELECT_USER_COUNTRY,
     ONCHANGE_USER_NAME_FIRST,
     ONCHANGE_USER_INFO_ABOUT,
     SELECT_SKILLS_EXPERTISE,
