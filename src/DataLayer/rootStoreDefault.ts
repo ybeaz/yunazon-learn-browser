@@ -25,6 +25,9 @@ export const profileStoreDefault: IProfile = {
   userInfoAbout: '',
   userCountry: [],
   userLanguages: [],
+  userYearOfBirth: '',
+  userGender: [],
+  userMedia: [],
 }
 
 export const searchFormSepDefault: ISearchFormSep = {
