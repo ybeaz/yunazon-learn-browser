@@ -7,4 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SELECT_USER_MEDIA: IActionEvent = (event, data) => {}
+export const SELECT_USER_MEDIA: IActionEvent = (event, data) =>
+  dispatch(actionSync.SELECT_USER_MEDIA(data))

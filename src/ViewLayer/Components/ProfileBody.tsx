@@ -26,30 +26,16 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 ): ReactElement => {
   const {
     language,
-    forms: { profile, searchFormSep },
+    forms: { profile },
   } = useSelector((store: IRootStore) => store)
 
   const {
     userLanguages,
     userCountry,
-    userNameFirst,
-    userInfoAbout,
     userSkillsExpertise,
-    avatar,
+    userGender,
+    userMedia,
   } = profile
-
-  const {
-    inputAgeFromRequired,
-    inputAgeToRequired,
-    inputDescriptionRequired,
-    selectCountryRequired,
-    selectGenderRequired,
-    selectLanguageRequired,
-    selectMediaRequired,
-    selectSkillsOffered,
-    selectSkillsRequired,
-    selectSortBy,
-  } = searchFormSep
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -115,10 +101,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       storeFormProp: 'userYearOfBirth',
     },
     selectUserGenderProps: {
-      // I stpped here: TODO to configure, code handler, reducer for selectUserGenderProps and for selectUserMediaProps
       allowClear: true,
       componentId: nanoid(),
-      defaultValue: [], // defaultOption['en']
+      value: userGender,
+      defaultValue: [],
       filterOption,
       mode: null,
       onBlur: stubOnAction,
@@ -135,7 +121,8 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     selectUserMediaProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: selectMediaRequired,
+      value: userMedia,
+      defaultValue: [],
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -268,12 +255,3 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     </div>
   )
 }
-
-/*
-
-Year of birth
-Gender
-
-Communication_media
-
-*/
