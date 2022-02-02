@@ -488,7 +488,11 @@ export const DICTIONARY: IDictionary = {
     en: 'Description contains',
     ru: 'Описание содержит',
   },
-  'Communication media': {
+  Year_of_birth: {
+    en: 'Year of birth',
+    ru: 'Год рождения',
+  },
+  Communication_media: {
     en: 'Communication media',
     ru: 'Способ коммуникации',
   },

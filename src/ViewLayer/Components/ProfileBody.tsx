@@ -174,6 +174,28 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
         </div>
       </div>
       <div className={`_row`}>
+        <div className={classCol01}>
+          {DICTIONARY['Year_of_birth'][language]}
+        </div>
+        <div className={classCol02}>
+          <Input {...propsOut.inputUserInfoAboutProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
+        <div className={classCol01}>{DICTIONARY['Gender'][language]}</div>
+        <div className={classCol02}>
+          <Input {...propsOut.inputUserInfoAboutProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
+        <div className={classCol01}>
+          {DICTIONARY['Communication_media'][language]}
+        </div>
+        <div className={classCol02}>
+          <Input {...propsOut.inputUserInfoAboutProps} />
+        </div>
+      </div>
+      <div className={`_row`}>
         <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
         <div className={classCol02}>
           <Input {...propsOut.inputUserInfoAboutProps} />
@@ -188,3 +210,12 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     </div>
   )
 }
+
+/*
+
+Year of birth
+Gender
+
+Communication_media
+
+*/
