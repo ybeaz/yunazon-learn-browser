@@ -47,6 +47,7 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
       defaultOpen: false,
       labelInValue: true,
       value: languagesSelected,
+      defaultValue: [],
       filterOption: filterOption,
       placeholder: DICTIONARY['select'][language],
       showSearch: true,

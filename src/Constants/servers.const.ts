@@ -1,7 +1,7 @@
 export const SERVERS_AUTH: Record<string, string> = {
   remote: 'https://un.userto.com',
-  localWebpack: 'http://127.0.0.1:4020',
-  localServer: 'http://127.0.0.1:4020',
+  localWebpack: 'https://un.userto.com',
+  localServer: 'https://un.userto.com',
 }
 
 export const SERVERS_ANALYTICS: Record<string, string> = {
