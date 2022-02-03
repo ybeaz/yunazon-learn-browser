@@ -40,6 +40,9 @@ export interface IProfile {
   userInfoAbout: string
   userCountry: string[]
   userLanguages: string[]
+  userYearOfBirth: string
+  userGender: string[]
+  userMedia: string[]
 }
 
 export interface ISearchFormSep {

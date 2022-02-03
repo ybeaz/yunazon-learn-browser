@@ -349,7 +349,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
           <div className={classCol01}>
-            {DICTIONARY['Communication media'][language]}
+            {DICTIONARY['Communication_media'][language]}
           </div>
           <div className={classCol02}>
             <SelectAntd {...propsOut.selectMediaRequiredProps} />

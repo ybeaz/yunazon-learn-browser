@@ -17,6 +17,7 @@ function* getAuthWebToken(args: any) {
         data: { authWebToken },
       },
     } = yield axios[method](url, payload, options)
+
     yield put(
       actionSync.SET_USER_PROFILE({
         ...authWebToken,
