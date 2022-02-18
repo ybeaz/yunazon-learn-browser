@@ -7,9 +7,9 @@ export const ONCHANGE_USER_NAME_AUTH: Function = (
   const { forms } = store
   const { user } = forms
 
-  const profileNext: IUser = { ...user, userNameFirst: data }
+  const userNext: IUser = { ...user, userNameFirst: data }
 
-  const formsNext: IForms = { ...forms, user: profileNext }
+  const formsNext: IForms = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

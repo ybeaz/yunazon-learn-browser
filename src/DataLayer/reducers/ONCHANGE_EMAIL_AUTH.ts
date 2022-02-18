@@ -7,11 +7,11 @@ export const ONCHANGE_EMAIL_AUTH: Function = (
   const { forms } = store
   const { user } = forms
 
-  const profileNext: IUser = { ...user, userEmail: data }
+  const userNext: IUser = { ...user, userEmail: data }
 
   const nextForms: IForms = {
     ...forms,
-    user: profileNext,
+    user: userNext,
   }
   return { ...store, forms: nextForms }
 }

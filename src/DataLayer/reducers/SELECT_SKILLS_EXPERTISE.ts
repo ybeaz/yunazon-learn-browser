@@ -6,7 +6,7 @@ export const SELECT_SKILLS_EXPERTISE: Function = (
 ): IRootStore => {
   const { forms } = store
   const { user } = forms
-  const profileNext = { ...user, userSkillsExpertise: data }
-  const formsNext = { ...forms, user: profileNext }
+  const userNext = { ...user, userSkillsExpertise: data }
+  const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

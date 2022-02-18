@@ -6,7 +6,7 @@ export const SELECT_USER_GENDER: Function = (
 ): IRootStore => {
   const { forms } = store
   const { user } = forms
-  const profileNext = { ...user, userGender: data }
-  const formsNext = { ...forms, user: profileNext }
+  const userNext = { ...user, userGender: data }
+  const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

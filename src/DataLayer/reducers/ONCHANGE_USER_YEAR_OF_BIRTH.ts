@@ -6,7 +6,7 @@ export const ONCHANGE_USER_YEAR_OF_BIRTH: Function = (
 ): IRootStore => {
   const { forms } = store
   const { user } = forms
-  const profileNext = { ...user, userYearOfBirth: data }
-  const formsNext = { ...forms, user: profileNext }
+  const userNext = { ...user, userYearOfBirth: data }
+  const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

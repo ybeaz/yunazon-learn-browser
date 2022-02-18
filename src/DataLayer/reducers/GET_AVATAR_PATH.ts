@@ -7,7 +7,7 @@ export const GET_AVATAR_PATH: Function = (
   const { forms } = store
   const { user } = forms
 
-  const profileNext = { ...user, avatar: data }
-  const formsNext = { ...forms, user: profileNext }
+  const userNext = { ...user, avatar: data }
+  const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

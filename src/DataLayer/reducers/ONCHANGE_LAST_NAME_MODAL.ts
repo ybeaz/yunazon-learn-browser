@@ -8,9 +8,9 @@ export const ONCHANGE_LAST_NAME_MODAL: Function = (
 
   const { user } = forms
 
-  const profileNext: IUser = { ...user, userNameLast: data }
+  const userNext: IUser = { ...user, userNameLast: data }
 
-  const formsNext: IForms = { ...forms, user: profileNext }
+  const formsNext: IForms = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

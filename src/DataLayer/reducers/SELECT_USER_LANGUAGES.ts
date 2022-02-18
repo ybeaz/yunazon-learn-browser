@@ -6,7 +6,7 @@ export const SELECT_USER_LANGUAGES: Function = (
 ): IRootStore => {
   const { forms } = store
   const { user } = forms
-  const profileNext = { ...user, userLanguages: data }
-  const formsNext = { ...forms, user: profileNext }
+  const userNext = { ...user, userLanguages: data }
+  const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

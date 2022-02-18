@@ -8,9 +8,9 @@ export const ONCHANGE_MIDDLE_NAME_MODAL: Function = (
 
   const { user } = forms
 
-  const profileNext: IUser = { ...user, userNameMiddle: data }
+  const userNext: IUser = { ...user, userNameMiddle: data }
 
-  const formsNext: IForms = { ...forms, user: profileNext }
+  const formsNext: IForms = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

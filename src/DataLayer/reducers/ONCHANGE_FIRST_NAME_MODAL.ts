@@ -8,9 +8,9 @@ export const ONCHANGE_FIRST_NAME_MODAL: Function = (
 
   const { user } = forms
 
-  const profileNext: IUser = { ...user, userNameFirst: data }
+  const userNext: IUser = { ...user, userNameFirst: data }
 
-  const formsNext: IForms = { ...forms, user: profileNext }
+  const formsNext: IForms = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }
