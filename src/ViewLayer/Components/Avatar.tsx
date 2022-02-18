@@ -13,15 +13,15 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
   const {
     language,
     forms: {
-      user: { avatar },
+      user: { userAvatar },
     },
   } = useSelector((store: IRootStore) => store)
 
   const propsOut = {
     buttonAvatarProps: {
-      icon: avatar ? null : 'FaUserCircle',
+      icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
-      imageSrc: avatar,
+      imageSrc: userAvatar,
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_Avatar',
@@ -34,11 +34,11 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     },
     imageAvatarDefaultProps: {
       classAdded: 'Image_ProfileBody_avatar_default',
-      src: avatar,
+      src: userAvatar,
     },
     imageAvatarProps: {
       classAdded: 'Image_ProfileBody_avatar',
-      src: avatar,
+      src: userAvatar,
     },
     inputAvatarFileProps: {
       classAdded: 'Input_ProfileBody_avatar',

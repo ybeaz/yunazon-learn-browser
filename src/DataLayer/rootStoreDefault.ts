@@ -11,7 +11,7 @@ export const userStoreDefault: IUser = {
   passwordAuth: '',
   passwordAuth2: '',
   phone: undefined,
-  avatar: undefined,
+  userAvatar: undefined,
   roles: [],
   status: undefined,
   uid: undefined,

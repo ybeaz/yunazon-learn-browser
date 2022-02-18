@@ -3,7 +3,7 @@ export interface IUser {
   passwordAuth: string
   passwordAuth2: string
   phone: undefined | number
-  avatar: undefined | string
+  userAvatar: undefined | string
   roles: undefined | string[]
   status: undefined | string
   uid: undefined | string
