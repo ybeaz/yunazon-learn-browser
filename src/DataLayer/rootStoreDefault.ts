@@ -1,12 +1,12 @@
 import {
   IComponentsState,
   ISearchFormSep,
-  IProfile,
+  IUser,
   IForms,
   IRootStore,
 } from '../Interfaces/IRootStore'
 
-export const profileStoreDefault: IProfile = {
+export const profileStoreDefault: IUser = {
   loginSource: undefined,
   passwordAuth: '',
   passwordAuth2: '',

@@ -1,27 +1,4 @@
-// export interface IProfileLeg {
-//   email: undefined | string
-//   familyName: undefined | string
-//   givenName: undefined | string
-//   loginSource: undefined | string
-//   phone: undefined | number
-//   picture: undefined | string
-//   roles: undefined | string
-//   status: undefined | string
-//   uid: undefined | string
-//   uidExternal: undefined | string
-//   userName: undefined | string
-//   webToken: null | string
-// }
-
-// * email
-// * emailAuth: string
-// * userNameAuth: string
-// * firstName: string
-// * middleName: string
-// * lastName: string
-// * familyName: undefined | string
-// * givenName: undefined | string
-export interface IProfile {
+export interface IUser {
   loginSource: undefined | string
   passwordAuth: string
   passwordAuth2: string
@@ -79,7 +56,7 @@ export interface IForms {
   sendTo: string
   sendCc: string
   searchFormSep: ISearchFormSep
-  profile: IProfile
+  profile: IUser
 }
 
 export interface IRootStore {

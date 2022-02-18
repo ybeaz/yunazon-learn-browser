@@ -10,7 +10,7 @@ import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IProfile, IRootStore } from '../../Interfaces/IRootStore'
+import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -63,7 +63,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     language,
   } = useSelector((store2: IRootStore) => store2)
 
-  const getButtonAuthUser = (user2: IProfile): any => {
+  const getButtonAuthUser = (user2: IUser): any => {
     const status = user2?.status
     const userName = user2?.userNameFirst
 

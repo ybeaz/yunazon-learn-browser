@@ -1,4 +1,4 @@
-import { IRootStore, IProfile, IForms } from '../../Interfaces/IRootStore'
+import { IRootStore, IUser, IForms } from '../../Interfaces/IRootStore'
 
 export const ONCHANGE_LAST_NAME_MODAL: Function = (
   store: IRootStore,
@@ -8,7 +8,7 @@ export const ONCHANGE_LAST_NAME_MODAL: Function = (
 
   const { profile } = forms
 
-  const profileNext: IProfile = { ...profile, userNameLast: data }
+  const profileNext: IUser = { ...profile, userNameLast: data }
 
   const formsNext: IForms = { ...forms, profile: profileNext }
 

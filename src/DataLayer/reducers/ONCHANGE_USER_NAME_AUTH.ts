@@ -1,4 +1,4 @@
-import { IRootStore, IProfile, IForms } from '../../Interfaces/IRootStore'
+import { IRootStore, IUser, IForms } from '../../Interfaces/IRootStore'
 
 export const ONCHANGE_USER_NAME_AUTH: Function = (
   store: IRootStore,
@@ -7,7 +7,7 @@ export const ONCHANGE_USER_NAME_AUTH: Function = (
   const { forms } = store
   const { profile } = forms
 
-  const profileNext: IProfile = { ...profile, userNameFirst: data }
+  const profileNext: IUser = { ...profile, userNameFirst: data }
 
   const formsNext: IForms = { ...forms, profile: profileNext }
 
