@@ -11,7 +11,7 @@ export const SET_USER_PROFILE: Function = (
 
   const { forms } = store
 
-  const formsNext = { ...forms, profile: data }
+  const formsNext = { ...forms, user: data }
 
   return { ...store, forms: formsNext }
 }

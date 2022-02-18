@@ -6,11 +6,11 @@ export const ONCHANGE_LAST_NAME_MODAL: Function = (
 ): IRootStore => {
   const { forms } = store
 
-  const { profile } = forms
+  const { user } = forms
 
-  const profileNext: IUser = { ...profile, userNameLast: data }
+  const profileNext: IUser = { ...user, userNameLast: data }
 
-  const formsNext: IForms = { ...forms, profile: profileNext }
+  const formsNext: IForms = { ...forms, user: profileNext }
 
   return { ...store, forms: formsNext }
 }

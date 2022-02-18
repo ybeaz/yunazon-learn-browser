@@ -59,7 +59,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   } = props
 
   const {
-    forms: { profile },
+    forms: { user },
     language,
   } = useSelector((store2: IRootStore) => store2)
 
@@ -98,13 +98,11 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     }
   }
 
-  const [buttonAuthUser, setButtonAuthUser] = useState(
-    getButtonAuthUser(profile)
-  )
+  const [buttonAuthUser, setButtonAuthUser] = useState(getButtonAuthUser(user))
 
   useEffect(() => {
-    setButtonAuthUser(getButtonAuthUser(profile))
-  }, [profile])
+    setButtonAuthUser(getButtonAuthUser(user))
+  }, [user])
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 

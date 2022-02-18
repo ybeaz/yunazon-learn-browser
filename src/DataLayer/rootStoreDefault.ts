@@ -6,7 +6,7 @@ import {
   IRootStore,
 } from '../Interfaces/IRootStore'
 
-export const profileStoreDefault: IUser = {
+export const userStoreDefault: IUser = {
   loginSource: undefined,
   passwordAuth: '',
   passwordAuth2: '',
@@ -77,7 +77,7 @@ export const formsDefault: IForms = {
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,
-  profile: profileStoreDefault,
+  user: userStoreDefault,
 }
 
 export const rootStoreDefault: IRootStore = {

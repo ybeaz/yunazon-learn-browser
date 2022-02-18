@@ -5,13 +5,13 @@ export const ONCHANGE_EMAIL_AUTH: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
+  const { user } = forms
 
-  const profileNext: IUser = { ...profile, userEmail: data }
+  const profileNext: IUser = { ...user, userEmail: data }
 
   const nextForms: IForms = {
     ...forms,
-    profile: profileNext,
+    user: profileNext,
   }
   return { ...store, forms: nextForms }
 }

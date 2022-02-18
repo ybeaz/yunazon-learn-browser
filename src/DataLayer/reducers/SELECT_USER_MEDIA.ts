@@ -5,8 +5,8 @@ export const SELECT_USER_MEDIA: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
-  const profileNext = { ...profile, userMedia: data }
-  const formsNext = { ...forms, profile: profileNext }
+  const { user } = forms
+  const profileNext = { ...user, userMedia: data }
+  const formsNext = { ...forms, user: profileNext }
   return { ...store, forms: formsNext }
 }

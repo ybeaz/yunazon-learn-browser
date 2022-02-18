@@ -12,12 +12,12 @@ import { Button } from './Button'
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: IRootStore) => store2)
   const {
-    forms: { profile },
+    forms: { user },
     language,
     componentsState: { isSideNavVisible },
   } = store
 
-  const status = profile?.status
+  const status = user?.status
 
   let history = useHistory()
 

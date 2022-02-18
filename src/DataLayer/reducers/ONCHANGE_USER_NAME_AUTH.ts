@@ -5,11 +5,11 @@ export const ONCHANGE_USER_NAME_AUTH: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
+  const { user } = forms
 
-  const profileNext: IUser = { ...profile, userNameFirst: data }
+  const profileNext: IUser = { ...user, userNameFirst: data }
 
-  const formsNext: IForms = { ...forms, profile: profileNext }
+  const formsNext: IForms = { ...forms, user: profileNext }
 
   return { ...store, forms: formsNext }
 }

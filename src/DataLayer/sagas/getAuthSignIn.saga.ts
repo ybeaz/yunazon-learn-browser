@@ -8,7 +8,7 @@ import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.c
 function* getAuthSignIn() {
   const {
     forms: {
-      profile: { emailUser, passwordAuth },
+      user: { emailUser, passwordAuth },
     },
   } = yield select((store: IRootStore) => store)
 

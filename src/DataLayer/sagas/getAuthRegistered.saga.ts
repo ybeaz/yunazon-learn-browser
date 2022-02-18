@@ -9,7 +9,7 @@ import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegi
 function* getAuthRegistered() {
   const {
     forms: {
-      profile: { emailUser, userNameFirst, passwordAuth },
+      user: { emailUser, userNameFirst, passwordAuth },
     },
   } = yield select((store: IRootStore) => store)
 

@@ -13,7 +13,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
   const {
     language,
     forms: {
-      profile: { avatar },
+      user: { avatar },
     },
   } = useSelector((store: IRootStore) => store)
 

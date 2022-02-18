@@ -5,9 +5,9 @@ export const GET_AVATAR_PATH: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
+  const { user } = forms
 
-  const profileNext = { ...profile, avatar: data }
-  const formsNext = { ...forms, profile: profileNext }
+  const profileNext = { ...user, avatar: data }
+  const formsNext = { ...forms, user: profileNext }
   return { ...store, forms: formsNext }
 }

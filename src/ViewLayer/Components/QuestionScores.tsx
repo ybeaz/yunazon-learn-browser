@@ -25,7 +25,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     courses,
     componentsState: { isDocumentAdded },
     forms: {
-      profile: { userNameFirst, userNameMiddle, userNameLast },
+      user: { userNameFirst, userNameMiddle, userNameLast },
     },
   } = store
 

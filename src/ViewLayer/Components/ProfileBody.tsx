@@ -26,7 +26,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 ): ReactElement => {
   const {
     language,
-    forms: { profile },
+    forms: { user },
   } = useSelector((store: IRootStore) => store)
 
   const {
@@ -35,7 +35,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     userSkillsExpertise,
     userGender,
     userMedia,
-  } = profile
+  } = user
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -50,7 +50,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       type: 'text',
       placeholder: DICTIONARY['name'][language],
       typeEvent: 'ONCHANGE_USER_NAME_FIRST',
-      storeFormGroup: 'profile',
+      storeFormGroup: 'user',
       storeFormProp: 'userNameFirst',
     },
     inputUserInfoAboutProps: {
@@ -58,7 +58,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       classAdded: 'Input_userInfoAbout',
       placeholder: DICTIONARY['tell_about_yourself'][language],
       typeEvent: 'ONCHANGE_USER_INFO_ABOUT',
-      storeFormGroup: 'profile',
+      storeFormGroup: 'user',
       storeFormProp: 'userInfoAbout',
     },
     selectSkillsExpertizeProps: {
@@ -97,7 +97,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
       typeEvent: 'ONCHANGE_USER_YEAR_OF_BIRTH',
-      storeFormGroup: 'profile',
+      storeFormGroup: 'user',
       storeFormProp: 'userYearOfBirth',
     },
     selectUserGenderProps: {

@@ -56,7 +56,7 @@ export interface IForms {
   sendTo: string
   sendCc: string
   searchFormSep: ISearchFormSep
-  profile: IUser
+  user: IUser
 }
 
 export interface IRootStore {
