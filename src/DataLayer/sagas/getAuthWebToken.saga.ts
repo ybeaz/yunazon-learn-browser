@@ -6,10 +6,11 @@ import { getAuthWebTokenConnector } from '../../CommunicationLayer/getAuthWebTok
 
 function* getAuthWebToken(args: any) {
   const {
-    data: { webToken },
+    data: { userWebTokenAuth },
   } = args
 
-  const { method, url, payload, options } = getAuthWebTokenConnector(webToken)
+  const { method, url, payload, options } =
+    getAuthWebTokenConnector(userWebTokenAuth)
 
   try {
     const {
@@ -21,6 +22,7 @@ function* getAuthWebToken(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...authWebToken,
+        userWebTokenAuth: authWebToken.webToken,
         userStatus: authWebToken.status,
         userLoginSource: 'un.userto.com',
       })

@@ -5,9 +5,9 @@ export const SET_USER_PROFILE: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
-  const { webToken } = data
+  const { userWebTokenAuth } = data
 
-  getSetObjToLocalStorage({ authWebToken: webToken })
+  getSetObjToLocalStorage({ userWebTokenAuth })
 
   const { forms } = store
 

@@ -37,6 +37,7 @@ function* getAuthSignIn() {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...authLoginPass,
+        userWebTokenAuth: authLoginPass.webToken,
         userStatus: authLoginPass.status,
         userLoginSource: 'un.userto.com',
       })

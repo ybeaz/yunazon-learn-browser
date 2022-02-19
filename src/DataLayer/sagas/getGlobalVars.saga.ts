@@ -16,12 +16,14 @@ function* getGlobalVars() {
       yield put(actionSync.SELECT_LANGUAGE_APP(language))
     }
 
-    const authWebToken = localStorage.getItem('authWebToken')
+    const userWebTokenAuth = localStorage.getItem('userWebTokenAuth')
 
-    if (typeof authWebToken === 'string' && authWebToken !== 'null') {
-      yield put(
-        actionAsync.GET_AUTH_WEB_TOKEN.REQUEST({ webToken: authWebToken })
-      )
+    if (
+      typeof userWebTokenAuth === 'string' &&
+      userWebTokenAuth !== 'null' &&
+      userWebTokenAuth !== 'undefined'
+    ) {
+      yield put(actionAsync.GET_AUTH_WEB_TOKEN.REQUEST({ userWebTokenAuth }))
     }
 
     const { width } = getSizeWindow()
