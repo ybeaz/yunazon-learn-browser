@@ -103,13 +103,14 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     selectUserGenderProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: userGender,
+      value: [userGender],
       defaultValue: [],
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents({}, { typeEvent: 'SELECT_USER_GENDER', data: values }),
+      onChange: (
+        values: string[] // Source of a potential error: type string[], but we use as a string
+      ) => handleEvents({}, { typeEvent: 'SELECT_USER_GENDER', data: values }),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',

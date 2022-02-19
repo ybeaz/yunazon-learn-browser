@@ -18,7 +18,7 @@ export interface IUser {
   userCountry: string[]
   userLanguages: string[]
   userBirthYear: number
-  userGender: string[]
+  userGender: string
   userMedia: string[]
 }
 

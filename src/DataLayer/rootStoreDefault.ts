@@ -26,7 +26,7 @@ export const userStoreDefault: IUser = {
   userCountry: [],
   userLanguages: [],
   userBirthYear: undefined,
-  userGender: [],
+  userGender: '',
   userMedia: [],
 }
 
