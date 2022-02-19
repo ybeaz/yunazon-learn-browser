@@ -1,14 +1,14 @@
 export interface IUser {
-  loginSource: undefined | string
+  loginSource: string
   passwordAuth: string
   passwordAuth2: string
-  phone: undefined | number
+  phone: number
   userAvatar: string
-  roles: undefined | string[]
-  status: undefined | string
-  uid: undefined | string
-  uidExternal: undefined | string
-  userEmail: undefined | string
+  roles: string[]
+  status: string
+  uid: string
+  uidExternal: string
+  userEmail: string
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string
