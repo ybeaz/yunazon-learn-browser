@@ -8,6 +8,8 @@ export const getSavedAnanlyticsEvent: Function = (
   event: any,
   props: IAzProps
 ): void => {
+  if (!flags.isGetingSavedAnanlyticsEvent()) return
+
   const { type, name, value: valueIn, level } = props
   const { hostname, pathname } = location
   const dataNext: any = {
@@ -22,6 +24,5 @@ export const getSavedAnanlyticsEvent: Function = (
     },
   }
 
-  flags.isGetingSavedAnanlyticsEvent() &&
-    store.dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
+  store.dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
 }

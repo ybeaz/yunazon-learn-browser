@@ -59,6 +59,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   } = props
 
   const {
+    componentsState: { modalFrames },
     forms: { user },
     language,
   } = useSelector((store2: IRootStore) => store2)
