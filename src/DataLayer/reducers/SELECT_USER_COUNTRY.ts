@@ -6,7 +6,7 @@ export const SELECT_USER_COUNTRY: Function = (
 ): IRootStore => {
   const { forms } = store
   const { user } = forms
-  const userNext = { ...user, userCountry: data }
+  const userNext = { ...user, userLocaleCountry: data }
   const formsNext = { ...forms, user: userNext }
   return { ...store, forms: formsNext }
 }

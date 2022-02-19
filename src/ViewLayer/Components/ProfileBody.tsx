@@ -31,7 +31,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 
   const {
     userLanguages,
-    userCountry,
+    userLocaleCountry,
     userSkillsExpertise,
     userGender,
     userMedia,
@@ -108,9 +108,14 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: (
-        values: string[] // Source of a potential error: type string[], but we use as a string
-      ) => handleEvents({}, { typeEvent: 'SELECT_USER_GENDER', data: values }),
+      onChange: (values: string | string[]) =>
+        handleEvents(
+          {},
+          {
+            typeEvent: 'SELECT_USER_GENDER',
+            data: Array.isArray(values) ? values.join('') : values,
+          }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -137,15 +142,21 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       showSearch: true,
       style: { width: '100%' },
     },
-    selectUserCountryProps: {
+    selectUserLocaleCountryProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: userCountry,
+      value: userLocaleCountry,
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents({}, { typeEvent: 'SELECT_USER_COUNTRY', data: values }),
+      onChange: (values: string | string[]) =>
+        handleEvents(
+          {},
+          {
+            typeEvent: 'SELECT_USER_COUNTRY',
+            data: Array.isArray(values) ? values.join('') : values,
+          }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -222,7 +233,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {' *'}
         </div>
         <div className={classCol02}>
-          <SelectAntd {...propsOut.selectUserCountryProps} />
+          <SelectAntd {...propsOut.selectUserLocaleCountryProps} />
         </div>
       </div>
       <div className={`_row`}>

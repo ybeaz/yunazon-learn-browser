@@ -2,9 +2,9 @@ export interface IUser {
   loginSource: string
   passwordAuth: string
   passwordAuth2: string
-  phone: number
+  userPhone: number
   userAvatar: string
-  roles: string[]
+  userRoles: string[]
   status: string
   uid: string
   uidExternal: string
@@ -15,7 +15,7 @@ export interface IUser {
   webToken: null | string
   userSkillsExpertise: string[]
   userInfoAbout: string
-  userCountry: string[]
+  userLocaleCountry: string
   userLanguages: string[]
   userBirthYear: number
   userGender: string
