@@ -13,7 +13,7 @@ export interface IUser {
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string
-  userWebTokenAuth: null | string
+  userWebTokenAuth: string
   userSkillsExpertise: string[]
   userInfoAbout: string
   userLocaleCountry: string

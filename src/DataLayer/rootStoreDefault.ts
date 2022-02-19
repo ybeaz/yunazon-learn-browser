@@ -10,7 +10,7 @@ export const userStoreDefault: IUser = {
   uid: undefined,
   uidExternal: undefined,
   userLoginSource: undefined,
-  userWebTokenAuth: null,
+  userWebTokenAuth: undefined,
   passwordAuth: '',
   passwordAuth2: '',
   userPhone: undefined,
