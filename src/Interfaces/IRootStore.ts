@@ -1,7 +1,7 @@
 export interface IUser {
   userLoginSource: string
-  passwordAuth: string
-  passwordAuth2: string
+  userPasswordAuth: string
+  userPasswordAuth2: string
   userPhone: number
   userAvatar: string
   userRoles: string[]

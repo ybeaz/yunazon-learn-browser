@@ -9,14 +9,14 @@ import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegi
 function* getAuthRegistered() {
   const {
     forms: {
-      user: { userEmail, userName, passwordAuth },
+      user: { userEmail, userName, userPasswordAuth },
     },
   } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthRegisteredConnector(
     userName,
     userEmail,
-    passwordAuth
+    userPasswordAuth
   )
 
   try {

@@ -13,7 +13,7 @@ const headers = {
 export const getAuthRegisteredConnector: Function = (
   userName: string,
   userEmail: string,
-  passwordAuth: string
+  userPasswordAuth: string
 ): any => {
   const envType: string = getDetectedEnv()
 
@@ -42,7 +42,7 @@ export const getAuthRegisteredConnector: Function = (
         authInput: {
           userName: userName,
           email: userEmail,
-          password: passwordAuth,
+          password: userPasswordAuth,
           phone: 0,
         },
       },

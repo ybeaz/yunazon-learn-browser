@@ -8,7 +8,7 @@ export const ONCHANGE_USER_PASSWORD_AUTH: Function = (
 
   const { user } = forms
 
-  const userNext = { ...user, passwordAuth: data }
+  const userNext = { ...user, userPasswordAuth: data }
 
   const nextForms = {
     ...forms,

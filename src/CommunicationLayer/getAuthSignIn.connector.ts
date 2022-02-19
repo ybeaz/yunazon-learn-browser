@@ -12,7 +12,7 @@ const headers = {
 
 export const getAuthSignInConnector: Function = (
   userEmail: string,
-  passwordAuth: string
+  userPasswordAuth: string
 ): any => {
   const envType: string = getDetectedEnv()
 
@@ -39,7 +39,7 @@ export const getAuthSignInConnector: Function = (
       operationName: 'AuthLoginPass',
       variables: {
         email: userEmail,
-        password: passwordAuth,
+        password: userPasswordAuth,
       },
       query,
     },

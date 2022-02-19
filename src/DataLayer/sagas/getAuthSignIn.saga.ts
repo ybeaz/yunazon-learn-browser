@@ -8,13 +8,13 @@ import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.c
 function* getAuthSignIn() {
   const {
     forms: {
-      user: { userEmail, passwordAuth },
+      user: { userEmail, userPasswordAuth },
     },
   } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthSignInConnector(
     userEmail,
-    passwordAuth
+    userPasswordAuth
   )
 
   try {

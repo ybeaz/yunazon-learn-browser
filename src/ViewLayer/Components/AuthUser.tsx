@@ -117,7 +117,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     placeholder: DICTIONARY.Password[language],
     typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH',
     storeFormGroup: 'user',
-    storeFormProp: 'passwordAuth',
+    storeFormProp: 'userPasswordAuth',
   }
 
   const inputPasswordAuth2Props = {
@@ -126,7 +126,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     placeholder: DICTIONARY.RepeatPassword[language],
     typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH_2',
     storeFormGroup: 'user',
-    storeFormProp: 'passwordAuth2',
+    storeFormProp: 'userPasswordAuth2',
   }
 
   const buttonAuthSignInUpOut = {
