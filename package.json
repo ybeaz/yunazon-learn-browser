@@ -22,7 +22,8 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/ybeaz/ynazon-app-desktop#readme",
   "resolutions": {
-    "styled-components": "^5"
+    "styled-components": "^5",
+    "react-error-overlay": "6.0.9"
   },
   "husky": {
     "hooks": {
