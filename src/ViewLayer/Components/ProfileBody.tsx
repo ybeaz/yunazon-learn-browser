@@ -92,7 +92,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       classAdded: 'SelectUserLanguages__ProfileBody',
       languagesSelected: userLanguages.map(item => ({ value: item })),
     },
-    inputUserYearOfBirthProps: {
+    inputUserBirthYearProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
@@ -229,7 +229,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {DICTIONARY['Year_of_birth'][language]}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserYearOfBirthProps} />
+          <Input {...propsOut.inputUserBirthYearProps} />
         </div>
       </div>
       <div className={`_row`}>
