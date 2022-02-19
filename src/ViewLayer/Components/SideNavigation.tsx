@@ -17,7 +17,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     componentsState: { isSideNavVisible },
   } = store
 
-  const status = user?.status
+  const userStatus = user?.userStatus
 
   let history = useHistory()
 
@@ -47,7 +47,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       icon: 'MdPerson',
       captureRight: DICTIONARY.PersonalСabinet[language],
       classAdded:
-        status === 'success'
+        userStatus === 'success'
           ? 'Button_sideMenuItems Button_personalCabinet_authorized'
           : 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },

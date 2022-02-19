@@ -26,7 +26,8 @@ function* getOAuthGoogle(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...oAuthGoogle,
-        loginSource: 'un.userto.com',
+        userStatus: oAuthGoogle.status,
+        loginSource: 'google.com',
       })
     )
 
@@ -38,13 +39,6 @@ function* getOAuthGoogle(args: any) {
       },
     ]
     yield put(actionSync.SET_MODAL_FRAMES(data))
-
-    yield put(
-      actionSync.SET_USER_PROFILE({
-        ...oAuthGoogle,
-        loginSource: 'un.userto.com',
-      })
-    )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

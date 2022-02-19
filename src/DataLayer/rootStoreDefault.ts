@@ -13,7 +13,7 @@ export const userStoreDefault: IUser = {
   userPhone: undefined,
   userAvatar: '',
   userRoles: [],
-  status: undefined,
+  userStatus: undefined,
   uid: undefined,
   uidExternal: undefined,
   userEmail: undefined,

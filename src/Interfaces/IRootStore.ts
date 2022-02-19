@@ -5,7 +5,7 @@ export interface IUser {
   userPhone: number
   userAvatar: string
   userRoles: string[]
-  status: string
+  userStatus: string
   uid: string
   uidExternal: string
   userEmail: string

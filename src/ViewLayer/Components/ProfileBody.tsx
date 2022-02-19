@@ -90,7 +90,9 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       mode: 'multiple' as 'multiple' | 'tags',
       typeEvent: 'SELECT_USER_LANGUAGES',
       classAdded: 'SelectUserLanguages__ProfileBody',
-      languagesSelected: userLanguages.map(item => ({ value: item })),
+      languagesSelected: userLanguages?.length
+        ? userLanguages.map(item => ({ value: item }))
+        : undefined,
     },
     inputUserBirthYearProps: {
       classAdded: 'Input_ageFromToRequired',

@@ -1,13 +1,18 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const ONCHANGE_PASSWORD_AUTH_2: Function = (
+export const ONCHANGE_USER_PASSWORD_AUTH: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
   const { forms } = store
+
+  const { user } = forms
+
+  const userNext = { ...user, passwordAuth: data }
+
   const nextForms = {
     ...forms,
-    passwordAuth2: data,
+    user: userNext,
   }
   return { ...store, forms: nextForms }
 }

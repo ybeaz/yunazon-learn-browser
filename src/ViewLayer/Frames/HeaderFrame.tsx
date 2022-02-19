@@ -64,21 +64,28 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   } = useSelector((store2: IRootStore) => store2)
 
   const getButtonAuthUser = (user2: IUser): any => {
-    const status = user2?.status
+    const userStatus = user2?.userStatus
     const userName = user2?.userNameFirst
 
     const classAdded =
-      status === 'success'
+      userStatus === 'success'
         ? `Button_personalCabinet Button_personalCabinet_authorized`
         : 'Button_personalCabinet'
 
     const tooltipText =
-      status === 'success' ? userName : DICTIONARY.PersonalСabinet[language]
+      userStatus === 'success' ? userName : DICTIONARY.PersonalСabinet[language]
 
     const childProps =
-      status === 'success'
+      userStatus === 'success'
         ? { scenario: { branch: 'signOut', step: '' } }
         : { scenario: { branch: 'signInManually', step: '' } }
+
+    console.info('HeaderFrame [83]', {
+      classAdded,
+      childProps,
+      userStatus,
+      user,
+    })
 
     return {
       icon: 'MdPerson',

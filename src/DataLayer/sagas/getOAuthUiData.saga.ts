@@ -42,6 +42,7 @@ function* getOAuthUiData(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...oAuthUiData,
+        userStatus: oAuthUiData.status,
         loginSource: 'un.userto.com',
       })
     )
