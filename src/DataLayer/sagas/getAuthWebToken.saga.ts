@@ -22,7 +22,7 @@ function* getAuthWebToken(args: any) {
       actionSync.SET_USER_PROFILE({
         ...authWebToken,
         userStatus: authWebToken.status,
-        loginSource: 'un.userto.com',
+        userLoginSource: 'un.userto.com',
       })
     )
   } catch (error) {

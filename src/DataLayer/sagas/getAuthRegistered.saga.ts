@@ -31,7 +31,7 @@ function* getAuthRegistered() {
       actionSync.SET_USER_PROFILE({
         ...register,
         userStatus: register.status,
-        loginSource: 'un.userto.com',
+        userLoginSource: 'un.userto.com',
       })
     )
 

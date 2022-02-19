@@ -27,7 +27,7 @@ function* getOAuthGoogle(args: any) {
       actionSync.SET_USER_PROFILE({
         ...oAuthGoogle,
         userStatus: oAuthGoogle.status,
-        loginSource: 'google.com',
+        userLoginSource: 'google.com',
       })
     )
 

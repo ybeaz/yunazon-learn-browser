@@ -43,7 +43,7 @@ function* getOAuthUiData(args: any) {
       actionSync.SET_USER_PROFILE({
         ...oAuthUiData,
         userStatus: oAuthUiData.status,
-        loginSource: 'un.userto.com',
+        userLoginSource: 'un.userto.com',
       })
     )
 

@@ -38,7 +38,7 @@ function* getAuthSignIn() {
       actionSync.SET_USER_PROFILE({
         ...authLoginPass,
         userStatus: authLoginPass.status,
-        loginSource: 'un.userto.com',
+        userLoginSource: 'un.userto.com',
       })
     )
 
