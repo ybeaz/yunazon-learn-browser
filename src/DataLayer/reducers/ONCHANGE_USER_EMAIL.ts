@@ -1,6 +1,6 @@
 import { IUser, IForms, IRootStore } from '../../Interfaces/IRootStore'
 
-export const ONCHANGE_EMAIL_AUTH: Function = (
+export const ONCHANGE_USER_EMAIL: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {

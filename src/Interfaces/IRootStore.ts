@@ -9,6 +9,7 @@ export interface IUser {
   uid: string
   uidExternal: string
   userEmail: string
+  userName: string
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string

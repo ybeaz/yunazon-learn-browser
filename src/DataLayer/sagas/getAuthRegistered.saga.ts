@@ -9,12 +9,12 @@ import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegi
 function* getAuthRegistered() {
   const {
     forms: {
-      user: { userEmail, userNameFirst, passwordAuth },
+      user: { userEmail, userName, passwordAuth },
     },
   } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthRegisteredConnector(
-    userNameFirst,
+    userName,
     userEmail,
     passwordAuth
   )

@@ -97,7 +97,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     classAdded: 'Input_usernameAuth',
     type: 'text',
     placeholder: DICTIONARY.Name[language],
-    typeEvent: 'ONCHANGE_USER_NAME_AUTH',
+    typeEvent: 'OONCHANGE_USER_NAME',
     storeFormGroup: 'user',
     storeFormProp: 'userName',
   }
@@ -106,7 +106,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     classAdded: 'Input_usernameAuth',
     type: 'text',
     placeholder: DICTIONARY.Email[language],
-    typeEvent: 'ONCHANGE_EMAIL_AUTH',
+    typeEvent: 'ONCHANGE_USER_EMAIL',
     storeFormGroup: 'user',
     storeFormProp: 'userEmail',
   }

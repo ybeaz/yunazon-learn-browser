@@ -11,7 +11,7 @@ const headers = {
 }
 
 export const getAuthRegisteredConnector: Function = (
-  userNameFirst: string,
+  userName: string,
   userEmail: string,
   passwordAuth: string
 ): any => {
@@ -40,7 +40,7 @@ export const getAuthRegisteredConnector: Function = (
       operationName: 'Register',
       variables: {
         authInput: {
-          userName: userNameFirst,
+          userName: userName,
           email: userEmail,
           password: passwordAuth,
           phone: 0,

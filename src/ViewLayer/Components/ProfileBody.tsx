@@ -51,7 +51,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       placeholder: DICTIONARY['name'][language],
       typeEvent: 'ONCHANGE_USER_NAME_FIRST',
       storeFormGroup: 'user',
-      storeFormProp: 'userNameFirst',
+      storeFormProp: 'userNamet',
     },
     inputUserInfoAboutProps: {
       tagName: 'textarea',

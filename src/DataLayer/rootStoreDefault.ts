@@ -17,6 +17,7 @@ export const userStoreDefault: IUser = {
   uid: undefined,
   uidExternal: undefined,
   userEmail: undefined,
+  userName: '',
   userNameFirst: '',
   userNameLast: '',
   userNameMiddle: '',

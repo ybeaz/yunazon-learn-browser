@@ -65,7 +65,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
 
   const getButtonAuthUser = (user2: IUser): any => {
     const userStatus = user2?.userStatus
-    const userName = user2?.userNameFirst
+    const userName = user2?.userName
 
     const classAdded =
       userStatus === 'success'
