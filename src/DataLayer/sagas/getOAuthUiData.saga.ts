@@ -6,14 +6,14 @@ import { getOAuthUiDataConnector } from '../../CommunicationLayer/getOAuthUiData
 
 function* getOAuthUiData(args: any) {
   const {
-    data: { userNameLast, userNameFirst, picture, uidExternal, userName },
+    data: { userNameLast, userNameFirst, picture, userIdExternal, userName },
   } = args
 
   const { method, url, payload, options } = getOAuthUiDataConnector({
     userNameLast,
     userNameFirst,
     picture,
-    uidExternal,
+    userIdExternal,
     userName,
   })
 

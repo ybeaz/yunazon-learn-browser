@@ -14,7 +14,7 @@ export const AUTH_VKONTAKTE: IActionEvent = (event, data) => {
     last_name: userNameLast,
     first_name: userNameFirst,
     photo: picture,
-    uid: uidExternal,
+    uid: userIdExternal,
   } = data
 
   // const dataExample = {
@@ -40,7 +40,7 @@ export const AUTH_VKONTAKTE: IActionEvent = (event, data) => {
       userNameLast,
       userNameFirst,
       picture,
-      uidExternal: uidExternal.toString(),
+      userIdExternal: userIdExternal.toString(),
       userName: `${userNameFirst} ${userNameLast}`,
     })
   )

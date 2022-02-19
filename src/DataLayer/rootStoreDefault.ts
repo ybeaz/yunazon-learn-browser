@@ -8,7 +8,7 @@ import {
 
 export const userStoreDefault: IUser = {
   userId: undefined,
-  uidExternal: undefined,
+  userIdExternal: undefined,
   userLoginSource: undefined,
   userWebTokenAuth: undefined,
   passwordAuth: '',

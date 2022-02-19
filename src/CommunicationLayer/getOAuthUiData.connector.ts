@@ -14,7 +14,7 @@ export const getOAuthUiDataConnector: Function = ({
   userNameLast,
   userNameFirst,
   picture,
-  uidExternal,
+  userIdExternal,
   userName,
 }): any => {
   const envType: string = getDetectedEnv()
@@ -26,8 +26,7 @@ export const getOAuthUiDataConnector: Function = ({
         status
         message
         uid
-        uidExternal
-        uidExternal
+        uidExternal: userIdExternal
         userName
         email
         phone
@@ -50,7 +49,7 @@ export const getOAuthUiDataConnector: Function = ({
           familyName: userNameLast,
           givenName: userNameFirst,
           picture,
-          uidExternal,
+          uidExternal: userIdExternal,
           userName,
         },
       },
