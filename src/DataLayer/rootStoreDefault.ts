@@ -7,7 +7,7 @@ import {
 } from '../Interfaces/IRootStore'
 
 export const userStoreDefault: IUser = {
-  uid: undefined,
+  userId: undefined,
   uidExternal: undefined,
   userLoginSource: undefined,
   userWebTokenAuth: undefined,

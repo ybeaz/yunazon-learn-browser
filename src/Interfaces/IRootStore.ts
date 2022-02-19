@@ -6,7 +6,7 @@ export interface IUser {
   userAvatar: string
   userRoles: string[]
   userStatus: string
-  uid: string
+  userId: string
   uidExternal: string
   userEmail: string
   userName: string

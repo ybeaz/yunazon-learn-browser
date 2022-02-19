@@ -22,6 +22,7 @@ function* getAuthWebToken(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...authWebToken,
+        userId: authWebToken.uid,
         userWebTokenAuth: authWebToken.webToken,
         userStatus: authWebToken.status,
         userLoginSource: 'un.userto.com',

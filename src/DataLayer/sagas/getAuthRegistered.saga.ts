@@ -30,6 +30,7 @@ function* getAuthRegistered() {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...register,
+        userId: register.uid,
         userWebTokenAuth: register.webToken,
         userStatus: register.status,
         userLoginSource: 'un.userto.com',

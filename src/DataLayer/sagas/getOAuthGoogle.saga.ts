@@ -26,6 +26,7 @@ function* getOAuthGoogle(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...oAuthGoogle,
+        userId: oAuthGoogle.uid,
         userWebTokenAuth: oAuthGoogle.webToken,
         userStatus: oAuthGoogle.status,
         userLoginSource: 'google.com',
