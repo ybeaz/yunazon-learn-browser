@@ -35,6 +35,15 @@ function* getAuthRegistered() {
       })
     )
 
+    const data = [
+      {
+        childName: 'AuthUser',
+        isActive: false,
+        childProps: { scenario: { branch: 'signUpManually', step: '' } },
+      },
+    ]
+    yield put(actionSync.SET_MODAL_FRAMES(data))
+
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

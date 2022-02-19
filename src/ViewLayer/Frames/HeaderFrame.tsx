@@ -80,13 +80,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
         ? { scenario: { branch: 'signOut', step: '' } }
         : { scenario: { branch: 'signInManually', step: '' } }
 
-    console.info('HeaderFrame [83]', {
-      classAdded,
-      childProps,
-      userStatus,
-      user,
-    })
-
     return {
       icon: 'MdPerson',
       classAdded,

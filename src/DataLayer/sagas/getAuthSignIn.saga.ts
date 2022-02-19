@@ -12,11 +12,6 @@ function* getAuthSignIn() {
     },
   } = yield select((store: IRootStore) => store)
 
-  console.info('getAuthSignIn.saga [15]', {
-    userEmail,
-    passwordAuth,
-  })
-
   const { method, url, payload, options } = getAuthSignInConnector(
     userEmail,
     passwordAuth

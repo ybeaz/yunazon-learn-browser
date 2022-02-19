@@ -1,6 +1,7 @@
 import { store } from '../DataLayer/store'
 import { actionAsync } from '../DataLayer/index.action'
 
+import * as flags from '../FeatureFlags/index'
 import { IAzProps } from '../Interfaces/IAzProps'
 
 export const getSavedAnanlyticsEvent: Function = (
@@ -21,5 +22,6 @@ export const getSavedAnanlyticsEvent: Function = (
     },
   }
 
-  store.dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
+  flags.isGetingSavedAnanlyticsEvent() &&
+    store.dispatch(actionAsync.SAVE_ANALYTICS.REQUEST(dataNext))
 }
