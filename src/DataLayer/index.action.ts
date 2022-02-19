@@ -5,7 +5,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 const ACTIONS_SYNC: string[] = [
   'SELECT_USER_MEDIA',
   'SELECT_USER_GENDER',
-  'ONCHANGE_USER_YEAR_OF_BIRTH',
+  'ONCHANGE_USER_BIRTH_YEAR',
   'SELECT_USER_LANGUAGES',
   'SELECT_USER_COUNTRY',
   'ONCHANGE_USER_NAME_FIRST',

@@ -3,7 +3,7 @@ import { IRootStore } from '../Interfaces/IRootStore'
 import { TEMPLATE } from './reducers/TEMPLATE'
 import { SELECT_USER_MEDIA } from './reducers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './reducers/SELECT_USER_GENDER'
-import { ONCHANGE_USER_YEAR_OF_BIRTH } from './reducers/ONCHANGE_USER_YEAR_OF_BIRTH'
+import { ONCHANGE_USER_BIRTH_YEAR } from './reducers/ONCHANGE_USER_BIRTH_YEAR'
 import { SELECT_USER_LANGUAGES } from './reducers/SELECT_USER_LANGUAGES'
 import { SELECT_USER_COUNTRY } from './reducers/SELECT_USER_COUNTRY'
 import { ONCHANGE_USER_NAME_FIRST } from './reducers/ONCHANGE_USER_NAME_FIRST'
@@ -73,7 +73,7 @@ export const indexReducer: IIndexReducer = (
     TEMPLATE,
     SELECT_USER_MEDIA,
     SELECT_USER_GENDER,
-    ONCHANGE_USER_YEAR_OF_BIRTH,
+    ONCHANGE_USER_BIRTH_YEAR,
     SELECT_USER_LANGUAGES,
     SELECT_USER_COUNTRY,
     ONCHANGE_USER_NAME_FIRST,

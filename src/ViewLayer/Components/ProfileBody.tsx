@@ -96,9 +96,9 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'ONCHANGE_USER_YEAR_OF_BIRTH',
+      typeEvent: 'ONCHANGE_USER_BIRTH_YEAR',
       storeFormGroup: 'user',
-      storeFormProp: 'userYearOfBirth',
+      storeFormProp: 'userBirthYear',
     },
     selectUserGenderProps: {
       allowClear: true,

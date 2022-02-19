@@ -3,7 +3,7 @@ export interface IUser {
   passwordAuth: string
   passwordAuth2: string
   phone: undefined | number
-  userAvatar: undefined | string
+  userAvatar: string
   roles: undefined | string[]
   status: undefined | string
   uid: undefined | string
@@ -17,7 +17,7 @@ export interface IUser {
   userInfoAbout: string
   userCountry: string[]
   userLanguages: string[]
-  userYearOfBirth: string
+  userBirthYear: number
   userGender: string[]
   userMedia: string[]
 }
