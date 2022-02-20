@@ -1,26 +1,29 @@
 export interface IUser {
-  userLoginSource: string
-  userPasswordAuth: string
-  userPasswordAuth2: string
-  userPhone: number
   userAvatar: string
-  userRoles: string[]
-  userStatus: string
+  userBirthYear: number
+  userEmail: string
+  userGender: string
   userId: string
   userIdExternal: string
-  userEmail: string
+  userInfoAbout: string
+  userLanguages: string[]
+  userLocaleCity: string
+  userLocaleCountry: string
+  userLoginSource: string
+  userMedia: string[]
   userName: string
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string
-  userWebTokenAuth: string
+  userPasswordAuth: string
+  userPasswordAuth2: string
+  userPhone: number
+  userRoles: string[]
   userSkillsExpertise: string[]
-  userInfoAbout: string
-  userLocaleCountry: string
-  userLanguages: string[]
-  userBirthYear: number
-  userGender: string
-  userMedia: string[]
+  userStatus: string
+  userWebLink: string
+  userWebTokenAuth: string
+  userZoneInfo: string
 }
 
 export interface ISearchFormSep {
