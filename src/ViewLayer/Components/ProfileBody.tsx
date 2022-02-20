@@ -30,12 +30,24 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   } = useSelector((store: IRootStore) => store)
 
   const {
+    userName,
+    userNameNick,
     userLanguages,
     userLocaleCountry,
     userSkillsExpertise,
     userGender,
     userMedia,
   } = user
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      {
+        typeEvent: 'ONCHANGE_USER_NAME_NICK',
+        data: userNameNick ? userNameNick : userName,
+      }
+    )
+  }, [userName])
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -45,13 +57,13 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const stubOnAction = () => {}
 
   const propsOut = {
-    inputUserNameFirstProps: {
+    inputUserNameNickProps: {
       classAdded: 'Input_userNameFirst',
       type: 'text',
       placeholder: DICTIONARY['name'][language],
-      typeEvent: 'ONCHANGE_USER_NAME_FIRST',
+      typeEvent: 'ONCHANGE_USER_NAME_NICK',
       storeFormGroup: 'user',
-      storeFormProp: 'userNamet',
+      storeFormProp: 'userNameNick',
     },
     inputUserInfoAboutProps: {
       tagName: 'textarea',
@@ -185,8 +197,6 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
 
-  console.info('ProfileBody [188]', { user })
-
   return (
     <div className='ProfileBody'>
       <div className={`_row`}>
@@ -204,7 +214,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {' *'}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserNameFirstProps} />
+          <Input {...propsOut.inputUserNameNickProps} />
         </div>
       </div>
       <div className={`_row`}>

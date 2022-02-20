@@ -9,14 +9,14 @@ import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegi
 function* getAuthRegistered() {
   const {
     forms: {
-      user: { userEmail, userName, userPasswordAuth },
+      user: { userEmail2, userName2, userPasswordAuth2 },
     },
   } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthRegisteredConnector(
-    userName,
-    userEmail,
-    userPasswordAuth
+    userName2,
+    userEmail2,
+    userPasswordAuth2
   )
 
   try {
@@ -27,13 +27,28 @@ function* getAuthRegistered() {
       },
     } = yield axios[method](url, payload, options)
 
+    const {
+      email: userEmail,
+      message,
+      path,
+      phone: userPhone,
+      roles: userRoles,
+      status: userStatus,
+      uid: userId,
+      userName,
+      webToken: userWebTokenAuth,
+    } = register
+
     yield put(
       actionSync.SET_USER_PROFILE({
-        ...register,
-        userId: register.uid,
-        userWebTokenAuth: register.webToken,
-        userStatus: register.status,
+        userEmail,
+        userId,
         userLoginSource: 'un.userto.com',
+        userName,
+        userPhone,
+        userRoles,
+        userStatus,
+        userWebTokenAuth,
       })
     )
 

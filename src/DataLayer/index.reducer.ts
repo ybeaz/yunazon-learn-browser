@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { ONCHANGE_USER_NAME_NICK } from './reducers/ONCHANGE_USER_NAME_NICK'
 import { SELECT_USER_MEDIA } from './reducers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './reducers/SELECT_USER_GENDER'
 import { ONCHANGE_USER_BIRTH_YEAR } from './reducers/ONCHANGE_USER_BIRTH_YEAR'
@@ -117,6 +118,7 @@ export const indexReducer: IIndexReducer = (
     PLUS_QUESTION_SLIDE,
     ONCHANGE_EMAIL_CC,
     ONCHANGE_EMAIL_TO,
+    ONCHANGE_USER_NAME_NICK,
     ONCHANGE_FIRST_NAME_MODAL,
     ONCHANGE_MIDDLE_NAME_MODAL,
     ONCHANGE_LAST_NAME_MODAL,

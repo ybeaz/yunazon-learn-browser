@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'ONCHANGE_USER_NAME_NICK',
   'SELECT_USER_MEDIA',
   'SELECT_USER_GENDER',
   'ONCHANGE_USER_BIRTH_YEAR',

@@ -23,6 +23,7 @@ export const userStoreDefault: IUser = {
   userLoginSource: undefined,
   userMedia: [],
   userName: undefined,
+  userNameNick: undefined,
   userNameFirst: undefined,
   userNameLast: undefined,
   userNameMiddle: undefined,

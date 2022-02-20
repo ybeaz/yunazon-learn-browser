@@ -25,6 +25,31 @@ function* getAuthSignIn() {
       },
     } = yield axios[method](url, payload, options)
 
+    const {
+      email: userEmail,
+      message,
+      path,
+      phone: userPhone,
+      roles: userRoles,
+      status: userStatus,
+      uid: userId,
+      userName,
+      webToken: userWebTokenAuth,
+    } = authLoginPass
+
+    yield put(
+      actionSync.SET_USER_PROFILE({
+        userEmail,
+        userId,
+        userLoginSource: 'un.userto.com',
+        userName,
+        userPhone,
+        userRoles,
+        userStatus,
+        userWebTokenAuth,
+      })
+    )
+
     const data = [
       {
         childName: 'AuthUser',
@@ -33,16 +58,6 @@ function* getAuthSignIn() {
       },
     ]
     yield put(actionSync.SET_MODAL_FRAMES(data))
-
-    yield put(
-      actionSync.SET_USER_PROFILE({
-        ...authLoginPass,
-        userId: authLoginPass.uid,
-        userWebTokenAuth: authLoginPass.webToken,
-        userStatus: authLoginPass.status,
-        userLoginSource: 'un.userto.com',
-      })
-    )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
