@@ -2,6 +2,7 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { ONCHANGE_USER_NAME_NICK } from './handlers/ONCHANGE_USER_NAME_NICK'
 import { SELECT_USER_MEDIA } from './handlers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './handlers/SELECT_USER_GENDER'
 import { ONCHANGE_USER_BIRTH_YEAR } from './handlers/ONCHANGE_USER_BIRTH_YEAR'
@@ -160,6 +161,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     ONCHANGE_USER_PASSWORD_AUTH,
     ONCHANGE_SEARCH_INPUT,
     ONCHANGE_USER_NAME,
+    ONCHANGE_USER_NAME_NICK,
     PLUS_QUESTION_SLIDE,
     PRINT_DOCUMENT,
     PRINT_SCORES,

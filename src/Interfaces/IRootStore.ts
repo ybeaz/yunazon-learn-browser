@@ -15,6 +15,7 @@ export interface IUser {
   userLoginSource: string
   userMedia: string[]
   userName: string
+  userNameNick: string
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string
