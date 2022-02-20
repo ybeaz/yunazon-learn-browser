@@ -1,6 +1,9 @@
 export interface IUser {
   userAvatar: string
   userBirthYear: number
+  userDateCreated: string
+  userDateDeleted: string
+  userDateUpdated: string
   userEmail: string
   userGender: string
   userId: string
