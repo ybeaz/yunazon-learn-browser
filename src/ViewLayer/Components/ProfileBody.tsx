@@ -185,6 +185,8 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
 
+  console.info('ProfileBody [188]', { user })
+
   return (
     <div className='ProfileBody'>
       <div className={`_row`}>
