@@ -9,6 +9,9 @@ import {
 export const userStoreDefault: IUser = {
   userAvatar: undefined,
   userBirthYear: undefined,
+  userDateCreated: undefined,
+  userDateDeleted: undefined,
+  userDateUpdated: undefined,
   userEmail: undefined,
   userGender: undefined,
   userId: undefined,
