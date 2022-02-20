@@ -16,7 +16,7 @@ export const AUTH_FACEBOOK: IActionEvent = (event, data) => {
     picture: {
       data: { url: picture },
     },
-    id: uidExternal,
+    id: userIdExternal,
     name: userName,
   } = data
 
@@ -25,7 +25,7 @@ export const AUTH_FACEBOOK: IActionEvent = (event, data) => {
       userNameLast,
       userNameFirst,
       picture,
-      uidExternal,
+      userIdExternal,
       userName,
     })
   )

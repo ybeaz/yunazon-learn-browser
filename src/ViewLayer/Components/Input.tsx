@@ -12,8 +12,8 @@ interface InputArgs {
   type?: string // type of html tag, for example, <input type='text' >
   placeholder: string // placeholder text
   typeEvent: string // typeEvent to trigger the proper action
-  storeFormProp?: string // name of the property in store.form that stores data
   storeFormGroup?: string // sub property in store.form to keep data
+  storeFormProp?: string // name of the property in store.form that stores data
   accept?: string // accepted files' format for type='file', for example, 'image/png, image/jpeg, image/jpg'
 }
 

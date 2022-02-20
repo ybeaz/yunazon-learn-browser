@@ -1,47 +1,25 @@
-// export interface IProfileLeg {
-//   email: undefined | string
-//   familyName: undefined | string
-//   givenName: undefined | string
-//   loginSource: undefined | string
-//   phone: undefined | number
-//   picture: undefined | string
-//   roles: undefined | string
-//   status: undefined | string
-//   uid: undefined | string
-//   uidExternal: undefined | string
-//   userName: undefined | string
-//   webToken: null | string
-// }
-
-// * email
-// * emailAuth: string
-// * userNameAuth: string
-// * firstName: string
-// * middleName: string
-// * lastName: string
-// * familyName: undefined | string
-// * givenName: undefined | string
-export interface IProfile {
-  loginSource: undefined | string
-  passwordAuth: string
-  passwordAuth2: string
-  phone: undefined | number
-  avatar: undefined | string
-  roles: undefined | string[]
-  status: undefined | string
-  uid: undefined | string
-  uidExternal: undefined | string
-  userEmail: undefined | string
+export interface IUser {
+  userLoginSource: string
+  userPasswordAuth: string
+  userPasswordAuth2: string
+  userPhone: number
+  userAvatar: string
+  userRoles: string[]
+  userStatus: string
+  userId: string
+  userIdExternal: string
+  userEmail: string
+  userName: string
   userNameFirst: string
   userNameLast: string
   userNameMiddle: string
-  webToken: null | string
+  userWebTokenAuth: string
   userSkillsExpertise: string[]
   userInfoAbout: string
-  userCountry: string[]
+  userLocaleCountry: string
   userLanguages: string[]
-  userYearOfBirth: string
-  userGender: string[]
+  userBirthYear: number
+  userGender: string
   userMedia: string[]
 }
 
@@ -79,7 +57,7 @@ export interface IForms {
   sendTo: string
   sendCc: string
   searchFormSep: ISearchFormSep
-  profile: IProfile
+  user: IUser
 }
 
 export interface IRootStore {

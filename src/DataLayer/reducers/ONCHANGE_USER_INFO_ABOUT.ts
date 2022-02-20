@@ -5,12 +5,12 @@ export const ONCHANGE_USER_INFO_ABOUT: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
-  const profileNext = { ...profile, userInfoAbout: data }
+  const { user } = forms
+  const userNext = { ...user, userInfoAbout: data }
 
   const nextForms = {
     ...forms,
-    profile: profileNext,
+    user: userNext,
   }
   return { ...store, forms: nextForms }
 }

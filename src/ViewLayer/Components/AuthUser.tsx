@@ -97,32 +97,36 @@ export const AuthUser: React.FunctionComponent<any> = (
     classAdded: 'Input_usernameAuth',
     type: 'text',
     placeholder: DICTIONARY.Name[language],
-    typeEvent: 'ONCHANGE_USER_NAME_AUTH',
-    storeFormProp: 'userNameAuth',
+    typeEvent: 'ONCHANGE_USER_NAME',
+    storeFormGroup: 'user',
+    storeFormProp: 'userName',
   }
 
   const inputEmailAuthProps = {
     classAdded: 'Input_usernameAuth',
     type: 'text',
     placeholder: DICTIONARY.Email[language],
-    typeEvent: 'ONCHANGE_EMAIL_AUTH',
-    storeFormProp: 'emailAuth',
+    typeEvent: 'ONCHANGE_USER_EMAIL',
+    storeFormGroup: 'user',
+    storeFormProp: 'userEmail',
   }
 
   const inputPasswordAuthProps = {
     classAdded: 'Input_passwordAuth',
     type: 'text',
     placeholder: DICTIONARY.Password[language],
-    typeEvent: 'ONCHANGE_PASSWORD_AUTH',
-    storeFormProp: 'passwordAuth',
+    typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH',
+    storeFormGroup: 'user',
+    storeFormProp: 'userPasswordAuth',
   }
 
   const inputPasswordAuth2Props = {
     classAdded: 'Input_passwordAuth',
     type: 'text',
     placeholder: DICTIONARY.RepeatPassword[language],
-    typeEvent: 'ONCHANGE_PASSWORD_AUTH_2',
-    storeFormProp: 'passwordAuth2',
+    typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH_2',
+    storeFormGroup: 'user',
+    storeFormProp: 'userPasswordAuth2',
   }
 
   const buttonAuthSignInUpOut = {

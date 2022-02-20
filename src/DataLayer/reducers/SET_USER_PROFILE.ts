@@ -5,13 +5,13 @@ export const SET_USER_PROFILE: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {
-  const { webToken } = data
+  const { userWebTokenAuth } = data
 
-  getSetObjToLocalStorage({ authWebToken: webToken })
+  getSetObjToLocalStorage({ userWebTokenAuth })
 
   const { forms } = store
 
-  const formsNext = { ...forms, profile: data }
+  const formsNext = { ...forms, user: data }
 
   return { ...store, forms: formsNext }
 }

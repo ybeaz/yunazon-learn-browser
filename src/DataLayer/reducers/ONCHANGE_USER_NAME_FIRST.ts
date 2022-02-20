@@ -5,12 +5,12 @@ export const ONCHANGE_USER_NAME_FIRST: Function = (
   data: any
 ): IRootStore => {
   const { forms } = store
-  const { profile } = forms
-  const profileNext = { ...profile, userNameFirst: data }
+  const { user } = forms
+  const userNext = { ...user, userNameFirst: data }
 
   const nextForms = {
     ...forms,
-    profile: profileNext,
+    user: userNext,
   }
   return { ...store, forms: nextForms }
 }

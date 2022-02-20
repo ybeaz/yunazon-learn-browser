@@ -10,7 +10,9 @@ const headers = {
   timestamp: +new Date(),
 }
 
-export const getAuthWebTokenConnector: Function = (webToken: string): any => {
+export const getAuthWebTokenConnector: Function = (
+  userWebTokenAuth: string
+): any => {
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
@@ -36,7 +38,7 @@ export const getAuthWebTokenConnector: Function = (webToken: string): any => {
     payload: {
       operationName: 'AuthWebToken',
       variables: {
-        webToken,
+        webToken: userWebTokenAuth,
       },
       query,
     },

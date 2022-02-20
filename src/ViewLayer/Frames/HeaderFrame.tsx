@@ -10,7 +10,7 @@ import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IProfile, IRootStore } from '../../Interfaces/IRootStore'
+import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -59,24 +59,25 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   } = props
 
   const {
-    forms: { profile },
+    componentsState: { modalFrames },
+    forms: { user },
     language,
   } = useSelector((store2: IRootStore) => store2)
 
-  const getButtonAuthUser = (user2: IProfile): any => {
-    const status = user2?.status
-    const userName = user2?.userNameFirst
+  const getButtonAuthUser = (user2: IUser): any => {
+    const userStatus = user2?.userStatus
+    const userName = user2?.userName
 
     const classAdded =
-      status === 'success'
+      userStatus === 'success'
         ? `Button_personalCabinet Button_personalCabinet_authorized`
         : 'Button_personalCabinet'
 
     const tooltipText =
-      status === 'success' ? userName : DICTIONARY.PersonalСabinet[language]
+      userStatus === 'success' ? userName : DICTIONARY.PersonalСabinet[language]
 
     const childProps =
-      status === 'success'
+      userStatus === 'success'
         ? { scenario: { branch: 'signOut', step: '' } }
         : { scenario: { branch: 'signInManually', step: '' } }
 
@@ -98,13 +99,11 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     }
   }
 
-  const [buttonAuthUser, setButtonAuthUser] = useState(
-    getButtonAuthUser(profile)
-  )
+  const [buttonAuthUser, setButtonAuthUser] = useState(getButtonAuthUser(user))
 
   useEffect(() => {
-    setButtonAuthUser(getButtonAuthUser(profile))
-  }, [profile])
+    setButtonAuthUser(getButtonAuthUser(user))
+  }, [user])
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 

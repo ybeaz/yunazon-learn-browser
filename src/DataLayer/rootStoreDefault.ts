@@ -1,32 +1,33 @@
 import {
   IComponentsState,
   ISearchFormSep,
-  IProfile,
+  IUser,
   IForms,
   IRootStore,
 } from '../Interfaces/IRootStore'
 
-export const profileStoreDefault: IProfile = {
-  loginSource: undefined,
-  passwordAuth: '',
-  passwordAuth2: '',
-  phone: undefined,
-  avatar: undefined,
-  roles: [],
-  status: undefined,
-  uid: undefined,
-  uidExternal: undefined,
+export const userStoreDefault: IUser = {
+  userId: undefined,
+  userIdExternal: undefined,
+  userLoginSource: undefined,
+  userWebTokenAuth: undefined,
+  userPasswordAuth: '',
+  userPasswordAuth2: '',
+  userPhone: undefined,
+  userAvatar: '',
+  userRoles: [],
+  userStatus: undefined,
   userEmail: undefined,
+  userName: '',
   userNameFirst: '',
   userNameLast: '',
   userNameMiddle: '',
-  webToken: null,
   userSkillsExpertise: [],
   userInfoAbout: '',
-  userCountry: [],
+  userLocaleCountry: '',
   userLanguages: [],
-  userYearOfBirth: '',
-  userGender: [],
+  userBirthYear: undefined,
+  userGender: '',
   userMedia: [],
 }
 
@@ -77,7 +78,7 @@ export const formsDefault: IForms = {
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,
-  profile: profileStoreDefault,
+  user: userStoreDefault,
 }
 
 export const rootStoreDefault: IRootStore = {

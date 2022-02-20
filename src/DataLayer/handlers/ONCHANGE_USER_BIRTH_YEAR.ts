@@ -7,7 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const ONCHANGE_USER_YEAR_OF_BIRTH: IActionEvent = (event, data) => {
+export const ONCHANGE_USER_BIRTH_YEAR: IActionEvent = (event, data) => {
   const { value } = event.target as HTMLInputElement
-  dispatch(actionSync.ONCHANGE_USER_YEAR_OF_BIRTH(value))
+  dispatch(actionSync.ONCHANGE_USER_BIRTH_YEAR(value))
 }

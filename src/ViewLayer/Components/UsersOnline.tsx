@@ -29,13 +29,13 @@ const USERS_MAMBA_FACES = [
   { fileName: '2096712036_square.jpg', userName: '' },
 ]
 
-interface IUser {
+interface IUserOnline {
   fileName: string
   userName: string
 }
 
 interface IGetUsersJsx {
-  (users: IUser[], language: string): ReactElement[]
+  (usersOnline: IUserOnline[], language: string): ReactElement[]
 }
 
 interface UsersOnlineArgs {}
@@ -46,9 +46,9 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
   const history = useHistory()
   const { language } = useSelector((store2: IRootStore) => store2)
 
-  const getUsersJsx: IGetUsersJsx = (categories2, language2) =>
-    categories2.map((item: IUser) => {
-      const { fileName, userName } = item
+  const getUsersJsx: IGetUsersJsx = (usersOnline, language2) =>
+    usersOnline.map((userOnline: IUserOnline) => {
+      const { fileName, userName } = userOnline
 
       const imageProps = {
         classAdded: 'Image_UsersOnline',

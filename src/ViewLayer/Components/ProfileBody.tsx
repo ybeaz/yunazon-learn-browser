@@ -26,16 +26,16 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 ): ReactElement => {
   const {
     language,
-    forms: { profile },
+    forms: { user },
   } = useSelector((store: IRootStore) => store)
 
   const {
     userLanguages,
-    userCountry,
+    userLocaleCountry,
     userSkillsExpertise,
     userGender,
     userMedia,
-  } = profile
+  } = user
 
   const filterOption = (input, option) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
@@ -50,15 +50,15 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       type: 'text',
       placeholder: DICTIONARY['name'][language],
       typeEvent: 'ONCHANGE_USER_NAME_FIRST',
-      storeFormGroup: 'profile',
-      storeFormProp: 'userNameFirst',
+      storeFormGroup: 'user',
+      storeFormProp: 'userNamet',
     },
     inputUserInfoAboutProps: {
       tagName: 'textarea',
       classAdded: 'Input_userInfoAbout',
       placeholder: DICTIONARY['tell_about_yourself'][language],
       typeEvent: 'ONCHANGE_USER_INFO_ABOUT',
-      storeFormGroup: 'profile',
+      storeFormGroup: 'user',
       storeFormProp: 'userInfoAbout',
     },
     selectSkillsExpertizeProps: {
@@ -90,26 +90,34 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       mode: 'multiple' as 'multiple' | 'tags',
       typeEvent: 'SELECT_USER_LANGUAGES',
       classAdded: 'SelectUserLanguages__ProfileBody',
-      languagesSelected: userLanguages.map(item => ({ value: item })),
+      languagesSelected: userLanguages?.length
+        ? userLanguages.map(item => ({ value: item }))
+        : undefined,
     },
-    inputUserYearOfBirthProps: {
+    inputUserBirthYearProps: {
       classAdded: 'Input_ageFromToRequired',
       type: 'text',
       placeholder: DICTIONARY['optional'][language],
-      typeEvent: 'ONCHANGE_USER_YEAR_OF_BIRTH',
-      storeFormGroup: 'profile',
-      storeFormProp: 'userYearOfBirth',
+      typeEvent: 'ONCHANGE_USER_BIRTH_YEAR',
+      storeFormGroup: 'user',
+      storeFormProp: 'userBirthYear',
     },
     selectUserGenderProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: userGender,
+      value: [userGender],
       defaultValue: [],
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents({}, { typeEvent: 'SELECT_USER_GENDER', data: values }),
+      onChange: (values: string | string[]) =>
+        handleEvents(
+          {},
+          {
+            typeEvent: 'SELECT_USER_GENDER',
+            data: Array.isArray(values) ? values.join('') : values,
+          }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -136,15 +144,21 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       showSearch: true,
       style: { width: '100%' },
     },
-    selectUserCountryProps: {
+    selectUserLocaleCountryProps: {
       allowClear: true,
       componentId: nanoid(),
-      value: userCountry,
+      value: userLocaleCountry,
       filterOption,
       mode: null,
       onBlur: stubOnAction,
-      onChange: (values: string[]) =>
-        handleEvents({}, { typeEvent: 'SELECT_USER_COUNTRY', data: values }),
+      onChange: (values: string | string[]) =>
+        handleEvents(
+          {},
+          {
+            typeEvent: 'SELECT_USER_COUNTRY',
+            data: Array.isArray(values) ? values.join('') : values,
+          }
+        ),
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
@@ -221,7 +235,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {' *'}
         </div>
         <div className={classCol02}>
-          <SelectAntd {...propsOut.selectUserCountryProps} />
+          <SelectAntd {...propsOut.selectUserLocaleCountryProps} />
         </div>
       </div>
       <div className={`_row`}>
@@ -229,7 +243,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {DICTIONARY['Year_of_birth'][language]}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserYearOfBirthProps} />
+          <Input {...propsOut.inputUserBirthYearProps} />
         </div>
       </div>
       <div className={`_row`}>

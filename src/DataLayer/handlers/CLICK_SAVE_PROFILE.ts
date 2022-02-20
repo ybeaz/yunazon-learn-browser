@@ -9,7 +9,7 @@ const { dispatch, getState } = store
 
 export const CLICK_SAVE_PROFILE: IActionEvent = (event, data) => {
   const {
-    forms: { profile },
+    forms: { user },
   } = getState()
-  console.info('CLICK_SAVE_PROFILE [11]', { profile })
+  console.info('CLICK_SAVE_PROFILE [11]', { user })
 }

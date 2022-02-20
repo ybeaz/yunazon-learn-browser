@@ -8,13 +8,13 @@ import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.c
 function* getAuthSignIn() {
   const {
     forms: {
-      profile: { emailUser, passwordAuth },
+      user: { userEmail, userPasswordAuth },
     },
   } = yield select((store: IRootStore) => store)
 
   const { method, url, payload, options } = getAuthSignInConnector(
-    emailUser,
-    passwordAuth
+    userEmail,
+    userPasswordAuth
   )
 
   try {
@@ -37,7 +37,10 @@ function* getAuthSignIn() {
     yield put(
       actionSync.SET_USER_PROFILE({
         ...authLoginPass,
-        loginSource: 'un.userto.com',
+        userId: authLoginPass.uid,
+        userWebTokenAuth: authLoginPass.webToken,
+        userStatus: authLoginPass.status,
+        userLoginSource: 'un.userto.com',
       })
     )
 

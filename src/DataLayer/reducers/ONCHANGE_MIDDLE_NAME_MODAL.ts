@@ -1,4 +1,4 @@
-import { IRootStore, IProfile, IForms } from '../../Interfaces/IRootStore'
+import { IRootStore, IUser, IForms } from '../../Interfaces/IRootStore'
 
 export const ONCHANGE_MIDDLE_NAME_MODAL: Function = (
   store: IRootStore,
@@ -6,11 +6,11 @@ export const ONCHANGE_MIDDLE_NAME_MODAL: Function = (
 ): IRootStore => {
   const { forms } = store
 
-  const { profile } = forms
+  const { user } = forms
 
-  const profileNext: IProfile = { ...profile, userNameMiddle: data }
+  const userNext: IUser = { ...user, userNameMiddle: data }
 
-  const formsNext: IForms = { ...forms, profile: profileNext }
+  const formsNext: IForms = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

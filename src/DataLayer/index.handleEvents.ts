@@ -4,7 +4,7 @@ import { IActionEvent } from '../Interfaces/IActionEvent'
 import { TEMPLATE } from './handlers/TEMPLATE'
 import { SELECT_USER_MEDIA } from './handlers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './handlers/SELECT_USER_GENDER'
-import { ONCHANGE_USER_YEAR_OF_BIRTH } from './handlers/ONCHANGE_USER_YEAR_OF_BIRTH'
+import { ONCHANGE_USER_BIRTH_YEAR } from './handlers/ONCHANGE_USER_BIRTH_YEAR'
 import { CLICK_SAVE_PROFILE } from './handlers/CLICK_SAVE_PROFILE'
 import { SELECT_USER_LANGUAGES } from './handlers/SELECT_USER_LANGUAGES'
 import { SELECT_USER_COUNTRY } from './handlers/SELECT_USER_COUNTRY'
@@ -58,16 +58,16 @@ import { GET_COURSE_QUERY_PR_QN } from './handlers/GET_COURSE_QUERY_PR_QN'
 import { GO_ACADEMY_SCREEN } from './handlers/GO_ACADEMY_SCREEN'
 import { GO_BACK_FROM_CERTIFICATE } from './handlers/GO_BACK_FROM_CERTIFICATE'
 import { GO_HOME } from './handlers/GO_HOME'
-import { ONCHANGE_EMAIL_AUTH } from './handlers/ONCHANGE_EMAIL_AUTH'
+import { ONCHANGE_USER_EMAIL } from './handlers/ONCHANGE_USER_EMAIL'
 import { ONCHANGE_EMAIL_CC } from './handlers/ONCHANGE_EMAIL_CC'
 import { ONCHANGE_EMAIL_TO } from './handlers/ONCHANGE_EMAIL_TO'
 import { ONCHANGE_FIRST_NAME_MODAL } from './handlers/ONCHANGE_FIRST_NAME_MODAL'
 import { ONCHANGE_LAST_NAME_MODAL } from './handlers/ONCHANGE_LAST_NAME_MODAL'
 import { ONCHANGE_MIDDLE_NAME_MODAL } from './handlers/ONCHANGE_MIDDLE_NAME_MODAL'
-import { ONCHANGE_PASSWORD_AUTH } from './handlers/ONCHANGE_PASSWORD_AUTH'
-import { ONCHANGE_PASSWORD_AUTH_2 } from './handlers/ONCHANGE_PASSWORD_AUTH_2'
+import { ONCHANGE_USER_PASSWORD_AUTH } from './handlers/ONCHANGE_USER_PASSWORD_AUTH'
+import { ONCHANGE_USER_PASSWORD_AUTH_2 } from './handlers/ONCHANGE_USER_PASSWORD_AUTH_2'
 import { ONCHANGE_SEARCH_INPUT } from './handlers/ONCHANGE_SEARCH_INPUT'
-import { ONCHANGE_USER_NAME_AUTH } from './handlers/ONCHANGE_USER_NAME_AUTH'
+import { ONCHANGE_USER_NAME } from './handlers/ONCHANGE_USER_NAME'
 import { PLUS_QUESTION_SLIDE } from './handlers/PLUS_QUESTION_SLIDE'
 import { PRINT_DOCUMENT } from './handlers/PRINT_DOCUMENT'
 import { PRINT_SCORES } from './handlers/PRINT_SCORES'
@@ -96,7 +96,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     TEMPLATE,
     SELECT_USER_MEDIA,
     SELECT_USER_GENDER,
-    ONCHANGE_USER_YEAR_OF_BIRTH,
+    ONCHANGE_USER_BIRTH_YEAR,
     CLICK_SAVE_PROFILE,
     SELECT_USER_LANGUAGES,
     SELECT_USER_COUNTRY,
@@ -150,16 +150,16 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     GO_ACADEMY_SCREEN,
     GO_BACK_FROM_CERTIFICATE,
     GO_HOME,
-    ONCHANGE_EMAIL_AUTH,
+    ONCHANGE_USER_EMAIL,
     ONCHANGE_EMAIL_CC,
     ONCHANGE_EMAIL_TO,
     ONCHANGE_FIRST_NAME_MODAL,
     ONCHANGE_LAST_NAME_MODAL,
     ONCHANGE_MIDDLE_NAME_MODAL,
-    ONCHANGE_PASSWORD_AUTH_2,
-    ONCHANGE_PASSWORD_AUTH,
+    ONCHANGE_USER_PASSWORD_AUTH_2,
+    ONCHANGE_USER_PASSWORD_AUTH,
     ONCHANGE_SEARCH_INPUT,
-    ONCHANGE_USER_NAME_AUTH,
+    ONCHANGE_USER_NAME,
     PLUS_QUESTION_SLIDE,
     PRINT_DOCUMENT,
     PRINT_SCORES,
