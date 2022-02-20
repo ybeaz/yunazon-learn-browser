@@ -8,7 +8,7 @@ import {
 
 export const userStoreDefault: IUser = {
   userAvatar: '',
-  userBirthYear: 0,
+  userBirthYear: null,
   userDateCreated: '',
   userDateDeleted: '',
   userDateUpdated: '',
@@ -29,7 +29,7 @@ export const userStoreDefault: IUser = {
   userNameMiddle: '',
   userPasswordAuth: '',
   userPasswordAuth2: '',
-  userPhone: 0,
+  userPhone: null,
   userRoles: [],
   userSkillsExpertise: [],
   userStatus: '',

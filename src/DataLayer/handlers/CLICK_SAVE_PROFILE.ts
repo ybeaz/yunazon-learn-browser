@@ -7,11 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const CLICK_SAVE_PROFILE: IActionEvent = (event, data) => {
-  const {
-    forms: { user },
-  } = getState()
-  console.info('CLICK_SAVE_PROFILE [11]', { user })
-
+export const CLICK_SAVE_PROFILE: IActionEvent = (event, data) =>
   dispatch(actionAsync.SAVE_USER_PROFILE.REQUEST())
-}

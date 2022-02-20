@@ -64,7 +64,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
         testCapture: 'should return 200 code and data defined',
         method: 'post',
         payload: {
-          operationName: 'CreateUser',
+          operationName: 'createUser',
           variables: {
             userInputGraphql: {
               userAvatar,
@@ -88,7 +88,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userZoneInfo,
             },
           },
-          query: `mutation CreateUser($userInputGraphql: UserInputGraphql!){ \
+          query: `mutation createUser($userInputGraphql: UserInputGraphql!){ \
         createUser(userInputGraphql: $userInputGraphql) { ...UserModelGraphqlAll }} \
         fragment ${FRAGMENTS['UserModelGraphqlAll']}`,
         },

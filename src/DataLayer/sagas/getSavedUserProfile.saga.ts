@@ -23,8 +23,13 @@ function* getSavedUserProfile() {
       data: { data },
     } = yield axios[method](url, payload, options)
 
-    // STOPPED HERE
-    console.info('getSavedUserProfile.saga [19]', { data })
+    const {} = data[payload.operationName]
+
+    // STOPPED HERE SET_USER_PROFILE
+    // yield put(actionSync.SET_USER_PROFILE(data))
+    console.info('getSavedUserProfile.saga [19]', {
+      'data[payload.operationName]': data[payload.operationName],
+    })
     // yield put(actionAsync.SAVE_USER_PROFILE.SUCCESS())
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
