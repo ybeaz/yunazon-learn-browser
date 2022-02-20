@@ -28,6 +28,7 @@ export const getAuthRegisteredConnector: Function = (
         email
         phone
         webToken
+        roles
       }
     }
   `

@@ -18,15 +18,15 @@ export const getAuthWebTokenConnector: Function = (
   const queryAst: DocumentNode = gql`
     query AuthWebToken($webToken: String) {
       authWebToken(webToken: $webToken) {
-        path
-        status
-        message
         email
+        message
+        path
+        picture
+        roles
+        status
         uid
         userName
         webToken
-        roles
-        picture
       }
     }
   `

@@ -6,11 +6,11 @@ import { getAuthWebTokenConnector } from '../../CommunicationLayer/getAuthWebTok
 
 function* getAuthWebToken(args: any) {
   const {
-    data: { userWebTokenAuth },
+    data: { userWebTokenAuth: userWebTokenAuth2 },
   } = args
 
   const { method, url, payload, options } =
-    getAuthWebTokenConnector(userWebTokenAuth)
+    getAuthWebTokenConnector(userWebTokenAuth2)
 
   try {
     const {
@@ -19,13 +19,28 @@ function* getAuthWebToken(args: any) {
       },
     } = yield axios[method](url, payload, options)
 
+    const {
+      email: userEmail,
+      message,
+      path,
+      phone: userPhone,
+      roles: userRoles,
+      status: userStatus,
+      uid: userId,
+      userName,
+      webToken: userWebTokenAuth,
+    } = authWebToken
+
     yield put(
       actionSync.SET_USER_PROFILE({
-        ...authWebToken,
-        userId: authWebToken.uid,
-        userWebTokenAuth: authWebToken.webToken,
-        userStatus: authWebToken.status,
+        userEmail,
+        userId,
         userLoginSource: 'un.userto.com',
+        userName,
+        userPhone,
+        userRoles,
+        userStatus,
+        userWebTokenAuth,
       })
     )
   } catch (error) {
