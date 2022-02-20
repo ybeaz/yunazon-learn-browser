@@ -12,4 +12,6 @@ export const CLICK_SAVE_PROFILE: IActionEvent = (event, data) => {
     forms: { user },
   } = getState()
   console.info('CLICK_SAVE_PROFILE [11]', { user })
+
+  dispatch(actionAsync.SAVE_USER_PROFILE.REQUEST())
 }

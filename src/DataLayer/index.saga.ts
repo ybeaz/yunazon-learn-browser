@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import getSavedUserProfileWatcher from './sagas/getSavedUserProfile.saga'
 import getOAuthUiDataWatcher from './sagas/getOAuthUiData.saga'
 import getOAuthGoogleWatcher from './sagas/getOAuthGoogle.saga'
 import getAuthWebTokenWatcher from './sagas/getAuthWebToken.saga'
@@ -14,6 +15,7 @@ import getGlobalVarsWatcher from './sagas/getGlobalVars.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getSavedUserProfileWatcher),
     fork(getOAuthUiDataWatcher),
     fork(getOAuthGoogleWatcher),
     fork(getAuthWebTokenWatcher),

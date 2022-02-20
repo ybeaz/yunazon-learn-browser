@@ -35,6 +35,7 @@ function* getAuthWebToken(args: any) {
       actionSync.SET_USER_PROFILE({
         userEmail,
         userId,
+        userIdExternal: '',
         userLoginSource: 'un.userto.com',
         userName,
         userPhone,
