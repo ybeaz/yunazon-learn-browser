@@ -63,6 +63,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'SAVE_USER_PROFILE',
   'ADD_DOCUMENT',
   'FIND_DOCUMENT',
   'GET_AUTH_SIGN_IN',

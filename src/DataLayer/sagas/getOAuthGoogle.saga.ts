@@ -27,6 +27,7 @@ function* getOAuthGoogle(args: any) {
       actionSync.SET_USER_PROFILE({
         ...oAuthGoogle,
         userId: oAuthGoogle.uid,
+        userIdExternal: '',
         userWebTokenAuth: oAuthGoogle.webToken,
         userStatus: oAuthGoogle.status,
         userLoginSource: 'google.com',
