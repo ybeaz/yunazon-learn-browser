@@ -39,6 +39,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userEmail,
       userGender,
       userIdAuth,
+      userIdProfile,
       userInfoAbout,
       userLanguages,
       userLocaleCity,
@@ -58,7 +59,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
 
     let obj: any
 
-    if (!userIdAuth) {
+    if (!userIdProfile) {
       obj = {
         testCapture: 'should return 200 code and data defined',
         method: 'post',
@@ -70,6 +71,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userBirthYear,
               userEmail,
               userGender,
+              userIdAuth,
               userInfoAbout,
               userLanguages,
               userLocaleCity,
@@ -107,6 +109,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userEmail,
               userGender,
               userIdAuth,
+              userIdProfile,
               userInfoAbout,
               userLanguages,
               userLocaleCity,
