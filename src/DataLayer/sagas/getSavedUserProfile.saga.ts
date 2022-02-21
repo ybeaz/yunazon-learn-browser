@@ -9,8 +9,8 @@ function* getSavedUserProfile() {
     forms: { user },
   } = yield select(store => store)
 
-  const { userId, userIdExternal: userIdExternalPrev, ...user2 } = user
-  const user3 = { ...user2, userId: userIdExternalPrev }
+  const { userIdAuth, userIdExternal: userIdExternalPrev, ...user2 } = user
+  const user3 = { ...user2, userIdAuth: userIdExternalPrev }
 
   const { method, url, payload, options } = getSavedUserProfileConnector(user3)
 
@@ -22,17 +22,19 @@ function* getSavedUserProfile() {
 
     const {
       responseMessage,
-      userId: userIdExternal,
+      userIdAuth: userIdExternal,
       ...rest
     } = data[payload.operationName]
 
-    yield put(actionSync.SET_USER_PROFILE({ ...rest, userId, userIdExternal }))
+    yield put(
+      actionSync.SET_USER_PROFILE({ ...rest, userIdAuth, userIdExternal })
+    )
     console.info('getSavedUserProfile.saga [19]', {
       'data[payload.operationName]': data[payload.operationName],
       operationName: payload.operationName,
       responseMessage,
       payload,
-      userId,
+      userIdAuth,
       userIdExternalPrev,
       userIdExternal,
       user3,

@@ -26,7 +26,7 @@ function* getAuthWebToken(args: any) {
       phone: userPhone,
       roles: userRoles,
       status: userStatus,
-      uid: userId,
+      uid: userIdAuth,
       userName,
       webToken: userWebTokenAuth,
     } = authWebToken
@@ -34,7 +34,7 @@ function* getAuthWebToken(args: any) {
     yield put(
       actionSync.SET_USER_PROFILE({
         userEmail,
-        userId,
+        userIdAuth,
         userIdExternal: '',
         userLoginSource: 'un.userto.com',
         userName,

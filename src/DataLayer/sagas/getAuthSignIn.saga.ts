@@ -32,7 +32,7 @@ function* getAuthSignIn() {
       phone: userPhone,
       roles: userRoles,
       status: userStatus,
-      uid: userId,
+      uid: userIdAuth,
       userName,
       webToken: userWebTokenAuth,
     } = authLoginPass
@@ -40,7 +40,7 @@ function* getAuthSignIn() {
     yield put(
       actionSync.SET_USER_PROFILE({
         userEmail,
-        userId,
+        userIdAuth,
         userIdExternal: '',
         userLoginSource: 'un.userto.com',
         userName,
