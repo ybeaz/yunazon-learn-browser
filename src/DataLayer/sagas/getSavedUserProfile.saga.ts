@@ -9,13 +9,10 @@ function* getSavedUserProfile() {
     forms: { user },
   } = yield select(store => store)
 
-  const { method, url, payload, options } = getSavedUserProfileConnector(user)
-  console.info('getSavedUserProfile.saga [13]', {
-    method,
-    url,
-    payload,
-    options,
-  })
+  const { userId, userIdExternal: userIdExternalPrev, ...user2 } = user
+  const user3 = { ...user2, userId: userIdExternalPrev }
+
+  const { method, url, payload, options } = getSavedUserProfileConnector(user3)
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -23,12 +20,22 @@ function* getSavedUserProfile() {
       data: { data },
     } = yield axios[method](url, payload, options)
 
-    const {} = data[payload.operationName]
+    const {
+      responseMessage,
+      userId: userIdExternal,
+      ...rest
+    } = data[payload.operationName]
 
-    // STOPPED HERE SET_USER_PROFILE
-    // yield put(actionSync.SET_USER_PROFILE(data))
+    yield put(actionSync.SET_USER_PROFILE({ ...rest, userId, userIdExternal }))
     console.info('getSavedUserProfile.saga [19]', {
       'data[payload.operationName]': data[payload.operationName],
+      operationName: payload.operationName,
+      responseMessage,
+      payload,
+      userId,
+      userIdExternalPrev,
+      userIdExternal,
+      user3,
     })
     // yield put(actionAsync.SAVE_USER_PROFILE.SUCCESS())
 

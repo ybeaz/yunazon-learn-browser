@@ -40,7 +40,7 @@ export const templateConnector: ITemplateConnector = () => {
       query: `query SendTemplate(){sendTemplate(){} }} fragment ${FRAGMENTS['']}`,
     },
     options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
+    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

@@ -39,7 +39,6 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userEmail,
       userGender,
       userId,
-      userIdExternal,
       userInfoAbout,
       userLanguages,
       userLocaleCity,
@@ -59,7 +58,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
 
     let obj: any
 
-    if (!userIdExternal) {
+    if (!userId) {
       obj = {
         testCapture: 'should return 200 code and data defined',
         method: 'post',
@@ -93,21 +92,21 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
         fragment ${FRAGMENTS['UserModelGraphqlAll']}`,
         },
         options: { headers: { ...headers } },
-        url: <string>`${SERVERS[envType]}/graphql`,
+        url: `${SERVERS[envType]}/graphql`,
       }
     } else {
       obj = {
         testCapture: 'should return 200 code and data defined',
         method: 'post',
         payload: {
-          operationName: 'UpdateUser',
+          operationName: 'updateUser',
           variables: {
             userInputGraphql2: {
               userAvatar,
               userBirthYear,
               userEmail,
               userGender,
-              userId: userIdExternal,
+              userId,
               userInfoAbout,
               userLanguages,
               userLocaleCity,
@@ -125,12 +124,12 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userZoneInfo,
             },
           },
-          query: `mutation UpdateUser($userInputGraphql2: UserInputGraphql2!){ \
+          query: `mutation updateUser($userInputGraphql2: UserInputGraphql2!){ \
         updateUser(userInputGraphql2: $userInputGraphql2) { ...UserModelGraphqlAll }} \
         fragment ${FRAGMENTS['UserModelGraphqlAll']}`,
         },
         options: { headers: { ...headers } },
-        url: <string>`${SERVERS[envType]}/graphql`,
+        url: `${SERVERS[envType]}/graphql`,
       }
     }
 
