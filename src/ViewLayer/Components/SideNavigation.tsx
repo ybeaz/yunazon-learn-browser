@@ -30,7 +30,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       action: { typeEvent: 'GO_HOME', data: { history, path: '/sep' } },
     },
     {
-      icon: 'MdHome',
+      icon: 'MdPerson',
       captureRight: DICTIONARY.My_profile[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_HOME', data: { history, path: '/profile' } },
