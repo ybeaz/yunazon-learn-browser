@@ -64,14 +64,6 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     language,
   } = useSelector((store2: IRootStore) => store2)
 
-  const [buttonAuthUser, setButtonAuthUser] = useState(
-    getButtonAuthUserProps(user, language, 'header')
-  )
-
-  useEffect(() => {
-    setButtonAuthUser(getButtonAuthUserProps(user, language, 'header'))
-  }, [user])
-
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
@@ -115,7 +107,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       tooltipPosition: 'bottom',
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
     },
-    buttonAuthUserProps: buttonAuthUser,
+    buttonAuthUserProps: getButtonAuthUserProps(user, language, 'header'),
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',

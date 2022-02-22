@@ -1,3 +1,4 @@
+import { componentsStateDefault } from '../rootStoreDefault'
 import { getUniqArrDeep } from '../../Shared/getUniqArrDeep'
 import { getUpdatedArrByArrInput } from '../../Shared/getUpdatedArrByArrInput'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -18,6 +19,8 @@ export const SET_MODAL_FRAMES: Function = (
       data,
       'childName'
     )
+  } else {
+    modaleFramesNext = componentsStateDefault.modalFrames
   }
 
   const componentsStateNext = {

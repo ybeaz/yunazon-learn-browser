@@ -164,7 +164,7 @@ export const AuthUser: React.FunctionComponent<any> = (
     classAdded: 'Button_AuthSignInUpBack',
     action: {
       typeEvent: 'CLICK_AUTH_SIGN_IN_UP_BACK',
-      data: {},
+      data: { branch },
     },
   }
 

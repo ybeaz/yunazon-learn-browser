@@ -3,7 +3,7 @@ import { IUser } from '../../Interfaces/IRootStore'
 import { ButtonArgs } from '../Components/Button'
 
 interface IGetButtonAuthUser {
-  (user2: IUser, language: string, component: string): ButtonArgs
+  (user2: IUser, language: string, componentFrom: string): ButtonArgs
 }
 
 /**
@@ -13,50 +13,64 @@ interface IGetButtonAuthUser {
 export const getButtonAuthUserProps: IGetButtonAuthUser = (
   user,
   language,
-  component
+  componentFrom
 ) => {
   const { userStatus, userName } = user
 
-  const { classAdded, tooltipText, captureRight, tooltipPosition } = {
+  const {
+    classAdded,
+    tooltipText,
+    captureRight,
+    tooltipPosition,
+    typeEvent,
+    childProps,
+  } = {
     'sideMenu+': {
       classAdded: 'Button_sideMenuItems',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
       tooltipPosition: 'right',
+      typeEvent: 'CLICK_SIDE_NAV_ITEM',
+      childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'sideMenu+failure': {
       classAdded: 'Button_sideMenuItems',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
       tooltipPosition: 'right',
+      typeEvent: 'CLICK_SIDE_NAV_ITEM',
+      childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'sideMenu+success': {
       classAdded: 'Button_sideMenuItems Button_personalCabinet_authorized',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
       tooltipPosition: 'right',
+      typeEvent: 'CLICK_SIDE_NAV_ITEM',
+      childProps: { scenario: { branch: 'signOut', step: '' } },
     },
     'header+': {
       classAdded: 'Button_personalCabinet',
       tooltipText: DICTIONARY.Login[language],
       tooltipPosition: 'bottom',
+      typeEvent: 'SET_MODAL_FRAMES',
+      childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'header+failure': {
       classAdded: 'Button_personalCabinet',
       tooltipText: DICTIONARY.Logout[language],
       tooltipPosition: 'bottom',
+      typeEvent: 'SET_MODAL_FRAMES',
+      childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'header+success': {
       classAdded: 'Button_personalCabinet Button_personalCabinet_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
+      typeEvent: 'SET_MODAL_FRAMES',
+      childProps: { scenario: { branch: 'signOut', step: '' } },
     },
-  }[`${component}+${userStatus}`]
-
-  const childProps =
-    userStatus === 'success'
-      ? { scenario: { branch: 'signOut', step: '' } }
-      : { scenario: { branch: 'signInManually', step: '' } }
+  }[`${componentFrom}+${userStatus}`]
 
   return {
     icon: 'MdPerson',
@@ -66,7 +80,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     isTooltipVisibleForced: false,
     tooltipPosition,
     action: {
-      typeEvent: 'CLICK_SIDE_NAV_ITEM',
+      typeEvent,
       data: [
         {
           childName: 'AuthUser',

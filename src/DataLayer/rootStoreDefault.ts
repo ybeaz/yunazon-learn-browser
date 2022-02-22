@@ -67,11 +67,6 @@ export const componentsStateDefault: IComponentsState = {
   oAuthStage: null,
   modalFrames: [
     {
-      childName: 'SkillExchangeIntro',
-      isActive: false,
-      childProps: {},
-    },
-    {
       childName: 'AuthUser',
       isActive: false,
       childProps: {
