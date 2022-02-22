@@ -1,8 +1,9 @@
 import { SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IRootStore'
 
+import { createUserQuery } from './queries/createUserQuery'
+import { updateUserQuery } from './queries/updateUserQuery'
 interface IHeaders {
   'Access-Control-Allow-Origin': string
   'Content-Type': string
@@ -57,6 +58,10 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userZoneInfo,
     } = user
 
+    console.info('getSavedUserProfile.connector [61]', {
+      createUserQuery,
+    })
+
     let obj: any
 
     if (!userIdProfile) {
@@ -89,9 +94,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userZoneInfo,
             },
           },
-          query: `mutation createUser($userInputGraphql: UserInputGraphql!){ \
-        createUser(userInputGraphql: $userInputGraphql) { ...UserModelGraphqlAll }} \
-        fragment ${FRAGMENTS['UserModelGraphqlAll']}`,
+          query: createUserQuery,
         },
         options: { headers: { ...headers } },
         url: `${SERVERS[envType]}/graphql`,
@@ -127,9 +130,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
               userZoneInfo,
             },
           },
-          query: `mutation updateUser($userInputGraphql2: UserInputGraphql2!){ \
-        updateUser(userInputGraphql2: $userInputGraphql2) { ...UserModelGraphqlAll }} \
-        fragment ${FRAGMENTS['UserModelGraphqlAll']}`,
+          query: updateUserQuery,
         },
         options: { headers: { ...headers } },
         url: `${SERVERS[envType]}/graphql`,

@@ -1,5 +1,5 @@
 import { SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
+import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
@@ -23,7 +23,7 @@ export const addDocumentConnector: Function = (
       variables: {
         addDocumentInputGraphql: { ...vars, env },
       },
-      query: `mutation AddDocument($addDocumentInputGraphql: AddDocumentInputGraphql!){ addDocument(addDocumentInputGraphql: $addDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `mutation AddDocument($addDocumentInputGraphql: AddDocumentInputGraphql!){ addDocument(addDocumentInputGraphql: $addDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS_STRINGS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,

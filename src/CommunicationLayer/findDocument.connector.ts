@@ -2,7 +2,7 @@ import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
 import { SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
+import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
@@ -23,7 +23,7 @@ export const findDocumentConnector: Function = (
       findDocument(documentID: $documentID){
         ...${fragmentName} }
       }
-      fragment ${FRAGMENTS[fragmentName]}
+      fragment ${FRAGMENTS_STRINGS[fragmentName]}
   `
   const query = print(queryAst as DocumentNode)
 

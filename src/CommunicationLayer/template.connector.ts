@@ -1,5 +1,5 @@
 import { SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
+import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 interface IHeaders {
@@ -37,7 +37,7 @@ export const templateConnector: ITemplateConnector = () => {
     payload: {
       operationName: 'SendTemplate',
       variables: {},
-      query: `query SendTemplate(){sendTemplate(){} }} fragment ${FRAGMENTS['']}`,
+      query: `query SendTemplate(){sendTemplate(){} }} fragment ${FRAGMENTS_STRINGS['']}`,
     },
     options: { headers: { ...headers } },
     url: `${SERVERS[envType]}/graphql`,

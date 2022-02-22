@@ -17,6 +17,7 @@ function* getSavedUserProfile() {
     operationName: payload.operationName,
     payload,
     user2,
+    method,
   })
 
   try {
