@@ -9,7 +9,11 @@ import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegi
 function* getAuthRegistered() {
   const {
     forms: {
-      user: { userEmail2, userName2, userPasswordAuth2 },
+      user: {
+        userEmail: userEmail2,
+        userName: userName2,
+        userPasswordAuth: userPasswordAuth2,
+      },
     },
   } = yield select((store: IRootStore) => store)
 
@@ -34,7 +38,7 @@ function* getAuthRegistered() {
       phone: userPhone,
       roles: userRoles,
       status: userStatus,
-      uid: userId,
+      uid: userIdAuth,
       userName,
       webToken: userWebTokenAuth,
     } = register
@@ -42,7 +46,7 @@ function* getAuthRegistered() {
     yield put(
       actionSync.SET_USER_PROFILE({
         userEmail,
-        userId,
+        userIdAuth,
         userIdExternal: '',
         userLoginSource: 'un.userto.com',
         userName,

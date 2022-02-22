@@ -11,7 +11,13 @@ export const SET_USER_PROFILE: Function = (
 
   const { forms } = store
 
-  const formsNext = { ...forms, user: data }
+  const { user } = forms
+
+  const userPhone = user.userPhone ? user.userPhone : null
+
+  const userNext = { ...user, ...data, userPhone }
+
+  const formsNext = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

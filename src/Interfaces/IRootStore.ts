@@ -6,7 +6,8 @@ export interface IUser {
   userDateUpdated: string
   userEmail: string
   userGender: string
-  userId: string
+  userIdProfile: string
+  userIdAuth: string
   userIdExternal: string
   userInfoAbout: string
   userLanguages: string[]

@@ -1,5 +1,5 @@
 import { SERVERS } from '../Constants/servers.const'
-import { FRAGMENTS } from './fragments'
+import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 const headers = {
@@ -16,7 +16,7 @@ export const sendEmailDocumentConnector: Function = (
   fragmentName: string
 ): any => {
   const envType: string = getDetectedEnv()
-  const env: string = envType === 'remote' ? 'production' : 'development'
+  const env = envType === 'remote' ? 'production' : 'development'
 
   const obj: any = {
     testCapture: 'should return 200 code and data defined',
@@ -29,7 +29,9 @@ export const sendEmailDocumentConnector: Function = (
         sendCc,
         sendBcc,
       },
-      query: `query SendEmailDocument($documentID: String!, $sendTo: String!, $sendCc: String!, $sendBcc: String!){sendEmailDocument(documentID: $documentID, sendTo: $sendTo, sendCc: $sendCc, sendBcc: $sendBcc){ ...${fragmentName} }} fragment ${FRAGMENTS[fragmentName]}`,
+      query: `query SendEmailDocument($documentID: String!, $sendTo: String!, $sendCc: String!, $sendBcc: String!){ \
+        sendEmailDocument(documentID: $documentID, sendTo: $sendTo, sendCc: $sendCc, sendBcc: $sendBcc){ ...${fragmentName} }} \ 
+        fragment ${FRAGMENTS_STRINGS[fragmentName]}`,
     },
     options: { headers: { ...headers } },
     url: <string>`${SERVERS[envType]}/graphql`,
