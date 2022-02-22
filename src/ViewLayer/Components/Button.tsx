@@ -15,7 +15,7 @@ export interface ButtonArgs {
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string // tooltips text for the button to provide user with a promt
   tooltipPosition?: string // options: ['top','right','bottom','left']
-  isTooltipVisible?: boolean // is tooltips visible, to manage it
+  isTooltipVisibleForced?: boolean // is tooltips visible, to manage it
   isUnderlined?: boolean // is the button underlined to highlight on of the buttons
   handleEvents?: Function // to pass handleEvents custom functioon instead of the action
 }
@@ -40,7 +40,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
     isDisplaying = true,
     tooltipText = '',
     tooltipPosition = '',
-    isTooltipVisible = false,
+    isTooltipVisibleForced = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
   } = props
@@ -57,7 +57,7 @@ export const Button: React.FunctionComponent<ButtonArgs> = (
     left: '_tooltipLeft',
   }[tooltipPosition]
 
-  classTooltipAdd = isTooltipVisible
+  classTooltipAdd = isTooltipVisibleForced
     ? `${classTooltipAdd} __tooltipTextVisible`
     : classTooltipAdd
 

@@ -292,7 +292,7 @@ export const SearchFormSepChRP: React.FunctionComponent<any> = (
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
   }

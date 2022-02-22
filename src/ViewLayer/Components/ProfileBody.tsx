@@ -189,7 +189,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
   }

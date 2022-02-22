@@ -29,7 +29,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
     imageAvatarDefaultProps: {

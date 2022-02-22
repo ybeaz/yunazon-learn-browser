@@ -79,7 +79,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
       isDisplaying: true,
       tooltipText: DICTIONARY['Next'][language],
       tooltipPosition: 'top',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
   }

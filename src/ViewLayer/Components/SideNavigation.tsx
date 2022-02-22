@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -17,9 +18,9 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     componentsState: { isSideNavVisible },
   } = store
 
-  const userStatus = user?.userStatus
-
   let history = useHistory()
+
+  const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
   const buttonPropsArr = [
     {
@@ -27,6 +28,12 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_HOME', data: { history, path: '/sep' } },
+    },
+    {
+      icon: 'MdHome',
+      captureRight: DICTIONARY.My_profile[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'GO_HOME', data: { history, path: '/profile' } },
     },
     {
       icon: 'HiOutlineAcademicCap',
@@ -42,15 +49,6 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         typeEvent: 'CREATE_COURSE',
         data: { contentComponentName: 'SideNavigation' },
       },
-    },
-    {
-      icon: 'MdPerson',
-      captureRight: DICTIONARY.PersonalСabinet[language],
-      classAdded:
-        userStatus === 'success'
-          ? 'Button_sideMenuItems Button_personalCabinet_authorized'
-          : 'Button_sideMenuItems',
-      action: { typeEvent: 'DEV_STAGE' },
     },
     {
       icon: 'MdFlag',
@@ -70,6 +68,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
     },
+    { ...buttonAuthUserProps },
   ]
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {

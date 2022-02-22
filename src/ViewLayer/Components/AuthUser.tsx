@@ -32,7 +32,7 @@ export const AuthUser: React.FunctionComponent<any> = (
 
   const SCENARIO = {
     signOut: {
-      title: DICTIONARY.SignOut[language],
+      title: DICTIONARY.Logout[language],
       scenarioTypeEvent: 'AUTH_SIGN_OUT',
     },
     signInManually: {

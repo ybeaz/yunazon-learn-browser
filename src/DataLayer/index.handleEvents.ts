@@ -2,6 +2,7 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { CLICK_SIDE_NAV_ITEM } from './handlers/CLICK_SIDE_NAV_ITEM'
 import { ONCHANGE_USER_NAME_NICK } from './handlers/ONCHANGE_USER_NAME_NICK'
 import { SELECT_USER_MEDIA } from './handlers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './handlers/SELECT_USER_GENDER'
@@ -95,6 +96,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    CLICK_SIDE_NAV_ITEM,
     SELECT_USER_MEDIA,
     SELECT_USER_GENDER,
     ONCHANGE_USER_BIRTH_YEAR,

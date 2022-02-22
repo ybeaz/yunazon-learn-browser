@@ -91,7 +91,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
       isDisplaying: true,
       tooltipText: DICTIONARY['Next'][language],
       tooltipPosition: 'top',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
   }

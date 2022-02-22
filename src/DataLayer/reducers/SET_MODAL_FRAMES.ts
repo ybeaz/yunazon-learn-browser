@@ -10,6 +10,7 @@ export const SET_MODAL_FRAMES: Function = (
   const { modalFrames } = componentsState
 
   let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
+
   if (data.length > 0) {
     modaleFramesNext = getUniqArrDeep(modalFrames)
     modaleFramesNext = getUpdatedArrByArrInput(
