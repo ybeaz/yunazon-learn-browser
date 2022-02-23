@@ -30,6 +30,9 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   } = useSelector((store: IRootStore) => store)
 
   const {
+    userWebTokenAuth,
+    userIdAuth,
+    userIdProfile,
     userName,
     userNameNick,
     userLanguages,

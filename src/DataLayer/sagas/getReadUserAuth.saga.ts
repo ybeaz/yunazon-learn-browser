@@ -2,16 +2,16 @@ import axios from 'axios'
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getSavedUserProfileConnector } from '../../CommunicationLayer/getSavedUserProfile.connector'
+import { getReadUserAuthConnector } from '../../CommunicationLayer/getReadUserAuth.connector'
 
-function* getSavedUserProfile() {
+function* getReadUserAuth() {
   const {
     forms: { user },
   } = yield select(store => store)
 
-  const { userIdExternal, ...user2 } = user
+  const { userIdExternal, userWebTokenAuth, ...user2 } = user
 
-  const { method, url, payload, options } = getSavedUserProfileConnector(user2)
+  const { method, url, payload, options } = getReadUserAuthConnector(user2)
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -26,13 +26,10 @@ function* getSavedUserProfile() {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
-    console.info('getSavedUserProfile [40]', error.name + ': ' + error.message)
+    console.info('getReadUserAuth [45]', error.name + ': ' + error.message)
   }
 }
 
-export default function* getSavedUserProfileWatcher() {
-  yield takeEvery(
-    [actionAsync.SAVE_USER_PROFILE.REQUEST().type],
-    getSavedUserProfile
-  )
+export default function* getReadUserAuthWatcher() {
+  yield takeEvery([actionAsync.READ_USER_AUTH.REQUEST().type], getReadUserAuth)
 }

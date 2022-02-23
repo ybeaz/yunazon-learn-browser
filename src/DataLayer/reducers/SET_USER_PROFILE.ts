@@ -7,7 +7,8 @@ export const SET_USER_PROFILE: Function = (
 ): IRootStore => {
   const { userWebTokenAuth } = data
 
-  getSetObjToLocalStorage({ userWebTokenAuth })
+  /** @description userWebTokenAuth is set once and unset with AUTH_SIGN_OUT */
+  if (userWebTokenAuth) getSetObjToLocalStorage({ userWebTokenAuth })
 
   const { forms } = store
 
