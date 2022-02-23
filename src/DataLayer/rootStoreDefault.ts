@@ -81,6 +81,7 @@ export const formsDefault: IForms = {
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,
+  userPrev: userStoreDefault,
   user: userStoreDefault,
 }
 

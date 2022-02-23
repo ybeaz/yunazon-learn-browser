@@ -26,13 +26,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 ): ReactElement => {
   const {
     language,
-    forms: { user },
+    forms: { user, userPrev },
   } = useSelector((store: IRootStore) => store)
 
   const {
-    userWebTokenAuth,
-    userIdAuth,
-    userIdProfile,
     userName,
     userNameNick,
     userLanguages,
@@ -56,6 +53,10 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
+  const isChangedForm = JSON.stringify(userPrev) !== JSON.stringify(user)
+  const buttonSearchSepClass = isChangedForm
+    ? 'Button_searchSepActive'
+    : 'Button_searchSepPassive'
   const defaultOption = DICTIONARY.notSelected
   const stubOnAction = () => {}
 
@@ -183,12 +184,14 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       style: { width: '100%' },
     },
     buttonSaveProfileProps: {
-      classAdded: 'Button_searchSep',
+      classAdded: `${buttonSearchSepClass}`,
       icon: null,
       icon2: null,
       captureLeft: DICTIONARY['Save'][language],
       captureRight: '',
-      action: { typeEvent: 'CLICK_SAVE_PROFILE' },
+      action: isChangedForm
+        ? { typeEvent: 'CLICK_SAVE_PROFILE' }
+        : { typeEvent: '' },
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',

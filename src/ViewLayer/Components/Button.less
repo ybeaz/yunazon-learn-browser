@@ -410,7 +410,7 @@
   }
 }
 
-.Button_searchSep {
+.Button_searchSepPassive {
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;
@@ -443,6 +443,7 @@
     flex: 1;
     height: 2.5rem;
     justify-content: space-evenly;
+    cursor: not-allowed;
 
     &:active,
     &:focus {
@@ -476,6 +477,14 @@
     ._capture_left {
       font-size: @fontSizeS;
     }
+  }
+}
+
+.Button_searchSepActive {
+  .Button_searchSepPassive;
+
+  .__button {
+    cursor: pointer;
   }
 }
 

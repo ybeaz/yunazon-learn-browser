@@ -65,6 +65,7 @@ export interface IForms {
   sendTo: string
   sendCc: string
   searchFormSep: ISearchFormSep
+  userPrev: IUser
   user: IUser
 }
 

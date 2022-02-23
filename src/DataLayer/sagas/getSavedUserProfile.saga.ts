@@ -22,7 +22,13 @@ function* getSavedUserProfile() {
 
     const { responseMessage, ...rest } = data[payload.operationName]
 
-    yield put(actionSync.SET_USER_PROFILE({ ...rest, userIdExternal }))
+    yield put(
+      actionSync.SET_USER_PROFILE({
+        ...rest,
+        userIdExternal,
+        calledFrom: 'SAVE_USER_PROFILE',
+      })
+    )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
