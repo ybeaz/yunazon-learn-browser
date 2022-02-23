@@ -18,7 +18,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     componentsState: { isSideNavVisible },
   } = store
 
-  let history = useHistory()
+  const history = useHistory()
 
   const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
@@ -27,19 +27,22 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_HOME', data: { history, path: '/sep' } },
+      action: { typeEvent: 'GO_SCREEN', data: { history, path: '/sep' } },
+      isDisplaying: true,
     },
     {
       icon: 'MdPerson',
       captureRight: DICTIONARY.My_profile[language],
       classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_HOME', data: { history, path: '/profile' } },
+      action: { typeEvent: 'GO_SCREEN', data: { history, path: '/profile' } },
+      isDisplaying: user.userStatus === 'success',
     },
     {
       icon: 'HiOutlineAcademicCap',
       captureRight: DICTIONARY.Academy[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history } },
+      isDisplaying: true,
     },
     {
       icon: 'MdQueue',
@@ -49,24 +52,28 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         typeEvent: 'CREATE_COURSE',
         data: { contentComponentName: 'SideNavigation' },
       },
+      isDisplaying: true,
     },
     {
       icon: 'MdFlag',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     {
       icon: 'MdAddShoppingCart',
       captureRight: DICTIONARY.Services[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     {
       icon: 'MdContactMail',
       captureRight: DICTIONARY.Contacts[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     { ...buttonAuthUserProps },
   ]

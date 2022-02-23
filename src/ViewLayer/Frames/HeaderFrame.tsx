@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
@@ -64,6 +64,8 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
     language,
   } = useSelector((store2: IRootStore) => store2)
 
+  const history = useHistory()
+
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
@@ -107,7 +109,12 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       tooltipPosition: 'bottom',
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
     },
-    buttonAuthUserProps: getButtonAuthUserProps(user, language, 'header'),
+    buttonAuthUserProps: getButtonAuthUserProps(
+      user,
+      language,
+      'header',
+      history
+    ),
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',

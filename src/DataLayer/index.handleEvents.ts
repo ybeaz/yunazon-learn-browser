@@ -59,7 +59,7 @@ import { GET_AUTH_SIGN_UP } from './handlers/GET_AUTH_SIGN_UP'
 import { GET_COURSE_QUERY_PR_QN } from './handlers/GET_COURSE_QUERY_PR_QN'
 import { GO_ACADEMY_SCREEN } from './handlers/GO_ACADEMY_SCREEN'
 import { GO_BACK_FROM_CERTIFICATE } from './handlers/GO_BACK_FROM_CERTIFICATE'
-import { GO_HOME } from './handlers/GO_HOME'
+import { GO_SCREEN } from './handlers/GO_SCREEN'
 import { ONCHANGE_USER_EMAIL } from './handlers/ONCHANGE_USER_EMAIL'
 import { ONCHANGE_EMAIL_CC } from './handlers/ONCHANGE_EMAIL_CC'
 import { ONCHANGE_EMAIL_TO } from './handlers/ONCHANGE_EMAIL_TO'
@@ -152,7 +152,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     GET_COURSE_QUERY_PR_QN,
     GO_ACADEMY_SCREEN,
     GO_BACK_FROM_CERTIFICATE,
-    GO_HOME,
+    GO_SCREEN,
     ONCHANGE_USER_EMAIL,
     ONCHANGE_EMAIL_CC,
     ONCHANGE_EMAIL_TO,

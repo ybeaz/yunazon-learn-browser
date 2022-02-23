@@ -3,7 +3,12 @@ import { IUser } from '../../Interfaces/IRootStore'
 import { ButtonArgs } from '../Components/Button'
 
 interface IGetButtonAuthUser {
-  (user2: IUser, language: string, componentFrom: string): ButtonArgs
+  (
+    user2: IUser,
+    language: string,
+    componentFrom: string,
+    history?: any
+  ): ButtonArgs
 }
 
 /**
@@ -13,7 +18,8 @@ interface IGetButtonAuthUser {
 export const getButtonAuthUserProps: IGetButtonAuthUser = (
   user,
   language,
-  componentFrom
+  componentFrom,
+  history = {}
 ) => {
   const { userStatus, userName } = user
 
@@ -79,6 +85,27 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
   }[`${componentFrom}+${userStatus}`]
 
+  const actionMain = {
+    typeEvent,
+    data: [
+      {
+        childName: 'AuthUser',
+        isActive: true,
+        childProps,
+      },
+    ],
+  }
+
+  const actionProfile = {
+    typeEvent: 'GO_SCREEN',
+    data: { history, path: '/profile' },
+  }
+
+  const action =
+    `${componentFrom}+${userStatus}` === 'header+success'
+      ? actionProfile
+      : actionMain
+
   return {
     icon,
     captureRight,
@@ -86,15 +113,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     tooltipText,
     isTooltipVisibleForced: false,
     tooltipPosition,
-    action: {
-      typeEvent,
-      data: [
-        {
-          childName: 'AuthUser',
-          isActive: true,
-          childProps,
-        },
-      ],
-    },
+    action,
+    isDisplaying: true,
   }
 }
