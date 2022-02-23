@@ -1,7 +1,6 @@
 import { store } from '../store'
 import { IActionEvent } from '../../Interfaces/IActionEvent'
 import { actionSync } from '../../DataLayer/index.action'
-import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
 const { dispatch } = store
 
@@ -21,7 +20,6 @@ export const AUTH_SIGN_OUT: IActionEvent = (event, data) => {
 
   dispatch(
     actionSync.SET_USER_PROFILE({
-      ...userStoreDefault,
       calledFrom: 'AUTH_SIGN_OUT',
     })
   )

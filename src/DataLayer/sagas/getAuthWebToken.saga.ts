@@ -45,7 +45,7 @@ function* getAuthWebToken(args: any) {
       })
     )
 
-    // yield put(actionAsync.READ_USER_AUTH.REQUEST())
+    yield put(actionAsync.READ_USER_AUTH.REQUEST())
   } catch (error) {
     console.info('getAuthWebToken.saga [25]', { message: error.message })
   }

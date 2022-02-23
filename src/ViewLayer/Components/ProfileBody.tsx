@@ -30,7 +30,6 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   } = useSelector((store: IRootStore) => store)
 
   const {
-    userWebTokenAuth,
     userIdAuth,
     userIdProfile,
     userName,
@@ -200,12 +199,13 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
 
-  console.info('ProfileBody [203]', {
-    userName,
-    userIdAuth,
-    userIdProfile,
-    user,
-  })
+  // console.info('ProfileBody [203]', {
+  //   userNameNick,
+  //   userName,
+  //   userIdAuth,
+  //   userIdProfile,
+  //   user,
+  // })
 
   return (
     <div className='ProfileBody'>

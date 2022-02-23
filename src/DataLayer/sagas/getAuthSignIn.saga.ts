@@ -51,6 +51,7 @@ function* getAuthSignIn() {
       })
     )
 
+    console.info()
     yield put(actionAsync.READ_USER_AUTH.REQUEST())
 
     const data = [
