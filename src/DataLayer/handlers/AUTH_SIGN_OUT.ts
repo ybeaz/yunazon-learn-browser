@@ -19,5 +19,10 @@ export const AUTH_SIGN_OUT: IActionEvent = (event, data) => {
     // console.info('handleEvents [248]', 'FB logout', { response })
   })
 
-  dispatch(actionSync.SET_USER_PROFILE(userStoreDefault))
+  dispatch(
+    actionSync.SET_USER_PROFILE({
+      ...userStoreDefault,
+      calledFrom: 'AUTH_SIGN_OUT',
+    })
+  )
 }
