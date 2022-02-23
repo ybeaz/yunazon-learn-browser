@@ -27,13 +27,14 @@
           border: 2px solid #ddd;
           height: 175px;
           width: 2px;
+          z-index: 10;
 
           .vl-innertext {
             position: absolute;
             top: 50%;
             transform: translate(-50%, -50%);
             border: 1px solid #ccc;
-            border-radius: 50%;
+            border-radius: 45%;
             padding: 8px 10px;
           }
         }
@@ -43,7 +44,7 @@
           display: flex;
           flex-direction: column;
           flex: 1;
-          padding: 0 50px;
+          width: 20vw;
 
           .fb {
             background-color: #3b5998;
@@ -129,18 +130,24 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
-    .col {
-      width: 100%;
-      margin-top: 0;
-    }
-    /* hide the vertical line */
-    .vl {
-      display: none;
-    }
-    /* show the hidden text on small screens */
-    .hide-md-lg {
-      display: block;
-      text-align: center;
+    .container {
+      .form {
+        .row {
+          .col {
+            width: 100%;
+            margin-top: 0;
+          }
+          /* hide the vertical line */
+          .vl {
+            display: none;
+          }
+          /* show the hidden text on small screens */
+          .hide-md-lg {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }

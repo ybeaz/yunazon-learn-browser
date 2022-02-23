@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
+import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../Components/PageActionsGroup'
 import { ShareButtons } from '../Components/ShareButtons'
@@ -10,7 +11,7 @@ import { LogoGroup } from '../Components/LogoGroup'
 import { Button } from '../Components/Button'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IUser, IRootStore } from '../../Interfaces/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
 import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
@@ -59,51 +60,11 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   } = props
 
   const {
-    componentsState: { modalFrames },
     forms: { user },
     language,
   } = useSelector((store2: IRootStore) => store2)
 
-  const getButtonAuthUser = (user2: IUser): any => {
-    const userStatus = user2?.userStatus
-    const userName = user2?.userName
-
-    const classAdded =
-      userStatus === 'success'
-        ? `Button_personalCabinet Button_personalCabinet_authorized`
-        : 'Button_personalCabinet'
-
-    const tooltipText =
-      userStatus === 'success' ? userName : DICTIONARY.PersonalСabinet[language]
-
-    const childProps =
-      userStatus === 'success'
-        ? { scenario: { branch: 'signOut', step: '' } }
-        : { scenario: { branch: 'signInManually', step: '' } }
-
-    return {
-      icon: 'MdPerson',
-      classAdded,
-      tooltipText,
-      tooltipPosition: 'bottom',
-      action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'AuthUser',
-            isActive: true,
-            childProps,
-          },
-        ],
-      },
-    }
-  }
-
-  const [buttonAuthUser, setButtonAuthUser] = useState(getButtonAuthUser(user))
-
-  useEffect(() => {
-    setButtonAuthUser(getButtonAuthUser(user))
-  }, [user])
+  const history = useHistory()
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
@@ -148,7 +109,12 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
       tooltipPosition: 'bottom',
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
     },
-    buttonAuthUserProps: buttonAuthUser,
+    buttonAuthUserProps: getButtonAuthUserProps(
+      user,
+      language,
+      'header',
+      history
+    ),
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',

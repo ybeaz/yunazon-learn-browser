@@ -30,6 +30,9 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
   } = useSelector((store: IRootStore) => store)
 
   const {
+    userWebTokenAuth,
+    userIdAuth,
+    userIdProfile,
     userName,
     userNameNick,
     userLanguages,
@@ -189,14 +192,13 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       isDisplaying: true,
       tooltipText: '',
       tooltipPosition: '',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
   }
 
   const classCol01 = '_col_1'
   const classCol02 = '_col_1'
-  console.info('ProfileBody [199]', { user })
 
   return (
     <div className='ProfileBody'>

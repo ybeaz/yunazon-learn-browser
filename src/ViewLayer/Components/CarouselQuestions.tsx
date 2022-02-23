@@ -155,7 +155,7 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     isDisplaying: isButtonSlideStart,
     tooltipText: youCanCheckYourUnderstanding,
     tooltipPosition: 'bottom',
-    isTooltipVisible: true,
+    isTooltipVisibleForced: true,
   }
 
   return (

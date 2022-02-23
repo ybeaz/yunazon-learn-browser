@@ -44,7 +44,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
       isDisplaying: true,
       tooltipText: DICTIONARY['Up'][language],
       tooltipPosition: 'top',
-      isTooltipVisible: false,
+      isTooltipVisibleForced: false,
       isUnderlined: false,
     },
     searchFormSepTopProps: {

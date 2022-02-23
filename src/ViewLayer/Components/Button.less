@@ -87,6 +87,76 @@
   }
 }
 
+.Button_sideMenuItems {
+  width: fit-content;
+
+  .__tooltipText {
+    font-size: @fontSize;
+  }
+
+  .__button {
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
+        display: flex;
+        position: relative;
+        height: 2.2rem;
+        cursor: pointer;
+        font-size: @fontSize;
+      }
+    }
+  }
+}
+
+.Button_personalCabinet_authorized {
+  .__button {
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._capture_left {
+      }
+      ._icon {
+        color: #04aa6d;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_personalCabinet {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  .__button {
+    flex: 1;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      ._capture_left {
+      }
+      ._icon {
+        height: 2rem;
+        width: 2rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
 .Button_Avatar {
   .__button {
     ._in {
@@ -560,7 +630,7 @@
       align-items: center;
       flex-direction: row;
       height: 1.5rem;
-      padding: 1.3rem 0;
+      padding: 1.3rem;
 
       ._capture_left {
       }
@@ -593,7 +663,7 @@
       align-items: center;
       flex-direction: row;
       height: 1.5rem;
-      padding: 1.3rem 0;
+      padding: 1.3rem;
 
       ._capture_left {
       }
@@ -742,54 +812,8 @@
   }
 }
 
-.Button_personalCabinet_authorized {
-  .__button {
-    &:active,
-    &:focus {
-    }
-    ._in {
-      ._capture_left {
-      }
-      ._icon {
-        color: #04aa6d;
-      }
-      ._capture_right {
-      }
-    }
-  }
-}
-
 .Button_ThemeToggle {
   padding: 0.25rem 0 0 0;
-}
-
-.Button_personalCabinet {
-  flex: 1;
-  padding: 0 0 0 0;
-  align-items: center;
-  .__button {
-    flex: 1;
-
-    &:active,
-    &:focus {
-    }
-
-    ._in {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      height: 1.5rem;
-      ._capture_left {
-      }
-      ._icon {
-        height: 2rem;
-        width: 2rem;
-      }
-      ._capture_right {
-      }
-    }
-  }
 }
 
 .Button_CallForActionMatrix {
@@ -960,25 +984,6 @@
       ._icon {
         -webkit-transform: rotateY(180deg);
         transform: rotateY(180deg);
-      }
-    }
-  }
-}
-
-.Button_sideMenuItems {
-  .__button {
-    &:active,
-    &:focus {
-    }
-
-    ._in {
-      ._icon {
-        display: flex;
-        position: relative;
-        height: 2.2rem;
-        padding-top: 4px;
-        cursor: pointer;
-        font-size: @fontSize;
       }
     }
   }

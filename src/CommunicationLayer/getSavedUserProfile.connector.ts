@@ -58,10 +58,6 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userZoneInfo,
     } = user
 
-    console.info('getSavedUserProfile.connector [61]', {
-      createUserQuery,
-    })
-
     let obj: any
 
     if (!userIdProfile) {

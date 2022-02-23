@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -17,22 +18,31 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     componentsState: { isSideNavVisible },
   } = store
 
-  const userStatus = user?.userStatus
+  const history = useHistory()
 
-  let history = useHistory()
+  const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
   const buttonPropsArr = [
     {
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_HOME', data: { history, path: '/sep' } },
+      action: { typeEvent: 'GO_SCREEN', data: { history, path: '/sep' } },
+      isDisplaying: true,
+    },
+    {
+      icon: 'MdPerson',
+      captureRight: DICTIONARY.My_profile[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'GO_SCREEN', data: { history, path: '/profile' } },
+      isDisplaying: user.userStatus === 'success',
     },
     {
       icon: 'HiOutlineAcademicCap',
       captureRight: DICTIONARY.Academy[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history } },
+      isDisplaying: true,
     },
     {
       icon: 'MdQueue',
@@ -42,34 +52,30 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         typeEvent: 'CREATE_COURSE',
         data: { contentComponentName: 'SideNavigation' },
       },
-    },
-    {
-      icon: 'MdPerson',
-      captureRight: DICTIONARY.PersonalСabinet[language],
-      classAdded:
-        userStatus === 'success'
-          ? 'Button_sideMenuItems Button_personalCabinet_authorized'
-          : 'Button_sideMenuItems',
-      action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     {
       icon: 'MdFlag',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     {
       icon: 'MdAddShoppingCart',
       captureRight: DICTIONARY.Services[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
     {
       icon: 'MdContactMail',
       captureRight: DICTIONARY.Contacts[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
+      isDisplaying: true,
     },
+    { ...buttonAuthUserProps },
   ]
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {

@@ -51,6 +51,8 @@ import {
 } from 'react-icons/ai'
 
 import {
+  BiLogOutCircle,
+  BiLogInCircle,
   BiVideoPlus,
   BiBuildingHouse,
   BiCookie,
@@ -110,6 +112,8 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  BiLogOutCircle,
+  BiLogInCircle,
   FaUserCircle,
   FaUserNinja,
   FaExchangeAlt,

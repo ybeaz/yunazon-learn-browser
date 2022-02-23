@@ -51,6 +51,8 @@ function* getAuthSignIn() {
       })
     )
 
+    yield put(actionAsync.READ_USER_AUTH.REQUEST())
+
     const data = [
       {
         childName: 'AuthUser',

@@ -2,17 +2,14 @@ import React from 'react'
 
 export type IDictionary = Record<string, any>
 
-// Какое знание хотите получить
-// Ваш вопрос
-// Ответим на все
-// Ищите на yourails
-// Вместе знаем все
-// Лица круглые
-
 export const DICTIONARY: IDictionary = {
   _: {
     en: '_',
     ru: '_',
+  },
+  My_profile: {
+    en: 'My profile',
+    ru: 'Мой профиль',
   },
   tell_about_yourself: {
     en: 'tell about yourself',
@@ -652,10 +649,6 @@ export const DICTIONARY: IDictionary = {
     en: 'Name',
     ru: 'Имя',
   },
-  SignOut: {
-    en: 'Sign out',
-    ru: 'Выйти',
-  },
   Back: {
     en: 'Back',
     ru: 'Назад',
@@ -671,6 +664,14 @@ export const DICTIONARY: IDictionary = {
   or: {
     en: 'or',
     ru: 'или',
+  },
+  Login: {
+    en: 'Login',
+    ru: 'Логин',
+  },
+  Logout: {
+    en: 'logout',
+    ru: 'Выйти',
   },
   loginSocialMediaEmail: {
     en: 'Login with Social Media or Email',
@@ -719,10 +720,6 @@ export const DICTIONARY: IDictionary = {
   RepeatPassword: {
     en: 'Repeat password',
     ru: 'Повторите пароль',
-  },
-  Login: {
-    en: 'Login',
-    ru: 'Логин',
   },
   createCourseQuiz: {
     en: 'Create course / quiz',
