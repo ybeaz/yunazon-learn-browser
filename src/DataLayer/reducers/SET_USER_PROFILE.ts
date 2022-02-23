@@ -31,7 +31,7 @@ export const SET_USER_PROFILE: Function = (
     userNext = { ...user, ...dataRest, userPhone }
   }
 
-  const formsNext = { ...forms, user: userNext }
+  const formsNext = { ...forms, user: userNext, userPrev: userNext }
 
   return { ...store, forms: formsNext }
 }

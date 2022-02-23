@@ -277,7 +277,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Button_BackToTop .__button,
-    .Button_searchSep .__button {
+    .Button_searchSepActive .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }
@@ -285,11 +285,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_startModule .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
-    }
-
-    .Button_ForgetPassword .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .Button_ForgetPassword ._in {
@@ -439,6 +434,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
     .Button_personalCabinet .__button,
+    .Button_personalCabinet_authorized .__button,
     .Button_ThemeToggle .__button {
       background-color: ${props2 =>
         ({
@@ -480,7 +476,17 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Button_Avatar ._in {
-      color: ${props2 => getColor(props2, 'colorGrey', medial, lighter4)};
+      color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
+    }
+
+    .Button_searchSepPassive .__button {
+      background-color: ${props2 =>
+        getColor(props2, 'colorGrey', opaciter2, middle)};
+    }
+
+    .Button_ForgetPassword .__button {
+      background-color: ${props2 =>
+        getColor(props2, 'colorGrey', medial, middle)};
     }
 
     .ModalFrames {
