@@ -8,6 +8,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 const { dispatch, getState } = store
 
 export const LOAD_PROFILES: IActionEvent = (event, data) => {
-  console.info('LOAD_PROFILES [11]')
   dispatch(actionAsync.READ_USERS.REQUEST())
 }

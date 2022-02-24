@@ -59,6 +59,8 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
     <div className='SearchGroupSep'>
       <SearchFormSep {...propsOut.searchFormSepTopProps} />
 
+      <h2 className='_titleSection'>ProfilesList</h2>
+
       <h2 className='_titleSection'>{DICTIONARY['Online'][language]}</h2>
       <UsersOnline />
 
@@ -96,7 +98,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         <SearchFormSep {...propsOut.searchFormSepBottomProps} />
       )}
 
-      <a href='/sep#id_header_SkillsExchangeSearch'>
+      <a href='/sep#id_header_SkillsExchangeMatrix'>
         <Button {...propsOut.buttonBackToTopProps} />
       </a>
     </div>

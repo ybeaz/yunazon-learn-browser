@@ -1,18 +1,21 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { useEffect, ReactElement } from 'react'
+import { useSelector } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
-import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Image } from '../Components/Image'
+import { FooterFrame } from '../Frames/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
-import { FooterFrame } from '../Frames/FooterFrame'
-import { MainFrame } from '../Frames/MainFrame'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { SearchGroupSep } from '../Components/SearchGroupSep'
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 
-interface ProfileArgs {
+interface SkillsExchangeMatrixProps {
   routeProps: {
     location: {
       pathname: string
@@ -22,9 +25,9 @@ interface ProfileArgs {
   themeDafault: string
 }
 
-export const Profile: React.FunctionComponent<ProfileArgs> = (
-  props: ProfileArgs
-): ReactElement => {
+export const SkillsExchangeMatrix: React.FunctionComponent<
+  SkillsExchangeMatrixProps
+> = (props): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS'])
 
   const store = useSelector((store2: IRootStore) => store2)
@@ -39,16 +42,23 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     },
     themeDafault,
   } = props
+  const { sfb, scs, sfs, hiw, intro, ssr } = getParsedUrlQuery(search)
 
   useEffect(() => {
     handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
     handleEvents({}, { typeEvent: 'SELECT_LANGUAGE_APP_INIT' })
+
+    intro && handleEvents({}, { typeEvent: 'SEP_INTRO_IN', data: intro })
+
+    ssr &&
+      handleEvents({}, { typeEvent: 'SEP_SELECT_SKILLS_REQUIRED', data: ssr })
   }, [])
 
+  const moduleCapture = 'Exchange your skills, save your time'
+  const moduleDescription = 'Exchange your skills, save your time'
+  const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
+
   const propsOut = {
-    mainFrameProps: {
-      screenType: 'Profile',
-    },
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
@@ -66,23 +76,39 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
       isButtonsShare: false,
       isInstallMobileAppGroup: true,
     },
-    profileBodyProps: {},
+    mainFrameProps: {
+      screenType: 'SkillsExchangeMatrix',
+    },
+    searchGroupSepProps: {
+      sfb: sfb === 'true',
+      scs: scs === 'true',
+      sfs: sfs === 'true',
+      hiw: hiw === 'true',
+    },
     imageBottomProps: {
       classAdded: 'Image_bottom',
       src: 'https://yourails.com/images/city.svg',
     },
   }
+
   return (
-    <div className='Profile'>
+    <div className='SkillsExchangeMatrix'>
+      <Helmet>
+        <html lang={languageStore} />
+        <meta charSet='utf-8' />
+        <title>{moduleCapture}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={moduleDescription} />
+      </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <ProfileBody {...propsOut.profileBodyProps} />
+        <SearchGroupSep {...propsOut.searchGroupSepProps} />
         {/* middle-right */}
-        {null}
+        {isShownPalette && <Palette />}
         {/* footer */}
         <FooterFrame>
           <Image {...propsOut.imageBottomProps} />
