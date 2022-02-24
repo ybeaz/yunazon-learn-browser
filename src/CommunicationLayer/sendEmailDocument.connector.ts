@@ -1,24 +1,34 @@
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 
-const headers = {
+interface ISendEmailDocumentConnector {
+  (
+    documentID: string,
+    sendTo: string,
+    sendCc: string,
+    sendBcc: string,
+    fragmentName: string
+  ): IConnectorOutput
+}
+
+const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
 }
 
-export const sendEmailDocumentConnector: Function = (
-  documentID: string,
-  sendTo: string,
-  sendCc: string,
-  sendBcc: string,
-  fragmentName: string
-): any => {
+export const sendEmailDocumentConnector: ISendEmailDocumentConnector = (
+  documentID,
+  sendTo,
+  sendCc,
+  sendBcc,
+  fragmentName
+) => {
   const envType: string = getDetectedEnv()
-  const env = envType === 'remote' ? 'production' : 'development'
 
-  const obj: any = {
+  const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {

@@ -1,20 +1,29 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
-const headers = {
+interface IGetAuthRegisteredConnector {
+  (
+    userName: string,
+    userEmail: string,
+    userPasswordAuth: string
+  ): IConnectorOutput
+}
+
+const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
 }
 
-export const getAuthRegisteredConnector: Function = (
-  userName: string,
-  userEmail: string,
-  userPasswordAuth: string
-): any => {
+export const getAuthRegisteredConnector: IGetAuthRegisteredConnector = (
+  userName,
+  userEmail,
+  userPasswordAuth
+) => {
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
@@ -34,7 +43,7 @@ export const getAuthRegisteredConnector: Function = (
   `
   const query = print(queryAst as DocumentNode)
 
-  const obj: any = {
+  const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
@@ -50,7 +59,7 @@ export const getAuthRegisteredConnector: Function = (
       query,
     },
     options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
+    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj
