@@ -60,6 +60,6 @@ function* addDocument(dataInput) {
   }
 }
 
-export default function* addDocumentWatcher() {
+export default function* addDocumentSaga() {
   yield takeEvery([actionAsync.ADD_DOCUMENT.REQUEST().type], addDocument)
 }

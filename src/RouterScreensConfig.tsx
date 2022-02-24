@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { routes } from './Constants/routes.const'
 import { Profile } from './ViewLayer/Screens/Profile'
 import { StubForUserResearch } from './ViewLayer/Screens/StubForUserResearch'
-import { SkillsExchangeSearch } from './ViewLayer/Screens/SkillsExchangeSearch'
-import { SkillsExchangeSearchChRP } from './ViewLayer/Screens/SkillsExchangeSearchChRP'
+import { SkillsExchangeMatrix } from './ViewLayer/Screens/SkillsExchangeMatrix'
+import { SkillsExchangeMatrixChRP } from './ViewLayer/Screens/SkillsExchangeMatrixChRP'
 import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix'
 import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent'
 import { Error404 } from './ViewLayer/Screens/Error404'
@@ -14,8 +14,8 @@ import { Certificate } from './ViewLayer/Screens/Certificate'
 const PAGES = {
   Profile,
   StubForUserResearch,
-  SkillsExchangeSearch,
-  SkillsExchangeSearchChRP,
+  SkillsExchangeMatrix,
+  SkillsExchangeMatrixChRP,
   AcademyMatrix,
   Certificate,
   AcademyPresent,

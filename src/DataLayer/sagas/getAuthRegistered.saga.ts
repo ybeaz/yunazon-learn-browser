@@ -72,7 +72,7 @@ function* getAuthRegistered() {
   }
 }
 
-export default function* getAuthRegisteredWatcher() {
+export default function* getAuthRegisteredSaga() {
   yield takeEvery(
     [actionAsync.GET_AUTH_SIGN_UP.REQUEST().type],
     getAuthRegistered

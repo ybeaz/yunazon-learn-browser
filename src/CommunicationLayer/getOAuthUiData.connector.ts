@@ -1,22 +1,33 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
-const headers = {
+interface IGetOAuthUiDataConnector {
+  (connectorInput: {
+    userNameLast: string
+    userNameFirst: string
+    picture: string
+    userIdExternal: string
+    userName: string
+  }): IConnectorOutput
+}
+
+const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
 }
 
-export const getOAuthUiDataConnector: Function = ({
+export const getOAuthUiDataConnector: IGetOAuthUiDataConnector = ({
   userNameLast,
   userNameFirst,
   picture,
   userIdExternal,
   userName,
-}): any => {
+}) => {
   const envType: string = getDetectedEnv()
 
   const queryAst: DocumentNode = gql`
@@ -39,7 +50,7 @@ export const getOAuthUiDataConnector: Function = ({
   `
   const query = print(queryAst as DocumentNode)
 
-  const obj: any = {
+  const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
@@ -56,7 +67,7 @@ export const getOAuthUiDataConnector: Function = ({
       query,
     },
     options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
+    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

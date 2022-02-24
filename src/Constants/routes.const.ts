@@ -22,13 +22,13 @@ export const routes: IRoute[] = [
   {
     path: `/sep`,
     exact: true,
-    page: 'SkillsExchangeSearch',
+    page: 'SkillsExchangeMatrix',
     themeDafault: 'Light',
   },
   {
     path: `/sep-2`,
     exact: true,
-    page: 'SkillsExchangeSearchChRP',
+    page: 'SkillsExchangeMatrixChRP',
     themeDafault: 'Light',
   },
   {

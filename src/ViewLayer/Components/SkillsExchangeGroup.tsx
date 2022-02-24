@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
+import { ProfilesMatrix } from './ProfilesMatrix'
 import { Button } from './Button'
 import { IAction } from '../../Interfaces/IAction'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
@@ -12,16 +13,16 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep'
 
-interface SearchGroupSepArgs {
+interface SkillsExchangeGroupArgs {
   sfb: boolean
   scs: boolean
   sfs: boolean
   hiw: boolean
 }
 
-export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
-  props: SearchGroupSepArgs
-): ReactElement => {
+export const SkillsExchangeGroup: React.FunctionComponent<
+  SkillsExchangeGroupArgs
+> = (props: SkillsExchangeGroupArgs): ReactElement => {
   const { sfb, scs, sfs, hiw } = props
 
   const flags = {
@@ -56,8 +57,11 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   }
 
   return (
-    <div className='SearchGroupSep'>
+    <div className='SkillsExchangeGroup'>
       <SearchFormSep {...propsOut.searchFormSepTopProps} />
+
+      <h2 className='_titleSection'>Users</h2>
+      <ProfilesMatrix />
 
       <h2 className='_titleSection'>{DICTIONARY['Online'][language]}</h2>
       <UsersOnline />
@@ -96,7 +100,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
         <SearchFormSep {...propsOut.searchFormSepBottomProps} />
       )}
 
-      <a href='/sep#id_header_SkillsExchangeSearch'>
+      <a href='/sep#id_header_SkillsExchangeMatrix'>
         <Button {...propsOut.buttonBackToTopProps} />
       </a>
     </div>

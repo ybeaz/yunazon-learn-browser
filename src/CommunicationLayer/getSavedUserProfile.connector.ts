@@ -1,33 +1,18 @@
 import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IRootStore'
-
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { createUserQuery } from './queries/createUserQuery'
 import { updateUserQuery } from './queries/updateUserQuery'
-interface IHeaders {
-  'Access-Control-Allow-Origin': string
-  'Content-Type': string
-  timestamp: number
+
+interface IGetSavedUserProfileConnector {
+  (user: IUser): IConnectorOutput
 }
 
 const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
-}
-
-interface IGetSavedUserProfileConnector {
-  (user: IUser): {
-    testCapture: string
-    method: string
-    payload: {
-      operationName: string
-      variables: any
-      query: string
-    }
-    options: { headers: IHeaders }
-    url: string
-  }
 }
 
 export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
@@ -58,7 +43,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userZoneInfo,
     } = user
 
-    let obj: any
+    let obj: IConnectorOutput
 
     if (!userIdProfile) {
       obj = {

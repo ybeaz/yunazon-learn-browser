@@ -1,22 +1,26 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
-const headers = {
+interface IFindDocumentConnector {
+  (documentID: string, fragmentName: string): IConnectorOutput
+}
+
+const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
 }
 
-export const findDocumentConnector: Function = (
-  documentID: string,
-  fragmentName: string
-): any => {
+export const findDocumentConnector: IFindDocumentConnector = (
+  documentID,
+  fragmentName
+) => {
   const envType: string = getDetectedEnv()
-  const env: string = envType === 'remote' ? 'production' : 'development'
 
   const queryAst: DocumentNode = gql`
     query FindDocument($documentID: String!){
@@ -27,7 +31,7 @@ export const findDocumentConnector: Function = (
   `
   const query = print(queryAst as DocumentNode)
 
-  const obj: any = {
+  const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
@@ -38,7 +42,7 @@ export const findDocumentConnector: Function = (
       query,
     },
     options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
+    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

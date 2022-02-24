@@ -90,6 +90,7 @@ export const rootStoreDefault: IRootStore = {
   componentsState: componentsStateDefault,
   courses: [],
   documents: [],
+  users: [],
   globalVars: {
     theme: 'Dark',
     numberQuestionsInSlide: 2,

@@ -1,7 +1,7 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { userModelAllFragment } from '../fragments/userModelAllFragment'
+import { userModelExtendedGraphql } from '../fragments/userModelFragment'
 
 const queryAstCreate: DocumentNode = gql`
   mutation createUser($userInputGraphql: UserInputGraphql!) {
@@ -9,7 +9,7 @@ const queryAstCreate: DocumentNode = gql`
       ...UserModelGraphqlAll
     }
   }
-  ${userModelAllFragment}
+  ${userModelExtendedGraphql}
 `
 
 export const createUserQuery = print(queryAstCreate)

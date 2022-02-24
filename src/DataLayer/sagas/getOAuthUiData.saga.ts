@@ -57,7 +57,7 @@ function* getOAuthUiData(args: any) {
   }
 }
 
-export default function* getOAuthUiDataWatcher() {
+export default function* getOAuthUiDataSaga() {
   yield takeEvery(
     [actionAsync.GET_OAUTH_UI_DATA.REQUEST().type],
     getOAuthUiData

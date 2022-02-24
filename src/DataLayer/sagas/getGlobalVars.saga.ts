@@ -35,6 +35,6 @@ function* getGlobalVars() {
   }
 }
 
-export default function* getGlobalVarsWatcher() {
+export default function* getGlobalVarsSaga() {
   yield takeEvery([actionAsync.GET_GLOBAL_VARS.REQUEST().type], getGlobalVars)
 }

@@ -51,7 +51,7 @@ function* getAuthWebToken(args: any) {
   }
 }
 
-export default function* getAuthWebTokenWatcher() {
+export default function* getAuthWebTokenSaga() {
   yield takeEvery(
     [actionAsync.GET_AUTH_WEB_TOKEN.REQUEST().type],
     getAuthWebToken

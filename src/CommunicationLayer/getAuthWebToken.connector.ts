@@ -1,50 +1,54 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
+import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
-const headers = {
+interface IGetAuthWebTokenConnector {
+  (userWebTokenAuth: string): IConnectorOutput
+}
+
+const headers: IHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
 }
 
-export const getAuthWebTokenConnector: Function = (
-  userWebTokenAuth: string
-): any => {
-  const envType: string = getDetectedEnv()
+export const getAuthWebTokenConnector: IGetAuthWebTokenConnector =
+  userWebTokenAuth => {
+    const envType: string = getDetectedEnv()
 
-  const queryAst: DocumentNode = gql`
-    query AuthWebToken($webToken: String) {
-      authWebToken(webToken: $webToken) {
-        email
-        message
-        path
-        picture
-        roles
-        status
-        uid
-        userName
-        webToken
+    const queryAst: DocumentNode = gql`
+      query AuthWebToken($webToken: String) {
+        authWebToken(webToken: $webToken) {
+          email
+          message
+          path
+          picture
+          roles
+          status
+          uid
+          userName
+          webToken
+        }
       }
-    }
-  `
-  const query = print(queryAst as DocumentNode)
+    `
+    const query = print(queryAst as DocumentNode)
 
-  const obj: any = {
-    testCapture: 'should return 200 code and data defined',
-    method: 'post',
-    payload: {
-      operationName: 'AuthWebToken',
-      variables: {
-        webToken: userWebTokenAuth,
+    const obj: IConnectorOutput = {
+      testCapture: 'should return 200 code and data defined',
+      method: 'post',
+      payload: {
+        operationName: 'AuthWebToken',
+        variables: {
+          webToken: userWebTokenAuth,
+        },
+        query,
       },
-      query,
-    },
-    options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
-  }
+      options: { headers: { ...headers } },
+      url: `${SERVERS[envType]}/graphql`,
+    }
 
-  return obj
-}
+    return obj
+  }
