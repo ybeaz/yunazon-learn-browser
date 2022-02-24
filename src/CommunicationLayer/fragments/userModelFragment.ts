@@ -22,8 +22,8 @@ export const userModelFragment = gql`
   }
 `
 
-export const userModelExtFragment = gql`
-  fragment UserModelGraphqlAll on UserModelGraphql {
+export const userModelExtendedGraphql = gql`
+  fragment UserModelGraphqlAll on UserModelExtendedGraphql {
     responseMessage {
       status
       message
