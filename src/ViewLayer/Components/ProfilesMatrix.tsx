@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { ProfilePlate } from './ProfilePlate'
+import { IUser, IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface ProfilesMatrixArgs {}
@@ -15,10 +16,11 @@ export const ProfilesMatrix: React.FunctionComponent<ProfilesMatrixArgs> = (
 
   const propsOut = {}
 
-  const getProfilesList = profiles => {
-    return profiles.map(profile => {
-      const { userNameNick } = profile
-      return <div>{userNameNick}</div>
+  const getProfilesList = (profiles: IUser[]) => {
+    return profiles.map((profile: IUser) => {
+      const profilePlateProps = { profile }
+
+      return <ProfilePlate {...profilePlateProps} />
     })
   }
 

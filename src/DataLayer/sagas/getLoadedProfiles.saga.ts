@@ -21,10 +21,6 @@ function* getLoadedProfiles() {
     } = yield axios[method](url, payload, options)
 
     const { users, responseMessage } = data[payload.operationName]
-    console.info('getLoadedProfiles.saga [23]', {
-      users,
-      responseMessage,
-    })
 
     yield put(actionSync.SET_USERS(users))
 
