@@ -1,6 +1,6 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser } from '../../Interfaces/IRootStore'
-import { ButtonArgs } from '../Components/Button'
+import { IButtonArgs } from '../Components/Button'
 
 interface IGetButtonAuthUser {
   (
@@ -8,7 +8,7 @@ interface IGetButtonAuthUser {
     language: string,
     componentFrom: string,
     history?: any
-  ): ButtonArgs
+  ): IButtonArgs
 }
 
 /**

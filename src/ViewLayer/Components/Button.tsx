@@ -4,7 +4,7 @@ import { IAction } from '../../Interfaces/IAction'
 import { Image } from './Image'
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-export interface ButtonArgs {
+export interface IButtonArgs {
   icon?: string | null // react name for the first icon inside the button
   icon2?: string | null // react name for the second icon to exchange first one
   imageSrc?: string | null // image source for the image inside the button
@@ -20,14 +20,14 @@ export interface ButtonArgs {
   handleEvents?: Function // to pass handleEvents custom functioon instead of the action
 }
 
-export const ButtonTest: React.FunctionComponent<ButtonArgs> = (
-  props: ButtonArgs
+export const ButtonTest: React.FunctionComponent<IButtonArgs> = (
+  props: IButtonArgs
 ): ReactElement => {
   return <div className='Button'>Button</div>
 }
 
-export const Button: React.FunctionComponent<ButtonArgs> = (
-  props: ButtonArgs
+export const Button: React.FunctionComponent<IButtonArgs> = (
+  props: IButtonArgs
 ): React.ReactElement => {
   const {
     icon = null,

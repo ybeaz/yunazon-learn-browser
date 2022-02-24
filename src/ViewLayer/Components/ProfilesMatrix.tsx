@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef, ReactElement } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
 
 import { ProfilePlate } from './ProfilePlate'
 import { IUser, IRootStore } from '../../Interfaces/IRootStore'
-import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface ProfilesMatrixArgs {}
 
