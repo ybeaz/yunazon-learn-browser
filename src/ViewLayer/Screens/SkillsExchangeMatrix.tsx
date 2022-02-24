@@ -10,7 +10,7 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { SearchGroupSep } from '../Components/SearchGroupSep'
+import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -79,7 +79,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
     mainFrameProps: {
       screenType: 'SkillsExchangeMatrix',
     },
-    searchGroupSepProps: {
+    skillsExchangeGroupProps: {
       sfb: sfb === 'true',
       scs: scs === 'true',
       sfs: sfs === 'true',
@@ -106,7 +106,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <SearchGroupSep {...propsOut.searchGroupSepProps} />
+        <SkillsExchangeGroup {...propsOut.skillsExchangeGroupProps} />
         {/* middle-right */}
         {isShownPalette && <Palette />}
         {/* footer */}

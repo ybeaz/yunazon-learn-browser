@@ -12,16 +12,16 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep'
 
-interface SearchGroupSepArgs {
+interface SkillsExchangeGroupArgs {
   sfb: boolean
   scs: boolean
   sfs: boolean
   hiw: boolean
 }
 
-export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
-  props: SearchGroupSepArgs
-): ReactElement => {
+export const SkillsExchangeGroup: React.FunctionComponent<
+  SkillsExchangeGroupArgs
+> = (props: SkillsExchangeGroupArgs): ReactElement => {
   const { sfb, scs, sfs, hiw } = props
 
   const flags = {
@@ -56,7 +56,7 @@ export const SearchGroupSep: React.FunctionComponent<SearchGroupSepArgs> = (
   }
 
   return (
-    <div className='SearchGroupSep'>
+    <div className='SkillsExchangeGroup'>
       <SearchFormSep {...propsOut.searchFormSepTopProps} />
 
       <h2 className='_titleSection'>ProfilesList</h2>
