@@ -3,10 +3,15 @@ import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IRootStore'
 
 import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
-import { readUserAuthQuery } from './queries/readUserAuthQuery'
+import { readUsersQuery } from './queries/readUsersQuery'
 
-interface IGetReadUserAuthConnector {
-  (user: IUser): IConnectorOutput
+interface IGetReadUsersConnector {
+  (
+    user: IUser,
+    options: {
+      isActive: boolean
+    }
+  ): IConnectorOutput
 }
 
 const headers: IHeaders = {
@@ -15,18 +20,19 @@ const headers: IHeaders = {
   timestamp: +new Date(),
 }
 
-export const getReadUsersConnector: IGetReadUserAuthConnector = user => {
+export const getReadUsersConnector: IGetReadUsersConnector = (
+  user,
+  options
+) => {
   const envType: string = getDetectedEnv()
-
-  const { userIdAuth } = user
 
   let obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
     method: 'post',
     payload: {
-      operationName: 'readUserAuth',
-      variables: { userIdAuth },
-      query: readUserAuthQuery,
+      operationName: 'readUsers',
+      variables: { options },
+      query: readUsersQuery,
     },
     options: { headers: { ...headers } },
     url: `${SERVERS[envType]}/graphql`,

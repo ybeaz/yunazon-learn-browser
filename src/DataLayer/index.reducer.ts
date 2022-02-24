@@ -1,6 +1,7 @@
 import { IRootStore } from '../Interfaces/IRootStore'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { LOAD_PROFILES } from './reducers/LOAD_PROFILES'
 import { ONCHANGE_USER_NAME_NICK } from './reducers/ONCHANGE_USER_NAME_NICK'
 import { SELECT_USER_MEDIA } from './reducers/SELECT_USER_MEDIA'
 import { SELECT_USER_GENDER } from './reducers/SELECT_USER_GENDER'
@@ -72,6 +73,7 @@ export const indexReducer: IIndexReducer = (
 
   const output = {
     TEMPLATE,
+    LOAD_PROFILES,
     SELECT_USER_MEDIA,
     SELECT_USER_GENDER,
     ONCHANGE_USER_BIRTH_YEAR,

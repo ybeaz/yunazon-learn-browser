@@ -1,7 +1,7 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { userModelAllFragment } from '../fragments/userModelAllFragment'
+import { userModelExtFragment } from '../fragments/userModelFragment'
 
 const readUserAuthAst: DocumentNode = gql`
   query readUserAuth($userIdAuth: String!) {
@@ -9,7 +9,7 @@ const readUserAuthAst: DocumentNode = gql`
       ...UserModelGraphqlAll
     }
   }
-  ${userModelAllFragment}
+  ${userModelExtFragment}
 `
 
 export const readUserAuthQuery = print(readUserAuthAst)

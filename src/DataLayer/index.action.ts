@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'LOAD_PROFILES',
   'ONCHANGE_USER_NAME_NICK',
   'SELECT_USER_MEDIA',
   'SELECT_USER_GENDER',
@@ -63,6 +64,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'READ_USERS',
   'READ_USER_AUTH',
   'SAVE_USER_PROFILE',
   'ADD_DOCUMENT',

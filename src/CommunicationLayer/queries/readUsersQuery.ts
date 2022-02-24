@@ -1,15 +1,23 @@
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { userModelAllFragment } from '../fragments/userModelAllFragment'
+import { userModelFragment } from '../fragments/userModelFragment'
 
 const readUsersQueryAst: DocumentNode = gql`
   query readUsers($options: ReadUsersOptions!) {
     readUsers(options: $options) {
-      ...UserModelGraphqlAll
+      users {
+        ...UserModelGraphqlAll
+      }
+      responseMessage {
+        status
+        message
+      }
     }
   }
-  ${userModelAllFragment}
+  ${userModelFragment}
 `
 
-export const readUserAuthQuery = print(readUsersQueryAst)
+export const readUsersQuery = print(readUsersQueryAst)
+
+// readUsers(options: $options) {users { ...UserModelGraphqlAll }, responseMessage { status, message }}}
