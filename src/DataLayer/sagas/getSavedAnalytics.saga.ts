@@ -54,6 +54,6 @@ function* getSavedAnalytics(payload: IGetSavedAnalytics) {
   }
 }
 
-export default function* getSavedAnalyticsWatcher() {
+export default function* getSavedAnalyticsSaga() {
   yield takeEvery(actionAsync.SAVE_ANALYTICS.REQUEST().type, getSavedAnalytics)
 }

@@ -28,6 +28,6 @@ function* findDocument(dataInput) {
   }
 }
 
-export default function* findDocumentWatcher() {
+export default function* findDocumentSaga() {
   yield takeEvery([actionAsync.FIND_DOCUMENT.REQUEST().type], findDocument)
 }

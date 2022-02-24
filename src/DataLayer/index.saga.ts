@@ -1,35 +1,35 @@
 import { all, fork } from 'redux-saga/effects'
 
-import getReadUsersWatcher from './sagas/getReadUsers.saga'
-import getReadUserAuthWatcher from './sagas/getReadUserAuth.saga'
-import getSavedUserProfileWatcher from './sagas/getSavedUserProfile.saga'
-import getOAuthUiDataWatcher from './sagas/getOAuthUiData.saga'
-import getOAuthGoogleWatcher from './sagas/getOAuthGoogle.saga'
-import getAuthWebTokenWatcher from './sagas/getAuthWebToken.saga'
-import getAuthSignInWatcher from './sagas/getAuthSignIn.saga'
-import getAuthRegisteredWatcher from './sagas/getAuthRegistered.saga'
-import getSavedAnalyticsWatcher from './sagas/getSavedAnalytics.saga'
-import sendEmailDocumentWatcher from './sagas/sendEmailDocument.saga'
-import findDocumentWatcher from './sagas/findDocument.saga'
-import addDocumentWatcher from './sagas/addDocument.saga'
-import getContentInfoWatcher from './sagas/getContentInfo.saga'
-import getGlobalVarsWatcher from './sagas/getGlobalVars.saga'
+import getLoadedProfilesSaga from './sagas/getLoadedProfiles.saga'
+import getReadUserAuthSaga from './sagas/getReadUserAuth.saga'
+import getSavedUserProfileSaga from './sagas/getSavedUserProfile.saga'
+import getOAuthUiDataSaga from './sagas/getOAuthUiData.saga'
+import getOAuthGoogleSaga from './sagas/getOAuthGoogle.saga'
+import getAuthWebTokenSaga from './sagas/getAuthWebToken.saga'
+import getAuthSignInSaga from './sagas/getAuthSignIn.saga'
+import getAuthRegisteredSaga from './sagas/getAuthRegistered.saga'
+import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
+import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
+import findDocumentSaga from './sagas/findDocument.saga'
+import addDocumentSaga from './sagas/addDocument.saga'
+import getContentInfoSaga from './sagas/getContentInfo.saga'
+import getGlobalVarsSaga from './sagas/getGlobalVars.saga'
 
 export default function* indexSaga() {
   yield all([
-    fork(getReadUsersWatcher),
-    fork(getReadUserAuthWatcher),
-    fork(getSavedUserProfileWatcher),
-    fork(getOAuthUiDataWatcher),
-    fork(getOAuthGoogleWatcher),
-    fork(getAuthWebTokenWatcher),
-    fork(getAuthSignInWatcher),
-    fork(getAuthRegisteredWatcher),
-    fork(getSavedAnalyticsWatcher),
-    fork(sendEmailDocumentWatcher),
-    fork(findDocumentWatcher),
-    fork(addDocumentWatcher),
-    fork(getContentInfoWatcher),
-    fork(getGlobalVarsWatcher),
+    fork(getLoadedProfilesSaga),
+    fork(getReadUserAuthSaga),
+    fork(getSavedUserProfileSaga),
+    fork(getOAuthUiDataSaga),
+    fork(getOAuthGoogleSaga),
+    fork(getAuthWebTokenSaga),
+    fork(getAuthSignInSaga),
+    fork(getAuthRegisteredSaga),
+    fork(getSavedAnalyticsSaga),
+    fork(sendEmailDocumentSaga),
+    fork(findDocumentSaga),
+    fork(addDocumentSaga),
+    fork(getContentInfoSaga),
+    fork(getGlobalVarsSaga),
   ])
 }

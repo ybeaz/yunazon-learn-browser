@@ -4,7 +4,7 @@ import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getReadUsersConnector } from '../../CommunicationLayer/getReadUsers.connector'
 
-function* getReadUsers() {
+function* getLoadedProfiles() {
   const {
     forms: { user },
   } = yield select(store => store)
@@ -21,7 +21,7 @@ function* getReadUsers() {
     } = yield axios[method](url, payload, options)
 
     const { users, responseMessage } = data[payload.operationName]
-    console.info('getReadUsers.saga [23]', {
+    console.info('getLoadedProfiles.saga [23]', {
       users,
       responseMessage,
     })
@@ -30,10 +30,10 @@ function* getReadUsers() {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
-    console.info('getReadUsers [29]', error.name + ': ' + error.message)
+    console.info('getLoadedProfiles [29]', error.name + ': ' + error.message)
   }
 }
 
-export default function* getReadUsersWatcher() {
-  yield takeEvery([actionAsync.READ_USERS.REQUEST().type], getReadUsers)
+export default function* getLoadedProfilesSaga() {
+  yield takeEvery([actionAsync.READ_USERS.REQUEST().type], getLoadedProfiles)
 }

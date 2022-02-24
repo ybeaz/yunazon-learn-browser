@@ -52,7 +52,7 @@ function* sendEmailDocument(dataInput) {
   }
 }
 
-export default function* sendEmailDocumentWatcher() {
+export default function* sendEmailDocumentSaga() {
   yield takeEvery(
     [actionAsync.SEND_EMAIL_DOCUMENT.REQUEST().type],
     sendEmailDocument

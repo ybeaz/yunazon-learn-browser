@@ -43,6 +43,6 @@ function* getContentInfo() {
   }
 }
 
-export default function* getContentInfoWatcher() {
+export default function* getContentInfoSaga() {
   yield takeEvery([actionAsync.GET_CONTENT_DATA.REQUEST().type], getContentInfo)
 }

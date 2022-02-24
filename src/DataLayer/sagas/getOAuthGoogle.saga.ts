@@ -49,6 +49,6 @@ function* getOAuthGoogle(args: any) {
   }
 }
 
-export default function* getOAuthGoogleWatcher() {
+export default function* getOAuthGoogleSaga() {
   yield takeEvery([actionAsync.GET_OAUTH_GOOGLE.REQUEST().type], getOAuthGoogle)
 }

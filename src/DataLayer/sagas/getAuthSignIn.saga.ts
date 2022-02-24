@@ -69,6 +69,6 @@ function* getAuthSignIn() {
   }
 }
 
-export default function* getAuthSignInWatcher() {
+export default function* getAuthSignInSaga() {
   yield takeEvery([actionAsync.GET_AUTH_SIGN_IN.REQUEST().type], getAuthSignIn)
 }

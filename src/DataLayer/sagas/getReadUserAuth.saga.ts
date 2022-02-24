@@ -30,6 +30,6 @@ function* getReadUserAuth() {
   }
 }
 
-export default function* getReadUserAuthWatcher() {
+export default function* getReadUserAuthSaga() {
   yield takeEvery([actionAsync.READ_USER_AUTH.REQUEST().type], getReadUserAuth)
 }

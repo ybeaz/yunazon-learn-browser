@@ -36,7 +36,7 @@ function* getSavedUserProfile() {
   }
 }
 
-export default function* getSavedUserProfileWatcher() {
+export default function* getSavedUserProfileSaga() {
   yield takeEvery(
     [actionAsync.SAVE_USER_PROFILE.REQUEST().type],
     getSavedUserProfile
