@@ -26,7 +26,7 @@ function* getLoadedProfiles() {
       responseMessage,
     })
 
-    // yield put(actionSync.SET_USER_PROFILE({ ...rest, userIdExternal }))
+    yield put(actionSync.SET_USERS(users))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

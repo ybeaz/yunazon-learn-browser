@@ -74,6 +74,7 @@ export interface IRootStore {
   componentsState: IComponentsState
   courses: any[]
   documents: any[]
+  users: IUser[]
   globalVars: {
     theme: string
     numberQuestionsInSlide: number
