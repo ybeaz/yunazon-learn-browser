@@ -4,7 +4,12 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { getOptionsUserLanguages } from '../../Shared/getOptionsUserLanguages'
 import { getOptionsUserSkillsExpertise } from '../../Shared/getOptionsUserSkillsExpertise'
+import { COUNTRIES } from '../../Constants/countries.const'
+import { MEDIA } from '../../Constants/media.const'
+import { GENDER } from '../../Constants/gender.const'
+import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAddedProps } from '../../Interfaces/IAddedProps'
@@ -38,13 +43,15 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     language
   )
 
-  // const optionsForUserLanguages = getOptionsUserSkillsExpertise(
-  //   userSkillsExpertise,
-  //   CATEGORIES_TO_EXCHANGE,
-  //   language
-  // )
+  const optionsUserLanguages = getOptionsUserLanguages(
+    userLanguages,
+    LANGUAGES,
+    language
+  )
 
   console.info('ProfilePlate [34]', {
+    optionsUserLanguages,
+    userLanguages,
     optionsUserSkillsExpertise,
     userSkillsExpertise,
     CATEGORIES_TO_EXCHANGE,
@@ -56,10 +63,16 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
   let userSkillsExpertiseAddedProps: IAddedProps = { defaultValue: [] }
-
   if (userSkillsExpertise && userSkillsExpertise.length) {
     userSkillsExpertiseAddedProps = {
       value: userSkillsExpertise,
+    }
+  }
+
+  let userLanguagesAddedProps: IAddedProps = { defaultValue: [] }
+  if (userLanguages && userLanguages.length) {
+    userLanguagesAddedProps = {
+      value: userLanguages,
     }
   }
 
@@ -91,8 +104,8 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       optionFilterProp: 'children',
       options: optionsUserSkillsExpertise,
       placeholder: DICTIONARY['select'][language],
-      showSearch: true,
       style: { width: '100%' },
+      showSearch: false,
       open: false,
       removeIcon: null,
       bordered: false,
@@ -100,7 +113,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     userLanguagesProps: {
       allowClear: false,
       componentId: nanoid(),
-      ...userSkillsExpertiseAddedProps,
+      ...userLanguagesAddedProps,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -108,10 +121,10 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
-      options: optionsUserSkillsExpertise,
+      options: optionsUserLanguages,
       placeholder: DICTIONARY['select'][language],
-      showSearch: true,
       style: { width: '100%' },
+      showSearch: false,
       open: false,
       removeIcon: null,
       bordered: false,
