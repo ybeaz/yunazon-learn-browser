@@ -10,10 +10,10 @@ interface IGetOptionsUserSkillsExpertise {
 }
 
 /**
- * @description Function to return array of objects for userSkillsExpertises that fits option model of SelectAntd
+ * @description Function to return skills options for ses SelectAntd
  */
 
-export const getOptionsUserSkillsExpertise: IGetOptionsUserSkillsExpertise = (
+export const getOptionsAntdStandard: IGetOptionsUserSkillsExpertise = (
   userSkillsExpertise,
   CATEGORIES_TO_EXCHANGE,
   language

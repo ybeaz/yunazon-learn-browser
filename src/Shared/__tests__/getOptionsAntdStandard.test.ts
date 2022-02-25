@@ -1,4 +1,4 @@
-import { getOptionsUserSkillsExpertise } from '../getOptionsUserSkillsExpertise'
+import { getOptionsAntdStandard } from '../getOptionsAntdStandard'
 
 const userSkillsExpertise = [
   'Autoclub',
@@ -30,9 +30,9 @@ const CATEGORIES_TO_EXCHANGE = {
 
 const language = 'ru'
 
-describe('Test function getOptionsUserSkillsExpertise', () => {
+describe('Test function getOptionsAntdStandard', () => {
   it('test', () => {
-    const outputed = getOptionsUserSkillsExpertise(
+    const outputed = getOptionsAntdStandard(
       userSkillsExpertise,
       CATEGORIES_TO_EXCHANGE,
       language

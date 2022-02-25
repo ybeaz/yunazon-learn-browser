@@ -6,7 +6,7 @@ interface IGetOptionsUserLanguages {
 }
 
 /**
- * @description Function to return options for SelectAnt for languages
+ * @description Function to return languages options for SelectAnt
  */
 
 export const getOptionsUserLanguages: IGetOptionsUserLanguages = (

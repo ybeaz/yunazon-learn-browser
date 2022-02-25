@@ -1,10 +1,6 @@
 export type IMedia = Record<string, { en: string; ru: string }>
 
 export const MEDIA: IMedia = {
-  messenger_and_voice: {
-    en: 'messenger and voice',
-    ru: 'мессенджер и голос',
-  },
   messenger: {
     en: 'messenger',
     ru: 'мессенджер',

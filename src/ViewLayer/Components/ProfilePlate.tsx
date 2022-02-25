@@ -5,7 +5,7 @@ import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
 import { getOptionsUserLanguages } from '../../Shared/getOptionsUserLanguages'
-import { getOptionsUserSkillsExpertise } from '../../Shared/getOptionsUserSkillsExpertise'
+import { getOptionsAntdStandard } from '../../Shared/getOptionsAntdStandard'
 import { COUNTRIES } from '../../Constants/countries.const'
 import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
@@ -16,6 +16,10 @@ import { IAddedProps } from '../../Interfaces/IAddedProps'
 import { Button } from './Button'
 import { IUser } from '../../Interfaces/IRootStore'
 
+interface IOptionStandard {
+  label: string
+  value: string
+}
 interface IProfilePlateArgs {
   profile: IUser
   language: string
@@ -27,6 +31,8 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
   const { language, profile } = props
 
   const {
+    userGender,
+    userMedia,
     userAvatar,
     userNameNick,
     userLocaleCountry,
@@ -37,43 +43,41 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
 
   const stubOnAction = () => {}
 
-  const optionsUserSkillsExpertise = getOptionsUserSkillsExpertise(
-    userSkillsExpertise,
-    CATEGORIES_TO_EXCHANGE,
-    language
-  )
+  // const optionsUserLocaleCountry = getOptionsUserLocaleCountry(
+  //   userLocaleCountry,
+  //   COUNTRIES,
+  //   language
+  // )
 
-  const optionsUserLanguages = getOptionsUserLanguages(
-    userLanguages,
-    LANGUAGES,
-    language
-  )
+  // const optionsUserGender = getOptionsUserGender(
+  //       userGender,
+  //   COUNTRIES,
+  //   language
+  // )
+
+  // const optionsUserMedia = getOptionsUserMedia(
+  //   userMedia,
+  //   COUNTRIES,
+  //   language
+  // )
 
   console.info('ProfilePlate [34]', {
-    optionsUserLanguages,
-    userLanguages,
-    optionsUserSkillsExpertise,
-    userSkillsExpertise,
-    CATEGORIES_TO_EXCHANGE,
+    profile,
     language,
   })
 
-  const filterOption = (input, option) =>
+  const filterOption = (input: any, option: IOptionStandard) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
-  let userSkillsExpertiseAddedProps: IAddedProps = { defaultValue: [] }
-  if (userSkillsExpertise && userSkillsExpertise.length) {
-    userSkillsExpertiseAddedProps = {
-      value: userSkillsExpertise,
+  const getSelectAntdAddedProps = (input: string[]): any => {
+    let res: any = { defaultValue: [] }
+    if (input && input.length) {
+      res = {
+        value: input,
+      }
     }
-  }
-
-  let userLanguagesAddedProps: IAddedProps = { defaultValue: [] }
-  if (userLanguages && userLanguages.length) {
-    userLanguagesAddedProps = {
-      value: userLanguages,
-    }
+    return res
   }
 
   const propsOut = {
@@ -91,10 +95,9 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       isTooltipVisibleForced: false,
       isUnderlined: false,
     },
-    userSkillsExpertiseProps: {
+    selectCommonPart: {
       allowClear: false,
       componentId: nanoid(),
-      ...userSkillsExpertiseAddedProps,
       filterOption,
       mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
@@ -102,7 +105,6 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       onFocus: stubOnAction,
       onSearch: stubOnAction,
       optionFilterProp: 'children',
-      options: optionsUserSkillsExpertise,
       placeholder: DICTIONARY['select'][language],
       style: { width: '100%' },
       showSearch: false,
@@ -110,24 +112,37 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       removeIcon: null,
       bordered: false,
     },
-    userLanguagesProps: {
-      allowClear: false,
-      componentId: nanoid(),
-      ...userLanguagesAddedProps,
-      filterOption,
-      mode: 'multiple' as 'multiple' | 'tags',
-      onBlur: stubOnAction,
-      onChange: stubOnAction,
-      onFocus: stubOnAction,
-      onSearch: stubOnAction,
-      optionFilterProp: 'children',
-      options: optionsUserLanguages,
-      placeholder: DICTIONARY['select'][language],
-      style: { width: '100%' },
-      showSearch: false,
-      open: false,
-      removeIcon: null,
-      bordered: false,
+    userSkillsExpertiseProps() {
+      return {
+        ...this.selectCommonPart,
+        ...getSelectAntdAddedProps(userSkillsExpertise),
+        options: getOptionsAntdStandard(
+          userSkillsExpertise,
+          CATEGORIES_TO_EXCHANGE,
+          language
+        ),
+      }
+    },
+    userLanguagesProps() {
+      return {
+        ...this.selectCommonPart,
+        ...getSelectAntdAddedProps(userLanguages),
+        options: getOptionsUserLanguages(userLanguages, LANGUAGES, language),
+      }
+    },
+    userMediaProps() {
+      return {
+        ...this.selectCommonPart,
+        ...getSelectAntdAddedProps(userMedia),
+        options: getOptionsAntdStandard(userMedia, MEDIA, language),
+      }
+    },
+    userGenderProps() {
+      return {
+        ...this.selectCommonPart,
+        ...getSelectAntdAddedProps([userGender]),
+        options: getOptionsAntdStandard([userGender], GENDER, language),
+      }
     },
   }
 
@@ -143,18 +158,31 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       <div className='_col'>
         <label>Компетенции</label>
         <div className='_userSkillsExpertise'>
-          <SelectAntd {...propsOut.userSkillsExpertiseProps} />
+          <SelectAntd {...propsOut.userSkillsExpertiseProps()} />
         </div>
       </div>
 
       <div className='_col'>
         <label>Языки</label>
         <div className='_userLanguages'>
-          <SelectAntd {...propsOut.userLanguagesProps} />
+          <SelectAntd {...propsOut.userLanguagesProps()} />
         </div>
       </div>
 
-      {/* <div className='_col _userLanguages'>{userLanguages}</div> */}
+      <div className='_col'>
+        <label>Медиа</label>
+        <div className='_userMedia'>
+          <SelectAntd {...propsOut.userMediaProps()} />
+        </div>
+      </div>
+
+      <div className='_col'>
+        <label>Пол</label>
+        <div className='_userMedia'>
+          <SelectAntd {...propsOut.userGenderProps()} />
+        </div>
+      </div>
+
       <div className='_col _userLocaleCountry'>{userLocaleCountry}</div>
       <div className='_col _userInfoAbout'>{userInfoAbout}</div>
     </div>
