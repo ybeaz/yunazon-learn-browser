@@ -11,13 +11,11 @@ export const ProfilesMatrix: React.FunctionComponent<ProfilesMatrixArgs> = (
 ): ReactElement => {
   const { users, language } = useSelector((store2: IRootStore) => store2)
 
-  console.info('ProfilesMatrix [14]', { users, language })
-
   const propsOut = {}
 
   const getProfilesList = (profiles: IUser[]) => {
     return profiles.map((profile: IUser) => {
-      const profilePlateProps = { profile }
+      const profilePlateProps = { language, profile }
 
       return <ProfilePlate {...profilePlateProps} />
     })

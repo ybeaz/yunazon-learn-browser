@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Competencies: {
+    en: 'Competencies',
+    ru: 'Компетенции',
+  },
   My_profile: {
     en: 'My profile',
     ru: 'Мой профиль',

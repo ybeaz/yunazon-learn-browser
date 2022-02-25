@@ -13,7 +13,7 @@ export default {
   globals: {
     'ts-jest': {
       babel: true,
-      tsConfig: 'tsconfig.json',
+      tsconfig: 'tsconfig.json',
     },
   },
 }
