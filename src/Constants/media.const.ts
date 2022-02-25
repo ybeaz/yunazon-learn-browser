@@ -1,6 +1,10 @@
 export type IMedia = Record<string, { en: string; ru: string }>
 
 export const MEDIA: IMedia = {
+  messenger_and_voice: {
+    en: 'messenger and voice',
+    ru: 'мессенджер и голос',
+  },
   messenger: {
     en: 'messenger',
     ru: 'мессенджер',
@@ -14,8 +18,8 @@ export const MEDIA: IMedia = {
     ru: 'видео',
   },
   anyOnline: {
-    en: 'any online tool',
-    ru: 'любой способ онлайн',
+    en: 'any',
+    ru: 'любой',
   },
   // Zoom: {
   //   en: 'Zoom',

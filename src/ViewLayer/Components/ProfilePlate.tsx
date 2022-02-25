@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { Select as SelectAntd } from 'antd'
 import 'antd/dist/antd.css'
 
+import { getOptionsUserLocaleCountry } from '../../Shared/getOptionsUserLocaleCountry'
 import { getOptionsUserLanguages } from '../../Shared/getOptionsUserLanguages'
 import { getOptionsAntdStandard } from '../../Shared/getOptionsAntdStandard'
 import { COUNTRIES } from '../../Constants/countries.const'
@@ -45,18 +46,6 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
 
   // const optionsUserLocaleCountry = getOptionsUserLocaleCountry(
   //   userLocaleCountry,
-  //   COUNTRIES,
-  //   language
-  // )
-
-  // const optionsUserGender = getOptionsUserGender(
-  //       userGender,
-  //   COUNTRIES,
-  //   language
-  // )
-
-  // const optionsUserMedia = getOptionsUserMedia(
-  //   userMedia,
   //   COUNTRIES,
   //   language
   // )
@@ -144,6 +133,17 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
         options: getOptionsAntdStandard([userGender], GENDER, language),
       }
     },
+    userLocaleCountryProps() {
+      return {
+        ...this.selectCommonPart,
+        ...getSelectAntdAddedProps([userLocaleCountry]),
+        options: getOptionsUserLocaleCountry(
+          userLocaleCountry,
+          COUNTRIES,
+          language
+        ),
+      }
+    },
   }
 
   return (
@@ -183,7 +183,13 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
         </div>
       </div>
 
-      <div className='_col _userLocaleCountry'>{userLocaleCountry}</div>
+      <div className='_col'>
+        <label>Страна</label>
+        <div className='_userLocaleCountry'>
+          <SelectAntd {...propsOut.userLocaleCountryProps()} />
+        </div>
+      </div>
+
       <div className='_col _userInfoAbout'>{userInfoAbout}</div>
     </div>
   )
