@@ -1,5 +1,6 @@
 .ProfilePlate {
   display: flex;
+  padding: 0 0 2rem 0;
 
   ._col {
     display: flex;
@@ -9,22 +10,43 @@
     ._userAvatar {
       display: flex;
     }
-  }
 
-  ._userNameNick {
-    display: flex;
-  }
+    ._userNameNick {
+      display: flex;
+      padding: 0 0 0 3rem;
+    }
 
-  ._userSkillsExpertise {
-    display: flex;
-  }
+    ._colLanguages {
+      display: flex;
+      align-items: center;
+    }
 
-  ._userLanguages {
-    display: flex;
-  }
+    ._colMedia {
+      display: flex;
+      align-items: center;
+    }
 
-  ._userLocaleCountry {
-    display: flex;
+    ._userSkillsExpertise {
+      display: flex;
+    }
+
+    ._userLanguages {
+      display: flex;
+    }
+
+    ._userLocaleCountry {
+      display: flex;
+    }
+
+    ._colGender {
+      display: flex;
+      align-items: center;
+    }
+
+    ._colCountry {
+      display: flex;
+      align-items: center;
+    }
   }
 
   ._userInfoAbout {
@@ -39,4 +61,19 @@
   }
   @media @phone, @phone-strict {
   }
+}
+
+._label {
+  display: flex;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  color: #576f92;
+  background: rgba(228, 231, 240, 0.77);
+  border-radius: 4px;
+  width: fit-content;
+  padding: 4px;
+  height: fit-content;
 }

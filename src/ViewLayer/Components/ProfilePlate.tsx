@@ -130,7 +130,9 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps([userGender]),
-        options: getOptionsAntdStandard([userGender], GENDER, language),
+        options: userGender
+          ? getOptionsAntdStandard([userGender], GENDER, language)
+          : [],
       }
     },
     userLocaleCountryProps() {
@@ -156,41 +158,46 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       </div>
 
       <div className='_col'>
-        <label>Компетенции</label>
+        <label className='_label'>{DICTIONARY['Competencies'][language]}</label>
         <div className='_userSkillsExpertise'>
           <SelectAntd {...propsOut.userSkillsExpertiseProps()} />
         </div>
       </div>
 
       <div className='_col'>
-        <label>Языки</label>
-        <div className='_userLanguages'>
-          <SelectAntd {...propsOut.userLanguagesProps()} />
+        <div className='_colLanguages'>
+          <label className='_label'>{DICTIONARY['Languages'][language]}</label>
+          <div className='_userLanguages'>
+            <SelectAntd {...propsOut.userLanguagesProps()} />
+          </div>
+        </div>
+
+        <div className='_colMedia'>
+          <label className='_label'>{DICTIONARY['Media'][language]}</label>
+          <div className='_userMedia'>
+            <SelectAntd {...propsOut.userMediaProps()} />
+          </div>
+        </div>
+
+        <div className='_colGender'>
+          <label className='_label'>{DICTIONARY['Gender'][language]}</label>
+          <div className='_userMedia'>
+            <SelectAntd {...propsOut.userGenderProps()} />
+          </div>
+        </div>
+
+        <div className='_colCountry'>
+          <label className='_label'>{DICTIONARY['Country'][language]}</label>
+          <div className='_userLocaleCountry'>
+            <SelectAntd {...propsOut.userLocaleCountryProps()} />
+          </div>
         </div>
       </div>
 
       <div className='_col'>
-        <label>Медиа</label>
-        <div className='_userMedia'>
-          <SelectAntd {...propsOut.userMediaProps()} />
-        </div>
+        <label className='_label'>{DICTIONARY['AboutUser'][language]}</label>
+        <div className='_userInfoAbout'>{userInfoAbout}</div>
       </div>
-
-      <div className='_col'>
-        <label>Пол</label>
-        <div className='_userMedia'>
-          <SelectAntd {...propsOut.userGenderProps()} />
-        </div>
-      </div>
-
-      <div className='_col'>
-        <label>Страна</label>
-        <div className='_userLocaleCountry'>
-          <SelectAntd {...propsOut.userLocaleCountryProps()} />
-        </div>
-      </div>
-
-      <div className='_col _userInfoAbout'>{userInfoAbout}</div>
     </div>
   )
 }

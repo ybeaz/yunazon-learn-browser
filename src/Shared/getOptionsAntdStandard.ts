@@ -18,8 +18,10 @@ export const getOptionsAntdStandard: IGetOptionsUserSkillsExpertise = (
   CATEGORIES_TO_EXCHANGE,
   language
 ) =>
-  userSkillsExpertise.map(skill => {
-    const label = CATEGORIES_TO_EXCHANGE[skill][language]
+  userSkillsExpertise.length
+    ? userSkillsExpertise.map(skill => {
+        const label = CATEGORIES_TO_EXCHANGE[skill][language]
 
-    return { label, value: skill }
-  })
+        return { label, value: skill }
+      })
+    : []
