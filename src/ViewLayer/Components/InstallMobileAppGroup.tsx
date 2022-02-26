@@ -4,44 +4,45 @@ import { useHistory } from 'react-router-dom'
 
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button, ButtonArgs } from './Button'
+import { Button, IButtonArgs } from './Button'
 
 interface InstallMobileAppGroupArgs {}
 
-export const InstallMobileAppGroup: React.FunctionComponent<InstallMobileAppGroupArgs> =
-  (props: InstallMobileAppGroupArgs): ReactElement => {
-    const history = useHistory()
+export const InstallMobileAppGroup: React.FunctionComponent<
+  InstallMobileAppGroupArgs
+> = (props: InstallMobileAppGroupArgs): ReactElement => {
+  const history = useHistory()
 
-    const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: IRootStore) => store2)
 
-    const buttonSiAppstoreProps: ButtonArgs = {
-      icon: 'SiAppstore',
-      icon2: null,
-      classAdded: 'Button_SiAppstore',
-      tooltipText: 'Install ...',
-      tooltipPosition: 'bottom',
-      action: {
-        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: { history, path: '/see-you', source: 'installAppStore' },
-      } as IAction,
-    }
-
-    const buttonSiGoogleplayProps: ButtonArgs = {
-      icon: 'SiGoogleplay',
-      icon2: null,
-      classAdded: 'Button_SiGoogleplay',
-      tooltipText: 'Install ...',
-      tooltipPosition: 'bottom',
-      action: {
-        typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
-        data: { history, path: '/see-you', source: 'installGooglePlay' },
-      } as IAction,
-    }
-
-    return (
-      <div className='InstallMobileAppGroup'>
-        <Button {...buttonSiAppstoreProps} />
-        <Button {...buttonSiGoogleplayProps} />
-      </div>
-    )
+  const buttonSiAppstoreProps: IButtonArgs = {
+    icon: 'SiAppstore',
+    icon2: null,
+    classAdded: 'Button_SiAppstore',
+    tooltipText: 'Install ...',
+    tooltipPosition: 'bottom',
+    action: {
+      typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+      data: { history, path: '/see-you', source: 'installAppStore' },
+    } as IAction,
   }
+
+  const buttonSiGoogleplayProps: IButtonArgs = {
+    icon: 'SiGoogleplay',
+    icon2: null,
+    classAdded: 'Button_SiGoogleplay',
+    tooltipText: 'Install ...',
+    tooltipPosition: 'bottom',
+    action: {
+      typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+      data: { history, path: '/see-you', source: 'installGooglePlay' },
+    } as IAction,
+  }
+
+  return (
+    <div className='InstallMobileAppGroup'>
+      <Button {...buttonSiAppstoreProps} />
+      <Button {...buttonSiGoogleplayProps} />
+    </div>
+  )
+}

@@ -433,8 +433,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_SiAppstore .__button,
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
-    .Button_personalCabinet .__button,
-    .Button_personalCabinet_authorized .__button,
+    .Button_auth .__button,
+    .Button_authHeader_authorized .__button,
     .Button_ThemeToggle .__button {
       background-color: ${props2 =>
         ({
@@ -446,7 +446,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_SiAppstore ._in,
     .Button_MdMenu ._in,
     .Button_AddCourse ._in,
-    .Button_personalCabinet ._in,
+    .Button_auth ._in,
     .Button_ThemeToggle ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }

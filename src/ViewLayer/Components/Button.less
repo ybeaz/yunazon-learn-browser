@@ -111,24 +111,55 @@
   }
 }
 
-.Button_personalCabinet_authorized {
+.Button_authSideMenu_authorized {
+  padding: 0.5rem 0 0 0;
+
   .__button {
+    justify-content: start;
+
     &:active,
     &:focus {
     }
     ._in {
       ._capture_left {
       }
-      ._icon {
-        color: #04aa6d;
+
+      ._image {
+        width: 1.5vw;
+        height: 1.5vw;
+        border-radius: 50%;
       }
+
       ._capture_right {
       }
     }
   }
 }
 
-.Button_personalCabinet {
+.Button_authHeader_authorized {
+  .__button {
+    justify-content: start;
+
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._capture_left {
+      }
+
+      ._image {
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50%;
+      }
+
+      ._capture_right {
+      }
+    }
+  }
+}
+
+.Button_auth {
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;

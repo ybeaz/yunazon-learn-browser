@@ -1,4 +1,7 @@
-export const CATEGORIES_TO_EXCHANGE: Record<string, any> = {
+export const CATEGORIES_TO_EXCHANGE: Record<
+  string,
+  { en: string; ru: string }
+> = {
   // _: { en: '_', ru: '_' },
   Autoclub: { en: 'Autoclub', ru: 'Автоклуб' },
   Auto_flea_market: { en: 'Auto flea market', ru: 'Автобарахолка' },

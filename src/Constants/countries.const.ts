@@ -253,6 +253,10 @@ export const COUNTRIES: ICountry[] = [
     name: 'United Kingdom of Great Britain and Northern Ireland',
     alpha2: 'gb',
     alpha3: 'gbr',
+    dictionary: {
+      en: 'Great Britain',
+      ru: 'Великобритания',
+    },
   },
   { id: 840, name: 'United States of America', alpha2: 'us', alpha3: 'usa' },
   { id: 858, name: 'Uruguay', alpha2: 'uy', alpha3: 'ury' },

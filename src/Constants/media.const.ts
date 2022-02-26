@@ -18,8 +18,8 @@ export const MEDIA: IMedia = {
     ru: 'видео',
   },
   anyOnline: {
-    en: 'any online tool',
-    ru: 'любой способ онлайн',
+    en: 'any',
+    ru: 'любой',
   },
   // Zoom: {
   //   en: 'Zoom',

@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Competencies: {
+    en: 'Competencies',
+    ru: 'Компетенции',
+  },
   My_profile: {
     en: 'My profile',
     ru: 'Мой профиль',
@@ -502,6 +506,14 @@ export const DICTIONARY: IDictionary = {
     en: 'Prefered gender',
     ru: 'Предпочтения по полу',
   },
+  AboutUser: {
+    en: 'About',
+    ru: 'Oбо мне',
+  },
+  Media: {
+    en: 'Media',
+    ru: 'Медиа',
+  },
   Gender: {
     en: 'Gender',
     ru: 'Пол',
@@ -517,6 +529,10 @@ export const DICTIONARY: IDictionary = {
   Age: {
     en: 'Age',
     ru: 'Возраст',
+  },
+  Languages: {
+    en: 'Languages',
+    ru: 'Языки',
   },
   Speaking_languages: {
     en: 'Speaking languages',
