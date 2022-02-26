@@ -21,10 +21,11 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   componentFrom,
   history = {}
 ) => {
-  const { userStatus, userName } = user
+  const { userAvatar, userStatus, userName } = user
 
   const {
-    icon,
+    imageSrc = null,
+    icon = null,
     classAdded,
     tooltipText,
     captureRight,
@@ -33,7 +34,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     childProps,
   } = {
     'sideMenu+': {
-      icon: 'BiLogInCircle',
+      icon: 'FaUserCircle',
       classAdded: 'Button_sideMenuItems',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
@@ -42,7 +43,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'sideMenu+failure': {
-      icon: 'BiLogInCircle',
+      icon: 'FaUserCircle',
       classAdded: 'Button_sideMenuItems',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
@@ -51,7 +52,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'sideMenu+success': {
-      icon: 'BiLogOutCircle',
+      imageSrc: 'FaUserCircle',
       classAdded: 'Button_sideMenuItems',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
@@ -60,7 +61,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signOut', step: '' } },
     },
     'header+': {
-      icon: 'BiLogInCircle',
+      icon: 'FaUserCircle',
       classAdded: 'Button_personalCabinet',
       tooltipText: DICTIONARY.Login[language],
       tooltipPosition: 'bottom',
@@ -68,7 +69,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'header+failure': {
-      icon: 'BiLogInCircle',
+      icon: 'FaUserCircle',
       classAdded: 'Button_personalCabinet',
       tooltipText: DICTIONARY.Logout[language],
       tooltipPosition: 'bottom',
@@ -76,7 +77,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'header+success': {
-      icon: 'MdPerson',
+      imageSrc: userAvatar,
       classAdded: 'Button_personalCabinet Button_personalCabinet_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
@@ -107,6 +108,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       : actionMain
 
   return {
+    imageSrc,
     icon,
     captureRight,
     classAdded,

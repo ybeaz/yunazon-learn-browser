@@ -32,28 +32,23 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
   const { language, profile } = props
 
   const {
-    userGender,
-    userMedia,
     userAvatar,
-    userNameNick,
-    userLocaleCountry,
-    userSkillsExpertise,
-    userLanguages,
+    userGender,
     userInfoAbout,
+    userLanguages,
+    userLocaleCountry,
+    userMedia,
+    userNameNick,
+    userSkillsExpertise,
   } = profile
 
   const stubOnAction = () => {}
 
-  // const optionsUserLocaleCountry = getOptionsUserLocaleCountry(
-  //   userLocaleCountry,
-  //   COUNTRIES,
-  //   language
-  // )
-
-  console.info('ProfilePlate [34]', {
-    profile,
-    language,
-  })
+  // console.info('ProfilePlate [34]', {
+  //   userAvatar,
+  //   profile,
+  //   language,
+  // })
 
   const filterOption = (input: any, option: IOptionStandard) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
