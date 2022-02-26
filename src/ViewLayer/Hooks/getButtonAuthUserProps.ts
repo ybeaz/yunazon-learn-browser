@@ -52,8 +52,8 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       childProps: { scenario: { branch: 'signInManually', step: '' } },
     },
     'sideMenu+success': {
-      imageSrc: 'FaUserCircle',
-      classAdded: 'Button_sideMenuItems',
+      imageSrc: userAvatar,
+      classAdded: 'Button_authSideMenu_authorized',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
       tooltipPosition: 'right',
@@ -62,7 +62,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_personalCabinet',
+      classAdded: 'Button_auth',
       tooltipText: DICTIONARY.Login[language],
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
@@ -70,7 +70,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+failure': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_personalCabinet',
+      classAdded: 'Button_auth',
       tooltipText: DICTIONARY.Logout[language],
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
@@ -78,7 +78,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+success': {
       imageSrc: userAvatar,
-      classAdded: 'Button_personalCabinet Button_personalCabinet_authorized',
+      classAdded: 'Button_authHeader_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
