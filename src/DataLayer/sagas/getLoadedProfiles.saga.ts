@@ -9,7 +9,19 @@ function* getLoadedProfiles() {
     forms: { user },
   } = yield select(store => store)
 
-  const { method, url, payload, options } = getReadUsersConnector(user, {
+  const { userIdAuth, userIdProfile } = user
+
+  const ne = [
+    {
+      userIdAuth,
+    },
+    {
+      userIdProfile,
+    },
+  ]
+
+  const { method, url, payload, options } = getReadUsersConnector({
+    ne,
     isActive: true,
   })
 

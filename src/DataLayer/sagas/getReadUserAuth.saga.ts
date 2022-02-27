@@ -24,6 +24,8 @@ function* getReadUserAuth() {
 
     yield put(actionSync.SET_USER_PROFILE({ ...rest, userIdExternal }))
 
+    yield put(actionAsync.READ_USERS.REQUEST())
+
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {
     console.info('getReadUserAuth [45]', error.name + ': ' + error.message)

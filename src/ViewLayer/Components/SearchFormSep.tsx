@@ -95,14 +95,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         data: defaultOptions.selectSortByProps,
       }
     )
-
-    handleEvents(
-      {},
-      {
-        typeEvent: 'LOAD_PROFILES',
-        data: defaultOptions.selectSortByProps,
-      }
-    )
   }, [])
 
   useEffect(() => {
@@ -305,7 +297,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
       style: { width: '100%' },
     },
     buttonSearchSepProps: {
-      classAdded: 'Button_searchSep',
+      classAdded: 'Button_searchSepActive',
       icon: null, // 'FaUsers'
       icon2: null,
       captureLeft: DICTIONARY['Search'][language],

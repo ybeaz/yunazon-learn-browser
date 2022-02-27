@@ -6,12 +6,10 @@ import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { readUsersQuery } from './queries/readUsersQuery'
 
 interface IGetReadUsersConnector {
-  (
-    user: IUser,
-    options: {
-      isActive: boolean
-    }
-  ): IConnectorOutput
+  (options: {
+    isActive: boolean
+    ne: Record<string, string>[]
+  }): IConnectorOutput
 }
 
 const headers: IHeaders = {
@@ -20,10 +18,7 @@ const headers: IHeaders = {
   timestamp: +new Date(),
 }
 
-export const getReadUsersConnector: IGetReadUsersConnector = (
-  user,
-  options
-) => {
+export const getReadUsersConnector: IGetReadUsersConnector = options => {
   const envType: string = getDetectedEnv()
 
   let obj: IConnectorOutput = {
