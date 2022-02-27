@@ -136,6 +136,31 @@
   }
 }
 
+.Button_authSideMenu {
+  padding: 0.5rem 0 0 0;
+
+  .__button {
+    justify-content: start;
+
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._capture_left {
+      }
+
+      ._image {
+        width: 1.5vw;
+        height: 1.5vw;
+        border-radius: 50%;
+      }
+
+      ._capture_right {
+      }
+    }
+  }
+}
+
 .Button_authHeader_authorized {
   .__button {
     justify-content: start;
@@ -148,9 +173,14 @@
       }
 
       ._image {
-        width: 2vw;
-        height: 2vw;
+        width: 1.7vw;
+        height: 1.7vw;
         border-radius: 50%;
+      }
+
+      ._icon {
+        width: 1.7vw;
+        height: 1.7vw;
       }
 
       ._capture_right {
@@ -159,7 +189,7 @@
   }
 }
 
-.Button_auth {
+.Button_authHeader {
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;
@@ -178,6 +208,13 @@
       height: 1.5rem;
       ._capture_left {
       }
+
+      ._image {
+        width: 2vw;
+        height: 2vw;
+        border-radius: 50%;
+      }
+
       ._icon {
         height: 2rem;
         width: 2rem;
