@@ -95,14 +95,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         data: defaultOptions.selectSortByProps,
       }
     )
-
-    handleEvents(
-      {},
-      {
-        typeEvent: 'LOAD_PROFILES',
-        data: defaultOptions.selectSortByProps,
-      }
-    )
   }, [])
 
   useEffect(() => {
