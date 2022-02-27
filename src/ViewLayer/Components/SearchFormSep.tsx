@@ -297,7 +297,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
       style: { width: '100%' },
     },
     buttonSearchSepProps: {
-      classAdded: 'Button_searchSep',
+      classAdded: 'Button_searchSepActive',
       icon: null, // 'FaUsers'
       icon2: null,
       captureLeft: DICTIONARY['Search'][language],
