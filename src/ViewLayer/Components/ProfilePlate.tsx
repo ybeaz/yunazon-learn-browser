@@ -44,12 +44,6 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
 
   const stubOnAction = () => {}
 
-  // console.info('ProfilePlate [34]', {
-  //   userAvatar,
-  //   profile,
-  //   language,
-  // })
-
   const filterOption = (input: any, option: IOptionStandard) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
     option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
