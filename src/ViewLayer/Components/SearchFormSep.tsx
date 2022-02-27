@@ -128,12 +128,6 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     }
   }
 
-  const getStdDictionary = getStdDictionaryOptions(
-    categoriesToExchangeState,
-    language,
-    defaultOption
-  )
-
   const propsOut = {
     selectSkillsRequiredProps: {
       allowClear: true,

@@ -15,11 +15,14 @@ export const getOptionsUserLocaleCountry: IGetOptionsUserLocaleCountry = (
   userLocaleCountry,
   COUNTRIES,
   language
-) => [
-  {
-    label: COUNTRIES.find(
-      (country: ICountry) => country.alpha3 === userLocaleCountry
-    ).dictionary[language],
-    value: userLocaleCountry,
-  },
-]
+) =>
+  userLocaleCountry
+    ? [
+        {
+          label: COUNTRIES.find(
+            (country: ICountry) => country.alpha3 === userLocaleCountry
+          ).dictionary[language],
+          value: userLocaleCountry,
+        },
+      ]
+    : []
