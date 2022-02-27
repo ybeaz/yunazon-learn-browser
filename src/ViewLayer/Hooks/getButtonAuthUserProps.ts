@@ -35,7 +35,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   } = {
     'sideMenu+': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_sideMenuItems',
+      classAdded: 'Button_authSideMenu',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
       tooltipPosition: 'right',
@@ -44,7 +44,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'sideMenu+failure': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_sideMenuItems',
+      classAdded: 'Button_authSideMenu',
       tooltipText: '',
       captureRight: DICTIONARY.Login[language],
       tooltipPosition: 'right',
@@ -53,7 +53,10 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'sideMenu+success': {
       imageSrc: userAvatar,
-      classAdded: 'Button_authSideMenu_authorized',
+      icon: userAvatar ? null : 'FaUserCircle',
+      classAdded: userAvatar
+        ? 'Button_authSideMenu'
+        : 'Button_authSideMenu_authorized',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
       tooltipPosition: 'right',
@@ -62,7 +65,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_auth',
+      classAdded: 'Button_authHeader',
       tooltipText: DICTIONARY.Login[language],
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
@@ -70,7 +73,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+failure': {
       icon: 'FaUserCircle',
-      classAdded: 'Button_auth',
+      classAdded: 'Button_authHeader',
       tooltipText: DICTIONARY.Logout[language],
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
@@ -78,7 +81,10 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+success': {
       imageSrc: userAvatar,
-      classAdded: 'Button_authHeader_authorized',
+      icon: userAvatar ? null : 'FaUserCircle',
+      classAdded: userAvatar
+        ? 'Button_authHeader'
+        : 'Button_authHeader_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',

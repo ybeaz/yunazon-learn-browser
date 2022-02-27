@@ -223,11 +223,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
 
-    .Input_passwordAuth .__input {
-      background: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
+    .Input_passwordAuth .__input,
     .Input_usernameAuth .__input {
       background: ${props2 =>
         getColor(props2, 'colorFirst', medial, middle, 'Dark')};
@@ -271,53 +267,32 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
-    .Button_сontinueIntroSep .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
-    }
-
+    .Button_MdBackward3 .__button,
+    .Button_MdForward2 .__button,
+    .Button_CallForActionMatrix .__button,
+    .Button_UseCertificate .__button,
+    .Button_AuthSignInUpBack .__button,
+    .Button_AuthSignInUp .__button,
+    .Button_сontinueIntroSep .__button,
+    .Button_startModule .__button,
     .Button_BackToTop .__button,
     .Button_searchSepActive .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Button_startModule .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
-    }
-
-    .Button_ForgetPassword ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
     .Button_SignUp .__button {
-        background-color: ${props2 =>
-          getColor(props2, 'colorGrey', medial, middle)};
-    }
-
-    .Button_SignUp ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
-    .Button_AuthSignInUp .__button {
       background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
+        getColor(props2, 'colorGrey', medial, middle)};
     }
 
-    .Button_AuthSignInUp ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
-    .Button_AuthSignInUpBack .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
-    }
-
-    .Button_AuthSignInUpBack ._in {
+    .Button_ForgetPassword ._in,
+    .Button_SignUp ._in,
+    .Button_AuthSignInUp ._in,
+    .Button_AuthSignInUpBack ._in,
+    .Button_AuthGoogle ._in,
+    .Button_AuthVkontakte ._in,
+    .Button_AuthFacebook ._in {
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, middle, 'Dark')};
     }
@@ -326,37 +301,12 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background-color: #dd4b39;
     }
 
-    .Button_AuthGoogle ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
     .Button_AuthVkontakte .__button {
       background-color: #45668e;
     }
 
-    .Button_AuthVkontakte ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
     .Button_AuthFacebook .__button {
       background-color: #3b5998;
-    }
-
-    .Button_AuthFacebook ._in {
-      color: ${props2 =>
-        getColor(props2, 'colorFirst', medial, middle, 'Dark')};
-    }
-
-    .Button_CallForActionMatrix .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
-    }
-
-    .Button_UseCertificate .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_UseCertificate ._in {
@@ -403,11 +353,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .Button_MdBackward3 .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, darker)};
-    }
-
     .Button_MdBackward3 ._in {
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker, 'Dark')};
@@ -416,11 +361,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_MdBackward2 .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorActiveDarker', medial, darker)};
-    }
-
-    .Button_MdForward2 .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_MdForward .__button {
@@ -433,8 +373,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_SiAppstore .__button,
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
-    .Button_auth .__button,
-    .Button_authHeader_authorized .__button,
     .Button_ThemeToggle .__button {
       background-color: ${props2 =>
         ({
@@ -446,9 +384,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_SiAppstore ._in,
     .Button_MdMenu ._in,
     .Button_AddCourse ._in,
-    .Button_auth ._in,
+    .Button_authHeader ._in,
     .Button_ThemeToggle ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+    }
+
+    .Button_authSideMenu_authorized .__button ._in ._icon,
+    .Button_authHeader_authorized .__button ._in ._icon {
+      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 
     .Button_MdPerson .__button {
@@ -475,8 +418,15 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirstLighter', medial, lighter)};
     }
 
+    .Button_authSideMenu ._in,
+    .Button_authHeader ._in,
     .Button_Avatar ._in {
       color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
+    }
+
+    .Button.Button_authSideMenu .__button ._in ._capture_right {
+      color: ${props2 =>
+        getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
 
     .Button_searchSepPassive .__button {

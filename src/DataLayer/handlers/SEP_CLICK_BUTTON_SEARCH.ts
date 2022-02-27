@@ -25,5 +25,7 @@ export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
     return
   }
 
-  history.push(path)
+  const messege = DICTIONARY.This_functionality_is_under_development[language]
+  alert(messege)
+  // history.push(path)
 }
