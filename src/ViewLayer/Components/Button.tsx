@@ -5,12 +5,12 @@ import { Image } from './Image'
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 export interface IButtonArgs {
-  icon?: string | null // react name for the first icon inside the button
-  icon2?: string | null // react name for the second icon to exchange first one
-  imageSrc?: string | null // image source for the image inside the button
+  icon?: string // react name for the first icon inside the button
+  icon2?: string // react name for the second icon to exchange first one
+  imageSrc?: string // image source for the image inside the button
   captureLeft?: string | ReactElement // capture on the left of the icon/ image
   captureRight?: string // capture on the right of the icon/ button
-  classAdded?: string // calss added to the button, to make it css unique
+  classAdded: string // calss added to the button, to make it css unique
   action?: IAction // action to assign the button
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string // tooltips text for the button to provide user with a promt
@@ -30,16 +30,16 @@ export const Button: React.FunctionComponent<IButtonArgs> = (
   props: IButtonArgs
 ): React.ReactElement => {
   const {
-    icon = null,
-    icon2 = null,
-    imageSrc = null,
+    icon = undefined,
+    icon2 = undefined,
+    imageSrc = undefined,
     captureLeft,
     captureRight,
-    classAdded,
+    classAdded = '',
     action = {},
     isDisplaying = true,
     tooltipText = '',
-    tooltipPosition = '',
+    tooltipPosition = 'top',
     isTooltipVisibleForced = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
@@ -50,12 +50,14 @@ export const Button: React.FunctionComponent<IButtonArgs> = (
     ? handleEventsCustom
     : handleEvents
 
-  let classTooltipAdd = {
+  const classTooltipsDictionary: Record<string, string> = {
     top: '_tooltipTop',
     right: '_tooltipRight',
     bottom: '_tooltipBottom',
     left: '_tooltipLeft',
-  }[tooltipPosition]
+  }
+
+  let classTooltipAdd: any = classTooltipsDictionary[tooltipPosition]
 
   classTooltipAdd = isTooltipVisibleForced
     ? `${classTooltipAdd} __tooltipTextVisible`

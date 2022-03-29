@@ -33,15 +33,16 @@ export const Input: React.FunctionComponent<InputArgs> = (
 
   const store = useSelector((store2: IRootStore) => store2)
   const { forms } = store
-  const value = storeFormGroup
-    ? forms[storeFormGroup][storeFormProp]
-    : forms[storeFormProp]
+  const value =
+    storeFormGroup && storeFormProp
+      ? forms[storeFormGroup][storeFormProp]
+      : storeFormProp && forms[storeFormProp]
 
   const action = { typeEvent }
 
   const iconReactProps = {
     icon: 'AiFillCloseCircle',
-    icon2: null,
+    icon2: 'null',
     classAdded: `IconReact_Input`,
   }
 
@@ -51,10 +52,10 @@ export const Input: React.FunctionComponent<InputArgs> = (
 
   // TODO Make click programmaticaly from another element to change default label
   // https://stackoverflow.com/questions/32433594/how-to-trigger-input-file-event-reactjs-by-another-dom
-  const handleClick = () => {
-    inputFileRef.current.type = type
-    inputFileRef.current.onInput()
-  }
+  // const handleClick = () => {
+  //   inputFileRef.current.type = type
+  //   inputFileRef.current.onInput()
+  // }
 
   return (
     <div className={`Input ${classAdded}`}>

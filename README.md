@@ -1,5 +1,7 @@
 # README
 
+&nbsp;
+
 ## Levels of Academy service usage
 
 5 - click buttons to "consume" results
@@ -12,7 +14,11 @@
 Example: getSavedAnanlyticsEvent({ type: 'click', name: 'logo clicked' })
 Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 
+&nbsp;
+
 ## Plan
+
+&nbsp;
 
 ## Done
 
@@ -50,7 +56,11 @@ Function available from src/ViewLayer/Hooks/getSavedAnanlyticsEvent.ts
 2021-03-08 Setup router, final (or one of the final :) move
 2021-03-06 Setup environment and render "Hello World"
 
+&nbsp;
+
 ## Features and options
+
+&nbsp;
 
 ### URL Search Parameters
 
@@ -71,6 +81,8 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
 `?hiw=true` value to control whether to display `HowItWorksSep` or not
 `?ssr=xyz` value to `selectSkillsRequired` form field
 `?intro=xyz` value to set true and select component as an into for the page, one of the CHILDREN from `src/ViewLayer/Frames/ModalFrames.tsx`. Example: `?intro=SkillExchangeIntro`
+
+&nbsp;
 
 ### Architecture / development notes
 
@@ -103,6 +115,8 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
 7. Using predefined mixins
    1. `src/ViewLayer/Styles/mixins.style.less` defines a set of mixins for paddings and margins with a pattern `.p_y_x`, `.p_t_r_b_l`, `.m_y_x`, `.m_t_r_b_l`
 
+&nbsp;
+
 ## To run the project
 
 1. Build Docker image from `docker-compose-mongodb.yml`
@@ -111,6 +125,8 @@ Full example: `/sep?ssr=Photoshop&intro=SkillExchangeIntro2&hiw=true&sfs=true&sf
    - in server directory run `yarn dev`
 3. Run application
    - here run `yarn dev:start` and to restart run `yarn dev`
+
+&nbsp;
 
 ## MongoDB collections
 
