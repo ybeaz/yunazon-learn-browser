@@ -1,7 +1,7 @@
+import { IUser } from '../Interfaces/IUser'
 import {
   IComponentsState,
   ISearchFormSep,
-  IUser,
   IForms,
   IRootStore,
 } from '../Interfaces/IRootStore'
@@ -37,6 +37,13 @@ export const userStoreDefault: IUser = {
   userWebLink: '',
   userWebTokenAuth: '',
   userZoneInfo: '',
+  userAwsCognitoAuth: {
+    id_token: '',
+    access_token: '',
+    refresh_token: '',
+    expires_in: 0,
+    token_type: '',
+  },
 }
 
 export const searchFormSepDefault: ISearchFormSep = {

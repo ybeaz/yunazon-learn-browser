@@ -15,7 +15,7 @@ import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.con
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAddedProps } from '../../Interfaces/IAddedProps'
 import { Button } from './Button'
-import { IUser } from '../../Interfaces/IRootStore'
+import { IUser } from '../../Interfaces/IUser'
 
 interface IOptionStandard {
   label: string

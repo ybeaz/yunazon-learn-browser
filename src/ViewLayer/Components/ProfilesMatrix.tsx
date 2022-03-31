@@ -2,7 +2,8 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ProfilePlate } from './ProfilePlate'
-import { IUser, IRootStore } from '../../Interfaces/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { IUser } from '../../Interfaces/IUser'
 
 interface ProfilesMatrixArgs {}
 
