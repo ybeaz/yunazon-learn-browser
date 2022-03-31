@@ -1,6 +1,5 @@
 import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
-import { IUser } from '../Interfaces/IRootStore'
 
 import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
 import { readUsersQuery } from './queries/readUsersQuery'

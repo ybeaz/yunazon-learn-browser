@@ -439,6 +439,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorGrey', medial, middle)};
     }
 
+    .IconReact_authUserHeader ._icon {
+      color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
+    }
+
+    .IconReact_authUserHeaderActive ._icon {
+      color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+    }
+
     .ModalFrames {
       background-color: ${props2 =>
         getColor(props2, 'colorGrey', medial, middle)};

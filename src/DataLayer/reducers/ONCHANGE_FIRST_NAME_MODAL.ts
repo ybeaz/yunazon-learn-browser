@@ -1,4 +1,5 @@
-import { IRootStore, IUser, IForms } from '../../Interfaces/IRootStore'
+import { IRootStore, IForms } from '../../Interfaces/IRootStore'
+import { IUser } from '../../Interfaces/IUser'
 
 export const ONCHANGE_FIRST_NAME_MODAL: Function = (
   store: IRootStore,

@@ -1,5 +1,5 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IUser } from '../../Interfaces/IRootStore'
+import { IUser } from '../../Interfaces/IUser'
 import { IButtonArgs } from '../Components/Button'
 
 interface IGetButtonAuthUser {

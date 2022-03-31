@@ -38,6 +38,10 @@ export const prodPlugins = [
 ]
 
 export const devPlugins = [
+  new webpack.DefinePlugin({
+    // <-- key to reducing React's size
+    'process.env': { ENV_APP: JSON.stringify('development') },
+  }),
   new BundleAnalyzerPlugin({
     analyzerMode: 'disabled',
     generateStatsFile: true,

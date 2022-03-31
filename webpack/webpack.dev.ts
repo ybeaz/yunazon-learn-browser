@@ -3,6 +3,7 @@ import { commonPlugins, devPlugins } from './plugins'
 
 export default {
   ...common,
+  mode: 'development',
   devtool: 'cheap-module-source-map', // 'source-map'
   devServer: {
     hot: true,

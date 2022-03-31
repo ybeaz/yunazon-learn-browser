@@ -2,6 +2,7 @@ import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
 import { IActionEvent } from '../Interfaces/IActionEvent'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { GET_COGNITO_TOKENS } from './handlers/GET_COGNITO_TOKENS'
 import { LOAD_PROFILES } from './handlers/LOAD_PROFILES'
 import { CLICK_SIDE_NAV_ITEM } from './handlers/CLICK_SIDE_NAV_ITEM'
 import { ONCHANGE_USER_NAME_NICK } from './handlers/ONCHANGE_USER_NAME_NICK'
@@ -97,6 +98,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
 
   const output: Record<string, IActionEvent> = {
     TEMPLATE,
+    GET_COGNITO_TOKENS,
     LOAD_PROFILES,
     CLICK_SIDE_NAV_ITEM,
     SELECT_USER_MEDIA,

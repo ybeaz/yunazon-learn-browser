@@ -1,5 +1,6 @@
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
-import { IUser, IRootStore } from '../../Interfaces/IRootStore'
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { IUser } from '../../Interfaces/IUser'
 import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
 export const SET_USER_PROFILE: Function = (

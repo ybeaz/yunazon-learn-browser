@@ -4,6 +4,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
   'SET_USERS',
+  'GET_COGNITO_TOKENS_SUCCESS',
   'LOAD_PROFILES',
   'ONCHANGE_USER_NAME_NICK',
   'SELECT_USER_MEDIA',
@@ -65,6 +66,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_COGNITO_TOKENS',
   'READ_USERS',
   'READ_USER_AUTH',
   'SAVE_USER_PROFILE',
