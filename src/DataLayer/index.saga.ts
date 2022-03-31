@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import getGetCognitoTokensSaga from './sagas/getGetCognitoTokens.saga'
 import getLoadedProfilesSaga from './sagas/getLoadedProfiles.saga'
 import getReadUserAuthSaga from './sagas/getReadUserAuth.saga'
 import getSavedUserProfileSaga from './sagas/getSavedUserProfile.saga'
@@ -17,6 +18,7 @@ import getGlobalVarsSaga from './sagas/getGlobalVars.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getGetCognitoTokensSaga),
     fork(getLoadedProfilesSaga),
     fork(getReadUserAuthSaga),
     fork(getSavedUserProfileSaga),

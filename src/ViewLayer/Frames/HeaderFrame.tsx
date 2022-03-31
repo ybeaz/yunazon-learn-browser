@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 
+import * as flags from '../../FeatureFlags/index'
+import { AuthAwsCognitoLink } from '../Components/AuthAwsCognitoLink'
 import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../Components/PageActionsGroup'
@@ -173,6 +175,7 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
               <Button {...propsOut.buttonAddCourseProps} />
             </div>
           )}
+          {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isButtonAuthUser && (
             <div className='_itemButtonAuthUser'>
               <Button {...propsOut.buttonAuthUserProps} />

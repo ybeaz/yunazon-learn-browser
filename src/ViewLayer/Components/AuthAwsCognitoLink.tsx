@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import { AWS_COGNITO_API, SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { IUserAwsCognitoAuth } from '../../Interfaces/IUserAwsCognitoAuth'
@@ -59,12 +60,12 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
     return output
   }
 
-  let redirectUri = 'https://d231htngxxargq.cloudfront.net/'
+  let redirectUri = SERVERS.remote
   try {
     redirectUri =
       process && process?.env?.ENV_APP === 'development'
-        ? 'http://localhost:3560/'
-        : 'https://d231htngxxargq.cloudfront.net/'
+        ? SERVERS.localWebpack
+        : SERVERS.remote
   } catch (error) {
     console.info('EventsScheduledScreen [39]', error?.message)
   }
@@ -72,9 +73,7 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
   const propsOut = {
     linkAuthUserProps: {
       className: '_linkAuthUser',
-      to: `https://sns-sms-001.auth.us-east-1.amazoncognito.com/login?client_id=4om9l0e26fdba7berph9pgv651&response_type=code&scope=email+openid&redirect_uri=${redirectUri}`,
-      urlDev: 'http://localhost:3560/',
-      urlProd: 'https://d231htngxxargq.cloudfront.net/',
+      to: `${AWS_COGNITO_API.callbackUrlPart}${redirectUri}`,
     },
     iconReactAuthUserProps: getLinkAuthUserProps(userAwsCognitoAuth),
   }
