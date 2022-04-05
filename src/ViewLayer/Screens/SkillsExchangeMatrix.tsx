@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../Components/Image'
+import { Image } from '../ComponentsLibrary/Image'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'

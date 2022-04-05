@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { SkillExchangeIntro2 } from '../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
 import { AuthUser } from '../Components/AuthUser'
-import { Button } from '../Components/Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { EmalInputs } from '../Components/EmalInputs'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -36,13 +36,16 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
         data: [{ childName, isActive: false, childProps }],
       }
 
-      const buttonCloseProps = {
-        icon: 'MdClose',
-        classAdded: 'Button_MdClose',
-        action: closeAction,
-      }
-
       const addClass = !isActive ? '' : 'ModalFrames_display'
+
+      const propsOut = {
+        buttonCloseProps: {
+          icon: 'MdClose',
+          classAdded: 'Button_MdClose',
+          action: closeAction,
+        },
+        childProps,
+      }
 
       return (
         <div
@@ -52,7 +55,7 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
         >
           <div className='__content'>
             <span className='_close'>
-              <Button {...buttonCloseProps} />
+              <Button {...propsOut.buttonCloseProps} />
             </span>
             <div
               className='_inner'
@@ -60,7 +63,7 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
                 handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
               }
             >
-              <CHILD {...childProps} />
+              <CHILD {...propsOut.childProps} />
             </div>
           </div>
         </div>

@@ -4,8 +4,6 @@ import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
-import { Button } from '../Components/Button'
-import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getDateString } from '../../Shared/getDateString'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { getSlug } from '../../Shared/getSlug'

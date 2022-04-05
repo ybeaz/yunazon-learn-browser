@@ -2,8 +2,6 @@ import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { LogoGroup } from '../Components/LogoGroup'
-import { Button } from '../Components/Button'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'

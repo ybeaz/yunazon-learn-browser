@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../Components/Image'
+import { Image } from '../ComponentsLibrary/Image'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { FooterFrame } from '../Frames/FooterFrame'

@@ -17,8 +17,8 @@ import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { Button } from './Button'
-import { Input } from './Input'
+import { Button } from '../ComponentsLibrary/Button'
+import { Input } from '../ComponentsLibrary/Input'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface ISearchFormSepArgs {

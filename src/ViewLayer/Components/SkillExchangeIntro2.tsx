@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Image } from './Image'
-import { Button } from './Button'
-import { IconReact } from './IconReact'
+import { Image } from '../ComponentsLibrary/Image'
+import { Button } from '../ComponentsLibrary/Button'
+import { IconReact } from '../ComponentsLibrary/IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 

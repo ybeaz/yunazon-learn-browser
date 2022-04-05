@@ -11,8 +11,8 @@ import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Input } from '../Components/Input'
-import { Button } from '../Components/Button'
+import { Input } from '../ComponentsLibrary/Input'
+import { Button } from '../ComponentsLibrary/Button'
 
 export const QuestionScores: React.FunctionComponent<any> = props => {
   let history = useHistory()
