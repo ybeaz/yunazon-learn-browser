@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ProfilesMatrix } from './ProfilesMatrix'
-import { Button } from './Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { IAction } from '../../Interfaces/IAction'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
 import { ServiceFunctionsSep } from './ServiceFunctionsSep'

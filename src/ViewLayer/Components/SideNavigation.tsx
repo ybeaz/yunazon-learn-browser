@@ -8,7 +8,7 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage } from './SelectLanguage'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button } from './Button'
+import { Button } from '../ComponentsLibrary/Button'
 
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: IRootStore) => store2)

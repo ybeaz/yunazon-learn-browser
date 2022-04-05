@@ -6,7 +6,7 @@ import { AWS_COGNITO_API, SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { IUserAwsCognitoAuth } from '../../Interfaces/IUserAwsCognitoAuth'
-import { IconReact } from '../Components/IconReact'
+import { IconReact } from '../ComponentsLibrary/IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
 interface IGetLinkAuthUserProps {

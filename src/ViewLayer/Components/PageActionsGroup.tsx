@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Button } from '../Components/Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 

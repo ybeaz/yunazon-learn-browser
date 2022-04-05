@@ -1,6 +1,6 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IUser } from '../../Interfaces/IUser'
-import { IButtonArgs } from '../Components/Button'
+import { IButtonArgs } from '../ComponentsLibrary/Button'
 
 interface IGetButtonAuthUser {
   (

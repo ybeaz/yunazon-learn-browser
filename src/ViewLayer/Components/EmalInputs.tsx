@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Input } from '../Components/Input'
-import { Button } from '../Components/Button'
+import { Input } from '../ComponentsLibrary/Input'
+import { Button } from '../ComponentsLibrary/Button'
 
 interface EmalInputsArgs {
   documentID: string

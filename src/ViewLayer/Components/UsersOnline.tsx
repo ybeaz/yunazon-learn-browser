@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import { Button } from './Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Image } from './Image'
+import { Image } from '../ComponentsLibrary/Image'
 
 const USERS_MAMBA_FACES = [
   { fileName: '1868053633_square_small.jpg', userName: '' },

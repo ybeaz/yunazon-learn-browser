@@ -8,7 +8,7 @@ import { IRootStore } from '../../Interfaces/IRootStore'
 import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { ICategory } from '../../Interfaces/ICategory'
-import { Button } from './Button'
+import { Button } from '../ComponentsLibrary/Button'
 
 interface IGetCategorisJsx {
   (categories: ICategory[], language: string): ReactElement[]

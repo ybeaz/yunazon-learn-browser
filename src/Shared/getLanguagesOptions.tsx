@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 
-import { Image } from '../ViewLayer/Components/Image'
+import { Image } from '../ViewLayer/ComponentsLibrary/Image'
 import { ILanguages } from '../Interfaces/ILanguages'
 import { IDictionary } from '../Constants/dictionary.const'
 import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 
-import { Input } from './Input'
-import { Button } from './Button'
+import { Input } from '../ComponentsLibrary/Input'
+import { Button } from '../ComponentsLibrary/Button'
 
 export const SearchGroup: React.FunctionComponent<any> = (
   props: any

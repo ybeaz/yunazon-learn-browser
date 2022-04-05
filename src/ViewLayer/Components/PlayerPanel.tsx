@@ -6,7 +6,7 @@ import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IDurationObj } from '../../Interfaces/IDurationObj'
-import { Button } from '../Components/Button'
+import { Button } from '../ComponentsLibrary/Button'
 
 interface PlayerPanelArgs {
   courseCapture: string

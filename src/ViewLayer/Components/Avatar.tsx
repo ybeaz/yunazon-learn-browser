@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button } from './Button'
-import { Input } from './Input'
+import { Button } from '../ComponentsLibrary/Button'
+import { Input } from '../ComponentsLibrary/Input'
 
 interface AvatarArgs {}
 

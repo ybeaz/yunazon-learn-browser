@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 
 import { IAction } from '../../Interfaces/IAction'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button, IButtonArgs } from './Button'
+import { Button, IButtonArgs } from '../ComponentsLibrary/Button'
 
 interface InstallMobileAppGroupArgs {}
 

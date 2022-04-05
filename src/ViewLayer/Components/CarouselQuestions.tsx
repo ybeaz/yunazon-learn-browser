@@ -7,7 +7,7 @@ import { getButtonsClassString } from '../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
-import { Button } from '../Components/Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 

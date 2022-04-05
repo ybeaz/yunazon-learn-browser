@@ -16,8 +16,8 @@ import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button } from './Button'
-import { Input } from './Input'
+import { Button } from '../ComponentsLibrary/Button'
+import { Input } from '../ComponentsLibrary/Input'
 
 interface ProfileBodyArgs {}
 

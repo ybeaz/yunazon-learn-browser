@@ -14,7 +14,7 @@ import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IAddedProps } from '../../Interfaces/IAddedProps'
-import { Button } from './Button'
+import { Button } from '../ComponentsLibrary/Button'
 import { IUser } from '../../Interfaces/IUser'
 
 interface IOptionStandard {
