@@ -11,7 +11,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
-import { LoaderOverlay } from '../Components/LoaderOverlay'
+import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 
 export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   props
@@ -27,7 +27,6 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
   getInitialTeachContentLoading()
 
-  let history = useHistory()
   const store = useSelector((store2: IRootStore) => store2)
   const { documents, language } = store
   const documentsLen = documents.length
