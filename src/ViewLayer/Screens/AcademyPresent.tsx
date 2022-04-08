@@ -17,7 +17,7 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
-import { LoaderOverlay } from '../Components/LoaderOverlay'
+import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { MainFrame } from '../Frames/MainFrame'
 import { PlayerIframe } from '../Frames/PlayerIframe'
 import { PlayerPanel } from '../Components/PlayerPanel'
@@ -45,7 +45,6 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     language: languageStore,
     globalVars: { durationMultiplier },
     courses,
-    componentsState: { isLoaderOverlayVisible },
     isLoaded: { mediaLoading },
   } = store
 
@@ -259,7 +258,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
             {null}
           </MainFrame>
           <SideNavigation />
-          <LoaderOverlay isLoaderOverlayVisible={isLoaderOverlayVisible} />
+          <LoaderOverlay />
         </>
       ) : null}
     </div>
