@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getReadUsersConnector } from '../../CommunicationLayer/getReadUsers.connector'
@@ -20,7 +19,7 @@ function* getLoadedProfiles() {
     },
   ]
 
-  const { method, url, payload, options } = getReadUsersConnector({
+  const { axiosClient, method, params } = getReadUsersConnector({
     ne,
     isActive: true,
   })
@@ -30,9 +29,9 @@ function* getLoadedProfiles() {
 
     const {
       data: { data },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
-    const { users, responseMessage } = data[payload.operationName]
+    const { users, responseMessage } = data[params.operationName]
 
     yield put(actionSync.SET_USERS(users))
 

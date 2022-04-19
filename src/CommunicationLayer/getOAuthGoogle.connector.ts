@@ -1,7 +1,12 @@
+import axios from 'axios'
+
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
@@ -9,7 +14,7 @@ interface IGetOAuthGoogleConnector {
   (clientId: string, credential: string, select_by: string): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -43,8 +48,13 @@ export const getOAuthGoogleConnector: IGetOAuthGoogleConnector = (
 
   const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'OAuthGoogle',
       variables: {
         oAuthGoogleInput: {
@@ -55,8 +65,6 @@ export const getOAuthGoogleConnector: IGetOAuthGoogleConnector = (
       },
       query,
     },
-    options: { headers: { ...headers } },
-    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

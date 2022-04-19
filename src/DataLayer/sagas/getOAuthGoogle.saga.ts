@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOAuthGoogleConnector } from '../../CommunicationLayer/getOAuthGoogle.connector'
@@ -9,7 +8,7 @@ function* getOAuthGoogle(args: any) {
     data: { clientId, credential, select_by },
   } = args
 
-  const { method, url, payload, options } = getOAuthGoogleConnector(
+  const { axiosClient, method, params } = getOAuthGoogleConnector(
     clientId,
     credential,
     select_by
@@ -21,7 +20,7 @@ function* getOAuthGoogle(args: any) {
       data: {
         data: { oAuthGoogle },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     yield put(
       actionSync.SET_USER_PROFILE({

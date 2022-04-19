@@ -1,7 +1,11 @@
+import axios from 'axios'
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
@@ -10,7 +14,7 @@ interface IFindDocumentConnector {
   (documentID: string, fragmentName: string): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -33,16 +37,19 @@ export const findDocumentConnector: IFindDocumentConnector = (
 
   const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'FindDocument',
       variables: {
         documentID,
       },
       query,
     },
-    options: { headers: { ...headers } },
-    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

@@ -1,7 +1,12 @@
+import axios from 'axios'
+
 import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { readUsersQuery } from './queries/readUsersQuery'
 
 interface IGetReadUsersConnector {
@@ -11,7 +16,7 @@ interface IGetReadUsersConnector {
   }): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -22,14 +27,17 @@ export const getReadUsersConnector: IGetReadUsersConnector = options => {
 
   let obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'readUsers',
       variables: { options },
       query: readUsersQuery,
     },
-    options: { headers: { ...headers } },
-    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

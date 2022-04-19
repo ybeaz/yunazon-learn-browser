@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { sendEmailDocumentConnector } from '../../CommunicationLayer/sendEmailDocument.connector'
@@ -12,7 +11,7 @@ function* sendEmailDocument(dataInput) {
   const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const { method, url, payload, options } = sendEmailDocumentConnector(
+  const { axiosClient, method, params } = sendEmailDocumentConnector(
     documentID,
     sendTo,
     sendCc,
@@ -26,7 +25,7 @@ function* sendEmailDocument(dataInput) {
       data: {
         data: { sendEmailDocument },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     yield put(
       actionSync.SET_MODAL_FRAMES([

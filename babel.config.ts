@@ -14,8 +14,11 @@ export default api => {
           corejs: 2,
         },
       ],
-      '@babel/preset-react',
       '@babel/typescript',
+      [
+        '@babel/preset-react',
+        { runtime: 'automatic', importSource: '@emotion/react' },
+      ],
     ],
     plugins: [
       [
@@ -42,6 +45,7 @@ export default api => {
           extensions: ['.svg'],
         },
       ],
+      '@emotion/babel-plugin',
     ],
     env: {
       production: {

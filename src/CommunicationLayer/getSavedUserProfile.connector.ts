@@ -1,7 +1,12 @@
+import axios from 'axios'
+
 import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IUser'
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { createUserQuery } from './queries/createUserQuery'
 import { updateUserQuery } from './queries/updateUserQuery'
 
@@ -9,7 +14,7 @@ interface IGetSavedUserProfileConnector {
   (user: IUser): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -48,8 +53,13 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
     if (!userIdProfile) {
       obj = {
         testCapture: 'should return 200 code and data defined',
+        axiosClient: axios.create({
+          baseURL: `${SERVERS[envType]}/graphql`,
+          timeout: 1000,
+          headers,
+        }),
         method: 'post',
-        payload: {
+        params: {
           operationName: 'createUser',
           variables: {
             userInputGraphql: {
@@ -77,14 +87,17 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
           },
           query: createUserQuery,
         },
-        options: { headers: { ...headers } },
-        url: `${SERVERS[envType]}/graphql`,
       }
     } else {
       obj = {
         testCapture: 'should return 200 code and data defined',
+        axiosClient: axios.create({
+          baseURL: `${SERVERS[envType]}/graphql`,
+          timeout: 1000,
+          headers,
+        }),
         method: 'post',
-        payload: {
+        params: {
           operationName: 'updateUser',
           variables: {
             userInputGraphql2: {
@@ -113,8 +126,6 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
           },
           query: updateUserQuery,
         },
-        options: { headers: { ...headers } },
-        url: `${SERVERS[envType]}/graphql`,
       }
     }
 

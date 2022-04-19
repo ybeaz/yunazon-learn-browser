@@ -1,5 +1,4 @@
 import { select, put, takeEvery, call } from 'redux-saga/effects'
-import axios from 'axios'
 
 import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName.const'
 import { cookie } from '../../Shared/cookie'
@@ -20,12 +19,7 @@ function* getSavedAnalytics(payload: IGetSavedAnalytics) {
   const { analyticsID: analyticsIDStore } = yield select(store => store)
 
   try {
-    const {
-      method,
-      options,
-      url,
-      payload: payloadNext,
-    } = getSavedAnalyticsConnector({
+    const { axiosClient, method, params } = getSavedAnalyticsConnector({
       ...(analyticsIDStore &&
         analyticsIDStore !== 'null' && { analyticsID: analyticsIDStore }),
       ...(initData && { initData }),
@@ -38,7 +32,7 @@ function* getSavedAnalytics(payload: IGetSavedAnalytics) {
           saveAnalytics: { analyticsID },
         },
       },
-    } = yield axios[method](url, payloadNext, options)
+    } = yield axiosClient[method]('', params)
 
     yield put(actionAsync.SAVE_ANALYTICS.SUCCESS({ analyticsID }))
 

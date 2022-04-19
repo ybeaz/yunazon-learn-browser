@@ -1,7 +1,12 @@
+import axios from 'axios'
+
 import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
@@ -15,7 +20,7 @@ interface IGetOAuthUiDataConnector {
   }): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -52,8 +57,13 @@ export const getOAuthUiDataConnector: IGetOAuthUiDataConnector = ({
 
   const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'OAuthUiData',
       variables: {
         authInput: {
@@ -66,8 +76,6 @@ export const getOAuthUiDataConnector: IGetOAuthUiDataConnector = ({
       },
       query,
     },
-    options: { headers: { ...headers } },
-    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

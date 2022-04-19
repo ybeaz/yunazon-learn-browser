@@ -12,7 +12,6 @@ import { CategoryCatalog } from './CategoryCatalog'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep'
-
 interface SkillsExchangeGroupArgs {
   sfb: boolean
   scs: boolean

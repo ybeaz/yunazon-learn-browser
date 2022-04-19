@@ -5,9 +5,6 @@ import { createGlobalStyle } from 'styled-components'
 import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { getBuiltColor } from './getBuiltColor'
-
-const condition = (arrThemes, arrColors) => {}
-
 interface IGetCreatedGlobalStyle {
   (lightness: ILightness, alphas: IAlphas): any
 }
