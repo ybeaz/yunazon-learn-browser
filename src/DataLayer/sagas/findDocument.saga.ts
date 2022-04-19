@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { findDocumentConnector } from '../../CommunicationLayer/findDocument.connector'
@@ -8,7 +7,7 @@ function* findDocument(dataInput) {
   const { data: documentID } = dataInput
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const { method, url, payload, options } = findDocumentConnector(
+  const { axiosClient, method, params } = findDocumentConnector(
     documentID,
     fragmentName
   )
@@ -19,7 +18,8 @@ function* findDocument(dataInput) {
       data: {
         data: { findDocument },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
+
     yield put(actionAsync.ADD_DOCUMENT.SUCCESS(findDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

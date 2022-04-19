@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -12,7 +11,7 @@ function* getAuthSignIn() {
     },
   } = yield select((store: IRootStore) => store)
 
-  const { method, url, payload, options } = getAuthSignInConnector(
+  const { axiosClient, method, params } = getAuthSignInConnector(
     userEmail,
     userPasswordAuth
   )
@@ -23,7 +22,7 @@ function* getAuthSignIn() {
       data: {
         data: { authLoginPass },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     const {
       email: userEmail,

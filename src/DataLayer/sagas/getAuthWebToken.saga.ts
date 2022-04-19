@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -9,7 +8,7 @@ function* getAuthWebToken(args: any) {
     data: { userWebTokenAuth: userWebTokenAuth2 },
   } = args
 
-  const { method, url, payload, options } =
+  const { axiosClient, method, params } =
     getAuthWebTokenConnector(userWebTokenAuth2)
 
   try {
@@ -17,7 +16,7 @@ function* getAuthWebToken(args: any) {
       data: {
         data: { authWebToken },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     const {
       email: userEmail,

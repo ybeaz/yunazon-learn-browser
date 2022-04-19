@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put } from 'redux-saga/effects'
 
 import { AWS_COGNITO_API } from '../../Constants/servers.const'
@@ -10,14 +9,14 @@ function* getGetCognitoTokens(action) {
     data: { code },
   } = action
 
-  const { method, url, options, payload } = getGetCognitoTokensConnector({
+  const { axiosClient, method, params } = getGetCognitoTokensConnector({
     ...AWS_COGNITO_API.getTokensOauth2,
     payload: { code },
   })
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-    const { data: data2 } = yield axios[method](url, payload, options)
+    const { data: data2 } = yield axiosClient[method]('', params)
 
     yield put(actionAsync.GET_COGNITO_TOKENS.SUCCESS(data2))
 

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
@@ -20,10 +19,10 @@ function* getContentInfo() {
     const { courses: coursesPrev } = yield select(store => store)
     if (coursesPrev.length) return
 
-    const { method, url, options } = getContentInfoConnector()
+    const { axiosClient, method, params } = getContentInfoConnector()
     const {
       data: { courses },
-    } = yield axios[method](url, {}, options)
+    } = yield axiosClient[method]('')
 
     let coursesNext = getProcessedArgsInChain(courses)
       .exec(getCutCoursesList)

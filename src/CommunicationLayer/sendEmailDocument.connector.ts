@@ -1,7 +1,12 @@
+import axios from 'axios'
+
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 
 interface ISendEmailDocumentConnector {
   (
@@ -13,7 +18,7 @@ interface ISendEmailDocumentConnector {
   ): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -30,8 +35,13 @@ export const sendEmailDocumentConnector: ISendEmailDocumentConnector = (
 
   const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'SendEmailDocument',
       variables: {
         documentID,
@@ -43,8 +53,6 @@ export const sendEmailDocumentConnector: ISendEmailDocumentConnector = (
         sendEmailDocument(documentID: $documentID, sendTo: $sendTo, sendCc: $sendCc, sendBcc: $sendBcc){ ...${fragmentName} }} \ 
         fragment ${FRAGMENTS_STRINGS[fragmentName]}`,
     },
-    options: { headers: { ...headers } },
-    url: <string>`${SERVERS[envType]}/graphql`,
   }
 
   return obj

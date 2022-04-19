@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedUserProfileConnector } from '../../CommunicationLayer/getSavedUserProfile.connector'
@@ -11,16 +10,16 @@ function* getSavedUserProfile() {
 
   const { userIdExternal, ...user2 } = user
 
-  const { method, url, payload, options } = getSavedUserProfileConnector(user2)
+  const { axiosClient, method, params } = getSavedUserProfileConnector(user2)
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const {
       data: { data },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
-    const { responseMessage, ...rest } = data[payload.operationName]
+    const { responseMessage, ...rest } = data[params.operationName]
 
     yield put(
       actionSync.SET_USER_PROFILE({

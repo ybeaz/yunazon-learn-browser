@@ -1,4 +1,8 @@
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import axios from 'axios'
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
@@ -7,7 +11,7 @@ interface IAddDocumentConnector {
   (vars: any, fragmentName: string): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -22,16 +26,19 @@ export const addDocumentConnector: IAddDocumentConnector = (
 
   const obj: IConnectorOutput = {
     testCapture: 'should return 200 code and data defined',
+    axiosClient: axios.create({
+      baseURL: `${SERVERS[envType]}/graphql`,
+      timeout: 1000,
+      headers,
+    }),
     method: 'post',
-    payload: {
+    params: {
       operationName: 'AddDocument',
       variables: {
         addDocumentInputGraphql: { ...vars, env },
       },
       query: `mutation AddDocument($addDocumentInputGraphql: AddDocumentInputGraphql!){ addDocument(addDocumentInputGraphql: $addDocumentInputGraphql){ ...${fragmentName} }} fragment ${FRAGMENTS_STRINGS[fragmentName]}`,
     },
-    options: { headers: { ...headers } },
-    url: `${SERVERS[envType]}/graphql`,
   }
 
   return obj

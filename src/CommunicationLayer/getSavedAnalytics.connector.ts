@@ -1,4 +1,9 @@
-import { IHeaders, IConnectorOutput } from '../Interfaces/IConnectorOutput'
+import axios from 'axios'
+
+import {
+  IConnectorOutput,
+  AxiosRequestHeaders,
+} from '../Interfaces/IConnectorOutput'
 import { IAnalyticsInput } from '../Interfaces/IAnalyticsInput'
 import { SERVERS_ANALYTICS as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
@@ -8,7 +13,7 @@ interface IGetSavedAnalyticsConnector {
   (props: IAnalyticsInput): IConnectorOutput
 }
 
-const headers: IHeaders = {
+const headers: AxiosRequestHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json',
   timestamp: +new Date(),
@@ -18,14 +23,16 @@ export const getSavedAnalyticsConnector: IGetSavedAnalyticsConnector =
   props => {
     const hash256 = getAssetHash(props)
     const envType = getDetectedEnv()
-    const url = `${SERVERS[envType]}/graphql`
 
     const obj: IConnectorOutput = {
       testCapture: 'should return 200 code and data defined',
+      axiosClient: axios.create({
+        baseURL: `${SERVERS[envType]}/graphql`,
+        timeout: 1000,
+        headers,
+      }),
       method: 'post',
-      url,
-      options: { headers: { ...headers } },
-      payload: {
+      params: {
         operationName: 'SaveAnalytics',
         variables: {
           analyticsInput: {

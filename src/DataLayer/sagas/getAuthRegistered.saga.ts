@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -17,7 +16,7 @@ function* getAuthRegistered() {
     },
   } = yield select((store: IRootStore) => store)
 
-  const { method, url, payload, options } = getAuthRegisteredConnector(
+  const { axiosClient, method, params } = getAuthRegisteredConnector(
     userName2,
     userEmail2,
     userPasswordAuth2
@@ -29,7 +28,7 @@ function* getAuthRegistered() {
       data: {
         data: { register },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     const {
       email: userEmail,

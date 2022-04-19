@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { addDocumentConnector } from '../../CommunicationLayer/addDocument.connector'
@@ -38,12 +37,10 @@ function* addDocument(dataInput) {
   }
 
   const fragmentName = 'DocumentModelGraphqlAll'
-  const {
-    method,
-    url,
-    payload: payloadNext,
-    options,
-  } = addDocumentConnector(payload, fragmentName)
+  const { axiosClient, method, params } = addDocumentConnector(
+    payload,
+    fragmentName
+  )
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -51,7 +48,7 @@ function* addDocument(dataInput) {
       data: {
         data: { addDocument },
       },
-    } = yield axios[method](url, payloadNext, options)
+    } = yield axiosClient[method]('', params)
 
     yield put(actionAsync.ADD_DOCUMENT.SUCCESS(addDocument))
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

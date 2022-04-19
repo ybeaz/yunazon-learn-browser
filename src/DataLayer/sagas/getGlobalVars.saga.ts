@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -7,8 +6,10 @@ import { getGlobalVarsConnector } from '../../CommunicationLayer/getGlobalVars.c
 
 function* getGlobalVars() {
   try {
-    const { method, url, options } = getGlobalVarsConnector()
-    const { data: globalVars } = yield axios[method](url, {}, options)
+    const { axiosClient, method } = getGlobalVarsConnector()
+
+    const { data: globalVars } = yield axiosClient[method]('')
+
     yield put(actionAsync.GET_GLOBAL_VARS.SUCCESS(globalVars))
 
     const language = localStorage.getItem('language')

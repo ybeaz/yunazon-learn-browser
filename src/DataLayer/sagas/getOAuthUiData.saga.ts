@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -9,7 +8,7 @@ function* getOAuthUiData(args: any) {
     data: { userNameLast, userNameFirst, picture, userIdExternal, userName },
   } = args
 
-  const { method, url, payload, options } = getOAuthUiDataConnector({
+  const { axiosClient, method, params } = getOAuthUiDataConnector({
     userNameLast,
     userNameFirst,
     picture,
@@ -23,7 +22,7 @@ function* getOAuthUiData(args: any) {
       data: {
         data: { oAuthUiData },
       },
-    } = yield axios[method](url, payload, options)
+    } = yield axiosClient[method]('', params)
 
     const data = [
       {
