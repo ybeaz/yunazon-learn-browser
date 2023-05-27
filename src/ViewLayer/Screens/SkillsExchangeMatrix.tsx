@@ -56,13 +56,13 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
 
   const moduleCapture = 'Exchange your skills, save your time'
   const moduleDescription = 'Exchange your skills, save your time'
-  const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
+  const canonicalUrl = `https://study.yourails.com${props?.routeProps.location.pathname}`
 
   const propsOut = {
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
+      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
       contentComponentName: 'SkillsExchangeMatrix',
       isButtonSideMenu: true,
       isLogoGroup: true,
@@ -87,7 +87,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
     },
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://yourails.com/images/city.svg',
+      src: 'https://study.yourails.com/images/city.svg',
     },
   }
 

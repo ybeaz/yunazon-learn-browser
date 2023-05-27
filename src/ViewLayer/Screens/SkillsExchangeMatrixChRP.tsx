@@ -32,7 +32,7 @@ export const SkillsExchangeMatrixChRP: React.FunctionComponent<
 
   const moduleCapture = 'Exchange your skills, save your time'
   const moduleDescription = 'Exchange your skills, save your time'
-  const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
+  const canonicalUrl = `https://study.yourails.com${props?.routeProps.location.pathname}`
   const mainFrameProps = {
     screenType: 'SkillsExchangeMatrixChRP',
     contentComponentName: 'SearchFormSepChRP',

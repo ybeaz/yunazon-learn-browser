@@ -26,7 +26,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
+    logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenu: true,
     isLogoGroup: true,
@@ -49,7 +49,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const imageBottomProps = {
     classAdded: 'Image_bottom',
-    src: 'https://yourails.com/images/city.svg',
+    src: 'https://study.yourails.com/images/city.svg',
   }
 
   return (

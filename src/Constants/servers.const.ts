@@ -11,7 +11,7 @@ export const SERVERS_ANALYTICS: Record<string, string> = {
 }
 
 export const SERVERS: Record<string, string> = {
-  remote: 'https://yourails.com',
+  remote: 'https://study.yourails.com',
   localWebpack: 'http://localhost:3440',
   localServer: 'http://127.0.0.1:3000',
 }

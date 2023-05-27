@@ -18,7 +18,7 @@ module.exports = {
 
       try {
         const method = 'get'
-        const url = 'https://yourails.com/appBrowser/globalVars.json'
+        const url = 'https://study.yourails.com/appBrowser/globalVars.json'
         const options = { headers: { ...headers } }
         const { data: globalVasr } = await axios[method](url, {}, options)
 

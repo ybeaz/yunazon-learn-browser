@@ -52,7 +52,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://yourails.com/images/logoYouRailsV21.png',
+      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
       contentComponentName: 'SkillsExchangeMatrix',
       isButtonSideMenu: true,
       isLogoGroup: true,
@@ -69,7 +69,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     profileBodyProps: {},
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://yourails.com/images/city.svg',
+      src: 'https://study.yourails.com/images/city.svg',
     },
   }
   return (

@@ -14,7 +14,7 @@ export const SuccessfulCasesSep: React.FunctionComponent<
   const propsOut = {
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
-      src: 'https://yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      src: 'https://study.yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [

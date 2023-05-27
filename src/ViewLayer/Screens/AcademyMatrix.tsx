@@ -71,7 +71,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
 
   const headerFrameProps = {
     brandName: 'YouRails Academy',
-    logoPath: 'https://yourails.com/images/logoYouRails.png',
+    logoPath: 'https://study.yourails.com/images/logoYouRails.png',
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,

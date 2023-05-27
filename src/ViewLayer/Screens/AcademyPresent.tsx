@@ -34,7 +34,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
 ): ReactElement => {
   const courseID = props?.routeProps.match.params.courseID
 
-  const canonicalUrl = `https://yourails.com${props?.routeProps.location.pathname}`
+  const canonicalUrl = `https://study.yourails.com${props?.routeProps.location.pathname}`
   const screenType = 'AcademyPresent'
 
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
@@ -210,7 +210,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
 
   const headerFrameProps = {
     brandName: 'YouRails Academy',
-    logoPath: 'https://yourails.com/images/logoYouRails.png',
+    logoPath: 'https://study.yourails.com/images/logoYouRails.png',
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,

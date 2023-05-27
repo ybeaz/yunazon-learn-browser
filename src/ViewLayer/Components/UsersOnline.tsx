@@ -52,7 +52,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
 
       const imageProps = {
         classAdded: 'Image_UsersOnline',
-        src: `https://yourails.com/images/faces_mamba/${fileName}`,
+        src: `https://study.yourails.com/images/faces_mamba/${fileName}`,
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
           data: {

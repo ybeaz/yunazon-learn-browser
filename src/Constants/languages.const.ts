@@ -1,6 +1,7 @@
 import { ILanguages } from '../Interfaces/ILanguages'
 
-export const SVG_FILE_DIR: string = 'https://yourails.com/images/languages/'
+export const SVG_FILE_DIR: string =
+  'https://study.yourails.com/images/languages/'
 
 /**
  * @description Const to define languages to select

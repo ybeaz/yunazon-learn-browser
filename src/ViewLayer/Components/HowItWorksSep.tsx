@@ -15,19 +15,19 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
   const propsOut = {
     illustration_5_1_1: {
       classAdded: 'Image_illustration',
-      src: 'https://yourails.com/images/illustrations/illustration_5_1_1.png',
+      src: 'https://study.yourails.com/images/illustrations/illustration_5_1_1.png',
     },
     illustration_5_2_1: {
       classAdded: 'Image_illustration',
-      src: 'https://yourails.com/images/illustrations/illustration_5_2_1.png',
+      src: 'https://study.yourails.com/images/illustrations/illustration_5_2_1.png',
     },
     illustration_5_3_1: {
       classAdded: 'Image_illustration',
-      src: 'https://yourails.com/images/illustrations/illustration_5_3_1.png',
+      src: 'https://study.yourails.com/images/illustrations/illustration_5_3_1.png',
     },
     illustration_5_4_1: {
       classAdded: 'Image_illustration',
-      src: 'https://yourails.com/images/illustrations/illustration_5_4_1.png',
+      src: 'https://study.yourails.com/images/illustrations/illustration_5_4_1.png',
     },
   }
 
