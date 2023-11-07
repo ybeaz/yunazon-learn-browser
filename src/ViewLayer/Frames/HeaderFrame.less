@@ -1,0 +1,122 @@
+.HeaderFrame {
+  display: flex;
+
+  ._itemButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ._content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    padding: 0.7rem 1rem;
+
+    .__left {
+      display: flex;
+      align-items: center;
+    }
+
+    .__main {
+      display: flex;
+      flex: 6;
+      justify-content: center;
+      align-items: center;
+
+      ._itemSearchGroup {
+        display: flex;
+        width: 40vw;
+      }
+    }
+
+    .__right {
+      display: flex;
+      flex: 3;
+      justify-content: flex-end;
+      align-items: center;
+
+      ._itemInstallMobileAppGroup {
+        display: none;
+      }
+
+      ._itemButtonAddCourse {
+        ._itemButton;
+        padding: 0 0.5rem 0 0;
+      }
+
+      ._itemButtonAuthUser {
+        ._itemButton;
+        padding: 0 0.5rem 0 0;
+      }
+
+      ._itemLanguageSelect {
+        ._itemButton;
+
+        &:nth-child(1) {
+          padding: 0 0 0 0;
+        }
+      }
+
+      ._itemButtonThemeToggle {
+        ._itemButton;
+        padding: 0 0.5rem 0.25rem 0.5rem;
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._content {
+      overflow: hidden;
+      justify-content: space-between;
+      .__left {
+      }
+
+      .__main {
+        flex: none;
+
+        ._itemSearchGroup {
+          display: none;
+        }
+      }
+
+      .__right {
+        flex: none;
+
+        ._itemInstallMobileAppGroup {
+          ._itemButton;
+        }
+        ._itemButtonAddCourse {
+          display: none;
+        }
+        ._itemButtonAuthUser {
+          display: none;
+        }
+        ._itemLanguageSelect {
+          display: none;
+        }
+        ._itemButtonThemeToggle {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.HeaderFrame_AcademyPresent {
+}
+
+.HeaderFrame_SkillsExchangeMatrix {
+  ._content {
+    .__left {
+      flex: none;
+    }
+  }
+}

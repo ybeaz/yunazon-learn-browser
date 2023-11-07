@@ -1,0 +1,90 @@
+.SearchFormSep {
+  display: flex;
+  flex-direction: column;
+
+  .__searchForm {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0 1rem 0;
+
+    ._row {
+      display: flex;
+      flex-direction: row;
+      padding: 0 0 1rem 0;
+
+      ._col_1 {
+        display: flex;
+        flex: 1;
+        padding: 0 0 0.2rem 0;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      ._col_2 {
+        display: flex;
+        flex: 2;
+        padding: 0 0 0.2rem 0;
+        align-items: center;
+      }
+
+      ._titleElem {
+        display: flex;
+      }
+
+      ._selectElement {
+        display: flex;
+
+        ._range {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+        }
+
+        ._linkAdvacedSearch {
+          flex: 1;
+          text-align: center;
+          cursor: pointer;
+          line-height: 1;
+        }
+
+        span.ant-select-clear > span {
+          margin-top: -2px;
+        }
+      }
+
+      ._submitGroup {
+        display: flex;
+      }
+    }
+
+    ._hideRow {
+      display: none;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    .__searchForm {
+      padding: 1rem 0 0 0;
+
+      ._row {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.SearchFormSep_bottom {
+  display: none;
+  padding: 1rem 0;
+
+  @media @phone, @phone-strict {
+    display: flex;
+  }
+}

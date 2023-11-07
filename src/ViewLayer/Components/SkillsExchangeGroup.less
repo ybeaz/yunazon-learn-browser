@@ -1,0 +1,35 @@
+.SkillsExchangeGroup {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+  position: relative;
+
+  .__titleScreen {
+    display: flex;
+    justify-content: center;
+    font-size: @fontSizeH2;
+  }
+
+  ._titleSection {
+    display: flex;
+    font-size: @fontSizeH3;
+    padding: 4rem 0 2rem 0;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+    padding: 1rem;
+  }
+  @media @phone, @phone-strict {
+    padding: 1rem;
+
+    ._titleSection {
+      display: flex;
+      font-size: @fontSizeH3;
+      padding: 3rem 0 1rem 0;
+    }
+  }
+}

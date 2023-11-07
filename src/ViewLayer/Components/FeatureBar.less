@@ -1,0 +1,69 @@
+.FeatureBar {
+  display: flex;
+  position: relative;
+
+  ._tooltipTop {
+    width: 120px;
+    top: -125%;
+    top: -190%;
+  }
+
+  ._tooltipRight {
+    top: -5px;
+    left: 105%;
+  }
+
+  ._tooltipBottom {
+    width: 120px;
+    top: 140%;
+    left: 18%;
+    margin-left: -60px;
+  }
+
+  ._tooltipLeft {
+    top: -5px;
+    right: 105%;
+  }
+
+  .__tooltipText {
+    visibility: hidden;
+    width: 120px;
+    font-size: @fontSizeS;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.3rem;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+  &:hover .__tooltipText {
+    visibility: visible;
+  }
+
+  .__group {
+    display: flex;
+    flex-direction: row;
+
+    ._item {
+      display: flex;
+      padding: 1px 1px;
+
+      ._icon {
+        display: flex;
+        width: 0.7rem;
+        height: 0.7rem;
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

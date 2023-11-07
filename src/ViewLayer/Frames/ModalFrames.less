@@ -1,0 +1,101 @@
+/* The Modal (background) */
+.ModalFrames {
+  display: none; // [flex, none]; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  transition: @transition;
+
+  .__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 15%;
+    margin: 0 auto;
+    border: 1px solid #888;
+    max-width: 70%;
+    height: fit-content;
+    max-height: fit-content;
+    height: -moz-max-content;
+
+    ._close {
+      display: flex;
+      position: absolute;
+      right: 0.25rem;
+      top: 0.25rem;
+      color: rgb(111, 111, 111);
+      font-size: @fontSizeH1;
+
+      &:hover,
+      :focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    ._inner {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 3rem 2rem 3rem;
+      width: 100%;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    .__content {
+      max-width: 90%;
+      min-width: 0;
+
+      ._inner {
+        padding: 2rem 0rem;
+      }
+    }
+  }
+}
+
+.ModalFrames_display {
+  display: flex;
+  backdrop-filter: contrast(75%) blur(0px) invert(25%);
+}
+
+@media @phone, @phone-strict {
+  .ModalFrames_EmalInputs {
+    .__content {
+      left: 1rem;
+    }
+  }
+}
+
+@media @phone, @phone-strict {
+  .ModalFrames_SkillExchangeIntro {
+    .__content {
+      top: 1rem;
+    }
+  }
+
+  .ModalFrames_QuestionScores {
+    .__content {
+      top: 1rem;
+    }
+  }
+}
+
+.ModalFrames_AuthUser {
+  .__content {
+    ._inner {
+      padding: 2rem 3rem 3rem 3rem;
+    }
+  }
+}

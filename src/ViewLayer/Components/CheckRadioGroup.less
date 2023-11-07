@@ -1,0 +1,138 @@
+.CheckRadioGroup {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0 2rem 0;
+
+  .__capture {
+    display: flex;
+    font-size: @fontSizeH4;
+    padding: 0 0 1rem 0;
+  }
+
+  /* The container */
+  .__label {
+    display: flex;
+    position: relative;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+    cursor: pointer;
+    font-size: @fontSize;
+    justify-content: flex-start;
+    align-items: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    ._capture {
+      display: flex;
+    }
+
+    ._checkdiv {
+      display: flex;
+
+      /* Hide the browser's default checkbox */
+      input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+
+      /* Create a custom checkbox */
+      .checkmark {
+        position: absolute;
+        top: 5px;
+        left: 0;
+        height: 28px;
+        width: 28px;
+      }
+
+      /* On mouse-over, add a grey background color */
+      &:hover input ~ .checkmark {
+      }
+
+      /* When the checkbox is checked, add a blue background */
+      input:checked ~ .checkmark {
+      }
+
+      /* Create the checkmark/indicator (hidden when not checked) */
+      .checkmark:after {
+        content: '';
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the checkmark when checked */
+      input:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone-strict {
+    .__capture {
+      font-size: @fontSize;
+    }
+    .__label {
+      ._capture {
+        font-size: @fontSize;
+      }
+    }
+  }
+  @media @phone {
+    .__capture {
+      font-size: @fontSizeS;
+    }
+    .__label {
+      ._capture {
+        font-size: @fontSizeS;
+      }
+    }
+  }
+}
+
+.CheckBox {
+  /* Style the checkmark/indicator */
+  .__label {
+    ._checkdiv {
+      .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.RadioButton {
+  /* Create a custom radio button */
+  .checkmark {
+    border-radius: 50%;
+  }
+
+  /* Style the indicator (dot/circle) */
+  .__label {
+    ._checkdiv {
+      .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+.UsersOnline {
+  display: flex;
+  flex-direction: column;
+
+  ._title {
+    display: flex;
+    font-size: @fontSizeH3;
+  }
+
+  ._images {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    max-height: 11vw;
+    position: relative;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._images {
+      max-height: 22vw;
+    }
+  }
+}

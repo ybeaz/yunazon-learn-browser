@@ -1,0 +1,286 @@
+.SkillExchangeIntro {
+  display: flex;
+  flex-direction: column;
+
+  .__title01 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: @fontSizeH1;
+  }
+
+  .__title02 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: @fontSizeH3;
+  }
+
+  ._button {
+    display: flex;
+  }
+
+  .__textBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 5rem;
+
+    ._row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      ._col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin: 0.5rem;
+
+        ._h2 {
+          display: flex;
+          font-size: @fontSizeH2;
+        }
+
+        ._statistics {
+          display: flex;
+          font-size: @fontSize;
+          font-weight: bold;
+
+          &:nth-child(1) {
+            padding: 0 0 0 2rem;
+          }
+          &:nth-child(2) {
+            padding: 0 0 0 3.5rem;
+          }
+          &:nth-child(3) {
+            padding: 0 0 0 5rem;
+          }
+        }
+
+        ._text {
+          display: flex;
+        }
+
+        ._iconAndText {
+          display: flex;
+
+          ._text {
+            display: flex;
+            text-align: start;
+            padding: 0 0.3rem;
+          }
+        }
+      }
+      ._col:empty {
+        padding: 0px;
+      }
+
+      ._center {
+        align-items: center;
+      }
+    }
+
+    .__imageFaceCollage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      ._titleSection {
+        display: flex;
+        font-size: @fontSizeH3;
+      }
+    }
+
+    ._text {
+      display: flex;
+      text-align: left;
+      padding: 0.3rem 0;
+    }
+
+    ._listActions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0.3rem 10%;
+      list-style: none;
+
+      ._action {
+        display: flex;
+
+        // &:before {
+        //   content: '✓ ';
+        // }
+
+        &:nth-child(2) {
+          padding: 0 0 0 5%;
+        }
+
+        &:nth-child(3) {
+          padding: 0 0 0 10%;
+        }
+
+        &:nth-child(4) {
+          padding: 0 0 0 15%;
+        }
+
+        ._textLi {
+          padding: 0 0 0 0.5rem;
+        }
+      }
+    }
+  }
+
+  ._bg_color_1 {
+    background: linear-gradient(
+      312.55deg,
+      rgba(102, 153, 255, 0.15) 0%,
+      rgba(0, 60, 197, 0.15) 100%
+    );
+  }
+
+  ._bg_color_2 {
+    background: linear-gradient(
+      332.72deg,
+      rgba(68, 208, 161, 0.15) 0%,
+      rgba(102, 153, 255, 0.15) 100%
+    );
+  }
+
+  ._bg_color_3 {
+    background: linear-gradient(
+      152.46deg,
+      rgba(255, 202, 94, 0.15) 0%,
+      rgba(68, 208, 161, 0.15) 100%
+    );
+  }
+
+  ._bg_color_4 {
+    background: linear-gradient(
+      338.54deg,
+      rgba(255, 180, 0, 0.15) 0%,
+      rgba(153, 0, 153, 0.15) 100%
+    );
+  }
+
+  ._bg_color_5 {
+    background: linear-gradient(216deg, #f0ddf1, #dde6f2);
+  }
+
+  ._asym_corners {
+    border-radius: 1rem 3rem 1rem 3rem;
+    position: relative;
+
+    ._iconValue {
+      display: flex;
+      position: absolute;
+      bottom: 0rem;
+      right: 1rem;
+    }
+  }
+
+  ._flex_1 {
+    flex: 1;
+  }
+
+  ._bordered {
+    border: solid 1px lightgrey;
+    justify-content: center;
+    border-radius: 0.5rem;
+    ._bg_color_5;
+  }
+
+  ._mobileVisible {
+    display: none;
+  }
+
+  ._m1_Media {
+    margin-top: -1rem !important;
+  }
+
+  ._p6_Media {
+    padding: 2rem 0 2rem 0;
+  }
+
+  ._p5_Media {
+    padding: 0 0 0 0;
+  }
+
+  ._p4_Media {
+    padding: 0 1rem 0 0;
+  }
+
+  ._p3_Media {
+    padding: 0 0 0 1rem;
+  }
+
+  ._p2_Media {
+    padding: 1rem 0 0 15%;
+  }
+
+  ._p1_Media {
+    padding: 1rem 0 0 0;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._mobileVisible {
+      display: flex;
+    }
+
+    .__textBlock {
+      padding: 0rem 0rem;
+
+      ._row {
+        display: flex;
+        flex-direction: column;
+
+        ._col {
+          margin: 0.2rem 0.5rem;
+        }
+      }
+
+      ._text {
+        padding: 0.3rem 0;
+      }
+    }
+
+    ._m1_Media {
+      margin-top: 0;
+    }
+
+    ._p6_Media {
+      padding: 1rem 0 2rem 0;
+    }
+
+    ._p5_Media {
+      padding: 3rem 0 0 0;
+    }
+
+    ._p4_Media {
+      padding: 0 0 1rem 0;
+    }
+
+    ._p3_Media {
+      padding: 0 0 0 0;
+    }
+
+    ._p2_Media {
+      padding: 1rem 0 0 0;
+    }
+
+    ._p1_Media {
+      padding: 0 0 0 0;
+    }
+
+    ._h2 {
+      padding-left: 2rem;
+    }
+  }
+}

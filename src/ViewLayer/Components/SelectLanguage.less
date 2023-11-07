@@ -1,0 +1,79 @@
+.SelectLanguage {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  .__selectAntd {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .__option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 0 0;
+    position: relative;
+    height: 2.4rem;
+
+    ._svgImage {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    ._blur {
+      filter: blur(1.2px);
+      -webkit-filter: blur(1.2px);
+    }
+
+    ._underline {
+      height: 3px;
+      flex: 1;
+      width: 100%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+      padding: 0.2rem 0 0 0;
+    }
+
+    ._underlineActive {
+      background-color: #717171;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
+
+.SelectLanguage
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  padding: 0 11px 0 0;
+  border-radius: 0;
+}
+
+.SelectLanguage .__selectAntd .ant-select-selection-item {
+  display: flex;
+}
+
+.ant-select-item {
+  padding: 5px;
+
+  .ant-select-item-option-content {
+    display: flex;
+  }
+}
+
+.SelectLanguage .ant-select-selection-item-content {
+  display: flex;
+}
+
+.SelectLanguage .ant-select-selector {
+  width: -webkit-fill-available;
+}

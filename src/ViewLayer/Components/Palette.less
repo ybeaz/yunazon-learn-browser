@@ -1,0 +1,63 @@
+.Palette {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-self: center;
+
+  .__themeTitleBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    ._themeTitle {
+      display: flex;
+      flex-direction: row;
+    }
+
+    ._changeThemeButton {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+
+  .__theme {
+    display: flex;
+    flex-direction: row;
+
+    ._colorColumnWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      ._colorTitle {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.7rem;
+        padding: 0.2rem;
+      }
+
+      ._colorColumn {
+        display: flex;
+        flex-direction: column;
+        width: 2rem;
+
+        ._colorPlate {
+          display: flex;
+          width: 2rem;
+          height: 2rem;
+          margin: 0.2rem;
+        }
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

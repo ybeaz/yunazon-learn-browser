@@ -1,0 +1,120 @@
+@optionSelectedBackground: rgb(206, 206, 206); // #a6d7fa;
+
+.Select {
+  display: flex;
+  height: fit-content;
+  flex: 1;
+  width: 100%;
+
+  .__selectTag {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    border: 0px;
+    outline: 0px;
+    text-indent: 1px;
+
+    -webkit-appearance: button;
+    // -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-user-select: none;
+    -webkit-appearance: none;
+    box-shadow: inset;
+    user-select: none;
+    -webkit-autofill,
+    -webkit-autofill:hover,
+    -webkit-autofill:focus {
+      -webkit-animation-name: autofill;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      background: @optionSelectedBackground !important;
+      background-color: @optionSelectedBackground;
+    }
+
+    &::-ms-expand {
+      display: none;
+    }
+
+    ._option {
+      display: flex;
+      padding: 0.2rem 0.5rem;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:checked,
+      &:valid,
+      &::selection {
+        background: @optionSelectedBackground !important;
+        background-color: @optionSelectedBackground;
+      }
+    }
+  }
+
+  .__Ok {
+    display: flex;
+    -webkit-appearance: button;
+    align-items: center;
+    padding: 0.2rem 0.5rem;
+    background: white;
+  }
+
+  ._heightFixed {
+    height: 1.6rem;
+  }
+
+  ._background {
+    background: @optionSelectedBackground !important;
+    background-color: @optionSelectedBackground;
+  }
+
+  ._scrollbar {
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 7px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      box-shadow: inset;
+      border-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
+
+.Select_ageFromRequired {
+}
+
+.Select_ageToRequired {
+}
+
+.Select_countryRequired {
+}
+
+.Select_genderRequired {
+}
+
+.Select_languageRequired {
+}
+
+.Select_mediaRequired {
+}
+
+.Select_skillsOffered {
+}
+
+.Select_skillsRequired {
+}
+
+.Select_SortByProps {
+}

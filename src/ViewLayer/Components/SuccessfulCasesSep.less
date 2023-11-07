@@ -1,0 +1,151 @@
+.SuccessfulCasesSep {
+  display: flex;
+  flex-direction: column;
+
+  ._title {
+    display: flex;
+    font-size: @fontSizeH3;
+  }
+
+  .__textBlock {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem 5rem;
+
+    ._row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      ._col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        ._h2 {
+          display: flex;
+          font-size: @fontSizeH2;
+        }
+
+        ._statistics {
+          display: flex;
+          font-size: @fontSize;
+          font-weight: bold;
+
+          &:nth-child(1) {
+            padding: 0 0 0 2rem;
+          }
+          &:nth-child(2) {
+            padding: 0 0 0 3.5rem;
+          }
+          &:nth-child(3) {
+            padding: 0 0 0 5rem;
+          }
+        }
+
+        ._text {
+          display: flex;
+        }
+
+        ._capturesImage {
+          display: flex;
+
+          ._text {
+            display: flex;
+            flex: 1;
+            padding: 0 0.5rem;
+          }
+        }
+
+        ._images {
+          display: flex;
+
+          ._image {
+            display: flex;
+          }
+        }
+
+        ._iconAndText {
+          display: flex;
+
+          ._text {
+            display: flex;
+            text-align: start;
+            padding: 0 0.3rem;
+          }
+        }
+      }
+      ._col:empty {
+        padding: 0px;
+      }
+
+      ._m_0p5 {
+        margin: 0.5rem;
+      }
+
+      ._center {
+        align-items: center;
+      }
+    }
+
+    .__imageFaceCollage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      ._titleSection {
+        display: flex;
+        font-size: @fontSizeH3;
+      }
+    }
+
+    ._text {
+      display: flex;
+      text-align: left;
+      padding: 0.3rem 0;
+    }
+
+    ._listActions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin: 0;
+      padding: 0.3rem 10%;
+      list-style: none;
+
+      ._action {
+        display: flex;
+
+        // &:before {
+        //   content: '✓ ';
+        // }
+
+        &:nth-child(2) {
+          padding: 0 0 0 5%;
+        }
+
+        &:nth-child(3) {
+          padding: 0 0 0 10%;
+        }
+
+        &:nth-child(4) {
+          padding: 0 0 0 15%;
+        }
+
+        ._textLi {
+          padding: 0 0 0 0.5rem;
+        }
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

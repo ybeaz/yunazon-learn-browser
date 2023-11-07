@@ -1,0 +1,30 @@
+.CategoryCatalog {
+  display: flex;
+  flex-direction: column;
+
+  ._title {
+    display: flex;
+    font-size: @fontSizeH3;
+  }
+
+  ._catalogIcons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 13rem;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._catalogIcons {
+      max-height: 10.5rem;
+    }
+  }
+}
