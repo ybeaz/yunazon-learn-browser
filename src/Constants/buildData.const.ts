@@ -1,0 +1,1 @@
+import { BuildDataType } from '../@types/BuildDataType'; export const buildData: BuildDataType = {"commit":"ecdc8eb9fc3f0ec7c4871af6e25dcf3ccb2caaa5","author":{"name":"Roman Ches","email":"contact@yourails.com"},"date":"2023-11-06 20:00","message":"perf-develop-save-status-B-052","branchCurrent":"develop","copyright":"© 2023-11-06 20:00 Roman Ches"}

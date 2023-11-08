@@ -17,7 +17,7 @@ export const getDateString: Function = ({
   rest = false,
   style = 'military',
 }: Iprops): string => {
-  const plus0 = num => `0${num.toString()}`.slice(-2)
+  const plus0 = (num: number) => `0${num.toString()}`.slice(-2)
 
   const d = new Date(timestamp)
   const separator = dash ? '-' : ' '
