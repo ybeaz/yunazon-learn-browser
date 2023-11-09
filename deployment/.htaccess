@@ -1,13 +1,15 @@
 # Make it work for single page app
+
 Options -MultiViews
 RewriteEngine On
 RewriteCond %{REQUEST_URI} !^/static/ [NC]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
+
 # RewriteRule ^ index.php [QSA,L]
 
 # Allow CORS for a site
-<IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin https://r1.userto.com  
+
+<IfModule mod_headers.c> 
     Header set Access-Control-Allow-Credentials true
 </IfModule>
