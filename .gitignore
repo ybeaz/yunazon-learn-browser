@@ -62,3 +62,4 @@ archive/
 workspace.code-workspace
 .vscode/
 ~$swipeFileSep.xlsx
+web-build
