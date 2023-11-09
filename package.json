@@ -1,8 +1,8 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.0.0",
+  "version": "0.54.0",
   "description": "webpack5 react",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",

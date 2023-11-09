@@ -14,15 +14,15 @@
   - !!! change version in links for `bundle.min.js` and `main.bundle.min.js`
 - Building
   `yarn export:web`: To build. It runs script from package.json file
-- Copy `~/Dev/yourails-sep-web-native/web-build/static` into
-  `~/Dev/yourails-assets/dist/static-web-yourails`
-- In Browser authorise at https://www.npmjs.com/ and check previous `yourails-assets-temp` package version
-- In Terminal, go to `cd ~/Dev/yourails-assets/`
+- Copy `~/Dev/yourails_sep_academy_web/web-build/static` into
+  `~/Dev/yourails-assets-sep-academy-web/dist/static`
+- In Browser authorise at https://www.npmjs.com/ and check previous `yourails-assets-sep-academy-web` package version
+- In Terminal, go to `cd ~/Dev/yourails-assets-sep-academy-web/`
 - In VS code change versions (for example `"version": "0.60.0",`) in
-  `/Users/admin/Dev/yourails-sep-web-native/package.json` and
-  `/Users/admin/Dev/yourails-assets/package.json`
+  `/Users/admin/Dev/yourails_sep_academy_web/package.json` and
+  `/Users/admin/Dev/yourails-assets-sep-academy-web/package.json`
 - In Terminal
-  - `cd ~/Dev/yourails-assets/ && eval $(ssh-agent -s); ssh-add ~/.ssh/2020-10-19-rsa && npm init && npm publish`,
+  - `cd ~/Dev/yourails-assets-sep-academy-web/ && eval $(ssh-agent -s); ssh-add ~/.ssh/2020-10-19-rsa && npm init && npm publish`,
     go through steps and change version to the next one
 - In ForkLift copy
   - copy `/deployment/index-r1.userto.html` to `r1.userto.com/www/`

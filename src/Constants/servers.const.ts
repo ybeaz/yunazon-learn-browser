@@ -1,7 +1,7 @@
 export const SERVERS_AUTH: Record<string, string> = {
-  remote: 'https://un.userto.com',
-  localWebpack: 'https://un.userto.com',
-  localServer: 'https://un.userto.com',
+  remote: 'https://yourails.com',
+  localWebpack: 'https://yourails.com',
+  localServer: 'https://yourails.com',
 }
 
 export const SERVERS_ANALYTICS: Record<string, string> = {
@@ -11,7 +11,7 @@ export const SERVERS_ANALYTICS: Record<string, string> = {
 }
 
 export const SERVERS: Record<string, string> = {
-  remote: 'https://study.yourails.com',
+  remote: 'https://yourails.com',
   localWebpack: 'http://localhost:3440',
   localServer: 'http://127.0.0.1:3000',
 }
