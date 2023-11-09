@@ -6,6 +6,7 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface StubForUserResearchArgs {
   routeProps: {
@@ -26,7 +27,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenu: true,
     isLogoGroup: true,
@@ -49,7 +50,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const imageBottomProps = {
     classAdded: 'Image_bottom',
-    src: 'https://study.yourails.com/images/city.svg',
+    src: `${SERVERS_MAIN.remote}/images/city.svg`,
   }
 
   return (

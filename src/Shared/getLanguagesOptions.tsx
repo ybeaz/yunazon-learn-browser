@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
+import { nanoid } from 'nanoid'
 
 import { Image } from '../ViewLayer/ComponentsLibrary/Image'
 import { ILanguages } from '../Interfaces/ILanguages'
@@ -30,6 +31,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
     const value = LANGUAGES[ln]['639-1']
     const [label] = LANGUAGES[ln][language]
     const twoChar6391 = LANGUAGES[ln]['639-1']
+    const key = nanoid()
 
     let labelNext = label
     labelNext = LANGUAGES[ln][twoChar6391]
@@ -45,6 +47,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
     return (
       <Option
+        key={key}
         className={`_optionsAntd ${classAdded}`}
         value={value}
         isSelectOption={true}

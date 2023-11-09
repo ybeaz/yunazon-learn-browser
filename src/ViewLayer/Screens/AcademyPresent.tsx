@@ -23,6 +23,7 @@ import { PlayerIframe } from '../Frames/PlayerIframe'
 import { PlayerPanel } from '../Components/PlayerPanel'
 import { ReaderIframe } from '../Frames/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 const COMPONENT = {
   ReaderIframe,
@@ -34,7 +35,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
 ): ReactElement => {
   const courseID = props?.routeProps.match.params.courseID
 
-  const canonicalUrl = `https://study.yourails.com${props?.routeProps.location.pathname}`
+  const canonicalUrl = `${SERVERS_MAIN.remote}${props?.routeProps.location.pathname}`
   const screenType = 'AcademyPresent'
 
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
@@ -210,7 +211,7 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
 
   const headerFrameProps = {
     brandName: 'YouRails Academy',
-    logoPath: 'https://study.yourails.com/images/logoYouRails.png',
+    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,

@@ -2,13 +2,13 @@ import { takeEvery, put } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getGlobalVarsConnector } from '../../CommunicationLayer/getGlobalVars.connector'
+import { getGlobalVarsConnector } from '../../CommunicationLayer/getGlobalVarsConnector'
 
 function* getGlobalVars() {
   try {
-    const { axiosClient, method } = getGlobalVarsConnector()
+    const { client } = getGlobalVarsConnector()
 
-    const { data: globalVars } = yield axiosClient[method]('')
+    const { data: globalVars } = yield client.get('/appBrowser/globalVars.json')
 
     yield put(actionAsync.GET_GLOBAL_VARS.SUCCESS(globalVars))
 
@@ -31,7 +31,7 @@ function* getGlobalVars() {
     if (width <= 480) {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
-  } catch (error) {
+  } catch (error: any) {
     console.info('getGlobalVars [31]', error.name + ': ' + error.message)
   }
 }

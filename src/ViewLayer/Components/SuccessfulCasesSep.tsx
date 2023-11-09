@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { Image } from '../ComponentsLibrary/Image'
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface SuccessfulCasesSepArgs {}
 
@@ -14,7 +15,7 @@ export const SuccessfulCasesSep: React.FunctionComponent<
   const propsOut = {
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
-      src: 'https://study.yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      src: `${SERVERS_MAIN.remote}/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [

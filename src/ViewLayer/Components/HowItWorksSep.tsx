@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 import { Image } from '../ComponentsLibrary/Image'
 import { IRootStore } from '../../Interfaces/IRootStore'
@@ -15,19 +16,19 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
   const propsOut = {
     illustration_5_1_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_1_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_1_1.png`,
     },
     illustration_5_2_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_2_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_2_1.png`,
     },
     illustration_5_3_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_3_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_3_1.png`,
     },
     illustration_5_4_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_4_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_4_1.png`,
     },
   }
 

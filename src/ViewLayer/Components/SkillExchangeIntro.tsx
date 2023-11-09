@@ -6,6 +6,7 @@ import { Button } from '../ComponentsLibrary/Button'
 import { IconReact } from '../ComponentsLibrary/IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface SkillExchangeIntroArgs {}
 
@@ -146,7 +147,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
     },
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
-      src: 'https://study.yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      src: `${SERVERS_MAIN.remote}/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -161,7 +162,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
 
     collageImageIndustriesProps: {
       classAdded: 'Image_collageImageIndustries',
-      src: 'https://study.yourails.com/images/collage-icon-industries-211122-YxY-51.jpg',
+      src: `${SERVERS_MAIN.remote}/images/collage-icon-industries-211122-YxY-51.jpg`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [

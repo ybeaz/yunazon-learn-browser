@@ -12,17 +12,16 @@ import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
 import { actionAsync } from '../../DataLayer/index.action'
-import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfo.connector'
+import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfoConnector'
 
 function* getContentInfo() {
   try {
     const { courses: coursesPrev } = yield select(store => store)
     if (coursesPrev.length) return
 
-    const { axiosClient, method, params } = getContentInfoConnector()
-    const {
-      data: { courses },
-    } = yield axiosClient[method]('')
+    const { client } = getContentInfoConnector()
+
+    const { data: courses } = yield client.get('/appBrowser/courses.json')
 
     let coursesNext = getProcessedArgsInChain(courses)
       .exec(getCutCoursesList)
@@ -37,8 +36,8 @@ function* getContentInfo() {
       .done()
 
     yield put(actionAsync.GET_CONTENT_DATA.SUCCESS(coursesNext))
-  } catch (error) {
-    console.info('getContentInfo  [20]', error.name + ': ' + error.message)
+  } catch (error: any) {
+    console.info('getContentInfo.saga  [44]', error.name + ': ' + error.message)
   }
 }
 

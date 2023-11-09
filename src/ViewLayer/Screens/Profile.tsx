@@ -11,6 +11,7 @@ import { MainFrame } from '../Frames/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface ProfileArgs {
   routeProps: {}
@@ -42,7 +43,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
       isButtonSideMenu: true,
       isLogoGroup: true,
@@ -59,7 +60,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     profileBodyProps: {},
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://study.yourails.com/images/city.svg',
+      src: `${SERVERS_MAIN.remote}/images/city.svg`,
     },
   }
   return (
