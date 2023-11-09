@@ -6,6 +6,7 @@ import { Button } from '../ComponentsLibrary/Button'
 import { IconReact } from '../ComponentsLibrary/IconReact'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface SkillExchangeIntro2Args {}
 
@@ -146,7 +147,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     },
     illustration_5_1_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_1_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_1_1.png`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -160,7 +161,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     },
     illustration_5_2_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_2_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_2_1.png`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -174,7 +175,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     },
     illustration_5_3_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_3_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_3_1.png`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -188,7 +189,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     },
     illustration_5_4_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_4_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_4_1.png`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -202,7 +203,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     },
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
-      src: 'https://study.yourails.com/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg',
+      src: `${SERVERS_MAIN.remote}/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -217,7 +218,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
 
     collageImageIndustriesProps: {
       classAdded: 'Image_collageImageIndustries',
-      src: 'https://study.yourails.com/images/collage-icon-industries-211122-YxY-51.jpg',
+      src: `${SERVERS_MAIN.remote}/images/collage-icon-industries-211122-YxY-51.jpg`,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [

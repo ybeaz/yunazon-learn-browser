@@ -14,6 +14,7 @@ import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
 
 interface SkillsExchangeMatrixProps {
   routeProps: {
@@ -54,13 +55,13 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
 
   const moduleCapture = 'Exchange your skills, save your time'
   const moduleDescription = 'Exchange your skills, save your time'
-  const canonicalUrl = `https://study.yourails.com${pathname}`
+  const canonicalUrl = `${SERVERS_MAIN.remote}${pathname}`
 
   const propsOut = {
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
       isButtonSideMenu: true,
       isLogoGroup: true,
@@ -85,7 +86,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
     },
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://study.yourails.com/images/city.svg',
+      src: `${SERVERS_MAIN.remote}/images/city.svg`,
     },
   }
 

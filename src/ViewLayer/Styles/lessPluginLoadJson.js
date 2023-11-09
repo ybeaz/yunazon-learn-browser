@@ -1,5 +1,7 @@
 const axios = require('axios').default
 
+import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
+
 /**
  * @description: Not used, experimented with changing less files directly
  *                here with async loading config data
@@ -18,7 +20,7 @@ module.exports = {
 
       try {
         const method = 'get'
-        const url = 'https://study.yourails.com/appBrowser/globalVars.json'
+        const url = `${SERVERS_MAIN.remote}/appBrowser/globalVars.json`
         const options = { headers: { ...headers } }
         const { data: globalVasr } = await axios[method](url, {}, options)
 

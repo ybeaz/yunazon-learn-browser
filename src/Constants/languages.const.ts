@@ -1,7 +1,7 @@
 import { ILanguages } from '../Interfaces/ILanguages'
+import { SERVERS_MAIN } from '../Constants/servers.const'
 
-export const SVG_FILE_DIR: string =
-  'https://study.yourails.com/images/languages/'
+export const SVG_FILE_DIR: string = `${SERVERS_MAIN.remote}/images/languages/`
 
 /**
  * @description Const to define languages to select

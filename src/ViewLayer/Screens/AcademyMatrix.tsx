@@ -13,6 +13,7 @@ import { IDurationObj } from '../../Interfaces/IDurationObj'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
@@ -71,7 +72,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
 
   const headerFrameProps = {
     brandName: 'YouRails Academy',
-    logoPath: 'https://study.yourails.com/images/logoYouRails.png',
+    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     isButtonSideMenu: true,
     isLogoGroup: true,
