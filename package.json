@@ -1,13 +1,12 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.54.0",
+  "version": "0.54.1",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",
-    "export:web": "ts-node tools/getGitBuildData.ts && yarn minify",
-    "export:web_": "ts-node tools/getGitBuildData.ts && yarn build && yarn minify",
+    "export:web": "ts-node tools/getGitBuildData.ts && yarn build && yarn minify",
     "gems": "ts-node --script-mode tools/getGems.ts",
     "jest": "jest --colors",
     "minify": "ts-node tools/getPreparedFilesPublicWeb.ts"
@@ -24,6 +23,7 @@
   },
   "homepage": "https://github.com/jacob-lcs/react-webpack5-template#readme",
   "dependencies": {
+    "@apollo/client": "^3.8.7",
     "antd": "^5.4.4",
     "axios": "^1.6.0",
     "dayjs": "^1.11.7",

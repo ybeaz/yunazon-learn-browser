@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
+import { nanoid } from 'nanoid'
 
 import { SkillExchangeIntro2 } from '../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
@@ -28,6 +29,7 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
+      const key = nanoid()
 
       if (!CHILD) return null
 
@@ -49,6 +51,7 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
 
       return (
         <div
+          key={key}
           id='modalFrames'
           className={`ModalFrames ${addClass} ModalFrames_${childName}`}
           onClick={event => handleEvents(event, closeAction)}
