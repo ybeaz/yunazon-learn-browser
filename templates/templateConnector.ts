@@ -1,5 +1,7 @@
-import { axiosClientRest } from './clients/axiosClient'
-import { ConnectorOutputType } from '../@types/ConnectorOutputType'
+// @ts-nocheck
+
+import { axiosClient } from './clients/axiosClient'
+import { ConnectorOutputType } from '../Interfaces/ConnectorOutputType'
 import { templateQuery } from './graphql/templateQuery'
 
 interface ConnectorType {
@@ -12,7 +14,7 @@ interface ConnectorType {
  */
 export const templateConnector: ConnectorType = variables => {
   const obj: ConnectorOutputType = {
-    client: axiosClientRest,
+    client: axiosClient,
     params: {
       operationName: 'Templater',
       variables,
