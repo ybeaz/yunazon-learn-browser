@@ -57,7 +57,7 @@ import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
 import { SELECT_COURSE_MODULE_CONTENTID } from './reducers/SELECT_COURSE_MODULE_CONTENTID'
 import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
-import { GET_CONTENT_DATA_SUCCESS } from './reducers/GET_CONTENT_DATA_SUCCESS'
+import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
 import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
 import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
 import { rootStoreDefault } from './rootStoreDefault'
@@ -130,7 +130,7 @@ export const indexReducer: IIndexReducer = (
     SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
     CLICK_CHECK,
-    GET_CONTENT_DATA_SUCCESS,
+    GET_COURSES_SUCCESS,
     TOGGLE_SIDE_NAVIGATION,
     GET_GLOBAL_VARS_SUCCESS,
   }

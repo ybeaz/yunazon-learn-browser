@@ -45,12 +45,12 @@ function* getContentInfo() {
       .exec(getOptionsShuffled)
       .exec(getProvidedSearchString).result
 
-    yield put(actionAsync.GET_CONTENT_DATA.SUCCESS(coursesNext))
+    yield put(actionAsync.GET_COURSES.SUCCESS(coursesNext))
   } catch (error: any) {
     console.info('getContentInfo.saga  [44]', error.name + ': ' + error.message)
   }
 }
 
 export default function* getContentInfoSaga() {
-  yield takeEvery([actionAsync.GET_CONTENT_DATA.REQUEST().type], getContentInfo)
+  yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getContentInfo)
 }

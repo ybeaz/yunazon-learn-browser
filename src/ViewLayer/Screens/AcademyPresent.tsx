@@ -41,7 +41,7 @@ export const AcademyPresent: React.FunctionComponent<
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
   const store = useSelector((store2: IRootStore) => store2)

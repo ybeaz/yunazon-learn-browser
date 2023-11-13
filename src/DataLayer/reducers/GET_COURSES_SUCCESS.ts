@@ -1,7 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 
-export const GET_CONTENT_DATA_SUCCESS: Function = (
+export const GET_COURSES_SUCCESS: Function = (
   store: IRootStore,
   data: any
 ): IRootStore => {

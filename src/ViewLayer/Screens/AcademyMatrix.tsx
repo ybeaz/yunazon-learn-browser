@@ -16,7 +16,7 @@ import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'
