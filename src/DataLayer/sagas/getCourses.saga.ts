@@ -15,7 +15,7 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 
 import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
 
-function* getContentInfo() {
+function* getCourses() {
   try {
     const { courses: coursesPrev } = yield select(store => store)
     if (coursesPrev.length) return
@@ -47,10 +47,10 @@ function* getContentInfo() {
 
     yield put(actionAsync.GET_COURSES.SUCCESS(coursesNext))
   } catch (error: any) {
-    console.info('getContentInfo.saga  [44]', error.name + ': ' + error.message)
+    console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }
 }
 
-export default function* getContentInfoSaga() {
-  yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getContentInfo)
+export default function* getCoursesSaga() {
+  yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)
 }
