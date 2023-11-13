@@ -9,9 +9,9 @@ export const GET_COURSES_SUCCESS: Function = (
   const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
   let storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
 
-  data.forEach(course => {
+  data.forEach((course: any) => {
     const { modules } = course
-    modules.forEach(module => {
+    modules.forEach((module: any) => {
       const { contentID: mediaKey } = module
       const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
       storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)
