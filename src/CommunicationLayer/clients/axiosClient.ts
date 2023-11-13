@@ -1,6 +1,6 @@
 import axios, { AxiosRequestHeaders } from 'axios'
 
-import { getDetectedEnv2 } from '../../Shared/getDetectedEnv2'
+import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { SERVERS_MAIN, ServersType } from '../../Constants/servers.const'
 
 const headers: Pick<
@@ -12,12 +12,12 @@ const headers: Pick<
   timestamp: `${+new Date()}`,
 }
 
-const envType: string = getDetectedEnv2()
+const envType: string = getDetectedEnv()
 
 const baseURL = SERVERS_MAIN[envType as keyof ServersType] as string
 const { timeout } = SERVERS_MAIN
 
-export const axiosClientRest = axios.create({
+export const axiosClient = axios.create({
   baseURL: `${baseURL}`,
   timeout,
   headers,

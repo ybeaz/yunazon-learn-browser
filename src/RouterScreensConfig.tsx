@@ -7,7 +7,7 @@ import {
   Route,
   Routes,
   Navigate,
-} from 'react-router-dom' // Switch, Redirect
+} from 'react-router-dom'
 
 import { ROUTES, RouteType } from './Constants/routes.const'
 import { Profile } from './ViewLayer/Screens/Profile'

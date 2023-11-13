@@ -1,6 +1,5 @@
-import { axiosClientRest } from './clients/axiosClient'
+import { axiosClient as axiosClientRest } from './clients/axiosClient'
 import { ConnectorOutputType } from '../@types/ConnectorOutputType'
-import { templateQuery } from './graphql/templateQuery'
 
 interface ConnectorType {
   (variables?: any): ConnectorOutputType

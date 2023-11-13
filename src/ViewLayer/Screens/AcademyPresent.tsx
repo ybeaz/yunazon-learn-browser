@@ -1,6 +1,7 @@
 import React, { useState, useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { useParams } from 'react-router-dom'
 
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
@@ -30,12 +31,14 @@ const COMPONENT = {
   PlayerIframe,
 }
 
-export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
-  props = { routeProps: {}, rootPath: '' }
-): ReactElement => {
-  const courseID = props?.routeProps.match.params.courseID
+export const AcademyPresent: React.FunctionComponent<
+  IRouterScreenProps
+> = (): ReactElement => {
+  const params = useParams()
+  const courseID = params.courseID
+  console.info('AcademyPresent [36]', { courseID, params, location })
 
-  const canonicalUrl = `${SERVERS_MAIN.remote}${props?.routeProps.location.pathname}`
+  const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
@@ -77,6 +80,10 @@ export const AcademyPresent: React.FunctionComponent<IRouterScreenProps> = (
     modulesTotal,
     questionsTotal,
   } = moduleState
+
+  return (
+    <div>We are flying from 40th flour. Until now everything is going Ok.</div>
+  )
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {

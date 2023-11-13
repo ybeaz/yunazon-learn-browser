@@ -101,6 +101,69 @@ export type CompetencyTagsParamsReadType = {
   idProfile?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type CourseEdgeType = {
+  __typename?: 'CourseEdgeType';
+  /** cursor */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** Course */
+  node?: Maybe<CourseType>;
+};
+
+export type CourseType = {
+  __typename?: 'CourseType';
+  /** course capture */
+  capture: Scalars['String']['output'];
+  /** courses ID */
+  courseID: Scalars['ID']['output'];
+  /** courses created date */
+  dateCreated: Scalars['Float']['output'];
+  /** courses deleted date */
+  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  /** courses updated date */
+  dateUpdated: Scalars['Float']['output'];
+  /** course description */
+  description: Scalars['String']['output'];
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** language code */
+  language: Scalars['String']['output'];
+  /** courses meta information */
+  meta?: Maybe<MetaType>;
+  /** courses modules */
+  modules?: Maybe<Array<ModuleType>>;
+  /** courses passRate */
+  passRate?: Maybe<Scalars['Float']['output']>;
+  /** courses questionNumber */
+  questionNumber: Scalars['Int']['output'];
+};
+
+export type CoursesConnectionType = {
+  __typename?: 'CoursesConnectionType';
+  /** [CoursesEdgeType] */
+  edges?: Maybe<Array<CourseEdgeType>>;
+  /** CoursesPageInfoType */
+  pageInfo?: Maybe<CoursesPageInfoType>;
+};
+
+export type CoursesInputType = {
+  /** courses created date */
+  coursesDateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** courses deleted date */
+  coursesDateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** courses updated date */
+  coursesDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** courses ID */
+  idCourses?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type CoursesPageInfoType = {
+  __typename?: 'CoursesPageInfoType';
+  /** endCursor */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** hasNextPage */
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type DocumentType = {
   __typename?: 'DocumentType';
   capture: Scalars['String']['output'];
@@ -184,21 +247,60 @@ export type MetaObjectType = {
   specTitle: Scalars['String']['output'];
 };
 
+export type MetaType = {
+  __typename?: 'MetaType';
+  /** course meta email */
+  email: Scalars['String']['output'];
+  /** course meta institution */
+  institution: Scalars['String']['output'];
+  /** course meta isSendingBcc */
+  isSendingBcc: Scalars['Boolean']['output'];
+  /** course meta specName */
+  specName: Scalars['String']['output'];
+  /** course meta specTitle */
+  specTitle: Scalars['String']['output'];
+};
+
+export type ModuleType = {
+  __typename?: 'ModuleType';
+  /** course module capture */
+  capture: Scalars['String']['output'];
+  /** course module contentID */
+  contentID: Scalars['ID']['output'];
+  /** course module content type */
+  contentType: Scalars['String']['output'];
+  /** course module capture */
+  description?: Maybe<Scalars['String']['output']>;
+  /** course module duration */
+  duration: Scalars['String']['output'];
+  /** course module index */
+  index: Scalars['Int']['output'];
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** course module ID */
+  moduleID: Scalars['ID']['output'];
+  /** course module questions */
+  questions: Array<QuestionType>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addDocument: DocumentType;
   addRecipe: RecipeType;
   createCompetencyTags: Array<CompetencyTagType>;
+  createCourses: Array<CourseType>;
   createProfiles: Array<ProfileType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
   deleteCompetencyTags: Array<CompetencyTagType>;
+  deleteCourses: Array<CourseType>;
   deleteProfiles: Array<ProfileType>;
   deleteTemplates: Array<TemplatesType>;
   deleteUser: UserModelExtendedType;
   removeDocument: Scalars['Boolean']['output'];
   removeRecipe: Scalars['Boolean']['output'];
   updateCompetencyTags: Array<CompetencyTagType>;
+  updateCourses: Array<CourseType>;
   updateProfiles: Array<ProfileType>;
   updateTemplates: Array<TemplatesType>;
   updateUser: UserModelExtendedType;
@@ -220,6 +322,11 @@ export type MutationCreateCompetencyTagsArgs = {
 };
 
 
+export type MutationCreateCoursesArgs = {
+  coursesInput: CoursesInputType;
+};
+
+
 export type MutationCreateProfilesArgs = {
   profilesInput: ProfilesInputType;
 };
@@ -237,6 +344,11 @@ export type MutationCreateUserArgs = {
 
 export type MutationDeleteCompetencyTagsArgs = {
   idCompetencyTags: Scalars['String']['input'];
+};
+
+
+export type MutationDeleteCoursesArgs = {
+  courseID: Scalars['String']['input'];
 };
 
 
@@ -271,6 +383,11 @@ export type MutationUpdateCompetencyTagsArgs = {
 };
 
 
+export type MutationUpdateCoursesArgs = {
+  coursesInput: CoursesInputType;
+};
+
+
 export type MutationUpdateProfilesArgs = {
   profilesInput: ProfilesInputType;
 };
@@ -289,6 +406,22 @@ export type NewRecipeInputType = {
   description?: InputMaybe<Scalars['String']['input']>;
   ingredients: Array<Scalars['String']['input']>;
   title: Scalars['String']['input'];
+};
+
+export type OptionType = {
+  __typename?: 'OptionType';
+  /** course module question option label */
+  label: Scalars['String']['output'];
+  /** course module question option status: true or false */
+  status: Scalars['Boolean']['output'];
+};
+
+export type ProfileEdgeType = {
+  __typename?: 'ProfileEdgeType';
+  /** cursor */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** ProfileEdgeType */
+  node?: Maybe<ProfileType>;
 };
 
 export enum ProfileNatureType {
@@ -349,6 +482,14 @@ export type ProfileType = {
   summary?: Maybe<Scalars['String']['output']>;
 };
 
+export type ProfilesConnectionType = {
+  __typename?: 'ProfilesConnectionType';
+  /** [ProfileEdgeType] */
+  edges?: Maybe<Array<ProfileEdgeType>>;
+  /** ProfilesPageInfoType */
+  pageInfo?: Maybe<ProfilesPageInfoType>;
+};
+
 export type ProfilesInputType = {
   /** profiles ID */
   idProfiles?: InputMaybe<Scalars['ID']['input']>;
@@ -358,6 +499,14 @@ export type ProfilesInputType = {
   profilesDateDeleted?: InputMaybe<Scalars['Date']['input']>;
   /** profiles updated date */
   profilesDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+};
+
+export type ProfilesPageInfoType = {
+  __typename?: 'ProfilesPageInfoType';
+  /** endCursor */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** hasNextPage */
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type Query = {
@@ -370,8 +519,14 @@ export type Query = {
   getRevokedUserAuthAwsCognito: UserIdDataAwsCognitoType;
   getUserIdDataAwsCognito: UserIdDataAwsCognitoType;
   readCompetencyTags: Array<CompetencyTagType>;
+  readCourse: CourseType;
+  readCourses: Array<CourseType>;
+  readCoursesConnection: CoursesConnectionType;
   readProfiles: Array<ProfileType>;
+  readProfilesConnection: ProfilesConnectionType;
+  readTemplate: TemplatesType;
   readTemplates: Array<TemplatesType>;
+  readTemplatesConnection: TemplatesConnectionType;
   readUserAuth: UserModelExtendedType;
   readUserProfile: UserModelExtendedType;
   readUsers: UsersType;
@@ -422,8 +577,28 @@ export type QueryReadCompetencyTagsArgs = {
 };
 
 
-export type QueryReadTemplatesArgs = {
-  options: TemplatesOptionsReadType;
+export type QueryReadCourseArgs = {
+  courseID: Scalars['String']['input'];
+};
+
+
+export type QueryReadCoursesConnectionArgs = {
+  readCoursesConnectionInput: ReadCoursesConnectionInputType;
+};
+
+
+export type QueryReadProfilesConnectionArgs = {
+  readProfilesConnectionInput: ReadProfilesConnectionInputType;
+};
+
+
+export type QueryReadTemplateArgs = {
+  idTemplates: Scalars['String']['input'];
+};
+
+
+export type QueryReadTemplatesConnectionArgs = {
+  readTemplatesConnectionInput: ReadTemplatesConnectionInputType;
 };
 
 
@@ -460,6 +635,47 @@ export type QuerySendEmailDocumentArgs = {
   sendTo: Scalars['String']['input'];
 };
 
+export type QuestionType = {
+  __typename?: 'QuestionType';
+  /** course question capture */
+  capture: Scalars['String']['output'];
+  /** course question designType */
+  designType?: Maybe<Scalars['String']['output']>;
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** designType > multi */
+  multi: Scalars['Boolean']['output'];
+  /** course question options */
+  options: Array<OptionType>;
+};
+
+export type ReadCoursesConnectionInputType = {
+  /** after */
+  after?: InputMaybe<Scalars['String']['input']>;
+  /** first */
+  first?: InputMaybe<Scalars['Int']['input']>;
+  /** offset */
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ReadProfilesConnectionInputType = {
+  /** after */
+  after?: InputMaybe<Scalars['String']['input']>;
+  /** first */
+  first?: InputMaybe<Scalars['Int']['input']>;
+  /** offset */
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export type ReadTemplatesConnectionInputType = {
+  /** after */
+  after?: InputMaybe<Scalars['String']['input']>;
+  /** first */
+  first?: InputMaybe<Scalars['Int']['input']>;
+  /** offset */
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
 export type ReadUsersOptions = {
   /** user fields equal to, see https://docs.mongodb.com/manual/reference/operator/query/eq/ */
   eq?: InputMaybe<Array<ComparisonFields>>;
@@ -492,32 +708,53 @@ export type Subscription = {
   recipeAdded: RecipeType;
 };
 
-export type TemplatesInputType = {
-  /** templates ID */
-  idTemplates?: InputMaybe<Scalars['ID']['input']>;
-  /** templates created date */
-  templatesDateCreated?: InputMaybe<Scalars['Date']['input']>;
-  /** templates deleted date */
-  templatesDateDeleted?: InputMaybe<Scalars['Date']['input']>;
-  /** templates updated date */
-  templatesDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+export type TemplatesConnectionType = {
+  __typename?: 'TemplatesConnectionType';
+  /** [TemplatesEdgeType] */
+  edges?: Maybe<Array<TemplatesEdgeType>>;
+  /** TemplatesPageInfoType */
+  pageInfo?: Maybe<TemplatesPageInfoType>;
 };
 
-export type TemplatesOptionsReadType = {
-  /** temporary name - value */
-  param?: InputMaybe<Scalars['String']['input']>;
+export type TemplatesEdgeType = {
+  __typename?: 'TemplatesEdgeType';
+  /** cursor */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** TemplatesEdgeType */
+  node?: Maybe<TemplatesType>;
+};
+
+export type TemplatesInputType = {
+  /** templates created date */
+  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates deleted date */
+  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** templates updated date */
+  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates ID */
+  idTemplates?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type TemplatesPageInfoType = {
+  __typename?: 'TemplatesPageInfoType';
+  /** endCursor */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** hasNextPage */
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type TemplatesType = {
   __typename?: 'TemplatesType';
+  /** templates created date */
+  dateCreated?: Maybe<Scalars['Date']['output']>;
+  /** templates deleted date */
+  dateDeleted?: Maybe<Scalars['Date']['output']>;
+  /** templates updated date */
+  dateUpdated?: Maybe<Scalars['Date']['output']>;
   /** templates ID */
   idTemplates?: Maybe<Scalars['ID']['output']>;
-  /** templates created date */
-  templatesDateCreated?: Maybe<Scalars['Date']['output']>;
-  /** templates deleted date */
-  templatesDateDeleted?: Maybe<Scalars['Date']['output']>;
-  /** templates updated date */
-  templatesDateUpdated?: Maybe<Scalars['Date']['output']>;
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
 };
 
 export type UserIdDataAwsCognitoInputType = {

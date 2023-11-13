@@ -10,6 +10,8 @@ function* getGlobalVars() {
 
     const { data: globalVars } = yield client.get('/appBrowser/globalVars.json')
 
+    console.info('getGlobalVars.saga [14]', { globalVars })
+
     yield put(actionAsync.GET_GLOBAL_VARS.SUCCESS(globalVars))
 
     const language = localStorage.getItem('language')

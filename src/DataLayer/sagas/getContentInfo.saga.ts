@@ -2,7 +2,6 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
 
-import { getCutCoursesList } from '../../Shared/getCutCoursesList'
 import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
 import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
@@ -12,19 +11,34 @@ import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
 import { actionAsync } from '../../DataLayer/index.action'
-import { getContentInfoConnector } from '../../CommunicationLayer/getContentInfoConnector'
+import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { ConnectionType } from '../../@types/ConnectionType'
+
+import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
 
 function* getContentInfo() {
   try {
     const { courses: coursesPrev } = yield select(store => store)
     if (coursesPrev.length) return
 
-    const { client } = getContentInfoConnector()
+    const variables = {
+      readCoursesConnectionInput: {
+        offset: 0,
+        first: 8,
+      },
+    }
 
-    const { data: courses } = yield client.get('/appBrowser/courses.json')
+    const readCoursesConnection: ConnectionType = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'readCoursesConnection',
+      }
+    )
 
-    let coursesNext = getProcessedArgsInChain(courses)
-      .exec(getCutCoursesList)
+    console.info('getContentInfo.saga [42]', readCoursesConnection)
+
+    let coursesNext = getProcessedArgsInChain(readCoursesConnection)
+      .exec(getMappedConnectionToRes)
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
@@ -34,6 +48,8 @@ function* getContentInfo() {
       .exec(getOptionsShuffled)
       .exec(getProvidedSearchString)
       .done()
+
+    console.info('getContentInfo.saga [57]', coursesNext)
 
     yield put(actionAsync.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error: any) {
