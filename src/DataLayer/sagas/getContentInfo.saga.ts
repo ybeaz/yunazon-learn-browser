@@ -1,7 +1,5 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { getProcessedArgsInChain } from '../../Shared/getProcessedArgsInChain'
-
 import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
 import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
@@ -13,6 +11,7 @@ import { getProvidedID } from '../../Shared/getProvidedID'
 import { actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ConnectionType } from '../../@types/ConnectionType'
+import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 
 import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
 
@@ -35,10 +34,8 @@ function* getContentInfo() {
       }
     )
 
-    console.info('getContentInfo.saga [42]', readCoursesConnection)
-
-    let coursesNext = getProcessedArgsInChain(readCoursesConnection)
-      .exec(getMappedConnectionToRes)
+    let coursesNext = getChainedResponsibility(readCoursesConnection)
+      .exec(getMappedConnectionToRes, { printRes: false })
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
@@ -46,10 +43,7 @@ function* getContentInfo() {
       .exec(getProvidedSelectedDefault)
       .exec(getProdidevAnswerDefault)
       .exec(getOptionsShuffled)
-      .exec(getProvidedSearchString)
-      .done()
-
-    console.info('getContentInfo.saga [57]', coursesNext)
+      .exec(getProvidedSearchString).result
 
     yield put(actionAsync.GET_CONTENT_DATA.SUCCESS(coursesNext))
   } catch (error: any) {

@@ -5,14 +5,14 @@ import { getArrShuffled } from './getArrShuffled'
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getOptionsShuffled: Function = (courses: any[]): any[] => {
+export const getOptionsShuffled = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       const { questions } = module
 
-      const questionsNext = questions.map(question => {
+      const questionsNext = questions.map((question: any) => {
         const { options } = question
 
         const optionsNext = getArrShuffled(options)

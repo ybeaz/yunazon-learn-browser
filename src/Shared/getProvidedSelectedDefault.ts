@@ -3,11 +3,11 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getProvidedSelectedDefault: Function = (courses: any[]): any[] => {
+export const getProvidedSelectedDefault = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       return { ...module, isSelected: false }
     })
 

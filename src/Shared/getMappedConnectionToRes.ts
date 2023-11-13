@@ -27,7 +27,7 @@ export const getMappedConnectionToRes: GetMappedConnectionToResType = (
     res = edges.map((edge: EdgeType) => edge.node)
 
     if (options?.printRes) {
-      console.log('getMappedConnectionToRes', { res })
+      console.log('getMappedConnectionToRes [30]', { res })
     }
   } catch (error: any) {
     console.log('getMappedConnectionToRes', 'Error', error.message)

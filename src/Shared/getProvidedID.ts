@@ -5,17 +5,17 @@ import { nanoid } from 'nanoid'
  * @param content: any[]
  * @returns content: any[]
  */
-export const getProvidedID: Function = (courses: any[]): any[] => {
+export const getProvidedID = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       const { questions } = module
 
-      const questionsNext = questions.map(question => {
+      const questionsNext = questions.map((question: any) => {
         const { options } = question
 
-        const optionNext = options.map(option => {
+        const optionNext = options.map((option: any) => {
           const nanoID = nanoid()
           return { optionID: nanoID, ...option }
         })

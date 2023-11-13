@@ -9,7 +9,7 @@ const errorCourse = ({
   questionNumber,
   passRate,
   meta,
-}) => {
+}: any) => {
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
     courseValidation = [
       ...courseValidation,
@@ -152,8 +152,8 @@ const errorModules = ({
   courseIndex,
   courseCapture,
   modules,
-}) => {
-  let errors = []
+}: any) => {
+  let errors: any[] = []
   let isFound: any
 
   if (!modules.length) errors = [...errors, 'module-no-modules']
@@ -224,14 +224,14 @@ const errorQuestions = ({
   courseCapture,
   moduleIndex,
   questions,
-}) => {
-  let errors = []
+}: any) => {
+  let errors: any[] = []
   let isFound: any
 
   if (!questions.length) errors = [...errors, 'questions-no-questions']
 
   isFound = questions.find(
-    question =>
+    (question: any) =>
       !question.capture ||
       question.capture === '' ||
       typeof question.capture !== 'string'
@@ -239,7 +239,7 @@ const errorQuestions = ({
   if (isFound) errors = [...errors, 'question-no-capture-or-type-error']
 
   isFound = questions.find(
-    question =>
+    (question: any) =>
       question.isActive === undefined || typeof question.isActive !== 'boolean'
   )
   if (isFound) errors = [...errors, 'question-no-isActive-or-type-error']
@@ -265,17 +265,17 @@ const errorOptions = ({
   questionIndex,
   questionCapture,
   options,
-}) => {
-  let errors = []
+}: any) => {
+  let errors: any[] = []
   let isFound: any
 
   isFound = options.find(
-    option =>
+    (option: any) =>
       !option.label || option.label === '' || typeof option.label !== 'string'
   )
   if (isFound) errors = [...errors, 'option-no-label-or-type-error']
 
-  isFound = options.find(option => {
+  isFound = options.find((option: any) => {
     const output =
       !option.hasOwnProperty('status') ||
       !(option.status === true || option.status === false)
@@ -283,7 +283,7 @@ const errorOptions = ({
   })
   if (isFound) errors = [...errors, 'option-no-status-or-type-error']
 
-  isFound = options.find(option => option.status === true)
+  isFound = options.find((option: any) => option.status === true)
   if (!isFound) errors = [...errors, 'option-no-right-option']
 
   if (errors.length) {
@@ -306,7 +306,7 @@ const errorOptions = ({
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getValidatedCourses: Function = (courses: any[]): any[] => {
+export const getValidatedCourses = (courses: any[]): any[] => {
   let courseValidation: any[] = []
 
   courses.forEach((course, courseIndex) => {
@@ -353,7 +353,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
         questions,
       })
 
-      questions.forEach((question, questionIndex) => {
+      questions.forEach((question: any, questionIndex: number) => {
         const { capture: questionCapture, options } = question
 
         courseValidation = errorOptions({
@@ -366,7 +366,7 @@ export const getValidatedCourses: Function = (courses: any[]): any[] => {
           options,
         })
 
-        options.forEach(option => {})
+        options.forEach((option: any) => {})
       })
     })
   })

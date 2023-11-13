@@ -3,17 +3,17 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getProdidevAnswerDefault: Function = (courses: any[]): any[] => {
+export const getProdidevAnswerDefault = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       const { questions } = module
 
-      const questionsNext = questions.map(question => {
+      const questionsNext = questions.map((question: any) => {
         const { options } = question
 
-        const optionNext = options.map(option => {
+        const optionNext = options.map((option: any) => {
           return { ...option, answer: false }
         })
 
