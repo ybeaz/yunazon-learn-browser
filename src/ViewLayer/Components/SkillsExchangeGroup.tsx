@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { ProfilesMatrix } from './ProfilesMatrix'
 import { Button } from '../ComponentsLibrary/Button'
-import { IAction } from '../../Interfaces/IAction'
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
 import { ServiceFunctionsSep } from './ServiceFunctionsSep'
 import { HowItWorksSep } from './HowItWorksSep'
@@ -40,7 +40,7 @@ export const SkillsExchangeGroup: React.FunctionComponent<
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_BackToTop',
-      action: {} as IAction,
+      action: {} as ActionReduxType,
       isDisplaying: true,
       tooltipText: DICTIONARY['Up'][language],
       tooltipPosition: 'top',

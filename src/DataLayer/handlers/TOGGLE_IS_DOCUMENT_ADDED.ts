@@ -1,9 +1,9 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
-export const TOGGLE_IS_DOCUMENT_ADDED: IActionEvent = (event, data) => {
+export const TOGGLE_IS_DOCUMENT_ADDED: ActionEventType = (event, data) => {
   dispatch(actionSync.TOGGLE_IS_DOCUMENT_ADDED(data))
 }

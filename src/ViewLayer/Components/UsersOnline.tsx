@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../ComponentsLibrary/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IAction } from '../../Interfaces/IAction'
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { Image } from '../ComponentsLibrary/Image'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -62,7 +62,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
             source: 'usersOnline',
             value: `${fileName} ${userName}`,
           },
-        } as IAction,
+        } as ActionReduxType,
       }
 
       return <Image {...imageProps} />
@@ -88,7 +88,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
           source: 'usersOnlineNext',
           value: 'next',
         },
-      } as IAction,
+      } as ActionReduxType,
       isDisplaying: true,
       tooltipText: DICTIONARY['Next'][language],
       tooltipPosition: 'top',

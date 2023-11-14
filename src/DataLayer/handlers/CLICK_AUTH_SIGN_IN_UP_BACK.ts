@@ -1,10 +1,10 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const CLICK_AUTH_SIGN_IN_UP_BACK: IActionEvent = (event, data) => {
+export const CLICK_AUTH_SIGN_IN_UP_BACK: ActionEventType = (event, data) => {
   const { branch } = data
 
   const {

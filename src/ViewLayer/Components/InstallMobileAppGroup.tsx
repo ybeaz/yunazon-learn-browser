@@ -1,52 +1,52 @@
-import React, { ReactElement } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { ReactElement } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { IAction } from "../../Interfaces/IAction";
-import { IRootStore } from "../../Interfaces/IRootStore";
-import { Button, IButtonArgs } from "../ComponentsLibrary/Button";
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
+import { IRootStore } from '../../Interfaces/IRootStore'
+import { Button, IButtonArgs } from '../ComponentsLibrary/Button'
 
 interface InstallMobileAppGroupArgs {}
 
 export const InstallMobileAppGroup: React.FunctionComponent<
   InstallMobileAppGroupArgs
 > = (props: InstallMobileAppGroupArgs): ReactElement => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { language } = useSelector((store2: IRootStore) => store2);
+  const { language } = useSelector((store2: IRootStore) => store2)
 
   const buttonSiAppstoreProps: IButtonArgs = {
-    icon: "SiAppstore",
+    icon: 'SiAppstore',
     icon2: null,
-    classAdded: "Button_SiAppstore",
-    tooltipText: "Install ...",
-    tooltipPosition: "bottom",
+    classAdded: 'Button_SiAppstore',
+    tooltipText: 'Install ...',
+    tooltipPosition: 'bottom',
     action: {
-      typeEvent: "SEP_CLICK_BUTTON_SEARCH",
-      data: { history: navigate, path: "/see-you", source: "installAppStore" },
-    } as IAction,
-  };
+      typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
+      data: { history: navigate, path: '/see-you', source: 'installAppStore' },
+    } as ActionReduxType,
+  }
 
   const buttonSiGoogleplayProps: IButtonArgs = {
-    icon: "SiGoogleplay",
+    icon: 'SiGoogleplay',
     icon2: null,
-    classAdded: "Button_SiGoogleplay",
-    tooltipText: "Install ...",
-    tooltipPosition: "bottom",
+    classAdded: 'Button_SiGoogleplay',
+    tooltipText: 'Install ...',
+    tooltipPosition: 'bottom',
     action: {
-      typeEvent: "SEP_CLICK_BUTTON_SEARCH",
+      typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
       data: {
         history: navigate,
-        path: "/see-you",
-        source: "installGooglePlay",
+        path: '/see-you',
+        source: 'installGooglePlay',
       },
-    } as IAction,
-  };
+    } as ActionReduxType,
+  }
 
   return (
-    <div className="InstallMobileAppGroup">
+    <div className='InstallMobileAppGroup'>
       <Button {...buttonSiAppstoreProps} />
       <Button {...buttonSiGoogleplayProps} />
     </div>
-  );
-};
+  )
+}

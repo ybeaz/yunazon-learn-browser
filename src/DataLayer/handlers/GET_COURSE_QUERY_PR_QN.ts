@@ -1,12 +1,12 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { isParsableInt } from '../../Shared/isParsableInt'
 
 const { dispatch, getState } = store
 
-export const GET_COURSE_QUERY_PR_QN: IActionEvent = (event, data) => {
+export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
   const { courseID, index } = data
   const { pr, rp, qn, nq } = getParsedUrlQuery()
 

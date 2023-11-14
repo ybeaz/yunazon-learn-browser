@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -7,5 +7,5 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SELECT_SKILLS_EXPERTISE: IActionEvent = (event, data) =>
+export const SELECT_SKILLS_EXPERTISE: ActionEventType = (event, data) =>
   dispatch(actionSync.SELECT_SKILLS_EXPERTISE(data))

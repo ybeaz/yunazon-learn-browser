@@ -1,6 +1,6 @@
 import { isParsableFloat } from '../../Shared/isParsableFloat'
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -8,7 +8,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch } = store
 
-export const SEP_INPUT_AGE_FROM_REQUIRED: IActionEvent = event => {
+export const SEP_INPUT_AGE_FROM_REQUIRED: ActionEventType = event => {
   const value = isParsableFloat(event.target.value)
     ? parseInt(event.target.value, 10)
     : ''

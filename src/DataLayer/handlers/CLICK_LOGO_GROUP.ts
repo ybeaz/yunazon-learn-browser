@@ -1,7 +1,7 @@
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
 
-export const CLICK_LOGO_GROUP: IActionEvent = (event, data) => {
+export const CLICK_LOGO_GROUP: ActionEventType = (event, data) => {
   getSavedAnanlyticsEvent(event, getAzProps('LOGO_CLICKED')())
 }

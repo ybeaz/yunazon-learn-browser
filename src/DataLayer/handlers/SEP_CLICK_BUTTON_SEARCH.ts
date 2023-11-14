@@ -1,7 +1,7 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../index.handleEvents'
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -9,7 +9,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const SEP_CLICK_BUTTON_SEARCH: IActionEvent = (event, data) => {
+export const SEP_CLICK_BUTTON_SEARCH: ActionEventType = (event, data) => {
   const { history, path, source, value } = data
 
   const {
