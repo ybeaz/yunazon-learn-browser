@@ -1,4 +1,4 @@
-import { IUser } from './IUser'
+import { UserType } from './UserType'
 
 export interface SearchFormSepType {
   selectSkillsOffered: string[]
@@ -34,8 +34,8 @@ export interface FormsType {
   sendTo: string
   sendCc: string
   searchFormSep: SearchFormSepType
-  userPrev: IUser
-  user: IUser
+  userPrev: UserType
+  user: UserType
 }
 
 export interface RootStoreType {
@@ -43,7 +43,7 @@ export interface RootStoreType {
   componentsState: ComponentsStateType
   courses: any[]
   documents: any[]
-  users: IUser[]
+  users: UserType[]
   globalVars: {
     titleSite: string
     descriptionSite: string

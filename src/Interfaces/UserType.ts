@@ -1,6 +1,6 @@
-import { IUserAwsCognitoAuth } from './IUserAwsCognitoAuth'
+import { UserAwsCognitoAuthType } from './UserAwsCognitoAuthType'
 
-export interface IUser {
+export interface UserType {
   userAvatar?: string
   userBirthYear?: number | null
   userDateCreated?: string
@@ -31,5 +31,5 @@ export interface IUser {
   userWebLink?: string
   userWebTokenAuth?: string
   userZoneInfo?: string
-  userAwsCognitoAuth: IUserAwsCognitoAuth
+  userAwsCognitoAuth: UserAwsCognitoAuthType
 }

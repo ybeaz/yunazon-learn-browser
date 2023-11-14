@@ -2,7 +2,7 @@ import axios from 'axios'
 
 import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
-import { IUser } from '../Interfaces/IUser'
+import { UserType } from '../Interfaces/UserType'
 import {
   ConnectorOutputType,
   AxiosRequestHeaders,
@@ -11,7 +11,7 @@ import { createUserQuery } from './queries/createUserQuery'
 import { updateUserQuery } from './queries/updateUserQuery'
 
 interface IGetSavedUserProfileConnector {
-  (user: IUser): ConnectorOutputType
+  (user: UserType): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {

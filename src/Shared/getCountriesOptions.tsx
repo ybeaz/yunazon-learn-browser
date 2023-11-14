@@ -1,13 +1,13 @@
 import { ICountry } from '../Constants/countries.const'
 import { IDictionary } from '../Constants/dictionary.const'
-import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
+import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
 
 interface IGetCountriesOptions {
   (
     countries: ICountry[],
     language: string,
     defaultOption: IDictionary
-  ): ISelectOptionAntD[]
+  ): SelectOptionAntDType[]
 }
 
 /**

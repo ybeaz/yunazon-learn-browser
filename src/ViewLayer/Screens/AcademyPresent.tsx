@@ -16,7 +16,7 @@ import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
+import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { MainFrame } from '../Frames/MainFrame'
@@ -32,7 +32,7 @@ const COMPONENT = {
 }
 
 export const AcademyPresent: React.FunctionComponent<
-  IRouterScreenProps
+  RouterScreenPropsType
 > = (): ReactElement => {
   const params = useParams()
   const courseID = params.courseID

@@ -1,4 +1,4 @@
-import { IUser } from '../Interfaces/IUser'
+import { UserType } from '../Interfaces/UserType'
 import {
   ComponentsStateType,
   SearchFormSepType,
@@ -6,7 +6,7 @@ import {
   RootStoreType,
 } from '../Interfaces/RootStoreType'
 
-export const userStoreDefault: IUser = {
+export const userStoreDefault: UserType = {
   userAvatar: '',
   userBirthYear: null,
   userDateCreated: '',

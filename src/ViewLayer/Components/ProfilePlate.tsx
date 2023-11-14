@@ -15,14 +15,14 @@ import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.con
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { PropsAddedType } from '../../Interfaces/PropsAddedType'
 import { Button } from '../ComponentsLibrary/Button'
-import { IUser } from '../../Interfaces/IUser'
+import { UserType } from '../../Interfaces/UserType'
 
 interface IOptionStandard {
   label: string
   value: string
 }
 interface IProfilePlateArgs {
-  profile: IUser
+  profile: UserType
   language: string
 }
 

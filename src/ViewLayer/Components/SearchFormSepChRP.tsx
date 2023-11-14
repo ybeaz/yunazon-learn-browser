@@ -8,7 +8,7 @@ import { GENDER } from '../../Constants/gender.const'
 import { AGE, IAge } from '../../Constants/age.const'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
-import { Select, ISelectOption } from './Select'
+import { Select, SelectOptionType } from './Select'
 import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { COUNTRIES, ICountry } from '../../Constants/countries.const'
@@ -23,36 +23,36 @@ interface IGetExchangeSkillOptions {
   (
     categories: any,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetCountriesOptions {
   (
     countries: ICountry[],
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetLanguagesOptions {
   (
     languages: LanguagesType,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetAgeOptions {
-  (age: IAge, defaultOption: ISelectOption): ISelectOption[]
+  (age: IAge, defaultOption: SelectOptionType): SelectOptionType[]
 }
 
 interface IGetStdDictionaryOptions {
   (
     dictionary: IDictionary,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 export const SearchFormSepChRP: React.FunctionComponent<any> = (

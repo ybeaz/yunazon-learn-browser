@@ -10,11 +10,11 @@ import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
+import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
 import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
-export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
+export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props
 ): ReactElement => {
   const {

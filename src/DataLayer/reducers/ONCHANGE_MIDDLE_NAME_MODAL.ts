@@ -1,6 +1,6 @@
 import { RootStoreType, FormsType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { IUser } from '../../Interfaces/IUser'
+import { UserType } from '../../Interfaces/UserType'
 
 export const ONCHANGE_MIDDLE_NAME_MODAL: ReducerType = (
   store: RootStoreType,
@@ -10,7 +10,7 @@ export const ONCHANGE_MIDDLE_NAME_MODAL: ReducerType = (
 
   const { user } = forms
 
-  const userNext: IUser = { ...user, userNameMiddle: data }
+  const userNext: UserType = { ...user, userNameMiddle: data }
 
   const formsNext: FormsType = { ...forms, user: userNext }
 

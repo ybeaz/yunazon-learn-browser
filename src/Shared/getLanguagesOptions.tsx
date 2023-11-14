@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid'
 import { Image } from '../ViewLayer/ComponentsLibrary/Image'
 import { LanguagesType } from '../Interfaces/LanguagesType'
 import { IDictionary } from '../Constants/dictionary.const'
-import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
+import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
 
 const { Option } = SelectAntd
 
@@ -64,7 +64,7 @@ interface IGetLanguagesOptions {
     LANGUAGES: LanguagesType,
     languages: string[],
     defaultOption2: IDictionary
-  ): ISelectOptionAntD[]
+  ): SelectOptionAntDType[]
 }
 
 interface IGetLanguagesOptions2 {
@@ -72,7 +72,7 @@ interface IGetLanguagesOptions2 {
     languages2: LanguagesType,
     language2: string,
     defaultOption2: IDictionary
-  ): ISelectOptionAntD[]
+  ): SelectOptionAntDType[]
 }
 
 /**

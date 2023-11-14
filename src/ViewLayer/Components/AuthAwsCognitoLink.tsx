@@ -5,12 +5,12 @@ import { useNavigate } from 'react-router-dom'
 import { AWS_COGNITO_API, SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { IUserAwsCognitoAuth } from '../../Interfaces/IUserAwsCognitoAuth'
+import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
 import { IconReact } from '../ComponentsLibrary/IconReact'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface IGetLinkAuthUserProps {
-  (userAwsCognitoAuth: IUserAwsCognitoAuth): {
+  (userAwsCognitoAuth: UserAwsCognitoAuthType): {
     icon: string
     classAdded: string
   }

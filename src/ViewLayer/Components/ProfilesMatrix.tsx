@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { ProfilePlate } from './ProfilePlate'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { IUser } from '../../Interfaces/IUser'
+import { UserType } from '../../Interfaces/UserType'
 
 interface ProfilesMatrixArgs {}
 
@@ -14,8 +14,8 @@ export const ProfilesMatrix: React.FunctionComponent<ProfilesMatrixArgs> = (
 
   const propsOut = {}
 
-  const getProfilesList = (profiles: IUser[]) => {
-    return profiles.map((profile: IUser) => {
+  const getProfilesList = (profiles: UserType[]) => {
+    return profiles.map((profile: UserType) => {
       const profilePlateProps = { language, profile }
 
       return <ProfilePlate {...profilePlateProps} />
