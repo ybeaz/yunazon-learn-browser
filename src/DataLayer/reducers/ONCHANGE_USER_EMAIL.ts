@@ -1,4 +1,4 @@
-import { IForms, RootStoreType } from '../../Interfaces/RootStoreType'
+import { FormsType, RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { IUser } from '../../Interfaces/IUser'
 
@@ -11,7 +11,7 @@ export const ONCHANGE_USER_EMAIL: ReducerType = (
 
   const userNext: IUser = { ...user, userEmail: data }
 
-  const nextForms: IForms = {
+  const nextForms: FormsType = {
     ...forms,
     user: userNext,
   }

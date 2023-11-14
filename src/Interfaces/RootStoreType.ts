@@ -1,6 +1,6 @@
 import { IUser } from './IUser'
 
-export interface ISearchFormSep {
+export interface SearchFormSepType {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
   selectCountryRequired: string[]
@@ -13,7 +13,7 @@ export interface ISearchFormSep {
   selectSortBy: string
 }
 
-export interface IComponentsState {
+export interface ComponentsStateType {
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
@@ -29,18 +29,18 @@ export interface IComponentsState {
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
 }
 
-export interface IForms {
+export interface FormsType {
   searchInput: string
   sendTo: string
   sendCc: string
-  searchFormSep: ISearchFormSep
+  searchFormSep: SearchFormSepType
   userPrev: IUser
   user: IUser
 }
 
 export interface RootStoreType {
   analyticsID: string | null
-  componentsState: IComponentsState
+  componentsState: ComponentsStateType
   courses: any[]
   documents: any[]
   users: IUser[]
@@ -53,7 +53,7 @@ export interface RootStoreType {
     numberQuestionsInSlide: number
     durationMultiplier: number
   }
-  forms: IForms
+  forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean

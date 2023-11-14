@@ -1,8 +1,8 @@
 import { IUser } from '../Interfaces/IUser'
 import {
-  IComponentsState,
-  ISearchFormSep,
-  IForms,
+  ComponentsStateType,
+  SearchFormSepType,
+  FormsType,
   RootStoreType,
 } from '../Interfaces/RootStoreType'
 
@@ -46,7 +46,7 @@ export const userStoreDefault: IUser = {
   },
 }
 
-export const searchFormSepDefault: ISearchFormSep = {
+export const searchFormSepDefault: SearchFormSepType = {
   selectSkillsOffered: [],
   selectSkillsRequired: '',
   selectCountryRequired: [],
@@ -59,7 +59,7 @@ export const searchFormSepDefault: ISearchFormSep = {
   selectSortBy: '',
 }
 
-export const componentsStateDefault: IComponentsState = {
+export const componentsStateDefault: ComponentsStateType = {
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
@@ -83,7 +83,7 @@ export const componentsStateDefault: IComponentsState = {
   ],
 }
 
-export const formsDefault: IForms = {
+export const formsDefault: FormsType = {
   searchInput: '',
   sendTo: '',
   sendCc: '',
