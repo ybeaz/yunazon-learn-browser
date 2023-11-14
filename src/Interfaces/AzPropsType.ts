@@ -1,4 +1,4 @@
-export interface IAzProps {
+export interface AzPropsType {
   type: string
   name?: string
   value?: string

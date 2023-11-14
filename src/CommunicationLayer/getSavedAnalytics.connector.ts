@@ -4,13 +4,13 @@ import {
   IConnectorOutput,
   AxiosRequestHeaders,
 } from '../Interfaces/IConnectorOutput'
-import { IAnalyticsInput } from '../Interfaces/IAnalyticsInput'
+import { AnalyticsInputType } from '../Interfaces/AnalyticsInputType'
 import { SERVERS_ANALYTICS as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { getAssetHash } from '../Shared/getAssetHash'
 
 interface IGetSavedAnalyticsConnector {
-  (props: IAnalyticsInput): IConnectorOutput
+  (props: AnalyticsInputType): IConnectorOutput
 }
 
 const headers: AxiosRequestHeaders = {

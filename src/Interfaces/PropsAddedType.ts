@@ -1,4 +1,4 @@
-export interface IAddedProps {
+export interface PropsAddedType {
   defaultValue?: string[]
   value?: string[]
 }

@@ -2,11 +2,11 @@ import { store } from '../DataLayer/store'
 import { actionAsync } from '../DataLayer/index.action'
 
 import * as flags from '../FeatureFlags/index'
-import { IAzProps } from '../Interfaces/IAzProps'
+import { AzPropsType } from '../Interfaces/AzPropsType'
 
 export const getSavedAnanlyticsEvent: Function = (
   event: any,
-  props: IAzProps
+  props: AzPropsType
 ): void => {
   if (!flags.isGetingSavedAnanlyticsEvent()) return
 

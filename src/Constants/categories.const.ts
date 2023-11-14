@@ -1,6 +1,6 @@
-import { ICategory } from '../Interfaces/ICategory'
+import { CategoryType } from '../Interfaces/CategoryType'
 
-export const CATEGORIES: ICategory[] = [
+export const CATEGORIES: CategoryType[] = [
   { icon: 'BsHouseDoor', en: 'House', ru: 'Недвижимость' },
   { icon: 'AiOutlineShoppingCart', en: 'Shopping', ru: 'Щопинг' },
   { icon: 'AiOutlineMedicineBox', en: 'Medicine', ru: 'Здоровье, лечение' },

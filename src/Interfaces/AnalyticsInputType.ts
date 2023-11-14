@@ -1,4 +1,4 @@
-export interface IInitData {
+interface InitDataAnalyticsType {
   width: number
   height: number
   search: string
@@ -8,7 +8,7 @@ export interface IInitData {
   referrer: string
 }
 
-export interface IEvent {
+interface EventAnalyticsType {
   type: string
   name: string
   value: string
@@ -16,10 +16,10 @@ export interface IEvent {
   pathname: string
 }
 
-export interface IAnalyticsInput {
+export interface AnalyticsInputType {
   analyticsID?: string
   hash256?: string
   type?: string
-  initData?: IInitData
-  event?: IEvent
+  initData?: InitDataAnalyticsType
+  event?: EventAnalyticsType
 }

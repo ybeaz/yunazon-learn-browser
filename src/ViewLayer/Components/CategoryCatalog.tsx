@@ -7,11 +7,11 @@ import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
-import { ICategory } from '../../Interfaces/ICategory'
+import { CategoryType } from '../../Interfaces/CategoryType'
 import { Button } from '../ComponentsLibrary/Button'
 
 interface IGetCategorisJsx {
-  (categories: ICategory[], language: string): ReactElement[]
+  (categories: CategoryType[], language: string): ReactElement[]
 }
 
 interface CategoryCatalogArgs {}
@@ -23,7 +23,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   const { language } = useSelector((store2: IRootStore) => store2)
 
   const getCategorisJsx: IGetCategorisJsx = (categories2, language2) =>
-    categories2.map((item: ICategory) => {
+    categories2.map((item: CategoryType) => {
       const { icon } = item
 
       const buttonProps = {

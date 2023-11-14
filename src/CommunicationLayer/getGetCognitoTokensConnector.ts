@@ -1,10 +1,10 @@
 import axios from 'axios'
 import qs from 'qs'
 
-import { IConnector } from '../Interfaces/IConnector'
+import { ConnectorType } from '../Interfaces/ConnectorType'
 import { IConnectorOutput, Method } from '../Interfaces/IConnectorOutput'
 
-export const getGetCognitoTokensConnector: IConnector = options => {
+export const getGetCognitoTokensConnector: ConnectorType = options => {
   const { method, url, headersAdd, payloadAdd, payload } = options
 
   const methodNext: Method = method as Method

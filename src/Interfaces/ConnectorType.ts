@@ -1,6 +1,6 @@
 import { IConnectorOutput } from './IConnectorOutput'
 
-export interface IConnectorOptions {
+export interface ConnectorOptionsType {
   method: string
   url: string
   headersAdd: any
@@ -8,6 +8,6 @@ export interface IConnectorOptions {
   payload?: any
 }
 
-export interface IConnector {
-  (options?: IConnectorOptions): IConnectorOutput
+export interface ConnectorType {
+  (options?: ConnectorOptionsType): IConnectorOutput
 }
