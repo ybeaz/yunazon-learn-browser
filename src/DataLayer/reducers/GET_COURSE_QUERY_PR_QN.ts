@@ -1,11 +1,11 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getCoursePassParamsSet } from '../../Shared/getCoursePassParamsSet'
 
 export const GET_COURSE_QUERY_PR_QN: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { courses } = store
 
   const { courseID, index, isReducing, questionNumberIn, passRateIn } = data

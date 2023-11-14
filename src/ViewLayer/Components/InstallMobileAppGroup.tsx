@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Button, IButtonArgs } from '../ComponentsLibrary/Button'
 
 interface InstallMobileAppGroupArgs {}
@@ -13,7 +13,7 @@ export const InstallMobileAppGroup: React.FunctionComponent<
 > = (props: InstallMobileAppGroupArgs): ReactElement => {
   const navigate = useNavigate()
 
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const buttonSiAppstoreProps: IButtonArgs = {
     icon: 'SiAppstore',

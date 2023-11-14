@@ -1,11 +1,11 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getOptionsClickedByID } from '../../Shared/getOptionsClickedByID'
 
 export const CLICK_CHECK: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { optionID, multi } = data
   const { courses } = store
   const coursesNext = getOptionsClickedByID(courses, optionID, multi)

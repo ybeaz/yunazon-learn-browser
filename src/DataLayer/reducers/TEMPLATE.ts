@@ -1,9 +1,9 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const TEMPLATE: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   return store
 }

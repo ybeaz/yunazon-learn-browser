@@ -1,10 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SET_OAUTH_GOOGLE_SCRIPT_STATE: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {
     ...componentsState,

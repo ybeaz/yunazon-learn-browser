@@ -1,10 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SEP_SELECT_MEDIA_REQUIRED: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
   const { searchFormSep } = forms
   const searchFormSepNext = { ...searchFormSep, selectMediaRequired: data }

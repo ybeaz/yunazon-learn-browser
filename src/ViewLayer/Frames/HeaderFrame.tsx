@@ -1,55 +1,53 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 
-import * as flags from "../../FeatureFlags/index";
-import { AuthAwsCognitoLink } from "../Components/AuthAwsCognitoLink";
-import { getButtonAuthUserProps } from "../Hooks/getButtonAuthUserProps";
-import { InstallMobileAppGroup } from "../Components/InstallMobileAppGroup";
-import { PageActionsGroup } from "../Components/PageActionsGroup";
-import { ShareButtons } from "../Components/ShareButtons";
-import { SearchGroup } from "../Components/SearchGroup";
-import { LogoGroup } from "../Components/LogoGroup";
-import { Button } from "../ComponentsLibrary/Button";
-import { LANGUAGES_APP } from "../../Constants/languagesApp.const";
-import { DICTIONARY } from "../../Constants/dictionary.const";
-import { IRootStore } from "../../Interfaces/IRootStore";
-import { SelectLanguage } from "../Components/SelectLanguage";
-import { ModalFrames } from "../Frames/ModalFrames";
+import * as flags from '../../FeatureFlags/index'
+import { AuthAwsCognitoLink } from '../Components/AuthAwsCognitoLink'
+import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
+import { InstallMobileAppGroup } from '../Components/InstallMobileAppGroup'
+import { PageActionsGroup } from '../Components/PageActionsGroup'
+import { ShareButtons } from '../Components/ShareButtons'
+import { SearchGroup } from '../Components/SearchGroup'
+import { LogoGroup } from '../Components/LogoGroup'
+import { Button } from '../ComponentsLibrary/Button'
+import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { SelectLanguage } from '../Components/SelectLanguage'
+import { ModalFrames } from '../Frames/ModalFrames'
 interface HeaderFrameArgs {
-  brandName?: string;
-  moto?: string;
-  logoPath?: string;
-  contentComponentName?: string;
-  courseCapture?: string;
-  documentID?: string;
-  courseID?: string;
-  contentID?: string;
-  isButtonSideMenu: boolean;
-  isLogoGroup: boolean;
-  isButtonAddCourse: boolean;
-  isButtonAuthUser: boolean;
-  isSelectLanguage: boolean;
-  isButtonThemeToggle: boolean;
-  isSeachGroup: boolean;
-  isButtonBack: boolean;
-  isPageActionsGroup: boolean;
-  isButtonsShare: boolean;
-  isInstallMobileAppGroup: boolean;
+  brandName?: string
+  moto?: string
+  logoPath?: string
+  contentComponentName?: string
+  courseCapture?: string
+  documentID?: string
+  courseID?: string
+  contentID?: string
+  isButtonSideMenu: boolean
+  isLogoGroup: boolean
+  isButtonAddCourse: boolean
+  isButtonAuthUser: boolean
+  isSelectLanguage: boolean
+  isButtonThemeToggle: boolean
+  isSeachGroup: boolean
+  isButtonBack: boolean
+  isPageActionsGroup: boolean
+  isButtonsShare: boolean
+  isInstallMobileAppGroup: boolean
 }
 
-export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = (
-  props
-) => {
+export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
   const {
     brandName,
     moto,
     logoPath,
     contentComponentName,
-    courseCapture = "",
-    documentID = "",
-    courseID = "",
-    contentID = "",
+    courseCapture = '',
+    documentID = '',
+    courseID = '',
+    contentID = '',
     isButtonAddCourse,
     isButtonAuthUser,
     isButtonBack,
@@ -61,70 +59,70 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = (
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
-  } = props;
+  } = props
 
   const {
     forms: { user },
     language,
-  } = useSelector((store2: IRootStore) => store2);
+  } = useSelector((store2: RootStoreType) => store2)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const createCourseQuiz = DICTIONARY.createCourseQuiz[language];
+  const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
-  const toggleTheme = DICTIONARY["Toggle site theme"][language];
+  const toggleTheme = DICTIONARY['Toggle site theme'][language]
 
   const classAddHeaderFrame =
-    contentComponentName === "ReaderIframe" ||
-    contentComponentName === "PlayerIframe"
-      ? "HeaderFrame_AcademyPresent"
-      : `HeaderFrame_${contentComponentName}`;
+    contentComponentName === 'ReaderIframe' ||
+    contentComponentName === 'PlayerIframe'
+      ? 'HeaderFrame_AcademyPresent'
+      : `HeaderFrame_${contentComponentName}`
 
   const propsOut = {
     selectLanguageProps: {
       LANGUAGES: LANGUAGES_APP,
       language,
       mode: null,
-      typeEvent: "SELECT_LANGUAGE_APP",
-      classAdded: "SelectLanguage__AppLanguage",
+      typeEvent: 'SELECT_LANGUAGE_APP',
+      classAdded: 'SelectLanguage__AppLanguage',
       languagesSelected: [{ value: language }],
     },
     buttonMdMenuProps: {
-      icon: "MdMenu",
-      classAdded: "Button_MdMenu",
+      icon: 'MdMenu',
+      classAdded: 'Button_MdMenu',
       action: {
-        typeEvent: "TOGGLE_SIDE_NAVIGATION",
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION',
       },
     },
     buttonBackProps: {
-      icon: "MdForward",
-      classAdded: "Button_MdBackward3",
+      icon: 'MdForward',
+      classAdded: 'Button_MdBackward3',
       action: {
-        typeEvent: "GO_BACK_FROM_CERTIFICATE",
+        typeEvent: 'GO_BACK_FROM_CERTIFICATE',
         data: { history: navigate, courseCapture },
       },
-      tooltipText: DICTIONARY["backToCourse"][language],
-      tooltipPosition: "bottom",
+      tooltipText: DICTIONARY['backToCourse'][language],
+      tooltipPosition: 'bottom',
     },
     buttonAddCourseProps: {
-      icon: "MdQueue",
-      classAdded: "Button_AddCourse",
+      icon: 'MdQueue',
+      classAdded: 'Button_AddCourse',
       tooltipText: createCourseQuiz,
-      tooltipPosition: "bottom",
-      action: { typeEvent: "CREATE_COURSE", data: { contentComponentName } },
+      tooltipPosition: 'bottom',
+      action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
     },
     buttonAuthUserProps: getButtonAuthUserProps(
       user,
       language,
-      "header",
+      'header',
       navigate
     ),
     buttonThemeToggleProps: {
-      icon: "CgDarkMode",
-      classAdded: "Button_ThemeToggle",
+      icon: 'CgDarkMode',
+      classAdded: 'Button_ThemeToggle',
       tooltipText: toggleTheme,
-      tooltipPosition: "bottom",
-      action: { typeEvent: "TOGGLE_THEME" },
+      tooltipPosition: 'bottom',
+      action: { typeEvent: 'TOGGLE_THEME' },
     },
     pageActionsProps: {
       courseCapture,
@@ -138,17 +136,17 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = (
       logoPath,
       contentComponentName,
     },
-  };
+  }
 
   return (
     <div
       id={`id_header_${contentComponentName}`}
       className={`HeaderFrame ${classAddHeaderFrame}`}
     >
-      <div className="_content">
-        <div className="__left">
+      <div className='_content'>
+        <div className='__left'>
           {isButtonBack && (
-            <Link to={{ pathname: "/academy" }}>
+            <Link to={{ pathname: '/academy' }}>
               <Button {...propsOut.buttonBackProps} />
             </Link>
           )}
@@ -159,37 +157,37 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = (
           )}
           {isButtonsShare && <ShareButtons />}
         </div>
-        <div className="__main">
+        <div className='__main'>
           {isSeachGroup && (
-            <div className="_itemSearchGroup">
+            <div className='_itemSearchGroup'>
               <SearchGroup />
             </div>
           )}
         </div>
-        <div className="__right">
+        <div className='__right'>
           {isInstallMobileAppGroup && (
-            <div className="_itemInstallMobileAppGroup">
+            <div className='_itemInstallMobileAppGroup'>
               <InstallMobileAppGroup />
             </div>
           )}
           {isButtonAddCourse && (
-            <div className="_itemButtonAddCourse">
+            <div className='_itemButtonAddCourse'>
               <Button {...propsOut.buttonAddCourseProps} />
             </div>
           )}
           {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isButtonAuthUser && (
-            <div className="_itemButtonAuthUser">
+            <div className='_itemButtonAuthUser'>
               <Button {...propsOut.buttonAuthUserProps} />
             </div>
           )}
           {isSelectLanguage && (
-            <div className="_itemLanguageSelect">
+            <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />
             </div>
           )}
           {isButtonThemeToggle && (
-            <div className="_itemButtonThemeToggle">
+            <div className='_itemButtonThemeToggle'>
               <Button {...propsOut.buttonThemeToggleProps} />
             </div>
           )}
@@ -197,5 +195,5 @@ export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = (
       </div>
       <ModalFrames />
     </div>
-  );
-};
+  )
+}

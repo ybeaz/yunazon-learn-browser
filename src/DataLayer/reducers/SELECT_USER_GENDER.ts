@@ -1,10 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 export const SELECT_USER_GENDER: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
   const { user } = forms
   const userNext = { ...user, userGender: data }

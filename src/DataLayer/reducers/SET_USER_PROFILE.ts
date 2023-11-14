@@ -1,13 +1,13 @@
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { IUser } from '../../Interfaces/IUser'
 import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
 export const SET_USER_PROFILE: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { userIdAuth, userWebTokenAuth } = data
   const { calledFrom, ...dataRest } = data
 

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { PlayerPanel } from './PlayerPanel'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from './LoaderBlurhash'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
@@ -44,7 +44,7 @@ export const ContentPlate: React.FunctionComponent<
     screenType,
   } = props
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language,
     isLoaded: { mediaLoading },

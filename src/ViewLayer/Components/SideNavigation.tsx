@@ -8,11 +8,11 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage } from './SelectLanguage'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Button } from '../ComponentsLibrary/Button'
 
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     forms: { user },
     language,

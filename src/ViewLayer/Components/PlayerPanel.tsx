@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { Button } from '../ComponentsLibrary/Button'
 
@@ -39,7 +39,7 @@ export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
     questionsTotal = 0,
   } = props
 
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
   const certificate = DICTIONARY.certificate[language]
   const succeded = DICTIONARY.succeded[language]
   const tried = DICTIONARY.tried[language]

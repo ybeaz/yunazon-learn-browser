@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SearchFormSepChRP } from '../Components/SearchFormSepChRP'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -23,7 +23,7 @@ export const SkillsExchangeMatrixChRP: React.FunctionComponent<
 > = (props): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const { language: languageStore } = store
 
   const { themeDafault } = props

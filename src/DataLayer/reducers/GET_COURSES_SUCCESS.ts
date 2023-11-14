@@ -1,11 +1,11 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 
 export const GET_COURSES_SUCCESS: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { isLoaded } = store
   const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
   let storeNext = { ...store, courses: data, isLoaded: isLoadedNext }

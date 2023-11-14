@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '../ComponentsLibrary/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Image } from '../ComponentsLibrary/Image'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -45,7 +45,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
   props: UsersOnlineArgs
 ): ReactElement => {
   const navigate = useNavigate()
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const getUsersJsx: IGetUsersJsx = (usersOnline, language2) =>
     usersOnline.map((userOnline: IUserOnline) => {

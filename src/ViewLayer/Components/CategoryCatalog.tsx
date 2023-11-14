@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { CategoryType } from '../../Interfaces/CategoryType'
@@ -20,7 +20,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
   props: CategoryCatalogArgs
 ): ReactElement => {
   const navigate = useNavigate()
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const getCategorisJsx: IGetCategorisJsx = (categories2, language2) =>
     categories2.map((item: CategoryType) => {

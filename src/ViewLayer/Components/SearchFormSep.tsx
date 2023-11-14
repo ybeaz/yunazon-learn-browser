@@ -19,7 +19,7 @@ import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface ISearchFormSepArgs {
   position: string
@@ -40,7 +40,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
     forms: { searchFormSep },
     language,
     componentsState: { isSepAdvancedSearch },
-  } = useSelector((store2: IRootStore) => store2)
+  } = useSelector((store2: RootStoreType) => store2)
 
   const [categoriesToExchangeState, setCategoriesToExchangeState] = useState(
     CATEGORIES_TO_EXCHANGE

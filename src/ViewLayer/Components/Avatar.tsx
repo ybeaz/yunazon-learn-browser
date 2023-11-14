@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
 
@@ -15,7 +15,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     forms: {
       user: { userAvatar },
     },
-  } = useSelector((store: IRootStore) => store)
+  } = useSelector((store: RootStoreType) => store)
 
   const propsOut = {
     buttonAvatarProps: {

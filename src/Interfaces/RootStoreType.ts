@@ -38,7 +38,7 @@ export interface IForms {
   user: IUser
 }
 
-export interface IRootStore {
+export interface RootStoreType {
   analyticsID: string | null
   componentsState: IComponentsState
   courses: any[]

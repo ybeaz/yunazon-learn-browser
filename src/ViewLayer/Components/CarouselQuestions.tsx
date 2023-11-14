@@ -9,10 +9,10 @@ import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { Button } from '../ComponentsLibrary/Button'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 export const CarouselQuestions: React.FunctionComponent = () => {
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
 
   const {
     globalVars: { numberQuestionsInSlide },

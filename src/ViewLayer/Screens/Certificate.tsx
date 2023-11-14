@@ -9,7 +9,7 @@ import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLo
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -28,7 +28,7 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const { documents, language } = store
   const documentsLen = documents.length
 

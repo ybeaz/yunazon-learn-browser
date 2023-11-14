@@ -9,7 +9,7 @@ import { ServiceFunctionsSep } from './ServiceFunctionsSep'
 import { HowItWorksSep } from './HowItWorksSep'
 import { UsersOnline } from './UsersOnline'
 import { CategoryCatalog } from './CategoryCatalog'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SearchFormSep } from './SearchFormSep'
 interface SkillsExchangeGroupArgs {
@@ -31,7 +31,7 @@ export const SkillsExchangeGroup: React.FunctionComponent<
     isSearchFormSepBottom: sfb,
   }
 
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     buttonBackToTopProps: {

@@ -1,5 +1,5 @@
-import { IRootStore } from './IRootStore'
+import { RootStoreType } from './RootStoreType'
 
 export interface ReducerType {
-  (store: IRootStore, data: any): IRootStore
+  (store: RootStoreType, data: any): RootStoreType
 }

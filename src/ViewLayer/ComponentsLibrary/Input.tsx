@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { IconReact } from './IconReact'
 
 interface InputArgs {
@@ -30,7 +30,7 @@ export const Input: React.FunctionComponent<InputArgs> = (
     accept,
   } = props
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const { forms } = store
   const value =
     storeFormGroup && storeFormProp

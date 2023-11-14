@@ -3,8 +3,8 @@ import {
   IComponentsState,
   ISearchFormSep,
   IForms,
-  IRootStore,
-} from '../Interfaces/IRootStore'
+  RootStoreType,
+} from '../Interfaces/RootStoreType'
 
 export const userStoreDefault: IUser = {
   userAvatar: '',
@@ -92,7 +92,7 @@ export const formsDefault: IForms = {
   user: userStoreDefault,
 }
 
-export const rootStoreDefault: IRootStore = {
+export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],

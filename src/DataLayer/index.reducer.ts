@@ -1,4 +1,4 @@
-import { IRootStore } from '../Interfaces/IRootStore'
+import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
 import { GET_COGNITO_TOKENS_SUCCESS } from './reducers/GET_COGNITO_TOKENS_SUCCESS'
@@ -62,7 +62,7 @@ import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
 import { rootStoreDefault } from './rootStoreDefault'
 
 export interface IIndexReducer {
-  (store: IRootStore, action: any): any
+  (store: RootStoreType, action: any): any
 }
 
 export const indexReducer: IIndexReducer = (

@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.connector'
 
@@ -9,7 +9,7 @@ function* getAuthSignIn() {
     forms: {
       user: { userEmail, userPasswordAuth },
     },
-  } = yield select((store: IRootStore) => store)
+  } = yield select((store: RootStoreType) => store)
 
   const { axiosClient, method, params } = getAuthSignInConnector(
     userEmail,

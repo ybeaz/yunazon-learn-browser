@@ -15,7 +15,7 @@ import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
 import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
@@ -44,7 +44,7 @@ export const AcademyPresent: React.FunctionComponent<
   getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     globalVars: { durationMultiplier },

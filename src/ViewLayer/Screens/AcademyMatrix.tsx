@@ -10,7 +10,7 @@ import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { MainFrame } from '../Frames/MainFrame'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -24,7 +24,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     globalVars: { durationMultiplier },
     courses,

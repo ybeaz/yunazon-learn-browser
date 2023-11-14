@@ -7,7 +7,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { IUserAwsCognitoAuth } from '../../Interfaces/IUserAwsCognitoAuth'
 import { IconReact } from '../ComponentsLibrary/IconReact'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface IGetLinkAuthUserProps {
   (userAwsCognitoAuth: IUserAwsCognitoAuth): {
@@ -21,7 +21,7 @@ interface AuthAwsCognitoLinkArgs {}
 export const AuthAwsCognitoLink: React.FunctionComponent<
   AuthAwsCognitoLinkArgs
 > = (props: AuthAwsCognitoLinkArgs) => {
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     forms: {
       user: { userAwsCognitoAuth },

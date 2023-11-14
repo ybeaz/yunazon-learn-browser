@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Input } from '../ComponentsLibrary/Input'
 import { Button } from '../ComponentsLibrary/Button'
 
@@ -12,7 +12,7 @@ interface EmalInputsArgs {
 export const EmalInputs: React.FunctionComponent<EmalInputsArgs> = props => {
   const { documentID } = props
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
 
   const {
     documents,

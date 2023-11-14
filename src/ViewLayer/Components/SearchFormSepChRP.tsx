@@ -13,7 +13,7 @@ import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { COUNTRIES, ICountry } from '../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { nanoid } from 'nanoid'
 
 /**
@@ -58,7 +58,7 @@ interface IGetStdDictionaryOptions {
 export const SearchFormSepChRP: React.FunctionComponent<any> = (
   props: any
 ): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const getExchangeSkillOptions: IGetExchangeSkillOptions = (
     categories,

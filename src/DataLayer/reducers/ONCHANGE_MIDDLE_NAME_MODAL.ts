@@ -1,11 +1,11 @@
-import { IRootStore, IForms } from '../../Interfaces/IRootStore'
+import { RootStoreType, IForms } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { IUser } from '../../Interfaces/IUser'
 
 export const ONCHANGE_MIDDLE_NAME_MODAL: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
 
   const { user } = forms

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ProfilePlate } from './ProfilePlate'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { IUser } from '../../Interfaces/IUser'
 
 interface ProfilesMatrixArgs {}
@@ -10,7 +10,7 @@ interface ProfilesMatrixArgs {}
 export const ProfilesMatrix: React.FunctionComponent<ProfilesMatrixArgs> = (
   props: ProfilesMatrixArgs
 ): ReactElement => {
-  const { users, language } = useSelector((store2: IRootStore) => store2)
+  const { users, language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {}
 

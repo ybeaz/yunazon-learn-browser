@@ -1,12 +1,12 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
 export const PLUS_QUESTION_SLIDE: ReducerType = (
-  store: IRootStore,
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { componentsState, courses, globalVars } = store
   const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
   const { questionsSlideNumber } = componentsState
