@@ -3,14 +3,14 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getFilteredActiveQuestions: Function = (courses: any[]): any[] => {
+export const getFilteredActiveQuestions = (courses: any[]): any[] => {
   return courses.map(course => {
     const { modules } = course
 
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       const { questions } = module
 
-      const questionsNext = questions.filter(question => {
+      const questionsNext = questions.filter((question: any) => {
         const { isActive: isActiveQuestion } = question
         return isActiveQuestion
       })

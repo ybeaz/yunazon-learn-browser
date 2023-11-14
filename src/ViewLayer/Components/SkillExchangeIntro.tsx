@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { Image } from '../ComponentsLibrary/Image'
 import { Button } from '../ComponentsLibrary/Button'
 import { IconReact } from '../ComponentsLibrary/IconReact'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -13,7 +13,7 @@ interface SkillExchangeIntroArgs {}
 export const SkillExchangeIntro: React.FunctionComponent<
   SkillExchangeIntroArgs
 > = (props: SkillExchangeIntroArgs): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     iconRiVoiceprintFillProps: {

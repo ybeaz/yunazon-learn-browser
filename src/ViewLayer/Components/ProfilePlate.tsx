@@ -1,35 +1,35 @@
-import React, { useState, useEffect, useRef, ReactElement } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
-import { Select as SelectAntd } from "antd";
+import React, { useState, useEffect, useRef, ReactElement } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { nanoid } from 'nanoid'
+import { Select as SelectAntd } from 'antd'
 // import 'antd/dist/antd.css'
 
-import { getOptionsUserLocaleCountry } from "../../Shared/getOptionsUserLocaleCountry";
-import { getOptionsUserLanguages } from "../../Shared/getOptionsUserLanguages";
-import { getOptionsAntdStandard } from "../../Shared/getOptionsAntdStandard";
-import { COUNTRIES } from "../../Constants/countries.const";
-import { MEDIA } from "../../Constants/media.const";
-import { GENDER } from "../../Constants/gender.const";
-import { LANGUAGES } from "../../Constants/languages.const";
-import { CATEGORIES_TO_EXCHANGE } from "../../Constants/categoriesToExchange.const";
-import { DICTIONARY } from "../../Constants/dictionary.const";
-import { IAddedProps } from "../../Interfaces/IAddedProps";
-import { Button } from "../ComponentsLibrary/Button";
-import { IUser } from "../../Interfaces/IUser";
+import { getOptionsUserLocaleCountry } from '../../Shared/getOptionsUserLocaleCountry'
+import { getOptionsUserLanguages } from '../../Shared/getOptionsUserLanguages'
+import { getOptionsAntdStandard } from '../../Shared/getOptionsAntdStandard'
+import { COUNTRIES } from '../../Constants/countries.const'
+import { MEDIA } from '../../Constants/media.const'
+import { GENDER } from '../../Constants/gender.const'
+import { LANGUAGES } from '../../Constants/languages.const'
+import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { PropsAddedType } from '../../Interfaces/PropsAddedType'
+import { Button } from '../ComponentsLibrary/Button'
+import { UserType } from '../../Interfaces/UserType'
 
 interface IOptionStandard {
-  label: string;
-  value: string;
+  label: string
+  value: string
 }
 interface IProfilePlateArgs {
-  profile: IUser;
-  language: string;
+  profile: UserType
+  language: string
 }
 
 export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
   props: IProfilePlateArgs
 ): ReactElement => {
-  const { language, profile } = props;
+  const { language, profile } = props
 
   const {
     userAvatar,
@@ -40,36 +40,36 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     userMedia,
     userNameNick,
     userSkillsExpertise,
-  } = profile;
+  } = profile
 
-  const stubOnAction = () => {};
+  const stubOnAction = () => {}
 
   const filterOption = (input: any, option: IOptionStandard) =>
     option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-    option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0;
+    option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
 
   const getSelectAntdAddedProps = (input: string[]): any => {
-    let res: any = { defaultValue: [] };
+    let res: any = { defaultValue: [] }
     if (input && input.length) {
       res = {
         value: input,
-      };
+      }
     }
-    return res;
-  };
+    return res
+  }
 
   const propsOut = {
     buttonAvatarProps: {
-      icon: userAvatar ? null : "FaUserCircle",
+      icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
       imageSrc: userAvatar,
-      captureLeft: "",
-      captureRight: "",
-      classAdded: "Button_Avatar",
+      captureLeft: '',
+      captureRight: '',
+      classAdded: 'Button_Avatar',
       action: {},
       isDisplaying: true,
-      tooltipText: "",
-      tooltipPosition: "",
+      tooltipText: '',
+      tooltipPosition: '',
       isTooltipVisibleForced: false,
       isUnderlined: false,
     },
@@ -77,14 +77,14 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       allowClear: false,
       componentId: nanoid(),
       filterOption,
-      mode: "multiple" as "multiple" | "tags",
+      mode: 'multiple' as 'multiple' | 'tags',
       onBlur: stubOnAction,
       onChange: stubOnAction,
       onFocus: stubOnAction,
       onSearch: stubOnAction,
-      optionFilterProp: "children",
-      placeholder: DICTIONARY["select"][language],
-      style: { width: "100%" },
+      optionFilterProp: 'children',
+      placeholder: DICTIONARY['select'][language],
+      style: { width: '100%' },
       showSearch: false,
       open: false,
       removeIcon: null,
@@ -99,21 +99,21 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
           CATEGORIES_TO_EXCHANGE,
           language
         ),
-      };
+      }
     },
     userLanguagesProps() {
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps(userLanguages),
         options: getOptionsUserLanguages(userLanguages, LANGUAGES, language),
-      };
+      }
     },
     userMediaProps() {
       return {
         ...this.selectCommonPart,
         ...getSelectAntdAddedProps(userMedia),
         options: getOptionsAntdStandard(userMedia, MEDIA, language),
-      };
+      }
     },
     userGenderProps() {
       return {
@@ -122,7 +122,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
         options: userGender
           ? getOptionsAntdStandard([userGender], GENDER, language)
           : [],
-      };
+      }
     },
     userLocaleCountryProps() {
       return {
@@ -133,60 +133,60 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
           COUNTRIES,
           language
         ),
-      };
+      }
     },
-  };
+  }
 
   return (
-    <div className="ProfilePlate">
-      <div className="_col">
-        <div className="_button">
+    <div className='ProfilePlate'>
+      <div className='_col'>
+        <div className='_button'>
           <Button {...propsOut.buttonAvatarProps} />
         </div>
-        <div className="_userNameNick">{userNameNick}</div>
+        <div className='_userNameNick'>{userNameNick}</div>
       </div>
 
-      <div className="_col">
-        <label className="_label">{DICTIONARY["Competencies"][language]}</label>
-        <div className="_userSkillsExpertise">
+      <div className='_col'>
+        <label className='_label'>{DICTIONARY['Competencies'][language]}</label>
+        <div className='_userSkillsExpertise'>
           <SelectAntd {...propsOut.userSkillsExpertiseProps()} />
         </div>
       </div>
 
-      <div className="_col">
-        <div className="_colLanguages">
-          <label className="_label">{DICTIONARY["Languages"][language]}</label>
-          <div className="_userLanguages">
+      <div className='_col'>
+        <div className='_colLanguages'>
+          <label className='_label'>{DICTIONARY['Languages'][language]}</label>
+          <div className='_userLanguages'>
             <SelectAntd {...propsOut.userLanguagesProps()} />
           </div>
         </div>
 
-        <div className="_colMedia">
-          <label className="_label">{DICTIONARY["Media"][language]}</label>
-          <div className="_userMedia">
+        <div className='_colMedia'>
+          <label className='_label'>{DICTIONARY['Media'][language]}</label>
+          <div className='_userMedia'>
             <SelectAntd {...propsOut.userMediaProps()} />
           </div>
         </div>
 
-        <div className="_colGender">
-          <label className="_label">{DICTIONARY["Gender"][language]}</label>
-          <div className="_userMedia">
+        <div className='_colGender'>
+          <label className='_label'>{DICTIONARY['Gender'][language]}</label>
+          <div className='_userMedia'>
             <SelectAntd {...propsOut.userGenderProps()} />
           </div>
         </div>
 
-        <div className="_colCountry">
-          <label className="_label">{DICTIONARY["Country"][language]}</label>
-          <div className="_userLocaleCountry">
+        <div className='_colCountry'>
+          <label className='_label'>{DICTIONARY['Country'][language]}</label>
+          <div className='_userLocaleCountry'>
             <SelectAntd {...propsOut.userLocaleCountryProps()} />
           </div>
         </div>
       </div>
 
-      <div className="_col">
-        <label className="_label">{DICTIONARY["AboutUser"][language]}</label>
-        <div className="_userInfoAbout">{userInfoAbout}</div>
+      <div className='_col'>
+        <label className='_label'>{DICTIONARY['AboutUser'][language]}</label>
+        <div className='_userInfoAbout'>{userInfoAbout}</div>
       </div>
     </div>
-  );
-};
+  )
+}

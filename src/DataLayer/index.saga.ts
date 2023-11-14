@@ -13,7 +13,7 @@ import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
 import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
 import findDocumentSaga from './sagas/findDocument.saga'
 import addDocumentSaga from './sagas/addDocument.saga'
-import getContentInfoSaga from './sagas/getContentInfo.saga'
+import getCoursesSaga from './sagas/getCourses.saga'
 import getGlobalVarsSaga from './sagas/getGlobalVars.saga'
 
 export default function* indexSaga() {
@@ -31,7 +31,7 @@ export default function* indexSaga() {
     fork(sendEmailDocumentSaga),
     fork(findDocumentSaga),
     fork(addDocumentSaga),
-    fork(getContentInfoSaga),
+    fork(getCoursesSaga),
     fork(getGlobalVarsSaga),
   ])
 }

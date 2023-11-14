@@ -1,4 +1,4 @@
-import { ILanguages } from '../Interfaces/ILanguages'
+import { LanguagesType } from '../Interfaces/LanguagesType'
 import { SERVERS_MAIN } from '../Constants/servers.const'
 
 export const SVG_FILE_DIR: string = `${SERVERS_MAIN.remote}/images/languages/`
@@ -7,7 +7,7 @@ export const SVG_FILE_DIR: string = `${SERVERS_MAIN.remote}/images/languages/`
  * @description Const to define languages to select
  * @reference See src/Constants/languagesAll.const.ts
  */
-export const LANGUAGES: ILanguages = {
+export const LANGUAGES: LanguagesType = {
   eng: {
     '639-1': 'en',
     '639-2': 'eng',

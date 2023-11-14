@@ -8,7 +8,7 @@ import { AuthUser } from '../Components/AuthUser'
 import { Button } from '../ComponentsLibrary/Button'
 import { EmalInputs } from '../Components/EmalInputs'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { QuestionScores } from '../Components/QuestionScores'
 
 const CHILDREN = {
@@ -20,7 +20,7 @@ const CHILDREN = {
 }
 
 export const ModalFrames: React.FunctionComponent = (): ReactElement => {
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     componentsState: { modalFrames },
   } = store

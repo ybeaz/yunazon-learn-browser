@@ -1,5 +1,5 @@
-import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
-import { IActionEvent } from '../Interfaces/IActionEvent'
+import { HandleEventType } from '../Interfaces/HandleEventType'
+import { ActionEventType } from '../Interfaces/ActionEventType'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
 import { GET_COGNITO_TOKENS } from './handlers/GET_COGNITO_TOKENS'
@@ -92,11 +92,11 @@ import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
 
-export const handleEvents: IHandleEventsInterface = (event, props): void => {
+export const handleEvents: HandleEventType = (event, props): void => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent
 
-  const output: Record<string, IActionEvent> = {
+  const output: Record<string, ActionEventType> = {
     TEMPLATE,
     GET_COGNITO_TOKENS,
     LOAD_PROFILES,

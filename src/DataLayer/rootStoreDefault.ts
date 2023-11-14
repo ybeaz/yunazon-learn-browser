@@ -1,12 +1,12 @@
-import { IUser } from '../Interfaces/IUser'
+import { UserType } from '../Interfaces/UserType'
 import {
-  IComponentsState,
-  ISearchFormSep,
-  IForms,
-  IRootStore,
-} from '../Interfaces/IRootStore'
+  ComponentsStateType,
+  SearchFormSepType,
+  FormsType,
+  RootStoreType,
+} from '../Interfaces/RootStoreType'
 
-export const userStoreDefault: IUser = {
+export const userStoreDefault: UserType = {
   userAvatar: '',
   userBirthYear: null,
   userDateCreated: '',
@@ -46,7 +46,7 @@ export const userStoreDefault: IUser = {
   },
 }
 
-export const searchFormSepDefault: ISearchFormSep = {
+export const searchFormSepDefault: SearchFormSepType = {
   selectSkillsOffered: [],
   selectSkillsRequired: '',
   selectCountryRequired: [],
@@ -59,7 +59,7 @@ export const searchFormSepDefault: ISearchFormSep = {
   selectSortBy: '',
 }
 
-export const componentsStateDefault: IComponentsState = {
+export const componentsStateDefault: ComponentsStateType = {
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
@@ -83,7 +83,7 @@ export const componentsStateDefault: IComponentsState = {
   ],
 }
 
-export const formsDefault: IForms = {
+export const formsDefault: FormsType = {
   searchInput: '',
   sendTo: '',
   sendCc: '',
@@ -92,20 +92,25 @@ export const formsDefault: IForms = {
   user: userStoreDefault,
 }
 
-export const rootStoreDefault: IRootStore = {
+export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],
   documents: [],
   users: [],
   globalVars: {
+    titleSite: 'Academy YouRails - Teach curious; Learn from inspired',
+    descriptionSite:
+      'Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates',
+    canonicalUrlSite: 'https://academy.yourails.com',
+    langSite: 'en',
     theme: 'Dark',
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
   forms: formsDefault,
   isLoaded: {
-    isLoadedGlobalVars: false,
+    isLoadedGlobalVars: true,
     isLoadedCourses: false,
     mediaLoading: {},
   },

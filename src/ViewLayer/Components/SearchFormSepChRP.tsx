@@ -8,12 +8,12 @@ import { GENDER } from '../../Constants/gender.const'
 import { AGE, IAge } from '../../Constants/age.const'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
-import { Select, ISelectOption } from './Select'
-import { ILanguages } from '../../Interfaces/ILanguages'
+import { Select, SelectOptionType } from './Select'
+import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { COUNTRIES, ICountry } from '../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { nanoid } from 'nanoid'
 
 /**
@@ -23,42 +23,42 @@ interface IGetExchangeSkillOptions {
   (
     categories: any,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetCountriesOptions {
   (
     countries: ICountry[],
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetLanguagesOptions {
   (
-    languages: ILanguages,
+    languages: LanguagesType,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 interface IGetAgeOptions {
-  (age: IAge, defaultOption: ISelectOption): ISelectOption[]
+  (age: IAge, defaultOption: SelectOptionType): SelectOptionType[]
 }
 
 interface IGetStdDictionaryOptions {
   (
     dictionary: IDictionary,
     language: string,
-    defaultOption: ISelectOption
-  ): ISelectOption[]
+    defaultOption: SelectOptionType
+  ): SelectOptionType[]
 }
 
 export const SearchFormSepChRP: React.FunctionComponent<any> = (
   props: any
 ): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const getExchangeSkillOptions: IGetExchangeSkillOptions = (
     categories,

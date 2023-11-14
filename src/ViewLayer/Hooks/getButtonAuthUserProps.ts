@@ -1,10 +1,10 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IUser } from '../../Interfaces/IUser'
+import { UserType } from '../../Interfaces/UserType'
 import { IButtonArgs } from '../ComponentsLibrary/Button'
 
 interface IGetButtonAuthUser {
   (
-    user2: IUser,
+    user2: UserType,
     language: string,
     componentFrom: string,
     history?: any

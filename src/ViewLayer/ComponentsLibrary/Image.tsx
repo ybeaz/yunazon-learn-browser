@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react'
 
-import { IAction } from '../../Interfaces/IAction'
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 interface ImageArgs {
   classAdded: string
   src: string | undefined
-  action?: IAction
+  action?: ActionReduxType
   handleEvents?: Function
 }
 

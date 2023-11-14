@@ -3,14 +3,14 @@ import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
 import {
-  IConnectorOutput,
+  ConnectorOutputType,
   AxiosRequestHeaders,
-} from '../Interfaces/IConnectorOutput'
+} from '../Interfaces/ConnectorOutputType'
 import { SERVERS_AUTH as SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 interface IGetAuthSignInConnector {
-  (userEmail: string, userPasswordAuth: string): IConnectorOutput
+  (userEmail: string, userPasswordAuth: string): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {
@@ -41,7 +41,7 @@ export const getAuthSignInConnector: IGetAuthSignInConnector = (
   `
   const query = print(queryAst as DocumentNode)
 
-  const obj: IConnectorOutput = {
+  const obj: ConnectorOutputType = {
     testCapture: 'should return 200 code and data defined',
     axiosClient: axios.create({
       baseURL: `${SERVERS[envType]}/graphql`,

@@ -67,7 +67,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     page: 'AcademyPresent',
-    path: `/c/:courseID`,
+    path: `/c/:courseID/:courseName`,
     children: [],
     errorElement: 'Error404',
     themeDafault: 'Dark',

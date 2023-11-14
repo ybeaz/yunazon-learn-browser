@@ -1,15 +1,15 @@
 import axios from 'axios'
 import qs from 'qs'
 
-import { IConnector } from '../Interfaces/IConnector'
-import { IConnectorOutput, Method } from '../Interfaces/IConnectorOutput'
+import { ConnectorType } from '../Interfaces/ConnectorType'
+import { ConnectorOutputType, Method } from '../Interfaces/ConnectorOutputType'
 
-export const getGetCognitoTokensConnector: IConnector = options => {
+export const getGetCognitoTokensConnector: ConnectorType = options => {
   const { method, url, headersAdd, payloadAdd, payload } = options
 
   const methodNext: Method = method as Method
 
-  const obj: IConnectorOutput = {
+  const obj: ConnectorOutputType = {
     testCapture: 'should return 200 code and data defined',
     axiosClient: axios.create({
       baseURL: url,

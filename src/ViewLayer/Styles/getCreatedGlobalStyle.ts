@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
 
 import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getBuiltColor } from './getBuiltColor'
 interface IGetCreatedGlobalStyle {
   (lightness: ILightness, alphas: IAlphas): any
@@ -39,7 +39,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   const {
     globalVars: { theme },
-  } = useSelector((store2: IRootStore) => store2)
+  } = useSelector((store2: RootStoreType) => store2)
 
   if (!theme) return null
 

@@ -1,4 +1,4 @@
-import { IRootStore } from '../Interfaces/IRootStore'
+import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
 import { GET_COGNITO_TOKENS_SUCCESS } from './reducers/GET_COGNITO_TOKENS_SUCCESS'
@@ -57,13 +57,12 @@ import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
 import { SELECT_COURSE_MODULE_CONTENTID } from './reducers/SELECT_COURSE_MODULE_CONTENTID'
 import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
-import { GET_CONTENT_DATA_SUCCESS } from './reducers/GET_CONTENT_DATA_SUCCESS'
+import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
 import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
-import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
 import { rootStoreDefault } from './rootStoreDefault'
 
 export interface IIndexReducer {
-  (store: IRootStore, action: any): any
+  (store: RootStoreType, action: any): any
 }
 
 export const indexReducer: IIndexReducer = (
@@ -72,7 +71,7 @@ export const indexReducer: IIndexReducer = (
 ) => {
   const { type, data } = action
 
-  const output = {
+  const output: Record<string, any> = {
     TEMPLATE,
     GET_COGNITO_TOKENS_SUCCESS,
     SET_USERS,
@@ -130,9 +129,8 @@ export const indexReducer: IIndexReducer = (
     SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
     CLICK_CHECK,
-    GET_CONTENT_DATA_SUCCESS,
+    GET_COURSES_SUCCESS,
     TOGGLE_SIDE_NAVIGATION,
-    GET_GLOBAL_VARS_SUCCESS,
   }
 
   return output[type] ? output[type](store, data) : store

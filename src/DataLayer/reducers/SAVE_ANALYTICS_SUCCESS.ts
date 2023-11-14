@@ -1,9 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SAVE_ANALYTICS_SUCCESS: Function = (
-  store: IRootStore,
+export const SAVE_ANALYTICS_SUCCESS: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { analyticsID } = data
   return { ...store, analyticsID }
 }

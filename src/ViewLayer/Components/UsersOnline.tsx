@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../ComponentsLibrary/Button'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IAction } from '../../Interfaces/IAction'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Image } from '../ComponentsLibrary/Image'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -45,7 +45,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
   props: UsersOnlineArgs
 ): ReactElement => {
   const navigate = useNavigate()
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const getUsersJsx: IGetUsersJsx = (usersOnline, language2) =>
     usersOnline.map((userOnline: IUserOnline) => {
@@ -62,7 +62,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
             source: 'usersOnline',
             value: `${fileName} ${userName}`,
           },
-        } as IAction,
+        } as ActionReduxType,
       }
 
       return <Image {...imageProps} />
@@ -88,7 +88,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
           source: 'usersOnlineNext',
           value: 'next',
         },
-      } as IAction,
+      } as ActionReduxType,
       isDisplaying: true,
       tooltipText: DICTIONARY['Next'][language],
       tooltipPosition: 'top',

@@ -1,9 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SEP_SELECT_LANGUAGE_REQUIRED: Function = (
-  store: IRootStore,
+export const SEP_SELECT_LANGUAGE_REQUIRED: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
   const { searchFormSep } = forms
   const searchFormSepNext = { ...searchFormSep, selectLanguageRequired: data }

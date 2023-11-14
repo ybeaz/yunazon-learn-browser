@@ -1,17 +1,18 @@
-import { IRootStore, IForms } from '../../Interfaces/IRootStore'
-import { IUser } from '../../Interfaces/IUser'
+import { RootStoreType, FormsType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
+import { UserType } from '../../Interfaces/UserType'
 
-export const ONCHANGE_LAST_NAME_MODAL: Function = (
-  store: IRootStore,
+export const ONCHANGE_LAST_NAME_MODAL: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
 
   const { user } = forms
 
-  const userNext: IUser = { ...user, userNameLast: data }
+  const userNext: UserType = { ...user, userNameLast: data }
 
-  const formsNext: IForms = { ...forms, user: userNext }
+  const formsNext: FormsType = { ...forms, user: userNext }
 
   return { ...store, forms: formsNext }
 }

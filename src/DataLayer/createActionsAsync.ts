@@ -16,9 +16,9 @@ export interface CreateAsyncAction {
  * @description Function to return functions in object accepted data
  *              with three props suffixes: _REQUEST, _SUCCESS, _FAILURE
  * @param base => data => return {}
- * @example  await dispatch(action.GET_CONTENT_DATA.REQUEST())
- * @example2 dispatch(action.GET_CONTENT_DATA.SUCCESS(myObject))
- * @example3 action.GET_CONTENT_DATA.SUCCESS(myObject).type - this returns type string 'GET_CONTENT_DATA_SUCCESS'
+ * @example  await dispatch(action.GET_COURSES.REQUEST())
+ * @example2 dispatch(action.GET_COURSES.SUCCESS(myObject))
+ * @example3 action.GET_COURSES.SUCCESS(myObject).type - this returns type string 'GET_COURSES_SUCCESS'
  * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
 const createRequestTypes: Function = (base: string): CreateRequestTypes =>

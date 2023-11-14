@@ -1,19 +1,20 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getModuleActiveByCourseIDIndex } from '../../Shared/getModuleActiveByCourseIDIndex'
 
-export const SELECT_COURSE_MODULE_CONTENTID: Function = (
-  store: IRootStore,
+export const SELECT_COURSE_MODULE_CONTENTID: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { courseID, index } = data
   const { courses } = store
 
-  let storeNext: IRootStore = { ...store }
+  let storeNext: RootStoreType = { ...store }
   courses.forEach(course => {
     const { modules } = course
-    modules.forEach(module => {
+    modules.forEach((module: any) => {
       const { contentID: mediaKey } = module
       const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
       storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)

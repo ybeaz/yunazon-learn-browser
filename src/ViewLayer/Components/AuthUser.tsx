@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { getInitializedVKontakteOAuth } from '../Hooks/getInitializedVKontakteOAuth'
 import { getInitializedFacebookOAuth } from '../Hooks/getInitializedFacebookOAuth'
 import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
@@ -28,7 +28,7 @@ export const AuthUser: React.FunctionComponent<any> = (
       isOAuthVKontakteScriptLoaded,
     },
     language,
-  } = useSelector((store2: IRootStore) => store2)
+  } = useSelector((store2: RootStoreType) => store2)
 
   const SCENARIO = {
     signOut: {

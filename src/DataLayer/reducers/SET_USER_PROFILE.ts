@@ -1,12 +1,13 @@
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { IUser } from '../../Interfaces/IUser'
+import { ReducerType } from '../../Interfaces/ReducerType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { UserType } from '../../Interfaces/UserType'
 import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
-export const SET_USER_PROFILE: Function = (
-  store: IRootStore,
+export const SET_USER_PROFILE: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { userIdAuth, userWebTokenAuth } = data
   const { calledFrom, ...dataRest } = data
 
@@ -19,7 +20,7 @@ export const SET_USER_PROFILE: Function = (
   /** @description userWebTokenAuth is set once */
   if (userWebTokenAuth) getSetObjToLocalStorage({ userWebTokenAuth })
 
-  let userNext: IUser
+  let userNext: UserType
   if (calledFrom === 'AUTH_SIGN_OUT') {
     /** @description Set userWebTokenAuth null if it comes from AUTH_SIGN_OUT */
     getSetObjToLocalStorage({ userWebTokenAuth: null })

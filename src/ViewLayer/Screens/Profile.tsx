@@ -9,7 +9,7 @@ import { HeaderFrame } from '../Frames/HeaderFrame'
 import { FooterFrame } from '../Frames/FooterFrame'
 import { MainFrame } from '../Frames/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -23,7 +23,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
 ): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     componentsState: { isShownPalette },

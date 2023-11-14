@@ -11,7 +11,7 @@ import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { MainFrame } from '../Frames/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
@@ -31,7 +31,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
 > = (props): ReactElement => {
   getEffectedRequests(['GET_GLOBAL_VARS'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     componentsState: { isShownPalette },

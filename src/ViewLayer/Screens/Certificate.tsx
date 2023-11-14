@@ -9,12 +9,12 @@ import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLo
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
 import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
-export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
+export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props
 ): ReactElement => {
   const {
@@ -25,10 +25,10 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     },
   } = props
 
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_CONTENT_DATA'])
+  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const { documents, language } = store
   const documentsLen = documents.length
 

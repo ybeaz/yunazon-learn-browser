@@ -3,14 +3,12 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getFilteredActiveCoursesModules: Function = (
-  courses: any[]
-): any[] => {
-  return courses.filter(course => {
+export const getFilteredActiveCoursesModules = (courses: any[]): any[] => {
+  return courses.filter((course: any) => {
     const { isActive: isActiveCourse, modules } = course
     let res = true
 
-    modules.forEach(module => {
+    modules.forEach((module: any) => {
       const { isActive: isActiveModule, questions } = module
 
       if (res === true) {

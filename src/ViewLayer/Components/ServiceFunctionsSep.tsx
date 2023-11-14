@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { IconReact } from '../ComponentsLibrary/IconReact'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface ServiceFunctionsSepArgs {}
@@ -10,7 +10,7 @@ interface ServiceFunctionsSepArgs {}
 export const ServiceFunctionsSep: React.FunctionComponent<
   ServiceFunctionsSepArgs
 > = (props: ServiceFunctionsSepArgs): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     iconFunction1Props: {

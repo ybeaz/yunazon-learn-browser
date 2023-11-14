@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { Image } from '../ComponentsLibrary/Image'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface SuccessfulCasesSepArgs {}
@@ -10,7 +10,7 @@ interface SuccessfulCasesSepArgs {}
 export const SuccessfulCasesSep: React.FunctionComponent<
   SuccessfulCasesSepArgs
 > = (props: SuccessfulCasesSepArgs): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     collageImageFaceProps: {

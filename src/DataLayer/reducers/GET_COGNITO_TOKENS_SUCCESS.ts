@@ -1,6 +1,6 @@
-import { IReducer } from '../../Interfaces/IReducer'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const GET_COGNITO_TOKENS_SUCCESS: IReducer = (store, data) => {
+export const GET_COGNITO_TOKENS_SUCCESS: ReducerType = (store, data) => {
   const { forms } = store
 
   const { user } = forms

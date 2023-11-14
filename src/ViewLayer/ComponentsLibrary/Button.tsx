@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { IAction } from '../../Interfaces/IAction'
+import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { Image } from './Image'
 import { IconReact } from './IconReact'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -11,7 +11,7 @@ export interface IButtonArgs {
   captureLeft?: string | ReactElement // capture on the left of the icon/ image
   captureRight?: string // capture on the right of the icon/ button
   classAdded: string // calss added to the button, to make it css unique
-  action?: IAction // action to assign the button
+  action?: ActionReduxType // action to assign the button
   isDisplaying?: boolean // is the button displaing at all
   tooltipText?: string // tooltips text for the button to provide user with a promt
   tooltipPosition?: string // options: ['top','right','bottom','left']

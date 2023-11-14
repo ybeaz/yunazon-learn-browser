@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 import { Image } from '../ComponentsLibrary/Image'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface HowItWorksSepArgs {}
@@ -11,7 +11,7 @@ interface HowItWorksSepArgs {}
 export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
   props: HowItWorksSepArgs
 ): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     illustration_5_1_1: {

@@ -1,24 +1,24 @@
-import React, { useEffect, ReactElement } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, ReactElement } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
-import { isParsableFloat } from "../../Shared/isParsableFloat";
-import { getParsedUrlQuery } from "../../Shared/getParsedUrlQuery";
-import { getQuesionString } from "../../Shared/getQuesionString";
-import { DICTIONARY } from "../../Constants/dictionary.const";
-import { getQuestionsWrongAnswered } from "../../Shared/getQuestionsWrongAnswered";
-import { getAnswersChecked2 } from "../../Shared/getAnswersChecked2";
-import { getActiveCourseData } from "../../Shared/getActiveCourseData";
-import { handleEvents } from "../../DataLayer/index.handleEvents";
-import { IRootStore } from "../../Interfaces/IRootStore";
-import { Input } from "../ComponentsLibrary/Input";
-import { Button } from "../ComponentsLibrary/Button";
+import { isParsableFloat } from '../../Shared/isParsableFloat'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { getQuesionString } from '../../Shared/getQuesionString'
+import { DICTIONARY } from '../../Constants/dictionary.const'
+import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
+import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
+import { getActiveCourseData } from '../../Shared/getActiveCourseData'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { Input } from '../ComponentsLibrary/Input'
+import { Button } from '../ComponentsLibrary/Button'
 
-export const QuestionScores: React.FunctionComponent<any> = (props) => {
-  let navigate = useNavigate();
+export const QuestionScores: React.FunctionComponent<any> = props => {
+  let navigate = useNavigate()
 
-  const { stopVideoHandler } = props;
-  const store = useSelector((store2: IRootStore) => store2);
+  const { stopVideoHandler } = props
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language,
     documents,
@@ -27,10 +27,10 @@ export const QuestionScores: React.FunctionComponent<any> = (props) => {
     forms: {
       user: { userNameFirst, userNameMiddle, userNameLast },
     },
-  } = store;
+  } = store
 
-  const documentsLen = documents.length;
-  const pathName = documentsLen && documents[documentsLen - 1]?.pathName;
+  const documentsLen = documents.length
+  const pathName = documentsLen && documents[documentsLen - 1]?.pathName
 
   const {
     courseActive: {
@@ -42,83 +42,82 @@ export const QuestionScores: React.FunctionComponent<any> = (props) => {
     },
     moduleActive,
     questionsActive,
-  } = getActiveCourseData(courses);
+  } = getActiveCourseData(courses)
 
-  const { rp, pr } = getParsedUrlQuery();
-  let passRateIn = rp || pr;
+  const { rp, pr } = getParsedUrlQuery()
+  let passRateIn = rp || pr
   passRateIn =
-    passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn);
-  passRateIn = passRateIn ? passRateIn : passRate;
-  passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn;
+    passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
+  passRateIn = passRateIn ? passRateIn : passRate
+  passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
-  const score = getAnswersChecked2(questionsActive, passRateIn);
-  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive);
-  const { total, right, wrong, result } = score;
-  const { moduleID, contentID } = moduleActive;
+  const score = getAnswersChecked2(questionsActive, passRateIn)
+  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
+  const { total, right, wrong, result } = score
+  const { moduleID, contentID } = moduleActive
 
   useEffect(() => {
-    stopVideoHandler && stopVideoHandler({}, {});
-  }, []);
+    stopVideoHandler && stopVideoHandler({}, {})
+  }, [])
 
   useEffect(() => {
     if (pathName && isDocumentAdded === true) {
-      handleEvents({}, { typeEvent: "TOGGLE_IS_DOCUMENT_ADDED", data: false });
-      navigate(pathName);
+      handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
+      navigate(pathName)
     }
-  }, [pathName]);
+  }, [pathName])
 
   const inputFirstNameProps = {
-    classAdded: "Input_name",
-    type: "text",
-    placeholder: "first name...",
-    typeEvent: "ONCHANGE_FIRST_NAME_MODAL",
-    storeFormProp: "userNameFirst",
-  };
+    classAdded: 'Input_name',
+    type: 'text',
+    placeholder: 'first name...',
+    typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
+    storeFormProp: 'userNameFirst',
+  }
 
   const inputMiddleNameProps = {
-    classAdded: "Input_name",
-    type: "text",
-    placeholder: "second name...",
-    typeEvent: "ONCHANGE_MIDDLE_NAME_MODAL",
-    storeFormProp: "userNameMiddle",
-  };
+    classAdded: 'Input_name',
+    type: 'text',
+    placeholder: 'second name...',
+    typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
+    storeFormProp: 'userNameMiddle',
+  }
 
   const inputLastNameProps = {
-    classAdded: "Input_name",
-    type: "text",
-    placeholder: "last name...",
-    typeEvent: "ONCHANGE_LAST_NAME_MODAL",
-    storeFormProp: "userNameLast",
-  };
+    classAdded: 'Input_name',
+    type: 'text',
+    placeholder: 'last name...',
+    typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
+    storeFormProp: 'userNameLast',
+  }
 
-  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language];
-  const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language];
-  const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language];
-  const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language];
-  const Congratulations = DICTIONARY.Congratulations[language];
+  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
+  const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
+  const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
+  const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
+  const Congratulations = DICTIONARY.Congratulations[language]
 
-  const lastNameLabel = DICTIONARY.userNameLast[language];
-  const firstNameLabel = DICTIONARY.userNameFirst[language];
-  const middleNameLabel = DICTIONARY.userNameMiddle[language];
+  const lastNameLabel = DICTIONARY.userNameLast[language]
+  const firstNameLabel = DICTIONARY.userNameFirst[language]
+  const middleNameLabel = DICTIONARY.userNameMiddle[language]
 
   const QuestionsWithIncorrectAnswers =
-    DICTIONARY.QuestionsWithIncorrectAnswers[language];
-  const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language];
-  const andReceiveTheCertificate =
-    DICTIONARY.andReceiveTheCertificate[language];
-  const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language];
-  const from = DICTIONARY.from[language];
-  const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language];
+    DICTIONARY.QuestionsWithIncorrectAnswers[language]
+  const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language]
+  const andReceiveTheCertificate = DICTIONARY.andReceiveTheCertificate[language]
+  const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language]
+  const from = DICTIONARY.from[language]
+  const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess =
-    DICTIONARY.YouWereCommittedToSuccess[language];
+    DICTIONARY.YouWereCommittedToSuccess[language]
 
-  const question = getQuesionString(language, right);
+  const question = getQuesionString(language, right)
 
   const scenario = {
     success: {
       message: (
         <>
-          <div className="_greet">{Congratulations}</div>
+          <div className='_greet'>{Congratulations}</div>
           <p>{YouCompletedTheCourse}</p>
           <p>"{courseCapture}"</p>
           <p>
@@ -128,12 +127,12 @@ export const QuestionScores: React.FunctionComponent<any> = (props) => {
         </>
       ),
       buttonForwardProps: {
-        icon: "MdForward",
-        classAdded: "Button_MdForward2",
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
         action: {
-          typeEvent: "ADD_DOCUMENT",
+          typeEvent: 'ADD_DOCUMENT',
           data: {
-            screenType: "Certificate",
+            screenType: 'Certificate',
             userNameFirst,
             userNameMiddle,
             userNameLast,
@@ -150,7 +149,7 @@ export const QuestionScores: React.FunctionComponent<any> = (props) => {
     failure: {
       message: (
         <>
-          <div className="_greet">{YouWereCommittedToSuccess}</div>
+          <div className='_greet'>{YouWereCommittedToSuccess}</div>
           <p>
             {andThisTimeAnswered} {right} {question} {from} {total}.
           </p>
@@ -160,61 +159,61 @@ export const QuestionScores: React.FunctionComponent<any> = (props) => {
         </>
       ),
       buttonForwardProps: {
-        icon: "MdForward",
-        classAdded: "Button_MdForward2",
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
         action: {
-          typeEvent: "CLOSE_MODAL_GET_SCORES",
+          typeEvent: 'CLOSE_MODAL_GET_SCORES',
         },
       },
     },
-  }[result];
+  }[result]
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
   ): ReactElement => {
     return (
-      <ul className="_ul">
-        {questions.map((question) => {
-          const { capture: questionCapture } = question;
+      <ul className='_ul'>
+        {questions.map(question => {
+          const { capture: questionCapture } = question
 
-          return <li className="_li">{questionCapture}</li>;
+          return <li className='_li'>{questionCapture}</li>
         })}
       </ul>
-    );
-  };
+    )
+  }
 
   return (
-    <div className="QuestionScores">
-      {" "}
-      <div className="_text">{scenario.message}</div>
-      <form className="_form">
-        {result === "success" ? (
+    <div className='QuestionScores'>
+      {' '}
+      <div className='_text'>{scenario.message}</div>
+      <form className='_form'>
+        {result === 'success' ? (
           <>
-            <div className="_group">
-              <label className="_label">{lastNameLabel}*</label>
+            <div className='_group'>
+              <label className='_label'>{lastNameLabel}*</label>
               <Input {...inputLastNameProps} />
             </div>
-            <div className="_group">
-              <label className="_label">{firstNameLabel}*</label>
+            <div className='_group'>
+              <label className='_label'>{firstNameLabel}*</label>
               <Input {...inputFirstNameProps} />
             </div>
-            <div className="_group">
-              <label className="_label">{middleNameLabel}</label>
+            <div className='_group'>
+              <label className='_label'>{middleNameLabel}</label>
               <Input {...inputMiddleNameProps} />
             </div>
           </>
         ) : null}
-        <div className="_buttons">
+        <div className='_buttons'>
           {/* <Button {...buttonCancelProps} /> */}
           <Button {...scenario.buttonForwardProps} />
         </div>
       </form>
-      {result === "failure" ? (
-        <div className="_qwa">
-          <div className="_capture">{QuestionsWithIncorrectAnswers}</div>
+      {result === 'failure' ? (
+        <div className='_qwa'>
+          <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
           {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
         </div>
       ) : null}
     </div>
-  );
-};
+  )
+}
