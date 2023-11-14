@@ -1,25 +1,30 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
+import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { templateConnector } from '../../CommunicationLayer/template.connector'
 
-function* template(dataInput) {
+function* template(dataInput: any) {
   const { data } = dataInput
-
-  const { axiosClient, method, params } = templateConnector()
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-    const {
-      data: {
-        data: { templateData },
-      },
-    } = yield axiosClient[method]('', params)
 
-    yield put(actionAsync.ACT_TEMPLATE.SUCCESS(templateData))
+    const variables = {
+      readTemplateInput: {
+        offset: 0,
+        first: 8,
+      },
+    }
+
+    const readTemplate: any[] = yield getResponseGraphqlAsync({
+      variables,
+      resolveGraphqlName: 'readTemplate',
+    })
+
+    yield put(actionAsync.ACT_TEMPLATE.SUCCESS(readTemplate))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error) {
+  } catch (error: any) {
     console.info('template [40]', error.name + ': ' + error.message)
   }
 }
