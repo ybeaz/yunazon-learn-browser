@@ -2,18 +2,9 @@ import { takeEvery, put } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getGlobalVarsConnector } from '../../CommunicationLayer/getGlobalVarsConnector'
 
 function* getGlobalVars() {
   try {
-    const { client } = getGlobalVarsConnector()
-
-    const { data: globalVars } = yield client.get('/appBrowser/globalVars.json')
-
-    console.info('getGlobalVars.saga [14]', { globalVars })
-
-    yield put(actionAsync.GET_GLOBAL_VARS.SUCCESS(globalVars))
-
     const language = localStorage.getItem('language')
     if (language) {
       yield put(actionSync.SELECT_LANGUAGE_APP(language))

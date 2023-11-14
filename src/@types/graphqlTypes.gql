@@ -458,6 +458,7 @@ type Query {
   readCourse(courseID: String!): CourseType!
   readCourses: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
+  readModule(moduleID: String!): CourseType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readTemplate(idTemplates: String!): TemplatesType!
@@ -482,7 +483,7 @@ type QuestionType {
   isActive: Boolean!
 
   """designType > multi"""
-  multi: Boolean!
+  multi: Boolean
 
   """course question options"""
   options: [OptionType!]!

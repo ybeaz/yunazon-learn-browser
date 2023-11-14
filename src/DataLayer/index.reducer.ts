@@ -59,7 +59,6 @@ import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
 import { TOGGLE_SIDE_NAVIGATION } from './reducers/TOGGLE_SIDE_NAVIGATION'
-import { GET_GLOBAL_VARS_SUCCESS } from './reducers/GET_GLOBAL_VARS_SUCCESS'
 import { rootStoreDefault } from './rootStoreDefault'
 
 export interface IIndexReducer {
@@ -72,7 +71,7 @@ export const indexReducer: IIndexReducer = (
 ) => {
   const { type, data } = action
 
-  const output = {
+  const output: Record<string, any> = {
     TEMPLATE,
     GET_COGNITO_TOKENS_SUCCESS,
     SET_USERS,
@@ -132,7 +131,6 @@ export const indexReducer: IIndexReducer = (
     CLICK_CHECK,
     GET_COURSES_SUCCESS,
     TOGGLE_SIDE_NAVIGATION,
-    GET_GLOBAL_VARS_SUCCESS,
   }
 
   return output[type] ? output[type](store, data) : store

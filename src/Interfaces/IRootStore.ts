@@ -39,12 +39,16 @@ export interface IForms {
 }
 
 export interface IRootStore {
-  analyticsID: string
+  analyticsID: string | null
   componentsState: IComponentsState
   courses: any[]
   documents: any[]
   users: IUser[]
   globalVars: {
+    titleSite: string
+    descriptionSite: string
+    canonicalUrlSite: string
+    langSite: string
     theme: string
     numberQuestionsInSlide: number
     durationMultiplier: number

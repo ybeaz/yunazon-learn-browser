@@ -473,6 +473,7 @@ export type Query = {
     readCourse: CourseType;
     readCourses: Array<CourseType>;
     readCoursesConnection: CoursesConnectionType;
+    readModule: CourseType;
     readProfiles: Array<ProfileType>;
     readProfilesConnection: ProfilesConnectionType;
     readTemplate: TemplatesType;
@@ -516,6 +517,9 @@ export type QueryReadCourseArgs = {
 export type QueryReadCoursesConnectionArgs = {
     readCoursesConnectionInput: ReadCoursesConnectionInputType;
 };
+export type QueryReadModuleArgs = {
+    moduleID: Scalars['String']['input'];
+};
 export type QueryReadProfilesConnectionArgs = {
     readProfilesConnectionInput: ReadProfilesConnectionInputType;
 };
@@ -556,7 +560,7 @@ export type QuestionType = {
     /** isActive */
     isActive: Scalars['Boolean']['output'];
     /** designType > multi */
-    multi: Scalars['Boolean']['output'];
+    multi?: Maybe<Scalars['Boolean']['output']>;
     /** course question options */
     options: Array<OptionType>;
 };
