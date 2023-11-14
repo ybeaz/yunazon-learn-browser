@@ -1,4 +1,4 @@
-export interface IHandleEventsProps {
+export interface HandleEventPropsType {
   typeEvent?: string
   type?: string
   data?: any

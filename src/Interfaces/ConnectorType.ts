@@ -1,4 +1,4 @@
-import { IConnectorOutput } from './IConnectorOutput'
+import { ConnectorOutputType } from './ConnectorOutputType'
 
 export interface ConnectorOptionsType {
   method: string
@@ -9,5 +9,5 @@ export interface ConnectorOptionsType {
 }
 
 export interface ConnectorType {
-  (options?: ConnectorOptionsType): IConnectorOutput
+  (options?: ConnectorOptionsType): ConnectorOutputType
 }

@@ -1,9 +1,9 @@
 import { getOptionsUserLanguages } from '../getOptionsUserLanguages'
-import { ILanguages } from '../../Interfaces/ILanguages'
+import { LanguagesType } from '../../Interfaces/LanguagesType'
 
 const userLanguages = ['en', 'zh']
 
-const LANGUAGES: ILanguages = {
+const LANGUAGES: LanguagesType = {
   eng: {
     '639-1': 'en',
     '639-2': 'eng',

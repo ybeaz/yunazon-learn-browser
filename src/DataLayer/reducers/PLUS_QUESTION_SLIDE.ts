@@ -1,8 +1,9 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
-export const PLUS_QUESTION_SLIDE: Function = (
+export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

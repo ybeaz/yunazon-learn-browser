@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_OAUTH_GOOGLE_SCRIPT_STATE: Function = (
+export const SET_OAUTH_GOOGLE_SCRIPT_STATE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

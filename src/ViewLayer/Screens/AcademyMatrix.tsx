@@ -9,7 +9,7 @@ import { ContentPlate } from '../Components/ContentPlate'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
+import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { MainFrame } from '../Frames/MainFrame'
 import { SITE_META_DATA } from '../../Constants/siteMetaData.const'
@@ -46,7 +46,7 @@ export const AcademyMatrix: React.FunctionComponent = (): ReactElement => {
       const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj: IDurationObj = getMultipliedTimeStr(
+      const durationObj: DurationObjType = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )

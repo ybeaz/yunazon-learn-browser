@@ -1,9 +1,10 @@
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IUser } from '../../Interfaces/IUser'
 import { userStoreDefault } from '../../DataLayer/rootStoreDefault'
 
-export const SET_USER_PROFILE: Function = (
+export const SET_USER_PROFILE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

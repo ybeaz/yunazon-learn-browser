@@ -9,7 +9,7 @@ import { AGE, IAge } from '../../Constants/age.const'
 import { Button } from '../ComponentsLibrary/Button'
 import { Input } from '../ComponentsLibrary/Input'
 import { Select, ISelectOption } from './Select'
-import { ILanguages } from '../../Interfaces/ILanguages'
+import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { COUNTRIES, ICountry } from '../../Constants/countries.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
@@ -37,7 +37,7 @@ interface IGetCountriesOptions {
 
 interface IGetLanguagesOptions {
   (
-    languages: ILanguages,
+    languages: LanguagesType,
     language: string,
     defaultOption: ISelectOption
   ): ISelectOption[]

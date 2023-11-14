@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_THEME: Function = (
+export const SET_THEME: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

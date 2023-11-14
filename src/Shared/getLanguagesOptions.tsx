@@ -3,7 +3,7 @@ import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
 
 import { Image } from '../ViewLayer/ComponentsLibrary/Image'
-import { ILanguages } from '../Interfaces/ILanguages'
+import { LanguagesType } from '../Interfaces/LanguagesType'
 import { IDictionary } from '../Constants/dictionary.const'
 import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
 
@@ -11,7 +11,7 @@ const { Option } = SelectAntd
 
 interface IGetLanguagesOptionsJsx {
   (
-    LANGUAGES: ILanguages,
+    LANGUAGES: LanguagesType,
     language: string,
     svgFileDir: string,
     classAdded: string
@@ -61,7 +61,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 
 interface IGetLanguagesOptions {
   (
-    LANGUAGES: ILanguages,
+    LANGUAGES: LanguagesType,
     languages: string[],
     defaultOption2: IDictionary
   ): ISelectOptionAntD[]
@@ -69,7 +69,7 @@ interface IGetLanguagesOptions {
 
 interface IGetLanguagesOptions2 {
   (
-    languages2: ILanguages,
+    languages2: LanguagesType,
     language2: string,
     defaultOption2: IDictionary
   ): ISelectOptionAntD[]

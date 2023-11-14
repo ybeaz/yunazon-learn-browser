@@ -1,7 +1,8 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { getCoursePassParamsSet } from '../../Shared/getCoursePassParamsSet'
 
-export const GET_COURSE_QUERY_PR_QN: Function = (
+export const GET_COURSE_QUERY_PR_QN: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

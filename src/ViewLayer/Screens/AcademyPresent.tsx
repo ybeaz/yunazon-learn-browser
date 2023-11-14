@@ -14,7 +14,7 @@ import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
+import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { IRootStore } from '../../Interfaces/IRootStore'
 import { IRouterScreenProps } from '../../Interfaces/IRouterScreenProps'
 import { LoaderBlurhash } from '../Components/LoaderBlurhash'
@@ -122,7 +122,7 @@ export const AcademyPresent: React.FunctionComponent<
         questionsTotal: questionsTotal2,
       } = getModuleByCourseIDIndex({ courses, courseID, index })
 
-      const durationObj2: IDurationObj = getMultipliedTimeStr(
+      const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )

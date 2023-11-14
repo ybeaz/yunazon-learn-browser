@@ -5,13 +5,13 @@ import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { IRootStore } from '../../Interfaces/IRootStore'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
+import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { Button } from '../ComponentsLibrary/Button'
 
 interface PlayerPanelArgs {
   courseCapture: string
   moduleCapture: string
-  durationObj: IDurationObj
+  durationObj: DurationObjType
   screenType: string
   isShowingPlay: boolean
   buttonPlayProps?: any

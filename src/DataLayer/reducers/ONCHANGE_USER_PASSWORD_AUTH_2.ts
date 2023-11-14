@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_USER_PASSWORD_AUTH_2: Function = (
+export const ONCHANGE_USER_PASSWORD_AUTH_2: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_SEARCH_INPUT: Function = (
+export const SET_SEARCH_INPUT: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

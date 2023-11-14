@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const CHANGE_NUM_QUESTIONS_IN_SLIDE: Function = (
+export const CHANGE_NUM_QUESTIONS_IN_SLIDE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

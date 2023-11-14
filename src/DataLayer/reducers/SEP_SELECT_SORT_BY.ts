@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SEP_SELECT_SORT_BY: Function = (
+export const SEP_SELECT_SORT_BY: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

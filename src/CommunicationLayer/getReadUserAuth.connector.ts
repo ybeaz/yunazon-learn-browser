@@ -4,13 +4,13 @@ import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IUser'
 import {
-  IConnectorOutput,
+  ConnectorOutputType,
   AxiosRequestHeaders,
-} from '../Interfaces/IConnectorOutput'
+} from '../Interfaces/ConnectorOutputType'
 import { readUserAuthQuery } from './queries/readUserAuthQuery'
 
 interface IGetReadUserAuthConnector {
-  (user: IUser): IConnectorOutput
+  (user: IUser): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {
@@ -24,7 +24,7 @@ export const getReadUserAuthConnector: IGetReadUserAuthConnector = user => {
 
   const { userIdAuth } = user
 
-  let obj: IConnectorOutput = {
+  let obj: ConnectorOutputType = {
     testCapture: 'should return 200 code and data defined',
     axiosClient: axios.create({
       baseURL: `${SERVERS[envType]}/graphql`,

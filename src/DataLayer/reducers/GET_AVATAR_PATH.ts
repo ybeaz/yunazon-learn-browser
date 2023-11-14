@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const GET_AVATAR_PATH: Function = (
+export const GET_AVATAR_PATH: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_USER_BIRTH_YEAR: Function = (
+export const ONCHANGE_USER_BIRTH_YEAR: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

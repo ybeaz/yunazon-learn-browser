@@ -1,4 +1,4 @@
-export interface IDurationObj {
+export interface DurationObjType {
   duration: string
   units: string
 }

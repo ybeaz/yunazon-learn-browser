@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SEP_INPUT_AGE_FROM_REQUIRED: Function = (
+export const SEP_INPUT_AGE_FROM_REQUIRED: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

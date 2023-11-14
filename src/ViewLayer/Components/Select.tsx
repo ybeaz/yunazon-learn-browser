@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { getUniqArrBy } from '../../Shared/getUniqArrBy'
 import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
+import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
 export interface ISelectOption {
   defaultSelected?: boolean
   selected: boolean
@@ -240,7 +240,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   const handleComponentEvents = (
     event: any,
-    propsEvent: IHandleEventsProps
+    propsEvent: HandleEventPropsType
   ): void => {
     const { typeEvent: typeEvent2, data } = propsEvent
 

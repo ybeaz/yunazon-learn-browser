@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SELECT_USER_GENDER: Function = (
+export const SELECT_USER_GENDER: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

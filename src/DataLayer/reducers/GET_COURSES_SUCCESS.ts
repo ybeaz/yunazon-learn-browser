@@ -1,7 +1,8 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 
-export const GET_COURSES_SUCCESS: Function = (
+export const GET_COURSES_SUCCESS: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

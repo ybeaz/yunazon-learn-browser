@@ -4,14 +4,14 @@ import { SERVERS } from '../Constants/servers.const'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { IUser } from '../Interfaces/IUser'
 import {
-  IConnectorOutput,
+  ConnectorOutputType,
   AxiosRequestHeaders,
-} from '../Interfaces/IConnectorOutput'
+} from '../Interfaces/ConnectorOutputType'
 import { createUserQuery } from './queries/createUserQuery'
 import { updateUserQuery } from './queries/updateUserQuery'
 
 interface IGetSavedUserProfileConnector {
-  (user: IUser): IConnectorOutput
+  (user: IUser): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {
@@ -48,7 +48,7 @@ export const getSavedUserProfileConnector: IGetSavedUserProfileConnector =
       userZoneInfo,
     } = user
 
-    let obj: IConnectorOutput
+    let obj: ConnectorOutputType
 
     if (!userIdProfile) {
       obj = {

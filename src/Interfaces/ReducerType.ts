@@ -1,5 +1,5 @@
 import { IRootStore } from './IRootStore'
 
-export interface IReducer {
+export interface ReducerType {
   (store: IRootStore, data: any): IRootStore
 }

@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_EMAIL_CC: Function = (
+export const ONCHANGE_EMAIL_CC: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

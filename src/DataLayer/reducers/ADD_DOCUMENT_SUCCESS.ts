@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ADD_DOCUMENT_SUCCESS: Function = (
+export const ADD_DOCUMENT_SUCCESS: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

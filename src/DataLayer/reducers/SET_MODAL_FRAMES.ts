@@ -1,9 +1,10 @@
 import { componentsStateDefault } from '../rootStoreDefault'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { getUniqArrDeep } from '../../Shared/getUniqArrDeep'
 import { getUpdatedArrByArrInput } from '../../Shared/getUpdatedArrByArrInput'
 import { IRootStore } from '../../Interfaces/IRootStore'
 
-export const SET_MODAL_FRAMES: Function = (
+export const SET_MODAL_FRAMES: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

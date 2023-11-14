@@ -1,9 +1,10 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getCourseModuleActive } from '../../Shared/getCourseModuleActive'
 
-export const SELECT_COURSE_MODULE: Function = (
+export const SELECT_COURSE_MODULE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

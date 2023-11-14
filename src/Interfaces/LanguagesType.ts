@@ -1,4 +1,4 @@
-export interface ILanguage {
+export interface LanguageType {
   '639-1'?: string
   '639-2'?: string
   '639-2/B'?: string
@@ -10,4 +10,4 @@ export interface ILanguage {
   wikiUrl: string
 }
 
-export type ILanguages = Record<string, ILanguage>
+export type LanguagesType = Record<string, LanguageType>

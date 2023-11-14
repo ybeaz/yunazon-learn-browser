@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SELECT_SKILLS_EXPERTISE: Function = (
+export const SELECT_SKILLS_EXPERTISE: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

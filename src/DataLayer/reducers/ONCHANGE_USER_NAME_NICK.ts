@@ -1,7 +1,8 @@
 import { IRootStore, IForms } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { IUser } from '../../Interfaces/IUser'
 
-export const ONCHANGE_USER_NAME_NICK: Function = (
+export const ONCHANGE_USER_NAME_NICK: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

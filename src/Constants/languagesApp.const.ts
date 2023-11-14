@@ -1,10 +1,10 @@
-import { ILanguages } from '../Interfaces/ILanguages'
+import { LanguagesType } from '../Interfaces/LanguagesType'
 
 /**
  * @description Const to define app languages
  * @reference See src/Constants/languagesAll.const.ts
  */
-export const LANGUAGES_APP: ILanguages = {
+export const LANGUAGES_APP: LanguagesType = {
   eng: {
     '639-1': 'en',
     '639-2': 'eng',

@@ -1,6 +1,7 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const TOGGLE_SIDE_NAVIGATION: Function = (
+export const TOGGLE_SIDE_NAVIGATION: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {

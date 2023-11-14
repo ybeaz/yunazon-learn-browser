@@ -1,8 +1,9 @@
 import { IRootStore } from '../../Interfaces/IRootStore'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
 import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 
-export const GET_ANSWERS_DEFAULT: Function = (
+export const GET_ANSWERS_DEFAULT: ReducerType = (
   store: IRootStore,
   data: any
 ): IRootStore => {
