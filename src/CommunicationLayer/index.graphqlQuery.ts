@@ -1,6 +1,7 @@
 import { DocumentNode } from '@apollo/client'
 
 import { readCoursesConnectionGql } from './graphql/readCoursesConnectionGql'
+import { readModuleGql } from './graphql/readModuleGql'
 
 export type GraphqlQueriesType = Record<string, DocumentNode>
 
@@ -9,5 +10,6 @@ export type GraphqlQueriesType = Record<string, DocumentNode>
  */
 
 export const graphqlQueries: GraphqlQueriesType = {
+  readModuleGql,
   readCoursesConnectionGql,
 }

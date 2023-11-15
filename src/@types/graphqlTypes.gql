@@ -455,10 +455,10 @@ type Query {
   getRevokedUserAuthAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getUserIdDataAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
-  readCourse(courseID: String!): CourseType!
+  readCourse(courseID: String, moduleID: String): CourseType!
   readCourses: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
-  readModule(moduleID: String!): CourseType!
+  readModule(moduleID: String!): ModuleType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readTemplate(idTemplates: String!): TemplatesType!

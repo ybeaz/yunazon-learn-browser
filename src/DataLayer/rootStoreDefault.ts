@@ -95,6 +95,7 @@ export const formsDefault: FormsType = {
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
+  moduleActive: {},
   courses: [],
   documents: [],
   users: [],

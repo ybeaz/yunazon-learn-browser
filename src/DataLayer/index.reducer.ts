@@ -1,6 +1,7 @@
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_MODULE } from './reducers/SET_MODULE'
 import { GET_COGNITO_TOKENS_SUCCESS } from './reducers/GET_COGNITO_TOKENS_SUCCESS'
 import { SET_USERS } from './reducers/SET_USERS'
 import { ONCHANGE_USER_NAME_NICK } from './reducers/ONCHANGE_USER_NAME_NICK'
@@ -73,6 +74,7 @@ export const indexReducer: IIndexReducer = (
 
   const output: Record<string, any> = {
     TEMPLATE,
+    SET_MODULE,
     GET_COGNITO_TOKENS_SUCCESS,
     SET_USERS,
     SELECT_USER_MEDIA,

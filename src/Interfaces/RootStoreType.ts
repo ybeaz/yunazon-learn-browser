@@ -1,4 +1,5 @@
 import { UserType } from './UserType'
+import { ModuleType, CourseType } from '../@types/GraphqlTypes'
 
 export interface SearchFormSepType {
   selectSkillsOffered: string[]
@@ -41,7 +42,8 @@ export interface FormsType {
 export interface RootStoreType {
   analyticsID: string | null
   componentsState: ComponentsStateType
-  courses: any[]
+  moduleActive: ModuleType | {}
+  courses: CourseType[]
   documents: any[]
   users: UserType[]
   globalVars: {

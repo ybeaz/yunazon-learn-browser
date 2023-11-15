@@ -3,32 +3,32 @@ import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
-function* template(dataInput: any) {
+function* getTemplate(dataInput: any) {
   const { data } = dataInput
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables = {
-      readTemplateInput: {
+      actionGetTemplateInput: {
         offset: 0,
         first: 8,
       },
     }
 
-    const readTemplate: any[] = yield getResponseGraphqlAsync({
+    const readgetTemplate: any[] = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'readTemplate',
+      resolveGraphqlName: 'actionGetTemplate',
     })
 
-    yield put(actionAsync.ACT_TEMPLATE.SUCCESS(readTemplate))
+    yield put(actionAsync.ACT_getTemplate.SUCCESS(readgetTemplate))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('template [40]', error.name + ': ' + error.message)
+    console.info('getTemplate Error', error.name + ': ' + error.message)
   }
 }
 
-export default function* templateSaga() {
-  yield takeEvery([actionAsync.ACT_TEMPLATE.REQUEST().type], template)
+export default function* getTemplateSaga() {
+  yield takeEvery([actionAsync.ACTION_GetTemplate.REQUEST().type], getTemplate)
 }

@@ -522,7 +522,7 @@ export type Query = {
   readCourse: CourseType;
   readCourses: Array<CourseType>;
   readCoursesConnection: CoursesConnectionType;
-  readModule: CourseType;
+  readModule: ModuleType;
   readProfiles: Array<ProfileType>;
   readProfilesConnection: ProfilesConnectionType;
   readTemplate: TemplatesType;
@@ -579,7 +579,7 @@ export type QueryReadCompetencyTagsArgs = {
 
 
 export type QueryReadCourseArgs = {
-  courseID: Scalars['String']['input'];
+  courseID?: InputMaybe<Scalars['String']['input']>;
 };
 
 

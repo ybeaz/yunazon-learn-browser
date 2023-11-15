@@ -35,20 +35,21 @@ export const AcademyPresent: React.FunctionComponent<
   RouterScreenPropsType
 > = (): ReactElement => {
   const params = useParams()
-  const courseID = params.courseID
-  console.info('AcademyPresent [36]', { courseID, params, location })
-
+  const moduleID = params.moduleID
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
+  getEffectedRequests([
+    'GET_GLOBAL_VARS',
+    { type: 'GET_MODULE_DATA', data: { moduleID } },
+  ])
   getInitialTeachContentLoading()
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     globalVars: { durationMultiplier },
-    courses,
+    moduleActive,
     isLoaded: { mediaLoading },
   } = store
 
@@ -80,6 +81,13 @@ export const AcademyPresent: React.FunctionComponent<
     modulesTotal,
     questionsTotal,
   } = moduleState
+
+  console.info('AcademyPresent [36]', {
+    moduleActive,
+    moduleID,
+    params,
+    location,
+  })
 
   return (
     <div>We are flying from 40th flour. Until now everything is going Ok.</div>
