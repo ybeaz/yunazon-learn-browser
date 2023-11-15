@@ -61,6 +61,7 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
   }
 
   let redirectUri = SERVERS.remote
+
   try {
     redirectUri =
       process && process?.env?.ENV_APP === 'development'

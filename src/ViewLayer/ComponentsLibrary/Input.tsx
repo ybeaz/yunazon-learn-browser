@@ -2,8 +2,14 @@ import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { UserType } from '../../Interfaces/UserType'
+import {
+  RootStoreType,
+  FormsType,
+  SearchFormSepType,
+} from '../../Interfaces/RootStoreType'
 import { IconReact } from './IconReact'
+import { isObject } from '../../Shared/isObject'
 
 interface InputArgs {
   tagName?: string // input tag, may be 'input' or 'textarea'
@@ -32,10 +38,23 @@ export const Input: React.FunctionComponent<InputArgs> = (
 
   const store = useSelector((store2: RootStoreType) => store2)
   const { forms } = store
-  const value =
-    storeFormGroup && storeFormProp
-      ? forms[storeFormGroup][storeFormProp]
-      : storeFormProp && forms[storeFormProp]
+
+  let value: string | number | string[] = ''
+
+  if (storeFormGroup === 'searchFormSep' && storeFormProp) {
+    const searchFormSepKey = storeFormProp as keyof SearchFormSepType
+    value = forms[storeFormGroup][searchFormSepKey]
+  }
+  if (
+    (storeFormGroup === 'user' || storeFormGroup === 'userPrev') &&
+    storeFormProp
+  ) {
+    const userKey = storeFormProp as keyof UserType
+    value = forms[storeFormGroup][userKey] as any
+  } else if (storeFormProp) {
+    const formsKey = storeFormProp as keyof FormsType
+    value = forms[formsKey] as any
+  }
 
   const action = { typeEvent }
 
@@ -56,7 +75,7 @@ export const Input: React.FunctionComponent<InputArgs> = (
 
   return (
     <div className={`Input ${classAdded}`}>
-      <form className='__form'>
+      <div className='__form'>
         {tagName === 'input' && (
           <input
             className={'__input _hidden'}
@@ -80,7 +99,7 @@ export const Input: React.FunctionComponent<InputArgs> = (
             value={value}
           />
         )}
-      </form>
+      </div>
       <span
         className='_iconClose'
         onClick={(_event: React.MouseEvent<HTMLSpanElement>) =>

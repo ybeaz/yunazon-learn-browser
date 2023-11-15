@@ -16,7 +16,8 @@ import { DICTIONARY } from '../../Constants/dictionary.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
-interface HeaderFrameArgs {
+
+export type HeaderFramePropsType = {
   brandName?: string
   moto?: string
   logoPath?: string
@@ -38,7 +39,9 @@ interface HeaderFrameArgs {
   isInstallMobileAppGroup: boolean
 }
 
-export const HeaderFrame: React.FunctionComponent<HeaderFrameArgs> = props => {
+export const HeaderFrame: React.FunctionComponent<
+  HeaderFramePropsType
+> = props => {
   const {
     brandName,
     moto,

@@ -8,7 +8,7 @@ interface isObjectType {
 
 /**
  * @description Function to isObject
- * @import import { isObject } from './isObject'
+ * @import import { isObject } from './Shared/isObject'
  */
 
 export const isObject: isObjectType = (obj, options) => {

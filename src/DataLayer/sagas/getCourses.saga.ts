@@ -10,7 +10,7 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 function* getCourses() {
   try {
     const { courses: coursesPrev } = yield select(store => store)
-    if (coursesPrev.length) return
+    if (coursesPrev.length > 1) return
 
     const variables = {
       readCoursesConnectionInput: {

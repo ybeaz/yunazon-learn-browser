@@ -1,16 +1,20 @@
-import React, { useState, useEffect, ReactElement } from 'react'
+import React, {
+  useState,
+  useEffect,
+  ReactElement,
+  FunctionComponent,
+} from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
 import { SideNavigation } from '../Components/SideNavigation'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { HeaderFrame, HeaderFramePropsType } from '../Frames/HeaderFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../Components/CarouselQuestions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getContentComponentName } from '../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
-import { getModuleByCourseIDIndex } from '../../Shared/getModuleByCourseIDIndex'
 import { getMultipliedTimeStr } from '../../Shared/getMultipliedTimeStr'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -22,12 +26,12 @@ import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
 import { MainFrame } from '../Frames/MainFrame'
 import { PlayerIframe } from '../Frames/PlayerIframe'
 import { PlayerPanel } from '../Components/PlayerPanel'
-import { ReaderIframe } from '../Frames/ReaderIframe'
+import { ReaderIframe, ReaderArgs } from '../Frames/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 
-const COMPONENT = {
+const COMPONENT: Record<string, FunctionComponent<ReaderArgs> | null> = {
   ReaderIframe,
   PlayerIframe,
 }
@@ -84,13 +88,6 @@ export const AcademyPresent: React.FunctionComponent<
   } = moduleState
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
-
-  console.info('AcademyPresent [36]', {
-    isLoaded,
-    courses,
-    moduleID,
-    mediaLoaded,
-  })
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
@@ -152,13 +149,6 @@ export const AcademyPresent: React.FunctionComponent<
 
   const isVisible = mediaLoaded[contentID]
 
-  console.info('AcademyPresent [162]', {
-    isLoaded,
-    isVisible,
-    contentID,
-    mediaLoaded,
-  })
-
   const { width, height } = VIDEO_RESOLUTION
   const {
     playVideoHandler,
@@ -172,7 +162,7 @@ export const AcademyPresent: React.FunctionComponent<
     height,
   })
 
-  const contentComponentProps = {
+  const contentComponentProps: Record<string, any> = {
     ReaderIframe: {
       contentID,
       isVisible,
@@ -228,7 +218,7 @@ export const AcademyPresent: React.FunctionComponent<
     contentComponentName,
   }
 
-  const headerFrameProps = {
+  const headerFrameProps: HeaderFramePropsType = {
     brandName: 'YouRails Academy',
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
@@ -248,6 +238,8 @@ export const AcademyPresent: React.FunctionComponent<
   const mainFrameProps = {
     screenType,
   }
+
+  // console.info('AcademyPresent [252]', { headerFrameProps })
 
   return (
     <div className='AcademyPresent'>
