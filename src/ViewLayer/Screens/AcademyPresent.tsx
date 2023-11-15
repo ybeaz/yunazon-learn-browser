@@ -31,7 +31,7 @@ import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 
-const COMPONENT: Record<string, FunctionComponent<ReaderArgs> | null> = {
+const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
   PlayerIframe,
 }
@@ -60,7 +60,7 @@ export const AcademyPresent: React.FunctionComponent<
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
-    CONTENT_ASSIGNED_COMPONENT: null,
+    CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
     contentComponentName: '',
     courseCapture: '',
     language: '',
