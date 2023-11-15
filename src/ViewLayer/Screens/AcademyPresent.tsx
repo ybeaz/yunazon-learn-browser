@@ -82,13 +82,13 @@ export const AcademyPresent: React.FunctionComponent<
     questionsTotal,
   } = moduleState
 
-  const courseID = moduleID
+  const mediaLoadingCoursesString = JSON.stringify([mediaLoading, courses])
 
   console.info('AcademyPresent [36]', {
+    isLoaded,
     courses,
     moduleID,
-    params,
-    location,
+    mediaLoading,
   })
 
   // return (
@@ -96,6 +96,8 @@ export const AcademyPresent: React.FunctionComponent<
   // )
 
   useEffect(() => {
+    const courseID = moduleID
+
     if (courses.length && isLoaded === false) {
       handleEvents(
         {},
@@ -117,8 +119,6 @@ export const AcademyPresent: React.FunctionComponent<
         }
       )
 
-      setIsLoaded(true)
-
       const {
         courseCapture: courseCapture2,
         language: language2,
@@ -139,6 +139,14 @@ export const AcademyPresent: React.FunctionComponent<
 
       const contentComponentName2 = getContentComponentName(contentType)
 
+      setIsLoaded(true)
+
+      console.info('AcademyPresent [142]', {
+        isLoaded,
+        courseID,
+        contentComponentName2,
+      })
+
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
         contentComponentName: contentComponentName2,
@@ -153,7 +161,7 @@ export const AcademyPresent: React.FunctionComponent<
         durationObj: durationObj2,
       })
     }
-  }, [mediaLoading, courses])
+  }, [mediaLoadingCoursesString])
 
   const isVisible = mediaLoading[contentID]
 

@@ -14,15 +14,22 @@ export const SELECT_COURSE_MODULE_CONTENTID: ReducerType = (
   let storeNext: RootStoreType = { ...store }
   courses.forEach(course => {
     const { modules } = course
-    modules.forEach((module: any) => {
+    const modulesNext = modules || []
+    modulesNext.forEach((module: any) => {
       const { contentID: mediaKey } = module
       const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
       storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)
     })
   })
 
+  console.info('SELECT_COURSE_MODULE_CONTENTID [25]', { courses, storeNext })
+
   let coursesNext = getProvidedSelectedDefault(courses)
   coursesNext = getModuleActiveByCourseIDIndex({ courses, courseID, index })
   storeNext = { ...storeNext, courses: coursesNext }
+  console.info('SELECT_COURSE_MODULE_CONTENTID [25]', {
+    coursesNext,
+    storeNext,
+  })
   return storeNext
 }
