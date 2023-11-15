@@ -9,9 +9,8 @@ import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
 import { getProvidedSelectedDefault } from './getProvidedSelectedDefault'
 import { getProvidedID } from './getProvidedID'
 import { getChainedResponsibility } from './getChainedResponsibility'
-import { getMappedConnectionToRes } from './getMappedConnectionToRes'
 
-export type GetPreparedCoursesParamsType = CoursesConnectionType
+export type GetPreparedCoursesParamsType = CourseType[]
 
 export type GetPreparedCoursesResType = CourseType[]
 
@@ -29,13 +28,13 @@ interface GetPreparedCoursesType {
  */
 
 export const getPreparedCourses: GetPreparedCoursesType = (
-  readCoursesConnection,
+  courses: CourseType[],
   options
 ) => {
   let coursesNext: CourseType[] = []
 
   try {
-    coursesNext = getChainedResponsibility(readCoursesConnection)
+    coursesNext = getChainedResponsibility(courses)
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
@@ -46,10 +45,10 @@ export const getPreparedCourses: GetPreparedCoursesType = (
       .exec(getProvidedSearchString).result
 
     if (options?.printRes) {
-      console.log('getMappedConnectionToRes', { coursesNext })
+      console.log('getMappedConnectionToCourses', { coursesNext })
     }
   } catch (error: any) {
-    console.log('getMappedConnectionToRes', 'Error', error.message)
+    console.log('getMappedConnectionToCourses', 'Error', error.message)
   } finally {
     return coursesNext
   }

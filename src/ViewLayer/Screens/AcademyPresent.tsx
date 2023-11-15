@@ -49,7 +49,7 @@ export const AcademyPresent: React.FunctionComponent<
   const {
     language: languageStore,
     globalVars: { durationMultiplier },
-    courseActive,
+    courses,
     isLoaded: { mediaLoading },
   } = store
 
@@ -82,16 +82,18 @@ export const AcademyPresent: React.FunctionComponent<
     questionsTotal,
   } = moduleState
 
+  const courseID = moduleID
+
   console.info('AcademyPresent [36]', {
-    courseActive,
+    courses,
     moduleID,
     params,
     location,
   })
 
-  return (
-    <div>We are flying from 40th flour. Until now everything is going Ok.</div>
-  )
+  // return (
+  //   <div>We are flying from 40th flour. Until now everything is going Ok.</div>
+  // )
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {

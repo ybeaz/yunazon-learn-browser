@@ -1,18 +1,10 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
-import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
-import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
-import { getValidatedCourses } from '../../Shared/getValidatedCourses'
-import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
-import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
-import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
-import { getProvidedID } from '../../Shared/getProvidedID'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ConnectionType } from '../../@types/ConnectionType'
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
+import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 function* getCourses() {
@@ -35,7 +27,7 @@ function* getCourses() {
     )
 
     let coursesNext = getChainedResponsibility(readCoursesConnection)
-      .exec(getMappedConnectionToRes, { printRes: false })
+      .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
 
     yield put(actionSync.SET_COURSES(coursesNext))

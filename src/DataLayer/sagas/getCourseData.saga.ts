@@ -1,8 +1,9 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import { ModuleType } from '../../@types/GraphqlTypes'
+import { CourseType } from '../../@types/GraphqlTypes'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 function* getCourseData(dataInput: any) {
   const {
@@ -18,12 +19,14 @@ function* getCourseData(dataInput: any) {
       },
     }
 
-    const readCourse: ModuleType = yield getResponseGraphqlAsync({
+    const readCourse: CourseType = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'readCourse',
     })
 
-    yield put(actionSync.SET_COURSE_ACTIVE({ readCourse }))
+    const coursesNext = getPreparedCourses([readCourse])
+
+    yield put(actionSync.SET_COURSES(coursesNext))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
