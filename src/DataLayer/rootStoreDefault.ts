@@ -112,7 +112,7 @@ export const rootStoreDefault: RootStoreType = {
   isLoaded: {
     isLoadedGlobalVars: true,
     isLoadedCourses: false,
-    mediaLoading: {},
+    mediaLoaded: {},
   },
   language: localStorage.getItem('language') || 'ru',
 }

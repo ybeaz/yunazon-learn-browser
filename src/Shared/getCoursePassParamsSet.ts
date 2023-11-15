@@ -1,11 +1,13 @@
+import { CourseType, ModuleType } from '../@types/GraphqlTypes'
 import { getLimitedArrayElemsRandomly } from './getLimitedArrayElemsRandomly'
 
 interface GetCoursePassParamsSetInterface {
   (
-    courses: any[],
+    courses: CourseType[],
     options: {
-      courseIDIn: string
-      indexIn: number
+      courseIDIn?: string
+      indexIn?: number
+      moduleIDIn?: string
       questionNumberIn: number | undefined
       passRateIn: number | undefined
     }
@@ -16,10 +18,11 @@ interface GetCoursePassParamsSetInterface {
  * @description Function to reduce course questions by number, pick up randomly
  */
 export const getCoursePassParamsSet: GetCoursePassParamsSetInterface = (
-  courses: any[],
-  { courseIDIn, indexIn, questionNumberIn, passRateIn } = {
+  courses: CourseType[],
+  { courseIDIn, indexIn, moduleIDIn, questionNumberIn, passRateIn } = {
     courseIDIn: 'all',
     indexIn: 0,
+    moduleIDIn: undefined,
     questionNumberIn: undefined,
     passRateIn: undefined,
   }
@@ -33,15 +36,31 @@ export const getCoursePassParamsSet: GetCoursePassParamsSetInterface = (
 
     questionNumberNext = questionNumberNext > 1 ? questionNumberNext : 2
 
-    let modulesNext = modules
+    let modulesNext: ModuleType[] = modules || []
 
-    if (courseIDIn === undefined || courseIDIn === courseID) {
-      modulesNext = modules.map(module => {
+    if ((!courseIDIn || courseIDIn === courseID) && !moduleIDIn) {
+      modulesNext = modulesNext.map(module => {
         const { index, questions } = module
 
         let questionsNext = questions
         if (
           (courseIDIn === undefined || indexIn === index) &&
+          typeof questionNumberNext === 'number'
+        ) {
+          questionsNext = getLimitedArrayElemsRandomly(
+            questions,
+            questionNumberNext
+          )
+        }
+        return { ...module, questions: questionsNext }
+      })
+    } else if (moduleIDIn) {
+      modulesNext = modulesNext.map(module => {
+        const { moduleID, index, questions } = module
+
+        let questionsNext = questions
+        if (
+          (courseIDIn === undefined || moduleIDIn === moduleID) &&
           typeof questionNumberNext === 'number'
         ) {
           questionsNext = getLimitedArrayElemsRandomly(

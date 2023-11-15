@@ -94,7 +94,7 @@ import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
 
 export const handleEvents: HandleEventType = (event, props): void => {
   const { type: typeStore, typeEvent, data } = props
-  const type = typeStore ? typeStore : typeEvent
+  const type = typeStore ? typeStore : typeEvent || ''
 
   const output: Record<string, ActionEventType> = {
     TEMPLATE,

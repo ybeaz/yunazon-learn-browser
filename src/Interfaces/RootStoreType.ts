@@ -58,7 +58,7 @@ export interface RootStoreType {
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean
-    mediaLoading: any
+    mediaLoaded: any
   }
   language: string
 }

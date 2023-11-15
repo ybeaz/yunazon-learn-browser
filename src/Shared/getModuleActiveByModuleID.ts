@@ -5,10 +5,8 @@ interface GetModuleActiveByModuleIDType {
 }
 
 /**
- * @description Function to make a course isSelected based on contentID
- * @param courses
- * @param contentID
- * @returns
+ * @description Function to make a course isSelected based on moduleID
+ * @import import { getModuleActiveByModuleID } from '../Shared/getModuleActiveByModuleID'
  */
 export const getModuleActiveByModuleID: GetModuleActiveByModuleIDType = ({
   courses,

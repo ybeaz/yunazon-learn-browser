@@ -25,6 +25,7 @@ import { PlayerPanel } from '../Components/PlayerPanel'
 import { ReaderIframe } from '../Frames/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 
 const COMPONENT = {
   ReaderIframe,
@@ -35,7 +36,7 @@ export const AcademyPresent: React.FunctionComponent<
   RouterScreenPropsType
 > = (): ReactElement => {
   const params = useParams()
-  const moduleID = params.moduleID
+  const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
@@ -50,7 +51,7 @@ export const AcademyPresent: React.FunctionComponent<
     language: languageStore,
     globalVars: { durationMultiplier },
     courses,
-    isLoaded: { mediaLoading },
+    isLoaded: { mediaLoaded },
   } = store
 
   const [isLoaded, setIsLoaded] = useState(false)
@@ -82,40 +83,32 @@ export const AcademyPresent: React.FunctionComponent<
     questionsTotal,
   } = moduleState
 
-  const mediaLoadingCoursesString = JSON.stringify([mediaLoading, courses])
+  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
   console.info('AcademyPresent [36]', {
     isLoaded,
     courses,
     moduleID,
-    mediaLoading,
+    mediaLoaded,
   })
 
-  // return (
-  //   <div>We are flying from 40th flour. Until now everything is going Ok.</div>
-  // )
-
   useEffect(() => {
-    const courseID = moduleID
-
     if (courses.length && isLoaded === false) {
       handleEvents(
         {},
         { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
       )
 
-      const index = 0
-
-      handleEvents(
-        {},
-        { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { courseID, index } }
-      )
+      // handleEvents(
+      //   {},
+      //   { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { moduleID, index } }
+      // )
 
       handleEvents(
         {},
         {
           type: 'GET_COURSE_QUERY_PR_QN',
-          data: { courseID, index },
+          data: { moduleID },
         }
       )
 
@@ -130,7 +123,7 @@ export const AcademyPresent: React.FunctionComponent<
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
-      } = getModuleByCourseIDIndex({ courses, courseID, index })
+      } = getModuleByModuleID({ courses, moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,
@@ -140,12 +133,6 @@ export const AcademyPresent: React.FunctionComponent<
       const contentComponentName2 = getContentComponentName(contentType)
 
       setIsLoaded(true)
-
-      console.info('AcademyPresent [142]', {
-        isLoaded,
-        courseID,
-        contentComponentName2,
-      })
 
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
@@ -161,9 +148,16 @@ export const AcademyPresent: React.FunctionComponent<
         durationObj: durationObj2,
       })
     }
-  }, [mediaLoadingCoursesString])
+  }, [mediaLoadedCoursesString])
 
-  const isVisible = mediaLoading[contentID]
+  const isVisible = mediaLoaded[contentID]
+
+  console.info('AcademyPresent [162]', {
+    isLoaded,
+    isVisible,
+    contentID,
+    mediaLoaded,
+  })
 
   const { width, height } = VIDEO_RESOLUTION
   const {

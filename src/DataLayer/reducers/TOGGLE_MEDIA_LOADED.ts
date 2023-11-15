@@ -8,16 +8,16 @@ export const TOGGLE_MEDIA_LOADED: ReducerType = (
   const { mediaKey, isMediaLoaded } = data
 
   const { isLoaded } = store
-  const { mediaLoading } = isLoaded
+  const { mediaLoaded } = isLoaded
 
-  const mediaLoadingNext = {
-    ...mediaLoading,
+  const mediaLoadedNext = {
+    ...mediaLoaded,
     [mediaKey]: isMediaLoaded,
   }
 
   const isLoadedNext = {
     ...isLoaded,
-    mediaLoading: mediaLoadingNext,
+    mediaLoaded: mediaLoadedNext,
   }
 
   return { ...store, isLoaded: isLoadedNext }

@@ -5,10 +5,8 @@ interface GetModuleActiveByCourseIDIndexType {
 }
 
 /**
- * @description Function to make a course isSelected based on contentID
- * @param courses
- * @param contentID
- * @returns
+ * @description Function to make a course isSelected based on contentID and index
+ * @import import { getModuleActiveByCourseIDIndex } from '../Shared/getModuleActiveByCourseIDIndex'
  */
 export const getModuleActiveByCourseIDIndex: GetModuleActiveByCourseIDIndexType =
   ({ courses, courseID: courseIDIn, index: indexIn }) => {

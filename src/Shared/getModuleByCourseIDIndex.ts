@@ -6,10 +6,7 @@ interface GetModuleByCourseIDIndexInterface {
 
 /**
  * @description Function to return module by provided contentID
- * @param courses
- * @param nameContentID
- * @param contentID
- * @returns
+ * @import import { getModuleByCourseIDIndex } from '../Shared/getModuleByCourseIDIndex'
  */
 export const getModuleByCourseIDIndex: GetModuleByCourseIDIndexInterface = ({
   courses,
