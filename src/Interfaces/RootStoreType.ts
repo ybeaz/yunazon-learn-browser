@@ -42,7 +42,7 @@ export interface FormsType {
 export interface RootStoreType {
   analyticsID: string | null
   componentsState: ComponentsStateType
-  moduleActive: ModuleType | {}
+  courseActive: CourseType | {}
   courses: CourseType[]
   documents: any[]
   users: UserType[]

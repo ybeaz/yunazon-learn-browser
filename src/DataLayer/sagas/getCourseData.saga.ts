@@ -4,7 +4,7 @@ import { ModuleType } from '../../@types/GraphqlTypes'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
-function* getModuleData(dataInput: any) {
+function* getCourseData(dataInput: any) {
   const {
     data: { moduleID },
   } = dataInput
@@ -13,24 +13,24 @@ function* getModuleData(dataInput: any) {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables = {
-      moduleID,
+      readCourseInput: {
+        moduleID,
+      },
     }
 
-    const readModule: ModuleType = yield getResponseGraphqlAsync({
+    const readCourse: ModuleType = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'readModule',
+      resolveGraphqlName: 'readCourse',
     })
 
-    console.info('getModuleData.saga [25]', { readModule })
-
-    yield put(actionSync.SET_MODULE({ readModule }))
+    yield put(actionSync.SET_COURSE_ACTIVE({ readCourse }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getModuleData Error', error.name + ': ' + error.message)
+    console.info('getCourseData Error', error.name + ': ' + error.message)
   }
 }
 
-export default function* getModuleDataSaga() {
-  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getModuleData)
+export default function* getCourseDataSaga() {
+  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getCourseData)
 }

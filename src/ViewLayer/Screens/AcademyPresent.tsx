@@ -49,7 +49,7 @@ export const AcademyPresent: React.FunctionComponent<
   const {
     language: languageStore,
     globalVars: { durationMultiplier },
-    moduleActive,
+    courseActive,
     isLoaded: { mediaLoading },
   } = store
 
@@ -83,7 +83,7 @@ export const AcademyPresent: React.FunctionComponent<
   } = moduleState
 
   console.info('AcademyPresent [36]', {
-    moduleActive,
+    courseActive,
     moduleID,
     params,
     location,
