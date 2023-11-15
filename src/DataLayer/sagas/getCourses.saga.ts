@@ -8,12 +8,12 @@ import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
 import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getProvidedID } from '../../Shared/getProvidedID'
-import { actionAsync } from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ConnectionType } from '../../@types/ConnectionType'
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-
 import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
+import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 function* getCourses() {
   try {
@@ -36,16 +36,9 @@ function* getCourses() {
 
     let coursesNext = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToRes, { printRes: false })
-      .exec(getValidatedCourses)
-      .exec(getFilteredActiveCoursesModules)
-      .exec(getFilteredActiveQuestions)
-      .exec(getProvidedID)
-      .exec(getProvidedSelectedDefault)
-      .exec(getProdidevAnswerDefault)
-      .exec(getOptionsShuffled)
-      .exec(getProvidedSearchString).result
+      .exec(getPreparedCourses).result
 
-    yield put(actionAsync.GET_COURSES.SUCCESS(coursesNext))
+    yield put(actionSync.SET_COURSES(coursesNext))
   } catch (error: any) {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }

@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_COURSES',
   'SET_COURSE_ACTIVE',
   'SET_USERS',
   'GET_COGNITO_TOKENS_SUCCESS',
