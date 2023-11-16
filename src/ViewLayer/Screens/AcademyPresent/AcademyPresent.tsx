@@ -20,7 +20,6 @@ import { getYouTubePlayerWorkHook } from '../../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { RouterScreenPropsType } from '../../../Interfaces/RouterScreenPropsType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { LoaderOverlay } from '../../ComponentsLibrary/LoaderOverlay'
 import { MainFrame } from '../../Frames/MainFrame'
@@ -174,18 +173,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     height,
   })
 
-  const contentComponentProps: Record<string, any> = {
-    ReaderIframe: {
-      contentID,
-      isVisible,
-      screenType,
-    },
-    PlayerIframe: {
-      contentID,
-      isVisible,
-    },
-  }
-
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
     classAdded: 'Button_MdPlayArrow',
@@ -205,30 +192,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     action: {},
   }
 
-  const playerPanelProps = {
-    courseCapture,
-    moduleCapture,
-    durationObj,
-    screenType,
-    isShowingPlay,
-    buttonPlayProps,
-    buttonPauseProps,
-    buttonStopProps,
-    isActionButtonDisplaying: false,
-    moduleIndex,
-    modulesTotal,
-    questionsTotal,
-  }
-
   const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
-
-  const loaderBlurhashProps = {
-    isVisibleBlurHash: !isVisible,
-    textTooltip,
-    isTextTooltip: true,
-    delay: 5000,
-    contentComponentName,
-  }
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
@@ -250,6 +214,38 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     mainFrameProps: {
       screenType,
     },
+    contentComponentProps: {
+      ReaderIframe: {
+        contentID,
+        isVisible,
+        screenType,
+      },
+      PlayerIframe: {
+        contentID,
+        isVisible,
+      },
+    },
+    loaderBlurhashProps: {
+      isVisibleBlurHash: !isVisible,
+      textTooltip,
+      isTextTooltip: true,
+      delay: 5000,
+      contentComponentName,
+    },
+    playerPanelProps: {
+      courseCapture,
+      moduleCapture,
+      durationObj,
+      screenType,
+      isShowingPlay,
+      buttonPlayProps,
+      buttonPauseProps,
+      buttonStopProps,
+      isActionButtonDisplaying: false,
+      moduleIndex,
+      modulesTotal,
+      questionsTotal,
+    },
   }
 
   return (
@@ -270,10 +266,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
             {/* middle-main */}
             <CONTENT_ASSIGNED_COMPONENT
-              {...contentComponentProps[contentComponentName]}
+              {...propsOut.contentComponentProps[contentComponentName]}
             >
-              <LoaderBlurhash {...loaderBlurhashProps} />
-              <PlayerPanel {...playerPanelProps} />
+              <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+              <PlayerPanel {...propsOut.playerPanelProps} />
             </CONTENT_ASSIGNED_COMPONENT>
             {/* middle-right */}
             <CarouselQuestions />
