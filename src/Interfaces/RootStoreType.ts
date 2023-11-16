@@ -1,6 +1,7 @@
 import { UserType } from './UserType'
+import { ModuleType, CourseType } from '../@types/GraphqlTypes'
 
-export interface SearchFormSepType {
+export type SearchFormSepType = {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
   selectCountryRequired: string[]
@@ -13,7 +14,7 @@ export interface SearchFormSepType {
   selectSortBy: string
 }
 
-export interface ComponentsStateType {
+export type ComponentsStateType = {
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
@@ -29,7 +30,7 @@ export interface ComponentsStateType {
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
 }
 
-export interface FormsType {
+export type FormsType = {
   searchInput: string
   sendTo: string
   sendCc: string
@@ -38,26 +39,34 @@ export interface FormsType {
   user: UserType
 }
 
-export interface RootStoreType {
+export type ScormType = {
+  courseIDActive: undefined
+  moduleIDActive: undefined
+  numberQuestionsInSlide: number
+  durationMultiplier: number
+}
+
+export type GlobalVarsType = {
+  titleSite: string
+  descriptionSite: string
+  canonicalUrlSite: string
+  langSite: string
+  theme: string
+}
+
+export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
-  courses: any[]
+  courses: CourseType[]
   documents: any[]
   users: UserType[]
-  globalVars: {
-    titleSite: string
-    descriptionSite: string
-    canonicalUrlSite: string
-    langSite: string
-    theme: string
-    numberQuestionsInSlide: number
-    durationMultiplier: number
-  }
+  scorm: ScormType
+  globalVars: GlobalVarsType
   forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean
     isLoadedCourses: boolean
-    mediaLoading: any
+    mediaLoaded: any
   }
   language: string
 }

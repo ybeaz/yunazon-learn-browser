@@ -8,7 +8,14 @@ export const GET_COURSE_QUERY_PR_QN: ReducerType = (
 ): RootStoreType => {
   const { courses } = store
 
-  const { courseID, index, isReducing, questionNumberIn, passRateIn } = data
+  const {
+    courseID,
+    index,
+    moduleID,
+    isReducing,
+    questionNumberIn,
+    passRateIn,
+  } = data
 
   let coursesNext = courses
 
@@ -16,6 +23,7 @@ export const GET_COURSE_QUERY_PR_QN: ReducerType = (
     coursesNext = getCoursePassParamsSet(courses, {
       courseIDIn: courseID,
       indexIn: index,
+      moduleIDIn: moduleID,
       questionNumberIn,
       passRateIn,
     })

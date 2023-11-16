@@ -1,3 +1,4 @@
+import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { createGlobalStyle } from 'styled-components'
@@ -45,7 +46,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
 
   const getColor = getBuiltColor(theme, 1, middle)
 
-  return createGlobalStyle`
+  const output = createGlobalStyle`
 
     .LogoGroup_StubForUserResearch .__div,
     .LogoGroup_StubForUserResearch .__div ._img,
@@ -511,4 +512,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
   `
+
+  return output
 }

@@ -52,7 +52,7 @@ export const getYouTubePlayerWorkHook = ({
   }
 
   // 4. The API will call this function when the video player is ready.
-  function onPlayerReady(event) {
+  function onPlayerReady(event: any) {
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: contentID,

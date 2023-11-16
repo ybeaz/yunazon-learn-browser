@@ -7,12 +7,15 @@ export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { componentsState, courses, globalVars } = store
-  const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
+  const {
+    componentsState,
+    courses,
+    scorm: { numberQuestionsInSlide, moduleIDActive },
+  } = store
   const { questionsSlideNumber } = componentsState
   const { step } = data
 
-  const { questionsActive } = getActiveCourseData(courses)
+  const { questionsActive } = getActiveCourseData(courses, moduleIDActive)
   const questionsChunked = getChunkedArray(
     questionsActive,
     numberQuestionsInSlide

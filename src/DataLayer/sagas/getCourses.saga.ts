@@ -1,24 +1,16 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { getFilteredActiveCoursesModules } from '../../Shared/getFilteredActiveCoursesModules'
-import { getFilteredActiveQuestions } from '../../Shared/getFilteredActiveQuestions'
-import { getProvidedSearchString } from '../../Shared/getProvidedSearchString'
-import { getValidatedCourses } from '../../Shared/getValidatedCourses'
-import { getOptionsShuffled } from '../../Shared/getOptionsShuffled'
-import { getProdidevAnswerDefault } from '../../Shared/getProdidevAnswerDefault'
-import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
-import { getProvidedID } from '../../Shared/getProvidedID'
-import { actionAsync } from '../../DataLayer/index.action'
+import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ConnectionType } from '../../@types/ConnectionType'
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-
-import { getMappedConnectionToRes } from '../../Shared/getMappedConnectionToRes'
+import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
+import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 function* getCourses() {
   try {
     const { courses: coursesPrev } = yield select(store => store)
-    if (coursesPrev.length) return
+    if (coursesPrev.length > 1) return
 
     const variables = {
       readCoursesConnectionInput: {
@@ -35,17 +27,10 @@ function* getCourses() {
     )
 
     let coursesNext = getChainedResponsibility(readCoursesConnection)
-      .exec(getMappedConnectionToRes, { printRes: false })
-      .exec(getValidatedCourses)
-      .exec(getFilteredActiveCoursesModules)
-      .exec(getFilteredActiveQuestions)
-      .exec(getProvidedID)
-      .exec(getProvidedSelectedDefault)
-      .exec(getProdidevAnswerDefault)
-      .exec(getOptionsShuffled)
-      .exec(getProvidedSearchString).result
+      .exec(getMappedConnectionToCourses, { printRes: false })
+      .exec(getPreparedCourses).result
 
-    yield put(actionAsync.GET_COURSES.SUCCESS(coursesNext))
+    yield put(actionSync.SET_COURSES(coursesNext))
   } catch (error: any) {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }

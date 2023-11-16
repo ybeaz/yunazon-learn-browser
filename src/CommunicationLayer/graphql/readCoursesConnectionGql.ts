@@ -1,5 +1,7 @@
 import { gql, DocumentNode } from '@apollo/client'
 
+import { FullCourseTypeFragment } from '../fragments/FullCourseTypeFragment'
+
 export const readCoursesConnectionGql: DocumentNode = gql`
   query readCoursesConnection(
     $readCoursesConnectionInput: ReadCoursesConnectionInputType!
@@ -19,40 +21,5 @@ export const readCoursesConnectionGql: DocumentNode = gql`
       }
     }
   }
-  fragment FullCourseType on CourseType {
-    courseID
-    capture
-    description
-    language
-    isActive
-    dateCreated
-    dateUpdated
-    dateDeleted
-    questionNumber
-    passRate
-    meta {
-      institution
-      specTitle
-      specName
-      email
-      isSendingBcc
-    }
-    modules {
-      moduleID
-      index
-      isActive
-      contentType
-      contentID
-      capture
-      duration
-      questions {
-        capture
-        isActive
-        options {
-          label
-          status
-        }
-      }
-    }
-  }
+  ${FullCourseTypeFragment}
 `

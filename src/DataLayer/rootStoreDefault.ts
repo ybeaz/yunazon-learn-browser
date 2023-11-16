@@ -98,6 +98,12 @@ export const rootStoreDefault: RootStoreType = {
   courses: [],
   documents: [],
   users: [],
+  scorm: {
+    courseIDActive: undefined,
+    moduleIDActive: undefined,
+    numberQuestionsInSlide: 2,
+    durationMultiplier: 1,
+  },
   globalVars: {
     titleSite: 'Academy YouRails - Teach curious; Learn from inspired',
     descriptionSite:
@@ -105,14 +111,12 @@ export const rootStoreDefault: RootStoreType = {
     canonicalUrlSite: 'https://academy.yourails.com',
     langSite: 'en',
     theme: 'Dark',
-    numberQuestionsInSlide: 2,
-    durationMultiplier: 1,
   },
   forms: formsDefault,
   isLoaded: {
     isLoadedGlobalVars: true,
     isLoadedCourses: false,
-    mediaLoading: {},
+    mediaLoaded: {},
   },
   language: localStorage.getItem('language') || 'ru',
 }

@@ -47,9 +47,9 @@ export const ContentPlate: React.FunctionComponent<
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language,
-    isLoaded: { mediaLoading },
+    isLoaded: { mediaLoaded },
   } = store
-  const isVisible = mediaLoading[contentID]
+  const isVisible = mediaLoaded[contentID]
 
   const { width, height } = VIDEO_RESOLUTION
   const { isShowingPlay } = getYouTubePlayerWorkHook({

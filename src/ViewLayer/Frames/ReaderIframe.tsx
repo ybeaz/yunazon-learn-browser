@@ -2,7 +2,7 @@ import React from 'react'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-interface ReaderArgs {
+export type ReaderArgs = {
   contentID: string
   isVisible: boolean
   screenType?: string

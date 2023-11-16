@@ -10,11 +10,12 @@ const { dispatch, getState } = store
 export const PLUS_QUESTION_SLIDE: ActionEventType = (event, data) => {
   const { step } = data
   const {
+    scorm: { moduleIDActive },
     courses,
     componentsState: { questionsSlideNumber },
   } = getState()
 
-  const { courseCapture } = getResultDataFromStore(courses)
+  const { courseCapture } = getResultDataFromStore(courses, moduleIDActive)
   const options = { courseCapture, questionsSlideNumber }
   event?.preventDefault &&
     step === 1 &&

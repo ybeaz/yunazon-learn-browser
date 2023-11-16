@@ -1,12 +1,11 @@
+import { CourseType, ModuleType } from '../@types/GraphqlTypes'
+
 /**
  * @description Function to return module by provided contentID
- * @param courses
- * @param nameID
- * @param contentID
- * @returns
+ * @import import { getModuleByID } from '../Shared/getModuleByID'
  */
 export const getModuleByID: Function = (
-  courses: any[],
+  courses: CourseType[],
   nameID: string = 'contentID',
   ID: string
 ): any => {
@@ -14,8 +13,14 @@ export const getModuleByID: Function = (
 
   courses.forEach(course => {
     const { courseID, capture: courseCapture, modules } = course
-    const modulesTotal = modules.length
-    const moduleFound = modules.find(module => module[nameID] === ID)
+    const modulesTotal = modules?.length
+
+    let moduleFound: ModuleType | undefined = modules
+      ? modules.find(
+          // @ts-expect-error
+          (module: ModuleType) => module[nameID] === ID
+        )
+      : undefined
 
     if (moduleFound) {
       const { questions } = moduleFound

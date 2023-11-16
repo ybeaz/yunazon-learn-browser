@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react'
-interface MainFrameArgs {
+
+export type MainFramePropsType = {
   screenType?: string
-  children: ReactElement[]
+  children: (ReactElement | null)[]
 }
 
-export const MainFrame: React.FunctionComponent<MainFrameArgs> = props => {
+export const MainFrame: React.FunctionComponent<MainFramePropsType> = props => {
   const { screenType } = props
 
   const classAdded = screenType ? `MainFrame_${screenType}` : ''

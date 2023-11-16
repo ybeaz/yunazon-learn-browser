@@ -1,6 +1,9 @@
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_COURSE_ID_ACTIVE } from './reducers/SET_COURSE_ID_ACTIVE'
+import { SET_MODULE_ID_ACTIVE } from './reducers/SET_MODULE_ID_ACTIVE'
+import { SET_COURSES } from './reducers/SET_COURSES'
 import { GET_COGNITO_TOKENS_SUCCESS } from './reducers/GET_COGNITO_TOKENS_SUCCESS'
 import { SET_USERS } from './reducers/SET_USERS'
 import { ONCHANGE_USER_NAME_NICK } from './reducers/ONCHANGE_USER_NAME_NICK'
@@ -54,7 +57,6 @@ import { ONCHANGE_FIRST_NAME_MODAL } from './reducers/ONCHANGE_FIRST_NAME_MODAL'
 import { ONCHANGE_MIDDLE_NAME_MODAL } from './reducers/ONCHANGE_MIDDLE_NAME_MODAL'
 import { ONCHANGE_LAST_NAME_MODAL } from './reducers/ONCHANGE_LAST_NAME_MODAL'
 import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
-import { SELECT_COURSE_MODULE_CONTENTID } from './reducers/SELECT_COURSE_MODULE_CONTENTID'
 import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
@@ -73,6 +75,9 @@ export const indexReducer: IIndexReducer = (
 
   const output: Record<string, any> = {
     TEMPLATE,
+    SET_COURSE_ID_ACTIVE,
+    SET_MODULE_ID_ACTIVE,
+    SET_COURSES,
     GET_COGNITO_TOKENS_SUCCESS,
     SET_USERS,
     SELECT_USER_MEDIA,
@@ -126,7 +131,6 @@ export const indexReducer: IIndexReducer = (
     ONCHANGE_MIDDLE_NAME_MODAL,
     ONCHANGE_LAST_NAME_MODAL,
     GET_ANSWERS_DEFAULT,
-    SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
     CLICK_CHECK,
     GET_COURSES_SUCCESS,

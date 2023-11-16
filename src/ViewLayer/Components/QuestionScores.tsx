@@ -22,6 +22,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
   const {
     language,
     documents,
+    scorm: { moduleIDActive },
     courses,
     componentsState: { isDocumentAdded },
     forms: {
@@ -42,7 +43,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     },
     moduleActive,
     questionsActive,
-  } = getActiveCourseData(courses)
+  } = getActiveCourseData(courses, moduleIDActive)
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr

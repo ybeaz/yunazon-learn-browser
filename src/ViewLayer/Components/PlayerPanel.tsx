@@ -8,7 +8,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { Button } from '../ComponentsLibrary/Button'
 
-interface PlayerPanelArgs {
+export type PlayerPanelPropsType = {
   courseCapture: string
   moduleCapture: string
   durationObj: DurationObjType
@@ -23,7 +23,9 @@ interface PlayerPanelArgs {
   questionsTotal?: number
 }
 
-export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
+export const PlayerPanel: React.FunctionComponent<
+  PlayerPanelPropsType
+> = props => {
   const {
     courseCapture,
     moduleCapture,
