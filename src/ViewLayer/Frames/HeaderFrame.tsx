@@ -90,7 +90,7 @@ export const HeaderFrame: React.FunctionComponent<
       classAdded: 'SelectLanguage__AppLanguage',
       languagesSelected: [{ value: language }],
     },
-    buttonMdMenuProps: {
+    buttonLeftSideNavigationMenuProps: {
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
@@ -153,7 +153,9 @@ export const HeaderFrame: React.FunctionComponent<
               <Button {...propsOut.buttonBackProps} />
             </Link>
           )}
-          {isButtonSideMenu && <Button {...propsOut.buttonMdMenuProps} />}
+          {isButtonSideMenu && (
+            <Button {...propsOut.buttonLeftSideNavigationMenuProps} />
+          )}
           {isLogoGroup && <LogoGroup {...propsOut.logoGroupProps} />}
           {isPageActionsGroup && (
             <PageActionsGroup {...propsOut.pageActionsProps} />
