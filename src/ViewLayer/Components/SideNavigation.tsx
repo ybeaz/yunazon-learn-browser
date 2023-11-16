@@ -7,7 +7,7 @@ import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { SelectLanguage } from './SelectLanguage'
+import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Button } from '../ComponentsLibrary/Button'
 
@@ -98,7 +98,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
 
   const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
 
-  const languageSelectProps: Record<string, any> = {
+  const languageSelectProps: SelectLanguagePropsType = {
     LANGUAGES: LANGUAGES_APP,
     language,
     mode: null,

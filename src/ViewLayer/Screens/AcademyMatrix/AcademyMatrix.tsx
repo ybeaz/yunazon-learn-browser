@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { CourseType } from '../../../@types/GraphqlTypes'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
@@ -41,6 +41,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
+    language: languageStore,
     scorm: { durationMultiplier },
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
@@ -88,6 +89,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
+      moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenu: true,

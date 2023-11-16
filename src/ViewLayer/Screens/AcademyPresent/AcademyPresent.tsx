@@ -192,6 +192,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
+      moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenu: true,
