@@ -107,11 +107,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
       )
 
-      // handleEvents(
-      //   {},
-      //   { type: 'SELECT_COURSE_MODULE_CONTENTID', data: { moduleID, index } }
-      // )
-
       handleEvents(
         {},
         {
