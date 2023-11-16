@@ -1,40 +1,65 @@
-import { CourseType, ModuleType } from '../@types/GraphqlTypes'
+import { CourseType, ModuleType, QuestionType } from '../@types/GraphqlTypes'
 
-interface GetActiveCourseData {
-  courseActive: any
-  moduleActive: any
-  questionsActive: any[]
+type ModuleActive = ModuleType | { moduleID: undefined; contentID: undefined }
+
+export type GetActiveCourseDataResType = {
+  courseActive: CourseType | { courseID: ''; capture: '' }
+  moduleActive: ModuleActive
+  questionsActive: QuestionType[] | []
+}
+
+interface GetActiveCourseDataType {
+  (
+    courses: CourseType[],
+    moduleIDActive: string | undefined
+  ): GetActiveCourseDataResType
 }
 
 /**
- * @description Function to find isSelected module
- * @param courses
- * @returns IRgetActiveCourseData
+ * @description Function to getActiveCourseData
+ * @run ts-node src/shared/utils/getActiveCourseData.ts
+ * @import import { getActiveCourseData } from './getActiveCourseData'
  */
-export const getActiveCourseData: Function = (
-  courses: any[]
-): GetActiveCourseData => {
-  const res = {
+export const getActiveCourseData: GetActiveCourseDataType = (
+  courses: CourseType[],
+  moduleIDActive: string | undefined
+) => {
+  const res: GetActiveCourseDataResType = {
     courseActive: { courseID: '', capture: '' },
-    moduleActive: {},
+    moduleActive: { moduleID: undefined, contentID: undefined },
     questionsActive: [],
   }
 
+  if (!courses.length || !moduleIDActive) return res
+
   try {
-    const courseActive = courses.find(
-      (course: any) => course.isSelected === true
-    ) || {
-      courseID: '',
-      capture: '',
+    let courseActive: CourseType = courses[0]
+
+    let moduleActive: ModuleActive = courses[0].modules
+      ? courses[0].modules[0]
+      : { moduleID: undefined, contentID: undefined }
+
+    let questionsActive: QuestionType[] = courses[0].modules
+      ? courses[0].modules[0].questions
+      : []
+
+    for (let course of courses) {
+      const { modules } = course
+      let isBreaking = false
+      for (let module of modules || []) {
+        const { moduleID } = module
+        if (moduleID === moduleIDActive) {
+          courseActive = course
+          moduleActive = module
+          isBreaking = true
+          if (isBreaking) break
+        }
+      }
+      if (isBreaking) break
     }
 
-    const moduleActive = courseActive?.modules
-      ? courseActive?.modules.find((module: any) => module.isSelected === true)
-      : {}
-
-    const questionsActive = moduleActive?.questions
-      ? moduleActive.questions
-      : []
+    // @ts-expect-error
+    questionsActive = moduleActive?.questions ? moduleActive.questions : []
 
     return {
       courseActive,

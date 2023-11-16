@@ -12,12 +12,13 @@ interface IGetResultDataFromStore {
  * @returns
  */
 export const getResultDataFromStore: Function = (
-  courses: any[]
+  courses: any[],
+  moduleIDActive: string
 ): IGetResultDataFromStore => {
   const {
     courseActive: { capture: courseCapture },
     questionsActive,
-  } = getActiveCourseData(courses)
+  } = getActiveCourseData(courses, moduleIDActive)
   const { result } = getAnswersChecked2(questionsActive)
   return { result, courseCapture }
 }

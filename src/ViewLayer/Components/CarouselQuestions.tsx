@@ -15,7 +15,7 @@ export const CarouselQuestions: React.FunctionComponent = () => {
   const store = useSelector((store2: RootStoreType) => store2)
 
   const {
-    scorm: { numberQuestionsInSlide },
+    scorm: { moduleIDActive, numberQuestionsInSlide },
     componentsState: { questionsSlideNumber, isCourseStarted },
     courses,
     language,
@@ -25,19 +25,12 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     courseActive: { capture: courseCapture, courseID },
     moduleActive: { moduleID, contentID },
     questionsActive,
-  } = getActiveCourseData(courses)
+  } = getActiveCourseData(courses, moduleIDActive)
 
   const questionsChunked = getChunkedArray(
     questionsActive,
     numberQuestionsInSlide
   )
-
-  console.info('CarouselQuestions [35]', {
-    courses,
-    questionsActive,
-    numberQuestionsInSlide,
-    questionsChunked,
-  })
 
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {

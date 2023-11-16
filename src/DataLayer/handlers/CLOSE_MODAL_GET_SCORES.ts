@@ -8,8 +8,11 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 const { dispatch, getState } = store
 
 export const CLOSE_MODAL_GET_SCORES: ActionEventType = (event, data) => {
-  const { courses } = getState()
-  const options = getResultDataFromStore(courses)
+  const {
+    courses,
+    scorm: { moduleIDActive },
+  } = getState()
+  const options = getResultDataFromStore(courses, moduleIDActive)
   event?.preventDefault &&
     getSavedAnanlyticsEvent(event, getAzProps('WENT_BACK')(options))
 
