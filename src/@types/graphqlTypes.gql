@@ -324,6 +324,9 @@ type OptionType {
   """course module question option label"""
   label: String!
 
+  """courses module question option ID"""
+  optionID: ID
+
   """course module question option status: true or false"""
   status: Boolean!
 }
@@ -455,7 +458,7 @@ type Query {
   getRevokedUserAuthAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getUserIdDataAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
-  readCourse(courseID: String, moduleID: String): CourseType!
+  readCourse(readCourseInput: ReadCourseInputType!): CourseType!
   readCourses: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
   readModule(moduleID: String!): ModuleType!
@@ -473,20 +476,31 @@ type Query {
 }
 
 type QuestionType {
-  """course question capture"""
+  """course module question capture"""
   capture: String!
 
-  """course question designType"""
+  """course module question designType"""
   designType: String
 
-  """isActive"""
+  """course module question isActive"""
   isActive: Boolean!
 
   """designType > multi"""
   multi: Boolean
 
-  """course question options"""
+  """course module question options"""
   options: [OptionType!]!
+
+  """courses module question ID"""
+  questionID: ID
+}
+
+input ReadCourseInputType {
+  """course ID"""
+  courseID: ID
+
+  """module ID"""
+  moduleID: ID
 }
 
 input ReadCoursesConnectionInputType {

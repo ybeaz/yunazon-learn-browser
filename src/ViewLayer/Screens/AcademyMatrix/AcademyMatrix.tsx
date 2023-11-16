@@ -41,7 +41,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
-    globalVars: { durationMultiplier },
+    scorm: { durationMultiplier },
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
     forms: { searchInput },

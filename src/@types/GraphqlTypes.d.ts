@@ -370,6 +370,8 @@ export type OptionType = {
     __typename?: 'OptionType';
     /** course module question option label */
     label: Scalars['String']['output'];
+    /** courses module question option ID */
+    optionID?: Maybe<Scalars['ID']['output']>;
     /** course module question option status: true or false */
     status: Scalars['Boolean']['output'];
 };
@@ -512,7 +514,7 @@ export type QueryReadCompetencyTagsArgs = {
     params: CompetencyTagsParamsReadType;
 };
 export type QueryReadCourseArgs = {
-    courseID?: InputMaybe<Scalars['String']['input']>;
+    readCourseInput: ReadCourseInputType;
 };
 export type QueryReadCoursesConnectionArgs = {
     readCoursesConnectionInput: ReadCoursesConnectionInputType;
@@ -553,16 +555,24 @@ export type QuerySendEmailDocumentArgs = {
 };
 export type QuestionType = {
     __typename?: 'QuestionType';
-    /** course question capture */
+    /** course module question capture */
     capture: Scalars['String']['output'];
-    /** course question designType */
+    /** course module question designType */
     designType?: Maybe<Scalars['String']['output']>;
-    /** isActive */
+    /** course module question isActive */
     isActive: Scalars['Boolean']['output'];
     /** designType > multi */
     multi?: Maybe<Scalars['Boolean']['output']>;
-    /** course question options */
+    /** course module question options */
     options: Array<OptionType>;
+    /** courses module question ID */
+    questionID?: Maybe<Scalars['ID']['output']>;
+};
+export type ReadCourseInputType = {
+    /** course ID */
+    courseID?: InputMaybe<Scalars['ID']['input']>;
+    /** module ID */
+    moduleID?: InputMaybe<Scalars['ID']['input']>;
 };
 export type ReadCoursesConnectionInputType = {
     /** after */

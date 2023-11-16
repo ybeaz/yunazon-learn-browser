@@ -39,21 +39,29 @@ export type FormsType = {
   user: UserType
 }
 
+export type ScormType = {
+  courseIDActive: undefined
+  moduleIDActive: undefined
+  numberQuestionsInSlide: number
+  durationMultiplier: number
+}
+
+export type GlobalVarsType = {
+  titleSite: string
+  descriptionSite: string
+  canonicalUrlSite: string
+  langSite: string
+  theme: string
+}
+
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
   courses: CourseType[]
   documents: any[]
   users: UserType[]
-  globalVars: {
-    titleSite: string
-    descriptionSite: string
-    canonicalUrlSite: string
-    langSite: string
-    theme: string
-    numberQuestionsInSlide: number
-    durationMultiplier: number
-  }
+  scorm: ScormType
+  globalVars: GlobalVarsType
   forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean

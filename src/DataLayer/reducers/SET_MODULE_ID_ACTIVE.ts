@@ -1,12 +1,15 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const CHANGE_NUM_QUESTIONS_IN_SLIDE: ReducerType = (
+export const SET_MODULE_ID_ACTIVE: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
+  const { moduleID } = data
+
   const { scorm } = store
-  const scormNext = { ...scorm, numberQuestionsInSlide: data }
-  const storeNext = { ...store, scorm: scormNext }
-  return storeNext
+
+  const scormNext = { ...scorm, moduleIDActive: moduleID }
+
+  return { ...store, scorm: scormNext }
 }

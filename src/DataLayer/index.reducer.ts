@@ -1,6 +1,8 @@
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
+import { SET_COURSE_ID_ACTIVE } from './reducers/SET_COURSE_ID_ACTIVE'
+import { SET_MODULE_ID_ACTIVE } from './reducers/SET_MODULE_ID_ACTIVE'
 import { SET_COURSES } from './reducers/SET_COURSES'
 import { GET_COGNITO_TOKENS_SUCCESS } from './reducers/GET_COGNITO_TOKENS_SUCCESS'
 import { SET_USERS } from './reducers/SET_USERS'
@@ -74,6 +76,8 @@ export const indexReducer: IIndexReducer = (
 
   const output: Record<string, any> = {
     TEMPLATE,
+    SET_COURSE_ID_ACTIVE,
+    SET_MODULE_ID_ACTIVE,
     SET_COURSES,
     GET_COGNITO_TOKENS_SUCCESS,
     SET_USERS,

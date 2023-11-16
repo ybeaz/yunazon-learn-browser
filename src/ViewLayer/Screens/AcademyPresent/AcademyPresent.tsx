@@ -64,7 +64,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
-    globalVars: { durationMultiplier },
+    scorm: { durationMultiplier },
     courses,
     isLoaded: { mediaLoaded },
   } = store

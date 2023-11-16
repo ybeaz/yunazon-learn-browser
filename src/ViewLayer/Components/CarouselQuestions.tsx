@@ -15,7 +15,7 @@ export const CarouselQuestions: React.FunctionComponent = () => {
   const store = useSelector((store2: RootStoreType) => store2)
 
   const {
-    globalVars: { numberQuestionsInSlide },
+    scorm: { numberQuestionsInSlide },
     componentsState: { questionsSlideNumber, isCourseStarted },
     courses,
     language,
@@ -31,6 +31,13 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     questionsActive,
     numberQuestionsInSlide
   )
+
+  console.info('CarouselQuestions [35]', {
+    courses,
+    questionsActive,
+    numberQuestionsInSlide,
+    questionsChunked,
+  })
 
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {

@@ -1,3 +1,5 @@
+import { CourseType, ModuleType } from '../@types/GraphqlTypes'
+
 interface GetActiveCourseData {
   courseActive: any
   moduleActive: any
@@ -19,13 +21,15 @@ export const getActiveCourseData: Function = (
   }
 
   try {
-    const courseActive = courses.find(course => course.isSelected === true) || {
+    const courseActive = courses.find(
+      (course: any) => course.isSelected === true
+    ) || {
       courseID: '',
       capture: '',
     }
 
     const moduleActive = courseActive?.modules
-      ? courseActive?.modules.find(module => module.isSelected === true)
+      ? courseActive?.modules.find((module: any) => module.isSelected === true)
       : {}
 
     const questionsActive = moduleActive?.questions
@@ -37,7 +41,7 @@ export const getActiveCourseData: Function = (
       moduleActive,
       questionsActive,
     }
-  } catch (error) {
+  } catch (error: any) {
     console.info('getActiveCourseData [34]', error.name + ': ' + error.message)
     return res
   }

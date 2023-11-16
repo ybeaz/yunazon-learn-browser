@@ -38,8 +38,8 @@ export const getPreparedCourses: GetPreparedCoursesType = (
       .exec(getValidatedCourses)
       .exec(getFilteredActiveCoursesModules)
       .exec(getFilteredActiveQuestions)
-      .exec(getProvidedID)
-      .exec(getProvidedSelectedDefault)
+      // .exec(getProvidedID)
+      // .exec(getProvidedSelectedDefault)
       .exec(getProdidevAnswerDefault)
       .exec(getOptionsShuffled)
       .exec(getProvidedSearchString).result

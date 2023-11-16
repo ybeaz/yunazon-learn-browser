@@ -7,8 +7,8 @@ export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { componentsState, courses, globalVars } = store
-  const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
+  const { componentsState, courses, scorm } = store
+  const numberQuestionsInSlide = scorm?.numberQuestionsInSlide
   const { questionsSlideNumber } = componentsState
   const { step } = data
 
