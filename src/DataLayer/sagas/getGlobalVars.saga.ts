@@ -1,13 +1,18 @@
-import { takeEvery, put } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { getConvertedType } from '../../Shared/getConvertedType'
+import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 function* getGlobalVars() {
   try {
-    const language = localStorage.getItem('language')
-    if (language) {
-      yield put(actionSync.SELECT_LANGUAGE_APP(language))
+    const languageStorage = getConvertedType(localStorage.getItem('language'))
+    if (languageStorage) {
+      yield put(actionSync.SELECT_LANGUAGE_APP(languageStorage))
+    } else {
+      const { language } = yield select(store => store)
+      getSetObjToLocalStorage({ language })
     }
 
     const userWebTokenAuth = localStorage.getItem('userWebTokenAuth')

@@ -24,24 +24,28 @@ export const getTemplateFuncAsync: GetTemplateFuncAsyncType = async (
   params,
   options
 ) => {
-  let res: any[] = []
+  let output: any[] = []
 
   try {
-    res = await []
+    output = await []
 
     if (options?.printRes) {
-      console.log('getMappedConnectionToRes', { res })
-      consoler('getMappedConnectionToRes', 'res', res)
+      console.log('getTemplateFuncAsync', { output })
+      consoler('getTemplateFuncAsync', 'output', output)
     }
   } catch (error: any) {
-    console.log('getMappedConnectionToRes', 'Error', error.message)
-    consolerError('getMappedConnectionToRes', error)
+    console.log('getTemplateFuncAsync', 'Error', error.message)
+    consolerError('getTemplateFuncAsync', error)
   } finally {
-    return res
+    return output
   }
 }
 
+/**
+ * @description Here the file is being run directly
+ */
 if (require.main === module) {
-  // This code will only run if the file is executed directly
-  console.log('This file is being run directly.')
+  const input = ''
+  const outout = getTemplateFuncAsync(input, { printRes: true })
+  console.log('getConvertedType [48]', { input, outout })
 }

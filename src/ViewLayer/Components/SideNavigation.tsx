@@ -32,7 +32,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/sep' },
       },
-      isDisplaying: true,
+      isDisplaying: false,
     },
     {
       icon: 'MdPerson',
@@ -49,7 +49,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       captureRight: DICTIONARY.Academy[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
-      isDisplaying: true,
+      isDisplaying: false,
     },
     {
       icon: 'MdQueue',
@@ -98,7 +98,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
 
   const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
 
-  const languageSelectProps = {
+  const languageSelectProps: Record<string, any> = {
     LANGUAGES: LANGUAGES_APP,
     language,
     mode: null,

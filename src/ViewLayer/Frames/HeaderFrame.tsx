@@ -18,10 +18,10 @@ import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 
 export type HeaderFramePropsType = {
-  brandName?: string
-  moto?: string
-  logoPath?: string
-  contentComponentName?: string
+  brandName: string
+  moto: string
+  logoPath: string
+  contentComponentName: string
   courseCapture?: string
   documentID?: string
   courseID?: string
@@ -81,7 +81,7 @@ export const HeaderFrame: React.FunctionComponent<
       ? 'HeaderFrame_AcademyPresent'
       : `HeaderFrame_${contentComponentName}`
 
-  const propsOut = {
+  const propsOut: Record<string, any> = {
     selectLanguageProps: {
       LANGUAGES: LANGUAGES_APP,
       language,
@@ -90,7 +90,7 @@ export const HeaderFrame: React.FunctionComponent<
       classAdded: 'SelectLanguage__AppLanguage',
       languagesSelected: [{ value: language }],
     },
-    buttonMdMenuProps: {
+    buttonLeftSideNavigationMenuProps: {
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
@@ -153,7 +153,9 @@ export const HeaderFrame: React.FunctionComponent<
               <Button {...propsOut.buttonBackProps} />
             </Link>
           )}
-          {isButtonSideMenu && <Button {...propsOut.buttonMdMenuProps} />}
+          {isButtonSideMenu && (
+            <Button {...propsOut.buttonLeftSideNavigationMenuProps} />
+          )}
           {isLogoGroup && <LogoGroup {...propsOut.logoGroupProps} />}
           {isPageActionsGroup && (
             <PageActionsGroup {...propsOut.pageActionsProps} />

@@ -19,7 +19,7 @@ export const LogoGroup: React.FunctionComponent<LogoGroupArgs> = (
     <Link
       className={`LogoGroup LogoGroup_${contentComponentName}`}
       to={{
-        pathname: `/sep`,
+        pathname: `/`,
       }}
       onClick={() => handleEvents({}, { typeEvent: 'CLICK_LOGO_GROUP' })}
     >
