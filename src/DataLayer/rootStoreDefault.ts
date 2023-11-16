@@ -118,5 +118,5 @@ export const rootStoreDefault: RootStoreType = {
     isLoadedCourses: false,
     mediaLoaded: {},
   },
-  language: localStorage.getItem('language') || 'ru',
+  language: 'en',
 }

@@ -18,10 +18,10 @@ import { SelectLanguage } from '../Components/SelectLanguage'
 import { ModalFrames } from '../Frames/ModalFrames'
 
 export type HeaderFramePropsType = {
-  brandName?: string
-  moto?: string
-  logoPath?: string
-  contentComponentName?: string
+  brandName: string
+  moto: string
+  logoPath: string
+  contentComponentName: string
   courseCapture?: string
   documentID?: string
   courseID?: string
@@ -81,7 +81,7 @@ export const HeaderFrame: React.FunctionComponent<
       ? 'HeaderFrame_AcademyPresent'
       : `HeaderFrame_${contentComponentName}`
 
-  const propsOut = {
+  const propsOut: Record<string, any> = {
     selectLanguageProps: {
       LANGUAGES: LANGUAGES_APP,
       language,

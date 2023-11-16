@@ -1,11 +1,13 @@
+import { getTemplateFuncAsync } from '../getTemplateFuncAsync'
+
 /**
- * @Description Exploring algorithms
- * @command to run `yarn jest getTemplateTest.test`
+ * @Description Test to challenge function getTemplateFuncAsync
+ * @command to run `yarn jest getTemplateFuncAsync.test.ts`
  */
 
 describe('Algoritms', () => {
-  it('-- getTemplateTest', () => {
-    const getTemplateTest = (input: any) => {
+  it('-- getTemplateFuncAsync.test', () => {
+    const getTemplateFuncAsync = (input: any) => {
       return true
     }
 
@@ -15,7 +17,7 @@ describe('Algoritms', () => {
       const { isActive, input, expected } = test
 
       if (isActive) {
-        let outputed = getTemplateTest(input)
+        let outputed = getTemplateFuncAsync(input)
         console.info('[]', { outputed })
 
         outputed = true
