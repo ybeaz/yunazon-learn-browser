@@ -1,4 +1,8 @@
-export type IconYrlPropsType = any
+export type IconYrlPropsType = {
+  classAdded: string
+  icon?: string
+  icon2?: string
+}
 
 export type IconYrlPropsOutType = Record<string, any>
 
