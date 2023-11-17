@@ -14,7 +14,7 @@ import {
 /**
  * @description Component to render ButtonYrl
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
-             from '../Components/ButtonYrl/ButtonYrl/ButtonYrl'
+             from '../Components/ButtonYrl/ButtonYrl'
  */
 const ButtonYrlComponent: ButtonYrlComponentType = (
   props: ButtonYrlPropsType

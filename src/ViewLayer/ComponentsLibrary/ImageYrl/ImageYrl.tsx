@@ -12,7 +12,7 @@ import {
 /**
  * @description Component to render ImageYrl
  * @import import { ImageYrl, ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlType } 
-             from '../Components/ImageYrl/ImageYrl/ImageYrl'
+             from '../Components/ImageYrl/ImageYrl'
  */
 const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
   const { classAdded, src, handleEvents: handleEventsCustom, action } = props
