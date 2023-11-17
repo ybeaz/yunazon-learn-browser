@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { Image } from '../ComponentsLibrary/Image'
-import { FooterFrame } from '../Frames/FooterFrame'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'

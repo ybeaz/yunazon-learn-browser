@@ -29,13 +29,10 @@ const debouncedFunc = getDebouncedFunc(
  * @import import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
  */
 export const refreshAuthMiddleware: Middleware = store => next => action => {
-  // TODO Implement localStorage for ios and android
-
   const refresh_token = localStorage.getItem('refresh_token')
-  if (refresh_token) debouncedFunc(store, refresh_token)
-  const { userIdDataAwsCognito } = store.getState()
 
-  console.info('refreshAuthMiddleware [37]', userIdDataAwsCognito)
+  if (refresh_token) debouncedFunc(store, refresh_token)
+
   const result = next(action)
   return result
 }
