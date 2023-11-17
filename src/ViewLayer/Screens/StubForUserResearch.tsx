@@ -2,9 +2,9 @@ import React, { useEffect, ReactElement } from 'react'
 
 import { Image } from '../ComponentsLibrary/Image'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
-import { MainFrame } from '../Frames/MainFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 

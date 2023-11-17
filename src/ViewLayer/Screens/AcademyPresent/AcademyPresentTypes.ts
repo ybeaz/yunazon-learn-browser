@@ -1,5 +1,5 @@
-import { HeaderFramePropsType } from '../../Frames/HeaderFrame'
-import { MainFramePropsType } from '../../Frames/MainFrame'
+import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel'
 

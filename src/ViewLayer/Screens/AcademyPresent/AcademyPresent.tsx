@@ -9,7 +9,10 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation'
-import { HeaderFrame, HeaderFramePropsType } from '../../Frames/HeaderFrame'
+import {
+  HeaderFrame,
+  HeaderFramePropsType,
+} from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -22,7 +25,7 @@ import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { LoaderOverlay } from '../../ComponentsLibrary/LoaderOverlay'
-import { MainFrame } from '../../Frames/MainFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel'
 import { ReaderIframe, ReaderArgs } from '../../Frames/ReaderIframe'

@@ -1,11 +1,20 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 
-export type MainFramePropsType = {
-  screenType?: string
-  children: (ReactElement | null)[]
-}
+import {
+  MainFramePropsType,
+  MainFramePropsOutType,
+  MainFrameComponentType,
+  MainFrameType,
+} from './MainFrameTypes'
 
-export const MainFrame: React.FunctionComponent<MainFramePropsType> = props => {
+/**
+ * @description Component to render MainFrame
+ * @import import { MainFrame, MainFramePropsType, MainFramePropsOutType, MainFrameType } 
+             from '../Components/MainFrame/MainFrame'
+ */
+const MainFrameComponent: MainFrameComponentType = (
+  props: MainFramePropsType
+) => {
   const { screenType } = props
 
   const classAdded = screenType ? `MainFrame_${screenType}` : ''
@@ -26,4 +35,13 @@ export const MainFrame: React.FunctionComponent<MainFramePropsType> = props => {
       <div className='__footer'>{props.children[4]}</div>
     </div>
   )
+}
+
+export const MainFrame: MainFrameType = React.memo(MainFrameComponent)
+
+export type {
+  MainFramePropsType,
+  MainFramePropsOutType,
+  MainFrameComponentType,
+  MainFrameType,
 }
