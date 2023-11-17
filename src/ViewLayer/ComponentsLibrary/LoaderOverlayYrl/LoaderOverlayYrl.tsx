@@ -1,4 +1,7 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 import {
   LoaderOverlayYrlPropsType,
@@ -10,16 +13,24 @@ import {
 /**
  * @description Component to render LoaderOverlayYrl
  * @import import { LoaderOverlayYrl, LoaderOverlayYrlPropsType, LoaderOverlayYrlPropsOutType, LoaderOverlayYrlType } 
-             from '../Components/LoaderOverlayYrl/LoaderOverlayYrl'
+             from '../Components/LoaderOverlayYrl/LoaderOverlayYrl/LoaderOverlayYrl'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   props: LoaderOverlayYrlPropsType
 ) => {
-  const {} = props
+  const {
+    componentsState: { isLoaderOverlayVisible },
+  } = useSelector((store2: RootStoreType) => store2)
+
+  const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
 
   const propsOut: LoaderOverlayYrlPropsOutType = {}
 
-  return <div className='LoaderOverlayYrl'>LoaderOverlayYrl</div>
+  return (
+    <div className={`LoaderOverlayYrl ${classAdd}`}>
+      <div className={`_spinner`}></div>
+    </div>
+  )
 }
 
 export const LoaderOverlayYrl: LoaderOverlayYrlType = React.memo(

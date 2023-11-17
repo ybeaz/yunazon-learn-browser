@@ -121,7 +121,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
-    .LoaderOverlay .LoaderOverlay__spinner {
+    .LoaderOverlayYrl .LoaderOverlay__spinner {
       border: 16px solid ${props2 =>
         getColor(props2, 'colorFirstDarker', medial, darker)};
       border-top: 16px solid ${props2 =>

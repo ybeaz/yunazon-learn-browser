@@ -24,7 +24,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { LoaderOverlay } from '../../ComponentsLibrary/LoaderOverlay'
+import { LoaderOverlayYrl } from '../../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel'
@@ -276,7 +276,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
           </MainFrame>
           <SideNavigation />
-          <LoaderOverlay />
+          <LoaderOverlayYrl />
         </>
       ) : null}
     </div>

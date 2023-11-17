@@ -11,7 +11,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
-import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
+import { LoaderOverlayYrl } from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
@@ -237,7 +237,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
           </div>
         </div>
       </div>
-      <LoaderOverlay />
+      <LoaderOverlayYrl />
     </div>
   )
 }
