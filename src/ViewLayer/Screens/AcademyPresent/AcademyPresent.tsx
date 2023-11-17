@@ -56,7 +56,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const screenType = 'AcademyPresent'
 
   getEffectedRequests([
-    { type: 'GET_GLOBAL_VARS', data: { params } },
+    { type: 'INIT_LOADING', data: { params } },
     { type: 'GET_MODULE_DATA', data: { moduleID } },
   ])
   getInitialTeachContentLoading()

@@ -39,7 +39,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   // const params = useParams()
 
   getEffectedRequests([
-    { type: 'GET_GLOBAL_VARS', data: { query } },
+    { type: 'INIT_LOADING', data: { query } },
     'GET_COURSES',
   ])
   getInitialTeachContentLoading()

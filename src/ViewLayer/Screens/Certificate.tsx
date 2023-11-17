@@ -25,7 +25,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     },
   } = props
 
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
+  getEffectedRequests(['INIT_LOADING', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
   const store = useSelector((store2: RootStoreType) => store2)

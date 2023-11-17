@@ -29,7 +29,7 @@ interface SkillsExchangeMatrixProps {
 export const SkillsExchangeMatrix: React.FunctionComponent<
   SkillsExchangeMatrixProps
 > = (props): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {

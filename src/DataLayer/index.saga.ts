@@ -16,7 +16,7 @@ import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
 import findDocumentSaga from './sagas/findDocument.saga'
 import addDocumentSaga from './sagas/addDocument.saga'
 import getCoursesSaga from './sagas/getCourses.saga'
-import getGlobalVarsSaga from './sagas/getGlobalVars.saga'
+import initLoadingSaga from './sagas/initLoading.saga'
 
 export default function* indexSaga() {
   yield all([
@@ -36,6 +36,6 @@ export default function* indexSaga() {
     fork(findDocumentSaga),
     fork(addDocumentSaga),
     fork(getCoursesSaga),
-    fork(getGlobalVarsSaga),
+    fork(initLoadingSaga),
   ])
 }
