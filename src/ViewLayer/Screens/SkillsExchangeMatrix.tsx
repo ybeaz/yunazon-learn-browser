@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
@@ -110,7 +110,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
         {isShownPalette && <Palette />}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
@@ -50,10 +50,10 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
 
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_1_1} />
+                <ImageYrl {...propsOut.illustration_5_1_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_2_1} />
+                <ImageYrl {...propsOut.illustration_5_2_1} />
               </div>
             </div>
           </div>
@@ -70,10 +70,10 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
             </div>
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_3_1} />
+                <ImageYrl {...propsOut.illustration_5_3_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_4_1} />
+                <ImageYrl {...propsOut.illustration_5_4_1} />
               </div>
             </div>
           </div>

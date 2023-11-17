@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Image } from './../Image'
+import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
@@ -86,7 +86,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
           </div>
         ) : null}
         {icon || icon2 ? <IconYrl {...propsOut.iconReactProps} /> : null}
-        {imageSrc && <Image {...propsOut.imageProps} />}
+        {imageSrc && <ImageYrl {...propsOut.imageProps} />}
         {captureRight ? (
           <div className='_in'>
             <div className={`_capture_right`}>{captureRight}</div>

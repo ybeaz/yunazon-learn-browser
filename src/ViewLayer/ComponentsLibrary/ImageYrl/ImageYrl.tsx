@@ -12,7 +12,7 @@ import {
 /**
  * @description Component to render ImageYrl
  * @import import { ImageYrl, ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlType } 
-             from '../Components/ImageYrl/ImageYrl'
+             from '../Components/ImageYrl/ImageYrl/ImageYrl'
  */
 const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
   const { classAdded, src, handleEvents: handleEventsCustom, action } = props
@@ -25,7 +25,7 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
 
   return (
     <div
-      className={`Image ${classAdded}`}
+      className={`ImageYrl ${classAdded}`}
       onClickCapture={(event: React.MouseEvent<HTMLDivElement>) =>
         handleEventsToUse(event, action)
       }

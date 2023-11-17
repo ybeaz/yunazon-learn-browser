@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SideNavigation } from '../Components/SideNavigation'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
@@ -76,7 +76,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
@@ -330,10 +330,10 @@ export const SkillExchangeIntro2: React.FunctionComponent<
 
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_1_1} />
+                <ImageYrl {...propsOut.illustration_5_1_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_2_1} />
+                <ImageYrl {...propsOut.illustration_5_2_1} />
               </div>
             </div>
           </div>
@@ -350,10 +350,10 @@ export const SkillExchangeIntro2: React.FunctionComponent<
             </div>
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_3_1} />
+                <ImageYrl {...propsOut.illustration_5_3_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_4_1} />
+                <ImageYrl {...propsOut.illustration_5_4_1} />
               </div>
             </div>
           </div>
@@ -373,14 +373,14 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['real_people_is_talking_to_you'][language]}{' '}
               {DICTIONARY['Everybody_is_protected'][language]}
             </h2>
-            <Image {...propsOut.collageImageFaceProps} />
+            <ImageYrl {...propsOut.collageImageFaceProps} />
           </div>
           <div className='_col _flex_1 _center _p3_Media _m1_Media'>
             <h2 className='_text'>
               {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
               {DICTIONARY['You_don_t_need_to_wait'][language]}
             </h2>
-            <Image {...propsOut.collageImageIndustriesProps} />
+            <ImageYrl {...propsOut.collageImageIndustriesProps} />
           </div>
         </div>
 

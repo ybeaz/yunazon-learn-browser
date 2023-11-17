@@ -1,6 +1,6 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
@@ -66,7 +66,7 @@ export const StubForUserResearch: React.FunctionComponent<
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...imageBottomProps} />
+          <ImageYrl {...imageBottomProps} />
         </FooterFrame>
       </MainFrame>
     </div>
