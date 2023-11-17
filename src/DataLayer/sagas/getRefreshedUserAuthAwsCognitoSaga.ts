@@ -1,7 +1,7 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS } from '../../Constants/clients.const'
+import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
@@ -13,7 +13,7 @@ export function* getRefreshedUserAuthAwsCognito(params: any): Iterable<any> {
 
   try {
     const envType = getDetectedEnv()
-    const redirect_uri = CLIENTS[envType]
+    const redirect_uri = CLIENTS_URI[envType]
 
     const variables = {
       userIdDataAwsCognitoInput: {

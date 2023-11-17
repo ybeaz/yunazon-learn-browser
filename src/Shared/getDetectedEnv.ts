@@ -1,7 +1,7 @@
-import { CLIENTS } from '../Constants/clients.const'
+import { CLIENTS_URI } from '../Constants/clientsUri.const'
 
 interface GetDetectedEnv {
-  (): keyof typeof CLIENTS
+  (): keyof typeof CLIENTS_URI
 }
 
 /**
@@ -9,7 +9,7 @@ interface GetDetectedEnv {
  * @import import { getDetectedEnv } from '../../../Shared/getDetectedEnv'
  */
 export const getDetectedEnv: GetDetectedEnv = () => {
-  const output: keyof typeof CLIENTS =
+  const output: keyof typeof CLIENTS_URI =
     window?.location?.hostname === '127.0.0.1' ||
     window?.location?.hostname === 'localhost'
       ? 'local'

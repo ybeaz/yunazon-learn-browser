@@ -6,7 +6,7 @@ import {
   AWS_COGNITO_URL,
   AWS_COGNITO_CLIENT_ID,
 } from '../../Constants/aws.const'
-import { CLIENTS } from '../../Constants/clients.const'
+import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
@@ -78,7 +78,7 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
   }
 
   const environment = getDetectedEnv()
-  const redirect_url: CLIENTS = CLIENTS[environment]
+  const redirect_url: CLIENTS_URI = CLIENTS_URI[environment]
   const linkSignIn = `${AWS_COGNITO_URL}/login?client_id=${AWS_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirect_url}&&scope=email+openid+profile`
 
   const propsOut = {
