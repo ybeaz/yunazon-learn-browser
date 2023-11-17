@@ -7,7 +7,7 @@ import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLoc
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
 
-function* getRevokedUserAuthAwsCognito(params: any): Iterable<any> {
+function* getAuthAwsCognitoUserRevoked(params: any): Iterable<any> {
   const {
     data: { refresh_token },
   } = params
@@ -26,7 +26,7 @@ function* getRevokedUserAuthAwsCognito(params: any): Iterable<any> {
 
     const userIdDataAwsCognito: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'getRevokedUserAuthAwsCognito',
+      resolveGraphqlName: 'getAuthAwsCognitoUserRevoked',
     })
 
     yield put(actionSync.SET_USERID_DATA_AWS_COGNITO({ userIdDataAwsCognito }))
@@ -36,19 +36,19 @@ function* getRevokedUserAuthAwsCognito(params: any): Iterable<any> {
       refresh_token: null,
     })
   } catch (error: any) {
-    console.log('ERROR getRevokedUserAuthAwsCognitoSaga', {
+    console.log('ERROR getAuthAwsCognitoUserRevokedSaga', {
       error: error.message,
     })
   }
 }
 
 /**
- * @description Function to getRevokedUserAuthAwsCognitoSaga
- * @import import getRevokedUserAuthAwsCognitoSaga from './sagas/getRevokedUserAuthAwsCognitoSaga'
+ * @description Function to getAuthAwsCognitoUserRevokedSaga
+ * @import import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
  */
-export default function* getRevokedUserAuthAwsCognitoSaga() {
+export default function* getAuthAwsCognitoUserRevokedSaga() {
   yield takeEvery(
     [actionAsync.GET_REVOKED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST().type],
-    getRevokedUserAuthAwsCognito
+    getAuthAwsCognitoUserRevoked
   )
 }

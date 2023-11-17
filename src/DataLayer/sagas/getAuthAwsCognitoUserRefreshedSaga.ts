@@ -7,9 +7,9 @@ import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
 
-export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
+export function* getAuthAwsCognitoUserRefreshed(params: any): Iterable<any> {
   const {
-    data: { code },
+    data: { refresh_token },
   } = params
 
   try {
@@ -18,7 +18,7 @@ export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
 
     const variables = {
       userIdDataAwsCognitoInput: {
-        code,
+        refresh_token,
         redirect_uri,
         client_app: ClientAppType['ACADEMY'],
       },
@@ -26,28 +26,26 @@ export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
 
     const userIdDataAwsCognito: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'getUserIdDataAwsCognito',
+      resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
     })
 
-    console.info('getUserIdDataAwsCognitoSaga [32]', {
-      userIdDataAwsCognito,
-      variables,
-    })
     yield put(actionSync.SET_USERID_DATA_AWS_COGNITO({ userIdDataAwsCognito }))
 
     getSetObjToLocalStorage(userIdDataAwsCognito)
   } catch (error: any) {
-    console.log('ERROR getUserIdDataAwsCognitoSaga', { error: error.message })
+    console.log('ERROR getAuthAwsCognitoUserRefreshedSaga', {
+      error: error.message,
+    })
   }
 }
 
 /**
- * @description Function to getUserIdDataAwsCognitoSaga
- * @import import getUserIdDataAwsCognitoSaga from './sagas/getUserIdDataAwsCognitoSaga'
+ * @description Function to getAuthAwsCognitoUserRefreshedSaga
+ * @import import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
  */
-export default function* getUserIdDataAwsCognitoSaga() {
+export default function* getAuthAwsCognitoUserRefreshedSaga() {
   yield takeEvery(
-    [actionAsync.GET_USERID_DATA_AWS_COGNITO_ASYNC.REQUEST().type],
-    getUserIdDataAwsCognito
+    [actionAsync.GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST().type],
+    getAuthAwsCognitoUserRefreshed
   )
 }

@@ -1,10 +1,10 @@
 import { gql, DocumentNode } from '@apollo/client'
 
-export const getUserIdDataAwsCognitoGql: DocumentNode = gql`
-  query getUserIdDataAwsCognito(
+export const getAuthAwsCognitoUserDataGql: DocumentNode = gql`
+  query getAuthAwsCognitoUserData(
     $userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!
   ) {
-    getUserIdDataAwsCognito(
+    getAuthAwsCognitoUserData(
       userIdDataAwsCognitoInput: $userIdDataAwsCognitoInput
     ) {
       sub

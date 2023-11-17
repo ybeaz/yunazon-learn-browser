@@ -4,8 +4,8 @@ import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getConvertedType } from '../../Shared/getConvertedType'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
-import { getUserIdDataAwsCognito } from './getUserIdDataAwsCognitoSaga'
-import { getRefreshedUserAuthAwsCognito } from './getRefreshedUserAuthAwsCognitoSaga'
+import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
+import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
 
 function* getGlobalVars(args: any) {
   try {
@@ -29,9 +29,9 @@ function* getGlobalVars(args: any) {
     const refresh_token = localStorage.getItem('refresh_token')
 
     if (code) {
-      yield call(getUserIdDataAwsCognito, { data: { code } })
+      yield call(getAuthAwsCognitoUserData, { data: { code } })
     } else if (refresh_token) {
-      yield call(getRefreshedUserAuthAwsCognito, { data: { refresh_token } })
+      yield call(getAuthAwsCognitoUserRefreshed, { data: { refresh_token } })
     }
 
     const { width } = getSizeWindow()
