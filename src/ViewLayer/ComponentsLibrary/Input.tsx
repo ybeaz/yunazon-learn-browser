@@ -8,7 +8,7 @@ import {
   FormsType,
   SearchFormSepType,
 } from '../../Interfaces/RootStoreType'
-import { IconReact } from './IconReact'
+import { IconYrl } from './IconYrl/IconYrl'
 import { isObject } from '../../Shared/isObject'
 
 interface InputArgs {
@@ -106,7 +106,7 @@ export const Input: React.FunctionComponent<InputArgs> = (
           handleEvents({ target: { value: '' } }, action)
         }
       >
-        <IconReact {...iconReactProps} />
+        <IconYrl {...iconReactProps} />
       </span>
     </div>
   )

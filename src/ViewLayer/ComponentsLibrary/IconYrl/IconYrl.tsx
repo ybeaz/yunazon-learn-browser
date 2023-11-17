@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { IconContext } from 'react-icons'
 
 import { ICONS } from '../../../Constants/icons.const'
@@ -19,7 +19,7 @@ import {
 /**
  * @description Component to render IconYrl
  * @import import { IconYrl, IconYrlPropsType, IconYrlPropsOutType, IconYrlType } 
-             from '../Components/IconYrl/IconYrl'
+             from '../Components/IconYrl/IconYrl/IconYrl'
  */
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   const { icon = '', icon2 = '', classAdded } = props
@@ -34,7 +34,7 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   return (
     <>
       {Icon && (
-        <div className={`IconReact ${classAdded}`}>
+        <div className={`IconYrl ${classAdded}`}>
           <IconContext.Provider
             value={{
               className: `_icon`,

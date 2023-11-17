@@ -9,7 +9,7 @@ interface IconReactArgs {
   icon2?: string
 }
 
-export const IconReact: React.FunctionComponent<IconReactArgs> = (
+export const IconYrl: React.FunctionComponent<IconReactArgs> = (
   props: IconReactArgs
 ): ReactElement => {
   const { icon = '', icon2 = '', classAdded } = props
@@ -22,7 +22,7 @@ export const IconReact: React.FunctionComponent<IconReactArgs> = (
   return (
     <>
       {Icon && (
-        <div className={`IconReact ${classAdded}`}>
+        <div className={`IconYrl ${classAdded}`}>
           <IconContext.Provider
             value={{
               className: `_icon`,

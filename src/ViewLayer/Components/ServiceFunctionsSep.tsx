@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { IconReact } from '../ComponentsLibrary/IconReact'
+import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
@@ -44,7 +44,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<
               {DICTIONARY['Find_people_by_knowledge_and_skills'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconFunction1Props} />
+              <IconYrl {...propsOut.iconFunction1Props} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_1'>
@@ -56,7 +56,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<
               }
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconFunction2Props} />
+              <IconYrl {...propsOut.iconFunction2Props} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_1'>
@@ -64,7 +64,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<
               {DICTIONARY['Become_an_expert_for_others'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconFunction3Props} />
+              <IconYrl {...propsOut.iconFunction3Props} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_1'>
@@ -72,7 +72,7 @@ export const ServiceFunctionsSep: React.FunctionComponent<
               {DICTIONARY['Chat_on_your_topics_in_all_languages'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconFunction4Props} />
+              <IconYrl {...propsOut.iconFunction4Props} />
             </div>
           </div>
         </div>

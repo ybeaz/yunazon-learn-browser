@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { Image } from '../ComponentsLibrary/Image'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { IconReact } from '../ComponentsLibrary/IconReact'
+import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -214,7 +214,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
               }
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconHiUsersProps} />
+              <IconYrl {...propsOut.iconHiUsersProps} />
             </div>
           </div>
           <div className='_col _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
@@ -226,7 +226,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
               }
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconBsPiggyBankProps} />
+              <IconYrl {...propsOut.iconBsPiggyBankProps} />
             </div>
           </div>
           <div className='_col _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
@@ -235,7 +235,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['and_skills'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconAiOutlineShareAltProps} />
+              <IconYrl {...propsOut.iconAiOutlineShareAltProps} />
             </div>
           </div>
           <div className='_col _flex_1 _bg_color_4 _asym_corners p_1_2'>
@@ -243,7 +243,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['Communicate_practice_foreign_languages'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconMdLanguageProps2} />
+              <IconYrl {...propsOut.iconMdLanguageProps2} />
             </div>
           </div>
         </div>
@@ -267,15 +267,15 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['clarify_the_question'][language]}
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconAiOutlineQuestionCircleProps} />
+              <IconYrl {...propsOut.iconAiOutlineQuestionCircleProps} />
               <div className='_text'>{DICTIONARY['category'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconIoLanguageSharpProps} />
+              <IconYrl {...propsOut.iconIoLanguageSharpProps} />
               <div className='_text'>{DICTIONARY['language'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconBiSelectMultipleProps} />
+              <IconYrl {...propsOut.iconBiSelectMultipleProps} />
               <div className='_text'>
                 {DICTIONARY['other_criteria'][language]}
               </div>
@@ -283,7 +283,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
           </div>
 
           <div className='_col'>
-            <IconReact {...propsOut.iconMdArrowForwardIosProps} />
+            <IconYrl {...propsOut.iconMdArrowForwardIosProps} />
           </div>
 
           <div className='_col _flex_1 _bordered p_1_1'>
@@ -291,7 +291,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['Get_users_by_topic'][language]}
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconFaUsersProps} />
+              <IconYrl {...propsOut.iconFaUsersProps} />
               <div className='_text'>
                 {DICTIONARY['A_list_to_chat_is_created'][language]}
               </div>
@@ -299,7 +299,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
           </div>
 
           <div className='_col'>
-            <IconReact {...propsOut.iconMdArrowForwardIosProps} />
+            <IconYrl {...propsOut.iconMdArrowForwardIosProps} />
           </div>
 
           <div className='_col _flex_1 _bordered p_1_1'>
@@ -309,19 +309,19 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['person'][language]} {DICTIONARY['by'][language]}
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconFaUsersCogProps} />
+              <IconYrl {...propsOut.iconFaUsersCogProps} />
               <div className='_text'>{DICTIONARY['ageGroup'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconBsFillPersonCheckFillProps} />
+              <IconYrl {...propsOut.iconBsFillPersonCheckFillProps} />
               <div className='_text'>{DICTIONARY['gender'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconMdHomeRepairServiceProps} />
+              <IconYrl {...propsOut.iconMdHomeRepairServiceProps} />
               <div className='_text'>{DICTIONARY['reputation'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconMdLanguageProps} />
+              <IconYrl {...propsOut.iconMdLanguageProps} />
               <div className='_text'>
                 {DICTIONARY['geography'][language]}
                 {'/ '}
@@ -331,7 +331,7 @@ export const SkillExchangeIntro: React.FunctionComponent<
           </div>
 
           <div className='_col'>
-            <IconReact {...propsOut.iconMdArrowForwardIosProps} />
+            <IconYrl {...propsOut.iconMdArrowForwardIosProps} />
           </div>
 
           <div className='_col _flex_1 _bordered p_1_1'>
@@ -339,15 +339,15 @@ export const SkillExchangeIntro: React.FunctionComponent<
               {DICTIONARY['Say_hello_and_hear_new_things'][language]}
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconIoChatbubblesOutlineProps} />
+              <IconYrl {...propsOut.iconIoChatbubblesOutlineProps} />
               <div className='_text'>{DICTIONARY['messaging'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconRiVoiceprintFillProps} />
+              <IconYrl {...propsOut.iconRiVoiceprintFillProps} />
               <div className='_text'>{DICTIONARY['voice'][language]}</div>
             </div>
             <div className='_iconAndText'>
-              <IconReact {...propsOut.iconBiVideoPlusProps} />
+              <IconYrl {...propsOut.iconBiVideoPlusProps} />
               <div className='_text'>{DICTIONARY['video'][language]}</div>
             </div>
           </div>

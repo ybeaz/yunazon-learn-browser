@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { Image } from '../ComponentsLibrary/Image'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { IconReact } from '../ComponentsLibrary/IconReact'
+import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -269,7 +269,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Find_people_by_knowledge_and_skills'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconHiUsersProps} />
+              <IconYrl {...propsOut.iconHiUsersProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
@@ -281,7 +281,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               }
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconBsPiggyBankProps} />
+              <IconYrl {...propsOut.iconBsPiggyBankProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
@@ -289,7 +289,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Become_an_expert_for_others'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconAiOutlineShareAltProps} />
+              <IconYrl {...propsOut.iconAiOutlineShareAltProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
@@ -297,7 +297,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Chat_on_your_topics_in_all_languages'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconMdLanguageProps2} />
+              <IconYrl {...propsOut.iconMdLanguageProps2} />
             </div>
           </div>
         </div>

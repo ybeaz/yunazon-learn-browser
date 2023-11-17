@@ -12,7 +12,7 @@ import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
-import { IconReact } from '../ComponentsLibrary/IconReact'
+import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface IGetLinkAuthUserProps {
@@ -92,7 +92,7 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
   return (
     <div className='AuthAwsCognitoLink'>
       <a className='_linkAuthUser' href={propsOut.linkAuthUserProps.to}>
-        <IconReact {...propsOut.iconReactAuthUserProps} />
+        <IconYrl {...propsOut.iconReactAuthUserProps} />
       </a>
     </div>
   )
