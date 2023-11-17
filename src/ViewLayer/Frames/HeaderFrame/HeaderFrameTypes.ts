@@ -1,5 +1,5 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
-import { ModalFrames } from '../../Frames/ModalFrames'
+import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 
 export type HeaderFramePropsType = {
   brandName: string
@@ -21,6 +21,7 @@ export type HeaderFramePropsType = {
   isPageActionsGroup: boolean
   isButtonsShare: boolean
   isInstallMobileAppGroup: boolean
+  children?: React.ReactElement
 }
 
 export type HeaderFramePropsOutType = {

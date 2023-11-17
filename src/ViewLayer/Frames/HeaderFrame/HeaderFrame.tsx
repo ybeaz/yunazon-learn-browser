@@ -15,7 +15,7 @@ import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { SelectLanguage } from '../../Components/SelectLanguage'
-import { ModalFrames } from '../../Frames/ModalFrames'
+import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 
 import {
   HeaderFramePropsType,

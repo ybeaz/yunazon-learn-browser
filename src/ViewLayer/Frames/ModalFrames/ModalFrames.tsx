@@ -1,17 +1,24 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, FunctionComponent } from 'react'
 import { useSelector } from 'react-redux'
 import { nanoid } from 'nanoid'
 
-import { SkillExchangeIntro2 } from '../Components/SkillExchangeIntro2'
-import { SkillExchangeIntro } from '../Components/SkillExchangeIntro'
-import { AuthUser } from '../Components/AuthUser'
-import { Button } from '../ComponentsLibrary/Button'
-import { EmalInputs } from '../Components/EmalInputs'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { QuestionScores } from '../Components/QuestionScores'
+import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
+import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
+import { AuthUser } from '../../Components/AuthUser'
+import { Button } from '../../ComponentsLibrary/Button'
+import { EmalInputs } from '../../Components/EmalInputs'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { QuestionScores } from '../../Components/QuestionScores'
 
-const CHILDREN = {
+import {
+  ModalFramesPropsType,
+  ModalFramesPropsOutType,
+  ModalFramesComponentType,
+  ModalFramesType,
+} from './ModalFramesTypes'
+
+const CHILDREN: Record<string, FunctionComponent<any>> = {
   SkillExchangeIntro2,
   SkillExchangeIntro,
   AuthUser,
@@ -19,13 +26,20 @@ const CHILDREN = {
   QuestionScores,
 }
 
-export const ModalFrames: React.FunctionComponent = (): ReactElement => {
+/**
+ * @description Component to render ModalFrames
+ * @import import { ModalFrames, ModalFramesPropsType, ModalFramesPropsOutType, ModalFramesType } 
+             from '../Components/ModalFrames/ModalFrames'
+ */
+const ModalFramesComponent: ModalFramesComponentType = (
+  props: ModalFramesPropsType
+) => {
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     componentsState: { modalFrames },
   } = store
 
-  const getChildren: Function = (children: any[]): ReactElement[] => {
+  const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
@@ -74,5 +88,16 @@ export const ModalFrames: React.FunctionComponent = (): ReactElement => {
     })
   }
 
+  const propsOut: ModalFramesPropsOutType = {}
+
   return <>{getChildren(modalFrames)}</>
+}
+
+export const ModalFrames: ModalFramesType = React.memo(ModalFramesComponent)
+
+export type {
+  ModalFramesPropsType,
+  ModalFramesPropsOutType,
+  ModalFramesComponentType,
+  ModalFramesType,
 }

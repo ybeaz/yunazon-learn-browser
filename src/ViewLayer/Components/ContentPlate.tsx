@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -10,11 +10,11 @@ import { LoaderBlurhash } from './LoaderBlurhash'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
-import { ReaderIframe } from '../Frames/ReaderIframe'
-import { PlayerIframe } from '../Frames/PlayerIframe'
+import { ReaderIframe } from '../Frames/ReaderIframe/ReaderIframe'
+import { PlayerIframe } from '../Frames/PlayerIframe/PlayerIframe'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-const COMPONENT = {
+const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
   PlayerIframe,
 }
@@ -59,7 +59,7 @@ export const ContentPlate: React.FunctionComponent<
     height,
   })
 
-  const contentComponentProps = {
+  const contentComponentProps: Record<string, any> = {
     ReaderIframe: {
       contentID,
       isVisible,
@@ -82,7 +82,8 @@ export const ContentPlate: React.FunctionComponent<
   const slug = getSlug(courseCapture)
   const pathname = `/m/${courseID}/${slug}`
 
-  const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]
+  const CONTENT_ASSIGNED_COMPONENT: FunctionComponent =
+    COMPONENT[contentComponentName]
 
   const textTooltip = DICTIONARY['pleaseWait'][language]
   const loaderBlurhashProps = {

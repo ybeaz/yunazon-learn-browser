@@ -15,11 +15,11 @@ import {
 const FooterFrameComponent: FooterFrameComponentType = (
   props: FooterFramePropsType
 ) => {
-  const {} = props
+  const { children } = props
 
   const propsOut: FooterFramePropsOutType = {}
 
-  return <div className='FooterFrame'>{props.children}</div>
+  return <div className='FooterFrame'>{children}</div>
 }
 
 export const FooterFrame: FooterFrameType = React.memo(FooterFrameComponent)
