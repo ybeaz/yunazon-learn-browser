@@ -1,5 +1,5 @@
 export type ModalFramesPropsType = {
-  children: React.ReactElement
+  children?: React.ReactElement
 }
 
 export type ModalFramesPropsOutType = Record<string, any>
