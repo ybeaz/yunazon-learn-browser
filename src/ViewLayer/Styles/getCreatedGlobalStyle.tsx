@@ -437,11 +437,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorGrey', medial, middle)};
     }
 
-    .IconReact_authUserHeader ._icon {
+    .IconYrl_authUserHeader ._icon {
       color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
-    .IconReact_authUserHeaderActive ._icon {
+    .IconYrl_authUserHeaderActive ._icon {
       color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 

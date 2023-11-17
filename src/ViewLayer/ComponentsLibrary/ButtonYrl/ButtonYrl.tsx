@@ -57,7 +57,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     iconReactProps: {
       icon,
       icon2,
-      classAdded: `_in IconReact_${classAdded}`,
+      classAdded: `_in IconYrl_${classAdded}`,
     },
     imageProps: {
       classAdded: `_in Image_${classAdded}`,

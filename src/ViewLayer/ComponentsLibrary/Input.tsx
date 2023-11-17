@@ -61,7 +61,7 @@ export const Input: React.FunctionComponent<InputArgs> = (
   const iconReactProps = {
     icon: 'AiFillCloseCircle',
     icon2: 'null',
-    classAdded: 'IconReact_Input',
+    classAdded: 'IconYrl_Input',
   }
 
   const inputFileRef = useRef(null)

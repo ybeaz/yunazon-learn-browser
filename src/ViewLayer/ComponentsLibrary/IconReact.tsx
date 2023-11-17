@@ -3,14 +3,14 @@ import { IconContext } from 'react-icons'
 
 import { ICONS } from '../../Constants/icons.const'
 
-interface IconReactArgs {
+interface IconYrlArgs {
   classAdded: string
   icon?: string
   icon2?: string
 }
 
-export const IconYrl: React.FunctionComponent<IconReactArgs> = (
-  props: IconReactArgs
+export const IconYrl: React.FunctionComponent<IconYrlArgs> = (
+  props: IconYrlArgs
 ): ReactElement => {
   const { icon = '', icon2 = '', classAdded } = props
 

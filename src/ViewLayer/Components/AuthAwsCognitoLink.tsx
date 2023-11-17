@@ -53,13 +53,13 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
   const getLinkAuthUserProps: IGetLinkAuthUserProps = userAwsCognitoAuth2 => {
     let output = {
       icon: 'FaUserCircle',
-      classAdded: 'IconReact_authUserHeader',
+      classAdded: 'IconYrl_authUserHeader',
     }
 
     if (userAwsCognitoAuth2?.expires_in > 0) {
       output = {
         icon: 'FaUserCircle',
-        classAdded: 'IconReact_authUserHeaderActive',
+        classAdded: 'IconYrl_authUserHeaderActive',
       }
     }
 

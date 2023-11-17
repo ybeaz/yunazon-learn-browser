@@ -72,7 +72,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
     iconMdArrowForwardIosProps: {
       icon: 'MdArrowRight',
       icon2: null,
-      classAdded: 'IconReact_ArrowRight2',
+      classAdded: 'IconYrl_ArrowRight2',
     },
     buttonMdArrowForwardIosProps: {
       icon: 'MdArrowRight',

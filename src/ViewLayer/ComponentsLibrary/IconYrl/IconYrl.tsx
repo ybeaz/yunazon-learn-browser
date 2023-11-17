@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons'
 
 import { ICONS } from '../../../Constants/icons.const'
 
-interface IconReactArgs {
+interface IconYrlArgs {
   classAdded: string
   icon?: string
   icon2?: string

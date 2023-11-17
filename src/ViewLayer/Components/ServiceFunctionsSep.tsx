@@ -16,22 +16,22 @@ export const ServiceFunctionsSep: React.FunctionComponent<
     iconFunction1Props: {
       icon: 'BsFillPersonPlusFill',
       icon2: null,
-      classAdded: 'IconReact_Function1',
+      classAdded: 'IconYrl_Function1',
     },
     iconFunction2Props: {
       icon: 'FaExchangeAlt',
       icon2: null,
-      classAdded: 'IconReact_Function2',
+      classAdded: 'IconYrl_Function2',
     },
     iconFunction3Props: {
       icon: 'FaUserNinja',
       icon2: null,
-      classAdded: 'IconReact_Function3',
+      classAdded: 'IconYrl_Function3',
     },
     iconFunction4Props: {
       icon: 'MdLanguage',
       icon2: null,
-      classAdded: 'IconReact_Function4',
+      classAdded: 'IconYrl_Function4',
     },
   }
 
