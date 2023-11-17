@@ -12,7 +12,7 @@ import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Input } from '../ComponentsLibrary/Input'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export const QuestionScores: React.FunctionComponent<any> = props => {
   let navigate = useNavigate()
@@ -205,8 +205,8 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
           </>
         ) : null}
         <div className='_buttons'>
-          {/* <Button {...buttonCancelProps} /> */}
-          <Button {...scenario.buttonForwardProps} />
+          {/* <ButtonYrl {...buttonCancelProps} /> */}
+          <ButtonYrl {...scenario.buttonForwardProps} />
         </div>
       </form>
       {result === 'failure' ? (

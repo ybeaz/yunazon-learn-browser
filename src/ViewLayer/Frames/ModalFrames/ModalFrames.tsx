@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid'
 import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
 import { AuthUser } from '../../Components/AuthUser'
-import { Button } from '../../ComponentsLibrary/Button'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { EmalInputs } from '../../Components/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -72,7 +72,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
         >
           <div className='__content'>
             <span className='_close'>
-              <Button {...propsOut.buttonCloseProps} />
+              <ButtonYrl {...propsOut.buttonCloseProps} />
             </span>
             <div
               className='_inner'

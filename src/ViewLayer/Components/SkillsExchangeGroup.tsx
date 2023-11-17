@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ProfilesMatrix } from './ProfilesMatrix'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
 import { ServiceFunctionsSep } from './ServiceFunctionsSep'
@@ -100,7 +100,7 @@ export const SkillsExchangeGroup: React.FunctionComponent<
       )}
 
       <a href='/sep#id_header_SkillsExchangeMatrix'>
-        <Button {...propsOut.buttonBackToTopProps} />
+        <ButtonYrl {...propsOut.buttonBackToTopProps} />
       </a>
     </div>
   )

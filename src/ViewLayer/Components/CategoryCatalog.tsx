@@ -8,7 +8,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { CategoryType } from '../../Interfaces/CategoryType'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface IGetCategorisJsx {
   (categories: CategoryType[], language: string): ReactElement[]
@@ -43,7 +43,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
         } as ActionReduxType,
       }
 
-      return <Button {...buttonProps} />
+      return <ButtonYrl {...buttonProps} />
     })
 
   const getCategoriesFromIcons = icons => {
@@ -88,7 +88,7 @@ export const CategoryCatalog: React.FunctionComponent<CategoryCatalogArgs> = (
     <div className='CategoryCatalog'>
       <div className='_catalogIcons'>
         {getCategorisJsx(categoriesNext, language)}
-        <Button {...propsOut.buttonMdArrowForwardIosProps} />
+        <ButtonYrl {...propsOut.buttonMdArrowForwardIosProps} />
       </div>
     </div>
   )

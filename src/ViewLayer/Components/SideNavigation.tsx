@@ -9,7 +9,7 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: RootStoreType) => store2)
@@ -90,7 +90,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       const key = nanoid()
       return (
         <div key={key} className='_item'>
-          <Button {...buttonProps} />
+          <ButtonYrl {...buttonProps} />
         </div>
       )
     })

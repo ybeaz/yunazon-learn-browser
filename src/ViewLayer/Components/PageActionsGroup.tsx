@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
@@ -61,9 +61,9 @@ export const PageActionsGroup: React.FunctionComponent<PageActionsGroupArgs> = (
   return (
     <div className='PageActions'>
       <div className='_buttons'>
-        <Button {...buttonPrintProps} />
-        <Button {...buttonEmailProps} />
-        <Button {...buttonCopyLinkProps} />
+        <ButtonYrl {...buttonPrintProps} />
+        <ButtonYrl {...buttonEmailProps} />
+        <ButtonYrl {...buttonCopyLinkProps} />
       </div>
     </div>
   )

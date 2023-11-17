@@ -245,21 +245,21 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .Button .__button {
+    .ButtonYrl .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorSecondLighter3', medial, lighter3)};
     }
 
-    .Button .__button:active,
-    .Button .__button:focus {
+    .ButtonYrl .__button:active,
+    .ButtonYrl .__button:focus {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       border-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }
-    .Button ._in {
+    .ButtonYrl ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
-    .Button .__tooltipText {
+    .ButtonYrl .__tooltipText {
       background: ${props2 =>
         getColor(props2, 'colorSecondLighter2', medial, lighter2)};
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
@@ -422,7 +422,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
-    .Button.Button_authSideMenu .__button ._in ._capture_right {
+    .ButtonYrl.Button_authSideMenu .__button ._in ._capture_right {
       color: ${props2 =>
         getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }

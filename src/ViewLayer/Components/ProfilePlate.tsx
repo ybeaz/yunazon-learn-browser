@@ -14,7 +14,7 @@ import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { PropsAddedType } from '../../Interfaces/PropsAddedType'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { UserType } from '../../Interfaces/UserType'
 
 interface IOptionStandard {
@@ -141,7 +141,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     <div className='ProfilePlate'>
       <div className='_col'>
         <div className='_button'>
-          <Button {...propsOut.buttonAvatarProps} />
+          <ButtonYrl {...propsOut.buttonAvatarProps} />
         </div>
         <div className='_userNameNick'>{userNameNick}</div>
       </div>

@@ -17,7 +17,7 @@ import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { Input } from '../ComponentsLibrary/Input'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
@@ -403,7 +403,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className={classCol01}></div>
           <div className={`${classCol02} _submitGroup`}>
-            <Button {...propsOut.buttonSearchSepProps} />
+            <ButtonYrl {...propsOut.buttonSearchSepProps} />
             <div
               className='_linkAdvacedSearch'
               onClick={event =>

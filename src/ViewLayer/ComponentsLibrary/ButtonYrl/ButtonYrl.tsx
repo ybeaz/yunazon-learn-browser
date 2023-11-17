@@ -14,7 +14,7 @@ import {
 /**
  * @description Component to render ButtonYrl
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
-             from '../Components/ButtonYrl/ButtonYrl'
+             from '../Components/ButtonYrl/ButtonYrl/ButtonYrl'
  */
 const ButtonYrlComponent: ButtonYrlComponentType = (
   props: ButtonYrlPropsType
@@ -66,7 +66,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   }
 
   return (
-    <div className={`Button ${classAdded} ${classDisplay}`}>
+    <div className={`ButtonYrl ${classAdded} ${classDisplay}`}>
       {tooltipText ? (
         <span className={`__tooltipText ${classTooltipAdd}`}>
           {tooltipText}

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { Input } from '../ComponentsLibrary/Input'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface EmalInputsArgs {
   documentID: string
@@ -67,8 +67,8 @@ export const EmalInputs: React.FunctionComponent<EmalInputsArgs> = props => {
           <Input {...inputEmailCcProps} />
         </div>
         <div className='_buttons'>
-          {/* <Button {...buttonCancelProps} /> */}
-          <Button {...buttonForwardProps} />
+          {/* <ButtonYrl {...buttonCancelProps} /> */}
+          <ButtonYrl {...buttonForwardProps} />
         </div>
       </form>
     </div>

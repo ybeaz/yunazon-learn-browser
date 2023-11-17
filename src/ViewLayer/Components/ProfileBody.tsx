@@ -16,7 +16,7 @@ import { getStdDictionaryOptions } from '../../Shared/getStdDictionaryOptions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { Input } from '../ComponentsLibrary/Input'
 
 interface ProfileBodyArgs {}
@@ -281,7 +281,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       <div className='_row'>
         <div className={classCol01}></div>
         <div className={`${classCol02} _submitGroup`}>
-          <Button {...propsOut.buttonSaveProfileProps} />
+          <ButtonYrl {...propsOut.buttonSaveProfileProps} />
         </div>
       </div>
     </div>

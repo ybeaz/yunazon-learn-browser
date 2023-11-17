@@ -6,7 +6,7 @@ import { SORT_BY } from '../../Constants/sortBy.const'
 import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { AGE, IAge } from '../../Constants/age.const'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { Input } from '../ComponentsLibrary/Input'
 import { Select, SelectOptionType } from './Select'
 import { LanguagesType } from '../../Interfaces/LanguagesType'
@@ -384,7 +384,7 @@ export const SearchFormSepChRP: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className={classCol01}></div>
           <div className={classCol02}>
-            <Button {...childrenProps.buttonSearchSepProps} />
+            <ButtonYrl {...childrenProps.buttonSearchSepProps} />
           </div>
         </div>
         <div className='_row'>

@@ -23,10 +23,10 @@ export interface IButtonArgs {
 export const ButtonTest: React.FunctionComponent<IButtonArgs> = (
   props: IButtonArgs
 ): ReactElement => {
-  return <div className='Button'>Button</div>
+  return <div className='ButtonYrl'>ButtonYrl</div>
 }
 
-export const Button: React.FunctionComponent<IButtonArgs> = (
+export const ButtonYrl: React.FunctionComponent<IButtonArgs> = (
   props: IButtonArgs
 ): React.ReactElement => {
   const {
@@ -76,7 +76,7 @@ export const Button: React.FunctionComponent<IButtonArgs> = (
   }
 
   return (
-    <div className={`Button ${classAdded} ${classDisplay}`}>
+    <div className={`ButtonYrl ${classAdded} ${classDisplay}`}>
       {tooltipText ? (
         <span className={`__tooltipText ${classTooltipAdd}`}>
           {tooltipText}

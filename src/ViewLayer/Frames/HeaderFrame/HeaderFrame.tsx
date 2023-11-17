@@ -10,7 +10,7 @@ import { PageActionsGroup } from '../../Components/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { SearchGroup } from '../../Components/SearchGroup'
 import { LogoGroup } from '../../Components/LogoGroup'
-import { Button } from '../../ComponentsLibrary/Button'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -140,11 +140,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         <div className='__left'>
           {isButtonBack && (
             <Link to={{ pathname: '/academy' }}>
-              <Button {...propsOut.buttonBackProps} />
+              <ButtonYrl {...propsOut.buttonBackProps} />
             </Link>
           )}
           {isButtonSideMenu && (
-            <Button {...propsOut.buttonLeftSideNavigationMenuProps} />
+            <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
           )}
           {isLogoGroup && <LogoGroup {...propsOut.logoGroupProps} />}
           {isPageActionsGroup && (
@@ -167,13 +167,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           )}
           {isButtonAddCourse && (
             <div className='_itemButtonAddCourse'>
-              <Button {...propsOut.buttonAddCourseProps} />
+              <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
           {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isButtonAuthUser && (
             <div className='_itemButtonAuthUser'>
-              <Button {...propsOut.buttonAuthUserProps} />
+              <ButtonYrl {...propsOut.buttonAuthUserProps} />
             </div>
           )}
           {isSelectLanguage && (
@@ -183,7 +183,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           )}
           {isButtonThemeToggle && (
             <div className='_itemButtonThemeToggle'>
-              <Button {...propsOut.buttonThemeToggleProps} />
+              <ButtonYrl {...propsOut.buttonThemeToggleProps} />
             </div>
           )}
         </div>

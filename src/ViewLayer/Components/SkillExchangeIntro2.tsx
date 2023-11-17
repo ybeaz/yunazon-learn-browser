@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Image } from '../ComponentsLibrary/Image'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { IconReact } from '../ComponentsLibrary/IconReact'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
@@ -303,7 +303,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
         </div>
       </div>
       <div className='_button _mobileVisible'>
-        <Button {...propsOut.buttonContinueProps} />
+        <ButtonYrl {...propsOut.buttonContinueProps} />
       </div>
 
       {/* How it works */}
@@ -398,7 +398,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
         </div>
       </div>
       <div className='_button p_3_0_2_0'>
-        <Button {...propsOut.buttonNextProps} />
+        <ButtonYrl {...propsOut.buttonNextProps} />
       </div>
     </div>
   )
