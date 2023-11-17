@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { Image } from './../Image'
+import { IconReact } from './../IconReact'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+
 import {
   ButtonYrlPropsType,
   ButtonYrlPropsOutType,
@@ -15,11 +19,83 @@ import {
 const ButtonYrlComponent: ButtonYrlComponentType = (
   props: ButtonYrlPropsType
 ) => {
-  const {} = props
+  const {
+    icon = undefined,
+    icon2 = undefined,
+    imageSrc = undefined,
+    captureLeft,
+    captureRight,
+    classAdded = '',
+    action = {},
+    isDisplaying = true,
+    tooltipText = '',
+    tooltipPosition = 'top',
+    isTooltipVisibleForced = false,
+    isUnderlined = false,
+    handleEvents: handleEventsCustom,
+  } = props
 
-  const propsOut: ButtonYrlPropsOutType = {}
+  const classDisplay = isDisplaying === true ? '' : 'Button_none'
+  const handleEventsToUse = handleEventsCustom
+    ? handleEventsCustom
+    : handleEvents
 
-  return <div className='ButtonYrl'>ButtonYrl</div>
+  const classTooltipsDictionary: Record<string, string> = {
+    top: '_tooltipTop',
+    right: '_tooltipRight',
+    bottom: '_tooltipBottom',
+    left: '_tooltipLeft',
+  }
+
+  let classTooltipAdd: any = classTooltipsDictionary[tooltipPosition]
+
+  classTooltipAdd = isTooltipVisibleForced
+    ? `${classTooltipAdd} __tooltipTextVisible`
+    : classTooltipAdd
+
+  const propsOut: ButtonYrlPropsOutType = {
+    iconReactProps: {
+      icon,
+      icon2,
+      classAdded: `_in IconReact_${classAdded}`,
+    },
+    imageProps: {
+      classAdded: `_in Image_${classAdded}`,
+      src: imageSrc,
+    },
+  }
+
+  return (
+    <div className={`Button ${classAdded} ${classDisplay}`}>
+      {tooltipText ? (
+        <span className={`__tooltipText ${classTooltipAdd}`}>
+          {tooltipText}
+        </span>
+      ) : null}
+
+      <button
+        className={`__button`}
+        type='button'
+        onClickCapture={(event: React.MouseEvent<HTMLButtonElement>) =>
+          handleEventsToUse(event, action)
+        }
+      >
+        {captureLeft ? (
+          <div className='_in'>
+            <div className={`_capture_left`}>{captureLeft}</div>
+          </div>
+        ) : null}
+        {icon || icon2 ? <IconReact {...propsOut.iconReactProps} /> : null}
+        {imageSrc && <Image {...propsOut.imageProps} />}
+        {captureRight ? (
+          <div className='_in'>
+            <div className={`_capture_right`}>{captureRight}</div>
+          </div>
+        ) : null}
+      </button>
+      {isUnderlined && <hr className='__underlined' />}
+    </div>
+  )
 }
 
 export const ButtonYrl: ButtonYrlType = React.memo(ButtonYrlComponent)
