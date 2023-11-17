@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SideNavigation } from '../../Components/SideNavigation'
@@ -10,6 +11,7 @@ import { ContentPlate } from '../../Components/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { MainFrame } from '../../Frames/MainFrame'
@@ -31,7 +33,15 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
+  const query = getParsedUrlQuery()
+  // console.info('AcademyMatrix [35]', { query, location })
+
+  // const params = useParams()
+
+  getEffectedRequests([
+    { type: 'GET_GLOBAL_VARS', data: { query } },
+    'GET_COURSES',
+  ])
   getInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'

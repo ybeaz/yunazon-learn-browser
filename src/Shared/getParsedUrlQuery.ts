@@ -9,7 +9,7 @@ export const getParsedUrlQuery: Function = (url: string): any => {
 
   var query = url.substring(1)
 
-  var result = {}
+  var result: any = {}
   query.split('&').forEach(function (part) {
     var item = part.split('=')
     result[item[0]] = decodeURIComponent(item[1])

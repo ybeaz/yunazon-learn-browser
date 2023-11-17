@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_USERID_DATA_AWS_COGNITO',
   'SET_COURSE_ID_ACTIVE',
   'SET_MODULE_ID_ACTIVE',
   'SET_COURSES',
@@ -68,6 +69,9 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_REVOKED_USER_AUTH_AWS_COGNITO_ASYNC',
+  'GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC',
+  'GET_USERID_DATA_AWS_COGNITO_ASYNC',
   'GET_MODULE_DATA',
   'GET_COGNITO_TOKENS',
   'READ_USERS',

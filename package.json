@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jacob-lcs/react-webpack5-template#readme",
   "dependencies": {
     "@apollo/client": "^3.8.7",
+    "@reduxjs/toolkit": "^1.9.7",
     "@types/react-helmet": "^6.1.9",
     "antd": "^5.4.4",
     "axios": "^1.6.0",

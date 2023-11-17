@@ -671,10 +671,12 @@ export type TemplatesType = {
     isActive: Scalars['Boolean']['output'];
 };
 export type UserIdDataAwsCognitoInputType = {
+    /** AWS enum client_app */
+    client_app: Scalars['String']['input'];
     /** AWS code from authorisation workflow */
     code?: InputMaybe<Scalars['String']['input']>;
     /** AWS redirect_uri */
-    redirect_uri?: InputMaybe<Scalars['String']['input']>;
+    redirect_uri: Scalars['String']['input'];
     /** AWS refresh token from post-authorization workflow */
     refresh_token?: InputMaybe<Scalars['String']['input']>;
 };

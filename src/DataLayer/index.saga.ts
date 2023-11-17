@@ -1,5 +1,8 @@
 import { all, fork } from 'redux-saga/effects'
 
+import getRevokedUserAuthAwsCognitoSaga from './sagas/getRevokedUserAuthAwsCognitoSaga'
+import getRefreshedUserAuthAwsCognitoSaga from './sagas/getRefreshedUserAuthAwsCognitoSaga'
+import getUserIdDataAwsCognitoSaga from './sagas/getUserIdDataAwsCognitoSaga'
 import getCourseDataSaga from './sagas/getCourseData.saga'
 import getGetCognitoTokensSaga from './sagas/getGetCognitoTokens.saga'
 import getLoadedProfilesSaga from './sagas/getLoadedProfiles.saga'
@@ -19,6 +22,9 @@ import getGlobalVarsSaga from './sagas/getGlobalVars.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getRevokedUserAuthAwsCognitoSaga),
+    fork(getRefreshedUserAuthAwsCognitoSaga),
+    fork(getUserIdDataAwsCognitoSaga),
     fork(getCourseDataSaga),
     fork(getGetCognitoTokensSaga),
     fork(getLoadedProfilesSaga),

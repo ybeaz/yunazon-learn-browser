@@ -46,6 +46,16 @@ export type ScormType = {
   durationMultiplier: number
 }
 
+export type UserIdDataAwsCognito = {
+  cognito_groups: string[]
+  email: string | null
+  exp: number | null
+  message: string | null
+  preferred_username: string | null
+  refresh_token: string | null
+  sub: string | null
+}
+
 export type GlobalVarsType = {
   titleSite: string
   descriptionSite: string
@@ -61,7 +71,6 @@ export type RootStoreType = {
   documents: any[]
   users: UserType[]
   scorm: ScormType
-  globalVars: GlobalVarsType
   forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean
@@ -69,4 +78,6 @@ export type RootStoreType = {
     mediaLoaded: any
   }
   language: string
+  userIdDataAwsCognito: UserIdDataAwsCognito
+  globalVars: GlobalVarsType
 }

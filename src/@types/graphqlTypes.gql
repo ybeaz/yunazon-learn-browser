@@ -628,11 +628,14 @@ type TemplatesType {
 }
 
 input UserIdDataAwsCognitoInputType {
+  """AWS enum client_app"""
+  client_app: String!
+
   """AWS code from authorisation workflow"""
   code: String
 
   """AWS redirect_uri"""
-  redirect_uri: String
+  redirect_uri: String!
 
   """AWS refresh token from post-authorization workflow"""
   refresh_token: String

@@ -2,7 +2,13 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { AWS_COGNITO_API, SERVERS } from '../../Constants/servers.const'
+import {
+  AWS_COGNITO_URL,
+  AWS_COGNITO_CLIENT_ID,
+} from '../../Constants/aws.const'
+import { CLIENTS } from '../../Constants/clients.const'
+import { getDetectedEnv } from '../../Shared/getDetectedEnv'
+import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
@@ -71,10 +77,14 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
     console.info('EventsScheduledScreen [39]', error?.message)
   }
 
+  const environment = getDetectedEnv()
+  const redirect_url: CLIENTS = CLIENTS[environment]
+  const linkSignIn = `${AWS_COGNITO_URL}/login?client_id=${AWS_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirect_url}&&scope=email+openid+profile`
+
   const propsOut = {
     linkAuthUserProps: {
       className: '_linkAuthUser',
-      to: `${AWS_COGNITO_API.callbackUrlPart}${redirectUri}`,
+      to: linkSignIn,
     },
     iconReactAuthUserProps: getLinkAuthUserProps(userAwsCognitoAuth),
   }
