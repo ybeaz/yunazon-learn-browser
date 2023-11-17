@@ -1,4 +1,11 @@
-export type ImageYrlPropsType = any
+import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
+
+export type ImageYrlPropsType = {
+  classAdded: string
+  src: string | undefined
+  action?: ActionReduxType
+  handleEvents?: Function
+}
 
 export type ImageYrlPropsOutType = Record<string, any>
 

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+
 import {
   ImageYrlPropsType,
   ImageYrlPropsOutType,
@@ -13,11 +15,24 @@ import {
              from '../Components/ImageYrl/ImageYrl'
  */
 const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
-  const {} = props
+  const { classAdded, src, handleEvents: handleEventsCustom, action } = props
+
+  let handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
+  handleEventsToUse = action ? handleEventsToUse : () => ({})
+  const classCursor = action ? '_cursor' : ''
 
   const propsOut: ImageYrlPropsOutType = {}
 
-  return <div className='ImageYrl'>ImageYrl</div>
+  return (
+    <div
+      className={`Image ${classAdded}`}
+      onClickCapture={(event: React.MouseEvent<HTMLDivElement>) =>
+        handleEventsToUse(event, action)
+      }
+    >
+      <img className={`_image ${classCursor}`} src={src} />
+    </div>
+  )
 }
 
 export const ImageYrl: ImageYrlType = React.memo(ImageYrlComponent)
