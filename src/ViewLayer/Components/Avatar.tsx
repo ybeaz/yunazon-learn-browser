@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { Input } from '../ComponentsLibrary/Input'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 interface AvatarArgs {}
 
@@ -56,7 +56,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
           <ButtonYrl {...propsOut.buttonAvatarProps} />
         </div>
         <div className='_input'>
-          <Input {...propsOut.inputAvatarFileProps} />
+          <InputYrl {...propsOut.inputAvatarFileProps} />
         </div>
       </div>
     </div>

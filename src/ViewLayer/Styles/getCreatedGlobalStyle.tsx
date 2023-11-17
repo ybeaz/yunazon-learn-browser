@@ -128,14 +128,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Input .__input {
+    .InputYrl .__input {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecondDarker', medial, darker)};
     }
 
-    .Input .__input:active,
-    .Input .__input:focus {
+    .InputYrl .__input:active,
+    .InputYrl .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       border-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};

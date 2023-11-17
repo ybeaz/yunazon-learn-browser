@@ -17,7 +17,7 @@ import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { Input } from '../ComponentsLibrary/Input'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 interface ProfileBodyArgs {}
 
@@ -220,13 +220,13 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {' *'}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserNameNickProps} />
+          <InputYrl {...propsOut.inputUserNameNickProps} />
         </div>
       </div>
       <div className={`_row`}>
         <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserInfoAboutProps} />
+          <InputYrl {...propsOut.inputUserInfoAboutProps} />
         </div>
       </div>
       <div className='_row'>
@@ -261,7 +261,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {DICTIONARY['Year_of_birth'][language]}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserBirthYearProps} />
+          <InputYrl {...propsOut.inputUserBirthYearProps} />
         </div>
       </div>
       <div className={`_row`}>

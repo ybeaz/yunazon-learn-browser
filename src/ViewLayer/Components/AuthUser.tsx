@@ -7,7 +7,7 @@ import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { Input } from '../ComponentsLibrary/Input'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 export const AuthUser: React.FunctionComponent<any> = (
   props: any = {
@@ -207,18 +207,18 @@ export const AuthUser: React.FunctionComponent<any> = (
               </div>
 
               {branch === 'signUpManually' && (
-                <Input {...inputUserNameAuthProps} />
+                <InputYrl {...inputUserNameAuthProps} />
               )}
               {(branch == 'signInManually' ||
                 branch === 'signUpManually' ||
                 branch === 'forgetPassword') && (
-                <Input {...inputEmailAuthProps} />
+                <InputYrl {...inputEmailAuthProps} />
               )}
               {(branch === 'signInManually' || branch === 'signUpManually') && (
-                <Input {...inputPasswordAuthProps} />
+                <InputYrl {...inputPasswordAuthProps} />
               )}
               {branch === 'signUpManually' && (
-                <Input {...inputPasswordAuth2Props} />
+                <InputYrl {...inputPasswordAuth2Props} />
               )}
 
               <div className='_signInUpWrapper'>

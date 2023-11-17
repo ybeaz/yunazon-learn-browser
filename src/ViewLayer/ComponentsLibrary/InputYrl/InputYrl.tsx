@@ -21,7 +21,7 @@ import {
 /**
  * @description Component to render InputYrl
  * @import import { InputYrl, InputYrlPropsType, InputYrlPropsOutType, InputYrlType } 
-             from '../Components/InputYrl/InputYrl'
+             from '../Components/InputYrl/InputYrl/InputYrl'
  */
 const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   const {
@@ -75,7 +75,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   const propsOut: InputYrlPropsOutType = {}
 
   return (
-    <div className={`Input ${classAdded}`}>
+    <div className={`InputYrl ${classAdded}`}>
       <div className='__form'>
         {tagName === 'input' && (
           <input

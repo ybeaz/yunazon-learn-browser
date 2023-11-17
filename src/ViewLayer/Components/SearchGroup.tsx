@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { Input } from '../ComponentsLibrary/Input'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export const SearchGroup: React.FunctionComponent<any> = (
@@ -23,7 +23,7 @@ export const SearchGroup: React.FunctionComponent<any> = (
   return (
     <div className='SearchGroup'>
       <div className='searchDiv'>
-        <Input {...inputSearchProps} />
+        <InputYrl {...inputSearchProps} />
       </div>
       <ButtonYrl {...buttonMdSearchProps} />
     </div>

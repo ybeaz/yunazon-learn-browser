@@ -18,7 +18,7 @@ import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { Input } from '../ComponentsLibrary/Input'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface ISearchFormSepArgs {
@@ -346,7 +346,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Matter_of_interest'][language]}
           </div>
           <div className={classCol02}>
-            <Input {...propsOut.inputDescriptionRequiredProps} />
+            <InputYrl {...propsOut.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -369,11 +369,11 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             <div className='_range'>
               {DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...propsOut.inputAgeFromRequiredProps} />
+            <InputYrl {...propsOut.inputAgeFromRequiredProps} />
             <div className='_range'>
               &nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...propsOut.inputAgeToRequiredProps} />
+            <InputYrl {...propsOut.inputAgeToRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
