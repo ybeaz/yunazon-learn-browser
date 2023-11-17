@@ -28,23 +28,11 @@ function* getGlobalVars(args: any) {
 
     const refresh_token = localStorage.getItem('refresh_token')
 
-    console.info('getGlobalVars.saga [31]', { code })
-
-    // if (code) {
-    //   yield call(getUserIdDataAwsCognito, { data: { code } })
-    // } else if (refresh_token) {
-    //   yield call(getRefreshedUserAuthAwsCognito, { data: { refresh_token } })
-    // }
-
-    // const userWebTokenAuth = localStorage.getItem('userWebTokenAuth')
-
-    // if (
-    //   typeof userWebTokenAuth === 'string' &&
-    //   userWebTokenAuth !== 'null' &&
-    //   userWebTokenAuth !== 'undefined'
-    // ) {
-    //   yield put(actionAsync.GET_AUTH_WEB_TOKEN.REQUEST({ userWebTokenAuth }))
-    // }
+    if (code) {
+      yield call(getUserIdDataAwsCognito, { data: { code } })
+    } else if (refresh_token) {
+      yield call(getRefreshedUserAuthAwsCognito, { data: { refresh_token } })
+    }
 
     const { width } = getSizeWindow()
     if (width <= 480) {

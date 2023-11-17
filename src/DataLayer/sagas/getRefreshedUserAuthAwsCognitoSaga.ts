@@ -5,6 +5,7 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { ClientAppType } from '../../@types/ClientAppType'
 
 export function* getRefreshedUserAuthAwsCognito(params: any): Iterable<any> {
   const {
@@ -19,6 +20,7 @@ export function* getRefreshedUserAuthAwsCognito(params: any): Iterable<any> {
       userIdDataAwsCognitoInput: {
         refresh_token,
         redirect_uri,
+        client_app: ClientAppType['ACADEMY'],
       },
     }
 

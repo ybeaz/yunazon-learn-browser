@@ -4,13 +4,11 @@ import getRevokedUserAuthAwsCognitoSaga from './sagas/getRevokedUserAuthAwsCogni
 import getRefreshedUserAuthAwsCognitoSaga from './sagas/getRefreshedUserAuthAwsCognitoSaga'
 import getUserIdDataAwsCognitoSaga from './sagas/getUserIdDataAwsCognitoSaga'
 import getCourseDataSaga from './sagas/getCourseData.saga'
-import getGetCognitoTokensSaga from './sagas/getGetCognitoTokens.saga'
 import getLoadedProfilesSaga from './sagas/getLoadedProfiles.saga'
 import getReadUserAuthSaga from './sagas/getReadUserAuth.saga'
 import getSavedUserProfileSaga from './sagas/getSavedUserProfile.saga'
 import getOAuthUiDataSaga from './sagas/getOAuthUiData.saga'
 import getOAuthGoogleSaga from './sagas/getOAuthGoogle.saga'
-import getAuthWebTokenSaga from './sagas/getAuthWebToken.saga'
 import getAuthSignInSaga from './sagas/getAuthSignIn.saga'
 import getAuthRegisteredSaga from './sagas/getAuthRegistered.saga'
 import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
@@ -26,13 +24,11 @@ export default function* indexSaga() {
     fork(getRefreshedUserAuthAwsCognitoSaga),
     fork(getUserIdDataAwsCognitoSaga),
     fork(getCourseDataSaga),
-    fork(getGetCognitoTokensSaga),
     fork(getLoadedProfilesSaga),
     fork(getReadUserAuthSaga),
     fork(getSavedUserProfileSaga),
     fork(getOAuthUiDataSaga),
     fork(getOAuthGoogleSaga),
-    fork(getAuthWebTokenSaga),
     fork(getAuthSignInSaga),
     fork(getAuthRegisteredSaga),
     fork(getSavedAnalyticsSaga),

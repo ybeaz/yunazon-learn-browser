@@ -5,6 +5,7 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { ClientAppType } from '../../@types/ClientAppType'
 
 export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
   const {
@@ -19,6 +20,7 @@ export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
       userIdDataAwsCognitoInput: {
         code,
         redirect_uri,
+        client_app: ClientAppType['ACADEMY'],
       },
     }
 
@@ -27,6 +29,10 @@ export function* getUserIdDataAwsCognito(params: any): Iterable<any> {
       resolveGraphqlName: 'getUserIdDataAwsCognito',
     })
 
+    console.info('getUserIdDataAwsCognitoSaga [32]', {
+      userIdDataAwsCognito,
+      variables,
+    })
     yield put(actionSync.SET_USERID_DATA_AWS_COGNITO({ userIdDataAwsCognito }))
 
     getSetObjToLocalStorage(userIdDataAwsCognito)
