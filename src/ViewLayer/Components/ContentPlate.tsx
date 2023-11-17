@@ -80,7 +80,7 @@ export const ContentPlate: React.FunctionComponent<
   }
 
   const slug = getSlug(courseCapture)
-  const pathname = `/c/${courseID}/${slug}`
+  const pathname = `/m/${courseID}/${slug}`
 
   const CONTENT_ASSIGNED_COMPONENT = COMPONENT[contentComponentName]
 

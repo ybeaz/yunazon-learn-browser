@@ -88,7 +88,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     : `${lastName} ${firstName}`
 
   const slug = getSlug(courseCapture)
-  const coursePathName = `/c/${courseID}/${slug}`
+  const coursePathName = `/m/${courseID}/${slug}`
 
   const headerFrameProps = {
     brandName: 'YouRails',
