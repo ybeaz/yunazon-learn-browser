@@ -102,7 +102,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
       isButtonAuthUser: true,

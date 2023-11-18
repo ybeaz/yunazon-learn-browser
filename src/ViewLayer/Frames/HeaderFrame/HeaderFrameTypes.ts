@@ -12,7 +12,7 @@ export type HeaderFramePropsType = {
   documentID?: string
   courseID?: string
   contentID?: string
-  isButtonSideMenu: boolean
+  isButtonSideMenuLeft: boolean
   isLogoGroup: boolean
   isButtonAddCourse: boolean
   isButtonAuthUser: boolean

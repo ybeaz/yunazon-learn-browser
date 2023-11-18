@@ -45,7 +45,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
       moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,

@@ -98,7 +98,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     documentID,
     courseID,
     contentID,
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: true,

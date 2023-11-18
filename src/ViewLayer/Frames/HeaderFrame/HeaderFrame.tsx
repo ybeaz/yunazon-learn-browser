@@ -45,7 +45,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isButtonAddCourse,
     isButtonAuthUser,
     isButtonBack,
-    isButtonSideMenu,
+    isButtonSideMenuLeft,
     isButtonsShare,
     isButtonThemeToggle,
     isInstallMobileAppGroup,
@@ -56,7 +56,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   } = props
 
   const {
-    userIdDataAwsCognito,
+    userIdDataAwsCognito: { preferred_username },
     forms: { user },
     language,
   } = useSelector((store2: RootStoreType) => store2)
@@ -145,7 +145,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     },
   }
 
-  console.info('HeaderFrame [148]', { userIdDataAwsCognito })
+  console.info('HeaderFrame [148]', { preferred_username })
 
   return (
     <div
@@ -159,7 +159,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
               <ButtonYrl {...propsOut.buttonBackProps} />
             </Link>
           )}
-          {isButtonSideMenu && (
+          {isButtonSideMenuLeft && (
             <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
           )}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}

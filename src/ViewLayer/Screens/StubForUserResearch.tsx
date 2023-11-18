@@ -29,7 +29,7 @@ export const StubForUserResearch: React.FunctionComponent<
     brandName: 'YouRails',
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: false,
