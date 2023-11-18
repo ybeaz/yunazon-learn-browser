@@ -49,6 +49,8 @@ const AbInCircleComponent: AbInCircleComponentType = (
 ) => {
   const { classAdded, text, colors2 } = props
 
+  if (!text) return null
+
   const text0 = text[0].toUpperCase()
   const text1 = text[1].toUpperCase()
 

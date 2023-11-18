@@ -1,6 +1,6 @@
 export type AbInCirclePropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  text: string
+  text: string | null
   colors2?: Record<string, string>
 }
 
@@ -11,7 +11,7 @@ export type AbInCirclePropsOutType = Record<string, any>
  */
 export interface AbInCircleComponentType
   extends React.FunctionComponent<AbInCirclePropsType> {
-  (props: AbInCirclePropsType): React.ReactElement
+  (props: AbInCirclePropsType): React.ReactElement | null
 }
 
 export type AbInCircleType = React.FunctionComponent<AbInCirclePropsType>

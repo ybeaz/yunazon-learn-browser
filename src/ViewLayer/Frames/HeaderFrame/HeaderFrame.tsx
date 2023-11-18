@@ -148,7 +148,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     },
     abInCircleProps: {
       classAdded: '',
-      text: 'text',
+      text: preferred_username,
     },
   }
 
