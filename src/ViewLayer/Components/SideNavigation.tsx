@@ -16,7 +16,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const {
     forms: { user },
     language,
-    componentsState: { isSideNavVisible },
+    componentsState: { isSideNavLeftVisible },
   } = store
 
   const navigate = useNavigate()
@@ -96,7 +96,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     })
   }
 
-  const classNameAdd = isSideNavVisible ? 'SideNavigation_show' : ''
+  const classNameAdd = isSideNavLeftVisible ? 'SideNavigation_show' : ''
 
   const languageSelectProps: SelectLanguagePropsType = {
     LANGUAGES: LANGUAGES_APP,

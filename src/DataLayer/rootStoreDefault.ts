@@ -64,7 +64,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isShownPalette: false,
   questionsSlideNumber: 0,
   isModalFrameVisible: false,
-  isSideNavVisible: false,
+  isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
   isDocumentAdded: false,
   isCourseStarted: false,

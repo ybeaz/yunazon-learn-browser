@@ -19,7 +19,7 @@ export type ComponentsStateType = {
   isShownPalette: boolean
   questionsSlideNumber: number
   isModalFrameVisible: boolean
-  isSideNavVisible: boolean
+  isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
   isDocumentAdded: boolean
   isCourseStarted: boolean

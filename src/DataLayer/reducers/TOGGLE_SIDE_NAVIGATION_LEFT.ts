@@ -6,10 +6,10 @@ export const TOGGLE_SIDE_NAVIGATION_LEFT: ReducerType = (
   data: any
 ): RootStoreType => {
   const { componentsState } = store
-  const { isSideNavVisible } = componentsState
+  const { isSideNavLeftVisible } = componentsState
   const componentsStateNext = {
     ...componentsState,
-    isSideNavVisible: !isSideNavVisible,
+    isSideNavLeftVisible: !isSideNavLeftVisible,
   }
   return { ...store, componentsState: componentsStateNext }
 }
