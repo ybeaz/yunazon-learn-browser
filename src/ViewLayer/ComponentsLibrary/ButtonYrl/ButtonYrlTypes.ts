@@ -15,6 +15,7 @@ export type ButtonYrlPropsType = {
   isTooltipVisibleForced?: boolean // is tooltips visible, to manage it
   isUnderlined?: boolean // is the button underlined to highlight on of the buttons
   handleEvents?: Function // to pass handleEvents custom functioon instead of the action
+  children?: string | ReactElement
 }
 
 export type ButtonYrlPropsOutType = Record<string, any>

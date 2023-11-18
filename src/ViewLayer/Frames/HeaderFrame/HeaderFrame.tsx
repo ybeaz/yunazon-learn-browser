@@ -57,6 +57,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   const {
     userIdDataAwsCognito: { preferred_username },
+    componentsState: { isSideNavLeftVisible },
     forms: { user },
     language,
   } = useSelector((store2: RootStoreType) => store2)
@@ -85,6 +86,12 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     buttonLeftSideNavigationMenuProps: {
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
+      action: {
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+      },
+    },
+    buttonLeftSideNavigationAvatarProps: {
+      classAdded: '_buttonLeftSideNavigationAvatar',
       action: {
         typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
       },
@@ -145,7 +152,23 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     },
   }
 
-  console.info('HeaderFrame [148]', { preferred_username })
+  let SideMenuLeft = null
+
+  if (isSideNavLeftVisible) {
+    SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
+  } else if (preferred_username) {
+    SideMenuLeft = (
+      <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
+        <AbInCircle {...propsOut.abInCircleProps} />
+      </ButtonYrl>
+    )
+  } else if (!preferred_username && flags.isAwsCognitoAuth())
+    SideMenuLeft = <AuthAwsCognitoLink />
+
+  console.info('HeaderFrame [148]', {
+    preferred_username,
+    isSideNavLeftVisible,
+  })
 
   return (
     <div
@@ -159,9 +182,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
               <ButtonYrl {...propsOut.buttonBackProps} />
             </Link>
           )}
-          {isButtonSideMenuLeft && (
-            <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
-          )}
+          {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && (
             <PageActionsGroup {...propsOut.pageActionsProps} />
@@ -200,7 +221,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonAuthUser && (
             <div className='_itemButtonAuthUser'>
               <ButtonYrl {...propsOut.buttonAuthUserProps} />
-              <AbInCircle {...propsOut.abInCircleProps} />
             </div>
           )}
         </div>

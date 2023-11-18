@@ -2,6 +2,7 @@ import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export type HeaderFramePropsType = {
   brandName: string
@@ -28,11 +29,12 @@ export type HeaderFramePropsType = {
 
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
-  buttonLeftSideNavigationMenuProps: any
-  buttonBackProps: any
-  buttonAddCourseProps: any
-  buttonAuthUserProps: any
-  buttonThemeToggleProps: any
+  buttonLeftSideNavigationMenuProps: ButtonYrlPropsType
+  buttonLeftSideNavigationAvatarProps: ButtonYrlPropsType
+  buttonBackProps: ButtonYrlPropsType
+  buttonAddCourseProps: ButtonYrlPropsType
+  buttonAuthUserProps: ButtonYrlPropsType
+  buttonThemeToggleProps: ButtonYrlPropsType
   pageActionsProps: any
   logoGroupProps: any
   avatarPlusInfoProps: AvatarPlusInfoPropsType

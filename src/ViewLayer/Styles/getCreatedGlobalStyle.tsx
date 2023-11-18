@@ -245,14 +245,13 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
+    .AbInCircle { 
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
     .SideNavigation .__content {
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', medial, middle)};
-    }
-
-    .ButtonYrl .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecondLighter3', medial, lighter3)};
     }
 
     .ButtonYrl .__button:active,

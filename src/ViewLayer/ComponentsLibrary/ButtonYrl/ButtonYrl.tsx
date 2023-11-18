@@ -14,7 +14,7 @@ import {
 /**
  * @description Component to render ButtonYrl
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
-             from '../Components/ButtonYrl/ButtonYrl'
+             from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
  */
 const ButtonYrlComponent: ButtonYrlComponentType = (
   props: ButtonYrlPropsType
@@ -33,6 +33,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     isTooltipVisibleForced = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
+    children,
   } = props
 
   const classDisplay = isDisplaying === true ? '' : 'Button_none'
@@ -92,6 +93,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
             <div className={`_capture_right`}>{captureRight}</div>
           </div>
         ) : null}
+        {children}
       </button>
       {isUnderlined && <hr className='__underlined' />}
     </div>
