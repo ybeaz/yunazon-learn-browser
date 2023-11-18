@@ -1,6 +1,8 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 
+import { getClasses } from '../../../Shared/getClasses'
+
 import { ICONS } from '../../../Constants/icons.const'
 
 interface IconYrlArgs {
@@ -34,7 +36,7 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   return (
     <>
       {Icon && (
-        <div className={`IconYrl ${classAdded}`}>
+        <div className={getClasses(`IconYrl`, classAdded)}>
           <IconContext.Provider
             value={{
               className: `_icon`,

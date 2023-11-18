@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 
 import { useSelector } from 'react-redux'
+import { getClasses } from '../../../Shared/getClasses'
 
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { UserType } from '../../../Interfaces/UserType'
@@ -75,7 +76,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   const propsOut: InputYrlPropsOutType = {}
 
   return (
-    <div className={`InputYrl ${classAdded}`}>
+    <div className={getClasses(`InputYrl`, classAdded)}>
       <div className='__form'>
         {tagName === 'input' && (
           <input

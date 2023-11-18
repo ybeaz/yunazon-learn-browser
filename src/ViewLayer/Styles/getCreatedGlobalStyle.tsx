@@ -236,6 +236,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
+    .AvatarPlusInfo,
+    .AvatarPlusInfo > ._link > ._captureText { 
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
     .LogoGroup {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }

@@ -1,6 +1,41 @@
 .AvatarPlusInfo {
   display: flex;
 
+  ._link {
+    display: flex;
+    text-decoration: none;
+
+    ._imageWrapper {
+    }
+
+    ._captureText {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+
+      ._capture {
+        display: flex;
+        font-size: @fontSize;
+        font-weight: 600;
+        padding-left: 0.3em;
+        align-items: center;
+        display: flex;
+        letter-spacing: normal;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+      }
+
+      ._text {
+        display: flex;
+        padding-left: 0.4em;
+        font-size: @fontSizeS;
+      }
+    }
+  }
+
   @media @large {
   }
   @media @desktop, @desktop-strict {

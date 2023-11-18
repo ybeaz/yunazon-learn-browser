@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { getClasses } from '../../../Shared/getClasses'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 import {
@@ -27,7 +28,7 @@ const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   const propsOut: LoaderOverlayYrlPropsOutType = {}
 
   return (
-    <div className={`LoaderOverlayYrl ${classAdd}`}>
+    <div className={getClasses(`LoaderOverlayYrl`, classAdd)}>
       <div className={`_spinner`}></div>
     </div>
   )

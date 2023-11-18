@@ -1,5 +1,6 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
+import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 
 export type HeaderFramePropsType = {
   brandName: string
@@ -33,6 +34,7 @@ export type HeaderFramePropsOutType = {
   buttonThemeToggleProps: any
   pageActionsProps: any
   logoGroupProps: any
+  avatarPlusInfoProps: AvatarPlusInfoPropsType
 }
 
 /**

@@ -21,11 +21,6 @@ import {
 import { useIntervalYrl, UseIntervalYrlType } from './Hooks/useIntervalYrl'
 
 import {
-  useLinkClickResYrl,
-  UseLinkClickResYrlType,
-} from './Hooks/useLinkClickResYrl'
-
-import {
   useMediaQueryResYrl,
   MediaParamsDefaultType,
   UseMediaQueryResYrlType,
@@ -68,7 +63,6 @@ export type {
   UseAnimatedYrlPropsType,
   UseAnimatedYrlType,
   UseIntervalYrlType,
-  UseLinkClickResYrlType,
   MediaParamsDefaultType,
   UseMediaQueryResYrlType,
   WithStoreStateYrlPropsType,
@@ -85,7 +79,6 @@ export {
   DeviceType,
   useAnimatedYrl,
   useIntervalYrl,
-  useLinkClickResYrl,
   useMediaQueryResYrl,
   withDelayYrl,
   withPropsYrl,

@@ -1,14 +1,24 @@
-export enum TypeWrapperEnum {
-  link = 'link',
-  button = 'button',
-}
+import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { ImageYrlPropsType } from '../../ComponentsLibrary'
 
 export type AvatarPlusInfoPropsType = {
-  classProps: Record<string, string | string[]>
-  typeWrapper: TypeWrapperEnum
+  classProps?: Record<string, string | string[]>
+  pathname?: string
+  handleEvents?: HandleEventType
+  typeEvent?: string
+  imgSrc?: string
+  capture: string
+  text: string
 }
 
-export type AvatarPlusInfoPropsOutType = Record<string, any>
+export type AvatarPlusInfoPropsOutType = {
+  linkProps: {
+    className?: string
+    to: { pathname: string } | {}
+    onClick: () => void
+  }
+  imageProps: ImageYrlPropsType
+}
 
 /**
  * @import import { AvatarPlusInfoType } from './AvatarPlusInfoType'

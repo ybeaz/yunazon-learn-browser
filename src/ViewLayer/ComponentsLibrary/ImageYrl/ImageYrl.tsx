@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { getClasses } from '../../../Shared/getClasses'
 
 import {
   ImageYrlPropsType,
@@ -25,7 +26,7 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
 
   return (
     <div
-      className={`ImageYrl ${classAdded}`}
+      className={getClasses('ImageYrl', classAdded)}
       onClickCapture={(event: React.MouseEvent<HTMLDivElement>) =>
         handleEventsToUse(event, action)
       }

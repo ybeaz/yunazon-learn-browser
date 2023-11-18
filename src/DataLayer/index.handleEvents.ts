@@ -91,7 +91,7 @@ import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
 import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
 
-export const handleEvents: HandleEventType = (event, props): void => {
+export const handleEvents = (event: any, props: any) => {
   const { type: typeStore, typeEvent, data } = props
   const type = typeStore ? typeStore : typeEvent || ''
 
@@ -169,7 +169,6 @@ export const handleEvents: HandleEventType = (event, props): void => {
     ONCHANGE_USER_NAME_NICK,
     PLUS_QUESTION_SLIDE,
     PRINT_DOCUMENT,
-    PRINT_SCORES,
     SAVE_ANALYTICS_INIT_DATA,
     SELECT_COURSE_MODULE,
     SELECT_LANGUAGE_APP,
@@ -185,6 +184,7 @@ export const handleEvents: HandleEventType = (event, props): void => {
     TOGGLE_MEDIA_LOADED,
     TOGGLE_SIDE_NAVIGATION,
     TOGGLE_START_COURSE,
+    // PRINT_SCORES,
   }
 
   output[type] && output[type](event, data)

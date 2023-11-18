@@ -20,6 +20,8 @@ export const withPropsYrl: WithPropsYrlType = (
   extraProps: WithPropsYrlPropsType
 ) =>
   function (Component: FunctionComponent<any>) {
+    console.info('withPropsYrl [23]', { extraProps })
+
     return function WrappedComponent(props: any) {
       const propsNext = { ...props, ...extraProps }
       return <Component {...propsNext} />

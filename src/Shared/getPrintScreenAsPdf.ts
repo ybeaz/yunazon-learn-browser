@@ -1,6 +1,7 @@
 import { getCertificateHtml } from './getCertificateHtml'
 
 /**
+ * @ DEPRECIATED SINCE IT CAUSES THE ERROR
  * @description Function to print React component as pdf with browser native API
  * @Link https://stackoverflow.com/questions/43567329/making-an-html-string-from-a-react-component-in-background-how-to-use-the-strin
  * @link https://stackoverflow.com/questions/18191893/generate-pdf-from-html-in-div-using-javascript

@@ -16,6 +16,12 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
+import {
+  AvatarPlusInfo,
+  AvatarPlusInfoPropsType,
+  AvatarPlusInfoPropsOutType,
+  AvatarPlusInfoType,
+} from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 
 import {
   HeaderFramePropsType,
@@ -129,6 +135,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       logoPath,
       contentComponentName,
     },
+    avatarPlusInfoProps: {
+      classProps: { _link: '_logoGroup' },
+      typeEvent: 'CLICK_LOGO_GROUP',
+      capture: brandName,
+      text: moto,
+      imgSrc: logoPath,
+      // pathname: '/',
+    },
   }
 
   return (
@@ -146,7 +160,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonSideMenu && (
             <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
           )}
-          {isLogoGroup && <LogoGroup {...propsOut.logoGroupProps} />}
+          {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && (
             <PageActionsGroup {...propsOut.pageActionsProps} />
           )}
@@ -171,11 +185,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
             </div>
           )}
           {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
-          {isButtonAuthUser && (
-            <div className='_itemButtonAuthUser'>
-              <ButtonYrl {...propsOut.buttonAuthUserProps} />
-            </div>
-          )}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />
@@ -184,6 +193,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonThemeToggle && (
             <div className='_itemButtonThemeToggle'>
               <ButtonYrl {...propsOut.buttonThemeToggleProps} />
+            </div>
+          )}
+          {isButtonAuthUser && (
+            <div className='_itemButtonAuthUser'>
+              <ButtonYrl {...propsOut.buttonAuthUserProps} />
             </div>
           )}
         </div>
