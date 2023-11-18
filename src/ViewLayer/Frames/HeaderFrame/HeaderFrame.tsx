@@ -9,19 +9,14 @@ import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { SearchGroup } from '../../Components/SearchGroup'
-import { LogoGroup } from '../../Components/LogoGroup'
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
-import {
-  AvatarPlusInfo,
-  AvatarPlusInfoPropsType,
-  AvatarPlusInfoPropsOutType,
-  AvatarPlusInfoType,
-} from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
+import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
+import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
 
 import {
   HeaderFramePropsType,
@@ -61,6 +56,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   } = props
 
   const {
+    userIdDataAwsCognito,
     forms: { user },
     language,
   } = useSelector((store2: RootStoreType) => store2)
@@ -141,9 +137,15 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       capture: brandName,
       text: moto,
       imgSrc: logoPath,
-      // pathname: '/',
+      pathname: '/',
+    },
+    abInCircleProps: {
+      classAdded: '',
+      text: 'text',
     },
   }
+
+  console.info('HeaderFrame [148]', { userIdDataAwsCognito })
 
   return (
     <div
@@ -198,6 +200,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonAuthUser && (
             <div className='_itemButtonAuthUser'>
               <ButtonYrl {...propsOut.buttonAuthUserProps} />
+              <AbInCircle {...propsOut.abInCircleProps} />
             </div>
           )}
         </div>

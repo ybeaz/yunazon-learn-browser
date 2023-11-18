@@ -1,4 +1,8 @@
-export type AbInCirclePropsType = any
+export type AbInCirclePropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
+  text: string
+  colors2?: Record<string, string>
+}
 
 export type AbInCirclePropsOutType = Record<string, any>
 

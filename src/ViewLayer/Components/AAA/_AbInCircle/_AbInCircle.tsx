@@ -69,6 +69,8 @@ const AbInCircleComponent: AbInCircleType = props => {
 
   const color = `#${char0}${char1}`
 
+  const textOut = `${text[0].toUpperCase()}${text[1].toUpperCase()}`
+
   const propsOut: AbInCirclePropsOutType = {}
 
   return (
@@ -81,7 +83,7 @@ const AbInCircleComponent: AbInCircleType = props => {
       testID={testID || 'AbInCircle'}
     >
       <Text style={[style.text, { color: 'white' }]} testID='text'>
-        {text}
+        {textOut}
       </Text>
     </View>
   )

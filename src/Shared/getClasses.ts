@@ -5,7 +5,7 @@ export type GetClassesResType = string
 interface GetClassesType {
   (
     className: string,
-    classProps?: string | string[] | Record<string, string | string[]>
+    classAdded?: string | string[] | Record<string, string | string[]>
   ): GetClassesResType
 }
 
@@ -15,24 +15,24 @@ interface GetClassesType {
  * @import import { getClasses } from './Shared/getClasses'
  */
 
-export const getClasses: GetClassesType = (className, classProps) => {
+export const getClasses: GetClassesType = (className, classAdded) => {
   let output: string = className
 
-  if (classProps) {
-    if (typeof classProps === 'string') output = `${className} ${classProps}`
-    else if (Array.isArray(classProps)) {
-      output = classProps.reduce(
+  if (classAdded) {
+    if (typeof classAdded === 'string') output = `${className} ${classAdded}`
+    else if (Array.isArray(classAdded)) {
+      output = classAdded.reduce(
         (accum: string, item: string) => `${accum} ${item}`,
         className
       )
     } else if (
-      classProps[className] &&
-      typeof classProps[className] === 'string'
+      classAdded[className] &&
+      typeof classAdded[className] === 'string'
     ) {
-      output = `${className} ${classProps[className]}`
-    } else if (Array.isArray(classProps[className])) {
+      output = `${className} ${classAdded[className]}`
+    } else if (Array.isArray(classAdded[className])) {
       // @ts-expect-error
-      output = classProps[className].reduce(
+      output = classAdded[className].reduce(
         (accum: string, item: string) => `${accum} ${item}`,
         className
       )

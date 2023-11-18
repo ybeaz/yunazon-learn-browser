@@ -1,4 +1,6 @@
-export type TemplateReactPropsType = any
+export type TemplateReactPropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
+}
 
 export type TemplateReactPropsOutType = Record<string, any>
 
