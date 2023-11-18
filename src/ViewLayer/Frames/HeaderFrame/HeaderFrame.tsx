@@ -90,7 +90,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION',
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonBackProps: {

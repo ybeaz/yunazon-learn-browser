@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const TOGGLE_SIDE_NAVIGATION: ReducerType = (
+export const TOGGLE_SIDE_NAVIGATION_LEFT: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
