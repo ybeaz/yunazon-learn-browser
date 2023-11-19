@@ -2,38 +2,33 @@ import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getConvertedType } from '../../Shared/getConvertedType'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
+import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
+import { getRedirected } from '../../Shared/getRedirected'
 
 function* initLoading(args: any) {
   try {
-    const languageStorage = getConvertedType(localStorage.getItem('language'))
-    const { language, authAwsCognitoUserData } = yield select(store => store)
+    const storeStateLocalStorage = getLocalStorageStoreStateRead()
+    const languageLocalStorage = storeStateLocalStorage?.language
 
-    if (languageStorage) {
-      yield put(actionSync.SELECT_LANGUAGE_APP(languageStorage))
-    } else {
-      getSetObjToLocalStorage({ source: 'initLoading [18]', language })
+    if (languageLocalStorage) {
+      yield put(actionSync.SET_STORE_STATE(storeStateLocalStorage))
+      yield put(actionSync.SELECT_LANGUAGE_APP(languageLocalStorage))
     }
 
     const code = args?.data?.query?.code
 
-    console.info('initLoading.saga [23]', {
-      refresh_token: localStorage.getItem('refresh_token'),
-    })
-
-    const refresh_token = getConvertedType(
-      localStorage.getItem('refresh_token')
-    )
-    console.info('initLoading.saga [26]', { refresh_token })
+    const refresh_token_LocalStorage =
+      storeStateLocalStorage?.authAwsCognitoUserData?.refresh_token
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })
-    } else if (refresh_token) {
-      console.info('initLoading.saga [30]', { refresh_token })
-      yield call(getAuthAwsCognitoUserRefreshed, { data: { refresh_token } })
+      getRedirected('/')
+    } else if (refresh_token_LocalStorage) {
+      yield call(getAuthAwsCognitoUserRefreshed, {
+        data: { refresh_token: refresh_token_LocalStorage },
+      })
     }
 
     const { width } = getSizeWindow()

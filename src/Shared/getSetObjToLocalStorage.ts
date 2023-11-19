@@ -1,5 +1,5 @@
 interface GetSetObjToLocalStorageType {
-  (objIn: Record<string, any>): void
+  (objIn: Record<string, any>, options?: { printRes?: boolean }): void
 }
 
 /**
@@ -8,10 +8,14 @@ interface GetSetObjToLocalStorageType {
  * @import import { getSetObjToLocalStorage } from '../Shared/getSetObjToLocalStorage'
  */
 export const getSetObjToLocalStorage: GetSetObjToLocalStorageType = (
-  objIn: Record<string, any>
+  objIn: Record<string, any>,
+  options
 ): void => {
   const { source, ...obj } = objIn
-  console.info('getSetObjToLocalStorage [15]', { source, obj })
+
+  if (options?.printRes) {
+    console.log('getLocalStorageStoreStateRead [16]', { source, obj })
+  }
   Object.keys(obj).forEach(key => localStorage.setItem(key, obj[key]))
 }
 

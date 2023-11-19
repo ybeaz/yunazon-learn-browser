@@ -1,11 +1,13 @@
-import { takeEvery, put } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { rootStoreDefault } from '../rootStoreDefault'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
+import { getLocalStorageStoreStateSet } from '../../Shared/getLocalStorageStoreStateSet'
 
 export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
   const {
@@ -30,16 +32,23 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
     })
 
     yield put(
-      actionSync.SET_USERID_DATA_AWS_COGNITO({
+      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
         authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserDataSaga',
       })
     )
 
-    getSetObjToLocalStorage({
-      source: 'getAuthAwsCognitoUserData [39]',
-      authAwsCognitoUserData,
-    })
+    let store = yield select(store => store)
+
+    // @ts-expect-error
+    const storeNext = { ...store, authAwsCognitoUserData }
+    getLocalStorageStoreStateSet(
+      {
+        source: 'getAuthAwsCognitoUserData [39]',
+        storeState: storeNext,
+      },
+      { printRes: false }
+    )
   } catch (error: any) {
     console.log('ERROR getAuthAwsCognitoUserDataSaga', {
       error: error.message,

@@ -1,9 +1,9 @@
-import { takeEvery, put } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
 
@@ -24,30 +24,17 @@ export function* getAuthAwsCognitoUserRefreshed(params: any): Iterable<any> {
       },
     }
 
-    console.info('getAuthAwsCognitoUserRefreshedSaga [27]', {
-      refresh_token,
-    })
-
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
     })
 
     yield put(
-      actionSync.SET_USERID_DATA_AWS_COGNITO({
+      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
         authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserRefreshedSaga',
       })
     )
-
-    console.info('getAuthAwsCognitoUserRefreshedSaga [39]', {
-      refresh_token,
-      authAwsCognitoUserData,
-    })
-    getSetObjToLocalStorage({
-      source: 'getAuthAwsCognitoUserRefreshed [47]',
-      authAwsCognitoUserData,
-    })
   } catch (error: any) {
     console.log('ERROR getAuthAwsCognitoUserRefreshedSaga', {
       error: error.message,

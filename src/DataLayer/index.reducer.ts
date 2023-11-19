@@ -3,7 +3,8 @@ import { Reducer, Action, ReducersMapObject } from 'redux'
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
-import { SET_USERID_DATA_AWS_COGNITO } from './reducers/SET_USERID_DATA_AWS_COGNITO'
+import { SET_STORE_STATE } from './reducers/SET_STORE_STATE'
+import { SET_AUTH_AWS_COGNITO_USER_DATA } from './reducers/SET_AUTH_AWS_COGNITO_USER_DATA'
 import { SET_COURSE_ID_ACTIVE } from './reducers/SET_COURSE_ID_ACTIVE'
 import { SET_MODULE_ID_ACTIVE } from './reducers/SET_MODULE_ID_ACTIVE'
 import { SET_COURSES } from './reducers/SET_COURSES'
@@ -79,7 +80,8 @@ export const indexReducer: IndexReducerType = (
 
   const output: Record<string, any> = {
     TEMPLATE,
-    SET_USERID_DATA_AWS_COGNITO,
+    SET_STORE_STATE,
+    SET_AUTH_AWS_COGNITO_USER_DATA,
     SET_COURSE_ID_ACTIVE,
     SET_MODULE_ID_ACTIVE,
     SET_COURSES,

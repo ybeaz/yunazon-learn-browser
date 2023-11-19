@@ -3,7 +3,8 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
-  'SET_USERID_DATA_AWS_COGNITO',
+  'SET_STORE_STATE',
+  'SET_AUTH_AWS_COGNITO_USER_DATA',
   'SET_COURSE_ID_ACTIVE',
   'SET_MODULE_ID_ACTIVE',
   'SET_COURSES',
