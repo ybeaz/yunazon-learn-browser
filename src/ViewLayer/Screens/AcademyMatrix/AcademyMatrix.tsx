@@ -34,9 +34,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
   const query = getParsedUrlQuery()
-  // console.info('AcademyMatrix [35]', { query, location })
-
-  // const params = useParams()
 
   getEffectedRequests([
     { type: 'INIT_LOADING', data: { query } },
