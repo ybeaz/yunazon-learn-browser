@@ -56,7 +56,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   } = props
 
   const {
-    userIdDataAwsCognito: { preferred_username },
+    authAwsCognitoUserData: { preferred_username },
     componentsState: { isSideNavLeftVisible },
     forms: { user },
     language,

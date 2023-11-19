@@ -6,7 +6,7 @@ const { dispatch, getState } = store
 
 export const CLICK_ON_SIGN_OUT: ActionEventType = (event, data) => {
   const {
-    userIdDataAwsCognito: { refresh_token },
+    authAwsCognitoUserData: { refresh_token },
   } = getState()
 
   dispatch(

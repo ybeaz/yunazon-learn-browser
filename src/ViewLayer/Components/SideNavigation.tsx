@@ -19,7 +19,7 @@ import { isAwsCognitoAuth } from '../../FeatureFlags'
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: RootStoreType) => store2)
   const {
-    userIdDataAwsCognito: { preferred_username },
+    authAwsCognitoUserData: { preferred_username },
     forms: { user },
     language,
     componentsState: { isSideNavLeftVisible },

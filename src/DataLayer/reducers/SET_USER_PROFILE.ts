@@ -18,12 +18,19 @@ export const SET_USER_PROFILE: ReducerType = (
   const userPhone = user.userPhone ? user.userPhone : null
 
   /** @description userWebTokenAuth is set once */
-  if (userWebTokenAuth) getSetObjToLocalStorage({ userWebTokenAuth })
+  if (userWebTokenAuth)
+    getSetObjToLocalStorage({
+      source: 'SET_USER_PROFILE [21]',
+      userWebTokenAuth,
+    })
 
   let userNext: UserType
   if (calledFrom === 'AUTH_SIGN_OUT') {
     /** @description Set userWebTokenAuth null if it comes from AUTH_SIGN_OUT */
-    getSetObjToLocalStorage({ userWebTokenAuth: null })
+    getSetObjToLocalStorage({
+      source: 'SET_USER_PROFILE [26]',
+      userWebTokenAuth: null,
+    })
     userNext = userStoreDefault
   } else if (!userIdAuth) {
     /** @description Preserve data(Next) if there is no associated profile */

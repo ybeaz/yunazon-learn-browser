@@ -24,20 +24,20 @@ function* getAuthAwsCognitoUserRevoked(params: any): Iterable<any> {
       },
     }
 
-    const userIdDataAwsCognito: any = yield getResponseGraphqlAsync({
+    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'getAuthAwsCognitoUserRevoked',
     })
 
     yield put(
       actionSync.SET_USERID_DATA_AWS_COGNITO({
-        userIdDataAwsCognito,
+        authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserRevokedSaga',
       })
     )
 
     getDeletedObjFromLocalStorage({
-      ...userIdDataAwsCognito,
+      ...authAwsCognitoUserData,
       refresh_token: null,
     })
   } catch (error: any) {

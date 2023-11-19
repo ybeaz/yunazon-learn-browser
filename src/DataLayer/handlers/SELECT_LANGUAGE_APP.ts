@@ -12,5 +12,8 @@ export const SELECT_LANGUAGE_APP: ActionEventType = (event, data) => {
 
   getSavedAnanlyticsEvent(event, getAzProps('APP_LANGUAGE_SELECTED')(dataNext))
   dispatch(actionSync.SELECT_LANGUAGE_APP(dataNext))
-  getSetObjToLocalStorage({ language: dataNext })
+  getSetObjToLocalStorage({
+    source: 'SELECT_LANGUAGE_APP [15]',
+    language: dataNext,
+  })
 }
