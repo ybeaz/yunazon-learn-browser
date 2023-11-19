@@ -9,15 +9,15 @@ import {
   Navigate,
 } from 'react-router-dom'
 
-import { ROUTES, RouteType } from './Constants/routes.const'
-import { Profile } from './ViewLayer/Screens/Profile'
-import { StubForUserResearch } from './ViewLayer/Screens/StubForUserResearch'
-import { SkillsExchangeMatrix } from './ViewLayer/Screens/SkillsExchangeMatrix'
-import { SkillsExchangeMatrixChRP } from './ViewLayer/Screens/SkillsExchangeMatrixChRP'
-import { AcademyMatrix } from './ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
-import { AcademyPresent } from './ViewLayer/Screens/AcademyPresent/AcademyPresent'
-import { Error404 } from './ViewLayer/Screens/Error404'
-import { Certificate } from './ViewLayer/Screens/Certificate'
+import { ROUTES, RouteType } from '../Constants/routes.const'
+import { Profile } from '../ViewLayer/Screens/Profile'
+import { StubForUserResearch } from '../ViewLayer/Screens/StubForUserResearch'
+import { SkillsExchangeMatrix } from '../ViewLayer/Screens/SkillsExchangeMatrix'
+import { SkillsExchangeMatrixChRP } from '../ViewLayer/Screens/SkillsExchangeMatrixChRP'
+import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
+import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
+import { Error404 } from '../ViewLayer/Screens/Error404'
+import { Certificate } from '../ViewLayer/Screens/Certificate'
 
 const PAGES: Record<string, any> = {
   Profile,
