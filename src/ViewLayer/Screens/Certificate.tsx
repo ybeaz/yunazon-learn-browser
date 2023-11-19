@@ -1,19 +1,20 @@
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import React, { useEffect, ReactElement } from "react";
-import styled from "styled-components";
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import React, { useEffect, ReactElement } from 'react'
+import styled from 'styled-components'
 
-import { getEffectedRequests } from "../Hooks/getEffectedRequests";
-import { getDateString } from "../../Shared/getDateString";
-import { getInitialTeachContentLoading } from "../Hooks/getInitialTeachContentLoading";
-import { getSlug } from "../../Shared/getSlug";
-import { handleEvents } from "../../DataLayer/index.handleEvents";
-import { HeaderFrame } from "../Frames/HeaderFrame";
-import { IRootStore } from "../../Interfaces/IRootStore";
-import { IRouterScreenProps } from "../../Interfaces/IRouterScreenProps";
-import { LoaderOverlay } from "../ComponentsLibrary/LoaderOverlay";
+import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { getDateString } from '../../Shared/getDateString'
+import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
+import { getSlug } from '../../Shared/getSlug'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
+import { LoaderOverlayYrl } from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
-export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
+export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props
 ): ReactElement => {
   const {
@@ -22,57 +23,57 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
         params: { documentID },
       },
     },
-  } = props;
+  } = props
 
-  getEffectedRequests(["GET_GLOBAL_VARS", "GET_CONTENT_DATA"]);
-  getInitialTeachContentLoading();
+  getEffectedRequests(['INIT_LOADING', 'GET_COURSES'])
+  getInitialTeachContentLoading()
 
-  const store = useSelector((store2: IRootStore) => store2);
-  const { documents, language } = store;
-  const documentsLen = documents.length;
+  const store = useSelector((store2: RootStoreType) => store2)
+  const { documents, language } = store
+  const documentsLen = documents.length
 
   useEffect(() => {
-    handleEvents({}, { typeEvent: "CLOSE_MODAL_GET_SCORES" });
-  }, [documents]);
+    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
+  }, [documents])
 
   useEffect(() => {
     if (!documentsLen) {
-      handleEvents({}, { typeEvent: "FIND_DOCUMENT", data: documentID });
+      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
-  }, [documents]);
+  }, [documents])
 
   let documentDefault = {
     userName: {
-      firstName: "",
-      middleName: "",
-      lastName: "",
+      firstName: '',
+      middleName: '',
+      lastName: '',
     },
     meta: {
-      institution: "",
-      specTitle: "",
-      specName: "",
+      institution: '',
+      specTitle: '',
+      specName: '',
     },
-    capture: "",
-    courseID: "",
-    contentID: "",
-  };
+    capture: '',
+    courseID: '',
+    contentID: '',
+  }
   const {
     userName: {
-      firstName = "",
-      middleName = "",
-      lastName = "",
-      email = "",
+      firstName = '',
+      middleName = '',
+      lastName = '',
+      email = '',
       isSendingBcc = false,
     },
-    meta: { institution = "", specTitle = "", specName = "" },
-    capture: courseCapture = "",
-    courseID = "",
-    contentID = "",
-    creationDate = "",
+    meta: { institution = '', specTitle = '', specName = '' },
+    capture: courseCapture = '',
+    courseID = '',
+    contentID = '',
+    creationDate = '',
     pathName: documentPathName,
-  } = (documentsLen && documents[documentsLen - 1]) || documentDefault;
+  } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
-  const dateStyle = language === "en" ? "US" : language === "ru" ? "EU" : "EU";
+  const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
   const creationDateReadable = getDateString({
     timestamp: creationDate,
@@ -80,24 +81,24 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     hours: false,
     minutes: false,
     seconds: false,
-  });
+  })
 
   const userName = middleName
     ? `${lastName} ${firstName} ${middleName}`
-    : `${lastName} ${firstName}`;
+    : `${lastName} ${firstName}`
 
-  const slug = getSlug(courseCapture);
-  const coursePathName = `/c/${courseID}/${slug}`;
+  const slug = getSlug(courseCapture)
+  const coursePathName = `/m/${courseID}/${slug}`
 
   const headerFrameProps = {
-    brandName: "YouRails",
-    logoPath: "https://study.yourails.com/images/logoYouRails.png",
-    contentComponentName: "SearchFormSep",
+    brandName: 'YouRails',
+    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
+    contentComponentName: 'SearchFormSep',
     courseCapture,
     documentID,
     courseID,
     contentID,
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: true,
@@ -108,82 +109,82 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
     isPageActionsGroup: true,
     isButtonsShare: true,
     isInstallMobileAppGroup: false,
-  };
+  }
 
   return (
-    <div className="Certificate">
-      <div className="_buttons Certificate_noPrint">
+    <div className='Certificate'>
+      <div className='_buttons Certificate_noPrint'>
         <HeaderFrame {...headerFrameProps} />
       </div>
 
-      <div className="container pm-certificate-container">
-        <div className="outer-border"></div>
-        <div className="inner-border"></div>
+      <div className='container pm-certificate-container'>
+        <div className='outer-border'></div>
+        <div className='inner-border'></div>
 
-        <div className="pm-certificate-border">
-          <div className="pm-certificate-header">
-            <div className="pm-certificate-title cursive">
+        <div className='pm-certificate-border'>
+          <div className='pm-certificate-header'>
+            <div className='pm-certificate-title cursive'>
               <h4>{institution}</h4>
               <h2>Certificate of Completion</h2>
             </div>
           </div>
 
-          <div className="pm-certificate-body">
-            <div className="pm-certificate-block">
-              <div className="">
-                <div className="">
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="pm-certificate-name underline margin-0">
-                    <span className="pm-name-text bold">{userName}</span>
+          <div className='pm-certificate-body'>
+            <div className='pm-certificate-block'>
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-certificate-name underline margin-0'>
+                    <span className='pm-name-text bold'>{userName}</span>
                   </div>
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className="">
-                <div className="">
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="pm-earned">
-                    <span className="pm-earned-text padding-0 block cursive">
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-earned'>
+                    <span className='pm-earned-text padding-0 block cursive'>
                       has earned
                     </span>
-                    <span className="pm-credits-text block bold sans">
+                    <span className='pm-credits-text block bold sans'>
                       1.0 Credit Hours
                     </span>
                   </div>
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className=""></div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''></div>
                 </div>
               </div>
 
-              <div className="">
-                <div className="">
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="pm-course-title">
-                    <span className="pm-earned-text block cursive">
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-course-title'>
+                    <span className='pm-earned-text block cursive'>
                       while completing the training course entitled
                     </span>
                   </div>
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
               </div>
 
-              <div className="">
-                <div className="">
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="pm-course-title underline">
-                    <span className="pm-credits-text block bold sans">
+              <div className=''>
+                <div className=''>
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-course-title underline'>
+                    <span className='pm-credits-text block bold sans'>
                       {courseCapture}
                     </span>
                   </div>
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="_code">
-                    <span className="_course">
-                      Course link/id#{" "}
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='_code'>
+                    <span className='_course'>
+                      Course link/id#{' '}
                       <a
-                        className="_courseLink"
+                        className='_courseLink'
                         href={coursePathName}
-                        target="_blank"
+                        target='_blank'
                       >
                         {courseID}
                       </a>
@@ -193,34 +194,34 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
               </div>
             </div>
 
-            <div className="">
-              <div className="">
-                <div className="pm-certificate-footer">
-                  <div className="pm-certified">
-                    <div className="pm-stamp"></div>
-                    <span className="pm-credits-text block sans">
+            <div className=''>
+              <div className=''>
+                <div className='pm-certificate-footer'>
+                  <div className='pm-certified'>
+                    <div className='pm-stamp'></div>
+                    <span className='pm-credits-text block sans'>
                       "Open Internet Education Academy"
                     </span>
-                    <span className="pm-credits-text block sans">
+                    <span className='pm-credits-text block sans'>
                       in partnership with "YouRails.com"
                     </span>
-                    <span className="pm-empty-space block underline"></span>
-                    <span className="pm-credits-text bold block sans">
+                    <span className='pm-empty-space block underline'></span>
+                    <span className='pm-credits-text bold block sans'>
                       {specName}, {specTitle}
                     </span>
                   </div>
-                  <div className="">{/* <!-- LEAVE EMPTY --> */}</div>
-                  <div className="pm-certified">
-                    <div className="_documentData">
-                      <span className="_completed">
+                  <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
+                  <div className='pm-certified'>
+                    <div className='_documentData'>
+                      <span className='_completed'>
                         Completed {creationDateReadable}
                       </span>
-                      <span className="_certificate">
+                      <span className='_certificate'>
                         Certificate link/ No
                         <a
-                          className="_documentLink"
+                          className='_documentLink'
                           href={documentPathName}
-                          target="_blank"
+                          target='_blank'
                         >
                           {documentID}
                         </a>
@@ -236,10 +237,10 @@ export const Certificate: React.FunctionComponent<IRouterScreenProps> = (
           </div>
         </div>
       </div>
-      <LoaderOverlay />
+      <LoaderOverlayYrl />
     </div>
-  );
-};
+  )
+}
 
 // export const Certificate: React.ComponentClass<any> = withRouter(
 //   CertificateOrigin
@@ -251,11 +252,11 @@ const StyledSection = styled.section`
     text-align: center;
 
     .cursive {
-      font-family: "Pinyon Script", cursive;
+      font-family: 'Pinyon Script', cursive;
     }
 
     .sans {
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
     }
 
     .bold {
@@ -297,7 +298,7 @@ const StyledSection = styled.section`
       background-color: #618597;
       padding: 30px;
       color: #333;
-      font-family: "Open Sans", sans-serif;
+      font-family: 'Open Sans', sans-serif;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       background: -webkit-repeating-linear-gradient(
         45deg,
@@ -368,7 +369,7 @@ const StyledSection = styled.section`
           top: 40px;
 
           h2 {
-            font-family: "Pinyon Script", cursive;
+            font-family: 'Pinyon Script', cursive;
             font-size: 34px !important;
           }
         }
@@ -419,4 +420,4 @@ const StyledSection = styled.section`
       }
     }
   }
-`;
+`

@@ -1,16 +1,17 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
 import { getCourseModuleActive } from '../../Shared/getCourseModuleActive'
 
-export const SELECT_COURSE_MODULE: Function = (
-  store: IRootStore,
+export const SELECT_COURSE_MODULE: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { courseID, moduleID } = data
   const { courses } = store
 
-  let storeNext: IRootStore = { ...store }
+  let storeNext: RootStoreType = { ...store }
   courses.forEach(course => {
     const { modules } = course
     modules.forEach(module => {

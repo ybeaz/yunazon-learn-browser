@@ -2,13 +2,13 @@ import { select, put, takeEvery, call } from 'redux-saga/effects'
 
 import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName.const'
 import { cookie } from '../../Shared/cookie'
-import { IAnalyticsInput } from '../../Interfaces/IAnalyticsInput'
+import { AnalyticsInputType } from '../../Interfaces/AnalyticsInputType'
 import { getSavedAnalyticsConnector } from '../../CommunicationLayer/getSavedAnalytics.connector'
 import { actionAsync } from '../../DataLayer/index.action'
 
 interface IGetSavedAnalytics {
   type: string
-  data: IAnalyticsInput
+  data: AnalyticsInputType
 }
 
 function* getSavedAnalytics(payload: IGetSavedAnalytics) {

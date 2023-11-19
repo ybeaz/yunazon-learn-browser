@@ -1,9 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_USER_BIRTH_YEAR: Function = (
-  store: IRootStore,
+export const ONCHANGE_USER_BIRTH_YEAR: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
   const { user } = forms
   const userBirthYear = data ? parseInt(data, 10) : data

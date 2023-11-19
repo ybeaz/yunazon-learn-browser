@@ -1,6 +1,6 @@
-import { IAzProps } from '../Interfaces/IAzProps'
+import { AzPropsType } from '../Interfaces/AzPropsType'
 
-export const getAzProps: Function = (type: string): IAzProps => {
+export const getAzProps: Function = (type: string): AzPropsType => {
   const output = {
     // NOT USED
     VISIT_TOPIC: (options: any) => {

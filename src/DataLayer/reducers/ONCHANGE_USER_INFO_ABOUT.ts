@@ -1,9 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ONCHANGE_USER_INFO_ABOUT: Function = (
-  store: IRootStore,
+export const ONCHANGE_USER_INFO_ABOUT: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { forms } = store
   const { user } = forms
   const userNext = { ...user, userInfoAbout: data }

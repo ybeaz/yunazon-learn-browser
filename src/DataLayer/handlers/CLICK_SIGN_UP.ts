@@ -1,10 +1,10 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
-export const CLICK_SIGN_UP: IActionEvent = (event, data) => {
+export const CLICK_SIGN_UP: ActionEventType = (event, data) => {
   const data2 = [
     {
       childName: 'AuthUser',

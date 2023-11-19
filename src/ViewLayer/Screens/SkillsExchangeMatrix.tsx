@@ -3,17 +3,18 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
-import { FooterFrame } from '../Frames/FooterFrame'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { MainFrame } from '../Frames/MainFrame'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
 
 interface SkillsExchangeMatrixProps {
   routeProps: {
@@ -28,9 +29,9 @@ interface SkillsExchangeMatrixProps {
 export const SkillsExchangeMatrix: React.FunctionComponent<
   SkillsExchangeMatrixProps
 > = (props): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     componentsState: { isShownPalette },
@@ -54,15 +55,15 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
 
   const moduleCapture = 'Exchange your skills, save your time'
   const moduleDescription = 'Exchange your skills, save your time'
-  const canonicalUrl = `https://study.yourails.com${pathname}`
+  const canonicalUrl = `${SERVERS_MAIN.remote}${pathname}`
 
   const propsOut = {
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,
@@ -85,7 +86,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
     },
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://study.yourails.com/images/city.svg',
+      src: `${SERVERS_MAIN.remote}/images/city.svg`,
     },
   }
 
@@ -109,7 +110,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
         {isShownPalette && <Palette />}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

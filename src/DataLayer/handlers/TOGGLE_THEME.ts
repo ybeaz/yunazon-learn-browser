@@ -1,10 +1,10 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const TOGGLE_THEME: IActionEvent = event => {
+export const TOGGLE_THEME: ActionEventType = event => {
   const {
     globalVars: { theme },
   } = getState()

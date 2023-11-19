@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
-import { Image } from '../ComponentsLibrary/Image'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface HowItWorksSepArgs {}
@@ -10,24 +11,24 @@ interface HowItWorksSepArgs {}
 export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
   props: HowItWorksSepArgs
 ): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const propsOut = {
     illustration_5_1_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_1_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_1_1.png`,
     },
     illustration_5_2_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_2_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_2_1.png`,
     },
     illustration_5_3_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_3_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_3_1.png`,
     },
     illustration_5_4_1: {
       classAdded: 'Image_illustration',
-      src: 'https://study.yourails.com/images/illustrations/illustration_5_4_1.png',
+      src: `${SERVERS_MAIN.remote}/images/illustrations/illustration_5_4_1.png`,
     },
   }
 
@@ -49,10 +50,10 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
 
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_1_1} />
+                <ImageYrl {...propsOut.illustration_5_1_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_2_1} />
+                <ImageYrl {...propsOut.illustration_5_2_1} />
               </div>
             </div>
           </div>
@@ -69,10 +70,10 @@ export const HowItWorksSep: React.FunctionComponent<HowItWorksSepArgs> = (
             </div>
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_3_1} />
+                <ImageYrl {...propsOut.illustration_5_3_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_4_1} />
+                <ImageYrl {...propsOut.illustration_5_4_1} />
               </div>
             </div>
           </div>

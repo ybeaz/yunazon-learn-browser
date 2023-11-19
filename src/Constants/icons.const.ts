@@ -34,6 +34,8 @@ import {
   MdQueue,
   MdRemoveCircle,
   MdSearch,
+  MdLogin,
+  MdLogout,
 } from 'react-icons/md'
 
 import {
@@ -112,6 +114,8 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  MdLogin,
+  MdLogout,
   BiLogOutCircle,
   BiLogInCircle,
   FaUserCircle,

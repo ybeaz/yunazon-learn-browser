@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux'
 import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { IDurationObj } from '../../Interfaces/IDurationObj'
-import { Button } from '../ComponentsLibrary/Button'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { DurationObjType } from '../../Interfaces/DurationObjType'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
-interface PlayerPanelArgs {
+export type PlayerPanelPropsType = {
   courseCapture: string
   moduleCapture: string
-  durationObj: IDurationObj
+  durationObj: DurationObjType
   screenType: string
   isShowingPlay: boolean
   buttonPlayProps?: any
@@ -23,7 +23,9 @@ interface PlayerPanelArgs {
   questionsTotal?: number
 }
 
-export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
+export const PlayerPanel: React.FunctionComponent<
+  PlayerPanelPropsType
+> = props => {
   const {
     courseCapture,
     moduleCapture,
@@ -39,7 +41,7 @@ export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
     questionsTotal = 0,
   } = props
 
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
   const certificate = DICTIONARY.certificate[language]
   const succeded = DICTIONARY.succeded[language]
   const tried = DICTIONARY.tried[language]
@@ -95,13 +97,13 @@ export const PlayerPanel: React.FunctionComponent<PlayerPanelArgs> = props => {
       </div>
       <div className='__buttons'>
         {isShowingPlay ? (
-          <Button {...buttonPlayProps} />
+          <ButtonYrl {...buttonPlayProps} />
         ) : (
-          <Button {...buttonPauseProps} />
+          <ButtonYrl {...buttonPauseProps} />
         )}
-        <Button {...buttonStopProps} />
+        <ButtonYrl {...buttonStopProps} />
       </div>
-      <Button {...callForActionButtonPros} />
+      <ButtonYrl {...callForActionButtonPros} />
     </div>
   )
 }

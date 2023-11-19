@@ -1,10 +1,10 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 const { dispatch } = store
 
-export const PRINT_SCORES: IActionEvent = (event, data) => {
+export const PRINT_SCORES: ActionEventType = (event, data) => {
   const { screenType, userName, capture, contentID, meta, description } = data
 
   getPrintScreenAsPdf({

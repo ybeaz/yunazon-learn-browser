@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
+const webpack = require('webpack')
 
 // css/css module 正则表达式
 const cssRegex = /\.css$/
@@ -23,7 +24,7 @@ module.exports = () => {
     },
     target: 'web',
     output: {
-      path: path.resolve(__dirname, 'dist/'),
+      path: path.resolve(__dirname, 'web-build/'),
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -31,6 +32,9 @@ module.exports = () => {
         template: './build/index.html',
       }),
       new WebpackBar(),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
     ],
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],

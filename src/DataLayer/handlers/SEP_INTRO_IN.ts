@@ -1,13 +1,10 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
-import { getAzProps } from '../../Analytics/getAzProps'
-import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromStore'
 
 const { dispatch, getState } = store
 
-export const SEP_INTRO_IN: IActionEvent = (event, data) => {
+export const SEP_INTRO_IN: ActionEventType = (event, data) => {
   const data2 = [
     {
       childName: data,

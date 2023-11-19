@@ -1,11 +1,12 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { Image } from '../ComponentsLibrary/Image'
-import { FooterFrame } from '../Frames/FooterFrame'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
-import { MainFrame } from '../Frames/MainFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface StubForUserResearchArgs {
   routeProps: {
@@ -26,9 +27,9 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: false,
@@ -49,7 +50,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const imageBottomProps = {
     classAdded: 'Image_bottom',
-    src: 'https://study.yourails.com/images/city.svg',
+    src: `${SERVERS_MAIN.remote}/images/city.svg`,
   }
 
   return (
@@ -65,7 +66,7 @@ export const StubForUserResearch: React.FunctionComponent<
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...imageBottomProps} />
+          <ImageYrl {...imageBottomProps} />
         </FooterFrame>
       </MainFrame>
     </div>

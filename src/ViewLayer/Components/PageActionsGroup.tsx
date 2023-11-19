@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface PageActionsGroupArgs {
   courseCapture?: string
@@ -17,7 +17,7 @@ export const PageActionsGroup: React.FunctionComponent<PageActionsGroupArgs> = (
 ): ReactElement => {
   const { courseCapture, documentID, courseID, contentID } = props
 
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   const buttonPrintProps = {
     icon: 'MdPrint',
@@ -61,9 +61,9 @@ export const PageActionsGroup: React.FunctionComponent<PageActionsGroupArgs> = (
   return (
     <div className='PageActions'>
       <div className='_buttons'>
-        <Button {...buttonPrintProps} />
-        <Button {...buttonEmailProps} />
-        <Button {...buttonCopyLinkProps} />
+        <ButtonYrl {...buttonPrintProps} />
+        <ButtonYrl {...buttonEmailProps} />
+        <ButtonYrl {...buttonCopyLinkProps} />
       </div>
     </div>
   )

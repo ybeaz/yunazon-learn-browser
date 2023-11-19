@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { Button } from '../ComponentsLibrary/Button'
-import { Input } from '../ComponentsLibrary/Input'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 interface AvatarArgs {}
 
@@ -15,7 +15,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     forms: {
       user: { userAvatar },
     },
-  } = useSelector((store: IRootStore) => store)
+  } = useSelector((store: RootStoreType) => store)
 
   const propsOut = {
     buttonAvatarProps: {
@@ -53,10 +53,10 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     <div className='Avatar'>
       <div className={`_row`}>
         <div className='_button'>
-          <Button {...propsOut.buttonAvatarProps} />
+          <ButtonYrl {...propsOut.buttonAvatarProps} />
         </div>
         <div className='_input'>
-          <Input {...propsOut.inputAvatarFileProps} />
+          <InputYrl {...propsOut.inputAvatarFileProps} />
         </div>
       </div>
     </div>

@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux'
 import { getInitializedVKontakteOAuth } from '../Hooks/getInitializedVKontakteOAuth'
 import { getInitializedFacebookOAuth } from '../Hooks/getInitializedFacebookOAuth'
 import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Button } from '../ComponentsLibrary/Button'
-import { Input } from '../ComponentsLibrary/Input'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 export const AuthUser: React.FunctionComponent<any> = (
   props: any = {
@@ -28,7 +28,7 @@ export const AuthUser: React.FunctionComponent<any> = (
       isOAuthVKontakteScriptLoaded,
     },
     language,
-  } = useSelector((store2: IRootStore) => store2)
+  } = useSelector((store2: RootStoreType) => store2)
 
   const SCENARIO = {
     signOut: {
@@ -189,9 +189,9 @@ export const AuthUser: React.FunctionComponent<any> = (
             {branch === 'signInManually' && (
               <>
                 <div className='col'>
-                  <Button {...buttonAuthFacebook} />
-                  <Button {...buttonAuthVkontakte} />
-                  <Button {...buttonAuthGoogle} />
+                  <ButtonYrl {...buttonAuthFacebook} />
+                  <ButtonYrl {...buttonAuthVkontakte} />
+                  <ButtonYrl {...buttonAuthGoogle} />
                 </div>
 
                 <div className='vl'>
@@ -207,30 +207,30 @@ export const AuthUser: React.FunctionComponent<any> = (
               </div>
 
               {branch === 'signUpManually' && (
-                <Input {...inputUserNameAuthProps} />
+                <InputYrl {...inputUserNameAuthProps} />
               )}
               {(branch == 'signInManually' ||
                 branch === 'signUpManually' ||
                 branch === 'forgetPassword') && (
-                <Input {...inputEmailAuthProps} />
+                <InputYrl {...inputEmailAuthProps} />
               )}
               {(branch === 'signInManually' || branch === 'signUpManually') && (
-                <Input {...inputPasswordAuthProps} />
+                <InputYrl {...inputPasswordAuthProps} />
               )}
               {branch === 'signUpManually' && (
-                <Input {...inputPasswordAuth2Props} />
+                <InputYrl {...inputPasswordAuth2Props} />
               )}
 
               <div className='_signInUpWrapper'>
                 {(branch === 'signUpManually' ||
                   branch === 'forgetPassword' ||
-                  branch === 'signOut') && <Button {...buttonAuthBack} />}
+                  branch === 'signOut') && <ButtonYrl {...buttonAuthBack} />}
 
                 {(branch === 'signInManually' ||
                   branch === 'signUpManually' ||
                   branch === 'forgetPassword' ||
                   branch === 'signOut') && (
-                  <Button {...buttonAuthSignInUpOut} />
+                  <ButtonYrl {...buttonAuthSignInUpOut} />
                 )}
 
                 <div className={`_wrapperSignInWith ${facebookButtonShowUp}`}>
@@ -244,12 +244,12 @@ export const AuthUser: React.FunctionComponent<any> = (
                     data-use-continue-as='false'
                   ></div>
 
-                  <Button {...buttonAuthBack} />
+                  <ButtonYrl {...buttonAuthBack} />
                 </div>
 
                 <div className={`_wrapperSignInWith ${vkontakteButtonShowUp}`}>
                   {isOAuthVKontakteScriptLoaded && <div id='vk_auth'></div>}
-                  <Button {...buttonAuthBack} />
+                  <ButtonYrl {...buttonAuthBack} />
                 </div>
 
                 <div className={`_wrapperSignInWith ${googleButtonShowUp}`}>
@@ -260,7 +260,7 @@ export const AuthUser: React.FunctionComponent<any> = (
                   {step === 'opt_out_or_no_session' && (
                     <div>{DICTIONARY.PleaseReloadThePage[language]}</div>
                   )}
-                  <Button {...buttonAuthBack} />
+                  <ButtonYrl {...buttonAuthBack} />
                 </div>
               </div>
             </div>
@@ -272,10 +272,10 @@ export const AuthUser: React.FunctionComponent<any> = (
         <div className='bottomContainer'>
           <div className='row'>
             <div className='col'>
-              <Button {...buttonSignUp} />
+              <ButtonYrl {...buttonSignUp} />
             </div>
             <div className='col'>
-              <Button {...buttonForgetPassword} />
+              <ButtonYrl {...buttonForgetPassword} />
             </div>
           </div>
         </div>

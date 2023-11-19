@@ -1,17 +1,21 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
-export const PLUS_QUESTION_SLIDE: Function = (
-  store: IRootStore,
+export const PLUS_QUESTION_SLIDE: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
-  const { componentsState, courses, globalVars } = store
-  const numberQuestionsInSlide = globalVars?.numberQuestionsInSlide
+): RootStoreType => {
+  const {
+    componentsState,
+    courses,
+    scorm: { numberQuestionsInSlide, moduleIDActive },
+  } = store
   const { questionsSlideNumber } = componentsState
   const { step } = data
 
-  const { questionsActive } = getActiveCourseData(courses)
+  const { questionsActive } = getActiveCourseData(courses, moduleIDActive)
   const questionsChunked = getChunkedArray(
     questionsActive,
     numberQuestionsInSlide

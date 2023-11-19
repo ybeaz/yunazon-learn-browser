@@ -1,9 +1,6 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
-import { getAzProps } from '../../Analytics/getAzProps'
-import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromStore'
 
 const { dispatch, getState } = store
 
@@ -21,7 +18,7 @@ const getBase64 = (event, dispatchFunc) => {
   }
 }
 
-export const GET_AVATAR_PATH: IActionEvent = event => {
+export const GET_AVATAR_PATH: ActionEventType = event => {
   const dispatchFunc: Function = (data2: string): Function => {
     return dispatch(actionSync.GET_AVATAR_PATH(data2))
   }

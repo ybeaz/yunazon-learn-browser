@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SideNavigation } from '../Components/SideNavigation'
-import { HeaderFrame } from '../Frames/HeaderFrame'
-import { FooterFrame } from '../Frames/FooterFrame'
-import { MainFrame } from '../Frames/MainFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface ProfileArgs {
   routeProps: {}
@@ -20,9 +21,9 @@ interface ProfileArgs {
 export const Profile: React.FunctionComponent<ProfileArgs> = (
   props: ProfileArgs
 ): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
     componentsState: { isShownPalette },
@@ -42,9 +43,9 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     headerFrameProps: {
       brandName: `YouRails`,
       moto: DICTIONARY['Together_know_everything'][languageStore],
-      logoPath: 'https://study.yourails.com/images/logoYouRailsV21.png',
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,
@@ -59,7 +60,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
     profileBodyProps: {},
     imageBottomProps: {
       classAdded: 'Image_bottom',
-      src: 'https://study.yourails.com/images/city.svg',
+      src: `${SERVERS_MAIN.remote}/images/city.svg`,
     },
   }
   return (
@@ -75,7 +76,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

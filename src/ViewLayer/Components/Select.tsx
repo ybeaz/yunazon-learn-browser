@@ -4,8 +4,8 @@ import { nanoid } from 'nanoid'
 import { getUniqArrBy } from '../../Shared/getUniqArrBy'
 import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { IHandleEventsProps } from '../../Interfaces/IHandleEventsProps'
-export interface ISelectOption {
+import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
+export interface SelectOptionType {
   defaultSelected?: boolean
   selected: boolean
   text?: string
@@ -14,7 +14,7 @@ export interface ISelectOption {
 interface ISelectArgs {
   classAdded: string
   multiple?: boolean
-  options: ISelectOption[]
+  options: SelectOptionType[]
   size: number
   sizeOnBlur: number
   typeEvent: string
@@ -23,7 +23,7 @@ interface ISelectArgs {
 }
 
 interface IGetOptionsNext {
-  (options: ISelectOption[], arrSelected: string[]): ISelectOption[]
+  (options: SelectOptionType[], arrSelected: string[]): SelectOptionType[]
 }
 
 export const Select: React.FunctionComponent<ISelectArgs> = (
@@ -120,11 +120,14 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
     setSizeState(sizeOnBlur)
   }, [language])
 
-  const getOptionsSelected = (options2: ISelectOption[]): ISelectOption[] =>
-    options2.filter(item => item.selected === true)
+  const getOptionsSelected = (
+    options2: SelectOptionType[]
+  ): SelectOptionType[] => options2.filter(item => item.selected === true)
 
-  const getOptionsJsx = (options2: ISelectOption[]): React.ReactElement[] => {
-    return options2.map((option: ISelectOption) => {
+  const getOptionsJsx = (
+    options2: SelectOptionType[]
+  ): React.ReactElement[] => {
+    return options2.map((option: SelectOptionType) => {
       const { text, value, defaultSelected, selected } = option
       const nanoID = nanoid()
 
@@ -141,7 +144,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
   }
 
   const getOptionsNext: IGetOptionsNext = (options2, arrSelected) => {
-    let output = options2.map((option: ISelectOption, i: number) => {
+    let output = options2.map((option: SelectOptionType, i: number) => {
       const { value, selected } = option
 
       let selectedNext = false
@@ -240,7 +243,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (
 
   const handleComponentEvents = (
     event: any,
-    propsEvent: IHandleEventsProps
+    propsEvent: HandleEventPropsType
   ): void => {
     const { typeEvent: typeEvent2, data } = propsEvent
 

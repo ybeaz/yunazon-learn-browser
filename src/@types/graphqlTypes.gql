@@ -1,0 +1,949 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input AddDocumentInputType {
+  capture: String!
+  contentIDs: [String!]!
+  courseID: ID!
+  description: String
+  env: String!
+  lang: String!
+  meta: MetaInputType!
+  moduleIDs: [String!]!
+  userName: UserNameInputType!
+}
+
+type AvatarSizeType {
+  """height"""
+  height: Float
+
+  """width"""
+  width: Float
+}
+
+type ChoiceType {
+  finish_reason: String!
+  index: Int!
+  message: MessageChoiceType!
+}
+
+input ComparisonFields {
+  """user ID"""
+  userIdAuth: ID
+
+  """user ID"""
+  userIdProfile: ID
+}
+
+enum CompetencyContentType {
+  CompetencyTagType
+  ProfileType
+  ProjectType
+}
+
+type CompetencyTagType {
+  """contentType"""
+  contentType: CompetencyContentType!
+
+  """iconLibrary"""
+  iconLibrary: String
+
+  """iconName"""
+  iconName: String
+
+  """competency ID"""
+  idCompetency: ID!
+
+  """profile ID"""
+  idProfile: ID!
+
+  """linkHref"""
+  linkHref: String
+
+  """section"""
+  section: String
+
+  """title"""
+  title: String
+
+  """tooltips"""
+  tooltips: String
+}
+
+input CompetencyTagsInputType {
+  """competencyTags created date"""
+  competencyTagsDateCreated: Date
+
+  """competencyTags deleted date"""
+  competencyTagsDateDeleted: Date
+
+  """competencyTags updated date"""
+  competencyTagsDateUpdated: Date
+
+  """competencyTags ID"""
+  idCompetencyTags: ID
+}
+
+input CompetencyTagsParamsReadType {
+  """first item"""
+  idProfile: String
+}
+
+type CourseEdgeType {
+  """cursor"""
+  cursor: String
+
+  """Course"""
+  node: CourseType
+}
+
+type CourseType {
+  """course capture"""
+  capture: String!
+
+  """courses ID"""
+  courseID: ID!
+
+  """courses created date"""
+  dateCreated: Float!
+
+  """courses deleted date"""
+  dateDeleted: Float
+
+  """courses updated date"""
+  dateUpdated: Float!
+
+  """course description"""
+  description: String!
+
+  """isActive"""
+  isActive: Boolean!
+
+  """language code"""
+  language: String!
+
+  """courses meta information"""
+  meta: MetaType
+
+  """courses modules"""
+  modules: [ModuleType!]
+
+  """courses passRate"""
+  passRate: Float
+
+  """courses questionNumber"""
+  questionNumber: Int!
+}
+
+type CoursesConnectionType {
+  """[CoursesEdgeType]"""
+  edges: [CourseEdgeType!]
+
+  """CoursesPageInfoType"""
+  pageInfo: CoursesPageInfoType
+}
+
+input CoursesInputType {
+  """courses created date"""
+  coursesDateCreated: Date
+
+  """courses deleted date"""
+  coursesDateDeleted: Date
+
+  """courses updated date"""
+  coursesDateUpdated: Date
+
+  """courses ID"""
+  idCourses: ID
+}
+
+type CoursesPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type DocumentType {
+  capture: String!
+  contentIDs: [String!]!
+  courseID: ID!
+  creationDate: Date!
+  description: String
+  documentID: ID!
+  env: String!
+  ip: String!
+  lang: String!
+  meta: MetaObjectType!
+  moduleIDs: [String!]!
+  pathName: String!
+  userName: UserNameObjectType!
+}
+
+type ImageDataOpenAiType {
+  b64_json: String
+  url: String
+}
+
+input ImageOpenAiInputType {
+  n: Int!
+  prompt: String!
+  response_format: String
+  size: String!
+}
+
+type ImagesOpenAiType {
+  created: Int!
+  data: [ImageDataOpenAiType!]!
+}
+
+input MessageAssistantInputType {
+  messages: [MessageChoiceInputType!]!
+  model: String!
+  temperature: Float!
+}
+
+type MessageAssistantType {
+  choices: [ChoiceType!]!
+}
+
+input MessageChoiceInputType {
+  content: String
+  role: String!
+}
+
+type MessageChoiceType {
+  content: String
+  role: String!
+}
+
+type MessengerType {
+  """name"""
+  name: String
+
+  """profileName"""
+  profileName: String
+}
+
+input MetaInputType {
+  email: String!
+  institution: String!
+  isSendingBcc: Boolean!
+  specName: String!
+  specTitle: String!
+}
+
+type MetaObjectType {
+  email: String!
+  institution: String!
+  isSendingBcc: Boolean!
+  specName: String!
+  specTitle: String!
+}
+
+type MetaType {
+  """course meta email"""
+  email: String!
+
+  """course meta institution"""
+  institution: String!
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean!
+
+  """course meta specName"""
+  specName: String!
+
+  """course meta specTitle"""
+  specTitle: String!
+}
+
+type ModuleType {
+  """course module capture"""
+  capture: String!
+
+  """course module contentID"""
+  contentID: ID!
+
+  """course module content type"""
+  contentType: String!
+
+  """course module capture"""
+  description: String
+
+  """course module duration"""
+  duration: String!
+
+  """course module index"""
+  index: Int!
+
+  """isActive"""
+  isActive: Boolean!
+
+  """course module ID"""
+  moduleID: ID!
+
+  """course module questions"""
+  questions: [QuestionType!]!
+}
+
+type Mutation {
+  addDocument(addDocumentInputType: AddDocumentInputType!): DocumentType!
+  addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
+  createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
+  createCourses(coursesInput: CoursesInputType!): [CourseType!]!
+  createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
+  createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  createUser(userInputType: UserInputType!): UserModelExtendedType!
+  deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
+  deleteCourses(courseID: String!): [CourseType!]!
+  deleteProfiles(idProfiles: String!): [ProfileType!]!
+  deleteTemplates(idTemplates: String!): [TemplatesType!]!
+  deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
+  removeDocument(id: String!): Boolean!
+  removeRecipe(id: String!): Boolean!
+  updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
+  updateCourses(coursesInput: CoursesInputType!): [CourseType!]!
+  updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
+  updateTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  updateUser(userInputType2: UserInputType!): UserModelExtendedType!
+}
+
+input NewRecipeInputType {
+  description: String
+  ingredients: [String!]!
+  title: String!
+}
+
+type OptionType {
+  """course module question option label"""
+  label: String!
+
+  """courses module question option ID"""
+  optionID: ID
+
+  """course module question option status: true or false"""
+  status: Boolean!
+}
+
+type ProfileEdgeType {
+  """cursor"""
+  cursor: String
+
+  """ProfileEdgeType"""
+  node: ProfileType
+}
+
+enum ProfileNatureType {
+  bot
+  company
+  human
+}
+
+type ProfileType {
+  """avatarSrc"""
+  avatarSize: AvatarSizeType
+
+  """avatarSrc"""
+  avatarSrc: String
+
+  """contacts"""
+  contacts: [String!]
+
+  """disclaimer"""
+  disclaimer: String
+
+  """emails"""
+  emails: [String!]
+
+  """help"""
+  help: String
+
+  """profile ID"""
+  idProfile: ID!
+
+  """socket ID"""
+  idSocket: ID
+
+  """user ID"""
+  idUser: ID!
+
+  """imagePendingSrc"""
+  imagePendingSrc: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """locations"""
+  locations: [String!]
+
+  """messengers"""
+  messengers: [MessengerType!]
+
+  """nameFirst"""
+  nameFirst: String
+
+  """nameLast"""
+  nameLast: String
+
+  """pendingText"""
+  pendingText: String
+
+  """phones"""
+  phones: [String!]
+
+  """default position profile in the list"""
+  position: Float
+
+  """profile ID"""
+  profileName: String!
+
+  """profileNature"""
+  profileNature: ProfileNatureType!
+
+  """promptExamples"""
+  promptExamples: [String!]
+
+  """serviceSections"""
+  serviceSections: [String!]
+
+  """serviceSpecs"""
+  serviceSpecs: [String!]
+
+  """summary"""
+  summary: String
+}
+
+type ProfilesConnectionType {
+  """[ProfileEdgeType]"""
+  edges: [ProfileEdgeType!]
+
+  """ProfilesPageInfoType"""
+  pageInfo: ProfilesPageInfoType
+}
+
+input ProfilesInputType {
+  """profiles ID"""
+  idProfiles: ID
+
+  """profiles created date"""
+  profilesDateCreated: Date
+
+  """profiles deleted date"""
+  profilesDateDeleted: Date
+
+  """profiles updated date"""
+  profilesDateUpdated: Date
+}
+
+type ProfilesPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
+type Query {
+  findAllDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
+  findDocument(documentID: String!): DocumentType!
+  getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
+  getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
+  getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
+  getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
+  getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
+  readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
+  readCourse(readCourseInput: ReadCourseInputType!): CourseType!
+  readCourses: [CourseType!]!
+  readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
+  readModule(moduleID: String!): ModuleType!
+  readProfiles: [ProfileType!]!
+  readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
+  readTemplate(idTemplates: String!): TemplatesType!
+  readTemplates: [TemplatesType!]!
+  readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
+  readUserAuth(userIdAuth: String!): UserModelExtendedType!
+  readUserProfile(userIdProfile: String!): UserModelExtendedType!
+  readUsers(options: ReadUsersOptions!): UsersType!
+  recipe(id: String!): RecipeType!
+  recipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
+  sendEmailDocument(documentID: String!, sendBcc: String!, sendCc: String!, sendTo: String!): DocumentType!
+}
+
+type QuestionType {
+  """course module question capture"""
+  capture: String!
+
+  """course module question designType"""
+  designType: String
+
+  """course module question isActive"""
+  isActive: Boolean!
+
+  """designType > multi"""
+  multi: Boolean
+
+  """course module question options"""
+  options: [OptionType!]!
+
+  """courses module question ID"""
+  questionID: ID
+}
+
+input ReadCourseInputType {
+  """course ID"""
+  courseID: ID
+
+  """module ID"""
+  moduleID: ID
+}
+
+input ReadCoursesConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
+}
+
+input ReadProfilesConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
+}
+
+input ReadTemplatesConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
+}
+
+input ReadUsersOptions {
+  """
+  user fields equal to, see https://docs.mongodb.com/manual/reference/operator/query/eq/
+  """
+  eq: [ComparisonFields!]
+
+  """The option to search for active or not recods in user document"""
+  isActive: Boolean = true
+
+  """
+  user fields equal to, see https://docs.mongodb.com/manual/reference/operator/query/ne/
+  """
+  ne: [ComparisonFields!]
+}
+
+type RecipeType {
+  creationDate: String!
+  description: String
+  id: ID!
+  ingredients: [String!]!
+  title: String!
+}
+
+type ResponseMessageType {
+  """description message"""
+  message: String
+
+  """status: success or failure"""
+  status: String
+}
+
+type Subscription {
+  documentAdded: DocumentType!
+  recipeAdded: RecipeType!
+}
+
+type TemplatesConnectionType {
+  """[TemplatesEdgeType]"""
+  edges: [TemplatesEdgeType!]
+
+  """TemplatesPageInfoType"""
+  pageInfo: TemplatesPageInfoType
+}
+
+type TemplatesEdgeType {
+  """cursor"""
+  cursor: String
+
+  """TemplatesEdgeType"""
+  node: TemplatesType
+}
+
+input TemplatesInputType {
+  """templates created date"""
+  dateCreated: Date
+
+  """templates deleted date"""
+  dateDeleted: Date
+
+  """templates updated date"""
+  dateUpdated: Date
+
+  """templates ID"""
+  idTemplates: ID
+}
+
+type TemplatesPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
+type TemplatesType {
+  """templates created date"""
+  dateCreated: Date
+
+  """templates deleted date"""
+  dateDeleted: Date
+
+  """templates updated date"""
+  dateUpdated: Date
+
+  """templates ID"""
+  idTemplates: ID
+
+  """isActive"""
+  isActive: Boolean!
+}
+
+input UserIdDataAwsCognitoInputType {
+  """AWS enum client_app"""
+  client_app: String!
+
+  """AWS code from authorisation workflow"""
+  code: String
+
+  """AWS redirect_uri"""
+  redirect_uri: String!
+
+  """AWS refresh token from post-authorization workflow"""
+  refresh_token: String
+}
+
+type UserIdDataAwsCognitoType {
+  """at hash"""
+  at_hash: String
+
+  """
+  The user pool app client that authenticated your user. Amazon Cognito renders the same value in the access token client_id claim
+  """
+  aud: String
+
+  """
+  The authentication time, in Unix time format, that your user completed authentication
+  """
+  auth_time: Float
+
+  """
+  An array of the names of user pool groups that have your user as a member
+  """
+  cognito_groups: [String!]
+
+  """The username of your user in your user pool"""
+  cognito_username: String
+
+  """user's email"""
+  email: String
+
+  """is email verified"""
+  email_verified: Boolean
+
+  """
+  The expiration time, in Unix time format, that your user's token expires
+  """
+  exp: Float
+
+  """
+  The issued-at time, in Unix time format, that Amazon Cognito issued your user's token
+  """
+  iat: Float
+
+  """
+  The identity provider that issued the token. The claim has the following format
+  """
+  iss: String
+
+  """The unique identifier of the JWT"""
+  jti: String
+
+  """message along with data"""
+  message: String!
+
+  """
+  A token-revocation identifier associated with your user's refresh token. Amazon Cognito references the origin_jti claim when it checks if you revoked your user's token with the Revoke endpoint or the RevokeToken API operation. When you revoke a token, Amazon Cognito invalidates all access and ID tokens with the same origin_jti value
+  """
+  origin_jti: String
+
+  """preferred username"""
+  preferred_username: String
+
+  """AWS refresh token from post-authorization workflow"""
+  refresh_token: String
+
+  """
+  A unique identifier (UUID), or subject, for the authenticated user. The username might not be unique in your user pool. The sub claim is the best way to identify a given user
+  """
+  sub: ID
+
+  """The intended purpose of the token. In an ID token, its value is id"""
+  token_use: String
+}
+
+input UserInputType {
+  """user avatar"""
+  userAvatar: String
+
+  """user year of birthday"""
+  userBirthYear: Float
+
+  """user email"""
+  userEmail: String
+
+  """user gender"""
+  userGender: String
+
+  """user ID"""
+  userIdAuth: ID
+
+  """user short information"""
+  userInfoAbout: String
+
+  """user speaking languages"""
+  userLanguages: [String!]
+
+  """user city location"""
+  userLocaleCity: String
+
+  """user country location"""
+  userLocaleCountry: String
+
+  """user login source"""
+  userLoginSource: String
+
+  """user media"""
+  userMedia: [String!]
+
+  """user accepted/ visible name as a result of registration"""
+  userName: String
+
+  """user first name"""
+  userNameFirst: String
+
+  """user last name"""
+  userNameLast: String
+
+  """user middle name"""
+  userNameMiddle: String
+
+  """user accepted/ visible name to display other people"""
+  userNameNick: String!
+
+  """user telephone number"""
+  userPhone: Float
+
+  """user roles to perform actions"""
+  userRoles: [String!]
+
+  """user set of skills, expertises"""
+  userSkillsExpertise: [String!]
+
+  """user timezone"""
+  userTimeZone: String
+
+  """user web site"""
+  userWebLink: String
+}
+
+type UserModelExtendedType {
+  responseMessage: ResponseMessageType!
+
+  """user avatar"""
+  userAvatar: String
+
+  """user year of birthday"""
+  userBirthYear: Float
+
+  """user created date"""
+  userDateCreated: Date
+
+  """user deleted date"""
+  userDateDeleted: Date
+
+  """user updated date"""
+  userDateUpdated: Date
+
+  """user email"""
+  userEmail: String
+
+  """user gender"""
+  userGender: String
+
+  """user ID"""
+  userIdAuth: ID
+
+  """user ID"""
+  userIdProfile: ID
+
+  """user short information"""
+  userInfoAbout: String
+
+  """user speaking languages"""
+  userLanguages: [String!]
+
+  """user city location"""
+  userLocaleCity: String
+
+  """user country location"""
+  userLocaleCountry: String
+
+  """user timezone"""
+  userLoginSource: String
+
+  """user media"""
+  userMedia: [String!]
+
+  """user accepted/ visible name as a result of registration"""
+  userName: String
+
+  """user first name"""
+  userNameFirst: String
+
+  """user last name"""
+  userNameLast: String
+
+  """user middle name"""
+  userNameMiddle: String
+
+  """user accepted/ visible name to display other people"""
+  userNameNick: String!
+
+  """user telephone number"""
+  userPhone: Float
+
+  """user roles to perform actions"""
+  userRoles: [String!]
+
+  """user set of skills, expertises"""
+  userSkillsExpertise: [String!]
+
+  """user timezone"""
+  userTimeZone: String
+
+  """user web site"""
+  userWebLink: String
+}
+
+input UserNameInputType {
+  firstName: String!
+  lastName: String!
+  middleName: String!
+}
+
+type UserNameObjectType {
+  firstName: String!
+  lastName: String!
+  middleName: String!
+}
+
+type UserType {
+  """user avatar"""
+  userAvatar: String
+
+  """user year of birthday"""
+  userBirthYear: Float
+
+  """user created date"""
+  userDateCreated: Date
+
+  """user deleted date"""
+  userDateDeleted: Date
+
+  """user updated date"""
+  userDateUpdated: Date
+
+  """user email"""
+  userEmail: String
+
+  """user gender"""
+  userGender: String
+
+  """user ID"""
+  userIdAuth: ID
+
+  """user ID"""
+  userIdProfile: ID
+
+  """user short information"""
+  userInfoAbout: String
+
+  """user speaking languages"""
+  userLanguages: [String!]
+
+  """user city location"""
+  userLocaleCity: String
+
+  """user country location"""
+  userLocaleCountry: String
+
+  """user timezone"""
+  userLoginSource: String
+
+  """user media"""
+  userMedia: [String!]
+
+  """user accepted/ visible name as a result of registration"""
+  userName: String
+
+  """user first name"""
+  userNameFirst: String
+
+  """user last name"""
+  userNameLast: String
+
+  """user middle name"""
+  userNameMiddle: String
+
+  """user accepted/ visible name to display other people"""
+  userNameNick: String!
+
+  """user telephone number"""
+  userPhone: Float
+
+  """user roles to perform actions"""
+  userRoles: [String!]
+
+  """user set of skills, expertises"""
+  userSkillsExpertise: [String!]
+
+  """user timezone"""
+  userTimeZone: String
+
+  """user web site"""
+  userWebLink: String
+}
+
+type UsersType {
+  responseMessage: ResponseMessageType!
+  users: [UserType!]!
+}

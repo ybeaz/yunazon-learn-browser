@@ -4,9 +4,10 @@ import { Helmet } from 'react-helmet'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SearchFormSepChRP } from '../Components/SearchFormSepChRP'
-import { IRootStore } from '../../Interfaces/IRootStore'
-import { MainFrame } from '../Frames/MainFrame'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface SkillsExchangeMatrixChRPProps {
   routeProps: {
@@ -20,9 +21,9 @@ interface SkillsExchangeMatrixChRPProps {
 export const SkillsExchangeMatrixChRP: React.FunctionComponent<
   SkillsExchangeMatrixChRPProps
 > = (props): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
-  const store = useSelector((store2: IRootStore) => store2)
+  const store = useSelector((store2: RootStoreType) => store2)
   const { language: languageStore } = store
 
   const { themeDafault } = props
@@ -32,7 +33,7 @@ export const SkillsExchangeMatrixChRP: React.FunctionComponent<
 
   const moduleCapture = 'Exchange your skills, save your time'
   const moduleDescription = 'Exchange your skills, save your time'
-  const canonicalUrl = `https://study.yourails.com${props?.routeProps.location.pathname}`
+  const canonicalUrl = `${SERVERS_MAIN.remote}${props?.routeProps.location.pathname}`
   const mainFrameProps = {
     screenType: 'SkillsExchangeMatrixChRP',
     contentComponentName: 'SearchFormSepChRP',

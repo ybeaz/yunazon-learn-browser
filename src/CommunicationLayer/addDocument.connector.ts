@@ -1,14 +1,14 @@
 import axios from 'axios'
 import {
-  IConnectorOutput,
+  ConnectorOutputType,
   AxiosRequestHeaders,
-} from '../Interfaces/IConnectorOutput'
+} from '../Interfaces/ConnectorOutputType'
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 interface IAddDocumentConnector {
-  (vars: any, fragmentName: string): IConnectorOutput
+  (vars: any, fragmentName: string): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {
@@ -24,7 +24,7 @@ export const addDocumentConnector: IAddDocumentConnector = (
   const envType: string = getDetectedEnv()
   const env: string = envType === 'remote' ? 'production' : 'development'
 
-  const obj: IConnectorOutput = {
+  const obj: ConnectorOutputType = {
     testCapture: 'should return 200 code and data defined',
     axiosClient: axios.create({
       baseURL: `${SERVERS[envType]}/graphql`,

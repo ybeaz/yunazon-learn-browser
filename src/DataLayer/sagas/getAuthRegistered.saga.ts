@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegistered.connector'
@@ -14,7 +14,7 @@ function* getAuthRegistered() {
         userPasswordAuth: userPasswordAuth2,
       },
     },
-  } = yield select((store: IRootStore) => store)
+  } = yield select((store: RootStoreType) => store)
 
   const { axiosClient, method, params } = getAuthRegisteredConnector(
     userName2,

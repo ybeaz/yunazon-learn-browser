@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface StubUserGoodbyeArgs {}
@@ -9,7 +9,7 @@ interface StubUserGoodbyeArgs {}
 export const StubUserGoodbye: React.FunctionComponent<StubUserGoodbyeArgs> = (
   props: StubUserGoodbyeArgs
 ): ReactElement => {
-  const { language } = useSelector((store2: IRootStore) => store2)
+  const { language } = useSelector((store2: RootStoreType) => store2)
 
   return (
     <div className='StubUserGoodbye'>

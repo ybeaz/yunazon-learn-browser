@@ -1,9 +1,10 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_IS_ADVANCED_SEARCH: Function = (
-  store: IRootStore,
+export const SET_IS_ADVANCED_SEARCH: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {
     ...componentsState,

@@ -1,7 +1,9 @@
-import { IHandleEventsInterface } from '../Interfaces/IHandleEventsInterface'
-import { IActionEvent } from '../Interfaces/IActionEvent'
+import { HandleEventType } from '../Interfaces/HandleEventType'
+import { ActionEventType } from '../Interfaces/ActionEventType'
 
 import { TEMPLATE } from './handlers/TEMPLATE'
+import { CLICK_ON_SIGN_IN } from './handlers/CLICK_ON_SIGN_IN'
+import { CLICK_ON_SIGN_OUT } from './handlers/CLICK_ON_SIGN_OUT'
 import { GET_COGNITO_TOKENS } from './handlers/GET_COGNITO_TOKENS'
 import { LOAD_PROFILES } from './handlers/LOAD_PROFILES'
 import { CLICK_SIDE_NAV_ITEM } from './handlers/CLICK_SIDE_NAV_ITEM'
@@ -74,10 +76,8 @@ import { ONCHANGE_SEARCH_INPUT } from './handlers/ONCHANGE_SEARCH_INPUT'
 import { ONCHANGE_USER_NAME } from './handlers/ONCHANGE_USER_NAME'
 import { PLUS_QUESTION_SLIDE } from './handlers/PLUS_QUESTION_SLIDE'
 import { PRINT_DOCUMENT } from './handlers/PRINT_DOCUMENT'
-import { PRINT_SCORES } from './handlers/PRINT_SCORES'
 import { SAVE_ANALYTICS_INIT_DATA } from './handlers/SAVE_ANALYTICS_INIT_DATA'
 import { SELECT_COURSE_MODULE } from './handlers/SELECT_COURSE_MODULE'
-import { SELECT_COURSE_MODULE_CONTENTID } from './handlers/SELECT_COURSE_MODULE_CONTENTID'
 import { SELECT_LANGUAGE_APP } from './handlers/SELECT_LANGUAGE_APP'
 import { SEND_AUTH_FORGET_PASSWORD } from './handlers/SEND_AUTH_FORGET_PASSWORD'
 import { SEND_EMAIL_DOCUMENT } from './handlers/SEND_EMAIL_DOCUMENT'
@@ -89,15 +89,18 @@ import { SET_QUESTION_SLIDE } from './handlers/SET_QUESTION_SLIDE'
 import { STOP_PROPAGATION } from './handlers/STOP_PROPAGATION'
 import { TOGGLE_IS_DOCUMENT_ADDED } from './handlers/TOGGLE_IS_DOCUMENT_ADDED'
 import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
-import { TOGGLE_SIDE_NAVIGATION } from './handlers/TOGGLE_SIDE_NAVIGATION'
+import { TOGGLE_SIDE_NAVIGATION_LEFT } from './handlers/TOGGLE_SIDE_NAVIGATION_LEFT'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
+// Causes error: import { PRINT_SCORES } from './handlers/PRINT_SCORES'
 
-export const handleEvents: IHandleEventsInterface = (event, props): void => {
+export const handleEvents = (event: any, props: any) => {
   const { type: typeStore, typeEvent, data } = props
-  const type = typeStore ? typeStore : typeEvent
+  const type = typeStore ? typeStore : typeEvent || ''
 
-  const output: Record<string, IActionEvent> = {
+  const output: Record<string, ActionEventType> = {
     TEMPLATE,
+    CLICK_ON_SIGN_IN,
+    CLICK_ON_SIGN_OUT,
     GET_COGNITO_TOKENS,
     LOAD_PROFILES,
     CLICK_SIDE_NAV_ITEM,
@@ -170,9 +173,7 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     ONCHANGE_USER_NAME_NICK,
     PLUS_QUESTION_SLIDE,
     PRINT_DOCUMENT,
-    PRINT_SCORES,
     SAVE_ANALYTICS_INIT_DATA,
-    SELECT_COURSE_MODULE_CONTENTID,
     SELECT_COURSE_MODULE,
     SELECT_LANGUAGE_APP,
     SEND_AUTH_FORGET_PASSWORD,
@@ -185,8 +186,9 @@ export const handleEvents: IHandleEventsInterface = (event, props): void => {
     STOP_PROPAGATION,
     TOGGLE_IS_DOCUMENT_ADDED,
     TOGGLE_MEDIA_LOADED,
-    TOGGLE_SIDE_NAVIGATION,
+    TOGGLE_SIDE_NAVIGATION_LEFT,
     TOGGLE_START_COURSE,
+    // Causes error: PRINT_SCORES,
   }
 
   output[type] && output[type](event, data)

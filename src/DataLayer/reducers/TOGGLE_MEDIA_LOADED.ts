@@ -1,22 +1,23 @@
-import { IRootStore } from '../../Interfaces/IRootStore'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const TOGGLE_MEDIA_LOADED: Function = (
-  store: IRootStore,
+export const TOGGLE_MEDIA_LOADED: ReducerType = (
+  store: RootStoreType,
   data: any
-): IRootStore => {
+): RootStoreType => {
   const { mediaKey, isMediaLoaded } = data
 
   const { isLoaded } = store
-  const { mediaLoading } = isLoaded
+  const { mediaLoaded } = isLoaded
 
-  const mediaLoadingNext = {
-    ...mediaLoading,
+  const mediaLoadedNext = {
+    ...mediaLoaded,
     [mediaKey]: isMediaLoaded,
   }
 
   const isLoadedNext = {
     ...isLoaded,
-    mediaLoading: mediaLoadingNext,
+    mediaLoaded: mediaLoadedNext,
   }
 
   return { ...store, isLoaded: isLoadedNext }

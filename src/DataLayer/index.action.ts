@@ -3,6 +3,10 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_USERID_DATA_AWS_COGNITO',
+  'SET_COURSE_ID_ACTIVE',
+  'SET_MODULE_ID_ACTIVE',
+  'SET_COURSES',
   'SET_USERS',
   'GET_COGNITO_TOKENS_SUCCESS',
   'LOAD_PROFILES',
@@ -33,7 +37,6 @@ const ACTIONS_SYNC: string[] = [
   'ONCHANGE_SEARCH_INPUT',
   'ONCHANGE_USER_NAME',
   'PLUS_QUESTION_SLIDE',
-  'SELECT_COURSE_MODULE_CONTENTID',
   'SELECT_COURSE_MODULE',
   'SEP_CLICK_BUTTON_SEARCH',
   'SEP_INPUT_AGE_FROM_REQUIRED',
@@ -60,12 +63,16 @@ const ACTIONS_SYNC: string[] = [
   'TOGGLE_IS_DOCUMENT_ADDED',
   'TOGGLE_LOADER_OVERLAY',
   'TOGGLE_MEDIA_LOADED',
-  'TOGGLE_SIDE_NAVIGATION',
+  'TOGGLE_SIDE_NAVIGATION_LEFT',
   'TOGGLE_START_COURSE',
 ]
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_REVOKED_USER_AUTH_AWS_COGNITO_ASYNC',
+  'GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC',
+  'GET_USERID_DATA_AWS_COGNITO_ASYNC',
+  'GET_MODULE_DATA',
   'GET_COGNITO_TOKENS',
   'READ_USERS',
   'READ_USER_AUTH',
@@ -74,9 +81,8 @@ const ACTION_ASYNC: string[] = [
   'FIND_DOCUMENT',
   'GET_AUTH_SIGN_IN',
   'GET_AUTH_SIGN_UP',
-  'GET_AUTH_WEB_TOKEN',
-  'GET_CONTENT_DATA',
-  'GET_GLOBAL_VARS',
+  'GET_COURSES',
+  'INIT_LOADING',
   'GET_OAUTH_GOOGLE',
   'GET_OAUTH_UI_DATA',
   'SAVE_ANALYTICS',
@@ -87,7 +93,7 @@ export const actionSync: CreateSyncAction = createSyncActions(ACTIONS_SYNC)
 export const actionAsync: CreateAsyncAction = createAsyncAction(ACTION_ASYNC)
 
 // Example of the sync action
-// export const TEST_ACTION: Function = (data: any = true): IAction => ({
+// export const TEST_ACTION: Function = (data: any = true): ActionReduxType => ({
 //   type: 'TEST_ACTION',
 //   data,
 // })

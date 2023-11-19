@@ -13,19 +13,19 @@ import { getCreatedGlobalStyle } from './getCreatedGlobalStyle'
  * @link to convert RGB to HSV https://www.rapidtables.com/convert/color/rgb-to-hsl.html
  */
 
-interface GlobalThemeArgs {
-  children: any
+type GlobalThemePropsType = {
+  children: ReactElement | null
 }
 
-export const GlobalTheme: React.FunctionComponent<GlobalThemeArgs> = (
-  props: GlobalThemeArgs
+export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
+  props: GlobalThemePropsType
 ): ReactElement => {
   const getThemeRemotely: Function = () => {
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
       require(`./index.style.less`)
       document.getElementsByTagName('body')[0].style.display = 'flex'
-    } catch (error) {
+    } catch (error: any) {
       console.info('RouterScreensConfig [115]', { msg: error.message })
     }
   }

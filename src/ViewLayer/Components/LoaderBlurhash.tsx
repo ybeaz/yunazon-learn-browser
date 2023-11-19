@@ -1,9 +1,17 @@
-import React, { useState, ReactElement } from "react";
+import React, { useState, ReactElement } from 'react'
 
 // import { Blurhash } from 'react-blurhash'
 
+export type LoaderBlurhashPropsType = {
+  isVisibleBlurHash: boolean
+  textTooltip: string
+  isTextTooltip: boolean
+  delay: number
+  contentComponentName: string
+}
+
 export const LoaderBlurhash: React.FunctionComponent<any> = (
-  props: any
+  props: LoaderBlurhashPropsType
 ): ReactElement => {
   const {
     isVisibleBlurHash,
@@ -11,15 +19,15 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
     isTextTooltip = false,
     delay = 500000,
     contentComponentName,
-  } = props;
+  } = props
 
-  const [isTextVisible, setIsTextVisible] = useState(false);
+  const [isTextVisible, setIsTextVisible] = useState(false)
 
   setTimeout(() => {
-    setIsTextVisible(true);
-  }, delay);
+    setIsTextVisible(true)
+  }, delay)
 
-  let blurHashClass = isVisibleBlurHash ? "_blockVisible" : "_blockHided";
+  let blurHashClass = isVisibleBlurHash ? '_blockVisible' : '_blockHided'
 
   return (
     <div
@@ -36,8 +44,8 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
         /> */}
       </div>
       {isTextTooltip && isVisibleBlurHash && isTextVisible && (
-        <div className="__text">{textTooltip}</div>
+        <div className='__text'>{textTooltip}</div>
       )}
     </div>
-  );
-};
+  )
+}

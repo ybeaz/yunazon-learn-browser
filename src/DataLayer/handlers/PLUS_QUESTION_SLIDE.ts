@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { IActionEvent } from '../../Interfaces/IActionEvent'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
 import { getSavedAnanlyticsEvent } from '../../Analytics/getSavedAnanlyticsEvent'
 import { getAzProps } from '../../Analytics/getAzProps'
@@ -7,14 +7,15 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const PLUS_QUESTION_SLIDE: IActionEvent = (event, data) => {
+export const PLUS_QUESTION_SLIDE: ActionEventType = (event, data) => {
   const { step } = data
   const {
+    scorm: { moduleIDActive },
     courses,
     componentsState: { questionsSlideNumber },
   } = getState()
 
-  const { courseCapture } = getResultDataFromStore(courses)
+  const { courseCapture } = getResultDataFromStore(courses, moduleIDActive)
   const options = { courseCapture, questionsSlideNumber }
   event?.preventDefault &&
     step === 1 &&

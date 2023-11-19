@@ -3,15 +3,15 @@ import { print, DocumentNode } from 'graphql'
 import gql from 'graphql-tag'
 
 import {
-  IConnectorOutput,
+  ConnectorOutputType,
   AxiosRequestHeaders,
-} from '../Interfaces/IConnectorOutput'
+} from '../Interfaces/ConnectorOutputType'
 import { SERVERS } from '../Constants/servers.const'
 import { FRAGMENTS_STRINGS } from './fragments/FRAGMENTS_STRINGS'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 interface IFindDocumentConnector {
-  (documentID: string, fragmentName: string): IConnectorOutput
+  (documentID: string, fragmentName: string): ConnectorOutputType
 }
 
 const headers: AxiosRequestHeaders = {
@@ -35,7 +35,7 @@ export const findDocumentConnector: IFindDocumentConnector = (
   `
   const query = print(queryAst as DocumentNode)
 
-  const obj: IConnectorOutput = {
+  const obj: ConnectorOutputType = {
     testCapture: 'should return 200 code and data defined',
     axiosClient: axios.create({
       baseURL: `${SERVERS[envType]}/graphql`,

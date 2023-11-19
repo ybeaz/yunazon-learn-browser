@@ -1,8 +1,8 @@
 import { Select as SelectAntd } from 'antd'
 
 import { IDictionary } from '../Constants/dictionary.const'
-import { ISelectOptionAntD } from '../Interfaces/ISelectOptionAntD'
-import { ISelectOption } from '../Interfaces/ISelectOption'
+import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
+import { SelectOptionType } from '../Interfaces/SelectOptionType'
 
 const { Option: OptionAntd } = SelectAntd
 
@@ -11,7 +11,7 @@ interface IGetStdDictionaryOptions {
     categories: any,
     language2: string,
     defaultOption2: IDictionary
-  ): ISelectOptionAntD[]
+  ): SelectOptionAntDType[]
 }
 
 /**
@@ -44,7 +44,7 @@ interface IGetStdDictionaryOptionsJsxElements {
   (
     categories: any,
     language: string,
-    defaultOption: ISelectOption
+    defaultOption: SelectOptionType
   ): IOptionFCAntd[]
 }
 
