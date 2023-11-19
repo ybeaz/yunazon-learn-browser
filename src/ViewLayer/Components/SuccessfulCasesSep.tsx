@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -35,7 +35,7 @@ export const SuccessfulCasesSep: React.FunctionComponent<
         <div className='_row'>
           <div className='_col'>
             <div className='_image'>
-              <Image {...propsOut.collageImageFaceProps} />
+              <ImageYrl {...propsOut.collageImageFaceProps} />
             </div>
             <div className='_text'>
               {' '}

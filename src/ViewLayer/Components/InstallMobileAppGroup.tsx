@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Button, IButtonArgs } from '../ComponentsLibrary/Button'
+import {
+  ButtonYrl,
+  IButtonArgs,
+} from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface InstallMobileAppGroupArgs {}
 
@@ -45,8 +48,8 @@ export const InstallMobileAppGroup: React.FunctionComponent<
 
   return (
     <div className='InstallMobileAppGroup'>
-      <Button {...buttonSiAppstoreProps} />
-      <Button {...buttonSiGoogleplayProps} />
+      <ButtonYrl {...buttonSiAppstoreProps} />
+      <ButtonYrl {...buttonSiGoogleplayProps} />
     </div>
   )
 }

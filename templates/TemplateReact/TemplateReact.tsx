@@ -1,5 +1,10 @@
 import React from 'react'
 
+// @ts-expect-error
+import { withPropsYrl } from '../../ComponentsLibrary'
+// @ts-expect-error
+import { getClasses } from '../../../Shared/getClasses'
+
 import {
   TemplateReactPropsType,
   TemplateReactPropsOutType,
@@ -15,15 +20,17 @@ import {
 const TemplateReactComponent: TemplateReactComponentType = (
   props: TemplateReactPropsType
 ) => {
-  const {} = props
+  const { classAdded } = props
 
   const propsOut: TemplateReactPropsOutType = {}
 
-  return <div className='TemplateReact'>TemplateReact</div>
+  return (
+    <div className={getClasses('TemplateReact', classAdded)}>TemplateReact</div>
+  )
 }
 
-export const TemplateReact: TemplateReactType = React.memo(
-  TemplateReactComponent
+export const TemplateReact = withPropsYrl({})(
+  React.memo(TemplateReactComponent)
 )
 
 export type {

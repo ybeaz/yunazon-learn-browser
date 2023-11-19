@@ -121,21 +121,21 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
-    .LoaderOverlay .LoaderOverlay__spinner {
+    .LoaderOverlayYrl .LoaderOverlay__spinner {
       border: 16px solid ${props2 =>
         getColor(props2, 'colorFirstDarker', medial, darker)};
       border-top: 16px solid ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }
 
-    .Input .__input {
+    .InputYrl .__input {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecondDarker', medial, darker)};
     }
 
-    .Input .__input:active,
-    .Input .__input:focus {
+    .InputYrl .__input:active,
+    .InputYrl .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       border-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
@@ -236,7 +236,16 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
+    .AvatarPlusInfo,
+    .AvatarPlusInfo > ._link > ._captureText { 
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
     .LogoGroup {
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
+    .AbInCircle { 
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
@@ -245,21 +254,16 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .Button .__button {
-      background-color: ${props2 =>
-        getColor(props2, 'colorSecondLighter3', medial, lighter3)};
-    }
-
-    .Button .__button:active,
-    .Button .__button:focus {
+    .ButtonYrl .__button:active,
+    .ButtonYrl .__button:focus {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       border-color: ${props2 =>
         getColor(props2, 'colorActive', medial, middle)};
     }
-    .Button ._in {
+    .ButtonYrl ._in {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
-    .Button .__tooltipText {
+    .ButtonYrl .__tooltipText {
       background: ${props2 =>
         getColor(props2, 'colorSecondLighter2', medial, lighter2)};
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
@@ -422,7 +426,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
-    .Button.Button_authSideMenu .__button ._in ._capture_right {
+    .ButtonYrl.Button_authSideMenu .__button ._in ._capture_right {
       color: ${props2 =>
         getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
@@ -437,11 +441,11 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorGrey', medial, middle)};
     }
 
-    .IconReact_authUserHeader ._icon {
+    .IconYrl_authUserHeader ._icon {
       color: ${props2 => getColor(props2, 'colorGrey', opaciter2, lighter4)};
     }
 
-    .IconReact_authUserHeaderActive ._icon {
+    .IconYrl_authUserHeaderActive ._icon {
       color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
 

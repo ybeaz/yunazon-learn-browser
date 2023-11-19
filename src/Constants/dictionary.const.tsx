@@ -694,7 +694,7 @@ export const DICTIONARY: IDictionary = {
     ru: 'Авторизация через соцсети или эл. адрес',
   },
   InputYourEmailToResetPassword: {
-    en: 'Input your email to reset password',
+    en: 'InputYrl your email to reset password',
     ru: 'Введите ваш эл. адрес',
   },
   ForgetPassword: {

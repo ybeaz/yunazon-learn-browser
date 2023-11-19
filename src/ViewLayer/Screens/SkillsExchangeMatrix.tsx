@@ -3,16 +3,16 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
-import { FooterFrame } from '../Frames/FooterFrame'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { SideNavigation } from '../Components/SideNavigation'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { Palette } from '../Components/Palette'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { MainFrame } from '../Frames/MainFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
 
@@ -29,7 +29,7 @@ interface SkillsExchangeMatrixProps {
 export const SkillsExchangeMatrix: React.FunctionComponent<
   SkillsExchangeMatrixProps
 > = (props): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
@@ -63,7 +63,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
       moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,
@@ -110,7 +110,7 @@ export const SkillsExchangeMatrix: React.FunctionComponent<
         {isShownPalette && <Palette />}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

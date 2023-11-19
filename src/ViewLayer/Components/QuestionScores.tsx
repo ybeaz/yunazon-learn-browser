@@ -11,8 +11,8 @@ import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Input } from '../ComponentsLibrary/Input'
-import { Button } from '../ComponentsLibrary/Button'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export const QuestionScores: React.FunctionComponent<any> = props => {
   let navigate = useNavigate()
@@ -192,21 +192,21 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
           <>
             <div className='_group'>
               <label className='_label'>{lastNameLabel}*</label>
-              <Input {...inputLastNameProps} />
+              <InputYrl {...inputLastNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{firstNameLabel}*</label>
-              <Input {...inputFirstNameProps} />
+              <InputYrl {...inputFirstNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{middleNameLabel}</label>
-              <Input {...inputMiddleNameProps} />
+              <InputYrl {...inputMiddleNameProps} />
             </div>
           </>
         ) : null}
         <div className='_buttons'>
-          {/* <Button {...buttonCancelProps} /> */}
-          <Button {...scenario.buttonForwardProps} />
+          {/* <ButtonYrl {...buttonCancelProps} /> */}
+          <ButtonYrl {...scenario.buttonForwardProps} />
         </div>
       </form>
       {result === 'failure' ? (

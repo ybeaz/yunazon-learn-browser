@@ -64,7 +64,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isShownPalette: false,
   questionsSlideNumber: 0,
   isModalFrameVisible: false,
-  isSideNavVisible: false,
+  isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
   isDocumentAdded: false,
   isCourseStarted: false,
@@ -104,6 +104,22 @@ export const rootStoreDefault: RootStoreType = {
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
+  forms: formsDefault,
+  isLoaded: {
+    isLoadedGlobalVars: true,
+    isLoadedCourses: false,
+    mediaLoaded: {},
+  },
+  language: 'en',
+  userIdDataAwsCognito: {
+    cognito_groups: [],
+    email: null,
+    exp: 0,
+    message: null,
+    preferred_username: null,
+    refresh_token: null,
+    sub: null,
+  },
   globalVars: {
     titleSite: 'Academy YouRails - Teach curious; Learn from inspired',
     descriptionSite:
@@ -112,11 +128,4 @@ export const rootStoreDefault: RootStoreType = {
     langSite: 'en',
     theme: 'Dark',
   },
-  forms: formsDefault,
-  isLoaded: {
-    isLoadedGlobalVars: true,
-    isLoadedCourses: false,
-    mediaLoaded: {},
-  },
-  language: 'en',
 }

@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SideNavigation } from '../Components/SideNavigation'
-import { HeaderFrame } from '../Frames/HeaderFrame'
-import { FooterFrame } from '../Frames/FooterFrame'
-import { MainFrame } from '../Frames/MainFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getEffectedRequests } from '../Hooks/getEffectedRequests'
@@ -21,7 +21,7 @@ interface ProfileArgs {
 export const Profile: React.FunctionComponent<ProfileArgs> = (
   props: ProfileArgs
 ): ReactElement => {
-  getEffectedRequests(['GET_GLOBAL_VARS'])
+  getEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
@@ -45,7 +45,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
       moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
       contentComponentName: 'SkillsExchangeMatrix',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
       isButtonAuthUser: true,
@@ -76,7 +76,7 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...propsOut.imageBottomProps} />
+          <ImageYrl {...propsOut.imageBottomProps} />
         </FooterFrame>
       </MainFrame>
       <SideNavigation />

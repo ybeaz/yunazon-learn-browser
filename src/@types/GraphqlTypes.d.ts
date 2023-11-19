@@ -466,11 +466,11 @@ export type Query = {
     __typename?: 'Query';
     findAllDocuments: Array<DocumentType>;
     findDocument: DocumentType;
+    getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
+    getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
+    getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
     getImagesOpenAi: ImagesOpenAiType;
     getMessageAssistant: MessageAssistantType;
-    getRefreshedUserAuthAwsCognito: UserIdDataAwsCognitoType;
-    getRevokedUserAuthAwsCognito: UserIdDataAwsCognitoType;
-    getUserIdDataAwsCognito: UserIdDataAwsCognitoType;
     readCompetencyTags: Array<CompetencyTagType>;
     readCourse: CourseType;
     readCourses: Array<CourseType>;
@@ -495,20 +495,20 @@ export type QueryFindAllDocumentsArgs = {
 export type QueryFindDocumentArgs = {
     documentID: Scalars['String']['input'];
 };
+export type QueryGetAuthAwsCognitoUserDataArgs = {
+    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
+};
+export type QueryGetAuthAwsCognitoUserRefreshedArgs = {
+    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
+};
+export type QueryGetAuthAwsCognitoUserRevokedArgs = {
+    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
+};
 export type QueryGetImagesOpenAiArgs = {
     imageOpenAiInput: ImageOpenAiInputType;
 };
 export type QueryGetMessageAssistantArgs = {
     messageAssistantInput: MessageAssistantInputType;
-};
-export type QueryGetRefreshedUserAuthAwsCognitoArgs = {
-    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
-};
-export type QueryGetRevokedUserAuthAwsCognitoArgs = {
-    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
-};
-export type QueryGetUserIdDataAwsCognitoArgs = {
-    userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType;
 };
 export type QueryReadCompetencyTagsArgs = {
     params: CompetencyTagsParamsReadType;
@@ -671,10 +671,12 @@ export type TemplatesType = {
     isActive: Scalars['Boolean']['output'];
 };
 export type UserIdDataAwsCognitoInputType = {
+    /** AWS enum client_app */
+    client_app: Scalars['String']['input'];
     /** AWS code from authorisation workflow */
     code?: InputMaybe<Scalars['String']['input']>;
     /** AWS redirect_uri */
-    redirect_uri?: InputMaybe<Scalars['String']['input']>;
+    redirect_uri: Scalars['String']['input'];
     /** AWS refresh token from post-authorization workflow */
     refresh_token?: InputMaybe<Scalars['String']['input']>;
 };

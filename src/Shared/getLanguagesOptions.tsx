@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
 
-import { Image } from '../ViewLayer/ComponentsLibrary/Image'
+import { ImageYrl } from '../ViewLayer/ComponentsLibrary/ImageYrl/ImageYrl'
 import { LanguagesType } from '../Interfaces/LanguagesType'
 import { IDictionary } from '../Constants/dictionary.const'
 import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
@@ -52,7 +52,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
         value={value}
         isSelectOption={true}
       >
-        <Image {...imageProps} />
+        <ImageYrl {...imageProps} />
         {labelNext}
       </Option>
     )

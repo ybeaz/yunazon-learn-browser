@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Image } from '../ComponentsLibrary/Image'
-import { Button } from '../ComponentsLibrary/Button'
-import { IconReact } from '../ComponentsLibrary/IconReact'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
@@ -19,87 +19,87 @@ export const SkillExchangeIntro2: React.FunctionComponent<
     iconRiVoiceprintFillProps: {
       icon: 'RiVoiceprintFill',
       icon2: null,
-      classAdded: 'IconReact_RiVoiceprintFill',
+      classAdded: 'IconYrl_RiVoiceprintFill',
     },
     iconMdArrowForwardIosProps: {
       icon: 'MdArrowRight',
       icon2: null,
-      classAdded: 'IconReact_ArrowRight',
+      classAdded: 'IconYrl_ArrowRight',
     },
     iconAiOutlineQuestionCircleProps: {
       icon: 'AiOutlineQuestionCircle',
       icon2: null,
-      classAdded: 'IconReact_AiOutlineQuestionCircle',
+      classAdded: 'IconYrl_AiOutlineQuestionCircle',
     },
     iconMdLanguageProps: {
       icon: 'MdLanguage',
       icon2: null,
-      classAdded: 'IconReact_MdLanguage',
+      classAdded: 'IconYrl_MdLanguage',
     },
     iconIoLanguageSharpProps: {
       icon: 'IoLanguageSharp',
       icon2: null,
-      classAdded: 'IconReact_IoLanguageSharp',
+      classAdded: 'IconYrl_IoLanguageSharp',
     },
     iconIoChatbubblesOutlineProps: {
       icon: 'IoChatbubblesOutline',
       icon2: null,
-      classAdded: 'IconReact_IoChatbubblesOutline',
+      classAdded: 'IconYrl_IoChatbubblesOutline',
     },
     iconBiSelectMultipleProps: {
       icon: 'BiSelectMultiple',
       icon2: null,
-      classAdded: 'IconReact_BiSelectMultiple',
+      classAdded: 'IconYrl_BiSelectMultiple',
     },
     iconBsPiggyBankProps: {
       icon: 'BsPiggyBank',
       icon2: null,
-      classAdded: 'IconReact_BsPiggyBank',
+      classAdded: 'IconYrl_BsPiggyBank',
     },
     iconAiOutlineShareAltProps: {
       icon: 'AiOutlineShareAlt',
       icon2: null,
-      classAdded: 'IconReact_AiOutlineShareAlt',
+      classAdded: 'IconYrl_AiOutlineShareAlt',
     },
     iconHiUsersProps: {
       icon: 'HiUsers',
       icon2: null,
-      classAdded: 'IconReact_HiUsers',
+      classAdded: 'IconYrl_HiUsers',
     },
     iconMdLanguageProps2: {
       icon: 'MdLanguage',
       icon2: null,
-      classAdded: 'IconReact_MdLanguage2',
+      classAdded: 'IconYrl_MdLanguage2',
     },
     iconBsFillPersonCheckFillProps: {
       icon: 'BsFillPersonCheckFill',
       icon2: null,
-      classAdded: 'IconReact_BsFillPersonCheckFill',
+      classAdded: 'IconYrl_BsFillPersonCheckFill',
     },
     iconFaUsersCogProps: {
       icon: 'FaUsersCog',
       icon2: null,
-      classAdded: 'IconReact_FaUsersCog',
+      classAdded: 'IconYrl_FaUsersCog',
     },
     iconMdHomeRepairServiceProps: {
       icon: 'MdHomeRepairService',
       icon2: null,
-      classAdded: 'IconReact_MdHomeRepairService',
+      classAdded: 'IconYrl_MdHomeRepairService',
     },
     iconFaUsersProps: {
       icon: 'FaUsers',
       icon2: null,
-      classAdded: 'IconReact_FaUsers',
+      classAdded: 'IconYrl_FaUsers',
     },
     iconBiVideoPlusProps: {
       icon: 'BiVideoPlus',
       icon2: null,
-      classAdded: 'IconReact_BiVideoPlus',
+      classAdded: 'IconYrl_BiVideoPlus',
     },
     icon6Props: {
       icon: '',
       icon2: null,
-      classAdded: 'IconReact_',
+      classAdded: 'IconYrl_',
     },
     buttonContinueProps: {
       classAdded: 'Button_сontinueIntroSep',
@@ -269,7 +269,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Find_people_by_knowledge_and_skills'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconHiUsersProps} />
+              <IconYrl {...propsOut.iconHiUsersProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_2 _asym_corners m_0_1_0_0 p_1_2'>
@@ -281,7 +281,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               }
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconBsPiggyBankProps} />
+              <IconYrl {...propsOut.iconBsPiggyBankProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_3 _asym_corners m_0_1_0_0 p_1_2'>
@@ -289,7 +289,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Become_an_expert_for_others'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconAiOutlineShareAltProps} />
+              <IconYrl {...propsOut.iconAiOutlineShareAltProps} />
             </div>
           </div>
           <div className='_col _m_0p5 _flex_1 _bg_color_4 _asym_corners p_1_2'>
@@ -297,13 +297,13 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['Chat_on_your_topics_in_all_languages'][language]}
             </div>
             <div className='_iconValue'>
-              <IconReact {...propsOut.iconMdLanguageProps2} />
+              <IconYrl {...propsOut.iconMdLanguageProps2} />
             </div>
           </div>
         </div>
       </div>
       <div className='_button _mobileVisible'>
-        <Button {...propsOut.buttonContinueProps} />
+        <ButtonYrl {...propsOut.buttonContinueProps} />
       </div>
 
       {/* How it works */}
@@ -330,10 +330,10 @@ export const SkillExchangeIntro2: React.FunctionComponent<
 
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_1_1} />
+                <ImageYrl {...propsOut.illustration_5_1_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_2_1} />
+                <ImageYrl {...propsOut.illustration_5_2_1} />
               </div>
             </div>
           </div>
@@ -350,10 +350,10 @@ export const SkillExchangeIntro2: React.FunctionComponent<
             </div>
             <div className='_images'>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_3_1} />
+                <ImageYrl {...propsOut.illustration_5_3_1} />
               </div>
               <div className='_image'>
-                <Image {...propsOut.illustration_5_4_1} />
+                <ImageYrl {...propsOut.illustration_5_4_1} />
               </div>
             </div>
           </div>
@@ -373,14 +373,14 @@ export const SkillExchangeIntro2: React.FunctionComponent<
               {DICTIONARY['real_people_is_talking_to_you'][language]}{' '}
               {DICTIONARY['Everybody_is_protected'][language]}
             </h2>
-            <Image {...propsOut.collageImageFaceProps} />
+            <ImageYrl {...propsOut.collageImageFaceProps} />
           </div>
           <div className='_col _flex_1 _center _p3_Media _m1_Media'>
             <h2 className='_text'>
               {DICTIONARY['There_are_people_for_all_major_topics'][language]}{' '}
               {DICTIONARY['You_don_t_need_to_wait'][language]}
             </h2>
-            <Image {...propsOut.collageImageIndustriesProps} />
+            <ImageYrl {...propsOut.collageImageIndustriesProps} />
           </div>
         </div>
 
@@ -398,7 +398,7 @@ export const SkillExchangeIntro2: React.FunctionComponent<
         </div>
       </div>
       <div className='_button p_3_0_2_0'>
-        <Button {...propsOut.buttonNextProps} />
+        <ButtonYrl {...propsOut.buttonNextProps} />
       </div>
     </div>
   )

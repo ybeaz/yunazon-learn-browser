@@ -8,10 +8,10 @@ import { getDateString } from '../../Shared/getDateString'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
-import { LoaderOverlay } from '../ComponentsLibrary/LoaderOverlay'
+import { LoaderOverlayYrl } from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
@@ -25,7 +25,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     },
   } = props
 
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
+  getEffectedRequests(['INIT_LOADING', 'GET_COURSES'])
   getInitialTeachContentLoading()
 
   const store = useSelector((store2: RootStoreType) => store2)
@@ -88,7 +88,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     : `${lastName} ${firstName}`
 
   const slug = getSlug(courseCapture)
-  const coursePathName = `/c/${courseID}/${slug}`
+  const coursePathName = `/m/${courseID}/${slug}`
 
   const headerFrameProps = {
     brandName: 'YouRails',
@@ -98,7 +98,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     documentID,
     courseID,
     contentID,
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: true,
@@ -237,7 +237,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
           </div>
         </div>
       </div>
-      <LoaderOverlay />
+      <LoaderOverlayYrl />
     </div>
   )
 }

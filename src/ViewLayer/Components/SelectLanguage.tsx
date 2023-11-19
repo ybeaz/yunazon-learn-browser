@@ -8,32 +8,41 @@ import { SVG_FILE_DIR } from '../../Constants/languages.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
-interface SelectLanguageArgs {
+export type SelectLanguagePropsType = {
   LANGUAGES: LanguagesType
   language: null | string
-  mode: 'multiple' | 'tags'
+  mode: 'multiple' | 'tags' | null
   typeEvent: string
   classAdded: string
   languagesSelected: { value: string }[]
 }
 
-export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
-  props: SelectLanguageArgs
-): ReactElement => {
+export type SelectLanguagePropsOutType = {
+  selectAntdProps: any
+}
+
+export const SelectLanguage: React.FunctionComponent<
+  SelectLanguagePropsType
+> = (props: SelectLanguagePropsType): ReactElement => {
   const {
     languagesSelected,
     classAdded,
     LANGUAGES,
-    language,
+    language: languageIn,
     mode,
     typeEvent,
   } = props
 
+  const language = languageIn || 'en'
+
   const stubOnAction = () => {}
 
-  const filterOption = (input, option) =>
-    option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
-    option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
+  const filterOption = (input: string, option: any) => {
+    return (
+      option?.label?.toLowerCase().indexOf(input.toLowerCase()) >= 0 ||
+      option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0
+    )
+  }
 
   const lagnguagesMapped = getLanguagesOptionsJsx(
     LANGUAGES,
@@ -42,17 +51,17 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageArgs> = (
     classAdded
   )
 
-  const propsOut = {
+  const propsOut: SelectLanguagePropsOutType = {
     selectAntdProps: {
       defaultOpen: false,
       labelInValue: true,
       value: languagesSelected,
       defaultValue: [],
-      filterOption: filterOption,
+      filterOption,
       placeholder: DICTIONARY['select'][language],
       showSearch: true,
       className: '__selectAntd',
-      mode: mode,
+      mode,
       onBlur: stubOnAction,
       onChange: (values: any) => handleEvents({}, { typeEvent, data: values }),
       onFocus: stubOnAction,

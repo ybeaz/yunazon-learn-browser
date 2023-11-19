@@ -7,8 +7,8 @@ import { Select as SelectAntd } from 'antd'
 
 import { PropsAddedType } from '../../Interfaces/PropsAddedType'
 import { SelectLanguage } from './SelectLanguage'
-import { getCountriesOptions } from '../../shared/getCountriesOptions'
-import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
+import { getCountriesOptions } from '../../Shared/getCountriesOptions'
+import { getStdDictionaryOptions } from '../../Shared/getStdDictionaryOptions'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SORT_BY } from '../../Constants/sortBy.const'
@@ -17,8 +17,8 @@ import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { Button } from '../ComponentsLibrary/Button'
-import { Input } from '../ComponentsLibrary/Input'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface ISearchFormSepArgs {
@@ -346,7 +346,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             {DICTIONARY['Matter_of_interest'][language]}
           </div>
           <div className={classCol02}>
-            <Input {...propsOut.inputDescriptionRequiredProps} />
+            <InputYrl {...propsOut.inputDescriptionRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -369,11 +369,11 @@ export const SearchFormSep: React.FunctionComponent<any> = (
             <div className='_range'>
               {DICTIONARY['fromStart'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...propsOut.inputAgeFromRequiredProps} />
+            <InputYrl {...propsOut.inputAgeFromRequiredProps} />
             <div className='_range'>
               &nbsp;&nbsp;{DICTIONARY['to'][language]}:&nbsp;&nbsp;
             </div>
-            <Input {...propsOut.inputAgeToRequiredProps} />
+            <InputYrl {...propsOut.inputAgeToRequiredProps} />
           </div>
         </div>
         <div className={`_row ${classAdvancedSearch}`}>
@@ -403,7 +403,7 @@ export const SearchFormSep: React.FunctionComponent<any> = (
         <div className='_row'>
           <div className={classCol01}></div>
           <div className={`${classCol02} _submitGroup`}>
-            <Button {...propsOut.buttonSearchSepProps} />
+            <ButtonYrl {...propsOut.buttonSearchSepProps} />
             <div
               className='_linkAdvacedSearch'
               onClick={event =>

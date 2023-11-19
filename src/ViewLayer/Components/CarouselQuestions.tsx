@@ -7,7 +7,7 @@ import { getButtonsClassString } from '../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CheckRadioGroup } from './CheckRadioGroup'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
@@ -163,19 +163,19 @@ export const CarouselQuestions: React.FunctionComponent = () => {
       {questionsActive.length ? getDots(questionsChunked) : null}
       <div className={`__buttons`}>
         <div className='_backward'>
-          <Button {...buttonSlideBackwardProps} />
+          <ButtonYrl {...buttonSlideBackwardProps} />
         </div>
         <div className='_forward'>
-          <Button {...buttonSlideForwardProps} />
+          <ButtonYrl {...buttonSlideForwardProps} />
         </div>
         <div className='_toCertificate'>
-          <Button {...buttonToCertificateProps} />
+          <ButtonYrl {...buttonToCertificateProps} />
         </div>
         <div className='_downLeft'>
-          <Button {...buttonBlockProps} />
+          <ButtonYrl {...buttonBlockProps} />
         </div>
         <div className='_startModule'>
-          <Button {...buttonStartProps} />
+          <ButtonYrl {...buttonStartProps} />
         </div>
       </div>
       {isCourseStarted && getSlides(questionsChunked)}

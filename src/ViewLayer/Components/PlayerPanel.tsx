@@ -6,7 +6,7 @@ import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 export type PlayerPanelPropsType = {
   courseCapture: string
@@ -97,13 +97,13 @@ export const PlayerPanel: React.FunctionComponent<
       </div>
       <div className='__buttons'>
         {isShowingPlay ? (
-          <Button {...buttonPlayProps} />
+          <ButtonYrl {...buttonPlayProps} />
         ) : (
-          <Button {...buttonPauseProps} />
+          <ButtonYrl {...buttonPauseProps} />
         )}
-        <Button {...buttonStopProps} />
+        <ButtonYrl {...buttonStopProps} />
       </div>
-      <Button {...callForActionButtonPros} />
+      <ButtonYrl {...callForActionButtonPros} />
     </div>
   )
 }

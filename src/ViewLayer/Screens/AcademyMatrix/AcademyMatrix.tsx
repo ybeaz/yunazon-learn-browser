@@ -1,18 +1,20 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
+import { useParams } from 'react-router-dom'
 
-import { CourseType } from '../../../@types/GraphqlTypes'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SideNavigation } from '../../Components/SideNavigation'
-import { HeaderFrame } from '../../Frames/HeaderFrame'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
 import { ContentPlate } from '../../Components/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { MainFrame } from '../../Frames/MainFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 
@@ -31,7 +33,15 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
-  getEffectedRequests(['GET_GLOBAL_VARS', 'GET_COURSES'])
+  const query = getParsedUrlQuery()
+  // console.info('AcademyMatrix [35]', { query, location })
+
+  // const params = useParams()
+
+  getEffectedRequests([
+    { type: 'INIT_LOADING', data: { query } },
+    'GET_COURSES',
+  ])
   getInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'
@@ -41,6 +51,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
+    language: languageStore,
     scorm: { durationMultiplier },
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
@@ -88,9 +99,10 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
+      moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
       isButtonAuthUser: true,

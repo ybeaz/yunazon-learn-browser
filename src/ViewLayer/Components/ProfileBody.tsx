@@ -5,19 +5,19 @@ import { Select as SelectAntd } from 'antd'
 // import 'antd/dist/antd.css'
 
 import { Avatar } from './Avatar'
-import { SelectLanguage } from './SelectLanguage'
-import { getCountriesOptions } from '../../shared/getCountriesOptions'
+import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
+import { getCountriesOptions } from '../../Shared/getCountriesOptions'
 import { COUNTRIES } from '../../Constants/countries.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { getStdDictionaryOptions } from '../../shared/getStdDictionaryOptions'
+import { getStdDictionaryOptions } from '../../Shared/getStdDictionaryOptions'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Button } from '../ComponentsLibrary/Button'
-import { Input } from '../ComponentsLibrary/Input'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
 
 interface ProfileBodyArgs {}
 
@@ -220,13 +220,13 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {' *'}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserNameNickProps} />
+          <InputYrl {...propsOut.inputUserNameNickProps} />
         </div>
       </div>
       <div className={`_row`}>
         <div className={classCol01}>{DICTIONARY['About_me'][language]}</div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserInfoAboutProps} />
+          <InputYrl {...propsOut.inputUserInfoAboutProps} />
         </div>
       </div>
       <div className='_row'>
@@ -261,7 +261,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
           {DICTIONARY['Year_of_birth'][language]}
         </div>
         <div className={classCol02}>
-          <Input {...propsOut.inputUserBirthYearProps} />
+          <InputYrl {...propsOut.inputUserBirthYearProps} />
         </div>
       </div>
       <div className={`_row`}>
@@ -281,7 +281,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
       <div className='_row'>
         <div className={classCol01}></div>
         <div className={`${classCol02} _submitGroup`}>
-          <Button {...propsOut.buttonSaveProfileProps} />
+          <ButtonYrl {...propsOut.buttonSaveProfileProps} />
         </div>
       </div>
     </div>

@@ -9,7 +9,10 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation'
-import { HeaderFrame, HeaderFramePropsType } from '../../Frames/HeaderFrame'
+import {
+  HeaderFrame,
+  HeaderFramePropsType,
+} from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -21,11 +24,11 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { LoaderOverlay } from '../../ComponentsLibrary/LoaderOverlay'
-import { MainFrame } from '../../Frames/MainFrame'
-import { PlayerIframe } from '../../Frames/PlayerIframe'
+import { LoaderOverlayYrl } from '../../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel'
-import { ReaderIframe, ReaderArgs } from '../../Frames/ReaderIframe'
+import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
@@ -56,7 +59,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const screenType = 'AcademyPresent'
 
   getEffectedRequests([
-    'GET_GLOBAL_VARS',
+    { type: 'INIT_LOADING', data: { params } },
     { type: 'GET_MODULE_DATA', data: { moduleID } },
   ])
   getInitialTeachContentLoading()
@@ -192,9 +195,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
+      moto: DICTIONARY['Together_know_everything'][languageStore],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
-      isButtonSideMenu: true,
+      isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
       isButtonAuthUser: true,
@@ -272,7 +276,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
           </MainFrame>
           <SideNavigation />
-          <LoaderOverlay />
+          <LoaderOverlayYrl />
         </>
       ) : null}
     </div>

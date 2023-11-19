@@ -452,11 +452,11 @@ type ProfilesPageInfoType {
 type Query {
   findAllDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
   findDocument(documentID: String!): DocumentType!
+  getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
+  getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
+  getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
   getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
-  getRefreshedUserAuthAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
-  getRevokedUserAuthAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
-  getUserIdDataAwsCognito(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
   readCourse(readCourseInput: ReadCourseInputType!): CourseType!
   readCourses: [CourseType!]!
@@ -628,11 +628,14 @@ type TemplatesType {
 }
 
 input UserIdDataAwsCognitoInputType {
+  """AWS enum client_app"""
+  client_app: String!
+
   """AWS code from authorisation workflow"""
   code: String
 
   """AWS redirect_uri"""
-  redirect_uri: String
+  redirect_uri: String!
 
   """AWS refresh token from post-authorization workflow"""
   refresh_token: String

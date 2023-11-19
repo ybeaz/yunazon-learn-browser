@@ -1,6 +1,6 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { UserType } from '../../Interfaces/UserType'
-import { IButtonArgs } from '../ComponentsLibrary/Button'
+import { IButtonArgs } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface IGetButtonAuthUser {
   (
@@ -12,7 +12,7 @@ interface IGetButtonAuthUser {
 }
 
 /**
- * @description Function returning properties for the Button component
+ * @description Function returning properties for the ButtonYrl component
  */
 
 export const getButtonAuthUserProps: IGetButtonAuthUser = (

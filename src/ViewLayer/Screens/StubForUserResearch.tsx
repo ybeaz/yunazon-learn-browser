@@ -1,10 +1,10 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { Image } from '../ComponentsLibrary/Image'
-import { FooterFrame } from '../Frames/FooterFrame'
-import { HeaderFrame } from '../Frames/HeaderFrame'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
+import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
-import { MainFrame } from '../Frames/MainFrame'
+import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
@@ -29,7 +29,7 @@ export const StubForUserResearch: React.FunctionComponent<
     brandName: 'YouRails',
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
-    isButtonSideMenu: true,
+    isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,
     isButtonAuthUser: false,
@@ -66,7 +66,7 @@ export const StubForUserResearch: React.FunctionComponent<
         {null}
         {/* footer */}
         <FooterFrame>
-          <Image {...imageBottomProps} />
+          <ImageYrl {...imageBottomProps} />
         </FooterFrame>
       </MainFrame>
     </div>

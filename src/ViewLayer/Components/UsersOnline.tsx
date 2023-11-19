@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { Button } from '../ComponentsLibrary/Button'
+import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { Image } from '../ComponentsLibrary/Image'
+import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 const USERS_MAMBA_FACES = [
@@ -65,14 +65,14 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
         } as ActionReduxType,
       }
 
-      return <Image {...imageProps} />
+      return <ImageYrl {...imageProps} />
     })
 
   const propsOut = {
     iconMdArrowForwardIosProps: {
       icon: 'MdArrowRight',
       icon2: null,
-      classAdded: 'IconReact_ArrowRight2',
+      classAdded: 'IconYrl_ArrowRight2',
     },
     buttonMdArrowForwardIosProps: {
       icon: 'MdArrowRight',
@@ -101,7 +101,7 @@ export const UsersOnline: React.FunctionComponent<UsersOnlineArgs> = (
     <div className='UsersOnline'>
       <div className='_images'>
         {getUsersJsx(USERS_MAMBA_FACES, language)}
-        <Button {...propsOut.buttonMdArrowForwardIosProps} />
+        <ButtonYrl {...propsOut.buttonMdArrowForwardIosProps} />
       </div>
     </div>
   )

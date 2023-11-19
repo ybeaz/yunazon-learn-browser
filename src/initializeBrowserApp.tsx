@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 
 import { store } from './DataLayer/store'
 import { GlobalTheme } from './ViewLayer/Styles/GlobalTheme'
-import { RouterScreensConfig } from './RouterScreensConfig'
+import { RouterScreensConfig } from './Navigation/NavigationWeb'
 
 export const initializeBrowserApp = () => {
   const rootElement = document.getElementById('root')

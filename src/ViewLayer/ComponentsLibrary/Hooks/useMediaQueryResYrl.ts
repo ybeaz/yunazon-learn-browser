@@ -1,6 +1,4 @@
-import '@expo/match-media'
-import { useMediaQuery } from 'react-responsive'
-import { Dimensions } from 'react-native'
+import { useMediaQuery } from './useMediaQuery/useMediaQuery'
 
 export enum DeviceType {
   xsDevice = 'xsDevice',
@@ -23,6 +21,7 @@ export interface UseMediaQueryResYrlType {
 }
 
 /**
+ * @TODO Need to update this custom hook
  * @description React Native hook to determine device type and related parameters to provide adaptive web design
  * @import import { useMediaQueryResYrl } from './YrlNativeViewLibrary'
  * @link https://www.npmjs.com/package/react-responsive
@@ -34,6 +33,7 @@ export interface UseMediaQueryResYrlType {
   Wide screens xl 1621 - 16000'
  */
 export const useMediaQueryResYrl: UseMediaQueryResYrlType = () => {
+  // @ts-expect-error   Need to update this to get compatible with web
   const { width, height } = Dimensions.get('window')
 
   const isXsDevice = useMediaQuery({
