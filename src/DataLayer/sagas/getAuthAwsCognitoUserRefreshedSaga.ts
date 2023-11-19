@@ -50,7 +50,7 @@ export function* getAuthAwsCognitoUserRefreshed(params: any): Iterable<any> {
  */
 export default function* getAuthAwsCognitoUserRefreshedSaga() {
   yield takeEvery(
-    [actionAsync.GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST().type],
+    [actionAsync.GET_AUTH_AWS_COGNITO_USER_REFRESHED.REQUEST().type],
     getAuthAwsCognitoUserRefreshed
   )
 }

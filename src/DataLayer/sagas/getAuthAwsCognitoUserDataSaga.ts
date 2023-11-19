@@ -50,7 +50,7 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
  */
 export default function* getAuthAwsCognitoUserDataSaga() {
   yield takeEvery(
-    [actionAsync.GET_USERID_DATA_AWS_COGNITO_ASYNC.REQUEST().type],
+    [actionAsync.GET_AUTH_AWS_COGNITO_USER_DATA.REQUEST().type],
     getAuthAwsCognitoUserData
   )
 }

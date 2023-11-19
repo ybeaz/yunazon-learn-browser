@@ -53,7 +53,7 @@ function* getAuthAwsCognitoUserRevoked(params: any): Iterable<any> {
  */
 export default function* getAuthAwsCognitoUserRevokedSaga() {
   yield takeEvery(
-    [actionAsync.GET_REVOKED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST().type],
+    [actionAsync.GET_AUTH_AWS_COGNITO_USER_REVOKED.REQUEST().type],
     getAuthAwsCognitoUserRevoked
   )
 }

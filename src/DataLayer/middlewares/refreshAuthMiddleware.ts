@@ -14,7 +14,7 @@ const getRefreshedAuthAwsCongito = (...args: any) => {
   const refresh_token = args[1]
   const { dispatch } = store
   dispatch(
-    actionAsync.GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST({
+    actionAsync.GET_AUTH_AWS_COGNITO_USER_REFRESHED.REQUEST({
       refresh_token,
     })
   )
