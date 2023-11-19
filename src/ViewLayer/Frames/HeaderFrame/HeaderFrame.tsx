@@ -163,13 +163,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   if (isSideNavLeftVisible) {
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
-  } else if (preferred_username) {
+  } else if (isButtonAuthUser && preferred_username) {
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
         <AbInCircle {...propsOut.abInCircleProps} />
       </ButtonYrl>
     )
-  } else if (!preferred_username)
+  } else if (isButtonAuthUser && !preferred_username)
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
     )
@@ -211,7 +211,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
-          {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />
@@ -220,11 +219,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonThemeToggle && (
             <div className='_itemButtonThemeToggle'>
               <ButtonYrl {...propsOut.buttonThemeToggleProps} />
-            </div>
-          )}
-          {isButtonAuthUser && (
-            <div className='_itemButtonAuthUser'>
-              <ButtonYrl {...propsOut.buttonAuthUserProps} />
             </div>
           )}
         </div>

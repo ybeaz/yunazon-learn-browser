@@ -9,7 +9,8 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, ButtonYrlType } from '../ComponentsLibrary'
+import { isAwsCognitoAuth } from '../../FeatureFlags'
 
 /**
  * @description Component for the left side menu
@@ -28,23 +29,13 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
 
   const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
-  const buttonPropsArr = [
+  const buttonPropsArr: ButtonYrlType[] = [
     {
       icon: 'MdLogin',
       captureRight: DICTIONARY.Login[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'CLICK_ON_SIGN_IN' },
-      isDisplaying: !preferred_username,
-    },
-    {
-      icon: 'MdHome',
-      captureRight: DICTIONARY.Home[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/sep' },
-      },
-      isDisplaying: false,
+      isDisplaying: isAwsCognitoAuth() && !preferred_username,
     },
     {
       icon: 'MdPerson',
@@ -55,13 +46,6 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         data: { history: navigate, path: '/profile' },
       },
       isDisplaying: user.userStatus === 'success',
-    },
-    {
-      icon: 'HiOutlineAcademicCap',
-      captureRight: DICTIONARY.Academy[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
-      isDisplaying: false,
     },
     {
       icon: 'MdQueue',
@@ -99,9 +83,30 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       captureRight: DICTIONARY.Logout[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'CLICK_ON_SIGN_OUT' },
-      isDisplaying: !!preferred_username,
+      isDisplaying: isAwsCognitoAuth() && !!preferred_username,
     },
-    // { ...buttonAuthUserProps },
+    {
+      icon: 'HiOutlineAcademicCap',
+      captureRight: DICTIONARY.Academy[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
+      isDisplaying: false,
+    },
+    {
+      icon: 'MdHome',
+      captureRight: DICTIONARY.Home[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/sep' },
+      },
+      isDisplaying: false,
+    },
+    {
+      description: 'Depreciated group of authentication',
+      ...buttonAuthUserProps,
+      isDisplaying: false,
+    },
   ]
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
