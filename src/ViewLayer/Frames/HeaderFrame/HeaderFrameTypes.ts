@@ -31,6 +31,7 @@ export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
   buttonLeftSideNavigationMenuProps: ButtonYrlPropsType
   buttonLeftSideNavigationAvatarProps: ButtonYrlPropsType
+  buttonLeftSideNavigationUnAuthorizedProps: ButtonYrlPropsType
   buttonBackProps: ButtonYrlPropsType
   buttonAddCourseProps: ButtonYrlPropsType
   buttonAuthUserProps: ButtonYrlPropsType

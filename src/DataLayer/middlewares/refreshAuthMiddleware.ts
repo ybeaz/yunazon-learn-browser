@@ -3,6 +3,7 @@ import { Middleware } from '@reduxjs/toolkit'
 import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
 import { getDebouncedFunc } from '../..//Shared/getDebouncedFunc'
 import { actionAsync } from '../../DataLayer/index.action'
+import { getConvertedType } from '../../Shared/getConvertedType'
 
 /**
  * @description Function to run refreshAuthMiddleware
@@ -29,7 +30,7 @@ const debouncedFunc = getDebouncedFunc(
  * @import import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
  */
 export const refreshAuthMiddleware: Middleware = store => next => action => {
-  const refresh_token = localStorage.getItem('refresh_token')
+  const refresh_token = getConvertedType(localStorage.getItem('refresh_token'))
 
   if (refresh_token) debouncedFunc(store, refresh_token)
 

@@ -24,6 +24,10 @@ interface IGetLinkAuthUserProps {
 
 interface AuthAwsCognitoLinkArgs {}
 
+/**
+ * @status DEPRECIATED, WORKING, at least is not used, replaced by programmatic redirect
+ * @description Component to implement Auth Cognito redirect onClick
+ */
 export const AuthAwsCognitoLink: React.FunctionComponent<
   AuthAwsCognitoLinkArgs
 > = (props: AuthAwsCognitoLinkArgs) => {

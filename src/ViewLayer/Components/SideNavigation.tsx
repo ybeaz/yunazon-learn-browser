@@ -11,9 +11,14 @@ import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
+/**
+ * @description Component for the left side menu
+ * @link React Icons https://react-icons.github.io/react-icons/icons/md/
+ */
 export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const store = useSelector((store2: RootStoreType) => store2)
   const {
+    userIdDataAwsCognito: { preferred_username },
     forms: { user },
     language,
     componentsState: { isSideNavLeftVisible },
@@ -24,6 +29,13 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
   const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
   const buttonPropsArr = [
+    {
+      icon: 'MdLogin',
+      captureRight: DICTIONARY.Login[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'CLICK_ON_SIGN_IN' },
+      isDisplaying: !preferred_username,
+    },
     {
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
@@ -82,7 +94,14 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
       action: { typeEvent: 'DEV_STAGE' },
       isDisplaying: true,
     },
-    { ...buttonAuthUserProps },
+    {
+      icon: 'MdLogout',
+      captureRight: DICTIONARY.Logout[language],
+      classAdded: 'Button_sideMenuItems',
+      action: { typeEvent: 'CLICK_ON_SIGN_OUT' },
+      isDisplaying: !!preferred_username,
+    },
+    // { ...buttonAuthUserProps },
   ]
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {

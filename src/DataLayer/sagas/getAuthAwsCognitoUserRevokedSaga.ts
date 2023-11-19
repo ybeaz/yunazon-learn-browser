@@ -29,7 +29,12 @@ function* getAuthAwsCognitoUserRevoked(params: any): Iterable<any> {
       resolveGraphqlName: 'getAuthAwsCognitoUserRevoked',
     })
 
-    yield put(actionSync.SET_USERID_DATA_AWS_COGNITO({ userIdDataAwsCognito }))
+    yield put(
+      actionSync.SET_USERID_DATA_AWS_COGNITO({
+        userIdDataAwsCognito,
+        source: 'getAuthAwsCognitoUserRevokedSaga',
+      })
+    )
 
     getDeletedObjFromLocalStorage({
       ...userIdDataAwsCognito,

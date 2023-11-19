@@ -91,7 +91,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       },
     },
     buttonLeftSideNavigationAvatarProps: {
-      classAdded: '_buttonLeftSideNavigationAvatar',
+      classAdded: 'Button_buttonLeftSideNavigationAvatar',
+      action: {
+        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+      },
+    },
+    buttonLeftSideNavigationUnAuthorizedProps: {
+      icon: 'FaUserCircle',
+      classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
         typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
       },
@@ -162,13 +169,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         <AbInCircle {...propsOut.abInCircleProps} />
       </ButtonYrl>
     )
-  } else if (!preferred_username && flags.isAwsCognitoAuth())
-    SideMenuLeft = <AuthAwsCognitoLink />
-
-  console.info('HeaderFrame [148]', {
-    preferred_username,
-    isSideNavLeftVisible,
-  })
+  } else if (!preferred_username)
+    SideMenuLeft = (
+      <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
+    )
 
   return (
     <div

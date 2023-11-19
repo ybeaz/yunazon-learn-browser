@@ -10,17 +10,19 @@ import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshed
 function* initLoading(args: any) {
   try {
     const languageStorage = getConvertedType(localStorage.getItem('language'))
+    const { language, userIdDataAwsCognito } = yield select(store => store)
 
     if (languageStorage) {
       yield put(actionSync.SELECT_LANGUAGE_APP(languageStorage))
     } else {
-      const { language } = yield select(store => store)
       getSetObjToLocalStorage({ language })
     }
 
     const code = args?.data?.query?.code
 
-    const refresh_token = localStorage.getItem('refresh_token')
+    const refresh_token = getConvertedType(
+      localStorage.getItem('refresh_token')
+    )
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })

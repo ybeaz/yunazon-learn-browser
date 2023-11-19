@@ -29,11 +29,12 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
       resolveGraphqlName: 'getAuthAwsCognitoUserData',
     })
 
-    console.info('getAuthAwsCognitoUserDataSaga [32]', {
-      userIdDataAwsCognito,
-      variables,
-    })
-    yield put(actionSync.SET_USERID_DATA_AWS_COGNITO({ userIdDataAwsCognito }))
+    yield put(
+      actionSync.SET_USERID_DATA_AWS_COGNITO({
+        userIdDataAwsCognito,
+        source: 'getAuthAwsCognitoUserDataSaga',
+      })
+    )
 
     getSetObjToLocalStorage(userIdDataAwsCognito)
   } catch (error: any) {
