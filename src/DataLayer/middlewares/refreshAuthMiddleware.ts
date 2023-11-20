@@ -42,21 +42,7 @@ export const refreshAuthMiddleware: Middleware = store => next => action => {
   ]
 
   if (!actionType.includes(actionsNotToRefreshAuth)) {
-    let refresh_token = null
-
-    const storeStateApp = store.getState()
-    const refresh_token_App =
-      storeStateApp?.authAwsCognitoUserData?.refresh_token
-
-    const storeStateLocalStorage = getLocalStorageStoreStateRead()
-    const refresh_token_LocalStorage =
-      storeStateLocalStorage?.authAwsCognitoUserData?.refresh_token
-
-    if (refresh_token_App) refresh_token = refresh_token_App
-    else if (refresh_token_LocalStorage)
-      refresh_token = refresh_token_LocalStorage
-
-    if (refresh_token) debouncedFunc(store, refresh_token)
+    debouncedFunc(store)
   }
 
   return result

@@ -47,7 +47,6 @@ export const getLocalStorageStoreStateSet: GetLocalStorageStoreStateSetType = (
     if (options?.printRes) {
       console.log('getLocalStorageStoreStateSet [48]', {
         source,
-        refresh_token: storeStateApp?.authAwsCognitoUserData.refresh_token,
         storeStateApp,
         storeStateLocalStorage,
       })

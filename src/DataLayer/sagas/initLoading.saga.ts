@@ -19,16 +19,11 @@ function* initLoading(args: any) {
 
     const code = args?.data?.query?.code
 
-    const refresh_token_LocalStorage =
-      storeStateLocalStorage?.authAwsCognitoUserData?.refresh_token
-
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })
       getRedirected('/')
-    } else if (refresh_token_LocalStorage) {
-      yield call(getAuthAwsCognitoUserRefreshed, {
-        data: { refresh_token: refresh_token_LocalStorage },
-      })
+    } else {
+      yield call(getAuthAwsCognitoUserRefreshed)
     }
 
     const { width } = getSizeWindow()
