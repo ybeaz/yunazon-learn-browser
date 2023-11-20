@@ -39,7 +39,7 @@ import { SELECT_SKILLS_OFFERED } from './handlers/SELECT_SKILLS_OFFERED'
 import { SELECT_SKILLS_REQ } from './handlers/SELECT_SKILLS_REQ'
 import { SELECT_SKILLS_REQ_COUNTRY } from './handlers/SELECT_SKILLS_REQ_COUNTRY'
 import { SELECT_SKILLS_REQ_LANG } from './handlers/SELECT_SKILLS_REQ_LANG'
-import { ADD_DOCUMENT } from './handlers/ADD_DOCUMENT'
+import { CREATE_DOCUMENT } from './handlers/CREATE_DOCUMENT'
 import { AUTH_FACEBOOK } from './handlers/AUTH_FACEBOOK'
 import { AUTH_GOOGLE } from './handlers/AUTH_GOOGLE'
 import { AUTH_SIGN_OUT } from './handlers/AUTH_SIGN_OUT'
@@ -135,7 +135,7 @@ export const handleEvents = (event: any, props: any) => {
     SELECT_SKILLS_REQ,
     SELECT_SKILLS_REQ_COUNTRY,
     SELECT_SKILLS_REQ_LANG,
-    ADD_DOCUMENT,
+    CREATE_DOCUMENT,
     AUTH_FACEBOOK,
     AUTH_GOOGLE,
     AUTH_SIGN_OUT,

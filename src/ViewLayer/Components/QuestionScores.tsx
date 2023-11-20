@@ -137,7 +137,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
         action: {
-          typeEvent: 'ADD_DOCUMENT',
+          typeEvent: 'CREATE_DOCUMENT',
           data: {
             screenType: 'Certificate',
             userNameFirst,
@@ -208,7 +208,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
       icon: 'MdForward',
       classAdded: 'Button_MdForward2',
       action: {
-        typeEvent: 'ADD_DOCUMENT',
+        typeEvent: 'CREATE_DOCUMENT',
         data: dataForButton,
       },
     },

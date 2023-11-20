@@ -14,7 +14,7 @@ import getAuthRegisteredSaga from './sagas/getAuthRegistered.saga'
 import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
 import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
 import findDocumentSaga from './sagas/findDocument.saga'
-import addDocumentSaga from './sagas/addDocument.saga'
+import addDocumentSaga from './sagas/createDocument.saga'
 import getCoursesSaga from './sagas/getCourses.saga'
 import initLoadingSaga from './sagas/initLoading.saga'
 

@@ -20,7 +20,7 @@ function* findDocument(dataInput) {
       },
     } = yield axiosClient[method]('', params)
 
-    yield put(actionAsync.ADD_DOCUMENT.SUCCESS(findDocument))
+    yield put(actionAsync.CREATE_DOCUMENT.SUCCESS(findDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error) {

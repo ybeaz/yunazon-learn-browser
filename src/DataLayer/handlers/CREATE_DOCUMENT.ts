@@ -7,7 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const ADD_DOCUMENT: ActionEventType = (event, data) => {
+export const CREATE_DOCUMENT: ActionEventType = (event, data) => {
   const {
     courses,
     scorm: { moduleIDActive },
@@ -19,5 +19,5 @@ export const ADD_DOCUMENT: ActionEventType = (event, data) => {
       getAzProps('PERSONAL_DATA_SUBMITTED')(options)
     )
 
-  dispatch(actionAsync.ADD_DOCUMENT.REQUEST(data))
+  dispatch(actionAsync.CREATE_DOCUMENT.REQUEST(data))
 }
