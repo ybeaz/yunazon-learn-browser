@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ADD_DOCUMENT_SUCCESS: ReducerType = (
+export const CREATE_DOCUMENT_SUCCESS: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
