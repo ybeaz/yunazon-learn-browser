@@ -2,8 +2,40 @@ import { CourseType, ModuleType, QuestionType } from '../@types/GraphqlTypes'
 
 type ModuleActive = ModuleType | { moduleID: undefined; contentID: undefined }
 
+const courseActiveDefault: CourseType = {
+  capture: '',
+  /** courses ID */
+  courseID: '',
+  /** courses created date */
+  dateCreated: 1,
+  /** courses deleted date */
+  dateDeleted: undefined,
+  /** courses updated date */
+  dateUpdated: 1,
+  /** course description */
+  description: '',
+  /** isActive */
+  isActive: false,
+  /** language code */
+  language: '',
+  /** courses meta information */
+  meta: {
+    email: '',
+    institution: '',
+    isSendingBcc: false,
+    specName: '',
+    specTitle: '',
+  },
+  /** courses modules */
+  modules: [],
+  /** courses passRate */
+  passRate: 1.0,
+  /** courses questionNumber */
+  questionNumber: 1,
+}
+
 export type GetActiveCourseDataResType = {
-  courseActive: CourseType | { courseID: ''; capture: '' }
+  courseActive: CourseType
   moduleActive: ModuleActive
   questionsActive: QuestionType[] | []
 }
@@ -25,7 +57,7 @@ export const getActiveCourseData: GetActiveCourseDataType = (
   moduleIDActive: string | undefined
 ) => {
   const res: GetActiveCourseDataResType = {
-    courseActive: { courseID: '', capture: '' },
+    courseActive: courseActiveDefault,
     moduleActive: { moduleID: undefined, contentID: undefined },
     questionsActive: [],
   }

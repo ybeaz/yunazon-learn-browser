@@ -2,18 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input AddDocumentInputType {
-  capture: String!
-  contentIDs: [String!]!
-  courseID: ID!
-  description: String
-  env: String!
-  lang: String!
-  meta: MetaInputType!
-  moduleIDs: [String!]!
-  userName: UserNameInputType!
-}
-
 type AvatarSizeType {
   """height"""
   height: Float
@@ -166,6 +154,17 @@ type CoursesPageInfoType {
   hasNextPage: Boolean
 }
 
+input CreateDocumentInputType {
+  capture: String!
+  contentIDs: [String!]!
+  courseID: ID!
+  description: String
+  lang: String!
+  meta: MetaInputType!
+  moduleIDs: [String!]!
+  userName: UserNameInputType!
+}
+
 """Date custom scalar type"""
 scalar Date
 
@@ -176,7 +175,6 @@ type DocumentType {
   creationDate: Date!
   description: String
   documentID: ID!
-  env: String!
   ip: String!
   lang: String!
   meta: MetaObjectType!
@@ -293,10 +291,10 @@ type ModuleType {
 }
 
 type Mutation {
-  addDocument(addDocumentInputType: AddDocumentInputType!): DocumentType!
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   createCourses(coursesInput: CoursesInputType!): [CourseType!]!
+  createDocument(createDocumentInput: CreateDocumentInputType!): DocumentType!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!

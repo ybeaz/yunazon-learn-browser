@@ -10,7 +10,7 @@ export type GetTemplateFuncAsyncResType = Promise<any>
 interface GetTemplateFuncAsyncType {
   (
     params: GetTemplateFuncAsyncParamsType,
-    options?: { printRes: boolean }
+    options?: { printRes?: boolean }
   ): GetTemplateFuncAsyncResType
 }
 

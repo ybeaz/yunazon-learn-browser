@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
-import * as flags from '../../../FeatureFlags/index'
-import { AuthAwsCognitoLink } from '../../Components/AuthAwsCognitoLink'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup'

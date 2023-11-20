@@ -1,6 +1,5 @@
 export default {
   verbose: true,
-  testURL: 'http://127.0.0.1/',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
@@ -10,10 +9,5 @@ export default {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testMatch: ['<rootDir>/**/(*.)test.(js|jsx|ts|tsx)'],
-  globals: {
-    'ts-jest': {
-      babel: true,
-      tsconfig: 'tsconfig.json',
-    },
-  },
+  testEnvironmentOptions: { url: 'http://127.0.0.1/' },
 }

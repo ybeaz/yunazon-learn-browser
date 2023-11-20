@@ -23,18 +23,6 @@ export type Scalars = {
   Date: { input: any; output: any; }
 };
 
-export type AddDocumentInputType = {
-  capture: Scalars['String']['input'];
-  contentIDs: Array<Scalars['String']['input']>;
-  courseID: Scalars['ID']['input'];
-  description?: InputMaybe<Scalars['String']['input']>;
-  env: Scalars['String']['input'];
-  lang: Scalars['String']['input'];
-  meta: MetaInputType;
-  moduleIDs: Array<Scalars['String']['input']>;
-  userName: UserNameInputType;
-};
-
 export type AvatarSizeType = {
   __typename?: 'AvatarSizeType';
   /** height */
@@ -164,6 +152,17 @@ export type CoursesPageInfoType = {
   hasNextPage?: Maybe<Scalars['Boolean']['output']>;
 };
 
+export type CreateDocumentInputType = {
+  capture: Scalars['String']['input'];
+  contentIDs: Array<Scalars['String']['input']>;
+  courseID: Scalars['ID']['input'];
+  description?: InputMaybe<Scalars['String']['input']>;
+  lang: Scalars['String']['input'];
+  meta: MetaInputType;
+  moduleIDs: Array<Scalars['String']['input']>;
+  userName: UserNameInputType;
+};
+
 export type DocumentType = {
   __typename?: 'DocumentType';
   capture: Scalars['String']['output'];
@@ -172,7 +171,6 @@ export type DocumentType = {
   creationDate: Scalars['Date']['output'];
   description?: Maybe<Scalars['String']['output']>;
   documentID: Scalars['ID']['output'];
-  env: Scalars['String']['output'];
   ip: Scalars['String']['output'];
   lang: Scalars['String']['output'];
   meta: MetaObjectType;
@@ -285,10 +283,10 @@ export type ModuleType = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  addDocument: DocumentType;
   addRecipe: RecipeType;
   createCompetencyTags: Array<CompetencyTagType>;
   createCourses: Array<CourseType>;
+  createDocument: DocumentType;
   createProfiles: Array<ProfileType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
@@ -307,11 +305,6 @@ export type Mutation = {
 };
 
 
-export type MutationAddDocumentArgs = {
-  addDocumentInputType: AddDocumentInputType;
-};
-
-
 export type MutationAddRecipeArgs = {
   newRecipeData: NewRecipeInputType;
 };
@@ -324,6 +317,11 @@ export type MutationCreateCompetencyTagsArgs = {
 
 export type MutationCreateCoursesArgs = {
   coursesInput: CoursesInputType;
+};
+
+
+export type MutationCreateDocumentArgs = {
+  createDocumentInput: CreateDocumentInputType;
 };
 
 

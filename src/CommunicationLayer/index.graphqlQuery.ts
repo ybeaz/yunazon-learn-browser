@@ -1,5 +1,6 @@
 import { DocumentNode } from '@apollo/client'
 
+import { createDocumentGql } from './graphql/createDocumentGql'
 import { getAuthAwsCognitoUserRefreshedGql } from './graphql/getAuthAwsCognitoUserRefreshedGql'
 import { getAuthAwsCognitoUserRevokedGql } from './graphql/getAuthAwsCognitoUserRevokedGql'
 import { getAuthAwsCognitoUserDataGql } from './graphql/getAuthAwsCognitoUserDataGql'
@@ -14,6 +15,7 @@ export type GraphqlQueriesType = Record<string, DocumentNode>
  */
 
 export const graphqlQueries: GraphqlQueriesType = {
+  createDocumentGql,
   getAuthAwsCognitoUserRefreshedGql,
   getAuthAwsCognitoUserRevokedGql,
   getAuthAwsCognitoUserDataGql,

@@ -1,7 +1,21 @@
-interface GetAnswersChecked2 {
+import { QuestionType, OptionType } from '../@types/GraphqlTypes'
+
+type Option2Type = OptionType & { answer: boolean }
+
+enum ResultType {
+  success = 'success',
+  failure = 'failure',
+}
+
+export type GetAnswersChecked2OutType = {
   total: number
   right: number
   wrong: number
+  result: ResultType
+}
+
+interface GetAnswersChecked2Type {
+  (questions: any[], passRateIn: number): GetAnswersChecked2OutType
 }
 
 /**
@@ -10,20 +24,20 @@ interface GetAnswersChecked2 {
  * @param passRateIn
  * @returns
  */
-export const getAnswersChecked2: Function = (
-  questions: any[],
+export const getAnswersChecked2: GetAnswersChecked2Type = (
+  questions: any[] = [],
   passRateIn: number = 1
-): GetAnswersChecked2 => {
+) => {
   let res = {
     total: questions.length,
     right: 0,
     wrong: 0,
     answered: 0,
-    result: 'failure',
+    result: ResultType['failure'],
   }
   questions.forEach(question => {
     let counter = 0
-    question.options.forEach(option => {
+    question.options.forEach((option: Option2Type) => {
       if (option.status === option.answer) {
         counter = counter + 1
       }
@@ -35,10 +49,15 @@ export const getAnswersChecked2: Function = (
       res.wrong = res.wrong + 1
     }
 
-    const findAnswer = question.options.find(option => option.answer === true)
+    const findAnswer = question.options.find(
+      (option: Option2Type) => option.answer === true
+    )
     if (findAnswer) res.answered += 1
   })
-  res.result = res.total <= res.right / passRateIn ? 'success' : 'failure'
+  res.result =
+    res.total <= res.right / passRateIn
+      ? ResultType['success']
+      : ResultType['failure']
 
   return res
 }

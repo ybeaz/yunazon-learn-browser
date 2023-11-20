@@ -7,7 +7,10 @@ import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getQuesionString } from '../../Shared/getQuesionString'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
-import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
+import {
+  getAnswersChecked2,
+  GetAnswersChecked2OutType,
+} from '../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
@@ -52,7 +55,10 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
   passRateIn = passRateIn ? passRateIn : passRate
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
-  const score = getAnswersChecked2(questionsActive, passRateIn)
+  const score: GetAnswersChecked2OutType = getAnswersChecked2(
+    questionsActive,
+    passRateIn
+  )
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong, result } = score
   const { moduleID, contentID } = moduleActive
@@ -114,7 +120,7 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
 
   const question = getQuesionString(language, right)
 
-  const scenario = {
+  let scenario: Record<string, any> = {
     success: {
       message: (
         <>
@@ -168,6 +174,45 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
       },
     },
   }[result]
+
+  // REMOVE after debugging
+  const dataForButton = {
+    screenType: 'Certificate',
+    userNameFirst,
+    userNameMiddle,
+    userNameLast,
+    meta,
+    capture: courseCapture,
+    description,
+    courseID,
+    moduleID,
+    contentID,
+  }
+
+  // console.info('QuestionScores [192]', { dataForButton })
+
+  // const scenario2 = {
+  scenario = {
+    message: (
+      <>
+        <div className='_greet'>{Congratulations}</div>
+        <p>{YouCompletedTheCourse}</p>
+        <p>"{courseCapture}"</p>
+        <p>
+          {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+        </p>
+        <p>{ToReceiveCertificate}</p>
+      </>
+    ),
+    buttonForwardProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'ADD_DOCUMENT',
+        data: dataForButton,
+      },
+    },
+  }
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
