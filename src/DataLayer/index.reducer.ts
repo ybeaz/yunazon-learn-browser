@@ -3,7 +3,8 @@ import { Reducer, Action, ReducersMapObject } from 'redux'
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
-import { SET_USERID_DATA_AWS_COGNITO } from './reducers/SET_USERID_DATA_AWS_COGNITO'
+import { SET_STORE_STATE } from './reducers/SET_STORE_STATE'
+import { SET_AUTH_AWS_COGNITO_USER_DATA } from './reducers/SET_AUTH_AWS_COGNITO_USER_DATA'
 import { SET_COURSE_ID_ACTIVE } from './reducers/SET_COURSE_ID_ACTIVE'
 import { SET_MODULE_ID_ACTIVE } from './reducers/SET_MODULE_ID_ACTIVE'
 import { SET_COURSES } from './reducers/SET_COURSES'
@@ -63,7 +64,7 @@ import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
 import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
-import { TOGGLE_SIDE_NAVIGATION_LEFT } from './reducers/TOGGLE_SIDE_NAVIGATION_LEFT'
+import { SET_SIDE_NAVIGATION_LEFT } from './reducers/SET_SIDE_NAVIGATION_LEFT'
 import { rootStoreDefault } from './rootStoreDefault'
 
 export type IndexReducerType =
@@ -79,7 +80,8 @@ export const indexReducer: IndexReducerType = (
 
   const output: Record<string, any> = {
     TEMPLATE,
-    SET_USERID_DATA_AWS_COGNITO,
+    SET_STORE_STATE,
+    SET_AUTH_AWS_COGNITO_USER_DATA,
     SET_COURSE_ID_ACTIVE,
     SET_MODULE_ID_ACTIVE,
     SET_COURSES,
@@ -139,7 +141,7 @@ export const indexReducer: IndexReducerType = (
     SELECT_COURSE_MODULE,
     CLICK_CHECK,
     GET_COURSES_SUCCESS,
-    TOGGLE_SIDE_NAVIGATION_LEFT,
+    SET_SIDE_NAVIGATION_LEFT,
   }
 
   return output[type] ? output[type](store, data) : store

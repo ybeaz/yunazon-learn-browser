@@ -6,7 +6,7 @@ interface GetRedirectedType {
 
 /**
  * @description Function to redirect app to the pathname
- * @import import { getRedirected } from '../../../Shared/getRedirected'
+ * @import import { getRedirected } from '../Shared/getRedirected'
  */
 
 export const getRedirected: GetRedirectedType = pathnameNext => {

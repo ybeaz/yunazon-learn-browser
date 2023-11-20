@@ -4,6 +4,7 @@ import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
 import { getDebouncedFunc } from '../..//Shared/getDebouncedFunc'
 import { actionAsync } from '../../DataLayer/index.action'
 import { getConvertedType } from '../../Shared/getConvertedType'
+import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
 
 /**
  * @description Function to run refreshAuthMiddleware
@@ -14,7 +15,7 @@ const getRefreshedAuthAwsCongito = (...args: any) => {
   const refresh_token = args[1]
   const { dispatch } = store
   dispatch(
-    actionAsync.GET_REFRESHED_USER_AUTH_AWS_COGNITO_ASYNC.REQUEST({
+    actionAsync.GET_AUTH_AWS_COGNITO_USER_REFRESHED.REQUEST({
       refresh_token,
     })
   )
@@ -30,10 +31,19 @@ const debouncedFunc = getDebouncedFunc(
  * @import import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
  */
 export const refreshAuthMiddleware: Middleware = store => next => action => {
-  const refresh_token = getConvertedType(localStorage.getItem('refresh_token'))
-
-  if (refresh_token) debouncedFunc(store, refresh_token)
-
   const result = next(action)
+
+  const { type: actionType } = action
+  const actionsNotToRefreshAuth = [
+    'INIT_LOADING',
+    'GET_AUTH_AWS_COGNITO_USER_DATA',
+    'GET_AUTH_AWS_COGNITO_USER_REFRESHED',
+    'GET_AUTH_AWS_COGNITO_USER_REVOKED',
+  ]
+
+  if (!actionType.includes(actionsNotToRefreshAuth)) {
+    debouncedFunc(store)
+  }
+
   return result
 }

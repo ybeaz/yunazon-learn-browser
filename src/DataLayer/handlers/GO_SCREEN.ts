@@ -7,5 +7,5 @@ const { dispatch } = store
 export const GO_SCREEN: ActionEventType = (event, data) => {
   const { history: navigate, path } = data
   navigate(path)
-  dispatch(actionSync.TOGGLE_SIDE_NAVIGATION_LEFT())
+  dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT())
 }

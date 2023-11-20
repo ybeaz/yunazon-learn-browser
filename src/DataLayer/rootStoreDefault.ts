@@ -111,7 +111,7 @@ export const rootStoreDefault: RootStoreType = {
     mediaLoaded: {},
   },
   language: 'en',
-  userIdDataAwsCognito: {
+  authAwsCognitoUserData: {
     cognito_groups: [],
     email: null,
     exp: 0,

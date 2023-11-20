@@ -56,7 +56,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   } = props
 
   const {
-    userIdDataAwsCognito: { preferred_username },
+    authAwsCognitoUserData: { preferred_username },
     componentsState: { isSideNavLeftVisible },
     forms: { user },
     language,
@@ -87,20 +87,20 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationAvatarProps: {
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationUnAuthorizedProps: {
       icon: 'FaUserCircle',
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonBackProps: {
@@ -163,13 +163,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   if (isSideNavLeftVisible) {
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
-  } else if (preferred_username) {
+  } else if (isButtonAuthUser && preferred_username) {
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
         <AbInCircle {...propsOut.abInCircleProps} />
       </ButtonYrl>
     )
-  } else if (!preferred_username)
+  } else if (isButtonAuthUser && !preferred_username)
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
     )
@@ -211,7 +211,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
-          {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />
@@ -220,11 +219,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           {isButtonThemeToggle && (
             <div className='_itemButtonThemeToggle'>
               <ButtonYrl {...propsOut.buttonThemeToggleProps} />
-            </div>
-          )}
-          {isButtonAuthUser && (
-            <div className='_itemButtonAuthUser'>
-              <ButtonYrl {...propsOut.buttonAuthUserProps} />
             </div>
           )}
         </div>

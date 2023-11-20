@@ -21,9 +21,9 @@ import {
 const CHILDREN: Record<string, FunctionComponent<any>> = {
   SkillExchangeIntro2,
   SkillExchangeIntro,
-  AuthUser,
   EmalInputs,
   QuestionScores,
+  //AuthUser, Not used in favor of Cognito authetication
 }
 
 /**

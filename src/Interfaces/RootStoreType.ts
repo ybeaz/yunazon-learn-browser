@@ -78,6 +78,6 @@ export type RootStoreType = {
     mediaLoaded: any
   }
   language: string
-  userIdDataAwsCognito: UserIdDataAwsCognito
+  authAwsCognitoUserData: UserIdDataAwsCognito
   globalVars: GlobalVarsType
 }
