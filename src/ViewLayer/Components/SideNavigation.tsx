@@ -135,7 +135,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     <div
       className={`SideNavigation ${classNameAdd}`}
       onClick={event =>
-        handleEvents(event, { typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT' })
+        handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })
       }
     >
       <div

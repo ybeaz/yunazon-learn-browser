@@ -89,7 +89,7 @@ import { SET_QUESTION_SLIDE } from './handlers/SET_QUESTION_SLIDE'
 import { STOP_PROPAGATION } from './handlers/STOP_PROPAGATION'
 import { TOGGLE_IS_DOCUMENT_ADDED } from './handlers/TOGGLE_IS_DOCUMENT_ADDED'
 import { TOGGLE_MEDIA_LOADED } from './handlers/TOGGLE_MEDIA_LOADED'
-import { TOGGLE_SIDE_NAVIGATION_LEFT } from './handlers/TOGGLE_SIDE_NAVIGATION_LEFT'
+import { SET_SIDE_NAVIGATION_LEFT } from './handlers/SET_SIDE_NAVIGATION_LEFT'
 import { TOGGLE_START_COURSE } from './handlers/TOGGLE_START_COURSE'
 // Causes error: import { PRINT_SCORES } from './handlers/PRINT_SCORES'
 
@@ -186,7 +186,7 @@ export const handleEvents = (event: any, props: any) => {
     STOP_PROPAGATION,
     TOGGLE_IS_DOCUMENT_ADDED,
     TOGGLE_MEDIA_LOADED,
-    TOGGLE_SIDE_NAVIGATION_LEFT,
+    SET_SIDE_NAVIGATION_LEFT,
     TOGGLE_START_COURSE,
     // Causes error: PRINT_SCORES,
   }

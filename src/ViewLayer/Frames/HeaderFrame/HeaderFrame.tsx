@@ -87,20 +87,20 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationAvatarProps: {
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationUnAuthorizedProps: {
       icon: 'FaUserCircle',
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonBackProps: {

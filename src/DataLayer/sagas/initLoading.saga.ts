@@ -26,6 +26,12 @@ function* initLoading(args: any) {
       yield call(getAuthAwsCognitoUserRefreshed)
     }
 
+    yield put(
+      actionSync.SET_SIDE_NAVIGATION_LEFT({
+        isSideNavLeftVisible: false,
+      })
+    )
+
     const { width } = getSizeWindow()
     if (width <= 480) {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))

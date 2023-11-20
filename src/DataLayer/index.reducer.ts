@@ -64,7 +64,7 @@ import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
 import { SELECT_COURSE_MODULE } from './reducers/SELECT_COURSE_MODULE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_COURSES_SUCCESS } from './reducers/GET_COURSES_SUCCESS'
-import { TOGGLE_SIDE_NAVIGATION_LEFT } from './reducers/TOGGLE_SIDE_NAVIGATION_LEFT'
+import { SET_SIDE_NAVIGATION_LEFT } from './reducers/SET_SIDE_NAVIGATION_LEFT'
 import { rootStoreDefault } from './rootStoreDefault'
 
 export type IndexReducerType =
@@ -141,7 +141,7 @@ export const indexReducer: IndexReducerType = (
     SELECT_COURSE_MODULE,
     CLICK_CHECK,
     GET_COURSES_SUCCESS,
-    TOGGLE_SIDE_NAVIGATION_LEFT,
+    SET_SIDE_NAVIGATION_LEFT,
   }
 
   return output[type] ? output[type](store, data) : store

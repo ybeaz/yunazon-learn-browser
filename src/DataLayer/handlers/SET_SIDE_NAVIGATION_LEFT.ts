@@ -6,10 +6,10 @@ import { getAzProps } from '../../Analytics/getAzProps'
 
 const { dispatch } = store
 
-export const TOGGLE_SIDE_NAVIGATION_LEFT: ActionEventType = (event, data) => {
+export const SET_SIDE_NAVIGATION_LEFT: ActionEventType = (event, data) => {
   event.stopPropagation()
 
-  dispatch(actionSync.TOGGLE_SIDE_NAVIGATION_LEFT())
+  dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT())
 
   getSavedAnanlyticsEvent(event, getAzProps('SIDE_PANEL_TOGGLED')())
 }

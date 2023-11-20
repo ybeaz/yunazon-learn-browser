@@ -7,5 +7,5 @@ const { dispatch } = store
 export const GO_ACADEMY_SCREEN: ActionEventType = (event, data) => {
   const { history: navigate } = data
   navigate('/academy')
-  dispatch(actionSync.TOGGLE_SIDE_NAVIGATION_LEFT())
+  dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT())
 }
