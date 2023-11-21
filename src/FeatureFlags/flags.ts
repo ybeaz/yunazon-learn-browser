@@ -7,6 +7,19 @@ export interface FeatureFlagType {
   (envTypeIn?: string): boolean | any
 }
 
+/** @description Flag isInput */
+export const isRedirectToCertificate: FeatureFlagType = (envTypeIn = envType) =>
+  false
+
+/** @description Flag isInput */
+export const isInputNamesModalWindow: FeatureFlagType = (envTypeIn = envType) =>
+  false
+
+/** @description Flag isCongratulationModalWindow */
+export const isCongratulationModalWindow: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType

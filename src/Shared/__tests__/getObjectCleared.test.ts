@@ -723,13 +723,60 @@ describe('Algoritms', () => {
       },
     }
 
+    const obj20 = obj01
+
+    const obj21 = {
+      courseActive: {
+        courseID: null,
+        passRate: null,
+        meta: {
+          institution: null,
+          specTitle: null,
+          specName: null,
+          email: null,
+          isSendingBcc: null,
+        },
+        modules: [
+          {
+            moduleID: null,
+            index: null,
+            isActive: null,
+            contentType: null,
+            contentID: null,
+            capture: null,
+            duration: null,
+            questions: [
+              {
+                questionID: null,
+                capture: null,
+                isActive: null,
+                options: [
+                  {
+                    optionID: null,
+                    label: null,
+                    status: null,
+                    answer: null,
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    }
+
     const options = {
       propsToRemove: ['__typename'],
     }
+    const options2 = {
+      propsToRemove: ['__typename'],
+      isAnyPropertyToNull: true,
+    }
 
     const tests = [
-      { isActive: true, input: obj01, options, expected: obj02 },
+      { isActive: true, input: obj20, options: options2, expected: obj21 },
       { isActive: true, input: obj10, options, expected: obj11 },
+      { isActive: true, input: obj01, options, expected: obj02 },
     ]
 
     tests.forEach(test => {
@@ -738,7 +785,6 @@ describe('Algoritms', () => {
       if (isActive) {
         let outputed = getObjectCleared(input, options)
         // consoler('getObjectCleared.test', '[736]', { outputed })
-
         expect(outputed).toEqual(expected)
       }
     })

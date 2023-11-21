@@ -8,7 +8,11 @@ export type GetObjectClearedResType = any
 interface GetObjectClearedType {
   (
     params: GetObjectClearedParamsType,
-    options?: { propsToRemove?: string[]; printRes?: boolean }
+    options?: {
+      propsToRemove?: string[]
+      isAnyPropertyToNull?: boolean
+      printRes?: boolean
+    }
   ): GetObjectClearedResType
 }
 
@@ -21,18 +25,21 @@ interface GetObjectClearedType {
  */
 export const getObjectCleared: GetObjectClearedType = (entity, options) => {
   const propsToRemove = options?.propsToRemove || []
+  const isAnyPropertyToNull = options?.isAnyPropertyToNull || false
 
   if (!propsToRemove || !propsToRemove.length) return entity
 
-  const gdcc = '__getDeepCircularCopy__'
+  let gdcc = '__getDeepCircularCopy__'
+  let result: any
 
   if (entity !== Object(entity)) {
-    return entity // primitive value
+    let value = entity
+    if (isAnyPropertyToNull) value = null
+    return value // primitive value
   }
 
   const set = gdcc in entity
   const cache = entity[gdcc]
-  let result: any
 
   if (set && typeof cache == 'function') {
     return cache()

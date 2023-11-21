@@ -8,11 +8,14 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
-import { SideNavigation } from '../../Components/SideNavigation'
 import {
-  HeaderFrame,
-  HeaderFramePropsType,
-} from '../../Frames/HeaderFrame/HeaderFrame'
+  isRedirectToCertificate,
+  isInputNamesModalWindow,
+  isCongratulationModalWindow,
+} from '../../../FeatureFlags'
+import { getRedirected } from '../../../Shared/getRedirected'
+import { SideNavigation } from '../../Components/SideNavigation'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -53,6 +56,10 @@ import {
 const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentPropsType
 ) => {
+  // if (isRedirectToCertificate()) {
+  //   getRedirected('/')
+  // }
+
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`

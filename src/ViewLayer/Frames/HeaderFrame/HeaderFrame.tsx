@@ -53,12 +53,15 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isSelectLanguage,
   } = props
 
+  const storeState = useSelector((store2: RootStoreType) => store2)
+  console.info('HeaderFrame [57]', { storeState })
+
   const {
     authAwsCognitoUserData: { preferred_username },
     componentsState: { isSideNavLeftVisible },
     forms: { user },
     language,
-  } = useSelector((store2: RootStoreType) => store2)
+  } = storeState
 
   const navigate = useNavigate()
 

@@ -46,6 +46,7 @@ export const getTemplateFuncAsync: GetTemplateFuncAsyncType = async (
  */
 if (require.main === module) {
   const input = ''
-  const outout = getTemplateFuncAsync(input, { printRes: true })
-  console.log('getConvertedType [48]', { input, outout })
+  const output = getTemplateFuncAsync(input, { printRes: true })
+  console.log('getConvertedType [48]', { input, output })
+  consoler('getTemplateFuncAsync', 'output', output)
 }
