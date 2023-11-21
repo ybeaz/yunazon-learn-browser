@@ -55,7 +55,7 @@ function* createDocument(dataInput: any): Iterable<any> {
 
     console.info('createDocument.saga [84]', { createDocument })
 
-    yield put(actionAsync.CREATE_DOCUMENT.SUCCESS(createDocument))
+    yield put(actionSync.ADD_DOCUMENT(createDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

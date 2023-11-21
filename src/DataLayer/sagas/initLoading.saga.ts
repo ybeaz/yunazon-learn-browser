@@ -12,10 +12,11 @@ function* initLoading(args: any) {
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
 
-    if (languageLocalStorage) {
+    if (storeStateLocalStorage) {
       yield put(actionSync.SET_STORE_STATE(storeStateLocalStorage))
       yield put(actionSync.SELECT_LANGUAGE_APP(languageLocalStorage))
     }
+    yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
 
     const code = args?.data?.query?.code
 

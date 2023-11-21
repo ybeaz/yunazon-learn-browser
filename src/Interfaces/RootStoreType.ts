@@ -15,6 +15,7 @@ export type SearchFormSepType = {
 }
 
 export type ComponentsStateType = {
+  isLoadedLocalStorageStoreState: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number

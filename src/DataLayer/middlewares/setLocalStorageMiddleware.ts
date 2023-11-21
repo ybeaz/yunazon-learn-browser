@@ -32,9 +32,17 @@ export const setLocalStorageMiddleware: Middleware =
   store => next => action => {
     const result = next(action)
 
+    const { type: actionType } = action
+    const actionsMandatoryToSetLocalStorage = [
+      'SET_AUTH_AWS_COGNITO_USER_DATA',
+      'ADD_DOCUMENT',
+    ]
+
     const storeState = store.getState()
 
-    if (storeState) debouncedFunc(storeState)
+    if (actionsMandatoryToSetLocalStorage.includes(actionType)) {
+      getLocalStorageStoreStateSetCallback(storeState)
+    } else if (storeState) debouncedFunc(storeState)
 
     return result
   }

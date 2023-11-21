@@ -41,7 +41,7 @@ export const refreshAuthMiddleware: Middleware = store => next => action => {
     'GET_AUTH_AWS_COGNITO_USER_REVOKED',
   ]
 
-  if (!actionType.includes(actionsNotToRefreshAuth)) {
+  if (!actionsNotToRefreshAuth.includes(actionType)) {
     debouncedFunc(store)
   }
 

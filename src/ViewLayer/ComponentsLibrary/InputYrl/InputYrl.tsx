@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 
 import { useSelector } from 'react-redux'
 import { getClasses } from '../../../Shared/getClasses'
-
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { UserType } from '../../../Interfaces/UserType'
 import {
@@ -28,6 +27,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   const {
     tagName = 'input',
     classAdded,
+    key,
     type,
     placeholder,
     typeEvent,
@@ -64,7 +64,8 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
     classAdded: 'IconYrl_Input',
   }
 
-  const inputFileRef = useRef(null)
+  const inputRef = useRef(null)
+  const textareaRef = useRef(null)
 
   // TODO Make click programmaticaly from another element to change default label
   // https://stackoverflow.com/questions/32433594/how-to-trigger-input-file-event-reactjs-by-another-dom
@@ -81,7 +82,8 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
         {tagName === 'input' && (
           <input
             className={'__input _hidden'}
-            ref={inputFileRef}
+            key={key}
+            ref={inputRef}
             type={type}
             placeholder={placeholder}
             value={value}
@@ -94,11 +96,13 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
         {tagName === 'textarea' && (
           <textarea
             className={'__input'}
+            key={key}
+            ref={textareaRef}
             placeholder={placeholder}
             onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
               handleEvents(event, action)
             }
-            value={value}
+            defaultValue={value}
           />
         )}
       </div>

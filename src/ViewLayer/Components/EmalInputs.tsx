@@ -32,6 +32,7 @@ export const EmalInputs: React.FunctionComponent<EmalInputsArgs> = props => {
 
   const inputEmailToProps = {
     classAdded: 'Input_email',
+    key: 'InputEmailToKey',
     type: 'text',
     placeholder: 'email...',
     typeEvent: 'ONCHANGE_EMAIL_TO',
@@ -40,6 +41,7 @@ export const EmalInputs: React.FunctionComponent<EmalInputsArgs> = props => {
 
   const inputEmailCcProps = {
     classAdded: 'Input_email',
+    key: 'InputEmailCcKey',
     type: 'text',
     placeholder: 'email cc...',
     typeEvent: 'ONCHANGE_EMAIL_CC',

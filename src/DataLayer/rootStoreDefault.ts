@@ -60,6 +60,7 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  isLoadedLocalStorageStoreState: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,

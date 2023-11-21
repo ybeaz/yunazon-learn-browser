@@ -3,7 +3,8 @@ import { Reducer, Action, ReducersMapObject } from 'redux'
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
 import { TEMPLATE } from './reducers/TEMPLATE'
-import { CREATE_DOCUMENT_SUCCESS } from './reducers/CREATE_DOCUMENT_SUCCESS'
+import { SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE } from './reducers/SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE'
+import { ADD_DOCUMENT } from './reducers/ADD_DOCUMENT'
 import { CHANGE_NUM_QUESTIONS_IN_SLIDE } from './reducers/CHANGE_NUM_QUESTIONS_IN_SLIDE'
 import { CLICK_CHECK } from './reducers/CLICK_CHECK'
 import { GET_ANSWERS_DEFAULT } from './reducers/GET_ANSWERS_DEFAULT'
@@ -80,6 +81,7 @@ export const indexReducer: IndexReducerType = (
 
   const output: Record<string, any> = {
     TEMPLATE,
+    SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE,
     SET_STORE_STATE,
     SET_AUTH_AWS_COGNITO_USER_DATA,
     SET_COURSE_ID_ACTIVE,
@@ -128,7 +130,7 @@ export const indexReducer: IndexReducerType = (
     SELECT_LANGUAGE_APP,
     TOGGLE_LOADER_OVERLAY,
     TOGGLE_IS_DOCUMENT_ADDED,
-    CREATE_DOCUMENT_SUCCESS,
+    ADD_DOCUMENT,
     SET_QUESTION_SLIDE,
     PLUS_QUESTION_SLIDE,
     ONCHANGE_EMAIL_CC,
