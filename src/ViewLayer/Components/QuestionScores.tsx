@@ -60,7 +60,8 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     passRateIn
   )
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong, result } = score
+  const { total, right, wrong } = score
+  let result = score.result
   const { moduleID, contentID } = moduleActive
 
   useEffect(() => {
@@ -173,46 +174,39 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
         },
       },
     },
-  }[result]
-
-  // REMOVE after debugging
-  const dataForButton = {
-    screenType: 'Certificate',
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
-    meta,
-    capture: courseCapture,
-    description,
-    courseID,
-    moduleID,
-    contentID,
-  }
-
-  // console.info('QuestionScores [192]', { dataForButton })
-
-  // const scenario2 = {
-  scenario = {
-    message: (
-      <>
-        <div className='_greet'>{Congratulations}</div>
-        <p>{YouCompletedTheCourse}</p>
-        <p>"{courseCapture}"</p>
-        <p>
-          {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
-        </p>
-        <p>{ToReceiveCertificate}</p>
-      </>
-    ),
-    buttonForwardProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'CREATE_DOCUMENT',
-        data: dataForButton,
+    debug: {
+      message: (
+        <>
+          <div className='_greet'>{Congratulations}</div>
+          <p>{YouCompletedTheCourse}</p>
+          <p>"{courseCapture}"</p>
+          <p>
+            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+          </p>
+          <p>{ToReceiveCertificate}</p>
+        </>
+      ),
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
+        action: {
+          typeEvent: 'CREATE_DOCUMENT',
+          data: {
+            screenType: 'Certificate',
+            userNameFirst,
+            userNameMiddle,
+            userNameLast,
+            meta,
+            capture: courseCapture,
+            description,
+            courseID,
+            moduleID,
+            contentID,
+          },
+        },
       },
     },
-  }
+  }[result]
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]

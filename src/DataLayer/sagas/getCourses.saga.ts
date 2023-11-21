@@ -7,9 +7,10 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
+let coursesPrev = []
+
 function* getCourses() {
   try {
-    const { courses: coursesPrev } = yield select(store => store)
     if (coursesPrev.length > 1) return
 
     const variables = {
@@ -30,6 +31,7 @@ function* getCourses() {
       .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
 
+    coursesPrev = coursesNext
     yield put(actionSync.SET_COURSES(coursesNext))
   } catch (error: any) {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
