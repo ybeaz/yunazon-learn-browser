@@ -43,7 +43,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     page: 'Certificate',
-    path: `/d/:documentID`,
+    path: `/d/:documentID?/:dataName`,
     children: [],
     errorElement: 'Error404',
     themeDafault: 'Dark',

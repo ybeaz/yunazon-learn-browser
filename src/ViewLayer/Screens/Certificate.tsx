@@ -17,13 +17,16 @@ import { SERVERS_MAIN } from '../../Constants/servers.const'
 export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props
 ): ReactElement => {
-  const {
-    routeProps: {
-      match: {
-        params: { documentID },
-      },
-    },
-  } = props
+  // const {
+  //   routeProps: {
+  //     match: {
+  //       params: { documentID },
+  //     },
+  //   },
+  // } = props
+
+  const documentID = 'HW17Gf5PyYw'
+  console.info('Certificate [29]')
 
   getEffectedRequests(['INIT_LOADING', 'GET_COURSES'])
   getInitialTeachContentLoading()
@@ -92,6 +95,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const headerFrameProps = {
     brandName: 'YouRails',
+    moto: '',
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     courseCapture,
