@@ -64,23 +64,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
 
-  console.info('QuestionScores [51]', {
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
-    // moduleIDActive,
-    // courseActive: {
-    //   passRate,
-    //   courseID,
-    //   capture: courseCapture,
-    //   description,
-    //   meta,
-    // },
-    // moduleActive,
-    // questionsActive,
-    // courses,
-  })
-
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
   passRateIn =
@@ -231,12 +214,30 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
+  console.info('QuestionScores [217]', {
+    userNameFirst,
+    userNameMiddle,
+    userNameLast,
+    // moduleIDActive,
+    // courseActive: {
+    //   passRate,
+    //   courseID,
+    //   capture: courseCapture,
+    //   description,
+    //   meta,
+    // },
+    // moduleActive,
+    // questionsActive,
+    // courses,
+  })
+
   const propsOut: QuestionScoresPropsOutType = {
     inputFirstNameProps: {
       classAdded: 'Input_name',
       type: 'text',
       placeholder: 'first name...',
       typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
+      storeFormGroup: 'user',
       storeFormProp: 'userNameFirst',
     },
     inputMiddleNameProps: {
@@ -244,6 +245,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       type: 'text',
       placeholder: 'second name...',
       typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
+      storeFormGroup: 'user',
       storeFormProp: 'userNameMiddle',
     },
     inputLastNameProps: {
@@ -251,6 +253,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       type: 'text',
       placeholder: 'last name...',
       typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
+      storeFormGroup: 'user',
       storeFormProp: 'userNameLast',
     },
   }
