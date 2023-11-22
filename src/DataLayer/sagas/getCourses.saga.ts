@@ -11,8 +11,6 @@ let coursesPrev = []
 
 function* getCourses() {
   try {
-    if (coursesPrev.length > 1) return
-
     const variables = {
       readCoursesConnectionInput: {
         offset: 0,

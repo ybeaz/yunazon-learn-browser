@@ -27,11 +27,11 @@ function* getCourseData(dataInput: any) {
 
     const coursesNext = getPreparedCourses([readCourse])
 
-    yield put(actionSync.SET_COURSES(coursesNext))
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
     yield put(
       actionSync.SET_COURSE_ID_ACTIVE({ courseID: readCourse?.courseID })
     )
+    yield put(actionSync.SET_COURSES(coursesNext))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

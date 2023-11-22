@@ -43,7 +43,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
-      const key = nanoid()
+      const key = JSON.stringify({ childName, childProps })
 
       if (!CHILD) return null
 

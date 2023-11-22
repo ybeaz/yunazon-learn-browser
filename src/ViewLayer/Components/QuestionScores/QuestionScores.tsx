@@ -6,7 +6,6 @@ import { withPropsYrl } from '../../ComponentsLibrary'
 import { getClasses } from '../../../Shared/getClasses'
 import { isParsableFloat } from '../../../Shared/isParsableFloat'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
-import { getQuesionString } from '../../../Shared/getQuesionString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getQuestionsWrongAnswered } from '../../../Shared/getQuestionsWrongAnswered'
 import {
@@ -18,6 +17,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { getScenarioDict, GetScenarioDictPropsType } from './getScenarioDict'
 
 import {
   QuestionScoresPropsType,
@@ -91,114 +91,29 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     }
   }, [pathName])
 
-  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
-  const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
-  const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
-  const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
-  const Congratulations = DICTIONARY.Congratulations[language]
-
   const lastNameLabel = DICTIONARY.userNameLast[language]
   const firstNameLabel = DICTIONARY.userNameFirst[language]
   const middleNameLabel = DICTIONARY.userNameMiddle[language]
 
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
-  const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language]
-  const andReceiveTheCertificate = DICTIONARY.andReceiveTheCertificate[language]
-  const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language]
-  const from = DICTIONARY.from[language]
-  const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
-  const YouWereCommittedToSuccess =
-    DICTIONARY.YouWereCommittedToSuccess[language]
 
-  const question = getQuesionString(language, right)
-
-  let scenario: Record<string, any> = {
-    success: {
-      message: (
-        <>
-          <div className='_greet'>{Congratulations}</div>
-          <p>{YouCompletedTheCourse}</p>
-          <p>"{courseCapture}"</p>
-          <p>
-            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
-          </p>
-          <p>{ToReceiveCertificate}</p>
-        </>
-      ),
-      buttonForwardProps: {
-        icon: 'MdForward',
-        classAdded: 'Button_MdForward2',
-        action: {
-          typeEvent: 'CREATE_DOCUMENT',
-          data: {
-            screenType: 'Certificate',
-            userNameFirst,
-            userNameMiddle,
-            userNameLast,
-            meta,
-            capture: courseCapture,
-            description,
-            courseID,
-            moduleID,
-            contentID,
-          },
-        },
-      },
-    },
-    failure: {
-      message: (
-        <>
-          <div className='_greet'>{YouWereCommittedToSuccess}</div>
-          <p>
-            {andThisTimeAnswered} {right} {question} {from} {total}.
-          </p>
-          <p>{ThisIsNotEnough}</p>
-          <p>{andReceiveTheCertificate}</p>
-          <p>{YouCanTryOnceAgain}</p>
-        </>
-      ),
-      buttonForwardProps: {
-        icon: 'MdForward',
-        classAdded: 'Button_MdForward2',
-        action: {
-          typeEvent: 'CLOSE_MODAL_GET_SCORES',
-        },
-      },
-    },
-    debug: {
-      message: (
-        <>
-          <div className='_greet'>{Congratulations}</div>
-          <p>{YouCompletedTheCourse}</p>
-          <p>"{courseCapture}"</p>
-          <p>
-            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
-          </p>
-          <p>{ToReceiveCertificate}</p>
-        </>
-      ),
-      buttonForwardProps: {
-        icon: 'MdForward',
-        classAdded: 'Button_MdForward2',
-        action: {
-          typeEvent: 'CREATE_DOCUMENT',
-          data: {
-            screenType: 'Certificate',
-            userNameFirst,
-            userNameMiddle,
-            userNameLast,
-            meta,
-            capture: courseCapture,
-            description,
-            courseID,
-            moduleID,
-            contentID,
-          },
-        },
-      },
-    },
-  }[result]
+  const getScenarioDictProps: GetScenarioDictPropsType = {
+    result,
+    language,
+    right,
+    total,
+    userNameFirst,
+    userNameMiddle,
+    userNameLast,
+    meta,
+    courseCapture,
+    description,
+    courseID,
+    moduleID,
+    contentID,
+  }
+  const scenario = getScenarioDict(getScenarioDictProps)
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
@@ -213,23 +128,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </ul>
     )
   }
-
-  console.info('QuestionScores [217]', {
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
-    // moduleIDActive,
-    // courseActive: {
-    //   passRate,
-    //   courseID,
-    //   capture: courseCapture,
-    //   description,
-    //   meta,
-    // },
-    // moduleActive,
-    // questionsActive,
-    // courses,
-  })
 
   const propsOut: QuestionScoresPropsOutType = {
     inputFirstNameProps: {

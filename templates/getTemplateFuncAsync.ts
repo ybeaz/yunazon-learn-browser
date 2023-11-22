@@ -19,7 +19,6 @@ interface GetTemplateFuncAsyncType {
  * @run ts-node src/shared/utils/getTemplateFuncAsync.ts
  * @import import { getTemplateFuncAsync } from '../Shared/getTemplateFuncAsync'
  */
-
 export const getTemplateFuncAsync: GetTemplateFuncAsyncType = async (
   params,
   options

@@ -15,12 +15,6 @@ export const ADD_DOCUMENT: ReducerType = (
     documentsNext = [...documents, data]
   }
 
-  console.info('ADD_DOCUMENT [14]', {
-    documentFound,
-    data,
-    documentsNext,
-    documents,
-  })
   const componentsStateNext = {
     ...componentsState,
     isDocumentAdded: true,

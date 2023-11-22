@@ -42,8 +42,6 @@ import {
   AcademyPresentType,
 } from './AcademyPresentTypes'
 
-let renderCounter = 0
-
 /**
  * @description Component to render AcademyPresent
  * @import import { AcademyPresent, AcademyPresentPropsType, AcademyPresentPropsOutType, AcademyPresentType } 
@@ -151,7 +149,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         {},
         {
           type: 'GET_COURSE_QUERY_PR_QN',
-          data: { moduleID: moduleIDActive },
+          data: { moduleID: moduleIDActive || moduleID },
         }
       )
 
@@ -166,7 +164,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
-      } = getModuleByModuleID({ courses, moduleID: moduleIDActive || '' })
+      } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,

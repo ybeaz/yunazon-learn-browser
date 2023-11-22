@@ -46,8 +46,6 @@ function* createDocument(dataInput: any): Iterable<any> {
       },
     }
 
-    console.info('createDocument.saga [61]', { variables })
-
     const createDocument: any = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'createDocument',

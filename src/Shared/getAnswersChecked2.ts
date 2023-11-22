@@ -2,7 +2,7 @@ import { QuestionType, OptionType } from '../@types/GraphqlTypes'
 
 type Option2Type = OptionType & { answer: boolean }
 
-enum ResultType {
+export enum ResultType {
   success = 'success',
   failure = 'failure',
 }
