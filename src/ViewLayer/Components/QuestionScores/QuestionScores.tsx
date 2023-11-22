@@ -2,22 +2,38 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { isParsableFloat } from '../../Shared/isParsableFloat'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { getQuesionString } from '../../Shared/getQuesionString'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { getQuestionsWrongAnswered } from '../../Shared/getQuestionsWrongAnswered'
+import { withPropsYrl } from '../../ComponentsLibrary'
+import { getClasses } from '../../../Shared/getClasses'
+import { isParsableFloat } from '../../../Shared/isParsableFloat'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
+import { getQuesionString } from '../../../Shared/getQuesionString'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { getQuestionsWrongAnswered } from '../../../Shared/getQuestionsWrongAnswered'
 import {
   getAnswersChecked2,
   GetAnswersChecked2OutType,
-} from '../../Shared/getAnswersChecked2'
-import { getActiveCourseData } from '../../Shared/getActiveCourseData'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+} from '../../../Shared/getAnswersChecked2'
+import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
-export const QuestionScores: React.FunctionComponent<any> = props => {
+import {
+  QuestionScoresPropsType,
+  QuestionScoresPropsOutType,
+  QuestionScoresComponentType,
+  QuestionScoresType,
+} from './QuestionScoresTypes'
+
+/**
+ * @description Component to render QuestionScores
+ * @import import { QuestionScores, QuestionScoresPropsType, QuestionScoresPropsOutType, QuestionScoresType } 
+             from '../Components/QuestionScores/QuestionScores'
+ */
+const QuestionScoresComponent: QuestionScoresComponentType = (
+  props: QuestionScoresPropsType
+) => {
   let navigate = useNavigate()
 
   const { stopVideoHandler } = props
@@ -49,17 +65,20 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
   } = getActiveCourseData(courses, moduleIDActive)
 
   console.info('QuestionScores [51]', {
-    moduleIDActive,
-    courseActive: {
-      passRate,
-      courseID,
-      capture: courseCapture,
-      description,
-      meta,
-    },
-    moduleActive,
-    questionsActive,
-    courses,
+    userNameFirst,
+    userNameMiddle,
+    userNameLast,
+    // moduleIDActive,
+    // courseActive: {
+    //   passRate,
+    //   courseID,
+    //   capture: courseCapture,
+    //   description,
+    //   meta,
+    // },
+    // moduleActive,
+    // questionsActive,
+    // courses,
   })
 
   const { rp, pr } = getParsedUrlQuery()
@@ -88,30 +107,6 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
       navigate(pathName)
     }
   }, [pathName])
-
-  const inputFirstNameProps = {
-    classAdded: 'Input_name',
-    type: 'text',
-    placeholder: 'first name...',
-    typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
-    storeFormProp: 'userNameFirst',
-  }
-
-  const inputMiddleNameProps = {
-    classAdded: 'Input_name',
-    type: 'text',
-    placeholder: 'second name...',
-    typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
-    storeFormProp: 'userNameMiddle',
-  }
-
-  const inputLastNameProps = {
-    classAdded: 'Input_name',
-    type: 'text',
-    placeholder: 'last name...',
-    typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
-    storeFormProp: 'userNameLast',
-  }
 
   const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
@@ -236,6 +231,30 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     )
   }
 
+  const propsOut: QuestionScoresPropsOutType = {
+    inputFirstNameProps: {
+      classAdded: 'Input_name',
+      type: 'text',
+      placeholder: 'first name...',
+      typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
+      storeFormProp: 'userNameFirst',
+    },
+    inputMiddleNameProps: {
+      classAdded: 'Input_name',
+      type: 'text',
+      placeholder: 'second name...',
+      typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
+      storeFormProp: 'userNameMiddle',
+    },
+    inputLastNameProps: {
+      classAdded: 'Input_name',
+      type: 'text',
+      placeholder: 'last name...',
+      typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
+      storeFormProp: 'userNameLast',
+    },
+  }
+
   return (
     <div className='QuestionScores'>
       <div className='_text'>{scenario.message}</div>
@@ -244,15 +263,15 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
           <>
             <div className='_group'>
               <label className='_label'>{lastNameLabel}*</label>
-              <InputYrl {...inputLastNameProps} />
+              <InputYrl {...propsOut.inputLastNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{firstNameLabel}*</label>
-              <InputYrl {...inputFirstNameProps} />
+              <InputYrl {...propsOut.inputFirstNameProps} />
             </div>
             <div className='_group'>
               <label className='_label'>{middleNameLabel}</label>
-              <InputYrl {...inputMiddleNameProps} />
+              <InputYrl {...propsOut.inputMiddleNameProps} />
             </div>
           </>
         ) : null}
@@ -269,4 +288,15 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
       ) : null}
     </div>
   )
+}
+
+export const QuestionScores = withPropsYrl({})(
+  React.memo(QuestionScoresComponent)
+)
+
+export type {
+  QuestionScoresPropsType,
+  QuestionScoresPropsOutType,
+  QuestionScoresComponentType,
+  QuestionScoresType,
 }

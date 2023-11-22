@@ -22,7 +22,7 @@ import {
  * @description Component to render IconYrl
  * @link React Icons https://react-icons.github.io/react-icons/icons/md/
  * @import import { IconYrl, IconYrlPropsType, IconYrlPropsOutType, IconYrlType } 
-             from '../ComponentsLibrary/IconYrl/IconYrl'
+             from '../ComponentsLibrary/'
  */
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   const { icon = '', icon2 = '', classAdded } = props

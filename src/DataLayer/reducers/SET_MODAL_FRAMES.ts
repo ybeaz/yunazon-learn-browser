@@ -13,8 +13,6 @@ export const SET_MODAL_FRAMES: ReducerType = (
 
   let modaleFramesNext = modalFrames.map(item => ({ ...item, isActive: false }))
 
-  console.info('SET_MODAL_FRAMES reducer [16]', { data })
-
   if (data.length > 0) {
     modaleFramesNext = getUniqArrDeep(modalFrames)
     modaleFramesNext = getUpdatedArrByArrInput(

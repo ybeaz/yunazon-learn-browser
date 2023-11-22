@@ -9,7 +9,7 @@ import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { EmalInputs } from '../../Components/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { QuestionScores } from '../../Components/QuestionScores'
+import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 
 import {
   ModalFramesPropsType,

@@ -20,8 +20,8 @@ import {
 
 /**
  * @description Component to render InputYrl
- * @import import { InputYrl, InputYrlPropsType, InputYrlPropsOutType, InputYrlType } 
-             from '../ComponentsLibrary/InputYrl/InputYrl'
+ * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
+             from '../ComponentsLibrary/'
  */
 const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   const {

@@ -66,9 +66,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const store = useSelector((store2: RootStoreType) => store2)
 
-  renderCounter += 1
-  console.info('AcademyPresent [69]', { renderCounter, store })
-
   const {
     language: languageStore,
     scorm: { durationMultiplier, moduleIDActive },
@@ -170,15 +167,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
       } = getModuleByModuleID({ courses, moduleID: moduleIDActive || '' })
-
-      console.info('AcademyPresent [108]', {
-        moduleIDActive,
-        courses,
-        moduleID,
-        courseSuccess,
-        duration,
-        durationMultiplier,
-      })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,
