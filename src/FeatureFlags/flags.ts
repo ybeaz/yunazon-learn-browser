@@ -7,19 +7,6 @@ export interface FeatureFlagType {
   (envTypeIn?: string): boolean | any
 }
 
-/** @description Flag isQuestionScoresModalWindow */
-export const isQuestionScoresModalWindow: FeatureFlagType = (
-  envTypeIn = envType
-) => false
-
-/** @description Flag isInput */
-export const isInputNamesModalWindow: FeatureFlagType = (envTypeIn = envType) =>
-  false
-
-/** @description Flag isInput */
-export const isRedirectToCertificate: FeatureFlagType = (envTypeIn = envType) =>
-  false
-
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType
@@ -35,3 +22,17 @@ export const isGetingSavedAnanlyticsEvent: FeatureFlagType = (
 
 /** @description Flag template */
 export const isTemplate: FeatureFlagType = (envTypeIn = envType) => false
+
+/**
+ * @description Feature flag for development and debugging
+ */
+
+/** @description Flag isDebugModalWindowQuestionScoresSuccess */
+export const isDebugModalWindowQuestionScoresSuccess: FeatureFlagType = (
+  envTypeIn = envType
+) => true
+
+/** @description Flag isDebugCertificateRedirectTo */
+export const isDebugCertificateRedirectTo: FeatureFlagType = (
+  envTypeIn = envType
+) => false

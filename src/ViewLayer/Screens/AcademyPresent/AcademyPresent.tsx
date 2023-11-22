@@ -4,9 +4,8 @@ import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import {
-  isQuestionScoresModalWindow,
-  isInputNamesModalWindow,
-  isRedirectToCertificate,
+  isDebugModalWindowQuestionScoresSuccess,
+  isDebugCertificateRedirectTo,
 } from '../../../FeatureFlags'
 import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
 import { SideNavigation } from '../../Components/SideNavigation'
@@ -110,12 +109,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   useEffect(() => {
     /* isQuestionScoresModalWindow() */
-    if (isQuestionScoresModalWindow()) {
+    if (isDebugModalWindowQuestionScoresSuccess()) {
       const eventAction01 = {
         typeEvent: 'SET_COURSES',
         data: [courseSuccess],
       }
       handleEvents({}, eventAction01)
+
       const eventAction02 = {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -130,7 +130,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         ],
       }
       handleEvents({}, eventAction02)
-    } else if (isRedirectToCertificate()) {
+    } else if (isDebugCertificateRedirectTo()) {
       /* isRedirectToCertificate() */
       handleEvents(
         {},

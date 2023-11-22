@@ -238,7 +238,6 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
 
   return (
     <div className='QuestionScores'>
-      {' '}
       <div className='_text'>{scenario.message}</div>
       <form className='_form'>
         {result === 'success' ? (
