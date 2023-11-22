@@ -1,19 +1,14 @@
-import React, {
-  useState,
-  useEffect,
-  ReactElement,
-  FunctionComponent,
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 import {
-  isRedirectToCertificate,
+  isQuestionScoresModalWindow,
   isInputNamesModalWindow,
-  isCongratulationModalWindow,
+  isRedirectToCertificate,
 } from '../../../FeatureFlags'
-import { getRedirected } from '../../../Shared/getRedirected'
+import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
@@ -48,6 +43,8 @@ import {
   AcademyPresentType,
 } from './AcademyPresentTypes'
 
+let renderCounter = 0
+
 /**
  * @description Component to render AcademyPresent
  * @import import { AcademyPresent, AcademyPresentPropsType, AcademyPresentPropsOutType, AcademyPresentType } 
@@ -56,10 +53,7 @@ import {
 const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentPropsType
 ) => {
-  // if (isRedirectToCertificate()) {
-  //   getRedirected('/')
-  // }
-
+  const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
@@ -72,9 +66,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   getInitialTeachContentLoading()
 
   const store = useSelector((store2: RootStoreType) => store2)
+
+  renderCounter += 1
+  console.info('AcademyPresent [69]', { renderCounter, store })
+
   const {
     language: languageStore,
-    scorm: { durationMultiplier },
+    scorm: { durationMultiplier, moduleIDActive },
     courses,
     isLoaded: { mediaLoaded },
   } = store
@@ -111,6 +109,41 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
   useEffect(() => {
+    /* isQuestionScoresModalWindow() */
+    if (isQuestionScoresModalWindow()) {
+      const eventAction01 = {
+        typeEvent: 'SET_COURSES',
+        data: [courseSuccess],
+      }
+      handleEvents({}, eventAction01)
+      const eventAction02 = {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: true,
+            childProps: {
+              courseCapture:
+                'Исторические деятели России и СССР первой половины XX века',
+            },
+          },
+        ],
+      }
+      handleEvents({}, eventAction02)
+    } else if (isRedirectToCertificate()) {
+      /* isRedirectToCertificate() */
+      handleEvents(
+        {},
+        {
+          typeEvent: 'GO_SCREEN',
+          data: {
+            history: navigate,
+            path: '/d/QbPOPMImLHB/2023-11-20-certificate',
+          },
+        }
+      )
+    }
+
     if (courses.length && isLoaded === false) {
       handleEvents(
         {},
@@ -121,7 +154,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         {},
         {
           type: 'GET_COURSE_QUERY_PR_QN',
-          data: { moduleID },
+          data: { moduleID: moduleIDActive },
         }
       )
 
@@ -136,7 +169,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
-      } = getModuleByModuleID({ courses, moduleID })
+      } = getModuleByModuleID({ courses, moduleID: moduleIDActive || '' })
+
+      console.info('AcademyPresent [108]', {
+        moduleIDActive,
+        courses,
+        moduleID,
+        courseSuccess,
+        duration,
+        durationMultiplier,
+      })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,

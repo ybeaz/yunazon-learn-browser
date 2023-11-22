@@ -48,6 +48,20 @@ export const QuestionScores: React.FunctionComponent<any> = props => {
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
 
+  console.info('QuestionScores [51]', {
+    moduleIDActive,
+    courseActive: {
+      passRate,
+      courseID,
+      capture: courseCapture,
+      description,
+      meta,
+    },
+    moduleActive,
+    questionsActive,
+    courses,
+  })
+
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
   passRateIn =

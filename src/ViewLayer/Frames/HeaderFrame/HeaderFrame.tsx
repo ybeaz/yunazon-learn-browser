@@ -54,8 +54,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   } = props
 
   const storeState = useSelector((store2: RootStoreType) => store2)
-  console.info('HeaderFrame [57]', { storeState })
-
   const {
     authAwsCognitoUserData: { preferred_username },
     componentsState: { isSideNavLeftVisible },

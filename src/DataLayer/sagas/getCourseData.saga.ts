@@ -4,6 +4,7 @@ import { CourseType } from '../../@types/GraphqlTypes'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
+// import { courseSuccess } from '../courseSuccessMock'
 
 function* getCourseData(dataInput: any) {
   const {
