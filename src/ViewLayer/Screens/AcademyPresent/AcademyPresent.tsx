@@ -108,7 +108,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
   useEffect(() => {
-    /* isQuestionScoresModalWindow() */
+    /* isDebugModalWindowQuestionScoresSuccess() */
     if (isDebugModalWindowQuestionScoresSuccess()) {
       const eventAction01 = {
         typeEvent: 'SET_COURSES',
@@ -131,7 +131,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       }
       handleEvents({}, eventAction02)
     } else if (isDebugCertificateRedirectTo()) {
-      /* isRedirectToCertificate() */
+      /* isDebugCertificateRedirectTo() */
       handleEvents(
         {},
         {
