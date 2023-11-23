@@ -1,6 +1,6 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { UserType } from '../../Interfaces/UserType'
-import { IButtonArgs } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrlPropsType } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface IGetButtonAuthUser {
   (
@@ -8,7 +8,7 @@ interface IGetButtonAuthUser {
     language: string,
     componentFrom: string,
     history?: any
-  ): IButtonArgs
+  ): ButtonYrlPropsType
 }
 
 /**
@@ -23,16 +23,21 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 ) => {
   const { userAvatar, userStatus, userName } = user
 
-  const {
-    imageSrc = null,
-    icon = null,
-    classAdded,
-    tooltipText,
-    captureRight,
-    tooltipPosition,
-    typeEvent,
-    childProps,
-  } = {
+  enum ButtonDictKeyType {
+    'sideMenu+' = 'sideMenu+',
+    'sideMenu+failure' = 'sideMenu+failure',
+    'sideMenu+success' = 'sideMenu+success',
+    'header+' = 'header+',
+    'header+failure' = 'header+failure',
+    'header+success' = 'header+success',
+  }
+
+  // @ts-expect-error
+  const buttonDictKey: ButtonDictKeyType = `${componentFrom}+${
+    userStatus || ''
+  }`
+
+  const buttonsDict: Record<string, any> = {
     'sideMenu+': {
       icon: 'FaUserCircle',
       classAdded: 'Button_authSideMenu',
@@ -90,7 +95,18 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
       typeEvent: 'SET_MODAL_FRAMES',
       childProps: { scenario: { branch: 'signOut', step: '' } },
     },
-  }[`${componentFrom}+${userStatus}`]
+  }[buttonDictKey]
+
+  const {
+    imageSrc = null,
+    icon = null,
+    classAdded,
+    tooltipText,
+    captureRight,
+    tooltipPosition,
+    typeEvent,
+    childProps,
+  } = buttonsDict
 
   const actionMain = {
     typeEvent,

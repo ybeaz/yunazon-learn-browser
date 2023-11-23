@@ -15,7 +15,7 @@ export type GetAnswersChecked2OutType = {
 }
 
 interface GetAnswersChecked2Type {
-  (questions: any[], passRateIn: number): GetAnswersChecked2OutType
+  (questions: any[], passRateIn?: number): GetAnswersChecked2OutType
 }
 
 /**

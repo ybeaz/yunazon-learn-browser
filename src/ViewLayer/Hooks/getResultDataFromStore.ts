@@ -8,8 +8,6 @@ interface IGetResultDataFromStore {
 
 /**
  * @descriptiion Function to incapsulate a range of repeating steps to return user results from course
- * @param getState
- * @returns
  */
 export const getResultDataFromStore: Function = (
   courses: any[],
