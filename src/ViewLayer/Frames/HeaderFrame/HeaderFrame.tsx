@@ -180,11 +180,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     >
       <div className='_content'>
         <div className='__left'>
-          {isButtonBack && (
+          {/* {isButtonBack && (
             <Link to={{ pathname: '/academy' }}>
               <ButtonYrl {...propsOut.buttonBackProps} />
             </Link>
-          )}
+          )} */}
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && (
