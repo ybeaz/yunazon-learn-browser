@@ -5,12 +5,6 @@ import { getClasses } from '../../../Shared/getClasses'
 
 import { ICONS } from '../../../Constants/icons.const'
 
-interface IconYrlArgs {
-  classAdded: string
-  icon?: string
-  icon2?: string
-}
-
 import {
   IconYrlPropsType,
   IconYrlPropsOutType,
