@@ -57,10 +57,10 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
     <div className={getClasses('FormInputNames', classAdded)}>
       <form className='_form'>
         <div className='_group'>
-          <div className='_group'>
-            <label className='_label'>{firstNameLabel}*</label>
-            <InputYrl {...propsOut.inputFirstNameProps} />
-          </div>
+          <label className='_label'>{firstNameLabel}*</label>
+          <InputYrl {...propsOut.inputFirstNameProps} />
+        </div>
+        <div className='_group'>
           <label className='_label'>{lastNameLabel}*</label>
           <InputYrl {...propsOut.inputLastNameProps} />
         </div>

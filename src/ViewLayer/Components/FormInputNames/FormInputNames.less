@@ -1,8 +1,11 @@
 .FormInputNames {
   display: flex;
+
   ._form {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    padding: 1rem 0 0 0;
 
     ._group {
       display: flex;
@@ -12,12 +15,14 @@
       ._label {
         padding: 0 0 0.5rem 0.3rem;
         text-align: initial;
+        background: inherit;
+        color: inherit;
       }
     }
     /* Clear floats */
     ._buttons {
       display: flex;
-      padding: 1rem 0 1.5rem 0;
+      padding: 0.5rem 0 1.5rem 0;
     }
   }
 
@@ -35,8 +40,6 @@
         }
       }
       /* Clear floats */
-      ._buttons {
-      }
     }
   }
 }
