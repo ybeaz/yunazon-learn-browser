@@ -10,6 +10,7 @@ import {
 } from '../../../FeatureFlags'
 import { courseFailure } from '../../../ContentMock/courseFailureMock'
 import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
+import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
@@ -58,12 +59,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  getEffectedRequests([
-    { type: 'INIT_LOADING', data: { params } },
-    { type: 'GET_MODULE_DATA', data: { moduleID } },
-  ])
-  getInitialTeachContentLoading()
-
   const store = useSelector((store2: RootStoreType) => store2)
 
   const {
@@ -72,6 +67,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     courses,
     isLoaded: { mediaLoaded },
   } = store
+
+  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
+
+  getEffectedRequests([
+    { type: 'INIT_LOADING', data: { params } },
+    { type: 'GET_MODULE_DATA', data: { moduleID } },
+  ])
+  getInitialTeachContentLoading()
+  useflagsDebug(mediaLoadedCoursesString)
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
@@ -102,66 +106,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     questionsTotal,
   } = moduleState
 
-  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
-
   useEffect(() => {
-    /* isDebugModalWindowQuestionScoresSuccess() */
-    if (isDebugModalWindowQuestionScoresSuccess()) {
-      const eventAction01 = {
-        typeEvent: 'SET_COURSES',
-        data: [courseSuccess],
-      }
-      handleEvents({}, eventAction01)
-
-      const eventAction02 = {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: true,
-            childProps: {
-              courseCapture:
-                'Исторические деятели России и СССР первой половины XX века',
-            },
-          },
-        ],
-      }
-      handleEvents({}, eventAction02)
-    } else if (isDebugModalWindowQuestionScoresFailure()) {
-      const eventAction01 = {
-        typeEvent: 'SET_COURSES',
-        data: [courseFailure],
-      }
-      handleEvents({}, eventAction01)
-
-      const eventAction02 = {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'QuestionScores',
-            isActive: true,
-            childProps: {
-              courseCapture:
-                'Исторические деятели России и СССР первой половины XX века',
-            },
-          },
-        ],
-      }
-      handleEvents({}, eventAction02)
-    } else if (isDebugCertificateRedirectTo()) {
-      /* isDebugCertificateRedirectTo() */
-      handleEvents(
-        {},
-        {
-          typeEvent: 'GO_SCREEN',
-          data: {
-            history: navigate,
-            path: '/d/QbPOPMImLHB/2023-11-20-certificate',
-          },
-        }
-      )
-    }
-
     if (courses.length && isLoaded === false) {
       handleEvents(
         {},

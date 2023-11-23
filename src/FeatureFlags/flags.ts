@@ -42,7 +42,7 @@ export const isDebugModalWindowQuestionScoresSuccess: FeatureFlagType = (
 
 export const isDebugModalWindowQuestionScoresFailure: FeatureFlagType = (
   envTypeIn = envType
-) => false
+) => true
 
 /** @description Flag isDebugCertificateRedirectTo */
 export const isDebugCertificateRedirectTo: FeatureFlagType = (
