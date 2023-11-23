@@ -2,16 +2,18 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .__wrapper {
     overflow: hidden;
     padding-bottom: 56.25%;
     position: relative;
     height: 0;
+    width: 100%;
 
     ._player {
-      left: 0;
       top: 0;
       height: 100%;
       width: 100%;
@@ -22,6 +24,7 @@
       -moz-transform: scaleY(1);
       -ms-transform: scaleY(1);
       transform: scaleY(1);
+      border-radius: @borderRadius1P0;
     }
   }
   .__panel {
