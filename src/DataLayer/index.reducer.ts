@@ -2,7 +2,6 @@ import { Reducer, Action, ReducersMapObject } from 'redux'
 
 import { RootStoreType } from '../Interfaces/RootStoreType'
 
-import { TEMPLATE } from './reducers/TEMPLATE'
 import { SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE } from './reducers/SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE'
 import { ADD_DOCUMENT } from './reducers/ADD_DOCUMENT'
 import { CHANGE_NUM_QUESTIONS_IN_SLIDE } from './reducers/CHANGE_NUM_QUESTIONS_IN_SLIDE'
@@ -80,7 +79,6 @@ export const indexReducer: IndexReducerType = (
   const { type, data } = action
 
   const output: Record<string, any> = {
-    TEMPLATE,
     SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE,
     SET_STORE_STATE,
     SET_AUTH_AWS_COGNITO_USER_DATA,
