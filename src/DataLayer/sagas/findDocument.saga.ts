@@ -1,29 +1,25 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { findDocumentConnector } from '../../CommunicationLayer/findDocument.connector'
+import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* findDocument(dataInput) {
-  const { data: documentID } = dataInput
-
-  const fragmentName = 'DocumentModelGraphqlAll'
-  const { axiosClient, method, params } = findDocumentConnector(
-    documentID,
-    fragmentName
-  )
+function* findDocument(props: any): Iterable<any> {
+  const { data: documentID } = props
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-    const {
-      data: {
-        data: { findDocument },
-      },
-    } = yield axiosClient[method]('', params)
 
-    yield put(actionAsync.ADD_DOCUMENT.SUCCESS(findDocument))
+    const variables = { documentID }
+
+    const findDocument: any = yield getResponseGraphqlAsync({
+      variables,
+      resolveGraphqlName: 'findDocument',
+    })
+
+    yield put(actionSync.ADD_DOCUMENT(findDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error) {
+  } catch (error: any) {
     console.info('findDocument [40]', error.name + ': ' + error.message)
   }
 }

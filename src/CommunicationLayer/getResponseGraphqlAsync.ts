@@ -1,5 +1,5 @@
 import { print } from 'graphql'
-
+import { gql, DocumentNode } from '@apollo/client'
 import { axiosClient } from './clients/axiosClient'
 import { apolloClient } from './clients/apolloClient'
 
@@ -7,10 +7,14 @@ import { ClientHttpType } from '../@types/ClientHttpType'
 import { MethodHttpType } from '../@types/MethodHttpType'
 import { graphqlQueries } from './index.graphqlQuery'
 import { selectGraphqlHttpClientFlag } from '../FeatureFlags'
+import { getObjectCleared } from '../Shared/getObjectCleared'
 
 export type GetResponseGraphqlAsyncParamsType = {
   variables: any
-  resolveGraphqlName: string
+  operationName?: string
+  resolveGraphqlName?: string
+  query?: DocumentNode | string
+  mutation?: DocumentNode | string
 }
 
 export type GetResponseGraphqlAsyncResType = Promise<any>
@@ -29,10 +33,12 @@ interface GetResponseGraphqlAsyncType {
  */
 
 export const getResponseGraphqlAsync: GetResponseGraphqlAsyncType = async (
-  { variables, resolveGraphqlName },
+  { variables, resolveGraphqlName: resolveGraphqlNameIn },
   options
 ) => {
   try {
+    const resolveGraphqlName = resolveGraphqlNameIn || ''
+
     const clientHttpType = selectGraphqlHttpClientFlag()
 
     const client: any =
@@ -45,21 +51,38 @@ export const getResponseGraphqlAsync: GetResponseGraphqlAsyncType = async (
     // @ts-expect-error
     const operationGraphql = documentNode?.definitions[0]?.operation
 
-    const params = {
+    let params: GetResponseGraphqlAsyncParamsType = {
       operationName: resolveGraphqlName,
-      variables,
-      query:
-        clientHttpType === ClientHttpType['apolloClient']
-          ? documentNode
-          : print(documentNode),
+      variables: getObjectCleared(variables, {
+        propsToRemove: ['__typename'],
+      }),
     }
 
     let output: any
 
     if (clientHttpType === ClientHttpType['apolloClient']) {
-      const res: any = await client('/graphql')[operationGraphql](params)
+      let res: any
+      if (operationGraphql === 'mutation') {
+        params = {
+          ...params,
+          mutation: documentNode,
+        }
+
+        res = await client('/graphql').mutate(params)
+      } else {
+        params = {
+          ...params,
+          query: documentNode,
+        }
+        res = await client('/graphql').query(params)
+      }
       output = res?.data[resolveGraphqlName]
     } else if (clientHttpType === ClientHttpType['axiosClient']) {
+      params = {
+        ...params,
+        query: print(documentNode),
+      }
+
       const res: any = await client({
         url: '/graphql',
         data: params,

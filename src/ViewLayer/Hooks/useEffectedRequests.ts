@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { actionAsync } from '../../DataLayer/index.action'
 
-export const getEffectedRequests: Function = (
+export const useEffectedRequests: Function = (
   requestList: string[] | any[]
 ): void => {
   const dispatch = useDispatch()

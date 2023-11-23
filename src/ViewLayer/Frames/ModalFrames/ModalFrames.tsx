@@ -9,7 +9,7 @@ import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { EmalInputs } from '../../Components/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { QuestionScores } from '../../Components/QuestionScores'
+import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 
 import {
   ModalFramesPropsType,
@@ -43,7 +43,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
-      const key = nanoid()
+      const key = JSON.stringify({ childName, childProps })
 
       if (!CHILD) return null
 

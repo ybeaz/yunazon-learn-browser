@@ -18,7 +18,7 @@ declare global {
  * @link explanation 'opt_out_or_no_session' https://www.intricatecloud.io/2020/12/passwordless-sign-in-with-google-one-tap-for-web/
  * @link example https://github.com/intricatecloud/google-one-tap-web-demo/blob/master/src/App.js
  */
-export const getInitializedGoogleOAuth: Function = (): void => {
+export const useInitializedGoogleOAuth: Function = (): void => {
   useEffect(() => {
     const scriptProps = {
       src: 'https://accounts.google.com/gsi/client',
@@ -26,7 +26,7 @@ export const getInitializedGoogleOAuth: Function = (): void => {
       defer: true,
     }
 
-    const handleCredentialResponse = async (...args) => {
+    const handleCredentialResponse = async (...args: any) => {
       handleEvents({}, { typeEvent: 'AUTH_GOOGLE', data: args })
     }
 
@@ -46,17 +46,17 @@ export const getInitializedGoogleOAuth: Function = (): void => {
         // window.google.accounts.id.prompt(notification => {
         //   if (notification.isNotDisplayed()) {
         //     console.log(
-        //       'getInitializedGoogleOAuth [47]',
+        //       'useInitializedGoogleOAuth [47]',
         //       notification.getNotDisplayedReason()
         //     )
         //   } else if (notification.isSkippedMoment()) {
         //     console.log(
-        //       'getInitializedGoogleOAuth [49]',
+        //       'useInitializedGoogleOAuth [49]',
         //       notification.getSkippedReason()
         //     )
         //   } else if (notification.isDismissedMoment()) {
         //     console.log(
-        //       'getInitializedGoogleOAuth [51]',
+        //       'useInitializedGoogleOAuth [51]',
         //       notification.getDismissedReason()
         //     )
         //   }
@@ -66,8 +66,8 @@ export const getInitializedGoogleOAuth: Function = (): void => {
           {},
           { typeEvent: 'SET_OAUTH_GOOGLE_SCRIPT_STATE', data: true }
         )
-      } catch (error) {
-        console.info('getInitializedGoogleOAuth [34]', {
+      } catch (error: any) {
+        console.info('useInitializedGoogleOAuth [34]', {
           message: error.message,
         })
       }

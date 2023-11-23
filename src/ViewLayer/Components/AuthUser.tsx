@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { getInitializedVKontakteOAuth } from '../Hooks/getInitializedVKontakteOAuth'
-import { getInitializedFacebookOAuth } from '../Hooks/getInitializedFacebookOAuth'
-import { getInitializedGoogleOAuth } from '../Hooks/getInitializedGoogleOAuth'
+import { useInitializedVKontakteOAuth } from '../Hooks/useInitializedVKontakteOAuth'
+import { useInitializedFacebookOAuth } from '../Hooks/useInitializedFacebookOAuth'
+import { useInitializedGoogleOAuth } from '../Hooks/useInitializedGoogleOAuth'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
@@ -18,9 +18,9 @@ export const AuthUser: React.FunctionComponent<any> = (
     scenario: { branch, step },
   } = props
 
-  getInitializedFacebookOAuth(branch)
-  getInitializedVKontakteOAuth(branch)
-  getInitializedGoogleOAuth()
+  useInitializedFacebookOAuth(branch)
+  useInitializedVKontakteOAuth(branch)
+  useInitializedGoogleOAuth()
 
   const {
     componentsState: {

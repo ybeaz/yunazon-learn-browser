@@ -1,7 +1,5 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { rootStoreDefault } from '../rootStoreDefault'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'

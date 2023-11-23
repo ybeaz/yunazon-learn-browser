@@ -8,7 +8,7 @@ import { PlayerPanel } from './PlayerPanel'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from './LoaderBlurhash'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { getYouTubePlayerWorkHook } from '../Hooks/getYouTubePlayerWorkHook'
+import { useYouTubePlayerWork } from '../Hooks/useYouTubePlayerWork'
 import { VIDEO_RESOLUTION } from '../../Constants/videoResolution.const'
 import { ReaderIframe } from '../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../Frames/PlayerIframe/PlayerIframe'
@@ -52,7 +52,7 @@ export const ContentPlate: React.FunctionComponent<
   const isVisible = mediaLoaded[contentID]
 
   const { width, height } = VIDEO_RESOLUTION
-  const { isShowingPlay } = getYouTubePlayerWorkHook({
+  const { isShowingPlay } = useYouTubePlayerWork({
     contentComponentName,
     contentID,
     width,

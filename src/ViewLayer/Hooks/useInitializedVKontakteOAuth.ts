@@ -9,7 +9,7 @@ import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScr
  * @link https://vk.com/dev/Login?aid=7910949&mode=2
  * @link https://vk.com/dev/widget_auth
  */
-export const getInitializedVKontakteOAuth: Function = (
+export const useInitializedVKontakteOAuth: Function = (
   branch: string
 ): void => {
   useEffect(() => {
@@ -41,12 +41,12 @@ export const getInitializedVKontakteOAuth: Function = (
         // @ts-ignore
         window.VK.Widgets.Auth('vk_auth', {
           width: '300px',
-          onAuth: function (data) {
+          onAuth: function (data: any) {
             handleEvents({}, { typeEvent: 'AUTH_VKONTAKTE', data })
           },
         })
-      } catch (error) {
-        console.info('getInitializedVKontakteOAuth [34]', {
+      } catch (error: any) {
+        console.info('useInitializedVKontakteOAuth [34]', {
           message: error.message,
         })
       }

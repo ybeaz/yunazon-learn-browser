@@ -1,25 +1,18 @@
-import React, {
-  useState,
-  useEffect,
-  ReactElement,
-  FunctionComponent,
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
+import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { SideNavigation } from '../../Components/SideNavigation'
-import {
-  HeaderFrame,
-  HeaderFramePropsType,
-} from '../../Frames/HeaderFrame/HeaderFrame'
-import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
+import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { getYouTubePlayerWorkHook } from '../../Hooks/getYouTubePlayerWorkHook'
+import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -53,24 +46,29 @@ import {
 const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentPropsType
 ) => {
+  const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  getEffectedRequests([
-    { type: 'INIT_LOADING', data: { params } },
-    { type: 'GET_MODULE_DATA', data: { moduleID } },
-  ])
-  getInitialTeachContentLoading()
-
   const store = useSelector((store2: RootStoreType) => store2)
+
   const {
     language: languageStore,
-    scorm: { durationMultiplier },
+    scorm: { durationMultiplier, moduleIDActive },
     courses,
     isLoaded: { mediaLoaded },
   } = store
+
+  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
+
+  useEffectedRequests([
+    { type: 'INIT_LOADING', data: { params } },
+    { type: 'GET_MODULE_DATA', data: { moduleID } },
+  ])
+  useInitialTeachContentLoading()
+  useflagsDebug(mediaLoadedCoursesString)
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
@@ -101,8 +99,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     questionsTotal,
   } = moduleState
 
-  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
-
   useEffect(() => {
     if (courses.length && isLoaded === false) {
       handleEvents(
@@ -114,7 +110,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         {},
         {
           type: 'GET_COURSE_QUERY_PR_QN',
-          data: { moduleID },
+          data: { moduleID: moduleIDActive || moduleID },
         }
       )
 
@@ -129,7 +125,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
-      } = getModuleByModuleID({ courses, moduleID })
+      } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,
@@ -164,7 +160,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
-  } = getYouTubePlayerWorkHook({
+  } = useYouTubePlayerWork({
     contentComponentName,
     contentID,
     width,

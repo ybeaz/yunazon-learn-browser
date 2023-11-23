@@ -2,8 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
-import * as flags from '../../../FeatureFlags/index'
-import { AuthAwsCognitoLink } from '../../Components/AuthAwsCognitoLink'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup'
@@ -55,12 +53,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isSelectLanguage,
   } = props
 
+  const storeState = useSelector((store2: RootStoreType) => store2)
   const {
     authAwsCognitoUserData: { preferred_username },
     componentsState: { isSideNavLeftVisible },
     forms: { user },
     language,
-  } = useSelector((store2: RootStoreType) => store2)
+  } = storeState
 
   const navigate = useNavigate()
 
@@ -181,11 +180,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     >
       <div className='_content'>
         <div className='__left'>
-          {isButtonBack && (
+          {/* {isButtonBack && (
             <Link to={{ pathname: '/academy' }}>
               <ButtonYrl {...propsOut.buttonBackProps} />
             </Link>
-          )}
+          )} */}
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && (

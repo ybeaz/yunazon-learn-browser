@@ -1,0 +1,45 @@
+.FormInputNames {
+  display: flex;
+
+  ._form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1rem 0 0 0;
+
+    ._group {
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 1.5rem 0;
+
+      ._label {
+        padding: 0 0 0.5rem 0.3rem;
+        text-align: initial;
+        background: inherit;
+        color: inherit;
+      }
+    }
+    /* Clear floats */
+    ._buttons {
+      display: flex;
+      padding: 0.5rem 0 1.5rem 0;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._form {
+      ._group {
+        ._label {
+          font-size: @fontSizeS;
+        }
+      }
+      /* Clear floats */
+    }
+  }
+}

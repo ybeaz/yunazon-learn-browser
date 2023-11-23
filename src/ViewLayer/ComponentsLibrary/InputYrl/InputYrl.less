@@ -21,6 +21,7 @@
       direction: ltr;
       border-width: 1px;
       border-style: solid;
+      border-radius: @borderRadius0P5;
       -webkit-appearance: none;
       background-clip: border-box;
       cursor: text;
@@ -29,6 +30,7 @@
         border-radius: 0px;
         outline: none;
         text-size-adjust: 100%;
+        border-radius: @borderRadius0P5;
       }
     }
   }
@@ -38,13 +40,15 @@
 
   ._iconClose {
     position: absolute;
-    top: 50%;
+    top: 20%;
     right: 11px;
     z-index: 1;
     display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-top: -9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-top: 0px;
     margin-right: 2px;
     color: rgba(0, 0, 0, 0.25);
     font-size: 12px;
@@ -53,9 +57,12 @@
     text-align: center;
     text-transform: none;
     background: #fff;
+    border-color: #fff;
     cursor: pointer;
     opacity: 0;
-    transition: color 0.3s ease, opacity 0.15s ease;
+    transition:
+      color 0.3s ease,
+      opacity 0.15s ease;
     text-rendering: auto;
   }
 

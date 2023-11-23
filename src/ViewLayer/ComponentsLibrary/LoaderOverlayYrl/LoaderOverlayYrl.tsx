@@ -14,7 +14,7 @@ import {
 /**
  * @description Component to render LoaderOverlayYrl
  * @import import { LoaderOverlayYrl, LoaderOverlayYrlPropsType, LoaderOverlayYrlPropsOutType, LoaderOverlayYrlType } 
-             from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
+             from '../ComponentsLibrary/'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   props: LoaderOverlayYrlPropsType

@@ -1,11 +1,11 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import React, { useEffect, ReactElement } from 'react'
+import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
 
-import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { useEffectedRequests } from '../Hooks/useEffectedRequests'
 import { getDateString } from '../../Shared/getDateString'
-import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
@@ -17,30 +17,36 @@ import { SERVERS_MAIN } from '../../Constants/servers.const'
 export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props
 ): ReactElement => {
-  const {
-    routeProps: {
-      match: {
-        params: { documentID },
-      },
-    },
-  } = props
+  const params = useParams()
+  const documentID = params?.documentID
 
-  getEffectedRequests(['INIT_LOADING', 'GET_COURSES'])
-  getInitialTeachContentLoading()
+  useEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
-  const { documents, language } = store
+  const {
+    language: languageStore,
+    documents,
+    language,
+    componentsState: { isLoadedLocalStorageStoreState },
+  } = store
   const documentsLen = documents.length
+  const documentFound = documents.find(
+    (document: any) => document.documentID === documentID
+  )
 
   useEffect(() => {
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-  }, [documents])
+  }, [])
 
   useEffect(() => {
-    if (!documentsLen) {
+    if (
+      isLoadedLocalStorageStoreState &&
+      Array.isArray(documents) &&
+      !documentFound
+    ) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
-  }, [documents])
+  }, [isLoadedLocalStorageStoreState])
 
   let documentDefault = {
     userName: {
@@ -57,6 +63,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     courseID: '',
     contentID: '',
   }
+
   const {
     userName: {
       firstName = '',
@@ -71,7 +78,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     contentID = '',
     creationDate = '',
     pathName: documentPathName,
-  } = (documentsLen && documents[documentsLen - 1]) || documentDefault
+  } = documentFound || documentDefault
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
@@ -92,6 +99,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const headerFrameProps = {
     brandName: 'YouRails',
+    moto: DICTIONARY['Together_know_everything'][languageStore],
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     courseCapture,

@@ -1,16 +1,15 @@
+import { consoler } from '../consoler'
+import { consolerError } from '../consolerError'
+
 import { getTemplateFuncAsync } from '../getTemplateFuncAsync'
 
 /**
  * @Description Test to challenge function getTemplateFuncAsync
- * @command to run `yarn jest getTemplateFuncAsync.test.ts`
+ * @test yarn jest getTemplateFuncAsync.test.ts
  */
 
 describe('Algoritms', () => {
   it('-- getTemplateFuncAsync.test', () => {
-    const getTemplateFuncAsync = (input: any) => {
-      return true
-    }
-
     const tests = [{ isActive: true, input: '', expected: '' }]
 
     tests.forEach(test => {
@@ -18,8 +17,9 @@ describe('Algoritms', () => {
 
       if (isActive) {
         let outputed = getTemplateFuncAsync(input)
-        console.info('[]', { outputed })
+        consoler('getTemplateFuncAsync.test', '[]', { outputed })
 
+        // @ts-expect-error
         outputed = true
         const expected2 = true
         expect(outputed).toEqual(expected2)

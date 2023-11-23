@@ -1,6 +1,7 @@
 export type InputYrlPropsType = {
   tagName?: string // input tag, may be 'input' or 'textarea'
   classAdded: string // class to add to customize the standard input class
+  key?: string // key for the element
   type?: string // type of html tag, for example, <input type='text' >
   placeholder: string // placeholder text
   typeEvent: string // typeEvent to trigger the proper action
