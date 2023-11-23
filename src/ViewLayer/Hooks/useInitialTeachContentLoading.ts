@@ -6,7 +6,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 /**
  * @description Make initial call for data and pupulate it to the store
  */
-export const getInitialTeachContentLoading: Function = (): void => {
+export const useInitialTeachContentLoading: Function = (): void => {
   useEffect(() => {
     const scriptProps = {
       src: 'https://www.youtube.com/iframe_api',

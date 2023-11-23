@@ -17,7 +17,7 @@ import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
+import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { getYouTubePlayerWorkHook } from '../../Hooks/getYouTubePlayerWorkHook'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -74,7 +74,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     { type: 'INIT_LOADING', data: { params } },
     { type: 'GET_MODULE_DATA', data: { moduleID } },
   ])
-  getInitialTeachContentLoading()
+  useInitialTeachContentLoading()
   useflagsDebug(mediaLoadedCoursesString)
 
   const [isLoaded, setIsLoaded] = useState(false)

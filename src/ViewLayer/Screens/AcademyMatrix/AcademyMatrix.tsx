@@ -9,7 +9,7 @@ import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { ContentPlate } from '../../Components/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
+import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
@@ -39,7 +39,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     { type: 'INIT_LOADING', data: { query } },
     'GET_COURSES',
   ])
-  getInitialTeachContentLoading()
+  useInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'
 

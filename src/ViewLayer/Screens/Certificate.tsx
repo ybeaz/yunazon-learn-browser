@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { useEffectedRequests } from '../Hooks/useEffectedRequests'
 import { getDateString } from '../../Shared/getDateString'
-import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
+import { useInitialTeachContentLoading } from '../Hooks/useInitialTeachContentLoading'
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
