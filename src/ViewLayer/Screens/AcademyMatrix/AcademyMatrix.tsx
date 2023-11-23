@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
+import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { ContentPlate } from '../../Components/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
@@ -35,7 +35,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 ) => {
   const query = getParsedUrlQuery()
 
-  getEffectedRequests([
+  useEffectedRequests([
     { type: 'INIT_LOADING', data: { query } },
     'GET_COURSES',
   ])

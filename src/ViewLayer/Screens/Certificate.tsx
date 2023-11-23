@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
 
-import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { useEffectedRequests } from '../Hooks/useEffectedRequests'
 import { getDateString } from '../../Shared/getDateString'
 import { getInitialTeachContentLoading } from '../Hooks/getInitialTeachContentLoading'
 import { getSlug } from '../../Shared/getSlug'
@@ -20,7 +20,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   const params = useParams()
   const documentID = params?.documentID
 
-  getEffectedRequests(['INIT_LOADING'])
+  useEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {

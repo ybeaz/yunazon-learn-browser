@@ -13,7 +13,7 @@ import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
+import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
@@ -70,7 +70,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
-  getEffectedRequests([
+  useEffectedRequests([
     { type: 'INIT_LOADING', data: { params } },
     { type: 'GET_MODULE_DATA', data: { moduleID } },
   ])

@@ -13,7 +13,7 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SkillsExchangeGroup } from '../Components/SkillsExchangeGroup'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
-import { getEffectedRequests } from '../Hooks/getEffectedRequests'
+import { useEffectedRequests } from '../Hooks/useEffectedRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
 
 interface SkillsExchangeMatrixProps {
@@ -29,7 +29,7 @@ interface SkillsExchangeMatrixProps {
 export const SkillsExchangeMatrix: React.FunctionComponent<
   SkillsExchangeMatrixProps
 > = (props): ReactElement => {
-  getEffectedRequests(['INIT_LOADING'])
+  useEffectedRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
