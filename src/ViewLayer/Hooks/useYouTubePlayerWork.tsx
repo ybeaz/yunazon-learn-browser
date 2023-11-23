@@ -3,14 +3,14 @@ import { useDispatch } from 'react-redux'
 
 import { actionSync } from '../../DataLayer/index.action'
 
-interface IGetYouTubePlayerWorkHookInput {
+interface IuseYouTubePlayerWorkInput {
   contentComponentName: string
   contentID: string
   height: string
   width: string
 }
 
-interface IGetYouTubePlayerWorkHook {
+interface IuseYouTubePlayerWork {
   onPlayerReady: Function | undefined
   playVideoHandler: Function | undefined
   pauseVideoHandler: Function | undefined
@@ -18,12 +18,12 @@ interface IGetYouTubePlayerWorkHook {
   isShowingPlay: boolean
 }
 
-export const getYouTubePlayerWorkHook = ({
+export const useYouTubePlayerWork = ({
   contentComponentName,
   contentID,
   height,
   width,
-}: IGetYouTubePlayerWorkHookInput): IGetYouTubePlayerWorkHook => {
+}: IuseYouTubePlayerWorkInput): IuseYouTubePlayerWork => {
   const playerDefault = {
     playVideo: () => {},
     pauseVideo: () => {},
@@ -61,9 +61,9 @@ export const getYouTubePlayerWorkHook = ({
     )
   }
 
-  const onChangePlayerStateHandler = state => {
+  const onChangePlayerStateHandler = (state: any) => {
     if (state.data === 0) {
-      // console.info('getYouTubePlayerWorkHook [21] PlayerIframe event on end is captured', { state })
+      // console.info('useYouTubePlayerWork [21] PlayerIframe event on end is captured', { state })
     }
     setPlayerState(state)
   }
@@ -71,7 +71,9 @@ export const getYouTubePlayerWorkHook = ({
   async function onYouTubeIframeAPIReady() {
     if (contentComponentName === 'PlayerIframe') {
       try {
+        // @ts-expect-error
         window['YT'].ready(function () {
+          // @ts-expect-error
           const Player = new window['YT'].Player(contentID, {
             height,
             width,
@@ -100,9 +102,9 @@ export const getYouTubePlayerWorkHook = ({
 
           setPlayer(Player)
         })
-      } catch (error) {
+      } catch (error: any) {
         console.error(
-          'getYouTubePlayerWorkHook [68]',
+          'useYouTubePlayerWork [68]',
           error.name + ': ' + error.message
         )
       }

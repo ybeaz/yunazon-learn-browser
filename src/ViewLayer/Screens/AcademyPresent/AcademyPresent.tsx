@@ -19,7 +19,7 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { getYouTubePlayerWorkHook } from '../../Hooks/getYouTubePlayerWorkHook'
+import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -167,7 +167,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     pauseVideoHandler,
     stopVideoHandler,
     isShowingPlay,
-  } = getYouTubePlayerWorkHook({
+  } = useYouTubePlayerWork({
     contentComponentName,
     contentID,
     width,
