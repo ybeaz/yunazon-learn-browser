@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import { useEffectedRequests } from '../Hooks/useEffectedRequests'
 import { getDateString } from '../../Shared/getDateString'
-import { useInitialTeachContentLoading } from '../Hooks/useInitialTeachContentLoading'
+import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
@@ -24,6 +24,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
+    language: languageStore,
     documents,
     language,
     componentsState: { isLoadedLocalStorageStoreState },
@@ -46,14 +47,6 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
   }, [isLoadedLocalStorageStoreState])
-
-  // console.info('Certificate [60]', {
-  //   documentFound,
-  //   documents,
-  //   documentID,
-  //   params,
-  //   isLoadedLocalStorageStoreState,
-  // })
 
   let documentDefault = {
     userName: {
@@ -106,7 +99,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    moto: '',
+    moto: DICTIONARY['Together_know_everything'][languageStore],
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     courseCapture,

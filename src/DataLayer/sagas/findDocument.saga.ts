@@ -16,8 +16,6 @@ function* findDocument(props: any): Iterable<any> {
       resolveGraphqlName: 'findDocument',
     })
 
-    console.info('findDocument.saga [22]', { findDocument })
-
     yield put(actionSync.ADD_DOCUMENT(findDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

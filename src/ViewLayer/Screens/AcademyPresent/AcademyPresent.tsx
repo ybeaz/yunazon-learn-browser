@@ -3,13 +3,6 @@ import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import {
-  isDebugModalWindowQuestionScoresSuccess,
-  isDebugModalWindowQuestionScoresFailure,
-  isDebugCertificateRedirectTo,
-} from '../../../FeatureFlags'
-import { courseFailure } from '../../../ContentMock/courseFailureMock'
-import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
