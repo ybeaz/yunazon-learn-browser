@@ -5,8 +5,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import {
   isDebugModalWindowQuestionScoresSuccess,
+  isDebugModalWindowQuestionScoresFailure,
   isDebugCertificateRedirectTo,
 } from '../../../FeatureFlags'
+import { courseFailure } from '../../../ContentMock/courseFailureMock'
 import { courseSuccess } from '../../../ContentMock/courseSuccessMock'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -108,6 +110,27 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       const eventAction01 = {
         typeEvent: 'SET_COURSES',
         data: [courseSuccess],
+      }
+      handleEvents({}, eventAction01)
+
+      const eventAction02 = {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'QuestionScores',
+            isActive: true,
+            childProps: {
+              courseCapture:
+                'Исторические деятели России и СССР первой половины XX века',
+            },
+          },
+        ],
+      }
+      handleEvents({}, eventAction02)
+    } else if (isDebugModalWindowQuestionScoresFailure()) {
+      const eventAction01 = {
+        typeEvent: 'SET_COURSES',
+        data: [courseFailure],
       }
       handleEvents({}, eventAction01)
 

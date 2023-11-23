@@ -1,4 +1,5 @@
 import { InputYrlPropsType } from '../../ComponentsLibrary/'
+import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
 
 export type QuestionScoresPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -6,9 +7,7 @@ export type QuestionScoresPropsType = {
 }
 
 export type QuestionScoresPropsOutType = {
-  inputFirstNameProps: InputYrlPropsType
-  inputMiddleNameProps: InputYrlPropsType
-  inputLastNameProps: InputYrlPropsType
+  formInputNamesProps: FormInputNamesPropsType
 }
 
 /**

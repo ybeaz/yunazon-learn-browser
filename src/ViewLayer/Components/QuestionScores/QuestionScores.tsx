@@ -11,13 +11,13 @@ import { getQuestionsWrongAnswered } from '../../../Shared/getQuestionsWrongAnsw
 import {
   getAnswersChecked2,
   GetAnswersChecked2OutType,
+  ResultType,
 } from '../../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { getScenarioDict, GetScenarioDictPropsType } from './getScenarioDict'
+import { FormInputNames } from '../FormInputNames/FormInputNames'
 
 import {
   QuestionScoresPropsType,
@@ -91,10 +91,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     }
   }, [pathName])
 
-  const lastNameLabel = DICTIONARY.userNameLast[language]
-  const firstNameLabel = DICTIONARY.userNameFirst[language]
-  const middleNameLabel = DICTIONARY.userNameMiddle[language]
-
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
 
@@ -130,57 +126,18 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const propsOut: QuestionScoresPropsOutType = {
-    inputFirstNameProps: {
-      classAdded: 'Input_name',
-      type: 'text',
-      placeholder: 'first name...',
-      typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
-      storeFormGroup: 'user',
-      storeFormProp: 'userNameFirst',
-    },
-    inputMiddleNameProps: {
-      classAdded: 'Input_name',
-      type: 'text',
-      placeholder: 'second name...',
-      typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
-      storeFormGroup: 'user',
-      storeFormProp: 'userNameMiddle',
-    },
-    inputLastNameProps: {
-      classAdded: 'Input_name',
-      type: 'text',
-      placeholder: 'last name...',
-      typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
-      storeFormGroup: 'user',
-      storeFormProp: 'userNameLast',
+    formInputNamesProps: {
+      language,
+      buttonForwardProps: scenario.buttonForwardProps,
     },
   }
 
   return (
     <div className='QuestionScores'>
       <div className='_text'>{scenario.message}</div>
-      <form className='_form'>
-        {result === 'success' ? (
-          <>
-            <div className='_group'>
-              <label className='_label'>{lastNameLabel}*</label>
-              <InputYrl {...propsOut.inputLastNameProps} />
-            </div>
-            <div className='_group'>
-              <label className='_label'>{firstNameLabel}*</label>
-              <InputYrl {...propsOut.inputFirstNameProps} />
-            </div>
-            <div className='_group'>
-              <label className='_label'>{middleNameLabel}</label>
-              <InputYrl {...propsOut.inputMiddleNameProps} />
-            </div>
-          </>
-        ) : null}
-        <div className='_buttons'>
-          {/* <ButtonYrl {...buttonCancelProps} /> */}
-          <ButtonYrl {...scenario.buttonForwardProps} />
-        </div>
-      </form>
+      {result === 'success' ? (
+        <FormInputNames {...propsOut.formInputNamesProps} />
+      ) : null}
       {result === 'failure' ? (
         <div className='_qwa'>
           <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
