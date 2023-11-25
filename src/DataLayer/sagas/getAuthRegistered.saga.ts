@@ -5,7 +5,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthRegisteredConnector } from '../../CommunicationLayer/getAuthRegistered.connector'
 
-function* getAuthRegistered() {
+function* getAuthRegistered(): Iterable<any> {
   const {
     forms: {
       user: {

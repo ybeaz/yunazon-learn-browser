@@ -4,7 +4,7 @@ import { axiosClient } from './clients/axiosClient'
 import { apolloClient } from './clients/apolloClient'
 
 import { ClientHttpType } from '../@types/ClientHttpType'
-import { MethodHttpType } from '../@types/MethodHttpType'
+import { MethodHttpEnumType } from '../@types/MethodHttpType'
 import { graphqlQueries } from './index.graphqlQuery'
 import { selectGraphqlHttpClientFlag } from '../FeatureFlags'
 import { getObjectCleared } from '../Shared/getObjectCleared'
@@ -86,7 +86,7 @@ export const getResponseGraphqlAsync: GetResponseGraphqlAsyncType = async (
       const res: any = await client({
         url: '/graphql',
         data: params,
-        method: MethodHttpType['post'],
+        method: MethodHttpEnumType['post'],
       })
       output = res?.data?.data[resolveGraphqlName]
     }

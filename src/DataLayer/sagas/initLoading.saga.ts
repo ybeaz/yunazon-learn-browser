@@ -8,7 +8,7 @@ import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStore
 import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
 
-function* initLoading(args: any) {
+function* initLoading(args: any): Iterable<any> {
   try {
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language

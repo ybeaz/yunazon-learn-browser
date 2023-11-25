@@ -9,7 +9,7 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 let coursesPrev = []
 
-function* getCourses() {
+function* getCourses(): Iterable<any> {
   try {
     const variables = {
       readCoursesConnectionInput: {
@@ -18,12 +18,10 @@ function* getCourses() {
       },
     }
 
-    const readCoursesConnection: ConnectionType = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: 'readCoursesConnection',
-      }
-    )
+    const readCoursesConnection: any = yield getResponseGraphqlAsync({
+      variables,
+      resolveGraphqlName: 'readCoursesConnection',
+    })
 
     let coursesNext = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToCourses, { printRes: false })

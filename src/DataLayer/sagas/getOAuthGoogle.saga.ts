@@ -3,7 +3,7 @@ import { takeEvery, put } from 'redux-saga/effects'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOAuthGoogleConnector } from '../../CommunicationLayer/getOAuthGoogle.connector'
 
-function* getOAuthGoogle(args: any) {
+function* getOAuthGoogle(args: any): Iterable<any> {
   const {
     data: { clientId, credential, select_by },
   } = args

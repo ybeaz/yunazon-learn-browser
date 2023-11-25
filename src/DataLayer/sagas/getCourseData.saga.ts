@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 // import { courseSuccess } from '../courseSuccessMock'
 
-function* getCourseData(dataInput: any) {
+function* getCourseData(dataInput: any): Iterable<any> {
   const {
     data: { moduleID },
   } = dataInput
@@ -20,7 +20,7 @@ function* getCourseData(dataInput: any) {
       },
     }
 
-    const readCourse: CourseType = yield getResponseGraphqlAsync({
+    const readCourse: any = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'readCourse',
     })
