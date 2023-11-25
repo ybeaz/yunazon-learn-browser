@@ -1,7 +1,6 @@
 import { HandleEventType } from '../Interfaces/HandleEventType'
 import { ActionEventType } from '../Interfaces/ActionEventType'
 
-import { TEMPLATE } from './handlers/TEMPLATE'
 import { SET_COURSES } from './handlers/SET_COURSES'
 import { CLICK_ON_SIGN_IN } from './handlers/CLICK_ON_SIGN_IN'
 import { CLICK_ON_SIGN_OUT } from './handlers/CLICK_ON_SIGN_OUT'
@@ -99,7 +98,6 @@ export const handleEvents = (event: any, props: any) => {
   const type = typeStore ? typeStore : typeEvent || ''
 
   const output: Record<string, ActionEventType> = {
-    TEMPLATE,
     AUTH_FACEBOOK,
     AUTH_GOOGLE,
     AUTH_SIGN_OUT,
