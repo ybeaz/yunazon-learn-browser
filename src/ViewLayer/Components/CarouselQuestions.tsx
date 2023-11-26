@@ -127,8 +127,14 @@ export const CarouselQuestions: React.FunctionComponent = () => {
     icon: 'MdForward',
     classAdded: 'Button_downLeft',
     action: {
-      typeEvent: '',
-      data: {},
+      typeEvent: 'TOGGLE_START_COURSE',
+      data: {
+        isStarting: false,
+        courseCapture,
+        courseID,
+        moduleID,
+        contentID,
+      },
     },
     isDisplaying: isButtonBlockProps,
   }
