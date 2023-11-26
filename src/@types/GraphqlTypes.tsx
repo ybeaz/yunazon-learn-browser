@@ -655,6 +655,8 @@ export type QuestionType = {
   options: Array<OptionType>;
   /** courses module question ID */
   questionID?: Maybe<Scalars['ID']['output']>;
+  /** course module question topic */
+  topic?: Maybe<Scalars['String']['output']>;
 };
 
 export type ReadCourseInputType = {

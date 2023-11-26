@@ -491,6 +491,9 @@ type QuestionType {
 
   """courses module question ID"""
   questionID: ID
+
+  """course module question topic"""
+  topic: String
 }
 
 input ReadCourseInputType {
