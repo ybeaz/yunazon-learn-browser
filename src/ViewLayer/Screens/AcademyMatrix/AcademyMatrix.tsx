@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
-import { ContentPlate } from '../../Components/ContentPlate'
+import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
@@ -73,6 +73,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         durationMultiplier
       )
       const contentPlateProps = {
+        key: moduleID,
         contentComponentName,
         courseID,
         courseCapture,
@@ -83,6 +84,12 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         isShowingPlay,
         screenType,
       }
+
+      // console.info('AcademyMatrix [88]', {
+      //   moduleID,
+      //   contentPlateProps,
+      //   courses2,
+      // })
       return <ContentPlate {...contentPlateProps} />
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>

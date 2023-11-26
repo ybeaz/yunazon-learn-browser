@@ -5,9 +5,13 @@ import { apolloClient } from './clients/apolloClient'
 
 import { ClientHttpType } from '../@types/ClientHttpType'
 import { MethodHttpEnumType } from '../@types/MethodHttpType'
-import { graphqlQueries } from './index.graphqlQuery'
 import { selectGraphqlHttpClientFlag } from '../FeatureFlags'
 import { getObjectCleared } from '../Shared/getObjectCleared'
+import * as GraphqlQueries from './graphql'
+
+export type GraphqlQueriesType = Record<string, DocumentNode>
+
+export const graphqlQueries: GraphqlQueriesType = GraphqlQueries
 
 export type GetResponseGraphqlAsyncParamsType = {
   variables: any
