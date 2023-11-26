@@ -9,7 +9,7 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl, ButtonYrlType } from '../ComponentsLibrary'
+import { ButtonYrl, ButtonYrlPropsType } from '../ComponentsLibrary'
 import { isAwsCognitoAuth } from '../../FeatureFlags'
 
 /**
@@ -29,7 +29,7 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
 
   const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
-  const buttonPropsArr: ButtonYrlType[] = [
+  const buttonPropsArr: ButtonYrlPropsType[] = [
     {
       icon: 'MdLogin',
       captureRight: DICTIONARY.Login[language],
@@ -100,11 +100,6 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/sep' },
       },
-      isDisplaying: false,
-    },
-    {
-      description: 'Depreciated group of authentication',
-      ...buttonAuthUserProps,
       isDisplaying: false,
     },
   ]

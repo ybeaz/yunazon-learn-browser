@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { SideNavigation } from '../../Components/SideNavigation'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup'
@@ -222,6 +223,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           )}
         </div>
       </div>
+      <SideNavigation />
       <ModalFrames />
     </div>
   )

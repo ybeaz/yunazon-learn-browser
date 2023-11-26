@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
 import { ContentPlate } from '../../Components/ContentPlate'
@@ -139,7 +138,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }
