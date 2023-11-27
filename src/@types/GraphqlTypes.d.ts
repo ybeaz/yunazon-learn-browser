@@ -60,6 +60,15 @@ export type ChoiceType = {
     index: Scalars['Int']['output'];
     message: MessageChoiceType;
 };
+export type CollectionUpdateStatusType = {
+    __typename?: 'CollectionUpdateStatusType';
+    /** templates ID */
+    collectionName?: Maybe<Scalars['ID']['output']>;
+    /** collection updated date */
+    dateUpdated?: Maybe<Scalars['Float']['output']>;
+    /** status > whether the collection is updated successfully */
+    statusUpdated: Scalars['Boolean']['output'];
+};
 export type ComparisonFields = {
     /** user ID */
     userIdAuth?: InputMaybe<Scalars['ID']['input']>;
@@ -165,28 +174,49 @@ export type CoursesPageInfoType = {
     hasNextPage?: Maybe<Scalars['Boolean']['output']>;
 };
 export type CreateDocumentInputType = {
-    capture: Scalars['String']['input'];
-    contentIDs: Array<Scalars['String']['input']>;
+    /** capture */
+    capture?: Scalars['String']['input'];
+    /** contentIDs */
+    contentIDs?: Array<Scalars['String']['input']>;
+    /** courseID */
     courseID: Scalars['ID']['input'];
+    /** description */
     description?: InputMaybe<Scalars['String']['input']>;
-    lang: Scalars['String']['input'];
+    /** language */
+    lang?: Scalars['String']['input'];
+    /** meta */
     meta: MetaInputType;
-    moduleIDs: Array<Scalars['String']['input']>;
+    /** moduleIDs */
+    moduleIDs?: Array<Scalars['String']['input']>;
+    /** userID */
+    userID?: Scalars['String']['input'];
+    /** userName */
     userName: UserNameInputType;
 };
 export type DocumentType = {
     __typename?: 'DocumentType';
+    /** capture */
     capture: Scalars['String']['output'];
+    /** contentIDs */
     contentIDs: Array<Scalars['String']['output']>;
+    /** courseID */
     courseID: Scalars['ID']['output'];
-    creationDate: Scalars['Date']['output'];
+    /** document created date */
+    dateCreated: Scalars['Float']['output'];
+    /** description */
     description?: Maybe<Scalars['String']['output']>;
     documentID: Scalars['ID']['output'];
     ip: Scalars['String']['output'];
+    /** language */
     lang: Scalars['String']['output'];
+    /** meta */
     meta: MetaObjectType;
+    /** moduleIDs */
     moduleIDs: Array<Scalars['String']['output']>;
     pathName: Scalars['String']['output'];
+    /** userID */
+    userID: Scalars['String']['output'];
+    /** userName */
     userName: UserNameObjectType;
 };
 export type ImageDataOpenAiType = {
@@ -295,6 +325,7 @@ export type Mutation = {
     deleteUser: UserModelExtendedType;
     removeDocument: Scalars['Boolean']['output'];
     removeRecipe: Scalars['Boolean']['output'];
+    updateCollections: Array<CollectionUpdateStatusType>;
     updateCompetencyTags: Array<CompetencyTagType>;
     updateCourses: Array<CourseType>;
     updateProfiles: Array<ProfileType>;
@@ -343,6 +374,9 @@ export type MutationRemoveDocumentArgs = {
 };
 export type MutationRemoveRecipeArgs = {
     id: Scalars['String']['input'];
+};
+export type MutationUpdateCollectionsArgs = {
+    collections: Array<Scalars['String']['input']>;
 };
 export type MutationUpdateCompetencyTagsArgs = {
     competencyTagsInput: CompetencyTagsInputType;

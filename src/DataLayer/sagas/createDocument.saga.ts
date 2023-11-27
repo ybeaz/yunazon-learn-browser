@@ -21,8 +21,12 @@ function* createDocument(dataInput: any): Iterable<any> {
     },
   } = dataInput
 
-  // @ts-expect-error
-  const { language = 'en' } = yield select((store: RootStoreType) => store)
+  const {
+    // @ts-expect-error
+    language = 'en',
+    // @ts-expect-error
+    authAwsCognitoUserData: { sub },
+  } = yield select((store: RootStoreType) => store)
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -31,6 +35,7 @@ function* createDocument(dataInput: any): Iterable<any> {
       createDocumentInput: CreateDocumentInputType
     } = {
       createDocumentInput: {
+        userID: sub || '000000',
         courseID,
         capture,
         description,

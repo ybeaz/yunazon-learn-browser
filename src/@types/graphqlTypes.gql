@@ -16,6 +16,17 @@ type ChoiceType {
   message: MessageChoiceType!
 }
 
+type CollectionUpdateStatusType {
+  """templates ID"""
+  collectionName: ID
+
+  """collection updated date"""
+  dateUpdated: Float
+
+  """status > whether the collection is updated successfully"""
+  statusUpdated: Boolean!
+}
+
 input ComparisonFields {
   """user ID"""
   userIdAuth: ID
@@ -155,13 +166,31 @@ type CoursesPageInfoType {
 }
 
 input CreateDocumentInputType {
-  capture: String!
-  contentIDs: [String!]!
+  """capture"""
+  capture: String! = "false"
+
+  """contentIDs"""
+  contentIDs: [String!]! = "false"
+
+  """courseID"""
   courseID: ID!
-  description: String
-  lang: String!
+
+  """description"""
+  description: String = "false"
+
+  """language"""
+  lang: String! = "false"
+
+  """meta"""
   meta: MetaInputType!
-  moduleIDs: [String!]!
+
+  """moduleIDs"""
+  moduleIDs: [String!]! = "false"
+
+  """userID"""
+  userID: String! = "false"
+
+  """userName"""
   userName: UserNameInputType!
 }
 
@@ -169,17 +198,37 @@ input CreateDocumentInputType {
 scalar Date
 
 type DocumentType {
+  """capture"""
   capture: String!
+
+  """contentIDs"""
   contentIDs: [String!]!
+
+  """courseID"""
   courseID: ID!
-  creationDate: Date!
+
+  """document created date"""
+  dateCreated: Float!
+
+  """description"""
   description: String
   documentID: ID!
   ip: String!
+
+  """language"""
   lang: String!
+
+  """meta"""
   meta: MetaObjectType!
+
+  """moduleIDs"""
   moduleIDs: [String!]!
   pathName: String!
+
+  """userID"""
+  userID: String!
+
+  """userName"""
   userName: UserNameObjectType!
 }
 
@@ -305,6 +354,7 @@ type Mutation {
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeDocument(id: String!): Boolean!
   removeRecipe(id: String!): Boolean!
+  updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(coursesInput: CoursesInputType!): [CourseType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
