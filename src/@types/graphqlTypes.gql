@@ -179,7 +179,7 @@ input CreateDocumentInputType {
   description: String = "false"
 
   """language"""
-  lang: String! = "false"
+  language: String! = "false"
 
   """meta"""
   meta: MetaInputType!
@@ -216,7 +216,7 @@ type DocumentType {
   ip: String!
 
   """language"""
-  lang: String!
+  language: String!
 
   """meta"""
   meta: MetaObjectType!

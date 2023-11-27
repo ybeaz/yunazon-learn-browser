@@ -183,7 +183,7 @@ export type CreateDocumentInputType = {
     /** description */
     description?: InputMaybe<Scalars['String']['input']>;
     /** language */
-    lang?: Scalars['String']['input'];
+    language?: Scalars['String']['input'];
     /** meta */
     meta: MetaInputType;
     /** moduleIDs */
@@ -208,7 +208,7 @@ export type DocumentType = {
     documentID: Scalars['ID']['output'];
     ip: Scalars['String']['output'];
     /** language */
-    lang: Scalars['String']['output'];
+    language: Scalars['String']['output'];
     /** meta */
     meta: MetaObjectType;
     /** moduleIDs */

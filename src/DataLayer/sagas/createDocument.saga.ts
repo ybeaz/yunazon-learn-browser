@@ -47,7 +47,7 @@ function* createDocument(dataInput: any): Iterable<any> {
           middleName: userNameMiddle,
           lastName: userNameLast,
         },
-        lang: language,
+        language,
       },
     }
 
@@ -55,8 +55,6 @@ function* createDocument(dataInput: any): Iterable<any> {
       variables,
       resolveGraphqlName: 'createDocument',
     })
-
-    console.info('createDocument.saga [84]', { createDocument })
 
     yield put(actionSync.ADD_DOCUMENT(createDocument))
 

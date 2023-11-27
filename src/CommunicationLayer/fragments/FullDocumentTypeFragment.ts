@@ -20,7 +20,7 @@ export const FullDocumentTypeFragment: DocumentNode = gql`
       lastName
     }
     dateCreated
-    lang
+    language
     ip
   }
 `
