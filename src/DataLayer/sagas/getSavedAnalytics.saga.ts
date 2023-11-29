@@ -11,7 +11,7 @@ interface IGetSavedAnalytics {
   data: AnalyticsInputType
 }
 
-function* getSavedAnalytics(payload: IGetSavedAnalytics) {
+function* getSavedAnalytics(payload: IGetSavedAnalytics): Iterable<any> {
   const {
     data: { initData, event },
   } = payload

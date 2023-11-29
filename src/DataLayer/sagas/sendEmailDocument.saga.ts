@@ -1,31 +1,29 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { sendEmailDocumentConnector } from '../../CommunicationLayer/sendEmailDocument.connector'
+import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* sendEmailDocument(dataInput) {
+function* sendEmailDocument(dataInput: any): Iterable<any> {
   const {
     data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
   } = dataInput
 
-  const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
-
-  const fragmentName = 'DocumentModelGraphqlAll'
-  const { axiosClient, method, params } = sendEmailDocumentConnector(
-    documentID,
-    sendTo,
-    sendCc,
-    sendBcc,
-    fragmentName
-  )
-
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-    const {
-      data: {
-        data: { sendEmailDocument },
-      },
-    } = yield axiosClient[method]('', params)
+
+    const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
+
+    const variables = {
+      documentID,
+      sendTo,
+      sendCc,
+      sendBcc,
+    }
+
+    const sendEmailDocument: any = yield getResponseGraphqlAsync({
+      variables,
+      resolveGraphqlName: 'sendEmailDocument',
+    })
 
     yield put(
       actionSync.SET_MODAL_FRAMES([

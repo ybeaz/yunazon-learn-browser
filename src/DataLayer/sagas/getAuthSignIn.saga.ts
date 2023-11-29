@@ -4,7 +4,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthSignInConnector } from '../../CommunicationLayer/getAuthSignIn.connector'
 
-function* getAuthSignIn() {
+function* getAuthSignIn(): Iterable<any> {
   const {
     forms: {
       user: { userEmail, userPasswordAuth },

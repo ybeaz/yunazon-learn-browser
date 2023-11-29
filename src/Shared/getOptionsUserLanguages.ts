@@ -1,5 +1,9 @@
 interface IGetOptionsUserLanguages {
-  (userLanguages: string[], LANGUAGES: any, language: string): {
+  (
+    userLanguages: string[],
+    LANGUAGES: any,
+    language: string
+  ): {
     label: string
     value: string
   }[]
@@ -14,16 +18,19 @@ export const getOptionsUserLanguages: IGetOptionsUserLanguages = (
   LANGUAGES,
   language
 ) => {
-  const languagesMapped = Object.keys(LANGUAGES).reduce((red, lang) => {
-    const key = LANGUAGES[lang]['639-1']
-    return {
-      ...red,
-      [key]: { ...LANGUAGES[lang] },
-    }
-  }, {})
+  const languagesMapped = Object.keys(LANGUAGES).reduce(
+    (accum: any, language2: string) => {
+      const key = LANGUAGES[language2]['639-1']
+      return {
+        ...accum,
+        [key]: { ...LANGUAGES[language2] },
+      }
+    },
+    {}
+  )
 
-  return userLanguages.map(langItem => {
-    const label = languagesMapped[langItem][language][0]
-    return { label, value: langItem }
+  return userLanguages.map((language2: string) => {
+    const label = languagesMapped[language2][language][0]
+    return { label, value: language2 }
   })
 }

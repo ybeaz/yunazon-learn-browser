@@ -68,16 +68,16 @@ export const useYouTubePlayerWork = ({
     setPlayerState(state)
   }
 
-  async function onYouTubeIframeAPIReady() {
+  async function onYouTubeIframeAPIReady(videoId: string) {
     if (contentComponentName === 'PlayerIframe') {
       try {
         // @ts-expect-error
         window['YT'].ready(function () {
           // @ts-expect-error
-          const Player = new window['YT'].Player(contentID, {
+          const Player = new window['YT'].Player(videoId, {
             height,
             width,
-            videoId: contentID,
+            videoId,
             title: 'YouTube video player',
             frameBorder: '0',
             allow:
@@ -112,7 +112,7 @@ export const useYouTubePlayerWork = ({
   }
 
   useEffect(() => {
-    setTimeout(() => onYouTubeIframeAPIReady(), 1000)
+    setTimeout(() => onYouTubeIframeAPIReady(contentID), 1000)
   }, [contentID])
 
   useEffect(() => {

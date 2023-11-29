@@ -4,10 +4,9 @@ import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
-import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
-import { CarouselQuestions } from '../../Components/CarouselQuestions'
+import { CarouselQuestions } from '../../Components/CarouselQuestions/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
@@ -271,7 +270,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* footer */}
             {null}
           </MainFrame>
-          <SideNavigation />
           <LoaderOverlayYrl />
         </>
       ) : null}

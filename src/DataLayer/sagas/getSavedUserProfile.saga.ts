@@ -3,7 +3,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSavedUserProfileConnector } from '../../CommunicationLayer/getSavedUserProfile.connector'
 
-function* getSavedUserProfile() {
+function* getSavedUserProfile(): Iterable<any> {
   const {
     forms: { user },
   } = yield select(store => store)

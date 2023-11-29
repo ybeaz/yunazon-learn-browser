@@ -76,14 +76,14 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     capture: courseCapture = '',
     courseID = '',
     contentID = '',
-    creationDate = '',
+    dateCreated = '',
     pathName: documentPathName,
   } = documentFound || documentDefault
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
-  const creationDateReadable = getDateString({
-    timestamp: creationDate,
+  const dateCreatedReadable = getDateString({
+    timestamp: dateCreated,
     style: dateStyle,
     hours: false,
     minutes: false,
@@ -222,7 +222,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
                   <div className='pm-certified'>
                     <div className='_documentData'>
                       <span className='_completed'>
-                        Completed {creationDateReadable}
+                        Completed {dateCreatedReadable}
                       </span>
                       <span className='_certificate'>
                         Certificate link/ No

@@ -8,6 +8,7 @@ import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGra
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageStoreStateSet } from '../../Shared/getLocalStorageStoreStateSet'
 import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
+import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
   try {
@@ -63,6 +64,9 @@ function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
       },
       { printRes: false }
     )
+    getSetObjToLocalStorage({
+      refresh_token: '',
+    })
   } catch (error: any) {
     console.log('ERROR getAuthAwsCognitoUserRevokedSaga', {
       error: error.message,

@@ -7,8 +7,9 @@ import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshed
 import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
 import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
+import { getCourses } from './getCourses.saga'
 
-function* initLoading(args: any) {
+function* initLoading(args: any): Iterable<any> {
   try {
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
@@ -39,6 +40,8 @@ function* initLoading(args: any) {
     if (width <= 480) {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
+
+    yield getCourses()
   } catch (error: any) {
     console.info('initLoading [31]', error.name + ': ' + error.message)
   }

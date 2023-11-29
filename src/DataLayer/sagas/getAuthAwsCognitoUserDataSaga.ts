@@ -6,6 +6,7 @@ import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageStoreStateSet } from '../../Shared/getLocalStorageStoreStateSet'
+import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
   const {
@@ -27,6 +28,10 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync({
       variables,
       resolveGraphqlName: 'getAuthAwsCognitoUserData',
+    })
+
+    yield getSetObjToLocalStorage({
+      refresh_token: authAwsCognitoUserData.refresh_token,
     })
 
     yield put(

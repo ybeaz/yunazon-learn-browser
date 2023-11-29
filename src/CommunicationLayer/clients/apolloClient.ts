@@ -6,11 +6,7 @@ import {
   DefaultOptions,
 } from '@apollo/client'
 
-const headers: Record<string, string> = {
-  'Access-Control-Allow-Origin': '*',
-  'Content-Type': 'application/json',
-  timestamp: `${+new Date()}`,
-}
+import { getHeaders } from './getHeaders'
 
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { SERVERS_MAIN, ServersType } from '../../Constants/servers.const'
@@ -22,7 +18,7 @@ const baseURL = SERVERS_MAIN[envType as keyof ServersType] as string
 const createHttpLink = (pathname: string): HttpLink => {
   return new HttpLink({
     uri: `${baseURL}${pathname}`,
-    headers,
+    headers: getHeaders({ printRes: false }),
   })
 }
 

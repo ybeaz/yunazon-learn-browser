@@ -9,6 +9,7 @@ export enum ResultType {
 
 export type GetAnswersChecked2OutType = {
   total: number
+  answered: number
   right: number
   wrong: number
   result: ResultType

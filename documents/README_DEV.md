@@ -17,7 +17,6 @@
 - Copy `~/Dev/yourails_sep_academy_web/web-build/static` into
   `~/Dev/yourails-assets-sep-academy-web/dist/static`
 - In Browser authorise at https://www.npmjs.com/ and check previous `yourails-assets-sep-academy-web` package version
-- In Terminal, go to `cd ~/Dev/yourails-assets-sep-academy-web/`
 - In VS code change versions (for example `"version": "0.60.0",`) in
   `/Users/admin/Dev/yourails_sep_academy_web/package.json` and
   `/Users/admin/Dev/yourails-assets-sep-academy-web/package.json`
@@ -27,7 +26,7 @@
 - In ForkLift copy
   - copy `/deployment/index-r1.userto.html` to `r1.userto.com/www/`
   - copy `/deployment/index-web.yourails.html` to `../web.yourails.com/www`
-  - ` /deployment/index-web.yourails.html``index.html ` and `.htaccess` to the directories
+  - `/deployment/index-web.yourails.html``index.html` and `.htaccess` to the directories
 - In Browser, new Tab,
   - `shift`+`command`+`delete` and remove cache
   - check r1.userto.com

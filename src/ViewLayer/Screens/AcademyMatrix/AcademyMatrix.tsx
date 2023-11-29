@@ -4,10 +4,9 @@ import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
-import { ContentPlate } from '../../Components/ContentPlate'
+import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
@@ -35,10 +34,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 ) => {
   const query = getParsedUrlQuery()
 
-  useEffectedRequests([
-    { type: 'INIT_LOADING', data: { query } },
-    'GET_COURSES',
-  ])
+  useEffectedRequests([{ type: 'INIT_LOADING', data: { query } }])
   useInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'
@@ -74,6 +70,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         durationMultiplier
       )
       const contentPlateProps = {
+        key: moduleID,
         contentComponentName,
         courseID,
         courseCapture,
@@ -84,6 +81,12 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         isShowingPlay,
         screenType,
       }
+
+      // console.info('AcademyMatrix [88]', {
+      //   moduleID,
+      //   contentPlateProps,
+      //   courses2,
+      // })
       return <ContentPlate {...contentPlateProps} />
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>
@@ -139,7 +142,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }
