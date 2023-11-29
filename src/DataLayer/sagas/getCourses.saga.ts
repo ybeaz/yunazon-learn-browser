@@ -9,7 +9,7 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 let coursesPrev = []
 
-function* getCourses(): Iterable<any> {
+export function* getCourses(): Iterable<any> {
   try {
     const variables = {
       readCoursesConnectionInput: {

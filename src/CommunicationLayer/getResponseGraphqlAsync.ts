@@ -87,7 +87,7 @@ export const getResponseGraphqlAsync: GetResponseGraphqlAsyncType = async (
         query: print(documentNode),
       }
 
-      const res: any = await client({
+      const res: any = await client()({
         url: '/graphql',
         data: params,
         method: MethodHttpEnumType['post'],

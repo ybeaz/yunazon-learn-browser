@@ -34,10 +34,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 ) => {
   const query = getParsedUrlQuery()
 
-  useEffectedRequests([
-    { type: 'INIT_LOADING', data: { query } },
-    'GET_COURSES',
-  ])
+  useEffectedRequests([{ type: 'INIT_LOADING', data: { query } }])
   useInitialTeachContentLoading()
 
   const screenType = 'AcademyMatrix'

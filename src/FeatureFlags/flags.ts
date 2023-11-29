@@ -18,7 +18,7 @@ export const isLoadingLocalStorageStoreState: FeatureFlagType = (
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType
-) => ClientHttpType['apolloClient']
+) => ClientHttpType['axiosClient']
 
 /** @description Flag to toggle display of the Cognito signin option in the Header */
 export const isAwsCognitoAuth: FeatureFlagType = (envTypeIn = envType) => true
