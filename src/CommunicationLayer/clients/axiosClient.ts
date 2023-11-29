@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders } from 'axios'
+import axios from 'axios'
 
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { SERVERS_MAIN, ServersType } from '../../Constants/servers.const'
