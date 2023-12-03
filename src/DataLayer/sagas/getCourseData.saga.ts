@@ -15,21 +15,23 @@ function* getCourseData(dataInput: any): Iterable<any> {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables = {
-      readCourseInput: {
-        moduleID,
-      },
+      readCoursesInput: [
+        {
+          moduleID,
+        },
+      ],
     }
 
-    const readCourse: any = yield getResponseGraphqlAsync({
+    const readCourses: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'readCourse',
+      resolveGraphqlName: 'readCourses',
     })
 
-    const coursesNext = getPreparedCourses([readCourse])
+    const coursesNext = getPreparedCourses([readCourses])
 
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
     yield put(
-      actionSync.SET_COURSE_ID_ACTIVE({ courseID: readCourse?.courseID })
+      actionSync.SET_COURSE_ID_ACTIVE({ courseID: readCourses?.courseID })
     )
     yield put(actionSync.SET_COURSES(coursesNext))
 

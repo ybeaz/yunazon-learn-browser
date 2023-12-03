@@ -13,8 +13,8 @@ export function* getCourses(): Iterable<any> {
   try {
     const variables = {
       readCoursesConnectionInput: {
-        offset: 0,
         first: 8,
+        offset: 6,
       },
     }
 

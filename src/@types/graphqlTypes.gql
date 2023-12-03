@@ -414,8 +414,9 @@ type Mutation {
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
+  deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
-  deleteCourses(courseID: String!): [CourseType!]!
+  deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteProfiles(idProfiles: String!): [ProfileType!]!
   deleteTemplates(templatesID: String!): [TemplatesType!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
@@ -576,8 +577,6 @@ type ProfilesPageInfoType {
 }
 
 type Query {
-  findAllDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
-  findDocument(documentID: String!): DocumentType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -587,17 +586,19 @@ type Query {
   readCourse(readCourseInput: ReadCourseInputType!): CourseType!
   readCourses: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
+  readDocument(documentID: String!): DocumentType!
+  readDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
   readModule(moduleID: String!): ModuleType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
+  readRecipe(id: String!): RecipeType!
+  readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
   readTemplate(templatesID: String!): TemplatesType!
   readTemplates: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
   readUserAuth(userIdAuth: String!): UserModelExtendedType!
   readUserProfile(userIdProfile: String!): UserModelExtendedType!
   readUsers(options: ReadUsersOptions!): UsersType!
-  recipe(id: String!): RecipeType!
-  recipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
   sendEmailDocument(documentID: String!, sendBcc: String!, sendCc: String!, sendTo: String!): DocumentType!
 }
 
@@ -656,13 +657,19 @@ input ReadCourseInputType {
 }
 
 input ReadCoursesConnectionInputType {
-  """after"""
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
   after: String
 
-  """first"""
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
   first: Int
 
-  """offset"""
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return.
+  """
   offset: Int
 }
 
@@ -780,17 +787,44 @@ type TemplatesType {
 }
 
 input UpdateCourseInputType {
+  """course capture"""
+  capture: String!
+
   """courses ID"""
-  courseID: ID
+  courseID: ID!
 
   """courses created date"""
-  coursesDateCreated: Date
+  dateCreated: Float!
 
   """courses deleted date"""
-  coursesDateDeleted: Date
+  dateDeleted: Float
 
   """courses updated date"""
-  coursesDateUpdated: Date
+  dateUpdated: Float!
+
+  """course description"""
+  description: String!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """courses meta information"""
+  meta: CourseMetaInputType
+
+  """courses modules"""
+  modules: [ModuleInputType!]
+
+  """courses passRate"""
+  passRate: Float
+
+  """profile ID"""
+  profileID: ID!
+
+  """courses questionNumber"""
+  questionNumber: Int!
 }
 
 input UserIdDataAwsCognitoInputType {

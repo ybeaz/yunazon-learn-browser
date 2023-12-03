@@ -369,8 +369,9 @@ export type Mutation = {
   createProfiles: Array<ProfileType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
+  deactivateCourses: Array<Scalars['String']['output']>;
   deleteCompetencyTags: Array<CompetencyTagType>;
-  deleteCourses: Array<CourseType>;
+  deleteCourses: Array<Scalars['String']['output']>;
   deleteProfiles: Array<ProfileType>;
   deleteTemplates: Array<TemplatesType>;
   deleteUser: UserModelExtendedType;
@@ -420,13 +421,18 @@ export type MutationCreateUserArgs = {
 };
 
 
+export type MutationDeactivateCoursesArgs = {
+  deactivateCoursesIdsInput: Array<Scalars['String']['input']>;
+};
+
+
 export type MutationDeleteCompetencyTagsArgs = {
   idCompetencyTags: Scalars['String']['input'];
 };
 
 
 export type MutationDeleteCoursesArgs = {
-  courseID: Scalars['String']['input'];
+  deleteCoursesIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -605,8 +611,6 @@ export type ProfilesPageInfoType = {
 
 export type Query = {
   __typename?: 'Query';
-  findAllDocuments: Array<DocumentType>;
-  findDocument: DocumentType;
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
@@ -616,29 +620,20 @@ export type Query = {
   readCourse: CourseType;
   readCourses: Array<CourseType>;
   readCoursesConnection: CoursesConnectionType;
+  readDocument: DocumentType;
+  readDocuments: Array<DocumentType>;
   readModule: ModuleType;
   readProfiles: Array<ProfileType>;
   readProfilesConnection: ProfilesConnectionType;
+  readRecipe: RecipeType;
+  readRecipes: Array<RecipeType>;
   readTemplate: TemplatesType;
   readTemplates: Array<TemplatesType>;
   readTemplatesConnection: TemplatesConnectionType;
   readUserAuth: UserModelExtendedType;
   readUserProfile: UserModelExtendedType;
   readUsers: UsersType;
-  recipe: RecipeType;
-  recipes: Array<RecipeType>;
   sendEmailDocument: DocumentType;
-};
-
-
-export type QueryFindAllDocumentsArgs = {
-  skip?: Scalars['Int']['input'];
-  take?: Scalars['Int']['input'];
-};
-
-
-export type QueryFindDocumentArgs = {
-  documentID: Scalars['String']['input'];
 };
 
 
@@ -682,6 +677,17 @@ export type QueryReadCoursesConnectionArgs = {
 };
 
 
+export type QueryReadDocumentArgs = {
+  documentID: Scalars['String']['input'];
+};
+
+
+export type QueryReadDocumentsArgs = {
+  skip?: Scalars['Int']['input'];
+  take?: Scalars['Int']['input'];
+};
+
+
 export type QueryReadModuleArgs = {
   moduleID: Scalars['String']['input'];
 };
@@ -689,6 +695,17 @@ export type QueryReadModuleArgs = {
 
 export type QueryReadProfilesConnectionArgs = {
   readProfilesConnectionInput: ReadProfilesConnectionInputType;
+};
+
+
+export type QueryReadRecipeArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryReadRecipesArgs = {
+  skip?: Scalars['Int']['input'];
+  take?: Scalars['Int']['input'];
 };
 
 
@@ -714,17 +731,6 @@ export type QueryReadUserProfileArgs = {
 
 export type QueryReadUsersArgs = {
   options: ReadUsersOptions;
-};
-
-
-export type QueryRecipeArgs = {
-  id: Scalars['String']['input'];
-};
-
-
-export type QueryRecipesArgs = {
-  skip?: Scalars['Int']['input'];
-  take?: Scalars['Int']['input'];
 };
 
 
@@ -778,11 +784,11 @@ export type ReadCourseInputType = {
 };
 
 export type ReadCoursesConnectionInputType = {
-  /** after */
+  /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
   after?: InputMaybe<Scalars['String']['input']>;
-  /** first */
+  /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
-  /** offset */
+  /** offset: Similar to "First," it specifies the maximum number of items to return. */
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
@@ -886,14 +892,32 @@ export type TemplatesType = {
 };
 
 export type UpdateCourseInputType = {
+  /** course capture */
+  capture: Scalars['String']['input'];
   /** courses ID */
-  courseID?: InputMaybe<Scalars['ID']['input']>;
+  courseID: Scalars['ID']['input'];
   /** courses created date */
-  coursesDateCreated?: InputMaybe<Scalars['Date']['input']>;
+  dateCreated: Scalars['Float']['input'];
   /** courses deleted date */
-  coursesDateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
   /** courses updated date */
-  coursesDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  dateUpdated: Scalars['Float']['input'];
+  /** course description */
+  description: Scalars['String']['input'];
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** language code */
+  language: Scalars['String']['input'];
+  /** courses meta information */
+  meta?: InputMaybe<CourseMetaInputType>;
+  /** courses modules */
+  modules?: InputMaybe<Array<ModuleInputType>>;
+  /** courses passRate */
+  passRate?: InputMaybe<Scalars['Float']['input']>;
+  /** profile ID */
+  profileID: Scalars['ID']['input'];
+  /** courses questionNumber */
+  questionNumber: Scalars['Int']['input'];
 };
 
 export type UserIdDataAwsCognitoInputType = {
