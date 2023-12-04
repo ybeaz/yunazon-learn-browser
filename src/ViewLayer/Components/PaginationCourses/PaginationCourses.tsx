@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
+import { ButtonYrl, withPropsYrl } from '../../ComponentsLibrary'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -21,7 +21,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
   const { classAdded } = props
 
   const propsOut: PaginationCoursesPropsOutType = {
-    buttonSlideBackwardProps: {
+    buttonCoursesBackwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdBackward2',
       action: {
@@ -30,7 +30,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
       },
       isDisplaying: true, // isButtonSlideBackward,
     },
-    buttonSlideForwardProps: {
+    buttonCoursesForwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdForward2',
       action: {
@@ -41,7 +41,13 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
     },
   }
 
-  return <div className={getClasses('PaginationCourses', classAdded)}></div>
+  return (
+    <div className={getClasses('PaginationCourses', classAdded)}>
+      <ButtonYrl {...propsOut.buttonCoursesBackwardProps}>Prev</ButtonYrl>
+      <div>Pages</div>
+      <ButtonYrl {...propsOut.buttonCoursesForwardProps}>Next</ButtonYrl>
+    </div>
+  )
 }
 
 export const PaginationCourses = withPropsYrl({})(

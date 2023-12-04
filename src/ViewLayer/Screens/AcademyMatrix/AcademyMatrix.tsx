@@ -16,6 +16,7 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
 
 import {
   AcademyMatrixPropsType,
@@ -136,7 +137,14 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {null}
         {/* middle-main */}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
-          <div>{getPlateMatix(coursesFiltered)}</div>
+          <div className='PlateMatrixPagination'>
+            <div className='PlateMatrixWrapper'>
+              {getPlateMatix(coursesFiltered)}
+            </div>
+            <div className='PaginationCoursesWrapper'>
+              <PaginationCourses />
+            </div>
+          </div>
         ) : null}
         {/* middle-right */}
         {null}

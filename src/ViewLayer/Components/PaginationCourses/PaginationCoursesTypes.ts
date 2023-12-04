@@ -1,8 +1,13 @@
+import { ButtonYrlPropsType } from '../../ComponentsLibrary'
+
 export type PaginationCoursesPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
 }
 
-export type PaginationCoursesPropsOutType = Record<string, any>
+export type PaginationCoursesPropsOutType = {
+  buttonCoursesBackwardProps: ButtonYrlPropsType
+  buttonCoursesForwardProps: ButtonYrlPropsType
+}
 
 /**
  * @import import { PaginationCoursesType } from './PaginationCoursesType'
