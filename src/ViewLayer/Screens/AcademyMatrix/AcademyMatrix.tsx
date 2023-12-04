@@ -32,16 +32,6 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
-  const query = getParsedUrlQuery()
-
-  useEffectedRequests([{ type: 'INIT_LOADING', data: { query } }])
-  useInitialTeachContentLoading()
-
-  const screenType = 'AcademyMatrix'
-
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
-    SITE_META_DATA
-
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
@@ -49,7 +39,18 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
     forms: { searchInput },
+    componentsState: { pagination },
   } = store
+
+  const query = getParsedUrlQuery()
+
+  useEffectedRequests([{ type: 'INIT_LOADING', data: { query, pagination } }])
+  useInitialTeachContentLoading()
+
+  const screenType = 'AcademyMatrix'
+
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
+    SITE_META_DATA
 
   const getPlateMatix: Function = (courses2: any[]): ReactElement => {
     const plates = courses2.map((item, i) => {

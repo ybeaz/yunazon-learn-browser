@@ -29,6 +29,9 @@ export type ComponentsStateType = {
   isOAuthGoogleScriptLoaded: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
+  pagination: {
+    courses: { first: number; offset: number }
+  }
 }
 
 export type FormsType = {

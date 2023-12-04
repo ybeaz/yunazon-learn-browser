@@ -82,6 +82,9 @@ export const componentsStateDefault: ComponentsStateType = {
       },
     },
   ],
+  pagination: {
+    courses: { first: 0, offset: 10 },
+  },
 }
 
 export const formsDefault: FormsType = {

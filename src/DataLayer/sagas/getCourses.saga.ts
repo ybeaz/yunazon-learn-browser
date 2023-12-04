@@ -9,12 +9,12 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 let coursesPrev = []
 
-export function* getCourses(): Iterable<any> {
+export function* getCourses({ first, offset }: any): Iterable<any> {
   try {
     const variables = {
       readCoursesConnectionInput: {
-        first: 0,
-        offset: 10,
+        first,
+        offset,
       },
     }
 

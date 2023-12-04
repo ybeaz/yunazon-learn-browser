@@ -41,7 +41,14 @@ function* initLoading(args: any): Iterable<any> {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
 
-    yield getCourses()
+    const {
+      pagination: {
+        courses: { first, offset },
+      },
+    } = args.data
+    console.info('initLoading.saga [44]', { first, offset })
+
+    yield getCourses({ first, offset })
   } catch (error: any) {
     console.info('initLoading [31]', error.name + ': ' + error.message)
   }
