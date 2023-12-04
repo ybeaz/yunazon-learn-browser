@@ -118,6 +118,10 @@ export type CourseMetaInputType = {
   specName: Scalars['String']['input'];
   /** course meta specTitle */
   specTitle: Scalars['String']['input'];
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** courses meta tags: tags that characterises the course content, its marketing features */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 export type CourseType = {
@@ -315,6 +319,10 @@ export type MetaType = {
   specName: Scalars['String']['output'];
   /** course meta specTitle */
   specTitle: Scalars['String']['output'];
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: Maybe<Array<Scalars['String']['output']>>;
+  /** courses meta tags: tags that characterises the course content, its marketing features */
+  tags?: Maybe<Array<Scalars['String']['output']>>;
 };
 
 export type ModuleInputType = {
@@ -617,12 +625,11 @@ export type Query = {
   getImagesOpenAi: ImagesOpenAiType;
   getMessageAssistant: MessageAssistantType;
   readCompetencyTags: Array<CompetencyTagType>;
-  readCourse: CourseType;
   readCourses: Array<CourseType>;
+  readCoursesAll: Array<CourseType>;
   readCoursesConnection: CoursesConnectionType;
   readDocument: DocumentType;
   readDocuments: Array<DocumentType>;
-  readModule: ModuleType;
   readProfiles: Array<ProfileType>;
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
@@ -667,8 +674,8 @@ export type QueryReadCompetencyTagsArgs = {
 };
 
 
-export type QueryReadCourseArgs = {
-  readCourseInput: ReadCourseInputType;
+export type QueryReadCoursesArgs = {
+  readCoursesInput: Array<ReadCourseInputType>;
 };
 
 
@@ -685,11 +692,6 @@ export type QueryReadDocumentArgs = {
 export type QueryReadDocumentsArgs = {
   skip?: Scalars['Int']['input'];
   take?: Scalars['Int']['input'];
-};
-
-
-export type QueryReadModuleArgs = {
-  moduleID: Scalars['String']['input'];
 };
 
 
@@ -788,7 +790,7 @@ export type ReadCoursesConnectionInputType = {
   after?: InputMaybe<Scalars['String']['input']>;
   /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
-  /** offset: Similar to "First," it specifies the maximum number of items to return. */
+  /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 

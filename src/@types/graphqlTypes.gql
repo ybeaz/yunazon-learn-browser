@@ -112,6 +112,14 @@ input CourseMetaInputType {
 
   """course meta specTitle"""
   specTitle: String!
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!] = []
 }
 
 type CourseType {
@@ -346,6 +354,14 @@ type MetaType {
 
   """course meta specTitle"""
   specTitle: String!
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!]
 }
 
 input ModuleInputType {
@@ -583,12 +599,11 @@ type Query {
   getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
   getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
-  readCourse(readCourseInput: ReadCourseInputType!): CourseType!
-  readCourses: [CourseType!]!
+  readCourses(readCoursesInput: [ReadCourseInputType!]!): [CourseType!]!
+  readCoursesAll: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
   readDocument(documentID: String!): DocumentType!
   readDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
-  readModule(moduleID: String!): ModuleType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
@@ -668,7 +683,7 @@ input ReadCoursesConnectionInputType {
   first: Int
 
   """
-  offset: Similar to "First," it specifies the maximum number of items to return.
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
 }
