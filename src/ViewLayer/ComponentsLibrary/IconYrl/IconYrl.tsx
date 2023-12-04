@@ -15,6 +15,12 @@ import {
 /**
  * @description Component to render IconYrl
  * @link React Icons https://react-icons.github.io/react-icons/icons/md/
+ * @propsOut 
+    iconYrlProps: {
+      icon: 'BsFillPersonPlusFill',
+      icon2: null,
+      classAdded: 'IconYrl_Function1',
+    },
  * @import import { IconYrl, IconYrlPropsType, IconYrlPropsOutType, IconYrlType } 
              from '../ComponentsLibrary/'
  */

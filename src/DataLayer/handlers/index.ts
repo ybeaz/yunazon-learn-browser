@@ -1,3 +1,4 @@
+export * from './SET_PAGE_CURSOR'
 export * from './AUTH_FACEBOOK'
 export * from './AUTH_GOOGLE'
 export * from './AUTH_SIGN_OUT'

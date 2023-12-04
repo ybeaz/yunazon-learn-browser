@@ -1,3 +1,4 @@
+export * from './SET_PAGE_CURSOR'
 export * from './ADD_DOCUMENT'
 export * from './CHANGE_NUM_QUESTIONS_IN_SLIDE'
 export * from './CLICK_CHECK'

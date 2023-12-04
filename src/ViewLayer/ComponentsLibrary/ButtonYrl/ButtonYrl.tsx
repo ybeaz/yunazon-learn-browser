@@ -13,6 +13,16 @@ import {
 
 /**
  * @description Component to render ButtonYrl
+ * @propsOut 
+    buttonYrlProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdBackward2',
+      action: {
+        typeEvent: 'SET_PAGE_CURSOR',
+        data: { myData: 1 },
+      },
+      isDisplaying: true // isButtonSlideBackward,
+    },
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
              from '../ComponentsLibrary/'
  */
