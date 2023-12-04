@@ -23,7 +23,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
   const propsOut: PaginationCoursesPropsOutType = {
     buttonCoursesBackwardProps: {
       icon: 'MdForward',
-      classAdded: 'Button_MdBackward2',
+      classAdded: 'Button_PaginationCoursesBackward',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
         data: { step: -1 },
@@ -32,7 +32,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
     },
     buttonCoursesForwardProps: {
       icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
+      classAdded: 'Button_PaginationCoursesForward',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
         data: { step: 1 },
