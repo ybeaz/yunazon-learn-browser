@@ -40,14 +40,11 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     courses,
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
     forms: { searchInput },
-    componentsState: { pagination },
   } = store
 
   const query = getParsedUrlQuery()
 
-  useEffectedInitialRequests([
-    { type: 'INIT_LOADING', data: { query, pagination } },
-  ])
+  useEffectedInitialRequests([{ type: 'INIT_LOADING', data: { query } }])
   useLoadedInitialTeachContent()
 
   const screenType = 'AcademyMatrix'
