@@ -10,7 +10,7 @@ import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { useEffectedRequests } from '../Hooks/useEffectedRequests'
+import { useEffectedInitialRequests } from '../Hooks/useEffectedInitialRequests'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 
 interface ProfileArgs {
@@ -21,7 +21,7 @@ interface ProfileArgs {
 export const Profile: React.FunctionComponent<ProfileArgs> = (
   props: ProfileArgs
 ): ReactElement => {
-  useEffectedRequests(['INIT_LOADING'])
+  useEffectedInitialRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {

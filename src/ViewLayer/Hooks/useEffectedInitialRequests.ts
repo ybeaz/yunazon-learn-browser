@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { actionAsync } from '../../DataLayer/index.action'
 
-export const useEffectedRequests: Function = (
+export const useEffectedInitialRequests: Function = (
   requestList: string[] | any[]
 ): void => {
   const dispatch = useDispatch()
@@ -20,7 +20,6 @@ export const useEffectedRequests: Function = (
         }
       })
 
-    console.info('useEffectedRequests [25]')
     makeDispatchAsyncWrappered(requestList)
   }, [])
 }

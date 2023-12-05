@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
@@ -45,8 +45,10 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const query = getParsedUrlQuery()
 
-  useEffectedRequests([{ type: 'INIT_LOADING', data: { query, pagination } }])
-  useInitialTeachContentLoading()
+  useEffectedInitialRequests([
+    { type: 'INIT_LOADING', data: { query, pagination } },
+  ])
+  useLoadedInitialTeachContent()
 
   const screenType = 'AcademyMatrix'
 
