@@ -1,9 +1,10 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOAuthGoogleConnector } from '../../CommunicationLayer/getOAuthGoogle.connector'
 
-function* getOAuthGoogle(args: any): Iterable<any> {
+function* getOAuthGoogle(args: ActionReduxType | any): Iterable<any> {
   const {
     data: { clientId, credential, select_by },
   } = args

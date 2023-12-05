@@ -1,5 +1,6 @@
 import { UserType } from './UserType'
 import { ModuleType, CourseType } from '../@types/GraphqlTypes'
+import { PaginationType } from './PaginationType'
 
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
@@ -13,6 +14,12 @@ export type SearchFormSepType = {
   inputDescriptionRequired: string
   selectSortBy: string
 }
+
+export enum PaginationNameEnumType {
+  pagesCourses = 'pagesCourses',
+}
+
+export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
   isLoadedLocalStorageStoreState: boolean
@@ -29,9 +36,7 @@ export type ComponentsStateType = {
   isOAuthGoogleScriptLoaded: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
-  pagination: {
-    courses: { first: number; offset: number }
-  }
+  pagination: PaginationDict
 }
 
 export type FormsType = {

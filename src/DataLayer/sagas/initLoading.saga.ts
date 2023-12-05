@@ -1,5 +1,6 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
@@ -9,7 +10,7 @@ import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
 import { getCourses } from './getCourses.saga'
 
-function* initLoading(args: any): Iterable<any> {
+function* initLoading(params: ActionReduxType | any): Iterable<any> {
   try {
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
@@ -21,7 +22,7 @@ function* initLoading(args: any): Iterable<any> {
     }
     yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
 
-    const code = args?.data?.query?.code
+    const code = params?.data?.query?.code
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })
@@ -43,12 +44,14 @@ function* initLoading(args: any): Iterable<any> {
 
     const {
       pagination: {
-        courses: { first, offset },
+        pagesCourses: { first, offset },
       },
-    } = args.data
-    console.info('initLoading.saga [44]', { first, offset })
+    } = params.data
 
-    yield getCourses({ first, offset })
+    yield getCourses({
+      type: 'GET_COURSES_REQUEST',
+      data: { first: 10, offset: 10 },
+    })
   } catch (error: any) {
     console.info('initLoading [31]', error.name + ': ' + error.message)
   }

@@ -6,20 +6,20 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { PaginationType } from '../../Interfaces'
 
-export const SET_PAGE_CURSOR: ReducerType = (
+export const SET_PAGE_INFO: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
   const { componentsState } = store
   const pagination: PaginationDict = componentsState.pagination
 
-  const { first: firstNext } = data
+  const { hasNextPage, endCursor } = data
   const paginationName: PaginationNameEnumType = data.paginationName
   const paginationSlice: PaginationType = pagination[paginationName]
 
   const paginationNext = {
     ...pagination,
-    [paginationName]: { ...paginationSlice, first: firstNext },
+    [paginationName]: { ...paginationSlice, hasNextPage, endCursor },
   }
 
   const componentsStateNext = { ...componentsState, pagination: paginationNext }

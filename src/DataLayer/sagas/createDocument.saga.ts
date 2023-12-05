@@ -1,11 +1,12 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* createDocument(dataInput: any): Iterable<any> {
+function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
     data: {
       capture,
@@ -19,7 +20,7 @@ function* createDocument(dataInput: any): Iterable<any> {
       userNameMiddle,
       userNameLast,
     },
-  } = dataInput
+  } = params
 
   const {
     // @ts-expect-error

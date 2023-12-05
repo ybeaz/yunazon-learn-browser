@@ -1,12 +1,13 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* sendEmailDocument(dataInput: any): Iterable<any> {
+function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
-  } = dataInput
+  } = params
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

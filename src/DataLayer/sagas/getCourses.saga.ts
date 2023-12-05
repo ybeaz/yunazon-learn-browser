@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ConnectionType } from '../../@types/ConnectionType'
@@ -9,7 +10,10 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
 let coursesPrev = []
 
-export function* getCourses({ first, offset }: any): Iterable<any> {
+export function* getCourses(params: ActionReduxType | any): Iterable<any> {
+  const first = params.data?.first || 0
+  const offset = params.data?.offset || 10
+
   try {
     const variables = {
       readCoursesConnectionInput: {
@@ -29,6 +33,11 @@ export function* getCourses({ first, offset }: any): Iterable<any> {
 
     coursesPrev = coursesNext
     yield put(actionSync.SET_COURSES(coursesNext))
+
+    const pageInfo = readCoursesConnection?.pageInfo
+    yield put(
+      actionSync.SET_PAGE_INFO({ paginationName: 'pagesCourses', ...pageInfo })
+    )
   } catch (error: any) {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }

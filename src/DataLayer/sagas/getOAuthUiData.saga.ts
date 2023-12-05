@@ -1,9 +1,10 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOAuthUiDataConnector } from '../../CommunicationLayer/getOAuthUiData.connector'
 
-function* getOAuthUiData(args: any): Iterable<any> {
+function* getOAuthUiData(args: ActionReduxType | any): Iterable<any> {
   const {
     data: { userNameLast, userNameFirst, picture, userIdExternal, userName },
   } = args

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonYrl, withPropsYrl } from '../../ComponentsLibrary'
+import { ButtonYrl, withStoreStateSliceYrl } from '../../ComponentsLibrary'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -18,7 +18,13 @@ import {
 const PaginationCoursesComponent: PaginationCoursesComponentType = (
   props: PaginationCoursesPropsType
 ) => {
-  const { classAdded } = props
+  const {
+    classAdded,
+    storeStateSlice: { pagesCourses },
+  } = props
+
+  const first = pagesCourses?.first || 0
+  const last = first + pagesCourses.offset
 
   const propsOut: PaginationCoursesPropsOutType = {
     buttonCoursesBackwardProps: {
@@ -27,7 +33,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
       captureRight: 'Prev',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
-        data: { step: -1 },
+        data: { paginationName: 'pagesCourses', direction: 'prev' },
       },
       isDisplaying: true, // isButtonSlideBackward,
     },
@@ -37,7 +43,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
       captureLeft: 'Next',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
-        data: { step: 1 },
+        data: { paginationName: 'pagesCourses', direction: 'next' },
       },
       isDisplaying: true, //  isButtonSlideForward,
     },
@@ -46,13 +52,14 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
   return (
     <div className={getClasses('PaginationCourses', classAdded)}>
       <ButtonYrl {...propsOut.buttonCoursesBackwardProps} />
-      <div className='_pages'>1 ... 10</div>
+      <div className='_pages'>{`${first} ... ${last}`}</div>
       <ButtonYrl {...propsOut.buttonCoursesForwardProps} />
     </div>
   )
 }
 
-export const PaginationCourses = withPropsYrl({})(
+export const PaginationCourses = withStoreStateSliceYrl(
+  ['pagesCourses'],
   React.memo(PaginationCoursesComponent)
 )
 

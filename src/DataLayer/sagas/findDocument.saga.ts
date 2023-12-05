@@ -1,10 +1,11 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* findDocument(props: any): Iterable<any> {
-  const { data: documentID } = props
+function* findDocument(params: ActionReduxType | any): Iterable<any> {
+  const { data: documentID } = params
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

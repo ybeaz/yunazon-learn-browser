@@ -1,5 +1,6 @@
 import { select, put, takeEvery, call } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { COOKIE_ANALYTICSID_NAME } from '../../Constants/cookieAnalyticsIDName.const'
 import { cookie } from '../../Shared/cookie'
 import { AnalyticsInputType } from '../../Interfaces/AnalyticsInputType'
@@ -11,10 +12,10 @@ interface IGetSavedAnalytics {
   data: AnalyticsInputType
 }
 
-function* getSavedAnalytics(payload: IGetSavedAnalytics): Iterable<any> {
+function* getSavedAnalytics(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { initData, event },
-  } = payload
+  } = params
 
   const { analyticsID: analyticsIDStore } = yield select(store => store)
 

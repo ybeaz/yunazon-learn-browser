@@ -29,6 +29,7 @@ export const withStoreStateSliceYrl: WithStoreStateSliceYrlType = function (
   return function WrappedComponent(props: any) {
     const store = useSelector((store2: any) => store2)
     const storeStateSlice = getObjectSlice({ entity: store, arrProps })
+
     return <Component {...props} storeStateSlice={storeStateSlice} />
   }
 }

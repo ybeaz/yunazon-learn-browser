@@ -6,6 +6,8 @@ import {
   RootStoreType,
 } from '../Interfaces/RootStoreType'
 
+import { paginationOffset } from '../Constants/pagination.const'
+
 export const userStoreDefault: UserType = {
   userAvatar: '',
   userBirthYear: null,
@@ -83,7 +85,12 @@ export const componentsStateDefault: ComponentsStateType = {
     },
   ],
   pagination: {
-    courses: { first: 0, offset: 10 },
+    pagesCourses: {
+      first: 0,
+      offset: paginationOffset,
+      hasNextPage: true,
+      endCursor: '',
+    },
   },
 }
 

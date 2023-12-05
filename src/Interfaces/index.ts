@@ -2,6 +2,7 @@
  * @description App types to organize code in a multidimentional feature development
  */
 
+export * from './PaginationType'
 export * from './ActionEventType'
 export * from './ActionReduxType'
 export * from './AnalyticsInputType'
