@@ -8,8 +8,6 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 
-let coursesPrev = []
-
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
   const first = params.data?.first || 0
   const offset = params.data?.offset || 10
@@ -31,7 +29,6 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
       .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
 
-    coursesPrev = coursesNext
     yield put(actionSync.SET_COURSES(coursesNext))
 
     const pageInfo = readCoursesConnection?.pageInfo

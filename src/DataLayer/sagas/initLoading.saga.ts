@@ -50,7 +50,7 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
 
     yield getCourses({
       type: 'GET_COURSES_REQUEST',
-      data: { first: 10, offset: 10 },
+      data: { first: 0, offset: 10 },
     })
   } catch (error: any) {
     console.info('initLoading [31]', error.name + ': ' + error.message)
