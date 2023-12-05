@@ -3,8 +3,6 @@ import { Middleware } from '@reduxjs/toolkit'
 import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
 import { getDebouncedFunc } from '../..//Shared/getDebouncedFunc'
 import { actionAsync } from '../../DataLayer/index.action'
-import { getConvertedType } from '../../Shared/getConvertedType'
-import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
 
 /**
  * @description Function to run refreshAuthMiddleware

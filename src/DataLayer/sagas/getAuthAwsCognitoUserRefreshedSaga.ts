@@ -6,7 +6,6 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 import { ClientAppType } from '../../@types/ClientAppType'
-import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
 
 export function* getAuthAwsCognitoUserRefreshed(): Iterable<any> {
   try {
@@ -21,13 +20,11 @@ export function* getAuthAwsCognitoUserRefreshed(): Iterable<any> {
       // @ts-expect-error
       storeStateApp?.authAwsCognitoUserData?.refresh_token
 
-    const storeStateLocalStorage = getLocalStorageStoreStateRead()
-    const refresh_token_LocalStorage =
-      storeStateLocalStorage?.authAwsCognitoUserData?.refresh_token
+    const refresh_token_localStorage = localStorage.getItem('refresh_token')
 
     if (refresh_token_App) refresh_token = refresh_token_App
-    else if (refresh_token_LocalStorage)
-      refresh_token = refresh_token_LocalStorage
+    else if (refresh_token_localStorage)
+      refresh_token = refresh_token_localStorage
 
     if (!refresh_token) return
 
