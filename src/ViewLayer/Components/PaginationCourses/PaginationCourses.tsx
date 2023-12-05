@@ -23,6 +23,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
     storeStateSlice: { pagesCourses },
   } = props
 
+  const hasNextPage = pagesCourses.hasNextPage
   const first = pagesCourses?.first || 0
   const last = first + pagesCourses.offset
 
@@ -35,7 +36,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
         typeEvent: 'SET_PAGE_CURSOR',
         data: { paginationName: 'pagesCourses', direction: 'prev' },
       },
-      isDisplaying: true, // isButtonSlideBackward,
+      isDisplaying: !!first,
     },
     buttonCoursesForwardProps: {
       icon: 'MdArrowForwardIos',
@@ -45,7 +46,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
         typeEvent: 'SET_PAGE_CURSOR',
         data: { paginationName: 'pagesCourses', direction: 'next' },
       },
-      isDisplaying: true, //  isButtonSlideForward,
+      isDisplaying: hasNextPage,
     },
   }
 
