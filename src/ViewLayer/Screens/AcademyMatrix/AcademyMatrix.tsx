@@ -84,11 +84,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         screenType,
       }
 
-      // console.info('AcademyMatrix [88]', {
-      //   moduleID,
-      //   contentPlateProps,
-      //   courses2,
-      // })
       return <ContentPlate {...contentPlateProps} />
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>

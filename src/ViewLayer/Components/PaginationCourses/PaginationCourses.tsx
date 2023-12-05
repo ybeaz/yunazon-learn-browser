@@ -22,8 +22,9 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
 
   const propsOut: PaginationCoursesPropsOutType = {
     buttonCoursesBackwardProps: {
-      icon: 'MdForward',
+      icon: 'MdArrowBackIos',
       classAdded: 'Button_PaginationCoursesBackward',
+      captureRight: 'Prev',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
         data: { step: -1 },
@@ -31,21 +32,22 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
       isDisplaying: true, // isButtonSlideBackward,
     },
     buttonCoursesForwardProps: {
-      icon: 'MdForward',
+      icon: 'MdArrowForwardIos',
       classAdded: 'Button_PaginationCoursesForward',
+      captureLeft: 'Next',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
         data: { step: 1 },
       },
-      isDisplaying: true, // isButtonSlideForward,
+      isDisplaying: true, //  isButtonSlideForward,
     },
   }
 
   return (
     <div className={getClasses('PaginationCourses', classAdded)}>
-      <ButtonYrl {...propsOut.buttonCoursesBackwardProps}>Prev</ButtonYrl>
-      <div>Pages</div>
-      <ButtonYrl {...propsOut.buttonCoursesForwardProps}>Next</ButtonYrl>
+      <ButtonYrl {...propsOut.buttonCoursesBackwardProps} />
+      <div className='_pages'>1 ... 10</div>
+      <ButtonYrl {...propsOut.buttonCoursesForwardProps} />
     </div>
   )
 }

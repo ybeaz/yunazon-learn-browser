@@ -3,6 +3,7 @@ import React from 'react'
 import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { getClasses } from '../../../Shared/getClasses'
 
 import {
   ButtonYrlPropsType,
@@ -77,7 +78,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   }
 
   return (
-    <div className={`ButtonYrl ${classAdded} ${classDisplay}`}>
+    <div className={getClasses('ButtonYrl', [classAdded, classDisplay])}>
       {tooltipText ? (
         <span className={`__tooltipText ${classTooltipAdd}`}>
           {tooltipText}

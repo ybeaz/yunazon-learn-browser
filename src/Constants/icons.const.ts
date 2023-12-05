@@ -1,4 +1,6 @@
 import {
+  MdArrowBackIos,
+  MdArrowForwardIos,
   MdHomeRepairService,
   MdConnectWithoutContact,
   MdDevicesOther,
@@ -114,6 +116,8 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  MdArrowBackIos,
+  MdArrowForwardIos,
   MdLogin,
   MdLogout,
   BiLogOutCircle,

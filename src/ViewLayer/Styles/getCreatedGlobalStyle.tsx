@@ -71,7 +71,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         ({
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        }[theme])};}
+        })[theme]};}
 
     .SearchFormSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
@@ -160,7 +160,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         ({
           Dark: getColor(props2, 'colorFirst', medial, lighter4, 'Dark'),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        }[theme])};}
+        })[theme]};}
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
@@ -269,6 +269,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+    .Button_PaginationCoursesBackward .__button,
+    .Button_PaginationCoursesForward .__button,
     .Button_MdBackward3 .__button,
     .Button_MdForward2 .__button,
     .Button_CallForActionMatrix .__button,
@@ -380,7 +382,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         ({
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        }[theme])};}
+        })[theme]};}
 
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
@@ -459,14 +461,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         ({
           Dark: getColor(props2, 'colorSecond', middle, lighter4),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        }[theme])};}
+        })[theme]};}
 
     .AuthUser .form, .AuthUser .bottomContainer {
       background: ${props2 =>
         ({
           Dark: getColor(props2, 'colorGrey', medial, middle),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        }[theme])};}
+        })[theme]};}
     
     .AuthUser .header2 {
       color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
@@ -509,7 +511,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         ({
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        }[theme])};}
+        })[theme]};}
 
     body {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
