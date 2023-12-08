@@ -12,8 +12,8 @@ import { getDetectedEnv } from '../Shared/getDetectedEnv'
 
 interface IGetOAuthUiDataConnector {
   (connectorInput: {
-    userNameLast: string
-    userNameFirst: string
+    nameLast: string
+    nameFirst: string
     picture: string
     userIdExternal: string
     userName: string
@@ -27,8 +27,8 @@ const headers: AxiosRequestHeaders = {
 }
 
 export const getOAuthUiDataConnector: IGetOAuthUiDataConnector = ({
-  userNameLast,
-  userNameFirst,
+  nameLast,
+  nameFirst,
   picture,
   userIdExternal,
   userName,
@@ -67,8 +67,8 @@ export const getOAuthUiDataConnector: IGetOAuthUiDataConnector = ({
       operationName: 'OAuthUiData',
       variables: {
         authInput: {
-          familyName: userNameLast,
-          givenName: userNameFirst,
+          familyName: nameLast,
+          givenName: nameFirst,
           picture,
           uidExternal: userIdExternal,
           userName,

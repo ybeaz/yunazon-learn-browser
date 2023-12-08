@@ -6,12 +6,12 @@ import { getOAuthUiDataConnector } from '../../CommunicationLayer/getOAuthUiData
 
 function* getOAuthUiData(args: ActionReduxType | any): Iterable<any> {
   const {
-    data: { userNameLast, userNameFirst, picture, userIdExternal, userName },
+    data: { nameLast, nameFirst, picture, userIdExternal, userName },
   } = args
 
   const { axiosClient, method, params } = getOAuthUiDataConnector({
-    userNameLast,
-    userNameFirst,
+    nameLast,
+    nameFirst,
     picture,
     userIdExternal,
     userName,

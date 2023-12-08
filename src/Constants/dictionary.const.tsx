@@ -831,15 +831,15 @@ export const DICTIONARY: IDictionary = {
     en: 'Expertise',
     ru: 'Экспертиза',
   },
-  userNameLast: {
+  nameLast: {
     en: 'last name',
     ru: 'фамилия',
   },
-  userNameFirst: {
+  nameFirst: {
     en: 'first name',
     ru: 'имя',
   },
-  userNameMiddle: {
+  nameMiddle: {
     en: 'middle name',
     ru: 'отчество',
   },

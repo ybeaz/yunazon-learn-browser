@@ -11,8 +11,8 @@ export const AUTH_FACEBOOK: ActionEventType = (event, data) => {
   if (oAuthStage !== 'signInWithFacebook') return
 
   const {
-    last_name: userNameLast,
-    first_name: userNameFirst,
+    last_name: nameLast,
+    first_name: nameFirst,
     picture: {
       data: { url: picture },
     },
@@ -22,8 +22,8 @@ export const AUTH_FACEBOOK: ActionEventType = (event, data) => {
 
   dispatch(
     actionAsync.GET_OAUTH_UI_DATA.REQUEST({
-      userNameLast,
-      userNameFirst,
+      nameLast,
+      nameFirst,
       picture,
       userIdExternal,
       userName,

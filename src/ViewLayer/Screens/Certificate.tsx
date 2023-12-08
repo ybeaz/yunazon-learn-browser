@@ -50,9 +50,9 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   let documentDefault = {
     userName: {
-      firstName: '',
-      middleName: '',
-      lastName: '',
+      nameFirst: '',
+      nameMiddle: '',
+      nameLast: '',
     },
     meta: {
       institution: '',
@@ -66,9 +66,9 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const {
     userName: {
-      firstName = '',
-      middleName = '',
-      lastName = '',
+      nameFirst = '',
+      nameMiddle = '',
+      nameLast = '',
       email = '',
       isSendingBcc = false,
     },
@@ -90,9 +90,9 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     seconds: false,
   })
 
-  const userName = middleName
-    ? `${lastName} ${firstName} ${middleName}`
-    : `${lastName} ${firstName}`
+  const userName = nameMiddle
+    ? `${nameLast} ${nameFirst} ${nameMiddle}`
+    : `${nameLast} ${nameFirst}`
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/m/${courseID}/${slug}`

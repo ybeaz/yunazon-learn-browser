@@ -150,7 +150,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input,
-    .Input_userNameFirst .__input,
+    .Input_nameFirst .__input,
     .Input_ageFromToRequired .__input, 
     .Input_descriptionRequired .__input  {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
@@ -188,8 +188,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input:active,
-    .Input_userNameFirst .__input:active,
-    .Input_userNameFirst .__input:focus,
+    .Input_nameFirst .__input:active,
+    .Input_nameFirst .__input:focus,
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
@@ -200,7 +200,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input::placeholder,
-    .Input_userNameFirst .__input::placeholder,
+    .Input_nameFirst .__input::placeholder,
     .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
@@ -208,14 +208,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
     
     .Input_userInfoAbout .__input:-ms-input-placeholder,
-    .Input_userNameFirst .__input:-ms-input-placeholder,
+    .Input_nameFirst .__input:-ms-input-placeholder,
     .Input_descriptionRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
     
     .Input_userInfoAbout .__input::-ms-input-placeholder,
-    .Input_userNameFirst .__input::-ms-input-placeholder,
+    .Input_nameFirst .__input::-ms-input-placeholder,
     .Input_descriptionRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};

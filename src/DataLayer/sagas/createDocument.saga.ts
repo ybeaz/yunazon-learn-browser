@@ -6,24 +6,6 @@ import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-/*
-{
-        userID: sub || '000000',
-        courseID,
-        capture,
-        description,
-        meta,
-        moduleIDs: [moduleID],
-        contentIDs: [contentID],
-        userName: {
-          firstName: userNameFirst,
-          middleName: userNameMiddle,
-          lastName: userNameLast,
-        },
-        language,
-      }
-*/
-
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
     data: {
@@ -34,9 +16,9 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       meta,
       moduleID,
       userEmail,
-      userNameFirst,
-      userNameMiddle,
-      userNameLast,
+      nameFirst,
+      nameMiddle,
+      nameLast,
     },
   } = params
 
@@ -48,9 +30,9 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     meta,
     moduleID,
     userEmail,
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
+    nameFirst,
+    nameMiddle,
+    nameLast,
   })
 
   const {
@@ -75,9 +57,9 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
           description,
           meta,
           profileProps: {
-            nameFirst: userNameFirst,
-            nameMiddle: userNameMiddle,
-            nameLast: userNameLast,
+            nameFirst: nameFirst,
+            nameMiddle: nameMiddle,
+            nameLast: nameLast,
           },
           language: 'en',
         },

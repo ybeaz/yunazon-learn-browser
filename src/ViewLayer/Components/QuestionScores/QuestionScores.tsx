@@ -45,7 +45,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     courses,
     componentsState: { isDocumentAdded },
     forms: {
-      user: { userNameFirst, userNameMiddle, userNameLast },
+      user: { nameFirst, nameMiddle, nameLast },
     },
   } = store
 
@@ -99,9 +99,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     language,
     right,
     total,
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
+    nameFirst,
+    nameMiddle,
+    nameLast,
     meta,
     courseCapture,
     description,

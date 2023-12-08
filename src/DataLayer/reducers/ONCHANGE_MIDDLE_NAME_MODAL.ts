@@ -10,7 +10,7 @@ export const ONCHANGE_MIDDLE_NAME_MODAL: ReducerType = (
 
   const { user } = forms
 
-  const userNext: UserType = { ...user, userNameMiddle: data }
+  const userNext: UserType = { ...user, nameMiddle: data }
 
   const formsNext: FormsType = { ...forms, user: userNext }
 

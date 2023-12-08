@@ -11,8 +11,8 @@ export const AUTH_VKONTAKTE: ActionEventType = (event, data) => {
   if (oAuthStage !== 'signInWithVkontakte') return
 
   const {
-    last_name: userNameLast,
-    first_name: userNameFirst,
+    last_name: nameLast,
+    first_name: nameFirst,
     photo: picture,
     uid: userIdExternal,
   } = data
@@ -37,11 +37,11 @@ export const AUTH_VKONTAKTE: ActionEventType = (event, data) => {
 
   dispatch(
     actionAsync.GET_OAUTH_UI_DATA.REQUEST({
-      userNameLast,
-      userNameFirst,
+      nameLast,
+      nameFirst,
       picture,
       userIdExternal: userIdExternal.toString(),
-      userName: `${userNameFirst} ${userNameLast}`,
+      userName: `${nameFirst} ${nameLast}`,
     })
   )
 }
