@@ -3,6 +3,7 @@ import { gql, DocumentNode } from '@apollo/client'
 export const FullCourseTypeFragment: DocumentNode = gql`
   fragment FullCourseType on CourseType {
     courseID
+    profileID
     capture
     description
     language
@@ -18,6 +19,8 @@ export const FullCourseTypeFragment: DocumentNode = gql`
       specName
       email
       isSendingBcc
+      stages
+      tags
     }
     modules {
       moduleID

@@ -1,5 +1,5 @@
 import { print } from 'graphql'
-import { gql, DocumentNode } from '@apollo/client'
+import { DocumentNode } from '@apollo/client'
 import { axiosClient } from './clients/axiosClient'
 import { apolloClient } from './clients/apolloClient'
 

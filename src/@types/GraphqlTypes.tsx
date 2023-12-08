@@ -107,23 +107,6 @@ export type CourseEdgeType = {
   node?: Maybe<CourseType>;
 };
 
-export type CourseMetaInputType = {
-  /** course meta email */
-  email: Scalars['String']['input'];
-  /** course meta institution */
-  institution: Scalars['String']['input'];
-  /** course meta isSendingBcc */
-  isSendingBcc?: Scalars['Boolean']['input'];
-  /** course meta specName */
-  specName: Scalars['String']['input'];
-  /** course meta specTitle */
-  specTitle: Scalars['String']['input'];
-  /** courses meta stages: stages/ statuses/ envs */
-  stages?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** courses meta tags: tags that characterises the course content, its marketing features */
-  tags?: InputMaybe<Array<Scalars['String']['input']>>;
-};
-
 export type CourseType = {
   __typename?: 'CourseType';
   /** course capture */
@@ -138,12 +121,14 @@ export type CourseType = {
   dateUpdated: Scalars['Float']['output'];
   /** course description */
   description: Scalars['String']['output'];
+  /** ip profile/ user */
+  ip?: Maybe<Scalars['String']['output']>;
   /** isActive */
   isActive: Scalars['Boolean']['output'];
   /** language code */
   language: Scalars['String']['output'];
   /** courses meta information */
-  meta?: Maybe<MetaType>;
+  meta?: Maybe<MetaCourseType>;
   /** courses modules */
   modules?: Maybe<Array<ModuleType>>;
   /** courses passRate */
@@ -182,7 +167,7 @@ export type CreateCourseInputType = {
   /** language code */
   language: Scalars['String']['input'];
   /** courses meta information */
-  meta?: InputMaybe<CourseMetaInputType>;
+  meta?: InputMaybe<MetaCourseInputType>;
   /** courses modules */
   modules?: InputMaybe<Array<ModuleInputType>>;
   /** courses passRate */
@@ -205,48 +190,49 @@ export type CreateDocumentInputType = {
   /** language */
   language?: Scalars['String']['input'];
   /** meta */
-  meta: DocumentMetaInputType;
+  meta: MetaDocumentInputType;
   /** moduleIDs */
   moduleIDs?: Array<Scalars['String']['input']>;
+  /** userName */
+  profilePart: ProfilePropsInputType;
   /** userID */
   userID?: Scalars['String']['input'];
-  /** userName */
-  userName: UserNameInputType;
-};
-
-export type DocumentMetaInputType = {
-  email: Scalars['String']['input'];
-  institution: Scalars['String']['input'];
-  isSendingBcc: Scalars['Boolean']['input'];
-  specName: Scalars['String']['input'];
-  specTitle: Scalars['String']['input'];
 };
 
 export type DocumentType = {
   __typename?: 'DocumentType';
-  /** capture */
+  /** course capture */
   capture: Scalars['String']['output'];
   /** contentIDs */
   contentIDs: Array<Scalars['String']['output']>;
   /** courseID */
   courseID: Scalars['ID']['output'];
-  /** document created date */
+  /** courses created date */
   dateCreated: Scalars['Float']['output'];
-  /** description */
-  description?: Maybe<Scalars['String']['output']>;
+  /** courses deleted date */
+  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  /** courses updated date */
+  dateUpdated: Scalars['Float']['output'];
+  /** course description */
+  description: Scalars['String']['output'];
+  /** documentID */
   documentID: Scalars['ID']['output'];
-  ip: Scalars['String']['output'];
-  /** language */
+  /** ip profile/ user */
+  ip?: Maybe<Scalars['String']['output']>;
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** language code */
   language: Scalars['String']['output'];
   /** meta */
-  meta: MetaObjectType;
+  meta: MetaDocumentType;
   /** moduleIDs */
   moduleIDs: Array<Scalars['String']['output']>;
+  /** pathName of the document */
   pathName: Scalars['String']['output'];
-  /** userID */
-  userID: Scalars['String']['output'];
+  /** profileID */
+  profileID: Scalars['ID']['output'];
   /** userName */
-  userName: UserNameObjectType;
+  profileProps: ProfilePropsType;
 };
 
 export type ImageDataOpenAiType = {
@@ -298,17 +284,25 @@ export type MessengerType = {
   profileName?: Maybe<Scalars['String']['output']>;
 };
 
-export type MetaObjectType = {
-  __typename?: 'MetaObjectType';
-  email: Scalars['String']['output'];
-  institution: Scalars['String']['output'];
-  isSendingBcc: Scalars['Boolean']['output'];
-  specName: Scalars['String']['output'];
-  specTitle: Scalars['String']['output'];
+export type MetaCourseInputType = {
+  /** course meta email */
+  email: Scalars['String']['input'];
+  /** course meta institution */
+  institution: Scalars['String']['input'];
+  /** course meta isSendingBcc */
+  isSendingBcc?: Scalars['Boolean']['input'];
+  /** course meta specName */
+  specName: Scalars['String']['input'];
+  /** course meta specTitle */
+  specTitle: Scalars['String']['input'];
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** courses meta tags: tags that characterises the course content, its marketing features */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
-export type MetaType = {
-  __typename?: 'MetaType';
+export type MetaCourseType = {
+  __typename?: 'MetaCourseType';
   /** course meta email */
   email: Scalars['String']['output'];
   /** course meta institution */
@@ -321,8 +315,34 @@ export type MetaType = {
   specTitle: Scalars['String']['output'];
   /** courses meta stages: stages/ statuses/ envs */
   stages?: Maybe<Array<Scalars['String']['output']>>;
-  /** courses meta tags: tags that characterises the course content, its marketing features */
+  /** courses meta tags: tags that characterises the course content */
   tags?: Maybe<Array<Scalars['String']['output']>>;
+};
+
+export type MetaDocumentInputType = {
+  /**  email */
+  email?: InputMaybe<Scalars['String']['input']>;
+  /** institution */
+  institution?: Scalars['String']['input'];
+  /** isSendingBcc to the email */
+  isSendingBcc?: Scalars['Boolean']['input'];
+  /** specName */
+  specName?: Scalars['String']['input'];
+  /** specTitle */
+  specTitle?: InputMaybe<Scalars['String']['input']>;
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** courses meta tags: tags that characterises the course content */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type MetaDocumentType = {
+  __typename?: 'MetaDocumentType';
+  email: Scalars['String']['output'];
+  institution: Scalars['String']['output'];
+  isSendingBcc: Scalars['Boolean']['output'];
+  specName: Scalars['String']['output'];
+  specTitle: Scalars['String']['output'];
 };
 
 export type ModuleInputType = {
@@ -373,17 +393,18 @@ export type Mutation = {
   addRecipe: RecipeType;
   createCompetencyTags: Array<CompetencyTagType>;
   createCourses: Array<CourseType>;
-  createDocument: DocumentType;
+  createDocuments: Array<DocumentType>;
   createProfiles: Array<ProfileType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
   deactivateCourses: Array<Scalars['String']['output']>;
+  deactivateDocuments: Array<Scalars['String']['output']>;
   deleteCompetencyTags: Array<CompetencyTagType>;
   deleteCourses: Array<Scalars['String']['output']>;
+  deleteDocuments: Array<Scalars['String']['output']>;
   deleteProfiles: Array<ProfileType>;
   deleteTemplates: Array<TemplatesType>;
   deleteUser: UserModelExtendedType;
-  removeDocument: Scalars['Boolean']['output'];
   removeRecipe: Scalars['Boolean']['output'];
   updateCollections: Array<CollectionUpdateStatusType>;
   updateCompetencyTags: Array<CompetencyTagType>;
@@ -409,8 +430,8 @@ export type MutationCreateCoursesArgs = {
 };
 
 
-export type MutationCreateDocumentArgs = {
-  createDocumentInput: CreateDocumentInputType;
+export type MutationCreateDocumentsArgs = {
+  createDocumentsInput: Array<CreateDocumentInputType>;
 };
 
 
@@ -434,6 +455,11 @@ export type MutationDeactivateCoursesArgs = {
 };
 
 
+export type MutationDeactivateDocumentsArgs = {
+  deactivateDocumentsIdsInput: Array<Scalars['String']['input']>;
+};
+
+
 export type MutationDeleteCompetencyTagsArgs = {
   idCompetencyTags: Scalars['String']['input'];
 };
@@ -441,6 +467,11 @@ export type MutationDeleteCompetencyTagsArgs = {
 
 export type MutationDeleteCoursesArgs = {
   deleteCoursesIdsInput: Array<Scalars['String']['input']>;
+};
+
+
+export type MutationDeleteDocumentsArgs = {
+  deleteDocumentsIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -457,11 +488,6 @@ export type MutationDeleteTemplatesArgs = {
 export type MutationDeleteUserArgs = {
   userIdAuth: Scalars['String']['input'];
   userIdProfile: Scalars['String']['input'];
-};
-
-
-export type MutationRemoveDocumentArgs = {
-  id: Scalars['String']['input'];
 };
 
 
@@ -537,6 +563,19 @@ export enum ProfileNatureType {
   Company = 'company',
   Human = 'human'
 }
+
+export type ProfilePropsInputType = {
+  nameFirst: Scalars['String']['input'];
+  nameLast: Scalars['String']['input'];
+  nameMiddle: Scalars['String']['input'];
+};
+
+export type ProfilePropsType = {
+  __typename?: 'ProfilePropsType';
+  nameFirst: Scalars['String']['output'];
+  nameLast: Scalars['String']['output'];
+  nameMiddle: Scalars['String']['output'];
+};
 
 export type ProfileType = {
   __typename?: 'ProfileType';
@@ -628,8 +667,8 @@ export type Query = {
   readCourses: Array<CourseType>;
   readCoursesAll: Array<CourseType>;
   readCoursesConnection: CoursesConnectionType;
-  readDocument: DocumentType;
   readDocuments: Array<DocumentType>;
+  readDocumentsAll: Array<DocumentType>;
   readProfiles: Array<ProfileType>;
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
@@ -684,14 +723,8 @@ export type QueryReadCoursesConnectionArgs = {
 };
 
 
-export type QueryReadDocumentArgs = {
-  documentID: Scalars['String']['input'];
-};
-
-
 export type QueryReadDocumentsArgs = {
-  skip?: Scalars['Int']['input'];
-  take?: Scalars['Int']['input'];
+  readDocumentsIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -911,7 +944,7 @@ export type UpdateCourseInputType = {
   /** language code */
   language: Scalars['String']['input'];
   /** courses meta information */
-  meta?: InputMaybe<CourseMetaInputType>;
+  meta?: InputMaybe<MetaCourseInputType>;
   /** courses modules */
   modules?: InputMaybe<Array<ModuleInputType>>;
   /** courses passRate */
@@ -1069,19 +1102,6 @@ export type UserModelExtendedType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
-};
-
-export type UserNameInputType = {
-  firstName: Scalars['String']['input'];
-  lastName: Scalars['String']['input'];
-  middleName: Scalars['String']['input'];
-};
-
-export type UserNameObjectType = {
-  __typename?: 'UserNameObjectType';
-  firstName: Scalars['String']['output'];
-  lastName: Scalars['String']['output'];
-  middleName: Scalars['String']['output'];
 };
 
 export type UserType = {

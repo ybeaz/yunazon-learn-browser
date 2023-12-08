@@ -97,31 +97,6 @@ type CourseEdgeType {
   node: CourseType
 }
 
-input CourseMetaInputType {
-  """course meta email"""
-  email: String!
-
-  """course meta institution"""
-  institution: String!
-
-  """course meta isSendingBcc"""
-  isSendingBcc: Boolean! = false
-
-  """course meta specName"""
-  specName: String!
-
-  """course meta specTitle"""
-  specTitle: String!
-
-  """courses meta stages: stages/ statuses/ envs"""
-  stages: [String!] = []
-
-  """
-  courses meta tags: tags that characterises the course content, its marketing features
-  """
-  tags: [String!] = []
-}
-
 type CourseType {
   """course capture"""
   capture: String!
@@ -141,6 +116,9 @@ type CourseType {
   """course description"""
   description: String!
 
+  """ip profile/ user"""
+  ip: String
+
   """isActive"""
   isActive: Boolean!
 
@@ -148,7 +126,7 @@ type CourseType {
   language: String!
 
   """courses meta information"""
-  meta: MetaType
+  meta: MetaCourseType
 
   """courses modules"""
   modules: [ModuleType!]
@@ -196,7 +174,7 @@ input CreateCourseInputType {
   language: String!
 
   """courses meta information"""
-  meta: CourseMetaInputType
+  meta: MetaCourseInputType
 
   """courses modules"""
   modules: [ModuleInputType!]
@@ -228,31 +206,23 @@ input CreateDocumentInputType {
   language: String! = "false"
 
   """meta"""
-  meta: DocumentMetaInputType!
+  meta: MetaDocumentInputType!
 
   """moduleIDs"""
   moduleIDs: [String!]! = "false"
 
+  """userName"""
+  profilePart: ProfilePropsInputType!
+
   """userID"""
   userID: String! = "false"
-
-  """userName"""
-  userName: UserNameInputType!
 }
 
 """Date custom scalar type"""
 scalar Date
 
-input DocumentMetaInputType {
-  email: String!
-  institution: String!
-  isSendingBcc: Boolean!
-  specName: String!
-  specTitle: String!
-}
-
 type DocumentType {
-  """capture"""
+  """course capture"""
   capture: String!
 
   """contentIDs"""
@@ -261,29 +231,44 @@ type DocumentType {
   """courseID"""
   courseID: ID!
 
-  """document created date"""
+  """courses created date"""
   dateCreated: Float!
 
-  """description"""
-  description: String
-  documentID: ID!
-  ip: String!
+  """courses deleted date"""
+  dateDeleted: Float
 
-  """language"""
+  """courses updated date"""
+  dateUpdated: Float!
+
+  """course description"""
+  description: String!
+
+  """documentID"""
+  documentID: ID!
+
+  """ip profile/ user"""
+  ip: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """language code"""
   language: String!
 
   """meta"""
-  meta: MetaObjectType!
+  meta: MetaDocumentType!
 
   """moduleIDs"""
   moduleIDs: [String!]!
+
+  """pathName of the document"""
   pathName: String!
 
-  """userID"""
-  userID: String!
+  """profileID"""
+  profileID: ID!
 
   """userName"""
-  userName: UserNameObjectType!
+  profileProps: ProfilePropsType!
 }
 
 type ImageDataOpenAiType {
@@ -331,15 +316,32 @@ type MessengerType {
   profileName: String
 }
 
-type MetaObjectType {
+input MetaCourseInputType {
+  """course meta email"""
   email: String!
+
+  """course meta institution"""
   institution: String!
-  isSendingBcc: Boolean!
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean! = false
+
+  """course meta specName"""
   specName: String!
+
+  """course meta specTitle"""
   specTitle: String!
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!] = []
 }
 
-type MetaType {
+type MetaCourseType {
   """course meta email"""
   email: String!
 
@@ -358,10 +360,39 @@ type MetaType {
   """courses meta stages: stages/ statuses/ envs"""
   stages: [String!]
 
-  """
-  courses meta tags: tags that characterises the course content, its marketing features
-  """
+  """courses meta tags: tags that characterises the course content"""
   tags: [String!]
+}
+
+input MetaDocumentInputType {
+  """ email"""
+  email: String = "false"
+
+  """institution"""
+  institution: String! = "false"
+
+  """isSendingBcc to the email"""
+  isSendingBcc: Boolean! = false
+
+  """specName"""
+  specName: String! = "false"
+
+  """specTitle"""
+  specTitle: String = "false"
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """courses meta tags: tags that characterises the course content"""
+  tags: [String!] = []
+}
+
+type MetaDocumentType {
+  email: String!
+  institution: String!
+  isSendingBcc: Boolean!
+  specName: String!
+  specTitle: String!
 }
 
 input ModuleInputType {
@@ -426,17 +457,18 @@ type Mutation {
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
-  createDocument(createDocumentInput: CreateDocumentInputType!): DocumentType!
+  createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
+  deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
+  deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
   deleteProfiles(idProfiles: String!): [ProfileType!]!
   deleteTemplates(templatesID: String!): [TemplatesType!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
-  removeDocument(id: String!): Boolean!
   removeRecipe(id: String!): Boolean!
   updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
@@ -486,6 +518,18 @@ enum ProfileNatureType {
   bot
   company
   human
+}
+
+input ProfilePropsInputType {
+  nameFirst: String!
+  nameLast: String!
+  nameMiddle: String!
+}
+
+type ProfilePropsType {
+  nameFirst: String!
+  nameLast: String!
+  nameMiddle: String!
 }
 
 type ProfileType {
@@ -602,8 +646,8 @@ type Query {
   readCourses(readCoursesInput: [ReadCourseInputType!]!): [CourseType!]!
   readCoursesAll: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
-  readDocument(documentID: String!): DocumentType!
-  readDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
+  readDocuments(readDocumentsIdsInput: [String!]!): [DocumentType!]!
+  readDocumentsAll: [DocumentType!]!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
@@ -827,7 +871,7 @@ input UpdateCourseInputType {
   language: String!
 
   """courses meta information"""
-  meta: CourseMetaInputType
+  meta: MetaCourseInputType
 
   """courses modules"""
   modules: [ModuleInputType!]
@@ -1067,18 +1111,6 @@ type UserModelExtendedType {
 
   """user web site"""
   userWebLink: String
-}
-
-input UserNameInputType {
-  firstName: String!
-  lastName: String!
-  middleName: String!
-}
-
-type UserNameObjectType {
-  firstName: String!
-  lastName: String!
-  middleName: String!
 }
 
 type UserType {

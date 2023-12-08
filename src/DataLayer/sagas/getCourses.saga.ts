@@ -3,20 +3,23 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
-import { ConnectionType } from '../../@types/ConnectionType'
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
+import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
   const first = params.data?.first || 0
   const offset = params.data?.offset || 10
+
+  const environment = getDetectedEnv()
 
   try {
     const variables = {
       readCoursesConnectionInput: {
         first,
         offset,
+        stagesPick: [environment],
       },
     }
 
@@ -25,7 +28,7 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
       resolveGraphqlName: 'readCoursesConnection',
     })
 
-    let coursesNext = getChainedResponsibility(readCoursesConnection)
+    let coursesNext: any = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
 
