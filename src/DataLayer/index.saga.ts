@@ -13,7 +13,7 @@ import getAuthSignInSaga from './sagas/getAuthSignIn.saga'
 import getAuthRegisteredSaga from './sagas/getAuthRegistered.saga'
 import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
 import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
-import findDocumentSaga from './sagas/findDocument.saga'
+import readDocumentSaga from './sagas/readDocument.saga'
 import addDocumentSaga from './sagas/createDocument.saga'
 import getCoursesSaga from './sagas/getCourses.saga'
 import initLoadingSaga from './sagas/initLoading.saga'
@@ -33,7 +33,7 @@ export default function* indexSaga() {
     fork(getAuthRegisteredSaga),
     fork(getSavedAnalyticsSaga),
     fork(sendEmailDocumentSaga),
-    fork(findDocumentSaga),
+    fork(readDocumentSaga),
     fork(addDocumentSaga),
     fork(getCoursesSaga),
     fork(initLoadingSaga),

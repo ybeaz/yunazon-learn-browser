@@ -116,8 +116,8 @@ type CourseType {
   """course description"""
   description: String!
 
-  """ip profile/ user"""
-  ip: String
+  """ipClient profile/ user"""
+  ipClient: String
 
   """isActive"""
   isActive: Boolean!
@@ -191,35 +191,46 @@ input CreateCourseInputType {
 
 input CreateDocumentInputType {
   """capture"""
-  capture: String! = "false"
+  capture: String!
 
   """contentIDs"""
-  contentIDs: [String!]! = "false"
+  contentIDs: [String!]!
 
   """courseID"""
   courseID: ID!
 
   """description"""
-  description: String = "false"
+  description: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
 
   """language"""
-  language: String! = "false"
+  language: String!
 
   """meta"""
   meta: MetaDocumentInputType!
 
   """moduleIDs"""
-  moduleIDs: [String!]! = "false"
-
-  """userName"""
-  profilePart: ProfilePropsInputType!
+  moduleIDs: [String!]!
 
   """userID"""
-  userID: String! = "false"
+  profileID: String!
+
+  """userName"""
+  profileProps: ProfilePropsInputType!
 }
 
 """Date custom scalar type"""
 scalar Date
+
+type DocumentEdgeType {
+  """cursor"""
+  cursor: String
+
+  """Document"""
+  node: DocumentType
+}
 
 type DocumentType {
   """course capture"""
@@ -246,8 +257,8 @@ type DocumentType {
   """documentID"""
   documentID: ID!
 
-  """ip profile/ user"""
-  ip: String
+  """ipClient profile/ user"""
+  ipClient: String
 
   """isActive"""
   isActive: Boolean!
@@ -269,6 +280,22 @@ type DocumentType {
 
   """userName"""
   profileProps: ProfilePropsType!
+}
+
+type DocumentsConnectionType {
+  """[DocumentsEdgeType]"""
+  edges: [DocumentEdgeType!]
+
+  """DocumentsPageInfoType"""
+  pageInfo: DocumentsPageInfoType
+}
+
+type DocumentsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type ImageDataOpenAiType {
@@ -366,19 +393,19 @@ type MetaCourseType {
 
 input MetaDocumentInputType {
   """ email"""
-  email: String = "false"
+  email: String = null
 
   """institution"""
-  institution: String! = "false"
+  institution: String!
 
   """isSendingBcc to the email"""
   isSendingBcc: Boolean! = false
 
   """specName"""
-  specName: String! = "false"
+  specName: String!
 
   """specTitle"""
-  specTitle: String = "false"
+  specTitle: String = null
 
   """courses meta stages: stages/ statuses/ envs"""
   stages: [String!] = []
@@ -388,11 +415,26 @@ input MetaDocumentInputType {
 }
 
 type MetaDocumentType {
-  email: String!
+  """ email"""
+  email: String
+
+  """institution"""
   institution: String!
+
+  """isSendingBcc to the email"""
   isSendingBcc: Boolean!
+
+  """specName"""
   specName: String!
-  specTitle: String!
+
+  """specTitle"""
+  specTitle: String
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """courses meta tags: tags that characterises the course content"""
+  tags: [String!]
 }
 
 input ModuleInputType {
@@ -648,6 +690,7 @@ type Query {
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
   readDocuments(readDocumentsIdsInput: [String!]!): [DocumentType!]!
   readDocumentsAll: [DocumentType!]!
+  readDocumentsConnection(readDocumentsConnectionInput: ReadDocumentsConnectionInputType!): DocumentsConnectionType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
@@ -726,10 +769,73 @@ input ReadCoursesConnectionInputType {
   """
   first: Int
 
+  """isActive"""
+  isActive: Boolean = false
+
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """
+  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """
+  courses meta stages: stages/ statuses/ envs to pick from the set of documents
+  """
+  stagesPick: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadDocumentsConnectionInputType {
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
+  after: String
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
+  first: Int
+
+  """isActive"""
+  isActive: Boolean = false
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
+  offset: Int
+
+  """
+  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """
+  courses meta stages: stages/ statuses/ envs to pick from the set of documents
+  """
+  stagesPick: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
 }
 
 input ReadProfilesConnectionInputType {
@@ -970,6 +1076,15 @@ type UserIdDataAwsCognitoType {
 }
 
 input UserInputType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
+
   """user avatar"""
   userAvatar: String
 
@@ -1006,15 +1121,6 @@ input UserInputType {
   """user accepted/ visible name as a result of registration"""
   userName: String
 
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
-
   """user accepted/ visible name to display other people"""
   userNameNick: String!
 
@@ -1035,6 +1141,14 @@ input UserInputType {
 }
 
 type UserModelExtendedType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
   responseMessage: ResponseMessageType!
 
   """user avatar"""
@@ -1085,15 +1199,6 @@ type UserModelExtendedType {
   """user accepted/ visible name as a result of registration"""
   userName: String
 
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
-
   """user accepted/ visible name to display other people"""
   userNameNick: String!
 
@@ -1114,6 +1219,15 @@ type UserModelExtendedType {
 }
 
 type UserType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
+
   """user avatar"""
   userAvatar: String
 
@@ -1161,15 +1275,6 @@ type UserType {
 
   """user accepted/ visible name as a result of registration"""
   userName: String
-
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
 
   """user accepted/ visible name to display other people"""
   userNameNick: String!

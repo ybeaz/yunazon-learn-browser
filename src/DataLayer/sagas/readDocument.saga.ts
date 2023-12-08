@@ -4,7 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* findDocument(params: ActionReduxType | any): Iterable<any> {
+function* readDocument(params: ActionReduxType | any): Iterable<any> {
   const { data: documentID } = params
 
   try {
@@ -12,19 +12,19 @@ function* findDocument(params: ActionReduxType | any): Iterable<any> {
 
     const variables = { documentID }
 
-    const findDocument: any = yield getResponseGraphqlAsync({
+    const readDocument: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'findDocument',
+      resolveGraphqlName: 'readDocument',
     })
 
-    yield put(actionSync.ADD_DOCUMENT(findDocument))
+    yield put(actionSync.ADD_DOCUMENT(readDocument))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('findDocument [40]', error.name + ': ' + error.message)
+    console.info('readDocument [40]', error.name + ': ' + error.message)
   }
 }
 
-export default function* findDocumentSaga() {
-  yield takeEvery([actionAsync.FIND_DOCUMENT.REQUEST().type], findDocument)
+export default function* readDocumentSaga() {
+  yield takeEvery([actionAsync.FIND_DOCUMENT.REQUEST().type], readDocument)
 }
