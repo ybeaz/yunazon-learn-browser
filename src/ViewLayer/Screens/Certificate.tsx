@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
@@ -29,7 +29,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     language,
     componentsState: { isLoadedLocalStorageStoreState },
   } = store
-  const documentsLen = documents.length
+
   const documentFound = documents.find(
     (document: any) => document.documentID === documentID
   )
