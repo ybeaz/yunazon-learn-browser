@@ -27,7 +27,7 @@ function* getCourseData(params: ActionReduxType | any): Iterable<any> {
       resolveGraphqlName: 'readCourses',
     })
 
-    const coursesNext = getPreparedCourses([readCourses])
+    const coursesNext = getPreparedCourses(readCourses)
 
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
     yield put(

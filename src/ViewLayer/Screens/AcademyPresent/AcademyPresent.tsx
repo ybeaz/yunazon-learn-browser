@@ -62,10 +62,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
-  useEffectedInitialRequests([
-    { type: 'INIT_LOADING', data: { params } },
-    { type: 'GET_MODULE_DATA', data: { moduleID } },
-  ])
+  useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedCoursesString)
 

@@ -49,7 +49,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   }, [isLoadedLocalStorageStoreState])
 
   let documentDefault = {
-    userName: {
+    profileProps: {
       nameFirst: '',
       nameMiddle: '',
       nameLast: '',
@@ -65,7 +65,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   }
 
   const {
-    userName: {
+    profileProps: {
       nameFirst = '',
       nameMiddle = '',
       nameLast = '',

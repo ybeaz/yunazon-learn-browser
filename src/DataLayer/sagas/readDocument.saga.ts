@@ -10,14 +10,16 @@ function* readDocument(params: ActionReduxType | any): Iterable<any> {
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables = { documentID }
+    const variables = {
+      readDocumentsIdsInput: [documentID],
+    }
 
-    const readDocument: any = yield getResponseGraphqlAsync({
+    const readDocuments: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'readDocument',
+      resolveGraphqlName: 'readDocuments',
     })
 
-    yield put(actionSync.ADD_DOCUMENT(readDocument))
+    yield put(actionSync.ADD_DOCUMENT(readDocuments[0]))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

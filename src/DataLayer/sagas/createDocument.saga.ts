@@ -22,19 +22,6 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     },
   } = params
 
-  console.info('createDocument.saga [43]', {
-    capture,
-    contentID,
-    courseID,
-    description,
-    meta,
-    moduleID,
-    userEmail,
-    nameFirst,
-    nameMiddle,
-    nameLast,
-  })
-
   const {
     // @ts-expect-error
     authAwsCognitoUserData: { sub },
