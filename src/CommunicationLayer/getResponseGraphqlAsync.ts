@@ -7,7 +7,7 @@ import { ClientHttpType } from '../@types/ClientHttpType'
 import { MethodHttpEnumType } from '../@types/MethodHttpType'
 import { selectGraphqlHttpClientFlag } from '../FeatureFlags'
 import { getObjectCleared } from '../Shared/getObjectCleared'
-import * as GraphqlQueries from './graphql'
+import * as GraphqlQueries from './query'
 
 export type GraphqlQueriesType = Record<string, DocumentNode>
 

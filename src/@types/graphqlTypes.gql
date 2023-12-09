@@ -777,6 +777,9 @@ input ReadCoursesConnectionInputType {
   """
   offset: Int
 
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortCoursesInputType
+
   """
   courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
   """
@@ -816,6 +819,9 @@ input ReadDocumentsConnectionInputType {
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortDocumentsInputType
 
   """
   courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
@@ -889,6 +895,22 @@ type ResponseMessageType {
 
   """status: success or failure"""
   status: String
+}
+
+input SortCoursesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float! = -1
+
+  """property name to sort by"""
+  prop: String! = "dateUpdated"
+}
+
+input SortDocumentsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float! = -1
+
+  """property name to sort by"""
+  prop: String! = "dateUpdated"
 }
 
 type Subscription {

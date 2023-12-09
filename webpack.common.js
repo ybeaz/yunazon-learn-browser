@@ -32,12 +32,21 @@ module.exports = () => {
         template: './build/index.html',
       }),
       new WebpackBar(),
+      /* Removed since it prevented Axios to run from outer source
       new webpack.ProvidePlugin({
         process: 'process/browser',
       }),
+      */
     ],
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
+      alias: {
+        '@abs': path.resolve(__dirname, './src'),
+        '@communication': path.resolve(
+          __dirname,
+          '../yourails_communication_layer'
+        ),
+      },
     },
     module: {
       rules: [

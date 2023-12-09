@@ -868,6 +868,8 @@ export type ReadCoursesConnectionInputType = {
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortCoursesInputType>;
   /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
   stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta stages: stages/ statuses/ envs to pick from the set of documents */
@@ -887,6 +889,8 @@ export type ReadDocumentsConnectionInputType = {
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortDocumentsInputType>;
   /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
   stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta stages: stages/ statuses/ envs to pick from the set of documents */
@@ -939,6 +943,20 @@ export type ResponseMessageType = {
   message?: Maybe<Scalars['String']['output']>;
   /** status: success or failure */
   status?: Maybe<Scalars['String']['output']>;
+};
+
+export type SortCoursesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: Scalars['Float']['input'];
+  /** property name to sort by */
+  prop?: Scalars['String']['input'];
+};
+
+export type SortDocumentsInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: Scalars['Float']['input'];
+  /** property name to sort by */
+  prop?: Scalars['String']['input'];
 };
 
 export type Subscription = {

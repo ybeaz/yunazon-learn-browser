@@ -2,8 +2,10 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
+import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+// @ts-expect-error
+import { getChainedResponsibility } from '@abs/Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
@@ -22,11 +24,13 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
         stagesPick: [environment],
       },
     }
-
-    const readCoursesConnection: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'readCoursesConnection',
-    })
+    const readCoursesConnection: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'readCoursesConnection',
+      },
+      getHeadersAuthDict()
+    )
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToCourses, { printRes: false })
