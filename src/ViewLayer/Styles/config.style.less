@@ -10,16 +10,28 @@
 @sm-max: (@md-min - 1);
 @md-max: (@lg-min - 1);
 
-@phone: ~'only screen and (max-width: @{xs-min})';
+/*
+@phone: ~'only screen and (min-width: 10px) and (max-width: 768px)';
+@phone-strict: ~'only screen and (min-width: 480px) and (max-width: 767px)';
+*/
+@phone: ~'only screen and (max-width: @{sm-min})';
 @phone-strict: ~'only screen and (min-width: @{xs-min}) and (max-width: @{xs-max})';
 
+/*
+@tablet: ~'only screen and (min-width: 768px) and (max-width: 992px)';
+@tablet-strict: ~'only screen and (min-width: 768px}) and (max-width: 991px)';
+*/
 @tablet: ~'only screen and (min-width: @{sm-min}) and (max-width: @{md-min})';
 @tablet-strict: ~'only screen and (min-width: @{sm-min}) and (max-width: @{sm-max})';
 
+/*
+@desktop: ~'only screen and (min-width: 992px) and (max-width: 1200px)';
+@desktop-strict: ~'only screen and (min-width: 992px) and (max-width: 1199px)';
+*/
 @desktop: ~'only screen and (min-width: @{md-min}) and (max-width: @{lg-min})';
 @desktop-strict: ~'only screen and (min-width: @{md-min}) and (max-width: @{md-max})';
 
-@large: ~'only screen and (min-width: @{lg-min})';
+@large: ~'only screen and (min-width: 1200px)';
 
 @fontSizeH1: 1.7rem;
 @fontSizeH2: 1.3rem;

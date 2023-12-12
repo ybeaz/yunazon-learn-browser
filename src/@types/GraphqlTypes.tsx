@@ -201,6 +201,17 @@ export type CreateDocumentInputType = {
   profileProps: ProfilePropsInputType;
 };
 
+export type CreateTemplatesInputType = {
+  /** templates created date */
+  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates deleted date */
+  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** templates updated date */
+  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates ID */
+  templatesID?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type DocumentEdgeType = {
   __typename?: 'DocumentEdgeType';
   /** cursor */
@@ -438,7 +449,7 @@ export type Mutation = {
   deleteCourses: Array<Scalars['String']['output']>;
   deleteDocuments: Array<Scalars['String']['output']>;
   deleteProfiles: Array<ProfileType>;
-  deleteTemplates: Array<TemplatesType>;
+  deleteTemplates: Array<Scalars['String']['output']>;
   deleteUser: UserModelExtendedType;
   removeRecipe: Scalars['Boolean']['output'];
   updateCollections: Array<CollectionUpdateStatusType>;
@@ -476,7 +487,7 @@ export type MutationCreateProfilesArgs = {
 
 
 export type MutationCreateTemplatesArgs = {
-  templatesInput: TemplatesInputType;
+  createTemplatesInput: CreateTemplatesInputType;
 };
 
 
@@ -516,7 +527,7 @@ export type MutationDeleteProfilesArgs = {
 
 
 export type MutationDeleteTemplatesArgs = {
-  templatesID: Scalars['String']['input'];
+  deleteTemplatesIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -552,7 +563,7 @@ export type MutationUpdateProfilesArgs = {
 
 
 export type MutationUpdateTemplatesArgs = {
-  templatesInput: TemplatesInputType;
+  updateTemplatesInput: UpdateTemplatesInputType;
 };
 
 
@@ -709,8 +720,8 @@ export type Query = {
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
   readRecipes: Array<RecipeType>;
-  readTemplate: TemplatesType;
   readTemplates: Array<TemplatesType>;
+  readTemplatesAll: Array<TemplatesType>;
   readTemplatesConnection: TemplatesConnectionType;
   readUserAuth: UserModelExtendedType;
   readUserProfile: UserModelExtendedType;
@@ -785,8 +796,8 @@ export type QueryReadRecipesArgs = {
 };
 
 
-export type QueryReadTemplateArgs = {
-  templatesID: Scalars['String']['input'];
+export type QueryReadTemplatesArgs = {
+  readTemplatesInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -981,17 +992,6 @@ export type TemplatesEdgeType = {
   node?: Maybe<TemplatesType>;
 };
 
-export type TemplatesInputType = {
-  /** templates created date */
-  dateCreated?: InputMaybe<Scalars['Date']['input']>;
-  /** templates deleted date */
-  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
-  /** templates updated date */
-  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
-  /** templates ID */
-  templatesID?: InputMaybe<Scalars['ID']['input']>;
-};
-
 export type TemplatesPageInfoType = {
   __typename?: 'TemplatesPageInfoType';
   /** endCursor */
@@ -1041,6 +1041,17 @@ export type UpdateCourseInputType = {
   profileID: Scalars['ID']['input'];
   /** courses questionNumber */
   questionNumber: Scalars['Int']['input'];
+};
+
+export type UpdateTemplatesInputType = {
+  /** templates created date */
+  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates deleted date */
+  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** templates updated date */
+  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** templates ID */
+  templatesID?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type UserIdDataAwsCognitoInputType = {

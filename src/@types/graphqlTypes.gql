@@ -221,6 +221,20 @@ input CreateDocumentInputType {
   profileProps: ProfilePropsInputType!
 }
 
+input CreateTemplatesInputType {
+  """templates created date"""
+  dateCreated: Date
+
+  """templates deleted date"""
+  dateDeleted: Date
+
+  """templates updated date"""
+  dateUpdated: Date
+
+  """templates ID"""
+  templatesID: ID
+}
+
 """Date custom scalar type"""
 scalar Date
 
@@ -501,7 +515,7 @@ type Mutation {
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  createTemplates(createTemplatesInput: CreateTemplatesInputType!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
@@ -509,14 +523,14 @@ type Mutation {
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
   deleteProfiles(idProfiles: String!): [ProfileType!]!
-  deleteTemplates(templatesID: String!): [TemplatesType!]!
+  deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
   updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  updateTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  updateTemplates(updateTemplatesInput: UpdateTemplatesInputType!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
 
@@ -695,8 +709,8 @@ type Query {
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
   readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
-  readTemplate(templatesID: String!): TemplatesType!
-  readTemplates: [TemplatesType!]!
+  readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
+  readTemplatesAll: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
   readUserAuth(userIdAuth: String!): UserModelExtendedType!
   readUserProfile(userIdProfile: String!): UserModelExtendedType!
@@ -934,20 +948,6 @@ type TemplatesEdgeType {
   node: TemplatesType
 }
 
-input TemplatesInputType {
-  """templates created date"""
-  dateCreated: Date
-
-  """templates deleted date"""
-  dateDeleted: Date
-
-  """templates updated date"""
-  dateUpdated: Date
-
-  """templates ID"""
-  templatesID: ID
-}
-
 type TemplatesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1012,6 +1012,20 @@ input UpdateCourseInputType {
 
   """courses questionNumber"""
   questionNumber: Int!
+}
+
+input UpdateTemplatesInputType {
+  """templates created date"""
+  dateCreated: Date
+
+  """templates deleted date"""
+  dateDeleted: Date
+
+  """templates updated date"""
+  dateUpdated: Date
+
+  """templates ID"""
+  templatesID: ID
 }
 
 input UserIdDataAwsCognitoInputType {
