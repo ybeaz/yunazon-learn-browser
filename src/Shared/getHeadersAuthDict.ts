@@ -39,7 +39,7 @@ export const getHeadersAuthDict: GetHeadersAuthDictType = (
 
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
-    const client_app = ClientAppType['CHAT_AI']
+    const client_app = ClientAppType['ACADEMY']
 
     if (refresh_token && redirect_uri && client_app) {
       headersAuthDict = {
