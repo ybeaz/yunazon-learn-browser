@@ -1,9 +1,8 @@
 /**
  * @description Function parse and return object fron url query string
- * @param url
- * @returns
+ * @import import { getParsedUrlQuery } from 'src/Shared/getParsedUrlQuery'
  */
-export const getParsedUrlQuery: Function = (url: string): any => {
+export const getParsedUrlQuery = (url?: string): any => {
   if (!url) url = location.search
   if (!url.length) return {}
 

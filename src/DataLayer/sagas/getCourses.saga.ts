@@ -11,20 +11,31 @@ import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionTo
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
   const first = params.data?.first || 0
   const offset = params.data?.offset || 10
 
-  console.info('getCourses.saga [18]', { flag: selectCoursesStageFlag() })
+  const search = getParsedUrlQuery()
 
-  /*
-    let startIndex = first >= 0 ? first : 0
+  const tagsPickStr = search?.tagspick
+  const tagsPick = tagsPickStr
+    ? tagsPickStr
+        .split(' ')
+        .filter((tag: string) => tag !== '')
+        .join('')
+        .split(',')
+    : []
 
-    if (startIndex > countDocuments) startIndex = countDocuments - offset
-
-    const finishIndex = startIndex + offset
-  */
+  const tagsOmitStr = search?.tagsomit
+  const tagsOmit = tagsOmitStr
+    ? tagsOmitStr
+        .split(' ')
+        .filter((tag: string) => tag !== '')
+        .join('')
+        .split(',')
+    : []
 
   try {
     const variables = {
@@ -32,6 +43,8 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
         first,
         offset,
         stagesPick: selectCoursesStageFlag(),
+        tagsPick,
+        tagsOmit,
       },
     }
     const readCoursesConnection: any = yield getResponseGraphqlAsync(
