@@ -529,6 +529,7 @@ type Mutation {
   updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
+  updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   updateTemplates(updateTemplatesInput: UpdateTemplatesInputType!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
@@ -693,6 +694,8 @@ type ProfilesPageInfoType {
 }
 
 type Query {
+  countCourses: Int!
+  countDocuments: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -784,7 +787,7 @@ input ReadCoursesConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = false
+  isActive: Boolean = true
 
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
@@ -827,7 +830,7 @@ input ReadDocumentsConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = false
+  isActive: Boolean = true
 
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
@@ -1012,6 +1015,43 @@ input UpdateCourseInputType {
 
   """courses questionNumber"""
   questionNumber: Int!
+}
+
+input UpdateCourseMetaInputType {
+  """courses ID"""
+  courseID: ID!
+
+  """courses meta information"""
+  meta: MetaCourseInputType
+
+  """profile ID"""
+  profileID: ID!
+}
+
+type UpdateCourseMetaType {
+  """acknowledged"""
+  acknowledged: Boolean
+
+  """courses ID"""
+  courseID: ID!
+
+  """matchedCount"""
+  matchedCount: Int
+
+  """courses meta information"""
+  meta: MetaCourseType
+
+  """modifiedCount"""
+  modifiedCount: Int
+
+  """profile ID"""
+  profileID: ID!
+
+  """upsertedCount"""
+  upsertedCount: Int
+
+  """upsertedId"""
+  upsertedId: String
 }
 
 input UpdateTemplatesInputType {

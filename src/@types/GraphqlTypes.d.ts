@@ -446,6 +446,7 @@ export type Mutation = {
     updateCollections: Array<CollectionUpdateStatusType>;
     updateCompetencyTags: Array<CompetencyTagType>;
     updateCourses: Array<CourseType>;
+    updateCoursesMeta: Array<UpdateCourseMetaType>;
     updateProfiles: Array<ProfileType>;
     updateTemplates: Array<TemplatesType>;
     updateUser: UserModelExtendedType;
@@ -507,6 +508,9 @@ export type MutationUpdateCompetencyTagsArgs = {
 };
 export type MutationUpdateCoursesArgs = {
     updateCoursesInput: Array<UpdateCourseInputType>;
+};
+export type MutationUpdateCoursesMetaArgs = {
+    updateCoursesMetaInput: Array<UpdateCourseMetaInputType>;
 };
 export type MutationUpdateProfilesArgs = {
     profilesInput: ProfilesInputType;
@@ -639,6 +643,8 @@ export type ProfilesPageInfoType = {
 };
 export type Query = {
     __typename?: 'Query';
+    countCourses: Scalars['Int']['output'];
+    countDocuments: Scalars['Int']['output'];
     getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
     getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
     getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
@@ -920,6 +926,33 @@ export type UpdateCourseInputType = {
     profileID: Scalars['ID']['input'];
     /** courses questionNumber */
     questionNumber: Scalars['Int']['input'];
+};
+export type UpdateCourseMetaInputType = {
+    /** courses ID */
+    courseID: Scalars['ID']['input'];
+    /** courses meta information */
+    meta?: InputMaybe<MetaCourseInputType>;
+    /** profile ID */
+    profileID: Scalars['ID']['input'];
+};
+export type UpdateCourseMetaType = {
+    __typename?: 'UpdateCourseMetaType';
+    /** acknowledged */
+    acknowledged?: Maybe<Scalars['Boolean']['output']>;
+    /** courses ID */
+    courseID: Scalars['ID']['output'];
+    /** matchedCount */
+    matchedCount?: Maybe<Scalars['Int']['output']>;
+    /** courses meta information */
+    meta?: Maybe<MetaCourseType>;
+    /** modifiedCount */
+    modifiedCount?: Maybe<Scalars['Int']['output']>;
+    /** profile ID */
+    profileID: Scalars['ID']['output'];
+    /** upsertedCount */
+    upsertedCount?: Maybe<Scalars['Int']['output']>;
+    /** upsertedId */
+    upsertedId?: Maybe<Scalars['String']['output']>;
 };
 export type UpdateTemplatesInputType = {
     /** templates created date */

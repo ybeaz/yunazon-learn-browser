@@ -2,17 +2,20 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-// css/css module 正则表达式
+// css/css module
 const cssRegex = /\.css$/
 const cssModuleRegex = /\.module\.css$/
-// sass/sass module 正则表达式
+// sass/sass module
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
-// less/less module 正则表达式
+// less/less module
 const lessRegex = /\.less$/
 const lessModuleRegex = /\.module\.less$/
-// stylus/stylus module 正则表达式
+// stylus/stylus module
 const stylRegex = /\.styl$/
 const stylModuleRegex = /\.module\.styl$/
 
@@ -32,6 +35,13 @@ module.exports = () => {
         template: './build/index.html',
       }),
       new WebpackBar(),
+      new webpack.ProgressPlugin(),
+      new CleanWebpackPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'disabled',
+        generateStatsFile: true,
+        statsOptions: { source: false },
+      }),
       /* Removed since it prevented Axios to run from outer source
       new webpack.ProvidePlugin({
         process: 'process/browser',

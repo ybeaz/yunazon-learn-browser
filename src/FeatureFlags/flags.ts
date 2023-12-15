@@ -1,5 +1,6 @@
 import { ClientHttpType } from '../@types/ClientHttpType'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
+import { CoursesStageEnumType } from '../@types/CoursesStageEnumType'
 
 const envType: string = getDetectedEnv()
 
@@ -11,6 +12,10 @@ export interface FeatureFlagType {
  * @description Flag to toggle isLoadingLocalStorageStoreState
  *      where or not to load initially local storage store state
  */
+export const selectCoursesStageFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => [CoursesStageEnumType['production2023']]
+
 export const isLoadingLocalStorageStoreState: FeatureFlagType = (
   envTypeIn = envType
 ) => false
@@ -18,7 +23,7 @@ export const isLoadingLocalStorageStoreState: FeatureFlagType = (
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType
-) => ClientHttpType['axiosClient']
+) => ClientHttpType['apolloClient']
 
 /** @description Flag to toggle display of the Cognito signin option in the Header */
 export const isAwsCognitoAuth: FeatureFlagType = (envTypeIn = envType) => true

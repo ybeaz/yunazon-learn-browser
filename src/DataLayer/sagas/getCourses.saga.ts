@@ -4,24 +4,34 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-// @ts-expect-error
-import { getChainedResponsibility } from '@abs/Shared/getChainedResponsibility'
+// import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+
+import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
+import { selectCoursesStageFlag } from '../../FeatureFlags'
+import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
   const first = params.data?.first || 0
   const offset = params.data?.offset || 10
 
-  const environment = getDetectedEnv()
+  console.info('getCourses.saga [18]', { flag: selectCoursesStageFlag() })
+
+  /*
+    let startIndex = first >= 0 ? first : 0
+
+    if (startIndex > countDocuments) startIndex = countDocuments - offset
+
+    const finishIndex = startIndex + offset
+  */
 
   try {
     const variables = {
       readCoursesConnectionInput: {
         first,
         offset,
-        stagesPick: [environment],
+        stagesPick: selectCoursesStageFlag(),
       },
     }
     const readCoursesConnection: any = yield getResponseGraphqlAsync(
@@ -35,6 +45,9 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
+
+    if (!coursesNext.length)
+      getDeletedObjFromLocalStorage({ storeStateJson: {} })
 
     yield put(actionSync.SET_COURSES(coursesNext))
 
