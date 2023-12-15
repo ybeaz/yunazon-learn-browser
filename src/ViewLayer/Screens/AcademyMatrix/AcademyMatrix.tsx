@@ -5,10 +5,10 @@ import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
@@ -16,6 +16,7 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
 
 import {
   AcademyMatrixPropsType,
@@ -32,16 +33,6 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
-  const query = getParsedUrlQuery()
-
-  useEffectedRequests([{ type: 'INIT_LOADING', data: { query } }])
-  useInitialTeachContentLoading()
-
-  const screenType = 'AcademyMatrix'
-
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
-    SITE_META_DATA
-
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
@@ -50,6 +41,16 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     isLoaded: { isLoadedGlobalVars, isLoadedCourses },
     forms: { searchInput },
   } = store
+
+  const query = getParsedUrlQuery()
+
+  useEffectedInitialRequests([{ type: 'INIT_LOADING', data: { query } }])
+  useLoadedInitialTeachContent()
+
+  const screenType = 'AcademyMatrix'
+
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
+    SITE_META_DATA
 
   const getPlateMatix: Function = (courses2: any[]): ReactElement => {
     const plates = courses2.map((item, i) => {
@@ -82,11 +83,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         screenType,
       }
 
-      // console.info('AcademyMatrix [88]', {
-      //   moduleID,
-      //   contentPlateProps,
-      //   courses2,
-      // })
       return <ContentPlate {...contentPlateProps} />
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>
@@ -135,7 +131,14 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {null}
         {/* middle-main */}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
-          <div>{getPlateMatix(coursesFiltered)}</div>
+          <div className='PlateMatrixPagination'>
+            <div className='PlateMatrixWrapper'>
+              {getPlateMatix(coursesFiltered)}
+            </div>
+            <div className='PaginationCoursesWrapper'>
+              <PaginationCourses />
+            </div>
+          </div>
         ) : null}
         {/* middle-right */}
         {null}

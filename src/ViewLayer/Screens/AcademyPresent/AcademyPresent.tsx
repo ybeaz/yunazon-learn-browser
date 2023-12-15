@@ -5,11 +5,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { useEffectedRequests } from '../../Hooks/useEffectedRequests'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { useInitialTeachContentLoading } from '../../Hooks/useInitialTeachContentLoading'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -62,11 +62,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
-  useEffectedRequests([
-    { type: 'INIT_LOADING', data: { params } },
-    { type: 'GET_MODULE_DATA', data: { moduleID } },
-  ])
-  useInitialTeachContentLoading()
+  useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
+  useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedCoursesString)
 
   const [isLoaded, setIsLoaded] = useState(false)

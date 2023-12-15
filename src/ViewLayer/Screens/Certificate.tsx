@@ -1,9 +1,9 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
 
-import { useEffectedRequests } from '../Hooks/useEffectedRequests'
+import { useEffectedInitialRequests } from '../Hooks/useEffectedInitialRequests'
 import { getDateString } from '../../Shared/getDateString'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
@@ -20,7 +20,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   const params = useParams()
   const documentID = params?.documentID
 
-  useEffectedRequests(['INIT_LOADING'])
+  useEffectedInitialRequests(['INIT_LOADING'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {
@@ -29,7 +29,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     language,
     componentsState: { isLoadedLocalStorageStoreState },
   } = store
-  const documentsLen = documents.length
+
   const documentFound = documents.find(
     (document: any) => document.documentID === documentID
   )
@@ -49,10 +49,10 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   }, [isLoadedLocalStorageStoreState])
 
   let documentDefault = {
-    userName: {
-      firstName: '',
-      middleName: '',
-      lastName: '',
+    profileProps: {
+      nameFirst: '',
+      nameMiddle: '',
+      nameLast: '',
     },
     meta: {
       institution: '',
@@ -65,10 +65,10 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   }
 
   const {
-    userName: {
-      firstName = '',
-      middleName = '',
-      lastName = '',
+    profileProps: {
+      nameFirst = '',
+      nameMiddle = '',
+      nameLast = '',
       email = '',
       isSendingBcc = false,
     },
@@ -90,9 +90,9 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     seconds: false,
   })
 
-  const userName = middleName
-    ? `${lastName} ${firstName} ${middleName}`
-    : `${lastName} ${firstName}`
+  const userName = nameMiddle
+    ? `${nameLast} ${nameFirst} ${nameMiddle}`
+    : `${nameLast} ${nameFirst}`
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/m/${courseID}/${slug}`

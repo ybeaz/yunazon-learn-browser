@@ -1,11 +1,12 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { ActionReduxType } from '../../Interfaces'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
 
-function* createDocument(dataInput: any): Iterable<any> {
+function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
     data: {
       capture,
@@ -15,15 +16,13 @@ function* createDocument(dataInput: any): Iterable<any> {
       meta,
       moduleID,
       userEmail,
-      userNameFirst,
-      userNameMiddle,
-      userNameLast,
+      nameFirst,
+      nameMiddle,
+      nameLast,
     },
-  } = dataInput
+  } = params
 
   const {
-    // @ts-expect-error
-    language = 'en',
     // @ts-expect-error
     authAwsCognitoUserData: { sub },
   } = yield select((store: RootStoreType) => store)
@@ -32,31 +31,34 @@ function* createDocument(dataInput: any): Iterable<any> {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables: {
-      createDocumentInput: CreateDocumentInputType
+      createDocumentsInput: CreateDocumentInputType[]
     } = {
-      createDocumentInput: {
-        userID: sub || '000000',
-        courseID,
-        capture,
-        description,
-        meta,
-        moduleIDs: [moduleID],
-        contentIDs: [contentID],
-        userName: {
-          firstName: userNameFirst,
-          middleName: userNameMiddle,
-          lastName: userNameLast,
+      createDocumentsInput: [
+        {
+          courseID,
+          profileID: sub || '000000',
+          moduleIDs: [moduleID],
+          contentIDs: [contentID],
+          isActive: true,
+          capture,
+          description,
+          meta,
+          profileProps: {
+            nameFirst: nameFirst,
+            nameMiddle: nameMiddle,
+            nameLast: nameLast,
+          },
+          language: 'en',
         },
-        language,
-      },
+      ],
     }
 
-    const createDocument: any = yield getResponseGraphqlAsync({
+    const createDocuments: any = yield getResponseGraphqlAsync({
       variables,
-      resolveGraphqlName: 'createDocument',
+      resolveGraphqlName: 'createDocuments',
     })
 
-    yield put(actionSync.ADD_DOCUMENT(createDocument))
+    yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

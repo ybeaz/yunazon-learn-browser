@@ -12,6 +12,11 @@ import {
 
 /**
  * @description Component to render ImageYrl
+ * @propsOut 
+    imageYrlProps: {
+      classAdded: 'Image_bottom',
+      src: `https://www.w3schools.com/bootstrap5/paris.jpg`,
+    },
  * @import import { ImageYrl, ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlType } 
              from '../ComponentsLibrary/'
  */

@@ -14,7 +14,7 @@ export const getSetObjToLocalStorage: GetSetObjToLocalStorageType = (
   const { source, ...obj } = objIn
 
   if (options?.printRes) {
-    console.log('getLocalStorageStoreStateRead [16]', { source, obj })
+    console.log('getSetObjToLocalStorage [16]', { source, obj })
   }
   Object.keys(obj).forEach(key => localStorage.setItem(key, obj[key]))
 }

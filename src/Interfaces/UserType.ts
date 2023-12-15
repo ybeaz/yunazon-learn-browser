@@ -19,9 +19,9 @@ export interface UserType {
   userMedia?: string[]
   userName?: string
   userNameNick?: string
-  userNameFirst?: string
-  userNameLast?: string
-  userNameMiddle?: string
+  nameFirst?: string
+  nameLast?: string
+  nameMiddle?: string
   userPasswordAuth?: string
   userPasswordAuth2?: string
   userPhone?: number | null

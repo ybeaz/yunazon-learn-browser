@@ -9,9 +9,9 @@ export type GetScenarioDictPropsType = {
   courseCapture: string
   right: number
   total: number
-  userNameFirst: string | undefined
-  userNameMiddle: string | undefined
-  userNameLast: string | undefined
+  nameFirst: string | undefined
+  nameMiddle: string | undefined
+  nameLast: string | undefined
   meta: any
   description: string
   courseID: string | undefined
@@ -40,9 +40,9 @@ export const getScenarioDict: GetScenarioDictType = (
     language,
     right,
     total,
-    userNameFirst,
-    userNameMiddle,
-    userNameLast,
+    nameFirst,
+    nameMiddle,
+    nameLast,
     meta,
     courseCapture,
     description,
@@ -88,9 +88,9 @@ export const getScenarioDict: GetScenarioDictType = (
           typeEvent: 'CREATE_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            userNameFirst,
-            userNameMiddle,
-            userNameLast,
+            nameFirst,
+            nameMiddle,
+            nameLast,
             meta,
             capture: courseCapture,
             description,
@@ -140,9 +140,9 @@ export const getScenarioDict: GetScenarioDictType = (
           typeEvent: 'CREATE_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            userNameFirst,
-            userNameMiddle,
-            userNameLast,
+            nameFirst,
+            nameMiddle,
+            nameLast,
             meta,
             capture: courseCapture,
             description,

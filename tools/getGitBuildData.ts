@@ -35,11 +35,11 @@ export const getGitBuildData: GetGitBuildDataType = async (
       getGitBuildDataRes
     ) as Object
 
-    const date = getDateString({ timestamp: getGitBuildDataResObjM1.date })
-    const year = getDateString({
-      timestamp: getGitBuildDataResObjM1.date,
-      style: 'year',
+    const date = getDateString({
+      timestamp: new Date(getGitBuildDataResObjM1.date),
     })
+    const year = new Date(getGitBuildDataResObjM1.date).getFullYear()
+
     const copyright = `© ${year} Roman Ches`
 
     const getGitBuildDataResObj = {

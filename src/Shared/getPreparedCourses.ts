@@ -45,10 +45,13 @@ export const getPreparedCourses: GetPreparedCoursesType = (
       .exec(getProvidedSearchString).result
 
     if (options?.printRes) {
-      console.log('getMappedConnectionToCourses', { coursesNext })
+      console.log('getPreparedCourses', { coursesNext })
     }
   } catch (error: any) {
-    console.log('getMappedConnectionToCourses', 'Error', error.message)
+    console.log('getPreparedCourses', 'Error', {
+      'error.message': error.message,
+      courses,
+    })
   } finally {
     return coursesNext
   }

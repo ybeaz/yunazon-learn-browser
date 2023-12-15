@@ -21,9 +21,9 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
 ) => {
   const { classAdded, language, buttonForwardProps } = props
 
-  const lastNameLabel = DICTIONARY.userNameLast[language]
-  const firstNameLabel = DICTIONARY.userNameFirst[language]
-  const middleNameLabel = DICTIONARY.userNameMiddle[language]
+  const nameLastLabel = DICTIONARY.nameLast[language]
+  const nameFirstLabel = DICTIONARY.nameFirst[language]
+  const nameMiddleLabel = DICTIONARY.nameMiddle[language]
 
   const propsOut: FormInputNamesPropsOutType = {
     inputFirstNameProps: {
@@ -32,7 +32,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       placeholder: 'first name...',
       typeEvent: 'ONCHANGE_FIRST_NAME_MODAL',
       storeFormGroup: 'user',
-      storeFormProp: 'userNameFirst',
+      storeFormProp: 'nameFirst',
     },
     inputMiddleNameProps: {
       classAdded: 'Input_name',
@@ -40,7 +40,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       placeholder: 'second name...',
       typeEvent: 'ONCHANGE_MIDDLE_NAME_MODAL',
       storeFormGroup: 'user',
-      storeFormProp: 'userNameMiddle',
+      storeFormProp: 'nameMiddle',
     },
     inputLastNameProps: {
       classAdded: 'Input_name',
@@ -48,7 +48,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       placeholder: 'last name...',
       typeEvent: 'ONCHANGE_LAST_NAME_MODAL',
       storeFormGroup: 'user',
-      storeFormProp: 'userNameLast',
+      storeFormProp: 'nameLast',
     },
     buttonForwardProps,
   }
@@ -57,15 +57,15 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
     <div className={getClasses('FormInputNames', classAdded)}>
       <form className='_form'>
         <div className='_group'>
-          <label className='_label'>{firstNameLabel}*</label>
+          <label className='_label'>{nameFirstLabel}*</label>
           <InputYrl {...propsOut.inputFirstNameProps} />
         </div>
         <div className='_group'>
-          <label className='_label'>{lastNameLabel}*</label>
+          <label className='_label'>{nameLastLabel}*</label>
           <InputYrl {...propsOut.inputLastNameProps} />
         </div>
         <div className='_group'>
-          <label className='_label'>{middleNameLabel}</label>
+          <label className='_label'>{nameMiddleLabel}</label>
           <InputYrl {...propsOut.inputMiddleNameProps} />
         </div>
         <div className='_buttons'>

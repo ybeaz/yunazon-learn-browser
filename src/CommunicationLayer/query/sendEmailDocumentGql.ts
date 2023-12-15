@@ -15,7 +15,7 @@ export const sendEmailDocumentGql: DocumentNode = gql`
       sendCc: $sendCc
       sendBcc: $sendBcc
     ) {
-      ...FullDocumentTypeFragment
+      ...FullDocumentType
     }
   }
   ${FullDocumentTypeFragment}

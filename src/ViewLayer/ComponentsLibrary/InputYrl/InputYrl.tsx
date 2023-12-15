@@ -20,6 +20,15 @@ import {
 
 /**
  * @description Component to render InputYrl
+ * @propsOut 
+    inputYrlProps: {
+      classAdded: 'Input_passwordAuth',
+      type: 'text',
+      placeholder: 'myPlaceholder',
+      typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH_2',
+      storeFormGroup: 'user',
+      storeFormProp: 'userPasswordAuth2',
+    },
  * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
              from '../ComponentsLibrary/'
  */

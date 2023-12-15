@@ -41,8 +41,8 @@ export enum MethodHttpEnumType {
   patch = 'patch',
 
   GET = 'GET',
-  HEAD = 'head',
-  POST = 'HEAD',
+  HEAD = 'HEAD',
+  POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE',
   CONNECT = 'CONNECT',

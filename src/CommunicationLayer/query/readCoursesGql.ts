@@ -2,9 +2,9 @@ import { gql, DocumentNode } from '@apollo/client'
 
 import { FullCourseTypeFragment } from '../fragments/FullCourseTypeFragment'
 
-export const readCourseGql: DocumentNode = gql`
-  query readCourse($readCourseInput: ReadCourseInputType!) {
-    readCourse(readCourseInput: $readCourseInput) {
+export const readCoursesGql: DocumentNode = gql`
+  query readCourses($readCoursesInput: [ReadCourseInputType!]!) {
+    readCourses(readCoursesInput: $readCoursesInput) {
       ...FullCourseType
     }
   }

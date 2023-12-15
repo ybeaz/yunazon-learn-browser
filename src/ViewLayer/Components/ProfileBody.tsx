@@ -62,7 +62,7 @@ export const ProfileBody: React.FunctionComponent<ProfileBodyArgs> = (
 
   const propsOut = {
     inputUserNameNickProps: {
-      classAdded: 'Input_userNameFirst',
+      classAdded: 'Input_nameFirst',
       type: 'text',
       placeholder: DICTIONARY['name'][language],
       typeEvent: 'ONCHANGE_USER_NAME_NICK',

@@ -10,7 +10,7 @@ export const ONCHANGE_LAST_NAME_MODAL: ReducerType = (
 
   const { user } = forms
 
-  const userNext: UserType = { ...user, userNameLast: data }
+  const userNext: UserType = { ...user, nameLast: data }
 
   const formsNext: FormsType = { ...forms, user: userNext }
 
