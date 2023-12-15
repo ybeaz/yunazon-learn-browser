@@ -4,7 +4,8 @@ import { ActionReduxType } from '../../Interfaces'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -53,10 +54,13 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       ],
     }
 
-    const createDocuments: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'createDocuments',
-    })
+    const createDocuments: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'createDocuments',
+      },
+      getHeadersAuthDict()
+    )
 
     yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))
 

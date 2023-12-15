@@ -2,7 +2,8 @@ import { takeEvery, put } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 
 function* readDocument(params: ActionReduxType | any): Iterable<any> {
   const { data: documentID } = params
@@ -14,10 +15,13 @@ function* readDocument(params: ActionReduxType | any): Iterable<any> {
       readDocumentsIdsInput: [documentID],
     }
 
-    const readDocuments: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'readDocuments',
-    })
+    const readDocuments: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'readDocuments',
+      },
+      getHeadersAuthDict()
+    )
 
     yield put(actionSync.ADD_DOCUMENT(readDocuments[0]))
 

@@ -1,10 +1,10 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
-// import { courseSuccess } from '../courseSuccessMock'
+import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 
 function* getCourseData(params: ActionReduxType | any): Iterable<any> {
   const {
