@@ -338,6 +338,41 @@ export type MetaCourseInputType = {
   tags?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
+export type MetaCoursePartialInputType = {
+  /** course meta email */
+  email?: InputMaybe<Scalars['String']['input']>;
+  /** course meta institution */
+  institution?: InputMaybe<Scalars['String']['input']>;
+  /** course meta isSendingBcc */
+  isSendingBcc?: InputMaybe<Scalars['Boolean']['input']>;
+  /** course meta specName */
+  specName?: InputMaybe<Scalars['String']['input']>;
+  /** course meta specTitle */
+  specTitle?: InputMaybe<Scalars['String']['input']>;
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** courses meta tags: tags that characterises the course content, its marketing features */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type MetaCoursePartialType = {
+  __typename?: 'MetaCoursePartialType';
+  /** course meta email */
+  email?: Maybe<Scalars['String']['output']>;
+  /** course meta institution */
+  institution?: Maybe<Scalars['String']['output']>;
+  /** course meta isSendingBcc */
+  isSendingBcc?: Maybe<Scalars['Boolean']['output']>;
+  /** course meta specName */
+  specName?: Maybe<Scalars['String']['output']>;
+  /** course meta specTitle */
+  specTitle?: Maybe<Scalars['String']['output']>;
+  /** courses meta stages: stages/ statuses/ envs */
+  stages?: Maybe<Array<Scalars['String']['output']>>;
+  /** courses meta tags: tags that characterises the course content, its marketing features */
+  tags?: Maybe<Array<Scalars['String']['output']>>;
+};
+
 export type MetaCourseType = {
   __typename?: 'MetaCourseType';
   /** course meta email */
@@ -885,8 +920,12 @@ export type ReadCoursesConnectionInputType = {
   first?: InputMaybe<Scalars['Int']['input']>;
   /** isActive */
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortCoursesInputType>;
   /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
@@ -1053,27 +1092,37 @@ export type UpdateCourseInputType = {
 
 export type UpdateCourseMetaInputType = {
   /** courses ID */
-  courseID: Scalars['ID']['input'];
+  courseID?: InputMaybe<Scalars['ID']['input']>;
   /** courses meta information */
-  meta?: InputMaybe<MetaCourseInputType>;
+  meta?: InputMaybe<MetaCoursePartialInputType>;
+  /** module ID */
+  moduleID?: InputMaybe<Scalars['ID']['input']>;
   /** profile ID */
   profileID: Scalars['ID']['input'];
 };
 
 export type UpdateCourseMetaType = {
   __typename?: 'UpdateCourseMetaType';
-  /** acknowledged */
-  acknowledged?: Maybe<Scalars['Boolean']['output']>;
   /** courses ID */
-  courseID: Scalars['ID']['output'];
-  /** matchedCount */
-  matchedCount?: Maybe<Scalars['Int']['output']>;
+  courseID?: Maybe<Scalars['ID']['output']>;
   /** courses meta information */
-  meta?: Maybe<MetaCourseType>;
-  /** modifiedCount */
-  modifiedCount?: Maybe<Scalars['Int']['output']>;
+  meta?: Maybe<MetaCoursePartialType>;
+  /** module ID */
+  moduleID?: Maybe<Scalars['ID']['output']>;
   /** profile ID */
   profileID: Scalars['ID']['output'];
+  /** updateInfo */
+  updateInfo?: Maybe<UpdateInfoType>;
+};
+
+export type UpdateInfoType = {
+  __typename?: 'UpdateInfoType';
+  /** acknowledged */
+  acknowledged?: Maybe<Scalars['Boolean']['output']>;
+  /** matchedCount */
+  matchedCount?: Maybe<Scalars['Int']['output']>;
+  /** modifiedCount */
+  modifiedCount?: Maybe<Scalars['Int']['output']>;
   /** upsertedCount */
   upsertedCount?: Maybe<Scalars['Int']['output']>;
   /** upsertedId */

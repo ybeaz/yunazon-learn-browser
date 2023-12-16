@@ -17,7 +17,7 @@ export const SearchGroup: React.FunctionComponent<any> = (
   const buttonMdSearchProps = {
     icon: 'MdSearch',
     classAdded: 'Button_MdSearch',
-    // action: { typeEvent: ''}
+    // action: { typeEvent: '' },
   }
 
   return (

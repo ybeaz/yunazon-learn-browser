@@ -9,14 +9,11 @@ import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStore
 import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
 import { getCourses } from './getCourses.saga'
-import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 
 function* initLoading(params: ActionReduxType | any): Iterable<any> {
   try {
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
-    const firstLocalStorage =
-      storeStateLocalStorage?.componentsState?.pagination?.pagesCourses?.first
 
     if (storeStateLocalStorage) {
       if (isLoadingLocalStorageStoreState())
@@ -45,17 +42,8 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
 
-    const first = firstLocalStorage || 0
-    yield put(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pagesCourses'],
-        first,
-      })
-    )
-
     yield getCourses({
       type: 'GET_COURSES_REQUEST',
-      data: { first, offset: 10 },
     })
   } catch (error: any) {
     console.info('initLoading [31]', error.name + ': ' + error.message)

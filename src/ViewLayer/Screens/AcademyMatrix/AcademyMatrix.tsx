@@ -1,7 +1,8 @@
-import React, { ReactElement } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -33,6 +34,7 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
+  const [searchParams, setSearchParams] = useSearchParams()
   const store = useSelector((store2: RootStoreType) => store2)
   const {
     language: languageStore,
@@ -43,6 +45,17 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   } = store
 
   const query = getParsedUrlQuery()
+
+  useEffect(() => {
+    setSearchParams({ search: searchInput })
+    console.info('AcademyMatrix [51]', { searchInput })
+  }, [searchInput])
+
+  const coursesFiltered = courses
+
+  //   .filter((item: any) =>
+  //   item.searchString.includes(searchInput)
+  // )
 
   useEffectedInitialRequests([{ type: 'INIT_LOADING', data: { query } }])
   useLoadedInitialTeachContent()
@@ -87,10 +100,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>
   }
-
-  const coursesFiltered = courses.filter((item: any) =>
-    item.searchString.includes(searchInput)
-  )
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
