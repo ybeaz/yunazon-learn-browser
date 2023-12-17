@@ -18,5 +18,13 @@ export const SET_TAGS_STATE: ReducerType = (
 
   const formsNext = { ...forms, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
+  console.info('SET_TAGS_STATE [21]', {
+    tagsPickState,
+    tagsOmitState,
+    tagsPick,
+    tagsOmit,
+    formsNext,
+  })
+
   return { ...store, forms: formsNext }
 }

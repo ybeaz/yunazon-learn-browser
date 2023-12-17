@@ -26,15 +26,25 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
         pagesCourses: { first, offset },
       },
     },
+    forms: { searchInput, tagsPick, tagsOmit },
   } = stateSelected as RootStoreType
+
+  console.info('getCourses.saga [32]', {
+    searchInput,
+    tagsPick,
+    tagsOmit,
+    first,
+    offset,
+  })
 
   let readCoursesConnectionInput: any = {
     first,
     offset,
+    searchPhrase: searchInput,
+    tagsPick,
+    tagsOmit,
     stagesPick: selectCoursesStageFlag(),
   }
-
-  console.info('getCourses.saga [37]', { first, offset })
 
   try {
     const variables = {

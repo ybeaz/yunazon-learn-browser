@@ -1,6 +1,7 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
+import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
@@ -18,14 +19,36 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
-    console.info('initLoading.saga [18] query', { query })
+    const searchInput = query?.search
+    const tagsPick =
+      (query && query?.tagspick && query?.tagspick.split(',')) || []
+    const tagsOmit =
+      (query && query?.tagsomit && query?.tagsomit.split(',')) || []
+    const first = query && query?.page ? parseInt(query?.page, 10) - 1 : 0
 
-    // yield put(
-    //   actionSync.SET_PAGE_CURSOR({
-    //     paginationName: PaginationNameEnumType['pagesCourses'],
-    //     first: readCoursesConnectionInput.first,
-    //   })
-    // )
+    console.info('initLoading.saga [26]', {
+      searchInput,
+      tagsPick,
+      tagsOmit,
+      first,
+      query,
+    })
+
+    yield put(actionSync.ONCHANGE_SEARCH_INPUT(searchInput))
+
+    yield put(
+      actionSync.SET_TAGS_STATE({
+        tagsPick,
+        tagsOmit,
+      })
+    )
+
+    yield put(
+      actionSync.SET_PAGE_CURSOR({
+        paginationName: PaginationNameEnumType['pagesCourses'],
+        first,
+      })
+    )
 
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
