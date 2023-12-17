@@ -53,15 +53,21 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    storeStateSlice: {
+      preferred_username,
+      isSideNavLeftVisible,
+      user,
+      language,
+    },
   } = props
 
-  const storeState = useSelector((store2: RootStoreType) => store2)
-  const {
-    authAwsCognitoUserData: { preferred_username },
-    componentsState: { isSideNavLeftVisible },
-    forms: { user },
-    language,
-  } = storeState
+  // const storeState = useSelector((store2: RootStoreType) => store2)
+  // const {
+  //   authAwsCognitoUserData: { preferred_username },
+  //   componentsState: { isSideNavLeftVisible },
+  //   forms: { user },
+  //   language,
+  // } = storeState
 
   const navigate = useNavigate()
 
@@ -230,7 +236,16 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   )
 }
 
-export const HeaderFrame: HeaderFrameType = React.memo(HeaderFrameComponent)
+const storeStateSliceProps: string[] = [
+  'preferred_username',
+  'isSideNavLeftVisible',
+  'user',
+  'language',
+]
+export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(HeaderFrameComponent)
+)
 
 export type {
   HeaderFramePropsType,
@@ -238,3 +253,8 @@ export type {
   HeaderFrameComponentType,
   HeaderFrameType,
 }
+
+/*
+withStoreStateSelectedYrl(storeStateSliceProps,
+const storeStateSliceProps: string[] = []
+*/

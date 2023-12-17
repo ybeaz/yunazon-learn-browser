@@ -160,7 +160,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   )
 }
 
-const storeStateSelect: string[] = [
+const storeStateSliceProps: string[] = [
   'language',
   'durationMultiplier',
   'courses',
@@ -169,7 +169,7 @@ const storeStateSelect: string[] = [
   'searchInput',
 ]
 export const AcademyMatrix: AcademyMatrixType = withStoreStateSelectedYrl(
-  storeStateSelect,
+  storeStateSliceProps,
   React.memo(AcademyMatrixComponent)
 )
 

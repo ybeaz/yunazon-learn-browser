@@ -25,6 +25,12 @@ export type HeaderFramePropsType = {
   isButtonsShare: boolean
   isInstallMobileAppGroup: boolean
   children?: React.ReactElement
+  storeStateSlice: {
+    preferred_username: any
+    isSideNavLeftVisible: any
+    user: any
+    language: any
+  }
 }
 
 export type HeaderFramePropsOutType = {
@@ -50,4 +56,6 @@ export interface HeaderFrameComponentType
   (props: HeaderFramePropsType): React.ReactElement
 }
 
-export type HeaderFrameType = React.FunctionComponent<HeaderFramePropsType>
+export type HeaderFrameType = React.FunctionComponent<
+  Omit<HeaderFramePropsType, 'storeStateSlice'>
+>

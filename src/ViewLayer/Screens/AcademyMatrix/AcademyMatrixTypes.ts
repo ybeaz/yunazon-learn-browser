@@ -14,7 +14,7 @@ export type AcademyMatrixPropsType = {
 }
 
 export type AcademyMatrixPropsOutType = {
-  headerFrameProps: HeaderFramePropsType
+  headerFrameProps: Omit<HeaderFramePropsType, 'storeStateSlice'>
   mainFrameProps: Omit<MainFramePropsType, 'children'>
 }
 
