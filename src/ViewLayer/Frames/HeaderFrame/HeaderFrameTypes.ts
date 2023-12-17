@@ -23,7 +23,6 @@ export type HeaderFrameComponentPropsType = {
   isButtonBack: boolean
   isPageActionsGroup: boolean
   isButtonsShare: boolean
-  isInstallMobileAppGroup: boolean
   children?: React.ReactElement
   storeStateSlice: {
     preferred_username: any

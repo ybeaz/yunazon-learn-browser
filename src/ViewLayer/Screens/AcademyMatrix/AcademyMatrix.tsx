@@ -115,7 +115,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isInstallMobileAppGroup: false,
     },
     mainFrameProps: {
       screenType,

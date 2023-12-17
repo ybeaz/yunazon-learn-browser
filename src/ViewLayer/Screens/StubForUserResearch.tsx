@@ -7,6 +7,7 @@ import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { DICTIONARY } from '../../Constants/dictionary.const'
 
 interface StubForUserResearchArgs {
   routeProps: {
@@ -27,6 +28,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
+    moto: DICTIONARY['Together_know_everything']['en'], // TODO: make it dynamic from store
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenuLeft: true,
@@ -39,7 +41,6 @@ export const StubForUserResearch: React.FunctionComponent<
     isButtonBack: false,
     isPageActionsGroup: false,
     isButtonsShare: false,
-    isInstallMobileAppGroup: false,
   }
 
   const mainFrameProps = {

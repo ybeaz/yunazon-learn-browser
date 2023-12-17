@@ -1,7 +1,7 @@
 import React, { ReactElement, FunctionComponent } from 'react'
 
-import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
-import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
+// import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
+// import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -15,8 +15,8 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
-  SkillExchangeIntro2,
-  SkillExchangeIntro,
+  // SkillExchangeIntro2,
+  // SkillExchangeIntro,
   EmalInputs,
   QuestionScores,
   //AuthUser, Not used in favor of Cognito authetication

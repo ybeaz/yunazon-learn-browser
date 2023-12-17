@@ -203,7 +203,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isInstallMobileAppGroup: false,
     },
     mainFrameProps: {
       screenType,

@@ -119,7 +119,6 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     isButtonBack: true,
     isPageActionsGroup: true,
     isButtonsShare: true,
-    isInstallMobileAppGroup: false,
   }
 
   return (
