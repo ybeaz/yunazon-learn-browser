@@ -1,10 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  InputYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
+
+import {
+  EmalInputsComponentPropsType,
   EmalInputsPropsType,
   EmalInputsPropsOutType,
   EmalInputsComponentType,
@@ -17,16 +20,13 @@ import {
              from '../Components/EmalInputs/EmalInputs'
  */
 const EmalInputsComponent: EmalInputsComponentType = (
-  props: EmalInputsPropsType
+  props: EmalInputsComponentPropsType
 ) => {
-  const { classAdded, documentID } = props
-
-  const store = useSelector((store2: RootStoreType) => store2)
-
   const {
-    documents,
-    forms: { sendTo, sendCc },
-  } = store
+    classAdded,
+    documentID,
+    storeStateSlice: { documents, sendTo, sendCc },
+  } = props
 
   const documentsLen = documents.length
   let documentDefault = {
@@ -86,7 +86,11 @@ const EmalInputsComponent: EmalInputsComponentType = (
   )
 }
 
-export const EmalInputs = React.memo(EmalInputsComponent)
+const storeStateSliceProps: string[] = ['documents', 'sendTo', 'sendCc']
+export const EmalInputs = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(EmalInputsComponent)
+)
 
 export type {
   EmalInputsPropsType,

@@ -1,9 +1,20 @@
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
-export type EmalInputsPropsType = {
+export type EmalInputsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   documentID: string
+  storeStateSlice: {
+    documents: RootStoreType['documents']
+    sendTo: RootStoreType['forms']['sendTo']
+    sendCc: RootStoreType['forms']['sendCc']
+  }
 }
+
+export type EmalInputsPropsType = Omit<
+  EmalInputsComponentPropsType,
+  'storeStateSlice'
+>
 
 export type EmalInputsPropsOutType = {
   inputEmailToProps: InputYrlPropsType
@@ -15,8 +26,8 @@ export type EmalInputsPropsOutType = {
  * @import import { EmalInputsType } from './EmalInputsType'
  */
 export interface EmalInputsComponentType
-  extends React.FunctionComponent<EmalInputsPropsType> {
-  (props: EmalInputsPropsType): React.ReactElement
+  extends React.FunctionComponent<EmalInputsComponentPropsType> {
+  (props: EmalInputsComponentPropsType): React.ReactElement
 }
 
 export type EmalInputsType = React.FunctionComponent<EmalInputsPropsType>
