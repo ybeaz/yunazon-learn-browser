@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
 
@@ -9,29 +8,30 @@ import { DICTIONARY } from '../../Constants/dictionary.const'
 import { getSlug } from '../../Shared/getSlug'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 import {
   LoaderOverlayYrl,
   withStoreStateSelectedYrl,
 } from '../ComponentsLibrary/'
 
-export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
-  props
+import {
+  CertificateComponentPropsType,
+  CertificateComponentType,
+  CertificatePropsOutType,
+  CertificateType,
+} from './CertificateTypes'
+
+export const CertificateComponent: CertificateComponentType = (
+  props: CertificateComponentPropsType
 ): ReactElement => {
+  const {
+    storeStateSlice: { documents, language, isLoadedLocalStorageStoreState },
+  } = props
+
   const params = useParams()
   const documentID = params?.documentID
 
   useEffectedInitialRequests(['INIT_LOADING'])
-
-  const store = useSelector((store2: RootStoreType) => store2)
-  const {
-    language: languageStore,
-    documents,
-    language,
-    componentsState: { isLoadedLocalStorageStoreState },
-  } = store
 
   const documentFound = documents.find(
     (document: any) => document.documentID === documentID
@@ -102,7 +102,7 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    moto: DICTIONARY['Together_know_everything'][languageStore],
+    moto: DICTIONARY['Together_know_everything'][language],
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
     contentComponentName: 'SearchFormSep',
     courseCapture,
@@ -120,6 +120,8 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     isPageActionsGroup: true,
     isButtonsShare: true,
   }
+
+  const propsOut: CertificatePropsOutType = {}
 
   return (
     <div className='Certificate'>
@@ -251,6 +253,17 @@ export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
     </div>
   )
 }
+
+const storeStateSliceProps: string[] = [
+  'language',
+  'documents',
+  'language',
+  'isLoadedLocalStorageStoreState',
+]
+export const Certificate: CertificateType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(CertificateComponent)
+)
 
 // export const Certificate: React.ComponentClass<any> = withRouter(
 //   CertificateOrigin
