@@ -1,6 +1,4 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { useSelector } from 'react-redux'
-import { nanoid } from 'nanoid'
 
 import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
 import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'

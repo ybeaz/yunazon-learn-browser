@@ -1,11 +1,16 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
-export type ModalFramesPropsType = {
+export type ModalFramesComponentPropsType = {
   children?: React.ReactElement
   storeStateSlice: {
     modalFrames: RootStoreType['componentsState']['modalFrames']
   }
 }
+
+export type ModalFramesPropsType = Omit<
+  ModalFramesComponentPropsType,
+  'storeStateSlice'
+>
 
 export type ModalFramesPropsOutType = Record<string, any>
 
@@ -13,10 +18,8 @@ export type ModalFramesPropsOutType = Record<string, any>
  * @import import { ModalFramesType } from './ModalFramesType'
  */
 export interface ModalFramesComponentType
-  extends React.FunctionComponent<ModalFramesPropsType> {
-  (props: ModalFramesPropsType): React.ReactElement
+  extends React.FunctionComponent<ModalFramesComponentPropsType> {
+  (props: ModalFramesComponentPropsType): React.ReactElement
 }
 
-export type ModalFramesType = React.FunctionComponent<
-  Omit<ModalFramesPropsType, 'storeStateSlice'>
->
+export type ModalFramesType = React.FunctionComponent<ModalFramesPropsType>

@@ -1,14 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 
-export type PlayerPanelPropsType = {
+export type PlayerPanelComponentPropsType = {
   courseCapture: string
   moduleCapture: string
   durationObj: DurationObjType
@@ -26,8 +24,13 @@ export type PlayerPanelPropsType = {
   }
 }
 
+export type PlayerPanelPropsType = Omit<
+  PlayerPanelComponentPropsType,
+  'storeStateSlice'
+>
+
 export const PlayerPanelComponent: React.FunctionComponent<
-  PlayerPanelPropsType
+  PlayerPanelComponentPropsType
 > = props => {
   const {
     courseCapture,
@@ -112,9 +115,8 @@ export const PlayerPanelComponent: React.FunctionComponent<
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const PlayerPanel: React.FunctionComponent<
-  Omit<PlayerPanelPropsType, 'storeStateSlice'>
-> = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(PlayerPanelComponent)
-)
+export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> =
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(PlayerPanelComponent)
+  )

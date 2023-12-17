@@ -4,7 +4,7 @@ import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarP
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
-export type HeaderFramePropsType = {
+export type HeaderFrameComponentPropsType = {
   brandName: string
   moto: string
   logoPath: string
@@ -33,6 +33,11 @@ export type HeaderFramePropsType = {
   }
 }
 
+export type HeaderFramePropsType = Omit<
+  HeaderFrameComponentPropsType,
+  'storeStateSlice'
+>
+
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
   buttonLeftSideNavigationMenuProps: ButtonYrlPropsType
@@ -52,10 +57,8 @@ export type HeaderFramePropsOutType = {
  * @import import { HeaderFrameType } from './HeaderFrameType'
  */
 export interface HeaderFrameComponentType
-  extends React.FunctionComponent<HeaderFramePropsType> {
-  (props: HeaderFramePropsType): React.ReactElement
+  extends React.FunctionComponent<HeaderFrameComponentPropsType> {
+  (props: HeaderFrameComponentPropsType): React.ReactElement
 }
 
-export type HeaderFrameType = React.FunctionComponent<
-  Omit<HeaderFramePropsType, 'storeStateSlice'>
->
+export type HeaderFrameType = React.FunctionComponent<HeaderFramePropsType>

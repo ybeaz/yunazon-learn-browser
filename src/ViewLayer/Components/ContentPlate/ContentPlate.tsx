@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
@@ -21,6 +20,7 @@ const COMPONENT: Record<string, FunctionComponent<any>> = {
 }
 
 import {
+  ContentPlateComponentPropsType,
   ContentPlatePropsType,
   ContentPlatePropsOutType,
   ContentPlateComponentType,
@@ -33,7 +33,7 @@ import {
              from '../Components/ContentPlate/ContentPlate'
  */
 const ContentPlateComponent: ContentPlateComponentType = (
-  props: ContentPlatePropsType
+  props: ContentPlateComponentPropsType
 ) => {
   const {
     classAdded,
@@ -48,11 +48,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
     storeStateSlice: { language, mediaLoaded },
   } = props
 
-  // const store = useSelector((store2: RootStoreType) => store2)
-  // const {
-  //   language,
-  //   isLoaded: { mediaLoaded },
-  // } = store
   const isVisible = mediaLoaded[contentID]
 
   const { width, height } = VIDEO_RESOLUTION

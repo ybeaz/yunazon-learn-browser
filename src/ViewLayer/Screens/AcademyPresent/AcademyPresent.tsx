@@ -14,7 +14,6 @@ import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
@@ -48,20 +47,30 @@ import {
 const AcademyPresentComponent: AcademyPresentComponentType = (
   props: AcademyPresentPropsType
 ) => {
+  const {
+    storeStateSlice: {
+      language: languageStore,
+      durationMultiplier,
+      moduleIDActive,
+      courses,
+      mediaLoaded,
+    },
+  } = props
+
   const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  const store = useSelector((store2: RootStoreType) => store2)
+  // const store = useSelector((store2: RootStoreType) => store2)
 
-  const {
-    language: languageStore,
-    scorm: { durationMultiplier, moduleIDActive },
-    courses,
-    isLoaded: { mediaLoaded },
-  } = store
+  // const {
+  //   language: languageStore,
+  //   scorm: { durationMultiplier, moduleIDActive },
+  //   courses,
+  //   isLoaded: { mediaLoaded },
+  // } = store
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
@@ -277,8 +286,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   )
 }
 
-export const AcademyPresent: AcademyPresentType = React.memo(
-  AcademyPresentComponent
+const storeStateSliceProps: string[] = [
+  'language',
+  'durationMultiplier',
+  'moduleIDActive',
+  'courses',
+  'mediaLoaded',
+]
+export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(AcademyPresentComponent)
 )
 
 export type {
