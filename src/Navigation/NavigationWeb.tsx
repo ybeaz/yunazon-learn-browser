@@ -21,7 +21,6 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     const { page, path, children, errorElement } = route
     const Element = PAGES[page]
     const element: ReactElement = <Element />
-    console.info('NavigationWeb [46]', { element, page })
     const id = nanoid()
     return { id, element, path, children, errorElement }
   })

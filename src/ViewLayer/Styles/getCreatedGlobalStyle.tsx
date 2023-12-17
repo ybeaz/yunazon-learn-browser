@@ -1,11 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
 import { createGlobalStyle } from 'styled-components'
 
 import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getBuiltColor } from './getBuiltColor'
+import { selectorTheme } from './selectors'
 interface IGetCreatedGlobalStyle {
   (lightness: ILightness, alphas: IAlphas): any
 }
@@ -38,9 +37,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     opaciter4,
   } = alphas
 
-  const {
-    globalVars: { theme },
-  } = useSelector((store2: RootStoreType) => store2)
+  const { theme } = selectorTheme(['theme'])
 
   if (!theme) return null
 
@@ -67,11 +64,13 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .SelectLanguage .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-      border-color: ${props2 =>
-        ({
+      border-color: ${(props2: any) => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        })[theme]};}
+        }
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .SearchFormSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
@@ -156,11 +155,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', lighter, medial, 'Light')};
-      border-color: ${props2 =>
-        ({
+      border-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorFirst', medial, lighter4, 'Dark'),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        })[theme]};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
@@ -378,11 +380,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
     .Button_ThemeToggle .__button {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        })[theme]};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
@@ -457,18 +462,23 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .ModalFrames .__content {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', middle, lighter4),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        })[theme]};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .AuthUser .form, .AuthUser .bottomContainer {
-      background: ${props2 =>
-        ({
+      background: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorGrey', medial, middle),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        })[theme]};}
+        }
+        return DICTIONARY_STYLES[theme]
+      }};}
     
     .AuthUser .header2 {
       color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
@@ -507,11 +517,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .HeaderFrame {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        })[theme]};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     body {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
