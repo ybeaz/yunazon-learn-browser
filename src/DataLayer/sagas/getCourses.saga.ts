@@ -14,57 +14,21 @@ import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLoc
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
-  const storeStateLocalStorage = getLocalStorageStoreStateRead()
-  const firstLocalStorage =
-    storeStateLocalStorage?.componentsState?.pagination?.pagesCourses?.first
-
-  const search = getParsedUrlQuery()
-  const urlFirst = search?.first
-  const urlOffset = search?.offset
-  const urlLanguage = search?.lang
-  const urlSearchPhrase = search?.search
-
-  const urlTagsPickStr = search?.tagspick
-  const urlTagsPick = urlTagsPickStr
-    ? urlTagsPickStr
-        .split(' ')
-        .filter((tag: string) => tag !== '')
-        .join('')
-        .split(',')
-    : []
-
-  const urlTagsOmitStr = search?.tagsomit
-  const urlTagsOmit = urlTagsOmitStr
-    ? urlTagsOmitStr
-        .split(' ')
-        .filter((tag: string) => tag !== '')
-        .join('')
-        .split(',')
-    : []
+  const stateSelected: RootStoreType | any = yield select(
+    (state: RootStoreType) => state
+  )
+  const {
+    authAwsCognitoUserData: { sub },
+  } = stateSelected as RootStoreType
 
   let readCoursesConnectionInput: any = {
     first: 0,
     offset: 10,
     stagesPick: selectCoursesStageFlag(),
   }
-
-  if (urlFirst) readCoursesConnectionInput.first = urlFirst
-  if (urlOffset) readCoursesConnectionInput.first = urlOffset
-  if (urlLanguage) readCoursesConnectionInput.language = urlLanguage
-  if (urlSearchPhrase) readCoursesConnectionInput.searchPhrase = urlSearchPhrase
-  if (urlTagsPick && urlTagsPick.length)
-    readCoursesConnectionInput.tagsPick = urlTagsPick
-  if (urlTagsOmit && urlTagsOmit.length)
-    readCoursesConnectionInput.tagsPick = urlTagsOmit
-
-  yield put(
-    actionSync.SET_PAGE_CURSOR({
-      paginationName: PaginationNameEnumType['pagesCourses'],
-      first: readCoursesConnectionInput.first,
-    })
-  )
 
   try {
     const variables = {

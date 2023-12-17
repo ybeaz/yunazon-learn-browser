@@ -23,10 +23,12 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     },
   } = params
 
+  const stateSelected: RootStoreType | any = yield select(
+    (state: RootStoreType) => state
+  )
   const {
-    // @ts-expect-error
     authAwsCognitoUserData: { sub },
-  } = yield select((store: RootStoreType) => store)
+  } = stateSelected as RootStoreType
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

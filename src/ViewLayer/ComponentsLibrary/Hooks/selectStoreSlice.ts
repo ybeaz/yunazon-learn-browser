@@ -46,7 +46,7 @@ export const selectStoreSlice: SelectStoreSliceType = (
   let output: any = {}
 
   try {
-    const selectTheme = createSelector(
+    const stateSelected = createSelector(
       (state: RootStoreType) => state,
       (state: RootStoreType) => {
         const getObjectSliceParams = {
@@ -58,7 +58,7 @@ export const selectStoreSlice: SelectStoreSliceType = (
       }
     )
 
-    output = useSelector(selectTheme)
+    output = useSelector(stateSelected)
 
     if (printRes) {
       console.log('selectStoreSlice [43]', { output })
