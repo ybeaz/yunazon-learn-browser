@@ -7,7 +7,7 @@ import { getButtonsClassString } from '../../../Shared/getButtonsClassString'
 import { getChunkedArray } from '../../../Shared/getChunkedArray'
 import { CheckRadioGroup } from '../CheckRadioGroup'
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
-import { ButtonYrl } from '../../ComponentsLibrary/'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 

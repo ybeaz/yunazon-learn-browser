@@ -1,9 +1,12 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
+import {
+  ImageYrl,
+  IconYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../Constants/servers.const'

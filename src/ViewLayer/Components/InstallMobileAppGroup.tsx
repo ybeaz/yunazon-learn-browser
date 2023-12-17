@@ -6,8 +6,9 @@ import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import {
   ButtonYrl,
-  IButtonArgs,
-} from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+  ButtonYrlPropsType,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 
 interface InstallMobileAppGroupArgs {}
 
@@ -18,7 +19,7 @@ export const InstallMobileAppGroup: React.FunctionComponent<
 
   const { language } = useSelector((store2: RootStoreType) => store2)
 
-  const buttonSiAppstoreProps: IButtonArgs = {
+  const buttonSiAppstoreProps: ButtonYrlPropsType = {
     icon: 'SiAppstore',
     icon2: null,
     classAdded: 'Button_SiAppstore',
@@ -30,7 +31,7 @@ export const InstallMobileAppGroup: React.FunctionComponent<
     } as ActionReduxType,
   }
 
-  const buttonSiGoogleplayProps: IButtonArgs = {
+  const buttonSiGoogleplayProps: ButtonYrlPropsType = {
     icon: 'SiGoogleplay',
     icon2: null,
     classAdded: 'Button_SiGoogleplay',

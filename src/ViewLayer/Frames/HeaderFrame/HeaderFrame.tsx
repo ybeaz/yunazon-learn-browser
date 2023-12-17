@@ -8,7 +8,7 @@ import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { SearchGroup } from '../../Components/SearchGroup'
-import { ButtonYrl } from '../../ComponentsLibrary/'
+
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -16,6 +16,7 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
   HeaderFramePropsType,

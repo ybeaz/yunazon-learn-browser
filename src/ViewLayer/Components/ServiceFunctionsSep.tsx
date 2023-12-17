@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
-import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
+import { IconYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 

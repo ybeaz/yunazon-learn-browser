@@ -1,5 +1,4 @@
 import React, { useEffect, ReactElement } from 'react'
-import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'

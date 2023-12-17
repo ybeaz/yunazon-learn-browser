@@ -9,7 +9,7 @@ import {
   FormsType,
   SearchFormSepType,
 } from '../../../Interfaces/RootStoreType'
-import { IconYrl } from '../IconYrl/IconYrl'
+import { IconYrl, withStoreStateSelectedYrl } from '../'
 
 import {
   InputYrlPropsType,

@@ -12,7 +12,7 @@ import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
-import { IconYrl } from '../ComponentsLibrary/IconYrl/IconYrl'
+import { IconYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface IGetLinkAuthUserProps {

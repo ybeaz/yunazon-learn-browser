@@ -6,8 +6,11 @@ import { useInitializedFacebookOAuth } from '../Hooks/useInitializedFacebookOAut
 import { useInitializedGoogleOAuth } from '../Hooks/useInitializedGoogleOAuth'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
+import {
+  InputYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 
 export const AuthUser: React.FunctionComponent<any> = (
   props: any = {

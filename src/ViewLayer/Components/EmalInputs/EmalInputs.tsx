@@ -2,8 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
   EmalInputsPropsType,

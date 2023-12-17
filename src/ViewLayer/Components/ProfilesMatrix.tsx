@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { ProfilePlate } from './ProfilePlate'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { UserType } from '../../Interfaces/UserType'
+import { withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 
 interface ProfilesMatrixArgs {}
 

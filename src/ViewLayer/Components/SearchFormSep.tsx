@@ -17,8 +17,11 @@ import { MEDIA } from '../../Constants/media.const'
 import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
+import {
+  InputYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 interface ISearchFormSepArgs {

@@ -8,7 +8,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ICONS_PROGRAMMING } from '../../Constants/iconsSimple.const'
 import { CATEGORIES } from '../../Constants/categories.const'
 import { CategoryType } from '../../Interfaces/CategoryType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 
 interface IGetCategorisJsx {
   (categories: CategoryType[], language: string): ReactElement[]

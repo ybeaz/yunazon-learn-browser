@@ -11,8 +11,11 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { RouterScreenPropsType } from '../../Interfaces/RouterScreenPropsType'
-import { LoaderOverlayYrl } from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
+import {
+  LoaderOverlayYrl,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 
 export const Certificate: React.FunctionComponent<RouterScreenPropsType> = (
   props

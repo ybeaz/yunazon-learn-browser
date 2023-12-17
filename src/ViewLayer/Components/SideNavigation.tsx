@@ -9,7 +9,11 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl, ButtonYrlPropsType } from '../ComponentsLibrary'
+import {
+  ButtonYrl,
+  ButtonYrlPropsType,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 import { isAwsCognitoAuth } from '../../FeatureFlags'
 
 /**

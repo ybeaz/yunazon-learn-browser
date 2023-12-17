@@ -16,7 +16,6 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { LoaderOverlayYrl } from '../../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel'
@@ -24,6 +23,10 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
+import {
+  LoaderOverlayYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,

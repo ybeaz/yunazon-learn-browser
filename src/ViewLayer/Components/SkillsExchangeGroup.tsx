@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ProfilesMatrix } from './ProfilesMatrix'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { SuccessfulCasesSep } from './SuccessfulCasesSep'
 import { ServiceFunctionsSep } from './ServiceFunctionsSep'

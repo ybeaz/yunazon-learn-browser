@@ -6,7 +6,7 @@ import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 
 export type PlayerPanelPropsType = {
   courseCapture: string
