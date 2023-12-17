@@ -1,8 +1,23 @@
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
-export type CarouselQuestionsPropsType = {
+export type CarouselQuestionsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  storeStateSlice: {
+    moduleIDActive: RootStoreType['scorm']['moduleIDActive']
+    numberQuestionsInSlide: RootStoreType['scorm']['numberQuestionsInSlide']
+    questionsSlideNumber: RootStoreType['componentsState']['questionsSlideNumber']
+    isCourseStarted: RootStoreType['componentsState']['isCourseStarted']
+    courses: RootStoreType['courses']
+    language: RootStoreType['language']
+  }
 }
+
+export type CarouselQuestionsPropsType = Omit<
+  CarouselQuestionsComponentPropsType,
+  'storeStateSlice'
+>
 
 export type CarouselQuestionsPropsOutType = {
   buttonStartProps: ButtonYrlPropsType
@@ -16,8 +31,8 @@ export type CarouselQuestionsPropsOutType = {
  * @import import { CarouselQuestionsType } from './CarouselQuestionsType'
  */
 export interface CarouselQuestionsComponentType
-  extends React.FunctionComponent<CarouselQuestionsPropsType> {
-  (props: CarouselQuestionsPropsType): React.ReactElement
+  extends React.FunctionComponent<CarouselQuestionsComponentPropsType> {
+  (props: CarouselQuestionsComponentPropsType): React.ReactElement
 }
 
 export type CarouselQuestionsType =

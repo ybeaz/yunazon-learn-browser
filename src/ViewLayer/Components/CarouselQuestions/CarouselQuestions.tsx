@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useSelector } from 'react-redux'
-
+import { nanoid } from 'nanoid'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getQuesionString } from '../../../Shared/getQuesionString'
 import { getButtonsClassString } from '../../../Shared/getButtonsClassString'
@@ -9,11 +8,11 @@ import { CheckRadioGroup } from '../CheckRadioGroup'
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
+  CarouselQuestionsComponentPropsType,
   CarouselQuestionsPropsType,
   CarouselQuestionsPropsOutType,
   CarouselQuestionsComponentType,
@@ -26,18 +25,18 @@ import {
              from '../Components/CarouselQuestions/CarouselQuestions'
  */
 const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
-  props: CarouselQuestionsPropsType
+  props: CarouselQuestionsComponentPropsType
 ) => {
-  const { classAdded } = props
-
-  const store = useSelector((store2: RootStoreType) => store2)
-
   const {
-    scorm: { moduleIDActive, numberQuestionsInSlide },
-    componentsState: { questionsSlideNumber, isCourseStarted },
-    courses,
-    language,
-  } = store
+    storeStateSlice: {
+      moduleIDActive,
+      numberQuestionsInSlide,
+      questionsSlideNumber,
+      isCourseStarted,
+      courses,
+      language,
+    },
+  } = props
 
   const {
     courseActive: { capture: courseCapture, courseID },
@@ -52,10 +51,12 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
+      const key = `${question}-${index}`
       const classNameToggleHighlight =
         index === questionsSlideNumber ? 'active' : ''
       return (
         <span
+          key={key}
           className={`_dot ${classNameToggleHighlight}`}
           onClick={event =>
             handleEvents(event, {
@@ -71,16 +72,25 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   }
 
   const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
-    return questions.map(question => {
-      return <CheckRadioGroup {...question} />
+    return questions.map((question, index) => {
+      const { questionID } = question
+      // const key = nanoid() // `${questionID}-${index}`
+      const checkRadioGroupProps = { ...question }
+      return (
+        <div key={questionID}>
+          <CheckRadioGroup {...checkRadioGroupProps} />
+        </div>
+      )
     })
   }
 
   const getSlides: Function = (questionsChunked2: any[]): ReactElement => {
     const questionsJSX = questionsChunked2.map((questions, index) => {
+      const key = JSON.stringify({ prop: questions[0], index })
       const classNameToggleShow = index === questionsSlideNumber ? '_show' : ''
       return (
-        <div className={`_slides fade ${classNameToggleShow}`}>
+        /* Adding a unique key here causes blinking, because the content is changing every time */
+        <div key={`${index}`} className={`_slides fade ${classNameToggleShow}`}>
           {getSlidesChunk(questions)}
         </div>
       )
@@ -212,7 +222,18 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   )
 }
 
-export const CarouselQuestions = React.memo(CarouselQuestionsComponent)
+const storeStateSliceProps: string[] = [
+  'moduleIDActive',
+  'numberQuestionsInSlide',
+  'questionsSlideNumber',
+  'isCourseStarted',
+  'courses',
+  'language',
+]
+export const CarouselQuestions = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(CarouselQuestionsComponent)
+)
 
 export type {
   CarouselQuestionsPropsType,

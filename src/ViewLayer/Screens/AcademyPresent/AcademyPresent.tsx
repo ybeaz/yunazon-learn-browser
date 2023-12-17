@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -33,6 +32,7 @@ const COMPONENT: Record<string, React.FunctionComponent<any>> = {
 }
 
 import {
+  AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
   AcademyPresentPropsOutType,
   AcademyPresentComponentType,
@@ -45,7 +45,7 @@ import {
              from '../Components/AcademyPresent/AcademyPresent'
  */
 const AcademyPresentComponent: AcademyPresentComponentType = (
-  props: AcademyPresentPropsType
+  props: AcademyPresentComponentPropsType
 ) => {
   const {
     storeStateSlice: {
@@ -62,15 +62,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
-
-  // const store = useSelector((store2: RootStoreType) => store2)
-
-  // const {
-  //   language: languageStore,
-  //   scorm: { durationMultiplier, moduleIDActive },
-  //   courses,
-  //   isLoaded: { mediaLoaded },
-  // } = store
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
