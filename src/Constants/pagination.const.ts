@@ -1,1 +1,1 @@
-export const paginationOffset: number = 5
+export const paginationOffset: number = 10

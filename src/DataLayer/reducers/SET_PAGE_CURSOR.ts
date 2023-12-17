@@ -5,6 +5,11 @@ import {
   PaginationNameEnumType,
 } from '../../Interfaces/RootStoreType'
 import { PaginationType } from '../../Interfaces'
+import {
+  getSetUrlQueryBrowserApi,
+  GetSetUrlQueryBrowserApiParamsType,
+} from '../../Shared/getSetUrlQueryBrowserApi'
+import { paginationOffset } from '../../Constants/pagination.const'
 
 export const SET_PAGE_CURSOR: ReducerType = (
   store: RootStoreType,
@@ -23,6 +28,19 @@ export const SET_PAGE_CURSOR: ReducerType = (
   }
 
   const componentsStateNext = { ...componentsState, pagination: paginationNext }
+
+  let searchParamsValue: string = '1'
+  if (firstNext && firstNext > 0) {
+    searchParamsValue = String(
+      (firstNext + paginationOffset) / paginationOffset
+    )
+  }
+  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: 'page',
+    searchParamsValue,
+  }
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
 
   return { ...store, componentsState: componentsStateNext }
 }

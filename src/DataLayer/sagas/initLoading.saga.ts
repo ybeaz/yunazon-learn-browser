@@ -10,21 +10,22 @@ import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStore
 import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
 import { getCourses } from './getCourses.saga'
-import {
-  getParsedUrlQuery,
-  getParsedUrlQueryBrowserApi,
-} from '../../Shared/getParsedUrlQuery'
+import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
+import { paginationOffset } from '../../Constants/pagination.const'
 
 function* initLoading(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
-    const searchInput = query?.search
+    const searchInput = query?.search || ''
     const tagsPick =
       (query && query?.tagspick && query?.tagspick.split(',')) || []
     const tagsOmit =
       (query && query?.tagsomit && query?.tagsomit.split(',')) || []
-    const first = query && query?.page ? parseInt(query?.page, 10) - 1 : 0
+    const first =
+      query && query?.page
+        ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
+        : 0
 
     console.info('initLoading.saga [26]', {
       searchInput,

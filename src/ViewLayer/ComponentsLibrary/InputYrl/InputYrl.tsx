@@ -8,6 +8,7 @@ import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 import { IconYrl } from '../'
 
 import {
+  InputYrlComponentPropsType,
   InputYrlPropsType,
   InputYrlPropsOutType,
   InputYrlComponentType,
@@ -28,7 +29,9 @@ import {
  * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
              from '../ComponentsLibrary/'
  */
-const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
+const InputYrlComponent: InputYrlComponentType = (
+  props: InputYrlComponentPropsType
+) => {
   const {
     tagName = 'input',
     classAdded,
@@ -58,6 +61,12 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
     const formsKey = storeFormProp as keyof FormsType
     value = forms[formsKey] as any
   }
+
+  console.info('InputYrl [63]', {
+    storeFormGroup,
+    storeFormProp,
+    value,
+  })
 
   const action = { typeEvent }
 

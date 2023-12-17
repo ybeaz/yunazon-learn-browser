@@ -11,9 +11,6 @@ import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionTo
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
-import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {

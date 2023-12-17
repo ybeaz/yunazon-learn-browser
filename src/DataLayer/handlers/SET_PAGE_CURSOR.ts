@@ -28,6 +28,6 @@ export const SET_PAGE_CURSOR: ActionEventType = (event, data) => {
 
   dispatch(actionSync.SET_PAGE_CURSOR({ paginationName, first: firstNext }))
 
-  // if (paginationName === PaginationNameEnumType['pagesCourses'])
-  //   dispatch(actionAsync.GET_COURSES.REQUEST({ first: firstNext, offset }))
+  if (paginationName === PaginationNameEnumType['pagesCourses'])
+    dispatch(actionAsync.GET_COURSES.REQUEST())
 }
