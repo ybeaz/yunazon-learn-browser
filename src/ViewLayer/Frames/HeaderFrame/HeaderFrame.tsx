@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation'
@@ -19,6 +18,7 @@ import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  HeaderFrameComponentPropsType,
   HeaderFramePropsType,
   HeaderFramePropsOutType,
   HeaderFrameComponentType,
@@ -31,7 +31,7 @@ import {
              from '../Components/HeaderFrame/HeaderFrame'
  */
 const HeaderFrameComponent: HeaderFrameComponentType = (
-  props: HeaderFramePropsType
+  props: HeaderFrameComponentPropsType
 ) => {
   const {
     brandName,
@@ -60,14 +60,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       language,
     },
   } = props
-
-  // const storeState = useSelector((store2: RootStoreType) => store2)
-  // const {
-  //   authAwsCognitoUserData: { preferred_username },
-  //   componentsState: { isSideNavLeftVisible },
-  //   forms: { user },
-  //   language,
-  // } = storeState
 
   const navigate = useNavigate()
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { getClasses } from '../../../Shared/getClasses'
 import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
@@ -23,10 +22,6 @@ const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   const {
     storeStateSlice: { isLoaderOverlayVisible },
   } = props
-
-  // const {
-  //   componentsState: { isLoaderOverlayVisible },
-  // } = useSelector((store2: RootStoreType) => store2)
 
   const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
 
