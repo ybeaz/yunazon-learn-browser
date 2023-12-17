@@ -7,7 +7,6 @@ import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 
 import {
@@ -33,10 +32,9 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
 const ModalFramesComponent: ModalFramesComponentType = (
   props: ModalFramesPropsType
 ) => {
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    componentsState: { modalFrames },
-  } = store
+    storeStateSlice: { modalFrames },
+  } = props
 
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
@@ -92,7 +90,11 @@ const ModalFramesComponent: ModalFramesComponentType = (
   return <>{getChildren(modalFrames)}</>
 }
 
-export const ModalFrames: ModalFramesType = React.memo(ModalFramesComponent)
+const storeStateSliceProps: string[] = ['modalFrames']
+export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(ModalFramesComponent)
+)
 
 export type {
   ModalFramesPropsType,

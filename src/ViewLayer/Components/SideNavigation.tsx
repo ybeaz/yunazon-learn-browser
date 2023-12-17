@@ -20,14 +20,17 @@ import { isAwsCognitoAuth } from '../../FeatureFlags'
  * @description Component for the left side menu
  * @link React Icons https://react-icons.github.io/react-icons/icons/md/
  */
-export const SideNavigation: React.FunctionComponent = (): ReactElement => {
-  const store = useSelector((store2: RootStoreType) => store2)
+export const SideNavigationComponent: React.FunctionComponent = (
+  props: any
+): ReactElement => {
   const {
-    authAwsCognitoUserData: { preferred_username },
-    forms: { user },
-    language,
-    componentsState: { isSideNavLeftVisible },
-  } = store
+    storeStateSlice: {
+      preferred_username,
+      user,
+      language,
+      isSideNavLeftVisible,
+    },
+  } = props
 
   const navigate = useNavigate()
 
@@ -153,3 +156,16 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     </div>
   )
 }
+
+const storeStateSliceProps: string[] = [
+  'preferred_username',
+  'user',
+  'language',
+  'isSideNavLeftVisible',
+]
+
+export const SideNavigation: React.FunctionComponent =
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(SideNavigationComponent)
+  )
