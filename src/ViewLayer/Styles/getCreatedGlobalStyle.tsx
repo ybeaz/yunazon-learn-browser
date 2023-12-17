@@ -4,19 +4,16 @@ import { createGlobalStyle } from 'styled-components'
 import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getBuiltColor } from './getBuiltColor'
-import {
-  selectStoreSlice,
-  SelectStoreSliceParamsType,
-} from '../ComponentsLibrary/Hooks/selectStoreSlice'
 
 interface IGetCreatedGlobalStyle {
-  (lightness: ILightness, alphas: IAlphas): any
+  (props: { lightness: ILightness; alphas: IAlphas; theme: string }): any
 }
 
-export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
+export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
   lightness,
-  alphas
-) => {
+  alphas,
+  theme,
+}) => {
   const {
     darker4,
     darker3,
@@ -40,8 +37,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     opaciter3,
     opaciter4,
   } = alphas
-
-  const { theme } = selectStoreSlice(['theme'])
 
   if (!theme) return null
 

@@ -13,11 +13,11 @@ import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachC
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
   AcademyMatrixPropsType,
@@ -34,15 +34,18 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (
   props: AcademyMatrixPropsType
 ) => {
-  const [searchParams, setSearchParams] = useSearchParams()
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    language: languageStore,
-    scorm: { durationMultiplier },
-    courses,
-    isLoaded: { isLoadedGlobalVars, isLoadedCourses },
-    forms: { searchInput },
-  } = store
+    storeStateSlice: {
+      language: languageStore,
+      durationMultiplier,
+      courses,
+      isLoadedGlobalVars,
+      isLoadedCourses,
+      searchInput,
+    },
+  } = props
+
+  const [searchParams, setSearchParams] = useSearchParams()
 
   const query = getParsedUrlQuery()
 
@@ -158,8 +161,17 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   )
 }
 
-export const AcademyMatrix: AcademyMatrixType = React.memo(
-  AcademyMatrixComponent
+const storeStateSelect: string[] = [
+  'language',
+  'durationMultiplier',
+  'courses',
+  'isLoadedGlobalVars',
+  'isLoadedCourses',
+  'searchInput',
+]
+export const AcademyMatrix: AcademyMatrixType = withStoreStateSelectedYrl(
+  storeStateSelect,
+  React.memo(AcademyMatrixComponent)
 )
 
 export type {

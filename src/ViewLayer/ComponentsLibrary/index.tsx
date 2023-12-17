@@ -64,6 +64,8 @@ import {
   SelectStoreSliceParamsType,
 } from './Hooks/selectStoreSlice'
 
+import { withStoreStateSelectedYrl } from './Hooks/withStoreStateSelectedYrl'
+
 export type {
   WithPropsYrlPropsType,
   WithPropsM1YrlType,
@@ -95,6 +97,7 @@ export {
   withStoreStateSliceYrl,
   withUseContextYrl,
   withElementDimensionsYrl,
+  withStoreStateSelectedYrl,
   selectStoreSlice,
 }
 
