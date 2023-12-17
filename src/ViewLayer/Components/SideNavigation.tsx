@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
@@ -9,21 +8,28 @@ import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl, ButtonYrlPropsType } from '../ComponentsLibrary'
+import {
+  ButtonYrl,
+  ButtonYrlPropsType,
+  withStoreStateSelectedYrl,
+} from '../ComponentsLibrary/'
 import { isAwsCognitoAuth } from '../../FeatureFlags'
 
 /**
  * @description Component for the left side menu
  * @link React Icons https://react-icons.github.io/react-icons/icons/md/
  */
-export const SideNavigation: React.FunctionComponent = (): ReactElement => {
-  const store = useSelector((store2: RootStoreType) => store2)
+export const SideNavigationComponent: React.FunctionComponent = (
+  props: any
+): ReactElement => {
   const {
-    authAwsCognitoUserData: { preferred_username },
-    forms: { user },
-    language,
-    componentsState: { isSideNavLeftVisible },
-  } = store
+    storeStateSlice: {
+      preferred_username,
+      user,
+      language,
+      isSideNavLeftVisible,
+    },
+  } = props
 
   const navigate = useNavigate()
 
@@ -149,3 +155,16 @@ export const SideNavigation: React.FunctionComponent = (): ReactElement => {
     </div>
   )
 }
+
+const storeStateSliceProps: string[] = [
+  'preferred_username',
+  'user',
+  'language',
+  'isSideNavLeftVisible',
+]
+
+export const SideNavigation: React.FunctionComponent =
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(SideNavigationComponent)
+  )

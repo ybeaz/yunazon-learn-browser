@@ -42,6 +42,14 @@ module.exports = () => {
         generateStatsFile: true,
         statsOptions: { source: false },
       }),
+      /* Need to research configuration, pro/cons
+      new webpack.DllReferencePlugin({
+        context: __dirname,
+        // manifest: require('./manifest.json'),
+        scope: 'xyz',
+        sourceType: 'commonjs2',
+      }),
+      */
       /* Removed since it prevented Axios to run from outer source
       new webpack.ProvidePlugin({
         process: 'process/browser',

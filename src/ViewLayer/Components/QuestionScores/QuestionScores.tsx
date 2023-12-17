@@ -1,9 +1,6 @@
 import React, { useEffect, ReactElement } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
-import { getClasses } from '../../../Shared/getClasses'
 import { isParsableFloat } from '../../../Shared/isParsableFloat'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -18,8 +15,10 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { getScenarioDict, GetScenarioDictPropsType } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  QuestionScoresComponentPropsType,
   QuestionScoresPropsType,
   QuestionScoresPropsOutType,
   QuestionScoresComponentType,
@@ -32,22 +31,23 @@ import {
              from '../Components/QuestionScores/QuestionScores'
  */
 const QuestionScoresComponent: QuestionScoresComponentType = (
-  props: QuestionScoresPropsType
+  props: QuestionScoresComponentPropsType
 ) => {
   let navigate = useNavigate()
 
-  const { stopVideoHandler } = props
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    language,
-    documents,
-    scorm: { moduleIDActive },
-    courses,
-    componentsState: { isDocumentAdded },
-    forms: {
-      user: { nameFirst, nameMiddle, nameLast },
+    stopVideoHandler,
+    storeStateSlice: {
+      language,
+      documents,
+      moduleIDActive,
+      courses,
+      isDocumentAdded,
+      nameFirst,
+      nameMiddle,
+      nameLast,
     },
-  } = store
+  } = props
 
   const documentsLen = documents.length
   const pathName = documentsLen && documents[documentsLen - 1]?.pathName
@@ -117,9 +117,13 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     return (
       <ul className='_ul'>
         {questions.map(question => {
-          const { capture: questionCapture } = question
+          const { questionID, capture: questionCapture } = question
 
-          return <li className='_li'>{questionCapture}</li>
+          return (
+            <li key={questionID} className='_li'>
+              {questionCapture}
+            </li>
+          )
         })}
       </ul>
     )
@@ -148,7 +152,18 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   )
 }
 
-export const QuestionScores = withPropsYrl({})(
+const storeStateSliceProps: string[] = [
+  'language',
+  'documents',
+  'moduleIDActive',
+  'courses',
+  'isDocumentAdded',
+  'nameFirst',
+  'nameMiddle',
+  'nameLast',
+]
+export const QuestionScores = withStoreStateSelectedYrl(
+  storeStateSliceProps,
   React.memo(QuestionScoresComponent)
 )
 

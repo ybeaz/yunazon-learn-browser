@@ -4,7 +4,7 @@ import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarP
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
-export type HeaderFramePropsType = {
+export type HeaderFrameComponentPropsType = {
   brandName: string
   moto: string
   logoPath: string
@@ -23,9 +23,19 @@ export type HeaderFramePropsType = {
   isButtonBack: boolean
   isPageActionsGroup: boolean
   isButtonsShare: boolean
-  isInstallMobileAppGroup: boolean
   children?: React.ReactElement
+  storeStateSlice: {
+    preferred_username: any
+    isSideNavLeftVisible: any
+    user: any
+    language: any
+  }
 }
+
+export type HeaderFramePropsType = Omit<
+  HeaderFrameComponentPropsType,
+  'storeStateSlice'
+>
 
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
@@ -46,8 +56,8 @@ export type HeaderFramePropsOutType = {
  * @import import { HeaderFrameType } from './HeaderFrameType'
  */
 export interface HeaderFrameComponentType
-  extends React.FunctionComponent<HeaderFramePropsType> {
-  (props: HeaderFramePropsType): React.ReactElement
+  extends React.FunctionComponent<HeaderFrameComponentPropsType> {
+  (props: HeaderFrameComponentPropsType): React.ReactElement
 }
 
 export type HeaderFrameType = React.FunctionComponent<HeaderFramePropsType>

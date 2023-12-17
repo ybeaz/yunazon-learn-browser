@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -14,9 +13,7 @@ import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { LoaderOverlayYrl } from '../../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel'
@@ -24,6 +21,10 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
+import {
+  LoaderOverlayYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -31,6 +32,7 @@ const COMPONENT: Record<string, React.FunctionComponent<any>> = {
 }
 
 import {
+  AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
   AcademyPresentPropsOutType,
   AcademyPresentComponentType,
@@ -43,22 +45,23 @@ import {
              from '../Components/AcademyPresent/AcademyPresent'
  */
 const AcademyPresentComponent: AcademyPresentComponentType = (
-  props: AcademyPresentPropsType
+  props: AcademyPresentComponentPropsType
 ) => {
+  const {
+    storeStateSlice: {
+      language: languageStore,
+      durationMultiplier,
+      moduleIDActive,
+      courses,
+      mediaLoaded,
+    },
+  } = props
+
   const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
-
-  const store = useSelector((store2: RootStoreType) => store2)
-
-  const {
-    language: languageStore,
-    scorm: { durationMultiplier, moduleIDActive },
-    courses,
-    isLoaded: { mediaLoaded },
-  } = store
 
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
@@ -200,7 +203,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isInstallMobileAppGroup: false,
     },
     mainFrameProps: {
       screenType,
@@ -274,8 +276,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   )
 }
 
-export const AcademyPresent: AcademyPresentType = React.memo(
-  AcademyPresentComponent
+const storeStateSliceProps: string[] = [
+  'language',
+  'durationMultiplier',
+  'moduleIDActive',
+  'courses',
+  'mediaLoaded',
+]
+export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(AcademyPresentComponent)
 )
 
 export type {

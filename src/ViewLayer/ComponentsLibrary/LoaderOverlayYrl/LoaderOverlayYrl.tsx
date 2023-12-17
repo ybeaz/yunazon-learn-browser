@@ -1,10 +1,10 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { getClasses } from '../../../Shared/getClasses'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 
 import {
+  LoaderOverlayYrlComponentPropsType,
   LoaderOverlayYrlPropsType,
   LoaderOverlayYrlPropsOutType,
   LoaderOverlayYrlComponentType,
@@ -17,11 +17,11 @@ import {
              from '../ComponentsLibrary/'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
-  props: LoaderOverlayYrlPropsType
+  props: LoaderOverlayYrlComponentPropsType
 ) => {
   const {
-    componentsState: { isLoaderOverlayVisible },
-  } = useSelector((store2: RootStoreType) => store2)
+    storeStateSlice: { isLoaderOverlayVisible },
+  } = props
 
   const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
 
@@ -34,8 +34,10 @@ const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   )
 }
 
-export const LoaderOverlayYrl: LoaderOverlayYrlType = React.memo(
-  LoaderOverlayYrlComponent
+const storeStateSliceProps: string[] = ['isLoaderOverlayVisible']
+export const LoaderOverlayYrl: LoaderOverlayYrlType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(LoaderOverlayYrlComponent)
 )
 
 export type {

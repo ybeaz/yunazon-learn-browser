@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonYrl, withStoreStateSliceYrl } from '../../ComponentsLibrary'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -59,7 +59,7 @@ const PaginationCoursesComponent: PaginationCoursesComponentType = (
   )
 }
 
-export const PaginationCourses = withStoreStateSliceYrl(
+export const PaginationCourses = withStoreStateSelectedYrl(
   ['pagesCourses'],
   React.memo(PaginationCoursesComponent)
 )

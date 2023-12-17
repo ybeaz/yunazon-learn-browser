@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
+import { withPropsYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {

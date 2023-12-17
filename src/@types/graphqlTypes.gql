@@ -382,6 +382,56 @@ input MetaCourseInputType {
   tags: [String!] = []
 }
 
+input MetaCoursePartialInputType {
+  """course meta email"""
+  email: String
+
+  """course meta institution"""
+  institution: String
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """course meta specName"""
+  specName: String
+
+  """course meta specTitle"""
+  specTitle: String
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!] = []
+}
+
+type MetaCoursePartialType {
+  """course meta email"""
+  email: String
+
+  """course meta institution"""
+  institution: String
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """course meta specName"""
+  specName: String
+
+  """course meta specTitle"""
+  specTitle: String
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!]
+}
+
 type MetaCourseType {
   """course meta email"""
   email: String!
@@ -789,10 +839,16 @@ input ReadCoursesConnectionInputType {
   """isActive"""
   isActive: Boolean = true
 
+  """language code"""
+  language: String = null
+
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """searchPhrase"""
+  searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortCoursesInputType
@@ -1019,33 +1075,44 @@ input UpdateCourseInputType {
 
 input UpdateCourseMetaInputType {
   """courses ID"""
-  courseID: ID!
+  courseID: ID
 
   """courses meta information"""
-  meta: MetaCourseInputType
+  meta: MetaCoursePartialInputType
+
+  """module ID"""
+  moduleID: ID
 
   """profile ID"""
   profileID: ID!
 }
 
 type UpdateCourseMetaType {
+  """courses ID"""
+  courseID: ID
+
+  """courses meta information"""
+  meta: MetaCoursePartialType
+
+  """module ID"""
+  moduleID: ID
+
+  """profile ID"""
+  profileID: ID!
+
+  """updateInfo"""
+  updateInfo: UpdateInfoType
+}
+
+type UpdateInfoType {
   """acknowledged"""
   acknowledged: Boolean
-
-  """courses ID"""
-  courseID: ID!
 
   """matchedCount"""
   matchedCount: Int
 
-  """courses meta information"""
-  meta: MetaCourseType
-
   """modifiedCount"""
   modifiedCount: Int
-
-  """profile ID"""
-  profileID: ID!
 
   """upsertedCount"""
   upsertedCount: Int

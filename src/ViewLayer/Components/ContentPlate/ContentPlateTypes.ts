@@ -1,6 +1,7 @@
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 
-export type ContentPlatePropsType = {
+export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   key: string
   contentComponentName: string
@@ -11,7 +12,16 @@ export type ContentPlatePropsType = {
   moduleID: string
   contentID: string
   screenType: string
+  storeStateSlice: {
+    language: RootStoreType['language']
+    mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
+  }
 }
+
+export type ContentPlatePropsType = Omit<
+  ContentPlateComponentPropsType,
+  'storeStateSlice'
+>
 
 export type ContentPlatePropsOutType = {
   contentComponentProps: Record<string, any>
@@ -24,8 +34,8 @@ export type ContentPlatePropsOutType = {
  * @import import { ContentPlateType } from './ContentPlateType'
  */
 export interface ContentPlateComponentType
-  extends React.FunctionComponent<ContentPlatePropsType> {
-  (props: ContentPlatePropsType): React.ReactElement
+  extends React.FunctionComponent<ContentPlateComponentPropsType> {
+  (props: ContentPlateComponentPropsType): React.ReactElement
 }
 
 export type ContentPlateType = React.FunctionComponent<ContentPlatePropsType>

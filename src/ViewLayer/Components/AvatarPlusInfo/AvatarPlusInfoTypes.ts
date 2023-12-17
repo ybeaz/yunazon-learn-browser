@@ -1,5 +1,5 @@
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
-import { ImageYrlPropsType } from '../../ComponentsLibrary'
+import { ImageYrlPropsType } from '../../ComponentsLibrary/'
 
 export type AvatarPlusInfoPropsType = {
   classProps?: Record<string, string | string[]>

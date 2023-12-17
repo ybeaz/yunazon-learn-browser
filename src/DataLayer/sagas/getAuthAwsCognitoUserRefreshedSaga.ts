@@ -4,7 +4,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 
 export function* getAuthAwsCognitoUserRefreshed(): Iterable<any> {

@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
+import { selectStoreSlice } from '../ComponentsLibrary/Hooks/selectStoreSlice'
 import {
   GLOBAL_THEME,
   LIGHTNESS,
   ALPHAS,
 } from '../../Constants/globalTheme.const'
-import { getCreatedGlobalStyle } from './getCreatedGlobalStyle'
+import { CreatedGlobalStyle } from './getCreatedGlobalStyle'
 
 /**
  * @description Component to provide Global theme
@@ -32,7 +33,13 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
 
   getThemeRemotely()
 
-  const GlobalStyle = getCreatedGlobalStyle(LIGHTNESS, ALPHAS)
+  const { theme } = selectStoreSlice(['theme'])
+  const createdGlobalStyleProps = {
+    lightness: LIGHTNESS,
+    alphas: ALPHAS,
+    theme,
+  }
+  const GlobalStyle = CreatedGlobalStyle(createdGlobalStyleProps)
 
   return (
     <ThemeProvider theme={GLOBAL_THEME}>

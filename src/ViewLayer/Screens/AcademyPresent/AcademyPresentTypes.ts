@@ -1,9 +1,24 @@
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel'
 
-export type AcademyPresentPropsType = any
+export type AcademyPresentComponentPropsType = {
+  storeStateSlice: {
+    language: RootStoreType['language']
+    durationMultiplier: RootStoreType['scorm']['durationMultiplier']
+    moduleIDActive: RootStoreType['scorm']['courseIDActive']
+    courses: RootStoreType['courses']
+    mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
+  }
+}
+
+export type AcademyPresentPropsType = Omit<
+  AcademyPresentComponentPropsType,
+  'storeStateSlice'
+>
 
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
@@ -17,8 +32,8 @@ export type AcademyPresentPropsOutType = {
  * @import import { AcademyPresentType } from './AcademyPresentType'
  */
 export interface AcademyPresentComponentType
-  extends React.FunctionComponent<AcademyPresentPropsType> {
-  (props: AcademyPresentPropsType): React.ReactElement
+  extends React.FunctionComponent<AcademyPresentComponentPropsType> {
+  (props: AcademyPresentComponentPropsType): React.ReactElement
 }
 
 export type AcademyPresentType =

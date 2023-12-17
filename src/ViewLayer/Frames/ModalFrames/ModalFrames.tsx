@@ -1,14 +1,10 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { useSelector } from 'react-redux'
-import { nanoid } from 'nanoid'
 
-import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
-import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
-import { AuthUser } from '../../Components/AuthUser'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+// import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
+// import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 
 import {
@@ -19,8 +15,8 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
-  SkillExchangeIntro2,
-  SkillExchangeIntro,
+  // SkillExchangeIntro2,
+  // SkillExchangeIntro,
   EmalInputs,
   QuestionScores,
   //AuthUser, Not used in favor of Cognito authetication
@@ -34,10 +30,9 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
 const ModalFramesComponent: ModalFramesComponentType = (
   props: ModalFramesPropsType
 ) => {
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    componentsState: { modalFrames },
-  } = store
+    storeStateSlice: { modalFrames },
+  } = props
 
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
@@ -93,7 +88,11 @@ const ModalFramesComponent: ModalFramesComponentType = (
   return <>{getChildren(modalFrames)}</>
 }
 
-export const ModalFrames: ModalFramesType = React.memo(ModalFramesComponent)
+const storeStateSliceProps: string[] = ['modalFrames']
+export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(ModalFramesComponent)
+)
 
 export type {
   ModalFramesPropsType,

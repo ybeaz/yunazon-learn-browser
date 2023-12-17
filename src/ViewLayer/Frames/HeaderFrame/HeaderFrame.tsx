@@ -1,14 +1,13 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
-import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
-import { PageActionsGroup } from '../../Components/PageActionsGroup'
+// import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
+import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { SearchGroup } from '../../Components/SearchGroup'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
@@ -16,8 +15,10 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  HeaderFrameComponentPropsType,
   HeaderFramePropsType,
   HeaderFramePropsOutType,
   HeaderFrameComponentType,
@@ -30,7 +31,7 @@ import {
              from '../Components/HeaderFrame/HeaderFrame'
  */
 const HeaderFrameComponent: HeaderFrameComponentType = (
-  props: HeaderFramePropsType
+  props: HeaderFrameComponentPropsType
 ) => {
   const {
     brandName,
@@ -47,20 +48,17 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isButtonSideMenuLeft,
     isButtonsShare,
     isButtonThemeToggle,
-    isInstallMobileAppGroup,
     isLogoGroup,
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    storeStateSlice: {
+      preferred_username,
+      isSideNavLeftVisible,
+      user,
+      language,
+    },
   } = props
-
-  const storeState = useSelector((store2: RootStoreType) => store2)
-  const {
-    authAwsCognitoUserData: { preferred_username },
-    componentsState: { isSideNavLeftVisible },
-    forms: { user },
-    language,
-  } = storeState
 
   const navigate = useNavigate()
 
@@ -201,11 +199,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
           )}
         </div>
         <div className='__right'>
-          {isInstallMobileAppGroup && (
-            <div className='_itemInstallMobileAppGroup'>
-              <InstallMobileAppGroup />
-            </div>
-          )}
           {isButtonAddCourse && (
             <div className='_itemButtonAddCourse'>
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
@@ -229,7 +222,16 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   )
 }
 
-export const HeaderFrame: HeaderFrameType = React.memo(HeaderFrameComponent)
+const storeStateSliceProps: string[] = [
+  'preferred_username',
+  'isSideNavLeftVisible',
+  'user',
+  'language',
+]
+export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(HeaderFrameComponent)
+)
 
 export type {
   HeaderFramePropsType,

@@ -1,14 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { FeatureBar } from './FeatureBar'
 import { SuccessTried } from './SuccessTried'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
 
-export type PlayerPanelPropsType = {
+export type PlayerPanelComponentPropsType = {
   courseCapture: string
   moduleCapture: string
   durationObj: DurationObjType
@@ -21,10 +19,18 @@ export type PlayerPanelPropsType = {
   moduleIndex?: number
   modulesTotal?: number
   questionsTotal?: number
+  storeStateSlice: {
+    language: string
+  }
 }
 
-export const PlayerPanel: React.FunctionComponent<
-  PlayerPanelPropsType
+export type PlayerPanelPropsType = Omit<
+  PlayerPanelComponentPropsType,
+  'storeStateSlice'
+>
+
+export const PlayerPanelComponent: React.FunctionComponent<
+  PlayerPanelComponentPropsType
 > = props => {
   const {
     courseCapture,
@@ -39,9 +45,9 @@ export const PlayerPanel: React.FunctionComponent<
     moduleIndex = 0,
     modulesTotal = 1,
     questionsTotal = 0,
+    storeStateSlice: { language },
   } = props
 
-  const { language } = useSelector((store2: RootStoreType) => store2)
   const certificate = DICTIONARY.certificate[language]
   const succeded = DICTIONARY.succeded[language]
   const tried = DICTIONARY.tried[language]
@@ -107,3 +113,10 @@ export const PlayerPanel: React.FunctionComponent<
     </div>
   )
 }
+
+const storeStateSliceProps: string[] = ['language']
+export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> =
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(PlayerPanelComponent)
+  )

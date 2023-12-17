@@ -55,7 +55,6 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isInstallMobileAppGroup: true,
     },
     profileBodyProps: {},
     imageBottomProps: {

@@ -1,10 +1,20 @@
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
-export type AcademyMatrixPropsType = any
+export type AcademyMatrixPropsType = {
+  storeStateSlice: {
+    language: RootStoreType['language']
+    durationMultiplier: RootStoreType['scorm']['durationMultiplier']
+    courses: RootStoreType['courses']
+    isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
+    isLoadedCourses: RootStoreType['isLoaded']['isLoadedCourses']
+    searchInput: RootStoreType['forms']['searchInput']
+  }
+}
 
 export type AcademyMatrixPropsOutType = {
-  headerFrameProps: HeaderFramePropsType
+  headerFrameProps: Omit<HeaderFramePropsType, 'storeStateSlice'>
   mainFrameProps: Omit<MainFramePropsType, 'children'>
 }
 

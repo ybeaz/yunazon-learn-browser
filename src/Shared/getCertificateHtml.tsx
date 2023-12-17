@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
 import { renderToString } from 'react-dom/server'
 
-import { Certificate } from '../ViewLayer/Screens/Certificate'
-import { CertificateStyledString as certificateStyles } from '../ViewLayer/Screens/CertificateStyle'
+import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
+import { CertificateStyledString as certificateStyles } from '../ViewLayer/Screens/Certificate/CertificateStyle'
 
 const SCREENS = {
   Certificate,

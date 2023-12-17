@@ -11,28 +11,64 @@ import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionTo
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
+import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStoreStateRead'
+import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 
 export function* getCourses(params: ActionReduxType | any): Iterable<any> {
-  const first = params.data?.first || 0
-  const offset = params.data?.offset || 10
+  const storeStateLocalStorage = getLocalStorageStoreStateRead()
+  const firstLocalStorage =
+    storeStateLocalStorage?.componentsState?.pagination?.pagesCourses?.first
 
-  console.info('getCourses.saga [18]', { flag: selectCoursesStageFlag() })
+  const search = getParsedUrlQuery()
+  const urlFirst = search?.first
+  const urlOffset = search?.offset
+  const urlLanguage = search?.lang
+  const urlSearchPhrase = search?.search
 
-  /*
-    let startIndex = first >= 0 ? first : 0
+  const urlTagsPickStr = search?.tagspick
+  const urlTagsPick = urlTagsPickStr
+    ? urlTagsPickStr
+        .split(' ')
+        .filter((tag: string) => tag !== '')
+        .join('')
+        .split(',')
+    : []
 
-    if (startIndex > countDocuments) startIndex = countDocuments - offset
+  const urlTagsOmitStr = search?.tagsomit
+  const urlTagsOmit = urlTagsOmitStr
+    ? urlTagsOmitStr
+        .split(' ')
+        .filter((tag: string) => tag !== '')
+        .join('')
+        .split(',')
+    : []
 
-    const finishIndex = startIndex + offset
-  */
+  let readCoursesConnectionInput: any = {
+    first: 0,
+    offset: 10,
+    stagesPick: selectCoursesStageFlag(),
+  }
+
+  if (urlFirst) readCoursesConnectionInput.first = urlFirst
+  if (urlOffset) readCoursesConnectionInput.first = urlOffset
+  if (urlLanguage) readCoursesConnectionInput.language = urlLanguage
+  if (urlSearchPhrase) readCoursesConnectionInput.searchPhrase = urlSearchPhrase
+  if (urlTagsPick && urlTagsPick.length)
+    readCoursesConnectionInput.tagsPick = urlTagsPick
+  if (urlTagsOmit && urlTagsOmit.length)
+    readCoursesConnectionInput.tagsPick = urlTagsOmit
+
+  yield put(
+    actionSync.SET_PAGE_CURSOR({
+      paginationName: PaginationNameEnumType['pagesCourses'],
+      first: readCoursesConnectionInput.first,
+    })
+  )
 
   try {
     const variables = {
-      readCoursesConnectionInput: {
-        first,
-        offset,
-        stagesPick: selectCoursesStageFlag(),
-      },
+      readCoursesConnectionInput,
     }
     const readCoursesConnection: any = yield getResponseGraphqlAsync(
       {

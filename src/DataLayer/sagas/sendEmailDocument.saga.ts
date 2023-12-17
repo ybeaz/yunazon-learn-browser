@@ -2,7 +2,7 @@ import { takeEvery, put } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 
 function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
   const {

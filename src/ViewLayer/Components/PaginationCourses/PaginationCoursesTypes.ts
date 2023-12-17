@@ -1,4 +1,4 @@
-import { ButtonYrlPropsType } from '../../ComponentsLibrary'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 import { PaginationType } from '../../../Interfaces'
 
 export type PaginationCoursesPropsType = {

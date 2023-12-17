@@ -1,15 +1,11 @@
 import React, { useRef } from 'react'
 
-import { useSelector } from 'react-redux'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { UserType } from '../../../Interfaces/UserType'
-import {
-  RootStoreType,
-  FormsType,
-  SearchFormSepType,
-} from '../../../Interfaces/RootStoreType'
-import { IconYrl } from '../IconYrl/IconYrl'
+import { FormsType, SearchFormSepType } from '../../../Interfaces/RootStoreType'
+import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
+import { IconYrl } from '../'
 
 import {
   InputYrlPropsType,
@@ -43,10 +39,8 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
     storeFormGroup,
     storeFormProp,
     accept,
+    storeStateSlice: { forms },
   } = props
-
-  const store = useSelector((store2: RootStoreType) => store2)
-  const { forms } = store
 
   let value: string | number | string[] = ''
 
@@ -127,7 +121,11 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   )
 }
 
-export const InputYrl: InputYrlType = React.memo(InputYrlComponent)
+const storeStateSliceProps: string[] = ['forms']
+export const InputYrl: InputYrlType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(InputYrlComponent)
+)
 
 export type {
   InputYrlPropsType,

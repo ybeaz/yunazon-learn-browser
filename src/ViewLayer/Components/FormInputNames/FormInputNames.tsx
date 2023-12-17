@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl, InputYrl, ButtonYrl } from '../../ComponentsLibrary'
+import { InputYrl, ButtonYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
@@ -77,9 +77,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
   )
 }
 
-export const FormInputNames = withPropsYrl({})(
-  React.memo(FormInputNamesComponent)
-)
+export const FormInputNames = React.memo(FormInputNamesComponent)
 
 export type {
   FormInputNamesPropsType,
