@@ -117,9 +117,13 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     return (
       <ul className='_ul'>
         {questions.map(question => {
-          const { capture: questionCapture } = question
+          const { questionID, capture: questionCapture } = question
 
-          return <li className='_li'>{questionCapture}</li>
+          return (
+            <li key={questionID} className='_li'>
+              {questionCapture}
+            </li>
+          )
         })}
       </ul>
     )

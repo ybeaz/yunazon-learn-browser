@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { SideNavigation } from '../../Components/SideNavigation'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
-import { PageActionsGroup } from '../../Components/PageActionsGroup'
+import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { SearchGroup } from '../../Components/SearchGroup'
 

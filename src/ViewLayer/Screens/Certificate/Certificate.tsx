@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import React, { useEffect, ReactElement, useRef } from 'react'
+import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
