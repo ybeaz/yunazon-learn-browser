@@ -9,9 +9,24 @@ import { getLocalStorageStoreStateRead } from '../../Shared/getLocalStorageStore
 import { getRedirected } from '../../Shared/getRedirected'
 import { isLoadingLocalStorageStoreState } from '../../FeatureFlags'
 import { getCourses } from './getCourses.saga'
+import {
+  getParsedUrlQuery,
+  getParsedUrlQueryBrowserApi,
+} from '../../Shared/getParsedUrlQuery'
 
 function* initLoading(params: ActionReduxType | any): Iterable<any> {
   try {
+    const query = getParsedUrlQueryBrowserApi()
+
+    console.info('initLoading.saga [18] query', { query })
+
+    // yield put(
+    //   actionSync.SET_PAGE_CURSOR({
+    //     paginationName: PaginationNameEnumType['pagesCourses'],
+    //     first: readCoursesConnectionInput.first,
+    //   })
+    // )
+
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
 
@@ -22,7 +37,7 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
     }
     yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
 
-    const code = params?.data?.query?.code
+    const code = query?.code
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })

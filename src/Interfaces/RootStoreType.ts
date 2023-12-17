@@ -46,6 +46,8 @@ export type FormsType = {
   searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
+  tagsPick: string[]
+  tagsOmit: string[]
 }
 
 export type ScormType = {

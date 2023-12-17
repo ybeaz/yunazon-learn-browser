@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_TAGS_STATE',
   'SET_PAGE_INFO',
   'SET_PAGE_CURSOR',
   'ADD_DOCUMENT',

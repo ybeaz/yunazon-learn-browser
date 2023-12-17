@@ -21,14 +21,20 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
     (state: RootStoreType) => state
   )
   const {
-    authAwsCognitoUserData: { sub },
+    componentsState: {
+      pagination: {
+        pagesCourses: { first, offset },
+      },
+    },
   } = stateSelected as RootStoreType
 
   let readCoursesConnectionInput: any = {
-    first: 0,
-    offset: 10,
+    first,
+    offset,
     stagesPick: selectCoursesStageFlag(),
   }
+
+  console.info('getCourses.saga [37]', { first, offset })
 
   try {
     const variables = {
