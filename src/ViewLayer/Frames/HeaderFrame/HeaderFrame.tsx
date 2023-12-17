@@ -253,8 +253,3 @@ export type {
   HeaderFrameComponentType,
   HeaderFrameType,
 }
-
-/*
-withStoreStateSelectedYrl(storeStateSliceProps,
-const storeStateSliceProps: string[] = []
-*/

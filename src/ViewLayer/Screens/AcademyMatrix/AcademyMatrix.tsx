@@ -55,10 +55,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const coursesFiltered = courses
 
-  //   .filter((item: any) =>
-  //   item.searchString.includes(searchInput)
-  // )
-
   useEffectedInitialRequests([{ type: 'INIT_LOADING', data: { query } }])
   useLoadedInitialTeachContent()
 

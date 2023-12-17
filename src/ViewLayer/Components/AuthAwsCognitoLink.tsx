@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -13,30 +12,30 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
 import { IconYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 
-interface IGetLinkAuthUserProps {
+interface GetLinkAuthUserPropsType {
   (userAwsCognitoAuth: UserAwsCognitoAuthType): {
     icon: string
     classAdded: string
   }
 }
 
-interface AuthAwsCognitoLinkArgs {}
+type AuthAwsCognitoLinkArgs = {
+  storeStateSlice: {
+    userAwsCognitoAuth: UserAwsCognitoAuthType
+  }
+}
 
 /**
  * @status DEPRECIATED, WORKING, at least is not used, replaced by programmatic redirect
  * @description Component to implement Auth Cognito redirect onClick
  */
-export const AuthAwsCognitoLink: React.FunctionComponent<
+export const AuthAwsCognitoLinkComponent: React.FunctionComponent<
   AuthAwsCognitoLinkArgs
 > = (props: AuthAwsCognitoLinkArgs) => {
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    forms: {
-      user: { userAwsCognitoAuth },
-    },
-  } = store
+    storeStateSlice: { userAwsCognitoAuth },
+  } = props
 
   const navigate = useNavigate()
 
@@ -54,21 +53,22 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
     }
   }, [])
 
-  const getLinkAuthUserProps: IGetLinkAuthUserProps = userAwsCognitoAuth2 => {
-    let output = {
-      icon: 'FaUserCircle',
-      classAdded: 'IconYrl_authUserHeader',
-    }
-
-    if (userAwsCognitoAuth2?.expires_in > 0) {
-      output = {
+  const getLinkAuthUserProps: GetLinkAuthUserPropsType =
+    userAwsCognitoAuth2 => {
+      let output = {
         icon: 'FaUserCircle',
-        classAdded: 'IconYrl_authUserHeaderActive',
+        classAdded: 'IconYrl_authUserHeader',
       }
-    }
 
-    return output
-  }
+      if (userAwsCognitoAuth2?.expires_in > 0) {
+        output = {
+          icon: 'FaUserCircle',
+          classAdded: 'IconYrl_authUserHeaderActive',
+        }
+      }
+
+      return output
+    }
 
   let redirectUri = SERVERS.remote
 
@@ -101,3 +101,10 @@ export const AuthAwsCognitoLink: React.FunctionComponent<
     </div>
   )
 }
+
+const storeStateSliceProps: string[] = ['userAwsCognitoAuth']
+export const AuthAwsCognitoLink: React.FunctionComponent =
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(AuthAwsCognitoLinkComponent)
+  )

@@ -1,3 +1,5 @@
+import { FormsType } from '../../../Interfaces/RootStoreType'
+
 export type InputYrlPropsType = {
   tagName?: string // input tag, may be 'input' or 'textarea'
   classAdded: string // class to add to customize the standard input class
@@ -8,6 +10,7 @@ export type InputYrlPropsType = {
   storeFormGroup?: string // sub property in store.form to keep data
   storeFormProp?: string // name of the property in store.form that stores data
   accept?: string // accepted files' format for type='file', for example, 'image/png, image/jpeg, image/jpg'
+  storeStateSlice: { forms: FormsType }
 }
 
 export type InputYrlPropsOutType = Record<string, any>
@@ -20,4 +23,6 @@ export interface InputYrlComponentType
   (props: InputYrlPropsType): React.ReactElement
 }
 
-export type InputYrlType = React.FunctionComponent<InputYrlPropsType>
+export type InputYrlType = React.FunctionComponent<
+  Omit<InputYrlPropsType, 'storeStateSlice'>
+>
