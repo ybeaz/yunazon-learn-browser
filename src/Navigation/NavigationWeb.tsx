@@ -7,7 +7,7 @@ import { ROUTES, RouteType } from '../Constants/routes.const'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { Error404 } from '../ViewLayer/Screens/Error404'
-import { Certificate } from '../ViewLayer/Screens/Certificate'
+import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 
 const PAGES: Record<string, FunctionComponent<any>> = {
   AcademyMatrix,

@@ -2,17 +2,17 @@ import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement, useRef } from 'react'
 import styled from 'styled-components'
 
-import { useEffectedInitialRequests } from '../Hooks/useEffectedInitialRequests'
-import { getDateString } from '../../Shared/getDateString'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { getSlug } from '../../Shared/getSlug'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { getDateString } from '../../../Shared/getDateString'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { getSlug } from '../../../Shared/getSlug'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import {
   LoaderOverlayYrl,
   withStoreStateSelectedYrl,
-} from '../ComponentsLibrary/'
+} from '../../ComponentsLibrary/'
 
 import {
   CertificateComponentPropsType,

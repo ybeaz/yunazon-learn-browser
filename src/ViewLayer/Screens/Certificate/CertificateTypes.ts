@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type CertificateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
