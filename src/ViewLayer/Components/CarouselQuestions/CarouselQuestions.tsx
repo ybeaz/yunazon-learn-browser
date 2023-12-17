@@ -51,12 +51,12 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
-      const key = `${question}-${index}`
+      const { questionID } = question
       const classNameToggleHighlight =
         index === questionsSlideNumber ? 'active' : ''
       return (
         <span
-          key={key}
+          key={`${questionID}-${index}`}
           className={`_dot ${classNameToggleHighlight}`}
           onClick={event =>
             handleEvents(event, {
@@ -72,9 +72,8 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   }
 
   const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
-    return questions.map((question, index) => {
+    return questions.map(question => {
       const { questionID } = question
-      // const key = nanoid() // `${questionID}-${index}`
       const checkRadioGroupProps = { ...question }
       return (
         <div key={questionID}>
@@ -86,7 +85,6 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const getSlides: Function = (questionsChunked2: any[]): ReactElement => {
     const questionsJSX = questionsChunked2.map((questions, index) => {
-      const key = JSON.stringify({ prop: questions[0], index })
       const classNameToggleShow = index === questionsSlideNumber ? '_show' : ''
       return (
         /* Adding a unique key here causes blinking, because the content is changing every time */

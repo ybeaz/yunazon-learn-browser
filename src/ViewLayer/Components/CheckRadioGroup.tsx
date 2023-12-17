@@ -21,9 +21,8 @@ export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupArgs> = ({
     return options2.map(item => {
       const { optionID, label } = item
       const answer = getAnswerByOptionID(options, optionID)
-      const key = JSON.stringify(item)
       return (
-        <label className={`__label ${optionID}`} key={optionID}>
+        <label key={optionID} className={`__label`}>
           <div className='_capture'>{label}</div>
           <div className={`_checkdiv`}>
             <input
