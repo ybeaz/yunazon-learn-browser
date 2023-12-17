@@ -32,6 +32,7 @@ import {
   WithStoreStateYrlType,
   WithStoreStateYrlPropsType,
 } from './Hooks/withStoreStateYrl'
+
 import {
   withStoreStateSliceYrl,
   WithStoreStateSliceYrlType,
@@ -42,12 +43,14 @@ import {
   withUseContextYrl,
   WithUseContextYrlType,
 } from './Hooks/withUseContextYrl'
+
 import {
   WithPropsYrlPropsType,
   WithPropsM1YrlType,
   WithPropsYrlType,
   withPropsYrl,
 } from './Hooks/withPropsYrl'
+
 import { withDelayYrl, WithDelayYrlType } from './Hooks/withDelayYrl'
 
 import {
@@ -55,6 +58,11 @@ import {
   withElementDimensionsYrlPropsType,
   withElementDimensionsYrlType,
 } from './Hooks/withElementDimensionsYrl'
+
+import {
+  selectStoreSlice,
+  SelectStoreSliceParamsType,
+} from './Hooks/selectStoreSlice'
 
 export type {
   WithPropsYrlPropsType,
@@ -73,6 +81,7 @@ export type {
   WithDelayYrlType,
   withElementDimensionsYrlPropsType,
   withElementDimensionsYrlType,
+  SelectStoreSliceParamsType,
 }
 
 export {
@@ -86,6 +95,7 @@ export {
   withStoreStateSliceYrl,
   withUseContextYrl,
   withElementDimensionsYrl,
+  selectStoreSlice,
 }
 
 export type {

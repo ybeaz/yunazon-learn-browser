@@ -11,7 +11,6 @@ import { ButtonYrl } from '../../ComponentsLibrary/'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -213,9 +212,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   )
 }
 
-export const CarouselQuestions = withPropsYrl({})(
-  React.memo(CarouselQuestionsComponent)
-)
+export const CarouselQuestions = React.memo(CarouselQuestionsComponent)
 
 export type {
   CarouselQuestionsPropsType,

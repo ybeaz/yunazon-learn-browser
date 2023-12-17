@@ -13,7 +13,6 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
 import { getClasses } from '../../../Shared/getClasses'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
@@ -119,7 +118,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
   )
 }
 
-export const ContentPlate = withPropsYrl({})(React.memo(ContentPlateComponent))
+export const ContentPlate = React.memo(ContentPlateComponent)
 
 export type {
   ContentPlatePropsType,

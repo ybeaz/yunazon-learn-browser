@@ -2,8 +2,6 @@ import React, { useEffect, ReactElement } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
-import { getClasses } from '../../../Shared/getClasses'
 import { isParsableFloat } from '../../../Shared/isParsableFloat'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -148,9 +146,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   )
 }
 
-export const QuestionScores = withPropsYrl({})(
-  React.memo(QuestionScoresComponent)
-)
+export const QuestionScores = React.memo(QuestionScoresComponent)
 
 export type {
   QuestionScoresPropsType,

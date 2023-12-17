@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary'
+import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsProp } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ButtonYrl, withStoreStateSliceYrl } from '../../ComponentsLibrary'
+import { ButtonYrl, withStoreStateSliceYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {

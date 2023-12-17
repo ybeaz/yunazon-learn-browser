@@ -5,9 +5,6 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
-import { getClasses } from '../../../Shared/getClasses'
-
 import {
   EmalInputsPropsType,
   EmalInputsPropsOutType,
@@ -90,7 +87,7 @@ const EmalInputsComponent: EmalInputsComponentType = (
   )
 }
 
-export const EmalInputs = withPropsYrl({})(React.memo(EmalInputsComponent))
+export const EmalInputs = React.memo(EmalInputsComponent)
 
 export type {
   EmalInputsPropsType,
