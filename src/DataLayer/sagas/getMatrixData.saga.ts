@@ -13,7 +13,7 @@ import { getCourses } from './getCourses.saga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
-function* initLoading(params: ActionReduxType | any): Iterable<any> {
+function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
@@ -77,10 +77,10 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
       type: 'GET_COURSES_REQUEST',
     })
   } catch (error: any) {
-    console.info('initLoading [31]', error.name + ': ' + error.message)
+    console.info('getMatrixData [31]', error.name + ': ' + error.message)
   }
 }
 
-export default function* initLoadingSaga() {
-  yield takeEvery([actionAsync.INIT_LOADING.REQUEST().type], initLoading)
+export default function* getMatrixDataSaga() {
+  yield takeEvery([actionAsync.GET_MATRIX_DATA.REQUEST().type], getMatrixData)
 }

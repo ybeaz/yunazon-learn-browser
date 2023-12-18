@@ -8,7 +8,7 @@ import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
 import readDocumentSaga from './sagas/readDocument.saga'
 import addDocumentSaga from './sagas/createDocument.saga'
 import getCoursesSaga from './sagas/getCourses.saga'
-import initLoadingSaga from './sagas/initLoading.saga'
+import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
@@ -20,6 +20,6 @@ export default function* indexSaga() {
     fork(readDocumentSaga),
     fork(addDocumentSaga),
     fork(getCoursesSaga),
-    fork(initLoadingSaga),
+    fork(getMatrixDataSaga),
   ])
 }

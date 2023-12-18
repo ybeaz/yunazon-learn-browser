@@ -21,7 +21,7 @@ interface ProfileArgs {
 export const Profile: React.FunctionComponent<ProfileArgs> = (
   props: ProfileArgs
 ): ReactElement => {
-  useEffectedInitialRequests(['INIT_LOADING'])
+  useEffectedInitialRequests(['GET_MATRIX_DATA'])
 
   const store = useSelector((store2: RootStoreType) => store2)
   const {

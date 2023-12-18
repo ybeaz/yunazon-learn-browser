@@ -43,7 +43,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const coursesFiltered = courses
 
-  useEffectedInitialRequests([{ type: 'INIT_LOADING' }])
+  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
   useLoadedInitialTeachContent()
 
   const screenType = 'AcademyMatrix'
