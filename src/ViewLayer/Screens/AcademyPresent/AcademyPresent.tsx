@@ -54,6 +54,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       courses,
       mediaLoaded,
+      // @ts-expect-error
+      preferred_username,
     },
   } = props
 
@@ -65,6 +67,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
   useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
+
+  console.info('AcademyPresent [71]', {
+    preferred_username,
+    mediaLoadedCoursesString,
+    moduleID,
+  })
+
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedCoursesString)
 
@@ -281,6 +290,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'courses',
   'mediaLoaded',
+  'preferred_username',
 ]
 export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
   storeStateSliceProps,
