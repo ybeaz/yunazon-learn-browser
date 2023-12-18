@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 
-function* getCourseData(params: ActionReduxType | any): Iterable<any> {
+function* getModuleData(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { moduleID },
   } = params
@@ -37,10 +37,10 @@ function* getCourseData(params: ActionReduxType | any): Iterable<any> {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getCourseData Error', error.name + ': ' + error.message)
+    console.info('getModuleData Error', error.name + ': ' + error.message)
   }
 }
 
-export default function* getCourseDataSaga() {
-  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getCourseData)
+export default function* getModuleDataSaga() {
+  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getModuleData)
 }
