@@ -1,7 +1,5 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
-import { useSearchParams, useLocation } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
