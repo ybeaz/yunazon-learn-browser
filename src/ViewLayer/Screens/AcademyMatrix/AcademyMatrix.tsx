@@ -1,7 +1,5 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
-import { useSearchParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -10,7 +8,6 @@ import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
@@ -44,18 +41,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     },
   } = props
 
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const query = getParsedUrlQuery()
-
-  useEffect(() => {
-    setSearchParams({ search: searchInput })
-    console.info('AcademyMatrix [51]', { searchInput })
-  }, [searchInput])
-
   const coursesFiltered = courses
 
-  useEffectedInitialRequests([{ type: 'INIT_LOADING', data: { query } }])
+  useEffectedInitialRequests([{ type: 'INIT_LOADING' }])
   useLoadedInitialTeachContent()
 
   const screenType = 'AcademyMatrix'

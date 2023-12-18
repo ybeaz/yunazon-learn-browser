@@ -40,12 +40,14 @@ export type ComponentsStateType = {
 }
 
 export type FormsType = {
-  searchInput: string
   sendTo: string
   sendCc: string
   searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
+  searchInput: string
+  tagsPick: string[]
+  tagsOmit: string[]
 }
 
 export type ScormType = {

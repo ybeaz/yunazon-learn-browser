@@ -3,8 +3,8 @@
  * @param url
  */
 
-const getOpenedSvgInNewTab = url => {
-  const win = open(url)
+export const getOpenedSvgInNewTab = (url: string) => {
+  const win: any = open(url)
   // so the Garbage Collector can collect the blob
-  win.onload = evt => URL.revokeObjectURL(url)
+  win.onload = (event: any) => URL.revokeObjectURL(url)
 }

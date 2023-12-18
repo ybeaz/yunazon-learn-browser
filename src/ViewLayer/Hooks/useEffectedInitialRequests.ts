@@ -14,7 +14,7 @@ export const useEffectedInitialRequests: Function = (
       requestList2.forEach(async (action: string | ActionReduxType) => {
         if (typeof action === 'string') {
           dispatch(actionAsync[action].REQUEST())
-        } else if (typeof action !== 'string' && action?.data) {
+        } else if (typeof action !== 'string') {
           const { type = '', data } = action as ActionReduxType
           dispatch(actionAsync[type].REQUEST(data))
         }

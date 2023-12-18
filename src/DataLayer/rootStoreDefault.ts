@@ -101,6 +101,8 @@ export const formsDefault: FormsType = {
   searchFormSep: searchFormSepDefault,
   userPrev: userStoreDefault,
   user: userStoreDefault,
+  tagsPick: [],
+  tagsOmit: [],
 }
 
 export const rootStoreDefault: RootStoreType = {

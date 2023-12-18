@@ -8,6 +8,7 @@ import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 import { IconYrl } from '../'
 
 import {
+  InputYrlComponentPropsType,
   InputYrlPropsType,
   InputYrlPropsOutType,
   InputYrlComponentType,
@@ -28,7 +29,9 @@ import {
  * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
              from '../ComponentsLibrary/'
  */
-const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
+const InputYrlComponent: InputYrlComponentType = (
+  props: InputYrlComponentPropsType
+) => {
   const {
     tagName = 'input',
     classAdded,
@@ -36,6 +39,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
     type,
     placeholder,
     typeEvent,
+    typeEventOnEnter,
     storeFormGroup,
     storeFormProp,
     accept,
@@ -60,6 +64,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   }
 
   const action = { typeEvent }
+  const actionOnEnter = { typeEvent: typeEventOnEnter }
 
   const iconReactProps = {
     icon: 'AiFillCloseCircle',
@@ -91,9 +96,14 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
             placeholder={placeholder}
             value={value}
             accept={accept}
-            onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+            onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
               handleEvents(event, action)
-            }
+            }}
+            onKeyDown={(event: any) => {
+              if (event.key === 'Enter') {
+                handleEvents(event, actionOnEnter)
+              }
+            }}
           />
         )}
         {tagName === 'textarea' && (
