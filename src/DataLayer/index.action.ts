@@ -75,6 +75,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_AUTH_DATA',
   'CREATE_DOCUMENT',
   'FIND_DOCUMENT',
   'GET_AUTH_AWS_COGNITO_USER_DATA',
