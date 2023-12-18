@@ -23,17 +23,10 @@ export const SideNavigationComponent: React.FunctionComponent = (
   props: any
 ): ReactElement => {
   const {
-    storeStateSlice: {
-      preferred_username,
-      user,
-      language,
-      isSideNavLeftVisible,
-    },
+    storeStateSlice: { preferred_username, language, isSideNavLeftVisible },
   } = props
 
   const navigate = useNavigate()
-
-  const buttonAuthUserProps = getButtonAuthUserProps(user, language, 'sideMenu')
 
   const buttonPropsArr: ButtonYrlPropsType[] = [
     {
@@ -45,13 +38,23 @@ export const SideNavigationComponent: React.FunctionComponent = (
     },
     {
       icon: 'MdPerson',
+      captureRight: DICTIONARY.My_documents[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/documents' },
+      },
+      isDisplaying: !!preferred_username,
+    },
+    {
+      icon: 'MdPerson',
       captureRight: DICTIONARY.My_profile[language],
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/profile' },
       },
-      isDisplaying: user.userStatus === 'success',
+      isDisplaying: !!preferred_username,
     },
     {
       icon: 'MdQueue',
@@ -98,16 +101,16 @@ export const SideNavigationComponent: React.FunctionComponent = (
       action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
       isDisplaying: false,
     },
-    {
-      icon: 'MdHome',
-      captureRight: DICTIONARY.Home[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/sep' },
-      },
-      isDisplaying: false,
-    },
+    // {
+    //   icon: 'MdHome',
+    //   captureRight: DICTIONARY.Home[language],
+    //   classAdded: 'Button_sideMenuItems',
+    //   action: {
+    //     typeEvent: 'GO_SCREEN',
+    //     data: { history: navigate, path: '/sep' },
+    //   },
+    //   isDisplaying: false,
+    // },
   ]
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
@@ -158,7 +161,6 @@ export const SideNavigationComponent: React.FunctionComponent = (
 
 const storeStateSliceProps: string[] = [
   'preferred_username',
-  'user',
   'language',
   'isSideNavLeftVisible',
 ]

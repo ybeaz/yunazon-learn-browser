@@ -32,7 +32,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 ) => {
   const {
     storeStateSlice: {
-      language: languageStore,
+      language,
       durationMultiplier,
       courses,
       isLoadedGlobalVars,
@@ -90,7 +90,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageStore],
+      moto: DICTIONARY['Together_know_everything'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

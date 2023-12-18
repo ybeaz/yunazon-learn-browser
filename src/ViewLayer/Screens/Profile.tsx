@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ProfileBody } from '../Components/ProfileBody'
+// import { ProfileBody } from '../Components/ProfileBody'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SideNavigation } from '../Components/SideNavigation'
@@ -70,7 +70,8 @@ export const Profile: React.FunctionComponent<ProfileArgs> = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <ProfileBody {...propsOut.profileBodyProps} />
+        <div>ProfileBody</div>
+        {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
         {/* footer */}

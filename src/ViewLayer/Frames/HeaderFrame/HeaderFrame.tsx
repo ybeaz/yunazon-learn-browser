@@ -162,6 +162,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   if (isSideNavLeftVisible) {
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
   } else if (isButtonAuthUser && preferred_username) {
+    console.info('HeaderFrame [165]', { isButtonAuthUser, preferred_username })
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
         <AbInCircle {...propsOut.abInCircleProps} />

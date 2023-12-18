@@ -57,7 +57,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   } = props
 
-  const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
