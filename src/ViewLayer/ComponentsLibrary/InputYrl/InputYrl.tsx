@@ -39,6 +39,7 @@ const InputYrlComponent: InputYrlComponentType = (
     type,
     placeholder,
     typeEvent,
+    typeEventOnEnter,
     storeFormGroup,
     storeFormProp,
     accept,
@@ -62,13 +63,8 @@ const InputYrlComponent: InputYrlComponentType = (
     value = forms[formsKey] as any
   }
 
-  console.info('InputYrl [63]', {
-    storeFormGroup,
-    storeFormProp,
-    value,
-  })
-
   const action = { typeEvent }
+  const actionOnEnter = { typeEvent: typeEventOnEnter }
 
   const iconReactProps = {
     icon: 'AiFillCloseCircle',
@@ -100,9 +96,14 @@ const InputYrlComponent: InputYrlComponentType = (
             placeholder={placeholder}
             value={value}
             accept={accept}
-            onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+            onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
               handleEvents(event, action)
-            }
+            }}
+            onKeyDown={(event: any) => {
+              if (event.key === 'Enter') {
+                handleEvents(event, actionOnEnter)
+              }
+            }}
           />
         )}
         {tagName === 'textarea' && (

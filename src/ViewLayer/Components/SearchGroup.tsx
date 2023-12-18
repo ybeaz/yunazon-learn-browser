@@ -11,13 +11,14 @@ export const SearchGroup: React.FunctionComponent<any> = (
     type: 'text',
     placeholder: 'Search...',
     typeEvent: 'ONCHANGE_SEARCH_INPUT',
+    typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
     storeFormProp: 'searchInput',
   }
 
   const buttonMdSearchProps = {
     icon: 'MdSearch',
     classAdded: 'Button_MdSearch',
-    // action: { typeEvent: '' },
+    action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
   }
 
   return (

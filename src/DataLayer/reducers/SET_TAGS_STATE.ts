@@ -22,5 +22,21 @@ export const SET_TAGS_STATE: ReducerType = (
 
   const formsNext = { ...forms, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
+  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: 'tagspick',
+    searchParamsValue:
+      (tagsPick && tagsPick.length && tagsPick.join(',')) || undefined,
+  }
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+
+  const getSetUrlQueryBrowserApiParams2: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: 'tagsomit',
+    searchParamsValue:
+      (tagsOmit && tagsOmit.length && tagsOmit.join(',')) || undefined,
+  }
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams2)
+
   return { ...store, forms: formsNext }
 }

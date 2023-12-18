@@ -27,14 +27,6 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
         ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
         : 0
 
-    console.info('initLoading.saga [26]', {
-      searchInput,
-      tagsPick,
-      tagsOmit,
-      first,
-      query,
-    })
-
     yield put(actionSync.ONCHANGE_SEARCH_INPUT(searchInput))
 
     yield put(
