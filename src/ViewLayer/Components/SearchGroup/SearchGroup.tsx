@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { InputYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import {
   SearchGroupComponentPropsType,

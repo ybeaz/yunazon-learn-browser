@@ -3,6 +3,7 @@ import React from 'react'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
+  ButtonYrl,
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
@@ -36,7 +37,8 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('DocumentsBody', classAdded)}>
-      <section className={getClasses('CitiesWeatherList', classAdded)}>
+      <h2 className='_screenTitle'>Certificates and diplomas</h2>
+      <section className={getClasses('_documentsTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_date'>Date</div>
           <div className='_cell _header_module_name'>Module name</div>
@@ -50,7 +52,9 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
           <div className='_cell _module_name'>{'module_name'}</div>
           <div className='_cell _module_link'>Link</div>
           <div className='_cell _document_link'>Link</div>
-          <div className='_cell _remove'>Busket</div>
+          <div className='_cell _remove'>
+            <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
+          </div>
         </div>
       </section>
     </div>
