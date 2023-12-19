@@ -37,7 +37,7 @@ export const SideNavigationComponent: React.FunctionComponent = (
       isDisplaying: isAwsCognitoAuth() && !preferred_username,
     },
     {
-      icon: 'MdPerson',
+      icon: 'MdAssignmentTurnedIn',
       captureRight: DICTIONARY.My_documents[language],
       classAdded: 'Button_sideMenuItems',
       action: {
@@ -47,14 +47,14 @@ export const SideNavigationComponent: React.FunctionComponent = (
       isDisplaying: !!preferred_username,
     },
     {
-      icon: 'MdPerson',
+      icon: 'MdCastForEducation',
       captureRight: DICTIONARY.My_courses[language],
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/courses' },
       },
-      isDisplaying: true, // TODO, component Courses.tsx !!preferred_username,
+      isDisplaying: false, // TODO, component Courses.tsx !!preferred_username,
     },
     {
       icon: 'MdPerson',
