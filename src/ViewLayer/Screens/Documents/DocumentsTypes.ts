@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 
 export type DocumentsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -9,7 +9,7 @@ export type DocumentsComponentPropsType = {
     sub: RootStoreType['authAwsCognitoUserData']['sub']
     documents: RootStoreType['documents']
   }
-  handleEvents: any
+  handleEvents: HandleEventType
 }
 
 export type DocumentsPropsType = Omit<
