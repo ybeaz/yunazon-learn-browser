@@ -75,7 +75,9 @@ const DocumentsComponent: DocumentsComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          <DocumentsBody {...propsOut.documentsBodyProps} />
+          {documents.length ? (
+            <DocumentsBody {...propsOut.documentsBodyProps} />
+          ) : null}
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}

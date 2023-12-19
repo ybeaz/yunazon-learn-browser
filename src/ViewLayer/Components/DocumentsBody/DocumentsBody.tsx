@@ -6,8 +6,7 @@ import {
   withStoreStateSelectedYrl,
   ButtonYrl,
 } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { getClasses, getDateString } from '../../../Shared/'
 import {
   DocumentsTablePropsOutType,
   DocumentsBodyComponentPropsType,
@@ -35,10 +34,16 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
         const { documentID, moduleIDs, capture, dateCreated, pathName } =
           document
 
+        const dateString = getDateString({
+          timestamp: dateCreated,
+          style: 'US',
+        })
+
         const propsOut: DocumentsTablePropsOutType = {
           linkToModuleProps: {
             className: '__shield',
             to: { pathname: `/m/${moduleIDs[0]}/` },
+            children: capture,
             onClick: (event: any) => {
               // handleEvents(event, {
               //   typeEvent: 'SELECT_COURSE_MODULE',
@@ -56,7 +61,7 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
               //   data: {  },
               // })
             },
-            // target: 'blank',
+            target: 'blank',
           },
           buttonDeactivateDocumentProps: {
             icon: 'MdDeleteOutline',
@@ -70,9 +75,10 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 
         return (
           <div key={documentID} className='_row _row_weather'>
-            <div className='_cell _date'>{dateCreated}</div>
-            <div className='_cell _module_name'>{capture}</div>
-            <div className='_cell _module_link'>Link</div>
+            <div className='_cell _date'>{dateString}</div>
+            <div className='_cell _module_name'>
+              <Link {...propsOut.linkToModuleProps} />
+            </div>
             <div className='_cell _document_link'>
               <Link {...propsOut.linkToDocumentProps} />
             </div>
@@ -89,7 +95,6 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
         <header className='_row _row_header'>
           <div className='_cell _header_date'>Date</div>
           <div className='_cell _header_module_name'>Module name</div>
-          <div className='_cell _header_module_link'>Module</div>
           <div className='_cell _header_document_link'>Document</div>
           <div className='_cell _header_remove'>Remove</div>
         </header>
@@ -99,31 +104,10 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
     )
   }
 
-  console.info('DocumentsBody [35]', { documents })
-
   return (
     <div className={getClasses('DocumentsBody', classAdded)}>
       <h2 className='_screenTitle'>Certificates and diplomas</h2>
       {getDocumentsTable(documents)}
-      {/* <section className={getClasses('_documentsTable', classAdded)}>
-        <header className='_row _row_header'>
-          <div className='_cell _header_date'>Date</div>
-          <div className='_cell _header_module_name'>Module name</div>
-          <div className='_cell _header_module_link'>Module</div>
-          <div className='_cell _header_document_link'>Document</div>
-          <div className='_cell _header_remove'>Remove</div>
-        </header>
-
-        <div key={'key'} className='_row _row_weather'>
-          <div className='_cell _date'>{'date'}</div>
-          <div className='_cell _module_name'>{'module_name'}</div>
-          <div className='_cell _module_link'>Link</div>
-          <div className='_cell _document_link'>Link</div>
-          <div className='_cell _remove'>
-            <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
-          </div>
-        </div>
-      </section> */}
     </div>
   )
 }

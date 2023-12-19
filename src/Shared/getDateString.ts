@@ -22,6 +22,10 @@ const getDateStringParamsDefault: Required<GetDateStringPropsType> = {
   style: 'military',
 }
 
+/**
+ * @description Function to get string from the linux date number
+ * @import  import { getDateString } from '../Shared/getDateString'
+ */
 export const getDateString: GetDateStringType = (
   paramIn: GetDateStringPropsType = getDateStringParamsDefault
 ): string => {
