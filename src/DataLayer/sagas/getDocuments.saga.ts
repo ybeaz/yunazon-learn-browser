@@ -8,12 +8,14 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
-import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { withDebounce } from '../../Shared/withDebounce'
 
-export function* getDocuments(params: ActionReduxType | any): Iterable<any> {
+export function* getDocumentsGenerator(
+  params: ActionReduxType | any
+): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -60,6 +62,8 @@ export function* getDocuments(params: ActionReduxType | any): Iterable<any> {
     console.info('getDocuments.saga  [44]', error.name + ': ' + error.message)
   }
 }
+
+export const getDocuments = withDebounce(getDocumentsGenerator, 500)
 
 export default function* getDocumentsSaga() {
   yield takeEvery([actionAsync.GET_DOCUMENTS.REQUEST().type], getDocuments)

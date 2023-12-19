@@ -12,11 +12,18 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { withDebounce } from '../../Shared/withDebounce'
 
-export function* getCourses(params: ActionReduxType | any): Iterable<any> {
+export function* getCoursesGenerator(): Iterable<any> {
+  // const isDebounced = debounce()
+  // console.info('getCourses.saga readCoursesConnection [45]', { isDebounced })
+
+  // if (!isDebounced) return
+
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
+
   const {
     componentsState: {
       pagination: {
@@ -39,12 +46,13 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
     const variables = {
       readCoursesConnectionInput,
     }
+
     const readCoursesConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
         resolveGraphqlName: 'readCoursesConnection',
       },
-      getHeadersAuthDict()
+      { ...getHeadersAuthDict(), clientHttpType: 'apolloClient' }
     )
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
@@ -64,6 +72,8 @@ export function* getCourses(params: ActionReduxType | any): Iterable<any> {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }
 }
+
+export const getCourses = withDebounce(getCoursesGenerator, 500)
 
 export default function* getCoursesSaga() {
   yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)

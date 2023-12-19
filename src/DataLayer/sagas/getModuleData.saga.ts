@@ -4,10 +4,10 @@ import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { withDebounce } from '../../Shared/withDebounce'
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 
-function* getModuleData(params: ActionReduxType | any): Iterable<any> {
+function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { moduleID },
   } = params
@@ -46,6 +46,8 @@ function* getModuleData(params: ActionReduxType | any): Iterable<any> {
     console.info('getModuleData Error', error.name + ': ' + error.message)
   }
 }
+
+export const getModuleData = withDebounce(getModuleDataGenerator, 500)
 
 export default function* getModuleDataSaga() {
   yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getModuleData)

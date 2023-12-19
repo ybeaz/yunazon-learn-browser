@@ -35,9 +35,6 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
         const { documentID, moduleIDs, capture, dateCreated, pathName } =
           document
 
-        // /d/:documentID/
-        // /m/:moduleID/
-
         const propsOut: DocumentsTablePropsOutType = {
           linkToModuleProps: {
             className: '__shield',

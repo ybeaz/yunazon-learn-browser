@@ -31,8 +31,6 @@ export const CertificateComponent: CertificateComponentType = (
   const params = useParams()
   const documentID = params?.documentID
 
-  useEffectedInitialRequests(['GET_MATRIX_DATA'])
-
   const documentFound = documents.find(
     (document: any) => document.documentID === documentID
   )

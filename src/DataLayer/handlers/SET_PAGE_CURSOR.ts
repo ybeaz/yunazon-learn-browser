@@ -7,10 +7,11 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { PaginationType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { withDebounce } from '../../Shared/withDebounce'
 
 const { dispatch, getState } = store
 
-export const SET_PAGE_CURSOR: ActionEventType = (event, data) => {
+export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
   const { componentsState } = getState() as RootStoreType
   const pagination: PaginationDict = componentsState.pagination
 
@@ -31,3 +32,8 @@ export const SET_PAGE_CURSOR: ActionEventType = (event, data) => {
   if (paginationName === PaginationNameEnumType['pagesCourses'])
     dispatch(actionAsync.GET_COURSES.REQUEST())
 }
+
+export const SET_PAGE_CURSOR: ActionEventType = withDebounce(
+  SET_PAGE_CURSOR_HANDLE,
+  500
+)
