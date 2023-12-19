@@ -16,27 +16,27 @@ import {
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
-  MyDocumentsComponentPropsType,
-  MyDocumentsPropsType,
-  MyDocumentsPropsOutType,
-  MyDocumentsComponentType,
-  MyDocumentsType,
-} from './MyDocumentsTypes'
+  DocumentsComponentPropsType,
+  DocumentsPropsType,
+  DocumentsPropsOutType,
+  DocumentsComponentType,
+  DocumentsType,
+} from './DocumentsTypes'
 
 /**
- * @description Component to render MyDocuments
- * @import import { MyDocuments, MyDocumentsPropsType, MyDocumentsPropsOutType, MyDocumentsType } 
-             from '../Components/MyDocuments/MyDocuments'
+ * @description Component to render Documents
+ * @import import { Documents, DocumentsPropsType, DocumentsPropsOutType, DocumentsType } 
+             from '../Components/Documents/Documents'
  */
-const MyDocumentsComponent: MyDocumentsComponentType = (
-  props: MyDocumentsComponentPropsType
+const DocumentsComponent: DocumentsComponentType = (
+  props: DocumentsComponentPropsType
 ) => {
   const {
     classAdded,
     storeStateSlice: { language },
   } = props
 
-  const propsOut: MyDocumentsPropsOutType = {
+  const propsOut: DocumentsPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
       moto: DICTIONARY['Together_know_everything'][language],
@@ -59,14 +59,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
   }
 
   return (
-    <div className={getClasses('MyDocuments', classAdded)}>
+    <div className={getClasses('Documents', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <div>MyDocuments</div>
+        <div>Documents</div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
@@ -81,14 +81,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const MyDocuments = withStoreStateSelectedYrl(
+export const Documents = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(MyDocumentsComponent)
+  React.memo(DocumentsComponent)
 )
 
 export type {
-  MyDocumentsPropsType,
-  MyDocumentsPropsOutType,
-  MyDocumentsComponentType,
-  MyDocumentsType,
+  DocumentsPropsType,
+  DocumentsPropsOutType,
+  DocumentsComponentType,
+  DocumentsType,
 }

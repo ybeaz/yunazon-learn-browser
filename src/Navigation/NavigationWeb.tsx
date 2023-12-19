@@ -6,7 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ROUTES, RouteType } from '../Constants/routes.const'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
-import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
+import { Documents } from '../ViewLayer/Screens/Documents/Documents'
+import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
+import { Courses } from '../ViewLayer/Screens/Courses/Courses'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
@@ -14,7 +16,9 @@ import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitia
 const PAGES: Record<string, FunctionComponent<any>> = {
   AcademyMatrix,
   AcademyPresent,
-  MyDocuments,
+  Documents,
+  Profiles,
+  Courses,
   Certificate,
   Error404,
 }

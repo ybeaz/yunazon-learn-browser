@@ -13,7 +13,19 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    page: 'MyDocuments',
+    page: 'Profiles',
+    path: `/profiles`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    page: 'Courses',
+    path: `/courses`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    page: 'Documents',
     path: `/documents`,
     children: [],
     errorElement: 'Error404',

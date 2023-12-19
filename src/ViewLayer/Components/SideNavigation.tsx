@@ -48,13 +48,23 @@ export const SideNavigationComponent: React.FunctionComponent = (
     },
     {
       icon: 'MdPerson',
+      captureRight: DICTIONARY.My_courses[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/courses' },
+      },
+      isDisplaying: true, // TODO, component Courses.tsx !!preferred_username,
+    },
+    {
+      icon: 'MdPerson',
       captureRight: DICTIONARY.My_profile[language],
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/profile' },
+        data: { history: navigate, path: '/profiles' },
       },
-      isDisplaying: !!preferred_username,
+      isDisplaying: false, // TODO, component Profiles.tsx !!preferred_username,
     },
     {
       icon: 'MdQueue',
@@ -64,28 +74,28 @@ export const SideNavigationComponent: React.FunctionComponent = (
         typeEvent: 'CREATE_COURSE',
         data: { contentComponentName: 'SideNavigation' },
       },
-      isDisplaying: true,
+      isDisplaying: false, // TODO,
     },
     {
       icon: 'MdFlag',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: true,
+      isDisplaying: false, // TODO, true,
     },
     {
       icon: 'MdAddShoppingCart',
       captureRight: DICTIONARY.Services[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: true,
+      isDisplaying: false, // TODO, true,
     },
     {
       icon: 'MdContactMail',
       captureRight: DICTIONARY.Contacts[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: true,
+      isDisplaying: false, // TODO, true,
     },
     {
       icon: 'MdLogout',
