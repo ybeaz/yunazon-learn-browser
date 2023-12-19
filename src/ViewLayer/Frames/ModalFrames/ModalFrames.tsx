@@ -8,6 +8,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 
 import {
+  ModalFramesComponentPropsType,
   ModalFramesPropsType,
   ModalFramesPropsOutType,
   ModalFramesComponentType,
@@ -28,7 +29,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
              from '../Components/ModalFrames/ModalFrames'
  */
 const ModalFramesComponent: ModalFramesComponentType = (
-  props: ModalFramesPropsType
+  props: ModalFramesComponentPropsType
 ) => {
   const {
     storeStateSlice: { modalFrames },

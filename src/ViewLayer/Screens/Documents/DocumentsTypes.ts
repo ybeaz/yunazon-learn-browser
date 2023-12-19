@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { MainFramePropsType, HeaderFramePropsType } from '../../Frames/'
+import { DocumentsBodyPropsType } from '../../Components/'
 
 export type DocumentsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -17,7 +19,11 @@ export type DocumentsPropsType = Omit<
   'storeStateSlice'
 >
 
-export type DocumentsPropsOutType = Record<string, any>
+export type DocumentsPropsOutType = {
+  headerFrameProps: HeaderFramePropsType
+  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  documentsBodyProps: DocumentsBodyPropsType
+}
 
 /**
  * @import import { DocumentsComponentPropsType, DocumentsPropsType, DocumentsPropsOutType, DocumentsComponentType, DocumentsType } from './DocumentsTypes'

@@ -8,6 +8,7 @@ import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { DocumentsBody } from '../../Components/'
 
 import {
   withPropsYrl,
@@ -58,11 +59,12 @@ const DocumentsComponent: DocumentsComponentType = (
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'AcademyPresent',
+      screenType: 'Documents',
+    },
+    documentsBodyProps: {
+      documents,
     },
   }
-
-  console.info('Documents [66]', { documents })
 
   return (
     <div className={getClasses('Documents', classAdded)}>
@@ -72,14 +74,14 @@ const DocumentsComponent: DocumentsComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <div>Documents</div>
+        <div>
+          <DocumentsBody {...propsOut.documentsBodyProps} />
+        </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
         {/* footer */}
-        <FooterFrame>
-          <ImageYrl {...propsOut.imageBottomProps} />
-        </FooterFrame>
+        {null}
       </MainFrame>
       <SideNavigation />
     </div>

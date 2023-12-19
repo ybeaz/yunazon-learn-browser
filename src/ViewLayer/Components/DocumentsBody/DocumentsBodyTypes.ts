@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type DocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -10,10 +11,12 @@ export type DocumentsBodyComponentPropsType = {
 
 export type DocumentsBodyPropsType = Omit<
   DocumentsBodyComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
-export type DocumentsBodyPropsOutType = Record<string, any>
+export type DocumentsBodyPropsOutType = {
+  buttonDeactivateDocumentProps: ButtonYrlPropsType
+}
 
 /**
  * @import import { DocumentsBodyComponentPropsType, DocumentsBodyPropsType, DocumentsBodyPropsOutType, DocumentsBodyComponentType, DocumentsBodyType } from './DocumentsBodyTypes'

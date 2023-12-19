@@ -1,6 +1,7 @@
 import React from 'react'
 
 import {
+  MainFrameComponentPropsType,
   MainFramePropsType,
   MainFramePropsOutType,
   MainFrameComponentType,
@@ -13,7 +14,7 @@ import {
              from '../Components/MainFrame/MainFrame'
  */
 const MainFrameComponent: MainFrameComponentType = (
-  props: MainFramePropsType
+  props: MainFrameComponentPropsType
 ) => {
   const { screenType, children } = props
 
@@ -40,6 +41,7 @@ const MainFrameComponent: MainFrameComponentType = (
 export const MainFrame: MainFrameType = React.memo(MainFrameComponent)
 
 export type {
+  MainFrameComponentPropsType,
   MainFramePropsType,
   MainFramePropsOutType,
   MainFrameComponentType,

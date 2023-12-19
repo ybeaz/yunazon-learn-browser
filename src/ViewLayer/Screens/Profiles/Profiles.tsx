@@ -71,9 +71,7 @@ const ProfilesComponent: ProfilesComponentType = (
         {/* middle-right */}
         {null}
         {/* footer */}
-        <FooterFrame>
-          <ImageYrl {...propsOut.imageBottomProps} />
-        </FooterFrame>
+        {null}
       </MainFrame>
       <SideNavigation />
     </div>
