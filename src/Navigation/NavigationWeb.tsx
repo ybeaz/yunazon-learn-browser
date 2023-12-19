@@ -9,6 +9,7 @@ import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPrese
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
+import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const PAGES: Record<string, FunctionComponent<any>> = {
   AcademyMatrix,
@@ -28,6 +29,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   })
 
   const routes = createBrowserRouter(routesDict)
+  useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
 
   return <RouterProvider router={routes} />
 }

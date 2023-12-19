@@ -15,6 +15,16 @@ import { paginationOffset } from '../../Constants/pagination.const'
 
 function* getAuthData(params: ActionReduxType | any): Iterable<any> {
   try {
+    const storeStateLocalStorage = getLocalStorageStoreStateRead()
+    const languageLocalStorage = storeStateLocalStorage?.language
+
+    if (storeStateLocalStorage) {
+      if (isLoadingLocalStorageStoreState())
+        yield put(actionSync.SET_STORE_STATE(storeStateLocalStorage))
+      yield put(actionSync.SELECT_LANGUAGE_APP(languageLocalStorage))
+    }
+    yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
+
     const query = getParsedUrlQueryBrowserApi()
     const code = query?.code
 
@@ -24,6 +34,12 @@ function* getAuthData(params: ActionReduxType | any): Iterable<any> {
     } else {
       yield call(getAuthAwsCognitoUserRefreshed)
     }
+
+    yield put(
+      actionSync.SET_SIDE_NAVIGATION_LEFT({
+        isSideNavLeftVisible: false,
+      })
+    )
   } catch (error: any) {
     console.info('getAuthData [31]', error.name + ': ' + error.message)
   }

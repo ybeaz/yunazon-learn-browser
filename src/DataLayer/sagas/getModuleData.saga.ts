@@ -5,6 +5,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getSizeWindow } from '../../Shared/getSizeWindow'
 
 function* getModuleData(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -34,6 +35,11 @@ function* getModuleData(params: ActionReduxType | any): Iterable<any> {
       actionSync.SET_COURSE_ID_ACTIVE({ courseID: readCourses?.courseID })
     )
     yield put(actionSync.SET_COURSES(coursesNext))
+
+    const { width } = getSizeWindow()
+    if (width <= 480) {
+      yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
+    }
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

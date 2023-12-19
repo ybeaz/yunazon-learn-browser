@@ -43,36 +43,6 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       })
     )
 
-    const storeStateLocalStorage = getLocalStorageStoreStateRead()
-    const languageLocalStorage = storeStateLocalStorage?.language
-
-    if (storeStateLocalStorage) {
-      if (isLoadingLocalStorageStoreState())
-        yield put(actionSync.SET_STORE_STATE(storeStateLocalStorage))
-      yield put(actionSync.SELECT_LANGUAGE_APP(languageLocalStorage))
-    }
-    yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
-
-    const code = query?.code
-
-    if (code) {
-      yield call(getAuthAwsCognitoUserData, { data: { code } })
-      getRedirected('/')
-    } else {
-      yield call(getAuthAwsCognitoUserRefreshed)
-    }
-
-    yield put(
-      actionSync.SET_SIDE_NAVIGATION_LEFT({
-        isSideNavLeftVisible: false,
-      })
-    )
-
-    const { width } = getSizeWindow()
-    if (width <= 480) {
-      yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
-    }
-
     yield getCourses({
       type: 'GET_COURSES_REQUEST',
     })

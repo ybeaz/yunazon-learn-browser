@@ -68,12 +68,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
 
-  console.info('AcademyPresent [71]', {
-    preferred_username,
-    mediaLoadedCoursesString,
-    moduleID,
-  })
-
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedCoursesString)
 
