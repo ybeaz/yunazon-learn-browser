@@ -8,7 +8,6 @@ import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import {
   withPropsYrl,

@@ -1,8 +1,11 @@
 import React from 'react'
 
+import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+
 export type DocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  documents: RootStoreType['documents']
+  handleEvents: HandleEventType
 }
 
 export type DocumentsBodyPropsType = Omit<

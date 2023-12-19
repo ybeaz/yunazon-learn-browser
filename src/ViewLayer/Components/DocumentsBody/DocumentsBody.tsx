@@ -12,6 +12,7 @@ import {
   DocumentsBodyComponentType,
   DocumentsBodyType,
 } from './DocumentsBodyTypes'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 /**
  * @description Component to render DocumentsBody
@@ -21,7 +22,7 @@ import {
 const DocumentsBodyComponent: DocumentsBodyComponentType = (
   props: DocumentsBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice } = props
+  const { classAdded, handleEvents } = props
 
   const propsOut: DocumentsBodyPropsOutType = {}
 
@@ -31,9 +32,11 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const DocumentsBody = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(DocumentsBodyComponent)
+export const DocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(DocumentsBodyComponent)
+  )
 )
 
 export type {
