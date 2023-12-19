@@ -1,3 +1,4 @@
+export * from './CLICK_ON_DEACTIVATE_DOCUMENT'
 export * from './GET_MATRIX_DATA'
 export * from './GET_MODULE_DATA'
 export * from './GET_DOCUMENTS'

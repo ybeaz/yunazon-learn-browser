@@ -29,7 +29,10 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
     buttonDeactivateDocumentProps: {
       icon: 'MdDeleteOutline',
       classAdded: 'Button_DeactivateDocument',
-      action: { typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT' },
+      action: {
+        typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
+        data: { documentID: 'xxxYYY' },
+      },
     },
   }
 
