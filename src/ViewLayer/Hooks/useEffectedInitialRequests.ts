@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
@@ -9,16 +9,21 @@ export const useEffectedInitialRequests: Function = (
   triggers: any[] = []
 ): void => {
   const dispatch = useDispatch()
+  const countRef = useRef(0)
 
   useEffect(() => {
     const makeDispatchAsyncWrappered = async (requestList2: Array<string>) =>
       Promise.all(
         requestList2.map(async (action: string | ActionReduxType) => {
-          if (typeof action === 'string') {
-            await dispatch(actionAsync[action].REQUEST())
-          } else if (typeof action !== 'string') {
-            const { type = '', data } = action as ActionReduxType
-            await dispatch(actionAsync[type].REQUEST(data))
+          if (countRef.current === 0) {
+            if (typeof action === 'string') {
+              await dispatch(actionAsync[action].REQUEST())
+            } else if (typeof action !== 'string') {
+              const { type = '', data } = action as ActionReduxType
+              await dispatch(actionAsync[type].REQUEST(data))
+            }
+
+            countRef.current = 1
           }
         })
       )

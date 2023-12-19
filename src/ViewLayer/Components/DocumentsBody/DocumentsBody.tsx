@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   withPropsYrl,
@@ -6,7 +7,9 @@ import {
   ButtonYrl,
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
+import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import {
+  DocumentsTablePropsOutType,
   DocumentsBodyComponentPropsType,
   DocumentsBodyPropsType,
   DocumentsBodyPropsOutType,
@@ -14,6 +17,7 @@ import {
   DocumentsBodyType,
 } from './DocumentsBodyTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { DocumentType } from '../../../@types/'
 
 /**
  * @description Component to render DocumentsBody
@@ -25,15 +29,77 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 ) => {
   const { classAdded, handleEvents, documents } = props
 
-  const propsOut: DocumentsBodyPropsOutType = {
-    buttonDeactivateDocumentProps: {
-      icon: 'MdDeleteOutline',
-      classAdded: 'Button_DeactivateDocument',
-      action: {
-        typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-        data: { documentID: 'xxxYYY' },
-      },
-    },
+  const getDocumentsTable = (documentsIn: DocumentType[]) => {
+    const documentsRows: React.ReactElement[] = documentsIn.map(
+      (document: DocumentType) => {
+        const { documentID, moduleIDs, capture, dateCreated, pathName } =
+          document
+
+        // /d/:documentID/
+        // /m/:moduleID/
+
+        const propsOut: DocumentsTablePropsOutType = {
+          linkToModuleProps: {
+            className: '__shield',
+            to: { pathname: `/m/${moduleIDs[0]}/` },
+            onClick: (event: any) => {
+              // handleEvents(event, {
+              //   typeEvent: 'SELECT_COURSE_MODULE',
+              //   data: {  },
+              // })
+            },
+          },
+          linkToDocumentProps: {
+            className: '__shield',
+            to: { pathname: `/d/${documentID}/` },
+            children: 'Link',
+            onClick: (event: any) => {
+              // handleEvents(event, {
+              //   typeEvent: '',
+              //   data: {  },
+              // })
+            },
+            // target: 'blank',
+          },
+          buttonDeactivateDocumentProps: {
+            icon: 'MdDeleteOutline',
+            classAdded: 'Button_DeactivateDocument',
+            action: {
+              typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
+              data: { documentID: 'xxxYYY' },
+            },
+          },
+        }
+
+        return (
+          <div key={documentID} className='_row _row_weather'>
+            <div className='_cell _date'>{dateCreated}</div>
+            <div className='_cell _module_name'>{capture}</div>
+            <div className='_cell _module_link'>Link</div>
+            <div className='_cell _document_link'>
+              <Link {...propsOut.linkToDocumentProps} />
+            </div>
+            <div className='_cell _remove'>
+              <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
+            </div>
+          </div>
+        )
+      }
+    )
+
+    return (
+      <section className={getClasses('_documentsTable', classAdded)}>
+        <header className='_row _row_header'>
+          <div className='_cell _header_date'>Date</div>
+          <div className='_cell _header_module_name'>Module name</div>
+          <div className='_cell _header_module_link'>Module</div>
+          <div className='_cell _header_document_link'>Document</div>
+          <div className='_cell _header_remove'>Remove</div>
+        </header>
+
+        {documentsRows}
+      </section>
+    )
   }
 
   console.info('DocumentsBody [35]', { documents })
@@ -41,7 +107,8 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
   return (
     <div className={getClasses('DocumentsBody', classAdded)}>
       <h2 className='_screenTitle'>Certificates and diplomas</h2>
-      <section className={getClasses('_documentsTable', classAdded)}>
+      {getDocumentsTable(documents)}
+      {/* <section className={getClasses('_documentsTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_date'>Date</div>
           <div className='_cell _header_module_name'>Module name</div>
@@ -59,7 +126,7 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
             <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }

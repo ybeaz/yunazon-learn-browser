@@ -68,17 +68,11 @@ export const CertificateComponent: CertificateComponentType = (
   }
 
   const {
-    profileProps: {
-      nameFirst = '',
-      nameMiddle = '',
-      nameLast = '',
-      email = '',
-      isSendingBcc = false,
-    },
+    profileProps: { nameFirst = '', nameMiddle = '', nameLast = '' },
     meta: { institution = '', specTitle = '', specName = '' },
     capture: courseCapture = '',
     courseID = '',
-    contentID = '',
+    contentIDs = [''],
     dateCreated = '',
     pathName: documentPathName,
   } = documentFound || documentDefault
@@ -108,7 +102,6 @@ export const CertificateComponent: CertificateComponentType = (
     courseCapture,
     documentID,
     courseID,
-    contentID,
     isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,

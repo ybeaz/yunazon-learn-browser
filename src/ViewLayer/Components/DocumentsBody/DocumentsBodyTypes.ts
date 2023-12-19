@@ -14,9 +14,13 @@ export type DocumentsBodyPropsType = Omit<
   'storeStateSlice' | 'handleEvents'
 >
 
-export type DocumentsBodyPropsOutType = {
+export type DocumentsTablePropsOutType = {
+  linkToDocumentProps: any
+  linkToModuleProps: any
   buttonDeactivateDocumentProps: ButtonYrlPropsType
 }
+
+export type DocumentsBodyPropsOutType = Record<string, any>
 
 /**
  * @import import { DocumentsBodyComponentPropsType, DocumentsBodyPropsType, DocumentsBodyPropsOutType, DocumentsBodyComponentType, DocumentsBodyType } from './DocumentsBodyTypes'
