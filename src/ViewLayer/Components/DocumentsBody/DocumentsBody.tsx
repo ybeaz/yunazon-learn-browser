@@ -68,7 +68,7 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
             classAdded: 'Button_DeactivateDocument',
             action: {
               typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-              data: { documentID: 'xxxYYY' },
+              data: { documentsIDs: [documentID] },
             },
           },
         }

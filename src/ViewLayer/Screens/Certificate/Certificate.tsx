@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
@@ -63,6 +62,8 @@ export const CertificateComponent: CertificateComponentType = (
     capture: '',
     courseID: '',
     contentID: '',
+    dateCreated: 0,
+    pathName: '',
   }
 
   const {
@@ -70,8 +71,7 @@ export const CertificateComponent: CertificateComponentType = (
     meta: { institution = '', specTitle = '', specName = '' },
     capture: courseCapture = '',
     courseID = '',
-    contentIDs = [''],
-    dateCreated = '',
+    dateCreated = 0,
     pathName: documentPathName,
   } = documentFound || documentDefault
 
@@ -86,8 +86,8 @@ export const CertificateComponent: CertificateComponentType = (
   })
 
   const userName = nameMiddle
-    ? `${nameLast} ${nameFirst} ${nameMiddle}`
-    : `${nameLast} ${nameFirst}`
+    ? `${nameFirst} ${nameMiddle} ${nameLast}`
+    : `${nameFirst} ${nameLast}`
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/m/${courseID}/${slug}`
