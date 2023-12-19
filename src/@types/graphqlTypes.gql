@@ -847,6 +847,9 @@ input ReadCoursesConnectionInputType {
   """
   offset: Int
 
+  """profile ID"""
+  profileID: ID
+
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -892,6 +895,9 @@ input ReadDocumentsConnectionInputType {
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """profile ID"""
+  profileID: ID
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortDocumentsInputType

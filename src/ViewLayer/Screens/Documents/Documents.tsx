@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
@@ -7,7 +7,7 @@ import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import {
@@ -33,8 +33,13 @@ const DocumentsComponent: DocumentsComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language },
+    storeStateSlice: { language, sub, documents },
+    handleEvents,
   } = props
+
+  useEffect(() => {
+    if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
+  }, [sub])
 
   const propsOut: DocumentsPropsOutType = {
     headerFrameProps: {
@@ -58,6 +63,8 @@ const DocumentsComponent: DocumentsComponentType = (
     },
   }
 
+  console.info('Documents [66]', { documents })
+
   return (
     <div className={getClasses('Documents', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
@@ -80,10 +87,12 @@ const DocumentsComponent: DocumentsComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
-export const Documents = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(DocumentsComponent)
+const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
+export const Documents = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(DocumentsComponent)
+  )
 )
 
 export type {

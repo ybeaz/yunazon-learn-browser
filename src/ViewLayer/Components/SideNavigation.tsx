@@ -37,6 +37,16 @@ export const SideNavigationComponent: React.FunctionComponent = (
       isDisplaying: isAwsCognitoAuth() && !preferred_username,
     },
     {
+      icon: 'MdHome',
+      captureRight: DICTIONARY.Home[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/' },
+      },
+      isDisplaying: true,
+    },
+    {
       icon: 'MdAssignmentTurnedIn',
       captureRight: DICTIONARY.My_documents[language],
       classAdded: 'Button_sideMenuItems',

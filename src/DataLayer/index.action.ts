@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_DOCUMENTS',
   'SET_TAGS_STATE',
   'SET_PAGE_INFO',
   'SET_PAGE_CURSOR',
@@ -75,6 +76,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_DOCUMENTS',
   'GET_AUTH_DATA',
   'CREATE_DOCUMENT',
   'FIND_DOCUMENT',

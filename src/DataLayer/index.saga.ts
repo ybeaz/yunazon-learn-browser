@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import getDocumentsSaga from './sagas/getDocuments.saga'
 import getAuthDataSaga from './sagas/getAuthData.saga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
@@ -13,6 +14,7 @@ import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getDocumentsSaga),
     fork(getAuthDataSaga),
     fork(getAuthAwsCognitoUserRevokedSaga),
     fork(getAuthAwsCognitoUserRefreshedSaga),

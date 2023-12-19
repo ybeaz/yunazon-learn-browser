@@ -924,6 +924,8 @@ export type ReadCoursesConnectionInputType = {
   language?: InputMaybe<Scalars['String']['input']>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** profile ID */
+  profileID?: InputMaybe<Scalars['ID']['input']>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -947,6 +949,8 @@ export type ReadDocumentsConnectionInputType = {
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** profile ID */
+  profileID?: InputMaybe<Scalars['ID']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortDocumentsInputType>;
   /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */

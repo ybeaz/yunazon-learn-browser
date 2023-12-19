@@ -33,6 +33,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   })
 
   const routes = createBrowserRouter(routesDict)
+
   useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
 
   return <RouterProvider router={routes} />

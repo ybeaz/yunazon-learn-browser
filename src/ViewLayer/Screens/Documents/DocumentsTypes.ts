@@ -6,7 +6,10 @@ export type DocumentsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
+    sub: RootStoreType['authAwsCognitoUserData']['sub']
+    documents: RootStoreType['documents']
   }
+  handleEvents: any
 }
 
 export type DocumentsPropsType = Omit<
