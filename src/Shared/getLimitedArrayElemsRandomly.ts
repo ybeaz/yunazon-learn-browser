@@ -16,7 +16,7 @@ export const getLimitedArrayElemsRandomly: Function = (
 
   arrNext = getArrShuffled(arrNext).slice(0, limit)
 
-  function compare(a, b) {
+  function compare(a: any, b: any) {
     if (a[indexName] < b[indexName]) {
       return -1
     }

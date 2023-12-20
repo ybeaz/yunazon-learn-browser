@@ -1,3 +1,4 @@
+export * from './getArrayElemPickedRandomly'
 export * from './isFunction'
 export * from './arrReduceObjPropsConsistent'
 export * from './consoler'

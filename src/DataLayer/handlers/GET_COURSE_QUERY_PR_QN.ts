@@ -29,8 +29,8 @@ export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
 
   const { pr, rp, qn, nq } = getParsedUrlQuery()
 
-  if ((qn || nq) && qn !== 'all' && nq === 'inf') {
-    const questionNumberQuery: string = !!qn ? qn : !!nq ? nq : '6'
+  if ((qn || nq) && qn !== 'all' && nq !== 'inf') {
+    const questionNumberQuery: string = qn ? qn : nq ? nq : '6'
     questionNumberNext = isParsableInt(questionNumberQuery)
       ? parseInt(questionNumberQuery, 10)
       : questionNumberNext
@@ -49,7 +49,7 @@ export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
   const courseNext = { ...course, modules: modulesNext }
 
   dispatch(
-    actionSync.GET_COURSE_IN_COURSES_BY_COURSEID({
+    actionSync.UPDATE_COURSE_BY_COURSEID({
       courseID,
       course: courseNext,
     })

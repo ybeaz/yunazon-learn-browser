@@ -36,6 +36,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   let navigate = useNavigate()
 
   const {
+    questionsIDsPicked,
     stopVideoHandler,
     storeStateSlice: {
       language,
@@ -53,16 +54,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const pathName = documentsLen && documents[documentsLen - 1]?.pathName
 
   const {
-    courseActive: {
-      passRate,
-      courseID,
-      capture: courseCapture,
-      description,
-      meta,
-    },
+    courseActive: { courseID, capture: courseCapture, description, meta },
     moduleActive,
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
+  const { moduleID, contentID, passRate } = moduleActive
+
+  const questionsPickedRandomly = questionsActive.filter((question: any) =>
+    questionsIDsPicked.includes(question?.questionID)
+  )
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
@@ -72,13 +72,14 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(
-    questionsActive,
+    questionsPickedRandomly,
     passRateIn
   )
-  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
+  const questionsWrongAnswered = getQuestionsWrongAnswered(
+    questionsPickedRandomly
+  )
   const { total, right, wrong } = score
   let result = score.result
-  const { moduleID, contentID } = moduleActive
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
@@ -103,8 +104,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     nameMiddle,
     nameLast,
     meta,
-    courseCapture,
-    description,
+    courseCapture: courseCapture || '',
+    description: description || '',
     courseID,
     moduleID,
     contentID,
