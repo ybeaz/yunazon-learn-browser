@@ -8,8 +8,6 @@ export const courseSuccess = {
   dateCreated: 1640995200000,
   dateUpdated: 1640995200000,
   dateDeleted: null,
-  questionNumber: 4,
-  passRate: 0.75,
   meta: {
     institution: 'Студия "Городок"',
     specTitle: 'Специалист Oтдела Мировой Истории',
@@ -27,6 +25,8 @@ export const courseSuccess = {
       contentID: 'wBvQba1DI1Y',
       capture: 'Модуль I',
       duration: '2:36',
+      questionNumber: 4,
+      passRate: 0.75,
       questions: [
         {
           questionID: 'f57K1Bix-mL2yv0dPCHn3',

@@ -44,8 +44,6 @@ export const storeObject = {
       dateCreated: 1701312970068,
       dateUpdated: 1701653931887,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -62,6 +60,8 @@ export const storeObject = {
           contentID: '-SRUctRR_4s',
           capture: 'Модуль I',
           duration: '41:30',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'AhA3z4gL8i2M',
@@ -272,8 +272,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746794932,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'Студия "Городок"',
         specTitle: 'Специалист Oтдела Мировой Истории',
@@ -290,6 +288,8 @@ export const storeObject = {
           contentID: 'wBvQba1DI1Y',
           capture: 'Модуль I',
           duration: '2:36',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'bjz6ZqwMVfbH',
@@ -400,8 +400,6 @@ export const storeObject = {
       dateCreated: 1700976254297,
       dateUpdated: 1701746794959,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'Малая ТРИЗ Академия',
         specTitle: 'Председатель Приемной Комиссии',
@@ -418,6 +416,8 @@ export const storeObject = {
           contentID: 'jJy5wbBb4vg',
           capture: 'Модуль I',
           duration: '13:11',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'aVD6pAIDml10',
@@ -634,8 +634,6 @@ export const storeObject = {
       dateCreated: 1700976254297,
       dateUpdated: 1701746794989,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'Малая ТРИЗ Академия',
         specTitle: 'Председатель Приемной Комиссии',
@@ -652,6 +650,8 @@ export const storeObject = {
           contentID: '2b0MNP1Qne8',
           capture: 'Модуль III',
           duration: '14:55',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'zM477dBn0SoV',
@@ -860,8 +860,6 @@ export const storeObject = {
       dateCreated: 1700972005343,
       dateUpdated: 1701746795072,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'Малая ТРИЗ Академия',
         specTitle: 'Председатель Приемной Комиссии',
@@ -878,6 +876,8 @@ export const storeObject = {
           contentID: 'V6jWszm3j4Q',
           capture: 'Модуль III',
           duration: '18:13',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'jvteMiBU79Tr',
@@ -1089,8 +1089,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746795095,
       dateDeleted: null,
-      questionNumber: 5,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -1107,6 +1105,8 @@ export const storeObject = {
           contentID: 'cj8dDTHGJBY',
           capture: 'Модуль I',
           duration: '11:34',
+          questionNumber: 5,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'egsZ5fiuMzRY',
@@ -1363,8 +1363,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746795113,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -1381,6 +1379,8 @@ export const storeObject = {
           contentID: 'HVT3Y3_gHGg',
           capture: 'Модуль I',
           duration: '11:16',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 't1O1sIyK1TJD',
@@ -1547,8 +1547,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746795130,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -1565,6 +1563,8 @@ export const storeObject = {
           contentID: 'H8WJ2KENlK0',
           capture: 'Модуль I',
           duration: '14:08',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'mWA8Xl1SXkvM',
@@ -1786,8 +1786,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746795146,
       dateDeleted: null,
-      questionNumber: 6,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -1804,6 +1802,8 @@ export const storeObject = {
           contentID: '9UvlqAVCoqY',
           capture: 'Модуль I',
           duration: '10:27',
+          questionNumber: 6,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'euO0BXTA8ekI',
@@ -1986,8 +1986,6 @@ export const storeObject = {
       dateCreated: 1640995200000,
       dateUpdated: 1701746795162,
       dateDeleted: null,
-      questionNumber: 4,
-      passRate: 0.75,
       meta: {
         institution: 'YouRails Academy',
         specTitle: 'Tutor',
@@ -2004,6 +2002,8 @@ export const storeObject = {
           contentID: '_6bkzHLI2T8',
           capture: 'Модуль I',
           duration: '11:46',
+          questionNumber: 4,
+          passRate: 0.75,
           questions: [
             {
               questionID: 'mKR64Wr2KTYf',

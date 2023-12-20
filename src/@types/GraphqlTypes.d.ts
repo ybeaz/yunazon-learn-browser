@@ -146,12 +146,8 @@ export type CourseType = {
     meta?: Maybe<MetaCourseType>;
     /** courses modules */
     modules?: Maybe<Array<ModuleType>>;
-    /** courses passRate */
-    passRate?: Maybe<Scalars['Float']['output']>;
     /** profile ID */
     profileID: Scalars['ID']['output'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['output'];
 };
 export type CoursesConnectionType = {
     __typename?: 'CoursesConnectionType';
@@ -182,12 +178,8 @@ export type CreateCourseInputType = {
     meta?: InputMaybe<MetaCourseInputType>;
     /** courses modules */
     modules?: InputMaybe<Array<ModuleInputType>>;
-    /** courses passRate */
-    passRate?: InputMaybe<Scalars['Float']['input']>;
     /** profile ID */
     profileID: Scalars['ID']['input'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['input'];
 };
 export type CreateDocumentInputType = {
     /** capture */
@@ -434,6 +426,10 @@ export type ModuleInputType = {
     isActive?: Scalars['Boolean']['input'];
     /** course module ID */
     moduleID?: InputMaybe<Scalars['ID']['input']>;
+    /** module passRate */
+    passRate?: InputMaybe<Scalars['Float']['input']>;
+    /** module questionNumber */
+    questionNumber: Scalars['Int']['input'];
     /** course module questions */
     questions: Array<QuestionInputType>;
 };
@@ -455,6 +451,10 @@ export type ModuleType = {
     isActive: Scalars['Boolean']['output'];
     /** course module ID */
     moduleID: Scalars['ID']['output'];
+    /** module passRate */
+    passRate?: Maybe<Scalars['Float']['output']>;
+    /** module questionNumber */
+    questionNumber: Scalars['Int']['output'];
     /** course module questions */
     questions: Array<QuestionType>;
 };
@@ -961,12 +961,8 @@ export type UpdateCourseInputType = {
     meta?: InputMaybe<MetaCourseInputType>;
     /** courses modules */
     modules?: InputMaybe<Array<ModuleInputType>>;
-    /** courses passRate */
-    passRate?: InputMaybe<Scalars['Float']['input']>;
     /** profile ID */
     profileID: Scalars['ID']['input'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['input'];
 };
 export type UpdateCourseMetaInputType = {
     /** courses ID */

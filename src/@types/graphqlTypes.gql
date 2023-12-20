@@ -131,14 +131,8 @@ type CourseType {
   """courses modules"""
   modules: [ModuleType!]
 
-  """courses passRate"""
-  passRate: Float
-
   """profile ID"""
   profileID: ID!
-
-  """courses questionNumber"""
-  questionNumber: Int!
 }
 
 type CoursesConnectionType {
@@ -179,14 +173,8 @@ input CreateCourseInputType {
   """courses modules"""
   modules: [ModuleInputType!]
 
-  """courses passRate"""
-  passRate: Float
-
   """profile ID"""
   profileID: ID!
-
-  """courses questionNumber"""
-  questionNumber: Int!
 }
 
 input CreateDocumentInputType {
@@ -526,6 +514,12 @@ input ModuleInputType {
   """course module ID"""
   moduleID: ID
 
+  """module passRate"""
+  passRate: Float
+
+  """module questionNumber"""
+  questionNumber: Int!
+
   """course module questions"""
   questions: [QuestionInputType!]!
 }
@@ -554,6 +548,12 @@ type ModuleType {
 
   """course module ID"""
   moduleID: ID!
+
+  """module passRate"""
+  passRate: Float
+
+  """module questionNumber"""
+  questionNumber: Int!
 
   """course module questions"""
   questions: [QuestionType!]!
@@ -1069,14 +1069,8 @@ input UpdateCourseInputType {
   """courses modules"""
   modules: [ModuleInputType!]
 
-  """courses passRate"""
-  passRate: Float
-
   """profile ID"""
   profileID: ID!
-
-  """courses questionNumber"""
-  questionNumber: Int!
 }
 
 input UpdateCourseMetaInputType {

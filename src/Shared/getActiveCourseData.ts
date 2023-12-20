@@ -1,42 +1,10 @@
 import { CourseType, ModuleType, QuestionType } from '../@types/GraphqlTypes'
 
-type ModuleActive = ModuleType | { moduleID: undefined; contentID: undefined }
-
-const courseActiveDefault: CourseType = {
-  capture: '',
-  /** courses ID */
-  courseID: '',
-  /** courses created date */
-  dateCreated: 1,
-  /** courses deleted date */
-  dateDeleted: undefined,
-  /** courses updated date */
-  dateUpdated: 1,
-  /** course description */
-  description: '',
-  /** isActive */
-  isActive: false,
-  /** language code */
-  language: '',
-  /** courses meta information */
-  meta: {
-    email: '',
-    institution: '',
-    isSendingBcc: false,
-    specName: '',
-    specTitle: '',
-  },
-  /** courses modules */
-  modules: [],
-  /** courses passRate */
-  passRate: 1.0,
-  /** courses questionNumber */
-  questionNumber: 1,
-}
+type ModuleActive = Partial<ModuleType>
 
 export type GetActiveCourseDataResType = {
-  courseActive: CourseType
-  moduleActive: ModuleActive
+  courseActive: Partial<CourseType>
+  moduleActive: Partial<ModuleActive>
   questionsActive: QuestionType[] | []
 }
 
@@ -57,8 +25,8 @@ export const getActiveCourseData: GetActiveCourseDataType = (
   moduleIDActive: string | undefined
 ) => {
   const res: GetActiveCourseDataResType = {
-    courseActive: courseActiveDefault,
-    moduleActive: { moduleID: undefined, contentID: undefined },
+    courseActive: {},
+    moduleActive: {},
     questionsActive: [],
   }
 
@@ -90,7 +58,6 @@ export const getActiveCourseData: GetActiveCourseDataType = (
       if (isBreaking) break
     }
 
-    // @ts-expect-error
     questionsActive = moduleActive?.questions ? moduleActive.questions : []
 
     return {

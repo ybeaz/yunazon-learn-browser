@@ -40,7 +40,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const {
     courseActive: { capture: courseCapture, courseID },
-    moduleActive: { moduleID, contentID },
+    moduleActive: { moduleID, contentID, passRate, questionNumber },
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
 
@@ -122,7 +122,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonStartProps: {
       captureLeft: (
         <div>
-          <div>{`${CertificateDash}\u00A0\u00A0\u00A0-\u00A0\u00A0\u00A0${questionsActive.length} ${questionStr}`}</div>
+          <div>{`${CertificateDash}\u00A0\u00A0\u00A0-\u00A0\u00A0\u00A0${questionNumber} ${questionStr}`}</div>
           {/* <div>{`${CertificateDash} ${duration} ${units} /`}</div>
           <div>{`${questionsActive.length} ${questionStr}`}</div> */}
         </div>
