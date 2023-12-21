@@ -522,6 +522,9 @@ input ModuleInputType {
 
   """course module questions"""
   questions: [QuestionInputType!]!
+
+  """course module summary"""
+  summary: [SummaryItemInputType!]
 }
 
 type ModuleType {
@@ -557,6 +560,9 @@ type ModuleType {
 
   """course module questions"""
   questions: [QuestionType!]!
+
+  """course module summary"""
+  summary: [SummaryItemType!]
 }
 
 type Mutation {
@@ -995,6 +1001,28 @@ input SortDocumentsInputType {
 type Subscription {
   documentAdded: DocumentType!
   recipeAdded: RecipeType!
+}
+
+input SummaryItemInputType {
+  """course module capture"""
+  capture: String = null
+
+  """courses module question ID"""
+  summaryItemID: ID
+
+  """course module text"""
+  text: String = null
+}
+
+type SummaryItemType {
+  """course module capture"""
+  capture: String
+
+  """course module summary ID"""
+  summaryItemID: ID!
+
+  """course module text"""
+  text: String
 }
 
 type TemplatesConnectionType {

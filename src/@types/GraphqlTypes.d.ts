@@ -432,6 +432,8 @@ export type ModuleInputType = {
     questionNumber: Scalars['Int']['input'];
     /** course module questions */
     questions: Array<QuestionInputType>;
+    /** course module summary */
+    summary?: InputMaybe<Array<SummaryItemInputType>>;
 };
 export type ModuleType = {
     __typename?: 'ModuleType';
@@ -457,6 +459,8 @@ export type ModuleType = {
     questionNumber: Scalars['Int']['output'];
     /** course module questions */
     questions: Array<QuestionType>;
+    /** course module summary */
+    summary?: Maybe<Array<SummaryItemType>>;
 };
 export type Mutation = {
     __typename?: 'Mutation';
@@ -905,6 +909,23 @@ export type Subscription = {
     __typename?: 'Subscription';
     documentAdded: DocumentType;
     recipeAdded: RecipeType;
+};
+export type SummaryItemInputType = {
+    /** course module capture */
+    capture?: InputMaybe<Scalars['String']['input']>;
+    /** courses module question ID */
+    summaryItemID?: InputMaybe<Scalars['ID']['input']>;
+    /** course module text */
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+export type SummaryItemType = {
+    __typename?: 'SummaryItemType';
+    /** course module capture */
+    capture?: Maybe<Scalars['String']['output']>;
+    /** course module summary ID */
+    summaryItemID: Scalars['ID']['output'];
+    /** course module text */
+    text?: Maybe<Scalars['String']['output']>;
 };
 export type TemplatesConnectionType = {
     __typename?: 'TemplatesConnectionType';
