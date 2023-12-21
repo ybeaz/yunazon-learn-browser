@@ -6,8 +6,6 @@ const errorCourse = ({
   courseDescription,
   language,
   isActive,
-  questionNumber,
-  passRate,
   meta,
 }: any) => {
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
@@ -54,33 +52,6 @@ const errorCourse = ({
     courseValidation = [
       ...courseValidation,
       { type: 'course-no-isActive-or-type-error', courseIndex, courseCapture },
-    ]
-  }
-
-  if (
-    !questionNumber ||
-    typeof questionNumber !== 'number' ||
-    questionNumber <= 1
-  ) {
-    courseValidation = [
-      ...courseValidation,
-      {
-        type: 'course-no-questionNumber-or-type-error',
-        courseIndex,
-        courseCapture,
-      },
-    ]
-  }
-
-  if (
-    !passRate ||
-    typeof passRate !== 'number' ||
-    passRate > 1 ||
-    passRate <= 0
-  ) {
-    courseValidation = [
-      ...courseValidation,
-      { type: 'course-no-passRate-or-type-error', courseIndex, courseCapture },
     ]
   }
 
@@ -206,6 +177,22 @@ const errorModules = ({
   )
   if (isFound) errors = [...errors, 'module-no-duration-or-type-error']
 
+  isFound = modules.find(
+    (module: any) =>
+      !module.questionNumber ||
+      module.questionNumber === 0 ||
+      typeof module.questionNumber !== 'number'
+  )
+  if (isFound) errors = [...errors, 'module-no-questionNumber-or-type-error']
+
+  isFound = modules.find(
+    (module: any) =>
+      !module.passRate ||
+      module.passRate === 0 ||
+      typeof module.passRate !== 'number'
+  )
+  if (isFound) errors = [...errors, 'module-no-passRate-or-type-error']
+
   if (errors.length) {
     return [
       ...courseValidation,
@@ -316,8 +303,6 @@ export const getValidatedCourses = (courses: any[]): any[] => {
       description: courseDescription,
       language,
       isActive,
-      questionNumber,
-      passRate,
       meta,
       modules,
     } = course
@@ -330,8 +315,6 @@ export const getValidatedCourses = (courses: any[]): any[] => {
       courseDescription,
       language,
       isActive,
-      questionNumber,
-      passRate,
       meta,
     })
 

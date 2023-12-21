@@ -22,6 +22,9 @@ export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
 
   const courseID = course?.courseID || '__'
   const modules = course?.modules || []
+
+  if (!modules.length) return
+
   const moduleIndex = modules.findIndex(module => module.moduleID === moduleID)
 
   let questionNumberNext: number = modules[moduleIndex].questionNumber

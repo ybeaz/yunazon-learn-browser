@@ -36,7 +36,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   let navigate = useNavigate()
 
   const {
-    questionsIDsPicked,
+    questionsIDsPicked = [],
     stopVideoHandler,
     storeStateSlice: {
       language,
@@ -60,7 +60,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   } = getActiveCourseData(courses, moduleIDActive)
   const { moduleID, contentID, passRate } = moduleActive
 
-  const questionsPickedRandomly = questionsActive.filter((question: any) =>
+  const questionsPickedRandomly = questionsActive?.filter((question: any) =>
     questionsIDsPicked.includes(question?.questionID)
   )
 
