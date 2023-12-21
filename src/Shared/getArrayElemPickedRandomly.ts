@@ -49,20 +49,23 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
   try {
     let randomNumArrLimited: number[] = []
     while (randomNumArrLimited.length < numberToPick) {
-      const randomNum = getRandomNumBetween(0, inputArray.length)
-      const randomNumCeil = Math.ceil(randomNum)
+      const randomNum = getRandomNumBetween(0, inputArray.length - 1)
+      const randomNumCeil = Math.floor(randomNum)
       randomNumArrLimited = [...randomNumArrLimited, randomNumCeil]
       randomNumArrLimited = [...new Set(randomNumArrLimited)].sort(
         (a: any, b: any) => a - b
       )
+      // console.info('getArrayElemPickedRandomly [58]', { randomNumArrLimited })
     }
 
+    // console.info('\ngetArrayElemPickedRandomly [60]', { randomNumArrLimited })
+
     output = inputArray.filter((_: any, index: number) =>
-      randomNumArrLimited.includes(index + 1)
+      randomNumArrLimited.includes(index)
     )
 
     if (printRes) {
-      console.log('getArrayElemPickedRandomly [43]', { output })
+      console.log('\ngetArrayElemPickedRandomly [43]', { randomNumArrLimited })
     }
   } catch (error: any) {
     console.log('getArrayElemPickedRandomly', 'Error', {
@@ -81,10 +84,15 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
 if (require.main === module) {
   ;(async () => {
     const params = {
-      inputArray: [{ a: 1 }, { c: 2 }, { d: 3 }, { e: 4 }, { f: 5 }, { g: 6 }],
+      inputArray: [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }, { g: 5 }],
       numberToPick: 4,
     }
-    const output = await getArrayElemPickedRandomly(params, { printRes: true })
-    console.log('getArrayElemPickedRandomly [60]', { params, output })
+
+    for (let i = 0; i < 100; i += 1) {
+      const output = await getArrayElemPickedRandomly(params, {
+        printRes: true,
+      })
+      console.log('getArrayElemPickedRandomly [60]', { output })
+    }
   })()
 }
