@@ -6,8 +6,9 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
+import { withDebounce } from '../../Shared/withDebounce'
 
-export function* getAuthAwsCognitoUserRefreshed(): Iterable<any> {
+export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
@@ -53,6 +54,11 @@ export function* getAuthAwsCognitoUserRefreshed(): Iterable<any> {
     })
   }
 }
+
+export const getAuthAwsCognitoUserRefreshed = withDebounce(
+  getAuthAwsCognitoUserRefreshedGenerator,
+  500
+)
 
 /**
  * @description Function to getAuthAwsCognitoUserRefreshedSaga

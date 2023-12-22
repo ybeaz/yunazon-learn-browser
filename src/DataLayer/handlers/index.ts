@@ -1,3 +1,7 @@
+export * from './CLICK_ON_DEACTIVATE_DOCUMENT'
+export * from './GET_MATRIX_DATA'
+export * from './GET_MODULE_DATA'
+export * from './GET_DOCUMENTS'
 export * from './SET_PAGE_CURSOR'
 export * from './AUTH_FACEBOOK'
 export * from './AUTH_GOOGLE'

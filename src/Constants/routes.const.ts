@@ -3,9 +3,6 @@ export type RouteType = {
   path: string
   children: any[]
   errorElement: string
-  themeDafault: string
-  strict?: boolean
-  exact?: boolean
 }
 
 export const ROUTES: RouteType[] = [
@@ -14,35 +11,42 @@ export const ROUTES: RouteType[] = [
     path: `/d/:documentID/:dataName?`,
     children: [],
     errorElement: 'Error404',
-    strict: true,
   },
   {
-    page: 'Certificate',
-    path: `/certificate`,
+    page: 'Profiles',
+    path: `/profiles`,
     children: [],
     errorElement: 'Error404',
-    exact: true,
+  },
+  {
+    page: 'Courses',
+    path: `/courses`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    page: 'Documents',
+    path: `/documents`,
+    children: [],
+    errorElement: 'Error404',
   },
   {
     page: 'AcademyPresent',
     path: `/m/:moduleID/:moduleCapture?`,
     children: [],
     errorElement: 'Error404',
-    strict: true,
   },
   {
     page: 'AcademyMatrix',
     path: `/`,
     children: [],
     errorElement: 'Error404',
-    exact: true,
   },
   {
     page: 'Error404',
     path: `/error404`,
     children: [],
     errorElement: 'Error404',
-    exact: true,
   },
 ]
 

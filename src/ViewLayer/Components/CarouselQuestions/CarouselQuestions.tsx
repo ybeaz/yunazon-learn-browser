@@ -1,11 +1,15 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useMemo } from 'react'
 import { nanoid } from 'nanoid'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getQuesionString } from '../../../Shared/getQuesionString'
-import { getButtonsClassString } from '../../../Shared/getButtonsClassString'
-import { getChunkedArray } from '../../../Shared/getChunkedArray'
+import { QuestionType } from '../../../@types/GraphqlTypes'
+import {
+  getActiveCourseData,
+  getQuesionString,
+  getArrayElemPickedRandomly,
+  getButtonsClassString,
+  getChunkedArray,
+} from '../../../Shared/'
 import { CheckRadioGroup } from '../CheckRadioGroup'
-import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
@@ -40,12 +44,29 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const {
     courseActive: { capture: courseCapture, courseID },
-    moduleActive: { moduleID, contentID },
+    moduleActive: { moduleID, contentID, questionNumber },
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
 
+  const questionsPickedRandomlyAndFrozen = useMemo(
+    () =>
+      getArrayElemPickedRandomly({
+        inputArray: questionsActive,
+        numberToPick: questionNumber || 6,
+      }),
+    [moduleID]
+  )
+
+  const questionsIDsPicked = questionsPickedRandomlyAndFrozen.map(
+    (question: QuestionType) => question.questionID
+  )
+
+  const questionsPickedRandomly = questionsActive.filter((question: any) =>
+    questionsIDsPicked.includes(question?.questionID)
+  )
+
   const questionsChunked = getChunkedArray(
-    questionsActive,
+    questionsPickedRandomly,
     numberQuestionsInSlide
   )
 
@@ -107,7 +128,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   } = getButtonsClassString(
     questionsSlideNumber,
     questionsChunked.length,
-    questionsActive,
+    questionsPickedRandomly,
     questionsChunked,
     isCourseStarted
   )
@@ -122,7 +143,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonStartProps: {
       captureLeft: (
         <div>
-          <div>{`${CertificateDash}\u00A0\u00A0\u00A0-\u00A0\u00A0\u00A0${questionsActive.length} ${questionStr}`}</div>
+          <div>{`${CertificateDash}\u00A0\u00A0\u00A0-\u00A0\u00A0\u00A0${questionNumber} ${questionStr}`}</div>
           {/* <div>{`${CertificateDash} ${duration} ${units} /`}</div>
           <div>{`${questionsActive.length} ${questionStr}`}</div> */}
         </div>
@@ -172,7 +193,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
           {
             childName: 'QuestionScores',
             isActive: true,
-            childProps: { courseCapture },
+            childProps: { questionsIDsPicked },
           },
         ],
       },

@@ -5,21 +5,24 @@ import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { actionAsync } from '../../DataLayer/index.action'
 
 export const useEffectedInitialRequests: Function = (
-  requestList: string[] | any[]
+  requestList: string[] | any[],
+  triggers: any[] = []
 ): void => {
   const dispatch = useDispatch()
 
   useEffect(() => {
     const makeDispatchAsyncWrappered = async (requestList2: Array<string>) =>
-      requestList2.forEach(async (action: string | ActionReduxType) => {
-        if (typeof action === 'string') {
-          dispatch(actionAsync[action].REQUEST())
-        } else if (typeof action !== 'string') {
-          const { type = '', data } = action as ActionReduxType
-          dispatch(actionAsync[type].REQUEST(data))
-        }
-      })
+      Promise.all(
+        requestList2.map(async (action: string | ActionReduxType) => {
+          if (typeof action === 'string') {
+            await dispatch(actionAsync[action].REQUEST())
+          } else if (typeof action !== 'string') {
+            const { type = '', data } = action as ActionReduxType
+            await dispatch(actionAsync[type].REQUEST(data))
+          }
+        })
+      )
 
     makeDispatchAsyncWrappered(requestList)
-  }, [])
+  }, triggers)
 }

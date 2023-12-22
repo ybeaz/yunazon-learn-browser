@@ -1,5 +1,5 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType } from '../@types/GraphqlTypes'
+import { CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 
 export type SearchFormSepType = {
@@ -17,6 +17,7 @@ export type SearchFormSepType = {
 
 export enum PaginationNameEnumType {
   pagesCourses = 'pagesCourses',
+  pagesDocuments = 'pagesDocuments',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
@@ -79,7 +80,7 @@ export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
   courses: CourseType[]
-  documents: any[]
+  documents: DocumentType[]
   users: UserType[]
   scorm: ScormType
   forms: FormsType

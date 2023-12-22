@@ -4,9 +4,10 @@ import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { withDebounce } from '../../Shared/withDebounce'
+import { getSizeWindow } from '../../Shared/getSizeWindow'
 
-function* getCourseData(params: ActionReduxType | any): Iterable<any> {
+function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { moduleID },
   } = params
@@ -35,12 +36,19 @@ function* getCourseData(params: ActionReduxType | any): Iterable<any> {
     )
     yield put(actionSync.SET_COURSES(coursesNext))
 
+    const { width } = getSizeWindow()
+    if (width <= 480) {
+      yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
+    }
+
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getCourseData Error', error.name + ': ' + error.message)
+    console.info('getModuleData Error', error.name + ': ' + error.message)
   }
 }
 
-export default function* getCourseDataSaga() {
-  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getCourseData)
+export const getModuleData = withDebounce(getModuleDataGenerator, 500)
+
+export default function* getModuleDataSaga() {
+  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getModuleData)
 }

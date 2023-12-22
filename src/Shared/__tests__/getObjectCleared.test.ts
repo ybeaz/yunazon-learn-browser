@@ -108,8 +108,6 @@ describe('Algoritms', () => {
         dateCreated: 1640995200000,
         dateUpdated: 1640995200000,
         dateDeleted: null,
-        questionNumber: 5,
-        passRate: 0.75,
         meta: {
           institution: 'YouRails Academy',
           specTitle: 'Tutor',
@@ -127,6 +125,8 @@ describe('Algoritms', () => {
             contentID: 'cj8dDTHGJBY',
             capture: 'Модуль I',
             duration: '11:34',
+            questionNumber: 5,
+            passRate: 0.75,
             questions: [
               {
                 questionID: 'UZTgswU6_SAskInnb_pY2',
@@ -427,8 +427,6 @@ describe('Algoritms', () => {
         dateCreated: 1640995200000,
         dateUpdated: 1640995200000,
         dateDeleted: null,
-        questionNumber: 5,
-        passRate: 0.75,
         meta: {
           institution: 'YouRails Academy',
           specTitle: 'Tutor',
@@ -445,6 +443,8 @@ describe('Algoritms', () => {
             contentID: 'cj8dDTHGJBY',
             capture: 'Модуль I',
             duration: '11:34',
+            questionNumber: 5,
+            passRate: 0.75,
             questions: [
               {
                 questionID: 'UZTgswU6_SAskInnb_pY2',

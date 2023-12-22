@@ -9,7 +9,7 @@ export type ModalFramesComponentPropsType = {
 
 export type ModalFramesPropsType = Omit<
   ModalFramesComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'children'
 >
 
 export type ModalFramesPropsOutType = Record<string, any>

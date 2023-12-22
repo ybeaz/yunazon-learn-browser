@@ -1,12 +1,7 @@
 /**
  * @description Function to return random number between two numbers
- * @param min
- * @param max
- * @returns
+ * @import import { getRandomNumBetween } from '../Shared/getRandomNumBetween'
  */
-export const getRandomNumBetween: Function = (
-  min: number,
-  max: number
-): number => {
+export const getRandomNumBetween = (min: number, max: number): number => {
   return Math.random() * (max - min + 1) + min
 }

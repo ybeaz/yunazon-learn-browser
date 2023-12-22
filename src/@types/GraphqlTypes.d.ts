@@ -146,12 +146,8 @@ export type CourseType = {
     meta?: Maybe<MetaCourseType>;
     /** courses modules */
     modules?: Maybe<Array<ModuleType>>;
-    /** courses passRate */
-    passRate?: Maybe<Scalars['Float']['output']>;
     /** profile ID */
     profileID: Scalars['ID']['output'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['output'];
 };
 export type CoursesConnectionType = {
     __typename?: 'CoursesConnectionType';
@@ -182,12 +178,8 @@ export type CreateCourseInputType = {
     meta?: InputMaybe<MetaCourseInputType>;
     /** courses modules */
     modules?: InputMaybe<Array<ModuleInputType>>;
-    /** courses passRate */
-    passRate?: InputMaybe<Scalars['Float']['input']>;
     /** profile ID */
     profileID: Scalars['ID']['input'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['input'];
 };
 export type CreateDocumentInputType = {
     /** capture */
@@ -434,8 +426,14 @@ export type ModuleInputType = {
     isActive?: Scalars['Boolean']['input'];
     /** course module ID */
     moduleID?: InputMaybe<Scalars['ID']['input']>;
+    /** module passRate */
+    passRate?: InputMaybe<Scalars['Float']['input']>;
+    /** module questionNumber */
+    questionNumber: Scalars['Int']['input'];
     /** course module questions */
     questions: Array<QuestionInputType>;
+    /** course module summary */
+    summary?: InputMaybe<Array<SummaryItemInputType>>;
 };
 export type ModuleType = {
     __typename?: 'ModuleType';
@@ -455,8 +453,14 @@ export type ModuleType = {
     isActive: Scalars['Boolean']['output'];
     /** course module ID */
     moduleID: Scalars['ID']['output'];
+    /** module passRate */
+    passRate?: Maybe<Scalars['Float']['output']>;
+    /** module questionNumber */
+    questionNumber: Scalars['Int']['output'];
     /** course module questions */
     questions: Array<QuestionType>;
+    /** course module summary */
+    summary?: Maybe<Array<SummaryItemType>>;
 };
 export type Mutation = {
     __typename?: 'Mutation';
@@ -813,6 +817,8 @@ export type ReadCoursesConnectionInputType = {
     language?: InputMaybe<Scalars['String']['input']>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
     offset?: InputMaybe<Scalars['Int']['input']>;
+    /** profile ID */
+    profileID?: InputMaybe<Scalars['ID']['input']>;
     /** searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
     /** option to sort by a field: 1 ascending, -1 descending */
@@ -835,6 +841,8 @@ export type ReadDocumentsConnectionInputType = {
     isActive?: InputMaybe<Scalars['Boolean']['input']>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
     offset?: InputMaybe<Scalars['Int']['input']>;
+    /** profile ID */
+    profileID?: InputMaybe<Scalars['ID']['input']>;
     /** option to sort by a field: 1 ascending, -1 descending */
     sort?: InputMaybe<SortDocumentsInputType>;
     /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
@@ -902,6 +910,23 @@ export type Subscription = {
     documentAdded: DocumentType;
     recipeAdded: RecipeType;
 };
+export type SummaryItemInputType = {
+    /** course module capture */
+    capture?: InputMaybe<Scalars['String']['input']>;
+    /** courses module question ID */
+    summaryItemID?: InputMaybe<Scalars['ID']['input']>;
+    /** course module text */
+    text?: InputMaybe<Scalars['String']['input']>;
+};
+export type SummaryItemType = {
+    __typename?: 'SummaryItemType';
+    /** course module capture */
+    capture?: Maybe<Scalars['String']['output']>;
+    /** course module summary ID */
+    summaryItemID: Scalars['ID']['output'];
+    /** course module text */
+    text?: Maybe<Scalars['String']['output']>;
+};
 export type TemplatesConnectionType = {
     __typename?: 'TemplatesConnectionType';
     /** [TemplatesEdgeType] */
@@ -957,12 +982,8 @@ export type UpdateCourseInputType = {
     meta?: InputMaybe<MetaCourseInputType>;
     /** courses modules */
     modules?: InputMaybe<Array<ModuleInputType>>;
-    /** courses passRate */
-    passRate?: InputMaybe<Scalars['Float']['input']>;
     /** profile ID */
     profileID: Scalars['ID']['input'];
-    /** courses questionNumber */
-    questionNumber: Scalars['Int']['input'];
 };
 export type UpdateCourseMetaInputType = {
     /** courses ID */

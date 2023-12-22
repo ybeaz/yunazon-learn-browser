@@ -1,4 +1,7 @@
 import {
+  MdDeleteOutline,
+  MdAssignmentTurnedIn,
+  MdCastForEducation,
   MdArrowBackIos,
   MdArrowForwardIos,
   MdHomeRepairService,
@@ -116,6 +119,9 @@ import { ICONS_PROGRAMMING } from './iconsSimple.const'
 
 export const ICONS = {
   ...ICONS_PROGRAMMING,
+  MdDeleteOutline,
+  MdAssignmentTurnedIn,
+  MdCastForEducation,
   MdArrowBackIos,
   MdArrowForwardIos,
   MdLogin,

@@ -33,13 +33,19 @@ export const refreshAuthMiddleware: Middleware = store => next => action => {
 
   const { type: actionType } = action
   const actionsNotToRefreshAuth = [
-    'INIT_LOADING',
-    'GET_AUTH_AWS_COGNITO_USER_DATA',
-    'GET_AUTH_AWS_COGNITO_USER_REFRESHED',
-    'GET_AUTH_AWS_COGNITO_USER_REVOKED',
+    'SET_AUTH_AWS_COGNITO_USER_DATA',
+    'SET_SIDE_NAVIGATION_LEFT',
+    'SELECT_LANGUAGE_APP',
+    'SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE',
+    'GET_AUTH_DATA_REQUEST',
+    'GET_MATRIX_DATA_REQUEST',
+    'GET_AUTH_AWS_COGNITO_USER_DATA_REQUEST',
+    'GET_AUTH_AWS_COGNITO_USER_REFRESHED_REQUEST',
+    'GET_AUTH_AWS_COGNITO_USER_REVOKED_REQUEST',
   ]
 
   if (!actionsNotToRefreshAuth.includes(actionType)) {
+    console.info('refreshAuthMiddleware [43]', { actionType })
     debouncedFunc(store)
   }
 

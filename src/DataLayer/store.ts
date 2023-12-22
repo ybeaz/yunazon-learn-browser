@@ -17,9 +17,9 @@ const createStore: CreateStoreType = indexReducer2 => {
   const store2 = configureStore({
     reducer: indexReducer2,
     middleware: [
-      thunk,
+      // thunk,
       sagaMiddleware,
-      refreshAuthMiddleware,
+      // refreshAuthMiddleware,
       setLocalStorageMiddleware,
     ],
   })

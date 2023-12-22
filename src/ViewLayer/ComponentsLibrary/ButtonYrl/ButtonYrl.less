@@ -1325,6 +1325,29 @@
   }
 }
 
+.Button_DeactivateDocument {
+  display: flex;
+  justify-content: center;
+
+  .__button {
+    width: 4.5rem;
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._icon {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+  }
+  @media @phone, @phone-strict {
+    .__button {
+      width: 2rem;
+    }
+  }
+}
+
 .Button_buttonLeftSideNavigationAvatar {
   padding-right: 1rem;
 }

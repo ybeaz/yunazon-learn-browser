@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
@@ -30,8 +29,6 @@ export const CertificateComponent: CertificateComponentType = (
 
   const params = useParams()
   const documentID = params?.documentID
-
-  useEffectedInitialRequests(['INIT_LOADING'])
 
   const documentFound = documents.find(
     (document: any) => document.documentID === documentID
@@ -65,21 +62,16 @@ export const CertificateComponent: CertificateComponentType = (
     capture: '',
     courseID: '',
     contentID: '',
+    dateCreated: 0,
+    pathName: '',
   }
 
   const {
-    profileProps: {
-      nameFirst = '',
-      nameMiddle = '',
-      nameLast = '',
-      email = '',
-      isSendingBcc = false,
-    },
+    profileProps: { nameFirst = '', nameMiddle = '', nameLast = '' },
     meta: { institution = '', specTitle = '', specName = '' },
     capture: courseCapture = '',
     courseID = '',
-    contentID = '',
-    dateCreated = '',
+    dateCreated = 0,
     pathName: documentPathName,
   } = documentFound || documentDefault
 
@@ -94,8 +86,8 @@ export const CertificateComponent: CertificateComponentType = (
   })
 
   const userName = nameMiddle
-    ? `${nameLast} ${nameFirst} ${nameMiddle}`
-    : `${nameLast} ${nameFirst}`
+    ? `${nameFirst} ${nameMiddle} ${nameLast}`
+    : `${nameFirst} ${nameLast}`
 
   const slug = getSlug(courseCapture)
   const coursePathName = `/m/${courseID}/${slug}`
@@ -108,7 +100,6 @@ export const CertificateComponent: CertificateComponentType = (
     courseCapture,
     documentID,
     courseID,
-    contentID,
     isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,

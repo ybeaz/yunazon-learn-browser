@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_DOCUMENTS',
   'SET_TAGS_STATE',
   'SET_PAGE_INFO',
   'SET_PAGE_CURSOR',
@@ -14,7 +15,7 @@ const ACTIONS_SYNC: string[] = [
   'GET_ANSWERS_DEFAULT',
   'GET_AVATAR_PATH',
   'GET_COGNITO_TOKENS_SUCCESS',
-  'GET_COURSE_QUERY_PR_QN',
+  'UPDATE_COURSE_BY_COURSEID',
   'LOAD_PROFILES',
   'ONCHANGE_EMAIL_CC',
   'ONCHANGE_EMAIL_TO',
@@ -75,6 +76,9 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'DEACTIVATE_DOCUMENTS',
+  'GET_DOCUMENTS',
+  'GET_AUTH_DATA',
   'CREATE_DOCUMENT',
   'FIND_DOCUMENT',
   'GET_AUTH_AWS_COGNITO_USER_DATA',
@@ -87,7 +91,7 @@ const ACTION_ASYNC: string[] = [
   'GET_MODULE_DATA',
   'GET_OAUTH_GOOGLE',
   'GET_OAUTH_UI_DATA',
-  'INIT_LOADING',
+  'GET_MATRIX_DATA',
   'READ_USER_AUTH',
   'READ_USERS',
   'SAVE_ANALYTICS',

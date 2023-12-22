@@ -13,36 +13,8 @@ import { getCourses } from './getCourses.saga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
-function* initLoading(params: ActionReduxType | any): Iterable<any> {
+function* getAuthData(params: ActionReduxType | any): Iterable<any> {
   try {
-    const query = getParsedUrlQueryBrowserApi()
-
-    const searchInput = query?.search || ''
-    const tagsPick =
-      (query && query?.tagspick && query?.tagspick.split(',')) || []
-    const tagsOmit =
-      (query && query?.tagsomit && query?.tagsomit.split(',')) || []
-    const first =
-      query && query?.page
-        ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
-        : 0
-
-    yield put(actionSync.ONCHANGE_SEARCH_INPUT(searchInput))
-
-    yield put(
-      actionSync.SET_TAGS_STATE({
-        tagsPick,
-        tagsOmit,
-      })
-    )
-
-    yield put(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pagesCourses'],
-        first,
-      })
-    )
-
     const storeStateLocalStorage = getLocalStorageStoreStateRead()
     const languageLocalStorage = storeStateLocalStorage?.language
 
@@ -53,6 +25,7 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
     }
     yield put(actionSync.SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE(true))
 
+    const query = getParsedUrlQueryBrowserApi()
     const code = query?.code
 
     if (code) {
@@ -67,20 +40,11 @@ function* initLoading(params: ActionReduxType | any): Iterable<any> {
         isSideNavLeftVisible: false,
       })
     )
-
-    const { width } = getSizeWindow()
-    if (width <= 480) {
-      yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
-    }
-
-    yield getCourses({
-      type: 'GET_COURSES_REQUEST',
-    })
   } catch (error: any) {
-    console.info('initLoading [31]', error.name + ': ' + error.message)
+    console.info('getAuthData [31]', error.name + ': ' + error.message)
   }
 }
 
-export default function* initLoadingSaga() {
-  yield takeEvery([actionAsync.INIT_LOADING.REQUEST().type], initLoading)
+export default function* getAuthDataSaga() {
+  yield takeEvery([actionAsync.GET_AUTH_DATA.REQUEST().type], getAuthData)
 }

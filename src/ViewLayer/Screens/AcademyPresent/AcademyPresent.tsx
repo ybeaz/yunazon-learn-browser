@@ -21,10 +21,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import {
-  LoaderOverlayYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -54,10 +51,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       courses,
       mediaLoaded,
+      // @ts-expect-error
+      preferred_username,
     },
   } = props
 
-  const navigate = useNavigate()
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
@@ -66,6 +64,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
 
   useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
+
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedCoursesString)
 
@@ -269,7 +268,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* footer */}
             {null}
           </MainFrame>
-          <LoaderOverlayYrl />
         </>
       ) : null}
     </div>
@@ -282,6 +280,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'courses',
   'mediaLoaded',
+  'preferred_username',
 ]
 export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
   storeStateSliceProps,
