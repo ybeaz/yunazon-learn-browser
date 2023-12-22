@@ -23,7 +23,6 @@ export enum PaginationNameEnumType {
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
-  isLoadedLocalStorageStoreState: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number

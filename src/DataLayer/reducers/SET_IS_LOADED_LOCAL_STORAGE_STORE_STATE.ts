@@ -1,6 +1,9 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
+/**
+ * @status DEPRECIATED, NOT USED
+ */
 export const SET_IS_LOADED_LOCAL_STORAGE_STORE_STATE: ReducerType = (
   store: RootStoreType,
   data: any

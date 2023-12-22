@@ -7,7 +7,6 @@ export type CertificateComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     documents: RootStoreType['documents']
-    isLoadedLocalStorageStoreState: RootStoreType['componentsState']['isLoadedLocalStorageStoreState']
   }
 }
 
