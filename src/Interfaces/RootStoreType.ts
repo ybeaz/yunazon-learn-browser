@@ -52,8 +52,8 @@ export type FormsType = {
 }
 
 export type ScormType = {
-  courseIDActive: undefined
-  moduleIDActive: undefined
+  courseIDActive: string | null
+  moduleIDActive: string | null
   numberQuestionsInSlide: number
   durationMultiplier: number
 }

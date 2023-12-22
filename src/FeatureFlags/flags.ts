@@ -16,10 +16,6 @@ export const selectCoursesStageFlag: FeatureFlagType = (
   envTypeIn = envType
 ) => [CoursesStageEnumType['production2023']]
 
-export const isLoadingLocalStorageStoreState: FeatureFlagType = (
-  envTypeIn = envType
-) => false
-
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType
@@ -54,3 +50,11 @@ export const isDebugModalWindowQuestionScoresFailure: FeatureFlagType = (
 export const isDebugCertificateRedirectTo: FeatureFlagType = (
   envTypeIn = envType
 ) => false
+
+/**
+ * @description DEPRECIATED:
+
+export const isLoadingLocalStorageStoreState: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+*/

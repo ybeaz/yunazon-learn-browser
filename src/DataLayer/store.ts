@@ -3,8 +3,6 @@ import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
 
-import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
-import { setLocalStorageMiddleware } from './middlewares/setLocalStorageMiddleware'
 import { indexReducer, IndexReducerType } from './index.reducer'
 import indexSaga from './index.saga'
 
@@ -20,7 +18,7 @@ const createStore: CreateStoreType = indexReducer2 => {
       // thunk,
       sagaMiddleware,
       // refreshAuthMiddleware,
-      setLocalStorageMiddleware,
+      // setLocalStorageMiddleware,
     ],
   })
   sagaMiddleware.run(indexSaga)

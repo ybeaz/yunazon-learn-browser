@@ -118,8 +118,9 @@ export const rootStoreDefault: RootStoreType = {
   documents: [],
   users: [],
   scorm: {
-    courseIDActive: undefined,
-    moduleIDActive: undefined,
+    // coursesInProgress: [],
+    courseIDActive: null,
+    moduleIDActive: null,
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },

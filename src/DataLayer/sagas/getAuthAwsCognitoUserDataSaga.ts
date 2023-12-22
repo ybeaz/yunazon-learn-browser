@@ -6,7 +6,6 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
-import { getLocalStorageStoreStateSet } from '../../Shared/getLocalStorageStoreStateSet'
 import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
 
 export function* getAuthAwsCognitoUserData(
@@ -42,18 +41,6 @@ export function* getAuthAwsCognitoUserData(
         authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserDataSaga',
       })
-    )
-
-    let store = yield select(store => store)
-
-    // @ts-expect-error
-    const storeNext = { ...store, authAwsCognitoUserData }
-    getLocalStorageStoreStateSet(
-      {
-        source: 'getAuthAwsCognitoUserData [39]',
-        storeState: storeNext,
-      },
-      { printRes: false }
     )
   } catch (error: any) {
     console.log('ERROR getAuthAwsCognitoUserDataSaga', {
