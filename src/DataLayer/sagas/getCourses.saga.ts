@@ -10,7 +10,6 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
-import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 
@@ -60,9 +59,6 @@ export function* getCoursesGenerator(): Iterable<any> {
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToCourses, { printRes: false })
       .exec(getPreparedCourses).result
-
-    if (!coursesNext.length)
-      getDeletedObjFromLocalStorage({ storeStateJson: {} })
 
     yield put(actionSync.SET_COURSES(coursesNext))
 

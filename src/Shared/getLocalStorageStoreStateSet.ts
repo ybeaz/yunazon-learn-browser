@@ -1,6 +1,6 @@
 import { RootStoreType } from '../Interfaces/RootStoreType'
 import { rootStoreDefault } from '../DataLayer/rootStoreDefault'
-import { getSetObjToLocalStorage } from './getSetObjToLocalStorage'
+import { getLocalStorageSetObjTo } from './getLocalStorageSetObjTo'
 import { getLocalStorageStoreStateRead } from './getLocalStorageStoreStateRead'
 import { isObject } from './isObject'
 
@@ -42,7 +42,7 @@ export const getLocalStorageStoreStateSet: GetLocalStorageStoreStateSetType = (
       storeStateJson = JSON.stringify(storeStateLocalStorage)
     else {
       storeStateJson = JSON.stringify(storeStateApp)
-      getSetObjToLocalStorage({ storeStateJson })
+      getLocalStorageSetObjTo({ storeStateJson })
     }
     if (options?.printRes) {
       console.log('getLocalStorageStoreStateSet [48]', {

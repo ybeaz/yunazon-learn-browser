@@ -3,12 +3,12 @@ interface GetDeletedObjFromLocalStorageType {
 }
 
 /**
- * @description Function to getDeletedObjFromLocalStorage
- * @see also: getSetObjToLocalStorage
+ * @description Function to getLocalStorageDeletedObjFrom
+ * @see also: getLocalStorageSetObjTo
  * @example of getting item back: const itemValue = localStorage.getItem('itemName')
  * @example of deleting item: localStorage.removeItem('itemName');
- * @import import { getDeletedObjFromLocalStorage } from '../../../Shared/getDeletedObjFromLocalStorage'
+ * @import import { getLocalStorageDeletedObjFrom } from '../../../Shared/getLocalStorageDeletedObjFrom'
  */
 
-export const getDeletedObjFromLocalStorage: GetDeletedObjFromLocalStorageType =
+export const getLocalStorageDeletedObjFrom: GetDeletedObjFromLocalStorageType =
   obj => Object.keys(obj).forEach(key => localStorage.removeItem(key))

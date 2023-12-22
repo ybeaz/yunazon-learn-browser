@@ -6,7 +6,7 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 
 function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
   try {
@@ -49,7 +49,7 @@ function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
       })
     )
 
-    getSetObjToLocalStorage({
+    getLocalStorageSetObjTo({
       refresh_token: '',
     })
   } catch (error: any) {

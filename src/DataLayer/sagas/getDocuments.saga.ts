@@ -9,7 +9,6 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
-import { getDeletedObjFromLocalStorage } from '../../Shared/getDeletedObjFromLocalStorage'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 
@@ -45,9 +44,6 @@ export function* getDocumentsGenerator(
     let documentsNext: any = getChainedResponsibility(
       readDocumentsConnection
     ).exec(getMappedConnectionToCourses, { printRes: false }).result
-
-    if (!documentsNext.length)
-      getDeletedObjFromLocalStorage({ storeStateJson: {} })
 
     yield put(actionSync.SET_DOCUMENTS(documentsNext))
 
