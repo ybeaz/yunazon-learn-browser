@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { LoaderOverlayYrl } from '../../ComponentsLibrary/'
+
 import {
   MainFrameComponentPropsType,
   MainFramePropsType,
@@ -34,6 +36,7 @@ const MainFrameComponent: MainFrameComponentType = (
         <div className='_in'></div>
       </div>
       <div className='__footer'>{children[4]}</div>
+      <LoaderOverlayYrl />
     </div>
   )
 }

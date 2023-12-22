@@ -11,24 +11,31 @@ import {
   LoaderOverlayYrlType,
 } from './LoaderOverlayYrlTypes'
 
+const propsDefault = {
+  classMain: 'LoaderOverlay3Yrl',
+}
+
 /**
  * @description Component to render LoaderOverlayYrl
  * @import import { LoaderOverlayYrl, LoaderOverlayYrlPropsType, LoaderOverlayYrlPropsOutType, LoaderOverlayYrlType } 
              from '../ComponentsLibrary/'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
-  props: LoaderOverlayYrlComponentPropsType
+  propsIn: LoaderOverlayYrlComponentPropsType
 ) => {
+  const props = { ...propsDefault, ...propsIn }
+
   const {
+    classMain,
     storeStateSlice: { isLoaderOverlayVisible },
   } = props
 
-  const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
+  const classAdd = isLoaderOverlayVisible ? `${classMain}_show` : ''
 
   const propsOut: LoaderOverlayYrlPropsOutType = {}
 
   return (
-    <div className={getClasses(`LoaderOverlayYrl`, classAdd)}>
+    <div className={getClasses(classMain, classAdd)}>
       <div className={`_spinner`}></div>
     </div>
   )

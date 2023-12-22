@@ -58,43 +58,48 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <style>
-    .loadingIconWrapper {
-      position: relative;
-      display: flex;
+    .LoaderOverlay3Yrl {
+      display: none;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
-      flex-direction: row;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
       width: 100%;
+      height: 100%;
+      overflow: auto;
     }
 
-    .loadingIcon {
+    .LoaderOverlay3Yrl .loadingIcon {
       width: 5rem;
       height: 5rem;
       color: tomato;
       margin: 50%;
     }
 
-    .loader:before,
-    .loader:after {
+    .LoaderOverlay3Yrl ._spinner:before,
+    .LoaderOverlay3Yrl ._spinner:after {
       position: absolute;
       top: 50%;
       left: 50%;
       border-radius: 50%;
       border-style: solid;
-      border-top-color: #ECD078;
-      border-right-color: #C02942;
+      border-top-color: #ecd078;
+      border-right-color: #c02942;
       border-bottom-color: #542437;
-      border-left-color: #53777A;
+      border-left-color: #53777a;
       content: '';
       transform: translate(-50%, -50%);
       animation: rotate 1.5s infinite ease-in-out;
     }
 
-    .loader:before {
+    .LoaderOverlay3Yrl ._spinner:before {
       border-width: 5vh;
     }
 
-    .loader:after {
+    .LoaderOverlay3Yrl ._spinner:after {
       width: 15vh;
       height: 15vh;
       border-width: 1vh;
@@ -108,6 +113,46 @@
 
       100% {
         transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @keyframes spinner {
+      0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+      }
+
+      100% {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+      }
+    }
+
+    .LoaderOverlay3Yrl ._spinner::before {
+      animation: 1.5s linear infinite spinner;
+      animation-play-state: inherit;
+      border: solid 0.5rem #cfd0d1;
+      border-bottom-color: #1c87c9;
+      border-radius: 50%;
+      content: '';
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      will-change: transform;
+    }
+
+    .LoaderOverlay3Yrl_show {
+      display: flex;
+      background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
+      .LoaderOverlay3Yrl_show {
+        background-color: rgba(255, 255, 255, 0);
+        backdrop-filter: blur(0.33rem);
+        transition: backdrop-filter 5s;
+        -webkit-backdrop-filter: blur(0.33rem);
       }
     }
   </style>
@@ -126,14 +171,14 @@
     </form>
   </noscript>
   <div id="root">
-    <div class="loadingIconWrapper">
-      <div class="loader"></div>
+    <div class="LoaderOverlay3Yrl LoaderOverlay3Yrl_show">
+      <div class="_spinner"></div>
     </div>
   </div>
   <!-- <script defer="defer" src="/static/js/bundle.min.js.gz"></script> -->
 
   <script type="text/javascript" defer="defer"
-    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.64.1/dist/static/js/bundle.min.js"
+    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.64.2/dist/static/js/bundle.min.js"
     crossorigin="anonymous"></script>
 
 </body>

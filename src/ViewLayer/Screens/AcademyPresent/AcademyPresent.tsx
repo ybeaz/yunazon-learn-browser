@@ -21,10 +21,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import {
-  LoaderOverlayYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -271,7 +268,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* footer */}
             {null}
           </MainFrame>
-          <LoaderOverlayYrl />
         </>
       ) : null}
     </div>

@@ -1,6 +1,7 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type LoaderOverlayYrlComponentPropsType = {
+  classMain?: 'LoaderOverlayYrl' | 'LoaderOverlay2Yrl' | 'LoaderOverlay3Yrl'
   storeStateSlice: {
     isLoaderOverlayVisible: RootStoreType['componentsState']['isLoaderOverlayVisible']
   }

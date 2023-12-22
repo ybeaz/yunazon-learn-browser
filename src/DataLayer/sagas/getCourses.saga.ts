@@ -43,6 +43,8 @@ export function* getCoursesGenerator(): Iterable<any> {
   }
 
   try {
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+
     const variables = {
       readCoursesConnectionInput,
     }
@@ -68,6 +70,8 @@ export function* getCoursesGenerator(): Iterable<any> {
     yield put(
       actionSync.SET_PAGE_INFO({ paginationName: 'pagesCourses', ...pageInfo })
     )
+
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
   }
