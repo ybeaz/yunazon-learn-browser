@@ -48,21 +48,25 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
 
   try {
     let randomNumArrLimited: number[] = []
-    while (randomNumArrLimited.length < numberToPick) {
-      const randomNum = getRandomNumBetween(0, inputArray.length - 1)
-      const randomNumCeil = Math.floor(randomNum)
-      randomNumArrLimited = [...randomNumArrLimited, randomNumCeil]
-      randomNumArrLimited = [...new Set(randomNumArrLimited)].sort(
-        (a: any, b: any) => a - b
+    if (inputArray.length <= numberToPick) {
+      output = inputArray
+    } else {
+      while (randomNumArrLimited.length < numberToPick) {
+        const randomNum = getRandomNumBetween(0, inputArray.length - 1)
+        const randomNumCeil = Math.floor(randomNum)
+        randomNumArrLimited = [...randomNumArrLimited, randomNumCeil]
+        randomNumArrLimited = [...new Set(randomNumArrLimited)].sort(
+          (a: any, b: any) => a - b
+        )
+        // console.info('getArrayElemPickedRandomly [58]', { randomNumArrLimited })
+      }
+
+      // console.info('\ngetArrayElemPickedRandomly [60]', { randomNumArrLimited })
+
+      output = inputArray.filter((_: any, index: number) =>
+        randomNumArrLimited.includes(index)
       )
-      // console.info('getArrayElemPickedRandomly [58]', { randomNumArrLimited })
     }
-
-    // console.info('\ngetArrayElemPickedRandomly [60]', { randomNumArrLimited })
-
-    output = inputArray.filter((_: any, index: number) =>
-      randomNumArrLimited.includes(index)
-    )
 
     if (printRes) {
       console.log('\ngetArrayElemPickedRandomly [43]', { randomNumArrLimited })
@@ -84,7 +88,7 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
 if (require.main === module) {
   ;(async () => {
     const params = {
-      inputArray: [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }, { g: 5 }],
+      inputArray: [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }], // [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }, { g: 5 }]
       numberToPick: 4,
     }
 
