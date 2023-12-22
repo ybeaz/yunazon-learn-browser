@@ -11,7 +11,7 @@ export type GetActiveCourseDataResType = {
 interface GetActiveCourseDataType {
   (
     courses: CourseType[],
-    moduleIDActive: string | undefined
+    moduleIDActive: string | null
   ): GetActiveCourseDataResType
 }
 
@@ -22,7 +22,7 @@ interface GetActiveCourseDataType {
  */
 export const getActiveCourseData: GetActiveCourseDataType = (
   courses: CourseType[],
-  moduleIDActive: string | undefined
+  moduleIDActive: string | null
 ) => {
   const res: GetActiveCourseDataResType = {
     courseActive: {},
