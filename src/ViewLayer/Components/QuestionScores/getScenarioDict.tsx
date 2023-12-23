@@ -2,23 +2,7 @@ import React from 'react'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
 import { getQuesionString } from '../../../Shared/getQuesionString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getLocalStorageDeletedCourse } from '../../../Shared/getLocalStorageDeletedCourse'
-
-export type GetScenarioDictPropsType = {
-  result: ResultType
-  language: string
-  courseCapture: string
-  right: number
-  total: number
-  nameFirst: string | undefined
-  nameMiddle: string | undefined
-  nameLast: string | undefined
-  meta: any
-  description: string
-  courseID: string | undefined
-  moduleID: string | undefined
-  contentID: string | undefined
-}
+import { GetScenarioDictPropsType } from './QuestionScoresTypes'
 
 export type GetScenarioDictResType = any
 
@@ -50,8 +34,19 @@ export const getScenarioDict: GetScenarioDictType = (
     courseID,
     moduleID,
     contentID,
+    sub,
   } = props
-  const result = props.result || ''
+
+  let scenarioCase: string = props.result || ''
+  if (!sub && props.result === 'success') {
+    scenarioCase = 'successNoAuth'
+  }
+
+  console.info('getScenarioDict [45]', {
+    sub,
+    scenarioCase,
+    'props.result': props.result,
+  })
 
   const question = getQuesionString(language, right)
 
@@ -69,6 +64,7 @@ export const getScenarioDict: GetScenarioDictType = (
   const YouWereCommittedToSuccess =
     DICTIONARY.YouWereCommittedToSuccess[language]
 
+  // @ts-expect-error
   const scenario: Record<string, any> = {
     success: {
       message: (
@@ -102,6 +98,18 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
+
+    successNoAuth: {
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
+        action: {
+          typeEvent: 'CLICK_ON_SIGN_IN',
+          data: {},
+        },
+      },
+    },
+
     failure: {
       message: (
         <>
@@ -123,6 +131,7 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
+
     debug: {
       message: (
         <>
@@ -155,7 +164,7 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
-  }[result]
+  }[scenarioCase]
 
   return scenario
 }

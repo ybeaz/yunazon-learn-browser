@@ -7,6 +7,7 @@ import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from '../../Shared/withDebounce'
+import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
@@ -21,7 +22,8 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       // @ts-expect-error
       storeStateApp?.authAwsCognitoUserData?.refresh_token
 
-    const refresh_token_localStorage = localStorage.getItem('refresh_token')
+    const refresh_token_localStorage =
+      getLocalStorageReadKeyObj('refresh_token')
 
     if (refresh_token_App) refresh_token = refresh_token_App
     else if (refresh_token_localStorage)

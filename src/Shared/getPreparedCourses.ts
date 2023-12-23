@@ -7,15 +7,10 @@ import { getOptionsShuffled } from './getOptionsShuffled'
 import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
 import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
-import { getLocalStorageReadKeyObj } from './getLocalStorageReadKeyObj'
-import { getCheckedCoursesAnswered } from './getCheckedCoursesAnswered'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
-export type GetPreparedCoursesResType = {
-  courses: CourseType[]
-  academyPresentCase: AcademyPresentCaseEnumType
-}
+export type GetPreparedCoursesResType = CourseType[]
 
 interface GetPreparedCoursesType {
   (
@@ -35,54 +30,24 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   options
 ) => {
   let coursesNext: CourseType[] = []
-  let academyPresentCase: AcademyPresentCaseEnumType =
+  let caseScenario: AcademyPresentCaseEnumType =
     AcademyPresentCaseEnumType['courseFirstLoading']
 
   try {
-    const coursesInProgress =
-      getLocalStorageReadKeyObj('coursesInProgress') || []
+    /* Case: use the whole courses set from API call */
+    caseScenario = AcademyPresentCaseEnumType['courseFirstLoading']
 
-    /* Case: use courseInProgress from the localStorage */
-    if (
-      coursesInProgress &&
-      coursesInProgress.length &&
-      courses.some(
-        (item: CourseType) => item.courseID === coursesInProgress[0]?.courseID
-      )
-    ) {
-      coursesNext = courses.map((course: CourseType) => {
-        const { courseID } = course
-
-        const courseInProgressFound = coursesInProgress.find(
-          (course: CourseType) => course.courseID === courseID
-        )
-
-        let output = course
-        if (courseInProgressFound) output = courseInProgressFound
-
-        return output
-      })
-
-      academyPresentCase = AcademyPresentCaseEnumType['courseInProgress']
-      const isAnswered = getCheckedCoursesAnswered(coursesNext)
-      if (isAnswered)
-        academyPresentCase = AcademyPresentCaseEnumType['courseCompleted']
-    } else {
-      /* Case: use the whole courses set from API call */
-      academyPresentCase = AcademyPresentCaseEnumType['courseFirstLoading']
-
-      coursesNext =
-        // .exec(getProvidedSearchString)
-        getChainedResponsibility(courses)
-          .exec(getValidatedCourses)
-          .exec(getFilteredActiveCoursesModules)
-          .exec(getFilteredActiveQuestions)
-          .exec(getQuestionsPickedRandomly)
-          // .exec(getProvidedID)
-          // .exec(getProvidedSelectedDefault)
-          .exec(getProdidevAnswerDefault)
-          .exec(getOptionsShuffled).result
-    }
+    coursesNext =
+      // .exec(getProvidedSearchString)
+      getChainedResponsibility(courses)
+        .exec(getValidatedCourses)
+        .exec(getFilteredActiveCoursesModules)
+        .exec(getFilteredActiveQuestions)
+        .exec(getQuestionsPickedRandomly)
+        // .exec(getProvidedID)
+        // .exec(getProvidedSelectedDefault)
+        .exec(getProdidevAnswerDefault)
+        .exec(getOptionsShuffled).result
 
     if (options?.printRes) {
       console.log('getPreparedCourses', { coursesNext })
@@ -93,7 +58,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
       courses,
     })
   } finally {
-    return { courses: coursesNext, academyPresentCase }
+    return coursesNext
   }
 }
 

@@ -1,6 +1,28 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
-import { QuestionType } from '../../../@types/GraphqlTypes'
+import {
+  CourseType,
+  ModuleType,
+  MetaCourseType,
+} from '../../../@types/GraphqlTypes'
+import { ResultType } from '../../../Shared/getAnswersChecked2'
+
+export type GetScenarioDictPropsType = {
+  result: ResultType
+  language: RootStoreType['language']
+  courseCapture: string
+  right: number
+  total: number
+  nameFirst: RootStoreType['forms']['user']['nameFirst']
+  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
+  nameLast: RootStoreType['forms']['user']['nameLast']
+  meta?: MetaCourseType | {}
+  description: string
+  courseID: CourseType['courseID']
+  moduleID: ModuleType['moduleID']
+  contentID: ModuleType['contentID']
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
+}
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -14,6 +36,7 @@ export type QuestionScoresComponentPropsType = {
     nameFirst: RootStoreType['forms']['user']['nameFirst']
     nameMiddle: RootStoreType['forms']['user']['nameMiddle']
     nameLast: RootStoreType['forms']['user']['nameLast']
+    sub: RootStoreType['authAwsCognitoUserData']['sub']
   }
 }
 

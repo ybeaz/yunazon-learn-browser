@@ -13,11 +13,12 @@ import {
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { getScenarioDict, GetScenarioDictPropsType } from './getScenarioDict'
+import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  GetScenarioDictPropsType,
   QuestionScoresComponentPropsType,
   QuestionScoresPropsType,
   QuestionScoresPropsOutType,
@@ -46,6 +47,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       nameFirst,
       nameMiddle,
       nameLast,
+      sub,
     },
   } = props
 
@@ -96,12 +98,13 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     nameFirst,
     nameMiddle,
     nameLast,
-    meta,
+    meta: meta || {},
     courseCapture: courseCapture || '',
     description: description || '',
-    courseID,
-    moduleID,
-    contentID,
+    courseID: courseID || '',
+    moduleID: moduleID || '',
+    contentID: contentID || '',
+    sub,
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
@@ -156,6 +159,7 @@ const storeStateSliceProps: string[] = [
   'nameFirst',
   'nameMiddle',
   'nameLast',
+  'sub',
 ]
 export const QuestionScores = withStoreStateSelectedYrl(
   storeStateSliceProps,

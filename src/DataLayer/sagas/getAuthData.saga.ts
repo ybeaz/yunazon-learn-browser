@@ -7,8 +7,11 @@ import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
 import { getRedirected } from '../../Shared/getRedirected'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
+import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getLocalStorageDeletedObjFrom } from '../../Shared/getLocalStorageDeletedObjFrom'
+import { withDebounce } from '../../Shared/withDebounce'
 
-function* getAuthData(params: ActionReduxType | any): Iterable<any> {
+function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     const languageLocalStorage = localStorage.getItem('language')
 
@@ -21,7 +24,22 @@ function* getAuthData(params: ActionReduxType | any): Iterable<any> {
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })
-      getRedirected('/')
+
+      const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
+      if (redirectAuthFrom) {
+        getLocalStorageDeletedObjFrom({ redirectAuthFrom: null })
+
+        getRedirected(redirectAuthFrom, {
+          isOrigin: true,
+          parentFunction: 'getAuthData [34]',
+          printRes: false,
+        })
+      } else {
+        getRedirected('/', {
+          parentFunction: 'getAuthData 40',
+          printRes: false,
+        })
+      }
     } else {
       yield call(getAuthAwsCognitoUserRefreshed)
     }
@@ -35,6 +53,8 @@ function* getAuthData(params: ActionReduxType | any): Iterable<any> {
     console.info('getAuthData [31]', error.name + ': ' + error.message)
   }
 }
+
+export const getAuthData = withDebounce(getAuthDataGenerator, 500)
 
 export default function* getAuthDataSaga() {
   yield takeEvery([actionAsync.GET_AUTH_DATA.REQUEST().type], getAuthData)

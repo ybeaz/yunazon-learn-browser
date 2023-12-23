@@ -14,7 +14,7 @@ export const getLocalStorageReadKeyObj: GetSetObjToLocalStorageType = (
   let output: any = null
 
   try {
-    const entity = localStorage.getItem(key) || '[]'
+    const entity = localStorage.getItem(key) || 'null'
     output = JSON.parse(entity)
 
     if (options?.printRes) {
