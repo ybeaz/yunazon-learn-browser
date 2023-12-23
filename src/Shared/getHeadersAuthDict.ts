@@ -2,6 +2,7 @@ import { consoler } from './consoler'
 import { CLIENTS_URI } from '../Constants/clientsUri.const'
 import { ClientAppType } from '../@types/ClientAppType'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
+import { getLocalStorageReadKeyObj } from './getLocalStorageReadKeyObj'
 
 export type GetHeadersAuthDictParamsType = VideoDecoder
 
@@ -35,7 +36,7 @@ export const getHeadersAuthDict: GetHeadersAuthDictType = (
   let headersAuthDict: GetHeadersAuthDictResType = {}
 
   try {
-    const refresh_token = localStorage.getItem('refresh_token') || ''
+    const refresh_token = getLocalStorageReadKeyObj('refresh_token')
 
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]

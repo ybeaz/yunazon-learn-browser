@@ -851,9 +851,13 @@ export const DICTIONARY: IDictionary = {
     en: 'middle name',
     ru: 'отчество',
   },
-  ToReceiveCertificate: {
+  ToReceiveCertificateFillTheForm: {
     en: 'To receive a certificate fill the form',
     ru: 'Для получения сертификата заполните форму',
+  },
+  ToReceiveCertificateLogIn: {
+    en: 'To receive a certificate and access your data in the future, please log in',
+    ru: 'Для получения сертификата и доступа к Вашим данным в будущем, пожалуйста, авторизуйтесь',
   },
   correctAnsweresFrom: {
     en: 'correct answeres from',

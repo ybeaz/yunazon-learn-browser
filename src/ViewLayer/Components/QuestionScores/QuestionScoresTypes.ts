@@ -1,5 +1,6 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 import {
   CourseType,
   ModuleType,
@@ -47,6 +48,7 @@ export type QuestionScoresPropsType = Omit<
 
 export type QuestionScoresPropsOutType = {
   formInputNamesProps: FormInputNamesPropsType
+  buttonForwardProps: ButtonYrlPropsType
 }
 
 /**

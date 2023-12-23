@@ -30,8 +30,6 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
     })
     const courseIDInProgres = courseInProgres && courseInProgres.courseID
 
-    console.info('getModuleData.saga [30]', { coursesInProgress })
-
     /* Case: use courseInProgress from the localStorage */
     if (coursesInProgress && coursesInProgress.length && courseIDInProgres) {
       coursesNext = coursesInProgress
@@ -41,6 +39,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
       if (isAnswered)
         caseScenario = AcademyPresentCaseEnumType['courseCompleted']
     } else {
+      /* Case: initial loading */
       const variables = {
         readCoursesInput: [
           {
@@ -64,12 +63,6 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
     yield put(actionSync.SET_COURSE_ID_ACTIVE({ courseID }))
 
     yield put(actionSync.SET_COURSES(coursesNext))
-
-    console.info('getModuleData.saga [63]', {
-      courseID,
-      courseActive,
-      coursesNext,
-    })
 
     if (
       caseScenario === AcademyPresentCaseEnumType['courseInProgress'] ||

@@ -42,15 +42,12 @@ export const getScenarioDict: GetScenarioDictType = (
     scenarioCase = 'successNoAuth'
   }
 
-  console.info('getScenarioDict [45]', {
-    sub,
-    scenarioCase,
-    'props.result': props.result,
-  })
-
   const question = getQuesionString(language, right)
 
-  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
+  const ToReceiveCertificateFillTheForm =
+    DICTIONARY.ToReceiveCertificateFillTheForm[language]
+  const ToReceiveCertificateLogIn =
+    DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
   const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
   const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
@@ -67,6 +64,7 @@ export const getScenarioDict: GetScenarioDictType = (
   // @ts-expect-error
   const scenario: Record<string, any> = {
     success: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
@@ -75,7 +73,7 @@ export const getScenarioDict: GetScenarioDictType = (
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>{ToReceiveCertificate}</p>
+          <p>{ToReceiveCertificateFillTheForm}</p>
         </>
       ),
       buttonForwardProps: {
@@ -100,6 +98,18 @@ export const getScenarioDict: GetScenarioDictType = (
     },
 
     successNoAuth: {
+      scenarioCase,
+      message: (
+        <>
+          <div className='_greet'>{Congratulations}</div>
+          <p>{YouCompletedTheCourse}</p>
+          <p>"{courseCapture}"</p>
+          <p>
+            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+          </p>
+          <p>{ToReceiveCertificateLogIn}</p>
+        </>
+      ),
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
@@ -111,6 +121,7 @@ export const getScenarioDict: GetScenarioDictType = (
     },
 
     failure: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{YouWereCommittedToSuccess}</div>
@@ -133,6 +144,7 @@ export const getScenarioDict: GetScenarioDictType = (
     },
 
     debug: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
@@ -141,7 +153,7 @@ export const getScenarioDict: GetScenarioDictType = (
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>{ToReceiveCertificate}</p>
+          <p>{ToReceiveCertificateFillTheForm}</p>
         </>
       ),
       buttonForwardProps: {

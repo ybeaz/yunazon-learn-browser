@@ -6,8 +6,12 @@ import { handleEvents } from '../../DataLayer/index.handleEvents'
 /**
  * @description Make initial call for data and pupulate it to the store
  */
-export const useLoadedInitialTeachContent: Function = (): void => {
+export const useLoadedInitialTeachContent: Function = (
+  { isSkipping }: { isSkipping: boolean } = { isSkipping: false }
+): void => {
   useEffect(() => {
+    if (isSkipping) return
+
     const scriptProps = {
       src: 'https://www.youtube.com/iframe_api',
       id: 'youtube_com_iframe_api',

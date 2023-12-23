@@ -15,7 +15,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import {
   GetScenarioDictPropsType,
@@ -132,18 +132,25 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       buttonForwardProps: scenario.buttonForwardProps,
     },
+    buttonForwardProps: scenario.buttonForwardProps,
   }
 
   return (
     <div className='QuestionScores'>
       <div className='_text'>{scenario.message}</div>
-      {result === 'success' ? (
+      {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />
       ) : null}
       {result === 'failure' ? (
         <div className='_qwa'>
           <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
           {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
+        </div>
+      ) : null}
+      {scenario.scenarioCase === 'success' ||
+      scenario.scenarioCase === 'successNoAuth' ? (
+        <div className='_buttons'>
+          <ButtonYrl {...propsOut.buttonForwardProps} />
         </div>
       ) : null}
     </div>

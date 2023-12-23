@@ -45,10 +45,11 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const coursesFiltered = courses
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
-  if (!redirectAuthFrom) {
-    useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
-    useLoadedInitialTeachContent()
-  }
+  let actionsToMount: any[] = []
+  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
+
+  useEffectedInitialRequests(actionsToMount)
+  useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })
 
   const screenType = 'AcademyMatrix'
 
