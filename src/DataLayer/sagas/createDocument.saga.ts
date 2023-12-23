@@ -6,6 +6,7 @@ import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getLocalStorageDeletedCourse } from '../../Shared/getLocalStorageDeletedCourse'
 
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -65,6 +66,8 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))
+
+    getLocalStorageDeletedCourse(courseID)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

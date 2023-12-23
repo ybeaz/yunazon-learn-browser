@@ -25,15 +25,20 @@ export const getLocalStorageDeletedCourse: GetLocalStorageDeletedCourseType = (
 ) => {
   try {
     const coursesInProgress = JSON.parse(
-      localStorage.getItem('coursesInProgress') || '[]'
+      localStorage.getItem('coursesInProgress') || '[{}]'
     )
     if (courseID && coursesInProgress && coursesInProgress.length) {
       const coursesInProgressNext = coursesInProgress.filter(
         (course: any) => course?.courseID !== courseID
       )
-      getLocalStorageSetObjTo({
-        coursesInProgress: JSON.stringify(coursesInProgressNext),
-      })
+
+      if (coursesInProgressNext.length) {
+        getLocalStorageSetObjTo({
+          coursesInProgress: coursesInProgressNext,
+        })
+      } else {
+        localStorage.removeItem('coursesInProgress')
+      }
     }
 
     if (options?.printRes) {

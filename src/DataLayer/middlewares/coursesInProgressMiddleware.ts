@@ -8,10 +8,10 @@ import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 const setLocalStorageCoursesInProgress = (...args: any) => {
   const storeState = args[0]
 
-  const courses = storeState.courses
-  const coursesJsonString = JSON.stringify(courses)
+  // const courses = storeState.courses
+  // const coursesJsonString = JSON.stringify(courses)
   getLocalStorageSetObjTo({
-    coursesInProgress: coursesJsonString,
+    coursesInProgress: storeState.courses,
   })
 }
 

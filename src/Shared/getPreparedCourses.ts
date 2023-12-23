@@ -6,10 +6,8 @@ import { getValidatedCourses } from './getValidatedCourses'
 import { getOptionsShuffled } from './getOptionsShuffled'
 import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
-import {
-  getQuestionsPickedRandomly,
-  GetQuestionsPickedRandomlyParamsType,
-} from '../Shared/getQuestionsPickedRandomly'
+import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
+import { getLocalStorageReadKeyObj } from './getLocalStorageReadKeyObj'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
@@ -35,9 +33,8 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   let coursesNext: CourseType[] = []
 
   try {
-    const coursesInProgress = JSON.parse(
-      localStorage.getItem('coursesInProgress') || '[]'
-    )
+    const coursesInProgress =
+      getLocalStorageReadKeyObj('coursesInProgress') || []
 
     let caseDescription = ''
 

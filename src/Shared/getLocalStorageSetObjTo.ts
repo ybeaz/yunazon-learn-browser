@@ -11,12 +11,20 @@ export const getLocalStorageSetObjTo: GetSetObjToLocalStorageType = (
   objIn: Record<string, any>,
   options
 ): void => {
-  const { source, ...obj } = objIn
+  try {
+    const { source, ...obj } = objIn
 
-  if (options?.printRes) {
-    console.log('getLocalStorageSetObjTo [16]', { source, obj })
+    Object.keys(obj).forEach(key => {
+      localStorage.setItem(key, JSON.stringify(obj[key]))
+    })
+
+    if (options?.printRes) {
+      console.log('getLocalStorageSetObjTo [24]', { source, obj })
+    }
+  } catch (error: any) {
+    console.log('getLocalStorageSetObjTo', 'Error', error.message)
+  } finally {
   }
-  Object.keys(obj).forEach(key => localStorage.setItem(key, obj[key]))
 }
 
 /**

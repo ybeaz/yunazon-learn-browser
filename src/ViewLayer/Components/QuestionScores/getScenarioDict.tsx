@@ -53,11 +53,6 @@ export const getScenarioDict: GetScenarioDictType = (
   } = props
   const result = props.result || ''
 
-  /*  Remove localStorage coursesInProgress in case of the failure */
-  if (result === 'failure') {
-    getLocalStorageDeletedCourse(courseID)
-  }
-
   const question = getQuesionString(language, right)
 
   const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
