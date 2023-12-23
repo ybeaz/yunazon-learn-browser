@@ -108,8 +108,9 @@ export const getScenarioDict: GetScenarioDictType = (
           <p>
             {andThisTimeAnswered} {right} {question} {from} {total}.
           </p>
-          <p>{ThisIsNotEnough}</p>
-          <p>{andReceiveTheCertificate}</p>
+          <p>
+            {ThisIsNotEnough} {andReceiveTheCertificate}
+          </p>
           <p>{YouCanTryOnceAgain}</p>
         </>
       ),

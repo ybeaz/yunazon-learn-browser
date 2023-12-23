@@ -35,17 +35,48 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   let coursesNext: CourseType[] = []
 
   try {
-    coursesNext =
-      // .exec(getProvidedSearchString)
-      getChainedResponsibility(courses)
-        .exec(getValidatedCourses)
-        .exec(getFilteredActiveCoursesModules)
-        .exec(getFilteredActiveQuestions)
-        .exec(getQuestionsPickedRandomly)
-        // .exec(getProvidedID)
-        // .exec(getProvidedSelectedDefault)
-        .exec(getProdidevAnswerDefault)
-        .exec(getOptionsShuffled).result
+    const coursesInProgress = JSON.parse(
+      localStorage.getItem('coursesInProgress') || 'null'
+    )
+
+    let caseDescription = ''
+
+    /* Case: use courseInProgress from the localStorage */
+    if (
+      coursesInProgress &&
+      courses.some(
+        (item: any) => item.courseID === coursesInProgress[0]?.courseID
+      )
+    ) {
+      caseDescription = 'use courseInProgress from the localStorage'
+      coursesNext = courses.map((course: any) => {
+        const { courseID } = course
+
+        const courseInProgressFound = coursesInProgress.find(
+          (course: any) => course.courseID === courseID
+        )
+
+        let output = course
+        if (courseInProgressFound) output = courseInProgressFound
+
+        return output
+      })
+    } else {
+      /* Case: use the whole courses set from API call */
+      caseDescription = 'use the whole courses set from API call'
+
+      coursesNext =
+        // .exec(getProvidedSearchString)
+        getChainedResponsibility(courses)
+          .exec(getValidatedCourses)
+          .exec(getFilteredActiveCoursesModules)
+          .exec(getFilteredActiveQuestions)
+          .exec(getQuestionsPickedRandomly)
+          // .exec(getProvidedID)
+          // .exec(getProvidedSelectedDefault)
+          .exec(getProdidevAnswerDefault)
+          .exec(getOptionsShuffled).result
+    }
 
     if (options?.printRes) {
       console.log('getPreparedCourses', { coursesNext })
