@@ -2,7 +2,7 @@ import React from 'react'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
 import { getQuesionString } from '../../../Shared/getQuesionString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getLocalStorageSetObjTo } from '../../../Shared/getLocalStorageSetObjTo'
+import { getLocalStorageDeletedCourse } from '../../../Shared/getLocalStorageDeletedCourse'
 
 export type GetScenarioDictPropsType = {
   result: ResultType
@@ -53,18 +53,9 @@ export const getScenarioDict: GetScenarioDictType = (
   } = props
   const result = props.result || ''
 
+  /*  Remove localStorage coursesInProgress in case of the failure */
   if (result === 'failure') {
-    const coursesInProgress = JSON.parse(
-      localStorage.getItem('coursesInProgress') || 'null'
-    )
-    if (coursesInProgress && coursesInProgress.length) {
-      const coursesInProgressNext = coursesInProgress.filter(
-        (course: any) => course.courseID !== courseID
-      )
-      getLocalStorageSetObjTo({
-        coursesInProgress: JSON.stringify(coursesInProgressNext),
-      })
-    }
+    getLocalStorageDeletedCourse(courseID)
   }
 
   const question = getQuesionString(language, right)
