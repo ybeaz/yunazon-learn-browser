@@ -1,5 +1,6 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
+import { CourseType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -28,7 +29,8 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
       resolveGraphqlName: 'readCourses',
     })
 
-    const coursesNext = getPreparedCourses(readCourses)
+    const { courses: coursesNext, academyPresentCase } =
+      getPreparedCourses(readCourses)
 
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
     yield put(
@@ -36,6 +38,22 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield put(actionSync.SET_COURSES(coursesNext))
+
+    if (
+      academyPresentCase === AcademyPresentCaseEnumType['courseInProgress'] ||
+      academyPresentCase === AcademyPresentCaseEnumType['courseCompleted']
+    ) {
+      yield put(actionSync.TOGGLE_START_COURSE(true))
+
+      if (
+        academyPresentCase === AcademyPresentCaseEnumType['courseCompleted']
+      ) {
+        const data = [
+          { childName: 'QuestionScores', isActive: true, childProps: {} },
+        ]
+        yield put(actionSync.SET_MODAL_FRAMES(data))
+      }
+    }
 
     const { width } = getSizeWindow()
     if (width <= 480) {

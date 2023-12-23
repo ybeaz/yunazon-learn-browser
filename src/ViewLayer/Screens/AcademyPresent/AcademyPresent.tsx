@@ -99,11 +99,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   useEffect(() => {
     if (courses.length && isLoaded === false) {
-      handleEvents(
-        {},
-        { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
-      )
-
       const {
         courseCapture: courseCapture2,
         language: language2,

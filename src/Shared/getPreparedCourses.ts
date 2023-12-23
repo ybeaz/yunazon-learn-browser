@@ -1,4 +1,4 @@
-import { CoursesConnectionType, CourseType } from '../@types/GraphqlTypes'
+import { CourseType, AcademyPresentCaseEnumType } from '../@types/'
 
 import { getFilteredActiveCoursesModules } from './getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from './getFilteredActiveQuestions'
@@ -8,10 +8,14 @@ import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
 import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
 import { getLocalStorageReadKeyObj } from './getLocalStorageReadKeyObj'
+import { getCheckedCoursesAnswered } from './getCheckedCoursesAnswered'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
-export type GetPreparedCoursesResType = CourseType[]
+export type GetPreparedCoursesResType = {
+  courses: CourseType[]
+  academyPresentCase: AcademyPresentCaseEnumType
+}
 
 interface GetPreparedCoursesType {
   (
@@ -31,27 +35,26 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   options
 ) => {
   let coursesNext: CourseType[] = []
+  let academyPresentCase: AcademyPresentCaseEnumType =
+    AcademyPresentCaseEnumType['courseFirstLoading']
 
   try {
     const coursesInProgress =
       getLocalStorageReadKeyObj('coursesInProgress') || []
-
-    let caseDescription = ''
 
     /* Case: use courseInProgress from the localStorage */
     if (
       coursesInProgress &&
       coursesInProgress.length &&
       courses.some(
-        (item: any) => item.courseID === coursesInProgress[0]?.courseID
+        (item: CourseType) => item.courseID === coursesInProgress[0]?.courseID
       )
     ) {
-      caseDescription = 'use courseInProgress from the localStorage'
-      coursesNext = courses.map((course: any) => {
+      coursesNext = courses.map((course: CourseType) => {
         const { courseID } = course
 
         const courseInProgressFound = coursesInProgress.find(
-          (course: any) => course.courseID === courseID
+          (course: CourseType) => course.courseID === courseID
         )
 
         let output = course
@@ -59,9 +62,14 @@ export const getPreparedCourses: GetPreparedCoursesType = (
 
         return output
       })
+
+      academyPresentCase = AcademyPresentCaseEnumType['courseInProgress']
+      const isAnswered = getCheckedCoursesAnswered(coursesNext)
+      if (isAnswered)
+        academyPresentCase = AcademyPresentCaseEnumType['courseCompleted']
     } else {
       /* Case: use the whole courses set from API call */
-      caseDescription = 'use the whole courses set from API call'
+      academyPresentCase = AcademyPresentCaseEnumType['courseFirstLoading']
 
       coursesNext =
         // .exec(getProvidedSearchString)
@@ -85,7 +93,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
       courses,
     })
   } finally {
-    return coursesNext
+    return { courses: coursesNext, academyPresentCase }
   }
 }
 
