@@ -104,14 +104,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
       )
 
-      handleEvents(
-        {},
-        {
-          type: 'GET_COURSE_QUERY_PR_QN',
-          data: { moduleID: moduleIDActive || moduleID },
-        }
-      )
-
       const {
         courseCapture: courseCapture2,
         language: language2,

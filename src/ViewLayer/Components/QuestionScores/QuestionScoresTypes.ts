@@ -4,7 +4,6 @@ import { QuestionType } from '../../../@types/GraphqlTypes'
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  questionsIDsPicked: QuestionType[]
   stopVideoHandler: any
   storeStateSlice: {
     language: RootStoreType['language']

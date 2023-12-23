@@ -5,7 +5,6 @@ import { QuestionType } from '../../../@types/GraphqlTypes'
 import {
   getActiveCourseData,
   getQuesionString,
-  getArrayElemPickedRandomly,
   getButtonsClassString,
   getChunkedArray,
 } from '../../../Shared/'
@@ -48,25 +47,8 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
 
-  const questionsPickedRandomlyAndFrozen = useMemo(
-    () =>
-      getArrayElemPickedRandomly({
-        inputArray: questionsActive,
-        numberToPick: questionNumber || 6,
-      }),
-    [moduleID]
-  )
-
-  const questionsIDsPicked = questionsPickedRandomlyAndFrozen.map(
-    (question: QuestionType) => question.questionID
-  )
-
-  const questionsPickedRandomly = questionsActive.filter((question: any) =>
-    questionsIDsPicked.includes(question?.questionID)
-  )
-
   const questionsChunked = getChunkedArray(
-    questionsPickedRandomly,
+    questionsActive,
     numberQuestionsInSlide
   )
 
@@ -128,7 +110,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   } = getButtonsClassString(
     questionsSlideNumber,
     questionsChunked.length,
-    questionsPickedRandomly,
+    questionsActive,
     questionsChunked,
     isCourseStarted
   )
@@ -193,7 +175,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
           {
             childName: 'QuestionScores',
             isActive: true,
-            childProps: { questionsIDsPicked },
+            childProps: {},
           },
         ],
       },

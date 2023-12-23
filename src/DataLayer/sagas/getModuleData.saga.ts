@@ -34,6 +34,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
     yield put(
       actionSync.SET_COURSE_ID_ACTIVE({ courseID: readCourses?.courseID })
     )
+
     yield put(actionSync.SET_COURSES(coursesNext))
 
     const { width } = getSizeWindow()

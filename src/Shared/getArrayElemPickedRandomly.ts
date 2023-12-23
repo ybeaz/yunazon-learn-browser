@@ -1,13 +1,11 @@
 import { getRandomNumBetween } from './getRandomNumBetween'
 
-export type GetArrayElemPickedRandomlyParamsType = {
-  inputArray: any[]
-  numberToPick: number
-}
+export type GetArrayElemPickedRandomlyParamsType = any[]
 
 export type GetArrayElemPickedRandomlyOptionsType = {
   printRes?: boolean
   parentFunction?: string
+  numberToPick?: number
 }
 
 export type GetArrayElemPickedRandomlyResType = any[]
@@ -19,9 +17,10 @@ interface GetArrayElemPickedRandomlyType {
   ): GetArrayElemPickedRandomlyResType
 }
 
-const optionsDefault: GetArrayElemPickedRandomlyOptionsType = {
+const optionsDefault: Required<GetArrayElemPickedRandomlyOptionsType> = {
   printRes: false,
   parentFunction: 'not specified',
+  numberToPick: 6,
 }
 
 /**
@@ -30,21 +29,24 @@ const optionsDefault: GetArrayElemPickedRandomlyOptionsType = {
  *    In debugging mode:
  *       node --inspect-brk -r ts-node/register src/Shared/getArrayElemPickedRandomly.ts
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
- * @import import { getArrayElemPickedRandomly, GetArrayElemPickedRandomlyParamsType } from '../Shared/getArrayElemPickedRandomly'
+ * @import import { getArrayElemPickedRandomly, GetArrayElemPickedRandomlyOptionsType } from '../Shared/getArrayElemPickedRandomly'
  */
 export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
-  params: GetArrayElemPickedRandomlyParamsType,
+  inputArray: GetArrayElemPickedRandomlyParamsType,
   optionsIn: GetArrayElemPickedRandomlyOptionsType = optionsDefault
 ) => {
-  const options: GetArrayElemPickedRandomlyOptionsType = {
+  const options: Required<GetArrayElemPickedRandomlyOptionsType> = {
     ...optionsDefault,
     ...optionsIn,
   }
 
-  const { printRes, parentFunction } = options
-  const { inputArray, numberToPick } = params
+  const {
+    printRes,
+    parentFunction,
+    numberToPick = optionsDefault['numberToPick'],
+  } = options
 
-  let output: any[] = []
+  let output: any[] = inputArray
 
   try {
     let randomNumArrLimited: number[] = []
@@ -69,7 +71,11 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
     }
 
     if (printRes) {
-      console.log('\ngetArrayElemPickedRandomly [43]', { randomNumArrLimited })
+      console.log('\ngetArrayElemPickedRandomly [74]', {
+        randomNumArrLimited,
+        randomNumArrLimitedLen: randomNumArrLimited.length,
+        inputArray,
+      })
     }
   } catch (error: any) {
     console.log('getArrayElemPickedRandomly', 'Error', {
@@ -83,20 +89,25 @@ export const getArrayElemPickedRandomly: GetArrayElemPickedRandomlyType = (
 
 /**
  * @description Here the file is being run directly
- * @
+ * @run ts-node src/Shared/getArrayElemPickedRandomly.ts
  */
 if (require.main === module) {
   ;(async () => {
-    const params = {
-      inputArray: [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }], // [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }, { g: 5 }]
-      numberToPick: 4,
-    }
+    const inputArray = [
+      { a: 0 },
+      { c: 1 },
+      { d: 2 },
+      { e: 3 },
+      { f: 4 },
+      { g: 5 },
+    ] // [{ a: 0 }, { c: 1 }, { d: 2 }, { e: 3 }, { f: 4 }, { g: 5 }]
 
     for (let i = 0; i < 100; i += 1) {
-      const output = await getArrayElemPickedRandomly(params, {
+      const output = getArrayElemPickedRandomly(inputArray, {
         printRes: true,
+        numberToPick: 4,
       })
-      console.log('getArrayElemPickedRandomly [60]', { output })
+      // console.log('getArrayElemPickedRandomly [60]', { output })
     }
   })()
 }

@@ -33,9 +33,9 @@ export const getChainedResponsibility: GetChainedResponsibilityType<
 > = entity => {
   const outputObj: GetChainedResponsibilityOutType<any> = {
     result: entity || [],
-    exec(func: FuncType, params?: any) {
+    exec(func: FuncType, options?: any) {
       const paramsNext: [any, any?] =
-        params && isObject(params) ? [this.result, params] : [this.result]
+        options && isObject(options) ? [this.result, options] : [this.result]
 
       this.result =
         this.result && paramsNext.length ? func.apply(null, paramsNext) : []

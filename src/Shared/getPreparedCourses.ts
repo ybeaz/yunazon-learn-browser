@@ -6,6 +6,10 @@ import { getValidatedCourses } from './getValidatedCourses'
 import { getOptionsShuffled } from './getOptionsShuffled'
 import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
+import {
+  getQuestionsPickedRandomly,
+  GetQuestionsPickedRandomlyParamsType,
+} from '../Shared/getQuestionsPickedRandomly'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
@@ -37,6 +41,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
         .exec(getValidatedCourses)
         .exec(getFilteredActiveCoursesModules)
         .exec(getFilteredActiveQuestions)
+        .exec(getQuestionsPickedRandomly)
         // .exec(getProvidedID)
         // .exec(getProvidedSelectedDefault)
         .exec(getProdidevAnswerDefault)
