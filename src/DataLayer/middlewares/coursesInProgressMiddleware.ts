@@ -13,10 +13,6 @@ const setLocalStorageCoursesInProgress = (...args: any) => {
   getLocalStorageSetObjTo({
     coursesInProgress: coursesJsonString,
   })
-
-  console.info('CoursesInProgressMiddleware [9]', {
-    coursesInProgress: storeState.courses,
-  })
 }
 
 /**

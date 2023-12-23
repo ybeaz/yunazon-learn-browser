@@ -103,6 +103,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     moduleID,
     contentID,
   }
+
   const scenario = getScenarioDict(getScenarioDictProps)
 
   const getRendedQuestionsWrongAnswered: Function = (

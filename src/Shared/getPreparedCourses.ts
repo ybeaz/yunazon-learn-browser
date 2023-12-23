@@ -36,7 +36,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
 
   try {
     const coursesInProgress = JSON.parse(
-      localStorage.getItem('coursesInProgress') || 'null'
+      localStorage.getItem('coursesInProgress') || '[]'
     )
 
     let caseDescription = ''
@@ -44,6 +44,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
     /* Case: use courseInProgress from the localStorage */
     if (
       coursesInProgress &&
+      coursesInProgress.length &&
       courses.some(
         (item: any) => item.courseID === coursesInProgress[0]?.courseID
       )
