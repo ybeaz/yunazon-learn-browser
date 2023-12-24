@@ -1,7 +1,9 @@
 import React from 'react'
+import { BuildDataType } from '../../../@types/BuildDataType'
 
 export type AboutAcademyBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  buildData: BuildDataType
   storeStateSlice: any
 }
 
