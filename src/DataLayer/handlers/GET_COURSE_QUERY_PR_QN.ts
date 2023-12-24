@@ -33,11 +33,24 @@ export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
 
   const { pr, rp, qn, nq } = getParsedUrlQuery()
 
-  if ((qn || nq) && qn !== 'all' && nq !== 'inf') {
+  if (
+    (qn || nq) &&
+    qn !== 'all' &&
+    qn !== 'inf' &&
+    nq !== 'all' &&
+    nq !== 'inf'
+  ) {
     const questionNumberQuery: string = qn ? qn : nq ? nq : '6'
     questionNumberNext = isParsableInt(questionNumberQuery)
       ? parseInt(questionNumberQuery, 10)
       : questionNumberNext
+  } else if (
+    ((qn || nq) && qn === 'all') ||
+    qn === 'inf' ||
+    nq === 'all' ||
+    nq === 'inf'
+  ) {
+    questionNumberNext = modules[moduleIndex].questions.length
   }
 
   if (pr || pr) {
