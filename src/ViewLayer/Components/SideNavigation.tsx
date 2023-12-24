@@ -57,6 +57,22 @@ export const SideNavigationComponent: React.FunctionComponent = (
       isDisplaying: !!preferred_username,
     },
     {
+      icon: 'MdLightbulbOutline',
+      captureRight: DICTIONARY.About[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'SET_MODAL_FRAMES',
+        data: [
+          {
+            childName: 'AboutAcademyBody',
+            isActive: true,
+            childProps: {},
+          },
+        ],
+      },
+      isDisplaying: true,
+    },
+    {
       icon: 'MdCastForEducation',
       captureRight: DICTIONARY.My_courses[language],
       classAdded: 'Button_sideMenuItems',

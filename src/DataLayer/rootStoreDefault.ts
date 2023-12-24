@@ -62,7 +62,6 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
-  isLoadedLocalStorageStoreState: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
@@ -118,8 +117,9 @@ export const rootStoreDefault: RootStoreType = {
   documents: [],
   users: [],
   scorm: {
-    courseIDActive: undefined,
-    moduleIDActive: undefined,
+    // coursesInProgress: [],
+    courseIDActive: null,
+    moduleIDActive: null,
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },

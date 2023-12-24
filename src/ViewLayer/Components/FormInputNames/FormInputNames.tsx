@@ -68,10 +68,6 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
           <label className='_label'>{nameMiddleLabel}</label>
           <InputYrl {...propsOut.inputMiddleNameProps} />
         </div>
-        <div className='_buttons'>
-          {/* <ButtonYrl {...buttonCancelProps} /> */}
-          <ButtonYrl {...propsOut.buttonForwardProps} />
-        </div>
       </form>
     </div>
   )

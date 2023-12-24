@@ -6,8 +6,7 @@ import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
-import { getLocalStorageStoreStateSet } from '../../Shared/getLocalStorageStoreStateSet'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 
 function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
   try {
@@ -50,18 +49,7 @@ function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
       })
     )
 
-    let store = yield select(store => store)
-
-    // @ts-expect-error
-    const storeNext = { ...store, authAwsCognitoUserData }
-    getLocalStorageStoreStateSet(
-      {
-        source: 'getAuthAwsCognitoUserRevoked [39]',
-        storeState: storeNext,
-      },
-      { printRes: false }
-    )
-    getSetObjToLocalStorage({
+    getLocalStorageSetObjTo({
       refresh_token: '',
     })
   } catch (error: any) {

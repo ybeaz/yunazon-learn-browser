@@ -1,7 +1,26 @@
 import { historyWeb } from '../Navigation/historyWeb'
 
+export type GetRedirectedParamsType = string | undefined
+
+export type GetRedirectedOptionsType = {
+  printRes?: boolean
+  parentFunction?: string
+  isOrigin?: boolean
+}
+
+export type GetRedirectedResType = void
+
 interface GetRedirectedType {
-  (pathnameNext: string | undefined): void
+  (
+    pathnameNext: GetRedirectedParamsType,
+    options?: GetRedirectedOptionsType
+  ): GetRedirectedResType
+}
+
+const optionsDefault: Required<GetRedirectedOptionsType> = {
+  printRes: false,
+  parentFunction: 'not specified',
+  isOrigin: false,
 }
 
 /**
@@ -9,16 +28,31 @@ interface GetRedirectedType {
  * @import import { getRedirected } from '../Shared/getRedirected'
  */
 
-export const getRedirected: GetRedirectedType = pathnameNext => {
+export const getRedirected: GetRedirectedType = (pathnameNext, optionsIn) => {
+  const options: Required<GetRedirectedOptionsType> = {
+    ...optionsDefault,
+    ...optionsIn,
+  }
+
+  const { printRes, parentFunction, isOrigin } = options
+
   if (!pathnameNext) return
+
   try {
-    historyWeb.push(pathnameNext)
+    if (!isOrigin) historyWeb.push(pathnameNext)
+    else window.location.href = `${window.location.origin}${pathnameNext}`
+
+    if (printRes)
+      console.log('getRedirected [42]', { pathnameNext, parentFunction })
   } catch (error: any) {
-    const message = error.message
-    console.log('getRedirected [21] Error', {
-      message,
-      pathnameNext,
-    })
+    if (printRes) {
+      const message = error.message
+      console.log('getRedirected [46]', {
+        pathnameNext,
+        parentFunction,
+        error: message,
+      })
+    }
     window.location.pathname = pathnameNext
   }
 }

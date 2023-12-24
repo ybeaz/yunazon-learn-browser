@@ -1,7 +1,6 @@
 export const storeObject = {
   analyticsID: null,
   componentsState: {
-    isLoadedLocalStorageStoreState: true,
     isSepAdvancedSearch: false,
     isShownPalette: false,
     questionsSlideNumber: 0,

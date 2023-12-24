@@ -13,11 +13,12 @@ import {
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { getScenarioDict, GetScenarioDictPropsType } from './getScenarioDict'
+import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import {
+  GetScenarioDictPropsType,
   QuestionScoresComponentPropsType,
   QuestionScoresPropsType,
   QuestionScoresPropsOutType,
@@ -36,7 +37,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   let navigate = useNavigate()
 
   const {
-    questionsIDsPicked = [],
     stopVideoHandler,
     storeStateSlice: {
       language,
@@ -47,6 +47,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       nameFirst,
       nameMiddle,
       nameLast,
+      sub,
     },
   } = props
 
@@ -60,10 +61,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   } = getActiveCourseData(courses, moduleIDActive)
   const { moduleID, contentID, passRate } = moduleActive
 
-  const questionsPickedRandomly = questionsActive?.filter((question: any) =>
-    questionsIDsPicked.includes(question?.questionID)
-  )
-
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
   passRateIn =
@@ -72,12 +69,10 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(
-    questionsPickedRandomly,
+    questionsActive,
     passRateIn
   )
-  const questionsWrongAnswered = getQuestionsWrongAnswered(
-    questionsPickedRandomly
-  )
+  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong } = score
   let result = score.result
 
@@ -103,13 +98,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     nameFirst,
     nameMiddle,
     nameLast,
-    meta,
+    meta: meta || {},
     courseCapture: courseCapture || '',
     description: description || '',
-    courseID,
-    moduleID,
-    contentID,
+    courseID: courseID || '',
+    moduleID: moduleID || '',
+    contentID: contentID || '',
+    sub,
   }
+
   const scenario = getScenarioDict(getScenarioDictProps)
 
   const getRendedQuestionsWrongAnswered: Function = (
@@ -135,18 +132,25 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       buttonForwardProps: scenario.buttonForwardProps,
     },
+    buttonForwardProps: scenario.buttonForwardProps,
   }
 
   return (
     <div className='QuestionScores'>
       <div className='_text'>{scenario.message}</div>
-      {result === 'success' ? (
+      {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />
       ) : null}
       {result === 'failure' ? (
         <div className='_qwa'>
           <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
           {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
+        </div>
+      ) : null}
+      {scenario.scenarioCase === 'success' ||
+      scenario.scenarioCase === 'successNoAuth' ? (
+        <div className='_buttons'>
+          <ButtonYrl {...propsOut.buttonForwardProps} />
         </div>
       ) : null}
     </div>
@@ -162,6 +166,7 @@ const storeStateSliceProps: string[] = [
   'nameFirst',
   'nameMiddle',
   'nameLast',
+  'sub',
 ]
 export const QuestionScores = withStoreStateSelectedYrl(
   storeStateSliceProps,

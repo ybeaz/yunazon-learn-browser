@@ -23,7 +23,6 @@ export enum PaginationNameEnumType {
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
-  isLoadedLocalStorageStoreState: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
@@ -52,8 +51,8 @@ export type FormsType = {
 }
 
 export type ScormType = {
-  courseIDActive: undefined
-  moduleIDActive: undefined
+  courseIDActive: string | null
+  moduleIDActive: string | null
   numberQuestionsInSlide: number
   durationMultiplier: number
 }

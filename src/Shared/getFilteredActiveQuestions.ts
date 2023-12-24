@@ -10,10 +10,9 @@ export const getFilteredActiveQuestions = (courses: any[]): any[] => {
     const modulesNext = modules.map((module: any) => {
       const { questions } = module
 
-      const questionsNext = questions.filter((question: any) => {
-        const { isActive: isActiveQuestion } = question
-        return isActiveQuestion
-      })
+      const questionsNext = questions.filter(
+        (question: any) => question.isActive
+      )
 
       return { ...module, questions: questionsNext }
     })

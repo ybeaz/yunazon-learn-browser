@@ -9,7 +9,7 @@ export const getCourseModuleActive: Function = (
 ): any[] => {
   return courses.map(course => {
     const { modules } = course
-    const modulesNext = modules.map(module => {
+    const modulesNext = modules.map((module: any) => {
       let isSelected = false
       if (module.moduleID === moduleID) isSelected = true
       return { ...module, isSelected }

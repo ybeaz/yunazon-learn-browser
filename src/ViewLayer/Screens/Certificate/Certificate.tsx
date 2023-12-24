@@ -24,7 +24,7 @@ export const CertificateComponent: CertificateComponentType = (
   props: CertificateComponentPropsType
 ): ReactElement => {
   const {
-    storeStateSlice: { documents, language, isLoadedLocalStorageStoreState },
+    storeStateSlice: { documents, language },
   } = props
 
   const params = useParams()
@@ -39,14 +39,10 @@ export const CertificateComponent: CertificateComponentType = (
   }, [])
 
   useEffect(() => {
-    if (
-      isLoadedLocalStorageStoreState &&
-      Array.isArray(documents) &&
-      !documentFound
-    ) {
+    if (Array.isArray(documents) && !documentFound) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
-  }, [isLoadedLocalStorageStoreState])
+  }, [])
 
   let documentDefault = {
     profileProps: {
@@ -245,12 +241,7 @@ export const CertificateComponent: CertificateComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = [
-  'language',
-  'documents',
-  'language',
-  'isLoadedLocalStorageStoreState',
-]
+const storeStateSliceProps: string[] = ['language', 'documents', 'language']
 export const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CertificateComponent)

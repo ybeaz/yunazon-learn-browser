@@ -2,22 +2,7 @@ import React from 'react'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
 import { getQuesionString } from '../../../Shared/getQuesionString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-
-export type GetScenarioDictPropsType = {
-  result: ResultType
-  language: string
-  courseCapture: string
-  right: number
-  total: number
-  nameFirst: string | undefined
-  nameMiddle: string | undefined
-  nameLast: string | undefined
-  meta: any
-  description: string
-  courseID: string | undefined
-  moduleID: string | undefined
-  contentID: string | undefined
-}
+import { GetScenarioDictPropsType } from './QuestionScoresTypes'
 
 export type GetScenarioDictResType = any
 
@@ -49,12 +34,20 @@ export const getScenarioDict: GetScenarioDictType = (
     courseID,
     moduleID,
     contentID,
+    sub,
   } = props
-  const result = props.result || ''
+
+  let scenarioCase: string = props.result || ''
+  if (!sub && props.result === 'success') {
+    scenarioCase = 'successNoAuth'
+  }
 
   const question = getQuesionString(language, right)
 
-  const ToReceiveCertificate = DICTIONARY.ToReceiveCertificate[language]
+  const ToReceiveCertificateFillTheForm =
+    DICTIONARY.ToReceiveCertificateFillTheForm[language]
+  const ToReceiveCertificateLogIn =
+    DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
   const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
   const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
@@ -68,8 +61,10 @@ export const getScenarioDict: GetScenarioDictType = (
   const YouWereCommittedToSuccess =
     DICTIONARY.YouWereCommittedToSuccess[language]
 
+  // @ts-expect-error
   const scenario: Record<string, any> = {
     success: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
@@ -78,7 +73,7 @@ export const getScenarioDict: GetScenarioDictType = (
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>{ToReceiveCertificate}</p>
+          <p>{ToReceiveCertificateFillTheForm}</p>
         </>
       ),
       buttonForwardProps: {
@@ -101,15 +96,41 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
+
+    successNoAuth: {
+      scenarioCase,
+      message: (
+        <>
+          <div className='_greet'>{Congratulations}</div>
+          <p>{YouCompletedTheCourse}</p>
+          <p>"{courseCapture}"</p>
+          <p>
+            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+          </p>
+          <p>{ToReceiveCertificateLogIn}</p>
+        </>
+      ),
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_MdForward2',
+        action: {
+          typeEvent: 'CLICK_ON_SIGN_IN',
+          data: {},
+        },
+      },
+    },
+
     failure: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{YouWereCommittedToSuccess}</div>
           <p>
             {andThisTimeAnswered} {right} {question} {from} {total}.
           </p>
-          <p>{ThisIsNotEnough}</p>
-          <p>{andReceiveTheCertificate}</p>
+          <p>
+            {ThisIsNotEnough} {andReceiveTheCertificate}
+          </p>
           <p>{YouCanTryOnceAgain}</p>
         </>
       ),
@@ -121,7 +142,9 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
+
     debug: {
+      scenarioCase,
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
@@ -130,7 +153,7 @@ export const getScenarioDict: GetScenarioDictType = (
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>{ToReceiveCertificate}</p>
+          <p>{ToReceiveCertificateFillTheForm}</p>
         </>
       ),
       buttonForwardProps: {
@@ -153,7 +176,7 @@ export const getScenarioDict: GetScenarioDictType = (
         },
       },
     },
-  }[result]
+  }[scenarioCase]
 
   return scenario
 }

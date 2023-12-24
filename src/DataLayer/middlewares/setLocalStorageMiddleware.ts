@@ -25,6 +25,7 @@ const debouncedFunc = getDebouncedFunc(
 )
 
 /**
+ * @status DEPRECIATED, NOT USED, BUT WORKING
  * @description Middleware to setLocalStorageMiddleware
  * @import import { setLocalStorageMiddleware } from './middlewares/setLocalStorageMiddleware'
  */

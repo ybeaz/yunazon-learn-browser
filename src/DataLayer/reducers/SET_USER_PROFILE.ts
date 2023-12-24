@@ -1,4 +1,4 @@
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { UserType } from '../../Interfaces/UserType'
@@ -19,7 +19,7 @@ export const SET_USER_PROFILE: ReducerType = (
 
   /** @description userWebTokenAuth is set once */
   if (userWebTokenAuth)
-    getSetObjToLocalStorage({
+    getLocalStorageSetObjTo({
       source: 'SET_USER_PROFILE [21]',
       userWebTokenAuth,
     })
@@ -27,7 +27,7 @@ export const SET_USER_PROFILE: ReducerType = (
   let userNext: UserType
   if (calledFrom === 'AUTH_SIGN_OUT') {
     /** @description Set userWebTokenAuth null if it comes from AUTH_SIGN_OUT */
-    getSetObjToLocalStorage({
+    getLocalStorageSetObjTo({
       source: 'SET_USER_PROFILE [26]',
       userWebTokenAuth: null,
     })

@@ -14,6 +14,7 @@ import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
 
 import {
   AcademyMatrixPropsType,
@@ -42,9 +43,13 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   } = props
 
   const coursesFiltered = courses
+  const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
-  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
-  useLoadedInitialTeachContent()
+  let actionsToMount: any[] = []
+  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
+
+  useEffectedInitialRequests(actionsToMount)
+  useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })
 
   const screenType = 'AcademyMatrix'
 

@@ -1,14 +1,12 @@
-import { CoursesConnectionType, CourseType } from '../@types/GraphqlTypes'
+import { CourseType, AcademyPresentCaseEnumType } from '../@types/'
 
 import { getFilteredActiveCoursesModules } from './getFilteredActiveCoursesModules'
 import { getFilteredActiveQuestions } from './getFilteredActiveQuestions'
-import { getProvidedSearchString } from './getProvidedSearchString'
 import { getValidatedCourses } from './getValidatedCourses'
 import { getOptionsShuffled } from './getOptionsShuffled'
 import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
-import { getProvidedSelectedDefault } from './getProvidedSelectedDefault'
-import { getProvidedID } from './getProvidedID'
 import { getChainedResponsibility } from './getChainedResponsibility'
+import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
@@ -32,17 +30,24 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   options
 ) => {
   let coursesNext: CourseType[] = []
+  let caseScenario: AcademyPresentCaseEnumType =
+    AcademyPresentCaseEnumType['courseFirstLoading']
 
   try {
-    coursesNext = getChainedResponsibility(courses)
-      .exec(getValidatedCourses)
-      .exec(getFilteredActiveCoursesModules)
-      .exec(getFilteredActiveQuestions)
-      // .exec(getProvidedID)
-      // .exec(getProvidedSelectedDefault)
-      .exec(getProdidevAnswerDefault)
-      .exec(getOptionsShuffled)
-      .exec(getProvidedSearchString).result
+    /* Case: use the whole courses set from API call */
+    caseScenario = AcademyPresentCaseEnumType['courseFirstLoading']
+
+    coursesNext =
+      // .exec(getProvidedSearchString)
+      getChainedResponsibility(courses)
+        .exec(getValidatedCourses)
+        .exec(getFilteredActiveCoursesModules)
+        .exec(getFilteredActiveQuestions)
+        .exec(getQuestionsPickedRandomly)
+        // .exec(getProvidedID)
+        // .exec(getProvidedSelectedDefault)
+        .exec(getProdidevAnswerDefault)
+        .exec(getOptionsShuffled).result
 
     if (options?.printRes) {
       console.log('getPreparedCourses', { coursesNext })

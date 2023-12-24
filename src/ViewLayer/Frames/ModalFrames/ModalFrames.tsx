@@ -6,6 +6,7 @@ import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
+import { AboutAcademyBody } from '../../Components/AboutAcademyBody/AboutAcademyBody'
 
 import {
   ModalFramesComponentPropsType,
@@ -16,11 +17,12 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
-  // SkillExchangeIntro2,
-  // SkillExchangeIntro,
   EmalInputs,
   QuestionScores,
+  AboutAcademyBody,
   //AuthUser, Not used in favor of Cognito authetication
+  // SkillExchangeIntro2,
+  // SkillExchangeIntro,
 }
 
 /**
