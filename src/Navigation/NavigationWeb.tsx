@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES, RouteType } from '../Constants/routes.const'
+import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { Documents } from '../ViewLayer/Screens/Documents/Documents'
@@ -15,6 +16,7 @@ import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitia
 import { getRedirected } from '../Shared/getRedirected'
 
 const PAGES: Record<string, FunctionComponent<any>> = {
+  AboutAcademy,
   AcademyMatrix,
   AcademyPresent,
   Documents,

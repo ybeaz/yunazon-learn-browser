@@ -4,6 +4,40 @@
 
 ## How to section, architecture / development notes
 
+### How to add icon to the project
+
+- Find a name of the icon (e.g. `MdLightbulbOutline`) by the link `https://react-icons.github.io/react-icons/icons/md/`
+- Add the name of the icon to the import and export section in the `` file
+- Use icon name for the icon property (e.g. `icon: 'MdLightbulbOutline'`) for the ButtonYrl, IconYrl components
+
+### How to a component to the modal window
+
+- Create a component in the ViewLayer > Components directory
+- Add the less reference to the component less file in the `src/ViewLayer/Styles/index.style.less` style index
+- Add the component to the `CHILDREN` dictionary in the `src/ViewLayer/Frames/ModalFrames/ModalFrames.tsx` file
+- Add action to the Button
+  <pre>
+    action: {
+          typeEvent: 'SET_MODAL_FRAMES',
+          data: [
+            {
+              childName: 'MyNewComponent',
+              isActive: true,
+              childProps: {},
+            },
+          ],
+        },
+  </pre>
+
+### How to add a page for routing navigation
+
+- Create a component in the ViewLayer > Screen directory
+- Add the less reference to the component less file in the `src/ViewLayer/Styles/index.style.less` style index
+- Change the layout of the page by adding the class with the name `.MainFrame_MyNewScreen` in the `src/ViewLayer/Frames/MainFrame/MainFrame.less` file
+- Add the name of this component to the `src/Constants/routes.const.ts` file
+- Add the component to the `PAGES` dictionary in the `src/Navigation/NavigationWeb.tsx` file
+- Check navigation working in the address browser field
+
 ### How to build and deploy web.yourails.com
 
 @link https://github.com/jsdelivr/jsdelivr // Link to CDN that works with GitHub.com

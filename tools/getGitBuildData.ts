@@ -40,7 +40,7 @@ export const getGitBuildData: GetGitBuildDataType = async (
     })
     const year = new Date(getGitBuildDataResObjM1.date).getFullYear()
 
-    const copyright = `© ${year} Roman Ches`
+    const copyright = `© 2021-${year} Userto Inc.`
 
     const getGitBuildDataResObj = {
       ...getGitBuildDataResObjM1,
