@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons'
 
 import { getClasses } from '../../../Shared/getClasses'
 
-import { ICONS } from '../../../Constants/icons.const'
+import { ICONS } from './iconsYrl.const'
 
 import {
   IconYrlPropsType,
