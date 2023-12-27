@@ -34,7 +34,6 @@ export type QuestionScoresComponentPropsType = {
     documents: RootStoreType['documents']
     moduleIDActive: RootStoreType['scorm']['moduleIDActive']
     courses: RootStoreType['courses']
-    isDocumentAdded: RootStoreType['componentsState']['isDocumentAdded']
     nameFirst: RootStoreType['forms']['user']['nameFirst']
     nameMiddle: RootStoreType['forms']['user']['nameMiddle']
     nameLast: RootStoreType['forms']['user']['nameLast']

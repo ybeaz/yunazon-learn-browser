@@ -68,7 +68,6 @@ export const componentsStateDefault: ComponentsStateType = {
   isModalFrameVisible: false,
   isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
-  isDocumentAdded: false,
   isCourseStarted: false,
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,

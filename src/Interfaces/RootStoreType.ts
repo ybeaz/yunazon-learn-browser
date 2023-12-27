@@ -29,7 +29,6 @@ export type ComponentsStateType = {
   isModalFrameVisible: boolean
   isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
-  isDocumentAdded: boolean
   isCourseStarted: boolean
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean

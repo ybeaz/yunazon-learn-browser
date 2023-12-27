@@ -5,7 +5,7 @@ export const ADD_DOCUMENT: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { documents, componentsState } = store
+  const { documents } = store
 
   let documentsNext = documents
   const documentFound = documents.find(
@@ -15,14 +15,8 @@ export const ADD_DOCUMENT: ReducerType = (
     documentsNext = [...documents, data]
   }
 
-  const componentsStateNext = {
-    ...componentsState,
-    isDocumentAdded: true,
-  }
-
   return {
     ...store,
     documents: documentsNext,
-    componentsState: componentsStateNext,
   }
 }

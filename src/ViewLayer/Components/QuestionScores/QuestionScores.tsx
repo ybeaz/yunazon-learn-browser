@@ -43,7 +43,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       documents,
       moduleIDActive,
       courses,
-      isDocumentAdded,
       nameFirst,
       nameMiddle,
       nameLast,
@@ -79,13 +78,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
   }, [])
-
-  // useEffect(() => {
-  //   if (pathName && isDocumentAdded === true) {
-  //     handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
-  //     navigate(pathName)
-  //   }
-  // }, [pathName])
 
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
@@ -163,7 +155,6 @@ const storeStateSliceProps: string[] = [
   'documents',
   'moduleIDActive',
   'courses',
-  'isDocumentAdded',
   'nameFirst',
   'nameMiddle',
   'nameLast',
