@@ -21,6 +21,7 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       nameFirst,
       nameMiddle,
       nameLast,
+      navigate,
     },
   } = params
 
@@ -70,6 +71,8 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     getLocalStorageDeletedCourse(courseID)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+
+    navigate(createDocuments[0]?.pathName)
   } catch (error: any) {
     console.info('createDocument [40]', error.name + ': ' + error.message)
   }

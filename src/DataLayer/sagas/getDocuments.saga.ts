@@ -22,14 +22,16 @@ export function* getDocumentsGenerator(
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  let readDocumentsConnectionInput: any = {
-    first: 0,
-    offset: 1000,
-    profileID: sub || '000000',
-    stagesPick: selectCoursesStageFlag(),
-  }
-
   try {
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+
+    const readDocumentsConnectionInput: any = {
+      first: 0,
+      offset: 1000,
+      profileID: sub || '000000',
+      stagesPick: selectCoursesStageFlag(),
+    }
+
     const variables = {
       readDocumentsConnectionInput,
     }
@@ -54,6 +56,8 @@ export function* getDocumentsGenerator(
         ...pageInfo,
       })
     )
+
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getDocuments.saga  [44]', error.name + ': ' + error.message)
   }

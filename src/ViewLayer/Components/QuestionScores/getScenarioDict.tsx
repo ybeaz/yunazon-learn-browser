@@ -35,6 +35,7 @@ export const getScenarioDict: GetScenarioDictType = (
     moduleID,
     contentID,
     sub,
+    navigate,
   } = props
 
   let scenarioCase: string = props.result || ''
@@ -92,6 +93,7 @@ export const getScenarioDict: GetScenarioDictType = (
             courseID,
             moduleID,
             contentID,
+            navigate,
           },
         },
       },

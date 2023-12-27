@@ -80,12 +80,12 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     stopVideoHandler && stopVideoHandler({}, {})
   }, [])
 
-  useEffect(() => {
-    if (pathName && isDocumentAdded === true) {
-      handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
-      navigate(pathName)
-    }
-  }, [pathName])
+  // useEffect(() => {
+  //   if (pathName && isDocumentAdded === true) {
+  //     handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
+  //     navigate(pathName)
+  //   }
+  // }, [pathName])
 
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
@@ -105,6 +105,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     moduleID: moduleID || '',
     contentID: contentID || '',
     sub,
+    navigate,
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)

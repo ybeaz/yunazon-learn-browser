@@ -36,7 +36,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
         })
       } else {
         getRedirected('/', {
-          parentFunction: 'getAuthData 40',
+          parentFunction: 'getAuthData [40]',
           printRes: false,
         })
       }

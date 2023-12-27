@@ -23,6 +23,7 @@ export type GetScenarioDictPropsType = {
   moduleID: ModuleType['moduleID']
   contentID: ModuleType['contentID']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
+  navigate: any
 }
 
 export type QuestionScoresComponentPropsType = {
