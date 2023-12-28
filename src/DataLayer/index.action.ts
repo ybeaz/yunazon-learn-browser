@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'TOGGLE_IS_CONFETTI',
   'SET_DOCUMENTS',
   'SET_TAGS_STATE',
   'SET_PAGE_INFO',

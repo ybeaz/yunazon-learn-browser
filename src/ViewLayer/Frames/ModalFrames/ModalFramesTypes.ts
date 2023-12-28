@@ -4,6 +4,7 @@ export type ModalFramesComponentPropsType = {
   children?: React.ReactElement
   storeStateSlice: {
     modalFrames: RootStoreType['componentsState']['modalFrames']
+    isConfetti: RootStoreType['componentsState']['isConfetti']
   }
 }
 

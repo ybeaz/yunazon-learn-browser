@@ -1,3 +1,4 @@
+export * from './TOGGLE_IS_CONFETTI'
 export * from './SET_PAGE_INFO'
 export * from './SET_PAGE_CURSOR'
 export * from './ADD_DOCUMENT'

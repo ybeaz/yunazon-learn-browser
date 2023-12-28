@@ -11,11 +11,14 @@ import {
   ResultType,
 } from '../../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import {
+  withStoreStateSelectedYrl,
+  withPropsYrl,
+  ButtonYrl,
+} from '../../ComponentsLibrary/'
 
 import {
   GetScenarioDictPropsType,
@@ -48,6 +51,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       nameLast,
       sub,
     },
+    handleEvents,
   } = props
 
   const documentsLen = documents.length
@@ -75,10 +79,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const { total, right, wrong } = score
   let result = score.result
 
-  useEffect(() => {
-    stopVideoHandler && stopVideoHandler({}, {})
-  }, [])
-
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
 
@@ -101,6 +101,24 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
+
+  useEffect(() => {
+    stopVideoHandler && stopVideoHandler({}, {})
+
+    if (
+      scenario.scenarioCase === 'success' ||
+      scenario.scenarioCase === 'successNoAuth'
+    ) {
+      /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
+      handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
+
+      setTimeout(
+        () =>
+          handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }),
+        5000
+      )
+    }
+  }, [])
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
@@ -160,9 +178,11 @@ const storeStateSliceProps: string[] = [
   'nameLast',
   'sub',
 ]
-export const QuestionScores = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(QuestionScoresComponent)
+
+export const QuestionScores = React.memo(
+  withPropsYrl({ handleEvents: handleEventsIn, comp: 'QuestionScores' })(
+    withStoreStateSelectedYrl(storeStateSliceProps, QuestionScoresComponent)
+  )
 )
 
 export type {

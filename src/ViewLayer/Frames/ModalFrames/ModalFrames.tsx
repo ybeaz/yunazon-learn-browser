@@ -1,4 +1,6 @@
 import React, { ReactElement, FunctionComponent } from 'react'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
 // import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
 // import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
@@ -34,8 +36,10 @@ const ModalFramesComponent: ModalFramesComponentType = (
   props: ModalFramesComponentPropsType
 ) => {
   const {
-    storeStateSlice: { modalFrames },
+    storeStateSlice: { modalFrames, isConfetti },
   } = props
+
+  const { width, height } = useWindowSize()
 
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
@@ -59,6 +63,12 @@ const ModalFramesComponent: ModalFramesComponentType = (
           action: closeAction,
         },
         childProps,
+        confettiProps: {
+          width,
+          height,
+          run: true,
+          opacity: isConfetti ? 1 : 0,
+        },
       }
 
       return (
@@ -81,6 +91,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
               <CHILD {...propsOut.childProps} />
             </div>
           </div>
+          {isConfetti ? <Confetti {...propsOut.confettiProps} /> : null}
         </div>
       )
     })
@@ -91,7 +102,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
   return <>{getChildren(modalFrames)}</>
 }
 
-const storeStateSliceProps: string[] = ['modalFrames']
+const storeStateSliceProps: string[] = ['modalFrames', 'isConfetti']
 export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(ModalFramesComponent)
