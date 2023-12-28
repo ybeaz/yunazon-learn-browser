@@ -3,7 +3,8 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { PlayerPanelPropsType } from '../../Components/PlayerPanel'
+import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
+import { SummaryPropsType } from '../../Components/Summary/Summary'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -26,6 +27,7 @@ export type AcademyPresentPropsOutType = {
   contentComponentProps: Record<string, any>
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
+  summaryProps: SummaryPropsType
 }
 
 /**

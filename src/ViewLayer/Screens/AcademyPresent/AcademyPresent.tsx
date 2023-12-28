@@ -22,6 +22,7 @@ import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { Summary } from '../../Components/Summary/Summary'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -81,6 +82,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     moduleIndex: 0,
     modulesTotal: 0,
     questionsTotal: 0,
+    summary: [],
   })
 
   const {
@@ -95,6 +97,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     moduleIndex,
     modulesTotal,
     questionsTotal,
+    summary,
   } = moduleState
 
   useEffect(() => {
@@ -110,6 +113,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
+        summary: summary2,
       } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
@@ -133,6 +137,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
+        summary: summary2,
       })
     }
   }, [mediaLoadedCoursesString])
@@ -225,6 +230,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modulesTotal,
       questionsTotal,
     },
+    summaryProps: {
+      summary,
+    },
   }
 
   return (
@@ -244,12 +252,17 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <CONTENT_ASSIGNED_COMPONENT
-              {...propsOut.contentComponentProps[contentComponentName]}
-            >
-              <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-              <PlayerPanel {...propsOut.playerPanelProps} />
-            </CONTENT_ASSIGNED_COMPONENT>
+            <>
+              <CONTENT_ASSIGNED_COMPONENT
+                {...propsOut.contentComponentProps[contentComponentName]}
+              >
+                <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+                <PlayerPanel {...propsOut.playerPanelProps} />
+              </CONTENT_ASSIGNED_COMPONENT>
+              {summary && summary.length ? (
+                <Summary {...propsOut.summaryProps} />
+              ) : null}
+            </>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}

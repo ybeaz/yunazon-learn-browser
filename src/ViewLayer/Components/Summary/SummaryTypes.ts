@@ -1,8 +1,10 @@
 import React from 'react'
+import { SummaryItemType } from '../../../@types/GraphqlTypes.d'
 
 export type SummaryComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: any
+  summary: SummaryItemType[]
 }
 
 export type SummaryPropsType = Omit<

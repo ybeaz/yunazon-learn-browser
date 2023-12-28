@@ -4,7 +4,6 @@ import { FeatureBar } from '../FeatureBar'
 import { SuccessTried } from '../SuccessTried'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { Summary } from '../Summary/Summary'
 
 import { getClasses } from '../../../Shared/getClasses'
 import {
@@ -104,7 +103,6 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
         )}
         <ButtonYrl {...buttonStopProps} />
       </div>
-      <Summary />
       <ButtonYrl {...callForActionButtonPros} />
     </div>
   )
