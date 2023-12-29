@@ -52,8 +52,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       courses,
       mediaLoaded,
-      // @ts-expect-error
-      preferred_username,
     },
   } = props
 
@@ -83,6 +81,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     modulesTotal: 0,
     questionsTotal: 0,
     summary: [],
+    objections: [],
   })
 
   const {
@@ -98,6 +97,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     modulesTotal,
     questionsTotal,
     summary,
+    objections,
   } = moduleState
 
   useEffect(() => {
@@ -114,6 +114,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
         summary: summary2,
+        objections: objections2,
       } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
@@ -138,6 +139,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
         summary: summary2,
+        objections: objections2,
       })
     }
   }, [mediaLoadedCoursesString])
@@ -230,8 +232,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modulesTotal,
       questionsTotal,
     },
-    textStructuredProps: {
-      summary,
+    summaryProps: {
+      testsEntities: summary,
+      title: 'Summary',
+    },
+    objectionsProps: {
+      testsEntities: objections,
+      title: 'Objections',
     },
   }
 
@@ -259,9 +266,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>
-              {summary && summary.length ? (
-                <TextStructured {...propsOut.textStructuredProps} />
-              ) : null}
+              <div className='_textsStructuredColumns'>
+                {summary && summary.length ? (
+                  <TextStructured {...propsOut.summaryProps} />
+                ) : null}
+                {objections && objections.length ? (
+                  <TextStructured {...propsOut.objectionsProps} />
+                ) : null}
+              </div>
             </>
             {/* middle-right */}
             <CarouselQuestions />

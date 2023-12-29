@@ -3,8 +3,8 @@ import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
 
 export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
-  summary: (SummaryItemType | ObjectionType)[]
+  testsEntities: (SummaryItemType | ObjectionType)[]
+  title: string
 }
 
 export type TextStructuredPropsType = Omit<

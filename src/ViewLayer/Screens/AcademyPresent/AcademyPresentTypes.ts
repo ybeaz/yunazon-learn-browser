@@ -27,7 +27,8 @@ export type AcademyPresentPropsOutType = {
   contentComponentProps: Record<string, any>
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
-  textStructuredProps: TextStructuredPropsType
+  summaryProps: TextStructuredPropsType
+  objectionsProps: TextStructuredPropsType
 }
 
 /**
