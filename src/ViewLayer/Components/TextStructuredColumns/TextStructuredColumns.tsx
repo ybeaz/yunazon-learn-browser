@@ -3,6 +3,7 @@ import React from 'react'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
+  ButtonYrl,
 } from '../../ComponentsLibrary/'
 
 import { getClasses } from '../../../Shared/getClasses'
@@ -10,6 +11,7 @@ import { TextStructured } from '../../Components/TextStructured/TextStructured'
 import {
   TextStructuredColumnsComponentPropsType,
   TextStructuredColumnsPropsType,
+  TextStructuredColumnsPropsOut2Type,
   TextStructuredColumnsPropsOutType,
   TextStructuredColumnsComponentType,
   TextStructuredColumnsType,
@@ -28,9 +30,30 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
   console.info('TextStructuredColumns [28]', {
     isSummary,
     isObjections,
-    summary,
-    objections,
   })
+
+  const propsOut2: TextStructuredColumnsPropsOut2Type = {
+    buttonSummaryIsSummaryProps: {
+      icon: '',
+      classAdded: 'Button_summaryIsSummary',
+      captureLeft: 'Toggle summary',
+      action: {
+        typeEvent: 'TOGGLE_IS_SUMMARY',
+        data: { isSummary: !isSummary },
+      },
+      isDisplaying: true,
+    },
+    buttonSummaryIsObjectionsProps: {
+      icon: '',
+      captureLeft: 'Toggle objections',
+      classAdded: 'Button_summaryIsObjections',
+      action: {
+        typeEvent: 'TOGGLE_IS_OBJECTIONS',
+        data: { isObjections: !isObjections },
+      },
+      isDisplaying: true,
+    },
+  }
 
   const propsOut: TextStructuredColumnsPropsOutType = {
     summaryProps: {
@@ -45,12 +68,18 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
 
   return (
     <div className={getClasses('TextStructuredColumns', classAdded)}>
-      {isSummary && summary && summary.length ? (
-        <TextStructured {...propsOut.summaryProps} />
-      ) : null}
-      {isObjections && objections && objections.length ? (
-        <TextStructured {...propsOut.objectionsProps} />
-      ) : null}
+      <div className='_buttonsWrapper'>
+        <ButtonYrl {...propsOut2.buttonSummaryIsSummaryProps} />
+        <ButtonYrl {...propsOut2.buttonSummaryIsObjectionsProps} />
+      </div>
+      <div className='_textStructuredWrapper'>
+        {isSummary && summary && summary.length ? (
+          <TextStructured {...propsOut.summaryProps} />
+        ) : null}
+        {isObjections && objections && objections.length ? (
+          <TextStructured {...propsOut.objectionsProps} />
+        ) : null}
+      </div>
     </div>
   )
 }

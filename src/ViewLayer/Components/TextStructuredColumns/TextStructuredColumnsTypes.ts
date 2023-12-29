@@ -2,6 +2,7 @@ import React from 'react'
 import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
 import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type TextStructuredColumnsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -15,6 +16,11 @@ export type TextStructuredColumnsPropsType = Omit<
   TextStructuredColumnsComponentPropsType,
   'storeStateSlice'
 >
+
+export type TextStructuredColumnsPropsOut2Type = {
+  buttonSummaryIsSummaryProps: ButtonYrlPropsType
+  buttonSummaryIsObjectionsProps: ButtonYrlPropsType
+}
 
 export type TextStructuredColumnsPropsOutType = {
   summaryProps: TextStructuredPropsType
