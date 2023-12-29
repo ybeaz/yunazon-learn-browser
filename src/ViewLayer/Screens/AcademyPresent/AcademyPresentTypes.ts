@@ -5,6 +5,7 @@ import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
+import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -13,6 +14,8 @@ export type AcademyPresentComponentPropsType = {
     moduleIDActive: RootStoreType['scorm']['courseIDActive']
     courses: RootStoreType['courses']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
+    isObjections: RootStoreType['componentsState']['isObjections']
+    isSummary: RootStoreType['componentsState']['isSummary']
   }
 }
 
@@ -27,6 +30,7 @@ export type AcademyPresentPropsOutType = {
   contentComponentProps: Record<string, any>
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
+  textStructuredColumnsProps: TextStructuredColumnsPropsType
   summaryProps: TextStructuredPropsType
   objectionsProps: TextStructuredPropsType
 }

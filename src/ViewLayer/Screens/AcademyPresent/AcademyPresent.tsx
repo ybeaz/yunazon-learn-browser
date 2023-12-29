@@ -23,6 +23,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -52,6 +53,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       courses,
       mediaLoaded,
+      isSummary,
+      isObjections,
     },
   } = props
 
@@ -232,13 +235,19 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modulesTotal,
       questionsTotal,
     },
+    textStructuredColumnsProps: {
+      summary,
+      objections,
+      isSummary,
+      isObjections,
+    },
     summaryProps: {
       testsEntities: summary,
       title: 'Summary',
     },
     objectionsProps: {
       testsEntities: objections,
-      title: 'Objections',
+      title: 'Arguments & objections',
     },
   }
 
@@ -266,14 +275,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>
-              <div className='_textsStructuredColumns'>
-                {summary && summary.length ? (
-                  <TextStructured {...propsOut.summaryProps} />
-                ) : null}
-                {objections && objections.length ? (
-                  <TextStructured {...propsOut.objectionsProps} />
-                ) : null}
-              </div>
+              <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
             </>
             {/* middle-right */}
             <CarouselQuestions />
@@ -293,6 +295,8 @@ const storeStateSliceProps: string[] = [
   'courses',
   'mediaLoaded',
   'preferred_username',
+  'isSummary',
+  'isObjections',
 ]
 export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
   storeStateSliceProps,

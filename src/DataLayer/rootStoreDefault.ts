@@ -62,6 +62,8 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  isObjections: false,
+  isSummary: true,
   isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,

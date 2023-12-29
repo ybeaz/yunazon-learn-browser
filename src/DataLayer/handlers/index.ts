@@ -1,3 +1,5 @@
+export * from './TOGGLE_IS_OBJECTIONS'
+export * from './TOGGLE_IS_SUMMARY'
 export * from './TOGGLE_IS_CONFETTI'
 export * from './CLICK_ON_DEACTIVATE_DOCUMENT'
 export * from './GET_MATRIX_DATA'
