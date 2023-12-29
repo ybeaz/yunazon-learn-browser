@@ -31,8 +31,6 @@ export type AcademyPresentPropsOutType = {
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
   textStructuredColumnsProps: TextStructuredColumnsPropsType
-  summaryProps: TextStructuredPropsType
-  objectionsProps: TextStructuredPropsType
 }
 
 /**
