@@ -13,7 +13,6 @@ import { Courses } from '../ViewLayer/Screens/Courses/Courses'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
-import { getRedirected } from '../Shared/getRedirected'
 
 const PAGES: Record<string, FunctionComponent<any>> = {
   AboutAcademy,

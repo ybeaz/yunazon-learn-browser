@@ -1,0 +1,33 @@
+.TextStructured {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  ._h2 {
+    font-size: @fontSizeH2;
+    align-self: center;
+  }
+
+  ._captureTextWrapper {
+    flex-direction: column;
+
+    ._capture {
+      padding: 1rem 0;
+      font-size: @fontSizeH5;
+    }
+
+    ._text {
+      padding: 0.5rem 0;
+      line-height: 1.25;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

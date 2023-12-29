@@ -16,12 +16,14 @@ import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
-import { PlayerPanel } from '../../Components/PlayerPanel'
+import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -51,8 +53,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       courses,
       mediaLoaded,
-      // @ts-expect-error
-      preferred_username,
+      isSummary,
+      isObjections,
     },
   } = props
 
@@ -81,6 +83,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     moduleIndex: 0,
     modulesTotal: 0,
     questionsTotal: 0,
+    summary: [],
+    objections: [],
   })
 
   const {
@@ -95,6 +99,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     moduleIndex,
     modulesTotal,
     questionsTotal,
+    summary,
+    objections,
   } = moduleState
 
   useEffect(() => {
@@ -110,6 +116,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: moduleIndex2,
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
+        summary: summary2,
+        objections: objections2,
       } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
@@ -133,6 +141,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         modulesTotal: modulesTotal2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
+        summary: summary2,
+        objections: objections2,
       })
     }
   }, [mediaLoadedCoursesString])
@@ -225,6 +235,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modulesTotal,
       questionsTotal,
     },
+    textStructuredColumnsProps: {
+      summary,
+      objections,
+      isSummary,
+      isObjections,
+      language: languageStore,
+      titleSummary: 'Summary',
+      titleObjections: 'Objections',
+    },
   }
 
   return (
@@ -244,12 +263,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <CONTENT_ASSIGNED_COMPONENT
-              {...propsOut.contentComponentProps[contentComponentName]}
-            >
-              <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-              <PlayerPanel {...propsOut.playerPanelProps} />
-            </CONTENT_ASSIGNED_COMPONENT>
+            <>
+              <CONTENT_ASSIGNED_COMPONENT
+                {...propsOut.contentComponentProps[contentComponentName]}
+              >
+                <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+                <PlayerPanel {...propsOut.playerPanelProps} />
+              </CONTENT_ASSIGNED_COMPONENT>
+              <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
+            </>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}
@@ -268,6 +290,8 @@ const storeStateSliceProps: string[] = [
   'courses',
   'mediaLoaded',
   'preferred_username',
+  'isSummary',
+  'isObjections',
 ]
 export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
   storeStateSliceProps,

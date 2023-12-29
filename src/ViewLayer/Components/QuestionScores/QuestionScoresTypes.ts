@@ -7,6 +7,7 @@ import {
   MetaCourseType,
 } from '../../../@types/GraphqlTypes'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
+import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
 export type GetScenarioDictPropsType = {
   result: ResultType
@@ -23,6 +24,7 @@ export type GetScenarioDictPropsType = {
   moduleID: ModuleType['moduleID']
   contentID: ModuleType['contentID']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
+  navigate: any
 }
 
 export type QuestionScoresComponentPropsType = {
@@ -33,17 +35,17 @@ export type QuestionScoresComponentPropsType = {
     documents: RootStoreType['documents']
     moduleIDActive: RootStoreType['scorm']['moduleIDActive']
     courses: RootStoreType['courses']
-    isDocumentAdded: RootStoreType['componentsState']['isDocumentAdded']
     nameFirst: RootStoreType['forms']['user']['nameFirst']
     nameMiddle: RootStoreType['forms']['user']['nameMiddle']
     nameLast: RootStoreType['forms']['user']['nameLast']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
   }
+  handleEvents: HandleEventType
 }
 
 export type QuestionScoresPropsType = Omit<
   QuestionScoresComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type QuestionScoresPropsOutType = {

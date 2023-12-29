@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
-import { PlayerPanel } from '../PlayerPanel'
+import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
 import { LoaderBlurhash } from '../LoaderBlurhash'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'

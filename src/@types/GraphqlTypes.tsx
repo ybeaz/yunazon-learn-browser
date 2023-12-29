@@ -435,6 +435,8 @@ export type ModuleInputType = {
   isActive?: Scalars['Boolean']['input'];
   /** course module ID */
   moduleID?: InputMaybe<Scalars['ID']['input']>;
+  /** course module objection */
+  objections?: InputMaybe<Array<ObjectionInputType>>;
   /** module passRate */
   passRate?: InputMaybe<Scalars['Float']['input']>;
   /** module questionNumber */
@@ -463,6 +465,8 @@ export type ModuleType = {
   isActive: Scalars['Boolean']['output'];
   /** course module ID */
   moduleID: Scalars['ID']['output'];
+  /** course module objection */
+  objections?: Maybe<Array<ObjectionType>>;
   /** module passRate */
   passRate?: Maybe<Scalars['Float']['output']>;
   /** module questionNumber */
@@ -620,6 +624,25 @@ export type NewRecipeInputType = {
   description?: InputMaybe<Scalars['String']['input']>;
   ingredients: Array<Scalars['String']['input']>;
   title: Scalars['String']['input'];
+};
+
+export type ObjectionInputType = {
+  /** course module Objection capture */
+  capture?: InputMaybe<Scalars['String']['input']>;
+  /** courses module Objection ID */
+  objectionID?: InputMaybe<Scalars['ID']['input']>;
+  /** course module Objection text */
+  text?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ObjectionType = {
+  __typename?: 'ObjectionType';
+  /** course module Objection capture */
+  capture?: Maybe<Scalars['String']['output']>;
+  /** course module Objection ID */
+  objectionID: Scalars['ID']['output'];
+  /** course module Objection text */
+  text?: Maybe<Scalars['String']['output']>;
 };
 
 export type OptionInputType = {
@@ -1032,21 +1055,21 @@ export type Subscription = {
 };
 
 export type SummaryItemInputType = {
-  /** course module capture */
+  /** course module Summary item capture */
   capture?: InputMaybe<Scalars['String']['input']>;
-  /** courses module question ID */
+  /** courses module Summary item ID */
   summaryItemID?: InputMaybe<Scalars['ID']['input']>;
-  /** course module text */
+  /** course module Summary item text */
   text?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SummaryItemType = {
   __typename?: 'SummaryItemType';
-  /** course module capture */
+  /** course module Summary item capture */
   capture?: Maybe<Scalars['String']['output']>;
   /** course module summary ID */
   summaryItemID: Scalars['ID']['output'];
-  /** course module text */
+  /** course module Summary item text */
   text?: Maybe<Scalars['String']['output']>;
 };
 

@@ -13,6 +13,7 @@ export const CREATE_DOCUMENT: ActionEventType = (event, data) => {
     scorm: { moduleIDActive },
   } = getState()
   const options = getResultDataFromStore(courses, moduleIDActive)
+  
   event?.preventDefault &&
     getSavedAnanlyticsEvent(
       event,

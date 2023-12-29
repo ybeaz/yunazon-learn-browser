@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.64.1",
+  "version": "0.66.1",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
@@ -41,16 +41,18 @@
     "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-blurhash": "^0.3.0",
+    "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.11.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.18.0",
     "react-share": "^4.4.1",
+    "react-use": "^17.4.2",
     "redux": "^5.0.0",
-    "reselect": "^5.0.1",
     "redux-saga": "^1.2.3",
     "redux-thunk": "^2.4.2",
+    "reselect": "^5.0.1",
     "styled-components": "^6.1.0",
     "ts-node": "^10.9.1",
     "yourails_communication_layer": "^0.1.2"

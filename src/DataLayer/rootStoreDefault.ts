@@ -62,13 +62,15 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  isObjections: false,
+  isSummary: true,
+  isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
   isModalFrameVisible: false,
   isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
-  isDocumentAdded: false,
   isCourseStarted: false,
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,

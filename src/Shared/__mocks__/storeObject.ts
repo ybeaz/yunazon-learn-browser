@@ -7,7 +7,6 @@ export const storeObject = {
     isModalFrameVisible: false,
     isSideNavLeftVisible: false,
     isLoaderOverlayVisible: false,
-    isDocumentAdded: false,
     isCourseStarted: false,
     isOAuthFacebookScriptLoaded: false,
     isOAuthVKontakteScriptLoaded: false,

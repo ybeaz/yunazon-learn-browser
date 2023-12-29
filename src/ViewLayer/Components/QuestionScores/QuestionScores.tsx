@@ -11,11 +11,14 @@ import {
   ResultType,
 } from '../../../Shared/getAnswersChecked2'
 import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import {
+  withStoreStateSelectedYrl,
+  withPropsYrl,
+  ButtonYrl,
+} from '../../ComponentsLibrary/'
 
 import {
   GetScenarioDictPropsType,
@@ -43,12 +46,12 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       documents,
       moduleIDActive,
       courses,
-      isDocumentAdded,
       nameFirst,
       nameMiddle,
       nameLast,
       sub,
     },
+    handleEvents,
   } = props
 
   const documentsLen = documents.length
@@ -76,17 +79,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const { total, right, wrong } = score
   let result = score.result
 
-  useEffect(() => {
-    stopVideoHandler && stopVideoHandler({}, {})
-  }, [])
-
-  useEffect(() => {
-    if (pathName && isDocumentAdded === true) {
-      handleEvents({}, { typeEvent: 'TOGGLE_IS_DOCUMENT_ADDED', data: false })
-      navigate(pathName)
-    }
-  }, [pathName])
-
   const QuestionsWithIncorrectAnswers =
     DICTIONARY.QuestionsWithIncorrectAnswers[language]
 
@@ -105,9 +97,28 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     moduleID: moduleID || '',
     contentID: contentID || '',
     sub,
+    navigate,
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
+
+  useEffect(() => {
+    stopVideoHandler && stopVideoHandler({}, {})
+
+    if (
+      scenario.scenarioCase === 'success' ||
+      scenario.scenarioCase === 'successNoAuth'
+    ) {
+      /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
+      handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
+
+      setTimeout(
+        () =>
+          handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }),
+        5000
+      )
+    }
+  }, [])
 
   const getRendedQuestionsWrongAnswered: Function = (
     questions: any[]
@@ -162,15 +173,16 @@ const storeStateSliceProps: string[] = [
   'documents',
   'moduleIDActive',
   'courses',
-  'isDocumentAdded',
   'nameFirst',
   'nameMiddle',
   'nameLast',
   'sub',
 ]
-export const QuestionScores = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(QuestionScoresComponent)
+
+export const QuestionScores = React.memo(
+  withPropsYrl({ handleEvents: handleEventsIn, comp: 'QuestionScores' })(
+    withStoreStateSelectedYrl(storeStateSliceProps, QuestionScoresComponent)
+  )
 )
 
 export type {

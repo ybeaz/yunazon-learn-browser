@@ -1,0 +1,115 @@
+.PlayerPanel {
+  display: flex;
+  padding: 0.7rem 0 0 0;
+  flex-direction: column;
+
+  .__info {
+    display: flex;
+    flex-direction: row;
+    ._capture {
+      display: flex;
+      flex-direction: column;
+      flex: 6;
+      padding: 0 0.5rem 0 0;
+      font-size: @fontSizeH4;
+    }
+    ._metaData {
+      flex-direction: column;
+      display: flex;
+      flex: 1;
+      ._successTried {
+        display: flex;
+        justify-content: flex-end;
+      }
+      ._difficulty {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .__buttons {
+    display: flex;
+    flex-direction: row;
+    padding: 1.5rem 0 0 0;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
+  }
+}
+
+.PlayerPanel_AcademyPresent {
+  .__capture {
+  }
+
+  .__buttons {
+    display: none;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+    padding: 0.7rem 0.5rem 1rem 0.5rem;
+    .__info {
+      ._capture {
+        font-size: @fontSize;
+        min-height: 2.5rem;
+      }
+    }
+  }
+  @media @phone-strict {
+    padding: 0.7rem 1rem 1rem 1rem;
+    .__capture {
+      font-size: @fontSize;
+      min-height: 2.5rem;
+    }
+  }
+  @media @phone {
+    padding: 0.7rem 1rem 1rem 1rem;
+    .__info {
+      ._capture {
+        font-size: @fontSizeS;
+        min-height: 2.5rem;
+      }
+    }
+  }
+}
+
+.PlayerPanel_AcademyMatrix {
+  .__info {
+    ._capture {
+      font-size: @fontSize;
+      min-height: 2.5rem;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      overflow: hidden;
+    }
+    ._metaData {
+      display: none;
+    }
+  }
+
+  .__buttons {
+    display: none;
+
+    .__play {
+    }
+    .__pause {
+    }
+    .__stop {
+    }
+  }
+}

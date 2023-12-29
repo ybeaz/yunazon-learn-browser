@@ -2,19 +2,16 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 /**
- * @status DEPRECIATED since isDocumentAdded removed, and orchestration happens in createDocument.saga.ts
- * @param store
- * @param data
- * @returns
+ * @description Toggling success confetti
  */
-export const TOGGLE_IS_DOCUMENT_ADDED: ReducerType = (
+export const TOGGLE_IS_SUMMARY: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {
     ...componentsState,
-    isDocumentAdded: data,
+    isSummary: data,
   }
   return {
     ...store,

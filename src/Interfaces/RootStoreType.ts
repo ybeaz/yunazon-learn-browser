@@ -23,13 +23,15 @@ export enum PaginationNameEnumType {
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
+  isObjections: boolean
+  isSummary: boolean
+  isConfetti: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
   isModalFrameVisible: boolean
   isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
-  isDocumentAdded: boolean
   isCourseStarted: boolean
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean

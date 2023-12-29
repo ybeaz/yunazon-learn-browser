@@ -1,37 +1,29 @@
 import React from 'react'
 
-import { FeatureBar } from './FeatureBar'
-import { SuccessTried } from './SuccessTried'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { DurationObjType } from '../../Interfaces/DurationObjType'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../ComponentsLibrary/'
+import { FeatureBar } from '../FeatureBar'
+import { SuccessTried } from '../SuccessTried'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
-export type PlayerPanelComponentPropsType = {
-  courseCapture: string
-  moduleCapture: string
-  durationObj: DurationObjType
-  screenType: string
-  isShowingPlay: boolean
-  buttonPlayProps?: any
-  buttonPauseProps?: any
-  buttonStopProps?: any
-  isActionButtonDisplaying: boolean
-  moduleIndex?: number
-  modulesTotal?: number
-  questionsTotal?: number
-  storeStateSlice: {
-    language: string
-  }
-}
-
-export type PlayerPanelPropsType = Omit<
+import { getClasses } from '../../../Shared/getClasses'
+import {
   PlayerPanelComponentPropsType,
-  'storeStateSlice'
->
+  PlayerPanelPropsType,
+  PlayerPanelPropsOutType,
+  PlayerPanelComponentType,
+  PlayerPanelType,
+} from './PlayerPanelTypes'
 
-export const PlayerPanelComponent: React.FunctionComponent<
-  PlayerPanelComponentPropsType
-> = props => {
+/**
+ * @description Component to render PlayerPanel
+ * @import import { PlayerPanel, PlayerPanelPropsType, PlayerPanelPropsOutType, PlayerPanelType } 
+             from '../Components/PlayerPanel/PlayerPanel'
+ */
+const PlayerPanelComponent: PlayerPanelComponentType = (
+  props: PlayerPanelComponentPropsType
+) => {
+  const { classAdded, storeStateSlice } = props
+
   const {
     courseCapture,
     moduleCapture,
@@ -88,6 +80,8 @@ export const PlayerPanelComponent: React.FunctionComponent<
       ? `${courseCapture} ${moduleCapture}`
       : `${courseCapture}`
 
+  const propsOut: PlayerPanelPropsOutType = {}
+
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
       <div className='__info'>
@@ -120,3 +114,10 @@ export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> =
     storeStateSliceProps,
     React.memo(PlayerPanelComponent)
   )
+
+export type {
+  PlayerPanelPropsType,
+  PlayerPanelPropsOutType,
+  PlayerPanelComponentType,
+  PlayerPanelType,
+}
