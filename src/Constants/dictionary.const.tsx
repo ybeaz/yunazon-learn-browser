@@ -7,6 +7,22 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Show: {
+    en: 'Show',
+    ru: 'Показать',
+  },
+  Hide: {
+    en: 'Hide',
+    ru: 'Скрыть',
+  },
+  summary: {
+    en: 'summary',
+    ru: 'краткое изложение',
+  },
+  objections: {
+    en: 'objections',
+    ru: 'возражения',
+  },
   My_courses: {
     en: 'My courses',
     ru: 'Мои курсы',

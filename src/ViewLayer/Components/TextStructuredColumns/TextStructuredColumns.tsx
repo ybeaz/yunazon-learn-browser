@@ -6,6 +6,7 @@ import {
   ButtonYrl,
 } from '../../ComponentsLibrary/'
 
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { TextStructured } from '../../Components/TextStructured/TextStructured'
 import {
@@ -25,44 +26,55 @@ import {
 const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
   props: TextStructuredColumnsComponentPropsType
 ) => {
-  const { classAdded, summary, objections, isSummary, isObjections } = props
-
-  console.info('TextStructuredColumns [28]', {
+  const {
+    classAdded,
+    summary,
+    objections,
     isSummary,
     isObjections,
-  })
+    language,
+    titleSummary,
+    titleObjections,
+  } = props
+
+  let buttonSummaryIsSummaryCaptureLeft = DICTIONARY.Show[language]
+  if (isSummary) buttonSummaryIsSummaryCaptureLeft = DICTIONARY.Hide[language]
+
+  let buttonSummaryIsObjectionsCaptureLeft = DICTIONARY.Show[language]
+  if (isObjections)
+    buttonSummaryIsObjectionsCaptureLeft = DICTIONARY.Hide[language]
 
   const propsOut2: TextStructuredColumnsPropsOut2Type = {
     buttonSummaryIsSummaryProps: {
       icon: '',
       classAdded: 'Button_summaryIsSummary',
-      captureLeft: 'Toggle summary',
+      captureLeft: `${buttonSummaryIsSummaryCaptureLeft} ${DICTIONARY.summary[language]}`,
       action: {
         typeEvent: 'TOGGLE_IS_SUMMARY',
         data: { isSummary: !isSummary },
       },
-      isDisplaying: true,
+      isDisplaying: summary && summary.length ? true : false,
     },
     buttonSummaryIsObjectionsProps: {
       icon: '',
-      captureLeft: 'Toggle objections',
+      captureLeft: `${buttonSummaryIsObjectionsCaptureLeft} ${DICTIONARY.objections[language]}`,
       classAdded: 'Button_summaryIsObjections',
       action: {
         typeEvent: 'TOGGLE_IS_OBJECTIONS',
         data: { isObjections: !isObjections },
       },
-      isDisplaying: true,
+      isDisplaying: objections && objections.length ? true : false,
     },
   }
 
   const propsOut: TextStructuredColumnsPropsOutType = {
     summaryProps: {
       testsEntities: summary,
-      title: 'Summary',
+      title: titleSummary,
     },
     objectionsProps: {
       testsEntities: objections,
-      title: 'Arguments & objections',
+      title: titleObjections,
     },
   }
 

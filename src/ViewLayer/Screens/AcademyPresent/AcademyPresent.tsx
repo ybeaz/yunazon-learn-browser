@@ -240,14 +240,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       objections,
       isSummary,
       isObjections,
-    },
-    summaryProps: {
-      testsEntities: summary,
-      title: 'Summary',
-    },
-    objectionsProps: {
-      testsEntities: objections,
-      title: 'Arguments & objections',
+      language: languageStore,
+      titleSummary: 'Summary',
+      titleObjections: 'Objections',
     },
   }
 

@@ -1,10 +1,11 @@
 import { ReducerType } from '../../Interfaces/ReducerType'
+import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export const SET_AUTH_AWS_COGNITO_USER_DATA: ReducerType = (store, data) => {
   const { source, authAwsCognitoUserData: authAwsCognitoUserDataIn } = data
   const refresh_token_in = authAwsCognitoUserDataIn?.refresh_token
 
-  const refresh_token_localStorage = localStorage.getItem('refresh_token')
+  const refresh_token_localStorage = getLocalStorageReadKeyObj('refresh_token')
 
   const {
     authAwsCognitoUserData: { refresh_token: refresh_token_storeStateApp },

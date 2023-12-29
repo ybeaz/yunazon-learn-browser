@@ -10,6 +10,9 @@ export type TextStructuredColumnsComponentPropsType = {
   objections: ObjectionType[]
   isObjections: RootStoreType['componentsState']['isObjections']
   isSummary: RootStoreType['componentsState']['isSummary']
+  language: RootStoreType['language']
+  titleSummary: string
+  titleObjections: string
 }
 
 export type TextStructuredColumnsPropsType = Omit<

@@ -1098,6 +1098,40 @@
   }
 }
 
+.Button_summaryIsSummary,
+.Button_summaryIsObjections {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  max-width: fit-content;
+
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    border-radius: @borderRadius0P5;
+    max-width: fit-content;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1rem;
+      padding: 0 1rem;
+
+      ._capture_left {
+      }
+      ._capture_right {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
 .Button_PaginationCoursesBackward {
   flex: 1;
   padding: 0 0 0 0;

@@ -13,7 +13,7 @@ import { withDebounce } from '../../Shared/withDebounce'
 
 function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
-    const languageLocalStorage = localStorage.getItem('language')
+    const languageLocalStorage = getLocalStorageReadKeyObj('language')
 
     if (languageLocalStorage) {
       yield put(actionSync.SELECT_LANGUAGE_APP(languageLocalStorage))

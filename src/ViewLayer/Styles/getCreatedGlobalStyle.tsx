@@ -270,6 +270,8 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+    .Button_summaryIsSummary .__button,
+    .Button_summaryIsObjections .__button,
     .Button_PaginationCoursesBackward .__button,
     .Button_PaginationCoursesForward .__button,
     .Button_MdBackward3 .__button,
