@@ -514,6 +514,9 @@ input ModuleInputType {
   """course module ID"""
   moduleID: ID
 
+  """course module objection"""
+  objections: [ObjectionInputType!]
+
   """module passRate"""
   passRate: Float
 
@@ -551,6 +554,9 @@ type ModuleType {
 
   """course module ID"""
   moduleID: ID!
+
+  """course module objection"""
+  objections: [ObjectionType!]
 
   """module passRate"""
   passRate: Float
@@ -595,6 +601,28 @@ input NewRecipeInputType {
   description: String
   ingredients: [String!]!
   title: String!
+}
+
+input ObjectionInputType {
+  """course module Objection capture"""
+  capture: String = null
+
+  """courses module Objection ID"""
+  objectionID: ID
+
+  """course module Objection text"""
+  text: String = null
+}
+
+type ObjectionType {
+  """course module Objection capture"""
+  capture: String
+
+  """course module Objection ID"""
+  objectionID: ID!
+
+  """course module Objection text"""
+  text: String
 }
 
 input OptionInputType {
@@ -1004,24 +1032,24 @@ type Subscription {
 }
 
 input SummaryItemInputType {
-  """course module capture"""
+  """course module Summary item capture"""
   capture: String = null
 
-  """courses module question ID"""
+  """courses module Summary item ID"""
   summaryItemID: ID
 
-  """course module text"""
+  """course module Summary item text"""
   text: String = null
 }
 
 type SummaryItemType {
-  """course module capture"""
+  """course module Summary item capture"""
   capture: String
 
   """course module summary ID"""
   summaryItemID: ID!
 
-  """course module text"""
+  """course module Summary item text"""
   text: String
 }
 

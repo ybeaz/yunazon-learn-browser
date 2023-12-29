@@ -22,7 +22,7 @@ import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { Summary } from '../../Components/Summary/Summary'
+import { TextStructured } from '../../Components/TextStructured/TextStructured'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -230,7 +230,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modulesTotal,
       questionsTotal,
     },
-    summaryProps: {
+    textStructuredProps: {
       summary,
     },
   }
@@ -260,7 +260,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>
               {summary && summary.length ? (
-                <Summary {...propsOut.summaryProps} />
+                <TextStructured {...propsOut.textStructuredProps} />
               ) : null}
             </>
             {/* middle-right */}

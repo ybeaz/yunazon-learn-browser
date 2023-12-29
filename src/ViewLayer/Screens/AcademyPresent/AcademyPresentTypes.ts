@@ -4,7 +4,7 @@ import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
-import { SummaryPropsType } from '../../Components/Summary/Summary'
+import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -27,7 +27,7 @@ export type AcademyPresentPropsOutType = {
   contentComponentProps: Record<string, any>
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
-  summaryProps: SummaryPropsType
+  textStructuredProps: TextStructuredPropsType
 }
 
 /**

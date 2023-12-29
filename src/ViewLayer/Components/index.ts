@@ -1,4 +1,4 @@
-export * from './Summary/Summary'
+export * from './TextStructured/TextStructured'
 export * from './AbInCircle/AbInCircle'
 export * from './AvatarPlusInfo/AvatarPlusInfo'
 export * from './CarouselQuestions/CarouselQuestions'
