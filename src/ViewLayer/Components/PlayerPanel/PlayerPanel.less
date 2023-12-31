@@ -6,6 +6,7 @@
   .__info {
     display: flex;
     flex-direction: row;
+
     ._capture {
       display: flex;
       flex-direction: column;
@@ -17,10 +18,12 @@
       flex-direction: column;
       display: flex;
       flex: 1;
+
       ._successTried {
         display: flex;
         justify-content: flex-end;
       }
+
       ._difficulty {
         display: flex;
         justify-content: flex-end;
@@ -92,10 +95,10 @@
   .__info {
     ._capture {
       font-size: @fontSize;
-      min-height: 2.5rem;
-      -webkit-line-clamp: 2;
-      display: -webkit-box;
       overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
     }
     ._metaData {
       display: none;
