@@ -7,7 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
+import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -45,7 +45,7 @@ export function* getDocumentsGenerator(
 
     let documentsNext: any = getChainedResponsibility(
       readDocumentsConnection
-    ).exec(getMappedConnectionToCourses, { printRes: false }).result
+    ).exec(getMappedConnectionToItems, { printRes: false }).result
 
     yield put(actionSync.SET_DOCUMENTS(documentsNext))
 

@@ -7,7 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
+import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
@@ -57,7 +57,7 @@ export function* getCoursesGenerator(): Iterable<any> {
     )
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
-      .exec(getMappedConnectionToCourses, { printRes: false })
+      .exec(getMappedConnectionToItems, { printRes: false })
       .exec(getPreparedCourses).result
 
     yield put(actionSync.SET_COURSES(coursesNext))

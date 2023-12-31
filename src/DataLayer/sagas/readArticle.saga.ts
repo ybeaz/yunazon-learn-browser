@@ -7,7 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToCourses } from '../../Shared/getMappedConnectionToCourses'
+import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
