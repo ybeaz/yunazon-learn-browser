@@ -1,6 +1,7 @@
 import { UserType } from './UserType'
 import { CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
+import { ArticleType } from '../@types/ArticleMockType'
 
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
@@ -82,6 +83,7 @@ export type RootStoreType = {
   componentsState: ComponentsStateType
   courses: CourseType[]
   documents: DocumentType[]
+  articles: ArticleType[]
   users: UserType[]
   scorm: ScormType
   forms: FormsType

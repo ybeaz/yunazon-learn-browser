@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'ADD_ARTICLE',
   'TOGGLE_IS_OBJECTIONS',
   'TOGGLE_IS_SUMMARY',
   'TOGGLE_IS_CONFETTI',
@@ -79,6 +80,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'FIND_ARTICLE',
   'DEACTIVATE_DOCUMENTS',
   'GET_DOCUMENTS',
   'GET_AUTH_DATA',

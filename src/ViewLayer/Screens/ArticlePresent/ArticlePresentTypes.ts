@@ -5,6 +5,7 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 export type ArticlePresentComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
+    articles: RootStoreType['articles']
     language: RootStoreType['language']
   }
 }

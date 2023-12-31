@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import readArticleSaga from './sagas/readArticle.saga'
 import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
 import getDocumentsSaga from './sagas/getDocuments.saga'
 import getAuthDataSaga from './sagas/getAuthData.saga'
@@ -15,6 +16,7 @@ import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(readArticleSaga),
     fork(deactivateDocumentsSaga),
     fork(getDocumentsSaga),
     fork(getAuthDataSaga),

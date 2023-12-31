@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
@@ -34,14 +35,29 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language },
+    storeStateSlice: { articles, language },
   } = props
+
+  const params = useParams()
+  const articleID = params?.articleID
+
+  const articleFound = articles.find(
+    (article: any) => article.articleID === articleID
+  )
+
+  useEffect(() => {
+    if (Array.isArray(articles) && !articleFound) {
+      handleEvents({}, { typeEvent: 'FIND_ARTICLE', data: articleID })
+    }
+  }, [])
 
   const propsOut: ArticlePresentPropsOutType = {
     mainFrameProps: {
       screenType: 'ArticlePresent',
     },
   }
+
+  console.info('ArticlePresent [60]', { articleID, articleFound, articles })
 
   return (
     <div className={getClasses('ArticlePresent', classAdded)}>
@@ -65,7 +81,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
+const storeStateSliceProps: string[] = ['articles', 'language']
 export const ArticlePresent = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(ArticlePresentComponent)
