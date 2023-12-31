@@ -7,11 +7,11 @@ interface getWriteFileType {
 }
 
 /**
- * @description Function to getWriteFile
- * @import import { getWriteFile } from './getWriteFile'
+ * @description Function to getWrittenFile
+ * @import import { getWrittenFile } from './getWrittenFile'
  */
 
-export const getWriteFile: getWriteFileType = async (
+export const getWrittenFile: getWriteFileType = async (
   pathFull,
   str,
   options
@@ -20,12 +20,12 @@ export const getWriteFile: getWriteFileType = async (
     await fs.writeFile(pathFull, str)
 
     if (options?.printRes) {
-      consoler('getWriteFile', 'getWriteFileRes', str)
+      consoler('getWrittenFile', 'getWriteFileRes', str)
     }
 
     return str
   } catch (error) {
-    consolerError('getWriteFile', error)
+    consolerError('getWrittenFile', error)
     return
   }
 }

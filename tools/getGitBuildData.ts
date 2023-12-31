@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import { consoler } from './consoler'
 import { consolerError } from './consolerError'
-import { getWriteFile } from './getWriteFile'
+import { getWrittenFile } from './getWrittenFile'
 import { execSync } from 'child_process'
 import { getDateString } from '../src/Shared/getDateString'
 
@@ -53,7 +53,7 @@ export const getGitBuildData: GetGitBuildDataType = async (
 
     getGitBuildDataRes = `import { BuildDataType } from '../@types/BuildDataType'; export const buildData: BuildDataType = ${getGitBuildDataRes}`
 
-    await getWriteFile(pathFull, getGitBuildDataRes)
+    await getWrittenFile(pathFull, getGitBuildDataRes)
 
     if (options?.printRes) {
       consoler('getGitBuildData', 'getGitBuildDataRes', {

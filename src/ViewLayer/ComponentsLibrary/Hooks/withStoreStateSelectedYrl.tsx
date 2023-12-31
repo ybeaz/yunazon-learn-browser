@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { selectStoreSlice } from '../../ComponentsLibrary/'
+import { selectStoreSlice } from './selectStoreSlice'
 
 export type WithStoreStateSelectedYrlPropsType = FunctionComponent<any>
 
