@@ -69,7 +69,9 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          <ArticlePresentBody {...propsOut.articlePresentBodyProps} />
+          {articleFound && articleFound.articleID ? (
+            <ArticlePresentBody {...propsOut.articlePresentBodyProps} />
+          ) : null}
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}

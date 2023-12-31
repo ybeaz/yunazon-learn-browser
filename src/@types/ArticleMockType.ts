@@ -1,5 +1,11 @@
 import { Maybe, Scalars, ProfilePropsType } from '../@types/GraphqlTypes.d'
 
+export type SectionType = {
+  capture: Maybe<Scalars['String']['output']>
+  divs?: Scalars['String']['output'][]
+  options?: { isTextIdent?: boolean }
+}
+
 export type ArticleType = {
   /** articleID */
   articleID: Scalars['ID']['output']
@@ -23,8 +29,5 @@ export type ArticleType = {
   profileID: Scalars['ID']['output']
   /** userName */
   authors: Maybe<Scalars['String']['output'][]>
-  sections: {
-    capture: Maybe<Scalars['String']['output']>
-    divs: Scalars['String']['output'][]
-  }[]
+  sections: SectionType[]
 }

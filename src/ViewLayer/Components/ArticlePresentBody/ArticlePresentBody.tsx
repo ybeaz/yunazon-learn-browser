@@ -1,9 +1,8 @@
 import React from 'react'
+import { nanoid } from 'nanoid'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { ArticleType } from '../../../@types/ArticleMockType'
+import { TextStructured } from '../TextStructured/TextStructured'
 
 import { getClasses } from '../../../Shared/getClasses'
 import {
@@ -23,14 +22,18 @@ const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
   props: ArticlePresentBodyComponentPropsType
 ) => {
   const { classAdded, article } = props
+  const { sections } = article
 
-  console.info('ArticlePresentBody [27]', { article })
-
-  const propsOut: ArticlePresentBodyPropsOutType = {}
+  const propsOut: ArticlePresentBodyPropsOutType = {
+    textStructuredProps: {
+      capture: article.capture,
+      entities: article.sections,
+    },
+  }
 
   return (
     <div className={getClasses('ArticlePresentBody', classAdded)}>
-      ArticlePresentBody
+      <TextStructured {...propsOut.textStructuredProps} />
     </div>
   )
 }

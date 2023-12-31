@@ -60,6 +60,7 @@ export const articles: ArticleType[] = [
           'Rosenblueth, Arturo, Wiener, Norbert, Bigelow, Julian (1943) “Behavior, Purpose, Teleology”, Philosophy of Science, 1943, Vol. 10, pp. 18–24.',
           'Wiener, Norbert (1948) Cybernetics or Control and Communication in the Animal and the Machine, MIT Press, Cambridge (MA).',
         ],
+        options: { isTextIdent: false },
       },
       {
         capture: "Author's Information",
@@ -67,6 +68,7 @@ export const articles: ArticleType[] = [
           'UMPLEBY Stuart Anspach - PhD, professor at George Washington University, Washington DC, USA.',
           'MEDVEDEVA Tatyana Alekseevna - Doctor of Economics, Professor, Siberian State University of Transport, Novosibirsk, Russian Federation.',
         ],
+        options: { isTextIdent: false },
       },
     ],
   },
