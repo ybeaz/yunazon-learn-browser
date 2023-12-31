@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { ArticlePresentBodyPropsType } from '../../Components/'
+import { MainFramePropsType } from '../../Frames/'
 
 export type ArticlePresentComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -15,7 +17,10 @@ export type ArticlePresentPropsType = Omit<
   'storeStateSlice'
 >
 
-export type ArticlePresentPropsOutType = Record<string, any>
+export type ArticlePresentPropsOutType = {
+  mainFrameProps: MainFramePropsType
+  articlePresentBodyProps: ArticlePresentBodyPropsType
+}
 
 /**
  * @import import { ArticlePresentComponentPropsType, ArticlePresentPropsType, ArticlePresentPropsOutType, ArticlePresentComponentType, ArticlePresentType } from './ArticlePresentTypes'

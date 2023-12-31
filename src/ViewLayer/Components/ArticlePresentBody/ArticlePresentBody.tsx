@@ -22,7 +22,9 @@ import {
 const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
   props: ArticlePresentBodyComponentPropsType
 ) => {
-  const { classAdded } = props
+  const { classAdded, article } = props
+
+  console.info('ArticlePresentBody [27]', { article })
 
   const propsOut: ArticlePresentBodyPropsOutType = {}
 

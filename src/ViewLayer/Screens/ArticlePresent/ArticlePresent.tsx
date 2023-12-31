@@ -41,9 +41,9 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const params = useParams()
   const articleID = params?.articleID
 
-  const articleFound = articles.find(
-    (article: any) => article.articleID === articleID
-  )
+  const articleFound =
+    articles.find((article: any) => article.articleID === articleID) ||
+    articles[0]
 
   useEffect(() => {
     if (Array.isArray(articles) && !articleFound) {
@@ -55,9 +55,10 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
     mainFrameProps: {
       screenType: 'ArticlePresent',
     },
+    articlePresentBodyProps: {
+      article: articleFound,
+    },
   }
-
-  console.info('ArticlePresent [60]', { articleID, articleFound, articles })
 
   return (
     <div className={getClasses('ArticlePresent', classAdded)}>
@@ -68,7 +69,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          <ArticlePresentBody />
+          <ArticlePresentBody {...propsOut.articlePresentBodyProps} />
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}

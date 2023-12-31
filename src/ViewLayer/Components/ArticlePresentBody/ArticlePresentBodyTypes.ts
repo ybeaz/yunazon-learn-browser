@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { ArticleType } from '../../../@types/ArticleMockType'
+
 export type ArticlePresentBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  article: ArticleType
 }
 
 export type ArticlePresentBodyPropsType = Omit<
