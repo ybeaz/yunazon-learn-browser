@@ -1,6 +1,7 @@
 import { Children, ReactNode } from 'react'
 
 export type PlayerIframePropsType = {
+  moduleID: string
   contentID: string
   isVisible: boolean
   children: React.ReactElement[]

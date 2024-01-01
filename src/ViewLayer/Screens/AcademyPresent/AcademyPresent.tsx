@@ -147,7 +147,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     }
   }, [mediaLoadedCoursesString])
 
-  const isVisible = mediaLoaded[contentID]
+  const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
   const {
@@ -157,6 +157,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     isShowingPlay,
   } = useYouTubePlayerWork({
     contentComponentName,
+    moduleID,
     contentID,
     width,
     height,
@@ -205,6 +206,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
     contentComponentProps: {
       ReaderIframe: {
+        moduleID,
         contentID,
         isVisible,
         screenType,

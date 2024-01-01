@@ -1,23 +1,39 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { TOGGLE_MEDIA_LOADED } from './TOGGLE_MEDIA_LOADED'
+import { CourseType, ModuleType } from '../../@types/GraphqlTypes.d'
 
 export const SET_COURSES: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
   const { isLoaded } = store
-  const isLoadedNext = { ...isLoaded, isLoadedCourses: true }
-  let storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
+  const { mediaLoaded } = isLoaded
 
-  data.forEach((course: any) => {
-    const { modules } = course
-    modules.forEach((module: any) => {
-      const { contentID: mediaKey } = module
-      const dataToMediaLoaded = { mediaKey, isMediaLoaded: false }
-      storeNext = TOGGLE_MEDIA_LOADED(storeNext, dataToMediaLoaded)
-    })
-  })
+  /* Making mediaLoaded false for each moduleID by default */
+  const mediaLoadedNext = data.reduce(
+    (accum: Record<string, boolean>, course: CourseType) => {
+      const modules = course?.modules || []
+
+      let output = modules.reduce(
+        (accum: Record<string, boolean>, module: ModuleType) => {
+          const { moduleID } = module
+          return { ...accum, [moduleID]: false }
+        },
+        {}
+      )
+
+      return { ...accum, ...output }
+    },
+    {}
+  )
+
+  const isLoadedNext = {
+    ...isLoaded,
+    isLoadedCourses: true,
+    mediaLoaded: mediaLoadedNext,
+  }
+
+  const storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
 
   return storeNext
 }

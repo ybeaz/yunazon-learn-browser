@@ -48,11 +48,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
     storeStateSlice: { language, mediaLoaded },
   } = props
 
-  const isVisible = mediaLoaded[contentID]
+  const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
   const { isShowingPlay } = useYouTubePlayerWork({
     contentComponentName,
+    moduleID,
     contentID,
     width,
     height,
@@ -67,10 +68,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const propsOut: ContentPlatePropsOutType = {
     contentComponentProps: {
       ReaderIframe: {
+        moduleID,
         contentID,
         isVisible,
       },
       PlayerIframe: {
+        moduleID,
         contentID,
         isVisible,
       },

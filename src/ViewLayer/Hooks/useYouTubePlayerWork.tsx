@@ -3,14 +3,15 @@ import { useDispatch } from 'react-redux'
 
 import { actionSync } from '../../DataLayer/index.action'
 
-interface IuseYouTubePlayerWorkInput {
+interface UseYouTubePlayerWorkPropsType {
   contentComponentName: string
+  moduleID: string
   contentID: string
   height: string
   width: string
 }
 
-interface IuseYouTubePlayerWork {
+interface UseYouTubePlayerWorkType {
   onPlayerReady: Function | undefined
   playVideoHandler: Function | undefined
   pauseVideoHandler: Function | undefined
@@ -20,10 +21,11 @@ interface IuseYouTubePlayerWork {
 
 export const useYouTubePlayerWork = ({
   contentComponentName,
+  moduleID,
   contentID,
   height,
   width,
-}: IuseYouTubePlayerWorkInput): IuseYouTubePlayerWork => {
+}: UseYouTubePlayerWorkPropsType): UseYouTubePlayerWorkType => {
   const playerDefault = {
     playVideo: () => {},
     pauseVideo: () => {},
@@ -55,7 +57,7 @@ export const useYouTubePlayerWork = ({
   function onPlayerReady(event: any) {
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
-        mediaKey: contentID,
+        mediaKey: moduleID,
         isMediaLoaded: true,
       })
     )
