@@ -82,7 +82,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       isVisibleBlurHash: !isVisible,
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
-      delay: 10000,
+      delay: 500,
       contentComponentName: 'AcademyMatrix',
     },
     playerPanelProps: {
@@ -118,9 +118,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'mediaLoaded']
-export const ContentPlate = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ContentPlateComponent)
+export const ContentPlate = React.memo(
+  withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
 )
 
 export type {

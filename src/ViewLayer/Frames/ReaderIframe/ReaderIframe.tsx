@@ -36,6 +36,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
           height='340'
           frameBorder='0'
           onLoad={event => {
+            console.info('ReaderIframe [39]', { event })
             handleEvents(event, {
               typeEvent: 'TOGGLE_MEDIA_LOADED',
               data: { mediaKey: moduleID, isMediaLoaded: true },
@@ -47,12 +48,6 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
       <div className='__panel'>{props.children[1]}</div>
     </div>
   )
-
-  const {} = props
-
-  const propsOut: ReaderIframePropsOutType = {}
-
-  return <div className='ReaderIframe'>ReaderIframe</div>
 }
 
 export const ReaderIframe: ReaderIframeType = React.memo(ReaderIframeComponent)

@@ -16,8 +16,10 @@ export const SET_COURSES: ReducerType = (
 
       let output = modules.reduce(
         (accum: Record<string, boolean>, module: ModuleType) => {
-          const { moduleID } = module
-          return { ...accum, [moduleID]: false }
+          const { moduleID, contentID } = module
+          let booleanValue = false
+          if (contentID.includes('yourails.com')) booleanValue = true
+          return { ...accum, [moduleID]: booleanValue }
         },
         {}
       )

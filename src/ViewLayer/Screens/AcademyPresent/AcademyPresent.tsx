@@ -11,7 +11,6 @@ import { getContentComponentName } from '../../../Shared/getContentComponentName
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
@@ -22,7 +21,6 @@ import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { TextStructured } from '../../Components/TextStructured/TextStructured'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
@@ -220,7 +218,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isVisibleBlurHash: !isVisible,
       textTooltip,
       isTextTooltip: true,
-      delay: 5000,
+      delay: 500,
       contentComponentName,
     },
     playerPanelProps: {
