@@ -36,7 +36,6 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
           height='340'
           frameBorder='0'
           onLoad={event => {
-            console.info('ReaderIframe [39]', { event })
             handleEvents(event, {
               typeEvent: 'TOGGLE_MEDIA_LOADED',
               data: { mediaKey: moduleID, isMediaLoaded: true },
