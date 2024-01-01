@@ -117,6 +117,7 @@ export const rootStoreDefault: RootStoreType = {
   componentsState: componentsStateDefault,
   courses: [],
   documents: [],
+  articles: [],
   users: [],
   scorm: {
     // coursesInProgress: [],

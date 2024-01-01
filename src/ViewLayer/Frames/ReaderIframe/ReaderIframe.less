@@ -1,27 +1,28 @@
 .ReaderIframe {
+  align-items: center;
   display: flex;
-  flex: 1;
   flex-direction: column;
-  min-width: 20rem;
+  flex: 1;
 
   .__wrapper {
+    height: inherit;
     overflow: hidden;
     padding-bottom: 56.25%;
     position: relative;
-    height: inherit;
+    width: 100%;
 
     ._reader {
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-      object-fit: cover;
-      object-position: center;
-      -webkit-transform: scaleY(1);
       -moz-transform: scaleY(1);
       -ms-transform: scaleY(1);
+      -webkit-transform: scaleY(1);
+      border-radius: @borderRadius1P0;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      position: absolute;
+      top: 0;
       transform: scaleY(1);
+      width: 100%;
     }
   }
 
@@ -36,5 +37,4 @@
 }
 
 .ReaderIframe_AcademyPresent {
-  height: 85vh;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
@@ -17,7 +17,8 @@ import {
 const ReaderIframeComponent: ReaderIframeComponentType = (
   props: ReaderIframePropsType
 ) => {
-  const { contentID, isVisible, screenType } = props
+  const { moduleID, contentID, isVisible, screenType } = props
+  const iFrameRef = useRef(null)
 
   let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
 
@@ -28,29 +29,25 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
     <div className={`ReaderIframe ${classAdded}`}>
       <div className={`__wrapper ${isVisibleClass}`}>
         <iframe
+          ref={iFrameRef}
           className='_reader'
           src={`${contentID}`}
           width='640'
           height='340'
           frameBorder='0'
-          onLoad={event =>
+          onLoad={event => {
+            console.info('ReaderIframe [39]', { event })
             handleEvents(event, {
               typeEvent: 'TOGGLE_MEDIA_LOADED',
-              data: { mediaKey: contentID, isMediaLoaded: true },
+              data: { mediaKey: moduleID, isMediaLoaded: true },
             })
-          }
+          }}
         ></iframe>
         {props.children[0]}
       </div>
       <div className='__panel'>{props.children[1]}</div>
     </div>
   )
-
-  const {} = props
-
-  const propsOut: ReaderIframePropsOutType = {}
-
-  return <div className='ReaderIframe'>ReaderIframe</div>
 }
 
 export const ReaderIframe: ReaderIframeType = React.memo(ReaderIframeComponent)

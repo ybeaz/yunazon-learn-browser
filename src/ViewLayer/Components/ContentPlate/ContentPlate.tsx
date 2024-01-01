@@ -48,11 +48,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
     storeStateSlice: { language, mediaLoaded },
   } = props
 
-  const isVisible = mediaLoaded[contentID]
+  const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
   const { isShowingPlay } = useYouTubePlayerWork({
     contentComponentName,
+    moduleID,
     contentID,
     width,
     height,
@@ -67,10 +68,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const propsOut: ContentPlatePropsOutType = {
     contentComponentProps: {
       ReaderIframe: {
+        moduleID,
         contentID,
         isVisible,
       },
       PlayerIframe: {
+        moduleID,
         contentID,
         isVisible,
       },
@@ -79,7 +82,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       isVisibleBlurHash: !isVisible,
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
-      delay: 10000,
+      delay: 500,
       contentComponentName: 'AcademyMatrix',
     },
     playerPanelProps: {
@@ -115,9 +118,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'mediaLoaded']
-export const ContentPlate = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ContentPlateComponent)
+export const ContentPlate = React.memo(
+  withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
 )
 
 export type {

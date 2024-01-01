@@ -7,6 +7,12 @@ export type RouteType = {
 
 export const ROUTES: RouteType[] = [
   {
+    page: 'ArticlePresent',
+    path: `/a/:articleID/:slug?`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
     page: 'AboutAcademy',
     path: `/about`,
     children: [],

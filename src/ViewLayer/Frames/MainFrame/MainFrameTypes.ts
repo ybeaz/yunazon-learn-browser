@@ -7,7 +7,7 @@ export type MainFrameComponentPropsType = {
 
 export type MainFramePropsType = Omit<
   MainFrameComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'children'
 >
 
 export type MainFramePropsOutType = Record<string, any>

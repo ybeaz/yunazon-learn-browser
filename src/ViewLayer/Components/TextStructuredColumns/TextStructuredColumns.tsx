@@ -69,12 +69,12 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
 
   const propsOut: TextStructuredColumnsPropsOutType = {
     summaryProps: {
-      testsEntities: summary,
-      title: titleSummary,
+      entities: summary,
+      capture: titleSummary,
     },
     objectionsProps: {
-      testsEntities: objections,
-      title: titleObjections,
+      entities: objections,
+      capture: titleObjections,
     },
   }
 

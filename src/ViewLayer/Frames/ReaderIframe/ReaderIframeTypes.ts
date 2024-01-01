@@ -1,4 +1,5 @@
 export type ReaderIframePropsType = {
+  moduleID: string
   contentID: string
   isVisible: boolean
   screenType: string
