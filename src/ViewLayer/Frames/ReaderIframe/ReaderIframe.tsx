@@ -27,7 +27,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
 
   return (
     <div className={`ReaderIframe ${classAdded}`}>
-      <div className={`__wrapper ${isVisibleClass}`}>
+      <div className={`_wrapper ${isVisibleClass}`}>
         <iframe
           ref={iFrameRef}
           className='_reader'
@@ -44,7 +44,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (
         ></iframe>
         {props.children[0]}
       </div>
-      <div className='__panel'>{props.children[1]}</div>
+      <div className='_panel'>{props.children[1]}</div>
     </div>
   )
 }

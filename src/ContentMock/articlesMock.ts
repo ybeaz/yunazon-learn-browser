@@ -60,7 +60,7 @@ export const articles: ArticleType[] = [
           'Rosenblueth, Arturo, Wiener, Norbert, Bigelow, Julian (1943) “Behavior, Purpose, Teleology”, Philosophy of Science, 1943, Vol. 10, pp. 18–24.',
           'Wiener, Norbert (1948) Cybernetics or Control and Communication in the Animal and the Machine, MIT Press, Cambridge (MA).',
         ],
-        options: { isTextIdent: false },
+        options: { isTextIdent: false, isList: 'olStyle' },
       },
       {
         capture: "Author's Information",

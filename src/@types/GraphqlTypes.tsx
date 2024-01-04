@@ -31,6 +31,44 @@ export type AvatarSizeType = {
   width?: Maybe<Scalars['Float']['output']>;
 };
 
+export type BotsConnectionType = {
+  __typename?: 'BotsConnectionType';
+  /** [BotsEdgeType] */
+  edges?: Maybe<Array<BotsEdgeType>>;
+  /** BotsPageInfoType */
+  pageInfo?: Maybe<BotsPageInfoType>;
+};
+
+export type BotsEdgeType = {
+  __typename?: 'BotsEdgeType';
+  /** cursor */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** BotsEdgeType */
+  node?: Maybe<BotsType>;
+};
+
+export type BotsPageInfoType = {
+  __typename?: 'BotsPageInfoType';
+  /** endCursor */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** hasNextPage */
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type BotsType = {
+  __typename?: 'BotsType';
+  /** bots ID */
+  botsID?: Maybe<Scalars['ID']['output']>;
+  /** bots created date */
+  dateCreated?: Maybe<Scalars['Date']['output']>;
+  /** bots deleted date */
+  dateDeleted?: Maybe<Scalars['Date']['output']>;
+  /** bots updated date */
+  dateUpdated?: Maybe<Scalars['Date']['output']>;
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+};
+
 export type ChoiceType = {
   __typename?: 'ChoiceType';
   finish_reason: Scalars['String']['output'];
@@ -149,6 +187,17 @@ export type CoursesPageInfoType = {
   endCursor?: Maybe<Scalars['String']['output']>;
   /** hasNextPage */
   hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type CreateBotsInputType = {
+  /** bots ID */
+  botsID?: InputMaybe<Scalars['ID']['input']>;
+  /** bots created date */
+  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** bots deleted date */
+  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** bots updated date */
+  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
 };
 
 export type CreateCourseInputType = {
@@ -480,14 +529,18 @@ export type ModuleType = {
 export type Mutation = {
   __typename?: 'Mutation';
   addRecipe: RecipeType;
+  createBots: Array<BotsType>;
   createCompetencyTags: Array<CompetencyTagType>;
   createCourses: Array<CourseType>;
   createDocuments: Array<DocumentType>;
   createProfiles: Array<ProfileType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
+  deactivateBots: Array<Scalars['String']['output']>;
   deactivateCourses: Array<Scalars['String']['output']>;
   deactivateDocuments: Array<Scalars['String']['output']>;
+  deactivateTemplates: Array<Scalars['String']['output']>;
+  deleteBots: Array<Scalars['String']['output']>;
   deleteCompetencyTags: Array<CompetencyTagType>;
   deleteCourses: Array<Scalars['String']['output']>;
   deleteDocuments: Array<Scalars['String']['output']>;
@@ -495,6 +548,7 @@ export type Mutation = {
   deleteTemplates: Array<Scalars['String']['output']>;
   deleteUser: UserModelExtendedType;
   removeRecipe: Scalars['Boolean']['output'];
+  updateBots: Array<BotsType>;
   updateCollections: Array<CollectionUpdateStatusType>;
   updateCompetencyTags: Array<CompetencyTagType>;
   updateCourses: Array<CourseType>;
@@ -507,6 +561,11 @@ export type Mutation = {
 
 export type MutationAddRecipeArgs = {
   newRecipeData: NewRecipeInputType;
+};
+
+
+export type MutationCreateBotsArgs = {
+  createBotsInput: Array<CreateBotsInputType>;
 };
 
 
@@ -531,12 +590,17 @@ export type MutationCreateProfilesArgs = {
 
 
 export type MutationCreateTemplatesArgs = {
-  createTemplatesInput: CreateTemplatesInputType;
+  createTemplatesInput: Array<CreateTemplatesInputType>;
 };
 
 
 export type MutationCreateUserArgs = {
   userInputType: UserInputType;
+};
+
+
+export type MutationDeactivateBotsArgs = {
+  deactivateBotsIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -547,6 +611,16 @@ export type MutationDeactivateCoursesArgs = {
 
 export type MutationDeactivateDocumentsArgs = {
   deactivateDocumentsIdsInput: Array<Scalars['String']['input']>;
+};
+
+
+export type MutationDeactivateTemplatesArgs = {
+  deactivateTemplatesIdsInput: Array<Scalars['String']['input']>;
+};
+
+
+export type MutationDeleteBotsArgs = {
+  deleteBotsIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -586,6 +660,11 @@ export type MutationRemoveRecipeArgs = {
 };
 
 
+export type MutationUpdateBotsArgs = {
+  updateBotsInput: Array<UpdateBotsInputType>;
+};
+
+
 export type MutationUpdateCollectionsArgs = {
   collections: Array<Scalars['String']['input']>;
 };
@@ -612,7 +691,7 @@ export type MutationUpdateProfilesArgs = {
 
 
 export type MutationUpdateTemplatesArgs = {
-  updateTemplatesInput: UpdateTemplatesInputType;
+  updateTemplatesInput: Array<UpdateTemplatesInputType>;
 };
 
 
@@ -772,13 +851,18 @@ export type ProfilesPageInfoType = {
 
 export type Query = {
   __typename?: 'Query';
+  countBots: Scalars['Int']['output'];
   countCourses: Scalars['Int']['output'];
   countDocuments: Scalars['Int']['output'];
+  countTemplates: Scalars['Int']['output'];
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
   getImagesOpenAi: ImagesOpenAiType;
   getMessageAssistant: MessageAssistantType;
+  readBots: Array<BotsType>;
+  readBotsAll: Array<BotsType>;
+  readBotsConnection: BotsConnectionType;
   readCompetencyTags: Array<CompetencyTagType>;
   readCourses: Array<CourseType>;
   readCoursesAll: Array<CourseType>;
@@ -822,6 +906,16 @@ export type QueryGetImagesOpenAiArgs = {
 
 export type QueryGetMessageAssistantArgs = {
   messageAssistantInput: MessageAssistantInputType;
+};
+
+
+export type QueryReadBotsArgs = {
+  readBotsInput: Array<Scalars['String']['input']>;
+};
+
+
+export type QueryReadBotsConnectionArgs = {
+  readBotsConnectionInput: ReadBotsConnectionInputType;
 };
 
 
@@ -931,6 +1025,15 @@ export type QuestionType = {
   questionID?: Maybe<Scalars['ID']['output']>;
   /** course module question topic */
   topic?: Maybe<Scalars['String']['output']>;
+};
+
+export type ReadBotsConnectionInputType = {
+  /** after */
+  after?: InputMaybe<Scalars['String']['input']>;
+  /** first */
+  first?: InputMaybe<Scalars['Int']['input']>;
+  /** offset */
+  offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type ReadCourseInputType = {
@@ -1109,6 +1212,17 @@ export type TemplatesType = {
   isActive: Scalars['Boolean']['output'];
   /** templates ID */
   templatesID?: Maybe<Scalars['ID']['output']>;
+};
+
+export type UpdateBotsInputType = {
+  /** bots ID */
+  botsID?: InputMaybe<Scalars['ID']['input']>;
+  /** bots created date */
+  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  /** bots deleted date */
+  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  /** bots updated date */
+  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
 };
 
 export type UpdateCourseInputType = {

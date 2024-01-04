@@ -10,6 +10,47 @@ type AvatarSizeType {
   width: Float
 }
 
+type BotsConnectionType {
+  """[BotsEdgeType]"""
+  edges: [BotsEdgeType!]
+
+  """BotsPageInfoType"""
+  pageInfo: BotsPageInfoType
+}
+
+type BotsEdgeType {
+  """cursor"""
+  cursor: String
+
+  """BotsEdgeType"""
+  node: BotsType
+}
+
+type BotsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
+type BotsType {
+  """bots ID"""
+  botsID: ID
+
+  """bots created date"""
+  dateCreated: Date
+
+  """bots deleted date"""
+  dateDeleted: Date
+
+  """bots updated date"""
+  dateUpdated: Date
+
+  """isActive"""
+  isActive: Boolean!
+}
+
 type ChoiceType {
   finish_reason: String!
   index: Int!
@@ -149,6 +190,20 @@ type CoursesPageInfoType {
 
   """hasNextPage"""
   hasNextPage: Boolean
+}
+
+input CreateBotsInputType {
+  """bots ID"""
+  botsID: ID
+
+  """bots created date"""
+  dateCreated: Date
+
+  """bots deleted date"""
+  dateDeleted: Date
+
+  """bots updated date"""
+  dateUpdated: Date
 }
 
 input CreateCourseInputType {
@@ -573,14 +628,18 @@ type ModuleType {
 
 type Mutation {
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
+  createBots(createBotsInput: [CreateBotsInputType!]!): [BotsType!]!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  createTemplates(createTemplatesInput: CreateTemplatesInputType!): [TemplatesType!]!
+  createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
+  deactivateBots(deactivateBotsIdsInput: [String!]!): [String!]!
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
+  deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
+  deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
@@ -588,12 +647,13 @@ type Mutation {
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
+  updateBots(updateBotsInput: [UpdateBotsInputType!]!): [BotsType!]!
   updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
   updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  updateTemplates(updateTemplatesInput: UpdateTemplatesInputType!): [TemplatesType!]!
+  updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
 
@@ -778,13 +838,18 @@ type ProfilesPageInfoType {
 }
 
 type Query {
+  countBots: Int!
   countCourses: Int!
   countDocuments: Int!
+  countTemplates: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
   getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
+  readBots(readBotsInput: [String!]!): [BotsType!]!
+  readBotsAll: [BotsType!]!
+  readBotsConnection(readBotsConnectionInput: ReadBotsConnectionInputType!): BotsConnectionType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
   readCourses(readCoursesInput: [ReadCourseInputType!]!): [CourseType!]!
   readCoursesAll: [CourseType!]!
@@ -849,6 +914,17 @@ type QuestionType {
 
   """course module question topic"""
   topic: String
+}
+
+input ReadBotsConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
 }
 
 input ReadCourseInputType {
@@ -1092,6 +1168,20 @@ type TemplatesType {
 
   """templates ID"""
   templatesID: ID
+}
+
+input UpdateBotsInputType {
+  """bots ID"""
+  botsID: ID
+
+  """bots created date"""
+  dateCreated: Date
+
+  """bots deleted date"""
+  dateDeleted: Date
+
+  """bots updated date"""
+  dateUpdated: Date
 }
 
 input UpdateCourseInputType {

@@ -1,9 +1,6 @@
 import React, { ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
-import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
-import { SectionType } from '../../../@types/ArticleMockType'
-
 import { getClasses } from '../../../Shared/getClasses'
 import {
   EntitiyItemType,
@@ -29,12 +26,19 @@ const TextStructuredComponent: TextStructuredComponentType = (
       const { capture } = entityItem
       const text = entityItem?.text
       const divs = entityItem?.divs
+
       let isTextIdent = true
       if (entityItem?.options?.isTextIdent !== undefined)
         isTextIdent = entityItem?.options?.isTextIdent
 
-      let divContent: string | ReactElement[] | null = text || null
-      if (!text && divs && divs.length) {
+      let divContent: string | ReactElement | ReactElement[] | null =
+        text || null
+      if (
+        !text &&
+        divs &&
+        divs.length &&
+        entityItem?.options?.isList === undefined
+      ) {
         divContent = divs.map((div: string) => {
           const key = nanoid()
           return (
@@ -46,6 +50,29 @@ const TextStructuredComponent: TextStructuredComponentType = (
             </p>
           )
         })
+      } else if (
+        !text &&
+        divs &&
+        divs.length &&
+        (entityItem?.options?.isList === 'olStyle' ||
+          entityItem?.options?.isList === 'ulStyle')
+      ) {
+        divContent = divs.map((div: string) => {
+          const key = nanoid()
+          return (
+            <li
+              key={key}
+              className={`_li ${!isTextIdent ? '_noTextIdent' : ''}`}
+            >
+              {div}
+            </li>
+          )
+        })
+
+        if (entityItem?.options?.isList === 'olStyle')
+          divContent = <ol className='_olStyle'>{divContent}</ol>
+        else if (entityItem?.options?.isList === 'ulStyle')
+          divContent = <ul className='_ulStyle'>{divContent}</ul>
       }
 
       const key = nanoid()
