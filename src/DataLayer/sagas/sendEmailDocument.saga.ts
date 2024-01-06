@@ -3,6 +3,7 @@ import { takeEvery, put } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -21,10 +22,16 @@ function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
       sendBcc,
     }
 
-    const sendEmailDocument: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'sendEmailDocument',
-    })
+    const sendEmailDocument: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'sendEmailDocument',
+      },
+      {
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
 
     yield put(
       actionSync.SET_MODAL_FRAMES([

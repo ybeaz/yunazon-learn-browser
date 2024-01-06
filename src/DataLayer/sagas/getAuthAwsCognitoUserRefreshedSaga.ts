@@ -8,6 +8,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
@@ -39,10 +40,16 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       },
     }
 
-    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
-    })
+    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
+      },
+      {
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
 
     yield put(
       actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({

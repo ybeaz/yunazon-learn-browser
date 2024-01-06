@@ -7,6 +7,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getLocalStorageDeletedCourse } from '../../Shared/getLocalStorageDeletedCourse'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -63,7 +64,11 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
         variables,
         resolveGraphqlName: 'createDocuments',
       },
-      getHeadersAuthDict()
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
     )
 
     yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))

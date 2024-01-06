@@ -10,6 +10,7 @@ import { getCheckedCoursesAnswered } from '../../Shared/getCheckedCoursesAnswere
 import { withDebounce } from '../../Shared/withDebounce'
 import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { getCourseByModuleId } from '../../Shared/getCourseByModuleId'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -48,10 +49,16 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
         ],
       }
 
-      const readCourses: any = yield getResponseGraphqlAsync({
-        variables,
-        resolveGraphqlName: 'readCourses',
-      })
+      const readCourses: any = yield getResponseGraphqlAsync(
+        {
+          variables,
+          resolveGraphqlName: 'readCourses',
+        },
+        {
+          clientHttpType: selectGraphqlHttpClientFlag(),
+          timeout: 5000,
+        }
+      )
 
       coursesNext = getPreparedCourses(readCourses)
     }

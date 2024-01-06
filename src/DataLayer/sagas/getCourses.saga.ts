@@ -12,6 +12,7 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getCoursesGenerator(): Iterable<any> {
   // const isDebounced = debounce()
@@ -53,7 +54,11 @@ export function* getCoursesGenerator(): Iterable<any> {
         variables,
         resolveGraphqlName: 'readCoursesConnection',
       },
-      { ...getHeadersAuthDict(), clientHttpType: 'apolloClient' }
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
     )
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)

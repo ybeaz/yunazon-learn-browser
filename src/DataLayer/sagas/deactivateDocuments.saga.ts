@@ -6,6 +6,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getDocuments } from './getDocuments.saga'
 import { withDebounce } from '../../Shared/withDebounce'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* deactivateDocumentsGenerator(
   params: ActionReduxType | any
@@ -26,7 +27,11 @@ function* deactivateDocumentsGenerator(
         variables,
         resolveGraphqlName: 'deactivateDocuments',
       },
-      getHeadersAuthDict()
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
     )
 
     yield call(getDocuments)
