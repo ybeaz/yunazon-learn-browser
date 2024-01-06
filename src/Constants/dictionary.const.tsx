@@ -23,6 +23,10 @@ export const DICTIONARY: IDictionary = {
     en: 'objections',
     ru: 'возражения',
   },
+  Create_course: {
+    en: 'Create course',
+    ru: 'Создать курс',
+  },
   My_courses: {
     en: 'My courses',
     ru: 'Мои курсы',

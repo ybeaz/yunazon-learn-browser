@@ -6,8 +6,8 @@ import { nanoid } from 'nanoid'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
+import { getSideNavigationButtons } from './getSideNavigationButtons'
 
 import {
   withPropsYrl,
@@ -15,8 +15,6 @@ import {
   ButtonYrlPropsType,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
-
-import { isAwsCognitoAuth } from '../../../FeatureFlags'
 
 import { getClasses } from '../../../Shared/getClasses'
 
@@ -43,126 +41,11 @@ const SideNavigationComponent: SideNavigationComponentType = (
 
   const navigate = useNavigate()
 
-  const buttonPropsArr: ButtonYrlPropsType[] = [
-    {
-      icon: 'MdLogin',
-      captureRight: DICTIONARY.Login[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'CLICK_ON_SIGN_IN' },
-      isDisplaying: isAwsCognitoAuth() && !preferred_username,
-    },
-    {
-      icon: 'MdHome',
-      captureRight: DICTIONARY.Home[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/' },
-      },
-      isDisplaying: true,
-    },
-    {
-      icon: 'MdAssignmentTurnedIn',
-      captureRight: DICTIONARY.My_documents[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/documents' },
-      },
-      isDisplaying: !!preferred_username,
-    },
-    {
-      icon: 'MdLightbulbOutline',
-      captureRight: DICTIONARY.About[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'SET_MODAL_FRAMES',
-        data: [
-          {
-            childName: 'AboutAcademyBody',
-            isActive: true,
-            childProps: {},
-          },
-        ],
-      },
-      isDisplaying: true,
-    },
-    {
-      icon: 'MdCastForEducation',
-      captureRight: DICTIONARY.My_courses[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/courses' },
-      },
-      isDisplaying: false, // TODO, component Courses.tsx !!preferred_username,
-    },
-    {
-      icon: 'MdPerson',
-      captureRight: DICTIONARY.My_profile[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/profiles' },
-      },
-      isDisplaying: false, // TODO, component Profiles.tsx !!preferred_username,
-    },
-    {
-      icon: 'MdQueue',
-      captureRight: DICTIONARY.createCourseQuiz[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'CREATE_COURSE',
-        data: { contentComponentName: 'SideNavigation' },
-      },
-      isDisplaying: false, // TODO,
-    },
-    {
-      icon: 'MdFlag',
-      captureRight: DICTIONARY.About[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: false, // TODO, true,
-    },
-    {
-      icon: 'MdAddShoppingCart',
-      captureRight: DICTIONARY.Services[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: false, // TODO, true,
-    },
-    {
-      icon: 'MdContactMail',
-      captureRight: DICTIONARY.Contacts[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'DEV_STAGE' },
-      isDisplaying: false, // TODO, true,
-    },
-    {
-      icon: 'MdLogout',
-      captureRight: DICTIONARY.Logout[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'CLICK_ON_SIGN_OUT' },
-      isDisplaying: isAwsCognitoAuth() && !!preferred_username,
-    },
-    {
-      icon: 'HiOutlineAcademicCap',
-      captureRight: DICTIONARY.Academy[language],
-      classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
-      isDisplaying: false,
-    },
-    // {
-    //   icon: 'MdHome',
-    //   captureRight: DICTIONARY.Home[language],
-    //   classAdded: 'Button_sideMenuItems',
-    //   action: {
-    //     typeEvent: 'GO_SCREEN',
-    //     data: { history: navigate, path: '/sep' },
-    //   },
-    //   isDisplaying: false,
-    // },
-  ]
+  const buttonPropsArr: ButtonYrlPropsType[] = getSideNavigationButtons({
+    navigate,
+    preferred_username,
+    language,
+  })
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
     return buttonPropsArr2.map(buttonProps => {
