@@ -1,8 +1,14 @@
 import React from 'react'
 
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { RootStoreType, ActionEventType } from '../../../Interfaces/'
+
 export type CourseCreateBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  storeStateSlice: {
+    language: RootStoreType['language']
+  }
+  handleEvents: ActionEventType
 }
 
 export type CourseCreateBodyPropsType = Omit<
@@ -10,7 +16,14 @@ export type CourseCreateBodyPropsType = Omit<
   'storeStateSlice'
 >
 
-export type CourseCreateBodyPropsOutType = Record<string, any>
+export type CourseCreateBodyPropsOutType = {
+  buttonMetaDataProps: ButtonYrlPropsType
+  buttonTranscriptProps: ButtonYrlPropsType
+  buttonSummaryProps: ButtonYrlPropsType
+  buttonQuestionsProps: ButtonYrlPropsType
+  buttonObjectionsProps: ButtonYrlPropsType
+  buttonFinalisedProps: ButtonYrlPropsType
+}
 
 /**
  * @import import { CourseCreateBodyComponentPropsType, CourseCreateBodyPropsType, CourseCreateBodyPropsOutType, CourseCreateBodyComponentType, CourseCreateBodyType } from './CourseCreateBodyTypes'

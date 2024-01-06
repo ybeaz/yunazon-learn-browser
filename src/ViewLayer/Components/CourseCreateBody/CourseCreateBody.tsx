@@ -5,7 +5,9 @@ import {
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
 
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
   CourseCreateBodyComponentPropsType,
   CourseCreateBodyPropsType,
@@ -22,21 +24,84 @@ import {
 const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   props: CourseCreateBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice } = props
+  const {
+    classAdded,
+    storeStateSlice: { language },
+    handleEvents,
+  } = props
 
-  const propsOut: CourseCreateBodyPropsOutType = {}
+  const propsOut: CourseCreateBodyPropsOutType = {
+    buttonMetaDataProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonTranscriptProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonSummaryProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonQuestionsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonObjectionsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonFinalisedProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdForward2',
+      action: {
+        typeEvent: 'PLUS_QUESTION_SLIDE',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+  }
 
   return (
     <div className={getClasses('CourseCreateBody', classAdded)}>
-      CourseCreateBody
+      <h2 className='_h2'>{DICTIONARY.Create_course[language]}</h2>
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = []
-export const CourseCreateBody: CourseCreateBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(CourseCreateBodyComponent)
+const storeStateSliceProps: string[] = ['language']
+export const CourseCreateBody: CourseCreateBodyType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(CourseCreateBodyComponent)
+  )
 )
 
 export type {

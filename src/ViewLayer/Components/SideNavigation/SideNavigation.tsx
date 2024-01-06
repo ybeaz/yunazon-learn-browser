@@ -3,8 +3,7 @@ import React, { ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
-import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
@@ -37,6 +36,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
   const {
     classAdded,
     storeStateSlice: { preferred_username, language, isSideNavLeftVisible },
+    handleEvents,
   } = props
 
   const navigate = useNavigate()
@@ -101,11 +101,14 @@ const storeStateSliceProps: string[] = [
   'isSideNavLeftVisible',
 ]
 
-export const SideNavigation: React.FunctionComponent =
+export const SideNavigation: React.FunctionComponent = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
     React.memo(SideNavigationComponent)
   )
+)
 
 export type {
   SideNavigationPropsType,

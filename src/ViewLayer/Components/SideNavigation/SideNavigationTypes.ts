@@ -1,5 +1,5 @@
 import React from 'react'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { RootStoreType, ActionEventType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type GetSideNavigationButtonsProps = {
@@ -19,6 +19,7 @@ export type SideNavigationComponentPropsType = {
     preferred_username: RootStoreType['authAwsCognitoUserData']['preferred_username']
     isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
   }
+  handleEvents: ActionEventType
 }
 
 export type SideNavigationPropsType = Omit<
