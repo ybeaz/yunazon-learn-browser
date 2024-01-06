@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
-import { SideNavigation } from '../../Components/SideNavigation'
+import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
@@ -52,6 +52,22 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   }, [])
 
   const propsOut: ArticlePresentPropsOutType = {
+    headerFrameProps: {
+      brandName: 'YouRails Academy',
+      moto: DICTIONARY['Together_know_everything'][language],
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
+      contentComponentName: 'SearchFormSep',
+      isButtonSideMenuLeft: true,
+      isLogoGroup: true,
+      isButtonAddCourse: true,
+      isButtonAuthUser: true,
+      isSelectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isPageActionsGroup: false,
+      isButtonsShare: false,
+    },
     mainFrameProps: {
       screenType: 'ArticlePresent',
     },
@@ -64,7 +80,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
     <div className={getClasses('ArticlePresent', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
-        {null}
+        <HeaderFrame {...propsOut.headerFrameProps} />
         {/* middle-left */}
         {null}
         {/* middle-main */}
@@ -79,7 +95,6 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

@@ -8,6 +8,7 @@ import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 // import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
@@ -58,9 +59,7 @@ const CourseCreateComponent: CourseCreateComponentType = (
     mainFrameProps: {
       screenType: 'CourseCreate',
     },
-    // courseCreateBodyProps: {
-
-    // },
+    courseCreateBodyProps: {},
   }
 
   return (
@@ -71,14 +70,13 @@ const CourseCreateComponent: CourseCreateComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <div>{'<CourseCreateBody {...propsOut.courseCreateBodyProps} />'}</div>
+        <CourseCreateBody {...propsOut.courseCreateBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

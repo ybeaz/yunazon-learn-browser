@@ -73,7 +73,6 @@ const ProfilesComponent: ProfilesComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

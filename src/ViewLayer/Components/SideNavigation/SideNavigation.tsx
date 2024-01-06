@@ -1,28 +1,43 @@
 import React, { ReactElement } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
-import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
+
 import {
+  withPropsYrl,
   ButtonYrl,
   ButtonYrlPropsType,
   withStoreStateSelectedYrl,
-} from '../ComponentsLibrary/'
-import { isAwsCognitoAuth } from '../../FeatureFlags'
+} from '../../ComponentsLibrary/'
+
+import { isAwsCognitoAuth } from '../../../FeatureFlags'
+
+import { getClasses } from '../../../Shared/getClasses'
+
+import {
+  SideNavigationComponentPropsType,
+  SideNavigationPropsType,
+  SideNavigationPropsOutType,
+  SideNavigationComponentType,
+  SideNavigationType,
+} from './SideNavigationTypes'
 
 /**
- * @description Component for the left side menu
- * @link React Icons https://react-icons.github.io/react-icons/icons/md/
+ * @description Component to render SideNavigation
+ * @import import { SideNavigation, SideNavigationPropsType, SideNavigationPropsOutType, SideNavigationType } 
+             from '../Components/SideNavigation/SideNavigation'
  */
-export const SideNavigationComponent: React.FunctionComponent = (
-  props: any
-): ReactElement => {
+const SideNavigationComponent: SideNavigationComponentType = (
+  props: SideNavigationComponentPropsType
+) => {
   const {
+    classAdded,
     storeStateSlice: { preferred_username, language, isSideNavLeftVisible },
   } = props
 
@@ -171,6 +186,8 @@ export const SideNavigationComponent: React.FunctionComponent = (
     languagesSelected: [{ value: language }],
   }
 
+  const propsOut: SideNavigationPropsOutType = {}
+
   return (
     <div
       className={`SideNavigation ${classNameAdd}`}
@@ -206,3 +223,10 @@ export const SideNavigation: React.FunctionComponent =
     storeStateSliceProps,
     React.memo(SideNavigationComponent)
   )
+
+export type {
+  SideNavigationPropsType,
+  SideNavigationPropsOutType,
+  SideNavigationComponentType,
+  SideNavigationType,
+}

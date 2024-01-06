@@ -73,7 +73,6 @@ const CoursesComponent: CoursesComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

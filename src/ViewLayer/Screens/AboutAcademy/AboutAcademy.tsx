@@ -76,7 +76,6 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

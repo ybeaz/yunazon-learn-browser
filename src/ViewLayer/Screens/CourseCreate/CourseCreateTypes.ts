@@ -2,7 +2,7 @@ import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
-// import { CourseCreateBodyPropsType } from '../../Components/'
+import { CourseCreateBodyPropsType } from '../../Components/'
 import { MainFramePropsType } from '../../Frames/'
 
 export type CourseCreateComponentPropsType = {
@@ -21,7 +21,7 @@ export type CourseCreatePropsType = Omit<
 export type CourseCreatePropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: MainFramePropsType
-  // courseCreateBodyProps: CourseCreateBodyPropsType
+  courseCreateBodyProps: CourseCreateBodyPropsType
 }
 
 /**

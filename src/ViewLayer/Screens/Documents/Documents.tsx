@@ -85,7 +85,6 @@ const DocumentsComponent: DocumentsComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }
