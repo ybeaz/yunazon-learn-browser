@@ -6,7 +6,6 @@ import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-import { InputGroup } from '../../Components/InputGroup/InputGroup'
 
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -15,7 +14,11 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  InputGroupYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 
 import {
   HeaderFrameComponentPropsType,
@@ -155,6 +158,21 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       classAdded: '',
       text: preferred_username,
     },
+    inputGroupProps: {
+      inputProps: {
+        classAdded: 'Input_search',
+        type: 'text',
+        placeholder: 'Search...',
+        typeEvent: 'ONCHANGE_SEARCH_INPUT',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        storeFormProp: 'searchInput',
+      },
+      buttonSubmitProps: {
+        icon: 'MdSearch',
+        classAdded: 'Button_MdSearch',
+        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+      },
+    },
   }
 
   let SideMenuLeft = null
@@ -193,8 +211,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         </div>
         <div className='__main'>
           {isSeachGroup && (
-            <div className='_itemInputGroup'>
-              <InputGroup />
+            <div className='_itemInputGroupYrl'>
+              <InputGroupYrl {...propsOut.inputGroupProps} />
             </div>
           )}
         </div>
