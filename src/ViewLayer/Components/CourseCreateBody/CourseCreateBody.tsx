@@ -104,13 +104,13 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         type: 'text',
         placeholder: 'Add resource url...',
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
-        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        typeEventOnEnter: 'CLICK_ON_COURSE_CREATE_SUBMIT',
         storeFormProp: 'inputCourseCreate',
       },
       buttonSubmitProps: {
-        classAdded: 'Button_MdSearch',
+        classAdded: 'Button_CourseCreateSubmit',
         icon: 'MdOutlineSend',
-        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+        action: { typeEvent: 'CLICK_ON_COURSE_CREATE_SUBMIT' },
       },
     },
   }

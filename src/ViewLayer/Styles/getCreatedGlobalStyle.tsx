@@ -416,6 +416,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
     }
 
     .Button_DeactivateDocument .__button,
+    .Button_CourseCreateSubmit  .__button,
     .Button_MdSearch .__button {
       border-bottom: solid 1px ${props2 =>
         getColor(props2, 'colorSecond', medial, middle, 'Dark')};
@@ -426,6 +427,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
     }
 
     .Button_DeactivateDocument ._in,
+    .Button_CourseCreateSubmit ._in,
     .Button_MdSearch ._in {
       color: ${props2 =>
         getColor(props2, 'colorFirstLighter', medial, lighter)};
