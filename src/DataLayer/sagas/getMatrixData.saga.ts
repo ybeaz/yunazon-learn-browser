@@ -11,7 +11,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
-    const searchInput = query?.search || ''
+    const inputSearch = query?.search || ''
     const tagsPick =
       (query && query?.tagspick && query?.tagspick.split(',')) || []
     const tagsOmit =
@@ -21,7 +21,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
         ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
         : 0
 
-    yield put(actionSync.ONCHANGE_SEARCH_INPUT(searchInput))
+    yield put(actionSync.ONCHANGE_SEARCH_INPUT(inputSearch))
 
     yield put(
       actionSync.SET_TAGS_STATE({

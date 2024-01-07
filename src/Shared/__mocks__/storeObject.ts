@@ -2173,7 +2173,7 @@ export const storeObject = {
     durationMultiplier: 1,
   },
   forms: {
-    searchInput: '',
+    inputSearch: '',
     sendTo: '',
     sendCc: '',
     searchFormSep: {

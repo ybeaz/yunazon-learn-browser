@@ -13,7 +13,7 @@ export const ONCHANGE_SEARCH_INPUT: ReducerType = (
   const { forms } = store
   const nextForms = {
     ...forms,
-    searchInput: data,
+    inputSearch: data,
   }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {

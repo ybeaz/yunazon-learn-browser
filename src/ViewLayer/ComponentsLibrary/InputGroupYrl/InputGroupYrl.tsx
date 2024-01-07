@@ -22,7 +22,7 @@ import {
         placeholder: 'Search...',
         typeEvent: 'ONCHANGE_SEARCH_INPUT',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
-        storeFormProp: 'searchInput',
+        storeFormProp: 'inputSearch',
       },
       buttonSubmitProps: {
         icon: 'MdSearch',

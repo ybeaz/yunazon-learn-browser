@@ -63,7 +63,7 @@ export type FormsType = {
   searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
-  searchInput: string
+  inputSearch: string
   tagsPick: string[]
   tagsOmit: string[]
 }

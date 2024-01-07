@@ -7,11 +7,11 @@ export const SET_SEARCH_INPUT: ReducerType = (
 ): RootStoreType => {
   const { forms } = store
 
-  const { searchInputIn } = data
+  const { inputSearchIn } = data
 
-  const { searchInput } = forms
-  const searchInputNext = !!searchInputIn ? searchInputIn : searchInput
-  const formsNext = { ...forms, searchInput: searchInputNext }
+  const { inputSearch } = forms
+  const inputSearchNext = !!inputSearchIn ? inputSearchIn : inputSearch
+  const formsNext = { ...forms, inputSearch: inputSearchNext }
 
   return { ...store, forms: formsNext }
 }

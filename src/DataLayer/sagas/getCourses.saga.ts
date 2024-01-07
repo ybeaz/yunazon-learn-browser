@@ -30,13 +30,13 @@ export function* getCoursesGenerator(): Iterable<any> {
         pagesCourses: { first, offset },
       },
     },
-    forms: { searchInput, tagsPick, tagsOmit },
+    forms: { inputSearch, tagsPick, tagsOmit },
   } = stateSelected as RootStoreType
 
   let readCoursesConnectionInput: any = {
     first,
     offset,
-    searchPhrase: searchInput,
+    searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,
     stagesPick: selectCoursesStageFlag(),

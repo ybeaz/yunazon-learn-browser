@@ -111,7 +111,7 @@ export const componentsStateDefault: ComponentsStateType = {
 }
 
 export const formsDefault: FormsType = {
-  searchInput: '',
+  inputSearch: '',
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,

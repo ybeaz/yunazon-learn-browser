@@ -38,7 +38,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       courses,
       isLoadedGlobalVars,
       isLoadedCourses,
-      searchInput,
+      inputSearch,
     },
   } = props
 
@@ -154,7 +154,7 @@ const storeStateSliceProps: string[] = [
   'courses',
   'isLoadedGlobalVars',
   'isLoadedCourses',
-  'searchInput',
+  'inputSearch',
 ]
 export const AcademyMatrix: AcademyMatrixType = withStoreStateSelectedYrl(
   storeStateSliceProps,
