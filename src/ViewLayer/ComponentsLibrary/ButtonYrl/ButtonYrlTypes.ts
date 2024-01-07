@@ -9,7 +9,8 @@ export type ButtonYrlPropsType = {
   captureRight?: string // capture on the right of the icon/ button
   classAdded: string // calss added to the button, to make it css unique
   action?: ActionReduxType // action to assign the button
-  isDisplaying?: boolean // is the button displaing at all
+  isDisplaying?: boolean // is element present on the page and visible/ displaying?
+  isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
   tooltipText?: string // tooltips text for the button to provide user with a promt
   tooltipPosition?: string // options: ['top','right','bottom','left']
   isTooltipVisibleForced?: boolean // is tooltips visible, to manage it

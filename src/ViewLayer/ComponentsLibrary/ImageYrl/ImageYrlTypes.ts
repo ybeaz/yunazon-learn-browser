@@ -5,6 +5,8 @@ export type ImageYrlPropsType = {
   src: string | undefined
   action?: ActionReduxType
   handleEvents?: Function
+  isDisplaying?: boolean // is element present on the page and visible/ displaying?
+  isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
 }
 
 export type ImageYrlPropsOutType = Record<string, any>

@@ -1,6 +1,10 @@
 import React from 'react'
+import { nanoid } from 'nanoid'
 
 import {
+  IconYrl,
+  ImageYrl,
+  ButtonYrl,
   withPropsYrl,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
@@ -9,12 +13,15 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
+  StagesType,
+  StagespropsOut,
   CourseCreateBodyComponentPropsType,
   CourseCreateBodyPropsType,
   CourseCreateBodyPropsOutType,
   CourseCreateBodyComponentType,
   CourseCreateBodyType,
 } from './CourseCreateBodyTypes'
+import { getCourseCreateStages } from './getCourseCreateStages'
 
 /**
  * @description Component to render CourseCreateBody
@@ -30,66 +37,67 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     handleEvents,
   } = props
 
-  const propsOut: CourseCreateBodyPropsOutType = {
-    buttonMetaDataProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
-    buttonTranscriptProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
-    buttonSummaryProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
-    buttonQuestionsProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
-    buttonObjectionsProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
-    buttonFinalisedProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_MdForward2',
-      action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
-        data: {},
-      },
-      isDisplaying: true,
-    },
+  const stages: StagesType[] = getCourseCreateStages()
+
+  const getStages = (stagesIn: StagesType[]) => {
+    return stagesIn.map((stage: StagesType) => {
+      const {
+        name: stageName,
+        action,
+        isToDo,
+        isPending,
+        isSuccess,
+        isFailed,
+        isRepeat,
+      } = stage
+
+      const propsOut: StagespropsOut = {
+        iconToDoProps: {
+          classAdded: 'Icon_toDo',
+          icon: 'MdCheckBoxOutlineBlank',
+          isVisible: isToDo,
+        },
+        imagePendingProps: {
+          classAdded: 'Image_pending',
+          src: 'https://yourails.com/images/loading/loading01.gif',
+          isVisible: isPending,
+        },
+        iconSuccessProps: {
+          classAdded: 'Icon_success',
+          icon: 'MdCheck',
+          isVisible: isSuccess,
+        },
+        iconFailedProps: {
+          classAdded: 'Icon_failed',
+          icon: 'MdClear',
+          isVisible: isSuccess,
+        },
+        buttonRepeatProps: {
+          classAdded: 'Button_create_stage_repeat',
+          icon: 'MdOutlineReplay',
+          action,
+          isVisible: isRepeat,
+        },
+      }
+
+      const key = nanoid()
+
+      return (
+        <div key={key} className='_stage'>
+          <IconYrl {...propsOut.iconToDoProps} />
+          <ImageYrl {...propsOut.imagePendingProps} />
+          <IconYrl {...propsOut.iconSuccessProps} />
+          <IconYrl {...propsOut.iconFailedProps} />
+          <ButtonYrl {...propsOut.buttonRepeatProps} />
+        </div>
+      )
+    })
   }
 
   return (
     <div className={getClasses('CourseCreateBody', classAdded)}>
       <h2 className='_h2'>{DICTIONARY.Create_course[language]}</h2>
+      <div className='_stagesWrapper'>{getStages(stages)}</div>
     </div>
   )
 }

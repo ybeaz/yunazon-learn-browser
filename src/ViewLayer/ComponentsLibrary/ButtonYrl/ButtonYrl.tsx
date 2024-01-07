@@ -39,6 +39,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     classAdded = '',
     action = {},
     isDisplaying = true,
+    isVisible = true,
     tooltipText = '',
     tooltipPosition = 'top',
     isTooltipVisibleForced = false,
@@ -47,7 +48,9 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     children,
   } = props
 
-  const classDisplay = isDisplaying === true ? '' : 'Button_none'
+  const classDisplay = isDisplaying === true ? '' : 'Button_display_none'
+  const classVisible = isVisible === true ? '' : 'Button_visible_none'
+
   const handleEventsToUse = handleEventsCustom
     ? handleEventsCustom
     : handleEvents
@@ -78,7 +81,13 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   }
 
   return (
-    <div className={getClasses('ButtonYrl', [classAdded, classDisplay])}>
+    <div
+      className={getClasses('ButtonYrl', [
+        classAdded,
+        classDisplay,
+        classVisible,
+      ])}
+    >
       {tooltipText ? (
         <span className={`__tooltipText ${classTooltipAdd}`}>
           {tooltipText}
