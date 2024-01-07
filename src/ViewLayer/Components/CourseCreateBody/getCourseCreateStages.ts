@@ -1,4 +1,10 @@
-import { StagesType, GetCourseCreateStagesType } from './CourseCreateBodyTypes'
+import {
+  StagesType,
+  GetCourseCreateStagesType,
+  GetCourseCreateStagesPropsType,
+} from './CourseCreateBodyTypes'
+
+// STOPPED HERE: enum status { todo, pending, sucess, etc. }
 
 /**
  * @description Function to getCourseCreateStages
@@ -8,7 +14,10 @@ import { StagesType, GetCourseCreateStagesType } from './CourseCreateBodyTypes'
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  * @import import { getCourseCreateStages, getCourseCreateStagesParamsType } from './getCourseCreateStages'
  */
-export const getCourseCreateStages: GetCourseCreateStagesType = () => {
+export const getCourseCreateStages: GetCourseCreateStagesType = ({
+  language,
+  createModuleStages,
+}: GetCourseCreateStagesPropsType) => {
   const stages: StagesType[] = [
     {
       name: 'metaData',
@@ -16,11 +25,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['metaData'],
     },
     {
       name: 'transcript',
@@ -28,11 +33,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['transcript'],
     },
     {
       name: 'summary',
@@ -40,11 +41,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['summary'],
     },
     {
       name: 'questions',
@@ -52,11 +49,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['questions'],
     },
     {
       name: 'objections',
@@ -64,11 +57,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['objections'],
     },
     {
       name: 'finalization',
@@ -76,11 +65,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = () => {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: {},
       },
-      isToDo: true,
-      isPending: true,
-      isSuccess: true,
-      isFailed: true,
-      isRepeat: true,
+      status: createModuleStages['finalization'],
     },
   ]
 

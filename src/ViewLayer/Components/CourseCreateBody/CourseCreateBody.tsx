@@ -1,6 +1,8 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
 
+import { CreateCourseStatusEnumType } from '../../../Interfaces/'
+
 import {
   IconYrl,
   ImageYrl,
@@ -33,50 +35,45 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language },
+    storeStateSlice: { language, createModuleStages },
     handleEvents,
   } = props
 
-  const stages: StagesType[] = getCourseCreateStages()
+  const stages: StagesType[] = getCourseCreateStages({
+    language,
+    createModuleStages,
+  })
 
   const getStages = (stagesIn: StagesType[]) => {
     return stagesIn.map((stage: StagesType) => {
-      const {
-        name: stageName,
-        action,
-        isToDo,
-        isPending,
-        isSuccess,
-        isFailed,
-        isRepeat,
-      } = stage
+      const { name: stageName, action, status } = stage
 
       const propsOut: StagespropsOut = {
         iconToDoProps: {
           classAdded: 'Icon_toDo',
           icon: 'MdCheckBoxOutlineBlank',
-          isVisible: isToDo,
+          isVisible: status === CreateCourseStatusEnumType['todo'],
         },
         imagePendingProps: {
           classAdded: 'Image_pending',
           src: 'https://yourails.com/images/loading/loading01.gif',
-          isVisible: isPending,
+          isVisible: status === CreateCourseStatusEnumType['pending'],
         },
         iconSuccessProps: {
           classAdded: 'Icon_success',
           icon: 'MdCheck',
-          isVisible: isSuccess,
+          isVisible: status === CreateCourseStatusEnumType['success'],
         },
         iconFailedProps: {
           classAdded: 'Icon_failed',
           icon: 'MdClear',
-          isVisible: isSuccess,
+          isVisible: status === CreateCourseStatusEnumType['failure'],
         },
         buttonRepeatProps: {
           classAdded: 'Button_create_stage_repeat',
           icon: 'MdOutlineReplay',
           action,
-          isVisible: isRepeat,
+          isVisible: status === CreateCourseStatusEnumType['failure'],
         },
       }
 
@@ -84,11 +81,19 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
 
       return (
         <div key={key} className='_stage'>
-          <IconYrl {...propsOut.iconToDoProps} />
-          <ImageYrl {...propsOut.imagePendingProps} />
-          <IconYrl {...propsOut.iconSuccessProps} />
-          <IconYrl {...propsOut.iconFailedProps} />
-          <ButtonYrl {...propsOut.buttonRepeatProps} />
+          <div className='_stageDesription'>
+            <div className='_capture'>
+              {DICTIONARY[`stage_${stageName}`][language]}
+            </div>
+            <div className='_status'>{DICTIONARY[`${status}`][language]}</div>
+          </div>
+          <div className='_stageVisualisation'>
+            <IconYrl {...propsOut.iconToDoProps} />
+            <ImageYrl {...propsOut.imagePendingProps} />
+            <IconYrl {...propsOut.iconSuccessProps} />
+            <IconYrl {...propsOut.iconFailedProps} />
+            <ButtonYrl {...propsOut.buttonRepeatProps} />
+          </div>
         </div>
       )
     })
@@ -102,7 +107,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
+const storeStateSliceProps: string[] = ['language', 'createModuleStages']
 export const CourseCreateBody: CourseCreateBodyType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(

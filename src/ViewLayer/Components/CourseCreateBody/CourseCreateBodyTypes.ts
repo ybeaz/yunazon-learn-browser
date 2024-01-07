@@ -5,24 +5,28 @@ import {
   IconYrlPropsType,
   ButtonYrlPropsType,
 } from '../../ComponentsLibrary/'
+
 import {
   RootStoreType,
   HandleEventPropsType,
   HandleEventType,
 } from '../../../Interfaces/'
 
+import { CreateCourseStatusEnumType } from '../../../Interfaces/RootStoreType'
+
 export type StagesType = {
   name: string
   action: HandleEventPropsType
-  isToDo: boolean
-  isPending: boolean
-  isSuccess: boolean
-  isFailed: boolean
-  isRepeat: boolean
+  status: CreateCourseStatusEnumType
+}
+
+export type GetCourseCreateStagesPropsType = {
+  language: RootStoreType['language']
+  createModuleStages: RootStoreType['componentsState']['createModuleStages']
 }
 
 export interface GetCourseCreateStagesType {
-  (): StagesType[]
+  (props: GetCourseCreateStagesPropsType): StagesType[]
 }
 
 export type StagespropsOut = {
@@ -37,6 +41,7 @@ export type CourseCreateBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
+    createModuleStages: RootStoreType['componentsState']['createModuleStages']
   }
   handleEvents: HandleEventType
 }

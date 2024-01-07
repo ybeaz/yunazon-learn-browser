@@ -3,6 +3,13 @@ import { CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
+export enum CreateCourseStatusEnumType {
+  todo = 'todo',
+  pending = 'pending',
+  success = 'success',
+  failure = 'failure',
+}
+
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
@@ -40,6 +47,14 @@ export type ComponentsStateType = {
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
+  createModuleStages: {
+    metaData: CreateCourseStatusEnumType
+    transcript: CreateCourseStatusEnumType
+    summary: CreateCourseStatusEnumType
+    questions: CreateCourseStatusEnumType
+    objections: CreateCourseStatusEnumType
+    finalization: CreateCourseStatusEnumType
+  }
 }
 
 export type FormsType = {

@@ -1,5 +1,6 @@
 import { UserType } from '../Interfaces/UserType'
 import {
+  CreateCourseStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
   FormsType,
@@ -98,6 +99,14 @@ export const componentsStateDefault: ComponentsStateType = {
       hasNextPage: true,
       endCursor: '',
     },
+  },
+  createModuleStages: {
+    metaData: CreateCourseStatusEnumType['todo'],
+    transcript: CreateCourseStatusEnumType['todo'],
+    summary: CreateCourseStatusEnumType['todo'],
+    questions: CreateCourseStatusEnumType['todo'],
+    objections: CreateCourseStatusEnumType['todo'],
+    finalization: CreateCourseStatusEnumType['todo'],
   },
 }
 
