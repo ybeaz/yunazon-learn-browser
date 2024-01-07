@@ -6,7 +6,7 @@ import {
   GetSetUrlQueryBrowserApiParamsType,
 } from '../../Shared/getSetUrlQueryBrowserApi'
 
-export const ONCHANGE_SEARCH_INPUT: ReducerType = (
+export const ONCHANGE_INPUT_SEARCH: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {

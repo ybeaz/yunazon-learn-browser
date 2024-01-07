@@ -4,7 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch } = store
 
-export const ONCHANGE_SEARCH_INPUT: ActionEventType = (event, data) => {
+export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, data) => {
   const { value } = event.target as HTMLInputElement
-  dispatch(actionSync.ONCHANGE_SEARCH_INPUT(value))
+  dispatch(actionSync.ONCHANGE_INPUT_SEARCH(value))
 }

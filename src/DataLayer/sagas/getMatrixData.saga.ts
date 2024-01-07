@@ -21,7 +21,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
         ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
         : 0
 
-    yield put(actionSync.ONCHANGE_SEARCH_INPUT(inputSearch))
+    yield put(actionSync.ONCHANGE_INPUT_SEARCH(inputSearch))
 
     yield put(
       actionSync.SET_TAGS_STATE({

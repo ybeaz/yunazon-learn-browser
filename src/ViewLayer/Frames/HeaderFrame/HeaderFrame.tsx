@@ -163,7 +163,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         classAdded: 'Input_search',
         type: 'text',
         placeholder: 'Search...',
-        typeEvent: 'ONCHANGE_SEARCH_INPUT',
+        typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
         storeFormProp: 'inputSearch',
       },

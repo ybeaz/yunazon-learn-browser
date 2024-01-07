@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const SET_SEARCH_INPUT: ReducerType = (
+export const SET_INPUT_SEARCH: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
