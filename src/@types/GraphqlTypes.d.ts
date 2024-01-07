@@ -256,7 +256,7 @@ export type CreateContentMetaDataType = {
     /** capture */
     capture?: Maybe<Scalars['String']['output']>;
     /** course module contentID */
-    contentID: Scalars['ID']['output'];
+    contentID?: Maybe<Scalars['ID']['output']>;
     /** description */
     description?: Maybe<Scalars['String']['output']>;
     /** duration */
@@ -264,7 +264,7 @@ export type CreateContentMetaDataType = {
     /** isContentMetaData */
     isContentMetaData?: Maybe<Scalars['Boolean']['output']>;
     /** language code */
-    language: Scalars['String']['output'];
+    language?: Maybe<Scalars['String']['output']>;
     /** length */
     length?: Maybe<Scalars['Float']['output']>;
     /** courses meta tags: tags that characterises the course content */

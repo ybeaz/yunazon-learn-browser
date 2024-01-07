@@ -271,7 +271,7 @@ type CreateContentMetaDataType {
   capture: String
 
   """course module contentID"""
-  contentID: ID!
+  contentID: ID
 
   """description"""
   description: String
@@ -283,7 +283,7 @@ type CreateContentMetaDataType {
   isContentMetaData: Boolean
 
   """language code"""
-  language: String!
+  language: String
 
   """length"""
   length: Float
