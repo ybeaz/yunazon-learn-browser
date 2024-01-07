@@ -22,6 +22,9 @@ export function* getCourseCreatedGenerator(
   })
 
   try {
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
+    )
     console.info('getCourseCreated.saga [27]', { inputCourseCreate })
 
     // yield put(actionSync.ADD_ARTICLE(articleNext))

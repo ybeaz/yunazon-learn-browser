@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'ADD_COURSE_CREATE_DATA',
   'CLICK_ON_COURSE_CREATE_SUBMIT',
   'ADD_ARTICLE',
   'TOGGLE_IS_OBJECTIONS',

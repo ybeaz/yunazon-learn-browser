@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 
@@ -35,7 +35,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, createModuleStages },
+    storeStateSlice: { language, createModuleStages, courseCreateProgress },
     handleEvents,
   } = props
 
@@ -96,6 +96,13 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     })
   }
 
+  useMemo(() => {
+    console.info('CourseCreateBody [99]', {
+      ...courseCreateProgress,
+      createModuleStages,
+    })
+  }, [JSON.stringify(courseCreateProgress)])
+
   const propsOut: CourseCreateBodyPropsOutType = {
     inputGroupProps: {
       classAdded: 'InputGroupYrl_CourseCreate',
@@ -126,7 +133,11 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'createModuleStages']
+const storeStateSliceProps: string[] = [
+  'language',
+  'createModuleStages',
+  'courseCreateProgress',
+]
 export const CourseCreateBody: CourseCreateBodyType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(
