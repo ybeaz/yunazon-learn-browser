@@ -6,7 +6,7 @@ import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-import { SearchGroup } from '../../Components/SearchGroup/SearchGroup'
+import { InputGroup } from '../../Components/InputGroup/InputGroup'
 
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -194,7 +194,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         <div className='__main'>
           {isSeachGroup && (
             <div className='_itemSearchGroup'>
-              <SearchGroup />
+              <InputGroup />
             </div>
           )}
         </div>

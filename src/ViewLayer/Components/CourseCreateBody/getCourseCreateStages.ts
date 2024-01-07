@@ -15,7 +15,6 @@ import {
  * @import import { getCourseCreateStages, getCourseCreateStagesParamsType } from './getCourseCreateStages'
  */
 export const getCourseCreateStages: GetCourseCreateStagesType = ({
-  language,
   createModuleStages,
 }: GetCourseCreateStagesPropsType) => {
   const stages: StagesType[] = [

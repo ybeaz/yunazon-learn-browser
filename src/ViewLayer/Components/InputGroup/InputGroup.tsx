@@ -10,7 +10,7 @@ import {
   SearchGroupType,
 } from './SearchGroupTypes'
 
-export const SearchGroup: SearchGroupComponentType = (
+export const InputGroup: SearchGroupComponentType = (
   props: SearchGroupComponentPropsType
 ) => {
   const propsOut: SearchGroupPropsOutType = {
@@ -30,7 +30,7 @@ export const SearchGroup: SearchGroupComponentType = (
   }
 
   return (
-    <div className='SearchGroup'>
+    <div className='InputGroup'>
       <div className='searchDiv'>
         <InputYrl {...propsOut.inputSearchProps} />
       </div>

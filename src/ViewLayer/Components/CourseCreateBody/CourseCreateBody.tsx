@@ -40,7 +40,6 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   } = props
 
   const stages: StagesType[] = getCourseCreateStages({
-    language,
     createModuleStages,
   })
 

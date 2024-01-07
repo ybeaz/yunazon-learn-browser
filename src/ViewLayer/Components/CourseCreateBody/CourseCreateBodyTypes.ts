@@ -21,7 +21,6 @@ export type StagesType = {
 }
 
 export type GetCourseCreateStagesPropsType = {
-  language: RootStoreType['language']
   createModuleStages: RootStoreType['componentsState']['createModuleStages']
 }
 
