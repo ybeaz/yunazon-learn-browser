@@ -193,7 +193,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         </div>
         <div className='__main'>
           {isSeachGroup && (
-            <div className='_itemSearchGroup'>
+            <div className='_itemInputGroup'>
               <InputGroup />
             </div>
           )}

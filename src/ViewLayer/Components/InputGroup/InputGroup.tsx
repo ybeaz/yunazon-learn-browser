@@ -3,17 +3,17 @@ import React, { ReactElement } from 'react'
 import { InputYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import {
-  SearchGroupComponentPropsType,
-  SearchGroupPropsType,
-  SearchGroupPropsOutType,
-  SearchGroupComponentType,
-  SearchGroupType,
-} from './SearchGroupTypes'
+  InputGroupComponentPropsType,
+  InputGroupPropsType,
+  InputGroupPropsOutType,
+  InputGroupComponentType,
+  InputGroupType,
+} from './InputGroupTypes'
 
-export const InputGroup: SearchGroupComponentType = (
-  props: SearchGroupComponentPropsType
+export const InputGroup: InputGroupComponentType = (
+  props: InputGroupComponentPropsType
 ) => {
-  const propsOut: SearchGroupPropsOutType = {
+  const propsOut: InputGroupPropsOutType = {
     inputSearchProps: {
       classAdded: 'Input_search',
       type: 'text',

@@ -2,26 +2,26 @@ import React from 'react'
 
 import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
-export type SearchGroupComponentPropsType = {
+export type InputGroupComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
 }
 
-export type SearchGroupPropsType = Omit<
-  SearchGroupComponentPropsType,
+export type InputGroupPropsType = Omit<
+  InputGroupComponentPropsType,
   'storeStateSlice'
 >
 
-export type SearchGroupPropsOutType = {
+export type InputGroupPropsOutType = {
   inputSearchProps: InputYrlPropsType
   buttonMdSearchProps: ButtonYrlPropsType
 }
 
 /**
- * @import import { SearchGroupComponentPropsType, SearchGroupPropsType, SearchGroupPropsOutType, SearchGroupComponentType, SearchGroupType } from './SearchGroupTypes'
+ * @import import { InputGroupComponentPropsType, InputGroupPropsType, InputGroupPropsOutType, InputGroupComponentType, InputGroupType } from './InputGroupTypes'
  */
-export interface SearchGroupComponentType
-  extends React.FunctionComponent<SearchGroupComponentPropsType> {
-  (props: SearchGroupComponentPropsType): React.ReactElement
+export interface InputGroupComponentType
+  extends React.FunctionComponent<InputGroupComponentPropsType> {
+  (props: InputGroupComponentPropsType): React.ReactElement
 }
 
-export type SearchGroupType = React.FunctionComponent<SearchGroupPropsType>
+export type InputGroupType = React.FunctionComponent<InputGroupPropsType>
