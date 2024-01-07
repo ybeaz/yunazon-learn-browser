@@ -1,4 +1,5 @@
 import {
+  MdOutlineSend,
   MdClear,
   MdCheck,
   MdCheckBoxOutlineBlank,
@@ -121,6 +122,7 @@ import { RiVoiceprintFill } from 'react-icons/ri'
 import { SiAppstore, SiGoogleplay } from 'react-icons/si'
 
 export const ICONS = {
+  MdOutlineSend,
   MdClear,
   MdCheck,
   MdCheckBoxOutlineBlank,

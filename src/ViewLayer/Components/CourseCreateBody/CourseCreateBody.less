@@ -10,13 +10,37 @@
     text-transform: capitalize;
   }
 
+  ._inputGroupWrapper {
+  }
+
   ._stagesWrapper {
     display: flex;
     flex-direction: row;
-  }
 
-  ._stage {
-    width: 10rem;
+    ._stage {
+      width: 10rem;
+      padding: 0 1rem;
+
+      ._stageDesription {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        line-height: 1.5em;
+        min-height: 4.5em;
+
+        ._capture {
+          width: min-content;
+          white-space: nowrap;
+        }
+        ._status {
+          width: fit-content;
+        }
+      }
+    }
+
+    ._stageVisualisation {
+    }
   }
 
   @media @large {

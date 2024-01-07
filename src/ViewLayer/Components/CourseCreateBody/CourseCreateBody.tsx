@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid'
 import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 
 import {
+  InputGroupYrl,
   IconYrl,
   ImageYrl,
   ButtonYrl,
@@ -16,7 +17,7 @@ import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
   StagesType,
-  StagespropsOut,
+  StagesPropsOut,
   CourseCreateBodyComponentPropsType,
   CourseCreateBodyPropsType,
   CourseCreateBodyPropsOutType,
@@ -47,32 +48,32 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     return stagesIn.map((stage: StagesType) => {
       const { name: stageName, action, status } = stage
 
-      const propsOut: StagespropsOut = {
+      const propsOut: StagesPropsOut = {
         iconToDoProps: {
           classAdded: 'Icon_toDo',
           icon: 'MdCheckBoxOutlineBlank',
-          isVisible: status === CreateCourseStatusEnumType['todo'],
+          isVisible: true, // status === CreateCourseStatusEnumType['todo'],
         },
         imagePendingProps: {
           classAdded: 'Image_pending',
           src: 'https://yourails.com/images/loading/loading01.gif',
-          isVisible: status === CreateCourseStatusEnumType['pending'],
+          isVisible: true, //  status === CreateCourseStatusEnumType['pending'],
         },
         iconSuccessProps: {
           classAdded: 'Icon_success',
           icon: 'MdCheck',
-          isVisible: status === CreateCourseStatusEnumType['success'],
+          isVisible: true, //  status === CreateCourseStatusEnumType['success'],
         },
         iconFailedProps: {
           classAdded: 'Icon_failed',
           icon: 'MdClear',
-          isVisible: status === CreateCourseStatusEnumType['failure'],
+          isVisible: true, //  status === CreateCourseStatusEnumType['failure'],
         },
         buttonRepeatProps: {
           classAdded: 'Button_create_stage_repeat',
           icon: 'MdOutlineReplay',
           action,
-          isVisible: status === CreateCourseStatusEnumType['failure'],
+          isVisible: true, //  status === CreateCourseStatusEnumType['failure'],
         },
       }
 
@@ -98,9 +99,31 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     })
   }
 
+  const propsOut: CourseCreateBodyPropsOutType = {
+    inputGroupProps: {
+      classAdded: 'InputGroupYrl_CourseCreate',
+      inputProps: {
+        classAdded: '',
+        type: 'text',
+        placeholder: 'Add resource url...',
+        typeEvent: 'ONCHANGE_SEARCH_INPUT',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        storeFormProp: 'searchInput',
+      },
+      buttonSubmitProps: {
+        classAdded: 'Button_MdSearch',
+        icon: 'MdOutlineSend',
+        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+      },
+    },
+  }
+
   return (
     <div className={getClasses('CourseCreateBody', classAdded)}>
       <h2 className='_h2'>{DICTIONARY.Create_course[language]}</h2>
+      <div className='_inputGroupWrapper'>
+        <InputGroupYrl {...propsOut.inputGroupProps} />
+      </div>
       <div className='_stagesWrapper'>{getStages(stages)}</div>
     </div>
   )

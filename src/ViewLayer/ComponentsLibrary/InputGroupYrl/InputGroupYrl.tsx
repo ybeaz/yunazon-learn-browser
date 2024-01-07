@@ -38,7 +38,10 @@ export const InputGroupYrl: InputGroupYrlComponentType = (
   const { classAdded, inputProps, buttonSubmitProps } = props
 
   const propsOut: InputGroupYrlPropsOutType = {
-    inputProps,
+    inputProps: {
+      ...inputProps,
+      classAdded: 'Input_InputGroupYrl',
+    },
     buttonSubmitProps,
   }
 

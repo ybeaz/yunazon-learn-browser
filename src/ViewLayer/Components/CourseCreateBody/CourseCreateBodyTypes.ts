@@ -4,6 +4,7 @@ import {
   ImageYrlPropsType,
   IconYrlPropsType,
   ButtonYrlPropsType,
+  InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
 
 import {
@@ -28,7 +29,7 @@ export interface GetCourseCreateStagesType {
   (props: GetCourseCreateStagesPropsType): StagesType[]
 }
 
-export type StagespropsOut = {
+export type StagesPropsOut = {
   iconToDoProps: IconYrlPropsType
   imagePendingProps: ImageYrlPropsType
   iconSuccessProps: IconYrlPropsType
@@ -50,7 +51,9 @@ export type CourseCreateBodyPropsType = Omit<
   'storeStateSlice'
 >
 
-export type CourseCreateBodyPropsOutType = {}
+export type CourseCreateBodyPropsOutType = {
+  inputGroupProps: InputGroupYrlPropsType
+}
 
 /**
  * @import import { CourseCreateBodyComponentPropsType, CourseCreateBodyPropsType, CourseCreateBodyPropsOutType, CourseCreateBodyComponentType, CourseCreateBodyType } from './CourseCreateBodyTypes'
