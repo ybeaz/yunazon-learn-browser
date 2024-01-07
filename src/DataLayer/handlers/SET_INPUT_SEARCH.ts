@@ -16,9 +16,5 @@ export const SET_INPUT_SEARCH: ActionEventType = (event, data) => {
         ? inputSearch
         : undefined
 
-  dispatch(
-    actionSync.SET_INPUT_SEARCH({
-      inputSearchIn,
-    })
-  )
+  dispatch(actionSync.SET_INPUT_SEARCH(inputSearchIn))
 }

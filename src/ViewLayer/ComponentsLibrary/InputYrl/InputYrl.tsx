@@ -67,7 +67,7 @@ const InputYrlComponent: InputYrlComponentType = (
   const actionOnEnter = { typeEvent: typeEventOnEnter }
 
   const iconReactProps = {
-    icon: 'AiFillCloseCircle',
+    icon: 'MdClose',
     icon2: 'null',
     classAdded: 'IconYrl_Input',
   }

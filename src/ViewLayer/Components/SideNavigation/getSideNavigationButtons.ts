@@ -48,7 +48,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       isDisplaying: !!preferred_username,
     },
     {
-      icon: 'MdAssignmentTurnedIn',
+      icon: 'MdAddCard',
       captureRight: DICTIONARY.Create_course[language],
       classAdded: 'Button_sideMenuItems',
       action: {

@@ -6,5 +6,5 @@ const { dispatch } = store
 
 export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, data) => {
   const { value } = event.target as HTMLInputElement
-  dispatch(actionSync.ONCHANGE_INPUT_SEARCH(value))
+  dispatch(actionSync.SET_INPUT_SEARCH(value))
 }
