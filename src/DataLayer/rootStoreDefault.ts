@@ -125,6 +125,7 @@ export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],
+  courseCreateProgress: {},
   documents: [],
   articles: [],
   users: [],

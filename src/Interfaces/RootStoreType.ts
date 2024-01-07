@@ -97,6 +97,7 @@ export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
   courses: CourseType[]
+  courseCreateProgress: any
   documents: DocumentType[]
   articles: ArticleType[]
   users: UserType[]
