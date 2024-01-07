@@ -22,7 +22,6 @@ export const useLoadedInitialTeachContent: Function = (
 
       handleEvents({}, { typeEvent: 'SAVE_ANALYTICS_INIT_DATA' })
       handleEvents({}, { typeEvent: 'SELECT_LANGUAGE_APP_INIT' })
-      handleEvents({}, { typeEvent: 'SET_INPUT_SEARCH' })
     }
 
     if (!document.getElementById(scriptProps.id)) makeDispatchAsyncWrappered()

@@ -1,5 +1,4 @@
 import React from 'react'
-import { nanoid } from 'nanoid'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 
@@ -77,10 +76,8 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         },
       }
 
-      const key = nanoid()
-
       return (
-        <div key={key} className='_stage'>
+        <div key={stageName} className='_stage'>
           <div className='_stageDesription'>
             <div className='_capture'>
               {DICTIONARY[`stage_${stageName}`][language]}
@@ -108,7 +105,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         placeholder: 'Add resource url...',
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
-        storeFormProp: 'inputSearch',
+        storeFormProp: 'inputCourseCreate',
       },
       buttonSubmitProps: {
         classAdded: 'Button_MdSearch',

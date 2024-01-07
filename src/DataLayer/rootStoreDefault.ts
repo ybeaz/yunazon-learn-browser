@@ -111,6 +111,7 @@ export const componentsStateDefault: ComponentsStateType = {
 }
 
 export const formsDefault: FormsType = {
+  inputCourseCreate: '',
   inputSearch: '',
   sendTo: '',
   sendCc: '',

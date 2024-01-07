@@ -21,7 +21,11 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
         ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
         : 0
 
-    yield put(actionSync.SET_INPUT_SEARCH(inputSearch))
+    const data = {
+      storeFormProp: 'inputSearch',
+      value: inputSearch,
+    }
+    yield put(actionSync.SET_INPUT_TO_STORE(data))
 
     yield put(
       actionSync.SET_TAGS_STATE({
