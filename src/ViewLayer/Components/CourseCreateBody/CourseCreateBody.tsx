@@ -97,10 +97,15 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   }
 
   useMemo(() => {
-    console.info('CourseCreateBody [99]', {
-      ...courseCreateProgress,
-      createModuleStages,
-    })
+    console.info(
+      'CourseCreateBody [99] courseCreateProgress',
+      courseCreateProgress
+    )
+    console.info(
+      'CourseCreateBody [104] createModuleStages',
+
+      createModuleStages
+    )
   }, [JSON.stringify(courseCreateProgress)])
 
   const propsOut: CourseCreateBodyPropsOutType = {

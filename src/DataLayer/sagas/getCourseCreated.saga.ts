@@ -8,9 +8,9 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 import { articles } from '../../ContentMock/articlesMock'
 
@@ -25,9 +25,39 @@ export function* getCourseCreatedGenerator(
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
     )
-    console.info('getCourseCreated.saga [27]', { inputCourseCreate })
 
-    // yield put(actionSync.ADD_ARTICLE(articleNext))
+    const variables = {
+      createContentMetaDataInput: {
+        originUrl: inputCourseCreate,
+      },
+    }
+
+    console.info('getCourseCreated.saga [33]', {
+      variables,
+    })
+
+    const createContentMetaData: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'createContentMetaData',
+      },
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
+
+    console.info('getCourseCreated.saga [49]', {
+      createContentMetaData,
+      inputCourseCreate,
+    })
+
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({
+        contentMetaData: createContentMetaData,
+      })
+    )
   } catch (error: any) {
     console.info(
       'getCourseCreated.saga  [44]',

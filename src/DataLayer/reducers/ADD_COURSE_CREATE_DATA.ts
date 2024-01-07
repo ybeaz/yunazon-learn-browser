@@ -7,9 +7,11 @@ export const ADD_COURSE_CREATE_DATA: ReducerType = (
 ): RootStoreType => {
   const { courseCreateProgress } = store
 
+  console.info('ADD_COURSE_CREATE_DATA [10]', { data })
+
   let courseCreateProgressNext = {
     ...courseCreateProgress,
-    originUrl: data.originUrl,
+    ...data,
   }
 
   return {
