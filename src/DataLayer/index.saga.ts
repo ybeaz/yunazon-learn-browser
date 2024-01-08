@@ -3,7 +3,8 @@ import { all, fork } from 'redux-saga/effects'
 import getCourseS60ModuleCreatedSaga from './sagas/getCourseS60ModuleCreated.saga'
 import getCourseS50ObjectionsCreatedSaga from './sagas/getCourseS50ObjectionsCreated.saga'
 import getCourseS40QuestionsCreatedSaga from './sagas/getCourseS40QuestionsCreated.saga'
-import getCourseS30SummaryCreatedSaga from './sagas/getCourseS30SummaryCreated.saga'
+import getCourseS35SummaryCreatedSaga from './sagas/getCourseS35SummaryCreated.saga'
+import getCourseS30SummaryChunkCreatedSaga from './sagas/getCourseS30SummaryChunkCreated.saga'
 import getCourseS20TranscriptCreatedSaga from './sagas/getCourseS20TranscriptCreated.saga'
 import getCourseS10MataDataCreatedSaga from './sagas/getCourseS10MataDataCreated.saga'
 import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
@@ -26,7 +27,8 @@ export default function* indexSaga() {
     fork(getCourseS60ModuleCreatedSaga),
     fork(getCourseS50ObjectionsCreatedSaga),
     fork(getCourseS40QuestionsCreatedSaga),
-    fork(getCourseS30SummaryCreatedSaga),
+    fork(getCourseS35SummaryCreatedSaga),
+    fork(getCourseS30SummaryChunkCreatedSaga),
     fork(getCourseS20TranscriptCreatedSaga),
     fork(getCourseS10MataDataCreatedSaga),
     fork(getCourseCreatedSaga),

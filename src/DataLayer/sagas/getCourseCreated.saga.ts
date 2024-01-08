@@ -5,7 +5,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getCourseS10MataDataCreated } from './getCourseS10MataDataCreated.saga'
 import { getCourseS20TranscriptCreated } from './getCourseS20TranscriptCreated.saga'
-import { getCourseS30SummaryCreated } from './getCourseS30SummaryCreated.saga'
+import { getCourseS35SummaryCreated } from './getCourseS35SummaryCreated.saga'
 import { getCourseS40QuestionsCreated } from './getCourseS40QuestionsCreated.saga'
 import { getCourseS50ObjectionsCreated } from './getCourseS50ObjectionsCreated.saga'
 import { getCourseS60ModuleCreated } from './getCourseS60ModuleCreated.saga'
@@ -22,7 +22,7 @@ export function* getCourseCreatedGenerator(
     yield getCourseS20TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
-    yield getCourseS30SummaryCreated()
+    yield getCourseS35SummaryCreated()
 
     /* Add questions to courseCreateProgress */
     // yield getCourseS40QuestionsCreated()

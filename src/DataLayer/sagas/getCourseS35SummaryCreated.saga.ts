@@ -21,7 +21,9 @@ import {
   GetPreparedResponseFromBotParamsType,
 } from '../../Shared/getPreparedResponseFromBot'
 
-export function* getCourseS30SummaryCreatedGenerator(
+import { getCourseS30SummaryChunkCreated } from './getCourseS30SummaryChunkCreated.saga'
+
+export function* getCourseS35SummaryCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -46,48 +48,15 @@ export function* getCourseS30SummaryCreatedGenerator(
       input: transcript,
     }
 
-    console.info('getCourseS30SummaryCreated.saga [50]', { params })
-
-    const output = getChunkedString(params, {
+    const textChunks = getChunkedString(params, {
       printRes: false,
       chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
       chunkSize: 5500,
       maxSearch: 128,
     })
 
-    const variables = {
-      createBotResponseInput: {
-        botID: 'gkHgpq771VuJ',
-        profileID: 'lojNPRoL4bSQ',
-        profileName: '@split_text_persona_summary',
-        userText: output[0],
-      },
-    }
-
-    console.info('getCourseS30SummaryCreated.saga [56]', { variables })
-    return
-    const createBotResponseSummary: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: 'createBotResponse',
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 30 * 1000,
-      }
-    )
-
-    console.info('getCourseS30SummaryCreated.saga [79]', {
-      createBotResponseSummary,
-    })
-
-    const summary = createBotResponseSummary.textObj.contentArray.map(
-      (contentPiece: string) => getPreparedResponseFromBot(contentPiece)
-    )
-
-    console.info('getCourseS30SummaryCreated.saga [85]', {
-      createBotResponseSummary,
+    const summary = yield getCourseS30SummaryChunkCreated({
+      textChunk: textChunks[0],
     })
 
     yield put(
@@ -111,20 +80,20 @@ export function* getCourseS30SummaryCreatedGenerator(
     )
 
     console.info(
-      'getCourseS30SummaryCreated.saga  [110] ERROR',
+      'getCourseS35SummaryCreated.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS30SummaryCreated = withDebounce(
-  getCourseS30SummaryCreatedGenerator,
+export const getCourseS35SummaryCreated = withDebounce(
+  getCourseS35SummaryCreatedGenerator,
   500
 )
 
-export default function* getCourseS30SummaryCreatedSaga() {
+export default function* getCourseS35SummaryCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_COURSE_SUMMARY_CREATED.REQUEST().type],
-    getCourseS30SummaryCreated
+    getCourseS35SummaryCreated
   )
 }

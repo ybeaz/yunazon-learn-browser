@@ -84,8 +84,6 @@ export const getChunkedString: GetChunkedStringType = (
     return []
   }
 
-  console.info('getChunkedString [87]', { input })
-
   let inputArrTemp = input.split('')
   let inputTemp = input
   let outputTemp: GetChunkedStringResType = []
