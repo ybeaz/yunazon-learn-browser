@@ -49,7 +49,7 @@ export function* getCourseS2TranscriptCreatedGenerator(
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        transcript: createYoutubeTranscript,
+        transcript: createYoutubeTranscript.transcript,
       })
     )
 

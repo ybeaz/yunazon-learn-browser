@@ -46,6 +46,8 @@ export function* getCourseS3SummaryCreatedGenerator(
       input: transcript,
     }
 
+    console.info('getCourseS3SummaryCreated.saga [50]', { params })
+
     const output = getChunkedString(params, {
       printRes: false,
       chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
