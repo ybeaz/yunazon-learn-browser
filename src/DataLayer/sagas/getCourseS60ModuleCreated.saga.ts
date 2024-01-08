@@ -12,15 +12,11 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourseS5ObjectionsCreatedGenerator(
+export function* getCourseS60ModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add objections to courseCreateProgress 
-        botID: 'g3lccRJtksaE',
-        profileID: 'y9WjMwhdhr31',
-        profileName: '@objector_persona',
-    */
+    /* Create course and module */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })
@@ -31,7 +27,7 @@ export function* getCourseS5ObjectionsCreatedGenerator(
       },
     }
 
-    console.info('getCourseS5ObjectionsCreated.saga [33]', {
+    console.info('getCourseS60ModuleCreated.saga [33]', {
       variables,
     })
 
@@ -47,7 +43,7 @@ export function* getCourseS5ObjectionsCreatedGenerator(
       }
     )
 
-    console.info('getCourseS5ObjectionsCreated.saga [50] ', {
+    console.info('getCourseS60ModuleCreated.saga [49]', {
       createContentMetaData,
       inputCourseCreate,
     })
@@ -60,26 +56,26 @@ export function* getCourseS5ObjectionsCreatedGenerator(
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['objections'],
+        stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseS5ObjectionsCreated.saga [44] ERROR',
+      'getCourseS60ModuleCreated.saga [44] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS5ObjectionsCreated = withDebounce(
-  getCourseS5ObjectionsCreatedGenerator,
+export const getCourseS60ModuleCreated = withDebounce(
+  getCourseS60ModuleCreatedGenerator,
   500
 )
 
-export default function* getCourseS5ObjectionsCreatedSaga() {
+export default function* getCourseS60ModuleCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_OBJECTIONS_CREATED.REQUEST().type],
-    getCourseS5ObjectionsCreated
+    [actionAsync.GET_COURSE_MODULE_CREATED.REQUEST().type],
+    getCourseS60ModuleCreated
   )
 }

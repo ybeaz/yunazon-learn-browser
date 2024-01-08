@@ -4,6 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
@@ -12,33 +13,32 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourseS4QuestionsCreatedGenerator(
+export function* getCourseS20TranscriptCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add questions to courseCreateProgress 
-        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
-        profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        profileName: '@t_q_ao_extractor_persona',
-    */
-    const inputCourseCreate: any = yield select((state: RootStoreType) => {
-      return state.forms.inputCourseCreate
+    /* Add transcript to courseCreateProgress */
+    const originUrl: any = yield select((state: RootStoreType) => {
+      return state.courseCreateProgress.originUrl
     })
 
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['transcript'],
+        status: CreateCourseStatusEnumType['pending'],
+      })
+    )
+
     const variables = {
-      createContentMetaDataInput: {
-        originUrl: inputCourseCreate,
+      createYoutubeTranscriptInput: {
+        originUrl,
       },
     }
 
-    console.info('getCourseS4QuestionsCreated.saga [33]', {
-      variables,
-    })
-
-    const createContentMetaData: any = yield getResponseGraphqlAsync(
+    const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createContentMetaData',
+        resolveGraphqlName: 'createYoutubeTranscript',
       },
       {
         ...getHeadersAuthDict(),
@@ -47,39 +47,41 @@ export function* getCourseS4QuestionsCreatedGenerator(
       }
     )
 
-    console.info('getCourseS4QuestionsCreated.saga [49]', {
-      createContentMetaData,
-      inputCourseCreate,
-    })
-
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        metaData: createContentMetaData,
+        transcript: createYoutubeTranscript.transcript,
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['transcript'],
+        status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['transcript'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseS4QuestionsCreated.saga [44] ERROR',
+      'getCourseS20TranscriptCreated.saga [69] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS4QuestionsCreated = withDebounce(
-  getCourseS4QuestionsCreatedGenerator,
+export const getCourseS20TranscriptCreated = withDebounce(
+  getCourseS20TranscriptCreatedGenerator,
   500
 )
 
-export default function* getCourseS4QuestionsCreatedSaga() {
+export default function* getCourseS20TranscriptCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_QUESTIONS_CREATED.REQUEST().type],
-    getCourseS4QuestionsCreated
+    [actionAsync.GET_COURSE_TRANSCRIPT_CREATED.REQUEST().type],
+    getCourseS20TranscriptCreated
   )
 }

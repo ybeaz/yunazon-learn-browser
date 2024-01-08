@@ -12,11 +12,15 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourseS6ModuleCreatedGenerator(
+export function* getCourseS40QuestionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Create course and module */
+    /* Add questions to courseCreateProgress 
+        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
+        profileID: 'iGlg3wRNvsQEIYF5L5svE',
+        profileName: '@t_q_ao_extractor_persona',
+    */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })
@@ -27,7 +31,7 @@ export function* getCourseS6ModuleCreatedGenerator(
       },
     }
 
-    console.info('getCourseS6ModuleCreated.saga [33]', {
+    console.info('getCourseS40QuestionsCreated.saga [33]', {
       variables,
     })
 
@@ -43,7 +47,7 @@ export function* getCourseS6ModuleCreatedGenerator(
       }
     )
 
-    console.info('getCourseS6ModuleCreated.saga [49]', {
+    console.info('getCourseS40QuestionsCreated.saga [49]', {
       createContentMetaData,
       inputCourseCreate,
     })
@@ -56,26 +60,26 @@ export function* getCourseS6ModuleCreatedGenerator(
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['courseModule'],
+        stage: CreateModuleStagesEnumType['questions'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseS6ModuleCreated.saga [44] ERROR',
+      'getCourseS40QuestionsCreated.saga [44] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS6ModuleCreated = withDebounce(
-  getCourseS6ModuleCreatedGenerator,
+export const getCourseS40QuestionsCreated = withDebounce(
+  getCourseS40QuestionsCreatedGenerator,
   500
 )
 
-export default function* getCourseS6ModuleCreatedSaga() {
+export default function* getCourseS40QuestionsCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_MODULE_CREATED.REQUEST().type],
-    getCourseS6ModuleCreated
+    [actionAsync.GET_COURSE_QUESTIONS_CREATED.REQUEST().type],
+    getCourseS40QuestionsCreated
   )
 }

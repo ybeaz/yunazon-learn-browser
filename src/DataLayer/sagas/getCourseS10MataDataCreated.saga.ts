@@ -13,32 +13,37 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourseS2TranscriptCreatedGenerator(
+export function* getCourseS10MataDataCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add transcript to courseCreateProgress */
-    const originUrl: any = yield select((state: RootStoreType) => {
-      return state.courseCreateProgress.originUrl
+    /* Add originUri to courseCreateProgress */
+    const inputCourseCreate: any = yield select((state: RootStoreType) => {
+      return state.forms.inputCourseCreate
     })
 
     yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
+    )
+
+    /* Add metaData to courseCreateProgress */
+    yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['transcript'],
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['pending'],
       })
     )
 
     const variables = {
-      createYoutubeTranscriptInput: {
-        originUrl,
+      createContentMetaDataInput: {
+        originUrl: inputCourseCreate,
       },
     }
 
-    const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
+    const createContentMetaData: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createYoutubeTranscript',
+        resolveGraphqlName: 'createContentMetaData',
       },
       {
         ...getHeadersAuthDict(),
@@ -49,39 +54,39 @@ export function* getCourseS2TranscriptCreatedGenerator(
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        transcript: createYoutubeTranscript.transcript,
+        metaData: createContentMetaData,
       })
     )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['transcript'],
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['transcript'],
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseS2TranscriptCreated.saga [69] ERROR',
+      'getCourseS10MataDataCreated.saga [76] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS2TranscriptCreated = withDebounce(
-  getCourseS2TranscriptCreatedGenerator,
+export const getCourseS10MataDataCreated = withDebounce(
+  getCourseS10MataDataCreatedGenerator,
   500
 )
 
-export default function* getCourseS2TranscriptCreatedSaga() {
+export default function* getCourseS10MataDataCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_TRANSCRIPT_CREATED.REQUEST().type],
-    getCourseS2TranscriptCreated
+    [actionAsync.GET_COURSE_META_DATA_CREATED.REQUEST().type],
+    getCourseS10MataDataCreated
   )
 }

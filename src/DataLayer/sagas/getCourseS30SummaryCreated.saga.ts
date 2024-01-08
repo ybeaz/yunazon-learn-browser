@@ -21,7 +21,7 @@ import {
   GetPreparedResponseFromBotParamsType,
 } from '../../Shared/getPreparedResponseFromBot'
 
-export function* getCourseS3SummaryCreatedGenerator(
+export function* getCourseS30SummaryCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -46,7 +46,7 @@ export function* getCourseS3SummaryCreatedGenerator(
       input: transcript,
     }
 
-    console.info('getCourseS3SummaryCreated.saga [50]', { params })
+    console.info('getCourseS30SummaryCreated.saga [50]', { params })
 
     const output = getChunkedString(params, {
       printRes: false,
@@ -64,8 +64,8 @@ export function* getCourseS3SummaryCreatedGenerator(
       },
     }
 
-    console.info('getCourseS3SummaryCreated.saga [56]', { variables })
-
+    console.info('getCourseS30SummaryCreated.saga [56]', { variables })
+    return
     const createBotResponseSummary: any = yield getResponseGraphqlAsync(
       {
         variables,
@@ -78,7 +78,7 @@ export function* getCourseS3SummaryCreatedGenerator(
       }
     )
 
-    console.info('getCourseS3SummaryCreated.saga [79]', {
+    console.info('getCourseS30SummaryCreated.saga [79]', {
       createBotResponseSummary,
     })
 
@@ -86,7 +86,7 @@ export function* getCourseS3SummaryCreatedGenerator(
       (contentPiece: string) => getPreparedResponseFromBot(contentPiece)
     )
 
-    console.info('getCourseS3SummaryCreated.saga [85]', {
+    console.info('getCourseS30SummaryCreated.saga [85]', {
       createBotResponseSummary,
     })
 
@@ -111,20 +111,20 @@ export function* getCourseS3SummaryCreatedGenerator(
     )
 
     console.info(
-      'getCourseS3SummaryCreated.saga  [110] ERROR',
+      'getCourseS30SummaryCreated.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS3SummaryCreated = withDebounce(
-  getCourseS3SummaryCreatedGenerator,
+export const getCourseS30SummaryCreated = withDebounce(
+  getCourseS30SummaryCreatedGenerator,
   500
 )
 
-export default function* getCourseS3SummaryCreatedSaga() {
+export default function* getCourseS30SummaryCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_COURSE_SUMMARY_CREATED.REQUEST().type],
-    getCourseS3SummaryCreated
+    getCourseS30SummaryCreated
   )
 }
