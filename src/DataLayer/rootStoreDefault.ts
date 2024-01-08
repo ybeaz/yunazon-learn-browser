@@ -129,7 +129,7 @@ export const componentsStateDefault: ComponentsStateType = {
 }
 
 export const formsDefault: FormsType = {
-  inputCourseCreate: 'https://www.youtube.com/watch?v=BL0-A7tjB3k',
+  inputCourseCreate: 'https://www.youtube.com/watch?v=LzDhhzHtRlk',
   inputSearch: '',
   sendTo: '',
   sendCc: '',

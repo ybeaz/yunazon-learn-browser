@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 
@@ -10,7 +10,7 @@ import {
   withPropsYrl,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
-
+import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
@@ -39,9 +39,18 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     handleEvents,
   } = props
 
-  const stages: StagesType[] = getCourseCreateStages({
-    createModuleStages,
-  })
+  const stages: StagesType[] = useMemo(
+    () =>
+      getCourseCreateStages({
+        createModuleStages,
+      }),
+    [JSON.stringify({ createModuleStages, courseCreateProgress })]
+  )
+  // const [stagesState, setStagesState] = useState(stages)
+
+  // useEffect(() => {
+  //   setStagesState(stages)
+  // }, [JSON.stringify(courseCreateProgress)])
 
   const getStages = (stagesIn: StagesType[]) => {
     return stagesIn.map((stage: StagesType) => {
@@ -56,6 +65,11 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         imagePendingProps: {
           classAdded: 'Image_pending',
           src: 'https://yourails.com/images/loading/loading01.gif',
+          isDisplaying: status === CreateCourseStatusEnumType['pending'],
+        },
+        timerProps: {
+          classAdded: 'Timer_CourseCreateBody',
+          miliseconds: timeCalculated,
           isDisplaying: status === CreateCourseStatusEnumType['pending'],
         },
         iconSuccessProps: {
@@ -86,7 +100,11 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
           </div>
           <div className='_stageVisualisation'>
             <IconYrl {...propsOut.iconToDoProps} />
-            <ImageYrl {...propsOut.imagePendingProps} />
+            {timeCalculated ? (
+              <Timer {...propsOut.timerProps} />
+            ) : (
+              <ImageYrl {...propsOut.imagePendingProps} />
+            )}
             <IconYrl {...propsOut.iconSuccessProps} />
             <IconYrl {...propsOut.iconFailedProps} />
             <ButtonYrl {...propsOut.buttonRepeatProps} />

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { TimerPropsType } from '../Timer/Timer'
 import {
   ImageYrlPropsType,
   IconYrlPropsType,
@@ -18,6 +19,7 @@ import { CreateCourseStatusEnumType } from '../../../Interfaces/RootStoreType'
 
 export type StagesType = {
   name: string
+  isActive: boolean
   action: HandleEventPropsType
   status: CreateCourseStatusEnumType
   timeCalculated: RootStoreType['componentsState']['createModuleStages'][CreateModuleStagesEnumType]['timeCalculated']
@@ -34,6 +36,7 @@ export interface GetCourseCreateStagesType {
 export type StagesPropsOut = {
   iconToDoProps: IconYrlPropsType
   imagePendingProps: ImageYrlPropsType
+  timerProps: TimerPropsType
   iconSuccessProps: IconYrlPropsType
   iconFailedProps: IconYrlPropsType
   buttonRepeatProps: ButtonYrlPropsType

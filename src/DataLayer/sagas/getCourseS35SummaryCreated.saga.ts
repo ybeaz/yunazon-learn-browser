@@ -2,24 +2,13 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
+import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
 import { withDebounce } from '../../Shared/withDebounce'
-import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  getChunkedString,
-  GetChunkedStringParamsType,
-  GetChunkedStringOptionsType,
-} from '../../Shared/getChunkedString'
-import {
-  getPreparedResponseFromBot,
-  GetPreparedResponseFromBotParamsType,
-} from '../../Shared/getPreparedResponseFromBot'
 
 import { getCourseS30SummaryChunkCreated } from './getCourseS30SummaryChunkCreated.saga'
 
@@ -33,8 +22,8 @@ export function* getCourseS35SummaryCreatedGenerator(
         profileName: '@split_text_persona_summary',
     */
 
-    const transcript: any = yield select((state: RootStoreType) => {
-      return state.courseCreateProgress.transcript
+    const transcriptChunks: any = yield select((state: RootStoreType) => {
+      return state.courseCreateProgress.transcriptChunks
     })
 
     yield put(
@@ -44,24 +33,48 @@ export function* getCourseS35SummaryCreatedGenerator(
       })
     )
 
-    const params = {
-      input: transcript,
+    let summary: any[] = []
+
+    for (const transcriptChunk of transcriptChunks) {
+      const summaryItem: any = yield getCourseS30SummaryChunkCreated({
+        textChunk: transcriptChunk,
+      })
+
+      let summaryItemNext = summaryItem
+      if (summaryItem.length === 1 && Array.isArray(summaryItem[0]))
+        summaryItemNext = summaryItem[0]
+
+      summary = [...summary, ...summaryItemNext]
+
+      console.info('getCourseS35SummaryCreated.saga [49]', {
+        summaryItemNext,
+        summary,
+      })
     }
 
-    const textChunks = getChunkedString(params, {
-      printRes: false,
-      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
-      chunkSize: 5500,
-      maxSearch: 128,
-    })
-
-    const summary = yield getCourseS30SummaryChunkCreated({
-      textChunk: textChunks[0],
-    })
+    console.info('getCourseS35SummaryCreated.saga [52]', { summary })
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         summary,
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['questions'],
+        timeCalculated: Array.isArray(summary)
+          ? summary.length * timeEstimationBots.transcriptChunkToSummary
+          : null,
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['objections'],
+        timeCalculated: Array.isArray(summary)
+          ? summary.length * timeEstimationBots.transcriptChunkToSummary
+          : null,
       })
     )
 

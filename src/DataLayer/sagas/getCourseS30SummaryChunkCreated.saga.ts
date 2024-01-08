@@ -11,11 +11,7 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  getChunkedString,
-  GetChunkedStringParamsType,
-  GetChunkedStringOptionsType,
-} from '../../Shared/getChunkedString'
+import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
 import {
   getPreparedResponseFromBot,
   GetPreparedResponseFromBotParamsType,
@@ -50,7 +46,7 @@ export function* getCourseS30SummaryChunkCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 30 * 1000,
+        timeout: timeEstimationBots.transcriptChunkToSummary,
       }
     )
 

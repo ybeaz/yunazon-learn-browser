@@ -20,6 +20,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
   const stages: StagesType[] = [
     {
       name: 'metaData',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_META_DATA_CREATED_HANDLE',
         data: {},
@@ -29,48 +30,53 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'transcript',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_TRANSCRIPT_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['transcript']['status'],
-      timeCalculated: createModuleStages['metaData']['timeCalculated'],
+      timeCalculated: createModuleStages['transcript']['timeCalculated'],
     },
     {
       name: 'summary',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_SUMMARY_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['summary']['status'],
-      timeCalculated: createModuleStages['metaData']['timeCalculated'],
+      timeCalculated: createModuleStages['summary']['timeCalculated'],
     },
     {
       name: 'questions',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_QUESTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['questions']['status'],
-      timeCalculated: createModuleStages['metaData']['timeCalculated'],
+      timeCalculated: createModuleStages['questions']['timeCalculated'],
     },
     {
       name: 'objections',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_OBJECTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['objections']['status'],
-      timeCalculated: createModuleStages['metaData']['timeCalculated'],
+      timeCalculated: createModuleStages['objections']['timeCalculated'],
     },
     {
       name: 'courseModule',
+      isActive: true,
       action: {
         typeEvent: 'GET_COURSE_MODULE_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['courseModule']['status'],
-      timeCalculated: createModuleStages['metaData']['timeCalculated'],
+      timeCalculated: createModuleStages['courseModule']['timeCalculated'],
     },
   ]
 

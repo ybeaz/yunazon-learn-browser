@@ -12,6 +12,8 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import { getChunkedString } from '../../Shared/getChunkedString'
 
 export function* getCourseS20TranscriptCreatedGenerator(
   params: ActionReduxType | any
@@ -53,10 +55,37 @@ export function* getCourseS20TranscriptCreatedGenerator(
       })
     )
 
+    const params = {
+      input: createYoutubeTranscript.transcript,
+    }
+
+    const transcriptChunks = getChunkedString(params, {
+      printRes: false,
+      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
+      chunkSize: 5500,
+      maxSearch: 128,
+    })
+
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({
+        transcriptChunks,
+      })
+    )
+
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateCourseStatusEnumType['success'],
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['summary'],
+        timeCalculated: Array.isArray(transcriptChunks)
+          ? transcriptChunks.length *
+            timeEstimationBots.transcriptChunkToSummary
+          : null,
       })
     )
   } catch (error: any) {
