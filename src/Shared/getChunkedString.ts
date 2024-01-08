@@ -38,11 +38,11 @@ const optionsDefault: Required<GetChunkedStringOptionsType> = {
 
 /**
  * @description Function to getChunkedString
- * @run ts-node src/shared/utils/getChunkedString.ts
+ * @run ts-node src/Shared/getChunkedString.ts
  *    In debugging mode:
- *       node --inspect-brk -r ts-node/register src/shared/utils/getChunkedString.ts
+ *       node --inspect-brk -r ts-node/register src/Shared/getChunkedString.ts
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
- * @import import { getChunkedString, GetChunkedStringParamsType, GetChunkedStringOptionsType } from 'src/shared/utils/getChunkedString'
+ * @import import { getChunkedString, GetChunkedStringParamsType, GetChunkedStringOptionsType } from 'src/Shared/getChunkedString'
  */
 export const getChunkedString: GetChunkedStringType = (
   paramsIn: GetChunkedStringParamsType,
@@ -59,11 +59,12 @@ export const getChunkedString: GetChunkedStringType = (
 
   const { input, output } = params
 
-  const { chunkCharacters, chunkSize, maxSearch, printRes, parentFunction } = options
+  const { chunkCharacters, chunkSize, maxSearch, printRes, parentFunction } =
+    options
 
   /* Protection against chunkSize < maxSearch, Warning */
   if (chunkSize < maxSearch) {
-    consolerError('getChunkedString [66]', {
+    console.log('getChunkedString [66]', {
       message: 'chunkSize < maxSearch',
       input,
       chunkSize,
@@ -74,7 +75,7 @@ export const getChunkedString: GetChunkedStringType = (
 
   /* Protection against input-options, Error */
   if (input.length < chunkSize || input.length < maxSearch) {
-    consolerError('getChunkedString [77]', {
+    console.log('getChunkedString [77]', {
       message: 'input.length < chunkSize) || (input.length < maxSearch',
       input,
       chunkSize,
@@ -88,7 +89,11 @@ export const getChunkedString: GetChunkedStringType = (
   let outputTemp: GetChunkedStringResType = []
 
   try {
-    for (let indexChar = 0; indexChar < chunkCharacters.length; indexChar += 1) {
+    for (
+      let indexChar = 0;
+      indexChar < chunkCharacters.length;
+      indexChar += 1
+    ) {
       let n = chunkSize
       let isBraking: boolean = false
 
@@ -106,10 +111,16 @@ export const getChunkedString: GetChunkedStringType = (
       }
 
       /* Look forward */
-      while (n && n <= inputArrTemp.length && n <= chunkSize + maxSearch && !isBraking) {
+      while (
+        n &&
+        n <= inputArrTemp.length &&
+        n <= chunkSize + maxSearch &&
+        !isBraking
+      ) {
         if (
           (chunkCharacters[indexChar] === inputArrTemp[n] ||
-            (n === chunkSize + maxSearch && indexChar === chunkCharacters.length - 1)) &&
+            (n === chunkSize + maxSearch &&
+              indexChar === chunkCharacters.length - 1)) &&
           !isBraking
         ) {
           const stringAdded = inputTemp.slice(0, n + 1)
@@ -125,7 +136,7 @@ export const getChunkedString: GetChunkedStringType = (
       if (isBraking) break
     }
   } catch (error: any) {
-    consolerError('getChunkedString', { parentFunction, ...error })
+    console.log('getChunkedString', { parentFunction, ...error })
   } finally {
     if (inputArrTemp.length > chunkSize && input !== inputTemp)
       return getChunkedString({ input: inputTemp, output: outputTemp }, options)
@@ -136,7 +147,7 @@ export const getChunkedString: GetChunkedStringType = (
     }
 
     if (printRes) {
-      consoler('getChunkedString [44]', {
+      console.log('getChunkedString [44]', {
         parentFunction,
         outputTemp,
       })
@@ -151,12 +162,20 @@ export const getChunkedString: GetChunkedStringType = (
  */
 if (require.main === module) {
   ;(async () => {
-    const params = {
-      input: `oh good morning uncle donald you can't wear this to your 
+    const text = `oh good morning uncle donald you can't wear this to your 
     job interview you gotta dress for the job you want not the job 
-    you have which is no job but it's a big day and a big day calls for a big breakfast`,
+    you have which is no job but it's a big day and a big day calls for a big breakfast`
+
+    const { text30 } = require('./__mocks__/texts')
+    const params = {
+      input: text30,
     }
-    const output = getChunkedString(params, { printRes: true, chunkSize: 20, maxSearch: 20 })
+    const output = getChunkedString(params, {
+      printRes: false,
+      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
+      chunkSize: 5500,
+      maxSearch: 128,
+    })
     consoler('getChunkedString [61]', output)
   })()
 }

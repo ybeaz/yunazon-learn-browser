@@ -15,7 +15,12 @@ export function* getCourseS4QuestionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add questions to courseCreateProgress */
+    /* Add questions to courseCreateProgress 
+        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
+        profileID: 'iGlg3wRNvsQEIYF5L5svE',
+        userID: '6',
+        profileName: '@t_q_ao_extractor_persona',
+    */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })

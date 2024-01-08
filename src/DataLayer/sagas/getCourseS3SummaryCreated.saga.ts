@@ -10,12 +10,28 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import {
+  getChunkedString,
+  GetChunkedStringParamsType,
+  GetChunkedStringOptionsType,
+} from '../../Shared/getChunkedString'
+import {
+  getPreparedResponseFromBot,
+  GetPreparedResponseFromBotParamsType,
+} from '../../Shared/getPreparedResponseFromBot'
 
 export function* getCourseS3SummaryCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add summary to courseCreateProgress */
+    /* Add summary to courseCreateProgress 
+        botID: 'gkHgpq771VuJ',
+        profileID: 'lojNPRoL4bSQ',
+        userID: '6',
+        profileName: '@split_text_persona_summary',
+    */
+
+    // STOPPED HERE
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })

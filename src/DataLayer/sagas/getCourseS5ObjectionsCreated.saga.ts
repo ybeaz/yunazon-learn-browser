@@ -15,7 +15,12 @@ export function* getCourseS5ObjectionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add objections to courseCreateProgress */
+    /* Add objections to courseCreateProgress 
+        botID: 'g3lccRJtksaE',
+        profileID: 'y9WjMwhdhr31',
+        userID: '6',
+        profileName: '@objector_persona',
+    */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })
