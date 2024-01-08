@@ -7,6 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 
 import {
   RootStoreType,
+  CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -28,7 +29,7 @@ export function* getCourseS1MataDataCreatedGenerator(
     /* Add metaData to courseCreateProgress */
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: 'metaData',
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['pending'],
       })
     )
@@ -59,14 +60,14 @@ export function* getCourseS1MataDataCreatedGenerator(
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: 'metaData',
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: 'metaData',
+        stage: CreateModuleStagesEnumType['metaData'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )

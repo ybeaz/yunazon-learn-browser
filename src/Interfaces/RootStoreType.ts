@@ -3,6 +3,15 @@ import { CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
+export enum CreateModuleStagesEnumType {
+  metaData = 'metaData',
+  transcript = 'transcript',
+  summary = 'summary',
+  questions = 'questions',
+  objections = 'objections',
+  courseModule = 'courseModule',
+}
+
 export enum CreateCourseStatusEnumType {
   todo = 'todo',
   pending = 'pending',
@@ -47,14 +56,10 @@ export type ComponentsStateType = {
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
-  createModuleStages: {
-    metaData: CreateCourseStatusEnumType
-    transcript: CreateCourseStatusEnumType
-    summary: CreateCourseStatusEnumType
-    questions: CreateCourseStatusEnumType
-    objections: CreateCourseStatusEnumType
-    courseModule: CreateCourseStatusEnumType
-  }
+  createModuleStages: Record<
+    CreateModuleStagesEnumType,
+    CreateCourseStatusEnumType
+  >
 }
 
 export type FormsType = {

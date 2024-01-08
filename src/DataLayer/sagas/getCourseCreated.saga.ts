@@ -2,18 +2,13 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-// import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
-import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getCourseS1MataDataCreated } from './getCourseS1MataDataCreated.saga'
-
-import { articles } from '../../ContentMock/articlesMock'
+import { getCourseS2TranscriptCreated } from './getCourseS2TranscriptCreated.saga'
+import { getCourseS3SummaryCreated } from './getCourseS3SummaryCreated.saga'
+import { getCourseS4QuestionsCreated } from './getCourseS4QuestionsCreated.saga'
+import { getCourseS5ObjectionsCreated } from './getCourseS5ObjectionsCreated.saga'
+import { getCourseS6ModuleCreated } from './getCourseS6ModuleCreated.saga'
 
 export function* getCourseCreatedGenerator(
   params: ActionReduxType | any
@@ -24,14 +19,19 @@ export function* getCourseCreatedGenerator(
     yield getCourseS1MataDataCreated()
 
     /* Add transcript to courseCreateProgress */
+    yield getCourseS2TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
+    // yield getCourseS3SummaryCreated()
 
     /* Add questions to courseCreateProgress */
+    // yield getCourseS4QuestionsCreated()
 
     /* Add objections to courseCreateProgress */
+    // yield getCourseS5ObjectionsCreated()
 
-    /* Create course */
+    /* Create course and module */
+    // yield getCourseS6ModuleCreated()
   } catch (error: any) {
     console.info(
       'getCourseCreated.saga  [44]',
