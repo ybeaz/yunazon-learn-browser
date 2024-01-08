@@ -6,6 +6,7 @@ import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import {
   RootStoreType,
+  CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'

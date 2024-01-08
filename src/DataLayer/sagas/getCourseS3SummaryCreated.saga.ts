@@ -6,6 +6,7 @@ import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import {
   RootStoreType,
+  CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -31,25 +32,27 @@ export function* getCourseS3SummaryCreatedGenerator(
         profileName: '@split_text_persona_summary',
     */
 
-    // STOPPED HERE
-    const inputCourseCreate: any = yield select((state: RootStoreType) => {
-      return state.forms.inputCourseCreate
+    const originUrl: any = yield select((state: RootStoreType) => {
+      return state.courseCreateProgress.originUrl
     })
 
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['transcript'],
+        status: CreateCourseStatusEnumType['pending'],
+      })
+    )
+
     const variables = {
-      createContentMetaDataInput: {
-        originUrl: inputCourseCreate,
+      createYoutubeTranscriptInput: {
+        originUrl,
       },
     }
 
-    console.info('getCourseS3SummaryCreated.saga [33]', {
-      variables,
-    })
-
-    const createContentMetaData: any = yield getResponseGraphqlAsync(
+    const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createContentMetaData',
+        resolveGraphqlName: 'createYoutubeTranscript',
       },
       {
         ...getHeadersAuthDict(),
@@ -58,14 +61,16 @@ export function* getCourseS3SummaryCreatedGenerator(
       }
     )
 
-    console.info('getCourseS3SummaryCreated.saga [49]', {
-      createContentMetaData,
-      inputCourseCreate,
-    })
-
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        metaData: createContentMetaData,
+        transcript: createYoutubeTranscript,
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['transcript'],
+        status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
