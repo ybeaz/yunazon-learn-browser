@@ -58,10 +58,12 @@ export function* getCourseS4QuestionsCreatedGenerator(
       })
     )
   } catch (error: any) {
-    actionSync.SET_COURSE_CREATE_STATUS({
-      stage: CreateModuleStagesEnumType['questions'],
-      status: CreateCourseStatusEnumType['failure'],
-    })
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['questions'],
+        status: CreateCourseStatusEnumType['failure'],
+      })
+    )
 
     console.info(
       'getCourseS4QuestionsCreated.saga [44] ERROR',

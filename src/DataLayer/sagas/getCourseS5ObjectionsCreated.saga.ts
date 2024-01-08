@@ -58,10 +58,12 @@ export function* getCourseS5ObjectionsCreatedGenerator(
       })
     )
   } catch (error: any) {
-    actionSync.SET_COURSE_CREATE_STATUS({
-      stage: CreateModuleStagesEnumType['objections'],
-      status: CreateCourseStatusEnumType['failure'],
-    })
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['objections'],
+        status: CreateCourseStatusEnumType['failure'],
+      })
+    )
 
     console.info(
       'getCourseS5ObjectionsCreated.saga [44] ERROR',

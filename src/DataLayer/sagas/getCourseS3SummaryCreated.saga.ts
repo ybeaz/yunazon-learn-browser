@@ -101,10 +101,12 @@ export function* getCourseS3SummaryCreatedGenerator(
       })
     )
   } catch (error: any) {
-    actionSync.SET_COURSE_CREATE_STATUS({
-      stage: CreateModuleStagesEnumType['summary'],
-      status: CreateCourseStatusEnumType['failure'],
-    })
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['summary'],
+        status: CreateCourseStatusEnumType['failure'],
+      })
+    )
 
     console.info(
       'getCourseS3SummaryCreated.saga  [110] ERROR',

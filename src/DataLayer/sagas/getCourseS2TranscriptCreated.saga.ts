@@ -60,10 +60,12 @@ export function* getCourseS2TranscriptCreatedGenerator(
       })
     )
   } catch (error: any) {
-    actionSync.SET_COURSE_CREATE_STATUS({
-      stage: CreateModuleStagesEnumType['transcript'],
-      status: CreateCourseStatusEnumType['failure'],
-    })
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['transcript'],
+        status: CreateCourseStatusEnumType['failure'],
+      })
+    )
 
     console.info(
       'getCourseS2TranscriptCreated.saga [69] ERROR',
