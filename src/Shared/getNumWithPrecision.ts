@@ -32,7 +32,7 @@ export const getNumWithPrecision: GetNumWithPrecisionType = (
 
     if (options?.printRes) {
       console.log('getNumWithPrecision', { output })
-      consoler('getNumWithPrecision', 'output', output)
+      consoler('getNumWithPrecision', output)
     }
   } catch (error: any) {
     console.log('getNumWithPrecision', 'Error', error.message)

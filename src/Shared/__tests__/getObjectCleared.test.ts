@@ -784,7 +784,7 @@ describe('Algoritms', () => {
 
       if (isActive) {
         let outputed = getObjectCleared(input, options)
-        // consoler('getObjectCleared.test', '[736]', { outputed })
+        // consoler('getObjectCleared.test [736]', { outputed })
         expect(outputed).toEqual(expected)
       }
     })

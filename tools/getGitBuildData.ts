@@ -56,7 +56,7 @@ export const getGitBuildData: GetGitBuildDataType = async (
     await getWriteFile(pathFull, getGitBuildDataRes)
 
     if (options?.printRes) {
-      consoler('getGitBuildData', 'getGitBuildDataRes', {
+      consoler('getGitBuildData', {
         getGitBuildDataRes,
         getGitBuildDataResObj,
       })
