@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_COURSE_CREATE_STATUS',
   'ADD_COURSE_CREATE_DATA',
   'CLICK_ON_COURSE_CREATE_SUBMIT',
   'ADD_ARTICLE',
@@ -81,6 +82,12 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_COURSE_MODULE_CREATED',
+  'GET_COURSE_OBJECTIONS_CREATED',
+  'GET_COURSE_QUESTIONS_CREATED',
+  'GET_COURSE_SUMMARY_CREATED',
+  'GET_COURSE_TRANSCRIPT_CREATED',
+  'GET_COURSE_META_DATA_CREATED',
   'GET_COURSE_CREATED',
   'FIND_ARTICLE',
   'DEACTIVATE_DOCUMENTS',

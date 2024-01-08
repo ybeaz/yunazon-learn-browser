@@ -11,17 +11,55 @@ import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToIt
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getCourseS1MataDataCreated } from './getCourseS1MataDataCreated.saga'
 
 import { articles } from '../../ContentMock/articlesMock'
 
-export function* getCourseCreatedGenerator(
+export function* getCourseS2TranscriptCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
     /* Add originUri to courseCreateProgress */
+    const inputCourseCreate: any = yield select((state: RootStoreType) => {
+      return state.forms.inputCourseCreate
+    })
+
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
+    )
+
     /* Add metaData to courseCreateProgress */
-    yield getCourseS1MataDataCreated()
+    const variables = {
+      createContentMetaDataInput: {
+        originUrl: inputCourseCreate,
+      },
+    }
+
+    console.info('getCourseS2TranscriptCreated.saga [33]', {
+      variables,
+    })
+
+    const createContentMetaData: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'createContentMetaData',
+      },
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
+
+    console.info('getCourseS2TranscriptCreated.saga [49]', {
+      createContentMetaData,
+      inputCourseCreate,
+    })
+
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({
+        metaData: createContentMetaData,
+      })
+    )
 
     /* Add transcript to courseCreateProgress */
 
@@ -34,17 +72,20 @@ export function* getCourseCreatedGenerator(
     /* Create course */
   } catch (error: any) {
     console.info(
-      'getCourseCreated.saga  [44]',
+      'getCourseS2TranscriptCreated.saga  [44]',
       error.name + ': ' + error.message
     )
   }
 }
 
-export const getCourseCreated = withDebounce(getCourseCreatedGenerator, 500)
+export const getCourseS2TranscriptCreated = withDebounce(
+  getCourseS2TranscriptCreatedGenerator,
+  500
+)
 
-export default function* getCourseCreatedSaga() {
+export default function* getCourseS2TranscriptCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_CREATED.REQUEST().type],
-    getCourseCreated
+    [actionAsync.GET_COURSE_TRANSCRIPT_CREATED.REQUEST().type],
+    getCourseS2TranscriptCreated
   )
 }

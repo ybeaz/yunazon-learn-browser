@@ -106,7 +106,7 @@ export const componentsStateDefault: ComponentsStateType = {
     summary: CreateCourseStatusEnumType['todo'],
     questions: CreateCourseStatusEnumType['todo'],
     objections: CreateCourseStatusEnumType['todo'],
-    finalization: CreateCourseStatusEnumType['todo'],
+    courseModule: CreateCourseStatusEnumType['todo'],
   },
 }
 

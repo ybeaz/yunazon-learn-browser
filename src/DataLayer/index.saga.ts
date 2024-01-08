@@ -1,5 +1,11 @@
 import { all, fork } from 'redux-saga/effects'
 
+import getCourseS6ModuleCreatedSaga from './sagas/getCourseS6ModuleCreated.saga'
+import getCourseS5ObjectionsCreatedSaga from './sagas/getCourseS5ObjectionsCreated.saga'
+import getCourseS4QuestionsCreatedSaga from './sagas/getCourseS4QuestionsCreated.saga'
+import getCourseS3SummaryCreatedSaga from './sagas/getCourseS3SummaryCreated.saga'
+import getCourseS2TranscriptCreatedSaga from './sagas/getCourseS2TranscriptCreated.saga'
+import getCourseS1MataDataCreatedSaga from './sagas/getCourseS1MataDataCreated.saga'
 import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
 import readArticleSaga from './sagas/readArticle.saga'
 import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
@@ -17,6 +23,12 @@ import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getCourseS6ModuleCreatedSaga),
+    fork(getCourseS5ObjectionsCreatedSaga),
+    fork(getCourseS4QuestionsCreatedSaga),
+    fork(getCourseS3SummaryCreatedSaga),
+    fork(getCourseS2TranscriptCreatedSaga),
+    fork(getCourseS1MataDataCreatedSaga),
     fork(getCourseCreatedSaga),
     fork(readArticleSaga),
     fork(deactivateDocumentsSaga),

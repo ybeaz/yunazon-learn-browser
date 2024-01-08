@@ -4,6 +4,9 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const GET_MODULE_DATA: ActionEventType = (event, data) => {
-  dispatch(actionAsync.GET_MODULE_DATA.REQUEST())
+export const GET_COURSE_SUMMARY_CREATED_HANDLE: ActionEventType = (
+  event,
+  data
+) => {
+  dispatch(actionAsync.GET_COURSE_SUMMARY_CREATED.REQUEST())
 }

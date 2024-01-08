@@ -21,7 +21,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     {
       name: 'metaData',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_META_DATA_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['metaData'],
@@ -29,7 +29,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     {
       name: 'transcript',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_TRANSCRIPT_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['transcript'],
@@ -37,7 +37,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     {
       name: 'summary',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_SUMMARY_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['summary'],
@@ -45,7 +45,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     {
       name: 'questions',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_QUESTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['questions'],
@@ -53,18 +53,18 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     {
       name: 'objections',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_OBJECTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['objections'],
     },
     {
-      name: 'finalization',
+      name: 'courseModule',
       action: {
-        typeEvent: 'PLUS_QUESTION_SLIDE',
+        typeEvent: 'GET_COURSE_MODULE_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['finalization'],
+      status: createModuleStages['courseModule'],
     },
   ]
 

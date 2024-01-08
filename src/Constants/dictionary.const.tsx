@@ -27,7 +27,7 @@ export const DICTIONARY: IDictionary = {
     en: 'objections creation',
     ru: 'создание возражений',
   },
-  stage_finalization: {
+  stage_courseModule: {
     en: 'finalization',
     ru: 'завершение',
   },

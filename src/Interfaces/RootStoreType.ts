@@ -53,7 +53,7 @@ export type ComponentsStateType = {
     summary: CreateCourseStatusEnumType
     questions: CreateCourseStatusEnumType
     objections: CreateCourseStatusEnumType
-    finalization: CreateCourseStatusEnumType
+    courseModule: CreateCourseStatusEnumType
   }
 }
 
