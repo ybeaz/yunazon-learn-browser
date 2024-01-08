@@ -62,9 +62,10 @@ function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
       refresh_token: '',
     })
   } catch (error: any) {
-    console.log('ERROR getAuthAwsCognitoUserRevokedSaga', {
-      error: error.message,
-    })
+    console.log(
+      'getAuthAwsCognitoUserRevokedSaga [65] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

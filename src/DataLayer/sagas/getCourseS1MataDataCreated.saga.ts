@@ -73,8 +73,8 @@ export function* getCourseS1MataDataCreatedGenerator(
     )
 
     console.info(
-      'getCourseS1MataDataCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS1MataDataCreated.saga [76] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

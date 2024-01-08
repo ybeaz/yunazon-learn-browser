@@ -55,13 +55,13 @@ export function* getCourseS6ModuleCreatedGenerator(
     )
   } catch (error: any) {
     actionSync.SET_COURSE_CREATE_STATUS({
-      stage: 'metaData',
+      stage: CreateModuleStagesEnumType['courseModule'],
       status: CreateCourseStatusEnumType['failure'],
     })
 
     console.info(
-      'getCourseS6ModuleCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS6ModuleCreated.saga [44] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

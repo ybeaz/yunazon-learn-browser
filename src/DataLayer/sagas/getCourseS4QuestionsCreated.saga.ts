@@ -19,7 +19,6 @@ export function* getCourseS4QuestionsCreatedGenerator(
     /* Add questions to courseCreateProgress 
         botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
         profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        userID: '6',
         profileName: '@t_q_ao_extractor_persona',
     */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
@@ -60,13 +59,13 @@ export function* getCourseS4QuestionsCreatedGenerator(
     )
   } catch (error: any) {
     actionSync.SET_COURSE_CREATE_STATUS({
-      stage: 'metaData',
+      stage: CreateModuleStagesEnumType['questions'],
       status: CreateCourseStatusEnumType['failure'],
     })
 
     console.info(
-      'getCourseS4QuestionsCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS4QuestionsCreated.saga [44] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

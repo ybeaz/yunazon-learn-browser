@@ -50,9 +50,10 @@ export function* getAuthAwsCognitoUserData(
       })
     )
   } catch (error: any) {
-    console.log('ERROR getAuthAwsCognitoUserDataSaga', {
-      error: error.message,
-    })
+    console.log(
+      'getAuthAwsCognitoUserDataSaga [53] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

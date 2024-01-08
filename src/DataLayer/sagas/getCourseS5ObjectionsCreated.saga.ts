@@ -19,7 +19,6 @@ export function* getCourseS5ObjectionsCreatedGenerator(
     /* Add objections to courseCreateProgress 
         botID: 'g3lccRJtksaE',
         profileID: 'y9WjMwhdhr31',
-        userID: '6',
         profileName: '@objector_persona',
     */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
@@ -48,7 +47,7 @@ export function* getCourseS5ObjectionsCreatedGenerator(
       }
     )
 
-    console.info('getCourseS5ObjectionsCreated.saga [49]', {
+    console.info('getCourseS5ObjectionsCreated.saga [50] ', {
       createContentMetaData,
       inputCourseCreate,
     })
@@ -60,13 +59,13 @@ export function* getCourseS5ObjectionsCreatedGenerator(
     )
   } catch (error: any) {
     actionSync.SET_COURSE_CREATE_STATUS({
-      stage: 'metaData',
+      stage: CreateModuleStagesEnumType['objections'],
       status: CreateCourseStatusEnumType['failure'],
     })
 
     console.info(
-      'getCourseS5ObjectionsCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS5ObjectionsCreated.saga [44] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

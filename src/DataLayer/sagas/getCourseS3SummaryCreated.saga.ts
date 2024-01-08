@@ -28,60 +28,87 @@ export function* getCourseS3SummaryCreatedGenerator(
     /* Add summary to courseCreateProgress 
         botID: 'gkHgpq771VuJ',
         profileID: 'lojNPRoL4bSQ',
-        userID: '6',
         profileName: '@split_text_persona_summary',
     */
 
-    const originUrl: any = yield select((state: RootStoreType) => {
-      return state.courseCreateProgress.originUrl
+    const transcript: any = yield select((state: RootStoreType) => {
+      return state.courseCreateProgress.transcript
     })
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['transcript'],
+        stage: CreateModuleStagesEnumType['summary'],
         status: CreateCourseStatusEnumType['pending'],
       })
     )
 
+    const params = {
+      input: transcript,
+    }
+
+    const output = getChunkedString(params, {
+      printRes: false,
+      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
+      chunkSize: 5500,
+      maxSearch: 128,
+    })
+
     const variables = {
-      createYoutubeTranscriptInput: {
-        originUrl,
+      createBotResponseInput: {
+        botID: 'gkHgpq771VuJ',
+        profileID: 'lojNPRoL4bSQ',
+        profileName: '@split_text_persona_summary',
+        userText: output[0],
       },
     }
 
-    const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
+    console.info('getCourseS3SummaryCreated.saga [56]', { variables })
+
+    const createBotResponseSummary: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createYoutubeTranscript',
+        resolveGraphqlName: 'createBotResponse',
       },
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: 30 * 1000,
       }
     )
 
+    console.info('getCourseS3SummaryCreated.saga [79]', {
+      createBotResponseSummary,
+    })
+
+    const summary = createBotResponseSummary.textObj.contentArray.map(
+      (contentPiece: string) => getPreparedResponseFromBot(contentPiece)
+    )
+
+    console.info('getCourseS3SummaryCreated.saga [85]', {
+      createBotResponseSummary,
+    })
+
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        transcript: createYoutubeTranscript,
+        summary,
       })
     )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['transcript'],
+        stage: CreateModuleStagesEnumType['summary'],
         status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     actionSync.SET_COURSE_CREATE_STATUS({
-      stage: 'metaData',
+      stage: CreateModuleStagesEnumType['summary'],
       status: CreateCourseStatusEnumType['failure'],
     })
 
     console.info(
-      'getCourseS3SummaryCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS3SummaryCreated.saga  [110] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

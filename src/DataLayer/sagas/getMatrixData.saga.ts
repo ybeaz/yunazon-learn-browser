@@ -43,7 +43,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield getCourses()
   } catch (error: any) {
-    console.info('getMatrixData [31]', error.name + ': ' + error.message)
+    console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

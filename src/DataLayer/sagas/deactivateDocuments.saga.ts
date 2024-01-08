@@ -38,7 +38,10 @@ function* deactivateDocumentsGenerator(
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('deactivateDocuments [40]', error.name + ': ' + error.message)
+    console.info(
+      'deactivateDocuments [41] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

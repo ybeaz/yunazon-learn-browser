@@ -58,9 +58,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       })
     )
   } catch (error: any) {
-    console.log('ERROR getAuthAwsCognitoUserRefreshedSaga', {
-      error: error.message,
-    })
+    console.log(
+      'getAuthAwsCognitoUserRefreshedSaga [61] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

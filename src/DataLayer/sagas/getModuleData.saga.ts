@@ -92,7 +92,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getModuleData Error', error.name + ': ' + error.message)
+    console.info('getModuleData [95] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

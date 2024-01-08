@@ -32,7 +32,7 @@ function* readDocument(params: ActionReduxType | any): Iterable<any> {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('readDocument [40]', error.name + ': ' + error.message)
+    console.info('readDocument [35] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

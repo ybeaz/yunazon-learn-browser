@@ -79,7 +79,7 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
 
     navigate(createDocuments[0]?.pathName)
   } catch (error: any) {
-    console.info('createDocument [40]', error.name + ': ' + error.message)
+    console.info('createDocument [82] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

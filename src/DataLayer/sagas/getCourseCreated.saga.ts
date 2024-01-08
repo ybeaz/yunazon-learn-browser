@@ -22,7 +22,7 @@ export function* getCourseCreatedGenerator(
     yield getCourseS2TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
-    // yield getCourseS3SummaryCreated()
+    yield getCourseS3SummaryCreated()
 
     /* Add questions to courseCreateProgress */
     // yield getCourseS4QuestionsCreated()
@@ -34,8 +34,8 @@ export function* getCourseCreatedGenerator(
     // yield getCourseS6ModuleCreated()
   } catch (error: any) {
     console.info(
-      'getCourseCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseCreated.saga [37] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }

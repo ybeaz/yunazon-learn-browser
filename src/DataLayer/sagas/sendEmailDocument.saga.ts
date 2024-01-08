@@ -43,7 +43,8 @@ function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
       ])
     )
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error) {
+  } catch (error: any) {
+    console.info('readDocument [47] ERROR', `${error.name}: ${error.message}`)
     yield put(
       actionSync.SET_MODAL_FRAMES([
         {

@@ -66,8 +66,8 @@ export function* getCourseS2TranscriptCreatedGenerator(
     })
 
     console.info(
-      'getCourseS2TranscriptCreated.saga  [44]',
-      error.name + ': ' + error.message
+      'getCourseS2TranscriptCreated.saga [69] ERROR',
+      `${error.name}: ${error.message}`
     )
   }
 }
