@@ -8,6 +8,7 @@ import {
 } from '../../ComponentsLibrary/'
 
 import {
+  CreateModuleStagesEnumType,
   RootStoreType,
   HandleEventPropsType,
   HandleEventType,
@@ -19,6 +20,7 @@ export type StagesType = {
   name: string
   action: HandleEventPropsType
   status: CreateCourseStatusEnumType
+  timeCalculated: RootStoreType['componentsState']['createModuleStages'][CreateModuleStagesEnumType]['timeCalculated']
 }
 
 export type GetCourseCreateStagesPropsType = {

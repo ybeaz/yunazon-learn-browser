@@ -101,12 +101,30 @@ export const componentsStateDefault: ComponentsStateType = {
     },
   },
   createModuleStages: {
-    metaData: CreateCourseStatusEnumType['todo'],
-    transcript: CreateCourseStatusEnumType['todo'],
-    summary: CreateCourseStatusEnumType['todo'],
-    questions: CreateCourseStatusEnumType['todo'],
-    objections: CreateCourseStatusEnumType['todo'],
-    courseModule: CreateCourseStatusEnumType['todo'],
+    metaData: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    transcript: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    summary: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    questions: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    objections: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    courseModule: {
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
   },
 }
 

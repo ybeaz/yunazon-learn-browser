@@ -45,7 +45,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
 
   const getStages = (stagesIn: StagesType[]) => {
     return stagesIn.map((stage: StagesType) => {
-      const { name: stageName, action, status } = stage
+      const { name: stageName, action, status, timeCalculated } = stage
 
       const propsOut: StagesPropsOut = {
         iconToDoProps: {

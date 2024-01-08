@@ -19,6 +19,11 @@ export enum CreateCourseStatusEnumType {
   failure = 'failure',
 }
 
+export type CreateModuleStageType = {
+  status: CreateCourseStatusEnumType
+  timeCalculated: number | null
+}
+
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
@@ -56,10 +61,7 @@ export type ComponentsStateType = {
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
-  createModuleStages: Record<
-    CreateModuleStagesEnumType,
-    CreateCourseStatusEnumType
-  >
+  createModuleStages: Record<CreateModuleStagesEnumType, CreateModuleStageType>
 }
 
 export type FormsType = {

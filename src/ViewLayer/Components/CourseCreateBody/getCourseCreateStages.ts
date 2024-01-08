@@ -24,7 +24,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_META_DATA_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['metaData'],
+      status: createModuleStages['metaData']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
     {
       name: 'transcript',
@@ -32,7 +33,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_TRANSCRIPT_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['transcript'],
+      status: createModuleStages['transcript']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
     {
       name: 'summary',
@@ -40,7 +42,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_SUMMARY_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['summary'],
+      status: createModuleStages['summary']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
     {
       name: 'questions',
@@ -48,7 +51,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_QUESTIONS_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['questions'],
+      status: createModuleStages['questions']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
     {
       name: 'objections',
@@ -56,7 +60,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_OBJECTIONS_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['objections'],
+      status: createModuleStages['objections']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
     {
       name: 'courseModule',
@@ -64,7 +69,8 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
         typeEvent: 'GET_COURSE_MODULE_CREATED_HANDLE',
         data: {},
       },
-      status: createModuleStages['courseModule'],
+      status: createModuleStages['courseModule']['status'],
+      timeCalculated: createModuleStages['metaData']['timeCalculated'],
     },
   ]
 
