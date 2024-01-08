@@ -3,16 +3,14 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-// import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import {
+  RootStoreType,
+  CreateCourseStatusEnumType,
+} from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-
-import { articles } from '../../ContentMock/articlesMock'
 
 export function* getCourseS1MataDataCreatedGenerator(
   params: ActionReduxType | any
@@ -28,15 +26,18 @@ export function* getCourseS1MataDataCreatedGenerator(
     )
 
     /* Add metaData to courseCreateProgress */
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: 'metaData',
+        status: CreateCourseStatusEnumType['pending'],
+      })
+    )
+
     const variables = {
       createContentMetaDataInput: {
         originUrl: inputCourseCreate,
       },
     }
-
-    console.info('getCourseS1MataDataCreated.saga [33]', {
-      variables,
-    })
 
     const createContentMetaData: any = yield getResponseGraphqlAsync(
       {
@@ -50,17 +51,26 @@ export function* getCourseS1MataDataCreatedGenerator(
       }
     )
 
-    console.info('getCourseS1MataDataCreated.saga [49]', {
-      createContentMetaData,
-      inputCourseCreate,
-    })
-
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         metaData: createContentMetaData,
       })
     )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: 'metaData',
+        status: CreateCourseStatusEnumType['success'],
+      })
+    )
   } catch (error: any) {
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: 'metaData',
+        status: CreateCourseStatusEnumType['failure'],
+      })
+    )
+
     console.info(
       'getCourseS1MataDataCreated.saga  [44]',
       error.name + ': ' + error.message

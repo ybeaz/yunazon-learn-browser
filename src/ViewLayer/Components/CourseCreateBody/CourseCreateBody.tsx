@@ -51,28 +51,28 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         iconToDoProps: {
           classAdded: 'Icon_toDo',
           icon: 'MdCheckBoxOutlineBlank',
-          isVisible: true, // status === CreateCourseStatusEnumType['todo'],
+          isDisplaying: status === CreateCourseStatusEnumType['todo'],
         },
         imagePendingProps: {
           classAdded: 'Image_pending',
           src: 'https://yourails.com/images/loading/loading01.gif',
-          isVisible: true, //  status === CreateCourseStatusEnumType['pending'],
+          isDisplaying: status === CreateCourseStatusEnumType['pending'],
         },
         iconSuccessProps: {
           classAdded: 'Icon_success',
           icon: 'MdCheck',
-          isVisible: true, //  status === CreateCourseStatusEnumType['success'],
+          isDisplaying: status === CreateCourseStatusEnumType['success'],
         },
         iconFailedProps: {
           classAdded: 'Icon_failed',
           icon: 'MdClear',
-          isVisible: true, //  status === CreateCourseStatusEnumType['failure'],
+          isDisplaying: status === CreateCourseStatusEnumType['failure'],
         },
         buttonRepeatProps: {
           classAdded: 'Button_create_stage_repeat',
           icon: 'MdOutlineReplay',
           action,
-          isVisible: true, //  status === CreateCourseStatusEnumType['failure'],
+          isDisplaying: status === CreateCourseStatusEnumType['failure'],
         },
       }
 

@@ -39,7 +39,7 @@ export const DICTIONARY: IDictionary = {
     en: 'in progress',
     ru: 'в процессе',
   },
-  sucess: {
+  success: {
     en: 'success',
     ru: 'успешно закончено',
   },
