@@ -3,12 +3,12 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
-import { getCourseS10MataDataCreated } from './getCourseS10MataDataCreated.saga'
-import { getCourseS20TranscriptCreated } from './getCourseS20TranscriptCreated.saga'
-import { getCourseS35SummaryCreated } from './getCourseS35SummaryCreated.saga'
-import { getCourseS40QuestionsCreated } from './getCourseS40QuestionsCreated.saga'
-import { getCourseS50ObjectionsCreated } from './getCourseS50ObjectionsCreated.saga'
-import { getCourseS60ModuleCreated } from './getCourseS60ModuleCreated.saga'
+import { getCourse10MataDataCreated } from './getCourse10MataDataCreated.saga'
+import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreated.saga'
+import { getCourse35SummaryCreated } from './getCourse35SummaryCreated.saga'
+import { getCourse40QuestionsChunkCreated } from './getCourse40QuestionsChunkCreated.saga'
+import { getCourse50ObjectionsCreated } from './getCourse50ObjectionsCreated.saga'
+import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
 
 export function* getCourseCreatedGenerator(
   params: ActionReduxType | any
@@ -16,22 +16,22 @@ export function* getCourseCreatedGenerator(
   try {
     /* Add originUri to courseCreateProgress */
     /* Add metaData to courseCreateProgress */
-    yield getCourseS10MataDataCreated()
+    yield getCourse10MataDataCreated()
 
     /* Add transcript to courseCreateProgress */
-    yield getCourseS20TranscriptCreated()
+    yield getCourse20TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
-    yield getCourseS35SummaryCreated()
+    yield getCourse35SummaryCreated()
 
     /* Add questions to courseCreateProgress */
-    // yield getCourseS40QuestionsCreated()
+    // yield getCourse40QuestionsChunkCreated()
 
     /* Add objections to courseCreateProgress */
-    // yield getCourseS50ObjectionsCreated()
+    // yield getCourse50ObjectionsCreated()
 
     /* Create course and module */
-    // yield getCourseS60ModuleCreated()
+    // yield getCourse60ModuleCreated()
   } catch (error: any) {
     console.info(
       'getCourseCreated.saga [37] ERROR',

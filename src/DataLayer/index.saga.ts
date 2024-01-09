@@ -1,12 +1,13 @@
 import { all, fork } from 'redux-saga/effects'
 
-import getCourseS60ModuleCreatedSaga from './sagas/getCourseS60ModuleCreated.saga'
-import getCourseS50ObjectionsCreatedSaga from './sagas/getCourseS50ObjectionsCreated.saga'
-import getCourseS40QuestionsCreatedSaga from './sagas/getCourseS40QuestionsCreated.saga'
-import getCourseS35SummaryCreatedSaga from './sagas/getCourseS35SummaryCreated.saga'
-import getCourseS30SummaryChunkCreatedSaga from './sagas/getCourseS30SummaryChunkCreated.saga'
-import getCourseS20TranscriptCreatedSaga from './sagas/getCourseS20TranscriptCreated.saga'
-import getCourseS10MataDataCreatedSaga from './sagas/getCourseS10MataDataCreated.saga'
+import getCourse60ModuleCreatedSaga from './sagas/getCourse60ModuleCreated.saga'
+import getCourse50ObjectionsCreatedSaga from './sagas/getCourse50ObjectionsCreated.saga'
+import getCourse45QuestionsCreatedSaga from './sagas/getCourse45QuestionsCreated.saga'
+import getCourse40QuestionsChunkCreatedSaga from './sagas/getCourse40QuestionsChunkCreated.saga'
+import getCourse35SummaryCreatedSaga from './sagas/getCourse35SummaryCreated.saga'
+import getCourse30SummaryChunkCreatedSaga from './sagas/getCourse30SummaryChunkCreated.saga'
+import getCourse20TranscriptCreatedSaga from './sagas/getCourse20TranscriptCreated.saga'
+import getCourse10MataDataCreatedSaga from './sagas/getCourse10MataDataCreated.saga'
 import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
 import readArticleSaga from './sagas/readArticle.saga'
 import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
@@ -24,13 +25,14 @@ import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
-    fork(getCourseS60ModuleCreatedSaga),
-    fork(getCourseS50ObjectionsCreatedSaga),
-    fork(getCourseS40QuestionsCreatedSaga),
-    fork(getCourseS35SummaryCreatedSaga),
-    fork(getCourseS30SummaryChunkCreatedSaga),
-    fork(getCourseS20TranscriptCreatedSaga),
-    fork(getCourseS10MataDataCreatedSaga),
+    fork(getCourse60ModuleCreatedSaga),
+    fork(getCourse50ObjectionsCreatedSaga),
+    fork(getCourse45QuestionsCreatedSaga),
+    fork(getCourse40QuestionsChunkCreatedSaga),
+    fork(getCourse35SummaryCreatedSaga),
+    fork(getCourse30SummaryChunkCreatedSaga),
+    fork(getCourse20TranscriptCreatedSaga),
+    fork(getCourse10MataDataCreatedSaga),
     fork(getCourseCreatedSaga),
     fork(readArticleSaga),
     fork(deactivateDocumentsSaga),

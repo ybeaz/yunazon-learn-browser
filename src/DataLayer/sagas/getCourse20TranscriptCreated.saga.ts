@@ -15,7 +15,7 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
 import { getChunkedString } from '../../Shared/getChunkedString'
 
-export function* getCourseS20TranscriptCreatedGenerator(
+export function* getCourse20TranscriptCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -97,20 +97,20 @@ export function* getCourseS20TranscriptCreatedGenerator(
     )
 
     console.info(
-      'getCourseS20TranscriptCreated.saga [69] ERROR',
+      'getCourse20TranscriptCreated.saga [69] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS20TranscriptCreated = withDebounce(
-  getCourseS20TranscriptCreatedGenerator,
+export const getCourse20TranscriptCreated = withDebounce(
+  getCourse20TranscriptCreatedGenerator,
   500
 )
 
-export default function* getCourseS20TranscriptCreatedSaga() {
+export default function* getCourse20TranscriptCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_COURSE_TRANSCRIPT_CREATED.REQUEST().type],
-    getCourseS20TranscriptCreated
+    getCourse20TranscriptCreated
   )
 }

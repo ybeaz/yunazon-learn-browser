@@ -10,9 +10,9 @@ import {
 import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
 import { withDebounce } from '../../Shared/withDebounce'
 
-import { getCourseS30SummaryChunkCreated } from './getCourseS30SummaryChunkCreated.saga'
+import { getCourse30SummaryChunkCreated } from './getCourse30SummaryChunkCreated.saga'
 
-export function* getCourseS35SummaryCreatedGenerator(
+export function* getCourse35SummaryCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -31,7 +31,7 @@ export function* getCourseS35SummaryCreatedGenerator(
     let summaryChunks: any[][] = []
 
     for (const transcriptChunk of transcriptChunks) {
-      const summaryItem: any = yield getCourseS30SummaryChunkCreated({
+      const summaryItem: any = yield getCourse30SummaryChunkCreated({
         textChunk: transcriptChunk,
       })
 
@@ -88,20 +88,20 @@ export function* getCourseS35SummaryCreatedGenerator(
     )
 
     console.info(
-      'getCourseS35SummaryCreated.saga  [110] ERROR',
+      'getCourse35SummaryCreated.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS35SummaryCreated = withDebounce(
-  getCourseS35SummaryCreatedGenerator,
+export const getCourse35SummaryCreated = withDebounce(
+  getCourse35SummaryCreatedGenerator,
   500
 )
 
-export default function* getCourseS35SummaryCreatedSaga() {
+export default function* getCourse35SummaryCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_COURSE_SUMMARY_CREATED.REQUEST().type],
-    getCourseS35SummaryCreated
+    getCourse35SummaryCreated
   )
 }

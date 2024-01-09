@@ -12,7 +12,7 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourseS50ObjectionsCreatedGenerator(
+export function* getCourse50ObjectionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -31,7 +31,7 @@ export function* getCourseS50ObjectionsCreatedGenerator(
       },
     }
 
-    console.info('getCourseS50ObjectionsCreated.saga [33]', {
+    console.info('getCourse50ObjectionsCreated.saga [33]', {
       variables,
     })
 
@@ -47,7 +47,7 @@ export function* getCourseS50ObjectionsCreatedGenerator(
       }
     )
 
-    console.info('getCourseS50ObjectionsCreated.saga [50] ', {
+    console.info('getCourse50ObjectionsCreated.saga [50] ', {
       createContentMetaData,
       inputCourseCreate,
     })
@@ -66,20 +66,20 @@ export function* getCourseS50ObjectionsCreatedGenerator(
     )
 
     console.info(
-      'getCourseS50ObjectionsCreated.saga [44] ERROR',
+      'getCourse50ObjectionsCreated.saga [44] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS50ObjectionsCreated = withDebounce(
-  getCourseS50ObjectionsCreatedGenerator,
+export const getCourse50ObjectionsCreated = withDebounce(
+  getCourse50ObjectionsCreatedGenerator,
   500
 )
 
-export default function* getCourseS50ObjectionsCreatedSaga() {
+export default function* getCourse50ObjectionsCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_COURSE_OBJECTIONS_CREATED.REQUEST().type],
-    getCourseS50ObjectionsCreated
+    getCourse50ObjectionsCreated
   )
 }

@@ -17,28 +17,28 @@ import {
   GetPreparedResponseFromBotParamsType,
 } from '../../Shared/getPreparedResponseFromBot'
 
-export function* getCourseS40QuestionsCreatedGenerator(
+export function* getCourse30SummaryChunkCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add questions to courseCreateProgress 
-        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
-        profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        profileName: '@t_q_ao_extractor_persona',
+    /* Add summary to courseCreateProgress 
+        botID: 'gkHgpq771VuJ',
+        profileID: 'lojNPRoL4bSQ',
+        profileName: '@split_text_persona_summary',
     */
 
-    const { summaryChunk } = params
+    const { textChunk } = params
 
     const variables = {
       createBotResponseInput: {
-        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
-        profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        profileName: '@t_q_ao_extractor_persona',
-        userText: summaryChunk,
+        botID: 'gkHgpq771VuJ',
+        profileID: 'lojNPRoL4bSQ',
+        profileName: '@split_text_persona_summary',
+        userText: textChunk,
       },
     }
 
-    const createBotResponseQuestions: any = yield getResponseGraphqlAsync(
+    const createBotResponseSummary: any = yield getResponseGraphqlAsync(
       {
         variables,
         resolveGraphqlName: 'createBotResponse',
@@ -46,45 +46,39 @@ export function* getCourseS40QuestionsCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: timeEstimationBots.summaryChunkToQuestions,
+        timeout: timeEstimationBots.transcriptChunkToSummary,
       }
     )
 
-    console.info('getCourseS40QuestionsCreated.saga [53]', {
-      createBotResponseQuestions,
-    })
+    const summary: any[] = createBotResponseSummary.textObj.contentArray.map(
+      (contentPiece: GetPreparedResponseFromBotParamsType) =>
+        getPreparedResponseFromBot(contentPiece)
+    )
 
-    const questions: any[] =
-      createBotResponseQuestions.textObj.contentArray.map(
-        (contentPiece: GetPreparedResponseFromBotParamsType) =>
-          getPreparedResponseFromBot(contentPiece)
-      )
-
-    console.info('getCourseS40QuestionsCreated.saga [59]', { questions })
-    return questions
+    return summary
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['summary'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseS40QuestionsCreated.saga [44] ERROR',
+      'getCourse30SummaryChunkCreated.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseS40QuestionsCreated = withDebounce(
-  getCourseS40QuestionsCreatedGenerator,
+export const getCourse30SummaryChunkCreated = withDebounce(
+  getCourse30SummaryChunkCreatedGenerator,
   500
 )
 
-export default function* getCourseS40QuestionsCreatedSaga() {
+export default function* getCourse30SummaryChunkCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_QUESTION_CHUNK_CREATED.REQUEST().type],
-    getCourseS40QuestionsCreated
+    [actionAsync.GET_COURSE_SUMMARY_CHUNK_CREATED.REQUEST().type],
+    getCourse30SummaryChunkCreated
   )
 }
