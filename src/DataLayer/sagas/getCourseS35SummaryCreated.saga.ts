@@ -16,12 +16,6 @@ export function* getCourseS35SummaryCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add summary to courseCreateProgress 
-        botID: 'gkHgpq771VuJ',
-        profileID: 'lojNPRoL4bSQ',
-        profileName: '@split_text_persona_summary',
-    */
-
     const transcriptChunks: any = yield select((state: RootStoreType) => {
       return state.courseCreateProgress.transcriptChunks
     })

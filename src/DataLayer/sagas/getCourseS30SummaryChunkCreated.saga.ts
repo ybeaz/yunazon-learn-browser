@@ -20,14 +20,14 @@ import {
 export function* getCourseS30SummaryChunkCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
-  const { textChunk } = params
-
   try {
     /* Add summary to courseCreateProgress 
         botID: 'gkHgpq771VuJ',
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
     */
+
+    const { textChunk } = params
 
     const variables = {
       createBotResponseInput: {
@@ -50,8 +50,9 @@ export function* getCourseS30SummaryChunkCreatedGenerator(
       }
     )
 
-    const summary = createBotResponseSummary.textObj.contentArray.map(
-      (contentPiece: string) => getPreparedResponseFromBot(contentPiece)
+    const summary: any[] = createBotResponseSummary.textObj.contentArray.map(
+      (contentPiece: GetPreparedResponseFromBotParamsType) =>
+        getPreparedResponseFromBot(contentPiece)
     )
 
     return summary

@@ -11,6 +11,11 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import {
+  getPreparedResponseFromBot,
+  GetPreparedResponseFromBotParamsType,
+} from '../../Shared/getPreparedResponseFromBot'
 
 export function* getCourseS40QuestionsCreatedGenerator(
   params: ActionReduxType | any
@@ -21,42 +26,42 @@ export function* getCourseS40QuestionsCreatedGenerator(
         profileID: 'iGlg3wRNvsQEIYF5L5svE',
         profileName: '@t_q_ao_extractor_persona',
     */
-    const inputCourseCreate: any = yield select((state: RootStoreType) => {
-      return state.forms.inputCourseCreate
-    })
+
+    const { summaryChunk } = params
 
     const variables = {
-      createContentMetaDataInput: {
-        originUrl: inputCourseCreate,
+      createBotResponseInput: {
+        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
+        profileID: 'iGlg3wRNvsQEIYF5L5svE',
+        profileName: '@t_q_ao_extractor_persona',
+        userText: summaryChunk,
       },
     }
 
-    console.info('getCourseS40QuestionsCreated.saga [33]', {
-      variables,
-    })
-
-    const createContentMetaData: any = yield getResponseGraphqlAsync(
+    const createBotResponseQuestions: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createContentMetaData',
+        resolveGraphqlName: 'createBotResponse',
       },
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: timeEstimationBots.summaryChunkToQuestions,
       }
     )
 
-    console.info('getCourseS40QuestionsCreated.saga [49]', {
-      createContentMetaData,
-      inputCourseCreate,
+    console.info('getCourseS40QuestionsCreated.saga [53]', {
+      createBotResponseQuestions,
     })
 
-    yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
-        metaData: createContentMetaData,
-      })
-    )
+    const questions: any[] =
+      createBotResponseQuestions.textObj.contentArray.map(
+        (contentPiece: GetPreparedResponseFromBotParamsType) =>
+          getPreparedResponseFromBot(contentPiece)
+      )
+
+    console.info('getCourseS40QuestionsCreated.saga [59]', { questions })
+    return questions
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
@@ -79,7 +84,7 @@ export const getCourseS40QuestionsCreated = withDebounce(
 
 export default function* getCourseS40QuestionsCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_QUESTIONS_CREATED.REQUEST().type],
+    [actionAsync.GET_COURSE_QUESTION_CHUNK_CREATED.REQUEST().type],
     getCourseS40QuestionsCreated
   )
 }
