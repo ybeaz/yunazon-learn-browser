@@ -78,16 +78,6 @@ export function* getCourse20TranscriptCreatedGenerator(
         status: CreateCourseStatusEnumType['success'],
       })
     )
-
-    yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['summary'],
-        timeCalculated: Array.isArray(transcriptChunks)
-          ? transcriptChunks.length *
-            timeEstimationBots.transcriptChunkToSummary
-          : null,
-      })
-    )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({

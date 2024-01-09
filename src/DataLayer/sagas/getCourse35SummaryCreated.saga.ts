@@ -1,4 +1,4 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -23,16 +23,33 @@ export function* getCourse35SummaryCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
+        timeCalculated: Array.isArray(transcriptChunks)
+          ? transcriptChunks.length *
+            timeEstimationBots.transcriptChunkToSummary
+          : null,
+      })
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['summary'],
         status: CreateCourseStatusEnumType['pending'],
       })
     )
+
+    console.info('getCourse35SummaryCreated.saga [40]', {
+      transcriptChunks,
+      timeCalculated: Array.isArray(transcriptChunks)
+        ? transcriptChunks.length * timeEstimationBots.transcriptChunkToSummary
+        : null,
+    })
 
     let summary: any[] = []
     let summaryChunks: any[][] = []
 
     for (const transcriptChunk of transcriptChunks) {
       const summaryItem: any = yield getCourse30SummaryChunkCreated({
-        textChunk: transcriptChunk,
+        userText: transcriptChunk,
       })
 
       let summaryItemNext = summaryItem
@@ -52,24 +69,6 @@ export function* getCourse35SummaryCreatedGenerator(
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         summaryChunks,
-      })
-    )
-
-    yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
-        timeCalculated: Array.isArray(summary)
-          ? summary.length * timeEstimationBots.transcriptChunkToSummary
-          : null,
-      })
-    )
-
-    yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['objections'],
-        timeCalculated: Array.isArray(summary)
-          ? summary.length * timeEstimationBots.transcriptChunkToSummary
-          : null,
       })
     )
 

@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useState } from 'react'
+import React, { useMemo } from 'react'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 
@@ -39,18 +39,15 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     handleEvents,
   } = props
 
+  // const state = useSelector(storeState => storeState )
+
   const stages: StagesType[] = useMemo(
     () =>
       getCourseCreateStages({
         createModuleStages,
       }),
-    [JSON.stringify({ createModuleStages, courseCreateProgress })]
+    [JSON.stringify(createModuleStages)]
   )
-  // const [stagesState, setStagesState] = useState(stages)
-
-  // useEffect(() => {
-  //   setStagesState(stages)
-  // }, [JSON.stringify(courseCreateProgress)])
 
   const getStages = (stagesIn: StagesType[]) => {
     return stagesIn.map((stage: StagesType) => {
@@ -70,6 +67,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         timerProps: {
           classAdded: 'Timer_CourseCreateBody',
           miliseconds: timeCalculated,
+          isStoping: status !== CreateCourseStatusEnumType['pending'],
           isDisplaying: status === CreateCourseStatusEnumType['pending'],
         },
         iconSuccessProps: {
@@ -114,17 +112,17 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     })
   }
 
-  useMemo(() => {
-    console.info(
-      'CourseCreateBody [99] courseCreateProgress',
-      courseCreateProgress
-    )
-    console.info(
-      'CourseCreateBody [104] createModuleStages',
+  // useMemo(() => {
+  console.info(
+    'CourseCreateBody [99] courseCreateProgress',
+    courseCreateProgress
+  )
+  console.info(
+    'CourseCreateBody [104] createModuleStages',
 
-      createModuleStages
-    )
-  }, [JSON.stringify(courseCreateProgress)])
+    createModuleStages
+  )
+  // }, [JSON.stringify(courseCreateProgress)])
 
   const propsOut: CourseCreateBodyPropsOutType = {
     inputGroupProps: {

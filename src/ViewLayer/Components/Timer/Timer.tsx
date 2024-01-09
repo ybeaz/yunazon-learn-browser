@@ -15,7 +15,12 @@ import {
              from '../Components/Timer/Timer'
  */
 const TimerComponent: TimerComponentType = (props: TimerComponentPropsType) => {
-  const { miliseconds, isDisplaying = true, isVisible = true } = props
+  const {
+    miliseconds,
+    isStoping = false,
+    isDisplaying = true,
+    isVisible = true,
+  } = props
 
   const classAdded: string = props?.classAdded || ''
 
@@ -28,22 +33,27 @@ const TimerComponent: TimerComponentType = (props: TimerComponentPropsType) => {
 
   const [timerState, setTimerState] = useState(secondsInitial)
   const counterRef = useRef(secondsInitial)
+  const timerIdRef = useRef(0)
 
   useEffect(() => {
     counterRef.current = timerState
   }, [timerState])
 
   useEffect(() => {
-    const intervalID = setInterval(() => {
-      if (counterRef.current > 0) {
-        setTimerState(counterRef.current - 1)
-      }
-    }, 1000)
+    if (!isStoping)
+      timerIdRef.current = window.setInterval(() => {
+        if (counterRef.current > 0) {
+          setTimerState(counterRef.current - 1)
+        }
+      }, 1000)
+    else {
+      setTimerState(secondsInitial)
+    }
 
     return () => {
-      clearInterval(intervalID)
+      window.clearInterval(timerIdRef.current)
     }
-  }, [])
+  }, [isStoping])
 
   const propsOut: TimerPropsOutType = {}
 

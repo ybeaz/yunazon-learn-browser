@@ -27,14 +27,14 @@ export function* getCourse30SummaryChunkCreatedGenerator(
         profileName: '@split_text_persona_summary',
     */
 
-    const { textChunk } = params
+    const { userText } = params
 
     const variables = {
       createBotResponseInput: {
         botID: 'gkHgpq771VuJ',
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
-        userText: textChunk,
+        userText,
       },
     }
 

@@ -12,6 +12,19 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
+/*
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['objections'],
+        timeCalculated: Array.isArray(summary)
+          ? summary.length * timeEstimationBots.transcriptChunkToSummary
+          : null,
+      })
+    )
+
+*/
+
 export function* getCourse50ObjectionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {

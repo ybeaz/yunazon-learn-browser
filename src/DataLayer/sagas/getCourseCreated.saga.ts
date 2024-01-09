@@ -6,7 +6,7 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { getCourse10MataDataCreated } from './getCourse10MataDataCreated.saga'
 import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreated.saga'
 import { getCourse35SummaryCreated } from './getCourse35SummaryCreated.saga'
-import { getCourse40QuestionsChunkCreated } from './getCourse40QuestionsChunkCreated.saga'
+import { getCourse45QuestionsCreated } from './getCourse45QuestionsCreated.saga'
 import { getCourse50ObjectionsCreated } from './getCourse50ObjectionsCreated.saga'
 import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
 
@@ -25,7 +25,7 @@ export function* getCourseCreatedGenerator(
     yield getCourse35SummaryCreated()
 
     /* Add questions to courseCreateProgress */
-    // yield getCourse40QuestionsChunkCreated()
+    yield getCourse45QuestionsCreated()
 
     /* Add objections to courseCreateProgress */
     // yield getCourse50ObjectionsCreated()

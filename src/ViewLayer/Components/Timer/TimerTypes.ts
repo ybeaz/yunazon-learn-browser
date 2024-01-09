@@ -5,6 +5,7 @@ import { ClassAddedType } from '../../../Shared/getClasses'
 export type TimerComponentPropsType = {
   classAdded?: string
   miliseconds: number | null
+  isStoping: boolean
   isDisplaying?: boolean // is element present on the page and visible/ displaying?
   isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
 }

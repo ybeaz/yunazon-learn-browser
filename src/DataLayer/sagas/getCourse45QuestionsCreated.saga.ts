@@ -16,9 +16,23 @@ export function* getCourse45QuestionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const summaryChunks: any = yield select((state: RootStoreType) => {
-      return state.courseCreateProgress.summaryChunks
-    })
+    const { summary, summaryChunks }: any = yield select(
+      (state: RootStoreType) => {
+        return {
+          summary: state.courseCreateProgress.summary,
+          summaryChunks: state.courseCreateProgress.summaryChunks,
+        }
+      }
+    )
+
+    yield put(
+      actionSync.SET_COURSE_CREATE_STATUS({
+        stage: CreateModuleStagesEnumType['questions'],
+        timeCalculated: Array.isArray(summary)
+          ? summary.length * timeEstimationBots.summaryChunkToQuestions
+          : null,
+      })
+    )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
@@ -32,7 +46,7 @@ export function* getCourse45QuestionsCreatedGenerator(
 
     for (const summaryChunk of summaryChunks) {
       const questionsChunk: any = yield getCourse40QuestionsChunkCreated({
-        textChunk: summaryChunk,
+        userText: JSON.stringify(summaryChunk, null, 2),
       })
 
       let questionsChunkNext = questionsChunk
