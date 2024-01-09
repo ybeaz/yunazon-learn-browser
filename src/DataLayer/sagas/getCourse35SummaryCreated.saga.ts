@@ -8,9 +8,9 @@ import {
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import {
-  timeEstimationBots,
-  TimeEstimationBotNameEnumType,
-} from '../../Constants/timeEstimationBots.const'
+  connectionsTimeouts,
+  ConnectionsTimeoutNameEnumType,
+} from '../../Constants/connectionsTimeouts.const'
 import { withDebounce } from '../../Shared/withDebounce'
 import {
   getCourseBotResponse,
@@ -30,7 +30,7 @@ export function* getCourse35SummaryCreatedGenerator(
         stage: CreateModuleStagesEnumType['summary'],
         timeCalculated: Array.isArray(transcriptChunks)
           ? transcriptChunks.length *
-            timeEstimationBots.transcriptChunkToSummary
+            connectionsTimeouts.transcriptChunkToSummary
           : null,
       })
     )
@@ -51,8 +51,8 @@ export function* getCourse35SummaryCreatedGenerator(
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
         stage: CreateModuleStagesEnumType['summary'],
-        timeEstimationBotName:
-          TimeEstimationBotNameEnumType['summaryChunkToQuestions'],
+        connectionsTimeoutName:
+          ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
         userText: transcriptChunk,
       }
       const summaryItem: any = yield getCourseBotResponse(

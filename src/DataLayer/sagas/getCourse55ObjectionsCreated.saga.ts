@@ -17,7 +17,7 @@ import {
   GetCourseBotResponseParamsType,
 } from './getCourseBotResponse.saga'
 
-export function* getCourse45QuestionsCreatedGenerator(
+export function* getCourse55ObjectionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -32,86 +32,86 @@ export function* getCourse45QuestionsCreatedGenerator(
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['objections'],
         timeCalculated: Array.isArray(summary)
-          ? summary.length * connectionsTimeouts.summaryChunkToQuestions
+          ? summary.length * connectionsTimeouts.summaryChunkToObjections
           : null,
       })
     )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['objections'],
         status: CreateCourseStatusEnumType['pending'],
       })
     )
 
-    let questions: any[] = []
-    let questionsChunks: any[][] = []
+    let objections: any[] = []
+    let objectionsChunks: any[][] = []
 
     for (const summaryChunk of summaryChunks) {
       const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
-        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
-        profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        profileName: '@t_q_ao_extractor_persona',
-        stage: CreateModuleStagesEnumType['questions'],
+        botID: 'g3lccRJtksaE',
+        profileID: 'y9WjMwhdhr31',
+        profileName: '@objector_persona',
+        stage: CreateModuleStagesEnumType['objections'],
         connectionsTimeoutName:
-          ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
+          ConnectionsTimeoutNameEnumType['summaryChunkToObjections'],
         userText: JSON.stringify(summaryChunk, null, 2),
       }
-      const questionsChunk: any = yield getCourseBotResponse(
+      const objectionsChunk: any = yield getCourseBotResponse(
         getCourseBotResponseParams
       )
 
-      let questionsChunkNext = questionsChunk
-      if (questionsChunk.length === 1 && Array.isArray(questionsChunk[0]))
-        questionsChunkNext = questionsChunk[0]
+      let objectionsChunkNext = objectionsChunk
+      if (objectionsChunk.length === 1 && Array.isArray(objectionsChunk[0]))
+        objectionsChunkNext = objectionsChunk[0]
 
-      questions = [...questionsChunks, ...questionsChunkNext]
-      questionsChunks = [...questionsChunks, questionsChunkNext]
+      objections = [...objectionsChunks, ...objectionsChunkNext]
+      objectionsChunks = [...objectionsChunks, objectionsChunkNext]
     }
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        questions,
+        objections,
       })
     )
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
-        questionsChunks,
+        objectionsChunks,
       })
     )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['objections'],
         status: CreateCourseStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['questions'],
+        stage: CreateModuleStagesEnumType['objections'],
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse45QuestionsCreated.saga  [110] ERROR',
+      'getCourse55ObjectionsCreated.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse45QuestionsCreated = withDebounce(
-  getCourse45QuestionsCreatedGenerator,
+export const getCourse55ObjectionsCreated = withDebounce(
+  getCourse55ObjectionsCreatedGenerator,
   500
 )
 
-export default function* getCourse45QuestionsCreatedSaga() {
+export default function* getCourse55ObjectionsCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_QUESTIONS_CREATED.REQUEST().type],
-    getCourse45QuestionsCreated
+    [actionAsync.GET_COURSE_OBJECTIONS_CREATED.REQUEST().type],
+    getCourse55ObjectionsCreated
   )
 }

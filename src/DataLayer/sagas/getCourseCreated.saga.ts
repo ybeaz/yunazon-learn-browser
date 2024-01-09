@@ -7,7 +7,7 @@ import { getCourse10MataDataCreated } from './getCourse10MataDataCreated.saga'
 import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreated.saga'
 import { getCourse35SummaryCreated } from './getCourse35SummaryCreated.saga'
 import { getCourse45QuestionsCreated } from './getCourse45QuestionsCreated.saga'
-import { getCourse50ObjectionsCreated } from './getCourse50ObjectionsCreated.saga'
+import { getCourse55ObjectionsCreated } from './getCourse55ObjectionsCreated.saga'
 import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
 
 export function* getCourseCreatedGenerator(
@@ -28,7 +28,7 @@ export function* getCourseCreatedGenerator(
     yield getCourse45QuestionsCreated()
 
     /* Add objections to courseCreateProgress */
-    // yield getCourse50ObjectionsCreated()
+    // yield getCourse55ObjectionsCreated()
 
     /* Create course and module */
     // yield getCourse60ModuleCreated()

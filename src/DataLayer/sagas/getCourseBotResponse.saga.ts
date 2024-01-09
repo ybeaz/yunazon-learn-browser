@@ -12,9 +12,9 @@ import {
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import {
-  timeEstimationBots,
-  TimeEstimationBotNameEnumType,
-} from '../../Constants/timeEstimationBots.const'
+  connectionsTimeouts,
+  ConnectionsTimeoutNameEnumType,
+} from '../../Constants/connectionsTimeouts.const'
 import {
   getPreparedResponseFromBot,
   GetPreparedResponseFromBotParamsType,
@@ -25,7 +25,7 @@ export type GetCourseBotResponseParamsType = {
   profileID: string
   profileName: string
   stage: CreateModuleStagesEnumType
-  timeEstimationBotName: TimeEstimationBotNameEnumType
+  connectionsTimeoutName: ConnectionsTimeoutNameEnumType
   userText: string
 }
 
@@ -38,7 +38,7 @@ export function* getCourseBotResponseGenerator(
     profileName,
     userText,
     stage,
-    timeEstimationBotName,
+    connectionsTimeoutName,
   } = params
 
   try {
@@ -59,7 +59,7 @@ export function* getCourseBotResponseGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: timeEstimationBots[timeEstimationBotName],
+        timeout: connectionsTimeouts[connectionsTimeoutName],
       }
     )
 

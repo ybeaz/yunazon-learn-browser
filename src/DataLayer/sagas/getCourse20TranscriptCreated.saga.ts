@@ -12,7 +12,7 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
 import { getChunkedString } from '../../Shared/getChunkedString'
 
 export function* getCourse20TranscriptCreatedGenerator(
