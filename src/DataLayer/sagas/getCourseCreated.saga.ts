@@ -1,6 +1,10 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import {
+  RootStoreType,
+  ActionReduxType,
+  CreateModuleStagesEnumType,
+} from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getCourse10MataDataCreated } from './getCourse10MataDataCreated.saga'
@@ -13,25 +17,47 @@ import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
 export function* getCourseCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
+  /*
+  CreateModuleStagesEnumType['metaData'],
+  CreateModuleStagesEnumType['transcript'],
+  CreateModuleStagesEnumType['summary'],
+  CreateModuleStagesEnumType['questions'],
+  CreateModuleStagesEnumType['objections'],
+  CreateModuleStagesEnumType['courseModule']
+*/
+  const stateSelected: RootStoreType | any = yield select(
+    (state: RootStoreType) => state
+  )
+
+  const {
+    componentsState: { createModuleStages },
+  } = stateSelected
+
   try {
     /* Add originUri to courseCreateProgress */
     /* Add metaData to courseCreateProgress */
-    yield getCourse10MataDataCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['metaData']].isActive)
+      yield getCourse10MataDataCreated()
 
     /* Add transcript to courseCreateProgress */
-    yield getCourse20TranscriptCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['transcript']].isActive)
+      yield getCourse20TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
-    yield getCourse35SummaryCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['summary']].isActive)
+      yield getCourse35SummaryCreated()
 
     /* Add questions to courseCreateProgress */
-    yield getCourse45QuestionsCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['questions']].isActive)
+      yield getCourse45QuestionsCreated()
 
     /* Add objections to courseCreateProgress */
-    // yield getCourse55ObjectionsCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['objections']].isActive)
+      yield getCourse55ObjectionsCreated()
 
     /* Create course and module */
-    // yield getCourse60ModuleCreated()
+    if (createModuleStages[CreateModuleStagesEnumType['courseModule']].isActive)
+      yield getCourse60ModuleCreated()
   } catch (error: any) {
     console.info(
       'getCourseCreated.saga [37] ERROR',

@@ -8,6 +8,7 @@ import {
 
 type DataType = {
   stage: CreateModuleStagesEnumType
+  isActive: CreateModuleStageType['isActive']
   status: CreateCourseStatusEnumType
   timeCalculated: CreateModuleStageType['timeCalculated']
 }
@@ -16,17 +17,18 @@ export const SET_COURSE_CREATE_STATUS: ReducerType = (
   store: RootStoreType,
   data: DataType
 ): RootStoreType => {
-  const { stage, status, timeCalculated } = data
+  const { stage, isActive, status, timeCalculated } = data
+  const dataKeys = Object.keys(data)
 
   const { componentsState } = store
   const { createModuleStages } = componentsState
 
   let createModuleStateNext: CreateModuleStageType = createModuleStages[stage]
-  if (status && timeCalculated)
-    createModuleStateNext = { status, timeCalculated }
-  else if (status)
+  if (dataKeys.includes('isActive'))
+    createModuleStateNext = { ...createModuleStages[stage], isActive }
+  if (dataKeys.includes('status'))
     createModuleStateNext = { ...createModuleStages[stage], status }
-  else if (timeCalculated)
+  if (dataKeys.includes('timeCalculated'))
     createModuleStateNext = { ...createModuleStages[stage], timeCalculated }
 
   const createModuleStagesNext = {

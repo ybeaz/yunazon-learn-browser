@@ -20,6 +20,7 @@ export enum CreateCourseStatusEnumType {
 }
 
 export type CreateModuleStageType = {
+  isActive: boolean
   status: CreateCourseStatusEnumType
   timeCalculated: number | null
 }

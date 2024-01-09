@@ -20,7 +20,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
   const stages: StagesType[] = [
     {
       name: 'metaData',
-      isActive: true,
+      isActive: createModuleStages['metaData']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_META_DATA_CREATED_HANDLE',
         data: {},
@@ -30,7 +30,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'transcript',
-      isActive: true,
+      isActive: createModuleStages['transcript']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_TRANSCRIPT_CREATED_HANDLE',
         data: {},
@@ -40,7 +40,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'summary',
-      isActive: true,
+      isActive: createModuleStages['summary']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_SUMMARY_CREATED_HANDLE',
         data: {},
@@ -50,7 +50,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'questions',
-      isActive: true,
+      isActive: createModuleStages['questions']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_QUESTIONS_CREATED_HANDLE',
         data: {},
@@ -60,7 +60,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'objections',
-      isActive: true,
+      isActive: createModuleStages['objections']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_OBJECTIONS_CREATED_HANDLE',
         data: {},
@@ -70,7 +70,7 @@ export const getCourseCreateStages: GetCourseCreateStagesType = ({
     },
     {
       name: 'courseModule',
-      isActive: true,
+      isActive: createModuleStages['courseModule']['isActive'],
       action: {
         typeEvent: 'GET_COURSE_MODULE_CREATED_HANDLE',
         data: {},

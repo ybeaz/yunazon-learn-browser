@@ -15,11 +15,6 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getCoursesGenerator(): Iterable<any> {
-  // const isDebounced = debounce()
-  // console.info('getCourses.saga readCoursesConnection [45]', { isDebounced })
-
-  // if (!isDebounced) return
-
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )

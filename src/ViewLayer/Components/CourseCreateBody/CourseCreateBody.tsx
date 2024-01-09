@@ -50,66 +50,68 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   )
 
   const getStages = (stagesIn: StagesType[]) => {
-    return stagesIn.map((stage: StagesType) => {
-      const { name: stageName, action, status, timeCalculated } = stage
+    return stagesIn
+      .filter((stage: StagesType) => stage.isActive)
+      .map((stage: StagesType) => {
+        const { name: stageName, action, status, timeCalculated } = stage
 
-      const propsOut: StagesPropsOut = {
-        iconToDoProps: {
-          classAdded: 'Icon_toDo',
-          icon: 'MdCheckBoxOutlineBlank',
-          isDisplaying: status === CreateCourseStatusEnumType['todo'],
-        },
-        imagePendingProps: {
-          classAdded: 'Image_pending',
-          src: 'https://yourails.com/images/loading/loading01.gif',
-          isDisplaying: status === CreateCourseStatusEnumType['pending'],
-        },
-        timerProps: {
-          classAdded: 'Timer_CourseCreateBody',
-          miliseconds: timeCalculated,
-          isStoping: status !== CreateCourseStatusEnumType['pending'],
-          isDisplaying: status === CreateCourseStatusEnumType['pending'],
-        },
-        iconSuccessProps: {
-          classAdded: 'Icon_success',
-          icon: 'MdCheck',
-          isDisplaying: status === CreateCourseStatusEnumType['success'],
-        },
-        iconFailedProps: {
-          classAdded: 'Icon_failed',
-          icon: 'MdClear',
-          isDisplaying: status === CreateCourseStatusEnumType['failure'],
-        },
-        buttonRepeatProps: {
-          classAdded: 'Button_create_stage_repeat',
-          icon: 'MdOutlineReplay',
-          action,
-          isDisplaying: status === CreateCourseStatusEnumType['failure'],
-        },
-      }
+        const propsOut: StagesPropsOut = {
+          iconToDoProps: {
+            classAdded: 'Icon_toDo',
+            icon: 'MdCheckBoxOutlineBlank',
+            isDisplaying: status === CreateCourseStatusEnumType['todo'],
+          },
+          imagePendingProps: {
+            classAdded: 'Image_pending',
+            src: 'https://yourails.com/images/loading/loading01.gif',
+            isDisplaying: status === CreateCourseStatusEnumType['pending'],
+          },
+          timerProps: {
+            classAdded: 'Timer_CourseCreateBody',
+            miliseconds: timeCalculated,
+            isStoping: status !== CreateCourseStatusEnumType['pending'],
+            isDisplaying: status === CreateCourseStatusEnumType['pending'],
+          },
+          iconSuccessProps: {
+            classAdded: 'Icon_success',
+            icon: 'MdCheck',
+            isDisplaying: status === CreateCourseStatusEnumType['success'],
+          },
+          iconFailedProps: {
+            classAdded: 'Icon_failed',
+            icon: 'MdClear',
+            isDisplaying: status === CreateCourseStatusEnumType['failure'],
+          },
+          buttonRepeatProps: {
+            classAdded: 'Button_create_stage_repeat',
+            icon: 'MdOutlineReplay',
+            action,
+            isDisplaying: status === CreateCourseStatusEnumType['failure'],
+          },
+        }
 
-      return (
-        <div key={stageName} className='_stage'>
-          <div className='_stageDesription'>
-            <div className='_capture'>
-              {DICTIONARY[`stage_${stageName}`][language]}
+        return (
+          <div key={stageName} className='_stage'>
+            <div className='_stageDesription'>
+              <div className='_capture'>
+                {DICTIONARY[`stage_${stageName}`][language]}
+              </div>
+              <div className='_status'>{DICTIONARY[`${status}`][language]}</div>
             </div>
-            <div className='_status'>{DICTIONARY[`${status}`][language]}</div>
+            <div className='_stageVisualisation'>
+              <IconYrl {...propsOut.iconToDoProps} />
+              {timeCalculated ? (
+                <Timer {...propsOut.timerProps} />
+              ) : (
+                <ImageYrl {...propsOut.imagePendingProps} />
+              )}
+              <IconYrl {...propsOut.iconSuccessProps} />
+              <IconYrl {...propsOut.iconFailedProps} />
+              <ButtonYrl {...propsOut.buttonRepeatProps} />
+            </div>
           </div>
-          <div className='_stageVisualisation'>
-            <IconYrl {...propsOut.iconToDoProps} />
-            {timeCalculated ? (
-              <Timer {...propsOut.timerProps} />
-            ) : (
-              <ImageYrl {...propsOut.imagePendingProps} />
-            )}
-            <IconYrl {...propsOut.iconSuccessProps} />
-            <IconYrl {...propsOut.iconFailedProps} />
-            <ButtonYrl {...propsOut.buttonRepeatProps} />
-          </div>
-        </div>
-      )
-    })
+        )
+      })
   }
 
   // useMemo(() => {

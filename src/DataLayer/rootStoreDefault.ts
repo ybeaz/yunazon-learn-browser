@@ -1,5 +1,6 @@
 import { UserType } from '../Interfaces/UserType'
 import {
+  CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
@@ -102,26 +103,32 @@ export const componentsStateDefault: ComponentsStateType = {
   },
   createModuleStages: {
     metaData: {
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
     transcript: {
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
     summary: {
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
     questions: {
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
     objections: {
+      isActive: false,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
     courseModule: {
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
