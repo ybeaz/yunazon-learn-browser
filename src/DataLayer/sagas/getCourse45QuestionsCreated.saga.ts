@@ -34,7 +34,7 @@ export function* getCourse45QuestionsCreatedGenerator(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         timeCalculated: Array.isArray(summary)
-          ? summary.length * connectionsTimeouts.summaryChunkToQuestions
+          ? summaryChunks.length * connectionsTimeouts.summaryChunkToQuestions
           : null,
       })
     )

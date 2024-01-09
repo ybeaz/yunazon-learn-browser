@@ -34,7 +34,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         timeCalculated: Array.isArray(summary)
-          ? summary.length * connectionsTimeouts.summaryChunkToObjections
+          ? summaryChunks.length * connectionsTimeouts.summaryChunkToObjections
           : null,
       })
     )
