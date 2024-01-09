@@ -123,7 +123,7 @@ export const componentsStateDefault: ComponentsStateType = {
       timeCalculated: null,
     },
     objections: {
-      isActive: false,
+      isActive: true,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },

@@ -1,6 +1,10 @@
 import React, { useMemo } from 'react'
 
-import { CreateCourseStatusEnumType } from '../../../Interfaces/'
+import {
+  CreateModuleStagesEnumType,
+  CreateCourseStatusEnumType,
+  CreateModuleStageType,
+} from '../../../Interfaces/'
 
 import {
   InputGroupYrl,
@@ -33,13 +37,20 @@ import { getCourseCreateStages } from './getCourseCreateStages'
 const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   props: CourseCreateBodyComponentPropsType
 ) => {
-  const {
-    classAdded,
-    storeStateSlice: { language, createModuleStages, courseCreateProgress },
-    handleEvents,
-  } = props
+  const { classAdded, storeStateSlice, handleEvents } = props
 
-  // const state = useSelector(storeState => storeState )
+  const { language, courseCreateProgress } = storeStateSlice
+  const createModuleStages: Record<
+    CreateModuleStagesEnumType,
+    CreateModuleStageType
+  > = storeStateSlice.createModuleStages
+
+  const stagesNo = Object.keys(createModuleStages).filter(
+    // @ts-expect-error
+    (key: CreateModuleStagesEnumType) =>
+      createModuleStages[key].isActive === true
+  ).length
+  const width: string = `${String(Math.round((100 * stagesNo) / 6))}%`
 
   const stages: StagesType[] = useMemo(
     () =>
@@ -148,7 +159,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   return (
     <div className={getClasses('CourseCreateBody', classAdded)}>
       <h2 className='_h2'>{DICTIONARY.Create_course[language]}</h2>
-      <div className='_inputGroupWrapper'>
+      <div className='_inputGroupWrapper' style={{ width }}>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>{getStages(stages)}</div>
