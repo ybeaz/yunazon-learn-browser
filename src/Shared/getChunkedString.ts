@@ -73,15 +73,9 @@ export const getChunkedString: GetChunkedStringType = (
     return []
   }
 
-  /* Protection against input-options, Error */
+  /* If input less than chunkSize we output it as one chunk */
   if (input.length < chunkSize || input.length < maxSearch) {
-    console.log('getChunkedString [77]', {
-      message: 'input.length < chunkSize) || (input.length < maxSearch',
-      input,
-      chunkSize,
-      maxSearch,
-    })
-    return []
+    return [input]
   }
 
   let inputArrTemp = input.split('')

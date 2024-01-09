@@ -163,6 +163,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>{getStages(stages)}</div>
+      <div className='_messageWrapper'></div>
     </div>
   )
 }

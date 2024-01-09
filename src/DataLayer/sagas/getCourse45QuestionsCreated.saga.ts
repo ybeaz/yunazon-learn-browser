@@ -67,7 +67,7 @@ export function* getCourse45QuestionsCreatedGenerator(
       if (questionsChunk.length === 1 && Array.isArray(questionsChunk[0]))
         questionsChunkNext = questionsChunk[0]
 
-      questions = [...questionsChunks, ...questionsChunkNext]
+      questions = [...questions, ...questionsChunkNext]
       questionsChunks = [...questionsChunks, questionsChunkNext]
     }
 

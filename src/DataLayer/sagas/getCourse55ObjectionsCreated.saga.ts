@@ -67,7 +67,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
       if (objectionsChunk.length === 1 && Array.isArray(objectionsChunk[0]))
         objectionsChunkNext = objectionsChunk[0]
 
-      objections = [...objectionsChunks, ...objectionsChunkNext]
+      objections = [...objections, ...objectionsChunkNext]
       objectionsChunks = [...objectionsChunks, objectionsChunkNext]
     }
 
