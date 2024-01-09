@@ -7,10 +7,15 @@ import {
   CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
-import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import {
+  timeEstimationBots,
+  TimeEstimationBotNameEnumType,
+} from '../../Constants/timeEstimationBots.const'
 import { withDebounce } from '../../Shared/withDebounce'
-
-import { getCourse30SummaryChunkCreated } from './getCourse30SummaryChunkCreated.saga'
+import {
+  getCourseBotResponse,
+  GetCourseBotResponseParamsType,
+} from './getCourseBotResponse.saga'
 
 export function* getCourse35SummaryCreatedGenerator(
   params: ActionReduxType | any
@@ -37,20 +42,22 @@ export function* getCourse35SummaryCreatedGenerator(
       })
     )
 
-    console.info('getCourse35SummaryCreated.saga [40]', {
-      transcriptChunks,
-      timeCalculated: Array.isArray(transcriptChunks)
-        ? transcriptChunks.length * timeEstimationBots.transcriptChunkToSummary
-        : null,
-    })
-
     let summary: any[] = []
     let summaryChunks: any[][] = []
 
     for (const transcriptChunk of transcriptChunks) {
-      const summaryItem: any = yield getCourse30SummaryChunkCreated({
+      const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
+        botID: 'gkHgpq771VuJ',
+        profileID: 'lojNPRoL4bSQ',
+        profileName: '@split_text_persona_summary',
+        stage: CreateModuleStagesEnumType['summary'],
+        timeEstimationBotName:
+          TimeEstimationBotNameEnumType['summaryChunkToQuestions'],
         userText: transcriptChunk,
-      })
+      }
+      const summaryItem: any = yield getCourseBotResponse(
+        getCourseBotResponseParams
+      )
 
       let summaryItemNext = summaryItem
       if (summaryItem.length === 1 && Array.isArray(summaryItem[0]))

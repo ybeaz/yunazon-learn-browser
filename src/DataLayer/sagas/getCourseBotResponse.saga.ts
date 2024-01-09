@@ -11,34 +11,47 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import {
+  timeEstimationBots,
+  TimeEstimationBotNameEnumType,
+} from '../../Constants/timeEstimationBots.const'
 import {
   getPreparedResponseFromBot,
   GetPreparedResponseFromBotParamsType,
 } from '../../Shared/getPreparedResponseFromBot'
 
-export function* getCourse30SummaryChunkCreatedGenerator(
-  params: ActionReduxType | any
+export type GetCourseBotResponseParamsType = {
+  botID: string
+  profileID: string
+  profileName: string
+  stage: CreateModuleStagesEnumType
+  timeEstimationBotName: TimeEstimationBotNameEnumType
+  userText: string
+}
+
+export function* getCourseBotResponseGenerator(
+  params: GetCourseBotResponseParamsType
 ): Iterable<any> {
+  const {
+    botID,
+    profileID,
+    profileName,
+    userText,
+    stage,
+    timeEstimationBotName,
+  } = params
+
   try {
-    /* Add summary to courseCreateProgress 
-        botID: 'gkHgpq771VuJ',
-        profileID: 'lojNPRoL4bSQ',
-        profileName: '@split_text_persona_summary',
-    */
-
-    const { userText } = params
-
     const variables = {
       createBotResponseInput: {
-        botID: 'gkHgpq771VuJ',
-        profileID: 'lojNPRoL4bSQ',
-        profileName: '@split_text_persona_summary',
+        botID,
+        profileID,
+        profileName,
         userText,
       },
     }
 
-    const createBotResponseSummary: any = yield getResponseGraphqlAsync(
+    const createBotResponse: any = yield getResponseGraphqlAsync(
       {
         variables,
         resolveGraphqlName: 'createBotResponse',
@@ -46,39 +59,39 @@ export function* getCourse30SummaryChunkCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: timeEstimationBots.transcriptChunkToSummary,
+        timeout: timeEstimationBots[timeEstimationBotName],
       }
     )
 
-    const summary: any[] = createBotResponseSummary.textObj.contentArray.map(
+    const output: any[] = createBotResponse.textObj.contentArray.map(
       (contentPiece: GetPreparedResponseFromBotParamsType) =>
         getPreparedResponseFromBot(contentPiece)
     )
 
-    return summary
+    return output
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
-        stage: CreateModuleStagesEnumType['summary'],
+        stage,
         status: CreateCourseStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse30SummaryChunkCreated.saga  [110] ERROR',
+      'getCourseBotResponse.saga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse30SummaryChunkCreated = withDebounce(
-  getCourse30SummaryChunkCreatedGenerator,
+export const getCourseBotResponse = withDebounce(
+  getCourseBotResponseGenerator,
   500
 )
 
-export default function* getCourse30SummaryChunkCreatedSaga() {
+export default function* getCourseBotResponseSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_SUMMARY_CHUNK_CREATED.REQUEST().type],
-    getCourse30SummaryChunkCreated
+    [actionAsync.GET_COURSE_BOT_RESPONSE.REQUEST().type],
+    getCourseBotResponse
   )
 }

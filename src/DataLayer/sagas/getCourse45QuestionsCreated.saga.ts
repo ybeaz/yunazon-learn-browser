@@ -7,10 +7,15 @@ import {
   CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
 } from '../../Interfaces/RootStoreType'
-import { timeEstimationBots } from '../../Constants/timeEstimationBots.const'
+import {
+  timeEstimationBots,
+  TimeEstimationBotNameEnumType,
+} from '../../Constants/timeEstimationBots.const'
 import { withDebounce } from '../../Shared/withDebounce'
-
-import { getCourse40QuestionsChunkCreated } from './getCourse40QuestionsChunkCreated.saga'
+import {
+  getCourseBotResponse,
+  GetCourseBotResponseParamsType,
+} from './getCourseBotResponse.saga'
 
 export function* getCourse45QuestionsCreatedGenerator(
   params: ActionReduxType | any
@@ -45,9 +50,18 @@ export function* getCourse45QuestionsCreatedGenerator(
     let questionsChunks: any[][] = []
 
     for (const summaryChunk of summaryChunks) {
-      const questionsChunk: any = yield getCourse40QuestionsChunkCreated({
+      const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
+        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
+        profileID: 'iGlg3wRNvsQEIYF5L5svE',
+        profileName: '@t_q_ao_extractor_persona',
+        stage: CreateModuleStagesEnumType['questions'],
+        timeEstimationBotName:
+          TimeEstimationBotNameEnumType['summaryChunkToQuestions'],
         userText: JSON.stringify(summaryChunk, null, 2),
-      })
+      }
+      const questionsChunk: any = yield getCourseBotResponse(
+        getCourseBotResponseParams
+      )
 
       let questionsChunkNext = questionsChunk
       if (questionsChunk.length === 1 && Array.isArray(questionsChunk[0]))

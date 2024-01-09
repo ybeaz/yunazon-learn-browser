@@ -1,10 +1,12 @@
-export const timeEstimationBots: Record<
-  | 'transcriptChunkToSummary'
-  | 'summaryChunkToQuestions'
-  | 'summaryChunkToObjections',
-  number
-> = {
-  transcriptChunkToSummary: 40000,
-  summaryChunkToQuestions: 50000,
-  summaryChunkToObjections: 50000,
+export enum TimeEstimationBotNameEnumType {
+  transcriptChunkToSummary = 'transcriptChunkToSummary',
+  summaryChunkToQuestions = 'summaryChunkToQuestions',
+  summaryChunkToObjections = 'summaryChunkToObjections',
 }
+
+export const timeEstimationBots: Record<TimeEstimationBotNameEnumType, number> =
+  {
+    transcriptChunkToSummary: 60000,
+    summaryChunkToQuestions: 90000,
+    summaryChunkToObjections: 90000,
+  }

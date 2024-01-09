@@ -3,11 +3,10 @@ import { all, fork } from 'redux-saga/effects'
 import getCourse60ModuleCreatedSaga from './sagas/getCourse60ModuleCreated.saga'
 import getCourse50ObjectionsCreatedSaga from './sagas/getCourse50ObjectionsCreated.saga'
 import getCourse45QuestionsCreatedSaga from './sagas/getCourse45QuestionsCreated.saga'
-import getCourse40QuestionsChunkCreatedSaga from './sagas/getCourse40QuestionsChunkCreated.saga'
 import getCourse35SummaryCreatedSaga from './sagas/getCourse35SummaryCreated.saga'
-import getCourse30SummaryChunkCreatedSaga from './sagas/getCourse30SummaryChunkCreated.saga'
 import getCourse20TranscriptCreatedSaga from './sagas/getCourse20TranscriptCreated.saga'
 import getCourse10MataDataCreatedSaga from './sagas/getCourse10MataDataCreated.saga'
+import getCourseBotResponseSaga from './sagas/getCourseBotResponse.saga'
 import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
 import readArticleSaga from './sagas/readArticle.saga'
 import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
@@ -25,12 +24,11 @@ import getMatrixDataSaga from './sagas/getMatrixData.saga'
 
 export default function* indexSaga() {
   yield all([
+    fork(getCourseBotResponseSaga),
     fork(getCourse60ModuleCreatedSaga),
     fork(getCourse50ObjectionsCreatedSaga),
     fork(getCourse45QuestionsCreatedSaga),
-    fork(getCourse40QuestionsChunkCreatedSaga),
     fork(getCourse35SummaryCreatedSaga),
-    fork(getCourse30SummaryChunkCreatedSaga),
     fork(getCourse20TranscriptCreatedSaga),
     fork(getCourse10MataDataCreatedSaga),
     fork(getCourseCreatedSaga),
