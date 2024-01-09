@@ -34,6 +34,7 @@ export function* getCourseS35SummaryCreatedGenerator(
     )
 
     let summary: any[] = []
+    let summaryChunks: any[][] = []
 
     for (const transcriptChunk of transcriptChunks) {
       const summaryItem: any = yield getCourseS30SummaryChunkCreated({
@@ -45,18 +46,18 @@ export function* getCourseS35SummaryCreatedGenerator(
         summaryItemNext = summaryItem[0]
 
       summary = [...summary, ...summaryItemNext]
-
-      console.info('getCourseS35SummaryCreated.saga [49]', {
-        summaryItemNext,
-        summary,
-      })
+      summaryChunks = [...summaryChunks, summaryItemNext]
     }
-
-    console.info('getCourseS35SummaryCreated.saga [52]', { summary })
 
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         summary,
+      })
+    )
+
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({
+        summaryChunks,
       })
     )
 
