@@ -1,9 +1,8 @@
-// @ts-nocheck
-
 import { promises as fs } from 'fs'
 
 import { consoler } from './consoler'
 import { consolerError } from './consolerError'
+import { isStringJsonParsable } from '../Shared/isStringJsonParsable'
 
 export type GetPreparedResponseFromBotParamsType = any
 
@@ -12,7 +11,7 @@ export type GetPreparedResponseFromBotOptionsType = {
   parentFunction?: string
 }
 
-export type GetPreparedResponseFromBotResType = Promise<any>
+export type GetPreparedResponseFromBotResType = any[]
 
 interface GetPreparedResponseFromBotType {
   (
@@ -48,7 +47,13 @@ export const getPreparedResponseFromBot: GetPreparedResponseFromBotType = (
   let output: GetPreparedResponseFromBotResType = []
 
   try {
-    output = JSON.parse(input)
+    if (isStringJsonParsable(input)) output = JSON.parse(input)
+    else {
+      console.info('getPreparedResponseFromBot [52]', { input })
+      output = new Function(`return [${input}];`)()
+    }
+
+    if (output.length === 1 && Array.isArray(output[0])) output = output[0]
   } catch (error: any) {
     console.log('getPreparedResponseFromBot', 'Error', {
       parentFunction,
@@ -70,7 +75,6 @@ if (require.main === module) {
   ;(async () => {
     const params = ''
     const output = getPreparedResponseFromBot(params, { printRes: true })
-    console.log('getPreparedResponseFromBot [60]', { params, output })
-    consoler('getPreparedResponseFromBot [61]', 'output', output)
+    consoler('getPreparedResponseFromBot [61]', output)
   })()
 }

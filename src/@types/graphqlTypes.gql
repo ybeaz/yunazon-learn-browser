@@ -682,6 +682,9 @@ input ModuleInputType {
 
   """course module summary"""
   summary: [SummaryItemInputType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseInputType = null
 }
 
 type ModuleType {
@@ -723,6 +726,9 @@ type ModuleType {
 
   """course module summary"""
   summary: [SummaryItemType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseType
 }
 
 type Mutation {
@@ -1309,6 +1315,62 @@ type TextObjType {
 
   """contentType"""
   contentType: String
+}
+
+input ThumbnailsCourseImageDataInputType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String = null
+
+  """width"""
+  width: Int!
+}
+
+type ThumbnailsCourseImageDataType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsCourseInputType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataInputType = null
+}
+
+type ThumbnailsCourseType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataType
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataType
 }
 
 type ThumbnailsImageDataType {

@@ -554,8 +554,6 @@ export type ModuleInputType = {
     questions: Array<QuestionInputType>;
     /** course module summary */
     summary?: InputMaybe<Array<SummaryItemInputType>>;
-    /** thumbnail image data */
-    thumbnails?: InputMaybe<ThumbnailsCourseInputType>;
 };
 export type ModuleType = {
     __typename?: 'ModuleType';
@@ -585,8 +583,6 @@ export type ModuleType = {
     questions: Array<QuestionType>;
     /** course module summary */
     summary?: Maybe<Array<SummaryItemType>>;
-    /** thumbnail image data */
-    thumbnails?: Maybe<ThumbnailsCourseType>;
 };
 export type Mutation = {
     __typename?: 'Mutation';
@@ -1185,48 +1181,6 @@ export type TextObjType = {
     contentArray: Array<Scalars['String']['output']>;
     /** contentType */
     contentType?: Maybe<Scalars['String']['output']>;
-};
-export type ThumbnailsCourseImageDataInputType = {
-    /** height */
-    height: Scalars['Int']['input'];
-    /** url */
-    url?: InputMaybe<Scalars['String']['input']>;
-    /** width */
-    width: Scalars['Int']['input'];
-};
-export type ThumbnailsCourseImageDataType = {
-    __typename?: 'ThumbnailsCourseImageDataType';
-    /** height */
-    height: Scalars['Int']['output'];
-    /** url */
-    url?: Maybe<Scalars['String']['output']>;
-    /** width */
-    width: Scalars['Int']['output'];
-};
-export type ThumbnailsCourseInputType = {
-    /** thumbnail image default */
-    default?: InputMaybe<ThumbnailsCourseImageDataInputType>;
-    /** thumbnail image high */
-    high?: InputMaybe<ThumbnailsCourseImageDataInputType>;
-    /** thumbnail image maxres */
-    maxres?: InputMaybe<ThumbnailsCourseImageDataInputType>;
-    /** thumbnail image medium */
-    medium?: InputMaybe<ThumbnailsCourseImageDataInputType>;
-    /** thumbnail image standard */
-    standard?: InputMaybe<ThumbnailsCourseImageDataInputType>;
-};
-export type ThumbnailsCourseType = {
-    __typename?: 'ThumbnailsCourseType';
-    /** thumbnail image default */
-    default?: Maybe<ThumbnailsCourseImageDataType>;
-    /** thumbnail image high */
-    high?: Maybe<ThumbnailsCourseImageDataType>;
-    /** thumbnail image maxres */
-    maxres?: Maybe<ThumbnailsCourseImageDataType>;
-    /** thumbnail image medium */
-    medium?: Maybe<ThumbnailsCourseImageDataType>;
-    /** thumbnail image standard */
-    standard?: Maybe<ThumbnailsCourseImageDataType>;
 };
 export type ThumbnailsImageDataType = {
     __typename?: 'ThumbnailsImageDataType';

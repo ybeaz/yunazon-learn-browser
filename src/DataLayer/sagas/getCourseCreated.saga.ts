@@ -34,6 +34,19 @@ export function* getCourseCreatedGenerator(
   } = stateSelected
 
   try {
+    yield put(
+      actionSync.ADD_COURSE_CREATE_DATA({
+        course: {},
+        metaData: {},
+        questions: [],
+        questionsChunks: [],
+        summary: [],
+        summaryChunks: [],
+        transcript: [],
+        transcriptChunks: [],
+      })
+    )
+
     /* Add originUri to courseCreateProgress */
     /* Add metaData to courseCreateProgress */
     if (createModuleStages[CreateModuleStagesEnumType['metaData']].isActive)

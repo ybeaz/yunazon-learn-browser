@@ -50,25 +50,33 @@ export function* getCourse45QuestionsCreatedGenerator(
     let questionsChunks: any[][] = []
 
     for (const summaryChunk of summaryChunks) {
+      const userText =
+        typeof summaryChunk === 'string'
+          ? summaryChunk
+          : JSON.stringify(summaryChunk, null, 2)
+
       const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
-        botID: 'l3Yg9sxlhbyKEJ5uzT1Sx',
-        profileID: 'iGlg3wRNvsQEIYF5L5svE',
-        profileName: '@t_q_ao_extractor_persona',
+        botID: 'kSuQwjzwTjvO',
+        profileID: 'tbd3rgTVFkiU',
+        profileName: '@t_q_ao_extractor_02_persona',
         stage: CreateModuleStagesEnumType['questions'],
         connectionsTimeoutName:
           ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
-        userText: JSON.stringify(summaryChunk, null, 2),
+        userText,
       }
       const questionsChunk: any = yield getCourseBotResponse(
         getCourseBotResponseParams
       )
 
-      let questionsChunkNext = questionsChunk
-      if (questionsChunk.length === 1 && Array.isArray(questionsChunk[0]))
-        questionsChunkNext = questionsChunk[0]
+      if (!Array.isArray(questionsChunk) || questionsChunk.length === 0)
+        throw new Error(
+          `getCourse45QuestionsCreated.saga [73] questionsChunk is not an array or array empty, ${JSON.stringify(
+            questionsChunk
+          )}`
+        )
 
-      questions = [...questions, ...questionsChunkNext]
-      questionsChunks = [...questionsChunks, questionsChunkNext]
+      questions = [...questions, ...questionsChunk].flat(12)
+      questionsChunks = [...questionsChunks, questionsChunk.flat(12)]
     }
 
     yield put(

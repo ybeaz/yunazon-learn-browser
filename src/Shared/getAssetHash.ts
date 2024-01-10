@@ -1,3 +1,4 @@
+// @ts-expect-error
 import Hashes from 'jshashes'
 
 import { ASSET_MODEL_HASH } from '../constants/assetModelHash.const'

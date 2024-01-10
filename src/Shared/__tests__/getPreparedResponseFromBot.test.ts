@@ -2,9 +2,16 @@ import { consoler } from '../consoler'
 import { consolerError } from '../consolerError'
 
 import { getPreparedResponseFromBot } from '../getPreparedResponseFromBot'
-import { response01 } from '../__mocks__/responsesOfBots'
+import {
+  response01,
+  response02,
+  response04,
+} from '../__mocks__/responsesOfBots'
 
-const tests = [{ isActive: true, input: response01, expected: '' }]
+const tests = [
+  // { isActive: true, input: response01, expected: '' },
+  { isActive: true, input: response04, expected: '' },
+]
 
 /**
  * @Description Test to challenge function getPreparedResponseFromBot

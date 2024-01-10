@@ -50,6 +50,11 @@ export function* getCourse55ObjectionsCreatedGenerator(
     let objectionsChunks: any[][] = []
 
     for (const summaryChunk of summaryChunks) {
+      const userText =
+        typeof summaryChunk === 'string'
+          ? summaryChunk
+          : JSON.stringify(summaryChunk, null, 2)
+
       const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
         botID: 'g3lccRJtksaE',
         profileID: 'y9WjMwhdhr31',
@@ -57,18 +62,21 @@ export function* getCourse55ObjectionsCreatedGenerator(
         stage: CreateModuleStagesEnumType['objections'],
         connectionsTimeoutName:
           ConnectionsTimeoutNameEnumType['summaryChunkToObjections'],
-        userText: JSON.stringify(summaryChunk, null, 2),
+        userText,
       }
       const objectionsChunk: any = yield getCourseBotResponse(
         getCourseBotResponseParams
       )
 
-      let objectionsChunkNext = objectionsChunk
-      if (objectionsChunk.length === 1 && Array.isArray(objectionsChunk[0]))
-        objectionsChunkNext = objectionsChunk[0]
+      if (!Array.isArray(objectionsChunk) || objectionsChunk.length === 0)
+        throw new Error(
+          `getCourse55ObjectionsCreated.saga [73] objectionsChunk is not an array or array empty, ${JSON.stringify(
+            objectionsChunk
+          )}`
+        )
 
-      objections = [...objections, ...objectionsChunkNext]
-      objectionsChunks = [...objectionsChunks, objectionsChunkNext]
+      objections = [...objections, ...objectionsChunk].flat(12)
+      objectionsChunks = [...objectionsChunks, objectionsChunk.flat(12)]
     }
 
     yield put(

@@ -1,4 +1,4 @@
-export const courseCreateProgress: any = {
+export const courseCreateProgress01: any = {
   originUrl: 'https://www.youtube.com/watch?v=-yY-S3rcBw8',
   metaData: {
     contentID: '-yY-S3rcBw8',

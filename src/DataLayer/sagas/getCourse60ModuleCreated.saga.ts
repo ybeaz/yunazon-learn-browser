@@ -21,8 +21,38 @@ export function* getCourse60ModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const inputCourseCreate: any = yield select((state: RootStoreType) => {
-      return state.forms.inputCourseCreate
+    const { courseCreateProgress, sub }: any = yield select(
+      (state: RootStoreType) => {
+        return {
+          courseCreateProgress: state.courseCreateProgress,
+          sub: state.authAwsCognitoUserData.sub,
+        }
+      }
+    )
+
+    const { metaData, questions, summary, objections } = courseCreateProgress
+    const {
+      contentID,
+      capture,
+      description,
+      duration,
+      language: languageIn,
+      tags,
+      thumbnails,
+    } = metaData
+
+    console.info('getCourse60ModuleCreated.saga [28]', {
+      sub,
+      contentID,
+      capture,
+      description,
+      duration,
+      language: languageIn,
+      tags,
+      thumbnails,
+      questions,
+      summary,
+      objections,
     })
 
     yield put(
@@ -33,7 +63,40 @@ export function* getCourse60ModuleCreatedGenerator(
     )
 
     const variables = {
-      createCoursesInput: [{}],
+      createCoursesInput: [
+        {
+          profileID: sub,
+          capture,
+          description,
+          language: languageIn ? languageIn : 'en',
+          isActive: true,
+          meta: {
+            institution: 'YouRails Academy',
+            specTitle: "Sr. Specialist of the Registrar's Office",
+            specName: 'Laurie Balton',
+            email: 't3531350@yahoo.com',
+            isSendingBcc: true,
+            stages: ['production2023'],
+            tags,
+          },
+          modules: [
+            {
+              index: 0,
+              isActive: true,
+              contentType: 'ytID',
+              contentID,
+              capture: `Модуль I. ${capture}`,
+              duration,
+              questionNumber: 4,
+              passRate: 0.75,
+              thumbnails,
+              questions,
+              summary,
+              objections,
+            },
+          ],
+        },
+      ],
     }
 
     const createCourses: any = yield getResponseGraphqlAsync(
@@ -44,8 +107,7 @@ export function* getCourse60ModuleCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        // @ts-expect-error
-        timeout: ConnectionsTimeoutNameEnumType.standard,
+        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
       }
     )
 

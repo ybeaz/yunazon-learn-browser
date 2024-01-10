@@ -12,8 +12,11 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
 import { getChunkedString } from '../../Shared/getChunkedString'
+import {
+  connectionsTimeouts,
+  ConnectionsTimeoutNameEnumType,
+} from '../../Constants/connectionsTimeouts.const'
 
 export function* getCourse20TranscriptCreatedGenerator(
   params: ActionReduxType | any
@@ -45,7 +48,7 @@ export function* getCourse20TranscriptCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
       }
     )
 

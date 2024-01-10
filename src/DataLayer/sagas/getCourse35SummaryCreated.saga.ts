@@ -59,12 +59,8 @@ export function* getCourse35SummaryCreatedGenerator(
         getCourseBotResponseParams
       )
 
-      let summaryItemNext = summaryItem
-      if (summaryItem.length === 1 && Array.isArray(summaryItem[0]))
-        summaryItemNext = summaryItem[0]
-
-      summary = [...summary, ...summaryItemNext]
-      summaryChunks = [...summaryChunks, summaryItemNext]
+      summary = [...summary, ...summaryItem].flat(12)
+      summaryChunks = [...summaryChunks, summaryItem.flat(12)]
     }
 
     yield put(

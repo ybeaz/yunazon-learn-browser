@@ -1,6 +1,6 @@
 import { UserType } from '../Interfaces/UserType'
 import {
-  CreateModuleStagesEnumType,
+  CourseCreateProgressType,
   CreateCourseStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
@@ -9,6 +9,8 @@ import {
 } from '../Interfaces/RootStoreType'
 
 import { paginationOffset } from '../Constants/pagination.const'
+
+import { courseCreateProgress01 } from './__mocks__/courseCreateProgress'
 
 export const userStoreDefault: UserType = {
   userAvatar: '',
@@ -123,7 +125,7 @@ export const componentsStateDefault: ComponentsStateType = {
       timeCalculated: null,
     },
     objections: {
-      isActive: true,
+      isActive: false,
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },
@@ -136,7 +138,7 @@ export const componentsStateDefault: ComponentsStateType = {
 }
 
 export const formsDefault: FormsType = {
-  inputCourseCreate: 'https://www.youtube.com/watch?v=-yY-S3rcBw8',
+  inputCourseCreate: '',
   inputSearch: '',
   sendTo: '',
   sendCc: '',
@@ -147,11 +149,22 @@ export const formsDefault: FormsType = {
   tagsOmit: [],
 }
 
+export const courseCreateProgressDefault: CourseCreateProgressType = {
+  course: {},
+  metaData: {},
+  questions: [],
+  questionsChunks: [],
+  summary: [],
+  summaryChunks: [],
+  transcript: [],
+  transcriptChunks: [],
+}
+
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],
-  courseCreateProgress: {},
+  courseCreateProgress: courseCreateProgressDefault,
   documents: [],
   articles: [],
   users: [],

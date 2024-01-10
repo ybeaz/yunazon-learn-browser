@@ -12,6 +12,10 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import {
+  connectionsTimeouts,
+  ConnectionsTimeoutNameEnumType,
+} from '../../Constants/connectionsTimeouts.const'
 
 export function* getCourse10MataDataCreatedGenerator(
   params: ActionReduxType | any
@@ -48,7 +52,7 @@ export function* getCourse10MataDataCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
       }
     )
 

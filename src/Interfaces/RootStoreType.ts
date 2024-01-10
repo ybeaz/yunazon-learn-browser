@@ -102,11 +102,22 @@ export type GlobalVarsType = {
   theme: string
 }
 
+export type CourseCreateProgressType = {
+  course: any
+  metaData: any
+  questions: any[]
+  questionsChunks: any[]
+  summary: any[]
+  summaryChunks: any[]
+  transcript: []
+  transcriptChunks: any[]
+}
+
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
   courses: CourseType[]
-  courseCreateProgress: any
+  courseCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
   users: UserType[]
