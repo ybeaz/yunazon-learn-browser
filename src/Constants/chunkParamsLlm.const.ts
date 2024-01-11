@@ -5,7 +5,7 @@ export type ChunksFromTranscriptStringType = {
 }
 
 export const CHUNKS_FROM_TRANSCRIPT_STRING: ChunksFromTranscriptStringType = {
-  chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
+  chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', '  ', ' '],
   chunkSize: 2400,
   maxSearch: 128,
 }
