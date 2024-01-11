@@ -19,15 +19,6 @@ import {
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  */
 
-/*
-.each(params)('With params %s, %s, %s', (a, b, c) => {
-  it(`${a} === ${b} should be ${c}`, () => {
-    expect(a === b).toBe(c);
-  });
-});
-
-*/
-
 const tests = [
   {
     isActive: true,

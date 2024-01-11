@@ -17,6 +17,7 @@ import {
   connectionsTimeouts,
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
+import { CHUNKS_FROM_TRANSCRIPT_STRING } from '../../Constants/chunkParamsLlm.const'
 
 export function* getCourse20TranscriptCreatedGenerator(
   params: ActionReduxType | any
@@ -64,9 +65,7 @@ export function* getCourse20TranscriptCreatedGenerator(
 
     const transcriptChunks = getChunkedString(params, {
       printRes: false,
-      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
-      chunkSize: 5500,
-      maxSearch: 128,
+      ...CHUNKS_FROM_TRANSCRIPT_STRING,
     })
 
     yield put(

@@ -103,6 +103,7 @@ export type GlobalVarsType = {
 }
 
 export type CourseCreateProgressType = {
+  originUrl: string
   course: any
   metaData: any
   questions: any[]

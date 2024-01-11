@@ -150,6 +150,7 @@ export const formsDefault: FormsType = {
 }
 
 export const courseCreateProgressDefault: CourseCreateProgressType = {
+  originUrl: '',
   course: {},
   metaData: {},
   questions: [],

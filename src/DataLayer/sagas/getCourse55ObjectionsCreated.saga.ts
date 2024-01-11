@@ -48,8 +48,18 @@ export function* getCourse55ObjectionsCreatedGenerator(
 
     let objections: any[] = []
     let objectionsChunks: any[][] = []
+    let paramPrev = ''
 
     for (const summaryChunk of summaryChunks) {
+      setTimeout(() => {
+        const paramString = JSON.stringify(summaryChunk)
+        if (paramPrev !== '' && paramPrev === paramString) {
+          throw new Error(
+            `getCourse35SummaryCreated.saga [57] connection ${CreateModuleStagesEnumType['objections']} is timed out`
+          )
+        }
+      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['summaryChunkToObjections']] + 1500)
+
       const userText =
         typeof summaryChunk === 'string'
           ? summaryChunk
@@ -77,6 +87,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
 
       objections = [...objections, ...objectionsChunk].flat(12)
       objectionsChunks = [...objectionsChunks, objectionsChunk.flat(12)]
+      paramPrev === JSON.stringify(summaryChunk)
     }
 
     yield put(

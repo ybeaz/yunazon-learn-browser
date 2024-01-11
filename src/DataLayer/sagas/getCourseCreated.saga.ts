@@ -1,9 +1,10 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
 import {
   RootStoreType,
   ActionReduxType,
   CreateModuleStagesEnumType,
+  CreateCourseStatusEnumType,
 } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -25,13 +26,6 @@ export function* getCourseCreatedGenerator(
   CreateModuleStagesEnumType['objections'],
   CreateModuleStagesEnumType['courseModule']
 */
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
-
-  const {
-    componentsState: { createModuleStages },
-  } = stateSelected
 
   try {
     yield put(
@@ -49,27 +43,102 @@ export function* getCourseCreatedGenerator(
 
     /* Add originUri to courseCreateProgress */
     /* Add metaData to courseCreateProgress */
-    if (createModuleStages[CreateModuleStagesEnumType['metaData']].isActive)
+    const stateSelected10: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages10 },
+    } = stateSelected10
+
+    if (createModuleStages10[CreateModuleStagesEnumType['metaData']].isActive)
       yield getCourse10MataDataCreated()
 
     /* Add transcript to courseCreateProgress */
-    if (createModuleStages[CreateModuleStagesEnumType['transcript']].isActive)
+    const stateSelected20: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages20 },
+    } = stateSelected20
+
+    if (
+      createModuleStages20[CreateModuleStagesEnumType['transcript']].isActive &&
+      createModuleStages20[CreateModuleStagesEnumType['metaData']].status ===
+        CreateCourseStatusEnumType['success']
+    )
       yield getCourse20TranscriptCreated()
 
     /* Add summary to courseCreateProgress */
-    if (createModuleStages[CreateModuleStagesEnumType['summary']].isActive)
+    const stateSelected35: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages35 },
+    } = stateSelected35
+
+    if (
+      createModuleStages35[CreateModuleStagesEnumType['summary']].isActive &&
+      createModuleStages35[CreateModuleStagesEnumType['transcript']].status ===
+        CreateCourseStatusEnumType['success']
+    )
       yield getCourse35SummaryCreated()
 
     /* Add questions to courseCreateProgress */
-    if (createModuleStages[CreateModuleStagesEnumType['questions']].isActive)
+    const stateSelected45: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages45, summary },
+    } = stateSelected45
+
+    console.info('getCourseCreated.saga [57]', {
+      metaData: createModuleStages20[CreateModuleStagesEnumType['metaData']],
+      questions: createModuleStages20[CreateModuleStagesEnumType['questions']],
+      summary,
+    })
+
+    if (
+      createModuleStages45[CreateModuleStagesEnumType['questions']].isActive &&
+      createModuleStages45[CreateModuleStagesEnumType['summary']].status ===
+        CreateCourseStatusEnumType['success']
+    )
       yield getCourse45QuestionsCreated()
 
     /* Add objections to courseCreateProgress */
-    if (createModuleStages[CreateModuleStagesEnumType['objections']].isActive)
+    const stateSelected55: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages55 },
+    } = stateSelected55
+
+    if (
+      createModuleStages55[CreateModuleStagesEnumType['objections']].isActive &&
+      createModuleStages55[CreateModuleStagesEnumType['questions']].status ===
+        CreateCourseStatusEnumType['success']
+    )
       yield getCourse55ObjectionsCreated()
 
     /* Create course and module */
-    if (createModuleStages[CreateModuleStagesEnumType['courseModule']].isActive)
+    const stateSelected60: RootStoreType | any = yield select(
+      (state: RootStoreType) => state
+    )
+    const {
+      componentsState: { createModuleStages: createModuleStages60 },
+    } = stateSelected60
+
+    if (
+      createModuleStages60[CreateModuleStagesEnumType['courseModule']]
+        .isActive &&
+      ((createModuleStages60[CreateModuleStagesEnumType['objections']]
+        .isActive === true &&
+        createModuleStages60[CreateModuleStagesEnumType['objections']]
+          .status === CreateCourseStatusEnumType['success']) ||
+        (createModuleStages60[CreateModuleStagesEnumType['objections']]
+          .isActive === false &&
+          createModuleStages60[CreateModuleStagesEnumType['questions']]
+            .status === CreateCourseStatusEnumType['success']))
+    )
       yield getCourse60ModuleCreated()
   } catch (error: any) {
     console.info(

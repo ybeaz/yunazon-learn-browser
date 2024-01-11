@@ -16,6 +16,8 @@ import {
   getCourseBotResponse,
   GetCourseBotResponseParamsType,
 } from './getCourseBotResponse.saga'
+import { getChunkedArray } from '../../Shared/getChunkedArray'
+import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
 
 export function* getCourse35SummaryCreatedGenerator(
   params: ActionReduxType | any
@@ -43,16 +45,25 @@ export function* getCourse35SummaryCreatedGenerator(
     )
 
     let summary: any[] = []
-    let summaryChunks: any[][] = []
+    let paramPrev = ''
 
     for (const transcriptChunk of transcriptChunks) {
+      setTimeout(() => {
+        const paramString = JSON.stringify(transcriptChunk)
+        if (paramPrev !== '' && paramPrev === paramString) {
+          throw new Error(
+            `getCourse35SummaryCreated.saga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
+          )
+        }
+      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
+
       const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
         botID: 'gkHgpq771VuJ',
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
         stage: CreateModuleStagesEnumType['summary'],
         connectionsTimeoutName:
-          ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
+          ConnectionsTimeoutNameEnumType['transcriptChunkToSummary'],
         userText: transcriptChunk,
       }
       const summaryItem: any = yield getCourseBotResponse(
@@ -60,7 +71,7 @@ export function* getCourse35SummaryCreatedGenerator(
       )
 
       summary = [...summary, ...summaryItem].flat(12)
-      summaryChunks = [...summaryChunks, summaryItem.flat(12)]
+      paramPrev === JSON.stringify(transcriptChunk)
     }
 
     yield put(
@@ -69,6 +80,10 @@ export function* getCourse35SummaryCreatedGenerator(
       })
     )
 
+    const summaryChunks: any[][] = getChunkedArray(
+      summary,
+      CHUNKS_FROM_SUMMARY_ARRAY
+    )
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         summaryChunks,
