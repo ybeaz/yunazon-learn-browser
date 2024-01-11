@@ -21,3 +21,109 @@ export const response04 = `{"capture": "Climate Change Concerns", "text": "I wan
   {"capture": "Impact of Artificial Intelligence", "text": "The second thing that keeps me up at night is that people may have no idea that an artificial intelligence is making a decision that directly impacts their lives - what percentage interest rate you get on your loan, whether you get that job that you applied for, whether your kid gets into that college that they really want to go to. Today AI is making decisions that directly impact you."}
   
   {"capture": "Conclusion and Call to Action", "text": "If you like this video and series, please comment below stay tuned for more videos that are part of this series and to get updates please like and subscribe."}`
+
+export const response05 =
+  '```json\
+  [\
+    {\
+      "designType": "CheckBox",\
+      "multi": true,\
+      "topic": "Introduction to ASM",\
+      "capture": "What is ASM in the context of cybersecurity?",\
+      "isActive": true,\
+      "options": [\
+        {\
+          "label": "ASM stands for Attack Surface Management.",\
+          "status": true\
+        },\
+        {\
+          "label": "ASM is a relatively new entrant in the cybersecurity defensive arsenal.",\
+          "status": true\
+        },\
+        {\
+          "label": "ASM is a type of malware used by attackers.",\
+          "status": false\
+        },\
+        {\
+          "label": "ASM refers to Automated Security Monitoring.",\
+          "status": false\
+        }\
+      ]\
+    },\
+    {\
+      "designType": "CheckBox",\
+      "multi": true,\
+      "topic": "Understanding Attack Surface",\
+      "capture": "What constitutes an organization\'s attack surface?",\
+      "isActive": true,\
+      "options": [\
+        {\
+          "label": "A log-in web form vulnerable to brute force attacks.",\
+          "status": true\
+        },\
+        {\
+          "label": "A misconfigured cloud bucket open to public access.",\
+          "status": true\
+        },\
+        {\
+          "label": "An updated Java application with no known vulnerabilities.",\
+          "status": false\
+        },\
+        {\
+          "label": "A fully decommissioned server with no active connections.",\
+          "status": false\
+        }\
+      ]\
+    },\
+    {\
+      "designType": "CheckBox",\
+      "multi": true,\
+      "topic": "Attack Surface Management",\
+      "capture": "How might an attacker approach understanding an organization\'s attack surface?",\
+      "isActive": true,\
+      "options": [\
+        {\
+          "label": "By using an open source tool like Kali Linux to crawl a company\'s online presence.",\
+          "status": true\
+        },\
+        {\
+          "label": "By attempting to understand what software is running that may be out of date.",\
+          "status": true\
+        },\
+        {\
+          "label": "By physically breaking into the company\'s main office.",\
+          "status": false\
+        },\
+        {\
+          "label": "By only targeting the company\'s social media accounts.",\
+          "status": false\
+        }\
+      ]\
+    },\
+    {\
+      "designType": "CheckBox",\
+      "multi": true,\
+      "topic": "Defending with ASM",\
+      "capture": "What is the defensive use of Attack Surface Management?",\
+      "isActive": true,\
+      "options": [\
+        {\
+          "label": "Businesses deploy ASM solutions to take an outside-in view on their security posture.",\
+          "status": true\
+        },\
+        {\
+          "label": "ASM solutions are used to train company staff on cybersecurity awareness.",\
+          "status": false\
+        },\
+        {\
+          "label": "ASM is primarily used for data recovery and backup.",\
+          "status": false\
+        },\
+        {\
+          "label": "ASM solutions physically protect the company\'s hardware.",\
+          "status": false\
+        }\
+      ]\
+    }\
+  ]\
+  ```'

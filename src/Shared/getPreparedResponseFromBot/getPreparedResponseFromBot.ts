@@ -1,8 +1,17 @@
 import { promises as fs } from 'fs'
 
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
-import { isStringJsonParsable } from '../Shared/isStringJsonParsable'
+import { consoler } from '../consoler'
+import { consolerError } from '../consolerError'
+import { isStringJsonParsable } from '../../Shared/isStringJsonParsable'
+import { getJsonFromString01 } from './getJsonFromString01'
+import { getJsonFromString02 } from './getJsonFromString02'
+import { getJsonFromString03 } from './getJsonFromString03'
+
+const PARSERS_ARRAY = [
+  getJsonFromString01,
+  getJsonFromString02,
+  getJsonFromString03,
+]
 
 export type GetPreparedResponseFromBotParamsType = any
 
@@ -27,6 +36,7 @@ const optionsDefault: Required<GetPreparedResponseFromBotOptionsType> = {
 
 /**
  * @description Function to getPreparedResponseFromBot
+ * @link https://stackoverflow.com/questions/29674495/how-do-i-extract-json-objects-from-a-string-and-add-them-to-an-array
  * @run ts-node src/shared/utils/getPreparedResponseFromBot.ts
  *    In debugging mode:
  *       node --inspect-brk -r ts-node/register src/shared/utils/getPreparedResponseFromBot.ts
@@ -45,15 +55,17 @@ export const getPreparedResponseFromBot: GetPreparedResponseFromBotType = (
   const { printRes, parentFunction } = options
 
   let output: GetPreparedResponseFromBotResType = []
+  let isDone: boolean = false
 
   try {
-    if (isStringJsonParsable(input)) output = JSON.parse(input)
-    else {
-      console.info('getPreparedResponseFromBot [52]', { input })
-      output = new Function(`return [${input}];`)()
-    }
+    for (const parserFunc of PARSERS_ARRAY) {
+      const { isDone, result } = parserFunc(input)
 
-    if (output.length === 1 && Array.isArray(output[0])) output = output[0]
+      if (isDone) {
+        output = result
+        break
+      }
+    }
   } catch (error: any) {
     console.log('getPreparedResponseFromBot', 'Error', {
       parentFunction,

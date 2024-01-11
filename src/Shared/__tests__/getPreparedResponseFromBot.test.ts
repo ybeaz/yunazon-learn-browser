@@ -1,16 +1,19 @@
 import { consoler } from '../consoler'
 import { consolerError } from '../consolerError'
 
-import { getPreparedResponseFromBot } from '../getPreparedResponseFromBot'
+import { getPreparedResponseFromBot } from '../getPreparedResponseFromBot/getPreparedResponseFromBot'
 import {
   response01,
   response02,
   response04,
+  response05,
 } from '../__mocks__/responsesOfBots'
 
 const tests = [
-  // { isActive: true, input: response01, expected: '' },
-  { isActive: true, input: response04, expected: '' },
+  { isActive: true, input: response01, expected: true },
+  { isActive: true, input: response02, expected: true },
+  { isActive: true, input: response04, expected: true },
+  { isActive: true, input: response05, expected: true },
 ]
 
 /**
@@ -25,12 +28,11 @@ describe('Algoritms', () => {
     '-- getPreparedResponseFromBot.test',
     ({ isActive, input, expected }) => {
       if (isActive) {
-        let outputed = getPreparedResponseFromBot(input)
-        consoler('getPreparedResponseFromBot.test', { outputed })
+        let res = getPreparedResponseFromBot(input)
+        consoler('getPreparedResponseFromBot.test', { res })
 
-        // outputed = true
-        // const expected2 = true
-        // expect(outputed).toEqual(expected2)
+        const output = Array.isArray(res)
+        expect(output).toEqual(expected)
       }
     }
   )

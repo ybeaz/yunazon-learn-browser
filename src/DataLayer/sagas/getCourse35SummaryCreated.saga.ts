@@ -74,6 +74,10 @@ export function* getCourse35SummaryCreatedGenerator(
       paramPrev === JSON.stringify(transcriptChunk)
     }
 
+    if (summary.length === 0) {
+      throw new Error(`getting summary step is failed`)
+    }
+
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         summary,

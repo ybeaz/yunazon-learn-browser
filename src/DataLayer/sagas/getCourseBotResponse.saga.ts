@@ -18,7 +18,7 @@ import {
 import {
   getPreparedResponseFromBot,
   GetPreparedResponseFromBotParamsType,
-} from '../../Shared/getPreparedResponseFromBot'
+} from '../../Shared/getPreparedResponseFromBot/getPreparedResponseFromBot'
 
 export type GetCourseBotResponseParamsType = {
   botID: string

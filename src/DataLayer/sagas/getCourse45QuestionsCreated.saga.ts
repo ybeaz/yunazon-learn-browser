@@ -90,6 +90,10 @@ export function* getCourse45QuestionsCreatedGenerator(
       paramPrev === JSON.stringify(summaryChunk)
     }
 
+    if (questions.length === 0) {
+      throw new Error(`getting questions step is failed`)
+    }
+
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         questions,

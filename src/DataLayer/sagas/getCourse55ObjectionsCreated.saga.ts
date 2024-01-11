@@ -90,6 +90,10 @@ export function* getCourse55ObjectionsCreatedGenerator(
       paramPrev === JSON.stringify(summaryChunk)
     }
 
+    if (objections.length === 0) {
+      throw new Error(`getting questions step is failed`)
+    }
+
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
         objections,
