@@ -18,6 +18,7 @@ import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { CoursesBody } from '../CoursesBody/CoursesBody'
 import {
   StagesType,
   StagesPropsOut,
@@ -149,6 +150,10 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
         action: { typeEvent: 'CLICK_ON_COURSE_CREATE_SUBMIT' },
       },
     },
+    coursesBodyProps: {
+      courses,
+      language,
+    },
   }
 
   console.info('CourseCreateBody [154]', { courses })
@@ -161,6 +166,9 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
       </div>
       <div className='_stagesWrapper'>{getStages(stages)}</div>
       <div className='_messageWrapper'></div>
+      <div className='_coursesBodyWrapper'>
+        {courses.length ? <CoursesBody {...propsOut.coursesBodyProps} /> : null}
+      </div>
     </div>
   )
 }

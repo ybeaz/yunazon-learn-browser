@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -26,7 +27,7 @@ import { DocumentType } from '../../../@types/'
 const DocumentsBodyComponent: DocumentsBodyComponentType = (
   props: DocumentsBodyComponentPropsType
 ) => {
-  const { classAdded, handleEvents, documents } = props
+  const { classAdded, handleEvents, documents, language } = props
 
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
     const documentsRows: React.ReactElement[] = documentsIn.map(
@@ -106,7 +107,9 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('DocumentsBody', classAdded)}>
-      <h2 className='_screenTitle'>Certificates and diplomas</h2>
+      <h2 className='_screenTitle'>
+        {DICTIONARY.Certificates_Credits_and_diplomas[language]}
+      </h2>
       {getDocumentsTable(documents)}
     </div>
   )

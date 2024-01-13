@@ -6,6 +6,7 @@ import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 export type DocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   documents: RootStoreType['documents']
+  language: RootStoreType['language']
   handleEvents: HandleEventType
 }
 

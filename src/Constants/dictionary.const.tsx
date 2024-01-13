@@ -63,6 +63,10 @@ export const DICTIONARY: IDictionary = {
     en: 'objections',
     ru: 'возражения',
   },
+  Certificates_Credits_and_diplomas: {
+    en: 'Certificates, Credits and diplomas',
+    ru: 'Сертификаты, кредиты и дипломы',
+  },
   Create_course: {
     en: 'Create course',
     ru: 'Создать курс',

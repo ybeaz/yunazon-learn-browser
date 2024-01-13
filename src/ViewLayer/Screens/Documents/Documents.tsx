@@ -61,6 +61,7 @@ const DocumentsComponent: DocumentsComponentType = (
     },
     documentsBodyProps: {
       documents,
+      language,
     },
   }
 
