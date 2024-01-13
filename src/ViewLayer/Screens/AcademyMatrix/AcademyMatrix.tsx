@@ -46,7 +46,10 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
   let actionsToMount: any[] = []
-  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
+  if (!redirectAuthFrom)
+    actionsToMount = [
+      { type: 'GET_MATRIX_DATA', data: { profileIDtoFilter: '' } },
+    ]
 
   useEffectedInitialRequests(actionsToMount)
   useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })

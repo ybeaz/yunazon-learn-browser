@@ -35,7 +35,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { preferred_username, language, isSideNavLeftVisible },
+    storeStateSlice: { sub, language, isSideNavLeftVisible },
     handleEvents,
   } = props
 
@@ -43,7 +43,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
 
   const buttonPropsArr: ButtonYrlPropsType[] = getSideNavigationButtons({
     navigate,
-    preferred_username,
+    sub,
     language,
   })
 
@@ -96,7 +96,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
 }
 
 const storeStateSliceProps: string[] = [
-  'preferred_username',
+  'sub',
   'language',
   'isSideNavLeftVisible',
 ]

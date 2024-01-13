@@ -48,6 +48,7 @@ export type CourseCreateBodyComponentPropsType = {
     language: RootStoreType['language']
     createModuleStages: RootStoreType['componentsState']['createModuleStages']
     courseCreateProgress: RootStoreType['courseCreateProgress']
+    courses: RootStoreType['courses']
   }
   handleEvents: HandleEventType
 }

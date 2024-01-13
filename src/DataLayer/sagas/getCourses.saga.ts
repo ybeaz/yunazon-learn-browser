@@ -14,7 +14,15 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCoursesGenerator(): Iterable<any> {
+export function* getCoursesGenerator(params: any): Iterable<any> {
+  const profileIDtoFilter = params?.data?.profileIDtoFilter
+  const profileIDs = profileIDtoFilter ? [profileIDtoFilter] : []
+  console.info('getCourses.saga [20]', {
+    profileIDs,
+    profileIDtoFilter,
+    params,
+  })
+
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -31,6 +39,7 @@ export function* getCoursesGenerator(): Iterable<any> {
   let readCoursesConnectionInput: any = {
     first,
     offset,
+    profileIDs,
     searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,

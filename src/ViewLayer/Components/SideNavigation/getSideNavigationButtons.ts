@@ -17,7 +17,7 @@ import { isAwsCognitoAuth } from '../../../FeatureFlags'
 export const getSideNavigationButtons: GetSideNavigationButtons = ({
   navigate,
   language,
-  preferred_username,
+  sub,
 }: GetSideNavigationButtonsProps): ButtonYrlPropsType[] => {
   const sideNavigationButtons: ButtonYrlPropsType[] = [
     {
@@ -25,7 +25,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       captureRight: DICTIONARY.Login[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'CLICK_ON_SIGN_IN' },
-      isDisplaying: isAwsCognitoAuth() && !preferred_username,
+      isDisplaying: isAwsCognitoAuth() && !sub,
     },
     {
       icon: 'MdHome',
@@ -45,17 +45,17 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/documents' },
       },
-      isDisplaying: !!preferred_username,
+      isDisplaying: !!sub,
     },
     {
-      icon: 'MdAddCard',
-      captureRight: DICTIONARY.Create_course[language],
+      icon: 'MdCastForEducation',
+      captureRight: DICTIONARY.My_courses[language],
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/course-create' },
       },
-      isDisplaying: !!preferred_username,
+      isDisplaying: !!sub,
     },
     {
       icon: 'MdCastForEducation',
@@ -65,7 +65,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/courses' },
       },
-      isDisplaying: !!preferred_username, // TODO, component Courses.tsx !!preferred_username,
+      isDisplaying: false, // !!sub, // TODO, component Courses.tsx !!sub,
     },
     {
       icon: 'MdLightbulbOutline',
@@ -91,7 +91,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/profiles' },
       },
-      isDisplaying: false, // TODO, component Profiles.tsx !!preferred_username,
+      isDisplaying: false, // TODO, component Profiles.tsx !!sub,
     },
     {
       icon: 'MdQueue',
@@ -129,7 +129,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       captureRight: DICTIONARY.Logout[language],
       classAdded: 'Button_sideMenuItems',
       action: { typeEvent: 'CLICK_ON_SIGN_OUT' },
-      isDisplaying: isAwsCognitoAuth() && !!preferred_username,
+      isDisplaying: isAwsCognitoAuth() && !!sub,
     },
     {
       icon: 'HiOutlineAcademicCap',

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -8,7 +8,7 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { actionAsync } from '../../../DataLayer/index.action'
 // import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
 
 import {
@@ -34,8 +34,18 @@ const CourseCreateComponent: CourseCreateComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language },
+    storeStateSlice: { language, sub },
   } = props
+
+  const dispatch = useDispatch()
+
+  const getMatrixData: any = { profileIDtoFilter: sub }
+
+  useEffect(() => {
+    if (sub) {
+      dispatch(actionAsync.GET_MATRIX_DATA.REQUEST(getMatrixData))
+    }
+  }, [sub])
 
   const propsOut: CourseCreatePropsOutType = {
     headerFrameProps: {
@@ -79,7 +89,7 @@ const CourseCreateComponent: CourseCreateComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['articles', 'language']
+const storeStateSliceProps: string[] = ['language', 'sub']
 export const CourseCreate = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CourseCreateComponent)

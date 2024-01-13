@@ -39,7 +39,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
 ) => {
   const { classAdded, storeStateSlice, handleEvents } = props
 
-  const { language, courseCreateProgress } = storeStateSlice
+  const { language, courseCreateProgress, courses } = storeStateSlice
   const createModuleStages: Record<
     CreateModuleStagesEnumType,
     CreateModuleStageType
@@ -151,10 +151,12 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     },
   }
 
+  console.info('CourseCreateBody [154]', { courses })
+
   return (
     <div className={getClasses('CourseCreateBody', classAdded)}>
-      <h2 className='_h2'>{DICTIONARY.Create_course[language]}</h2>
       <div className='_inputGroupWrapper' style={{ width }}>
+        <h3 className='_h2'>{DICTIONARY.Create_course[language]}</h3>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>{getStages(stages)}</div>
@@ -167,6 +169,7 @@ const storeStateSliceProps: string[] = [
   'language',
   'createModuleStages',
   'courseCreateProgress',
+  'courses',
 ]
 export const CourseCreateBody: CourseCreateBodyType = withPropsYrl({
   handleEvents: handleEventsIn,
