@@ -66,6 +66,7 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  // screenActive: '',
   isObjections: false,
   isSummary: true,
   isConfetti: false,

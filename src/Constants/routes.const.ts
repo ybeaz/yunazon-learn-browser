@@ -1,5 +1,5 @@
 export type RouteType = {
-  page: string
+  screen: string
   path: string
   children: any[]
   errorElement: string
@@ -7,61 +7,63 @@ export type RouteType = {
 
 export const ROUTES: RouteType[] = [
   {
-    page: 'ArticlePresent',
+    screen: 'ArticlePresent',
     path: `/a/:articleID/:slug?`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'AboutAcademy',
+    screen: 'AboutAcademy',
     path: `/about`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'Certificate',
+    screen: 'Certificate',
     path: `/d/:documentID/:dataName?`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'Profiles',
+    screen: 'Profiles',
     path: `/profiles`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'CourseCreate' /* Screen/Page to display the form to create a course */,
+    screen:
+      'CourseCreate' /* Screen/Page to display the form to create a course */,
     path: `/course-create/:courseID?/:moduleID?`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'Courses' /* Screen/Page to display courses created by the author */,
+    screen:
+      'Courses' /* Screen/Page to display courses created by the author */,
     path: `/courses`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'Documents',
+    screen: 'Documents',
     path: `/documents`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'AcademyPresent',
+    screen: 'AcademyPresent',
     path: `/m/:moduleID/:moduleCapture?`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'AcademyMatrix',
+    screen: 'AcademyMatrix',
     path: `/`,
     children: [],
     errorElement: 'Error404',
   },
   {
-    page: 'Error404',
+    screen: 'Error404',
     path: `/error404`,
     children: [],
     errorElement: 'Error404',
@@ -71,7 +73,7 @@ export const ROUTES: RouteType[] = [
 /* Remove after 2024-01-15
 
   // {
-  //   page: 'CertificateStyled',
+  //   screen: 'CertificateStyled',
   //   path: `/Certificate-styled`,
   //   children: [],
   //   errorElement: 'Error404',
@@ -80,7 +82,7 @@ export const ROUTES: RouteType[] = [
   // },
 
   // {
-  //   page: 'AcademyMatrix',
+  //   screen: 'AcademyMatrix',
   //   path: '/academy',
   //   children: [],
   //   errorElement: 'Error404',
@@ -89,7 +91,7 @@ export const ROUTES: RouteType[] = [
   // },
 
   // {
-  //   page: 'Profile',
+  //   screen: 'Profile',
   //   path: `/profile`,
   //   children: [],
   //   errorElement: 'Error404',
@@ -97,7 +99,7 @@ export const ROUTES: RouteType[] = [
   //   exact: true,
   // },
   // {
-  //   page: 'StubForUserResearch',
+  //   screen: 'StubForUserResearch',
   //   path: `/see-you`,
   //   children: [],
   //   errorElement: 'Error404',
@@ -105,7 +107,7 @@ export const ROUTES: RouteType[] = [
   //   exact: true,
   // },
   // {
-  //   page: 'SkillsExchangeMatrix',
+  //   screen: 'SkillsExchangeMatrix',
   //   path: `/sep`,
   //   children: [],
   //   errorElement: 'Error404',
@@ -113,7 +115,7 @@ export const ROUTES: RouteType[] = [
   //   exact: true,
   // },
   // {
-  //   page: 'SkillsExchangeMatrixChRP',
+  //   screen: 'SkillsExchangeMatrixChRP',
   //   path: `/sep-2`,
   //   children: [],
   //   errorElement: 'Error404',

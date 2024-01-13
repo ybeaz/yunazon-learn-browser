@@ -16,7 +16,7 @@ import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
-const PAGES: Record<string, FunctionComponent<any>> = {
+const SCREENS: Record<string, FunctionComponent<any>> = {
   CourseCreate,
   ArticlePresent,
   AboutAcademy,
@@ -31,8 +31,8 @@ const PAGES: Record<string, FunctionComponent<any>> = {
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const routesDict = ROUTES.map((route: RouteType, index: number) => {
-    const { page, path, children, errorElement } = route
-    const Element = PAGES[page]
+    const { screen, path, children, errorElement } = route
+    const Element = SCREENS[screen]
     const element: ReactElement = <Element />
     const id = nanoid()
     return { id, element, path, children, errorElement }
