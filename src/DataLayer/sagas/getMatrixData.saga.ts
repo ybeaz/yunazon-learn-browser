@@ -8,6 +8,8 @@ import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
 function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
+  console.info('getMatrixData.saga [12]', { params })
+
   try {
     const query = getParsedUrlQueryBrowserApi()
 

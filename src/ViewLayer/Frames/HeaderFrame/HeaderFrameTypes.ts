@@ -7,6 +7,7 @@ import {
 } from '../../ComponentsLibrary/'
 
 export type HeaderFrameComponentPropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
   brandName: string
   moto: string
   logoPath: string

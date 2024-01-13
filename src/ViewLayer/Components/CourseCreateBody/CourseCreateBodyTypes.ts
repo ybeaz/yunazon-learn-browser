@@ -54,7 +54,7 @@ export type CourseCreateBodyComponentPropsType = {
 
 export type CourseCreateBodyPropsType = Omit<
   CourseCreateBodyComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type CourseCreateBodyPropsOutType = {

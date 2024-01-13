@@ -49,7 +49,7 @@ const CourseCreateComponent: CourseCreateComponentType = (
       isButtonAuthUser: true,
       isSelectLanguage: true,
       isButtonThemeToggle: true,
-      isSeachGroup: false,
+      isSeachGroup: true,
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,

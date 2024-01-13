@@ -9,7 +9,7 @@ import { ShareButtons } from '../../Components/ShareButtons'
 
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { getClasses } from '../../../Shared/getClasses'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
@@ -37,14 +37,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   props: HeaderFrameComponentPropsType
 ) => {
   const {
+    classAdded,
     brandName,
-    moto,
-    logoPath,
     contentComponentName,
-    courseCapture = '',
-    documentID = '',
-    courseID = '',
     contentID = '',
+    courseCapture = '',
+    courseID = '',
+    documentID = '',
     isButtonAddCourse,
     isButtonAuthUser,
     isButtonBack,
@@ -55,6 +54,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    logoPath,
+    moto,
     storeStateSlice: {
       preferred_username,
       isSideNavLeftVisible,
@@ -68,12 +69,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
-
-  const classAddHeaderFrame =
-    contentComponentName === 'ReaderIframe' ||
-    contentComponentName === 'PlayerIframe'
-      ? 'HeaderFrame_AcademyPresent'
-      : `HeaderFrame_${contentComponentName}`
 
   const propsOut: HeaderFramePropsOutType = {
     selectLanguageProps: {
@@ -193,7 +188,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   return (
     <div
       id={`id_header_${contentComponentName}`}
-      className={`HeaderFrame ${classAddHeaderFrame}`}
+      className={getClasses('HeaderFrame', classAdded)}
     >
       <div className='_content'>
         <div className='__left'>
