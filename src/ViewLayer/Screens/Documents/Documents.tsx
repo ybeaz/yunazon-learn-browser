@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
-import { SideNavigation } from '../../Components/SideNavigation'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
@@ -85,7 +83,6 @@ const DocumentsComponent: DocumentsComponentType = (
         {/* footer */}
         {null}
       </MainFrame>
-      <SideNavigation />
     </div>
   )
 }

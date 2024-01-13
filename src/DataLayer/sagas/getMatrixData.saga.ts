@@ -8,10 +8,12 @@ import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
 function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
+  console.info('getMatrixData.saga [12]', { params })
+
   try {
     const query = getParsedUrlQueryBrowserApi()
 
-    const searchInput = query?.search || ''
+    const inputSearch = query?.search || ''
     const tagsPick =
       (query && query?.tagspick && query?.tagspick.split(',')) || []
     const tagsOmit =
@@ -21,7 +23,11 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
         ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
         : 0
 
-    yield put(actionSync.ONCHANGE_SEARCH_INPUT(searchInput))
+    const data = {
+      storeFormProp: 'inputSearch',
+      value: inputSearch,
+    }
+    yield put(actionSync.SET_INPUT_TO_STORE(data))
 
     yield put(
       actionSync.SET_TAGS_STATE({
@@ -39,7 +45,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield getCourses()
   } catch (error: any) {
-    console.info('getMatrixData [31]', error.name + ': ' + error.message)
+    console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

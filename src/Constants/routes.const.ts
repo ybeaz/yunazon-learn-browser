@@ -31,7 +31,13 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    page: 'Courses',
+    page: 'CourseCreate' /* Screen/Page to display the form to create a course */,
+    path: `/course-create/:courseID?/:moduleID?`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    page: 'Courses' /* Screen/Page to display courses created by the author */,
     path: `/courses`,
     children: [],
     errorElement: 'Error404',

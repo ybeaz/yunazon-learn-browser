@@ -1,21 +1,24 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { SideNavigation } from '../../Components/SideNavigation'
+import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
 import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-import { SearchGroup } from '../../Components/SearchGroup/SearchGroup'
 
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { getClasses } from '../../../Shared/getClasses'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  InputGroupYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 
 import {
   HeaderFrameComponentPropsType,
@@ -34,14 +37,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   props: HeaderFrameComponentPropsType
 ) => {
   const {
+    classAdded,
     brandName,
-    moto,
-    logoPath,
     contentComponentName,
-    courseCapture = '',
-    documentID = '',
-    courseID = '',
     contentID = '',
+    courseCapture = '',
+    courseID = '',
+    documentID = '',
     isButtonAddCourse,
     isButtonAuthUser,
     isButtonBack,
@@ -52,6 +54,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    logoPath,
+    moto,
     storeStateSlice: {
       preferred_username,
       isSideNavLeftVisible,
@@ -65,12 +69,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
-
-  const classAddHeaderFrame =
-    contentComponentName === 'ReaderIframe' ||
-    contentComponentName === 'PlayerIframe'
-      ? 'HeaderFrame_AcademyPresent'
-      : `HeaderFrame_${contentComponentName}`
 
   const propsOut: HeaderFramePropsOutType = {
     selectLanguageProps: {
@@ -155,6 +153,21 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       classAdded: '',
       text: preferred_username,
     },
+    inputGroupProps: {
+      inputProps: {
+        classAdded: 'Input_search',
+        type: 'text',
+        placeholder: 'Search...',
+        typeEvent: 'ONCHANGE_INPUT_SEARCH',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        storeFormProp: 'inputSearch',
+      },
+      buttonSubmitProps: {
+        icon: 'MdSearch',
+        classAdded: 'Button_MdSearch',
+        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+      },
+    },
   }
 
   let SideMenuLeft = null
@@ -175,7 +188,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   return (
     <div
       id={`id_header_${contentComponentName}`}
-      className={`HeaderFrame ${classAddHeaderFrame}`}
+      className={getClasses('HeaderFrame', classAdded)}
     >
       <div className='_content'>
         <div className='__left'>
@@ -193,8 +206,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
         </div>
         <div className='__main'>
           {isSeachGroup && (
-            <div className='_itemSearchGroup'>
-              <SearchGroup />
+            <div className='_itemInputGroupYrl'>
+              <InputGroupYrl {...propsOut.inputGroupProps} />
             </div>
           )}
         </div>

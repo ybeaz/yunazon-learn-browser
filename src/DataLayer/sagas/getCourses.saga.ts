@@ -12,13 +12,9 @@ import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getCoursesGenerator(): Iterable<any> {
-  // const isDebounced = debounce()
-  // console.info('getCourses.saga readCoursesConnection [45]', { isDebounced })
-
-  // if (!isDebounced) return
-
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -29,13 +25,13 @@ export function* getCoursesGenerator(): Iterable<any> {
         pagesCourses: { first, offset },
       },
     },
-    forms: { searchInput, tagsPick, tagsOmit },
+    forms: { inputSearch, tagsPick, tagsOmit },
   } = stateSelected as RootStoreType
 
   let readCoursesConnectionInput: any = {
     first,
     offset,
-    searchPhrase: searchInput,
+    searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,
     stagesPick: selectCoursesStageFlag(),
@@ -53,7 +49,11 @@ export function* getCoursesGenerator(): Iterable<any> {
         variables,
         resolveGraphqlName: 'readCoursesConnection',
       },
-      { ...getHeadersAuthDict(), clientHttpType: 'apolloClient' }
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
     )
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
@@ -69,7 +69,10 @@ export function* getCoursesGenerator(): Iterable<any> {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getCourses.saga  [44]', error.name + ': ' + error.message)
+    console.info(
+      'getCourses.saga [77] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

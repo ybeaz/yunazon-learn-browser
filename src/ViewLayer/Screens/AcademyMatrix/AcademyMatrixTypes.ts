@@ -9,7 +9,7 @@ export type AcademyMatrixPropsType = {
     courses: RootStoreType['courses']
     isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
     isLoadedCourses: RootStoreType['isLoaded']['isLoadedCourses']
-    searchInput: RootStoreType['forms']['searchInput']
+    inputSearch: RootStoreType['forms']['inputSearch']
   }
 }
 

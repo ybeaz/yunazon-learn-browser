@@ -2,12 +2,88 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type AiRequestOptionsType {
+  """response_format"""
+  response_format: String
+}
+
 type AvatarSizeType {
   """height"""
   height: Float
 
   """width"""
   width: Float
+}
+
+type BotType {
+  """aiRequestOptions"""
+  aiRequestOptions: AiRequestOptionsType!
+
+  """aiServiceMethod"""
+  aiServiceMethod: String!
+
+  """aiServiceName"""
+  aiServiceName: String!
+
+  """bots ID"""
+  botID: ID
+
+  """comments"""
+  comments: String!
+
+  """bots created date"""
+  dateCreated: Float
+
+  """bots deleted date"""
+  dateDeleted: Float
+
+  """bots updated date"""
+  dateUpdated: Float
+
+  """disclaimerRef"""
+  disclaimerRef: String!
+
+  """isActive"""
+  isActive: Boolean
+
+  """profile ID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String!
+
+  """prompt"""
+  prompt: PromptType!
+
+  """transformFunctionName"""
+  transformFunctionName: String!
+
+  """user ID"""
+  userID: ID
+}
+
+type BotsConnectionType {
+  """[BotsEdgeType]"""
+  edges: [BotsEdgeType!]
+
+  """BotsPageInfoType"""
+  pageInfo: BotsPageInfoType
+}
+
+type BotsEdgeType {
+  """cursor"""
+  cursor: String
+
+  """BotsEdgeType"""
+  node: BotType
+}
+
+type BotsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type ChoiceType {
@@ -151,6 +227,74 @@ type CoursesPageInfoType {
   hasNextPage: Boolean
 }
 
+input CreateBotResponseInputType {
+  """botID"""
+  botID: ID
+
+  """profileID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String = null
+
+  """userText"""
+  userText: String!
+}
+
+type CreateBotResponseType {
+  """botID"""
+  botID: ID
+
+  """isBotResponse"""
+  isBotResponse: Boolean
+
+  """length"""
+  length: Float
+
+  """profileID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String
+
+  """textObj"""
+  textObj: TextObjType
+}
+
+input CreateBotsInputType {
+  """bots ID"""
+  botsID: ID
+}
+
+type CreateContentMetaDataType {
+  """capture"""
+  capture: String
+
+  """course module contentID"""
+  contentID: ID
+
+  """description"""
+  description: String
+
+  """duration"""
+  duration: String
+
+  """isContentMetaData"""
+  isContentMetaData: Boolean
+
+  """language code"""
+  language: String
+
+  """length"""
+  length: Float
+
+  """courses meta tags: tags that characterises the course content"""
+  tags: [String!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsType!
+}
+
 input CreateCourseInputType {
   """course capture"""
   capture: String!
@@ -209,18 +353,28 @@ input CreateDocumentInputType {
   profileProps: ProfilePropsInputType!
 }
 
+input CreateOriginInputType {
+  """youtubeID"""
+  originID: String = null
+
+  """youtubeUrl"""
+  originUrl: [String!] = null
+}
+
 input CreateTemplatesInputType {
-  """templates created date"""
-  dateCreated: Date
-
-  """templates deleted date"""
-  dateDeleted: Date
-
-  """templates updated date"""
-  dateUpdated: Date
-
   """templates ID"""
   templatesID: ID
+}
+
+type CreateYoutubeTranscriptType {
+  """isTranscript"""
+  isTranscript: Boolean
+
+  """length"""
+  length: Float
+
+  """transcript"""
+  transcript: String
 }
 
 """Date custom scalar type"""
@@ -528,6 +682,9 @@ input ModuleInputType {
 
   """course module summary"""
   summary: [SummaryItemInputType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseInputType = null
 }
 
 type ModuleType {
@@ -569,18 +726,28 @@ type ModuleType {
 
   """course module summary"""
   summary: [SummaryItemType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseType
 }
 
 type Mutation {
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
+  createBotResponse(createBotResponseInput: CreateBotResponseInputType!): CreateBotResponseType!
+  createBots(createBotsInput: [CreateBotsInputType!]!): [BotType!]!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
+  createContentMetaData(createContentMetaDataInput: CreateOriginInputType!): CreateContentMetaDataType!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  createTemplates(createTemplatesInput: CreateTemplatesInputType!): [TemplatesType!]!
+  createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
+  createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
+  deactivateBots(deactivateBotsIdsInput: [String!]!): [String!]!
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
+  deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
+  deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
@@ -588,12 +755,13 @@ type Mutation {
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
+  updateBots(updateBotsInput: [UpdateBotsInputType!]!): [BotType!]!
   updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
   updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  updateTemplates(updateTemplatesInput: UpdateTemplatesInputType!): [TemplatesType!]!
+  updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
 
@@ -777,14 +945,50 @@ type ProfilesPageInfoType {
   hasNextPage: Boolean
 }
 
+type PromptMessageType {
+  """content"""
+  content: String!
+
+  """role"""
+  role: String!
+}
+
+type PromptType {
+  """messages"""
+  messages: [PromptMessageType!]!
+
+  """model"""
+  model: String
+
+  """n for images"""
+  n: Int
+
+  """prompt for images"""
+  prompt: String
+
+  """response_format for images"""
+  response_format: String
+
+  """size for images"""
+  size: String
+
+  """temperature"""
+  temperature: Float!
+}
+
 type Query {
+  countBots: Int!
   countCourses: Int!
   countDocuments: Int!
+  countTemplates: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
   getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
+  readBots(readBotsInput: [String!]!): [BotType!]!
+  readBotsAll: [BotType!]!
+  readBotsConnection(readBotsConnectionInput: ReadBotsConnectionInputType!): BotsConnectionType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
   readCourses(readCoursesInput: [ReadCourseInputType!]!): [CourseType!]!
   readCoursesAll: [CourseType!]!
@@ -851,6 +1055,17 @@ type QuestionType {
   topic: String
 }
 
+input ReadBotsConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
+}
+
 input ReadCourseInputType {
   """course ID"""
   courseID: ID
@@ -865,6 +1080,12 @@ input ReadCoursesConnectionInputType {
   """
   after: String
 
+  """course module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """courses ID"""
+  courseIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
@@ -876,13 +1097,16 @@ input ReadCoursesConnectionInputType {
   """language code"""
   language: String = null
 
+  """course module IDs"""
+  moduleIDs: [ID!] = []
+
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
 
-  """profile ID"""
-  profileID: ID
+  """profile IDs"""
+  profileIDs: [ID!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -1079,19 +1303,125 @@ type TemplatesPageInfoType {
 
 type TemplatesType {
   """templates created date"""
-  dateCreated: Date
+  dateCreated: Float!
 
   """templates deleted date"""
-  dateDeleted: Date
+  dateDeleted: Float
 
   """templates updated date"""
-  dateUpdated: Date
+  dateUpdated: Float!
 
   """isActive"""
   isActive: Boolean!
 
   """templates ID"""
   templatesID: ID
+}
+
+type TextObjType {
+  """contentArray"""
+  contentArray: [String!]!
+
+  """contentType"""
+  contentType: String
+}
+
+input ThumbnailsCourseImageDataInputType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String = null
+
+  """width"""
+  width: Int!
+}
+
+type ThumbnailsCourseImageDataType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsCourseInputType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataInputType = null
+}
+
+type ThumbnailsCourseType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataType
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataType
+}
+
+type ThumbnailsImageDataType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+type ThumbnailsType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataType
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataType
+}
+
+input UpdateBotsInputType {
+  """bots ID"""
+  botsID: ID
+
+  """bots created date"""
+  dateCreated: Float!
+
+  """bots deleted date"""
+  dateDeleted: Float = null
+
+  """bots updated date"""
+  dateUpdated: Float!
 }
 
 input UpdateCourseInputType {

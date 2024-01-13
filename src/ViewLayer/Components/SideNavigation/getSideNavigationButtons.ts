@@ -1,34 +1,25 @@
-import React, { ReactElement } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
-
-import { getButtonAuthUserProps } from '../Hooks/getButtonAuthUserProps'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { LANGUAGES_APP } from '../../Constants/languagesApp.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { SelectLanguage, SelectLanguagePropsType } from './SelectLanguage'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import {
-  ButtonYrl,
-  ButtonYrlPropsType,
-  withStoreStateSelectedYrl,
-} from '../ComponentsLibrary/'
-import { isAwsCognitoAuth } from '../../FeatureFlags'
+  GetSideNavigationButtonsProps,
+  GetSideNavigationButtons,
+} from './SideNavigationTypes'
+import { isAwsCognitoAuth } from '../../../FeatureFlags'
 
 /**
- * @description Component for the left side menu
- * @link React Icons https://react-icons.github.io/react-icons/icons/md/
+ * @description Function to getSideNavigationButtons
+ * @run ts-node src/shared/utils/getSideNavigationButtons.ts
+ *    In debugging mode:
+ *       node --inspect-brk -r ts-node/register src/shared/utils/getSideNavigationButtons.ts
+ *       chrome://inspect/#devices > Open dedicated DevTools for Node
+ * @import import { getSideNavigationButtons, GetSideNavigationButtonsParamsType } from './getSideNavigationButtons'
  */
-export const SideNavigationComponent: React.FunctionComponent = (
-  props: any
-): ReactElement => {
-  const {
-    storeStateSlice: { preferred_username, language, isSideNavLeftVisible },
-  } = props
-
-  const navigate = useNavigate()
-
-  const buttonPropsArr: ButtonYrlPropsType[] = [
+export const getSideNavigationButtons: GetSideNavigationButtons = ({
+  navigate,
+  language,
+  preferred_username,
+}: GetSideNavigationButtonsProps): ButtonYrlPropsType[] => {
+  const sideNavigationButtons: ButtonYrlPropsType[] = [
     {
       icon: 'MdLogin',
       captureRight: DICTIONARY.Login[language],
@@ -57,6 +48,26 @@ export const SideNavigationComponent: React.FunctionComponent = (
       isDisplaying: !!preferred_username,
     },
     {
+      icon: 'MdAddCard',
+      captureRight: DICTIONARY.Create_course[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/course-create' },
+      },
+      isDisplaying: !!preferred_username,
+    },
+    {
+      icon: 'MdCastForEducation',
+      captureRight: DICTIONARY.My_courses[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { history: navigate, path: '/courses' },
+      },
+      isDisplaying: !!preferred_username, // TODO, component Courses.tsx !!preferred_username,
+    },
+    {
       icon: 'MdLightbulbOutline',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
@@ -71,16 +82,6 @@ export const SideNavigationComponent: React.FunctionComponent = (
         ],
       },
       isDisplaying: true,
-    },
-    {
-      icon: 'MdCastForEducation',
-      captureRight: DICTIONARY.My_courses[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/courses' },
-      },
-      isDisplaying: false, // TODO, component Courses.tsx !!preferred_username,
     },
     {
       icon: 'MdPerson',
@@ -149,60 +150,5 @@ export const SideNavigationComponent: React.FunctionComponent = (
     // },
   ]
 
-  const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
-    return buttonPropsArr2.map(buttonProps => {
-      const key = nanoid()
-      return (
-        <div key={key} className='_item'>
-          <ButtonYrl {...buttonProps} />
-        </div>
-      )
-    })
-  }
-
-  const classNameAdd = isSideNavLeftVisible ? 'SideNavigation_show' : ''
-
-  const languageSelectProps: SelectLanguagePropsType = {
-    LANGUAGES: LANGUAGES_APP,
-    language,
-    mode: null,
-    typeEvent: 'SELECT_LANGUAGE_APP',
-    classAdded: 'SelectLanguage__AppLanguage',
-    languagesSelected: [{ value: language }],
-  }
-
-  return (
-    <div
-      className={`SideNavigation ${classNameAdd}`}
-      onClick={event =>
-        handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })
-      }
-    >
-      <div
-        className='__content'
-        onClick={event =>
-          handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
-        }
-      >
-        <div className='__menuGroup'>
-          <div className='_groupItem _languageSelect'>
-            <SelectLanguage {...languageSelectProps} />
-          </div>
-          {getButtons(buttonPropsArr)}
-        </div>
-      </div>
-    </div>
-  )
+  return sideNavigationButtons
 }
-
-const storeStateSliceProps: string[] = [
-  'preferred_username',
-  'language',
-  'isSideNavLeftVisible',
-]
-
-export const SideNavigation: React.FunctionComponent =
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(SideNavigationComponent)
-  )

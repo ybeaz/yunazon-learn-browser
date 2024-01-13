@@ -7,6 +7,7 @@ import { getDetectedEnv } from '../../Shared/getDetectedEnv'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getAuthAwsCognitoUserData(
   params: ActionReduxType | any
@@ -27,10 +28,16 @@ export function* getAuthAwsCognitoUserData(
       },
     }
 
-    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'getAuthAwsCognitoUserData',
-    })
+    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'getAuthAwsCognitoUserData',
+      },
+      {
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
 
     yield getLocalStorageSetObjTo({
       refresh_token: authAwsCognitoUserData.refresh_token,
@@ -43,9 +50,10 @@ export function* getAuthAwsCognitoUserData(
       })
     )
   } catch (error: any) {
-    console.log('ERROR getAuthAwsCognitoUserDataSaga', {
-      error: error.message,
-    })
+    console.log(
+      'getAuthAwsCognitoUserDataSaga [53] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

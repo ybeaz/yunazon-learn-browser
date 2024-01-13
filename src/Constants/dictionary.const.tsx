@@ -7,6 +7,46 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  stage_metaData: {
+    en: 'getting meta data',
+    ru: 'получение мета данных',
+  },
+  stage_transcript: {
+    en: 'resource obtaining',
+    ru: 'получение ресурса',
+  },
+  stage_summary: {
+    en: 'content preprocessing',
+    ru: 'предобработка контента',
+  },
+  stage_questions: {
+    en: 'module creation',
+    ru: 'создание модуля',
+  },
+  stage_objections: {
+    en: 'objections creation',
+    ru: 'создание возражений',
+  },
+  stage_courseModule: {
+    en: 'finalization',
+    ru: 'завершение',
+  },
+  todo: {
+    en: 'not started',
+    ru: 'не начато',
+  },
+  pending: {
+    en: 'in progress',
+    ru: 'в процессе',
+  },
+  success: {
+    en: 'success',
+    ru: 'успешно закончено',
+  },
+  failure: {
+    en: 'failure',
+    ru: 'произошла ошибка',
+  },
   Show: {
     en: 'Show',
     ru: 'Показать',
@@ -22,6 +62,10 @@ export const DICTIONARY: IDictionary = {
   objections: {
     en: 'objections',
     ru: 'возражения',
+  },
+  Create_course: {
+    en: 'Create course',
+    ru: 'Создать курс',
   },
   My_courses: {
     en: 'My courses',

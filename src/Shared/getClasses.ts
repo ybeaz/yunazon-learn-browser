@@ -1,12 +1,13 @@
-export type GetClassesParamsType = any
+export type ClassAddedType =
+  | undefined
+  | string
+  | (undefined | string)[]
+  | Record<string, string | (string | undefined)[]>
 
 export type GetClassesResType = string
 
 interface GetClassesType {
-  (
-    className: string,
-    classAdded?: string | string[] | Record<string, string | string[]>
-  ): GetClassesResType
+  (className: string, classAdded?: ClassAddedType): GetClassesResType
 }
 
 /**
@@ -22,7 +23,8 @@ export const getClasses: GetClassesType = (className, classAdded) => {
     if (typeof classAdded === 'string') output = `${className} ${classAdded}`
     else if (Array.isArray(classAdded)) {
       output = classAdded.reduce(
-        (accum: string, item: string) => `${accum} ${item}`,
+        (accum: string, item: string | undefined) =>
+          item ? `${accum} ${item}` : `${accum}`,
         className
       )
     } else if (
@@ -33,7 +35,8 @@ export const getClasses: GetClassesType = (className, classAdded) => {
     } else if (Array.isArray(classAdded[className])) {
       // @ts-expect-error
       output = classAdded[className].reduce(
-        (accum: string, item: string) => `${accum} ${item}`,
+        (accum: string, item: string | undefined) =>
+          item ? `${accum} ${item}` : `${accum}`,
         className
       )
     }

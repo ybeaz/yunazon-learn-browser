@@ -1,10 +1,13 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
-import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import {
+  ButtonYrlPropsType,
+  InputGroupYrlPropsType,
+} from '../../ComponentsLibrary/'
 
 export type HeaderFrameComponentPropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
   brandName: string
   moto: string
   logoPath: string
@@ -50,6 +53,7 @@ export type HeaderFramePropsOutType = {
   logoGroupProps: any
   avatarPlusInfoProps: AvatarPlusInfoPropsType
   abInCircleProps: AbInCirclePropsType
+  inputGroupProps: InputGroupYrlPropsType
 }
 
 /**

@@ -9,7 +9,7 @@ export const getAnswerByOptionID: Function = (
   options: any[],
   optionIDIn: string
 ): boolean => {
-  let answerNext: boolean
+  let answerNext: boolean = false
 
   options.forEach((option: any) => {
     let { optionID, answer } = option

@@ -50,7 +50,7 @@ export const getCourseByModuleId: GetCourseByModuleIdType = (
     }
 
     if (options?.printRes) {
-      consoler('getCourseByModuleId', 'res', { res })
+      consoler('getCourseByModuleId', { res })
     }
   } catch (error: any) {
     consolerError('getCourseByModuleId', error)

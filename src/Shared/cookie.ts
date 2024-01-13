@@ -5,10 +5,12 @@
  */
 export const cookie = {
   get: (name: string) => {
-    let c = document.cookie.match(
-      `(?:(?:^|.*; *)${name} *= *([^;]*).*$)|^.*$`
-    )[1]
-    if (c) return decodeURIComponent(c)
+    let c: any =
+      document &&
+      document?.cookie &&
+      document?.cookie?.match(`(?:(?:^|.*; *)${name} *= *([^;]*).*$)|^.*$`)
+
+    if (c) return decodeURIComponent(c[1])
   },
 
   set: (name: string, value: string, opts: any = {}) => {

@@ -25,7 +25,16 @@ import {
              from '../ComponentsLibrary/'
  */
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
-  const { icon = '', icon2 = '', classAdded } = props
+  const {
+    icon = '',
+    icon2 = '',
+    classAdded,
+    isDisplaying = true,
+    isVisible = true,
+  } = props
+
+  const classDisplay = isDisplaying === true ? '' : 'Icon_display_none'
+  const classVisible = isVisible === true ? '' : 'Icon_visible_none'
 
   // @ts-ignore
   const Icon: any = ICONS[icon]
@@ -37,7 +46,13 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   return (
     <>
       {Icon && (
-        <div className={getClasses(`IconYrl`, classAdded)}>
+        <div
+          className={getClasses(`IconYrl`, [
+            classAdded,
+            classDisplay,
+            classVisible,
+          ])}
+        >
           <IconContext.Provider
             value={{
               className: `_icon`,

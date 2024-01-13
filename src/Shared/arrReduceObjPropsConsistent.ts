@@ -10,7 +10,7 @@ export const arrReduceObjPropsConsistent: Function = (
     return {}
   }
 
-  let objNext = {}
+  let objNext: any = {}
   let consistency = true
   arr.forEach(item => {
     if (consistency && obj[item] !== undefined) {

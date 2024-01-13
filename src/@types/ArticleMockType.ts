@@ -3,7 +3,7 @@ import { Maybe, Scalars, ProfilePropsType } from '../@types/GraphqlTypes.d'
 export type SectionType = {
   capture: Maybe<Scalars['String']['output']>
   divs?: Scalars['String']['output'][]
-  options?: { isTextIdent?: boolean }
+  options?: { isTextIdent?: boolean; isList?: 'olStyle' | 'ulStyle' }
 }
 
 export type ArticleType = {

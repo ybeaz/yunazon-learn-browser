@@ -1,7 +1,5 @@
-// @ts-nocheck
-
 import { store } from '../store'
-import { ActionEventType } from '../../@types/ActionEventType'
+import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store

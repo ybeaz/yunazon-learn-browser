@@ -1,5 +1,7 @@
 import { UserType } from '../Interfaces/UserType'
 import {
+  CourseCreateProgressType,
+  CreateCourseStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
   FormsType,
@@ -7,6 +9,8 @@ import {
 } from '../Interfaces/RootStoreType'
 
 import { paginationOffset } from '../Constants/pagination.const'
+
+import { courseCreateProgress01 } from './__mocks__/courseCreateProgress'
 
 export const userStoreDefault: UserType = {
   userAvatar: '',
@@ -99,10 +103,43 @@ export const componentsStateDefault: ComponentsStateType = {
       endCursor: '',
     },
   },
+  createModuleStages: {
+    metaData: {
+      isActive: true,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    transcript: {
+      isActive: true,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    summary: {
+      isActive: true,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    questions: {
+      isActive: true,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    objections: {
+      isActive: false,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    courseModule: {
+      isActive: true,
+      status: CreateCourseStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+  },
 }
 
 export const formsDefault: FormsType = {
-  searchInput: '',
+  inputCourseCreate: '',
+  inputSearch: '',
   sendTo: '',
   sendCc: '',
   searchFormSep: searchFormSepDefault,
@@ -112,10 +149,23 @@ export const formsDefault: FormsType = {
   tagsOmit: [],
 }
 
+export const courseCreateProgressDefault: CourseCreateProgressType = {
+  originUrl: '',
+  course: {},
+  metaData: {},
+  questions: [],
+  questionsChunks: [],
+  summary: [],
+  summaryChunks: [],
+  transcript: [],
+  transcriptChunks: [],
+}
+
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
   courses: [],
+  courseCreateProgress: courseCreateProgressDefault,
   documents: [],
   articles: [],
   users: [],

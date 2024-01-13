@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ArticlePresentBodyPropsType } from '../../Components/'
 import { MainFramePropsType } from '../../Frames/'
@@ -18,6 +19,7 @@ export type ArticlePresentPropsType = Omit<
 >
 
 export type ArticlePresentPropsOutType = {
+  headerFrameProps: HeaderFramePropsType
   mainFrameProps: MainFramePropsType
   articlePresentBodyProps: ArticlePresentBodyPropsType
 }

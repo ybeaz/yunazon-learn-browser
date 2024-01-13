@@ -48,10 +48,6 @@ const InputYrlComponent: InputYrlComponentType = (
 
   let value: string | number | string[] = ''
 
-  if (storeFormGroup === 'searchFormSep' && storeFormProp) {
-    const searchFormSepKey = storeFormProp as keyof SearchFormSepType
-    value = forms[storeFormGroup][searchFormSepKey]
-  }
   if (
     (storeFormGroup === 'user' || storeFormGroup === 'userPrev') &&
     storeFormProp
@@ -63,11 +59,11 @@ const InputYrlComponent: InputYrlComponentType = (
     value = forms[formsKey] as any
   }
 
-  const action = { typeEvent }
+  const action = { typeEvent, data: { storeFormGroup, storeFormProp } }
   const actionOnEnter = { typeEvent: typeEventOnEnter }
 
   const iconReactProps = {
-    icon: 'AiFillCloseCircle',
+    icon: 'MdClose',
     icon2: 'null',
     classAdded: 'IconYrl_Input',
   }

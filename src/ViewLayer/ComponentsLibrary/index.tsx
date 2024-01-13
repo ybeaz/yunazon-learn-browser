@@ -1,4 +1,10 @@
 import {
+  InputGroupYrlPropsType,
+  InputGroupYrlType,
+  InputGroupYrl,
+} from './InputGroupYrl/InputGroupYrl'
+
+import {
   ButtonYrl,
   ButtonYrlPropsType,
   ButtonYrlType,
@@ -102,6 +108,8 @@ export {
 }
 
 export type {
+  InputGroupYrlPropsType,
+  InputGroupYrlType,
   ButtonYrlPropsType,
   ButtonYrlType,
   IconYrlPropsType,
@@ -115,6 +123,7 @@ export type {
 }
 
 export {
+  InputGroupYrl,
   ButtonYrl,
   IconYrl,
   ImageYrl,

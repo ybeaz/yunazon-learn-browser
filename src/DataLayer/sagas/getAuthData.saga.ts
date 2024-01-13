@@ -50,7 +50,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       })
     )
   } catch (error: any) {
-    console.info('getAuthData [31]', error.name + ': ' + error.message)
+    console.info('getAuthData [53] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

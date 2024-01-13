@@ -11,6 +11,7 @@ import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToIt
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getDocumentsGenerator(
   params: ActionReduxType | any
@@ -40,7 +41,11 @@ export function* getDocumentsGenerator(
         variables,
         resolveGraphqlName: 'readDocumentsConnection',
       },
-      getHeadersAuthDict()
+      {
+        ...getHeadersAuthDict(),
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
     )
 
     let documentsNext: any = getChainedResponsibility(
@@ -59,7 +64,10 @@ export function* getDocumentsGenerator(
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getDocuments.saga  [44]', error.name + ': ' + error.message)
+    console.info(
+      'getDocuments.saga [44] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 

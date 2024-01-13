@@ -66,6 +66,6 @@ export const getHeadersAuthDict: GetHeadersAuthDictType = (
 if (require.main === module) {
   ;(async () => {
     const output = getHeadersAuthDict({ printRes: true })
-    consoler('getHeadersAuthDict [61]', 'output', output)
+    consoler('getHeadersAuthDict [61]', output)
   })()
 }

@@ -3,6 +3,28 @@ import { CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
+export enum CreateModuleStagesEnumType {
+  metaData = 'metaData',
+  transcript = 'transcript',
+  summary = 'summary',
+  questions = 'questions',
+  objections = 'objections',
+  courseModule = 'courseModule',
+}
+
+export enum CreateCourseStatusEnumType {
+  todo = 'todo',
+  pending = 'pending',
+  success = 'success',
+  failure = 'failure',
+}
+
+export type CreateModuleStageType = {
+  isActive: boolean
+  status: CreateCourseStatusEnumType
+  timeCalculated: number | null
+}
+
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
   selectSkillsRequired: string
@@ -40,6 +62,7 @@ export type ComponentsStateType = {
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
+  createModuleStages: Record<CreateModuleStagesEnumType, CreateModuleStageType>
 }
 
 export type FormsType = {
@@ -48,7 +71,8 @@ export type FormsType = {
   searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
-  searchInput: string
+  inputCourseCreate: string
+  inputSearch: string
   tagsPick: string[]
   tagsOmit: string[]
 }
@@ -78,10 +102,23 @@ export type GlobalVarsType = {
   theme: string
 }
 
+export type CourseCreateProgressType = {
+  originUrl: string
+  course: any
+  metaData: any
+  questions: any[]
+  questionsChunks: any[]
+  summary: any[]
+  summaryChunks: any[]
+  transcript: []
+  transcriptChunks: any[]
+}
+
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
   courses: CourseType[]
+  courseCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
   users: UserType[]
