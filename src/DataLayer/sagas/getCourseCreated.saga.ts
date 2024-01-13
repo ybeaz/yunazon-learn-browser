@@ -91,12 +91,6 @@ export function* getCourseCreatedGenerator(
       componentsState: { createModuleStages: createModuleStages45, summary },
     } = stateSelected45
 
-    console.info('getCourseCreated.saga [57]', {
-      metaData: createModuleStages20[CreateModuleStagesEnumType['metaData']],
-      questions: createModuleStages20[CreateModuleStagesEnumType['questions']],
-      summary,
-    })
-
     if (
       createModuleStages45[CreateModuleStagesEnumType['questions']].isActive &&
       createModuleStages45[CreateModuleStagesEnumType['summary']].status ===

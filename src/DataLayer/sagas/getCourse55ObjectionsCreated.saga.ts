@@ -85,7 +85,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
           )}`
         )
 
-      objections = [...objections, ...objectionsChunk].flat(12)
+      objections = [...objections, ...objectionsChunk.flat(12)]
       objectionsChunks = [...objectionsChunks, objectionsChunk.flat(12)]
       paramPrev === JSON.stringify(summaryChunk)
     }

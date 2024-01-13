@@ -1174,16 +1174,22 @@ export type ReadCourseInputType = {
 export type ReadCoursesConnectionInputType = {
   /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
   after?: InputMaybe<Scalars['String']['input']>;
+  /** course module contentIDs */
+  contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** courses ID */
+  courseIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
   /** isActive */
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** language code */
   language?: InputMaybe<Scalars['String']['input']>;
+  /** course module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
-  /** profile ID */
-  profileID?: InputMaybe<Scalars['ID']['input']>;
+  /** profile IDs */
+  profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */

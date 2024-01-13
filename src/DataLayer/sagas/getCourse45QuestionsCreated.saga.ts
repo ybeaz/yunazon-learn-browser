@@ -85,7 +85,7 @@ export function* getCourse45QuestionsCreatedGenerator(
           )}`
         )
 
-      questions = [...questions, ...questionsChunk].flat(12)
+      questions = [...questions, ...questionsChunk.flat(12)]
       questionsChunks = [...questionsChunks, questionsChunk.flat(12)]
       paramPrev === JSON.stringify(summaryChunk)
     }

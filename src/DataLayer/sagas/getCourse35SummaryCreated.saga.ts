@@ -70,7 +70,7 @@ export function* getCourse35SummaryCreatedGenerator(
         getCourseBotResponseParams
       )
 
-      summary = [...summary, ...summaryItem].flat(12)
+      summary = [...summary, ...summaryItem.flat(12)]
       paramPrev === JSON.stringify(transcriptChunk)
     }
 

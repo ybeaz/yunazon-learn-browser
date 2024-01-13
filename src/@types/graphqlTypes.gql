@@ -1080,6 +1080,12 @@ input ReadCoursesConnectionInputType {
   """
   after: String
 
+  """course module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """courses ID"""
+  courseIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
@@ -1091,13 +1097,16 @@ input ReadCoursesConnectionInputType {
   """language code"""
   language: String = null
 
+  """course module IDs"""
+  moduleIDs: [ID!] = []
+
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
 
-  """profile ID"""
-  profileID: ID
+  """profile IDs"""
+  profileIDs: [ID!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
