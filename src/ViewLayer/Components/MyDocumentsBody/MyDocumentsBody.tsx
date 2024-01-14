@@ -10,22 +10,22 @@ import {
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   DocumentsTablePropsOutType,
-  DocumentsBodyComponentPropsType,
-  DocumentsBodyPropsType,
-  DocumentsBodyPropsOutType,
-  DocumentsBodyComponentType,
-  DocumentsBodyType,
-} from './DocumentsBodyTypes'
+  MyDocumentsBodyComponentPropsType,
+  MyDocumentsBodyPropsType,
+  MyDocumentsBodyPropsOutType,
+  MyDocumentsBodyComponentType,
+  MyDocumentsBodyType,
+} from './MyDocumentsBodyTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { DocumentType } from '../../../@types/'
 
 /**
- * @description Component to render DocumentsBody
- * @import import { DocumentsBody, DocumentsBodyPropsType, DocumentsBodyPropsOutType, DocumentsBodyType } 
-             from '../Components/DocumentsBody/DocumentsBody'
+ * @description Component to render MyDocumentsBody
+ * @import import { MyDocumentsBody, MyDocumentsBodyPropsType, MyDocumentsBodyPropsOutType, MyDocumentsBodyType } 
+             from '../Components/MyDocumentsBody/MyDocumentsBody'
  */
-const DocumentsBodyComponent: DocumentsBodyComponentType = (
-  props: DocumentsBodyComponentPropsType
+const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
+  props: MyDocumentsBodyComponentPropsType
 ) => {
   const { classAdded, handleEvents, documents, language } = props
 
@@ -106,7 +106,7 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
   }
 
   return (
-    <div className={getClasses('DocumentsBody', classAdded)}>
+    <div className={getClasses('MyDocumentsBody', classAdded)}>
       <h2 className='_screenTitle'>
         {DICTIONARY.Certificates_Credits_and_diplomas[language]}
       </h2>
@@ -116,16 +116,16 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const DocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(DocumentsBodyComponent)
+    React.memo(MyDocumentsBodyComponent)
   )
 )
 
 export type {
-  DocumentsBodyPropsType,
-  DocumentsBodyPropsOutType,
-  DocumentsBodyComponentType,
-  DocumentsBodyType,
+  MyDocumentsBodyPropsType,
+  MyDocumentsBodyPropsOutType,
+  MyDocumentsBodyComponentType,
+  MyDocumentsBodyType,
 }

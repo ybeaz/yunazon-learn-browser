@@ -6,7 +6,7 @@ import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { DocumentsBody } from '../../Components/'
+import { MyDocumentsBody } from '../../Components/'
 
 import {
   withPropsYrl,
@@ -59,7 +59,7 @@ const DocumentsComponent: DocumentsComponentType = (
     mainFrameProps: {
       screenType: 'Documents',
     },
-    documentsBodyProps: {
+    myDocumentsBodyProps: {
       documents,
       language,
     },
@@ -75,7 +75,7 @@ const DocumentsComponent: DocumentsComponentType = (
         {/* middle-main */}
         <div>
           {documents.length ? (
-            <DocumentsBody {...propsOut.documentsBodyProps} />
+            <MyDocumentsBody {...propsOut.myDocumentsBodyProps} />
           ) : null}
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}

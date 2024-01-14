@@ -2,7 +2,7 @@ import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { MainFramePropsType, HeaderFramePropsType } from '../../Frames/'
-import { DocumentsBodyPropsType } from '../../Components/'
+import { MyDocumentsBodyPropsType } from '../../Components/'
 
 export type DocumentsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -22,7 +22,7 @@ export type DocumentsPropsType = Omit<
 export type DocumentsPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
-  documentsBodyProps: DocumentsBodyPropsType
+  myDocumentsBodyProps: MyDocumentsBodyPropsType
 }
 
 /**
