@@ -91,7 +91,7 @@ export const componentsStateDefault: ComponentsStateType = {
     },
   ],
   pagination: {
-    pagesCourses: {
+    pageCourses: {
       first: 0,
       offset: paginationOffset,
       hasNextPage: true,

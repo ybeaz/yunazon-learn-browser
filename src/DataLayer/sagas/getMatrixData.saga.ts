@@ -36,7 +36,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pagesCourses'],
+        paginationName: PaginationNameEnumType['pageCourses'],
         first,
       })
     )

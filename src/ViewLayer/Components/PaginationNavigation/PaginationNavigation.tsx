@@ -21,13 +21,13 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { pagesCourses },
+    storeStateSlice: { pageCourses },
     paginationName,
   } = props
 
-  const hasNextPage = pagesCourses.hasNextPage
-  const first = pagesCourses?.first || 0
-  const last = first + pagesCourses.offset
+  const hasNextPage = pageCourses.hasNextPage
+  const first = pageCourses?.first || 0
+  const last = first + pageCourses.offset
 
   const propsOut: PaginationNavigationPropsOutType = {
     buttonCoursesBackwardProps: {
@@ -63,7 +63,7 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
 
 export const PaginationNavigation: PaginationNavigationType =
   withStoreStateSelectedYrl(
-    ['pagesCourses'],
+    ['pageCourses'],
     React.memo(PaginationNavigationComponent)
   )
 

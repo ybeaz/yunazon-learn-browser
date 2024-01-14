@@ -1,12 +1,12 @@
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { PaginationType } from '../../../Interfaces'
+import { PaginationType, PaginationNameEnumType } from '../../../Interfaces'
 
 export type PaginationNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
-    pagesCourses: PaginationType
+    pageCourses: PaginationType
   }
-  paginationName: 'pagesCourses' | 'pagesMyCourses' | 'pagesMyDocuments'
+  paginationName: PaginationNameEnumType
 }
 
 export type PaginationNavigationPropsOutType = {

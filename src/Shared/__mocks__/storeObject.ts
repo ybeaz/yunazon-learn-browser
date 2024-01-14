@@ -25,7 +25,7 @@ export const storeObject = {
       },
     ],
     pagination: {
-      pagesCourses: {
+      pageCourses: {
         first: 0,
         offset: 10,
       },

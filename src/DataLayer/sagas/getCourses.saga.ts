@@ -23,7 +23,7 @@ export function* getCoursesGenerator(): Iterable<any> {
     componentsState: {
       screenActive,
       pagination: {
-        pagesCourses: { first, offset },
+        pageCourses: { first, offset },
       },
     },
     forms: { inputSearch, tagsPick, tagsOmit },
@@ -77,7 +77,7 @@ export function* getCoursesGenerator(): Iterable<any> {
 
     const pageInfo = readCoursesConnection?.pageInfo
     yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: 'pagesCourses', ...pageInfo })
+      actionSync.SET_PAGE_INFO({ paginationName: 'pageCourses', ...pageInfo })
     )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
