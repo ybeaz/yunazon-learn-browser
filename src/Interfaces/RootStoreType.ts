@@ -40,7 +40,7 @@ export type SearchFormSepType = {
 
 export enum PaginationNameEnumType {
   pageCourses = 'pageCourses',
-  pagesDocuments = 'pagesDocuments',
+  pageDocuments = 'pageDocuments',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>

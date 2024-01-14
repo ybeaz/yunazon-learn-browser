@@ -97,7 +97,7 @@ export const componentsStateDefault: ComponentsStateType = {
       hasNextPage: true,
       endCursor: '',
     },
-    pagesDocuments: {
+    pageDocuments: {
       first: 0,
       offset: paginationOffset,
       hasNextPage: true,

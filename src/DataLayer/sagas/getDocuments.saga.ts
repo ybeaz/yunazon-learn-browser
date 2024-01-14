@@ -57,7 +57,7 @@ export function* getDocumentsGenerator(
     const pageInfo = readDocumentsConnection?.pageInfo
     yield put(
       actionSync.SET_PAGE_INFO({
-        paginationName: 'pagesDocuments',
+        paginationName: 'pageDocuments',
         ...pageInfo,
       })
     )
