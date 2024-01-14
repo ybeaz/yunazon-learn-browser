@@ -46,6 +46,7 @@ export enum PaginationNameEnumType {
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
+  screenActive: string
   isObjections: boolean
   isSummary: boolean
   isConfetti: boolean

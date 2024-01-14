@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { CourseCreateBodyPropsType } from '../../Components/'
 import { MainFramePropsType } from '../../Frames/'
@@ -11,6 +11,7 @@ export type CourseCreateComponentPropsType = {
     language: RootStoreType['language']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
   }
+  handleEvents: HandleEventType
 }
 
 export type CourseCreatePropsType = Omit<

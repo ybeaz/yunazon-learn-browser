@@ -16,7 +16,7 @@ export type DocumentsComponentPropsType = {
 
 export type DocumentsPropsType = Omit<
   DocumentsComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type DocumentsPropsOutType = {

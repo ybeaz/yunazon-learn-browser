@@ -13,8 +13,12 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  withStoreStateSelectedYrl,
+  withPropsYrl,
+} from '../../ComponentsLibrary/'
 import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
   AcademyMatrixPropsType,
@@ -40,16 +44,21 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       isLoadedCourses,
       inputSearch,
     },
+    handleEvents,
   } = props
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } }
+    )
+  }, [])
 
   const coursesFiltered = courses
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
   let actionsToMount: any[] = []
-  if (!redirectAuthFrom)
-    actionsToMount = [
-      { type: 'GET_MATRIX_DATA', data: { profileIDtoFilter: '' } },
-    ]
+  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
 
   useEffectedInitialRequests(actionsToMount)
   useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })
@@ -159,9 +168,13 @@ const storeStateSliceProps: string[] = [
   'isLoadedCourses',
   'inputSearch',
 ]
-export const AcademyMatrix: AcademyMatrixType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(AcademyMatrixComponent)
+export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(AcademyMatrixComponent)
+  )
 )
 
 export type {

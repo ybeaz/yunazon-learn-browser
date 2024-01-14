@@ -66,7 +66,7 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
-  // screenActive: '',
+  screenActive: 'AcademyMatrix',
   isObjections: false,
   isSummary: true,
   isConfetti: false,

@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_SCREEN_ACTIVE',
   'SET_COURSE_CREATE_STATUS',
   'ADD_COURSE_CREATE_DATA',
   'CLICK_ON_COURSE_CREATE_SUBMIT',

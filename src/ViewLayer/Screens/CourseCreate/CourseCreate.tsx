@@ -7,9 +7,8 @@ import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { actionAsync } from '../../../DataLayer/index.action'
-// import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
   withPropsYrl,
@@ -35,15 +34,18 @@ const CourseCreateComponent: CourseCreateComponentType = (
   const {
     classAdded,
     storeStateSlice: { language, sub },
+    handleEvents,
   } = props
 
   const dispatch = useDispatch()
 
-  const getMatrixData: any = { profileIDtoFilter: sub }
-
   useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'CourseCreate' } }
+    )
     if (sub) {
-      dispatch(actionAsync.GET_MATRIX_DATA.REQUEST(getMatrixData))
+      dispatch(actionAsync.GET_MATRIX_DATA.REQUEST())
     }
   }, [sub])
 
@@ -90,9 +92,11 @@ const CourseCreateComponent: CourseCreateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'sub']
-export const CourseCreate = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(CourseCreateComponent)
+export const CourseCreate = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(CourseCreateComponent)
+  )
 )
 
 export type {

@@ -9,9 +9,6 @@ import { paginationOffset } from '../../Constants/pagination.const'
 
 function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
-    const profileIDtoFilter = params?.data?.profileIDtoFilter
-    console.info('getMatrixData.saga [14]', { profileIDtoFilter, params })
-
     const query = getParsedUrlQueryBrowserApi()
 
     const inputSearch = query?.search || ''
@@ -44,7 +41,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       })
     )
 
-    yield getCourses(params)
+    yield getCourses()
   } catch (error: any) {
     console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }
