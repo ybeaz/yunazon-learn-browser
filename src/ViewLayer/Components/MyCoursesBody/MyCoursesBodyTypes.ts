@@ -7,7 +7,7 @@ import {
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
-
+import { PaginationNavigationPropsType } from '../../Components/'
 import { MyCoursesTablePropsType } from '../MyCoursesTable/MyCoursesTable'
 
 import {
@@ -63,6 +63,7 @@ export type MyCoursesBodyPropsType = Omit<
 export type MyCoursesBodyPropsOutType = {
   inputGroupProps: InputGroupYrlPropsType
   myCoursesTableProps: MyCoursesTablePropsType
+  paginationNavigationProps: PaginationNavigationPropsType
 }
 
 /**

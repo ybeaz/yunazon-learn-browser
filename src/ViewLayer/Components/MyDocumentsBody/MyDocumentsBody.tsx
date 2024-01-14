@@ -119,6 +119,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
         {DICTIONARY.Certificates_Credits_and_diplomas[language]}
       </h2>
       {getDocumentsTable(documents)}
+
       <div className='_paginationNavigationWrapper'>
         <PaginationNavigation {...propsOut.paginationNavigationProps} />
       </div>

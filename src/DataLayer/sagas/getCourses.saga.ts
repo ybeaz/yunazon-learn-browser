@@ -36,10 +36,6 @@ export function* getCoursesGenerator(): Iterable<any> {
     return
   }
 
-  console.info('getCourses.saga [20]', {
-    profileIDs,
-  })
-
   let readCoursesConnectionInput: any = {
     first,
     offset,

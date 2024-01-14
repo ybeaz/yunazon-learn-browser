@@ -25,8 +25,6 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
     paginationName,
   } = props
 
-  console.info('PaginationNavigation [28]', { paginationName, pagination })
-
   const hasNextPage = pagination[paginationName].hasNextPage
   const first = pagination[paginationName]?.first || 0
   const last = first + pagination[paginationName].offset

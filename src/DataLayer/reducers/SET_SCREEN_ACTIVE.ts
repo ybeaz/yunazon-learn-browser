@@ -10,8 +10,6 @@ export const SET_SCREEN_ACTIVE: ReducerType = (
 ): RootStoreType => {
   const { screenActive } = data
 
-  console.info('SET_SCREEN_ACTIVE [13]', { screenActive })
-
   const { componentsState } = store
 
   const componentsStateNext = {

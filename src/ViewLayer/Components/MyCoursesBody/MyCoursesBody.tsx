@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
 
 import {
+  PaginationNameEnumType,
   CreateModuleStagesEnumType,
   CreateCourseStatusEnumType,
   CreateModuleStageType,
 } from '../../../Interfaces/'
-
 import {
   InputGroupYrl,
   IconYrl,
@@ -19,6 +19,7 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyCoursesTable } from '../MyCoursesTable/MyCoursesTable'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import {
   StagesType,
   StagesPropsOut,
@@ -154,9 +155,10 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
       courses,
       language,
     },
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageCourses'],
+    },
   }
-
-  console.info('MyCoursesBody [154]', { courses })
 
   return (
     <div className={getClasses('MyCoursesBody', classAdded)}>
@@ -170,6 +172,9 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
         {courses.length ? (
           <MyCoursesTable {...propsOut.myCoursesTableProps} />
         ) : null}
+        <div className='_paginationNavigationWrapper'>
+          <PaginationNavigation {...propsOut.paginationNavigationProps} />
+        </div>
       </div>
     </div>
   )
