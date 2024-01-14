@@ -1,6 +1,7 @@
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { PaginationNavigationPropsType } from '../../Components/'
 
 export type AcademyMatrixPropsType = {
   storeStateSlice: {
@@ -17,6 +18,7 @@ export type AcademyMatrixPropsType = {
 export type AcademyMatrixPropsOutType = {
   headerFrameProps: Omit<HeaderFramePropsType, 'storeStateSlice'>
   mainFrameProps: Omit<MainFramePropsType, 'children'>
+  paginationNavigationProps: PaginationNavigationPropsType
 }
 
 /**

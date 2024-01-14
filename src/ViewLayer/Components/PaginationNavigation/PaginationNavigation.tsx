@@ -4,6 +4,7 @@ import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
+  PaginationNavigationComponentPropsType,
   PaginationNavigationPropsType,
   PaginationNavigationPropsOutType,
   PaginationNavigationComponentType,
@@ -16,11 +17,12 @@ import {
              from '../Components/PaginationNavigation/PaginationNavigation'
  */
 const PaginationNavigationComponent: PaginationNavigationComponentType = (
-  props: PaginationNavigationPropsType
+  props: PaginationNavigationComponentPropsType
 ) => {
   const {
     classAdded,
     storeStateSlice: { pagesCourses },
+    paginationName,
   } = props
 
   const hasNextPage = pagesCourses.hasNextPage
@@ -34,7 +36,7 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
       captureRight: 'Prev',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
-        data: { paginationName: 'pagesCourses', direction: 'prev' },
+        data: { paginationName, direction: 'prev' },
       },
       isDisplaying: !!first,
     },
@@ -44,7 +46,7 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
       captureLeft: 'Next',
       action: {
         typeEvent: 'SET_PAGE_CURSOR',
-        data: { paginationName: 'pagesCourses', direction: 'next' },
+        data: { paginationName, direction: 'next' },
       },
       isDisplaying: hasNextPage,
     },
@@ -59,10 +61,11 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
   )
 }
 
-export const PaginationNavigation = withStoreStateSelectedYrl(
-  ['pagesCourses'],
-  React.memo(PaginationNavigationComponent)
-)
+export const PaginationNavigation: PaginationNavigationType =
+  withStoreStateSelectedYrl(
+    ['pagesCourses'],
+    React.memo(PaginationNavigationComponent)
+  )
 
 export type {
   PaginationNavigationPropsType,

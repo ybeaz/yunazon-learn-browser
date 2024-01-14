@@ -124,6 +124,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     mainFrameProps: {
       screenType,
     },
+    paginationNavigationProps: {
+      paginationName: 'pagesCourses',
+    },
   }
 
   return (
@@ -147,7 +150,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
               {getPlateMatix(coursesFiltered)}
             </div>
             <div className='PaginationNavigationWrapper'>
-              <PaginationNavigation />
+              <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
           </div>
         ) : null}
