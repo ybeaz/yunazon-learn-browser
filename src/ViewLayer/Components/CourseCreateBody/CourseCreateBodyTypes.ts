@@ -8,7 +8,7 @@ import {
   InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
 
-import { CoursesBodyPropsType } from '../CoursesBody/CoursesBody'
+import { MyCoursesTablePropsType } from '../MyCoursesTable/MyCoursesTable'
 
 import {
   CreateModuleStagesEnumType,
@@ -62,7 +62,7 @@ export type CourseCreateBodyPropsType = Omit<
 
 export type CourseCreateBodyPropsOutType = {
   inputGroupProps: InputGroupYrlPropsType
-  coursesBodyProps: CoursesBodyPropsType
+  myCoursesTableProps: MyCoursesTablePropsType
 }
 
 /**

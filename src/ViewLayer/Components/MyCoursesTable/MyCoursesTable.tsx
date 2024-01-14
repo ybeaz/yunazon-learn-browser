@@ -10,22 +10,22 @@ import {
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   CoursesTablePropsOutType,
-  CoursesBodyComponentPropsType,
-  CoursesBodyPropsType,
-  CoursesBodyPropsOutType,
-  CoursesBodyComponentType,
-  CoursesBodyType,
-} from './CoursesBodyTypes'
+  MyCoursesTableComponentPropsType,
+  MyCoursesTablePropsType,
+  MyCoursesTablePropsOutType,
+  MyCoursesTableComponentType,
+  MyCoursesTableType,
+} from './MyCoursesTableTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { CourseType } from '../../../@types/'
 
 /**
- * @description Component to render CoursesBody
- * @import import { CoursesBody, CoursesBodyPropsType, CoursesBodyPropsOutType, CoursesBodyType } 
-             from '../Components/CoursesBody/CoursesBody'
+ * @description Component to render MyCoursesTable
+ * @import import { MyCoursesTable, MyCoursesTablePropsType, MyCoursesTablePropsOutType, MyCoursesTableType } 
+             from '../Components/MyCoursesTable/MyCoursesTable'
  */
-const CoursesBodyComponent: CoursesBodyComponentType = (
-  props: CoursesBodyComponentPropsType
+const MyCoursesTableComponent: MyCoursesTableComponentType = (
+  props: MyCoursesTableComponentPropsType
 ) => {
   const { classAdded, handleEvents, courses, language } = props
 
@@ -108,7 +108,7 @@ const CoursesBodyComponent: CoursesBodyComponentType = (
   }
 
   return (
-    <div className={getClasses('CoursesBody', classAdded)}>
+    <div className={getClasses('MyCoursesTable', classAdded)}>
       <h2 className='_screenTitle'>{DICTIONARY.My_courses[language]}</h2>
       {getCoursesTable(courses)}
     </div>
@@ -116,16 +116,16 @@ const CoursesBodyComponent: CoursesBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const CoursesBody = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyCoursesTable = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(CoursesBodyComponent)
+    React.memo(MyCoursesTableComponent)
   )
 )
 
 export type {
-  CoursesBodyPropsType,
-  CoursesBodyPropsOutType,
-  CoursesBodyComponentType,
-  CoursesBodyType,
+  MyCoursesTablePropsType,
+  MyCoursesTablePropsOutType,
+  MyCoursesTableComponentType,
+  MyCoursesTableType,
 }
