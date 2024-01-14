@@ -9,7 +9,7 @@ import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePrese
 import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
-import { Documents } from '../ViewLayer/Screens/Documents/Documents'
+import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
@@ -21,7 +21,7 @@ const SCREENS: Record<string, FunctionComponent<any>> = {
   AboutAcademy,
   AcademyMatrix,
   AcademyPresent,
-  Documents,
+  MyDocuments,
   Profiles,
   Certificate,
   Error404,

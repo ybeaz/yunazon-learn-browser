@@ -4,7 +4,7 @@ import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { MainFramePropsType, HeaderFramePropsType } from '../../Frames/'
 import { MyDocumentsBodyPropsType } from '../../Components/'
 
-export type DocumentsComponentPropsType = {
+export type MyDocumentsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
@@ -14,23 +14,23 @@ export type DocumentsComponentPropsType = {
   handleEvents: HandleEventType
 }
 
-export type DocumentsPropsType = Omit<
-  DocumentsComponentPropsType,
+export type MyDocumentsPropsType = Omit<
+  MyDocumentsComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
 
-export type DocumentsPropsOutType = {
+export type MyDocumentsPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
-  myDocumentsBodyProps: MyDocumentsBodyPropsType
+  myMyDocumentsBodyProps: MyDocumentsBodyPropsType
 }
 
 /**
- * @import import { DocumentsComponentPropsType, DocumentsPropsType, DocumentsPropsOutType, DocumentsComponentType, DocumentsType } from './DocumentsTypes'
+ * @import import { MyDocumentsComponentPropsType, MyDocumentsPropsType, MyDocumentsPropsOutType, MyDocumentsComponentType, MyDocumentsType } from './MyDocumentsTypes'
  */
-export interface DocumentsComponentType
-  extends React.FunctionComponent<DocumentsComponentPropsType> {
-  (props: DocumentsComponentPropsType): React.ReactElement
+export interface MyDocumentsComponentType
+  extends React.FunctionComponent<MyDocumentsComponentPropsType> {
+  (props: MyDocumentsComponentPropsType): React.ReactElement
 }
 
-export type DocumentsType = React.FunctionComponent<DocumentsPropsType>
+export type MyDocumentsType = React.FunctionComponent<MyDocumentsPropsType>

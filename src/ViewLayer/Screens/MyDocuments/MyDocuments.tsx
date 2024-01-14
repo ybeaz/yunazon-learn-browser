@@ -14,20 +14,20 @@ import {
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
-  DocumentsComponentPropsType,
-  DocumentsPropsType,
-  DocumentsPropsOutType,
-  DocumentsComponentType,
-  DocumentsType,
-} from './DocumentsTypes'
+  MyDocumentsComponentPropsType,
+  MyDocumentsPropsType,
+  MyDocumentsPropsOutType,
+  MyDocumentsComponentType,
+  MyDocumentsType,
+} from './MyDocumentsTypes'
 
 /**
- * @description Component to render Documents
- * @import import { Documents, DocumentsPropsType, DocumentsPropsOutType, DocumentsType } 
-             from '../Components/Documents/Documents'
+ * @description Component to render MyDocuments
+ * @import import { MyDocuments, MyDocumentsPropsType, MyDocumentsPropsOutType, MyDocumentsType } 
+             from '../Components/MyDocuments/MyDocuments'
  */
-const DocumentsComponent: DocumentsComponentType = (
-  props: DocumentsComponentPropsType
+const MyDocumentsComponent: MyDocumentsComponentType = (
+  props: MyDocumentsComponentPropsType
 ) => {
   const {
     classAdded,
@@ -39,7 +39,7 @@ const DocumentsComponent: DocumentsComponentType = (
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 
-  const propsOut: DocumentsPropsOutType = {
+  const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
       moto: DICTIONARY['Together_know_everything'][language],
@@ -57,16 +57,16 @@ const DocumentsComponent: DocumentsComponentType = (
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'Documents',
+      screenType: 'MyDocuments',
     },
-    myDocumentsBodyProps: {
+    myMyDocumentsBodyProps: {
       documents,
       language,
     },
   }
 
   return (
-    <div className={getClasses('Documents', classAdded)}>
+    <div className={getClasses('MyDocuments', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
@@ -75,7 +75,7 @@ const DocumentsComponent: DocumentsComponentType = (
         {/* middle-main */}
         <div>
           {documents.length ? (
-            <MyDocumentsBody {...propsOut.myDocumentsBodyProps} />
+            <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} />
           ) : null}
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
@@ -89,16 +89,16 @@ const DocumentsComponent: DocumentsComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
-export const Documents = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(DocumentsComponent)
+    React.memo(MyDocumentsComponent)
   )
 )
 
 export type {
-  DocumentsPropsType,
-  DocumentsPropsOutType,
-  DocumentsComponentType,
-  DocumentsType,
+  MyDocumentsPropsType,
+  MyDocumentsPropsOutType,
+  MyDocumentsComponentType,
+  MyDocumentsType,
 }

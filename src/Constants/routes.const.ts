@@ -38,8 +38,8 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen: 'Documents',
-    path: `/documents`,
+    screen: 'MyDocuments',
+    path: `/my-documents`,
     children: [],
     errorElement: 'Error404',
   },
