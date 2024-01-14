@@ -36,6 +36,10 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
   } = props
 
   useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } }
+    )
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 

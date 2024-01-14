@@ -35,6 +35,10 @@ export const CertificateComponent: CertificateComponentType = (
   )
 
   useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
+    )
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
   }, [])
 

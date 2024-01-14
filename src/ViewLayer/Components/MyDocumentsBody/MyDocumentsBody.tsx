@@ -17,7 +17,9 @@ import {
   MyDocumentsBodyType,
 } from './MyDocumentsBodyTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { PaginationNameEnumType } from '../../../Interfaces'
 import { DocumentType } from '../../../@types/'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 
 /**
  * @description Component to render MyDocumentsBody
@@ -72,6 +74,9 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
               data: { documentsIDs: [documentID] },
             },
           },
+          paginationNavigationProps: {
+            paginationName: PaginationNameEnumType['pageDocuments'],
+          },
         }
 
         return (
@@ -105,12 +110,21 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
     )
   }
 
+  const propsOut = {
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageCourses'],
+    },
+  }
+
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       <h2 className='_screenTitle'>
         {DICTIONARY.Certificates_Credits_and_diplomas[language]}
       </h2>
       {getDocumentsTable(documents)}
+      <div className='_paginationNavigationWrapper'>
+        <PaginationNavigation {...propsOut.paginationNavigationProps} />
+      </div>
     </div>
   )
 }

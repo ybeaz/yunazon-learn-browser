@@ -2,6 +2,7 @@ import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { PaginationNavigationPropsType } from '../../Components/'
 
 export type MyDocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -19,6 +20,7 @@ export type DocumentsTablePropsOutType = {
   linkToDocumentProps: any
   linkToModuleProps: any
   buttonDeactivateDocumentProps: ButtonYrlPropsType
+  paginationNavigationProps: PaginationNavigationPropsType
 }
 
 export type MyDocumentsBodyPropsOutType = Record<string, any>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -33,6 +33,13 @@ const ProfilesComponent: ProfilesComponentType = (
     classAdded,
     storeStateSlice: { language },
   } = props
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } }
+    )
+  }, [])
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
