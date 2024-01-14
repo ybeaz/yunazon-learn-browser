@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES, RouteType } from '../Constants/routes.const'
-import { CourseCreate } from '../ViewLayer/Screens/CourseCreate/CourseCreate'
+import { MyCourses } from '../ViewLayer/Screens/MyCourses/MyCourses'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
@@ -17,7 +17,7 @@ import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const SCREENS: Record<string, FunctionComponent<any>> = {
-  CourseCreate,
+  MyCourses,
   ArticlePresent,
   AboutAcademy,
   AcademyMatrix,

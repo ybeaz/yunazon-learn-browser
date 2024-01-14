@@ -53,7 +53,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/course-create' },
+        data: { history: navigate, path: '/my-courses' },
       },
       isDisplaying: !!sub,
     },

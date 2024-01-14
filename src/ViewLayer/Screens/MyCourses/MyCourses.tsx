@@ -16,20 +16,20 @@ import {
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
-  CourseCreateComponentPropsType,
-  CourseCreatePropsType,
-  CourseCreatePropsOutType,
-  CourseCreateComponentType,
-  CourseCreateType,
-} from './CourseCreateTypes'
+  MyCoursesComponentPropsType,
+  MyCoursesPropsType,
+  MyCoursesPropsOutType,
+  MyCoursesComponentType,
+  MyCoursesType,
+} from './MyCoursesTypes'
 
 /**
- * @description Component to render CourseCreate
- * @import import { CourseCreate, CourseCreatePropsType, CourseCreatePropsOutType, CourseCreateType } 
-             from '../Components/CourseCreate/CourseCreate'
+ * @description Component to render MyCourses
+ * @import import { MyCourses, MyCoursesPropsType, MyCoursesPropsOutType, MyCoursesType } 
+             from '../Components/MyCourses/MyCourses'
  */
-const CourseCreateComponent: CourseCreateComponentType = (
-  props: CourseCreateComponentPropsType
+const MyCoursesComponent: MyCoursesComponentType = (
+  props: MyCoursesComponentPropsType
 ) => {
   const {
     classAdded,
@@ -42,14 +42,14 @@ const CourseCreateComponent: CourseCreateComponentType = (
   useEffect(() => {
     handleEvents(
       {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'CourseCreate' } }
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyCourses' } }
     )
     if (sub) {
       dispatch(actionAsync.GET_MATRIX_DATA.REQUEST())
     }
   }, [sub])
 
-  const propsOut: CourseCreatePropsOutType = {
+  const propsOut: MyCoursesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
       moto: DICTIONARY['Together_know_everything'][language],
@@ -67,13 +67,13 @@ const CourseCreateComponent: CourseCreateComponentType = (
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'CourseCreate',
+      screenType: 'MyCourses',
     },
     courseCreateBodyProps: {},
   }
 
   return (
-    <div className={getClasses('CourseCreate', classAdded)}>
+    <div className={getClasses('MyCourses', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
@@ -92,16 +92,16 @@ const CourseCreateComponent: CourseCreateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'sub']
-export const CourseCreate = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyCourses = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(CourseCreateComponent)
+    React.memo(MyCoursesComponent)
   )
 )
 
 export type {
-  CourseCreatePropsType,
-  CourseCreatePropsOutType,
-  CourseCreateComponentType,
-  CourseCreateType,
+  MyCoursesPropsType,
+  MyCoursesPropsOutType,
+  MyCoursesComponentType,
+  MyCoursesType,
 }

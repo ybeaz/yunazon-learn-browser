@@ -32,8 +32,8 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen:
-      'CourseCreate' /* Screen/Page to display the form to create a course */,
-    path: `/course-create/:courseID?/:moduleID?`,
+      'MyCourses' /* Screen/Page to display the form to create a course */,
+    path: `/my-courses/`,
     children: [],
     errorElement: 'Error404',
   },

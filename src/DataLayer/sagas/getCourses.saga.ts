@@ -31,8 +31,8 @@ export function* getCoursesGenerator(): Iterable<any> {
   } = stateSelected as RootStoreType
 
   let profileIDs: string[] = []
-  if (screenActive === 'CourseCreate' && sub) profileIDs = [sub]
-  else if (screenActive === 'CourseCreate' && !sub) {
+  if (screenActive === 'MyCourses' && sub) profileIDs = [sub]
+  else if (screenActive === 'MyCourses' && !sub) {
     return
   }
 
