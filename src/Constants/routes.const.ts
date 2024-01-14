@@ -38,13 +38,6 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen:
-      'Courses' /* Screen/Page to display courses created by the author */,
-    path: `/courses`,
-    children: [],
-    errorElement: 'Error404',
-  },
-  {
     screen: 'Documents',
     path: `/documents`,
     children: [],

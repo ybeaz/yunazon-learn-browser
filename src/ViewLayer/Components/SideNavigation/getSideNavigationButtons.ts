@@ -58,16 +58,6 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       isDisplaying: !!sub,
     },
     {
-      icon: 'MdCastForEducation',
-      captureRight: DICTIONARY.My_courses[language],
-      classAdded: 'Button_sideMenuItems',
-      action: {
-        typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/courses' },
-      },
-      isDisplaying: false, // !!sub, // TODO, component Courses.tsx !!sub,
-    },
-    {
       icon: 'MdLightbulbOutline',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',

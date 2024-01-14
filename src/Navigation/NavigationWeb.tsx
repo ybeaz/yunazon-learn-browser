@@ -11,7 +11,6 @@ import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { Documents } from '../ViewLayer/Screens/Documents/Documents'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
-import { Courses } from '../ViewLayer/Screens/Courses/Courses'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
@@ -24,7 +23,6 @@ const SCREENS: Record<string, FunctionComponent<any>> = {
   AcademyPresent,
   Documents,
   Profiles,
-  Courses,
   Certificate,
   Error404,
 }
