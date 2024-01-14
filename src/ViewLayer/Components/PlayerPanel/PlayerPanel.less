@@ -7,13 +7,26 @@
     display: flex;
     flex-direction: row;
 
-    ._capture {
-      display: flex;
-      flex-direction: column;
-      flex: 6;
-      padding: 0 0.5rem 0 0;
-      font-size: @fontSizeH4;
+    ._captureDuration {
+      ._addStyle4Capture {
+        display: flex;
+        height: 2.3rem;
+      }
+
+      ._addSStyle4Duration {
+        display: none;
+      }
+      ._capture {
+        display: flex;
+        flex-direction: column;
+        flex: 6;
+        padding: 0 0.5rem 0 0;
+        font-size: @fontSizeH4;
+      }
+      ._duration {
+      }
     }
+
     ._metaData {
       flex-direction: column;
       display: flex;
@@ -93,12 +106,14 @@
 
 .PlayerPanel_AcademyMatrix {
   .__info {
-    ._capture {
-      font-size: @fontSize;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
+    ._captureDuration {
+      ._capture {
+        font-size: @fontSize;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+      }
     }
     ._metaData {
       display: none;

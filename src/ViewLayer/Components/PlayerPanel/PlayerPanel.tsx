@@ -80,14 +80,20 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
       ? `${courseCapture} ${moduleCapture}`
       : `${courseCapture}`
 
+  const addStyle4Capture =
+    screenType === 'AcademyMatrix' ? `_addStyle4Capture` : ''
+
+  const addSStyle4Duration =
+    screenType === 'AcademyMatrix' ? `_addSStyle4Duration` : ''
+
   const propsOut: PlayerPanelPropsOutType = {}
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
       <div className='__info'>
         <div className='_captureDuration'>
-          <div className='_capture'>{`${capture}`}</div>
-          <div className='_duration'>{duration}</div>
+          <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
+          <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
         </div>
         <div className='_metaData'>
           <div className='_successTried'>
