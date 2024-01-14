@@ -10,6 +10,7 @@ export type MyCoursesComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
+    createModuleStages: RootStoreType['componentsState']['createModuleStages']
   }
   handleEvents: HandleEventType
 }

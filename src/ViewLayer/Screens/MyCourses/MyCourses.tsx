@@ -9,7 +9,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { MyCoursesBody } from '../../Components/MyCoursesBody/MyCoursesBody'
 import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-
+import { CreateCourseStatusEnumType } from '../../../Interfaces/'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -33,7 +33,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub },
+    storeStateSlice: { language, sub, createModuleStages },
     handleEvents,
   } = props
 
@@ -44,10 +44,34 @@ const MyCoursesComponent: MyCoursesComponentType = (
       {},
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyCourses' } }
     )
-    if (sub) {
+
+    const isStateTodoAll = Object.keys(createModuleStages).reduce(
+      (accum: boolean, item: any) => {
+        let output = true
+        if (item.isActive && item.status !== CreateCourseStatusEnumType['todo'])
+          output = false
+        return output
+      },
+      false
+    )
+
+    const isStateSuccessAll = Object.keys(createModuleStages).reduce(
+      (accum: boolean, item: any) => {
+        let output = true
+        if (
+          item.isActive &&
+          item.status !== CreateCourseStatusEnumType['success']
+        )
+          output = false
+        return accum && output
+      },
+      false
+    )
+
+    if (sub && (isStateTodoAll || isStateSuccessAll)) {
       dispatch(actionAsync.GET_MATRIX_DATA.REQUEST())
     }
-  }, [sub])
+  }, [sub, JSON.stringify(createModuleStages)])
 
   const propsOut: MyCoursesPropsOutType = {
     headerFrameProps: {
@@ -91,7 +115,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub']
+const storeStateSliceProps: string[] = ['language', 'sub', 'createModuleStages']
 export const MyCourses = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,

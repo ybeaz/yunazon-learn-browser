@@ -14,7 +14,6 @@ import {
   CreateModuleStagesEnumType,
   RootStoreType,
   HandleEventPropsType,
-  HandleEventType,
 } from '../../../Interfaces/'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/RootStoreType'
@@ -52,7 +51,6 @@ export type MyCoursesBodyComponentPropsType = {
     courseCreateProgress: RootStoreType['courseCreateProgress']
     courses: RootStoreType['courses']
   }
-  handleEvents: HandleEventType
 }
 
 export type MyCoursesBodyPropsType = Omit<

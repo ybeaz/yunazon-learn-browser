@@ -85,7 +85,10 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
       <div className='__info'>
-        <div className='_capture'>{capture}</div>
+        <div className='_captureDuration'>
+          <div className='_capture'>{`${capture}`}</div>
+          <div className='_duration'>{duration}</div>
+        </div>
         <div className='_metaData'>
           <div className='_successTried'>
             <SuccessTried {...successTriedProps} />

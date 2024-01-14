@@ -21,10 +21,28 @@ const TextStructuredComponent: TextStructuredComponentType = (
 ) => {
   const { classAdded, entities, capture } = props
 
+  const getStringNormalizedForReading = (str: string) => {
+    let output: string | string[] = str
+
+    output = output.split('. ')
+
+    output = output
+      .map(
+        (item: string) =>
+          item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()
+      )
+      .join('. ')
+
+    return output
+  }
+
   const getTextStructured = (arrayIn: EntitiyItemType[]): ReactElement[] => {
     return arrayIn.map((entityItem: EntitiyItemType) => {
       const { capture } = entityItem
-      const text = entityItem?.text
+      const textM2 = entityItem?.text
+      const text = textM2 && getStringNormalizedForReading(textM2)
+
+      // console.info('TextStructured [38]', { text, textM2 })
       const divs = entityItem?.divs
 
       let isTextIdent = true

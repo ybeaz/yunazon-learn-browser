@@ -39,7 +39,7 @@ import { getCourseCreateStages } from './getCourseCreateStages'
 const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
   props: MyCoursesBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice, handleEvents } = props
+  const { classAdded, storeStateSlice } = props
 
   const { language, courseCreateProgress, courses } = storeStateSlice
   const createModuleStages: Record<
@@ -186,13 +186,9 @@ const storeStateSliceProps: string[] = [
   'courseCreateProgress',
   'courses',
 ]
-export const MyCoursesBody: MyCoursesBodyType = withPropsYrl({
-  handleEvents: handleEventsIn,
-})(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(MyCoursesBodyComponent)
-  )
+export const MyCoursesBody: MyCoursesBodyType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(MyCoursesBodyComponent)
 )
 
 export type {
