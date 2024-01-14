@@ -22,21 +22,21 @@ import { MyCoursesTable } from '../MyCoursesTable/MyCoursesTable'
 import {
   StagesType,
   StagesPropsOut,
-  CourseCreateBodyComponentPropsType,
-  CourseCreateBodyPropsType,
-  CourseCreateBodyPropsOutType,
-  CourseCreateBodyComponentType,
-  CourseCreateBodyType,
-} from './CourseCreateBodyTypes'
+  MyCoursesBodyComponentPropsType,
+  MyCoursesBodyPropsType,
+  MyCoursesBodyPropsOutType,
+  MyCoursesBodyComponentType,
+  MyCoursesBodyType,
+} from './MyCoursesBodyTypes'
 import { getCourseCreateStages } from './getCourseCreateStages'
 
 /**
- * @description Component to render CourseCreateBody
- * @import import { CourseCreateBody, CourseCreateBodyPropsType, CourseCreateBodyPropsOutType, CourseCreateBodyType } 
-             from '../Components/CourseCreateBody/CourseCreateBody'
+ * @description Component to render MyCoursesBody
+ * @import import { MyCoursesBody, MyCoursesBodyPropsType, MyCoursesBodyPropsOutType, MyCoursesBodyType } 
+             from '../Components/MyCoursesBody/MyCoursesBody'
  */
-const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
-  props: CourseCreateBodyComponentPropsType
+const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
+  props: MyCoursesBodyComponentPropsType
 ) => {
   const { classAdded, storeStateSlice, handleEvents } = props
 
@@ -79,7 +79,7 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
             isDisplaying: status === CreateCourseStatusEnumType['pending'],
           },
           timerProps: {
-            classAdded: 'Timer_CourseCreateBody',
+            classAdded: 'Timer_MyCoursesBody',
             miliseconds: timeCalculated,
             isStoping: status !== CreateCourseStatusEnumType['pending'],
             isDisplaying: status === CreateCourseStatusEnumType['pending'],
@@ -127,13 +127,13 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
   }
 
   useMemo(() => {
-    console.info('CourseCreateBody [130] courseCreateProgress', {
+    console.info('MyCoursesBody [130] courseCreateProgress', {
       ...courseCreateProgress,
       createModuleStages,
     })
   }, [JSON.stringify(courseCreateProgress)])
 
-  const propsOut: CourseCreateBodyPropsOutType = {
+  const propsOut: MyCoursesBodyPropsOutType = {
     inputGroupProps: {
       classAdded: 'InputGroupYrl_CourseCreate',
       inputProps: {
@@ -156,10 +156,10 @@ const CourseCreateBodyComponent: CourseCreateBodyComponentType = (
     },
   }
 
-  console.info('CourseCreateBody [154]', { courses })
+  console.info('MyCoursesBody [154]', { courses })
 
   return (
-    <div className={getClasses('CourseCreateBody', classAdded)}>
+    <div className={getClasses('MyCoursesBody', classAdded)}>
       <div className='_inputGroupWrapper' style={{ width }}>
         <h3 className='_h2'>{DICTIONARY.Create_course[language]}</h3>
         <InputGroupYrl {...propsOut.inputGroupProps} />
@@ -181,18 +181,18 @@ const storeStateSliceProps: string[] = [
   'courseCreateProgress',
   'courses',
 ]
-export const CourseCreateBody: CourseCreateBodyType = withPropsYrl({
+export const MyCoursesBody: MyCoursesBodyType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(CourseCreateBodyComponent)
+    React.memo(MyCoursesBodyComponent)
   )
 )
 
 export type {
-  CourseCreateBodyPropsType,
-  CourseCreateBodyPropsOutType,
-  CourseCreateBodyComponentType,
-  CourseCreateBodyType,
+  MyCoursesBodyPropsType,
+  MyCoursesBodyPropsOutType,
+  MyCoursesBodyComponentType,
+  MyCoursesBodyType,
 }

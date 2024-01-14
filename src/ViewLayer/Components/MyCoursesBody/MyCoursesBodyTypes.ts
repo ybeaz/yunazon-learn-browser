@@ -44,7 +44,7 @@ export type StagesPropsOut = {
   buttonRepeatProps: ButtonYrlPropsType
 }
 
-export type CourseCreateBodyComponentPropsType = {
+export type MyCoursesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
@@ -55,23 +55,22 @@ export type CourseCreateBodyComponentPropsType = {
   handleEvents: HandleEventType
 }
 
-export type CourseCreateBodyPropsType = Omit<
-  CourseCreateBodyComponentPropsType,
+export type MyCoursesBodyPropsType = Omit<
+  MyCoursesBodyComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
 
-export type CourseCreateBodyPropsOutType = {
+export type MyCoursesBodyPropsOutType = {
   inputGroupProps: InputGroupYrlPropsType
   myCoursesTableProps: MyCoursesTablePropsType
 }
 
 /**
- * @import import { CourseCreateBodyComponentPropsType, CourseCreateBodyPropsType, CourseCreateBodyPropsOutType, CourseCreateBodyComponentType, CourseCreateBodyType } from './CourseCreateBodyTypes'
+ * @import import { MyCoursesBodyComponentPropsType, MyCoursesBodyPropsType, MyCoursesBodyPropsOutType, MyCoursesBodyComponentType, MyCoursesBodyType } from './MyCoursesBodyTypes'
  */
-export interface CourseCreateBodyComponentType
-  extends React.FunctionComponent<CourseCreateBodyComponentPropsType> {
-  (props: CourseCreateBodyComponentPropsType): React.ReactElement
+export interface MyCoursesBodyComponentType
+  extends React.FunctionComponent<MyCoursesBodyComponentPropsType> {
+  (props: MyCoursesBodyComponentPropsType): React.ReactElement
 }
 
-export type CourseCreateBodyType =
-  React.FunctionComponent<CourseCreateBodyPropsType>
+export type MyCoursesBodyType = React.FunctionComponent<MyCoursesBodyPropsType>

@@ -6,7 +6,7 @@ import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { CourseCreateBody } from '../../Components/CourseCreateBody/CourseCreateBody'
+import { MyCoursesBody } from '../../Components/MyCoursesBody/MyCoursesBody'
 import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
@@ -80,7 +80,7 @@ const CourseCreateComponent: CourseCreateComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <CourseCreateBody {...propsOut.courseCreateBodyProps} />
+        <MyCoursesBody {...propsOut.courseCreateBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
