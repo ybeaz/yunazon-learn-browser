@@ -12,7 +12,7 @@ import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import {
   withStoreStateSelectedYrl,
   withPropsYrl,
@@ -146,8 +146,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
             <div className='PlateMatrixWrapper'>
               {getPlateMatix(coursesFiltered)}
             </div>
-            <div className='PaginationCoursesWrapper'>
-              <PaginationCourses />
+            <div className='PaginationNavigationWrapper'>
+              <PaginationNavigation />
             </div>
           </div>
         ) : null}
