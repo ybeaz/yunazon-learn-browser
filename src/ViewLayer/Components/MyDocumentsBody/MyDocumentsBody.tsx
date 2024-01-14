@@ -74,9 +74,6 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
               data: { documentsIDs: [documentID] },
             },
           },
-          paginationNavigationProps: {
-            paginationName: PaginationNameEnumType['pageDocuments'],
-          },
         }
 
         return (
@@ -112,7 +109,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   const propsOut = {
     paginationNavigationProps: {
-      paginationName: PaginationNameEnumType['pageCourses'],
+      paginationName: PaginationNameEnumType['pageDocuments'],
     },
   }
 

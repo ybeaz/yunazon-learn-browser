@@ -20,10 +20,11 @@ export type DocumentsTablePropsOutType = {
   linkToDocumentProps: any
   linkToModuleProps: any
   buttonDeactivateDocumentProps: ButtonYrlPropsType
-  paginationNavigationProps: PaginationNavigationPropsType
 }
 
-export type MyDocumentsBodyPropsOutType = Record<string, any>
+export type MyDocumentsBodyPropsOutType = {
+  paginationNavigationProps: PaginationNavigationPropsType
+}
 
 /**
  * @import import { MyDocumentsBodyComponentPropsType, MyDocumentsBodyPropsType, MyDocumentsBodyPropsOutType, MyDocumentsBodyComponentType, MyDocumentsBodyType } from './MyDocumentsBodyTypes'

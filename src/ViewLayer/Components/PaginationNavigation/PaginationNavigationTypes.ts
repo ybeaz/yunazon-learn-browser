@@ -1,10 +1,10 @@
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { PaginationType, PaginationNameEnumType } from '../../../Interfaces'
+import { RootStoreType, PaginationNameEnumType } from '../../../Interfaces'
 
 export type PaginationNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
-    pageCourses: PaginationType
+    pagination: RootStoreType['componentsState']['pagination']
   }
   paginationName: PaginationNameEnumType
 }

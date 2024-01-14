@@ -27,10 +27,14 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
   else if (direction === 'next' && !hasNextPage) firstNext = first
   else if (direction === 'prev' && first >= offset) firstNext = first - offset
 
+  console.info('SET_PAGE_CURSOR [30]', { paginationName, first, firstNext })
+
   dispatch(actionSync.SET_PAGE_CURSOR({ paginationName, first: firstNext }))
 
   if (paginationName === PaginationNameEnumType['pageCourses'])
     dispatch(actionAsync.GET_COURSES.REQUEST())
+  else if (paginationName === PaginationNameEnumType['pageDocuments'])
+    dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
 }
 
 export const SET_PAGE_CURSOR: ActionEventType = withDebounce(

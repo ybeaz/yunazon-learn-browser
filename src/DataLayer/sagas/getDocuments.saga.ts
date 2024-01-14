@@ -21,14 +21,19 @@ export function* getDocumentsGenerator(
   )
   const {
     authAwsCognitoUserData: { sub },
+    componentsState: {
+      pagination: {
+        pageDocuments: { first, offset },
+      },
+    },
   } = stateSelected as RootStoreType
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const readDocumentsConnectionInput: any = {
-      first: 0,
-      offset: 1000,
+      first,
+      offset,
       profileID: sub || '000000',
       stagesPick: selectCoursesStageFlag(),
     }
