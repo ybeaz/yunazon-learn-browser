@@ -17,8 +17,10 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const tagsOmit =
       (query && query?.tagsomit && query?.tagsomit.split(',')) || []
     const first =
-      query && query?.page
-        ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
+      query && query?.[PaginationNameEnumType['pageCourses']]
+        ? parseInt(query?.[PaginationNameEnumType['pageCourses']], 10) *
+            paginationOffset -
+          paginationOffset
         : 0
 
     const data = {
