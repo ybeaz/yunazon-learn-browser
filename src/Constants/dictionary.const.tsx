@@ -7,6 +7,22 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  course: {
+    en: 'course',
+    ru: 'курс',
+  },
+  Do_you_confirm_removing: {
+    en: 'Do you confirm removing',
+    ru: 'Вы подтверждаете удаление',
+  },
+  cancel: {
+    en: 'cancel',
+    ru: 'отменить',
+  },
+  confirm: {
+    en: 'confirm',
+    ru: 'подтвердить',
+  },
   stage_metaData: {
     en: 'getting meta data',
     ru: 'получение мета данных',

@@ -69,7 +69,7 @@
       align-items: center;
       flex-direction: row;
       ._capture_left {
-        padding: 0 0.3rem 0 0;
+        padding: 0 0 0 0;
         line-height: 1.1;
       }
       ._icon {
@@ -1098,12 +1098,15 @@
   }
 }
 
+.Button_NoCancel,
+.Button_YesConfirm,
 .Button_summaryIsSummary,
 .Button_summaryIsObjections {
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;
   max-width: fit-content;
+  border-radius: @borderRadius0P5;
 
   .__button {
     flex: 1;

@@ -8,9 +8,11 @@ import { MainFramePropsType } from '../../Frames/'
 export type MyCoursesComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
-    language: RootStoreType['language']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
+    language: RootStoreType['language']
     createModuleStages: RootStoreType['componentsState']['createModuleStages']
+    courseCreateProgress: RootStoreType['courseCreateProgress']
+    courses: RootStoreType['courses']
   }
   handleEvents: HandleEventType
 }

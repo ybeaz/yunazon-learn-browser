@@ -45,12 +45,10 @@ export type StagesPropsOut = {
 
 export type MyCoursesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: {
-    language: RootStoreType['language']
-    createModuleStages: RootStoreType['componentsState']['createModuleStages']
-    courseCreateProgress: RootStoreType['courseCreateProgress']
-    courses: RootStoreType['courses']
-  }
+  language: RootStoreType['language']
+  createModuleStages: RootStoreType['componentsState']['createModuleStages']
+  courseCreateProgress: RootStoreType['courseCreateProgress']
+  courses: RootStoreType['courses']
 }
 
 export type MyCoursesBodyPropsType = Omit<

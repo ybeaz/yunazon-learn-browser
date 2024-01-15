@@ -1,4 +1,10 @@
 import {
+  ConfirmationYesNoBodyYrl,
+  ConfirmationYesNoBodyYrlPropsType,
+  ConfirmationYesNoBodyYrlType,
+} from './ConfirmationYesNoBodyYrl/ConfirmationYesNoBodyYrl'
+
+import {
   InputGroupYrlPropsType,
   InputGroupYrlType,
   InputGroupYrl,
@@ -108,6 +114,8 @@ export {
 }
 
 export type {
+  ConfirmationYesNoBodyYrlPropsType,
+  ConfirmationYesNoBodyYrlType,
   InputGroupYrlPropsType,
   InputGroupYrlType,
   ButtonYrlPropsType,
@@ -123,6 +131,7 @@ export type {
 }
 
 export {
+  ConfirmationYesNoBodyYrl,
   InputGroupYrl,
   ButtonYrl,
   IconYrl,

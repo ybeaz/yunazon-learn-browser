@@ -39,13 +39,13 @@ import { getCourseCreateStages } from './getCourseCreateStages'
 const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
   props: MyCoursesBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice } = props
-
-  const { language, courseCreateProgress, courses } = storeStateSlice
-  const createModuleStages: Record<
-    CreateModuleStagesEnumType,
-    CreateModuleStageType
-  > = storeStateSlice.createModuleStages
+  const {
+    classAdded,
+    language,
+    courseCreateProgress,
+    courses,
+    createModuleStages,
+  } = props
 
   const stagesNo = Object.keys(createModuleStages).filter(
     // @ts-expect-error
@@ -173,7 +173,9 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
           <MyCoursesTable {...propsOut.myCoursesTableProps} />
         ) : null}
         <div className='_paginationNavigationWrapper'>
-          <PaginationNavigation {...propsOut.paginationNavigationProps} />
+          {courses.length ? (
+            <PaginationNavigation {...propsOut.paginationNavigationProps} />
+          ) : null}
         </div>
       </div>
     </div>

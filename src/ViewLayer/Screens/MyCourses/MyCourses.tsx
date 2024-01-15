@@ -9,7 +9,11 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { MyCoursesBody } from '../../Components/MyCoursesBody/MyCoursesBody'
 import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { CreateCourseStatusEnumType } from '../../../Interfaces/'
+import {
+  CreateCourseStatusEnumType,
+  CreateModuleStagesEnumType,
+  CreateModuleStageType,
+} from '../../../Interfaces/'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -33,7 +37,13 @@ const MyCoursesComponent: MyCoursesComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub, createModuleStages },
+    storeStateSlice: {
+      language,
+      sub,
+      createModuleStages,
+      courseCreateProgress,
+      courses,
+    },
     handleEvents,
   } = props
 
@@ -71,7 +81,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
       dispatch(actionAsync.GET_MATRIX_DATA.REQUEST())
     }
-  }, [sub, JSON.stringify(createModuleStages)])
+  }, [sub, JSON.stringify({ createModuleStages, courses })])
 
   const propsOut: MyCoursesPropsOutType = {
     headerFrameProps: {
@@ -93,7 +103,12 @@ const MyCoursesComponent: MyCoursesComponentType = (
     mainFrameProps: {
       screenType: 'MyCourses',
     },
-    courseCreateBodyProps: {},
+    courseCreateBodyProps: {
+      language,
+      createModuleStages,
+      courseCreateProgress,
+      courses,
+    },
   }
 
   return (
@@ -115,7 +130,13 @@ const MyCoursesComponent: MyCoursesComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub', 'createModuleStages']
+const storeStateSliceProps: string[] = [
+  'language',
+  'sub',
+  'createModuleStages',
+  'courseCreateProgress',
+  'courses',
+]
 export const MyCourses = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,

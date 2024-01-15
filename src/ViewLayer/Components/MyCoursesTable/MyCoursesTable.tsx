@@ -5,8 +5,8 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
-  ButtonYrl,
 } from '../../ComponentsLibrary/'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   CoursesTablePropsOutType,
@@ -67,8 +67,33 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
             icon: 'MdDeleteOutline',
             classAdded: 'Button_DeactivateCourse',
             action: {
-              typeEvent: 'CLICK_ON_DEACTIVATE_COURSE',
-              data: { coursesIDs: [courseID] },
+              typeEvent: 'SET_MODAL_FRAMES',
+              data: [
+                {
+                  childName: 'ConfirmationYesNoBodyYrl',
+                  isActive: true,
+                  childProps: {
+                    message: [
+                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['course'][language]}`,
+                      `${capture}?`,
+                    ],
+                    captureButton4Yes: DICTIONARY['confirm'][language],
+                    captureButton4No: DICTIONARY['cancel'][language],
+                    action4Yes: {
+                      typeEvent: 'TODO',
+                      data: { coursesIDs: [courseID] },
+                    },
+                    action4No: {
+                      typeEvent: 'SET_MODAL_FRAMES',
+                      data: {
+                        childName: 'ConfirmationYesNoBodyYrl',
+                        isActive: false,
+                      },
+                    },
+                    buttonRight: 'NoCancel',
+                  },
+                },
+              ],
             },
           },
         }
