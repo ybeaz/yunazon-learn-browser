@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -47,6 +47,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
     handleEvents,
   } = props
 
+  const [isStatePendingAny, setIsStatePedingAny] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -55,27 +56,52 @@ const MyCoursesComponent: MyCoursesComponentType = (
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyCourses' } }
     )
 
-    const isStateTodoAll = Object.keys(createModuleStages).reduce(
-      (accum: boolean, item: any) => {
-        let output = true
-        if (item.isActive && item.status !== CreateCourseStatusEnumType['todo'])
-          output = false
-        return output
+    const isStatePendingAny = Object.keys(createModuleStages).reduce(
+      // @ts-expect-error
+      (accum: boolean, item: CreateModuleStagesEnumType) => {
+        let output = false
+        if (
+          createModuleStages[item].isActive &&
+          createModuleStages[item].status ===
+            CreateCourseStatusEnumType['pending']
+        )
+          output = true
+        return output || accum
       },
       false
     )
 
-    const isStateSuccessAll = Object.keys(createModuleStages).reduce(
-      (accum: boolean, item: any) => {
+    setIsStatePedingAny(!!isStatePendingAny)
+
+    const isStateTodoAll = Object.keys(createModuleStages).reduce(
+      // @ts-expect-error
+      (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = true
         if (
-          item.isActive &&
-          item.status !== CreateCourseStatusEnumType['success']
-        )
+          createModuleStages[item].isActive &&
+          createModuleStages[item].status !== CreateCourseStatusEnumType['todo']
+        ) {
           output = false
+        }
         return accum && output
       },
-      false
+      true
+    )
+
+    const isStateSuccessAll = Object.keys(CreateModuleStagesEnumType).reduce(
+      // @ts-expect-error
+      (accum: boolean, item: CreateModuleStagesEnumType) => {
+        let output = true
+        if (
+          createModuleStages[item].isActive &&
+          createModuleStages[item].status !==
+            CreateCourseStatusEnumType['success']
+        ) {
+          output = false
+        }
+        return accum && output
+      },
+      true
     )
 
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
@@ -108,6 +134,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
       createModuleStages,
       courseCreateProgress,
       courses,
+      isStatePendingAny,
     },
   }
 

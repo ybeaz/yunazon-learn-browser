@@ -45,6 +45,7 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
     courseCreateProgress,
     courses,
     createModuleStages,
+    isStatePendingAny,
   } = props
 
   const stagesNo = Object.keys(createModuleStages).filter(
@@ -166,7 +167,9 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
         <h3 className='_h2'>{DICTIONARY.Create_course[language]}</h3>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
-      <div className='_stagesWrapper'>{getStages(stages)}</div>
+      <div className='_stagesWrapper'>
+        {isStatePendingAny ? getStages(stages) : null}
+      </div>
       <div className='_messageWrapper'></div>
       <div className='_coursesBodyWrapper'>
         {courses.length ? (
