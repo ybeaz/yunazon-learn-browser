@@ -21,9 +21,10 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
   const paginationSlice: PaginationType = pagination[paginationName]
   const { first = 0, offset, hasNextPage } = paginationSlice
 
-  let firstNext = 0
+  let firstNext = data?.first || 0
 
-  if (direction === 'next' && hasNextPage) firstNext = first + offset
+  if (direction === 'set') firstNext = firstNext
+  else if (direction === 'next' && hasNextPage) firstNext = first + offset
   else if (direction === 'next' && !hasNextPage) firstNext = first
   else if (direction === 'prev' && first >= offset) firstNext = first - offset
 

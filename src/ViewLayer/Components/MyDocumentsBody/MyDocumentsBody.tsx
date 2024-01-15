@@ -68,10 +68,35 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
           },
           buttonDeactivateDocumentProps: {
             icon: 'MdDeleteOutline',
-            classAdded: 'Button_DeactivateDocument',
+            classAdded: 'Button_DeactivateCourse',
             action: {
-              typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-              data: { documentsIDs: [documentID] },
+              typeEvent: 'SET_MODAL_FRAMES',
+              data: [
+                {
+                  childName: 'ConfirmationYesNoBodyYrl',
+                  isActive: true,
+                  childProps: {
+                    message: [
+                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['document'][language]} No ${documentID}`,
+                      `${capture}?`,
+                    ],
+                    captureButton4Yes: DICTIONARY['confirm'][language],
+                    captureButton4No: DICTIONARY['cancel'][language],
+                    action4Yes: {
+                      typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
+                      data: { documentsIDs: [documentID] },
+                    },
+                    action4No: {
+                      typeEvent: 'SET_MODAL_FRAMES',
+                      data: {
+                        childName: 'ConfirmationYesNoBodyYrl',
+                        isActive: false,
+                      },
+                    },
+                    buttonRight: 'NoCancel',
+                  },
+                },
+              ],
             },
           },
         }

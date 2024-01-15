@@ -7,12 +7,13 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
-
+import { paginationOffset } from '../../../Constants/pagination.const'
+import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
 import {
   MyDocumentsComponentPropsType,
   MyDocumentsPropsType,
@@ -35,11 +36,31 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
     handleEvents,
   } = props
 
+  const query = getParsedUrlQueryBrowserApi()
+  const first =
+    query && query?.[PaginationNameEnumType['pageDocuments']]
+      ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) *
+          paginationOffset -
+        paginationOffset
+      : 0
+
   useEffect(() => {
     handleEvents(
       {},
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } }
     )
+    handleEvents(
+      {},
+      {
+        type: 'SET_PAGE_CURSOR_HANDLE',
+        data: {
+          paginationName: PaginationNameEnumType['pageDocuments'],
+          direction: 'set',
+          first,
+        },
+      }
+    )
+
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 

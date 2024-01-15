@@ -11,6 +11,10 @@ export const DICTIONARY: IDictionary = {
     en: 'course',
     ru: 'курс',
   },
+  document: {
+    en: 'document',
+    ru: 'документ',
+  },
   Do_you_confirm_removing: {
     en: 'Do you confirm removing',
     ru: 'Вы подтверждаете удаление',
