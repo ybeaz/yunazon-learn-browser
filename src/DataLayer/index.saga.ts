@@ -9,6 +9,7 @@ import getCourse10MataDataCreatedSaga from './sagas/getCourse10MataDataCreated.s
 import getCourseBotResponseSaga from './sagas/getCourseBotResponse.saga'
 import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
 import readArticleSaga from './sagas/readArticle.saga'
+import deactivateCoursesSaga from './sagas/deactivateCourses.saga'
 import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
 import getDocumentsSaga from './sagas/getDocuments.saga'
 import getAuthDataSaga from './sagas/getAuthData.saga'
@@ -33,6 +34,7 @@ export default function* indexSaga() {
     fork(getCourse10MataDataCreatedSaga),
     fork(getCourseCreatedSaga),
     fork(readArticleSaga),
+    fork(deactivateCoursesSaga),
     fork(deactivateDocumentsSaga),
     fork(getDocumentsSaga),
     fork(getAuthDataSaga),

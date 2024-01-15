@@ -80,7 +80,7 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
                     captureButton4Yes: DICTIONARY['confirm'][language],
                     captureButton4No: DICTIONARY['cancel'][language],
                     action4Yes: {
-                      typeEvent: 'TODO',
+                      typeEvent: 'CLICK_ON_DEACTIVATE_COURSE',
                       data: { coursesIDs: [courseID] },
                     },
                     action4No: {
