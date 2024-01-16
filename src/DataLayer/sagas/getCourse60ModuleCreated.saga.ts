@@ -41,11 +41,18 @@ export function* getCourse60ModuleCreatedGenerator(
       thumbnails,
     } = metaData
 
+    const descriptionNext = summary.reduce(
+      (accum: string, summaryItem: any) =>
+        `${accum}${summaryItem?.capture ? ` ${summaryItem?.capture}.` : ''}`,
+      ''
+    )
+
     console.info('getCourse60ModuleCreated.saga [28]', {
       sub,
       contentID,
       capture,
       description,
+      descriptionNext,
       duration,
       language: languageIn,
       tags,
@@ -67,7 +74,7 @@ export function* getCourse60ModuleCreatedGenerator(
         {
           profileID: sub,
           capture,
-          description,
+          description: descriptionNext,
           language: languageIn ? languageIn : 'en',
           isActive: true,
           meta: {
