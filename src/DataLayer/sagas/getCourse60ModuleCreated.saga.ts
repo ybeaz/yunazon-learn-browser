@@ -47,21 +47,6 @@ export function* getCourse60ModuleCreatedGenerator(
       ''
     )
 
-    console.info('getCourse60ModuleCreated.saga [28]', {
-      sub,
-      contentID,
-      capture,
-      description,
-      descriptionNext,
-      duration,
-      language: languageIn,
-      tags,
-      thumbnails,
-      questions,
-      summary,
-      objections,
-    })
-
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
