@@ -640,6 +640,7 @@ export type Mutation = {
   updateCompetencyTags: Array<CompetencyTagType>;
   updateCourses: Array<CourseType>;
   updateCoursesMeta: Array<UpdateCourseMetaType>;
+  updateDocuments: Array<DocumentType>;
   updateProfiles: Array<ProfileType>;
   updateTemplates: Array<TemplatesType>;
   updateUser: UserModelExtendedType;
@@ -784,6 +785,11 @@ export type MutationUpdateCoursesArgs = {
 
 export type MutationUpdateCoursesMetaArgs = {
   updateCoursesMetaInput: Array<UpdateCourseMetaInputType>;
+};
+
+
+export type MutationUpdateDocumentsArgs = {
+  updateDocumentsInput: Array<UpdateDocumentInputType>;
 };
 
 
@@ -1485,6 +1491,41 @@ export type UpdateCourseMetaType = {
   profileID: Scalars['ID']['output'];
   /** updateInfo */
   updateInfo?: Maybe<UpdateInfoType>;
+};
+
+export type UpdateDocumentInputType = {
+  /** course capture */
+  capture: Scalars['String']['input'];
+  /** contentIDs */
+  contentIDs: Array<Scalars['String']['input']>;
+  /** courseID */
+  courseID: Scalars['ID']['input'];
+  /** courses created date */
+  dateCreated: Scalars['Float']['input'];
+  /** courses deleted date */
+  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  /** courses updated date */
+  dateUpdated: Scalars['Float']['input'];
+  /** course description */
+  description: Scalars['String']['input'];
+  /** documentID */
+  documentID: Scalars['ID']['input'];
+  /** ipClient profile/ user */
+  ipClient?: InputMaybe<Scalars['String']['input']>;
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** language code */
+  language: Scalars['String']['input'];
+  /** meta */
+  meta: MetaDocumentInputType;
+  /** moduleIDs */
+  moduleIDs: Array<Scalars['String']['input']>;
+  /** pathName of the document */
+  pathName: Scalars['String']['input'];
+  /** profileID */
+  profileID: Scalars['ID']['input'];
+  /** userName */
+  profileProps: ProfilePropsInputType;
 };
 
 export type UpdateInfoType = {

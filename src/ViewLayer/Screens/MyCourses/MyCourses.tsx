@@ -47,7 +47,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
     handleEvents,
   } = props
 
-  const [isStatePendingAny, setIsStatePedingAny] = useState(false)
+  const [isStatePendingAny, setIsStatePendingAny] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
       false
     )
 
-    setIsStatePedingAny(!!isStatePendingAny)
+    setIsStatePendingAny(!!isStatePendingAny)
 
     const isStateTodoAll = Object.keys(createModuleStages).reduce(
       // @ts-expect-error

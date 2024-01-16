@@ -26,6 +26,7 @@ export function* getDocumentsGenerator(
         pageDocuments: { first, offset },
       },
     },
+    forms: { inputSearch, tagsPick, tagsOmit },
   } = stateSelected as RootStoreType
 
   try {
@@ -34,7 +35,10 @@ export function* getDocumentsGenerator(
     const readDocumentsConnectionInput: any = {
       first,
       offset,
-      profileID: sub || '000000',
+      profileIDs: [sub || '000000'],
+      searchPhrase: inputSearch,
+      tagsPick,
+      tagsOmit,
       stagesPick: selectCoursesStageFlag(),
     }
 

@@ -14,7 +14,9 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCoursesGenerator(): Iterable<any> {
+export function* getCoursesGenerator(
+  params: ActionReduxType | any
+): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )

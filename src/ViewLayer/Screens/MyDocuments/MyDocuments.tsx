@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -36,6 +36,8 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
     handleEvents,
   } = props
 
+  const firstRender = useRef(true)
+
   const query = getParsedUrlQueryBrowserApi()
   const first =
     query && query?.[PaginationNameEnumType['pageDocuments']]
@@ -45,6 +47,16 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
       : 0
 
   useEffect(() => {
+    if (firstRender) {
+      handleEvents(
+        {},
+        {
+          type: 'ONCHANGE_INPUT_SEARCH',
+          data: { storeFormProp: 'inputSearch', value: '' },
+        }
+      )
+    }
+
     handleEvents(
       {},
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } }
@@ -62,7 +74,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
     )
 
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
-  }, [sub])
+  }, [sub, JSON.stringify(documents)])
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
@@ -76,7 +88,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
       isButtonAuthUser: true,
       isSelectLanguage: true,
       isButtonThemeToggle: true,
-      isSeachGroup: false,
+      isSeachGroup: true,
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,

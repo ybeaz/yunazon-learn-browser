@@ -7,8 +7,8 @@ const { dispatch } = store
 export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
   const storeFormGroup = dataIn && dataIn.storeFormGroup
   const storeFormProp = dataIn && dataIn.storeFormProp
-
-  const { value } = event.target as HTMLInputElement
+  const value =
+    (dataIn && dataIn?.value) || (event?.target?.value as string) || ''
 
   const data = {
     storeFormGroup,

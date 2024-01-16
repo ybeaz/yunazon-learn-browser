@@ -760,6 +760,7 @@ type Mutation {
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
   updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
+  updateDocuments(updateDocumentsInput: [UpdateDocumentInputType!]!): [DocumentType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
@@ -1488,6 +1489,56 @@ type UpdateCourseMetaType {
 
   """updateInfo"""
   updateInfo: UpdateInfoType
+}
+
+input UpdateDocumentInputType {
+  """course capture"""
+  capture: String!
+
+  """contentIDs"""
+  contentIDs: [String!]!
+
+  """courseID"""
+  courseID: ID!
+
+  """courses created date"""
+  dateCreated: Float!
+
+  """courses deleted date"""
+  dateDeleted: Float = null
+
+  """courses updated date"""
+  dateUpdated: Float!
+
+  """course description"""
+  description: String!
+
+  """documentID"""
+  documentID: ID!
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """meta"""
+  meta: MetaDocumentInputType!
+
+  """moduleIDs"""
+  moduleIDs: [String!]!
+
+  """pathName of the document"""
+  pathName: String!
+
+  """profileID"""
+  profileID: ID!
+
+  """userName"""
+  profileProps: ProfilePropsInputType!
 }
 
 type UpdateInfoType {
