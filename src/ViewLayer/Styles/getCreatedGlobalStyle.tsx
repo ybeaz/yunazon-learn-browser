@@ -270,11 +270,12 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+    .Button_NoCancel,
     .Button_create_stage_repeat .__button,
     .Button_summaryIsSummary .__button,
     .Button_summaryIsObjections .__button,
-    .Button_PaginationCoursesBackward .__button,
-    .Button_PaginationCoursesForward .__button,
+    .Button_PaginationNavigationBackward .__button,
+    .Button_PaginationNavigationForward .__button,
     .Button_MdBackward3 .__button,
     .Button_MdForward2 .__button,
     .Button_CallForActionMatrix .__button,
@@ -322,6 +323,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
         getColor(props2, 'colorFirst', medial, darker, 'Dark')};
     }
 
+    .Button_YesConfirm,
     .Button_downLeft .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorSecondLighter3', medial, lighter3)};

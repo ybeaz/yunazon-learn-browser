@@ -8,8 +8,6 @@ import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
 function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
-  console.info('getMatrixData.saga [12]', { params })
-
   try {
     const query = getParsedUrlQueryBrowserApi()
 
@@ -19,8 +17,10 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const tagsOmit =
       (query && query?.tagsomit && query?.tagsomit.split(',')) || []
     const first =
-      query && query?.page
-        ? parseInt(query?.page, 10) * paginationOffset - paginationOffset
+      query && query?.[PaginationNameEnumType['pageCourses']]
+        ? parseInt(query?.[PaginationNameEnumType['pageCourses']], 10) *
+            paginationOffset -
+          paginationOffset
         : 0
 
     const data = {
@@ -38,7 +38,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pagesCourses'],
+        paginationName: PaginationNameEnumType['pageCourses'],
         first,
       })
     )

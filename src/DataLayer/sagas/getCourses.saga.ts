@@ -14,23 +14,34 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCoursesGenerator(): Iterable<any> {
+export function* getCoursesGenerator(
+  params: ActionReduxType | any
+): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
 
   const {
     componentsState: {
+      screenActive,
       pagination: {
-        pagesCourses: { first, offset },
+        pageCourses: { first, offset },
       },
     },
     forms: { inputSearch, tagsPick, tagsOmit },
+    authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
+
+  let profileIDs: string[] = []
+  if (screenActive === 'MyCourses' && sub) profileIDs = [sub]
+  else if (screenActive === 'MyCourses' && !sub) {
+    return
+  }
 
   let readCoursesConnectionInput: any = {
     first,
     offset,
+    profileIDs,
     searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,
@@ -64,7 +75,7 @@ export function* getCoursesGenerator(): Iterable<any> {
 
     const pageInfo = readCoursesConnection?.pageInfo
     yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: 'pagesCourses', ...pageInfo })
+      actionSync.SET_PAGE_INFO({ paginationName: 'pageCourses', ...pageInfo })
     )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

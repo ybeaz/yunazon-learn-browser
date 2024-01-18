@@ -13,8 +13,8 @@ export const connectionsTimeouts: Record<
 > = {
   standard: 5000,
   metaData: 5000,
-  transcript: 5000,
+  transcript: 10000,
   transcriptChunkToSummary: 60000,
-  summaryChunkToQuestions: 90000,
+  summaryChunkToQuestions: 120000,
   summaryChunkToObjections: 90000,
 }

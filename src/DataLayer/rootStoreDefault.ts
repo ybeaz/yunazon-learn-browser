@@ -10,7 +10,7 @@ import {
 
 import { paginationOffset } from '../Constants/pagination.const'
 
-import { courseCreateProgress01 } from './__mocks__/courseCreateProgress'
+import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
 export const userStoreDefault: UserType = {
   userAvatar: '',
@@ -66,6 +66,7 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  screenActive: 'AcademyMatrix',
   isObjections: false,
   isSummary: true,
   isConfetti: false,
@@ -90,13 +91,13 @@ export const componentsStateDefault: ComponentsStateType = {
     },
   ],
   pagination: {
-    pagesCourses: {
+    pageCourses: {
       first: 0,
       offset: paginationOffset,
       hasNextPage: true,
       endCursor: '',
     },
-    pagesDocuments: {
+    pageDocuments: {
       first: 0,
       offset: paginationOffset,
       hasNextPage: true,
@@ -125,7 +126,7 @@ export const componentsStateDefault: ComponentsStateType = {
       timeCalculated: null,
     },
     objections: {
-      isActive: false,
+      isActive: isObjectionsStageForCourseCreateFlag(),
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },

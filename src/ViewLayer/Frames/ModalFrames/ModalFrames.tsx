@@ -4,7 +4,9 @@ import Confetti from 'react-confetti'
 
 // import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
 // import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ConfirmationYesNoBodyYrl } from '../../ComponentsLibrary/ConfirmationYesNoBodyYrl/ConfirmationYesNoBodyYrl'
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
@@ -19,6 +21,7 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
+  ConfirmationYesNoBodyYrl,
   EmalInputs,
   QuestionScores,
   AboutAcademyBody,

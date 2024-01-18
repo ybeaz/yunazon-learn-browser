@@ -46,6 +46,11 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
     articles[0]
 
   useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'ArticlePresent' } }
+    )
+
     if (Array.isArray(articles) && !articleFound) {
       handleEvents({}, { typeEvent: 'FIND_ARTICLE', data: articleID })
     }

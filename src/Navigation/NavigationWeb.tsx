@@ -4,35 +4,33 @@ import { nanoid } from 'nanoid'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES, RouteType } from '../Constants/routes.const'
-import { CourseCreate } from '../ViewLayer/Screens/CourseCreate/CourseCreate'
+import { MyCourses } from '../ViewLayer/Screens/MyCourses/MyCourses'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
-import { Documents } from '../ViewLayer/Screens/Documents/Documents'
+import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
-import { Courses } from '../ViewLayer/Screens/Courses/Courses'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
-const PAGES: Record<string, FunctionComponent<any>> = {
-  CourseCreate,
+const SCREENS: Record<string, FunctionComponent<any>> = {
+  MyCourses,
   ArticlePresent,
   AboutAcademy,
   AcademyMatrix,
   AcademyPresent,
-  Documents,
+  MyDocuments,
   Profiles,
-  Courses,
   Certificate,
   Error404,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const routesDict = ROUTES.map((route: RouteType, index: number) => {
-    const { page, path, children, errorElement } = route
-    const Element = PAGES[page]
+    const { screen, path, children, errorElement } = route
+    const Element = SCREENS[screen]
     const element: ReactElement = <Element />
     const id = nanoid()
     return { id, element, path, children, errorElement }

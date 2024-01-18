@@ -36,7 +36,7 @@ export const SET_PAGE_CURSOR: ReducerType = (
     )
   }
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-    searchParamsName: 'page',
+    searchParamsName: paginationName,
     searchParamsValue,
   }
 

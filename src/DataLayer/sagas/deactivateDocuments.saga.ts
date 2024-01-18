@@ -37,6 +37,12 @@ function* deactivateDocumentsGenerator(
     yield call(getDocuments)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    yield put(
+      actionSync.SET_MODAL_FRAMES({
+        childName: 'ConfirmationYesNoBodyYrl',
+        isActive: false,
+      })
+    )
   } catch (error: any) {
     console.info(
       'deactivateDocuments [41] ERROR',

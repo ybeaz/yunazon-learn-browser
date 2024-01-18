@@ -8,13 +8,17 @@ import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachC
 import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { PaginationCourses } from '../../Components/PaginationCourses/PaginationCourses'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
+import {
+  withStoreStateSelectedYrl,
+  withPropsYrl,
+} from '../../ComponentsLibrary/'
 import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
   AcademyMatrixPropsType,
@@ -40,7 +44,15 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       isLoadedCourses,
       inputSearch,
     },
+    handleEvents,
   } = props
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } }
+    )
+  }, [])
 
   const coursesFiltered = courses
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
@@ -112,6 +124,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     mainFrameProps: {
       screenType,
     },
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageCourses'],
+    },
   }
 
   return (
@@ -130,12 +145,12 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {null}
         {/* middle-main */}
         {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
-          <div className='PlateMatrixPagination'>
-            <div className='PlateMatrixWrapper'>
+          <div className='_plateMatrixPagination'>
+            <div className='_plateMatrixWrapper'>
               {getPlateMatix(coursesFiltered)}
             </div>
-            <div className='PaginationCoursesWrapper'>
-              <PaginationCourses />
+            <div className='_paginationNavigationWrapper'>
+              <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
           </div>
         ) : null}
@@ -156,9 +171,13 @@ const storeStateSliceProps: string[] = [
   'isLoadedCourses',
   'inputSearch',
 ]
-export const AcademyMatrix: AcademyMatrixType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(AcademyMatrixComponent)
+export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    React.memo(AcademyMatrixComponent)
+  )
 )
 
 export type {

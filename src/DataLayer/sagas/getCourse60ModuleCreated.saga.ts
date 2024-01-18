@@ -41,19 +41,11 @@ export function* getCourse60ModuleCreatedGenerator(
       thumbnails,
     } = metaData
 
-    console.info('getCourse60ModuleCreated.saga [28]', {
-      sub,
-      contentID,
-      capture,
-      description,
-      duration,
-      language: languageIn,
-      tags,
-      thumbnails,
-      questions,
-      summary,
-      objections,
-    })
+    const descriptionNext = summary.reduce(
+      (accum: string, summaryItem: any) =>
+        `${accum}${summaryItem?.capture ? ` ${summaryItem?.capture}.` : ''}`,
+      ''
+    )
 
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
@@ -67,7 +59,7 @@ export function* getCourse60ModuleCreatedGenerator(
         {
           profileID: sub,
           capture,
-          description,
+          description: descriptionNext,
           language: languageIn ? languageIn : 'en',
           isActive: true,
           meta: {
@@ -87,7 +79,7 @@ export function* getCourse60ModuleCreatedGenerator(
               contentID,
               capture: `Модуль I. ${capture}`,
               duration,
-              questionNumber: 4,
+              questionNumber: 6,
               passRate: 0.75,
               thumbnails,
               questions,

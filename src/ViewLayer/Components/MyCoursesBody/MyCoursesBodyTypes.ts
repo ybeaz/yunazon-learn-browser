@@ -7,12 +7,13 @@ import {
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
+import { PaginationNavigationPropsType } from '../../Components/'
+import { MyCoursesTablePropsType } from '../MyCoursesTable/MyCoursesTable'
 
 import {
   CreateModuleStagesEnumType,
   RootStoreType,
   HandleEventPropsType,
-  HandleEventType,
 } from '../../../Interfaces/'
 
 import { CreateCourseStatusEnumType } from '../../../Interfaces/RootStoreType'
@@ -42,32 +43,32 @@ export type StagesPropsOut = {
   buttonRepeatProps: ButtonYrlPropsType
 }
 
-export type CourseCreateBodyComponentPropsType = {
+export type MyCoursesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: {
-    language: RootStoreType['language']
-    createModuleStages: RootStoreType['componentsState']['createModuleStages']
-    courseCreateProgress: RootStoreType['courseCreateProgress']
-  }
-  handleEvents: HandleEventType
+  language: RootStoreType['language']
+  createModuleStages: RootStoreType['componentsState']['createModuleStages']
+  courseCreateProgress: RootStoreType['courseCreateProgress']
+  courses: RootStoreType['courses']
+  isShowCourseCreateProgress: boolean
 }
 
-export type CourseCreateBodyPropsType = Omit<
-  CourseCreateBodyComponentPropsType,
+export type MyCoursesBodyPropsType = Omit<
+  MyCoursesBodyComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
 
-export type CourseCreateBodyPropsOutType = {
+export type MyCoursesBodyPropsOutType = {
   inputGroupProps: InputGroupYrlPropsType
+  myCoursesTableProps: MyCoursesTablePropsType
+  paginationNavigationProps: PaginationNavigationPropsType
 }
 
 /**
- * @import import { CourseCreateBodyComponentPropsType, CourseCreateBodyPropsType, CourseCreateBodyPropsOutType, CourseCreateBodyComponentType, CourseCreateBodyType } from './CourseCreateBodyTypes'
+ * @import import { MyCoursesBodyComponentPropsType, MyCoursesBodyPropsType, MyCoursesBodyPropsOutType, MyCoursesBodyComponentType, MyCoursesBodyType } from './MyCoursesBodyTypes'
  */
-export interface CourseCreateBodyComponentType
-  extends React.FunctionComponent<CourseCreateBodyComponentPropsType> {
-  (props: CourseCreateBodyComponentPropsType): React.ReactElement
+export interface MyCoursesBodyComponentType
+  extends React.FunctionComponent<MyCoursesBodyComponentPropsType> {
+  (props: MyCoursesBodyComponentPropsType): React.ReactElement
 }
 
-export type CourseCreateBodyType =
-  React.FunctionComponent<CourseCreateBodyPropsType>
+export type MyCoursesBodyType = React.FunctionComponent<MyCoursesBodyPropsType>

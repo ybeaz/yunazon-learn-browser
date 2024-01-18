@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
@@ -35,6 +35,13 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
     classAdded,
     storeStateSlice: { language },
   } = props
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } }
+    )
+  }, [])
 
   const propsOut: AboutAcademyPropsOutType = {
     headerFrameProps: {

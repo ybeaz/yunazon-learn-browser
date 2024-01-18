@@ -39,13 +39,14 @@ export type SearchFormSepType = {
 }
 
 export enum PaginationNameEnumType {
-  pagesCourses = 'pagesCourses',
-  pagesDocuments = 'pagesDocuments',
+  pageCourses = 'pageCourses',
+  pageDocuments = 'pageDocuments',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
+  screenActive: string
   isObjections: boolean
   isSummary: boolean
   isConfetti: boolean

@@ -1,3 +1,4 @@
+export * from './SET_SCREEN_ACTIVE'
 export * from './ADD_ARTICLE'
 export * from './TOGGLE_IS_OBJECTIONS'
 export * from './TOGGLE_IS_SUMMARY'

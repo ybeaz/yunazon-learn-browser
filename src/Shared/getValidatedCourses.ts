@@ -29,7 +29,7 @@ const errorCourse = ({
   if (
     !courseDescription ||
     typeof courseDescription !== 'string' ||
-    courseDescription.length < 64
+    courseDescription.length < 32
   ) {
     courseValidation = [
       ...courseValidation,

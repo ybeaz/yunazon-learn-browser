@@ -9,6 +9,21 @@ export interface FeatureFlagType {
 }
 
 /**
+ * @description Flag to toggle adding course create functionality
+ *              (Reason is NetAngels is blocked from ChatGPT)
+ */
+export const isCourseCreateSectionFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => (envTypeIn === 'local' ? true : false)
+
+/**
+ * @description Flag to toggle adding objections to the content
+ */
+export const isObjectionsStageForCourseCreateFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
+/**
  * @description Flag to toggle isLoadingLocalStorageStoreState
  *      where or not to load initially local storage store state
  */

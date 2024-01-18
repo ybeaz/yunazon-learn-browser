@@ -5,7 +5,7 @@ import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 export type GetSideNavigationButtonsProps = {
   navigate: any
   language: RootStoreType['language']
-  preferred_username: RootStoreType['authAwsCognitoUserData']['preferred_username']
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
 }
 
 export interface GetSideNavigationButtons {
@@ -16,7 +16,7 @@ export type SideNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
-    preferred_username: RootStoreType['authAwsCognitoUserData']['preferred_username']
+    sub: RootStoreType['authAwsCognitoUserData']['sub']
     isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
   }
   handleEvents: ActionEventType

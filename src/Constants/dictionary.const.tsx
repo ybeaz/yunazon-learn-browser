@@ -7,6 +7,26 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  course: {
+    en: 'course',
+    ru: 'курс',
+  },
+  document: {
+    en: 'document',
+    ru: 'документ',
+  },
+  Do_you_confirm_removing: {
+    en: 'Do you confirm removing',
+    ru: 'Вы подтверждаете удаление',
+  },
+  cancel: {
+    en: 'cancel',
+    ru: 'отменить',
+  },
+  confirm: {
+    en: 'confirm',
+    ru: 'подтвердить',
+  },
   stage_metaData: {
     en: 'getting meta data',
     ru: 'получение мета данных',
@@ -62,6 +82,10 @@ export const DICTIONARY: IDictionary = {
   objections: {
     en: 'objections',
     ru: 'возражения',
+  },
+  Certificates_Credits_and_diplomas: {
+    en: 'Certificates, Credits and diplomas',
+    ru: 'Сертификаты, кредиты и дипломы',
   },
   Create_course: {
     en: 'Create course',

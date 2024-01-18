@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -9,24 +10,26 @@ import {
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   DocumentsTablePropsOutType,
-  DocumentsBodyComponentPropsType,
-  DocumentsBodyPropsType,
-  DocumentsBodyPropsOutType,
-  DocumentsBodyComponentType,
-  DocumentsBodyType,
-} from './DocumentsBodyTypes'
+  MyDocumentsBodyComponentPropsType,
+  MyDocumentsBodyPropsType,
+  MyDocumentsBodyPropsOutType,
+  MyDocumentsBodyComponentType,
+  MyDocumentsBodyType,
+} from './MyDocumentsBodyTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { PaginationNameEnumType } from '../../../Interfaces'
 import { DocumentType } from '../../../@types/'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 
 /**
- * @description Component to render DocumentsBody
- * @import import { DocumentsBody, DocumentsBodyPropsType, DocumentsBodyPropsOutType, DocumentsBodyType } 
-             from '../Components/DocumentsBody/DocumentsBody'
+ * @description Component to render MyDocumentsBody
+ * @import import { MyDocumentsBody, MyDocumentsBodyPropsType, MyDocumentsBodyPropsOutType, MyDocumentsBodyType } 
+             from '../Components/MyDocumentsBody/MyDocumentsBody'
  */
-const DocumentsBodyComponent: DocumentsBodyComponentType = (
-  props: DocumentsBodyComponentPropsType
+const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
+  props: MyDocumentsBodyComponentPropsType
 ) => {
-  const { classAdded, handleEvents, documents } = props
+  const { classAdded, handleEvents, documents, language } = props
 
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
     const documentsRows: React.ReactElement[] = documentsIn.map(
@@ -65,10 +68,35 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
           },
           buttonDeactivateDocumentProps: {
             icon: 'MdDeleteOutline',
-            classAdded: 'Button_DeactivateDocument',
+            classAdded: 'Button_DeactivateCourse',
             action: {
-              typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-              data: { documentsIDs: [documentID] },
+              typeEvent: 'SET_MODAL_FRAMES',
+              data: [
+                {
+                  childName: 'ConfirmationYesNoBodyYrl',
+                  isActive: true,
+                  childProps: {
+                    message: [
+                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['document'][language]} No ${documentID}`,
+                      `${capture}?`,
+                    ],
+                    captureButton4Yes: DICTIONARY['confirm'][language],
+                    captureButton4No: DICTIONARY['cancel'][language],
+                    action4Yes: {
+                      typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
+                      data: { documentsIDs: [documentID] },
+                    },
+                    action4No: {
+                      typeEvent: 'SET_MODAL_FRAMES',
+                      data: {
+                        childName: 'ConfirmationYesNoBodyYrl',
+                        isActive: false,
+                      },
+                    },
+                    buttonRight: 'NoCancel',
+                  },
+                },
+              ],
             },
           },
         }
@@ -104,25 +132,37 @@ const DocumentsBodyComponent: DocumentsBodyComponentType = (
     )
   }
 
+  const propsOut = {
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageDocuments'],
+    },
+  }
+
   return (
-    <div className={getClasses('DocumentsBody', classAdded)}>
-      <h2 className='_screenTitle'>Certificates and diplomas</h2>
+    <div className={getClasses('MyDocumentsBody', classAdded)}>
+      <h2 className='_screenTitle'>
+        {DICTIONARY.Certificates_Credits_and_diplomas[language]}
+      </h2>
       {getDocumentsTable(documents)}
+
+      <div className='_paginationNavigationWrapper'>
+        <PaginationNavigation {...propsOut.paginationNavigationProps} />
+      </div>
     </div>
   )
 }
 
 const storeStateSliceProps: string[] = []
-export const DocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(DocumentsBodyComponent)
+    React.memo(MyDocumentsBodyComponent)
   )
 )
 
 export type {
-  DocumentsBodyPropsType,
-  DocumentsBodyPropsOutType,
-  DocumentsBodyComponentType,
-  DocumentsBodyType,
+  MyDocumentsBodyPropsType,
+  MyDocumentsBodyPropsOutType,
+  MyDocumentsBodyComponentType,
+  MyDocumentsBodyType,
 }
