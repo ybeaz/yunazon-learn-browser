@@ -117,7 +117,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
     )
 
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
-      dispatch(actionAsync.GET_MATRIX_DATA.REQUEST())
+      dispatch(actionAsync.GET_COURSES.REQUEST())
     }
   }, [sub, JSON.stringify({ createModuleStages, courses })])
 
