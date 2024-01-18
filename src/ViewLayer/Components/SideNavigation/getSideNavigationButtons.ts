@@ -5,6 +5,7 @@ import {
   GetSideNavigationButtons,
 } from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
+import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
 
 /**
  * @description Function to getSideNavigationButtons
@@ -55,7 +56,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'GO_SCREEN',
         data: { history: navigate, path: '/my-courses' },
       },
-      isDisplaying: !!sub,
+      isDisplaying: !!sub && isCourseCreateSectionFlag(),
     },
     {
       icon: 'MdLightbulbOutline',

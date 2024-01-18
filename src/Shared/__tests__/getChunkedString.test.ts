@@ -9,6 +9,7 @@ import {
   text20,
   expected20,
   text32,
+  text42,
 } from '../__mocks__/texts'
 
 /**
@@ -20,6 +21,16 @@ import {
  */
 
 const tests = [
+  {
+    isActive: true,
+    params: { input: text42 },
+    expected: [text42],
+    options: {
+      chunkCharacters: ['.\n\n', '.\n', '. ', '\n', ', ', ' '],
+      chunkSize: 5000,
+      maxSearch: 256,
+    },
+  },
   {
     isActive: true,
     params: { input: text32 },
