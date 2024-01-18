@@ -119,7 +119,8 @@ const MyCoursesComponent: MyCoursesComponentType = (
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
       dispatch(actionAsync.GET_COURSES.REQUEST())
     }
-  }, [sub, JSON.stringify({ createModuleStages, courses })])
+    // TODO: to research why courses couses cycling call on prod
+  }, [JSON.stringify({ sub, createModuleStages, coursesLen: courses.length })])
 
   const propsOut: MyCoursesPropsOutType = {
     headerFrameProps: {
