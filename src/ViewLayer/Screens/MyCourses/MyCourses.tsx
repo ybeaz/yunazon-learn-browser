@@ -47,7 +47,8 @@ const MyCoursesComponent: MyCoursesComponentType = (
     handleEvents,
   } = props
 
-  const [isStatePendingAny, setIsStatePendingAny] = useState(false)
+  const [isShowCourseCreateProgress, setIsShowCourseCreateProgress] =
+    useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -56,8 +57,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyCourses' } }
     )
 
-    const isStatePendingAny = Object.keys(createModuleStages).reduce(
-      // @ts-expect-error
+    const isStatePendingAny = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = false
         if (
@@ -71,10 +71,23 @@ const MyCoursesComponent: MyCoursesComponentType = (
       false
     )
 
-    setIsStatePendingAny(!!isStatePendingAny)
+    const isStateFailureAny = Object.values(CreateModuleStagesEnumType).reduce(
+      (accum: boolean, item: CreateModuleStagesEnumType) => {
+        let output = false
+        if (
+          createModuleStages[item].isActive &&
+          createModuleStages[item].status ===
+            CreateCourseStatusEnumType['failure']
+        )
+          output = true
+        return output || accum
+      },
+      false
+    )
 
-    const isStateTodoAll = Object.keys(createModuleStages).reduce(
-      // @ts-expect-error
+    setIsShowCourseCreateProgress(!!isStatePendingAny || !!isStateFailureAny)
+
+    const isStateTodoAll = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = true
         if (
@@ -88,8 +101,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
       true
     )
 
-    const isStateSuccessAll = Object.keys(CreateModuleStagesEnumType).reduce(
-      // @ts-expect-error
+    const isStateSuccessAll = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = true
         if (
@@ -129,12 +141,12 @@ const MyCoursesComponent: MyCoursesComponentType = (
     mainFrameProps: {
       screenType: 'MyCourses',
     },
-    courseCreateBodyProps: {
+    myCoursesBodyProps: {
       language,
       createModuleStages,
       courseCreateProgress,
       courses,
-      isStatePendingAny,
+      isShowCourseCreateProgress,
     },
   }
 
@@ -146,7 +158,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <MyCoursesBody {...propsOut.courseCreateBodyProps} />
+        <MyCoursesBody {...propsOut.myCoursesBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}

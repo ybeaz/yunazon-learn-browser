@@ -79,7 +79,7 @@ export function* getCourse60ModuleCreatedGenerator(
               contentID,
               capture: `Модуль I. ${capture}`,
               duration,
-              questionNumber: 4,
+              questionNumber: 6,
               passRate: 0.75,
               thumbnails,
               questions,

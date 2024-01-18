@@ -49,7 +49,7 @@ export type MyCoursesBodyComponentPropsType = {
   createModuleStages: RootStoreType['componentsState']['createModuleStages']
   courseCreateProgress: RootStoreType['courseCreateProgress']
   courses: RootStoreType['courses']
-  isStatePendingAny: boolean
+  isShowCourseCreateProgress: boolean
 }
 
 export type MyCoursesBodyPropsType = Omit<

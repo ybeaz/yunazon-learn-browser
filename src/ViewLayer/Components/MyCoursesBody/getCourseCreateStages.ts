@@ -2,7 +2,7 @@ import {
   StagesType,
   GetCourseCreateStagesType,
   GetCourseCreateStagesPropsType,
-} from './CourseCreateBodyTypes'
+} from './MyCoursesBodyTypes'
 
 // STOPPED HERE: enum status { todo, pending, sucess, etc. }
 

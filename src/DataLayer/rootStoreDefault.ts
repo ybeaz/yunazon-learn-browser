@@ -10,7 +10,7 @@ import {
 
 import { paginationOffset } from '../Constants/pagination.const'
 
-import { courseCreateProgress01 } from './__mocks__/courseCreateProgress'
+import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
 export const userStoreDefault: UserType = {
   userAvatar: '',
@@ -126,7 +126,7 @@ export const componentsStateDefault: ComponentsStateType = {
       timeCalculated: null,
     },
     objections: {
-      isActive: false,
+      isActive: isObjectionsStageForCourseCreateFlag(),
       status: CreateCourseStatusEnumType['todo'],
       timeCalculated: null,
     },

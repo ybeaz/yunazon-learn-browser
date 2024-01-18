@@ -49,7 +49,7 @@ export function* getCourse20TranscriptCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
+        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.transcript],
       }
     )
 

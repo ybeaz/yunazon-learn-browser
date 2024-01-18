@@ -45,11 +45,10 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
     courseCreateProgress,
     courses,
     createModuleStages,
-    isStatePendingAny,
+    isShowCourseCreateProgress,
   } = props
 
-  const stagesNo = Object.keys(createModuleStages).filter(
-    // @ts-expect-error
+  const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
     (key: CreateModuleStagesEnumType) =>
       createModuleStages[key].isActive === true
   ).length
@@ -168,7 +167,7 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>
-        {isStatePendingAny ? getStages(stages) : null}
+        {isShowCourseCreateProgress ? getStages(stages) : null}
       </div>
       <div className='_messageWrapper'></div>
       <div className='_coursesBodyWrapper'>

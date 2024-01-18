@@ -52,7 +52,7 @@ export function* getCourse10MataDataCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
+        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.metaData],
       }
     )
 

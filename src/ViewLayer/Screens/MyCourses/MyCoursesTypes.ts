@@ -25,7 +25,7 @@ export type MyCoursesPropsType = Omit<
 export type MyCoursesPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: MainFramePropsType
-  courseCreateBodyProps: MyCoursesBodyPropsType
+  myCoursesBodyProps: MyCoursesBodyPropsType
 }
 
 /**

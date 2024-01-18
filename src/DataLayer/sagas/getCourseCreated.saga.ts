@@ -18,18 +18,10 @@ import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
 export function* getCourseCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
-  /*
-  CreateModuleStagesEnumType['metaData'],
-  CreateModuleStagesEnumType['transcript'],
-  CreateModuleStagesEnumType['summary'],
-  CreateModuleStagesEnumType['questions'],
-  CreateModuleStagesEnumType['objections'],
-  CreateModuleStagesEnumType['courseModule']
-*/
-
   try {
     yield put(
       actionSync.ADD_COURSE_CREATE_DATA({
+        originUrl: '',
         course: {},
         metaData: {},
         questions: [],

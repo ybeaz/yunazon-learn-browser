@@ -8,6 +8,10 @@ export interface FeatureFlagType {
   (envTypeIn?: string): boolean | any
 }
 
+export const isObjectionsStageForCourseCreateFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
 /**
  * @description Flag to toggle isLoadingLocalStorageStoreState
  *      where or not to load initially local storage store state
