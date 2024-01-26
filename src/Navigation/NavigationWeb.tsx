@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { ROUTES, RouteType } from '../Constants/routes.const'
+import { ROUTES, RouteType } from './routes.const'
 import { MyCourses } from '../ViewLayer/Screens/MyCourses/MyCourses'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'

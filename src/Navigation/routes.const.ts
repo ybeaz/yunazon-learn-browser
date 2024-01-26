@@ -8,7 +8,7 @@ export type RouteType = {
 export const ROUTES: RouteType[] = [
   {
     screen: 'ArticlePresent',
-    path: `/a/:articleID/:slug?`,
+    path: `/a/:articleID/:slugArticle?`,
     children: [],
     errorElement: 'Error404',
   },
@@ -20,7 +20,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'Certificate',
-    path: `/d/:documentID/:dataName?`,
+    path: `/d/:documentID/:slugDocument?`,
     children: [],
     errorElement: 'Error404',
   },
@@ -45,7 +45,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'AcademyPresent',
-    path: `/m/:moduleID/:moduleCapture?`,
+    path: `/m/:moduleID/:slugModule?`,
     children: [],
     errorElement: 'Error404',
   },
