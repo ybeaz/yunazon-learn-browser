@@ -385,7 +385,7 @@ input CreateModuleInputType {
   meta: MetaInputType = null
 
   """module objection"""
-  objections: [ObjectionInputType!]
+  objections: [ObjectionInputType!] = []
 
   """module passRate"""
   passRate: Float = 0.75
@@ -397,7 +397,7 @@ input CreateModuleInputType {
   questionNumber: Int! = 4
 
   """module questions"""
-  questions: [QuestionInputType!]!
+  questions: [QuestionInputType!]! = []
 
   """module summary"""
   summary: [SummaryItemInputType!] = []
@@ -406,7 +406,7 @@ input CreateModuleInputType {
   thumbnails: ThumbnailsInputType = null
 
   """module transcriptList"""
-  transcriptList: [TranscriptObjectInputType!]
+  transcriptList: [TranscriptObjectInputType!] = []
 }
 
 input CreateOriginInputType {
@@ -1435,7 +1435,7 @@ input ReadCoursesConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = true
+  isActive: Boolean
 
   """language code"""
   language: String = null
@@ -1496,7 +1496,7 @@ input ReadDocumentsConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = true
+  isActive: Boolean
 
   """language code"""
   language: String = null
@@ -1559,7 +1559,7 @@ input ReadModulesConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = true
+  isActive: Boolean
 
   """language code"""
   language: String = null
@@ -1655,26 +1655,26 @@ type ResponseMessageType {
 
 input SortCoursesInputType {
   """sorting direction: 1 ascending, -1 descending"""
-  direction: Float! = -1
+  direction: Float
 
   """property name to sort by"""
-  prop: String! = "dateUpdated"
+  prop: String
 }
 
 input SortDocumentsInputType {
   """sorting direction: 1 ascending, -1 descending"""
-  direction: Float! = -1
+  direction: Float
 
   """property name to sort by"""
-  prop: String! = "dateUpdated"
+  prop: String
 }
 
 input SortInputType {
   """sorting direction: 1 ascending, -1 descending"""
-  direction: Float! = -1
+  direction: Float
 
   """property name to sort by"""
-  prop: String! = "dateUpdated"
+  prop: String
 }
 
 type Subscription {
@@ -2187,7 +2187,7 @@ input UpdateModuleInputType {
   moduleID: ID!
 
   """module objection"""
-  objections: [ObjectionInputType!]
+  objections: [ObjectionInputType!] = []
 
   """module passRate"""
   passRate: Float = 0.75
@@ -2199,7 +2199,7 @@ input UpdateModuleInputType {
   questionNumber: Int! = 4
 
   """module questions"""
-  questions: [QuestionInputType!]!
+  questions: [QuestionInputType!]! = []
 
   """module summary"""
   summary: [SummaryItemInputType!] = []
@@ -2208,7 +2208,7 @@ input UpdateModuleInputType {
   thumbnails: ThumbnailsInputType = null
 
   """module transcriptList"""
-  transcriptList: [TranscriptObjectInputType!]
+  transcriptList: [TranscriptObjectInputType!] = []
 }
 
 input UpdateTemplatesInputType {

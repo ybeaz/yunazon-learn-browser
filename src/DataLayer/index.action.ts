@@ -83,6 +83,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_MODULES',
   'GET_COURSE_BOT_RESPONSE',
   'GET_COURSE_MODULE_CREATED',
   'GET_COURSE_OBJECTIONS_CREATED',

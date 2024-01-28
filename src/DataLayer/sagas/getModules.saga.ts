@@ -3,18 +3,17 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-// import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { getPreparedCourses } from '../../Shared/getPreparedCourses'
+import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCoursesGenerator(
+export function* getModulesGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
@@ -45,7 +44,7 @@ export function* getCoursesGenerator(
     searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,
-    stagesPick: selectCoursesStageFlag(),
+    stagesPick: [],
     sort: { prop: 'dateCreated', direction: -1 },
   }
 
@@ -70,7 +69,7 @@ export function* getCoursesGenerator(
 
     let coursesNext: any = getChainedResponsibility(readCoursesConnection)
       .exec(getMappedConnectionToItems, { printRes: false })
-      .exec(getPreparedCourses).result
+      .exec(getPreparedModules).result
 
     yield put(actionSync.SET_COURSES(coursesNext))
 
@@ -82,14 +81,14 @@ export function* getCoursesGenerator(
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info(
-      'getCourses.saga [77] ERROR',
+      'getModules.saga [77] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourses = withDebounce(getCoursesGenerator, 500)
+export const getModules = withDebounce(getModulesGenerator, 500)
 
-export default function* getCoursesSaga() {
-  yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)
+export default function* getModulesSaga() {
+  yield takeEvery([actionAsync.GET_MODULES.REQUEST().type], getModules)
 }

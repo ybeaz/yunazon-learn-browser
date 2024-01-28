@@ -341,7 +341,7 @@ export type CreateModuleInputType = {
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
-  questions: Array<QuestionInputType>;
+  questions?: Array<QuestionInputType>;
   /** module summary */
   summary?: InputMaybe<Array<SummaryItemInputType>>;
   /** thumbnail image data */
@@ -1625,23 +1625,23 @@ export type ResponseMessageType = {
 
 export type SortCoursesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
-  direction?: Scalars['Float']['input'];
+  direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
-  prop?: Scalars['String']['input'];
+  prop?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SortDocumentsInputType = {
   /** sorting direction: 1 ascending, -1 descending */
-  direction?: Scalars['Float']['input'];
+  direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
-  prop?: Scalars['String']['input'];
+  prop?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type SortInputType = {
   /** sorting direction: 1 ascending, -1 descending */
-  direction?: Scalars['Float']['input'];
+  direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
-  prop?: Scalars['String']['input'];
+  prop?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Subscription = {
@@ -2066,7 +2066,7 @@ export type UpdateModuleInputType = {
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
-  questions: Array<QuestionInputType>;
+  questions?: Array<QuestionInputType>;
   /** module summary */
   summary?: InputMaybe<Array<SummaryItemInputType>>;
   /** thumbnail image data */
