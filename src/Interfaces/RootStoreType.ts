@@ -39,7 +39,7 @@ export type SearchFormSepType = {
 }
 
 export enum PaginationNameEnumType {
-  pageCourses = 'pageCourses',
+  pageModules = 'pageModules',
   pageDocuments = 'pageDocuments',
 }
 

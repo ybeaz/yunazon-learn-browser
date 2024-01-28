@@ -125,7 +125,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       screenType,
     },
     paginationNavigationProps: {
-      paginationName: PaginationNameEnumType['pageCourses'],
+      paginationName: PaginationNameEnumType['pageModules'],
     },
   }
 

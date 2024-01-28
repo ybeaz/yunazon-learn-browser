@@ -156,7 +156,7 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
       language,
     },
     paginationNavigationProps: {
-      paginationName: PaginationNameEnumType['pageCourses'],
+      paginationName: PaginationNameEnumType['pageModules'],
     },
   }
 

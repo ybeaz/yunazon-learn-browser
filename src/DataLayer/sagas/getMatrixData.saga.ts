@@ -17,8 +17,8 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const tagsOmit =
       (query && query?.tagsomit && query?.tagsomit.split(',')) || []
     const first =
-      query && query?.[PaginationNameEnumType['pageCourses']]
-        ? parseInt(query?.[PaginationNameEnumType['pageCourses']], 10) *
+      query && query?.[PaginationNameEnumType['pageModules']]
+        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
             paginationOffset -
           paginationOffset
         : 0
@@ -38,7 +38,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageCourses'],
+        paginationName: PaginationNameEnumType['pageModules'],
         first,
       })
     )

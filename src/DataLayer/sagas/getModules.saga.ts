@@ -24,7 +24,7 @@ export function* getModulesGenerator(
     componentsState: {
       screenActive,
       pagination: {
-        pageCourses: { first, offset },
+        pageModules: { first, offset },
       },
     },
     forms: { inputSearch, tagsPick, tagsOmit },
@@ -75,7 +75,7 @@ export function* getModulesGenerator(
 
     const pageInfo = readCoursesConnection?.pageInfo
     yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: 'pageCourses', ...pageInfo })
+      actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo })
     )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

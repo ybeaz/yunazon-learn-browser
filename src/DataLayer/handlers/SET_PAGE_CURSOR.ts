@@ -30,7 +30,7 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
 
   dispatch(actionSync.SET_PAGE_CURSOR({ paginationName, first: firstNext }))
 
-  if (paginationName === PaginationNameEnumType['pageCourses'])
+  if (paginationName === PaginationNameEnumType['pageModules'])
     dispatch(actionAsync.GET_COURSES.REQUEST())
   else if (paginationName === PaginationNameEnumType['pageDocuments'])
     dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
