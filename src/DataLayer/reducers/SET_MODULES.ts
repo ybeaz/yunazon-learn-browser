@@ -2,12 +2,11 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { CourseType, ModuleType } from '../../@types/GraphqlTypes.d'
 
-export const SET_COURSES: ReducerType = (
+export const SET_MODULES: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
   const { isLoaded } = store
-  const { mediaLoaded } = isLoaded
 
   /* Making mediaLoaded false for each moduleID by default */
   const mediaLoadedNext = data.reduce(
@@ -36,7 +35,7 @@ export const SET_COURSES: ReducerType = (
     mediaLoaded: mediaLoadedNext,
   }
 
-  const storeNext = { ...store, courses: data, isLoaded: isLoadedNext }
+  const storeNext = { ...store, modules: data, isLoaded: isLoadedNext }
 
   return storeNext
 }

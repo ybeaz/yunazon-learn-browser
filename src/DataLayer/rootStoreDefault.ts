@@ -165,6 +165,7 @@ export const courseCreateProgressDefault: CourseCreateProgressType = {
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
+  modules: [],
   courses: [],
   courseCreateProgress: courseCreateProgressDefault,
   documents: [],

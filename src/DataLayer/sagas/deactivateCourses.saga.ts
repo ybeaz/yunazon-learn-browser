@@ -5,6 +5,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getCourses } from './getCourses.saga'
+import { getModules } from './getModules.saga'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
@@ -35,6 +36,7 @@ function* deactivateCoursesGenerator(
     )
 
     yield call(getCourses)
+    yield call(getModules)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(

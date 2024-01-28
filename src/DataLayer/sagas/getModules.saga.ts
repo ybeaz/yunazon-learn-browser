@@ -8,7 +8,6 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
-import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
@@ -37,7 +36,7 @@ export function* getModulesGenerator(
     return
   }
 
-  let readCoursesConnectionInput: any = {
+  let readModulesConnectionInput: any = {
     first,
     offset,
     profileIDs,
@@ -52,13 +51,13 @@ export function* getModulesGenerator(
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
 
     const variables = {
-      readCoursesConnectionInput,
+      readModulesConnectionInput,
     }
 
-    const readCoursesConnection: any = yield getResponseGraphqlAsync(
+    const readModulesConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readCoursesConnection',
+        resolveGraphqlName: 'readModulesConnection',
       },
       {
         ...getHeadersAuthDict(),
@@ -67,13 +66,13 @@ export function* getModulesGenerator(
       }
     )
 
-    let coursesNext: any = getChainedResponsibility(readCoursesConnection)
+    let modulesNext: any = getChainedResponsibility(readModulesConnection)
       .exec(getMappedConnectionToItems, { printRes: false })
       .exec(getPreparedModules).result
 
-    yield put(actionSync.SET_COURSES(coursesNext))
+    yield put(actionSync.SET_MODULES(modulesNext))
 
-    const pageInfo = readCoursesConnection?.pageInfo
+    const pageInfo = readModulesConnection?.pageInfo
     yield put(
       actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo })
     )

@@ -4,6 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getCourses } from './getCourses.saga'
+import { getModules } from './getModules.saga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
@@ -44,6 +45,7 @@ function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield getCourses()
+    yield getModules()
   } catch (error: any) {
     console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }

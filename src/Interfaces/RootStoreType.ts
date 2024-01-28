@@ -1,5 +1,5 @@
 import { UserType } from './UserType'
-import { CourseType, DocumentType } from '../@types/'
+import { ModuleType, CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
@@ -118,6 +118,7 @@ export type CourseCreateProgressType = {
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
+  modules: ModuleType[]
   courses: CourseType[]
   courseCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
