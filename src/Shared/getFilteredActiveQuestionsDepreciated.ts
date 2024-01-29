@@ -3,7 +3,9 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getFilteredActiveQuestions = (courses: any[]): any[] => {
+export const getFilteredActiveQuestionsDepreciated = (
+  courses: any[]
+): any[] => {
   return courses.map(course => {
     const { modules } = course
 

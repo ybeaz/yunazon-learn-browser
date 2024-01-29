@@ -40,9 +40,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       language,
       durationMultiplier,
       courses,
+      modules,
       isLoadedGlobalVars,
       isLoadedCourses,
-      inputSearch,
     },
     handleEvents,
   } = props
@@ -129,6 +129,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     },
   }
 
+  console.info('AcademyMatrix [132]', { modules, courses })
+
   return (
     <div className='AcademyMatrix'>
       <Helmet>
@@ -167,9 +169,9 @@ const storeStateSliceProps: string[] = [
   'language',
   'durationMultiplier',
   'courses',
+  'modules',
   'isLoadedGlobalVars',
   'isLoadedCourses',
-  'inputSearch',
 ]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,

@@ -70,6 +70,8 @@ export function* getModulesGenerator(
       .exec(getMappedConnectionToItems, { printRes: false })
       .exec(getPreparedModules).result
 
+    console.info('getModules.saga [73]', { modulesNext })
+
     yield put(actionSync.SET_MODULES(modulesNext))
 
     const pageInfo = readModulesConnection?.pageInfo

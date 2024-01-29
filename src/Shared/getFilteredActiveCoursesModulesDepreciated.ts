@@ -3,7 +3,9 @@
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getFilteredActiveCoursesModules = (courses: any[]): any[] => {
+export const getFilteredActiveCoursesModulesDepreciated = (
+  courses: any[]
+): any[] => {
   return courses.filter((course: any) => {
     const { isActive: isActiveCourse, modules } = course
     let res = true

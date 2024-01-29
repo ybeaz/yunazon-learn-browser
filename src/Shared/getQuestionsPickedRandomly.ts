@@ -1,3 +1,5 @@
+import { ModuleType } from '../@types/GraphqlTypes'
+
 import {
   getArrayElemPickedRandomly,
   GetArrayElemPickedRandomlyOptionsType,
@@ -5,8 +7,6 @@ import {
 
 import { getParsedUrlQuery } from './getParsedUrlQuery'
 import { isParsableInt } from './isParsableInt'
-
-export type GetQuestionsPickedRandomlyParamsType = any[]
 
 export type GetQuestionsPickedRandomlyOptionsType = {
   printRes?: boolean
@@ -18,7 +18,7 @@ export type GetQuestionsPickedRandomlyResType = any
 
 interface GetQuestionsPickedRandomlyType {
   (
-    params: GetQuestionsPickedRandomlyParamsType,
+    modules: ModuleType[],
     options?: GetQuestionsPickedRandomlyOptionsType
   ): GetQuestionsPickedRandomlyResType
 }
@@ -38,7 +38,7 @@ const optionsDefault: Required<GetQuestionsPickedRandomlyOptionsType> = {
  * @import import { getQuestionsPickedRandomly, GetQuestionsPickedRandomlyParamsType } from '../Shared/getQuestionsPickedRandomly'
  */
 export const getQuestionsPickedRandomly: GetQuestionsPickedRandomlyType = (
-  courses: GetQuestionsPickedRandomlyParamsType,
+  modules: ModuleType[],
   optionsIn: GetQuestionsPickedRandomlyOptionsType = optionsDefault
 ) => {
   const options: Required<GetQuestionsPickedRandomlyOptionsType> = {
@@ -53,57 +53,50 @@ export const getQuestionsPickedRandomly: GetQuestionsPickedRandomlyType = (
   try {
     const { pr, rp, qn, nq } = getParsedUrlQuery()
 
-    output = courses.map((course: any) => {
-      const { modules, ...theRestOfCourse } = course
+    output = modules.map((module: any) => {
+      const { questions, questionNumber, passRate, ...theRestOfModule } = module
 
-      const modulesNext = modules.map((module: any) => {
-        const { questions, questionNumber, passRate, ...theRestOfModule } =
-          module
+      let questionNumberNext: number = questionNumber
+      let passRateNext: number = passRate || 0.75
 
-        let questionNumberNext: number = questionNumber
-        let passRateNext: number = passRate || 0.75
+      if (
+        (qn || nq) &&
+        qn !== 'all' &&
+        qn !== 'inf' &&
+        nq !== 'all' &&
+        nq !== 'inf'
+      ) {
+        const questionNumberQuery: string = qn ? qn : nq ? nq : '6'
+        questionNumberNext = isParsableInt(questionNumberQuery)
+          ? parseInt(questionNumberQuery, 10)
+          : questionNumberNext
+      } else if (
+        ((qn || nq) && qn === 'all') ||
+        qn === 'inf' ||
+        nq === 'all' ||
+        nq === 'inf'
+      ) {
+        questionNumberNext = questions.length
+      }
 
-        if (
-          (qn || nq) &&
-          qn !== 'all' &&
-          qn !== 'inf' &&
-          nq !== 'all' &&
-          nq !== 'inf'
-        ) {
-          const questionNumberQuery: string = qn ? qn : nq ? nq : '6'
-          questionNumberNext = isParsableInt(questionNumberQuery)
-            ? parseInt(questionNumberQuery, 10)
-            : questionNumberNext
-        } else if (
-          ((qn || nq) && qn === 'all') ||
-          qn === 'inf' ||
-          nq === 'all' ||
-          nq === 'inf'
-        ) {
-          questionNumberNext = questions.length
-        }
+      if (pr || pr) {
+        passRateNext = !!pr
+          ? parseFloat(pr)
+          : !!rp
+            ? parseFloat(rp)
+            : passRateNext
+      }
 
-        if (pr || pr) {
-          passRateNext = !!pr
-            ? parseFloat(pr)
-            : !!rp
-              ? parseFloat(rp)
-              : passRateNext
-        }
-
-        const questionsNext = getArrayElemPickedRandomly(questions, {
-          numberToPick: questionNumberNext,
-        })
-
-        return {
-          ...theRestOfModule,
-          questionNumber: questionNumberNext,
-          passRate: passRateNext,
-          questions: questionsNext,
-        }
+      const questionsNext = getArrayElemPickedRandomly(questions, {
+        numberToPick: questionNumberNext,
       })
 
-      return { ...theRestOfCourse, modules: modulesNext }
+      return {
+        ...theRestOfModule,
+        questionNumber: questionNumberNext,
+        passRate: passRateNext,
+        questions: questionsNext,
+      }
     })
 
     if (printRes) {

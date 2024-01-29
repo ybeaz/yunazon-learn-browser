@@ -293,7 +293,7 @@ const errorOptions = ({
  * @param courses: any[]
  * @returns content: any[]
  */
-export const getValidatedCourses = (courses: any[]): any[] => {
+export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
   let courseValidation: any[] = []
 
   courses.forEach((course, courseIndex) => {

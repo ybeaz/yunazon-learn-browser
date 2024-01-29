@@ -1,28 +1,21 @@
+import { ModuleType, QuestionType } from '../@types/GraphqlTypes'
 import { getArrShuffled } from './getArrShuffled'
 
 /**
  * @description Function to add a default answer to each question option
- * @param courses: any[]
- * @returns content: any[]
  */
-export const getOptionsShuffled = (courses: any[]): any[] => {
-  return courses.map(course => {
-    const { modules } = course
+export const getOptionsShuffled = (modules: ModuleType[]): ModuleType[] => {
+  return modules.map((module: ModuleType) => {
+    const { questions } = module
 
-    const modulesNext = modules.map((module: any) => {
-      const { questions } = module
+    const questionsNext = questions.map((question: QuestionType) => {
+      const { options } = question
 
-      const questionsNext = questions.map((question: any) => {
-        const { options } = question
+      const optionsNext = getArrShuffled(options)
 
-        const optionsNext = getArrShuffled(options)
-
-        return { ...question, options: optionsNext }
-      })
-
-      return { ...module, questions: questionsNext }
+      return { ...question, options: optionsNext }
     })
 
-    return { ...course, modules: modulesNext }
+    return { ...module, questions: questionsNext }
   })
 }

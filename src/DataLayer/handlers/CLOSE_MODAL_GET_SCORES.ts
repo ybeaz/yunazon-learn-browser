@@ -16,7 +16,7 @@ export const CLOSE_MODAL_GET_SCORES: ActionEventType = (event, data) => {
   event?.preventDefault &&
     getSavedAnanlyticsEvent(event, getAzProps('WENT_BACK')(options))
 
-  dispatch(actionSync.GET_ANSWERS_DEFAULT())
+  dispatch(actionSync.GET_ANSWERS_DEFAULT_DEPRECIATED())
   dispatch(actionSync.SET_QUESTION_SLIDE(0))
   dispatch(
     actionSync.SET_MODAL_FRAMES([

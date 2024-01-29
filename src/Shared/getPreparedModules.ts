@@ -1,7 +1,6 @@
 import { ModuleType, AcademyPresentCaseEnumType } from '../@types/'
 
 import { getFilteredActiveModulesQuestions } from './getFilteredActiveModulesQuestions'
-import { getFilteredActiveQuestions } from './getFilteredActiveQuestions'
 import { getValidatedModules } from './getValidatedEntity/getValidatedModules'
 import { getOptionsShuffled } from './getOptionsShuffled'
 import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
@@ -39,10 +38,7 @@ export const getPreparedModules: GetPreparedModulesType = (
       getChainedResponsibility(modules)
         .exec(getValidatedModules)
         .exec(getFilteredActiveModulesQuestions)
-        .exec(getFilteredActiveQuestions)
         .exec(getQuestionsPickedRandomly)
-        // .exec(getProvidedID)
-        // .exec(getProvidedSelectedDefault)
         .exec(getProdidevAnswerDefault)
         .exec(getOptionsShuffled).result
 
