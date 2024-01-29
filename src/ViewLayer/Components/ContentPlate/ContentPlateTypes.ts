@@ -5,7 +5,6 @@ export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   key: string
   contentComponentName: string
-  courseID: string
   courseCapture: string
   moduleCapture: string
   durationObj: DurationObjType

@@ -38,7 +38,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const {
     classAdded,
     contentComponentName,
-    courseID,
     courseCapture,
     moduleCapture,
     durationObj,
@@ -98,8 +97,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
       to: { pathname },
       onClick: (event: any) =>
         handleEvents(event, {
-          typeEvent: 'SELECT_COURSE_MODULE',
-          data: { courseCapture, courseID, moduleID, contentID },
+          typeEvent: 'SELECT_MODULE',
+          data: { courseCapture, moduleID, contentID },
         }),
     },
   }

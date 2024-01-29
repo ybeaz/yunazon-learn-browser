@@ -2,21 +2,21 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { SET_MODULE_ID_ACTIVE } from './SET_MODULE_ID_ACTIVE'
 import { getProvidedSelectedDefault } from '../../Shared/getProvidedSelectedDefault'
-import { getCourseModuleActive } from '../../Shared/getCourseModuleActive'
+import { getModulesWithSetActive } from '../../Shared/getModulesWithSetActive'
 
-export const SELECT_COURSE_MODULE: ReducerType = (
+export const SELECT_MODULE: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { courseID, moduleID } = data
-  const { courses } = store
+  const { moduleID } = data
+  const { modules } = store
 
   let storeNext: RootStoreType = { ...store }
   storeNext = SET_MODULE_ID_ACTIVE(storeNext, { moduleID })
 
-  let coursesNext = getProvidedSelectedDefault(courses)
-  coursesNext = getCourseModuleActive(courses, courseID, moduleID)
-  storeNext = { ...storeNext, courses: coursesNext }
+  let modulesNext = getProvidedSelectedDefault(modules)
+  modulesNext = getModulesWithSetActive(modules, moduleID)
+  storeNext = { ...storeNext, modules: modulesNext }
 
   return storeNext
 }

@@ -87,7 +87,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       const contentPlateProps = {
         key: moduleID,
         contentComponentName,
-        courseID: '',
         courseCapture,
         moduleCapture,
         durationObj,

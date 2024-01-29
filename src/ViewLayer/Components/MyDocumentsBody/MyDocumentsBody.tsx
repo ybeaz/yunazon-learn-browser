@@ -49,7 +49,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
             children: capture,
             onClick: (event: any) => {
               // handleEvents(event, {
-              //   typeEvent: 'SELECT_COURSE_MODULE',
+              //   typeEvent: 'SELECT_MODULE',
               //   data: {  },
               // })
             },

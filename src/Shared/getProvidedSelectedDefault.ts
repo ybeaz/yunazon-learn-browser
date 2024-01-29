@@ -1,16 +1,12 @@
+import { ModuleType } from '../@types/GraphqlTypes'
+
 /**
- * @description Function to add isSelected status default to courses and modules
- * @param courses: any[]
- * @returns content: any[]
+ * @description Function to add isSelected status default to modules
  */
-export const getProvidedSelectedDefault = (courses: any[]): any[] => {
-  return courses.map(course => {
-    const { modules } = course
-
-    const modulesNext = modules.map((module: any) => {
-      return { ...module, isSelected: false }
-    })
-
-    return { ...course, modules: modulesNext, isSelected: false }
+export const getProvidedSelectedDefault = (
+  modules: ModuleType[]
+): ModuleType[] => {
+  return modules.map((module: ModuleType) => {
+    return { ...module, isSelected: false }
   })
 }
