@@ -1,6 +1,7 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
+import { ModuleType } from '../../../@types/GraphqlTypes'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
@@ -39,10 +40,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     storeStateSlice: {
       language,
       durationMultiplier,
-      courses,
       modules,
       isLoadedGlobalVars,
-      isLoadedCourses,
     },
     handleEvents,
   } = props
@@ -54,7 +53,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     )
   }, [])
 
-  const coursesFiltered = courses
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
   let actionsToMount: any[] = []
@@ -68,16 +66,16 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
 
-  const getPlateMatix: Function = (courses2: any[]): ReactElement => {
-    const plates = courses2.map((item, i) => {
-      const { courseID, capture: courseCapture, modules } = item
+  const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
+    const plates = modules2.map((module: ModuleType) => {
       const {
         moduleID,
         capture: moduleCapture,
         contentType,
         contentID,
         duration,
-      } = modules[0]
+        capture: courseCapture,
+      } = module
 
       const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
@@ -89,7 +87,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       const contentPlateProps = {
         key: moduleID,
         contentComponentName,
-        courseID,
+        courseID: '',
         courseCapture,
         moduleCapture,
         durationObj,
@@ -129,7 +127,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     },
   }
 
-  console.info('AcademyMatrix [132]', { modules, courses })
+  console.info('AcademyMatrix [132]', { modules })
 
   return (
     <div className='AcademyMatrix'>
@@ -146,11 +144,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
+        {modules.length && isLoadedGlobalVars ? (
           <div className='_plateMatrixPagination'>
-            <div className='_plateMatrixWrapper'>
-              {getPlateMatix(coursesFiltered)}
-            </div>
+            <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
             <div className='_paginationNavigationWrapper'>
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
@@ -168,7 +164,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 const storeStateSliceProps: string[] = [
   'language',
   'durationMultiplier',
-  'courses',
   'modules',
   'isLoadedGlobalVars',
   'isLoadedCourses',

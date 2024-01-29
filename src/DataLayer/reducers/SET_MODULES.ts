@@ -31,7 +31,6 @@ export const SET_MODULES: ReducerType = (
 
   const isLoadedNext = {
     ...isLoaded,
-    isLoadedCourses: true,
     mediaLoaded: mediaLoadedNext,
   }
 
