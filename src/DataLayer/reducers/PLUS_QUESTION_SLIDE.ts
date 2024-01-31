@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
-import { getActiveCourseData } from '../../Shared/getActiveCourseData'
+import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 
 export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: RootStoreType,
@@ -9,17 +9,17 @@ export const PLUS_QUESTION_SLIDE: ReducerType = (
 ): RootStoreType => {
   const {
     componentsState,
-    courses,
+    modules,
     scorm: { numberQuestionsInSlide, moduleIDActive },
   } = store
   const { questionsSlideNumber } = componentsState
   const { step } = data
 
-  const { questionsActive } = getActiveCourseData(courses, moduleIDActive)
-  const questionsChunked = getChunkedArray(
-    questionsActive,
-    numberQuestionsInSlide
-  )
+  const { questions } = getModuleByModuleID({
+    modules,
+    moduleID: moduleIDActive || '',
+  })
+  const questionsChunked = getChunkedArray(questions, numberQuestionsInSlide)
 
   let questionSlideNumberNext = 0
   const questionSlideNumberPlus = questionsSlideNumber + step

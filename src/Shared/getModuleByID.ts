@@ -1,6 +1,7 @@
 import { CourseType, ModuleType } from '../@types/GraphqlTypes'
 
 /**
+ * @status DEPRECIATED
  * @description Function to return module by provided contentID
  * @import import { getModuleByID } from '../Shared/getModuleByID'
  */
@@ -15,6 +16,7 @@ export const getModuleByID: Function = (
     const { courseID, capture: courseCapture, modules } = course
     const modulesTotal = modules?.length
 
+    // @ts-expect-error
     let moduleFound: ModuleType | undefined = modules
       ? modules.find(
           // @ts-expect-error

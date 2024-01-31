@@ -41,8 +41,8 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     } = {
       createDocumentsInput: [
         {
-          courseID,
-          profileID: sub || '000000',
+          courseID: courseID || '000000000000',
+          profileID: sub || '000000000000',
           moduleIDs: [moduleID],
           contentIDs: [contentID],
           isActive: true,

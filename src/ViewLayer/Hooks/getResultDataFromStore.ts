@@ -3,7 +3,7 @@ import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
 interface IGetResultDataFromStore {
   result: string
-  courseCapture: string
+  courseCapture: string | undefined
 }
 
 /**
