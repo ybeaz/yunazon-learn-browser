@@ -1,86 +1,64 @@
 import { CourseType, ModuleType } from '../@types/GraphqlTypes'
 
+type GetModuleByModuleIDParamsType = { modules: ModuleType[]; moduleID: string }
+
+export type GetModuleByModuleIDOptionsType = {
+  printRes?: boolean
+  parentFunction?: string
+}
+
+export type GetModuleByModuleIDResType = any
+
 interface GetModuleByModuleIDType {
-  (args: { courses: CourseType[]; moduleID: string }): any
+  (
+    params: GetModuleByModuleIDParamsType,
+    options?: GetModuleByModuleIDOptionsType
+  ): GetModuleByModuleIDResType
+}
+
+const optionsDefault: Required<GetModuleByModuleIDOptionsType> = {
+  printRes: false,
+  parentFunction: 'not specified',
 }
 
 /**
  * @description Function to return module by provided moduleID
  * @import import { getModuleByModuleID } from '../Shared/getModuleByModuleID'
  */
-export const getModuleByModuleID: GetModuleByModuleIDType = ({
-  courses,
-  moduleID: moduleIDIn,
-}) => {
-  let output = {}
-
-  let course:
-    | CourseType
-    | Pick<
-        CourseType,
-        'courseID' | 'capture' | 'description' | 'language' | 'modules'
-      > = {
-    courseID: '',
-    capture: '',
-    description: '',
-    language: '',
-    modules: [],
+export const getModuleByModuleID: GetModuleByModuleIDType = (
+  { modules, moduleID },
+  optionsIn
+) => {
+  const options: Required<GetModuleByModuleIDOptionsType> = {
+    ...optionsDefault,
+    ...optionsIn,
   }
 
-  let module:
-    | ModuleType
-    | Pick<ModuleType, 'capture' | 'description' | 'questions'> = {
-    capture: '',
-    description: '',
-    questions: [],
-  }
+  const { printRes, parentFunction } = options
 
-  for (let course2 of courses) {
-    const { modules } = course2
-    let getBroken = false
-    for (let module2 of modules || []) {
-      const { moduleID } = module2
-      if (moduleID && moduleID === moduleIDIn) {
-        course = course2
-        module = module2
-        getBroken = true
-        if (getBroken) break
-      }
-      if (getBroken) break
-    }
-  }
+  let output: GetModuleByModuleIDResType = []
 
-  const {
-    courseID,
-    capture: courseCapture,
-    description: courseDescription,
-    language,
-    modules,
-  } = course
-  const modulesTotal = modules && modules.length
+  try {
+    const module =
+      modules.find((module2: ModuleType) => module2.moduleID === moduleID) ||
+      modules[0]
 
-  let moduleCapture = module?.capture
-  let moduleDescription = module?.description
-
-  if (modulesTotal === 1) {
-    moduleCapture = courseCapture
-    moduleDescription = courseDescription
-  }
-
-  if (module?.questions) {
     const { questions } = module
     const questionsTotal = questions.length
     output = {
       ...module,
-      courseID,
-      courseCapture,
-      language,
-      moduleCapture,
-      moduleDescription,
-      modulesTotal,
       questionsTotal,
     }
-  }
+  } catch (error: any) {
+    console.log('getModuleByModuleID', 'Error', {
+      parentFunction,
+      message: error.messag,
+    })
+  } finally {
+    if (printRes) {
+      console.log('getModuleByModuleID [63]', { output })
+    }
 
-  return output
+    return output
+  }
 }

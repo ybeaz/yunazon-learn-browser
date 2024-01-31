@@ -1,15 +1,15 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import { CourseType, AcademyPresentCaseEnumType } from '../../@types/'
+import { ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getPreparedCourses } from '../../Shared/getPreparedCourses'
+import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getCheckedCoursesAnswered } from '../../Shared/getCheckedCoursesAnswered'
+import { getCheckedModulesAnswered } from '../../Shared/getCheckedModulesAnswered'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getSizeWindow } from '../../Shared/getSizeWindow'
-import { getCourseByModuleId } from '../../Shared/getCourseByModuleId'
+import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
@@ -17,42 +17,45 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
     data: { moduleID },
   } = params
 
-  let coursesNext: CourseType[] = []
-  let caseScenario = AcademyPresentCaseEnumType['courseFirstLoading']
+  let modulesNext: ModuleType[] = []
+  let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const coursesInProgress =
-      getLocalStorageReadKeyObj('coursesInProgress') || []
-    const courseInProgres = getCourseByModuleId({
+    // STOPPED HERE. Need to change many things :-)
+    console.info('getModuleData.saga [27]', { moduleID })
+
+    const modulesInProgress =
+      getLocalStorageReadKeyObj('modulesInProgress') || []
+    const courseInProgres = getModuleByModuleID({
       moduleID,
-      courses: coursesInProgress,
+      modules: modulesInProgress,
     })
     const courseIDInProgres = courseInProgres && courseInProgres.courseID
 
-    /* Case: use courseInProgress from the localStorage */
-    if (coursesInProgress && coursesInProgress.length && courseIDInProgres) {
-      coursesNext = coursesInProgress
+    /* Case: use moduleInProgress from the localStorage */
+    if (modulesInProgress && modulesInProgress.length && courseIDInProgres) {
+      modulesNext = modulesInProgress
 
-      caseScenario = AcademyPresentCaseEnumType['courseInProgress']
-      const isAnswered = getCheckedCoursesAnswered(coursesNext)
+      caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
+      const isAnswered = getCheckedModulesAnswered(modulesNext)
       if (isAnswered)
-        caseScenario = AcademyPresentCaseEnumType['courseCompleted']
+        caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
     } else {
       /* Case: initial loading */
       const variables = {
-        readCoursesInput: [
+        readModulesInput: [
           {
             moduleID,
           },
         ],
       }
 
-      const readCourses: any = yield getResponseGraphqlAsync(
+      const readModules: any = yield getResponseGraphqlAsync(
         {
           variables,
-          resolveGraphqlName: 'readCourses',
+          resolveGraphqlName: 'readModules',
         },
         {
           clientHttpType: selectGraphqlHttpClientFlag(),
@@ -60,24 +63,20 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
         }
       )
 
-      coursesNext = getPreparedCourses(readCourses)
+      modulesNext = getPreparedModules(readModules)
     }
 
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
-    const courseActive = getCourseByModuleId({ moduleID, courses: coursesNext })
-    const courseID = courseActive && courseActive.courseID
-    yield put(actionSync.SET_COURSE_ID_ACTIVE({ courseID }))
-
-    yield put(actionSync.SET_COURSES(coursesNext))
+    yield put(actionSync.SET_MODULES(modulesNext))
 
     if (
-      caseScenario === AcademyPresentCaseEnumType['courseInProgress'] ||
-      caseScenario === AcademyPresentCaseEnumType['courseCompleted']
+      caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
+      caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
     ) {
       yield put(actionSync.TOGGLE_START_COURSE(true))
 
-      if (caseScenario === AcademyPresentCaseEnumType['courseCompleted']) {
+      if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
         const data = [
           { childName: 'QuestionScores', isActive: true, childProps: {} },
         ]

@@ -4,8 +4,7 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type PlayerPanelComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  courseCapture: string
-  moduleCapture: string
+  capture: string
   durationObj: DurationObjType
   screenType: string
   isShowingPlay: boolean
@@ -13,8 +12,6 @@ export type PlayerPanelComponentPropsType = {
   buttonPauseProps?: any
   buttonStopProps?: any
   isActionButtonDisplaying: boolean
-  moduleIndex?: number
-  modulesTotal?: number
   questionsTotal?: number
   storeStateSlice: {
     language: RootStoreType['language']

@@ -30,12 +30,9 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   options
 ) => {
   let coursesNext: CourseType[] = []
-  // let caseScenario: AcademyPresentCaseEnumType =
-  //   AcademyPresentCaseEnumType['courseFirstLoading']
 
   try {
     /* Case: use the whole courses set from API call */
-    // caseScenario = AcademyPresentCaseEnumType['courseFirstLoading']
 
     coursesNext =
       // .exec(getProvidedSearchString)
