@@ -96,7 +96,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     objections,
   } = moduleState
 
-  console.info('AcademyPresent [99]', { modules })
+  console.info('AcademyPresent [99]', { moduleIDActive, modules })
 
   useEffect(() => {
     if (modules.length && isLoaded === false) {

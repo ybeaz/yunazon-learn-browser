@@ -7,7 +7,7 @@ import { getResultDataFromStore } from '../../ViewLayer/Hooks/getResultDataFromS
 
 const { dispatch, getState } = store
 
-export const PLUS_QUESTION_SLIDE: ActionEventType = (event, data) => {
+export const PLUS_QUESTION_SLIDE: ActionEventType = (event, data: any) => {
   const { step } = data
   const {
     scorm: { moduleIDActive },
