@@ -1,12 +1,12 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
 
 export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   key: string
   contentComponentName: string
-  courseCapture: string
-  moduleCapture: string
+  capture: string
   durationObj: DurationObjType
   moduleID: string
   contentID: string
@@ -25,7 +25,7 @@ export type ContentPlatePropsType = Omit<
 export type ContentPlatePropsOutType = {
   contentComponentProps: Record<string, any>
   loaderBlurhashProps: any
-  playerPanelProps: any
+  playerPanelProps: PlayerPanelPropsType
   linkProps: any
 }
 

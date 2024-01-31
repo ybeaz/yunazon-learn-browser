@@ -38,8 +38,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const {
     classAdded,
     contentComponentName,
-    courseCapture,
-    moduleCapture,
+    capture,
     durationObj,
     moduleID,
     contentID,
@@ -58,7 +57,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     height,
   })
 
-  const slug = getSlug(courseCapture)
+  const slug = getSlug(capture)
   const pathname = `/m/${moduleID}/${slug}`
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent =
@@ -85,8 +84,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       contentComponentName: 'AcademyMatrix',
     },
     playerPanelProps: {
-      courseCapture,
-      moduleCapture,
+      capture,
       durationObj,
       screenType,
       isShowingPlay,
@@ -98,7 +96,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       onClick: (event: any) =>
         handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
-          data: { courseCapture, moduleID, contentID },
+          data: { capture, moduleID, contentID },
         }),
     },
   }

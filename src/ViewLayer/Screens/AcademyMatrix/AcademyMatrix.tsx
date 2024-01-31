@@ -6,7 +6,10 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
+import {
+  ContentPlate,
+  ContentPlatePropsType,
+} from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
@@ -68,31 +71,21 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
-      const {
-        moduleID,
-        capture: moduleCapture,
-        contentType,
-        contentID,
-        duration,
-        capture: courseCapture,
-      } = module
+      const { moduleID, capture, contentType, contentID, duration } = module
 
-      const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
       const durationObj: DurationObjType = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
-      const contentPlateProps = {
+      const contentPlateProps: ContentPlatePropsType = {
         key: moduleID,
         contentComponentName,
-        courseCapture,
-        moduleCapture,
+        capture,
         durationObj,
         moduleID,
         contentID,
-        isShowingPlay,
         screenType,
       }
 
