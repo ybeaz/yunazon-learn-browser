@@ -10,29 +10,29 @@ import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   CoursesTablePropsOutType,
-  MyCoursesTableComponentPropsType,
-  MyCoursesTablePropsType,
-  MyCoursesTablePropsOutType,
-  MyCoursesTableComponentType,
-  MyCoursesTableType,
-} from './MyCoursesTableTypes'
+  MyModulesTableComponentPropsType,
+  MyModulesTablePropsType,
+  MyModulesTablePropsOutType,
+  MyModulesTableComponentType,
+  MyModulesTableType,
+} from './MyModulesTableTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { CourseType } from '../../../@types/'
+import { ModuleType } from '../../../@types/'
 
 /**
- * @description Component to render MyCoursesTable
- * @import import { MyCoursesTable, MyCoursesTablePropsType, MyCoursesTablePropsOutType, MyCoursesTableType } 
-             from '../Components/MyCoursesTable/MyCoursesTable'
+ * @description Component to render MyModulesTable
+ * @import import { MyModulesTable, MyModulesTablePropsType, MyModulesTablePropsOutType, MyModulesTableType } 
+             from '../Components/MyModulesTable/MyModulesTable'
  */
-const MyCoursesTableComponent: MyCoursesTableComponentType = (
-  props: MyCoursesTableComponentPropsType
+const MyModulesTableComponent: MyModulesTableComponentType = (
+  props: MyModulesTableComponentPropsType
 ) => {
-  const { classAdded, handleEvents, courses, language } = props
+  const { classAdded, handleEvents, modules, language } = props
 
-  const getCoursesTable = (coursesIn: CourseType[]) => {
-    const coursesRows: React.ReactElement[] = coursesIn.map(
-      (course: CourseType) => {
-        const { courseID, modules, capture, dateCreated } = course
+  const getModulesTable = (modulesIn: ModuleType[]) => {
+    const modulesRows: React.ReactElement[] = modulesIn.map(
+      (module: ModuleType) => {
+        const { moduleID, capture, dateCreated } = module
 
         const dateString = getDateString({
           timestamp: dateCreated,
@@ -53,7 +53,7 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
           },
           linkToCourseProps: {
             className: '__shield',
-            to: { pathname: `/c/${courseID}/` },
+            to: { pathname: `/m/${moduleID}/` },
             children: 'Link',
             onClick: (event: any) => {
               // handleEvents(event, {
@@ -74,14 +74,14 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
                   isActive: true,
                   childProps: {
                     message: [
-                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['course'][language]}`,
+                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['module'][language]}`,
                       `${capture}?`,
                     ],
                     captureButton4Yes: DICTIONARY['confirm'][language],
                     captureButton4No: DICTIONARY['cancel'][language],
                     action4Yes: {
-                      typeEvent: 'CLICK_ON_DEACTIVATE_COURSE',
-                      data: { coursesIDs: [courseID] },
+                      typeEvent: 'CLICK_ON_DEACTIVATE_MODULE',
+                      data: { moduleIDs: [moduleID] },
                     },
                     action4No: {
                       typeEvent: 'SET_MODAL_FRAMES',
@@ -99,7 +99,7 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
         }
 
         return (
-          <div key={courseID} className='_row _row_weather'>
+          <div key={moduleID} className='_row _row_weather'>
             <div className='_cell _date'>{dateString}</div>
             <div className='_cell _module_name'>
               <Link {...propsOut.linkToModuleProps} />
@@ -127,30 +127,30 @@ const MyCoursesTableComponent: MyCoursesTableComponentType = (
           <div className='_cell _header_remove'>Remove</div>
         </header>
 
-        {coursesRows}
+        {modulesRows}
       </section>
     )
   }
 
   return (
-    <div className={getClasses('MyCoursesTable', classAdded)}>
+    <div className={getClasses('MyModulesTable', classAdded)}>
       <h2 className='_screenTitle'>{DICTIONARY.My_courses[language]}</h2>
-      {getCoursesTable(courses)}
+      {getModulesTable(modules)}
     </div>
   )
 }
 
 const storeStateSliceProps: string[] = []
-export const MyCoursesTable = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyModulesTable = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(MyCoursesTableComponent)
+    React.memo(MyModulesTableComponent)
   )
 )
 
 export type {
-  MyCoursesTablePropsType,
-  MyCoursesTablePropsOutType,
-  MyCoursesTableComponentType,
-  MyCoursesTableType,
+  MyModulesTablePropsType,
+  MyModulesTablePropsOutType,
+  MyModulesTableComponentType,
+  MyModulesTableType,
 }

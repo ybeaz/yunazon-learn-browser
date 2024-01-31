@@ -7,7 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
@@ -73,7 +73,7 @@ export function* getCourseBotResponseGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage,
-        status: CreateCourseStatusEnumType['failure'],
+        status: CreateModuleStatusEnumType['failure'],
       })
     )
 

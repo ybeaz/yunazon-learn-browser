@@ -5,7 +5,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import {
   connectionsTimeouts,
@@ -24,8 +24,8 @@ export function* getCourse55ObjectionsCreatedGenerator(
     const { summary, summaryChunks }: any = yield select(
       (state: RootStoreType) => {
         return {
-          summary: state.courseCreateProgress.summary,
-          summaryChunks: state.courseCreateProgress.summaryChunks,
+          summary: state.moduleCreateProgress.summary,
+          summaryChunks: state.moduleCreateProgress.summaryChunks,
         }
       }
     )
@@ -42,7 +42,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
-        status: CreateCourseStatusEnumType['pending'],
+        status: CreateModuleStatusEnumType['pending'],
       })
     )
 
@@ -109,14 +109,14 @@ export function* getCourse55ObjectionsCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
-        status: CreateCourseStatusEnumType['success'],
+        status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
-        status: CreateCourseStatusEnumType['failure'],
+        status: CreateModuleStatusEnumType['failure'],
       })
     )
 

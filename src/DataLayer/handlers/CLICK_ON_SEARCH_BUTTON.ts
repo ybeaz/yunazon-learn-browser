@@ -10,7 +10,7 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
     componentsState: { screenActive },
   } = getState() as RootStoreType
 
-  if (screenActive === 'AcademyMatrix' || screenActive === 'MyCourses')
+  if (screenActive === 'AcademyMatrix' || screenActive === 'MyModules')
     dispatch(actionAsync.GET_MODULES.REQUEST())
   else if (screenActive === 'MyDocuments')
     dispatch(actionAsync.GET_DOCUMENTS.REQUEST())

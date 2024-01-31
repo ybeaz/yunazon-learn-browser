@@ -80,7 +80,7 @@ const ACTIONS_SYNC: string[] = [
   'TOGGLE_IS_DOCUMENT_ADDED',
   'TOGGLE_LOADER_OVERLAY',
   'TOGGLE_MEDIA_LOADED',
-  'TOGGLE_START_COURSE',
+  'TOGGLE_START_MODULE',
 ]
 
 // Asynchroneous actions for saga

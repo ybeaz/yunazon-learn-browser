@@ -1,8 +1,8 @@
 import {
   StagesType,
-  GetCourseCreateStagesType,
-  GetCourseCreateStagesPropsType,
-} from './MyCoursesBodyTypes'
+  GetModuleCreateStagesType,
+  GetModuleCreateStagesPropsType,
+} from './MyModulesBodyTypes'
 
 // STOPPED HERE: enum status { todo, pending, sucess, etc. }
 
@@ -14,9 +14,9 @@ import {
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  * @import import { getCourseCreateStages, getCourseCreateStagesParamsType } from './getCourseCreateStages'
  */
-export const getCourseCreateStages: GetCourseCreateStagesType = ({
+export const getModuleCreateStages: GetModuleCreateStagesType = ({
   createModuleStages,
-}: GetCourseCreateStagesPropsType) => {
+}: GetModuleCreateStagesPropsType) => {
   const stages: StagesType[] = [
     {
       name: 'metaData',

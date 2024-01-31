@@ -8,7 +8,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
@@ -21,7 +21,7 @@ export function* getCourse10MataDataCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    /* Add originUri to courseCreateProgress */
+    /* Add originUri to moduleCreateProgress */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })
@@ -30,11 +30,11 @@ export function* getCourse10MataDataCreatedGenerator(
       actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
     )
 
-    /* Add metaData to courseCreateProgress */
+    /* Add metaData to moduleCreateProgress */
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
-        status: CreateCourseStatusEnumType['pending'],
+        status: CreateModuleStatusEnumType['pending'],
       })
     )
 
@@ -65,14 +65,14 @@ export function* getCourse10MataDataCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
-        status: CreateCourseStatusEnumType['success'],
+        status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
-        status: CreateCourseStatusEnumType['failure'],
+        status: CreateModuleStatusEnumType['failure'],
       })
     )
 

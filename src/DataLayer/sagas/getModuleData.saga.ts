@@ -28,14 +28,18 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     const modulesInProgress =
       getLocalStorageReadKeyObj('modulesInProgress') || []
-    const courseInProgres = getModuleByModuleID({
-      moduleID,
-      modules: modulesInProgress,
-    })
-    const courseIDInProgres = courseInProgres && courseInProgres.courseID
+
+    let moduleInProgres = null
+    if (modulesInProgress && modulesInProgress.length)
+      moduleInProgres = getModuleByModuleID({
+        moduleID,
+        modules: modulesInProgress,
+      })
+
+    const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
 
     /* Case: use moduleInProgress from the localStorage */
-    if (modulesInProgress && modulesInProgress.length && courseIDInProgres) {
+    if (modulesInProgress && modulesInProgress.length && moduleIDInProgres) {
       modulesNext = modulesInProgress
 
       caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
@@ -66,6 +70,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
       modulesNext = getPreparedModules(readModules)
     }
 
+    console.info('getModuleData.saga [73]', { modulesNext, moduleID })
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
     yield put(actionSync.SET_MODULES(modulesNext))
@@ -74,7 +79,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
       caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
       caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
     ) {
-      yield put(actionSync.TOGGLE_START_COURSE(true))
+      yield put(actionSync.TOGGLE_START_MODULE(true))
 
       if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
         const data = [

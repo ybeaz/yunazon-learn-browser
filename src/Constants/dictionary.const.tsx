@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  module: {
+    en: 'module',
+    ru: 'модуль',
+  },
   course: {
     en: 'course',
     ru: 'курс',

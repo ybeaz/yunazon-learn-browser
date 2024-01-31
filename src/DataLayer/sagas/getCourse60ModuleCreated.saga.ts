@@ -8,7 +8,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import {
@@ -21,16 +21,16 @@ export function* getCourse60ModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const { courseCreateProgress, sub }: any = yield select(
+    const { moduleCreateProgress, sub }: any = yield select(
       (state: RootStoreType) => {
         return {
-          courseCreateProgress: state.courseCreateProgress,
+          moduleCreateProgress: state.moduleCreateProgress,
           sub: state.authAwsCognitoUserData.sub,
         }
       }
     )
 
-    const { metaData, questions, summary, objections } = courseCreateProgress
+    const { metaData, questions, summary, objections } = moduleCreateProgress
     const {
       contentID,
       capture,
@@ -50,7 +50,7 @@ export function* getCourse60ModuleCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
-        status: CreateCourseStatusEnumType['pending'],
+        status: CreateModuleStatusEnumType['pending'],
       })
     )
 
@@ -112,14 +112,14 @@ export function* getCourse60ModuleCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
-        status: CreateCourseStatusEnumType['success'],
+        status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
-        status: CreateCourseStatusEnumType['failure'],
+        status: CreateModuleStatusEnumType['failure'],
       })
     )
 

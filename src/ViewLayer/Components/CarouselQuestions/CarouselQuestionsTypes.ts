@@ -8,8 +8,8 @@ export type CarouselQuestionsComponentPropsType = {
     moduleIDActive: RootStoreType['scorm']['moduleIDActive']
     numberQuestionsInSlide: RootStoreType['scorm']['numberQuestionsInSlide']
     questionsSlideNumber: RootStoreType['componentsState']['questionsSlideNumber']
-    isCourseStarted: RootStoreType['componentsState']['isCourseStarted']
-    courses: RootStoreType['courses']
+    isModuleStarted: RootStoreType['componentsState']['isModuleStarted']
+    modules: RootStoreType['modules']
     language: RootStoreType['language']
   }
 }

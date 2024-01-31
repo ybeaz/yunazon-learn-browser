@@ -12,7 +12,7 @@ export enum CreateModuleStagesEnumType {
   courseModule = 'courseModule',
 }
 
-export enum CreateCourseStatusEnumType {
+export enum CreateModuleStatusEnumType {
   todo = 'todo',
   pending = 'pending',
   success = 'success',
@@ -21,7 +21,7 @@ export enum CreateCourseStatusEnumType {
 
 export type CreateModuleStageType = {
   isActive: boolean
-  status: CreateCourseStatusEnumType
+  status: CreateModuleStatusEnumType
   timeCalculated: number | null
 }
 
@@ -56,7 +56,7 @@ export type ComponentsStateType = {
   isModalFrameVisible: boolean
   isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
-  isCourseStarted: boolean
+  isModuleStarted: boolean
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
@@ -120,7 +120,7 @@ export type RootStoreType = {
   componentsState: ComponentsStateType
   modules: ModuleType[]
   courses: CourseType[]
-  courseCreateProgress: CourseCreateProgressType
+  moduleCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
   users: UserType[]

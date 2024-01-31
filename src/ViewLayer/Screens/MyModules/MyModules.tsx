@@ -6,11 +6,11 @@ import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { MyCoursesBody } from '../../Components/MyCoursesBody/MyCoursesBody'
+import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
   CreateModuleStageType,
 } from '../../../Interfaces/'
@@ -20,20 +20,20 @@ import {
 } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
-  MyCoursesComponentPropsType,
-  MyCoursesPropsType,
-  MyCoursesPropsOutType,
-  MyCoursesComponentType,
-  MyCoursesType,
-} from './MyCoursesTypes'
+  MyModulesComponentPropsType,
+  MyModulesPropsType,
+  MyModulesPropsOutType,
+  MyModulesComponentType,
+  MyModulesType,
+} from './MyModulesTypes'
 
 /**
- * @description Component to render MyCourses
- * @import import { MyCourses, MyCoursesPropsType, MyCoursesPropsOutType, MyCoursesType } 
-             from '../Components/MyCourses/MyCourses'
+ * @description Component to render MyModules
+ * @import import { MyModules, MyModulesPropsType, MyModulesPropsOutType, MyModulesType } 
+             from '../Components/MyModules/MyModules'
  */
-const MyCoursesComponent: MyCoursesComponentType = (
-  props: MyCoursesComponentPropsType
+const MyModulesComponent: MyModulesComponentType = (
+  props: MyModulesComponentPropsType
 ) => {
   const {
     classAdded,
@@ -41,20 +41,20 @@ const MyCoursesComponent: MyCoursesComponentType = (
       language,
       sub,
       createModuleStages,
-      courseCreateProgress,
-      courses,
+      moduleCreateProgress,
+      modules,
     },
     handleEvents,
   } = props
 
-  const [isShowCourseCreateProgress, setIsShowCourseCreateProgress] =
+  const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] =
     useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
     handleEvents(
       {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyCourses' } }
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyModules' } }
     )
 
     const isStatePendingAny = Object.values(CreateModuleStagesEnumType).reduce(
@@ -63,7 +63,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
         if (
           createModuleStages[item].isActive &&
           createModuleStages[item].status ===
-            CreateCourseStatusEnumType['pending']
+            CreateModuleStatusEnumType['pending']
         )
           output = true
         return output || accum
@@ -77,7 +77,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
         if (
           createModuleStages[item].isActive &&
           createModuleStages[item].status ===
-            CreateCourseStatusEnumType['failure']
+            CreateModuleStatusEnumType['failure']
         )
           output = true
         return output || accum
@@ -85,14 +85,14 @@ const MyCoursesComponent: MyCoursesComponentType = (
       false
     )
 
-    setIsShowCourseCreateProgress(!!isStatePendingAny || !!isStateFailureAny)
+    setIsShowModuleCreateProgress(!!isStatePendingAny || !!isStateFailureAny)
 
     const isStateTodoAll = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = true
         if (
           createModuleStages[item].isActive &&
-          createModuleStages[item].status !== CreateCourseStatusEnumType['todo']
+          createModuleStages[item].status !== CreateModuleStatusEnumType['todo']
         ) {
           output = false
         }
@@ -107,7 +107,7 @@ const MyCoursesComponent: MyCoursesComponentType = (
         if (
           createModuleStages[item].isActive &&
           createModuleStages[item].status !==
-            CreateCourseStatusEnumType['success']
+            CreateModuleStatusEnumType['success']
         ) {
           output = false
         }
@@ -117,12 +117,12 @@ const MyCoursesComponent: MyCoursesComponentType = (
     )
 
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
-      dispatch(actionAsync.GET_COURSES.REQUEST())
+      dispatch(actionAsync.GET_MODULES.REQUEST())
     }
     // TODO: to research why courses couses cycling call on prod
-  }, [JSON.stringify({ sub, createModuleStages, coursesLen: courses.length })])
+  }, [JSON.stringify({ sub, createModuleStages, modulesLen: modules.length })])
 
-  const propsOut: MyCoursesPropsOutType = {
+  const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
       moto: DICTIONARY['Together_know_everything'][language],
@@ -140,26 +140,26 @@ const MyCoursesComponent: MyCoursesComponentType = (
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'MyCourses',
+      screenType: 'MyModules',
     },
-    myCoursesBodyProps: {
+    myModulesBodyProps: {
       language,
       createModuleStages,
-      courseCreateProgress,
-      courses,
-      isShowCourseCreateProgress,
+      moduleCreateProgress,
+      modules,
+      isShowModuleCreateProgress,
     },
   }
 
   return (
-    <div className={getClasses('MyCourses', classAdded)}>
+    <div className={getClasses('MyModules', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <MyCoursesBody {...propsOut.myCoursesBodyProps} />
+        <MyModulesBody {...propsOut.myModulesBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
@@ -174,19 +174,19 @@ const storeStateSliceProps: string[] = [
   'language',
   'sub',
   'createModuleStages',
-  'courseCreateProgress',
-  'courses',
+  'moduleCreateProgress',
+  'modules',
 ]
-export const MyCourses = withPropsYrl({ handleEvents: handleEventsIn })(
+export const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(
     storeStateSliceProps,
-    React.memo(MyCoursesComponent)
+    React.memo(MyModulesComponent)
   )
 )
 
 export type {
-  MyCoursesPropsType,
-  MyCoursesPropsOutType,
-  MyCoursesComponentType,
-  MyCoursesType,
+  MyModulesPropsType,
+  MyModulesPropsOutType,
+  MyModulesComponentType,
+  MyModulesType,
 }

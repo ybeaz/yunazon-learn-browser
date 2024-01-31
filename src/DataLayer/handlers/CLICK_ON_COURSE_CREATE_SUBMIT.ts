@@ -2,7 +2,7 @@ import { store } from '../store'
 import {
   ActionEventType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
@@ -15,7 +15,7 @@ export const CLICK_ON_COURSE_CREATE_SUBMIT: ActionEventType = (event, data) => {
     dispatch(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType[key],
-        status: CreateCourseStatusEnumType['todo'],
+        status: CreateModuleStatusEnumType['todo'],
       })
     )
   })

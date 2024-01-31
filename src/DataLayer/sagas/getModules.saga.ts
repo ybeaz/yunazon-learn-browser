@@ -31,8 +31,8 @@ export function* getModulesGenerator(
   } = stateSelected as RootStoreType
 
   let profileIDs: string[] = []
-  if (screenActive === 'MyCourses' && sub) profileIDs = [sub]
-  else if (screenActive === 'MyCourses' && !sub) {
+  if (screenActive === 'MyModules' && sub) profileIDs = [sub]
+  else if (screenActive === 'MyModules' && !sub) {
     return
   }
 

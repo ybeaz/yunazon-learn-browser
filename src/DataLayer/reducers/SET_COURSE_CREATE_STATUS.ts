@@ -1,7 +1,7 @@
 import {
   RootStoreType,
   CreateModuleStageType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
   ReducerType,
 } from '../../Interfaces/'
@@ -9,7 +9,7 @@ import {
 type DataType = {
   stage: CreateModuleStagesEnumType
   isActive: CreateModuleStageType['isActive']
-  status: CreateCourseStatusEnumType
+  status: CreateModuleStatusEnumType
   timeCalculated: CreateModuleStageType['timeCalculated']
 }
 

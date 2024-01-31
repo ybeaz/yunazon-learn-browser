@@ -5,7 +5,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
 import {
   connectionsTimeouts,
@@ -24,7 +24,7 @@ export function* getCourse35SummaryCreatedGenerator(
 ): Iterable<any> {
   try {
     const transcriptChunks: any = yield select((state: RootStoreType) => {
-      return state.courseCreateProgress.transcriptChunks
+      return state.moduleCreateProgress.transcriptChunks
     })
 
     yield put(
@@ -40,7 +40,7 @@ export function* getCourse35SummaryCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
-        status: CreateCourseStatusEnumType['pending'],
+        status: CreateModuleStatusEnumType['pending'],
       })
     )
 
@@ -97,14 +97,14 @@ export function* getCourse35SummaryCreatedGenerator(
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
-        status: CreateCourseStatusEnumType['success'],
+        status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
       actionSync.SET_COURSE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
-        status: CreateCourseStatusEnumType['failure'],
+        status: CreateModuleStatusEnumType['failure'],
       })
     )
 

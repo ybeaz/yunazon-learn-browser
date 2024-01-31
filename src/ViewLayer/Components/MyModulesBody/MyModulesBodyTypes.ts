@@ -8,30 +8,29 @@ import {
   InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
 import { PaginationNavigationPropsType } from '../../Components/'
-import { MyCoursesTablePropsType } from '../MyCoursesTable/MyCoursesTable'
+import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 
 import {
+  CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
   RootStoreType,
   HandleEventPropsType,
 } from '../../../Interfaces/'
 
-import { CreateCourseStatusEnumType } from '../../../Interfaces/RootStoreType'
-
 export type StagesType = {
   name: string
   isActive: boolean
   action: HandleEventPropsType
-  status: CreateCourseStatusEnumType
+  status: CreateModuleStatusEnumType
   timeCalculated: RootStoreType['componentsState']['createModuleStages'][CreateModuleStagesEnumType]['timeCalculated']
 }
 
-export type GetCourseCreateStagesPropsType = {
+export type GetModuleCreateStagesPropsType = {
   createModuleStages: RootStoreType['componentsState']['createModuleStages']
 }
 
-export interface GetCourseCreateStagesType {
-  (props: GetCourseCreateStagesPropsType): StagesType[]
+export interface GetModuleCreateStagesType {
+  (props: GetModuleCreateStagesPropsType): StagesType[]
 }
 
 export type StagesPropsOut = {
@@ -43,32 +42,32 @@ export type StagesPropsOut = {
   buttonRepeatProps: ButtonYrlPropsType
 }
 
-export type MyCoursesBodyComponentPropsType = {
+export type MyModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   language: RootStoreType['language']
   createModuleStages: RootStoreType['componentsState']['createModuleStages']
-  courseCreateProgress: RootStoreType['courseCreateProgress']
-  courses: RootStoreType['courses']
-  isShowCourseCreateProgress: boolean
+  moduleCreateProgress: RootStoreType['moduleCreateProgress']
+  modules: RootStoreType['modules']
+  isShowModuleCreateProgress: boolean
 }
 
-export type MyCoursesBodyPropsType = Omit<
-  MyCoursesBodyComponentPropsType,
+export type MyModulesBodyPropsType = Omit<
+  MyModulesBodyComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
 
-export type MyCoursesBodyPropsOutType = {
+export type MyModulesBodyPropsOutType = {
   inputGroupProps: InputGroupYrlPropsType
-  myCoursesTableProps: MyCoursesTablePropsType
+  myModulesTableProps: MyModulesTablePropsType
   paginationNavigationProps: PaginationNavigationPropsType
 }
 
 /**
- * @import import { MyCoursesBodyComponentPropsType, MyCoursesBodyPropsType, MyCoursesBodyPropsOutType, MyCoursesBodyComponentType, MyCoursesBodyType } from './MyCoursesBodyTypes'
+ * @import import { MyModulesBodyComponentPropsType, MyModulesBodyPropsType, MyModulesBodyPropsOutType, MyModulesBodyComponentType, MyModulesBodyType } from './MyModulesBodyTypes'
  */
-export interface MyCoursesBodyComponentType
-  extends React.FunctionComponent<MyCoursesBodyComponentPropsType> {
-  (props: MyCoursesBodyComponentPropsType): React.ReactElement
+export interface MyModulesBodyComponentType
+  extends React.FunctionComponent<MyModulesBodyComponentPropsType> {
+  (props: MyModulesBodyComponentPropsType): React.ReactElement
 }
 
-export type MyCoursesBodyType = React.FunctionComponent<MyCoursesBodyPropsType>
+export type MyModulesBodyType = React.FunctionComponent<MyModulesBodyPropsType>

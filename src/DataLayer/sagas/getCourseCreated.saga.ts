@@ -4,7 +4,7 @@ import {
   RootStoreType,
   ActionReduxType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
 } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -33,8 +33,8 @@ export function* getCourseCreatedGenerator(
       })
     )
 
-    /* Add originUri to courseCreateProgress */
-    /* Add metaData to courseCreateProgress */
+    /* Add originUri to moduleCreateProgress */
+    /* Add metaData to moduleCreateProgress */
     const stateSelected10: RootStoreType | any = yield select(
       (state: RootStoreType) => state
     )
@@ -45,7 +45,7 @@ export function* getCourseCreatedGenerator(
     if (createModuleStages10[CreateModuleStagesEnumType['metaData']].isActive)
       yield getCourse10MataDataCreated()
 
-    /* Add transcript to courseCreateProgress */
+    /* Add transcript to moduleCreateProgress */
     const stateSelected20: RootStoreType | any = yield select(
       (state: RootStoreType) => state
     )
@@ -56,11 +56,11 @@ export function* getCourseCreatedGenerator(
     if (
       createModuleStages20[CreateModuleStagesEnumType['transcript']].isActive &&
       createModuleStages20[CreateModuleStagesEnumType['metaData']].status ===
-        CreateCourseStatusEnumType['success']
+        CreateModuleStatusEnumType['success']
     )
       yield getCourse20TranscriptCreated()
 
-    /* Add summary to courseCreateProgress */
+    /* Add summary to moduleCreateProgress */
     const stateSelected35: RootStoreType | any = yield select(
       (state: RootStoreType) => state
     )
@@ -71,11 +71,11 @@ export function* getCourseCreatedGenerator(
     if (
       createModuleStages35[CreateModuleStagesEnumType['summary']].isActive &&
       createModuleStages35[CreateModuleStagesEnumType['transcript']].status ===
-        CreateCourseStatusEnumType['success']
+        CreateModuleStatusEnumType['success']
     )
       yield getCourse35SummaryCreated()
 
-    /* Add questions to courseCreateProgress */
+    /* Add questions to moduleCreateProgress */
     const stateSelected45: RootStoreType | any = yield select(
       (state: RootStoreType) => state
     )
@@ -86,11 +86,11 @@ export function* getCourseCreatedGenerator(
     if (
       createModuleStages45[CreateModuleStagesEnumType['questions']].isActive &&
       createModuleStages45[CreateModuleStagesEnumType['summary']].status ===
-        CreateCourseStatusEnumType['success']
+        CreateModuleStatusEnumType['success']
     )
       yield getCourse45QuestionsCreated()
 
-    /* Add objections to courseCreateProgress */
+    /* Add objections to moduleCreateProgress */
     const stateSelected55: RootStoreType | any = yield select(
       (state: RootStoreType) => state
     )
@@ -101,7 +101,7 @@ export function* getCourseCreatedGenerator(
     if (
       createModuleStages55[CreateModuleStagesEnumType['objections']].isActive &&
       createModuleStages55[CreateModuleStagesEnumType['questions']].status ===
-        CreateCourseStatusEnumType['success']
+        CreateModuleStatusEnumType['success']
     )
       yield getCourse55ObjectionsCreated()
 
@@ -119,11 +119,11 @@ export function* getCourseCreatedGenerator(
       ((createModuleStages60[CreateModuleStagesEnumType['objections']]
         .isActive === true &&
         createModuleStages60[CreateModuleStagesEnumType['objections']]
-          .status === CreateCourseStatusEnumType['success']) ||
+          .status === CreateModuleStatusEnumType['success']) ||
         (createModuleStages60[CreateModuleStagesEnumType['objections']]
           .isActive === false &&
           createModuleStages60[CreateModuleStagesEnumType['questions']]
-            .status === CreateCourseStatusEnumType['success']))
+            .status === CreateModuleStatusEnumType['success']))
     )
       yield getCourse60ModuleCreated()
   } catch (error: any) {

@@ -10,7 +10,7 @@ import {
   GetAnswersChecked2OutType,
   ResultType,
 } from '../../../Shared/getAnswersChecked2'
-import { getActiveCourseData } from '../../../Shared/getActiveCourseData'
+import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
@@ -45,7 +45,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       language,
       documents,
       moduleIDActive,
-      courses,
+      modules,
       nameFirst,
       nameMiddle,
       nameLast,
@@ -58,11 +58,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   const pathName = documentsLen && documents[documentsLen - 1]?.pathName
 
   const {
-    courseActive: { courseID, capture: courseCapture, description, meta },
-    moduleActive,
-    questionsActive,
-  } = getActiveCourseData(courses, moduleIDActive)
-  const { moduleID, contentID, passRate } = moduleActive
+    capture,
+    description,
+    meta,
+    moduleID,
+    contentID,
+    passRate,
+    questions: questionsActive,
+  } = getModuleByModuleID({
+    moduleID: moduleIDActive || '',
+    modules,
+  })
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
@@ -91,9 +97,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     nameMiddle,
     nameLast,
     meta: meta || {},
-    courseCapture: courseCapture || '',
+    capture: capture || '',
     description: description || '',
-    courseID: courseID || '',
     moduleID: moduleID || '',
     contentID: contentID || '',
     sub,
@@ -172,7 +177,7 @@ const storeStateSliceProps: string[] = [
   'language',
   'documents',
   'moduleIDActive',
-  'courses',
+  'modules',
   'nameFirst',
   'nameMiddle',
   'nameLast',

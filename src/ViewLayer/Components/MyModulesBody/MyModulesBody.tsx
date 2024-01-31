@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import {
   PaginationNameEnumType,
   CreateModuleStagesEnumType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
   CreateModuleStageType,
 } from '../../../Interfaces/'
 import {
@@ -18,34 +18,34 @@ import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { MyCoursesTable } from '../MyCoursesTable/MyCoursesTable'
+import { MyModulesTable } from '../MyModulesTable/MyModulesTable'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import {
   StagesType,
   StagesPropsOut,
-  MyCoursesBodyComponentPropsType,
-  MyCoursesBodyPropsType,
-  MyCoursesBodyPropsOutType,
-  MyCoursesBodyComponentType,
-  MyCoursesBodyType,
-} from './MyCoursesBodyTypes'
-import { getCourseCreateStages } from './getCourseCreateStages'
+  MyModulesBodyComponentPropsType,
+  MyModulesBodyPropsType,
+  MyModulesBodyPropsOutType,
+  MyModulesBodyComponentType,
+  MyModulesBodyType,
+} from './MyModulesBodyTypes'
+import { getModuleCreateStages } from './getModuleCreateStages'
 
 /**
- * @description Component to render MyCoursesBody
- * @import import { MyCoursesBody, MyCoursesBodyPropsType, MyCoursesBodyPropsOutType, MyCoursesBodyType } 
-             from '../Components/MyCoursesBody/MyCoursesBody'
+ * @description Component to render MyModulesBody
+ * @import import { MyModulesBody, MyModulesBodyPropsType, MyModulesBodyPropsOutType, MyModulesBodyType } 
+             from '../Components/MyModulesBody/MyModulesBody'
  */
-const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
-  props: MyCoursesBodyComponentPropsType
+const MyModulesBodyComponent: MyModulesBodyComponentType = (
+  props: MyModulesBodyComponentPropsType
 ) => {
   const {
     classAdded,
     language,
-    courseCreateProgress,
-    courses,
+    moduleCreateProgress,
+    modules,
     createModuleStages,
-    isShowCourseCreateProgress,
+    isShowModuleCreateProgress,
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
@@ -56,7 +56,7 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
 
   const stages: StagesType[] = useMemo(
     () =>
-      getCourseCreateStages({
+      getModuleCreateStages({
         createModuleStages,
       }),
     [JSON.stringify(createModuleStages)]
@@ -72,34 +72,34 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
           iconToDoProps: {
             classAdded: 'Icon_toDo',
             icon: 'MdCheckBoxOutlineBlank',
-            isDisplaying: status === CreateCourseStatusEnumType['todo'],
+            isDisplaying: status === CreateModuleStatusEnumType['todo'],
           },
           imagePendingProps: {
             classAdded: 'Image_pending',
             src: 'https://yourails.com/images/loading/loading01.gif',
-            isDisplaying: status === CreateCourseStatusEnumType['pending'],
+            isDisplaying: status === CreateModuleStatusEnumType['pending'],
           },
           timerProps: {
-            classAdded: 'Timer_MyCoursesBody',
+            classAdded: 'Timer_MyModulesBody',
             miliseconds: timeCalculated,
-            isStoping: status !== CreateCourseStatusEnumType['pending'],
-            isDisplaying: status === CreateCourseStatusEnumType['pending'],
+            isStoping: status !== CreateModuleStatusEnumType['pending'],
+            isDisplaying: status === CreateModuleStatusEnumType['pending'],
           },
           iconSuccessProps: {
             classAdded: 'Icon_success',
             icon: 'MdCheck',
-            isDisplaying: status === CreateCourseStatusEnumType['success'],
+            isDisplaying: status === CreateModuleStatusEnumType['success'],
           },
           iconFailedProps: {
             classAdded: 'Icon_failed',
             icon: 'MdClear',
-            isDisplaying: status === CreateCourseStatusEnumType['failure'],
+            isDisplaying: status === CreateModuleStatusEnumType['failure'],
           },
           buttonRepeatProps: {
             classAdded: 'Button_create_stage_repeat',
             icon: 'MdOutlineReplay',
             action,
-            isDisplaying: status === CreateCourseStatusEnumType['failure'],
+            isDisplaying: status === CreateModuleStatusEnumType['failure'],
           },
         }
 
@@ -128,13 +128,13 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
   }
 
   useMemo(() => {
-    console.info('MyCoursesBody [130] courseCreateProgress', {
-      ...courseCreateProgress,
+    console.info('MyModulesBody [130] courseModuleProgress', {
+      ...moduleCreateProgress,
       createModuleStages,
     })
-  }, [JSON.stringify(courseCreateProgress)])
+  }, [JSON.stringify(moduleCreateProgress)])
 
-  const propsOut: MyCoursesBodyPropsOutType = {
+  const propsOut: MyModulesBodyPropsOutType = {
     inputGroupProps: {
       classAdded: 'InputGroupYrl_CourseCreate',
       inputProps: {
@@ -151,8 +151,8 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
         action: { typeEvent: 'CLICK_ON_COURSE_CREATE_SUBMIT' },
       },
     },
-    myCoursesTableProps: {
-      courses,
+    myModulesTableProps: {
+      modules,
       language,
     },
     paginationNavigationProps: {
@@ -161,21 +161,21 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
   }
 
   return (
-    <div className={getClasses('MyCoursesBody', classAdded)}>
+    <div className={getClasses('MyModulesBody', classAdded)}>
       <div className='_inputGroupWrapper' style={{ width }}>
         <h3 className='_h2'>{DICTIONARY.Create_course[language]}</h3>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>
-        {isShowCourseCreateProgress ? getStages(stages) : null}
+        {isShowModuleCreateProgress ? getStages(stages) : null}
       </div>
       <div className='_messageWrapper'></div>
       <div className='_coursesBodyWrapper'>
-        {courses.length ? (
-          <MyCoursesTable {...propsOut.myCoursesTableProps} />
+        {modules.length ? (
+          <MyModulesTable {...propsOut.myModulesTableProps} />
         ) : null}
         <div className='_paginationNavigationWrapper'>
-          {courses.length ? (
+          {modules.length ? (
             <PaginationNavigation {...propsOut.paginationNavigationProps} />
           ) : null}
         </div>
@@ -187,17 +187,17 @@ const MyCoursesBodyComponent: MyCoursesBodyComponentType = (
 const storeStateSliceProps: string[] = [
   'language',
   'createModuleStages',
-  'courseCreateProgress',
-  'courses',
+  'moduleCreateProgress',
+  'modules',
 ]
-export const MyCoursesBody: MyCoursesBodyType = withStoreStateSelectedYrl(
+export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(MyCoursesBodyComponent)
+  React.memo(MyModulesBodyComponent)
 )
 
 export type {
-  MyCoursesBodyPropsType,
-  MyCoursesBodyPropsOutType,
-  MyCoursesBodyComponentType,
-  MyCoursesBodyType,
+  MyModulesBodyPropsType,
+  MyModulesBodyPropsOutType,
+  MyModulesBodyComponentType,
+  MyModulesBodyType,
 }

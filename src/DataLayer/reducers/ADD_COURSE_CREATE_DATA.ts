@@ -5,15 +5,15 @@ export const ADD_COURSE_CREATE_DATA: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
-  const { courseCreateProgress } = store
+  const { moduleCreateProgress } = store
 
   let courseCreateProgressNext = {
-    ...courseCreateProgress,
+    ...moduleCreateProgress,
     ...data,
   }
 
   return {
     ...store,
-    courseCreateProgress: courseCreateProgressNext,
+    moduleCreateProgress: courseCreateProgressNext,
   }
 }

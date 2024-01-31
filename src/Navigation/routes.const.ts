@@ -32,7 +32,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen:
-      'MyCourses' /* Screen/Page to display the form to create a course */,
+      'MyModules' /* Screen/Page to display the form to create a course */,
     path: `/my-courses/`,
     children: [],
     errorElement: 'Error404',
