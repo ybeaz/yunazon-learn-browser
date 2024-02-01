@@ -134,7 +134,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
 
   return (
     <div className={getClasses('MyModulesTable', classAdded)}>
-      <h2 className='_screenTitle'>{DICTIONARY.My_courses[language]}</h2>
+      <h2 className='_screenTitle'>{DICTIONARY.My_modules[language]}</h2>
       {getModulesTable(modules)}
     </div>
   )

@@ -128,7 +128,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
   }
 
   useMemo(() => {
-    console.info('MyModulesBody [130] courseModuleProgress', {
+    console.info('MyModulesBody [130] moduleModuleProgress', {
       ...moduleCreateProgress,
       createModuleStages,
     })
@@ -163,14 +163,14 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
   return (
     <div className={getClasses('MyModulesBody', classAdded)}>
       <div className='_inputGroupWrapper' style={{ width }}>
-        <h3 className='_h2'>{DICTIONARY.Create_course[language]}</h3>
+        <h3 className='_h2'>{DICTIONARY.Create_module[language]}</h3>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
       <div className='_stagesWrapper'>
         {isShowModuleCreateProgress ? getStages(stages) : null}
       </div>
       <div className='_messageWrapper'></div>
-      <div className='_coursesBodyWrapper'>
+      <div className='_modulesBodyWrapper'>
         {modules.length ? (
           <MyModulesTable {...propsOut.myModulesTableProps} />
         ) : null}

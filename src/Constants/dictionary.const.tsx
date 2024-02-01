@@ -95,9 +95,17 @@ export const DICTIONARY: IDictionary = {
     en: 'Create course',
     ru: 'Создать курс',
   },
+  Create_module: {
+    en: 'Create module',
+    ru: 'Создать модуль',
+  },
   My_courses: {
     en: 'My courses',
     ru: 'Мои курсы',
+  },
+  My_modules: {
+    en: 'My modules',
+    ru: 'Мои модули',
   },
   My_documents: {
     en: 'My documents',
