@@ -81,6 +81,6 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-export default function* addDocumentSaga() {
+export default function* createDocumentSaga() {
   yield takeEvery([actionAsync.CREATE_DOCUMENT.REQUEST().type], createDocument)
 }

@@ -21,7 +21,7 @@ import getAuthAwsCognitoUserDataSaga from './sagas/getAuthAwsCognitoUserDataSaga
 import getModuleDataSaga from './sagas/getModuleDataSaga'
 import sendEmailDocumentSaga from './sagas/sendEmailDocumentSaga'
 import readDocumentSaga from './sagas/readDocumentSaga'
-import addDocumentSaga from './sagas/createDocumentSaga'
+import createDocumentSaga from './sagas/createDocumentSaga'
 import getCoursesSaga from './sagas/getCoursesSaga'
 import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
@@ -48,7 +48,7 @@ export default function* indexSaga() {
     fork(getModuleDataSaga),
     fork(sendEmailDocumentSaga),
     fork(readDocumentSaga),
-    fork(addDocumentSaga),
+    fork(createDocumentSaga),
     fork(getCoursesSaga),
     fork(getMatrixDataSaga),
   ])
