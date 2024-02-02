@@ -67,7 +67,7 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
       modulesNext = getPreparedModules(readModules)
     }
 
-    console.info('getModuleData.saga [73]', { modulesNext, moduleID })
+    console.info('getModuleDataSaga [73]', { modulesNext, moduleID })
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
     yield put(actionSync.SET_MODULES(modulesNext))

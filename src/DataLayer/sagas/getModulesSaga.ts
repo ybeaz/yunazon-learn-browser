@@ -75,7 +75,7 @@ export function* getModulesGenerator(
       .exec(getMappedConnectionToItems, { printRes: false })
       .exec(getPreparedModules).result
 
-    console.info('getModules.saga [73]', { modulesNext })
+    console.info('getModulesSaga [73]', { modulesNext })
 
     yield put(actionSync.SET_MODULES(modulesNext))
 
@@ -86,10 +86,7 @@ export function* getModulesGenerator(
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info(
-      'getModules.saga [77] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModulesSaga [77] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

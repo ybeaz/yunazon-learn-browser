@@ -79,7 +79,7 @@ export function* getDocumentsGenerator(
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info(
-      'getDocuments.saga [44] ERROR',
+      'getDocumentsSaga [44] ERROR',
       `${error.name}: ${error.message}`
     )
   }

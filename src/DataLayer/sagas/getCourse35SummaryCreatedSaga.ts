@@ -15,7 +15,7 @@ import { withDebounce } from '../../Shared/withDebounce'
 import {
   getCourseBotResponse,
   GetCourseBotResponseParamsType,
-} from './getCourseBotResponse.saga'
+} from './getCourseBotResponseSaga'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
 
@@ -52,7 +52,7 @@ export function* getCourse35SummaryCreatedGenerator(
         const paramString = JSON.stringify(transcriptChunk)
         if (paramPrev !== '' && paramPrev === paramString) {
           throw new Error(
-            `getCourse35SummaryCreated.saga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
+            `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
           )
         }
       }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
@@ -109,7 +109,7 @@ export function* getCourse35SummaryCreatedGenerator(
     )
 
     console.info(
-      'getCourse35SummaryCreated.saga  [110] ERROR',
+      'getCourse35SummaryCreatedSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }

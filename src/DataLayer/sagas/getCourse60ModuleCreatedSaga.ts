@@ -125,7 +125,7 @@ export function* getCourse60ModuleCreatedGenerator(
     )
 
     console.info(
-      'getCourse60ModuleCreated.saga [76] ERROR',
+      'getCourse60ModuleCreatedSaga [76] ERROR',
       `${error.name}: ${error.message}`
     )
   }

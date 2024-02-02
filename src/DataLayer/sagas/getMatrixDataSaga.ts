@@ -3,7 +3,7 @@ import { takeEvery, call, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getModules } from './getModules.saga'
+import { getModules } from './getModulesSaga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 

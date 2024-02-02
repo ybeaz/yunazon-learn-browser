@@ -29,7 +29,7 @@ export function* readArticleGenerator(
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info(
-      'readArticle.saga [33] ERROR',
+      'readArticleSaga [33] ERROR',
       `${error.name}: ${error.message}`
     )
   }

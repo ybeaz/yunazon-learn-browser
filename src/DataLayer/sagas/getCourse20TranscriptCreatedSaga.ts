@@ -90,7 +90,7 @@ export function* getCourse20TranscriptCreatedGenerator(
     )
 
     console.info(
-      'getCourse20TranscriptCreated.saga [69] ERROR',
+      'getCourse20TranscriptCreatedSaga [69] ERROR',
       `${error.name}: ${error.message}`
     )
   }

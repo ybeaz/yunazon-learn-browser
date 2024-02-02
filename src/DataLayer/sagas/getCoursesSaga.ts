@@ -86,10 +86,7 @@ export function* getCoursesGenerator(
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info(
-      'getCourses.saga [77] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getCoursesSaga [77] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

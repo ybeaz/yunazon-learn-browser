@@ -79,7 +79,7 @@ export function* getCourseBotResponseGenerator(
     )
 
     console.info(
-      'getCourseBotResponse.saga  [110] ERROR',
+      'getCourseBotResponseSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }

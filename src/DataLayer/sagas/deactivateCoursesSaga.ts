@@ -1,32 +1,32 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
 
-import { MutationDeactivateDocumentsArgs } from '../../@types/GraphqlTypes'
+import { MutationDeactivateCoursesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getDocuments } from './getDocuments.saga'
+import { getCourses } from './getCoursesSaga'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-function* deactivateDocumentsGenerator(
+function* deactivateCoursesGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   const {
-    data: { documentsIDs },
+    data: { coursesIDs },
   } = params
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables: MutationDeactivateDocumentsArgs = {
-      deactivateDocumentsIdsInput: documentsIDs,
+    const variables: MutationDeactivateCoursesArgs = {
+      deactivateCoursesIdsInput: coursesIDs,
     }
 
-    const deactivateDocuments: any = yield getResponseGraphqlAsync(
+    const deactivateCourses: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'deactivateDocuments',
+        resolveGraphqlName: 'deactivateCourses',
       },
       {
         ...getHeadersAuthDict(),
@@ -35,7 +35,7 @@ function* deactivateDocumentsGenerator(
       }
     )
 
-    yield call(getDocuments)
+    yield call(getCourses)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(
@@ -46,20 +46,17 @@ function* deactivateDocumentsGenerator(
     )
   } catch (error: any) {
     console.info(
-      'deactivateDocuments [41] ERROR',
+      'deactivateCourses [41] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const deactivateDocuments = withDebounce(
-  deactivateDocumentsGenerator,
-  500
-)
+export const deactivateCourses = withDebounce(deactivateCoursesGenerator, 500)
 
-export default function* deactivateDocumentsSaga() {
+export default function* deactivateCoursesSaga() {
   yield takeEvery(
-    [actionAsync.DEACTIVATE_DOCUMENTS.REQUEST().type],
-    deactivateDocuments
+    [actionAsync.DEACTIVATE_COURSES.REQUEST().type],
+    deactivateCourses
   )
 }

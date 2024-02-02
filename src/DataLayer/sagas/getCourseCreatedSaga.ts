@@ -8,12 +8,12 @@ import {
 } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
-import { getCourse10MataDataCreated } from './getCourse10MataDataCreated.saga'
-import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreated.saga'
-import { getCourse35SummaryCreated } from './getCourse35SummaryCreated.saga'
-import { getCourse45QuestionsCreated } from './getCourse45QuestionsCreated.saga'
-import { getCourse55ObjectionsCreated } from './getCourse55ObjectionsCreated.saga'
-import { getCourse60ModuleCreated } from './getCourse60ModuleCreated.saga'
+import { getCourse10MataDataCreated } from './getCourse10MataDataCreatedSaga'
+import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreatedSaga'
+import { getCourse35SummaryCreated } from './getCourse35SummaryCreatedSaga'
+import { getCourse45QuestionsCreated } from './getCourse45QuestionsCreatedSaga'
+import { getCourse55ObjectionsCreated } from './getCourse55ObjectionsCreatedSaga'
+import { getCourse60ModuleCreated } from './getCourse60ModuleCreatedSaga'
 
 export function* getCourseCreatedGenerator(
   params: ActionReduxType | any
@@ -128,7 +128,7 @@ export function* getCourseCreatedGenerator(
       yield getCourse60ModuleCreated()
   } catch (error: any) {
     console.info(
-      'getCourseCreated.saga [37] ERROR',
+      'getCourseCreatedSaga [37] ERROR',
       `${error.name}: ${error.message}`
     )
   }
