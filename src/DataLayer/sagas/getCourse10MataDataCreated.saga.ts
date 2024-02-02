@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { MutationCreateContentMetaDataArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -38,7 +39,7 @@ export function* getCourse10MataDataCreatedGenerator(
       })
     )
 
-    const variables = {
+    const variables: MutationCreateContentMetaDataArgs = {
       createContentMetaDataInput: {
         originUrl: inputCourseCreate,
       },

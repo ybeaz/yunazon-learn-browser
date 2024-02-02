@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { MutationCreateBotResponseArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -42,7 +43,7 @@ export function* getCourseBotResponseGenerator(
   } = params
 
   try {
-    const variables = {
+    const variables: MutationCreateBotResponseArgs = {
       createBotResponseInput: {
         botID,
         profileID,

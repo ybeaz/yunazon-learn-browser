@@ -1,32 +1,32 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
 
-import { MutationDeactivateDocumentsArgs } from '../../@types/GraphqlTypes'
+import { MutationDeactivateModulesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getDocuments } from './getDocuments.saga'
+import { getModules } from './getModules.saga'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-function* deactivateDocumentsGenerator(
+function* deactivateModulesGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   const {
-    data: { documentsIDs },
+    data: { modulesIDs },
   } = params
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables: MutationDeactivateDocumentsArgs = {
-      deactivateDocumentsIdsInput: documentsIDs,
+    const variables: MutationDeactivateModulesArgs = {
+      deactivateModulesIdsInput: modulesIDs,
     }
 
-    const deactivateDocuments: any = yield getResponseGraphqlAsync(
+    const deactivateModules: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'deactivateDocuments',
+        resolveGraphqlName: 'deactivateModules',
       },
       {
         ...getHeadersAuthDict(),
@@ -35,7 +35,7 @@ function* deactivateDocumentsGenerator(
       }
     )
 
-    yield call(getDocuments)
+    yield call(getModules)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(
@@ -46,20 +46,17 @@ function* deactivateDocumentsGenerator(
     )
   } catch (error: any) {
     console.info(
-      'deactivateDocuments [41] ERROR',
+      'deactivateModules [41] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const deactivateDocuments = withDebounce(
-  deactivateDocumentsGenerator,
-  500
-)
+export const deactivateModules = withDebounce(deactivateModulesGenerator, 500)
 
-export default function* deactivateDocumentsSaga() {
+export default function* deactivateModulesSaga() {
   yield takeEvery(
-    [actionAsync.DEACTIVATE_DOCUMENTS.REQUEST().type],
-    deactivateDocuments
+    [actionAsync.DEACTIVATE_MODULES.REQUEST().type],
+    deactivateModules
   )
 }

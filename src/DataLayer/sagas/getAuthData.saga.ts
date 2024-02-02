@@ -1,7 +1,6 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
-import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'

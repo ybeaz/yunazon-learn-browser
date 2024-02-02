@@ -1,5 +1,9 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import {
+  ReadModulesConnectionInputType,
+  QueryReadModulesConnectionArgs,
+} from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -36,7 +40,7 @@ export function* getModulesGenerator(
     return
   }
 
-  let readModulesConnectionInput: any = {
+  let readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
     profileIDs,
@@ -45,12 +49,13 @@ export function* getModulesGenerator(
     tagsOmit,
     stagesPick: [],
     sort: { prop: 'dateCreated', direction: -1 },
+    isActive: true,
   }
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
 
-    const variables = {
+    const variables: QueryReadModulesConnectionArgs = {
       readModulesConnectionInput,
     }
 

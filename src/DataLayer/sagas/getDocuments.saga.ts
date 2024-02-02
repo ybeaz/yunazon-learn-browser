@@ -1,5 +1,9 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import {
+  ReadDocumentsConnectionInputType,
+  QueryReadDocumentsConnectionArgs,
+} from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -32,7 +36,7 @@ export function* getDocumentsGenerator(
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const readDocumentsConnectionInput: any = {
+    const readDocumentsConnectionInput: ReadDocumentsConnectionInputType = {
       first,
       offset,
       profileIDs: [sub || '000000'],
@@ -40,9 +44,10 @@ export function* getDocumentsGenerator(
       tagsPick,
       tagsOmit,
       stagesPick: selectCoursesStageFlag(),
+      isActive: true,
     }
 
-    const variables = {
+    const variables: QueryReadDocumentsConnectionArgs = {
       readDocumentsConnectionInput,
     }
     const readDocumentsConnection: any = yield getResponseGraphqlAsync(

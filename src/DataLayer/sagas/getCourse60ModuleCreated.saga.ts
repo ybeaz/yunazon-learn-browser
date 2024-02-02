@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { MutationCreateCoursesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -54,7 +55,7 @@ export function* getCourse60ModuleCreatedGenerator(
       })
     )
 
-    const variables = {
+    const variables: MutationCreateCoursesArgs = {
       createCoursesInput: [
         {
           profileID: sub,

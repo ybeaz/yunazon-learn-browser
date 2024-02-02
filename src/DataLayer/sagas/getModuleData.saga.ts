@@ -1,6 +1,10 @@
 import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
 
-import { ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
+import {
+  QueryReadModulesArgs,
+  ModuleType,
+  AcademyPresentCaseEnumType,
+} from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -22,9 +26,6 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
-    // STOPPED HERE. Need to change many things :-)
-    console.info('getModuleData.saga [27]', { moduleID })
 
     const modulesInProgress =
       getLocalStorageReadKeyObj('modulesInProgress') || []
@@ -48,12 +49,8 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
         caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
     } else {
       /* Case: initial loading */
-      const variables = {
-        readModulesInput: [
-          {
-            moduleID,
-          },
-        ],
+      const variables: QueryReadModulesArgs = {
+        readModulesInput: [{ moduleID }],
       }
 
       const readModules: any = yield getResponseGraphqlAsync(

@@ -1,5 +1,6 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
+import { QueryReadDocumentsArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
@@ -12,7 +13,7 @@ function* readDocument(params: ActionReduxType | any): Iterable<any> {
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables = {
+    const variables: QueryReadDocumentsArgs = {
       readDocumentsIdsInput: [documentID],
     }
 

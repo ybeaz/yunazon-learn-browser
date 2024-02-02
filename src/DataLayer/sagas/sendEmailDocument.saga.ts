@@ -1,5 +1,6 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
+import { QuerySendEmailDocumentArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
@@ -15,7 +16,7 @@ function* sendEmailDocument(params: ActionReduxType | any): Iterable<any> {
 
     const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
 
-    const variables = {
+    const variables: QuerySendEmailDocumentArgs = {
       documentID,
       sendTo,
       sendCc,

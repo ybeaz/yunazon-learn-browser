@@ -1,5 +1,9 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import {
+  ReadCoursesConnectionInputType,
+  QueryReadCoursesConnectionArgs,
+} from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -38,7 +42,7 @@ export function* getCoursesGenerator(
     return
   }
 
-  let readCoursesConnectionInput: any = {
+  let readCoursesConnectionInput: ReadCoursesConnectionInputType = {
     first,
     offset,
     profileIDs,
@@ -47,12 +51,13 @@ export function* getCoursesGenerator(
     tagsOmit,
     stagesPick: selectCoursesStageFlag(),
     sort: { prop: 'dateCreated', direction: -1 },
+    isActive: true,
   }
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
 
-    const variables = {
+    const variables: QueryReadCoursesConnectionArgs = {
       readCoursesConnectionInput,
     }
 

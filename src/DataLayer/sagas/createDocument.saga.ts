@@ -1,8 +1,8 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { MutationCreateDocumentsArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { CreateDocumentInputType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -36,9 +36,7 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables: {
-      createDocumentsInput: CreateDocumentInputType[]
-    } = {
+    const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
           courseID: courseID || '000000000000',
