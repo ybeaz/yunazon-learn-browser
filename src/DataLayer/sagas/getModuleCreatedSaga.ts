@@ -8,19 +8,19 @@ import {
 } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
-import { getCourse10MataDataCreated } from './getCourse10MataDataCreatedSaga'
-import { getCourse20TranscriptCreated } from './getCourse20TranscriptCreatedSaga'
-import { getCourse35SummaryCreated } from './getCourse35SummaryCreatedSaga'
-import { getCourse45QuestionsCreated } from './getCourse45QuestionsCreatedSaga'
-import { getCourse55ObjectionsCreated } from './getCourse55ObjectionsCreatedSaga'
-import { getCourse60ModuleCreated } from './getCourse60ModuleCreatedSaga'
+import { getModule10MataDataCreated } from './getModule10MataDataCreatedSaga'
+import { getModule20TranscriptCreated } from './getModule20TranscriptCreatedSaga'
+import { getModule35SummaryCreated } from './getModule35SummaryCreatedSaga'
+import { getModule45QuestionsCreated } from './getModule45QuestionsCreatedSaga'
+import { getModule55ObjectionsCreated } from './getModule55ObjectionsCreatedSaga'
+import { getModule60ModuleCreated } from './getModule60ModuleCreatedSaga'
 
-export function* getCourseCreatedGenerator(
+export function* getModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         originUrl: '',
         course: {},
         metaData: {},
@@ -43,7 +43,7 @@ export function* getCourseCreatedGenerator(
     } = stateSelected10
 
     if (createModuleStages10[CreateModuleStagesEnumType['metaData']].isActive)
-      yield getCourse10MataDataCreated()
+      yield getModule10MataDataCreated()
 
     /* Add transcript to moduleCreateProgress */
     const stateSelected20: RootStoreType | any = yield select(
@@ -58,7 +58,7 @@ export function* getCourseCreatedGenerator(
       createModuleStages20[CreateModuleStagesEnumType['metaData']].status ===
         CreateModuleStatusEnumType['success']
     )
-      yield getCourse20TranscriptCreated()
+      yield getModule20TranscriptCreated()
 
     /* Add summary to moduleCreateProgress */
     const stateSelected35: RootStoreType | any = yield select(
@@ -73,7 +73,7 @@ export function* getCourseCreatedGenerator(
       createModuleStages35[CreateModuleStagesEnumType['transcript']].status ===
         CreateModuleStatusEnumType['success']
     )
-      yield getCourse35SummaryCreated()
+      yield getModule35SummaryCreated()
 
     /* Add questions to moduleCreateProgress */
     const stateSelected45: RootStoreType | any = yield select(
@@ -88,7 +88,7 @@ export function* getCourseCreatedGenerator(
       createModuleStages45[CreateModuleStagesEnumType['summary']].status ===
         CreateModuleStatusEnumType['success']
     )
-      yield getCourse45QuestionsCreated()
+      yield getModule45QuestionsCreated()
 
     /* Add objections to moduleCreateProgress */
     const stateSelected55: RootStoreType | any = yield select(
@@ -103,7 +103,7 @@ export function* getCourseCreatedGenerator(
       createModuleStages55[CreateModuleStagesEnumType['questions']].status ===
         CreateModuleStatusEnumType['success']
     )
-      yield getCourse55ObjectionsCreated()
+      yield getModule55ObjectionsCreated()
 
     /* Create course and module */
     const stateSelected60: RootStoreType | any = yield select(
@@ -125,20 +125,20 @@ export function* getCourseCreatedGenerator(
           createModuleStages60[CreateModuleStagesEnumType['questions']]
             .status === CreateModuleStatusEnumType['success']))
     )
-      yield getCourse60ModuleCreated()
+      yield getModule60ModuleCreated()
   } catch (error: any) {
     console.info(
-      'getCourseCreatedSaga [37] ERROR',
+      'getModuleCreatedSaga [37] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseCreated = withDebounce(getCourseCreatedGenerator, 500)
+export const getModuleCreated = withDebounce(getModuleCreatedGenerator, 500)
 
-export default function* getCourseCreatedSaga() {
+export default function* getModuleCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_CREATED.REQUEST().type],
-    getCourseCreated
+    [actionAsync.GET_MODULE_CREATED.REQUEST().type],
+    getModuleCreated
   )
 }

@@ -21,7 +21,7 @@ import {
   GetPreparedResponseFromBotParamsType,
 } from '../../Shared/getPreparedResponseFromBot/getPreparedResponseFromBot'
 
-export type GetCourseBotResponseParamsType = {
+export type GetBotResponseParamsType = {
   botID: string
   profileID: string
   profileName: string
@@ -30,8 +30,8 @@ export type GetCourseBotResponseParamsType = {
   userText: string
 }
 
-export function* getCourseBotResponseGenerator(
-  params: GetCourseBotResponseParamsType
+export function* getBotResponseGenerator(
+  params: GetBotResponseParamsType
 ): Iterable<any> {
   const {
     botID,
@@ -72,27 +72,21 @@ export function* getCourseBotResponseGenerator(
     return output
   } catch (error: any) {
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage,
         status: CreateModuleStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourseBotResponseSaga  [110] ERROR',
+      'getBotResponseSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourseBotResponse = withDebounce(
-  getCourseBotResponseGenerator,
-  500
-)
+export const getBotResponse = withDebounce(getBotResponseGenerator, 500)
 
-export default function* getCourseBotResponseSaga() {
-  yield takeEvery(
-    [actionAsync.GET_COURSE_BOT_RESPONSE.REQUEST().type],
-    getCourseBotResponse
-  )
+export default function* getBotResponseSaga() {
+  yield takeEvery([actionAsync.GET_BOT_RESPONSE.REQUEST().type], getBotResponse)
 }

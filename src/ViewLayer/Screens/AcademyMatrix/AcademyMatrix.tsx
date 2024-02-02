@@ -119,8 +119,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     },
   }
 
-  console.info('AcademyMatrix [132]', { modules })
-
   return (
     <div className='AcademyMatrix'>
       <Helmet>

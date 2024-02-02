@@ -22,7 +22,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'metaData',
       isActive: createModuleStages['metaData']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_META_DATA_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_META_DATA_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['metaData']['status'],
@@ -32,7 +32,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'transcript',
       isActive: createModuleStages['transcript']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_TRANSCRIPT_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_TRANSCRIPT_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['transcript']['status'],
@@ -42,7 +42,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'summary',
       isActive: createModuleStages['summary']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_SUMMARY_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_SUMMARY_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['summary']['status'],
@@ -52,7 +52,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'questions',
       isActive: createModuleStages['questions']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_QUESTIONS_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_QUESTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['questions']['status'],
@@ -62,7 +62,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'objections',
       isActive: createModuleStages['objections']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_OBJECTIONS_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_OBJECTIONS_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['objections']['status'],
@@ -72,7 +72,7 @@ export const getModuleCreateStages: GetModuleCreateStagesType = ({
       name: 'courseModule',
       isActive: createModuleStages['courseModule']['isActive'],
       action: {
-        typeEvent: 'GET_COURSE_MODULE_CREATED_HANDLE',
+        typeEvent: 'GET_MODULE_MODULE_CREATED_HANDLE',
         data: {},
       },
       status: createModuleStages['courseModule']['status'],

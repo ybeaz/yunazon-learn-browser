@@ -12,12 +12,9 @@ import {
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
 import { withDebounce } from '../../Shared/withDebounce'
-import {
-  getCourseBotResponse,
-  GetCourseBotResponseParamsType,
-} from './getCourseBotResponseSaga'
+import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 
-export function* getCourse55ObjectionsCreatedGenerator(
+export function* getModule55ObjectionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -31,7 +28,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         timeCalculated: Array.isArray(summary)
           ? summaryChunks.length * connectionsTimeouts.summaryChunkToObjections
@@ -40,7 +37,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['pending'],
       })
@@ -65,7 +62,7 @@ export function* getCourse55ObjectionsCreatedGenerator(
           ? summaryChunk
           : JSON.stringify(summaryChunk, null, 2)
 
-      const getCourseBotResponseParams: GetCourseBotResponseParamsType = {
+      const getBotResponseParams: GetBotResponseParamsType = {
         botID: 'g3lccRJtksaE',
         profileID: 'y9WjMwhdhr31',
         profileName: '@objector_persona',
@@ -74,13 +71,11 @@ export function* getCourse55ObjectionsCreatedGenerator(
           ConnectionsTimeoutNameEnumType['summaryChunkToObjections'],
         userText,
       }
-      const objectionsChunk: any = yield getCourseBotResponse(
-        getCourseBotResponseParams
-      )
+      const objectionsChunk: any = yield getBotResponse(getBotResponseParams)
 
       if (!Array.isArray(objectionsChunk) || objectionsChunk.length === 0)
         throw new Error(
-          `getCourse55ObjectionsCreatedSaga [73] objectionsChunk is not an array or array empty, ${JSON.stringify(
+          `getModule55ObjectionsCreatedSaga [73] objectionsChunk is not an array or array empty, ${JSON.stringify(
             objectionsChunk
           )}`
         )
@@ -95,46 +90,46 @@ export function* getCourse55ObjectionsCreatedGenerator(
     }
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         objections,
       })
     )
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         objectionsChunks,
       })
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['objections'],
         status: CreateModuleStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse55ObjectionsCreatedSaga  [110] ERROR',
+      'getModule55ObjectionsCreatedSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse55ObjectionsCreated = withDebounce(
-  getCourse55ObjectionsCreatedGenerator,
+export const getModule55ObjectionsCreated = withDebounce(
+  getModule55ObjectionsCreatedGenerator,
   500
 )
 
-export default function* getCourse55ObjectionsCreatedSaga() {
+export default function* getModule55ObjectionsCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_OBJECTIONS_CREATED.REQUEST().type],
-    getCourse55ObjectionsCreated
+    [actionAsync.GET_MODULE_OBJECTIONS_CREATED.REQUEST().type],
+    getModule55ObjectionsCreated
   )
 }

@@ -142,13 +142,13 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         type: 'text',
         placeholder: 'Add resource url...',
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
-        typeEventOnEnter: 'CLICK_ON_COURSE_CREATE_SUBMIT',
+        typeEventOnEnter: 'CLICK_ON_MODULE_CREATE_SUBMIT',
         storeFormProp: 'inputCourseCreate',
       },
       buttonSubmitProps: {
         classAdded: 'Button_CourseCreateSubmit',
         icon: 'MdOutlineSend',
-        action: { typeEvent: 'CLICK_ON_COURSE_CREATE_SUBMIT' },
+        action: { typeEvent: 'CLICK_ON_MODULE_CREATE_SUBMIT' },
       },
     },
     myModulesTableProps: {

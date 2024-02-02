@@ -18,7 +18,7 @@ import {
 } from '../../Constants/connectionsTimeouts.const'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCourse60ModuleCreatedGenerator(
+export function* getModule60ModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -49,7 +49,7 @@ export function* getCourse60ModuleCreatedGenerator(
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['pending'],
       })
@@ -105,40 +105,40 @@ export function* getCourse60ModuleCreatedGenerator(
     )
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         course: createCourses[0],
       })
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['courseModule'],
         status: CreateModuleStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse60ModuleCreatedSaga [76] ERROR',
+      'getModule60ModuleCreatedSaga [76] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse60ModuleCreated = withDebounce(
-  getCourse60ModuleCreatedGenerator,
+export const getModule60ModuleCreated = withDebounce(
+  getModule60ModuleCreatedGenerator,
   500
 )
 
-export default function* getCourse60ModuleCreatedSaga() {
+export default function* getModule60ModuleCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_META_DATA_CREATED.REQUEST().type],
-    getCourse60ModuleCreated
+    [actionAsync.GET_MODULE_CREATED.REQUEST().type],
+    getModule60ModuleCreated
   )
 }

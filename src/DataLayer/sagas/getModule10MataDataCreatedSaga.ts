@@ -18,7 +18,7 @@ import {
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
 
-export function* getCourse10MataDataCreatedGenerator(
+export function* getModule10MataDataCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -28,12 +28,12 @@ export function* getCourse10MataDataCreatedGenerator(
     })
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({ originUrl: inputCourseCreate })
+      actionSync.ADD_MODULE_CREATE_DATA({ originUrl: inputCourseCreate })
     )
 
     /* Add metaData to moduleCreateProgress */
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['pending'],
       })
@@ -58,40 +58,40 @@ export function* getCourse10MataDataCreatedGenerator(
     )
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         metaData: createContentMetaData,
       })
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['metaData'],
         status: CreateModuleStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse10MataDataCreatedSaga [76] ERROR',
+      'getModule10MataDataCreatedSaga [76] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse10MataDataCreated = withDebounce(
-  getCourse10MataDataCreatedGenerator,
+export const getModule10MataDataCreated = withDebounce(
+  getModule10MataDataCreatedGenerator,
   500
 )
 
-export default function* getCourse10MataDataCreatedSaga() {
+export default function* getModule10MataDataCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_META_DATA_CREATED.REQUEST().type],
-    getCourse10MataDataCreated
+    [actionAsync.GET_MODULE_META_DATA_CREATED.REQUEST().type],
+    getModule10MataDataCreated
   )
 }

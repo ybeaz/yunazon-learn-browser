@@ -20,7 +20,7 @@ import {
 } from '../../Constants/connectionsTimeouts.const'
 import { CHUNKS_FROM_TRANSCRIPT_STRING } from '../../Constants/chunkParamsLlm.const'
 
-export function* getCourse20TranscriptCreatedGenerator(
+export function* getModule20TranscriptCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -30,7 +30,7 @@ export function* getCourse20TranscriptCreatedGenerator(
     })
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['pending'],
       })
@@ -55,7 +55,7 @@ export function* getCourse20TranscriptCreatedGenerator(
     )
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         transcript: createYoutubeTranscript.transcript,
       })
     )
@@ -70,40 +70,40 @@ export function* getCourse20TranscriptCreatedGenerator(
     })
 
     yield put(
-      actionSync.ADD_COURSE_CREATE_DATA({
+      actionSync.ADD_MODULE_CREATE_DATA({
         transcriptChunks,
       })
     )
 
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['success'],
       })
     )
   } catch (error: any) {
     yield put(
-      actionSync.SET_COURSE_CREATE_STATUS({
+      actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['transcript'],
         status: CreateModuleStatusEnumType['failure'],
       })
     )
 
     console.info(
-      'getCourse20TranscriptCreatedSaga [69] ERROR',
+      'getModule20TranscriptCreatedSaga [69] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getCourse20TranscriptCreated = withDebounce(
-  getCourse20TranscriptCreatedGenerator,
+export const getModule20TranscriptCreated = withDebounce(
+  getModule20TranscriptCreatedGenerator,
   500
 )
 
-export default function* getCourse20TranscriptCreatedSaga() {
+export default function* getModule20TranscriptCreatedSaga() {
   yield takeEvery(
-    [actionAsync.GET_COURSE_TRANSCRIPT_CREATED.REQUEST().type],
-    getCourse20TranscriptCreated
+    [actionAsync.GET_MODULE_TRANSCRIPT_CREATED.REQUEST().type],
+    getModule20TranscriptCreated
   )
 }

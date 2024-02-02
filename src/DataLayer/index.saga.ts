@@ -2,14 +2,14 @@ import { all, fork } from 'redux-saga/effects'
 
 import deactivateModulesSaga from './sagas/deactivateModulesSaga'
 import getModulesSaga from './sagas/getModulesSaga'
-import getCourse60ModuleCreatedSaga from './sagas/getCourse60ModuleCreatedSaga'
-import getCourse55ObjectionsCreatedSaga from './sagas/getCourse55ObjectionsCreatedSaga'
-import getCourse45QuestionsCreatedSaga from './sagas/getCourse45QuestionsCreatedSaga'
-import getCourse35SummaryCreatedSaga from './sagas/getCourse35SummaryCreatedSaga'
-import getCourse20TranscriptCreatedSaga from './sagas/getCourse20TranscriptCreatedSaga'
-import getCourse10MataDataCreatedSaga from './sagas/getCourse10MataDataCreatedSaga'
-import getCourseBotResponseSaga from './sagas/getCourseBotResponseSaga'
-import getCourseCreatedSaga from './sagas/getCourseCreatedSaga'
+import getModule60ModuleCreatedSaga from './sagas/getModule60ModuleCreatedSaga'
+import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreatedSaga'
+import getModule45QuestionsCreatedSaga from './sagas/getModule45QuestionsCreatedSaga'
+import getModule35SummaryCreatedSaga from './sagas/getModule35SummaryCreatedSaga'
+import getModule20TranscriptCreatedSaga from './sagas/getModule20TranscriptCreatedSaga'
+import getModule10MataDataCreatedSaga from './sagas/getModule10MataDataCreatedSaga'
+import getBotResponseSaga from './sagas/getBotResponseSaga'
+import getModuleCreatedSaga from './sagas/getModuleCreatedSaga'
 import readArticleSaga from './sagas/readArticleSaga'
 import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
 import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
@@ -27,14 +27,14 @@ import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
-    fork(getCourseBotResponseSaga),
-    fork(getCourse60ModuleCreatedSaga),
-    fork(getCourse55ObjectionsCreatedSaga),
-    fork(getCourse45QuestionsCreatedSaga),
-    fork(getCourse35SummaryCreatedSaga),
-    fork(getCourse20TranscriptCreatedSaga),
-    fork(getCourse10MataDataCreatedSaga),
-    fork(getCourseCreatedSaga),
+    fork(getBotResponseSaga),
+    fork(getModule60ModuleCreatedSaga),
+    fork(getModule55ObjectionsCreatedSaga),
+    fork(getModule45QuestionsCreatedSaga),
+    fork(getModule35SummaryCreatedSaga),
+    fork(getModule20TranscriptCreatedSaga),
+    fork(getModule10MataDataCreatedSaga),
+    fork(getModuleCreatedSaga),
     fork(deactivateModulesSaga),
     fork(getModulesSaga),
     fork(readArticleSaga),

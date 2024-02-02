@@ -13,7 +13,7 @@ type DataType = {
   timeCalculated: CreateModuleStageType['timeCalculated']
 }
 
-export const SET_COURSE_CREATE_STATUS: ReducerType = (
+export const SET_MODULE_CREATE_STATUS: ReducerType = (
   store: RootStoreType,
   data: DataType
 ): RootStoreType => {

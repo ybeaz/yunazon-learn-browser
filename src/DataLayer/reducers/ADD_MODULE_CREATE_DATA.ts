@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-export const ADD_COURSE_CREATE_DATA: ReducerType = (
+export const ADD_MODULE_CREATE_DATA: ReducerType = (
   store: RootStoreType,
   data: any
 ): RootStoreType => {
