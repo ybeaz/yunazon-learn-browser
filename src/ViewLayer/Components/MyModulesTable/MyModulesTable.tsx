@@ -32,7 +32,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
   const getModulesTable = (modulesIn: ModuleType[]) => {
     const modulesRows: React.ReactElement[] = modulesIn.map(
       (module: ModuleType) => {
-        const { moduleID, capture, dateCreated } = module
+        const { moduleID, capture, dateCreated, duration } = module
 
         const dateString = getDateString({
           timestamp: dateCreated,
@@ -104,7 +104,8 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
             <div className='_cell _module_name'>
               <Link {...propsOut.linkToModuleProps} />
             </div>
-            <div className='_cell _course_button_edit'>
+            <div className='_cell _module_duration'>{duration}</div>
+            <div className='_cell _module_button_edit'>
               {/* TODO: Add a button and implement edit feature */}
             </div>
             <div className='_cell _remove'>
@@ -118,13 +119,22 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
     return (
       <section className={getClasses('_coursesTable', classAdded)}>
         <header className='_row _row_header'>
-          <div className='_cell _header_date'>Date</div>
-          <div className='_cell _header_module_name'>Module name</div>
-          <div className='_cell _header_course_link'>
-            {/* TODO: Add a button and implement edit feature */}
-            <div style={{ opacity: 0 }}>Edit</div>
+          <div className='_cell _header_date'>
+            {DICTIONARY.Date_of_creation[language]}
           </div>
-          <div className='_cell _header_remove'>Remove</div>
+          <div className='_cell _header_module_name'>
+            {DICTIONARY.Module_name[language]}
+          </div>
+          <div className='_cell _header_module_duration'>
+            {DICTIONARY.Module_duration[language]}
+          </div>
+          <div className='_cell _header_module_button_edit'>
+            {/* TODO: Add a button and implement edit feature */}
+            <div style={{ opacity: 0 }}>{DICTIONARY.Edit[language]}</div>
+          </div>
+          <div className='_cell _header_remove'>
+            {DICTIONARY.Remove[language]}
+          </div>
         </header>
 
         {modulesRows}
