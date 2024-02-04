@@ -44,6 +44,7 @@ export function* getDocumentsGenerator(
       tagsPick,
       tagsOmit,
       stagesPick: selectCoursesStageFlag(),
+      sort: { prop: 'dateCreated', direction: -1 },
       isActive: true,
     }
 

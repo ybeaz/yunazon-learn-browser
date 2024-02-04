@@ -31,8 +31,6 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 ) => {
   const { classAdded, handleEvents, documents, language } = props
 
-  console.info('MyDocumentsBody [34]', { documents })
-
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
     const documentsRows: React.ReactElement[] = documentsIn.map(
       (document: DocumentType) => {
