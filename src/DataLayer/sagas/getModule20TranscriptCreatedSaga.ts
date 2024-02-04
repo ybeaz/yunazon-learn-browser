@@ -57,6 +57,7 @@ export function* getModule20TranscriptCreatedGenerator(
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         transcript: createYoutubeTranscript.transcript,
+        transcriptList: createYoutubeTranscript.transcriptList,
       })
     )
 

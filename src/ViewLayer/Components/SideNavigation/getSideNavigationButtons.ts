@@ -50,7 +50,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
     },
     {
       icon: 'MdCastForEducation',
-      captureRight: DICTIONARY.My_modules[language],
+      captureRight: DICTIONARY.My_courses[language],
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',

@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateCoursesArgs } from '../../@types/GraphqlTypes'
+import { MutationCreateModulesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
@@ -31,13 +31,14 @@ export function* getModule60ModuleCreatedGenerator(
       }
     )
 
-    const { metaData, questions, summary, objections } = moduleCreateProgress
+    const { metaData, transcriptList, questions, summary, objections } =
+      moduleCreateProgress
     const {
       contentID,
       capture,
       description,
       duration,
-      language: languageIn,
+      language,
       tags,
       thumbnails,
     } = metaData
@@ -55,13 +56,13 @@ export function* getModule60ModuleCreatedGenerator(
       })
     )
 
-    const variables: MutationCreateCoursesArgs = {
-      createCoursesInput: [
+    const variables: MutationCreateModulesArgs = {
+      createModulesInput: [
         {
           profileID: sub,
           capture,
           description: descriptionNext,
-          language: languageIn ? languageIn : 'en',
+          language: language ? language : 'en',
           isActive: true,
           meta: {
             institution: 'YouRails Academy',
@@ -72,22 +73,17 @@ export function* getModule60ModuleCreatedGenerator(
             stages: ['production2023'],
             tags,
           },
-          modules: [
-            {
-              index: 0,
-              isActive: true,
-              contentType: 'ytID',
-              contentID,
-              capture: `Модуль I. ${capture}`,
-              duration,
-              questionNumber: 6,
-              passRate: 0.75,
-              thumbnails,
-              questions,
-              summary,
-              objections,
-            },
-          ],
+          index: 0,
+          contentType: 'ytID',
+          contentID,
+          duration,
+          questionNumber: 6,
+          passRate: 0.75,
+          thumbnails,
+          questions,
+          summary,
+          objections,
+          transcriptList,
         },
       ],
     }
@@ -95,7 +91,7 @@ export function* getModule60ModuleCreatedGenerator(
     const createCourses: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createCourses',
+        resolveGraphqlName: 'createModules',
       },
       {
         ...getHeadersAuthDict(),
