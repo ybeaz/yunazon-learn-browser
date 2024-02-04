@@ -12,7 +12,7 @@ import { HandleEventType } from '../../../Interfaces/HandleEventType'
 export type GetScenarioDictPropsType = {
   result: ResultType
   language: RootStoreType['language']
-  courseCapture: string
+  capture: string
   right: number
   total: number
   nameFirst: RootStoreType['forms']['user']['nameFirst']
@@ -20,7 +20,6 @@ export type GetScenarioDictPropsType = {
   nameLast: RootStoreType['forms']['user']['nameLast']
   meta?: MetaCourseType | {}
   description: string
-  courseID: CourseType['courseID']
   moduleID: ModuleType['moduleID']
   contentID: ModuleType['contentID']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
@@ -34,7 +33,7 @@ export type QuestionScoresComponentPropsType = {
     language: RootStoreType['language']
     documents: RootStoreType['documents']
     moduleIDActive: RootStoreType['scorm']['moduleIDActive']
-    courses: RootStoreType['courses']
+    modules: RootStoreType['modules']
     nameFirst: RootStoreType['forms']['user']['nameFirst']
     nameMiddle: RootStoreType['forms']['user']['nameMiddle']
     nameLast: RootStoreType['forms']['user']['nameLast']

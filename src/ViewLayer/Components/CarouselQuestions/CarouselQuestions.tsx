@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { QuestionType } from '../../../@types/GraphqlTypes'
 import {
-  getActiveCourseData,
+  getModuleByModuleID,
   getQuesionString,
   getButtonsClassString,
   getChunkedArray,
@@ -35,17 +35,22 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       moduleIDActive,
       numberQuestionsInSlide,
       questionsSlideNumber,
-      isCourseStarted,
-      courses,
+      isModuleStarted,
+      modules,
       language,
     },
   } = props
 
   const {
-    courseActive: { capture: courseCapture, courseID },
-    moduleActive: { moduleID, contentID, questionNumber },
-    questionsActive,
-  } = getActiveCourseData(courses, moduleIDActive)
+    capture,
+    moduleID,
+    contentID,
+    questionNumber,
+    questions: questionsActive,
+  } = getModuleByModuleID({
+    moduleID: moduleIDActive || '',
+    modules,
+  })
 
   const questionsChunked = getChunkedArray(
     questionsActive,
@@ -112,7 +117,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     questionsChunked.length,
     questionsActive,
     questionsChunked,
-    isCourseStarted
+    isModuleStarted
   )
 
   const CertificateDash = DICTIONARY['Certificate'][language]
@@ -133,11 +138,10 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       icon: 'MdForward',
       classAdded: 'Button_startModule',
       action: {
-        typeEvent: 'TOGGLE_START_COURSE',
+        typeEvent: 'TOGGLE_START_MODULE',
         data: {
           isStarting: true,
-          courseCapture,
-          courseID,
+          capture,
           moduleID,
           contentID,
         },
@@ -185,11 +189,10 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       icon: 'MdForward',
       classAdded: 'Button_downLeft',
       action: {
-        typeEvent: 'TOGGLE_START_COURSE',
+        typeEvent: 'TOGGLE_START_MODULE',
         data: {
           isStarting: false,
-          courseCapture,
-          courseID,
+          capture,
           moduleID,
           contentID,
         },
@@ -218,7 +221,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
           <ButtonYrl {...propsOut.buttonStartProps} />
         </div>
       </div>
-      {isCourseStarted && getSlides(questionsChunked)}
+      {isModuleStarted && getSlides(questionsChunked)}
     </div>
   )
 }
@@ -227,8 +230,8 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'numberQuestionsInSlide',
   'questionsSlideNumber',
-  'isCourseStarted',
-  'courses',
+  'isModuleStarted',
+  'modules',
   'language',
 ]
 export const CarouselQuestions = withStoreStateSelectedYrl(

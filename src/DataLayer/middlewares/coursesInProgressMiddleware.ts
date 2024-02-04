@@ -11,7 +11,7 @@ const setLocalStorageCoursesInProgress = (...args: any) => {
   // const courses = storeState.courses
   // const coursesJsonString = JSON.stringify(courses)
   getLocalStorageSetObjTo({
-    coursesInProgress: storeState.courses,
+    modulesInProgress: storeState.courses,
   })
 }
 

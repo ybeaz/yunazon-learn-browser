@@ -1,38 +1,42 @@
 import { all, fork } from 'redux-saga/effects'
 
-import getCourse60ModuleCreatedSaga from './sagas/getCourse60ModuleCreated.saga'
-import getCourse55ObjectionsCreatedSaga from './sagas/getCourse55ObjectionsCreated.saga'
-import getCourse45QuestionsCreatedSaga from './sagas/getCourse45QuestionsCreated.saga'
-import getCourse35SummaryCreatedSaga from './sagas/getCourse35SummaryCreated.saga'
-import getCourse20TranscriptCreatedSaga from './sagas/getCourse20TranscriptCreated.saga'
-import getCourse10MataDataCreatedSaga from './sagas/getCourse10MataDataCreated.saga'
-import getCourseBotResponseSaga from './sagas/getCourseBotResponse.saga'
-import getCourseCreatedSaga from './sagas/getCourseCreated.saga'
-import readArticleSaga from './sagas/readArticle.saga'
-import deactivateCoursesSaga from './sagas/deactivateCourses.saga'
-import deactivateDocumentsSaga from './sagas/deactivateDocuments.saga'
-import getDocumentsSaga from './sagas/getDocuments.saga'
-import getAuthDataSaga from './sagas/getAuthData.saga'
+import deactivateModulesSaga from './sagas/deactivateModulesSaga'
+import getModulesSaga from './sagas/getModulesSaga'
+import getModule60ModuleCreatedSaga from './sagas/getModule60ModuleCreatedSaga'
+import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreatedSaga'
+import getModule45QuestionsCreatedSaga from './sagas/getModule45QuestionsCreatedSaga'
+import getModule35SummaryCreatedSaga from './sagas/getModule35SummaryCreatedSaga'
+import getModule20TranscriptCreatedSaga from './sagas/getModule20TranscriptCreatedSaga'
+import getModule10MataDataCreatedSaga from './sagas/getModule10MataDataCreatedSaga'
+import getBotResponseSaga from './sagas/getBotResponseSaga'
+import getModuleAssembledSaga from './sagas/getModuleAssembledSaga'
+import readArticleSaga from './sagas/readArticleSaga'
+import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
+import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
+import getDocumentsSaga from './sagas/getDocumentsSaga'
+import getAuthDataSaga from './sagas/getAuthDataSaga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
 import getAuthAwsCognitoUserDataSaga from './sagas/getAuthAwsCognitoUserDataSaga'
-import getModuleDataSaga from './sagas/getModuleData.saga'
-import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
-import readDocumentSaga from './sagas/readDocument.saga'
-import addDocumentSaga from './sagas/createDocument.saga'
-import getCoursesSaga from './sagas/getCourses.saga'
-import getMatrixDataSaga from './sagas/getMatrixData.saga'
+import getModuleDataSaga from './sagas/getModuleDataSaga'
+import sendEmailDocumentSaga from './sagas/sendEmailDocumentSaga'
+import readDocumentSaga from './sagas/readDocumentSaga'
+import createDocumentSaga from './sagas/createDocumentSaga'
+import getCoursesSaga from './sagas/getCoursesSaga'
+import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
-    fork(getCourseBotResponseSaga),
-    fork(getCourse60ModuleCreatedSaga),
-    fork(getCourse55ObjectionsCreatedSaga),
-    fork(getCourse45QuestionsCreatedSaga),
-    fork(getCourse35SummaryCreatedSaga),
-    fork(getCourse20TranscriptCreatedSaga),
-    fork(getCourse10MataDataCreatedSaga),
-    fork(getCourseCreatedSaga),
+    fork(getBotResponseSaga),
+    fork(getModule60ModuleCreatedSaga),
+    fork(getModule55ObjectionsCreatedSaga),
+    fork(getModule45QuestionsCreatedSaga),
+    fork(getModule35SummaryCreatedSaga),
+    fork(getModule20TranscriptCreatedSaga),
+    fork(getModule10MataDataCreatedSaga),
+    fork(getModuleAssembledSaga),
+    fork(deactivateModulesSaga),
+    fork(getModulesSaga),
     fork(readArticleSaga),
     fork(deactivateCoursesSaga),
     fork(deactivateDocumentsSaga),
@@ -44,7 +48,7 @@ export default function* indexSaga() {
     fork(getModuleDataSaga),
     fork(sendEmailDocumentSaga),
     fork(readDocumentSaga),
-    fork(addDocumentSaga),
+    fork(createDocumentSaga),
     fork(getCoursesSaga),
     fork(getMatrixDataSaga),
   ])

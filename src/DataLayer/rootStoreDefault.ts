@@ -1,7 +1,7 @@
 import { UserType } from '../Interfaces/UserType'
 import {
   CourseCreateProgressType,
-  CreateCourseStatusEnumType,
+  CreateModuleStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
   FormsType,
@@ -76,7 +76,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isModalFrameVisible: false,
   isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
-  isCourseStarted: false,
+  isModuleStarted: false,
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
@@ -91,7 +91,7 @@ export const componentsStateDefault: ComponentsStateType = {
     },
   ],
   pagination: {
-    pageCourses: {
+    pageModules: {
       first: 0,
       offset: paginationOffset,
       hasNextPage: true,
@@ -107,32 +107,32 @@ export const componentsStateDefault: ComponentsStateType = {
   createModuleStages: {
     metaData: {
       isActive: true,
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
     transcript: {
       isActive: true,
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
     summary: {
       isActive: true,
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
     questions: {
       isActive: true,
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
     objections: {
       isActive: isObjectionsStageForCourseCreateFlag(),
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
     courseModule: {
       isActive: true,
-      status: CreateCourseStatusEnumType['todo'],
+      status: CreateModuleStatusEnumType['todo'],
       timeCalculated: null,
     },
   },
@@ -165,13 +165,13 @@ export const courseCreateProgressDefault: CourseCreateProgressType = {
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
+  modules: [],
   courses: [],
-  courseCreateProgress: courseCreateProgressDefault,
+  moduleCreateProgress: courseCreateProgressDefault,
   documents: [],
   articles: [],
   users: [],
   scorm: {
-    // coursesInProgress: [],
     courseIDActive: null,
     moduleIDActive: null,
     numberQuestionsInSlide: 2,

@@ -12,7 +12,7 @@ export type AcademyPresentComponentPropsType = {
     language: RootStoreType['language']
     durationMultiplier: RootStoreType['scorm']['durationMultiplier']
     moduleIDActive: RootStoreType['scorm']['courseIDActive']
-    courses: RootStoreType['courses']
+    modules: RootStoreType['modules']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
     isObjections: RootStoreType['componentsState']['isObjections']
     isSummary: RootStoreType['componentsState']['isSummary']

@@ -1,12 +1,12 @@
 import { CourseType, AcademyPresentCaseEnumType } from '../@types/'
 
-import { getFilteredActiveCoursesModules } from './getFilteredActiveCoursesModules'
-import { getFilteredActiveQuestions } from './getFilteredActiveQuestions'
-import { getValidatedCourses } from './getValidatedCourses'
-import { getOptionsShuffled } from './getOptionsShuffled'
-import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
+import { getFilteredActiveCoursesModulesDepreciated } from './getFilteredActiveCoursesModulesDepreciated'
+import { getFilteredActiveQuestionsDepreciated } from './getFilteredActiveQuestionsDepreciated'
+import { getValidatedCoursesDepreciated } from './getValidatedCoursesDepreciated'
+import { getOptionsShuffledDepreciated } from './getOptionsShuffledDepreciated'
+import { getProdidevAnswerDefaultDepreciated } from './getProdidevAnswerDefaultDepreciated'
 import { getChainedResponsibility } from './getChainedResponsibility'
-import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
+import { getQuestionsPickedRandomlyDepreciated } from '../Shared/getQuestionsPickedRandomlyDepreciated'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
@@ -30,24 +30,21 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   options
 ) => {
   let coursesNext: CourseType[] = []
-  let caseScenario: AcademyPresentCaseEnumType =
-    AcademyPresentCaseEnumType['courseFirstLoading']
 
   try {
     /* Case: use the whole courses set from API call */
-    caseScenario = AcademyPresentCaseEnumType['courseFirstLoading']
 
     coursesNext =
       // .exec(getProvidedSearchString)
       getChainedResponsibility(courses)
-        .exec(getValidatedCourses)
-        .exec(getFilteredActiveCoursesModules)
-        .exec(getFilteredActiveQuestions)
-        .exec(getQuestionsPickedRandomly)
+        .exec(getValidatedCoursesDepreciated)
+        .exec(getFilteredActiveCoursesModulesDepreciated)
+        .exec(getFilteredActiveQuestionsDepreciated)
+        .exec(getQuestionsPickedRandomlyDepreciated)
         // .exec(getProvidedID)
         // .exec(getProvidedSelectedDefault)
-        .exec(getProdidevAnswerDefault)
-        .exec(getOptionsShuffled).result
+        .exec(getProdidevAnswerDefaultDepreciated)
+        .exec(getOptionsShuffledDepreciated).result
 
     if (options?.printRes) {
       console.log('getPreparedCourses', { coursesNext })

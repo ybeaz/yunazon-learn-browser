@@ -4,6 +4,8 @@ import styled from 'styled-components'
 
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { DocumentType } from '../../../@types/index'
 import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -31,7 +33,7 @@ export const CertificateComponent: CertificateComponentType = (
   const documentID = params?.documentID
 
   const documentFound = documents.find(
-    (document: any) => document.documentID === documentID
+    (document: DocumentType) => document.documentID === documentID
   )
 
   useEffect(() => {
@@ -61,6 +63,7 @@ export const CertificateComponent: CertificateComponentType = (
     },
     capture: '',
     courseID: '',
+    moduleIDs: [''],
     contentID: '',
     dateCreated: 0,
     pathName: '',
@@ -71,6 +74,7 @@ export const CertificateComponent: CertificateComponentType = (
     meta: { institution = '', specTitle = '', specName = '' },
     capture: courseCapture = '',
     courseID = '',
+    moduleIDs = [''],
     dateCreated = 0,
     pathName: documentPathName,
   } = documentFound || documentDefault
@@ -90,7 +94,7 @@ export const CertificateComponent: CertificateComponentType = (
     : `${nameFirst} ${nameLast}`
 
   const slug = getSlug(courseCapture)
-  const coursePathName = `/m/${courseID}/${slug}`
+  const modulePathName = `/m/${moduleIDs[0]}/${slug}`
 
   const headerFrameProps = {
     brandName: 'YouRails',
@@ -165,7 +169,7 @@ export const CertificateComponent: CertificateComponentType = (
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title'>
                     <span className='pm-earned-text block cursive'>
-                      while completing the training course entitled
+                      while completing the training module entitled
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
@@ -182,14 +186,14 @@ export const CertificateComponent: CertificateComponentType = (
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='_code'>
-                    <span className='_course'>
-                      Course link/id#{' '}
+                    <span className='_module'>
+                      Module link/ No
                       <a
-                        className='_courseLink'
-                        href={coursePathName}
+                        className='_moduleLink'
+                        href={modulePathName}
                         target='_blank'
                       >
-                        {courseID}
+                        {moduleIDs[0]}
                       </a>
                     </span>
                   </div>
@@ -203,7 +207,7 @@ export const CertificateComponent: CertificateComponentType = (
                   <div className='pm-certified'>
                     <div className='pm-stamp'></div>
                     <span className='pm-credits-text block sans'>
-                      "Open Internet Education Academy"
+                      "Open Internet Academy"
                     </span>
                     <span className='pm-credits-text block sans'>
                       in partnership with "YouRails.com"

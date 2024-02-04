@@ -7,10 +7,8 @@ export type AcademyMatrixPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     durationMultiplier: RootStoreType['scorm']['durationMultiplier']
-    courses: RootStoreType['courses']
+    modules: RootStoreType['modules']
     isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
-    isLoadedCourses: RootStoreType['isLoaded']['isLoadedCourses']
-    inputSearch: RootStoreType['forms']['inputSearch']
   }
   handleEvents: HandleEventType
 }

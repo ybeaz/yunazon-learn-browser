@@ -49,7 +49,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
             children: capture,
             onClick: (event: any) => {
               // handleEvents(event, {
-              //   typeEvent: 'SELECT_COURSE_MODULE',
+              //   typeEvent: 'SELECT_MODULE',
               //   data: {  },
               // })
             },
@@ -68,7 +68,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
           },
           buttonDeactivateDocumentProps: {
             icon: 'MdDeleteOutline',
-            classAdded: 'Button_DeactivateCourse',
+            classAdded: 'Button_DeactivateModule',
             action: {
               typeEvent: 'SET_MODAL_FRAMES',
               data: [

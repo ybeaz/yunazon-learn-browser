@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { QueryGetAuthAwsCognitoUserRefreshedArgs } from '../../@types/GraphqlTypes'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
@@ -32,7 +33,7 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
 
     if (!refresh_token) return
 
-    const variables = {
+    const variables: QueryGetAuthAwsCognitoUserRefreshedArgs = {
       userIdDataAwsCognitoInput: {
         refresh_token,
         redirect_uri,

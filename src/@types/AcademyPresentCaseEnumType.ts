@@ -1,5 +1,5 @@
 export enum AcademyPresentCaseEnumType {
-  courseInProgress = 'courseInProgress',
-  courseFirstLoading = 'courseFirstLoading',
-  courseCompleted = 'courseCompleted',
+  moduleInProgress = 'moduleInProgress',
+  moduleFirstLoading = 'moduleFirstLoading',
+  moduleCompleted = 'moduleCompleted',
 }

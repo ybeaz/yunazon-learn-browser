@@ -1,11 +1,15 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
+import { ModuleType } from '../../../@types/GraphqlTypes'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { ContentPlate } from '../../Components/ContentPlate/ContentPlate'
+import {
+  ContentPlate,
+  ContentPlatePropsType,
+} from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
@@ -39,10 +43,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     storeStateSlice: {
       language,
       durationMultiplier,
-      courses,
+      modules,
       isLoadedGlobalVars,
-      isLoadedCourses,
-      inputSearch,
     },
     handleEvents,
   } = props
@@ -54,7 +56,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
     )
   }, [])
 
-  const coursesFiltered = courses
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
 
   let actionsToMount: any[] = []
@@ -68,34 +69,23 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
     SITE_META_DATA
 
-  const getPlateMatix: Function = (courses2: any[]): ReactElement => {
-    const plates = courses2.map((item, i) => {
-      const { courseID, capture: courseCapture, modules } = item
-      const {
-        moduleID,
-        capture: moduleCapture,
-        contentType,
-        contentID,
-        duration,
-      } = modules[0]
+  const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
+    const plates = modules2.map((module: ModuleType) => {
+      const { moduleID, capture, contentType, contentID, duration } = module
 
-      const isShowingPlay = false
       const contentComponentName = getContentComponentName(contentType)
 
       const durationObj: DurationObjType = getMultipliedTimeStr(
         duration,
         durationMultiplier
       )
-      const contentPlateProps = {
+      const contentPlateProps: ContentPlatePropsType = {
         key: moduleID,
         contentComponentName,
-        courseID,
-        courseCapture,
-        moduleCapture,
+        capture,
         durationObj,
         moduleID,
         contentID,
-        isShowingPlay,
         screenType,
       }
 
@@ -125,7 +115,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       screenType,
     },
     paginationNavigationProps: {
-      paginationName: PaginationNameEnumType['pageCourses'],
+      paginationName: PaginationNameEnumType['pageModules'],
     },
   }
 
@@ -144,11 +134,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        {courses.length && isLoadedGlobalVars && isLoadedCourses ? (
+        {modules.length && isLoadedGlobalVars ? (
           <div className='_plateMatrixPagination'>
-            <div className='_plateMatrixWrapper'>
-              {getPlateMatix(coursesFiltered)}
-            </div>
+            <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
             <div className='_paginationNavigationWrapper'>
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>
@@ -166,10 +154,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 const storeStateSliceProps: string[] = [
   'language',
   'durationMultiplier',
-  'courses',
+  'modules',
   'isLoadedGlobalVars',
   'isLoadedCourses',
-  'inputSearch',
 ]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,

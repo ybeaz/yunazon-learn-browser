@@ -17,9 +17,9 @@ describe('Test function getObjectSlice', () => {
         isActive: true,
         params: {
           entity: storeObject,
-          arrProps: ['pageCourses'],
+          arrProps: ['pageModules'],
         },
-        expected: { pageCourses: { first: 0, offset: 10 } },
+        expected: { pageModules: { first: 0, offset: 10 } },
       },
       {
         isActive: true,

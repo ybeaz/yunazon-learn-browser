@@ -1,5 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { QueryGetAuthAwsCognitoUserDataArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
@@ -20,7 +21,7 @@ export function* getAuthAwsCognitoUserData(
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
 
-    const variables = {
+    const variables: QueryGetAuthAwsCognitoUserDataArgs = {
       userIdDataAwsCognitoInput: {
         code,
         redirect_uri,

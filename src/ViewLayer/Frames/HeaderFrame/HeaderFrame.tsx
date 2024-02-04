@@ -115,6 +115,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       tooltipText: createCourseQuiz,
       tooltipPosition: 'bottom',
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
+      isDisplaying: false /* TODO: Not used so far */,
     },
     buttonAuthUserProps: getButtonAuthUserProps(
       user,

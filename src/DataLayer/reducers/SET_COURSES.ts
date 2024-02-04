@@ -15,6 +15,7 @@ export const SET_COURSES: ReducerType = (
       const modules = course?.modules || []
 
       let output = modules.reduce(
+        // @ts-expect-error
         (accum: Record<string, boolean>, module: ModuleType) => {
           const { moduleID, contentID } = module
           let booleanValue = false

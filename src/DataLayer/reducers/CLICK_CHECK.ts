@@ -7,8 +7,8 @@ export const CLICK_CHECK: ReducerType = (
   data: any
 ): RootStoreType => {
   const { optionID, multi } = data
-  const { courses } = store
-  const coursesNext = getOptionsClickedByID(courses, optionID, multi)
-  const storeNext = { ...store, courses: coursesNext }
+  const { modules } = store
+  const modulesNext = getOptionsClickedByID(modules, optionID, multi)
+  const storeNext = { ...store, modules: modulesNext }
   return storeNext
 }

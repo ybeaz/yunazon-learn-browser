@@ -22,7 +22,7 @@ export const getButtonsClassString: Function = (
   questionsChunkedLen: number,
   questionsActive: any[],
   questionsChunked: any[],
-  isCourseStarted: boolean
+  isModuleStarted: boolean
 ): GetButtonsClassString => {
   const { total: questionsTotal, answered: questionsAnswered } =
     getAnswersChecked2(questionsActive)
@@ -67,7 +67,7 @@ export const getButtonsClassString: Function = (
   }
 
   let buttonsClassString = ''
-  if (!isCourseStarted) {
+  if (!isModuleStarted) {
     isButtonSlideStart = true
     buttonRight = 'display_startModule'
   } else if (!questionsActive.length) {
@@ -81,7 +81,7 @@ export const getButtonsClassString: Function = (
     isButtonSlideForward = false
     isButtonToCertificate = false
     isButtonBlockProps = true
-    isButtonSlideStart = isCourseStarted ? false : true
+    isButtonSlideStart = isModuleStarted ? false : true
     buttonRight = 'display_downLeft'
   }
 

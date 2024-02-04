@@ -29,9 +29,8 @@ export const getScenarioDict: GetScenarioDictType = (
     nameMiddle,
     nameLast,
     meta,
-    courseCapture,
+    capture,
     description,
-    courseID,
     moduleID,
     contentID,
     sub,
@@ -70,7 +69,7 @@ export const getScenarioDict: GetScenarioDictType = (
         <>
           <div className='_greet'>{Congratulations}</div>
           <p>{YouCompletedTheCourse}</p>
-          <p>"{courseCapture}"</p>
+          <p>"{capture}"</p>
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
@@ -88,9 +87,9 @@ export const getScenarioDict: GetScenarioDictType = (
             nameMiddle,
             nameLast,
             meta,
-            capture: courseCapture,
+            capture,
             description,
-            courseID,
+            courseID: undefined /* Not used for now */,
             moduleID,
             contentID,
             navigate,
@@ -105,7 +104,7 @@ export const getScenarioDict: GetScenarioDictType = (
         <>
           <div className='_greet'>{Congratulations}</div>
           <p>{YouCompletedTheCourse}</p>
-          <p>"{courseCapture}"</p>
+          <p>"{capture}"</p>
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
@@ -151,7 +150,7 @@ export const getScenarioDict: GetScenarioDictType = (
         <>
           <div className='_greet'>{Congratulations}</div>
           <p>{YouCompletedTheCourse}</p>
-          <p>"{courseCapture}"</p>
+          <p>"{capture}"</p>
           <p>
             {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
           </p>
@@ -169,9 +168,9 @@ export const getScenarioDict: GetScenarioDictType = (
             nameMiddle,
             nameLast,
             meta,
-            capture: courseCapture,
+            capture,
             description,
-            courseID,
+            courseID: undefined /* Not used for now */,
             moduleID,
             contentID,
           },

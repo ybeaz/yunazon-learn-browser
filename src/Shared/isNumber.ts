@@ -1,9 +1,10 @@
-interface IisNumber {
-  (n: any): boolean
+interface IsNumberType {
+  (entity: any): boolean
 }
 
 /**
  * @description Function to determine if the input is a number
  */
 
-export const isNumber: IisNumber = n => Number(n) === n
+export const isNumber: IsNumberType = entity =>
+  Number(entity) === entity && typeof entity === 'number'

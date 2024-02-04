@@ -22,6 +22,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -49,9 +50,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       language: languageStore,
       durationMultiplier,
       moduleIDActive,
-      courses,
+      modules,
       mediaLoaded,
-      isSummary,
+      isSummary: isSummaryStore,
       isObjections,
     },
   } = props
@@ -61,25 +62,32 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
+  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
   useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
 
   useLoadedInitialTeachContent()
-  useflagsDebug(mediaLoadedCoursesString)
+  useflagsDebug(mediaLoadedModulesString)
+
+  /* Hide summary by url settings */
+  let isSummaryButton = true
+  let isSummary = isSummaryStore
+  const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
+  if (isSummaryUrlQuery === 'false') {
+    isSummaryButton = false
+    isSummary = false
+  }
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
     CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
     contentComponentName: '',
-    courseCapture: '',
+    capture: '',
     language: '',
-    moduleCapture: '',
-    moduleDescription: '',
+    description: '',
     contentID: '',
     durationObj: { duration: '', units: '' },
-    moduleIndex: 0,
-    modulesTotal: 0,
+    index: 0,
     questionsTotal: 0,
     summary: [],
     objections: [],
@@ -88,35 +96,30 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const {
     CONTENT_ASSIGNED_COMPONENT,
     contentComponentName,
-    courseCapture,
+    capture,
     language,
-    moduleCapture,
-    moduleDescription,
+    description,
     contentID,
     durationObj,
-    moduleIndex,
-    modulesTotal,
     questionsTotal,
     summary,
     objections,
   } = moduleState
 
   useEffect(() => {
-    if (courses.length && isLoaded === false) {
+    if (modules.length && isLoaded === false) {
       const {
-        courseCapture: courseCapture2,
+        capture: capture2,
         language: language2,
-        moduleCapture: moduleCapture2,
-        moduleDescription: moduleDescription2,
+        description: description2,
         contentType,
         contentID: contentID2,
         duration,
-        index: moduleIndex2,
-        modulesTotal: modulesTotal2,
+        index: index2,
         questionsTotal: questionsTotal2,
         summary: summary2,
         objections: objections2,
-      } = getModuleByModuleID({ courses, moduleID: moduleIDActive || moduleID })
+      } = getModuleByModuleID({ modules, moduleID: moduleIDActive || moduleID })
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,
@@ -130,20 +133,18 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
         contentComponentName: contentComponentName2,
-        courseCapture: courseCapture2,
+        capture: capture2,
         language: language2,
-        moduleCapture: moduleCapture2,
-        moduleDescription: moduleDescription2,
+        description: description2,
         contentID: contentID2,
-        moduleIndex: moduleIndex2,
-        modulesTotal: modulesTotal2,
+        index: index2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
         summary: summary2,
         objections: objections2,
       })
     }
-  }, [mediaLoadedCoursesString])
+  }, [mediaLoadedModulesString])
 
   const isVisible = mediaLoaded[moduleID] || false
 
@@ -222,8 +223,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       contentComponentName,
     },
     playerPanelProps: {
-      courseCapture,
-      moduleCapture,
+      capture,
       durationObj,
       screenType,
       isShowingPlay,
@@ -231,14 +231,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       buttonPauseProps,
       buttonStopProps,
       isActionButtonDisplaying: false,
-      moduleIndex,
-      modulesTotal,
       questionsTotal,
     },
     textStructuredColumnsProps: {
       summary,
       objections,
+      isSummaryButton,
       isSummary,
+      isObjectionsButton: true,
       isObjections,
       language: languageStore,
       titleSummary: 'Summary',
@@ -253,9 +253,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
           <Helmet>
             <html lang={language} />
             <meta charSet='utf-8' />
-            <title>{moduleCapture}</title>
+            <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
-            <meta name='description' content={moduleDescription} />
+            <meta name='description' content={description} />
           </Helmet>
           <MainFrame {...propsOut.mainFrameProps}>
             {/* header */}
@@ -287,7 +287,7 @@ const storeStateSliceProps: string[] = [
   'language',
   'durationMultiplier',
   'moduleIDActive',
-  'courses',
+  'modules',
   'mediaLoaded',
   'preferred_username',
   'isSummary',

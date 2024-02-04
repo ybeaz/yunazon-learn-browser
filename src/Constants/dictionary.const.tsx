@@ -7,6 +7,30 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Date_of_creation: {
+    en: 'Date of creation',
+    ru: 'Дата создания',
+  },
+  Module_name: {
+    en: 'Module name',
+    ru: 'Название модуля',
+  },
+  Module_duration: {
+    en: 'Module duration',
+    ru: 'Продолжительность',
+  },
+  Edit: {
+    en: 'Edit',
+    ru: 'Редактировать',
+  },
+  Remove: {
+    en: 'Remove',
+    ru: 'Удалить',
+  },
+  module: {
+    en: 'module',
+    ru: 'модуль',
+  },
   course: {
     en: 'course',
     ru: 'курс',
@@ -91,9 +115,17 @@ export const DICTIONARY: IDictionary = {
     en: 'Create course',
     ru: 'Создать курс',
   },
+  Create_module: {
+    en: 'Create module',
+    ru: 'Создать модуль',
+  },
   My_courses: {
     en: 'My courses',
     ru: 'Мои курсы',
+  },
+  My_modules: {
+    en: 'My modules',
+    ru: 'Мои модули',
   },
   My_documents: {
     en: 'My documents',

@@ -8,8 +8,10 @@ export type TextStructuredColumnsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   summary: SummaryItemType[]
   objections: ObjectionType[]
-  isObjections: RootStoreType['componentsState']['isObjections']
+  isSummaryButton: boolean
   isSummary: RootStoreType['componentsState']['isSummary']
+  isObjectionsButton: boolean
+  isObjections: RootStoreType['componentsState']['isObjections']
   language: RootStoreType['language']
   titleSummary: string
   titleObjections: string

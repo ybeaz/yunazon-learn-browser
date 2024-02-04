@@ -1,28 +1,24 @@
+import { ModuleType, QuestionType, OptionType } from '../@types/GraphqlTypes'
+
 /**
  * @description Function to add a default answer to each question option
- * @param courses: any[]
- * @returns content: any[]
  */
-export const getProdidevAnswerDefault = (courses: any[]): any[] => {
-  return courses.map(course => {
-    const { modules } = course
+export const getProdidevAnswerDefault = (
+  modules: ModuleType[]
+): ModuleType[] => {
+  return modules.map((module: ModuleType) => {
+    const { questions } = module
 
-    const modulesNext = modules.map((module: any) => {
-      const { questions } = module
+    const questionsNext = questions.map((question: QuestionType) => {
+      const { options } = question
 
-      const questionsNext = questions.map((question: any) => {
-        const { options } = question
-
-        const optionNext = options.map((option: any) => {
-          return { ...option, answer: false }
-        })
-
-        return { ...question, options: optionNext }
+      const optionNext = options.map((option: OptionType) => {
+        return { ...option, answer: false }
       })
 
-      return { ...module, questions: questionsNext }
+      return { ...question, options: optionNext }
     })
 
-    return { ...course, modules: modulesNext }
+    return { ...module, questions: questionsNext }
   })
 }

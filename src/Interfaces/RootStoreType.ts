@@ -1,5 +1,5 @@
 import { UserType } from './UserType'
-import { CourseType, DocumentType } from '../@types/'
+import { ModuleType, CourseType, DocumentType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
@@ -12,7 +12,7 @@ export enum CreateModuleStagesEnumType {
   courseModule = 'courseModule',
 }
 
-export enum CreateCourseStatusEnumType {
+export enum CreateModuleStatusEnumType {
   todo = 'todo',
   pending = 'pending',
   success = 'success',
@@ -21,7 +21,7 @@ export enum CreateCourseStatusEnumType {
 
 export type CreateModuleStageType = {
   isActive: boolean
-  status: CreateCourseStatusEnumType
+  status: CreateModuleStatusEnumType
   timeCalculated: number | null
 }
 
@@ -39,7 +39,7 @@ export type SearchFormSepType = {
 }
 
 export enum PaginationNameEnumType {
-  pageCourses = 'pageCourses',
+  pageModules = 'pageModules',
   pageDocuments = 'pageDocuments',
 }
 
@@ -56,7 +56,7 @@ export type ComponentsStateType = {
   isModalFrameVisible: boolean
   isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
-  isCourseStarted: boolean
+  isModuleStarted: boolean
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
@@ -118,8 +118,9 @@ export type CourseCreateProgressType = {
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
+  modules: ModuleType[]
   courses: CourseType[]
-  courseCreateProgress: CourseCreateProgressType
+  moduleCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
   users: UserType[]

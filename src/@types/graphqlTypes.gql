@@ -205,7 +205,7 @@ type CourseType {
   meta: MetaCourseType
 
   """courses modules"""
-  modules: [ModuleType!]
+  modules: [ModuleCourseType!]
 
   """profile ID"""
   profileID: ID!
@@ -292,7 +292,7 @@ type CreateContentMetaDataType {
   tags: [String!]
 
   """thumbnail image data"""
-  thumbnails: ThumbnailsType!
+  thumbnails: ThumbnailsBotType!
 }
 
 input CreateCourseInputType {
@@ -315,7 +315,7 @@ input CreateCourseInputType {
   meta: MetaCourseInputType
 
   """courses modules"""
-  modules: [ModuleInputType!]
+  modules: [ModuleCourseInputType!]
 
   """profile ID"""
   profileID: ID!
@@ -353,6 +353,62 @@ input CreateDocumentInputType {
   profileProps: ProfilePropsInputType!
 }
 
+input CreateModuleInputType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """meta information"""
+  meta: MetaInputType = null
+
+  """module objection"""
+  objections: [ObjectionInputType!] = []
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """profile ID"""
+  profileID: ID!
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """module questions"""
+  questions: [QuestionInputType!]! = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
+
+  """module transcriptList"""
+  transcriptList: [TranscriptObjectInputType!] = []
+}
+
 input CreateOriginInputType {
   """youtubeID"""
   originID: String = null
@@ -375,6 +431,9 @@ type CreateYoutubeTranscriptType {
 
   """transcript"""
   transcript: String
+
+  """transcriptList"""
+  transcriptList: [TranscriptObjectBotType!]
 }
 
 """Date custom scalar type"""
@@ -643,7 +702,99 @@ type MetaDocumentType {
   tags: [String!]
 }
 
-input ModuleInputType {
+input MetaInputType {
+  """meta email"""
+  email: String!
+
+  """meta institution"""
+  institution: String!
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean! = false
+
+  """meta specName"""
+  specName: String!
+
+  """meta specTitle"""
+  specTitle: String!
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """meta tags: tags that characterises the content, its marketing features"""
+  tags: [String!] = []
+}
+
+input MetaPartialInputType {
+  """meta email"""
+  email: String
+
+  """meta institution"""
+  institution: String
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """meta specName"""
+  specName: String
+
+  """meta specTitle"""
+  specTitle: String
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """meta tags: tags that characterises the content, its marketing features"""
+  tags: [String!] = []
+}
+
+type MetaPartialType {
+  """meta email"""
+  email: String
+
+  """meta institution"""
+  institution: String
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """meta specName"""
+  specName: String
+
+  """meta specTitle"""
+  specTitle: String
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """meta tags: tags that characterises the content, its marketing features"""
+  tags: [String!]
+}
+
+type MetaType {
+  """meta email"""
+  email: String!
+
+  """meta institution"""
+  institution: String!
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean!
+
+  """meta specName"""
+  specName: String!
+
+  """meta specTitle"""
+  specTitle: String!
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!]
+}
+
+input ModuleCourseInputType {
   """course module capture"""
   capture: String!
 
@@ -669,7 +820,7 @@ input ModuleInputType {
   moduleID: ID
 
   """course module objection"""
-  objections: [ObjectionInputType!]
+  objections: [ObjectionCourseInputType!]
 
   """module passRate"""
   passRate: Float
@@ -678,16 +829,16 @@ input ModuleInputType {
   questionNumber: Int!
 
   """course module questions"""
-  questions: [QuestionInputType!]!
+  questions: [QuestionCourseInputType!]!
 
   """course module summary"""
-  summary: [SummaryItemInputType!]
+  summary: [SummaryItemCourseInputType!]
 
   """thumbnail image data"""
   thumbnails: ThumbnailsCourseInputType = null
 }
 
-type ModuleType {
+type ModuleCourseType {
   """course module capture"""
   capture: String!
 
@@ -713,7 +864,7 @@ type ModuleType {
   moduleID: ID!
 
   """course module objection"""
-  objections: [ObjectionType!]
+  objections: [ObjectionCourseType!]
 
   """module passRate"""
   passRate: Float
@@ -722,13 +873,105 @@ type ModuleType {
   questionNumber: Int!
 
   """course module questions"""
-  questions: [QuestionType!]!
+  questions: [QuestionCourseType!]!
 
   """course module summary"""
-  summary: [SummaryItemType!]
+  summary: [SummaryItemCourseType!]
 
   """thumbnail image data"""
   thumbnails: ThumbnailsCourseType
+}
+
+type ModuleEdgeType {
+  """cursor"""
+  cursor: String
+
+  """module"""
+  node: ModuleType
+}
+
+type ModuleType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """language code"""
+  language: String!
+
+  """meta information"""
+  meta: MetaType
+
+  """module ID"""
+  moduleID: ID!
+
+  """module objection"""
+  objections: [ObjectionType!]
+
+  """module passRate"""
+  passRate: Float
+
+  """profile ID"""
+  profileID: ID!
+
+  """module questionNumber"""
+  questionNumber: Int!
+
+  """module questions"""
+  questions: [QuestionType!]!
+
+  """module summary"""
+  summary: [SummaryItemType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsType
+
+  """transcriptList"""
+  transcriptList: [TranscriptObjectType!]
+}
+
+type ModulesConnectionType {
+  """[ModuleEdgeType]"""
+  edges: [ModuleEdgeType!]
+
+  """ModulesPageInfoType"""
+  pageInfo: ModulesPageInfoType
+}
+
+type ModulesPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type Mutation {
@@ -739,6 +982,7 @@ type Mutation {
   createContentMetaData(createContentMetaDataInput: CreateOriginInputType!): CreateContentMetaDataType!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
+  createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
@@ -746,11 +990,13 @@ type Mutation {
   deactivateBots(deactivateBotsIdsInput: [String!]!): [String!]!
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
+  deactivateModules(deactivateModulesIdsInput: [String!]!): [String!]!
   deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
   deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
+  deleteModules(deleteModulesIdsInput: [String!]!): [String!]!
   deleteProfiles(idProfiles: String!): [ProfileType!]!
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
@@ -761,6 +1007,8 @@ type Mutation {
   updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
   updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
   updateDocuments(updateDocumentsInput: [UpdateDocumentInputType!]!): [DocumentType!]!
+  updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
+  updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
   updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
@@ -772,7 +1020,7 @@ input NewRecipeInputType {
   title: String!
 }
 
-input ObjectionInputType {
+input ObjectionCourseInputType {
   """course module Objection capture"""
   capture: String = null
 
@@ -783,7 +1031,7 @@ input ObjectionInputType {
   text: String = null
 }
 
-type ObjectionType {
+type ObjectionCourseType {
   """course module Objection capture"""
   capture: String
 
@@ -794,7 +1042,29 @@ type ObjectionType {
   text: String
 }
 
-input OptionInputType {
+input ObjectionInputType {
+  """module Objection capture"""
+  capture: String = null
+
+  """module Objection ID"""
+  objectionID: ID
+
+  """module Objection text"""
+  text: String = null
+}
+
+type ObjectionType {
+  """module Objection capture"""
+  capture: String
+
+  """module Objection ID"""
+  objectionID: ID!
+
+  """module Objection text"""
+  text: String
+}
+
+input OptionCourseInputType {
   """course module question option label"""
   label: String!
 
@@ -805,7 +1075,7 @@ input OptionInputType {
   status: Boolean!
 }
 
-type OptionType {
+type OptionCourseType {
   """course module question option label"""
   label: String!
 
@@ -813,6 +1083,28 @@ type OptionType {
   optionID: ID
 
   """course module question option status: true or false"""
+  status: Boolean!
+}
+
+input OptionInputType {
+  """module question option label"""
+  label: String!
+
+  """module question option ID"""
+  optionID: ID
+
+  """module question option status: true or false"""
+  status: Boolean!
+}
+
+type OptionType {
+  """module question option label"""
+  label: String!
+
+  """module question option ID"""
+  optionID: ID
+
+  """module question option status: true or false"""
   status: Boolean!
 }
 
@@ -981,6 +1273,7 @@ type Query {
   countBots: Int!
   countCourses: Int!
   countDocuments: Int!
+  countModules: Int!
   countTemplates: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -997,6 +1290,9 @@ type Query {
   readDocuments(readDocumentsIdsInput: [String!]!): [DocumentType!]!
   readDocumentsAll: [DocumentType!]!
   readDocumentsConnection(readDocumentsConnectionInput: ReadDocumentsConnectionInputType!): DocumentsConnectionType!
+  readModules(readModulesInput: [ReadModuleInputType!]!): [ModuleType!]!
+  readModulesAll: [ModuleType!]!
+  readModulesConnection(readModulesConnectionInput: ReadModulesConnectionInputType!): ModulesConnectionType!
   readProfiles: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
@@ -1010,7 +1306,7 @@ type Query {
   sendEmailDocument(documentID: String!, sendBcc: String!, sendCc: String!, sendTo: String!): DocumentType!
 }
 
-input QuestionInputType {
+input QuestionCourseInputType {
   """course module question capture"""
   capture: String!
 
@@ -1024,7 +1320,7 @@ input QuestionInputType {
   multi: Boolean = false
 
   """course module question options"""
-  options: [OptionInputType!]!
+  options: [OptionCourseInputType!]!
 
   """courses module question ID"""
   questionID: ID
@@ -1033,7 +1329,7 @@ input QuestionInputType {
   topic: String
 }
 
-type QuestionType {
+type QuestionCourseType {
   """course module question capture"""
   capture: String!
 
@@ -1047,12 +1343,58 @@ type QuestionType {
   multi: Boolean
 
   """course module question options"""
-  options: [OptionType!]!
+  options: [OptionCourseType!]!
 
   """courses module question ID"""
   questionID: ID
 
   """course module question topic"""
+  topic: String
+}
+
+input QuestionInputType {
+  """module question capture"""
+  capture: String!
+
+  """module question designType"""
+  designType: String
+
+  """module question isActive"""
+  isActive: Boolean! = false
+
+  """designType > multi"""
+  multi: Boolean = false
+
+  """module question options"""
+  options: [OptionInputType!]!
+
+  """module question ID"""
+  questionID: ID
+
+  """module question topic"""
+  topic: String
+}
+
+type QuestionType {
+  """module question capture"""
+  capture: String!
+
+  """module question designType"""
+  designType: String
+
+  """module question isActive"""
+  isActive: Boolean!
+
+  """designType > multi"""
+  multi: Boolean
+
+  """module question options"""
+  options: [OptionType!]!
+
+  """module question ID"""
+  questionID: ID
+
+  """module question topic"""
   topic: String
 }
 
@@ -1093,7 +1435,7 @@ input ReadCoursesConnectionInputType {
   first: Int
 
   """isActive"""
-  isActive: Boolean = true
+  isActive: Boolean
 
   """language code"""
   language: String = null
@@ -1142,21 +1484,36 @@ input ReadDocumentsConnectionInputType {
   """
   after: String
 
+  """course module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """courses ID"""
+  courseIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
   first: Int
 
   """isActive"""
-  isActive: Boolean = true
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """course module IDs"""
+  moduleIDs: [ID!] = []
 
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
 
-  """profile ID"""
-  profileID: ID
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortDocumentsInputType
@@ -1178,6 +1535,67 @@ input ReadDocumentsConnectionInputType {
 
   """
   courses meta tags: tags that characterises the course content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadModuleInputType {
+  """module ID"""
+  moduleID: ID
+}
+
+input ReadModulesConnectionInputType {
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
+  after: String
+
+  """module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
+  first: Int
+
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
+  offset: Int
+
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortInputType
+
+  """
+  meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """meta stages: stages/ statuses/ envs to pick from the set of documents"""
+  stagesPick: [String!] = []
+
+  """
+  meta tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  meta tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1237,18 +1655,26 @@ type ResponseMessageType {
 
 input SortCoursesInputType {
   """sorting direction: 1 ascending, -1 descending"""
-  direction: Float! = -1
+  direction: Float
 
   """property name to sort by"""
-  prop: String! = "dateUpdated"
+  prop: String
 }
 
 input SortDocumentsInputType {
   """sorting direction: 1 ascending, -1 descending"""
-  direction: Float! = -1
+  direction: Float
 
   """property name to sort by"""
-  prop: String! = "dateUpdated"
+  prop: String
+}
+
+input SortInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
 }
 
 type Subscription {
@@ -1256,7 +1682,7 @@ type Subscription {
   recipeAdded: RecipeType!
 }
 
-input SummaryItemInputType {
+input SummaryItemCourseInputType {
   """course module Summary item capture"""
   capture: String = null
 
@@ -1267,7 +1693,7 @@ input SummaryItemInputType {
   text: String = null
 }
 
-type SummaryItemType {
+type SummaryItemCourseType {
   """course module Summary item capture"""
   capture: String
 
@@ -1275,6 +1701,28 @@ type SummaryItemType {
   summaryItemID: ID!
 
   """course module Summary item text"""
+  text: String
+}
+
+input SummaryItemInputType {
+  """module Summary item capture"""
+  capture: String = null
+
+  """module Summary item ID"""
+  summaryItemID: ID
+
+  """module Summary item text"""
+  text: String = null
+}
+
+type SummaryItemType {
+  """module Summary item capture"""
+  capture: String
+
+  """module summary ID"""
+  summaryItemID: ID!
+
+  """module Summary item text"""
   text: String
 }
 
@@ -1325,6 +1773,23 @@ type TextObjType {
 
   """contentType"""
   contentType: String
+}
+
+type ThumbnailsBotType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataBotType
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataBotType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataBotType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataBotType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataBotType
 }
 
 input ThumbnailsCourseImageDataInputType {
@@ -1383,6 +1848,28 @@ type ThumbnailsCourseType {
   standard: ThumbnailsCourseImageDataType
 }
 
+type ThumbnailsImageDataBotType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsImageDataInputType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String = null
+
+  """width"""
+  width: Int!
+}
+
 type ThumbnailsImageDataType {
   """height"""
   height: Int!
@@ -1392,6 +1879,23 @@ type ThumbnailsImageDataType {
 
   """width"""
   width: Int!
+}
+
+input ThumbnailsInputType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataInputType = null
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataInputType = null
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataInputType = null
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataInputType = null
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataInputType = null
 }
 
 type ThumbnailsType {
@@ -1409,6 +1913,45 @@ type ThumbnailsType {
 
   """thumbnail image standard"""
   standard: ThumbnailsImageDataType
+}
+
+type TranscriptObjectBotType {
+  """duration"""
+  duration: Float
+
+  """start"""
+  start: Float
+
+  """text"""
+  text: String
+}
+
+input TranscriptObjectInputType {
+  """duration"""
+  duration: Float = 0
+
+  """start"""
+  start: Float = 0
+
+  """text"""
+  text: String = null
+
+  """transcriptItem ID"""
+  transcriptItemID: ID
+}
+
+type TranscriptObjectType {
+  """duration"""
+  duration: Float
+
+  """start"""
+  start: Float
+
+  """text"""
+  text: String
+
+  """transcriptItem ID"""
+  transcriptItemID: ID
 }
 
 input UpdateBotsInputType {
@@ -1454,7 +1997,7 @@ input UpdateCourseInputType {
   meta: MetaCourseInputType
 
   """courses modules"""
-  modules: [ModuleInputType!]
+  modules: [ModuleCourseInputType!]
 
   """profile ID"""
   profileID: ID!
@@ -1488,7 +2031,7 @@ type UpdateCourseMetaType {
   profileID: ID!
 
   """updateInfo"""
-  updateInfo: UpdateInfoType
+  updateInfo: UpdateInfoCourseType
 }
 
 input UpdateDocumentInputType {
@@ -1541,6 +2084,23 @@ input UpdateDocumentInputType {
   profileProps: ProfilePropsInputType!
 }
 
+type UpdateInfoCourseType {
+  """acknowledged"""
+  acknowledged: Boolean
+
+  """matchedCount"""
+  matchedCount: Int
+
+  """modifiedCount"""
+  modifiedCount: Int
+
+  """upsertedCount"""
+  upsertedCount: Int
+
+  """upsertedId"""
+  upsertedId: String
+}
+
 type UpdateInfoType {
   """acknowledged"""
   acknowledged: Boolean
@@ -1556,6 +2116,99 @@ type UpdateInfoType {
 
   """upsertedId"""
   upsertedId: String
+}
+
+input UpdateMetaInputType {
+  """meta information"""
+  meta: MetaPartialInputType
+
+  """module ID"""
+  moduleID: ID
+
+  """profile ID"""
+  profileID: ID!
+}
+
+type UpdateMetaType {
+  """meta information"""
+  meta: MetaPartialType
+
+  """module ID"""
+  moduleID: ID
+
+  """profile ID"""
+  profileID: ID!
+
+  """updateInfo"""
+  updateInfo: UpdateInfoType
+}
+
+input UpdateModuleInputType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """meta information"""
+  meta: MetaInputType = null
+
+  """module ID"""
+  moduleID: ID!
+
+  """module objection"""
+  objections: [ObjectionInputType!] = []
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """profile ID"""
+  profileID: ID!
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """module questions"""
+  questions: [QuestionInputType!]! = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
+
+  """module transcriptList"""
+  transcriptList: [TranscriptObjectInputType!] = []
 }
 
 input UpdateTemplatesInputType {

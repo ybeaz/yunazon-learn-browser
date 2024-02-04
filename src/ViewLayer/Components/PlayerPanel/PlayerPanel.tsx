@@ -25,8 +25,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
   const { classAdded, storeStateSlice } = props
 
   const {
-    courseCapture,
-    moduleCapture,
+    capture,
     durationObj: { duration, units },
     screenType,
     isShowingPlay = false,
@@ -34,8 +33,6 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
     buttonPauseProps = {},
     buttonStopProps = {},
     isActionButtonDisplaying: isDisplaying,
-    moduleIndex = 0,
-    modulesTotal = 1,
     questionsTotal = 0,
     storeStateSlice: { language },
   } = props
@@ -75,10 +72,6 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
     tooltipText: difficulty,
     tooltipPosition: 'bottom',
   }
-  const capture =
-    screenType === 'AcademyPresent' && modulesTotal > 1
-      ? `${courseCapture} ${moduleCapture}`
-      : `${courseCapture}`
 
   const addStyle4Capture =
     screenType === 'AcademyMatrix' ? `_addStyle4Capture` : ''

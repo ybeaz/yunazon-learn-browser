@@ -7,7 +7,7 @@ export const storeObject = {
     isModalFrameVisible: false,
     isSideNavLeftVisible: false,
     isLoaderOverlayVisible: false,
-    isCourseStarted: false,
+    isModuleStarted: false,
     isOAuthFacebookScriptLoaded: false,
     isOAuthVKontakteScriptLoaded: false,
     isOAuthGoogleScriptLoaded: false,
@@ -25,7 +25,7 @@ export const storeObject = {
       },
     ],
     pagination: {
-      pageCourses: {
+      pageModules: {
         first: 0,
         offset: 10,
       },
