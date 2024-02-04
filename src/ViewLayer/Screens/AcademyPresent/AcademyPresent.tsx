@@ -71,7 +71,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   /* Hide summary by url settings */
   let isSummaryButton = true
-  let isSummary = true
+  let isSummary = isSummaryStore
   const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
   if (isSummaryUrlQuery === 'false') {
     isSummaryButton = false
