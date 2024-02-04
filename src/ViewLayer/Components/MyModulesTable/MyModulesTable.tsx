@@ -65,7 +65,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
           },
           buttonDeactivateCourseProps: {
             icon: 'MdDeleteOutline',
-            classAdded: 'Button_DeactivateCourse',
+            classAdded: 'Button_DeactivateModule',
             action: {
               typeEvent: 'SET_MODAL_FRAMES',
               data: [
