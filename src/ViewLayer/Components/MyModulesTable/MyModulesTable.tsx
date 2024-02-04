@@ -9,7 +9,7 @@ import {
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
-  CoursesTablePropsOutType,
+  ModulesTablePropsOutType,
   MyModulesTableComponentPropsType,
   MyModulesTablePropsType,
   MyModulesTablePropsOutType,
@@ -39,7 +39,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
           style: 'US',
         })
 
-        const propsOut: CoursesTablePropsOutType = {
+        const propsOut: ModulesTablePropsOutType = {
           linkToModuleProps: {
             className: '__shield',
             to: { pathname: `/m/${modules && modules[0].moduleID}/` },
@@ -51,19 +51,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
               // })
             },
           },
-          linkToCourseProps: {
-            className: '__shield',
-            to: { pathname: `/m/${moduleID}/` },
-            children: 'Link',
-            onClick: (event: any) => {
-              // handleEvents(event, {
-              //   typeEvent: '',
-              //   data: {  },
-              // })
-            },
-            target: 'blank',
-          },
-          buttonDeactivateCourseProps: {
+          buttonDeactivateModuleProps: {
             icon: 'MdDeleteOutline',
             classAdded: 'Button_DeactivateModule',
             action: {
@@ -109,7 +97,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
               {/* TODO: Add a button and implement edit feature */}
             </div>
             <div className='_cell _remove'>
-              <ButtonYrl {...propsOut.buttonDeactivateCourseProps} />
+              <ButtonYrl {...propsOut.buttonDeactivateModuleProps} />
             </div>
           </div>
         )
@@ -117,7 +105,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
     )
 
     return (
-      <section className={getClasses('_coursesTable', classAdded)}>
+      <section className={getClasses('_modulesTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_date'>
             {DICTIONARY.Date_of_creation[language]}

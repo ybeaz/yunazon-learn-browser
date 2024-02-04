@@ -15,10 +15,9 @@ export type MyModulesTablePropsType = Omit<
   'storeStateSlice' | 'handleEvents'
 >
 
-export type CoursesTablePropsOutType = {
-  linkToCourseProps: any
+export type ModulesTablePropsOutType = {
   linkToModuleProps: any
-  buttonDeactivateCourseProps: ButtonYrlPropsType
+  buttonDeactivateModuleProps: ButtonYrlPropsType
 }
 
 export type MyModulesTablePropsOutType = Record<string, any>
