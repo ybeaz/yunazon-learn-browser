@@ -30,7 +30,9 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
     classAdded,
     summary,
     objections,
+    isSummaryButton,
     isSummary,
+    isObjectionsButton,
     isObjections,
     language,
     titleSummary,
@@ -81,8 +83,12 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
   return (
     <div className={getClasses('TextStructuredColumns', classAdded)}>
       <div className='_buttonsWrapper'>
-        <ButtonYrl {...propsOut2.buttonSummaryIsSummaryProps} />
-        <ButtonYrl {...propsOut2.buttonSummaryIsObjectionsProps} />
+        {isSummaryButton ? (
+          <ButtonYrl {...propsOut2.buttonSummaryIsSummaryProps} />
+        ) : null}
+        {isObjectionsButton ? (
+          <ButtonYrl {...propsOut2.buttonSummaryIsObjectionsProps} />
+        ) : null}
       </div>
       <div className='_textStructuredWrapper'>
         {isSummary && summary && summary.length ? (

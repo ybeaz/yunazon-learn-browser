@@ -22,6 +22,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -51,7 +52,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       modules,
       mediaLoaded,
-      isSummary,
+      isSummary: isSummaryStore,
       isObjections,
     },
   } = props
@@ -67,6 +68,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
+
+  /* Hide summary by url settings */
+  let isSummaryButton = true
+  let isSummary = true
+  const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
+  if (isSummaryUrlQuery === 'false') {
+    isSummaryButton = false
+    isSummary = false
+  }
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
@@ -226,7 +236,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     textStructuredColumnsProps: {
       summary,
       objections,
+      isSummaryButton,
       isSummary,
+      isObjectionsButton: true,
       isObjections,
       language: languageStore,
       titleSummary: 'Summary',
