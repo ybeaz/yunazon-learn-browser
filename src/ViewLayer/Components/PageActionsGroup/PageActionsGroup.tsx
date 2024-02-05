@@ -15,9 +15,9 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
   props: PageActionsGroupComponentPropsType
 ) => {
   const {
-    courseCapture,
+    moduleCapture,
     documentID,
-    courseID,
+    moduleID,
     contentID,
     storeStateSlice: { language },
   } = props
@@ -28,7 +28,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
       classAdded: 'Button_UseCertificate',
       action: {
         typeEvent: 'PRINT_DOCUMENT',
-        data: { courseCapture, documentID, courseID, contentID },
+        data: { moduleCapture, documentID, moduleID, contentID },
       },
       tooltipText: DICTIONARY['sendToPrint'][language],
       tooltipPosition: 'bottom',
@@ -56,7 +56,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
       classAdded: 'Button_UseCertificate',
       action: {
         typeEvent: 'COPY_URL_TO_CLIPBOARD',
-        data: { courseCapture, documentID, courseID, contentID },
+        data: { moduleCapture, documentID, moduleID, contentID },
       },
       tooltipText: DICTIONARY['copyLinkToClipboard'][language],
       tooltipPosition: 'bottom',

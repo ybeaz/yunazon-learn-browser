@@ -14,150 +14,13 @@
   <meta name="description"
     content="Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates">
   <meta httpequiv="X-UA-Compatible" content="IE=edge" />
-
-  <style>
-    #root,
-    body,
-    html {
-      width: 100%;
-      -webkit-overflow-scrolling: touch;
-      margin: 0;
-      padding: 0;
-      min-height: 100%
-    }
-
-    #root {
-      flex-shrink: 0;
-      flex-basis: auto;
-      flex-grow: 1;
-      display: flex;
-      flex: 1
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-      height: calc(100% + env(safe-area-inset-top))
-    }
-
-    body {
-      display: flex;
-      overflow-y: auto;
-      overscroll-behavior-y: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -ms-overflow-style: scrollbar
-    }
-  </style>
-  <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="apple-mobile-web-app-title" content="javascript-react-chat-app">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <style>
-    .LoaderOverlay3Yrl {
-      display: none;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-    }
-
-    .LoaderOverlay3Yrl .loadingIcon {
-      width: 5rem;
-      height: 5rem;
-      color: tomato;
-      margin: 50%;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:before,
-    .LoaderOverlay3Yrl ._spinner:after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border-radius: 50%;
-      border-style: solid;
-      border-top-color: #ecd078;
-      border-right-color: #c02942;
-      border-bottom-color: #542437;
-      border-left-color: #53777a;
-      content: '';
-      transform: translate(-50%, -50%);
-      animation: rotate 1.5s infinite ease-in-out;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:before {
-      border-width: 5vh;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:after {
-      width: 15vh;
-      height: 15vh;
-      border-width: 1vh;
-      animation-direction: reverse;
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0);
-      }
-
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
-
-    @keyframes spinner {
-      0% {
-        transform: translate3d(-50%, -50%, 0) rotate(0deg);
-      }
-
-      100% {
-        transform: translate3d(-50%, -50%, 0) rotate(360deg);
-      }
-    }
-
-    .LoaderOverlay3Yrl ._spinner::before {
-      animation: 1.5s linear infinite spinner;
-      animation-play-state: inherit;
-      border: solid 0.5rem #cfd0d1;
-      border-bottom-color: #1c87c9;
-      border-radius: 50%;
-      content: '';
-      height: 100px;
-      width: 100px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
-      will-change: transform;
-    }
-
-    .LoaderOverlay3Yrl_show {
-      display: flex;
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
-      .LoaderOverlay3Yrl_show {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(0.33rem);
-        transition: backdrop-filter 5s;
-        -webkit-backdrop-filter: blur(0.33rem);
-      }
-    }
-  </style>
-
-
+  <link rel="manifest" href="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.1/dist/manifest.json">
 </head>
 
 <body><noscript>
@@ -175,10 +38,10 @@
       <div class="_spinner"></div>
     </div>
   </div>
-  <!-- <script defer="defer" src="/static/js/bundle.min.js.gz"></script> -->
 
+  <!-- <script defer="defer" src="/static/js/bundle.min.js.gz"></script> -->
   <script type="text/javascript" defer="defer"
-    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.0/dist/static/js/bundle.min.js"
+    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.1/dist/js/bundle.min.js"
     crossorigin="anonymous"></script>
 
 </body>

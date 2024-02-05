@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 
 export type CertificateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -15,7 +16,9 @@ export type CertificatePropsType = Omit<
   'storeStateSlice'
 >
 
-export type CertificatePropsOutType = Record<string, any>
+export type CertificatePropsOutType = {
+  headerFrameProps: HeaderFramePropsType
+}
 
 /**
  * @import import { CertificateComponentPropsType, CertificatePropsType, CertificatePropsOutType, CertificateComponentType, CertificateType } from './CertificateType'

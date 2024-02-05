@@ -33,7 +33,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
             childName: 'QuestionScores',
             isActive: true,
             childProps: {
-              courseCapture:
+              moduleCapture:
                 'Исторические деятели России и СССР первой половины XX века',
             },
           },
@@ -54,7 +54,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
             childName: 'QuestionScores',
             isActive: true,
             childProps: {
-              courseCapture:
+              moduleCapture:
                 'Исторические деятели России и СССР первой половины XX века',
             },
           },

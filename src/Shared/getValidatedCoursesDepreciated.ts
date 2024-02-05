@@ -2,7 +2,7 @@ const errorCourse = ({
   courseValidation,
   courseIndex,
   courseID,
-  courseCapture,
+  moduleCapture,
   courseDescription,
   language,
   isActive,
@@ -11,18 +11,18 @@ const errorCourse = ({
   if (!courseID || typeof courseID !== 'string' || courseID.length < 10) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-courseID-or-type-error', courseIndex, courseCapture },
+      { type: 'course-no-courseID-or-type-error', courseIndex, moduleCapture },
     ]
   }
 
   if (
-    !courseCapture ||
-    typeof courseCapture !== 'string' ||
-    courseCapture.length < 12
+    !moduleCapture ||
+    typeof moduleCapture !== 'string' ||
+    moduleCapture.length < 12
   ) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-capture-or-type-error', courseIndex, courseCapture },
+      { type: 'course-no-capture-or-type-error', courseIndex, moduleCapture },
     ]
   }
 
@@ -36,7 +36,7 @@ const errorCourse = ({
       {
         type: 'course-no-description-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -44,14 +44,14 @@ const errorCourse = ({
   if (!language || typeof language !== 'string' || language.length < 2) {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-language-or-type-error', courseIndex, courseCapture },
+      { type: 'course-no-language-or-type-error', courseIndex, moduleCapture },
     ]
   }
 
   if (typeof isActive !== 'boolean') {
     courseValidation = [
       ...courseValidation,
-      { type: 'course-no-isActive-or-type-error', courseIndex, courseCapture },
+      { type: 'course-no-isActive-or-type-error', courseIndex, moduleCapture },
     ]
   }
 
@@ -66,7 +66,7 @@ const errorCourse = ({
       {
         type: 'course-no-meta-institution-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -77,7 +77,7 @@ const errorCourse = ({
       {
         type: 'course-no-meta-specTitle-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -88,7 +88,7 @@ const errorCourse = ({
       {
         type: 'course-no-meta-specName-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -99,7 +99,7 @@ const errorCourse = ({
       {
         type: 'course-no-meta-email-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -110,7 +110,7 @@ const errorCourse = ({
       {
         type: 'course-no-meta-isSendingBcc-or-type-error',
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   }
@@ -121,7 +121,7 @@ const errorCourse = ({
 const errorModules = ({
   courseValidation,
   courseIndex,
-  courseCapture,
+  moduleCapture,
   modules,
 }: any) => {
   let errors: any[] = []
@@ -199,7 +199,7 @@ const errorModules = ({
       {
         errors,
         courseIndex,
-        courseCapture,
+        moduleCapture,
       },
     ]
   } else return courseValidation
@@ -208,7 +208,7 @@ const errorModules = ({
 const errorQuestions = ({
   courseValidation,
   courseIndex,
-  courseCapture,
+  moduleCapture,
   moduleIndex,
   questions,
 }: any) => {
@@ -237,7 +237,7 @@ const errorQuestions = ({
       {
         errors,
         courseIndex,
-        courseCapture,
+        moduleCapture,
         moduleIndex,
       },
     ]
@@ -247,7 +247,7 @@ const errorQuestions = ({
 const errorOptions = ({
   courseValidation,
   courseIndex,
-  courseCapture,
+  moduleCapture,
   moduleIndex,
   questionIndex,
   questionCapture,
@@ -279,7 +279,7 @@ const errorOptions = ({
       {
         errors,
         courseIndex,
-        courseCapture,
+        moduleCapture,
         moduleIndex,
         questionIndex,
         questionCapture,
@@ -299,7 +299,7 @@ export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
   courses.forEach((course, courseIndex) => {
     const {
       courseID,
-      capture: courseCapture,
+      capture: moduleCapture,
       description: courseDescription,
       language,
       isActive,
@@ -311,7 +311,7 @@ export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
       courseValidation,
       courseIndex,
       courseID,
-      courseCapture,
+      moduleCapture,
       courseDescription,
       language,
       isActive,
@@ -321,7 +321,7 @@ export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
     courseValidation = errorModules({
       courseValidation,
       courseIndex,
-      courseCapture,
+      moduleCapture,
       modules,
     })
 
@@ -331,7 +331,7 @@ export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
       courseValidation = errorQuestions({
         courseValidation,
         courseIndex,
-        courseCapture,
+        moduleCapture,
         moduleIndex,
         questions,
       })
@@ -342,7 +342,7 @@ export const getValidatedCoursesDepreciated = (courses: any[]): any[] => {
         courseValidation = errorOptions({
           courseValidation,
           courseIndex,
-          courseCapture,
+          moduleCapture,
           moduleIndex,
           questionIndex,
           questionCapture,

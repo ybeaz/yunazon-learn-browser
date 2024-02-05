@@ -81,6 +81,16 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     questionsActive,
     passRateIn
   )
+
+  console.info('QuestionScores [85]', {
+    capture,
+    description,
+    meta,
+    moduleID,
+    contentID,
+    questionsActive,
+  })
+
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong } = score
   let result = score.result

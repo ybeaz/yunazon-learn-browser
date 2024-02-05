@@ -1,15 +1,13 @@
+import { QuestionType, OptionType } from '../@types/GraphqlTypes'
+
 /**
  * @description Function to get an array of wrong answered questions
- * @param questions
- * @returns
  */
-export const getQuestionsWrongAnswered: Function = (
-  questions: any[]
-): any[] => {
-  return questions.filter(question => {
+export const getQuestionsWrongAnswered = (questions: QuestionType[]): any[] => {
+  return questions.filter((question: QuestionType) => {
     let res = false
     let counter = 0
-    question.options.forEach(option => {
+    question.options.forEach((option: any) => {
       if (option.status === option.answer) {
         counter = counter + 1
       }

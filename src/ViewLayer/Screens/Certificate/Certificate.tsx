@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
+import { Helmet } from 'react-helmet'
 
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -42,9 +43,6 @@ export const CertificateComponent: CertificateComponentType = (
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
     )
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-  }, [])
-
-  useEffect(() => {
     if (Array.isArray(documents) && !documentFound) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
@@ -67,16 +65,18 @@ export const CertificateComponent: CertificateComponentType = (
     contentID: '',
     dateCreated: 0,
     pathName: '',
+    language: '',
   }
 
   const {
     profileProps: { nameFirst = '', nameMiddle = '', nameLast = '' },
     meta: { institution = '', specTitle = '', specName = '' },
-    capture: courseCapture = '',
+    capture: moduleCapture = '',
     courseID = '',
     moduleIDs = [''],
     dateCreated = 0,
     pathName: documentPathName,
+    language: languageDoc = '',
   } = documentFound || documentDefault
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
@@ -89,39 +89,55 @@ export const CertificateComponent: CertificateComponentType = (
     seconds: false,
   })
 
+  const dateMilitaty = getDateString({
+    timestamp: dateCreated,
+    style: 'military',
+    hours: false,
+    minutes: false,
+    seconds: false,
+  })
+
   const userName = nameMiddle
     ? `${nameFirst} ${nameMiddle} ${nameLast}`
     : `${nameFirst} ${nameLast}`
 
-  const slug = getSlug(courseCapture)
+  const slug = getSlug(moduleCapture)
   const modulePathName = `/m/${moduleIDs[0]}/${slug}`
+  const titlePage = `${dateMilitaty}-certificate-${moduleIDs[0]}-${slug}`
 
-  const headerFrameProps = {
-    brandName: 'YouRails',
-    moto: DICTIONARY['Together_know_everything'][language],
-    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
-    contentComponentName: 'SearchFormSep',
-    courseCapture,
-    documentID,
-    courseID,
-    isButtonSideMenuLeft: true,
-    isLogoGroup: true,
-    isButtonAddCourse: false,
-    isButtonAuthUser: true,
-    isSelectLanguage: true,
-    isButtonThemeToggle: true,
-    isSeachGroup: false,
-    isButtonBack: true,
-    isPageActionsGroup: true,
-    isButtonsShare: true,
+  const propsOut: CertificatePropsOutType = {
+    headerFrameProps: {
+      brandName: 'YouRails',
+      moto: DICTIONARY['Together_know_everything'][language],
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
+      contentComponentName: 'SearchFormSep',
+      moduleCapture: moduleCapture,
+      documentID,
+      moduleID: moduleIDs[0],
+      isButtonSideMenuLeft: true,
+      isLogoGroup: true,
+      isButtonAddCourse: false,
+      isButtonAuthUser: true,
+      isSelectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: true,
+      isPageActionsGroup: true,
+      isButtonsShare: true,
+    },
   }
-
-  const propsOut: CertificatePropsOutType = {}
 
   return (
     <div className='Certificate'>
+      <Helmet>
+        <html lang={languageDoc} />
+        <meta charSet='utf-8' />
+        <title>{titlePage}</title>
+        <link rel='canonical' href={location.href} />
+        <meta name='description' content={moduleCapture} />
+      </Helmet>
       <div className='_buttons Certificate_noPrint'>
-        <HeaderFrame {...headerFrameProps} />
+        <HeaderFrame {...propsOut.headerFrameProps} />
       </div>
 
       <div className='container pm-certificate-container'>
@@ -181,7 +197,7 @@ export const CertificateComponent: CertificateComponentType = (
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline'>
                     <span className='pm-credits-text block bold sans'>
-                      {courseCapture}
+                      {moduleCapture}
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>

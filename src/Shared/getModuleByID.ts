@@ -13,7 +13,7 @@ export const getModuleByID: Function = (
   let module = {}
 
   courses.forEach(course => {
-    const { courseID, capture: courseCapture, modules } = course
+    const { courseID, capture: moduleCapture, modules } = course
     const modulesTotal = modules?.length
 
     // @ts-expect-error
@@ -30,7 +30,7 @@ export const getModuleByID: Function = (
       module = {
         ...moduleFound,
         courseID,
-        courseCapture,
+        moduleCapture,
         modulesTotal,
         questionsTotal,
       }

@@ -41,8 +41,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     brandName,
     contentComponentName,
     contentID = '',
-    courseCapture = '',
-    courseID = '',
+    moduleCapture = '',
+    moduleID = '',
     documentID = '',
     isButtonAddCourse,
     isButtonAuthUser,
@@ -104,7 +104,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       classAdded: 'Button_MdBackward3',
       action: {
         typeEvent: 'GO_BACK_FROM_CERTIFICATE',
-        data: { history: navigate, courseCapture },
+        data: { history: navigate, moduleCapture },
       },
       tooltipText: DICTIONARY['backToCourse'][language],
       tooltipPosition: 'bottom',
@@ -131,9 +131,9 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       action: { typeEvent: 'TOGGLE_THEME' },
     },
     pageActionsProps: {
-      courseCapture,
+      moduleCapture,
       documentID,
-      courseID,
+      moduleID,
       contentID,
     },
     logoGroupProps: {
