@@ -73,10 +73,12 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
     summaryProps: {
       entities: summary,
       capture: titleSummary,
+      captureType: 'genre',
     },
     objectionsProps: {
       entities: objections,
       capture: titleObjections,
+      captureType: 'genre',
     },
   }
 

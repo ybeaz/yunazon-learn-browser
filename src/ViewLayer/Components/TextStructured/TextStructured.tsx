@@ -24,7 +24,7 @@ import {
 const TextStructuredComponent: TextStructuredComponentType = (
   props: TextStructuredComponentPropsType
 ) => {
-  const { classAdded, entities, capture } = props
+  const { classAdded, entities, capture, captureType } = props
 
   const getStringNormalizedForReading = (str: string) => {
     let output: string | string[] = str
@@ -141,7 +141,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
       itemScope
       itemType='https://schema.org/Article'
     >
-      <h2 className='_h2' itemProp='genre'>
+      <h2 className='_h2' itemProp={captureType}>
         {capture}
       </h2>
       {getTextStructured(entities)}

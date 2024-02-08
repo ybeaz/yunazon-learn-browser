@@ -17,6 +17,7 @@ export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   entities: EntitiyItemType[]
   capture: string
+  captureType: 'headline' | 'alternativeHeadline' | 'genre'
 }
 
 export type TextStructuredPropsType = Omit<

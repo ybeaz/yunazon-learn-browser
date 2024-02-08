@@ -25,6 +25,7 @@ const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
   const propsOut: ArticlePresentBodyPropsOutType = {
     textStructuredProps: {
       capture: article.capture,
+      captureType: 'headline',
       entities: article.sections,
     },
   }

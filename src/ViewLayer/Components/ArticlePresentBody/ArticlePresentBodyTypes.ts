@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ArticleType } from '../../../@types/ArticleMockType'
+import { TextStructuredPropsType } from '../TextStructured/TextStructured'
 
 export type ArticlePresentBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -12,7 +13,9 @@ export type ArticlePresentBodyPropsType = Omit<
   'storeStateSlice'
 >
 
-export type ArticlePresentBodyPropsOutType = Record<string, any>
+export type ArticlePresentBodyPropsOutType = {
+  textStructuredProps: TextStructuredPropsType
+}
 
 /**
  * @import import { ArticlePresentBodyComponentPropsType, ArticlePresentBodyPropsType, ArticlePresentBodyPropsOutType, ArticlePresentBodyComponentType, ArticlePresentBodyType } from './ArticlePresentBodyTypes'
