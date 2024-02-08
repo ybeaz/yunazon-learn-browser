@@ -128,7 +128,7 @@ export const CertificateComponent: CertificateComponentType = (
   }
 
   return (
-    <div className='Certificate'>
+    <div className='Certificate' id={documentID}>
       <Helmet>
         <html lang={languageDoc} />
         <meta charSet='utf-8' />

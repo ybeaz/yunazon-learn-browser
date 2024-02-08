@@ -1,7 +1,5 @@
 import React from 'react'
-import { nanoid } from 'nanoid'
 
-import { ArticleType } from '../../../@types/ArticleMockType'
 import { TextStructured } from '../TextStructured/TextStructured'
 
 import { getClasses } from '../../../Shared/getClasses'
@@ -32,9 +30,9 @@ const ArticlePresentBodyComponent: ArticlePresentBodyComponentType = (
   }
 
   return (
-    <div className={getClasses('ArticlePresentBody', classAdded)}>
+    <article className={getClasses('ArticlePresentBody', classAdded)}>
       <TextStructured {...propsOut.textStructuredProps} />
-    </div>
+    </article>
   )
 }
 

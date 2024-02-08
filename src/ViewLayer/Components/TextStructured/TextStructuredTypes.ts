@@ -1,5 +1,6 @@
 import React from 'react'
 import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
+import { ArticleType } from '../../../@types/ArticleMockType'
 import { SectionType } from '../../../@types/ArticleMockType'
 
 export type EntitiyItemType = {
