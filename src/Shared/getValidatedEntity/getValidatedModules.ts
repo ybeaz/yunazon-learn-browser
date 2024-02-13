@@ -18,7 +18,7 @@ export const getValidatedModules = (modules: ModuleType[]): ModuleType[] => {
 
     moduleValidation = getValidatedEntity({
       entityValidation: moduleValidation,
-      parentID: undefined,
+      parentID: null,
       entityIndex: indexModule,
       entityType: 'module',
       entityID: 'moduleID',

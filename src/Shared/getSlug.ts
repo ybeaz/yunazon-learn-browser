@@ -1,7 +1,6 @@
 /**
  * @description Function to return string slug with Cyrillic support
- * @param str
- * @returns
+ * @import import { getSlug } from 'src/Shared/getSlug'
  */
 export const getSlug: Function = (str: string): string => {
   return str

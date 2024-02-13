@@ -7,6 +7,14 @@ type AiRequestOptionsType {
   response_format: String
 }
 
+input AvatarSizeInputType {
+  """height"""
+  height: Float = 0
+
+  """width"""
+  width: Float = 0
+}
+
 type AvatarSizeType {
   """height"""
   height: Float
@@ -363,6 +371,9 @@ input CreateModuleInputType {
   """module content type"""
   contentType: String!
 
+  """creatorID"""
+  creatorID: ID!
+
   """description"""
   description: String!
 
@@ -381,17 +392,17 @@ input CreateModuleInputType {
   """language code"""
   language: String!
 
-  """meta information"""
+  """DEPRECIATED. meta information"""
   meta: MetaInputType = null
 
   """module objection"""
   objections: [ObjectionInputType!] = []
 
+  """organizationID"""
+  organizationID: ID!
+
   """module passRate"""
   passRate: Float = 0.75
-
-  """profile ID"""
-  profileID: ID!
 
   """module questionNumber"""
   questionNumber: Int! = 4
@@ -399,8 +410,14 @@ input CreateModuleInputType {
   """module questions"""
   questions: [QuestionInputType!]! = []
 
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
   """module summary"""
   summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
 
   """thumbnail image data"""
   thumbnails: ThumbnailsInputType = null
@@ -415,6 +432,96 @@ input CreateOriginInputType {
 
   """youtubeUrl"""
   originUrl: [String!] = null
+}
+
+input CreateProfileInputType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
+  """avatarSrc"""
+  avatarSize: AvatarSizeInputType
+
+  """avatarSrc"""
+  avatarSrc: String
+
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
+  """contacts"""
+  contacts: [String!] = []
+
+  """description"""
+  description: String
+
+  """disclaimer"""
+  disclaimer: String
+
+  """emails"""
+  emails: [String!] = []
+
+  """help"""
+  help: String
+
+  """socket ID"""
+  idSocket: ID
+
+  """imagePendingSrc"""
+  imagePendingSrc: String
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
+
+  """locations"""
+  locations: [String!] = []
+
+  """messengers"""
+  messengers: [MessengerInputType!] = []
+
+  """nameFirst"""
+  nameFirst: String
+
+  """nameLast"""
+  nameLast: String
+
+  """nameMiddle"""
+  nameMiddle: String
+
+  """pendingText"""
+  pendingText: String
+
+  """phones"""
+  phones: [String!] = []
+
+  """default position profile in the list"""
+  position: Float = 0
+
+  """profile ID"""
+  profileName: String!
+
+  """profileNature"""
+  profileNature: ProfileNatureType!
+
+  """promptExamples"""
+  promptExamples: [String!] = []
+
+  """serviceSections"""
+  serviceSections: [String!] = []
+
+  """serviceSpecs"""
+  serviceSpecs: [String!] = []
+
+  """url. URLs of the item."""
+  urls: [String!]
+
+  """user ID"""
+  userID: ID!
 }
 
 input CreateTemplatesInputType {
@@ -548,6 +655,14 @@ input MessageChoiceInputType {
 type MessageChoiceType {
   content: String
   role: String!
+}
+
+input MessengerInputType {
+  """name"""
+  name: String
+
+  """profileName"""
+  profileName: String
 }
 
 type MessengerType {
@@ -900,6 +1015,9 @@ type ModuleType {
   """module content type"""
   contentType: String!
 
+  """creatorID"""
+  creatorID: ID!
+
   """created date"""
   dateCreated: Float!
 
@@ -927,7 +1045,7 @@ type ModuleType {
   """language code"""
   language: String!
 
-  """meta information"""
+  """DEPRECIATED meta information"""
   meta: MetaType
 
   """module ID"""
@@ -936,11 +1054,11 @@ type ModuleType {
   """module objection"""
   objections: [ObjectionType!]
 
+  """organizationID"""
+  organizationID: ID!
+
   """module passRate"""
   passRate: Float
-
-  """profile ID"""
-  profileID: ID!
 
   """module questionNumber"""
   questionNumber: Int!
@@ -948,8 +1066,14 @@ type ModuleType {
   """module questions"""
   questions: [QuestionType!]!
 
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
   """module summary"""
   summary: [SummaryItemType!]
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!]
 
   """thumbnail image data"""
   thumbnails: ThumbnailsType
@@ -983,7 +1107,7 @@ type Mutation {
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
-  createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
+  createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -991,13 +1115,14 @@ type Mutation {
   deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
   deactivateModules(deactivateModulesIdsInput: [String!]!): [String!]!
+  deactivateProfiles(deactivateProfilesIdsInput: [String!]!): [String!]!
   deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
   deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
   deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
   deleteModules(deleteModulesIdsInput: [String!]!): [String!]!
-  deleteProfiles(idProfiles: String!): [ProfileType!]!
+  deleteProfiles(deleteProfilesIdsInput: [String!]!): [String!]!
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
@@ -1009,7 +1134,7 @@ type Mutation {
   updateDocuments(updateDocumentsInput: [UpdateDocumentInputType!]!): [DocumentType!]!
   updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
   updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
-  updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
+  updateProfiles(updateProfilesInput: [UpdateProfileInputType!]!): [ProfileType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
@@ -1135,14 +1260,25 @@ type ProfilePropsType {
 }
 
 type ProfileType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
   """avatarSrc"""
   avatarSize: AvatarSizeType
 
   """avatarSrc"""
   avatarSrc: String
 
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
   """contacts"""
   contacts: [String!]
+
+  """description"""
+  description: String
 
   """disclaimer"""
   disclaimer: String
@@ -1159,8 +1295,16 @@ type ProfileType {
   """imagePendingSrc"""
   imagePendingSrc: String
 
+  """ipClient profile/ user"""
+  ipClient: String
+
   """isActive"""
   isActive: Boolean!
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
 
   """locations"""
   locations: [String!]
@@ -1173,6 +1317,9 @@ type ProfileType {
 
   """nameLast"""
   nameLast: String
+
+  """nameMiddle"""
+  nameMiddle: String
 
   """pendingText"""
   pendingText: String
@@ -1201,8 +1348,8 @@ type ProfileType {
   """serviceSpecs"""
   serviceSpecs: [String!]
 
-  """summary"""
-  summary: String
+  """url. URLs of the item."""
+  urls: [String!]
 
   """user ID"""
   userID: ID!
@@ -1214,20 +1361,6 @@ type ProfilesConnectionType {
 
   """ProfilesPageInfoType"""
   pageInfo: ProfilesPageInfoType
-}
-
-input ProfilesInputType {
-  """profiles ID"""
-  idProfiles: ID
-
-  """profiles created date"""
-  profilesDateCreated: Date
-
-  """profiles deleted date"""
-  profilesDateDeleted: Date
-
-  """profiles updated date"""
-  profilesDateUpdated: Date
 }
 
 type ProfilesPageInfoType {
@@ -1274,6 +1407,7 @@ type Query {
   countCourses: Int!
   countDocuments: Int!
   countModules: Int!
+  countProfiles: Int!
   countTemplates: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -1293,7 +1427,8 @@ type Query {
   readModules(readModulesInput: [ReadModuleInputType!]!): [ModuleType!]!
   readModulesAll: [ModuleType!]!
   readModulesConnection(readModulesConnectionInput: ReadModulesConnectionInputType!): ModulesConnectionType!
-  readProfiles: [ProfileType!]!
+  readProfiles(readProfilesInput: [ReadProfileInputType!]!): [ProfileType!]!
+  readProfilesAll: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
   readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
@@ -1598,6 +1733,14 @@ input ReadModulesConnectionInputType {
   meta tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
+}
+
+input ReadProfileInputType {
+  """profile ID"""
+  profileID: ID
+
+  """user ID"""
+  userID: ID
 }
 
 input ReadProfilesConnectionInputType {
@@ -2119,25 +2262,31 @@ type UpdateInfoType {
 }
 
 input UpdateMetaInputType {
+  """creatorID"""
+  creatorID: ID!
+
   """meta information"""
   meta: MetaPartialInputType
 
   """module ID"""
   moduleID: ID
 
-  """profile ID"""
-  profileID: ID!
+  """organizationID"""
+  organizationID: ID!
 }
 
 type UpdateMetaType {
+  """creatorID"""
+  creatorID: ID!
+
   """meta information"""
   meta: MetaPartialType
 
   """module ID"""
   moduleID: ID
 
-  """profile ID"""
-  profileID: ID!
+  """organizationID"""
+  organizationID: ID!
 
   """updateInfo"""
   updateInfo: UpdateInfoType
@@ -2152,6 +2301,9 @@ input UpdateModuleInputType {
 
   """module content type"""
   contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
 
   """created date"""
   dateCreated: Float!
@@ -2180,7 +2332,7 @@ input UpdateModuleInputType {
   """language code"""
   language: String!
 
-  """meta information"""
+  """DEPRECIATED. meta information"""
   meta: MetaInputType = null
 
   """module ID"""
@@ -2189,11 +2341,11 @@ input UpdateModuleInputType {
   """module objection"""
   objections: [ObjectionInputType!] = []
 
+  """organizationID"""
+  organizationID: ID!
+
   """module passRate"""
   passRate: Float = 0.75
-
-  """profile ID"""
-  profileID: ID!
 
   """module questionNumber"""
   questionNumber: Int! = 4
@@ -2201,14 +2353,122 @@ input UpdateModuleInputType {
   """module questions"""
   questions: [QuestionInputType!]! = []
 
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
   """module summary"""
   summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
 
   """thumbnail image data"""
   thumbnails: ThumbnailsInputType = null
 
   """module transcriptList"""
   transcriptList: [TranscriptObjectInputType!] = []
+}
+
+input UpdateProfileInputType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
+  """avatarSrc"""
+  avatarSize: AvatarSizeInputType
+
+  """avatarSrc"""
+  avatarSrc: String
+
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
+  """contacts"""
+  contacts: [String!] = []
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String
+
+  """disclaimer"""
+  disclaimer: String
+
+  """emails"""
+  emails: [String!] = []
+
+  """help"""
+  help: String
+
+  """socket ID"""
+  idSocket: ID
+
+  """imagePendingSrc"""
+  imagePendingSrc: String
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
+
+  """locations"""
+  locations: [String!] = []
+
+  """messengers"""
+  messengers: [MessengerInputType!] = []
+
+  """nameFirst"""
+  nameFirst: String
+
+  """nameLast"""
+  nameLast: String
+
+  """nameMiddle"""
+  nameMiddle: String
+
+  """pendingText"""
+  pendingText: String
+
+  """phones"""
+  phones: [String!] = []
+
+  """default position profile in the list"""
+  position: Float = 0
+
+  """profile ID"""
+  profileID: ID!
+
+  """profile ID"""
+  profileName: String!
+
+  """profileNature"""
+  profileNature: ProfileNatureType!
+
+  """promptExamples"""
+  promptExamples: [String!] = []
+
+  """serviceSections"""
+  serviceSections: [String!] = []
+
+  """serviceSpecs"""
+  serviceSpecs: [String!] = []
+
+  """url. URLs of the item."""
+  urls: [String!]
+
+  """user ID"""
+  userID: ID!
 }
 
 input UpdateTemplatesInputType {

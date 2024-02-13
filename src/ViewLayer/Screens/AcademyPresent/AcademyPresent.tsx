@@ -247,7 +247,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   }
 
   return (
-    <div className='AcademyPresent' id={moduleID}>
+    <div className='AcademyPresent'>
       {isLoaded === true ? (
         <>
           <Helmet>
