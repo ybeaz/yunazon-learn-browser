@@ -43,7 +43,7 @@ export function* getDocumentsGenerator(
       searchPhrase: inputSearch,
       tagsPick,
       tagsOmit,
-      stagesPick: selectCoursesStageFlag(),
+      stagesPick: [],
       sort: { prop: 'dateCreated', direction: -1 },
       isActive: true,
     }
