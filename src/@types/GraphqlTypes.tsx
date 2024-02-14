@@ -1232,6 +1232,12 @@ export type ProfileType = {
   awards?: Maybe<Array<Scalars['String']['output']>>;
   /** contacts */
   contacts?: Maybe<Array<Scalars['String']['output']>>;
+  /** created date */
+  dateCreated: Scalars['Float']['output'];
+  /** deleted date */
+  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  /** updated date */
+  dateUpdated: Scalars['Float']['output'];
   /** description */
   description?: Maybe<Scalars['String']['output']>;
   /** disclaimer */
@@ -1667,7 +1673,7 @@ export type ReadModulesConnectionInputType = {
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
-  sort?: InputMaybe<SortInputType>;
+  sort?: InputMaybe<SortModulesInputType>;
   /** meta stages: stages/ statuses/ envs to omit with that selection of the documents */
   stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** meta stages: stages/ statuses/ envs to pick from the set of documents */
@@ -1690,8 +1696,14 @@ export type ReadProfilesConnectionInputType = {
   after?: InputMaybe<Scalars['String']['input']>;
   /** first */
   first?: InputMaybe<Scalars['Int']['input']>;
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortProfilesInputType>;
 };
 
 export type ReadTemplatesConnectionInputType = {
@@ -1743,7 +1755,14 @@ export type SortDocumentsInputType = {
   prop?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SortInputType = {
+export type SortModulesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortProfilesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */

@@ -1277,6 +1277,15 @@ type ProfileType {
   """contacts"""
   contacts: [String!]
 
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
   """description"""
   description: String
 
@@ -1714,7 +1723,7 @@ input ReadModulesConnectionInputType {
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
-  sort: SortInputType
+  sort: SortModulesInputType
 
   """
   meta stages: stages/ statuses/ envs to omit with that selection of the documents
@@ -1750,8 +1759,17 @@ input ReadProfilesConnectionInputType {
   """first"""
   first: Int
 
+  """isActive"""
+  isActive: Boolean
+
   """offset"""
   offset: Int
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortProfilesInputType
 }
 
 input ReadTemplatesConnectionInputType {
@@ -1812,7 +1830,15 @@ input SortDocumentsInputType {
   prop: String
 }
 
-input SortInputType {
+input SortModulesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortProfilesInputType {
   """sorting direction: 1 ascending, -1 descending"""
   direction: Float
 
