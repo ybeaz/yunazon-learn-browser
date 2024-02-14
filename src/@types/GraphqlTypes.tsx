@@ -29,6 +29,13 @@ export type AiRequestOptionsType = {
   response_format?: Maybe<Scalars['String']['output']>;
 };
 
+export type AvatarSizeInputType = {
+  /** height */
+  height?: InputMaybe<Scalars['Float']['input']>;
+  /** width */
+  width?: InputMaybe<Scalars['Float']['input']>;
+};
+
 export type AvatarSizeType = {
   __typename?: 'AvatarSizeType';
   /** height */
@@ -318,6 +325,8 @@ export type CreateModuleInputType = {
   contentID: Scalars['ID']['input'];
   /** module content type */
   contentType: Scalars['String']['input'];
+  /** creatorID */
+  creatorID: Scalars['ID']['input'];
   /** description */
   description: Scalars['String']['input'];
   /** module duration */
@@ -330,20 +339,24 @@ export type CreateModuleInputType = {
   isActive?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
-  /** meta information */
+  /** DEPRECIATED. meta information */
   meta?: InputMaybe<MetaInputType>;
   /** module objection */
   objections?: InputMaybe<Array<ObjectionInputType>>;
+  /** organizationID */
+  organizationID: Scalars['ID']['input'];
   /** module passRate */
   passRate?: InputMaybe<Scalars['Float']['input']>;
-  /** profile ID */
-  profileID: Scalars['ID']['input'];
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
   questions?: Array<QuestionInputType>;
+  /** meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
   /** module summary */
   summary?: InputMaybe<Array<SummaryItemInputType>>;
+  /** meta tags: tags that characterises the content */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
   /** thumbnail image data */
   thumbnails?: InputMaybe<ThumbnailsInputType>;
   /** module transcriptList */
@@ -355,6 +368,65 @@ export type CreateOriginInputType = {
   originID?: InputMaybe<Scalars['String']['input']>;
   /** youtubeUrl */
   originUrl?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type CreateProfileInputType = {
+  /** affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team. */
+  affiliation?: InputMaybe<Scalars['String']['input']>;
+  /** avatarSrc */
+  avatarSize?: InputMaybe<AvatarSizeInputType>;
+  /** avatarSrc */
+  avatarSrc?: InputMaybe<Scalars['String']['input']>;
+  /** award. An award won by or for this item. Supersedes awards. */
+  awards?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** contacts */
+  contacts?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** description */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** disclaimer */
+  disclaimer?: InputMaybe<Scalars['String']['input']>;
+  /** emails */
+  emails?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** help */
+  help?: InputMaybe<Scalars['String']['input']>;
+  /** socket ID */
+  idSocket?: InputMaybe<Scalars['ID']['input']>;
+  /** imagePendingSrc */
+  imagePendingSrc?: InputMaybe<Scalars['String']['input']>;
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** jobTitle. The job title of the person (for example, Financial Manager). */
+  jobTitle?: InputMaybe<Scalars['String']['input']>;
+  /** locations */
+  locations?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** messengers */
+  messengers?: InputMaybe<Array<MessengerInputType>>;
+  /** nameFirst */
+  nameFirst?: InputMaybe<Scalars['String']['input']>;
+  /** nameLast */
+  nameLast?: InputMaybe<Scalars['String']['input']>;
+  /** nameMiddle */
+  nameMiddle?: InputMaybe<Scalars['String']['input']>;
+  /** pendingText */
+  pendingText?: InputMaybe<Scalars['String']['input']>;
+  /** phones */
+  phones?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** default position profile in the list */
+  position?: InputMaybe<Scalars['Float']['input']>;
+  /** profile ID */
+  profileName: Scalars['String']['input'];
+  /** profileNature */
+  profileNature: ProfileNatureType;
+  /** promptExamples */
+  promptExamples?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** serviceSections */
+  serviceSections?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** serviceSpecs */
+  serviceSpecs?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** url. URLs of the item. */
+  urls?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** user ID */
+  userID: Scalars['ID']['input'];
 };
 
 export type CreateTemplatesInputType = {
@@ -473,6 +545,13 @@ export type MessageChoiceType = {
   __typename?: 'MessageChoiceType';
   content?: Maybe<Scalars['String']['output']>;
   role: Scalars['String']['output'];
+};
+
+export type MessengerInputType = {
+  /** name */
+  name?: InputMaybe<Scalars['String']['input']>;
+  /** profileName */
+  profileName?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type MessengerType = {
@@ -737,6 +816,8 @@ export type ModuleType = {
   contentID: Scalars['ID']['output'];
   /** module content type */
   contentType: Scalars['String']['output'];
+  /** creatorID */
+  creatorID: Scalars['ID']['output'];
   /** created date */
   dateCreated: Scalars['Float']['output'];
   /** deleted date */
@@ -755,22 +836,26 @@ export type ModuleType = {
   isActive: Scalars['Boolean']['output'];
   /** language code */
   language: Scalars['String']['output'];
-  /** meta information */
+  /** DEPRECIATED meta information */
   meta?: Maybe<MetaType>;
   /** module ID */
   moduleID: Scalars['ID']['output'];
   /** module objection */
   objections?: Maybe<Array<ObjectionType>>;
+  /** organizationID */
+  organizationID: Scalars['ID']['output'];
   /** module passRate */
   passRate?: Maybe<Scalars['Float']['output']>;
-  /** profile ID */
-  profileID: Scalars['ID']['output'];
   /** module questionNumber */
   questionNumber: Scalars['Int']['output'];
   /** module questions */
   questions: Array<QuestionType>;
+  /** meta stages: stages/ statuses/ envs */
+  stages?: Maybe<Array<Scalars['String']['output']>>;
   /** module summary */
   summary?: Maybe<Array<SummaryItemType>>;
+  /** meta tags: tags that characterises the content */
+  tags?: Maybe<Array<Scalars['String']['output']>>;
   /** thumbnail image data */
   thumbnails?: Maybe<ThumbnailsType>;
   /** transcriptList */
@@ -811,13 +896,14 @@ export type Mutation = {
   deactivateCourses: Array<Scalars['String']['output']>;
   deactivateDocuments: Array<Scalars['String']['output']>;
   deactivateModules: Array<Scalars['String']['output']>;
+  deactivateProfiles: Array<Scalars['String']['output']>;
   deactivateTemplates: Array<Scalars['String']['output']>;
   deleteBots: Array<Scalars['String']['output']>;
   deleteCompetencyTags: Array<CompetencyTagType>;
   deleteCourses: Array<Scalars['String']['output']>;
   deleteDocuments: Array<Scalars['String']['output']>;
   deleteModules: Array<Scalars['String']['output']>;
-  deleteProfiles: Array<ProfileType>;
+  deleteProfiles: Array<Scalars['String']['output']>;
   deleteTemplates: Array<Scalars['String']['output']>;
   deleteUser: UserModelExtendedType;
   removeRecipe: Scalars['Boolean']['output'];
@@ -876,7 +962,7 @@ export type MutationCreateModulesArgs = {
 
 
 export type MutationCreateProfilesArgs = {
-  profilesInput: ProfilesInputType;
+  createProfilesInput: Array<CreateProfileInputType>;
 };
 
 
@@ -915,6 +1001,11 @@ export type MutationDeactivateModulesArgs = {
 };
 
 
+export type MutationDeactivateProfilesArgs = {
+  deactivateProfilesIdsInput: Array<Scalars['String']['input']>;
+};
+
+
 export type MutationDeactivateTemplatesArgs = {
   deactivateTemplatesIdsInput: Array<Scalars['String']['input']>;
 };
@@ -946,7 +1037,7 @@ export type MutationDeleteModulesArgs = {
 
 
 export type MutationDeleteProfilesArgs = {
-  idProfiles: Scalars['String']['input'];
+  deleteProfilesIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -1007,7 +1098,7 @@ export type MutationUpdateModulesMetaArgs = {
 
 
 export type MutationUpdateProfilesArgs = {
-  profilesInput: ProfilesInputType;
+  updateProfilesInput: Array<UpdateProfileInputType>;
 };
 
 
@@ -1131,12 +1222,24 @@ export type ProfilePropsType = {
 
 export type ProfileType = {
   __typename?: 'ProfileType';
+  /** affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team. */
+  affiliation?: Maybe<Scalars['String']['output']>;
   /** avatarSrc */
   avatarSize?: Maybe<AvatarSizeType>;
   /** avatarSrc */
   avatarSrc?: Maybe<Scalars['String']['output']>;
+  /** award. An award won by or for this item. Supersedes awards. */
+  awards?: Maybe<Array<Scalars['String']['output']>>;
   /** contacts */
   contacts?: Maybe<Array<Scalars['String']['output']>>;
+  /** created date */
+  dateCreated: Scalars['Float']['output'];
+  /** deleted date */
+  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  /** updated date */
+  dateUpdated: Scalars['Float']['output'];
+  /** description */
+  description?: Maybe<Scalars['String']['output']>;
   /** disclaimer */
   disclaimer?: Maybe<Scalars['String']['output']>;
   /** emails */
@@ -1147,8 +1250,12 @@ export type ProfileType = {
   idSocket?: Maybe<Scalars['ID']['output']>;
   /** imagePendingSrc */
   imagePendingSrc?: Maybe<Scalars['String']['output']>;
+  /** ipClient profile/ user */
+  ipClient?: Maybe<Scalars['String']['output']>;
   /** isActive */
   isActive: Scalars['Boolean']['output'];
+  /** jobTitle. The job title of the person (for example, Financial Manager). */
+  jobTitle?: Maybe<Scalars['String']['output']>;
   /** locations */
   locations?: Maybe<Array<Scalars['String']['output']>>;
   /** messengers */
@@ -1157,6 +1264,8 @@ export type ProfileType = {
   nameFirst?: Maybe<Scalars['String']['output']>;
   /** nameLast */
   nameLast?: Maybe<Scalars['String']['output']>;
+  /** nameMiddle */
+  nameMiddle?: Maybe<Scalars['String']['output']>;
   /** pendingText */
   pendingText?: Maybe<Scalars['String']['output']>;
   /** phones */
@@ -1175,8 +1284,8 @@ export type ProfileType = {
   serviceSections?: Maybe<Array<Scalars['String']['output']>>;
   /** serviceSpecs */
   serviceSpecs?: Maybe<Array<Scalars['String']['output']>>;
-  /** summary */
-  summary?: Maybe<Scalars['String']['output']>;
+  /** url. URLs of the item. */
+  urls?: Maybe<Array<Scalars['String']['output']>>;
   /** user ID */
   userID: Scalars['ID']['output'];
 };
@@ -1187,17 +1296,6 @@ export type ProfilesConnectionType = {
   edges?: Maybe<Array<ProfileEdgeType>>;
   /** ProfilesPageInfoType */
   pageInfo?: Maybe<ProfilesPageInfoType>;
-};
-
-export type ProfilesInputType = {
-  /** profiles ID */
-  idProfiles?: InputMaybe<Scalars['ID']['input']>;
-  /** profiles created date */
-  profilesDateCreated?: InputMaybe<Scalars['Date']['input']>;
-  /** profiles deleted date */
-  profilesDateDeleted?: InputMaybe<Scalars['Date']['input']>;
-  /** profiles updated date */
-  profilesDateUpdated?: InputMaybe<Scalars['Date']['input']>;
 };
 
 export type ProfilesPageInfoType = {
@@ -1240,6 +1338,7 @@ export type Query = {
   countCourses: Scalars['Int']['output'];
   countDocuments: Scalars['Int']['output'];
   countModules: Scalars['Int']['output'];
+  countProfiles: Scalars['Int']['output'];
   countTemplates: Scalars['Int']['output'];
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
@@ -1260,6 +1359,7 @@ export type Query = {
   readModulesAll: Array<ModuleType>;
   readModulesConnection: ModulesConnectionType;
   readProfiles: Array<ProfileType>;
+  readProfilesAll: Array<ProfileType>;
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
   readRecipes: Array<RecipeType>;
@@ -1340,6 +1440,11 @@ export type QueryReadModulesArgs = {
 
 export type QueryReadModulesConnectionArgs = {
   readModulesConnectionInput: ReadModulesConnectionInputType;
+};
+
+
+export type QueryReadProfilesArgs = {
+  readProfilesInput: Array<ReadProfileInputType>;
 };
 
 
@@ -1568,7 +1673,7 @@ export type ReadModulesConnectionInputType = {
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
-  sort?: InputMaybe<SortInputType>;
+  sort?: InputMaybe<SortModulesInputType>;
   /** meta stages: stages/ statuses/ envs to omit with that selection of the documents */
   stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** meta stages: stages/ statuses/ envs to pick from the set of documents */
@@ -1579,13 +1684,26 @@ export type ReadModulesConnectionInputType = {
   tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
+export type ReadProfileInputType = {
+  /** profile ID */
+  profileID?: InputMaybe<Scalars['ID']['input']>;
+  /** user ID */
+  userID?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type ReadProfilesConnectionInputType = {
   /** after */
   after?: InputMaybe<Scalars['String']['input']>;
   /** first */
   first?: InputMaybe<Scalars['Int']['input']>;
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortProfilesInputType>;
 };
 
 export type ReadTemplatesConnectionInputType = {
@@ -1637,7 +1755,14 @@ export type SortDocumentsInputType = {
   prop?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type SortInputType = {
+export type SortModulesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortProfilesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
@@ -2008,22 +2133,26 @@ export type UpdateInfoType = {
 };
 
 export type UpdateMetaInputType = {
+  /** creatorID */
+  creatorID: Scalars['ID']['input'];
   /** meta information */
   meta?: InputMaybe<MetaPartialInputType>;
   /** module ID */
   moduleID?: InputMaybe<Scalars['ID']['input']>;
-  /** profile ID */
-  profileID: Scalars['ID']['input'];
+  /** organizationID */
+  organizationID: Scalars['ID']['input'];
 };
 
 export type UpdateMetaType = {
   __typename?: 'UpdateMetaType';
+  /** creatorID */
+  creatorID: Scalars['ID']['output'];
   /** meta information */
   meta?: Maybe<MetaPartialType>;
   /** module ID */
   moduleID?: Maybe<Scalars['ID']['output']>;
-  /** profile ID */
-  profileID: Scalars['ID']['output'];
+  /** organizationID */
+  organizationID: Scalars['ID']['output'];
   /** updateInfo */
   updateInfo?: Maybe<UpdateInfoType>;
 };
@@ -2035,6 +2164,8 @@ export type UpdateModuleInputType = {
   contentID: Scalars['ID']['input'];
   /** module content type */
   contentType: Scalars['String']['input'];
+  /** creatorID */
+  creatorID: Scalars['ID']['input'];
   /** created date */
   dateCreated: Scalars['Float']['input'];
   /** deleted date */
@@ -2053,26 +2184,97 @@ export type UpdateModuleInputType = {
   isActive?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
-  /** meta information */
+  /** DEPRECIATED. meta information */
   meta?: InputMaybe<MetaInputType>;
   /** module ID */
   moduleID: Scalars['ID']['input'];
   /** module objection */
   objections?: InputMaybe<Array<ObjectionInputType>>;
+  /** organizationID */
+  organizationID: Scalars['ID']['input'];
   /** module passRate */
   passRate?: InputMaybe<Scalars['Float']['input']>;
-  /** profile ID */
-  profileID: Scalars['ID']['input'];
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
   questions?: Array<QuestionInputType>;
+  /** meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
   /** module summary */
   summary?: InputMaybe<Array<SummaryItemInputType>>;
+  /** meta tags: tags that characterises the content */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
   /** thumbnail image data */
   thumbnails?: InputMaybe<ThumbnailsInputType>;
   /** module transcriptList */
   transcriptList?: InputMaybe<Array<TranscriptObjectInputType>>;
+};
+
+export type UpdateProfileInputType = {
+  /** affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team. */
+  affiliation?: InputMaybe<Scalars['String']['input']>;
+  /** avatarSrc */
+  avatarSize?: InputMaybe<AvatarSizeInputType>;
+  /** avatarSrc */
+  avatarSrc?: InputMaybe<Scalars['String']['input']>;
+  /** award. An award won by or for this item. Supersedes awards. */
+  awards?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** contacts */
+  contacts?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** created date */
+  dateCreated: Scalars['Float']['input'];
+  /** deleted date */
+  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  /** updated date */
+  dateUpdated: Scalars['Float']['input'];
+  /** description */
+  description?: InputMaybe<Scalars['String']['input']>;
+  /** disclaimer */
+  disclaimer?: InputMaybe<Scalars['String']['input']>;
+  /** emails */
+  emails?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** help */
+  help?: InputMaybe<Scalars['String']['input']>;
+  /** socket ID */
+  idSocket?: InputMaybe<Scalars['ID']['input']>;
+  /** imagePendingSrc */
+  imagePendingSrc?: InputMaybe<Scalars['String']['input']>;
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** jobTitle. The job title of the person (for example, Financial Manager). */
+  jobTitle?: InputMaybe<Scalars['String']['input']>;
+  /** locations */
+  locations?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** messengers */
+  messengers?: InputMaybe<Array<MessengerInputType>>;
+  /** nameFirst */
+  nameFirst?: InputMaybe<Scalars['String']['input']>;
+  /** nameLast */
+  nameLast?: InputMaybe<Scalars['String']['input']>;
+  /** nameMiddle */
+  nameMiddle?: InputMaybe<Scalars['String']['input']>;
+  /** pendingText */
+  pendingText?: InputMaybe<Scalars['String']['input']>;
+  /** phones */
+  phones?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** default position profile in the list */
+  position?: InputMaybe<Scalars['Float']['input']>;
+  /** profile ID */
+  profileID: Scalars['ID']['input'];
+  /** profile ID */
+  profileName: Scalars['String']['input'];
+  /** profileNature */
+  profileNature: ProfileNatureType;
+  /** promptExamples */
+  promptExamples?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** serviceSections */
+  serviceSections?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** serviceSpecs */
+  serviceSpecs?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** url. URLs of the item. */
+  urls?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** user ID */
+  userID: Scalars['ID']['input'];
 };
 
 export type UpdateTemplatesInputType = {

@@ -12,9 +12,9 @@ export type HeaderFrameComponentPropsType = {
   moto: string
   logoPath: string
   contentComponentName: string
-  courseCapture?: string
+  moduleCapture?: string
   documentID?: string
-  courseID?: string
+  moduleID?: string
   contentID?: string
   isButtonSideMenuLeft: boolean
   isLogoGroup: boolean

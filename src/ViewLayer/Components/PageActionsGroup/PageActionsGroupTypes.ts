@@ -5,9 +5,9 @@ import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type PageActionsGroupComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  courseCapture?: string
+  moduleCapture?: string
   documentID?: string
-  courseID?: string
+  moduleID?: string
   contentID?: string
   storeStateSlice: {
     language: RootStoreType['language']

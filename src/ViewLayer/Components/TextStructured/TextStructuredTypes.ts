@@ -1,5 +1,6 @@
 import React from 'react'
 import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
+import { ArticleType } from '../../../@types/ArticleMockType'
 import { SectionType } from '../../../@types/ArticleMockType'
 
 export type EntitiyItemType = {
@@ -16,6 +17,7 @@ export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   entities: EntitiyItemType[]
   capture: string
+  captureType: 'headline' | 'alternativeHeadline' | 'genre'
 }
 
 export type TextStructuredPropsType = Omit<

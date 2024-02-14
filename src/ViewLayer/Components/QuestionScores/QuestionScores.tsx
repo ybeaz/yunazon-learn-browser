@@ -81,6 +81,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     questionsActive,
     passRateIn
   )
+
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong } = score
   let result = score.result

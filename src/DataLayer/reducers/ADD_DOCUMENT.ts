@@ -14,7 +14,6 @@ export const ADD_DOCUMENT: ReducerType = (
   if (!documentFound) {
     documentsNext = [...documents, data]
   }
-
   return {
     ...store,
     documents: documentsNext,

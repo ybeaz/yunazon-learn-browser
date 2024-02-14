@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",
-    "export:web": "ts-node tools/getGitBuildData.ts && yarn build && yarn minify",
+    "export:web": "yarn build && yarn minify && ts-node tools/getBuildAdded.ts",
     "bundle-report": "webpack-bundle-analyzer --port 4200 web-build/stats.json",
     "jest": "jest --colors",
     "minify": "ts-node tools/getPreparedFilesPublicWeb.ts",

@@ -82,7 +82,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   }
 
   return (
-    <div className={getClasses('ArticlePresent', classAdded)}>
+    <div className={getClasses('ArticlePresent', classAdded)} id={articleID}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />

@@ -14,11 +14,13 @@ const isLength11More = isLengthOfNum(11)
 
 export const templateModule: Record<string, any> = {
   moduleID: [isDefined, isString, isLength11More],
-  profileID: [isDefined, isString, isLength11More],
+  creatorID: [isDefined, isString, isLength11More],
   contentID: [isDefined, isString, isLength11More],
   isActive: [isNotUndefined, isBoolean],
   capture: [isDefined, isString],
   description: [isDefined, isString],
+  tags: [isDefined, isArray],
+  stages: [isDefined, isArray],
   language: [isDefined, isString],
   dateCreated: [isDefined, isNumber],
   dateUpdated: [isDefined, isNumber],

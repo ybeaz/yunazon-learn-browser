@@ -5,159 +5,52 @@
   <title>
     YouRails - Teach curious; Learn from inspired
   </title>
-  <link rel="shortcut icon" type="image/x-icon" href="https://yourails.com/images/faviconYouRails.ico">
-  <link rel="icon" type="image/png" href="https://yourails.com/images/faviconYouRails.ico">
+  <link rel="canonical" href="https://academy.yourails.com">
   <meta name="viewport"
     content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1.00001,viewport-fit=cover" />
   <meta charset="utf-8">
-  <link rel="canonical" href="https://academy.yourails.com">
   <meta name="description"
     content="Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates">
+  <meta name="keywords" content="Learn, Maths, Mathmatics, Story, School, Homework, Learning, Education, fun" />
+
+  <link rel="shortcut icon" href="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/favicon.ico"
+    type="image/x-icon">
+  <link rel="icon" href="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/favicon-16x16.png" sizes="32x32">
+  <link rel="icon" href="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" href="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/android-chrome-192x192.png"
+    sizes="192x192">
+  <link rel="icon" href="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/android-chrome-512x512.png"
+    sizes="512x512">
+
+  <meta property="og:site_name" content="YouRails" />
+  <meta property="og:url" content="https://academy.yourails.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="YouRails - Teach curious; Learn from inspired" />
+  <meta property="og:image"
+    content="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/android-chrome-192x192.png" />
+  <meta property="og:description"
+    content="Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates" />
+  <meta name="msapplication-TileColor" content="#f8f8ff" />
+  <meta name="theme-color" content="#f8f8ff" />
+
+  <meta name="twitter:card" content="summary" /> <!-- or summary_large_image -->
+  <meta name="twitter:title" content="YouRails - Teach curious; Learn from inspired" />
+  <meta name="twitter:title" content="<%= title %>" />
+  <meta name="twitter:description"
+    content="Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates" />
+  <meta name="twitter:image"
+    content="https://yourails.com/images/logoYouRails/logos_cap_2024-02-10/android-chrome-192x192.png" />
+
   <meta httpequiv="X-UA-Compatible" content="IE=edge" />
-
-  <style>
-    #root,
-    body,
-    html {
-      width: 100%;
-      -webkit-overflow-scrolling: touch;
-      margin: 0;
-      padding: 0;
-      min-height: 100%
-    }
-
-    #root {
-      flex-shrink: 0;
-      flex-basis: auto;
-      flex-grow: 1;
-      display: flex;
-      flex: 1
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-      height: calc(100% + env(safe-area-inset-top))
-    }
-
-    body {
-      display: flex;
-      overflow-y: auto;
-      overscroll-behavior-y: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -ms-overflow-style: scrollbar
-    }
-  </style>
-  <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
-  <meta name="apple-mobile-web-app-title" content="javascript-react-chat-app">
+  <meta name="apple-mobile-web-app-title" content="YouRails - Teach curious; Learn from inspired">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <style>
-    .LoaderOverlay3Yrl {
-      display: none;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-    }
-
-    .LoaderOverlay3Yrl .loadingIcon {
-      width: 5rem;
-      height: 5rem;
-      color: tomato;
-      margin: 50%;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:before,
-    .LoaderOverlay3Yrl ._spinner:after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      border-radius: 50%;
-      border-style: solid;
-      border-top-color: #ecd078;
-      border-right-color: #c02942;
-      border-bottom-color: #542437;
-      border-left-color: #53777a;
-      content: '';
-      transform: translate(-50%, -50%);
-      animation: rotate 1.5s infinite ease-in-out;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:before {
-      border-width: 5vh;
-    }
-
-    .LoaderOverlay3Yrl ._spinner:after {
-      width: 15vh;
-      height: 15vh;
-      border-width: 1vh;
-      animation-direction: reverse;
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: translate(-50%, -50%) rotate(0);
-      }
-
-      100% {
-        transform: translate(-50%, -50%) rotate(360deg);
-      }
-    }
-
-    @keyframes spinner {
-      0% {
-        transform: translate3d(-50%, -50%, 0) rotate(0deg);
-      }
-
-      100% {
-        transform: translate3d(-50%, -50%, 0) rotate(360deg);
-      }
-    }
-
-    .LoaderOverlay3Yrl ._spinner::before {
-      animation: 1.5s linear infinite spinner;
-      animation-play-state: inherit;
-      border: solid 0.5rem #cfd0d1;
-      border-bottom-color: #1c87c9;
-      border-radius: 50%;
-      content: '';
-      height: 100px;
-      width: 100px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(-50%, -50%, 0);
-      will-change: transform;
-    }
-
-    .LoaderOverlay3Yrl_show {
-      display: flex;
-      background-color: rgba(255, 255, 255, 0.85);
-    }
-
-    @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
-      .LoaderOverlay3Yrl_show {
-        background-color: rgba(255, 255, 255, 0);
-        backdrop-filter: blur(0.33rem);
-        transition: backdrop-filter 5s;
-        -webkit-backdrop-filter: blur(0.33rem);
-      }
-    }
-  </style>
-
-
+  <link rel="manifest" href="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.13/dist/manifest.json">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.13/dist/css/styles-loading-init.css">
 </head>
 
 <body><noscript>
@@ -175,10 +68,10 @@
       <div class="_spinner"></div>
     </div>
   </div>
-  <!-- <script defer="defer" src="/static/js/bundle.min.js.gz"></script> -->
 
+  <!-- <script defer="defer" src="/static/js/bundle.min.js.gz"></script> -->
   <script type="text/javascript" defer="defer"
-    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.0/dist/static/js/bundle.min.js"
+    src="https://cdn.jsdelivr.net/npm/yourails-assets-sep-academy-web@0.70.13/dist/js/bundle.min.js"
     crossorigin="anonymous"></script>
 
 </body>

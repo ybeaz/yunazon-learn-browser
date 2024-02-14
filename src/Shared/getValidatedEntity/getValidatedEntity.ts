@@ -1,6 +1,6 @@
 export type GetValidatedEntityParamsType = {
   entityValidation: string[]
-  parentID: string
+  parentID?: string | null
   entityIndex: number
   entityType: string
   entityID: string

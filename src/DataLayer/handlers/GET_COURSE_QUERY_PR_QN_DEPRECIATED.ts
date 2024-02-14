@@ -14,7 +14,10 @@ const { dispatch, getState } = store
  * PR/RP - pass rate
  *
  */
-export const GET_COURSE_QUERY_PR_QN: ActionEventType = (event, data) => {
+export const GET_COURSE_QUERY_PR_QN_DEPRECIATED: ActionEventType = (
+  event,
+  data
+) => {
   const moduleID = data?.moduleID
 
   const { courses } = getState()

@@ -3,7 +3,7 @@ import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
 interface IGetResultDataFromStore {
   result: string
-  courseCapture: string | undefined
+  moduleCapture: string | undefined
 }
 
 /**
@@ -14,9 +14,9 @@ export const getResultDataFromStore: Function = (
   moduleIDActive: string
 ): IGetResultDataFromStore => {
   const {
-    courseActive: { capture: courseCapture },
+    courseActive: { capture: moduleCapture },
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
   const { result } = getAnswersChecked2(questionsActive)
-  return { result, courseCapture }
+  return { result, moduleCapture }
 }
