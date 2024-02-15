@@ -85,6 +85,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'GET_PROFILE_DATA',
   'GET_MODULES',
   'GET_BOT_RESPONSE',
   'GET_MODULE_MODULE_CREATED',
