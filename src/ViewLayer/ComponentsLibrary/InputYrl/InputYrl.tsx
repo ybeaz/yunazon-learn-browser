@@ -2,7 +2,6 @@ import React, { useRef } from 'react'
 
 import { getClasses } from '../../../Shared/getClasses'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { UserType } from '../../../Interfaces/UserType'
 import { FormsType, SearchFormSepType } from '../../../Interfaces/RootStoreType'
 import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 import { IconYrl } from '../'
@@ -48,12 +47,9 @@ const InputYrlComponent: InputYrlComponentType = (
 
   let value: string | number | string[] = ''
 
-  if (
-    (storeFormGroup === 'user' || storeFormGroup === 'userPrev') &&
-    storeFormProp
-  ) {
-    const userKey = storeFormProp as keyof UserType
-    value = forms[storeFormGroup][userKey] as any
+  if (storeFormGroup && storeFormProp && forms[storeFormGroup]) {
+    // @ts-expect-error
+    value = forms[storeFormGroup][storeFormProp]
   } else if (storeFormProp) {
     const formsKey = storeFormProp as keyof FormsType
     value = forms[formsKey] as any

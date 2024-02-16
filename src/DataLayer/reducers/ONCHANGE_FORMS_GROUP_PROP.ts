@@ -10,7 +10,6 @@ export const ONCHANGE_FORMS_GROUP_PROP: ReducerType = (
   }
 ): RootStoreType => {
   const { forms } = store
-  const { user } = forms
 
   const { storeFormGroup, storeFormProp, value } = data
 
@@ -25,6 +24,5 @@ export const ONCHANGE_FORMS_GROUP_PROP: ReducerType = (
     formsNext = { ...forms, [storeFormProp]: value }
   }
 
-  console.info('ONCHANGE_FORMS_GROUP_PROP [17]', { data, forms })
   return { ...store, forms: formsNext }
 }

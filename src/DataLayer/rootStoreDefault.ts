@@ -175,7 +175,6 @@ export const rootStoreDefault: RootStoreType = {
   documents: [],
   articles: [],
   profiles: [],
-  // Remove: users: [],
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,

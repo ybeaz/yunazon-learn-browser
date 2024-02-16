@@ -83,6 +83,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'UPDATE_PROFILE',
   'GET_PROFILES',
   'GET_MODULES',
   'GET_BOT_RESPONSE',
@@ -115,7 +116,6 @@ const ACTION_ASYNC: string[] = [
   'GET_OAUTH_UI_DATA',
   'GET_MATRIX_DATA',
   'READ_USER_AUTH',
-  // Remove: 'READ_USERS',
   'SAVE_ANALYTICS',
   'SAVE_USER_PROFILE',
   'SEND_EMAIL_DOCUMENT',

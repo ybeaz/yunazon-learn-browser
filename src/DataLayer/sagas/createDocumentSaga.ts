@@ -6,22 +6,12 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getLocalStorageDeletedCourse } from '../../Shared/getLocalStorageDeletedCourse'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
-    data: {
-      // capture,
-      // contentID,
-      // courseID,
-      // description,
-      // meta,
-      // moduleID,
-      // userEmail,
-      navigate,
-    },
+    data: { navigate },
   } = params
 
   const stateSelected: RootStoreType | any = yield select(
@@ -83,8 +73,6 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
         },
       ],
     }
-
-    console.info('createDocumentSaga [44]', variables)
 
     const createDocuments: any = yield getResponseGraphqlAsync(
       {

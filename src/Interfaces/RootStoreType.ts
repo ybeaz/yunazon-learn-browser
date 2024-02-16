@@ -143,7 +143,6 @@ export type RootStoreType = {
     | 'avatarSrc'
     | 'avatarSize'
   >[]
-  // Remove: users: UserType[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

@@ -43,7 +43,7 @@ export function* getProfilesGenerator(
       {
         variables,
         resolveGraphqlName: 'readProfiles',
-        fragmentName: FragmentEnumType['ProfileTypeShort'],
+        fragmentName: FragmentEnumType['ProfileTypeFull'],
       },
       {
         ...getHeadersAuthDict(),
@@ -53,6 +53,33 @@ export function* getProfilesGenerator(
     )
 
     yield put(actionSync.SET_PROFILES(readProfiles))
+
+    /* Set default names to forms input */
+    const profile0 = readProfiles[0]
+
+    yield put(
+      actionSync.ONCHANGE_FORMS_GROUP_PROP({
+        storeFormGroup: 'profileActive',
+        storeFormProp: 'nameFirst',
+        value: profile0.nameFirst || '',
+      })
+    )
+
+    yield put(
+      actionSync.ONCHANGE_FORMS_GROUP_PROP({
+        storeFormGroup: 'profileActive',
+        storeFormProp: 'nameMiddle',
+        value: profile0.nameMiddle || '',
+      })
+    )
+
+    yield put(
+      actionSync.ONCHANGE_FORMS_GROUP_PROP({
+        storeFormGroup: 'profileActive',
+        storeFormProp: 'nameLast',
+        value: profile0.nameLast || '',
+      })
+    )
 
     return readProfiles
   } catch (error: any) {

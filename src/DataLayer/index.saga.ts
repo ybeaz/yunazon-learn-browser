@@ -1,5 +1,6 @@
 import { all, fork } from 'redux-saga/effects'
 
+import updateProfileSaga from './sagas/updateProfileSaga'
 import deactivateModulesSaga from './sagas/deactivateModulesSaga'
 import getProfilesSaga from './sagas/getProfilesSaga'
 import getModulesSaga from './sagas/getModulesSaga'
@@ -28,6 +29,7 @@ import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(updateProfileSaga),
     fork(getProfilesSaga),
     fork(getBotResponseSaga),
     fork(getModule60ModuleCreatedSaga),
