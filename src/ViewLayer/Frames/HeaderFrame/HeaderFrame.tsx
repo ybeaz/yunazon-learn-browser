@@ -1,8 +1,7 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
-import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
@@ -59,8 +58,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     storeStateSlice: {
       preferred_username,
       isSideNavLeftVisible,
-      user,
       language,
+      profiles,
     },
   } = props
 
@@ -117,12 +116,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
       isDisplaying: false /* TODO: Not used so far */,
     },
-    buttonAuthUserProps: getButtonAuthUserProps(
-      user,
-      language,
-      'header',
-      navigate
-    ),
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',
@@ -186,6 +179,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
     )
 
+  console.info('HeaderFrame [189]', { profiles, props })
+
   return (
     <div
       id={`id_header_${contentComponentName}`}
@@ -239,8 +234,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 const storeStateSliceProps: string[] = [
   'preferred_username',
   'isSideNavLeftVisible',
-  'user',
   'language',
+  'profiles',
 ]
 export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
   storeStateSliceProps,

@@ -4,7 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
-import { getProfileData } from './getProfileDataSaga'
+import { getProfiles } from './getProfilesSaga'
 import { getRedirected } from '../../Shared/getRedirected'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
@@ -24,7 +24,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     if (code) {
       yield call(getAuthAwsCognitoUserData, { data: { code } })
-      yield call(getProfileData)
+      yield call(getProfiles)
 
       const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
       if (redirectAuthFrom) {
@@ -43,7 +43,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       }
     } else {
       yield call(getAuthAwsCognitoUserRefreshed)
-      yield call(getProfileData)
+      yield call(getProfiles)
     }
 
     yield put(

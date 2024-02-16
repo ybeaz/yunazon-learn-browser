@@ -1,5 +1,5 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType, DocumentType } from '../@types/'
+import { ModuleType, CourseType, DocumentType, ProfileType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
@@ -69,7 +69,6 @@ export type ComponentsStateType = {
 export type FormsType = {
   sendTo: string
   sendCc: string
-  searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
   inputCourseCreate: string
@@ -123,7 +122,22 @@ export type RootStoreType = {
   moduleCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
-  users: UserType[]
+  profiles: Pick<
+    ProfileType,
+    | 'profileID'
+    | 'userID'
+    | 'nameFirst'
+    | 'nameLast'
+    | 'nameMiddle'
+    | 'affiliation'
+    | 'awards'
+    | 'description'
+    | 'jobTitle'
+    | 'urls'
+    | 'avatarSrc'
+    | 'avatarSize'
+  >[]
+  // Remove: users: UserType[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

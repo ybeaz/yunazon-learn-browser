@@ -5,6 +5,7 @@ import {
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
 } from '../../ComponentsLibrary/'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type HeaderFrameComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -28,10 +29,10 @@ export type HeaderFrameComponentPropsType = {
   isButtonsShare: boolean
   children?: React.ReactElement
   storeStateSlice: {
-    preferred_username: any
-    isSideNavLeftVisible: any
-    user: any
-    language: any
+    preferred_username: RootStoreType['authAwsCognitoUserData']['preferred_username']
+    isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
+    language: RootStoreType['language']
+    profiles: RootStoreType['profiles']
   }
 }
 
@@ -47,7 +48,6 @@ export type HeaderFramePropsOutType = {
   buttonLeftSideNavigationUnAuthorizedProps: ButtonYrlPropsType
   buttonBackProps: ButtonYrlPropsType
   buttonAddCourseProps: ButtonYrlPropsType
-  buttonAuthUserProps: ButtonYrlPropsType
   buttonThemeToggleProps: ButtonYrlPropsType
   pageActionsProps: any
   logoGroupProps: any

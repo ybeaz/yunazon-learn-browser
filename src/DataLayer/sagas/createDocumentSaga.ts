@@ -69,7 +69,7 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       }
     )
 
-    yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))
+    yield put(actionSync.SET_DOCUMENTS(createDocuments))
 
     getLocalStorageDeletedCourse(courseID)
 

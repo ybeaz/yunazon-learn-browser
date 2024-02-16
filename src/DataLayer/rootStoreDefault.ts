@@ -143,7 +143,6 @@ export const formsDefault: FormsType = {
   inputSearch: '',
   sendTo: '',
   sendCc: '',
-  searchFormSep: searchFormSepDefault,
   userPrev: userStoreDefault,
   user: userStoreDefault,
   tagsPick: [],
@@ -170,7 +169,8 @@ export const rootStoreDefault: RootStoreType = {
   moduleCreateProgress: courseCreateProgressDefault,
   documents: [],
   articles: [],
-  users: [],
+  profiles: [],
+  // Remove: users: [],
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,

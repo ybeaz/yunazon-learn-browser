@@ -18,7 +18,7 @@ import {
 
 export type GetBotResponseParamsType = never
 
-export function* getProfileDataGenerator(
+export function* getProfilesGenerator(
   params: GetBotResponseParamsType
 ): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
@@ -52,20 +52,20 @@ export function* getProfileDataGenerator(
       }
     )
 
-    const output = readProfiles[0]
-    console.info('getProfileDataSaga [44]', { output })
+    yield put(actionSync.SET_PROFILES(readProfiles))
+    console.info('getProfilesSaga [44]', { readProfiles })
 
-    return output
+    return readProfiles
   } catch (error: any) {
     console.info(
-      'getProfileDataSaga  [110] ERROR',
+      'getProfilesSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getProfileData = withDebounce(getProfileDataGenerator, 500)
+export const getProfiles = withDebounce(getProfilesGenerator, 500)
 
-export default function* getProfileDataSaga() {
-  yield takeEvery([actionAsync.GET_PROFILE_DATA.REQUEST().type], getProfileData)
+export default function* getProfilesSaga() {
+  yield takeEvery([actionAsync.GET_PROFILES.REQUEST().type], getProfiles)
 }

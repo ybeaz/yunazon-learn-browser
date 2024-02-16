@@ -2,12 +2,6 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { selectCoursesStageFlag } from '../../FeatureFlags'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 
 import { articles } from '../../ContentMock/articlesMock'
@@ -24,7 +18,7 @@ export function* readArticleGenerator(
       (article: any) => article.articleID === articleID
     )
 
-    yield put(actionSync.ADD_ARTICLE(articleNext))
+    yield put(actionSync.SET_ARTICLES([articleNext]))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
