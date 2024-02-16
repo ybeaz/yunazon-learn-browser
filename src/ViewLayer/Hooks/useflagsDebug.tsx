@@ -7,9 +7,7 @@ import {
   isDebugModelWindowQuestionScoresFailure,
   isDebugCertificateRedirectTo,
 } from '../../FeatureFlags'
-import { courseFailure } from '../../ContentMock/courseFailureMock'
-import { courseSuccess } from '../../ContentMock/courseSuccessMock'
-
+import { moduleFailure } from '../../ContentMock/moduleFailureMock'
 import { moduleSuccess } from '../../ContentMock/moduleSuccessMock'
 
 /**
@@ -44,8 +42,8 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
       handleEvents({}, eventAction02)
     } else if (isDebugModelWindowQuestionScoresFailure()) {
       const eventAction01 = {
-        typeEvent: 'SET_COURSES',
-        data: [courseFailure],
+        typeEvent: 'SET_MODULES',
+        data: [moduleFailure],
       }
       handleEvents({}, eventAction01)
 
