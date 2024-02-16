@@ -54,6 +54,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       mediaLoaded,
       isSummary: isSummaryStore,
       isObjections,
+      // @ts-expect-error
+      forms,
     },
   } = props
 
@@ -249,6 +251,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
+  console.info('AcademyPresent [252]', { forms })
+
   return (
     <div className='AcademyPresent' id={`moduleID-${moduleID}`}>
       {isLoaded === true ? (
@@ -287,6 +291,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 }
 
 const storeStateSliceProps: string[] = [
+  'forms',
   'language',
   'durationMultiplier',
   'moduleIDActive',

@@ -110,17 +110,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
-  console.info('QuestionScores [113]', {
-    scenario,
-    result,
-    right,
-    total,
-    moduleID,
-    contentID,
-    sub,
-    questionsActive,
-    passRateIn,
-  })
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})

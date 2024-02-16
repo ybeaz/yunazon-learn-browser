@@ -8,20 +8,18 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getLocalStorageDeletedCourse } from '../../Shared/getLocalStorageDeletedCourse'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
 function* createDocument(params: ActionReduxType | any): Iterable<any> {
   const {
     data: {
-      capture,
-      contentID,
-      courseID,
-      description,
-      meta,
-      moduleID,
-      userEmail,
-      nameFirst,
-      nameMiddle,
-      nameLast,
+      // capture,
+      // contentID,
+      // courseID,
+      // description,
+      // meta,
+      // moduleID,
+      // userEmail,
       navigate,
     },
   } = params
@@ -30,8 +28,37 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     (state: RootStoreType) => state
   )
   const {
+    forms: {
+      profileActive: { nameFirst, nameMiddle, nameLast },
+    },
+    profiles,
+    modules,
+    scorm: { moduleIDActive },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
+
+  console.info('createDocumentSaga [40]', {
+    nameFirst,
+    nameMiddle,
+    nameLast,
+    moduleIDActive,
+    profiles,
+    modules,
+    sub,
+  })
+
+  const { profileID } = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
+
+  const { moduleID, contentID, capture, description, meta } =
+    getArrayItemByProp({
+      arr: modules,
+      propName: 'moduleID',
+      propValue: moduleIDActive,
+    })
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -39,8 +66,8 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
-          courseID: courseID || '000000000000',
-          profileID: sub || '000000000000',
+          courseID: '000000000000',
+          profileID: profileID || '000000000000',
           moduleIDs: [moduleID],
           contentIDs: [contentID],
           isActive: true,
@@ -57,6 +84,8 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       ],
     }
 
+    console.info('createDocumentSaga [44]', variables)
+
     const createDocuments: any = yield getResponseGraphqlAsync(
       {
         variables,
@@ -70,8 +99,6 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield put(actionSync.SET_DOCUMENTS(createDocuments))
-
-    getLocalStorageDeletedCourse(courseID)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
 

@@ -147,6 +147,11 @@ export const formsDefault: FormsType = {
   user: userStoreDefault,
   tagsPick: [],
   tagsOmit: [],
+  profileActive: {
+    nameFirst: '',
+    nameLast: '',
+    nameMiddle: '',
+  },
 }
 
 export const courseCreateProgressDefault: CourseCreateProgressType = {

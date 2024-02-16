@@ -75,6 +75,11 @@ export type FormsType = {
   inputSearch: string
   tagsPick: string[]
   tagsOmit: string[]
+  profileActive: {
+    nameFirst: string
+    nameLast: string
+    nameMiddle: string
+  }
 }
 
 export type ScormType = {

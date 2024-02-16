@@ -1,5 +1,3 @@
-import { FieldWithPossiblyUndefined } from 'lodash'
-
 type GetArrayItemByIdPropsType = {
   arr: any[]
   propName: string
@@ -17,7 +15,7 @@ interface GetArrayItemByIdType {
 
 /**
  * @description Function to getArrayItemByProp
- * @import import { getArrayItemById } from './shared/getArrayItemById'
+ * @import import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
  */
 
 export const getArrayItemByProp: GetArrayItemByIdType = (

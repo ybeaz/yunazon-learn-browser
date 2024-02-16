@@ -26,6 +26,5 @@ export const SET_MODULES: ReducerType = (
 
   const storeNext = { ...store, modules: data, isLoaded: isLoadedNext }
 
-  console.info('SET_MODULES [29]', { data })
   return storeNext
 }

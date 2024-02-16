@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'ONCHANGE_FORMS_GROUP_PROP',
   'GET_ANSWERS_DEFAULT_DEPRECIATED',
   'SET_MODULES',
   'SET_SCREEN_ACTIVE',
@@ -28,9 +29,6 @@ const ACTIONS_SYNC: string[] = [
   'LOAD_PROFILES',
   'ONCHANGE_EMAIL_CC',
   'ONCHANGE_EMAIL_TO',
-  'ONCHANGE_FIRST_NAME_MODAL',
-  'ONCHANGE_LAST_NAME_MODAL',
-  'ONCHANGE_MIDDLE_NAME_MODAL',
   'ONCHANGE_USER_BIRTH_YEAR',
   'ONCHANGE_USER_EMAIL',
   'ONCHANGE_USER_INFO_ABOUT',
