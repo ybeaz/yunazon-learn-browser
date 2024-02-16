@@ -32,10 +32,13 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     let moduleInProgres = null
     if (modulesInProgress && modulesInProgress.length)
-      moduleInProgres = getModuleByModuleID({
-        moduleID,
-        modules: modulesInProgress,
-      })
+      moduleInProgres = getModuleByModuleID(
+        {
+          moduleID,
+          modules: modulesInProgress,
+        },
+        { parentFunction: 'getModuleDataGenerator' }
+      )
 
     const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
 

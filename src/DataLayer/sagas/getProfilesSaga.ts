@@ -53,7 +53,6 @@ export function* getProfilesGenerator(
     )
 
     yield put(actionSync.SET_PROFILES(readProfiles))
-    console.info('getProfilesSaga [44]', { readProfiles })
 
     return readProfiles
   } catch (error: any) {

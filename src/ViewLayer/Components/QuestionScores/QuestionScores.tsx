@@ -65,10 +65,13 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     contentID,
     passRate,
     questions: questionsActive,
-  } = getModuleByModuleID({
-    moduleID: moduleIDActive || '',
-    modules,
-  })
+  } = getModuleByModuleID(
+    {
+      moduleID: moduleIDActive || '',
+      modules,
+    },
+    { parentFunction: 'QuestionScoresComponent' }
+  )
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
@@ -107,6 +110,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
+  console.info('QuestionScores [113]', {
+    scenario,
+    result,
+    right,
+    total,
+    moduleID,
+    contentID,
+    sub,
+    questionsActive,
+    passRateIn,
+  })
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})

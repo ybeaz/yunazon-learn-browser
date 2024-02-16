@@ -4,7 +4,7 @@ import { getFilteredActiveCoursesModulesDepreciated } from './getFilteredActiveC
 import { getFilteredActiveQuestionsDepreciated } from './getFilteredActiveQuestionsDepreciated'
 import { getValidatedCoursesDepreciated } from './getValidatedCoursesDepreciated'
 import { getOptionsShuffledDepreciated } from './getOptionsShuffledDepreciated'
-import { getProdidevAnswerDefaultDepreciated } from './getProdidevAnswerDefaultDepreciated'
+import { getProdidedAnswerDefaultDepreciated } from './getProdidedAnswerDefaultDepreciated'
 import { getChainedResponsibility } from './getChainedResponsibility'
 import { getQuestionsPickedRandomlyDepreciated } from '../Shared/getQuestionsPickedRandomlyDepreciated'
 
@@ -43,7 +43,7 @@ export const getPreparedCourses: GetPreparedCoursesType = (
         .exec(getQuestionsPickedRandomlyDepreciated)
         // .exec(getProvidedID)
         // .exec(getProvidedSelectedDefault)
-        .exec(getProdidevAnswerDefaultDepreciated)
+        .exec(getProdidedAnswerDefaultDepreciated)
         .exec(getOptionsShuffledDepreciated).result
 
     if (options?.printRes) {

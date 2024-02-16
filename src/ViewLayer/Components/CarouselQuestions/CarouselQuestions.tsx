@@ -47,10 +47,13 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     contentID,
     questionNumber,
     questions: questionsActive,
-  } = getModuleByModuleID({
-    moduleID: moduleIDActive || '',
-    modules,
-  })
+  } = getModuleByModuleID(
+    {
+      moduleID: moduleIDActive || '',
+      modules,
+    },
+    { parentFunction: 'CarouselQuestionsComponent' }
+  )
 
   const questionsChunked = getChunkedArray(
     questionsActive,

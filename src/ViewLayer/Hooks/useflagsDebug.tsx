@@ -3,12 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import {
-  isDebugModalWindowQuestionScoresSuccess,
-  isDebugModalWindowQuestionScoresFailure,
+  isDebugModelWindowQuestionScoresSuccess,
+  isDebugModelWindowQuestionScoresFailure,
   isDebugCertificateRedirectTo,
 } from '../../FeatureFlags'
 import { courseFailure } from '../../ContentMock/courseFailureMock'
 import { courseSuccess } from '../../ContentMock/courseSuccessMock'
+
+import { moduleSuccess } from '../../ContentMock/moduleSuccessMock'
 
 /**
  * @description Hook to add debugging functionality
@@ -18,11 +20,11 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    /* isDebugModalWindowQuestionScoresSuccess() */
-    if (isDebugModalWindowQuestionScoresSuccess()) {
+    /* isDebugModelWindowQuestionScoresSuccess() */
+    if (isDebugModelWindowQuestionScoresSuccess()) {
       const eventAction01 = {
-        typeEvent: 'SET_COURSES',
-        data: [courseSuccess],
+        typeEvent: 'SET_MODULES',
+        data: [moduleSuccess],
       }
       handleEvents({}, eventAction01)
 
@@ -40,7 +42,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
         ],
       }
       handleEvents({}, eventAction02)
-    } else if (isDebugModalWindowQuestionScoresFailure()) {
+    } else if (isDebugModelWindowQuestionScoresFailure()) {
       const eventAction01 = {
         typeEvent: 'SET_COURSES',
         data: [courseFailure],

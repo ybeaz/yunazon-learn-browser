@@ -119,7 +119,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         questionsTotal: questionsTotal2,
         summary: summary2,
         objections: objections2,
-      } = getModuleByModuleID({ modules, moduleID: moduleIDActive || moduleID })
+      } = getModuleByModuleID(
+        { modules, moduleID: moduleIDActive || moduleID },
+        { parentFunction: 'AcademyPresentComponent' }
+      )
 
       const durationObj2: DurationObjType = getMultipliedTimeStr(
         duration,

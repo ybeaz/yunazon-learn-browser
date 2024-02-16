@@ -3,7 +3,7 @@ import { ModuleType, AcademyPresentCaseEnumType } from '../@types/'
 import { getFilteredActiveModulesQuestions } from './getFilteredActiveModulesQuestions'
 import { getValidatedModules } from './getValidatedEntity/getValidatedModules'
 import { getOptionsShuffled } from './getOptionsShuffled'
-import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
+import { getProdidedAnswerDefault } from './getProdidedAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
 import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
 
@@ -39,7 +39,7 @@ export const getPreparedModules: GetPreparedModulesType = (
         .exec(getValidatedModules)
         .exec(getFilteredActiveModulesQuestions)
         .exec(getQuestionsPickedRandomly)
-        .exec(getProdidevAnswerDefault)
+        .exec(getProdidedAnswerDefault)
         .exec(getOptionsShuffled).result
 
     if (options?.printRes) {

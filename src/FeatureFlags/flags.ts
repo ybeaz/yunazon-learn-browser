@@ -51,13 +51,13 @@ export const isTemplate: FeatureFlagType = (envTypeIn = envType) => false
  * @description Feature flag for development and debugging
  */
 
-/** @description Flag isDebugModalWindowQuestionScoresSuccess */
-export const isDebugModalWindowQuestionScoresSuccess: FeatureFlagType = (
+/** @description Flag isDebugModelWindowQuestionScoresSuccess */
+export const isDebugModelWindowQuestionScoresSuccess: FeatureFlagType = (
   envTypeIn = envType
 ) => false
 
-/** @description Flag isDebugModalWindowQuestionScoresFailure */
-export const isDebugModalWindowQuestionScoresFailure: FeatureFlagType = (
+/** @description Flag isDebugModelWindowQuestionScoresFailure */
+export const isDebugModelWindowQuestionScoresFailure: FeatureFlagType = (
   envTypeIn = envType
 ) => false
 
