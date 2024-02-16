@@ -13,5 +13,6 @@ export const SET_PROFILES: ReducerType = (
     [...data, ...profiles]
   ).filter((profile: ProfileType) => profile.isActive === true)
   const storeNext = { ...store, profiles: profilesNext }
+  console.info('SET_PROFILES [16]', { profiles, data, profilesNext })
   return storeNext
 }

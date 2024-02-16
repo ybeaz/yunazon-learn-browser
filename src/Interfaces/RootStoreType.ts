@@ -126,6 +126,7 @@ export type RootStoreType = {
     ProfileType,
     | 'profileID'
     | 'userID'
+    | 'isActive'
     | 'nameFirst'
     | 'nameLast'
     | 'nameMiddle'

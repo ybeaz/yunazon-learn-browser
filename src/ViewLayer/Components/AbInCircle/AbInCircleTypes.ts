@@ -1,6 +1,6 @@
 export type AbInCirclePropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  text: string | null
+  text: string[] | string | null
   colors2?: Record<string, string>
 }
 

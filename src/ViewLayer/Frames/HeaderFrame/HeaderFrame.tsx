@@ -5,7 +5,7 @@ import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
 // import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-
+import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
@@ -55,12 +55,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isSelectLanguage,
     logoPath,
     moto,
-    storeStateSlice: {
-      preferred_username,
-      isSideNavLeftVisible,
-      language,
-      profiles,
-    },
+    storeStateSlice: { sub, isSideNavLeftVisible, language, profiles },
   } = props
 
   const navigate = useNavigate()
@@ -68,6 +63,15 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
+
+  const profile = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
+  const nameFirst = profile?.nameFirst
+  const nameLast = profile?.nameLast
+  const circleTextArr = nameFirst && nameLast ? [nameFirst, nameLast] : []
 
   const propsOut: HeaderFramePropsOutType = {
     selectLanguageProps: {
@@ -145,7 +149,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     },
     abInCircleProps: {
       classAdded: '',
-      text: preferred_username,
+      text: circleTextArr,
     },
     inputGroupProps: {
       inputProps: {
@@ -168,18 +172,16 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   if (isSideNavLeftVisible) {
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
-  } else if (isButtonAuthUser && preferred_username) {
+  } else if (isButtonAuthUser && sub) {
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
         <AbInCircle {...propsOut.abInCircleProps} />
       </ButtonYrl>
     )
-  } else if (isButtonAuthUser && !preferred_username)
+  } else if (isButtonAuthUser && !sub)
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
     )
-
-  console.info('HeaderFrame [189]', { profiles, props })
 
   return (
     <div
@@ -232,7 +234,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 }
 
 const storeStateSliceProps: string[] = [
-  'preferred_username',
+  'sub',
   'isSideNavLeftVisible',
   'language',
   'profiles',
