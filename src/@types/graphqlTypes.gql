@@ -449,6 +449,9 @@ input CreateProfileInputType {
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
 
+  """user ID"""
+  botID: ID = null
+
   """contacts"""
   contacts: [String!] = []
 
@@ -1273,6 +1276,9 @@ type ProfileType {
 
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
+
+  """user ID"""
+  botID: ID
 
   """contacts"""
   contacts: [String!]
@@ -2409,6 +2415,9 @@ input UpdateProfileInputType {
 
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
+
+  """user ID"""
+  botID: ID = null
 
   """contacts"""
   contacts: [String!] = []

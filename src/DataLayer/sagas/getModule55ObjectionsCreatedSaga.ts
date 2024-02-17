@@ -63,7 +63,7 @@ export function* getModule55ObjectionsCreatedGenerator(
           : JSON.stringify(summaryChunk, null, 2)
 
       const getBotResponseParams: GetBotResponseParamsType = {
-        botID: 'g3lccRJtksaE',
+        botID: 'x2QS7ncRBvAu',
         profileID: 'y9WjMwhdhr31',
         profileName: '@objector_persona',
         stage: CreateModuleStagesEnumType['objections'],

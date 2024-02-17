@@ -54,7 +54,7 @@ export const getValidatedModules = (modules: ModuleType[]): ModuleType[] => {
   })
 
   if (moduleValidation.length) {
-    console.error('getCourseValidated 225]', moduleValidation)
+    console.error('getModuleValidated [225]', moduleValidation)
   }
   return modules
 }

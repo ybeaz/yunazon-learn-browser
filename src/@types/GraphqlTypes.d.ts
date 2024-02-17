@@ -377,6 +377,8 @@ export type CreateProfileInputType = {
     avatarSrc?: InputMaybe<Scalars['String']['input']>;
     /** award. An award won by or for this item. Supersedes awards. */
     awards?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** user ID */
+    botID?: InputMaybe<Scalars['ID']['input']>;
     /** contacts */
     contacts?: InputMaybe<Array<Scalars['String']['input']>>;
     /** description */
@@ -1106,6 +1108,8 @@ export type ProfileType = {
     avatarSrc?: Maybe<Scalars['String']['output']>;
     /** award. An award won by or for this item. Supersedes awards. */
     awards?: Maybe<Array<Scalars['String']['output']>>;
+    /** user ID */
+    botID?: Maybe<Scalars['ID']['output']>;
     /** contacts */
     contacts?: Maybe<Array<Scalars['String']['output']>>;
     /** created date */
@@ -1988,6 +1992,8 @@ export type UpdateProfileInputType = {
     avatarSrc?: InputMaybe<Scalars['String']['input']>;
     /** award. An award won by or for this item. Supersedes awards. */
     awards?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** user ID */
+    botID?: InputMaybe<Scalars['ID']['input']>;
     /** contacts */
     contacts?: InputMaybe<Array<Scalars['String']['input']>>;
     /** created date */

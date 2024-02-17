@@ -41,6 +41,10 @@ export function* getModule20TranscriptCreatedGenerator(
         originUrl,
       },
     }
+    console.info('getModule20TranscriptCreatedSaga [44]', {
+      variables,
+      'getHeadersAuthDict()': getHeadersAuthDict(),
+    })
 
     const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
@@ -54,6 +58,9 @@ export function* getModule20TranscriptCreatedGenerator(
       }
     )
 
+    console.info('getModule20TranscriptCreatedSaga [60]', {
+      createYoutubeTranscript,
+    })
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         transcript: createYoutubeTranscript.transcript,

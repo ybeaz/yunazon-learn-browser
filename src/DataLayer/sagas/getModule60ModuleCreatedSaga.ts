@@ -5,7 +5,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
@@ -22,14 +22,21 @@ export function* getModule60ModuleCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const { moduleCreateProgress, sub }: any = yield select(
+    const { moduleCreateProgress, sub, profiles }: any = yield select(
       (state: RootStoreType) => {
         return {
           moduleCreateProgress: state.moduleCreateProgress,
           sub: state.authAwsCognitoUserData.sub,
+          profiles: state.profiles,
         }
       }
     )
+
+    const profile = getArrayItemByProp({
+      arr: profiles,
+      propName: 'userID',
+      propValue: sub,
+    })
 
     const { metaData, transcriptList, questions, summary, objections } =
       moduleCreateProgress
@@ -59,20 +66,12 @@ export function* getModule60ModuleCreatedGenerator(
     const variables: MutationCreateModulesArgs = {
       createModulesInput: [
         {
-          profileID: sub,
+          creatorID: profile.profileID,
+          organizationID: '',
           capture,
           description: descriptionNext,
           language: language ? language : 'en',
           isActive: true,
-          meta: {
-            institution: 'YouRails Academy',
-            specTitle: "Sr. Specialist of the Registrar's Office",
-            specName: 'Laurie Balton',
-            email: 't3531350@yahoo.com',
-            isSendingBcc: true,
-            stages: ['production2023'],
-            tags,
-          },
           index: 0,
           contentType: 'ytID',
           contentID,
