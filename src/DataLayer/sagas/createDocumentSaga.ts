@@ -8,51 +8,69 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { withDebounce } from '../../Shared/withDebounce'
 
-function* createDocument(params: ActionReduxType | any): Iterable<any> {
-  const {
-    data: { navigate },
-  } = params
-
+function* createDocumentGenerator(
+  params: ActionReduxType | any
+): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
   const {
-    forms: {
-      profileActive: { nameFirst, nameMiddle, nameLast },
-    },
     profiles,
     modules,
     scorm: { moduleIDActive },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  console.info('createDocumentSaga [40]', {
-    nameFirst,
-    nameMiddle,
-    nameLast,
-    moduleIDActive,
-    profiles,
-    modules,
-    sub,
-  })
-
-  const { profileID } = getArrayItemByProp({
+  const {
+    profileID,
+    nameFirst: nameFirstLearner,
+    nameMiddle: nameMiddleLearner,
+    nameLast: nameLastLearner,
+  } = getArrayItemByProp({
     arr: profiles,
     propName: 'userID',
     propValue: sub,
   })
 
-  const { moduleID, contentID, capture, description, meta } =
-    getArrayItemByProp({
-      arr: modules,
-      propName: 'moduleID',
-      propValue: moduleIDActive,
-    })
+  const {
+    moduleID,
+    contentID,
+    creatorID,
+    capture,
+    description,
+    meta: metaToRemove,
+    tags,
+  } = getArrayItemByProp({
+    arr: modules,
+    propName: 'moduleID',
+    propValue: moduleIDActive,
+  })
+
+  const {
+    nameFirst: nameFirstCreator,
+    nameMiddle: nameMiddleCreator,
+    nameLast: nameLastCreator,
+    jobTitle,
+    affiliation,
+  } = getArrayItemByProp({
+    arr: profiles,
+    propName: 'profileID',
+    propValue: creatorID,
+  })
+
+  const meta = {
+    email: 't3531350@yahoo.com',
+    institution: affiliation,
+    isSendingBcc: true,
+    specName: `${nameFirstCreator} ${nameLastCreator}`,
+    specTitle: jobTitle,
+    stages: ['production'],
+    tags: tags || [],
+  }
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
@@ -65,9 +83,9 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
           description,
           meta,
           profileProps: {
-            nameFirst: nameFirst,
-            nameMiddle: nameMiddle,
-            nameLast: nameLast,
+            nameFirst: nameFirstLearner,
+            nameMiddle: nameMiddleLearner,
+            nameLast: nameLastLearner,
           },
           language: 'en',
         },
@@ -88,13 +106,13 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
 
     yield put(actionSync.SET_DOCUMENTS(createDocuments))
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-
-    navigate(createDocuments[0]?.pathName)
+    return createDocuments
   } catch (error: any) {
     console.info('createDocument [82] ERROR', `${error.name}: ${error.message}`)
   }
 }
+
+export const createDocument = withDebounce(createDocumentGenerator, 500)
 
 export default function* createDocumentSaga() {
   yield takeEvery([actionAsync.CREATE_DOCUMENT.REQUEST().type], createDocument)

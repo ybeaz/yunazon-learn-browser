@@ -1,8 +1,9 @@
 import { all, fork } from 'redux-saga/effects'
 
+import createDocumentScenarioSaga from './sagas/createDocumentScenarioSaga'
 import updateProfileSaga from './sagas/updateProfileSaga'
 import deactivateModulesSaga from './sagas/deactivateModulesSaga'
-import getProfilesSaga from './sagas/getProfilesSaga'
+import getProfileSaga from './sagas/getProfileSaga'
 import getModulesSaga from './sagas/getModulesSaga'
 import getModule60ModuleCreatedSaga from './sagas/getModule60ModuleCreatedSaga'
 import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreatedSaga'
@@ -20,7 +21,7 @@ import getAuthDataSaga from './sagas/getAuthDataSaga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
 import getAuthAwsCognitoUserDataSaga from './sagas/getAuthAwsCognitoUserDataSaga'
-import getModuleDataSaga from './sagas/getModuleDataSaga'
+import getModuleSaga from './sagas/getModuleSaga'
 import sendEmailDocumentSaga from './sagas/sendEmailDocumentSaga'
 import readDocumentSaga from './sagas/readDocumentSaga'
 import createDocumentSaga from './sagas/createDocumentSaga'
@@ -29,8 +30,9 @@ import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(createDocumentScenarioSaga),
     fork(updateProfileSaga),
-    fork(getProfilesSaga),
+    fork(getProfileSaga),
     fork(getBotResponseSaga),
     fork(getModule60ModuleCreatedSaga),
     fork(getModule55ObjectionsCreatedSaga),
@@ -49,7 +51,7 @@ export default function* indexSaga() {
     fork(getAuthAwsCognitoUserRevokedSaga),
     fork(getAuthAwsCognitoUserRefreshedSaga),
     fork(getAuthAwsCognitoUserDataSaga),
-    fork(getModuleDataSaga),
+    fork(getModuleSaga),
     fork(sendEmailDocumentSaga),
     fork(readDocumentSaga),
     fork(createDocumentSaga),

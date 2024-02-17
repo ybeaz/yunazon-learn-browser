@@ -2,6 +2,9 @@ import { ModuleType } from '../@types'
 
 export const moduleSuccess: any = {
   moduleID: 'wBvQba1DI1Y',
+  creatorID: 'bATouyoHwSfL',
+  organizationID: '1___oooOOOooo000',
+  contentID: 'wBvQba1DI1Y',
   capture: 'Исторические деятели России и СССР первой половины XX века',
   description:
     'Кратко и емко в запоминающейся форме о деятелях России и СССР первой половины XX века',
@@ -20,7 +23,6 @@ export const moduleSuccess: any = {
   },
   index: 0,
   contentType: 'ytID',
-  contentID: 'wBvQba1DI1Y',
   duration: '2:36',
   questionNumber: 4,
   passRate: 0.75,

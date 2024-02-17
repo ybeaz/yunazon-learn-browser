@@ -8,8 +8,9 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { withDebounce } from '../../Shared/withDebounce'
 
-function* updateProfile(params: ActionReduxType | any): Iterable<any> {
+function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -60,6 +61,8 @@ function* updateProfile(params: ActionReduxType | any): Iterable<any> {
     console.info('updateProfile [82] ERROR', `${error.name}: ${error.message}`)
   }
 }
+
+export const updateProfile = withDebounce(updateProfileGenerator, 500)
 
 export default function* updateProfileSaga() {
   yield takeEvery([actionAsync.UPDATE_PROFILE.REQUEST().type], updateProfile)

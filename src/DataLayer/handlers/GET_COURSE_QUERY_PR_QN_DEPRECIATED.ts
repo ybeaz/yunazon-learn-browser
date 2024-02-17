@@ -8,7 +8,7 @@ import { getCourseByModuleId } from '../../Shared/getCourseByModuleId'
 const { dispatch, getState } = store
 
 /**
- * @status DEPRECIATED, see GET_MODULE_DATA > getModuleData.saga.ts > getPreparedCourses.ts > getQuestionsPickedRandomly.ts
+ * @status DEPRECIATED, see GET_MODULE > getModule.saga.ts > getPreparedCourses.ts > getQuestionsPickedRandomly.ts
  * @comments
  * QN/NQ - questions number
  * PR/RP - pass rate
