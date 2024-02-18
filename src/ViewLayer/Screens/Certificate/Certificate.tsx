@@ -64,7 +64,6 @@ export const CertificateComponent: CertificateComponentType = (
     moduleIDs: [''],
     contentID: '',
     dateCreated: 0,
-    pathName: '',
     language: '',
   }
 
@@ -75,9 +74,11 @@ export const CertificateComponent: CertificateComponentType = (
     courseID = '',
     moduleIDs = [''],
     dateCreated = 0,
-    pathName: documentPathName,
     language: languageDoc = '',
   } = documentFound || documentDefault
+
+  const documentSlug = getSlug(moduleCapture)
+  const documentPathName = `/d/${documentID}/${documentSlug}`
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
@@ -101,9 +102,9 @@ export const CertificateComponent: CertificateComponentType = (
     ? `${nameFirst} ${nameMiddle} ${nameLast}`
     : `${nameFirst} ${nameLast}`
 
-  const slug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleIDs[0]}/${slug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleIDs[0]}-${slug}`
+  const moduleSlug = getSlug(moduleCapture)
+  const modulePathName = `/m/${moduleIDs[0]}/${moduleSlug}`
+  const titlePage = `${dateMilitaty}-certificate-${moduleIDs[0]}-${moduleSlug}`
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {

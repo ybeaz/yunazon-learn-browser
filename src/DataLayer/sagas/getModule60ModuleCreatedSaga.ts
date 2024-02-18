@@ -38,6 +38,12 @@ export function* getModule60ModuleCreatedGenerator(
       propValue: sub,
     })
 
+    console.info('getModule60ModuleCreatedSaga [41]', {
+      profiles,
+      profile,
+      sub,
+    })
+
     const { metaData, transcriptList, questions, summary, objections } =
       moduleCreateProgress
     const {
@@ -66,8 +72,8 @@ export function* getModule60ModuleCreatedGenerator(
     const variables: MutationCreateModulesArgs = {
       createModulesInput: [
         {
-          creatorID: profile.profileID,
-          organizationID: '',
+          creatorID: profile?.profileID,
+          organizationID: '1___oooOOOooo000',
           capture,
           description: descriptionNext,
           language: language ? language : 'en',

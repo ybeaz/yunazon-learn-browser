@@ -22,13 +22,12 @@ function* createDocumentScenarioGenerator(
     yield call(updateProfile)
     const documents: any = yield call(createDocument)
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-
     const { capture, documentID } = documents[0]
-
     const slug = getSlug(capture)
     const pathname = `/d/${documentID}/${slug}`
     navigate(pathname)
+
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info(
       'createDocumentScenario [82] ERROR',

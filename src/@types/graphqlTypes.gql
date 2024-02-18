@@ -1703,6 +1703,9 @@ input ReadModulesConnectionInputType {
   """module contentIDs"""
   contentIDs: [ID!] = []
 
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
@@ -1721,9 +1724,6 @@ input ReadModulesConnectionInputType {
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
-
-  """profile IDs"""
-  profileIDs: [ID!] = []
 
   """searchPhrase"""
   searchPhrase: String = null

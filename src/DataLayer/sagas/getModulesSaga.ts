@@ -1,4 +1,4 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
 import {
   ReadModulesConnectionInputType,
@@ -15,10 +15,13 @@ import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
 export function* getModulesGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
+  yield delay(1000)
+
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -34,16 +37,25 @@ export function* getModulesGenerator(
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  let profileIDs: string[] = []
-  if (screenActive === 'MyModules' && sub) profileIDs = [sub]
-  else if (screenActive === 'MyModules' && !sub) {
+  let profiles = stateSelected.profiles
+
+  let creatorIDs: string[] = []
+  if (screenActive === 'MyModules' && sub) {
+    const profile = getArrayItemByProp({
+      arr: profiles,
+      propName: 'userID',
+      propValue: sub,
+    })
+
+    creatorIDs = [profile?.profileID]
+  } else if (screenActive === 'MyModules' && !sub) {
     return
   }
 
   let readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
-    profileIDs,
+    creatorIDs,
     searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,

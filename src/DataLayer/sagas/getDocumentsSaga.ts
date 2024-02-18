@@ -1,4 +1,4 @@
-import { takeEvery, put, select } from 'redux-saga/effects'
+import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
 import {
   ReadDocumentsConnectionInputType,
@@ -16,10 +16,13 @@ import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
 export function* getDocumentsGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
+  yield delay(1000)
+
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
@@ -31,7 +34,14 @@ export function* getDocumentsGenerator(
       },
     },
     forms: { inputSearch, tagsPick, tagsOmit },
+    profiles,
   } = stateSelected as RootStoreType
+
+  const { profileID } = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -39,7 +49,7 @@ export function* getDocumentsGenerator(
     const readDocumentsConnectionInput: ReadDocumentsConnectionInputType = {
       first,
       offset,
-      profileIDs: [sub || '000000'],
+      profileIDs: [profileID],
       searchPhrase: inputSearch,
       tagsPick,
       tagsOmit,
