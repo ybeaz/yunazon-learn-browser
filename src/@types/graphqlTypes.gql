@@ -330,35 +330,20 @@ input CreateCourseInputType {
 }
 
 input CreateDocumentInputType {
-  """capture"""
-  capture: String!
+  """creator of the module"""
+  creator: UpdateProfileInputType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """description"""
-  description: String = null
+  """ipClient profile/ user"""
+  ipClient: String = null
 
   """isActive"""
   isActive: Boolean! = false
 
-  """language"""
-  language: String!
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
 
-  """meta"""
-  meta: MetaDocumentInputType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """userID"""
-  profileID: String!
-
-  """userName"""
-  profileProps: ProfilePropsInputType!
+  """module"""
+  module: UpdateModuleInputType!
 }
 
 input CreateModuleInputType {
@@ -558,26 +543,17 @@ type DocumentEdgeType {
 }
 
 type DocumentType {
-  """course capture"""
-  capture: String!
+  """creator of the module"""
+  creator: ProfileType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """courses created date"""
+  """documents created date"""
   dateCreated: Float!
 
-  """courses deleted date"""
+  """documents deleted date"""
   dateDeleted: Float
 
-  """courses updated date"""
+  """documents updated date"""
   dateUpdated: Float!
-
-  """course description"""
-  description: String!
 
   """documentID"""
   documentID: ID!
@@ -588,23 +564,11 @@ type DocumentType {
   """isActive"""
   isActive: Boolean!
 
-  """language code"""
-  language: String!
+  """learner, user, student"""
+  learner: ProfileType!
 
-  """meta"""
-  meta: MetaDocumentType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """pathName of the document"""
-  pathName: String!
-
-  """profileID"""
-  profileID: ID!
-
-  """userName"""
-  profileProps: ProfilePropsType!
+  """module"""
+  module: ModuleType!
 }
 
 type DocumentsConnectionType {
@@ -766,52 +730,6 @@ type MetaCourseType {
 
   """course meta specTitle"""
   specTitle: String!
-
-  """courses meta stages: stages/ statuses/ envs"""
-  stages: [String!]
-
-  """courses meta tags: tags that characterises the course content"""
-  tags: [String!]
-}
-
-input MetaDocumentInputType {
-  """ email"""
-  email: String = null
-
-  """institution"""
-  institution: String!
-
-  """isSendingBcc to the email"""
-  isSendingBcc: Boolean! = false
-
-  """specName"""
-  specName: String!
-
-  """specTitle"""
-  specTitle: String = null
-
-  """courses meta stages: stages/ statuses/ envs"""
-  stages: [String!] = []
-
-  """courses meta tags: tags that characterises the course content"""
-  tags: [String!] = []
-}
-
-type MetaDocumentType {
-  """ email"""
-  email: String
-
-  """institution"""
-  institution: String!
-
-  """isSendingBcc to the email"""
-  isSendingBcc: Boolean!
-
-  """specName"""
-  specName: String!
-
-  """specTitle"""
-  specTitle: String
 
   """courses meta stages: stages/ statuses/ envs"""
   stages: [String!]
@@ -1250,18 +1168,6 @@ enum ProfileNatureType {
   human
 }
 
-input ProfilePropsInputType {
-  nameFirst: String!
-  nameLast: String!
-  nameMiddle: String!
-}
-
-type ProfilePropsType {
-  nameFirst: String!
-  nameLast: String!
-  nameMiddle: String!
-}
-
 type ProfileType {
   """
   affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
@@ -1669,22 +1575,22 @@ input ReadDocumentsConnectionInputType {
   sort: SortDocumentsInputType
 
   """
-  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  documents meta stages: stages/ statuses/ envs to omit with that selection of the documents
   """
   stagesOmit: [String!] = []
 
   """
-  courses meta stages: stages/ statuses/ envs to pick from the set of documents
+  documents meta stages: stages/ statuses/ envs to pick from the set of documents
   """
   stagesPick: [String!] = []
 
   """
-  courses meta tags: tags that characterises the course content to omit with that selection of the documents
+  documents meta tags: tags that characterises the course content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  courses meta tags: tags that characterises the course content to pick from the set of documents
+  documents meta tags: tags that characterises the course content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -2222,26 +2128,17 @@ type UpdateCourseMetaType {
 }
 
 input UpdateDocumentInputType {
-  """course capture"""
-  capture: String!
+  """creator of the module"""
+  creator: UpdateProfileInputType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """courses created date"""
+  """documents created date"""
   dateCreated: Float!
 
-  """courses deleted date"""
+  """documents deleted date"""
   dateDeleted: Float = null
 
-  """courses updated date"""
+  """documents updated date"""
   dateUpdated: Float!
-
-  """course description"""
-  description: String!
 
   """documentID"""
   documentID: ID!
@@ -2252,23 +2149,11 @@ input UpdateDocumentInputType {
   """isActive"""
   isActive: Boolean! = false
 
-  """language code"""
-  language: String!
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
 
-  """meta"""
-  meta: MetaDocumentInputType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """pathName of the document"""
-  pathName: String!
-
-  """profileID"""
-  profileID: ID!
-
-  """userName"""
-  profileProps: ProfilePropsInputType!
+  """module"""
+  module: UpdateModuleInputType!
 }
 
 type UpdateInfoCourseType {
