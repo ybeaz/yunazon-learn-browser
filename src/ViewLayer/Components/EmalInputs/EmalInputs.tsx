@@ -65,7 +65,7 @@ const EmalInputsComponent: EmalInputsComponentType = (
           documentID,
           sendTo,
           sendCc,
-          emailBcc: null,
+          emailBcc: '',
           isSendingBcc: false,
         },
       },

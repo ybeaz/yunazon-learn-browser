@@ -2,44 +2,22 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { MutationUpdateProfilesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { withDebounce } from '../../Shared/withDebounce'
 
 function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
   const {
-    forms: {
-      profileActive: { nameFirst, nameMiddle, nameLast },
-    },
-    profiles,
-    authAwsCognitoUserData: { sub },
-  } = stateSelected as RootStoreType
-
-  const profile = getArrayItemByProp({
-    arr: profiles,
-    propName: 'userID',
-    propValue: sub,
-  })
+    data: { profile },
+  } = params
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables: MutationUpdateProfilesArgs = {
-      updateProfilesInput: [
-        {
-          ...profile,
-          nameFirst,
-          nameMiddle,
-          nameLast,
-        },
-      ],
+      updateProfilesInput: [profile],
     }
 
     const updateProfiles: any = yield getResponseGraphqlAsync(
