@@ -1002,6 +1002,8 @@ export type OptionCourseType = {
     status: Scalars['Boolean']['output'];
 };
 export type OptionInputType = {
+    /** module question option answer: true or false */
+    answer?: InputMaybe<Scalars['Boolean']['input']>;
     /** module question option label */
     label: Scalars['String']['input'];
     /** module question option ID */
@@ -1011,6 +1013,8 @@ export type OptionInputType = {
 };
 export type OptionType = {
     __typename?: 'OptionType';
+    /** module question option answer: true or false */
+    answer?: Maybe<Scalars['Boolean']['output']>;
     /** module question option label */
     label: Scalars['String']['output'];
     /** module question option ID */

@@ -1,7 +1,13 @@
 import React from 'react'
 
+import { DocumentType } from '../../../@types/GraphqlTypes'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
+
+export type CertificateBodyComponentProps = {
+  documentFound: DocumentType
+  language: RootStoreType['language']
+}
 
 export type CertificateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

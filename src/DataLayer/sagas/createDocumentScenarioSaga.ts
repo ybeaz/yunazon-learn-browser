@@ -31,7 +31,10 @@ function* createDocumentScenarioGenerator(
     yield call(updateProfile)
     const documents: any = yield call(createDocument)
 
-    const { capture, documentID } = documents[0]
+    const {
+      module: { capture },
+      documentID,
+    } = documents[0]
     const slug = getSlug(capture)
     const pathname = `/d/${documentID}/${slug}`
     navigate(pathname)

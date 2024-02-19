@@ -23,71 +23,32 @@ function* createDocumentGenerator(
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  const {
-    profileID,
-    nameFirst: nameFirstLearner,
-    nameMiddle: nameMiddleLearner,
-    nameLast: nameLastLearner,
-  } = getArrayItemByProp({
-    arr: profiles,
-    propName: 'userID',
-    propValue: sub,
-  })
-
-  const {
-    moduleID,
-    contentID,
-    creatorID,
-    capture,
-    description,
-    meta: metaToRemove,
-    tags,
-  } = getArrayItemByProp({
+  const module = getArrayItemByProp({
     arr: modules,
     propName: 'moduleID',
     propValue: moduleIDActive,
   })
 
-  const {
-    nameFirst: nameFirstCreator,
-    nameMiddle: nameMiddleCreator,
-    nameLast: nameLastCreator,
-    jobTitle,
-    affiliation,
-  } = getArrayItemByProp({
+  const profileCreator = getArrayItemByProp({
     arr: profiles,
     propName: 'profileID',
-    propValue: creatorID,
+    propValue: module.creatorID,
   })
 
-  const meta = {
-    email: 't3531350@yahoo.com',
-    institution: affiliation,
-    isSendingBcc: true,
-    specName: `${nameFirstCreator} ${nameLastCreator}`,
-    specTitle: jobTitle,
-    stages: ['production'],
-    tags: tags || [],
-  }
+  const profileLearner = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
 
   try {
     const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
-          courseID: '000000000000',
-          profileID: profileID || '000000000000',
-          moduleIDs: [moduleID],
-          contentIDs: [contentID],
           isActive: true,
-          capture,
-          description,
-          meta,
-          profileProps: {
-            nameFirst: nameFirstLearner,
-            nameMiddle: nameMiddleLearner,
-            nameLast: nameLastLearner,
-          },
-          language: 'en',
+          module,
+          learner: profileLearner,
+          creator: profileCreator,
         },
       ],
     }

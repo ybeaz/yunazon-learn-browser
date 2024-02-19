@@ -17,65 +17,34 @@ import {
 } from '../../ComponentsLibrary/'
 
 import {
+  CertificateBodyComponentProps,
   CertificateComponentPropsType,
   CertificateComponentType,
   CertificatePropsOutType,
   CertificateType,
 } from './CertificateTypes'
 
-export const CertificateComponent: CertificateComponentType = (
-  props: CertificateComponentPropsType
-): ReactElement => {
+const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
+  documentFound,
+  language,
+}: CertificateBodyComponentProps) => {
   const {
-    storeStateSlice: { documents, language },
-  } = props
-
-  const params = useParams()
-  const documentID = params?.documentID
-
-  const documentFound = documents.find(
-    (document: DocumentType) => document.documentID === documentID
-  )
-
-  useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
-    )
-    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound) {
-      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    }
-  }, [])
-
-  let documentDefault = {
-    profileProps: {
-      nameFirst: '',
-      nameMiddle: '',
-      nameLast: '',
+    documentID,
+    dateCreated,
+    module: { moduleID, capture: moduleCapture, language: languageDoc },
+    creator: {
+      affiliation,
+      jobTitle,
+      nameFirst: nameFirstCreator,
+      nameLast: nameLastCreator,
+      nameMiddle: nameMiddleCreator,
     },
-    meta: {
-      institution: '',
-      specTitle: '',
-      specName: '',
+    learner: {
+      nameFirst: nameFirstLearner,
+      nameLast: nameLastLearner,
+      nameMiddle: nameMiddleLearner,
     },
-    capture: '',
-    courseID: '',
-    moduleIDs: [''],
-    contentID: '',
-    dateCreated: 0,
-    language: '',
-  }
-
-  const {
-    profileProps: { nameFirst = '', nameMiddle = '', nameLast = '' },
-    meta: { institution = '', specTitle = '', specName = '' },
-    capture: moduleCapture = '',
-    courseID = '',
-    moduleIDs = [''],
-    dateCreated = 0,
-    language: languageDoc = '',
-  } = documentFound || documentDefault
+  } = documentFound
 
   const documentSlug = getSlug(moduleCapture)
   const documentPathName = `/d/${documentID}/${documentSlug}`
@@ -98,13 +67,17 @@ export const CertificateComponent: CertificateComponentType = (
     seconds: false,
   })
 
-  const userName = nameMiddle
-    ? `${nameFirst} ${nameMiddle} ${nameLast}`
-    : `${nameFirst} ${nameLast}`
+  const userNameCreator = nameMiddleCreator
+    ? `${nameFirstCreator} ${nameMiddleCreator} ${nameLastCreator}`
+    : `${nameFirstCreator} ${nameLastCreator}`
+
+  const userNameLearner = nameMiddleLearner
+    ? `${nameFirstLearner} ${nameMiddleLearner} ${nameLastLearner}`
+    : `${nameFirstLearner} ${nameLastLearner}`
 
   const moduleSlug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleIDs[0]}/${moduleSlug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleIDs[0]}-${moduleSlug}`
+  const modulePathName = `/m/${moduleID}/${moduleSlug}`
+  const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
@@ -114,7 +87,7 @@ export const CertificateComponent: CertificateComponentType = (
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,
-      moduleID: moduleIDs[0],
+      moduleID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
@@ -148,7 +121,7 @@ export const CertificateComponent: CertificateComponentType = (
         <div className='pm-certificate-border'>
           <div className='pm-certificate-header'>
             <div className='pm-certificate-title cursive'>
-              <h4>{institution}</h4>
+              <h4>{affiliation}</h4>
               <h2>Certificate of Completion</h2>
             </div>
           </div>
@@ -159,7 +132,7 @@ export const CertificateComponent: CertificateComponentType = (
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-certificate-name underline margin-0'>
-                    <span className='pm-name-text bold'>{userName}</span>
+                    <span className='pm-name-text bold'>{userNameLearner}</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
@@ -210,7 +183,7 @@ export const CertificateComponent: CertificateComponentType = (
                         href={modulePathName}
                         target='_blank'
                       >
-                        {moduleIDs[0]}
+                        {moduleID}
                       </a>
                     </span>
                   </div>
@@ -231,7 +204,7 @@ export const CertificateComponent: CertificateComponentType = (
                     </span>
                     <span className='pm-empty-space block underline'></span>
                     <span className='pm-credits-text bold block sans'>
-                      {specName}, {specTitle}
+                      {userNameCreator}, {jobTitle}
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
@@ -261,6 +234,49 @@ export const CertificateComponent: CertificateComponentType = (
           </div>
         </div>
       </div>
+      <LoaderOverlayYrl />
+    </div>
+  )
+}
+
+export const CertificateComponent: CertificateComponentType = (
+  props: CertificateComponentPropsType
+): ReactElement => {
+  const {
+    storeStateSlice: { documents, language },
+  } = props
+
+  const params = useParams()
+  const documentID = params?.documentID
+
+  const documentFound = documents.find(
+    (document: DocumentType) => document.documentID === documentID
+  )
+
+  useEffect(() => {
+    handleEvents(
+      {},
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
+    )
+    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
+    if (Array.isArray(documents) && !documentFound) {
+      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
+    }
+  }, [])
+
+  const propsOut: Record<string, any> = {
+    certificateBodyComponentProps: {
+      documentFound,
+      language,
+    },
+  }
+
+  // TODO: to refactor using MainFrame
+  return (
+    <div className='Certificate' id={documentID}>
+      {documentFound ? (
+        <CertificateBodyComponent {...propsOut.certificateBodyComponentProps} />
+      ) : null}
       <LoaderOverlayYrl />
     </div>
   )

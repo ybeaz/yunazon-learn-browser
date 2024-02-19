@@ -1133,6 +1133,9 @@ type OptionCourseType {
 }
 
 input OptionInputType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
   """module question option label"""
   label: String!
 
@@ -1144,6 +1147,9 @@ input OptionInputType {
 }
 
 type OptionType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
   """module question option label"""
   label: String!
 
