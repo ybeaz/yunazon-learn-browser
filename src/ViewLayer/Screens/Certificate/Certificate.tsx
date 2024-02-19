@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet'
 
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DocumentType } from '../../../@types/index'
 import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'

@@ -28,16 +28,16 @@ const EmalInputsComponent: EmalInputsComponentType = (
     storeStateSlice: { documents, sendTo, sendCc },
   } = props
 
-  const documentsLen = documents.length
-  let documentDefault = {
-    meta: {
-      email: '',
-      isSendingBcc: false,
-    },
-  }
-  const {
-    meta: { email: emailBcc = '', isSendingBcc = false },
-  } = (documentsLen && documents[documentsLen - 1]) || documentDefault
+  // const documentsLen = documents?.length
+  // let documentDefault = {
+  //   meta: {
+  //     email: '',
+  //     isSendingBcc: false,
+  //   },
+  // }
+  // const {
+  //   // meta: { email: emailBcc = '', isSendingBcc = false },
+  // } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const propsOut: EmalInputsPropsOutType = {
     inputEmailToProps: {
@@ -61,7 +61,13 @@ const EmalInputsComponent: EmalInputsComponentType = (
       classAdded: 'Button_MdForward',
       action: {
         typeEvent: 'SEND_EMAIL_DOCUMENT',
-        data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
+        data: {
+          documentID,
+          sendTo,
+          sendCc,
+          emailBcc: null,
+          isSendingBcc: false,
+        },
       },
     },
   }
