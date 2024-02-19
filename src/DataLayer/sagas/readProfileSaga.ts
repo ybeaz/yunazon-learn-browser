@@ -13,7 +13,7 @@ import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
 
 export type GetBotResponseParamsType = never
 
-export function* getProfileGenerator(
+export function* readProfileGenerator(
   params: GetBotResponseParamsType
 ): Iterable<any> {
   const {
@@ -45,17 +45,18 @@ export function* getProfileGenerator(
 
     yield put(actionSync.SET_PROFILES(readProfiles))
 
-    return readProfiles
+    return readProfiles[0]
   } catch (error: any) {
     console.info(
-      'getProfileSaga  [110] ERROR',
+      'readProfileSaga  [110] ERROR',
       `${error.name}: ${error.message}`
     )
+    return { nameFirst: null, nameMiddle: null, nameLast: null }
   }
 }
 
-export const getProfile = withDebounce(getProfileGenerator, 500)
+export const readProfile = withDebounce(readProfileGenerator, 500)
 
-export default function* getProfileSaga() {
-  yield takeEvery([actionAsync.GET_PROFILE.REQUEST().type], getProfile)
+export default function* readProfileSaga() {
+  yield takeEvery([actionAsync.GET_PROFILE.REQUEST().type], readProfile)
 }

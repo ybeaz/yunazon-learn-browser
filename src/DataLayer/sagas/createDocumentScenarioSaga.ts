@@ -4,7 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getSlug } from '../../Shared/getSlug'
 import { createDocument } from './createDocumentSaga'
-import { getProfile } from './getProfileSaga'
+import { readProfile } from './readProfileSaga'
 import { updateProfile } from './updateProfileSaga'
 import { withDebounce } from '../../Shared/withDebounce'
 
@@ -27,7 +27,7 @@ function* createDocumentScenarioGenerator(
     ]
     yield put(actionSync.SET_MODAL_FRAMES(data2))
 
-    yield call(getProfile, { data: { profileID: creatorID } })
+    yield call(readProfile, { data: { profileID: creatorID } })
     yield call(updateProfile)
     const documents: any = yield call(createDocument)
 

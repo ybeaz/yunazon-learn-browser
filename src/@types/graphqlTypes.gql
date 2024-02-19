@@ -1765,6 +1765,9 @@ input ReadProfilesConnectionInputType {
   """bot IDs"""
   botIDs: [ID!] = []
 
+  """emails"""
+  email: String = null
+
   """first"""
   first: Int
 

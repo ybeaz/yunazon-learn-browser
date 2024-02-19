@@ -5,13 +5,13 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
-import { getProfile } from './getProfileSaga'
+import { readProfile } from './readProfileSaga'
+import { createProfile } from './createProfileSaga'
 import { getRedirected } from '../../Shared/getRedirected'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 import { getLocalStorageDeletedObjFrom } from '../../Shared/getLocalStorageDeletedObjFrom'
 import { withDebounce } from '../../Shared/withDebounce'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
 function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -51,22 +51,24 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
     )
 
     const {
-      authAwsCognitoUserData: { sub },
+      authAwsCognitoUserData: { sub, email },
     } = stateSelected as RootStoreType
 
-    console.info('getAuthDataSaga [57]', { sub })
     if (sub) {
-      yield call(getProfile, { data: { userID: sub } })
+      const profile: any = yield call(readProfile, { data: { userID: sub } })
 
-      /* Set default names to forms input */
-      stateSelected = yield select((state: RootStoreType) => state)
-      const { profiles } = stateSelected as RootStoreType
+      let nameFirst = profile?.nameFirst
+      let nameMiddle = profile?.nameMiddle
+      let nameLast = profile?.nameLast
 
-      const { nameFirst, nameMiddle, nameLast } = getArrayItemByProp({
-        arr: profiles,
-        propName: 'userID',
-        propValue: sub,
-      })
+      if (!nameFirst && !nameLast) {
+        const profile2: any = yield call(createProfile, {
+          data: { sub, email },
+        })
+        nameFirst = profile2?.nameFirst
+        nameMiddle = profile2?.nameMiddle
+        nameLast = profile2?.nameLast
+      }
 
       yield put(
         actionSync.ONCHANGE_FORMS_GROUP_PROP({

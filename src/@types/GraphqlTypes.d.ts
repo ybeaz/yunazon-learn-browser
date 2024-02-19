@@ -1511,6 +1511,8 @@ export type ReadProfilesConnectionInputType = {
     after?: InputMaybe<Scalars['String']['input']>;
     /** bot IDs */
     botIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** emails */
+    email?: InputMaybe<Scalars['String']['input']>;
     /** first */
     first?: InputMaybe<Scalars['Int']['input']>;
     /** isActive */
