@@ -34,8 +34,11 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
     const documentsRows: React.ReactElement[] = documentsIn.map(
       (document: DocumentType) => {
-        const { documentID, moduleIDs, capture, dateCreated, pathName } =
-          document
+        const {
+          documentID,
+          module: { moduleID, capture },
+          dateCreated,
+        } = document
 
         const dateString = getDateString({
           timestamp: dateCreated,
@@ -45,7 +48,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
         const propsOut: DocumentsTablePropsOutType = {
           linkToModuleProps: {
             className: '__shield',
-            to: { pathname: `/m/${moduleIDs[0]}/` },
+            to: { pathname: `/m/${moduleID}/` },
             children: capture,
             onClick: (event: any) => {
               // handleEvents(event, {

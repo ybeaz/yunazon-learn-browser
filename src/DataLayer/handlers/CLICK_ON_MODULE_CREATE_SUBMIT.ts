@@ -20,5 +20,5 @@ export const CLICK_ON_MODULE_CREATE_SUBMIT: ActionEventType = (event, data) => {
     )
   })
 
-  dispatch(actionAsync.GET_MODULE_ASSEMBLED.REQUEST())
+  dispatch(actionAsync.GET_MODULE_SCENARIO.REQUEST())
 }

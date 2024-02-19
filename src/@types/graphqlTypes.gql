@@ -377,9 +377,6 @@ input CreateModuleInputType {
   """language code"""
   language: String!
 
-  """DEPRECIATED. meta information"""
-  meta: MetaInputType = null
-
   """module objection"""
   objections: [ObjectionInputType!] = []
 
@@ -738,29 +735,6 @@ type MetaCourseType {
   tags: [String!]
 }
 
-input MetaInputType {
-  """meta email"""
-  email: String!
-
-  """meta institution"""
-  institution: String!
-
-  """meta isSendingBcc"""
-  isSendingBcc: Boolean! = false
-
-  """meta specName"""
-  specName: String!
-
-  """meta specTitle"""
-  specTitle: String!
-
-  """meta stages: stages/ statuses/ envs"""
-  stages: [String!] = []
-
-  """meta tags: tags that characterises the content, its marketing features"""
-  tags: [String!] = []
-}
-
 input MetaPartialInputType {
   """meta email"""
   email: String
@@ -804,29 +778,6 @@ type MetaPartialType {
   stages: [String!]
 
   """meta tags: tags that characterises the content, its marketing features"""
-  tags: [String!]
-}
-
-type MetaType {
-  """meta email"""
-  email: String!
-
-  """meta institution"""
-  institution: String!
-
-  """meta isSendingBcc"""
-  isSendingBcc: Boolean!
-
-  """meta specName"""
-  specName: String!
-
-  """meta specTitle"""
-  specTitle: String!
-
-  """meta stages: stages/ statuses/ envs"""
-  stages: [String!]
-
-  """meta tags: tags that characterises the content"""
   tags: [String!]
 }
 
@@ -965,9 +916,6 @@ type ModuleType {
 
   """language code"""
   language: String!
-
-  """DEPRECIATED meta information"""
-  meta: MetaType
 
   """module ID"""
   moduleID: ID!
@@ -1552,6 +1500,9 @@ input ReadDocumentsConnectionInputType {
   """courses ID"""
   courseIDs: [ID!] = []
 
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
@@ -1563,6 +1514,9 @@ input ReadDocumentsConnectionInputType {
   """language code"""
   language: String = null
 
+  """learner IDs"""
+  learnerIDs: [ID!] = []
+
   """course module IDs"""
   moduleIDs: [ID!] = []
 
@@ -1570,9 +1524,6 @@ input ReadDocumentsConnectionInputType {
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
-
-  """profile IDs"""
-  profileIDs: [ID!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -2266,9 +2217,6 @@ input UpdateModuleInputType {
 
   """language code"""
   language: String!
-
-  """DEPRECIATED. meta information"""
-  meta: MetaInputType = null
 
   """module ID"""
   moduleID: ID!

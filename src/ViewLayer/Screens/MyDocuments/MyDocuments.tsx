@@ -61,20 +61,9 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
       {},
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } }
     )
-    handleEvents(
-      {},
-      {
-        type: 'SET_PAGE_CURSOR_HANDLE',
-        data: {
-          paginationName: PaginationNameEnumType['pageDocuments'],
-          direction: 'set',
-          first,
-        },
-      }
-    )
 
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
-  }, [sub, JSON.stringify(documents)])
+  }, [sub])
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {

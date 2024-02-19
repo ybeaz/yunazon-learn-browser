@@ -329,8 +329,6 @@ export type CreateModuleInputType = {
   isActive?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
-  /** DEPRECIATED. meta information */
-  meta?: InputMaybe<MetaInputType>;
   /** module objection */
   objections?: InputMaybe<Array<ObjectionInputType>>;
   /** organizationID */
@@ -610,23 +608,6 @@ export type MetaCourseType = {
   tags?: Maybe<Array<Scalars['String']['output']>>;
 };
 
-export type MetaInputType = {
-  /** meta email */
-  email: Scalars['String']['input'];
-  /** meta institution */
-  institution: Scalars['String']['input'];
-  /** meta isSendingBcc */
-  isSendingBcc?: Scalars['Boolean']['input'];
-  /** meta specName */
-  specName: Scalars['String']['input'];
-  /** meta specTitle */
-  specTitle: Scalars['String']['input'];
-  /** meta stages: stages/ statuses/ envs */
-  stages?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** meta tags: tags that characterises the content, its marketing features */
-  tags?: InputMaybe<Array<Scalars['String']['input']>>;
-};
-
 export type MetaPartialInputType = {
   /** meta email */
   email?: InputMaybe<Scalars['String']['input']>;
@@ -659,24 +640,6 @@ export type MetaPartialType = {
   /** meta stages: stages/ statuses/ envs */
   stages?: Maybe<Array<Scalars['String']['output']>>;
   /** meta tags: tags that characterises the content, its marketing features */
-  tags?: Maybe<Array<Scalars['String']['output']>>;
-};
-
-export type MetaType = {
-  __typename?: 'MetaType';
-  /** meta email */
-  email: Scalars['String']['output'];
-  /** meta institution */
-  institution: Scalars['String']['output'];
-  /** meta isSendingBcc */
-  isSendingBcc: Scalars['Boolean']['output'];
-  /** meta specName */
-  specName: Scalars['String']['output'];
-  /** meta specTitle */
-  specTitle: Scalars['String']['output'];
-  /** meta stages: stages/ statuses/ envs */
-  stages?: Maybe<Array<Scalars['String']['output']>>;
-  /** meta tags: tags that characterises the content */
   tags?: Maybe<Array<Scalars['String']['output']>>;
 };
 
@@ -779,8 +742,6 @@ export type ModuleType = {
   isActive: Scalars['Boolean']['output'];
   /** language code */
   language: Scalars['String']['output'];
-  /** DEPRECIATED meta information */
-  meta?: Maybe<MetaType>;
   /** module ID */
   moduleID: Scalars['ID']['output'];
   /** module objection */
@@ -1558,18 +1519,20 @@ export type ReadDocumentsConnectionInputType = {
   contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** courses ID */
   courseIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** creator IDs */
+  creatorIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
   /** isActive */
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** language code */
   language?: InputMaybe<Scalars['String']['input']>;
+  /** learner IDs */
+  learnerIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** course module IDs */
   moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
-  /** profile IDs */
-  profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -2114,8 +2077,6 @@ export type UpdateModuleInputType = {
   isActive?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
-  /** DEPRECIATED. meta information */
-  meta?: InputMaybe<MetaInputType>;
   /** module ID */
   moduleID: Scalars['ID']['input'];
   /** module objection */

@@ -37,7 +37,7 @@ export function* getDocumentsGenerator(
     profiles,
   } = stateSelected as RootStoreType
 
-  const { profileID } = getArrayItemByProp({
+  const { profileID: learnerID } = getArrayItemByProp({
     arr: profiles,
     propName: 'userID',
     propValue: sub,
@@ -49,7 +49,7 @@ export function* getDocumentsGenerator(
     const readDocumentsConnectionInput: ReadDocumentsConnectionInputType = {
       first,
       offset,
-      profileIDs: [profileID],
+      learnerIDs: [learnerID],
       searchPhrase: inputSearch,
       tagsPick,
       tagsOmit,

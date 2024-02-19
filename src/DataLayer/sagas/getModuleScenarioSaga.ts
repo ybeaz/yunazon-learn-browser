@@ -15,7 +15,7 @@ import { getModule45QuestionsCreated } from './getModule45QuestionsCreatedSaga'
 import { getModule55ObjectionsCreated } from './getModule55ObjectionsCreatedSaga'
 import { getModule60ModuleCreated } from './getModule60ModuleCreatedSaga'
 
-export function* getModuleAssembledGenerator(
+export function* getModuleScenarioGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
@@ -128,17 +128,17 @@ export function* getModuleAssembledGenerator(
       yield getModule60ModuleCreated()
   } catch (error: any) {
     console.info(
-      'getModuleAssembledSaga [37] ERROR',
+      'getModuleScenarioSaga [37] ERROR',
       `${error.name}: ${error.message}`
     )
   }
 }
 
-export const getModuleAssembled = withDebounce(getModuleAssembledGenerator, 500)
+export const getModuleScenario = withDebounce(getModuleScenarioGenerator, 500)
 
-export default function* getModuleAssembledSaga() {
+export default function* getModuleScenarioSaga() {
   yield takeEvery(
-    [actionAsync.GET_MODULE_ASSEMBLED.REQUEST().type],
-    getModuleAssembled
+    [actionAsync.GET_MODULE_SCENARIO.REQUEST().type],
+    getModuleScenario
   )
 }

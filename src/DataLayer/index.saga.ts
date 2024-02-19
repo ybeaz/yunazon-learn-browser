@@ -13,7 +13,7 @@ import getModule35SummaryCreatedSaga from './sagas/getModule35SummaryCreatedSaga
 import getModule20TranscriptCreatedSaga from './sagas/getModule20TranscriptCreatedSaga'
 import getModule10MataDataCreatedSaga from './sagas/getModule10MataDataCreatedSaga'
 import getBotResponseSaga from './sagas/getBotResponseSaga'
-import getModuleAssembledSaga from './sagas/getModuleAssembledSaga'
+import getModuleScenarioSaga from './sagas/getModuleScenarioSaga'
 import readArticleSaga from './sagas/readArticleSaga'
 import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
 import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
@@ -42,7 +42,7 @@ export default function* indexSaga() {
     fork(getModule35SummaryCreatedSaga),
     fork(getModule20TranscriptCreatedSaga),
     fork(getModule10MataDataCreatedSaga),
-    fork(getModuleAssembledSaga),
+    fork(getModuleScenarioSaga),
     fork(deactivateModulesSaga),
     fork(getModulesSaga),
     fork(readArticleSaga),
