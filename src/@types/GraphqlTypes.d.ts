@@ -1509,16 +1509,22 @@ export type ReadProfileInputType = {
 export type ReadProfilesConnectionInputType = {
     /** after */
     after?: InputMaybe<Scalars['String']['input']>;
+    /** bot IDs */
+    botIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** first */
     first?: InputMaybe<Scalars['Int']['input']>;
     /** isActive */
     isActive?: InputMaybe<Scalars['Boolean']['input']>;
     /** offset */
     offset?: InputMaybe<Scalars['Int']['input']>;
+    /** profile IDs */
+    profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
     /** option to sort by a field: 1 ascending, -1 descending */
     sort?: InputMaybe<SortProfilesInputType>;
+    /** user IDs */
+    userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 export type ReadTemplatesConnectionInputType = {
     /** after */

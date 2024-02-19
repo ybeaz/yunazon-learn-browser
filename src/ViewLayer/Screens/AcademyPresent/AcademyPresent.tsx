@@ -292,7 +292,6 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
-  'preferred_username',
   'isSummary',
   'isObjections',
 ]

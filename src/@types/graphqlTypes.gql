@@ -1762,6 +1762,9 @@ input ReadProfilesConnectionInputType {
   """after"""
   after: String
 
+  """bot IDs"""
+  botIDs: [ID!] = []
+
   """first"""
   first: Int
 
@@ -1771,11 +1774,17 @@ input ReadProfilesConnectionInputType {
   """offset"""
   offset: Int
 
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortProfilesInputType
+
+  """user IDs"""
+  userIDs: [ID!] = []
 }
 
 input ReadTemplatesConnectionInputType {

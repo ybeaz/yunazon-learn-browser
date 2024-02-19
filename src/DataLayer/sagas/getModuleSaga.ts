@@ -93,7 +93,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
 
-    // yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getModule [95] ERROR', `${error.name}: ${error.message}`)
   }

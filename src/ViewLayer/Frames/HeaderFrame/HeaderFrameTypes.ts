@@ -29,7 +29,7 @@ export type HeaderFrameComponentPropsType = {
   isButtonsShare: boolean
   children?: React.ReactElement
   storeStateSlice: {
-    sub: RootStoreType['authAwsCognitoUserData']['sub']
+    authAwsCognitoUserData: RootStoreType['authAwsCognitoUserData']
     isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
     language: RootStoreType['language']
     profiles: RootStoreType['profiles']

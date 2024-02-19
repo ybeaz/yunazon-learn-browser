@@ -55,7 +55,12 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     isSelectLanguage,
     logoPath,
     moto,
-    storeStateSlice: { sub, isSideNavLeftVisible, language, profiles },
+    storeStateSlice: {
+      authAwsCognitoUserData: { sub, email },
+      isSideNavLeftVisible,
+      language,
+      profiles,
+    },
   } = props
 
   const navigate = useNavigate()
@@ -69,8 +74,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     propName: 'userID',
     propValue: sub,
   })
-  const nameFirst = profile?.nameFirst
-  const nameLast = profile?.nameLast
+  const nameFirst = profile?.nameFirst || (email && email[0])
+  const nameLast = profile?.nameLast || (email && email[1])
   const circleTextArr = nameFirst && nameLast ? [nameFirst, nameLast] : []
 
   const propsOut: HeaderFramePropsOutType = {
@@ -234,7 +239,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 }
 
 const storeStateSliceProps: string[] = [
-  'sub',
+  'authAwsCognitoUserData',
   'isSideNavLeftVisible',
   'language',
   'profiles',

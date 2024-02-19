@@ -54,41 +54,44 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       authAwsCognitoUserData: { sub },
     } = stateSelected as RootStoreType
 
-    yield call(getProfile, { data: { userID: sub } })
+    console.info('getAuthDataSaga [57]', { sub })
+    if (sub) {
+      yield call(getProfile, { data: { userID: sub } })
 
-    /* Set default names to forms input */
-    stateSelected = yield select((state: RootStoreType) => state)
-    const { profiles } = stateSelected as RootStoreType
+      /* Set default names to forms input */
+      stateSelected = yield select((state: RootStoreType) => state)
+      const { profiles } = stateSelected as RootStoreType
 
-    const { nameFirst, nameMiddle, nameLast } = getArrayItemByProp({
-      arr: profiles,
-      propName: 'userID',
-      propValue: sub,
-    })
-
-    yield put(
-      actionSync.ONCHANGE_FORMS_GROUP_PROP({
-        storeFormGroup: 'profileActive',
-        storeFormProp: 'nameFirst',
-        value: nameFirst || '',
+      const { nameFirst, nameMiddle, nameLast } = getArrayItemByProp({
+        arr: profiles,
+        propName: 'userID',
+        propValue: sub,
       })
-    )
 
-    yield put(
-      actionSync.ONCHANGE_FORMS_GROUP_PROP({
-        storeFormGroup: 'profileActive',
-        storeFormProp: 'nameMiddle',
-        value: nameMiddle || '',
-      })
-    )
+      yield put(
+        actionSync.ONCHANGE_FORMS_GROUP_PROP({
+          storeFormGroup: 'profileActive',
+          storeFormProp: 'nameFirst',
+          value: nameFirst || '',
+        })
+      )
 
-    yield put(
-      actionSync.ONCHANGE_FORMS_GROUP_PROP({
-        storeFormGroup: 'profileActive',
-        storeFormProp: 'nameLast',
-        value: nameLast || '',
-      })
-    )
+      yield put(
+        actionSync.ONCHANGE_FORMS_GROUP_PROP({
+          storeFormGroup: 'profileActive',
+          storeFormProp: 'nameMiddle',
+          value: nameMiddle || '',
+        })
+      )
+
+      yield put(
+        actionSync.ONCHANGE_FORMS_GROUP_PROP({
+          storeFormGroup: 'profileActive',
+          storeFormProp: 'nameLast',
+          value: nameLast || '',
+        })
+      )
+    }
 
     yield put(
       actionSync.SET_SIDE_NAVIGATION_LEFT({

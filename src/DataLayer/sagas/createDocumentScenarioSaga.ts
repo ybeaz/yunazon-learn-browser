@@ -1,4 +1,4 @@
-import { call, takeEvery, put } from 'redux-saga/effects'
+import { call, takeEvery, put, delay } from 'redux-saga/effects'
 
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -18,6 +18,15 @@ function* createDocumentScenarioGenerator(
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
+    const data2 = [
+      {
+        childName: 'QuestionScores',
+        isActive: false,
+        childProps: {},
+      },
+    ]
+    yield put(actionSync.SET_MODAL_FRAMES(data2))
+
     yield call(getProfile, { data: { profileID: creatorID } })
     yield call(updateProfile)
     const documents: any = yield call(createDocument)
@@ -27,6 +36,7 @@ function* createDocumentScenarioGenerator(
     const pathname = `/d/${documentID}/${slug}`
     navigate(pathname)
 
+    delay(1000)
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info(
