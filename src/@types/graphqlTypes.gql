@@ -977,6 +977,7 @@ type Mutation {
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
+  createSiteMap: SiteMapReportType!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -1693,6 +1694,17 @@ type ResponseMessageType {
 
   """status: success or failure"""
   status: String
+}
+
+type SiteMapReportType {
+  """articlesUrls"""
+  articlesUrls: Int
+
+  """rootUrl"""
+  collectionsUrls: Int
+
+  """modulesUrls"""
+  modulesUrls: Int
 }
 
 input SortCoursesInputType {

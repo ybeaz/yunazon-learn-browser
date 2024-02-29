@@ -47,7 +47,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 ) => {
   const {
     storeStateSlice: {
-      language: languageStore,
+      language: languageSite,
       durationMultiplier,
       moduleIDActive,
       modules,
@@ -124,10 +124,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { parentFunction: 'AcademyPresentComponent' }
       )
 
-      const durationObj2: DurationObjType = getMultipliedTimeStr(
-        duration,
-        durationMultiplier
-      )
+      const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
 
@@ -152,18 +149,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
-  const {
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-  } = useYouTubePlayerWork({
-    contentComponentName,
-    moduleID,
-    contentID,
-    width,
-    height,
-  })
+  const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
+    useYouTubePlayerWork({
+      contentComponentName,
+      moduleID,
+      contentID,
+      width,
+      height,
+    })
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
@@ -184,12 +177,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     action: {},
   }
 
-  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageStore],
+      moto: DICTIONARY['Together_know_everything'][languageSite],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -243,7 +236,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isSummary,
       isObjectionsButton: true,
       isObjections,
-      language: languageStore,
+      language: languageSite,
       titleSummary: 'Summary',
       titleObjections: 'Objections',
     },
@@ -267,9 +260,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
             {/* middle-main */}
             <>
-              <CONTENT_ASSIGNED_COMPONENT
-                {...propsOut.contentComponentProps[contentComponentName]}
-              >
+              <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>

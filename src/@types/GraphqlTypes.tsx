@@ -793,6 +793,7 @@ export type Mutation = {
   createDocuments: Array<DocumentType>;
   createModules: Array<ModuleType>;
   createProfiles: Array<ProfileType>;
+  createSiteMap: SiteMapReportType;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
   createYoutubeTranscript: CreateYoutubeTranscriptType;
@@ -1646,6 +1647,16 @@ export type ResponseMessageType = {
   message?: Maybe<Scalars['String']['output']>;
   /** status: success or failure */
   status?: Maybe<Scalars['String']['output']>;
+};
+
+export type SiteMapReportType = {
+  __typename?: 'SiteMapReportType';
+  /** articlesUrls */
+  articlesUrls?: Maybe<Scalars['Int']['output']>;
+  /** rootUrl */
+  collectionsUrls?: Maybe<Scalars['Int']['output']>;
+  /** modulesUrls */
+  modulesUrls?: Maybe<Scalars['Int']['output']>;
 };
 
 export type SortCoursesInputType = {
