@@ -14,6 +14,7 @@ import { getModule35SummaryCreated } from './getModule35SummaryCreatedSaga'
 import { getModule45QuestionsCreated } from './getModule45QuestionsCreatedSaga'
 import { getModule55ObjectionsCreated } from './getModule55ObjectionsCreatedSaga'
 import { getModule60ModuleCreated } from './getModule60ModuleCreatedSaga'
+import { createSiteMap } from './createSiteMapSaga'
 
 export function* getModuleScenarioGenerator(
   params: ActionReduxType | any
@@ -126,6 +127,8 @@ export function* getModuleScenarioGenerator(
             .status === CreateModuleStatusEnumType['success']))
     )
       yield getModule60ModuleCreated()
+
+    yield createSiteMap()
   } catch (error: any) {
     console.info(
       'getModuleScenarioSaga [37] ERROR',

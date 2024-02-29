@@ -48,7 +48,7 @@ export const getBuildAdded: GetBuildAddedType = async (
     await getCreatedFolder(pathToCssFolder)
     consoler('getCreatedFolder for css:', 'yes')
 
-    const fileNameCss: string = 'styles-loading-init.css'
+    const fileNameCss: string = 'styles-init.css'
     const sourceCss: string = `deployment/${fileNameCss}`
     const destinationCss: string = `${pathToCssFolder}/${fileNameCss}`
     const overwriteCss: boolean = true

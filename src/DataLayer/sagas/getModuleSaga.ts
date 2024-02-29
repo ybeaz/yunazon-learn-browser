@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
 import {
   QueryReadModulesArgs,

@@ -1839,6 +1839,10 @@ export type ThumbnailsImageDataBotType = {
 export type ThumbnailsImageDataInputType = {
   /** height */
   height: Scalars['Int']['input'];
+  /** rel */
+  rel?: InputMaybe<Scalars['String']['input']>;
+  /** type */
+  type?: InputMaybe<Scalars['String']['input']>;
   /** url */
   url?: InputMaybe<Scalars['String']['input']>;
   /** width */
@@ -1849,6 +1853,10 @@ export type ThumbnailsImageDataType = {
   __typename?: 'ThumbnailsImageDataType';
   /** height */
   height: Scalars['Int']['output'];
+  /** rel */
+  rel?: Maybe<Scalars['String']['output']>;
+  /** type */
+  type?: Maybe<Scalars['String']['output']>;
   /** url */
   url?: Maybe<Scalars['String']['output']>;
   /** width */
@@ -1858,8 +1866,18 @@ export type ThumbnailsImageDataType = {
 export type ThumbnailsInputType = {
   /** thumbnail image default */
   default?: InputMaybe<ThumbnailsImageDataInputType>;
+  /** favicon */
+  favicon?: InputMaybe<ThumbnailsImageDataInputType>;
   /** thumbnail image high */
   high?: InputMaybe<ThumbnailsImageDataInputType>;
+  /** image16x16 */
+  image16x16?: InputMaybe<ThumbnailsImageDataInputType>;
+  /** image32x32 */
+  image32x32?: InputMaybe<ThumbnailsImageDataInputType>;
+  /** image192x192 */
+  image192x192?: InputMaybe<ThumbnailsImageDataInputType>;
+  /** image512x512 */
+  image512x512?: InputMaybe<ThumbnailsImageDataInputType>;
   /** thumbnail image maxres */
   maxres?: InputMaybe<ThumbnailsImageDataInputType>;
   /** thumbnail image medium */
@@ -1872,8 +1890,18 @@ export type ThumbnailsType = {
   __typename?: 'ThumbnailsType';
   /** thumbnail image default */
   default?: Maybe<ThumbnailsImageDataType>;
+  /** favicon */
+  favicon?: Maybe<ThumbnailsImageDataType>;
   /** thumbnail image high */
   high?: Maybe<ThumbnailsImageDataType>;
+  /** image16x16 */
+  image16x16?: Maybe<ThumbnailsImageDataType>;
+  /** image32x32 */
+  image32x32?: Maybe<ThumbnailsImageDataType>;
+  /** image192x192 */
+  image192x192?: Maybe<ThumbnailsImageDataType>;
+  /** image512x512 */
+  image512x512?: Maybe<ThumbnailsImageDataType>;
   /** thumbnail image maxres */
   maxres?: Maybe<ThumbnailsImageDataType>;
   /** thumbnail image medium */

@@ -83,6 +83,7 @@ const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 const ACTION_ASYNC: string[] = [
+  'CREATE_SITE_MAP',
   'CREATE_PROFILE',
   'CREATE_DOCUMENT_SCENARIO',
   'UPDATE_PROFILE',

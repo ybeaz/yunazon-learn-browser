@@ -1913,6 +1913,12 @@ input ThumbnailsImageDataInputType {
   """height"""
   height: Int!
 
+  """rel"""
+  rel: String = null
+
+  """type"""
+  type: String = null
+
   """url"""
   url: String = null
 
@@ -1923,6 +1929,12 @@ input ThumbnailsImageDataInputType {
 type ThumbnailsImageDataType {
   """height"""
   height: Int!
+
+  """rel"""
+  rel: String
+
+  """type"""
+  type: String
 
   """url"""
   url: String
@@ -1935,8 +1947,23 @@ input ThumbnailsInputType {
   """thumbnail image default"""
   default: ThumbnailsImageDataInputType = null
 
+  """favicon"""
+  favicon: ThumbnailsImageDataInputType = null
+
   """thumbnail image high"""
   high: ThumbnailsImageDataInputType = null
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataInputType = null
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataInputType = null
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataInputType = null
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataInputType = null
 
   """thumbnail image maxres"""
   maxres: ThumbnailsImageDataInputType = null
@@ -1952,8 +1979,23 @@ type ThumbnailsType {
   """thumbnail image default"""
   default: ThumbnailsImageDataType
 
+  """favicon"""
+  favicon: ThumbnailsImageDataType
+
   """thumbnail image high"""
   high: ThumbnailsImageDataType
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataType
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataType
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataType
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataType
 
   """thumbnail image maxres"""
   maxres: ThumbnailsImageDataType
