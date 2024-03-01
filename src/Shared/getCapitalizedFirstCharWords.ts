@@ -45,6 +45,8 @@ export const getCapitalizedFirstCharWords: GetCapitalizedFirstCharWordsType = (
     ...optionsIn,
   }
 
+  if (!inputString) return ''
+
   const { isTakingAllWords, printRes, parentFunction } = options
 
   let output: GetCapitalizedFirstCharWordsResType = ''

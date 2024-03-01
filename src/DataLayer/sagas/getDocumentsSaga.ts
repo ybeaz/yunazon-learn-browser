@@ -18,14 +18,10 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
-export function* getDocumentsGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)
 
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
   const {
     authAwsCognitoUserData: { sub },
     componentsState: {
@@ -69,13 +65,14 @@ export function* getDocumentsGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: 10000,
       }
     )
 
-    let documentsNext: any = getChainedResponsibility(
-      readDocumentsConnection
-    ).exec(getMappedConnectionToItems, { printRes: false }).result
+    let documentsNext: any = getChainedResponsibility(readDocumentsConnection).exec(
+      getMappedConnectionToItems,
+      { printRes: false }
+    ).result
 
     yield put(actionSync.SET_DOCUMENTS(documentsNext))
 
@@ -89,10 +86,7 @@ export function* getDocumentsGenerator(
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info(
-      'getDocumentsSaga [44] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getDocumentsSaga [44] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

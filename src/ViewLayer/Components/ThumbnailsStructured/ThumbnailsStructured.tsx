@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  ThumbnailsImageDataType,
-  ThumbnailsType,
-} from '../../../@types/GraphqlTypes'
+import { ThumbnailsImageDataType, ThumbnailsType } from '../../../@types/GraphqlTypes'
 
 import {
   ThumbnailsStructuredComponentPropsType,
@@ -25,12 +22,9 @@ const ThumbnailsStructuredComponent: ThumbnailsStructuredComponentType = (
 
   delete thumbnails['_id']
   const { favicon = '', ...thumbnailsRest } = thumbnails || { favicon: '' }
-  const thumbnailsArray =
-    (Object.values(thumbnailsRest || {}) as ThumbnailsImageDataType[]) || []
+  const thumbnailsArray = (Object.values(thumbnailsRest || {}) as ThumbnailsImageDataType[]) || []
   const heightMax = Math.max(
-    ...thumbnailsArray.map(
-      (thumbnail: ThumbnailsImageDataType) => thumbnail.height
-    )
+    ...thumbnailsArray.map((thumbnail: ThumbnailsImageDataType) => thumbnail.height)
   )
 
   const thumbnailsImages = thumbnailsArray.map(
@@ -50,6 +44,7 @@ const ThumbnailsStructuredComponent: ThumbnailsStructuredComponentType = (
             <meta itemProp='image' content={url || ''} rel={rel || ''} />
             <img
               src={url || ''}
+              loading='lazy'
               alt={`${nameEntity} thumbnail ${width}x${height}`}
               width={width}
               height={height}

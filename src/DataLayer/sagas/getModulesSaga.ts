@@ -17,14 +17,10 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
-export function* getModulesGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)
 
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const {
     componentsState: {
@@ -79,7 +75,7 @@ export function* getModulesGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: 10000,
       }
     )
 
@@ -90,9 +86,7 @@ export function* getModulesGenerator(
     yield put(actionSync.SET_MODULES(modulesNext))
 
     const pageInfo = readModulesConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo })
-    )
+    yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

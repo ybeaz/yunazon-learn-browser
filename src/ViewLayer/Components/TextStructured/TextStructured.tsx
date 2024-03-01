@@ -65,8 +65,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
   const getTextStructured = (arrayIn: EntitiyItemType[]): ReactElement[] => {
     return arrayIn.map((entityItem: EntitiyItemType) => {
       const { capture } = entityItem
-      const textM2 = entityItem?.text
-      const text = textM2 && getCapitalizedFirstCharWords(textM2, { isTakingAllWords: false })
+      const text = entityItem?.text
 
       const divs = entityItem?.divs
 
@@ -74,8 +73,9 @@ const TextStructuredComponent: TextStructuredComponentType = (
       if (entityItem?.options?.isTextIdent !== undefined)
         isTextIdent = entityItem?.options?.isTextIdent
 
-      let divContent: string | ReactElement | ReactElement[] | null =
-        <span itemProp='text'>{text}</span> || null
+      let divContent: string | ReactElement | ReactElement[] | null = text ? (
+        <span itemProp='text'>{text}</span>
+      ) : null
 
       /* Create content */
       if (!text && divs && divs.length && entityItem?.options?.isList === undefined) {
