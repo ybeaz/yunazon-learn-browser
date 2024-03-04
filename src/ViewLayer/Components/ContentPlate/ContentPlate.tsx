@@ -97,11 +97,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID },
         }),
-      onPointerEnter: (event: any) =>
-        handleEvents(event, {
-          typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID },
-        }),
     },
   }
 
@@ -111,7 +106,9 @@ const ContentPlateComponent: ContentPlateComponentType = (
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
-      <Link {...propsOut.linkProps} />
+      <Link {...propsOut.linkProps}>
+        <div> </div>
+      </Link>
     </div>
   )
 }

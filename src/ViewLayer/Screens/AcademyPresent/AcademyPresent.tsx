@@ -260,17 +260,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <>
+            <div className='AcademyPresent__middle-main'>
               <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>
-              <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
-            </>
+            </div>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}
-            {null}
+            <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
           </MainFrame>
         </>
       ) : null}
