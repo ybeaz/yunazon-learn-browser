@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
@@ -46,6 +46,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     storeStateSlice: { language, mediaLoaded },
   } = props
 
+  const navigate = useNavigate()
   const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
@@ -95,7 +96,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       onClick: (event: any) =>
         handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID },
+          data: { capture, moduleID, contentID, navigate },
         }),
     },
   }
@@ -106,9 +107,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
-      <NavLink {...propsOut.linkProps}>
-        <div> </div>
-      </NavLink>
+      <NavLink {...propsOut.linkProps} />
     </div>
   )
 }
