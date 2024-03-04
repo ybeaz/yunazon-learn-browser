@@ -60,8 +60,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const slug = getSlug(capture)
   const pathname = `/m/${moduleID}/${slug}`
 
-  const CONTENT_ASSIGNED_COMPONENT: FunctionComponent =
-    COMPONENT[contentComponentName]
+  const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
   const propsOut: ContentPlatePropsOutType = {
     contentComponentProps: {
@@ -98,14 +97,17 @@ const ContentPlateComponent: ContentPlateComponentType = (
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID },
         }),
+      onPointerEnter: (event: any) =>
+        handleEvents(event, {
+          typeEvent: 'SELECT_MODULE',
+          data: { capture, moduleID, contentID },
+        }),
     },
   }
 
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
-      <CONTENT_ASSIGNED_COMPONENT
-        {...propsOut.contentComponentProps[contentComponentName]}
-      >
+      <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>

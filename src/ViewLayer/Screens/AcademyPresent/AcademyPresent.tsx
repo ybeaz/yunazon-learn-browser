@@ -249,6 +249,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
           <Helmet>
             <html lang={language} />
             <meta charSet='utf-8' />
+            <meta name='viewport' content='width=device-width,initial-scale=1' />
             <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
             <meta name='description' content={description} />

@@ -10,10 +10,7 @@ import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import {
-  LoaderOverlayYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
   CertificateBodyComponentProps,
@@ -105,6 +102,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
       <Helmet>
         <html lang={languageDoc} />
         <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
         <title>{titlePage}</title>
         <link rel='canonical' href={location.href} />
         <meta name='description' content={moduleCapture} />
@@ -141,12 +139,8 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-earned'>
-                    <span className='pm-earned-text padding-0 block cursive'>
-                      has earned
-                    </span>
-                    <span className='pm-credits-text block bold sans'>
-                      1.0 Credit Hours
-                    </span>
+                    <span className='pm-earned-text padding-0 block cursive'>has earned</span>
+                    <span className='pm-credits-text block bold sans'>1.0 Credit Hours</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className=''></div>
@@ -169,19 +163,13 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline'>
-                    <span className='pm-credits-text block bold sans'>
-                      {moduleCapture}
-                    </span>
+                    <span className='pm-credits-text block bold sans'>{moduleCapture}</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='_code'>
                     <span className='_module'>
                       Module link/ No
-                      <a
-                        className='_moduleLink'
-                        href={modulePathName}
-                        target='_blank'
-                      >
+                      <a className='_moduleLink' href={modulePathName} target='_blank'>
                         {moduleID}
                       </a>
                     </span>
@@ -195,9 +183,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                 <div className='pm-certificate-footer'>
                   <div className='pm-certified'>
                     <div className='pm-stamp'></div>
-                    <span className='pm-credits-text block sans'>
-                      "Open Internet Academy"
-                    </span>
+                    <span className='pm-credits-text block sans'>"Open Internet Academy"</span>
                     <span className='pm-credits-text block sans'>
                       in partnership with "YouRails.com"
                     </span>
@@ -209,16 +195,10 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-certified'>
                     <div className='_documentData'>
-                      <span className='_completed'>
-                        Completed {dateCreatedReadable}
-                      </span>
+                      <span className='_completed'>Completed {dateCreatedReadable}</span>
                       <span className='_certificate'>
                         Certificate link/ No
-                        <a
-                          className='_documentLink'
-                          href={documentPathName}
-                          target='_blank'
-                        >
+                        <a className='_documentLink' href={documentPathName} target='_blank'>
                           {documentID}
                         </a>
                       </span>
@@ -253,10 +233,7 @@ export const CertificateComponent: CertificateComponentType = (
   )
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
     handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
     if (Array.isArray(documents) && !documentFound) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
@@ -352,13 +329,7 @@ const StyledSection = styled.section`
         #b2cad6 1px,
         #b2cad6 2px
       );
-      background: repeating-linear-gradient(
-        90deg,
-        #618597,
-        #618597 1px,
-        #b2cad6 1px,
-        #b2cad6 2px
-      );
+      background: repeating-linear-gradient(90deg, #618597, #618597 1px, #b2cad6 1px, #b2cad6 2px);
 
       .outer-border {
         width: 794px;
