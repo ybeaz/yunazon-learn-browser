@@ -1,12 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-  ButtonYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   DocumentsTablePropsOutType,
@@ -32,94 +28,92 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   const { classAdded, handleEvents, documents, language } = props
 
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
-    const documentsRows: React.ReactElement[] = documentsIn.map(
-      (document: DocumentType) => {
-        const {
-          documentID,
-          module: { moduleID, capture },
-          dateCreated,
-        } = document
+    const documentsRows: React.ReactElement[] = documentsIn.map((document: DocumentType) => {
+      const {
+        documentID,
+        module: { moduleID, capture },
+        dateCreated,
+      } = document
 
-        const dateString = getDateString({
-          timestamp: dateCreated,
-          style: 'US',
-        })
+      const dateString = getDateString({
+        timestamp: dateCreated,
+        style: 'US',
+      })
 
-        const propsOut: DocumentsTablePropsOutType = {
-          linkToModuleProps: {
-            className: '__shield',
-            to: { pathname: `/m/${moduleID}/` },
-            children: capture,
-            onClick: (event: any) => {
-              // handleEvents(event, {
-              //   typeEvent: 'SELECT_MODULE',
-              //   data: {  },
-              // })
-            },
+      const propsOut: DocumentsTablePropsOutType = {
+        linkToModuleProps: {
+          className: '__shield',
+          to: { pathname: `/m/${moduleID}/` },
+          children: capture,
+          onClick: (event: any) => {
+            // handleEvents(event, {
+            //   typeEvent: 'SELECT_MODULE',
+            //   data: {  },
+            // })
           },
-          linkToDocumentProps: {
-            className: '__shield',
-            to: { pathname: `/d/${documentID}/` },
-            children: 'Link',
-            onClick: (event: any) => {
-              // handleEvents(event, {
-              //   typeEvent: '',
-              //   data: {  },
-              // })
-            },
-            target: 'blank',
+        },
+        linkToDocumentProps: {
+          className: '__shield',
+          to: { pathname: `/d/${documentID}/` },
+          children: 'Link',
+          onClick: (event: any) => {
+            // handleEvents(event, {
+            //   typeEvent: '',
+            //   data: {  },
+            // })
           },
-          buttonDeactivateDocumentProps: {
-            icon: 'MdDeleteOutline',
-            classAdded: 'Button_DeactivateModule',
-            action: {
-              typeEvent: 'SET_MODAL_FRAMES',
-              data: [
-                {
-                  childName: 'ConfirmationYesNoBodyYrl',
-                  isActive: true,
-                  childProps: {
-                    message: [
-                      `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['document'][language]} No ${documentID}`,
-                      `${capture}?`,
-                    ],
-                    captureButton4Yes: DICTIONARY['confirm'][language],
-                    captureButton4No: DICTIONARY['cancel'][language],
-                    action4Yes: {
-                      typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-                      data: { documentsIDs: [documentID] },
-                    },
-                    action4No: {
-                      typeEvent: 'SET_MODAL_FRAMES',
-                      data: {
-                        childName: 'ConfirmationYesNoBodyYrl',
-                        isActive: false,
-                      },
-                    },
-                    buttonRight: 'NoCancel',
+          target: 'blank',
+        },
+        buttonDeactivateDocumentProps: {
+          icon: 'MdDeleteOutline',
+          classAdded: 'Button_DeactivateModule',
+          action: {
+            typeEvent: 'SET_MODAL_FRAMES',
+            data: [
+              {
+                childName: 'ConfirmationYesNoBodyYrl',
+                isActive: true,
+                childProps: {
+                  message: [
+                    `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['document'][language]} No ${documentID}`,
+                    `${capture}?`,
+                  ],
+                  captureButton4Yes: DICTIONARY['confirm'][language],
+                  captureButton4No: DICTIONARY['cancel'][language],
+                  action4Yes: {
+                    typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
+                    data: { documentsIDs: [documentID] },
                   },
+                  action4No: {
+                    typeEvent: 'SET_MODAL_FRAMES',
+                    data: {
+                      childName: 'ConfirmationYesNoBodyYrl',
+                      isActive: false,
+                    },
+                  },
+                  buttonRight: 'NoCancel',
                 },
-              ],
-            },
+              },
+            ],
           },
-        }
-
-        return (
-          <div key={documentID} className='_row _row_weather'>
-            <div className='_cell _date'>{dateString}</div>
-            <div className='_cell _module_name'>
-              <Link {...propsOut.linkToModuleProps} />
-            </div>
-            <div className='_cell _document_link'>
-              <Link {...propsOut.linkToDocumentProps} />
-            </div>
-            <div className='_cell _remove'>
-              <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
-            </div>
-          </div>
-        )
+        },
       }
-    )
+
+      return (
+        <div key={documentID} className='_row _row_weather'>
+          <div className='_cell _date'>{dateString}</div>
+          <div className='_cell _module_name'>
+            <NavLink {...propsOut.linkToModuleProps} />
+          </div>
+          <div className='_cell _document_link'>
+            <NavLink {...propsOut.linkToDocumentProps} />
+          </div>
+          <div className='_cell _remove'>
+            <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
+          </div>
+        </div>
+      )
+    })
 
     return (
       <section className={getClasses('_documentsTable', classAdded)}>
@@ -143,9 +137,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
-      <h2 className='_screenTitle'>
-        {DICTIONARY.Certificates_Credits_and_diplomas[language]}
-      </h2>
+      <h2 className='_screenTitle'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
       {getDocumentsTable(documents)}
 
       <div className='_paginationNavigationWrapper'>
@@ -157,10 +149,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
 const storeStateSliceProps: string[] = []
 export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(MyDocumentsBodyComponent)
-  )
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsBodyComponent))
 )
 
 export type {

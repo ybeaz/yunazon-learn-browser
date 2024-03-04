@@ -13,11 +13,7 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
-import {
-  InputGroupYrl,
-  ButtonYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { InputGroupYrl, ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
   HeaderFrameComponentPropsType,
@@ -32,9 +28,7 @@ import {
  * @import import { HeaderFrame, HeaderFramePropsType, HeaderFramePropsOutType, HeaderFrameType } 
              from '../Components/HeaderFrame/HeaderFrame'
  */
-const HeaderFrameComponent: HeaderFrameComponentType = (
-  props: HeaderFrameComponentPropsType
-) => {
+const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameComponentPropsType) => {
   const {
     classAdded,
     brandName,
@@ -184,27 +178,20 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       </ButtonYrl>
     )
   } else if (isButtonAuthUser && !sub)
-    SideMenuLeft = (
-      <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
-    )
+    SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
 
   return (
-    <div
-      id={`id_header_${contentComponentName}`}
-      className={getClasses('HeaderFrame', classAdded)}
-    >
+    <div id={`id_header_${contentComponentName}`} className={getClasses('HeaderFrame', classAdded)}>
       <div className='_content'>
         <div className='__left'>
           {/* {isButtonBack && (
-            <Link to={{ pathname: '/academy' }}>
+            <NavLink to={{ pathname: '/academy' }}>
               <ButtonYrl {...propsOut.buttonBackProps} />
-            </Link>
+            </NavLink>
           )} */}
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
-          {isPageActionsGroup && (
-            <PageActionsGroup {...propsOut.pageActionsProps} />
-          )}
+          {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
         </div>
         <div className='__main'>

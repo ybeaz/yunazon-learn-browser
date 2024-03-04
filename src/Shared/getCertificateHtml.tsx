@@ -4,7 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { CertificateStyledString as certificateStyles } from '../ViewLayer/Screens/Certificate/CertificateStyle'
 
-const SCREENS = {
+const SCREENS: Record<string, any> = {
   Certificate,
 }
 
@@ -31,7 +31,7 @@ export const getCertificateHtml: Function = (data: any): string => {
 
   const certificateHtml =
     `<html><head><title>${title}</title>` +
-    // '<link rel="stylesheet" href="/stylesheets/certificateStyles.css">' +
+    // '<NavLink rel="stylesheet" href="/stylesheets/certificateStyles.css">' +
     `<style>${certificateStyles}</style></head>` +
     `<body>${divContents.outerHTML}</body ></html >`
 

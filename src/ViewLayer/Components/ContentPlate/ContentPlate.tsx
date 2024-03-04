@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
@@ -106,9 +106,9 @@ const ContentPlateComponent: ContentPlateComponentType = (
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
-      <Link {...propsOut.linkProps}>
+      <NavLink {...propsOut.linkProps}>
         <div> </div>
-      </Link>
+      </NavLink>
     </div>
   )
 }
