@@ -3,12 +3,7 @@ import { UserType } from '../../Interfaces/UserType'
 import { ButtonYrlPropsType } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface IGetButtonAuthUser {
-  (
-    user2: UserType,
-    language: string,
-    componentFrom: string,
-    history?: any
-  ): ButtonYrlPropsType
+  (user2: UserType, language: string, componentFrom: string, history?: any): ButtonYrlPropsType
 }
 
 /**
@@ -19,7 +14,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   user,
   language,
   componentFrom,
-  history = {}
+  navigate = {}
 ) => {
   const { userAvatar, userStatus, userName } = user
 
@@ -33,9 +28,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   }
 
   // @ts-expect-error
-  const buttonDictKey: ButtonDictKeyType = `${componentFrom}+${
-    userStatus || ''
-  }`
+  const buttonDictKey: ButtonDictKeyType = `${componentFrom}+${userStatus || ''}`
 
   const buttonsDict: Record<string, any> = {
     'sideMenu+': {
@@ -59,9 +52,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     'sideMenu+success': {
       imageSrc: userAvatar,
       icon: userAvatar ? null : 'FaUserCircle',
-      classAdded: userAvatar
-        ? 'Button_authSideMenu'
-        : 'Button_authSideMenu_authorized',
+      classAdded: userAvatar ? 'Button_authSideMenu' : 'Button_authSideMenu_authorized',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
       tooltipPosition: 'right',
@@ -87,9 +78,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     'header+success': {
       imageSrc: userAvatar,
       icon: userAvatar ? null : 'FaUserCircle',
-      classAdded: userAvatar
-        ? 'Button_authHeader'
-        : 'Button_authHeader_authorized',
+      classAdded: userAvatar ? 'Button_authHeader' : 'Button_authHeader_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
@@ -121,13 +110,10 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   const actionProfile = {
     typeEvent: 'GO_SCREEN',
-    data: { history, path: '/profile' },
+    data: { navigate, pathname: '/profile' },
   }
 
-  const action =
-    `${componentFrom}+${userStatus}` === 'header+success'
-      ? actionProfile
-      : actionMain
+  const action = `${componentFrom}+${userStatus}` === 'header+success' ? actionProfile : actionMain
 
   return {
     imageSrc,

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
+import { withPropsYrl } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
@@ -9,7 +10,7 @@ import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsProp } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import { getClasses } from '../../../Shared/getClasses'
@@ -44,6 +45,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     contentID,
     screenType,
     storeStateSlice: { language, mediaLoaded },
+    handleEvents,
   } = props
 
   const navigate = useNavigate()
@@ -93,11 +95,16 @@ const ContentPlateComponent: ContentPlateComponentType = (
     linkProps: {
       className: '__shield',
       to: { pathname },
-      onClick: (event: any) =>
+      onClick: (event: any) => {
         handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID, navigate },
-        }),
+          data: { capture, moduleID, contentID },
+        })
+        handleEvents(event, {
+          typeEvent: 'GO_LINK_PATH',
+          data: { navigate, pathname },
+        })
+      },
     },
   }
 
@@ -114,7 +121,9 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
 const storeStateSliceProps: string[] = ['language', 'mediaLoaded']
 export const ContentPlate = React.memo(
-  withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
+  withPropsYrl({ handleEvents: handleEventsProp })(
+    withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
+  )
 )
 
 export type {

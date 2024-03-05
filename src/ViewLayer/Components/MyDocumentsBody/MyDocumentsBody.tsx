@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
@@ -16,6 +16,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { PaginationNameEnumType } from '../../../Interfaces'
 import { DocumentType } from '../../../@types/'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
+import { getSlug } from '../../../Shared/getSlug'
 
 /**
  * @description Component to render MyDocumentsBody
@@ -26,6 +27,8 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   props: MyDocumentsBodyComponentPropsType
 ) => {
   const { classAdded, handleEvents, documents, language } = props
+
+  const navigate = useNavigate()
 
   const getDocumentsTable = (documentsIn: DocumentType[]) => {
     const documentsRows: React.ReactElement[] = documentsIn.map((document: DocumentType) => {
@@ -40,29 +43,31 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
         style: 'US',
       })
 
+      const pathnameModule = `/m/${moduleID}/${getSlug(capture)}`
+      const pathnameDocument = `/d/${documentID}`
+
       const propsOut: DocumentsTablePropsOutType = {
         linkToModuleProps: {
           className: '__shield',
-          to: { pathname: `/m/${moduleID}/` },
+          to: { pathname: pathnameModule },
           children: capture,
           onClick: (event: any) => {
-            // handleEvents(event, {
-            //   typeEvent: 'SELECT_MODULE',
-            //   data: {  },
-            // })
+            handleEvents(event, {
+              typeEvent: 'GO_LINK_PATH',
+              data: { navigate, pathname: pathnameModule },
+            })
           },
         },
         linkToDocumentProps: {
           className: '__shield',
-          to: { pathname: `/d/${documentID}/` },
+          to: { pathname: pathnameDocument },
           children: 'Link',
           onClick: (event: any) => {
-            // handleEvents(event, {
-            //   typeEvent: '',
-            //   data: {  },
-            // })
+            handleEvents(event, {
+              typeEvent: 'GO_LINK_PATH',
+              data: { navigate, pathname: pathnameDocument },
+            })
           },
-          target: 'blank',
         },
         buttonDeactivateDocumentProps: {
           icon: 'MdDeleteOutline',

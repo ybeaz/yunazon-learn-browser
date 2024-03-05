@@ -184,11 +184,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     <div id={`id_header_${contentComponentName}`} className={getClasses('HeaderFrame', classAdded)}>
       <div className='_content'>
         <div className='__left'>
-          {/* {isButtonBack && (
-            <NavLink to={{ pathname: '/academy' }}>
-              <ButtonYrl {...propsOut.buttonBackProps} />
-            </NavLink>
-          )} */}
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}

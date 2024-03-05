@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
@@ -15,6 +15,7 @@ import {
 } from './MyModulesTableTypes'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModuleType } from '../../../@types/'
+import { getSlug } from '../../../Shared/getSlug'
 
 /**
  * @description Component to render MyModulesTable
@@ -25,6 +26,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
   props: MyModulesTableComponentPropsType
 ) => {
   const { classAdded, handleEvents, modules, language } = props
+  const navigate = useNavigate()
 
   const getModulesTable = (modulesIn: ModuleType[]) => {
     const modulesRows: React.ReactElement[] = modulesIn.map((module: ModuleType) => {
@@ -35,16 +37,18 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         style: 'US',
       })
 
+      const pathnameModule = `/m/${moduleID}/${getSlug(capture)}`
+
       const propsOut: ModulesTablePropsOutType = {
         linkToModuleProps: {
           className: '__shield',
-          to: { pathname: `/m/${modules && modules[0].moduleID}/` },
+          to: { pathname: pathnameModule },
           children: capture,
           onClick: (event: any) => {
-            // handleEvents(event, {
-            //   typeEvent: 'SELECT_MODULE',
-            //   data: {  },
-            // })
+            handleEvents(event, {
+              typeEvent: 'GO_LINK_PATH',
+              data: { navigate, pathname: pathnameModule },
+            })
           },
         },
         buttonDeactivateModuleProps: {

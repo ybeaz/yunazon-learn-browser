@@ -1,9 +1,6 @@
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import {
-  GetSideNavigationButtonsProps,
-  GetSideNavigationButtons,
-} from './SideNavigationTypes'
+import { GetSideNavigationButtonsProps, GetSideNavigationButtons } from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
 
@@ -34,7 +31,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/' },
+        data: { navigate, pathname: '/' },
       },
       isDisplaying: true,
     },
@@ -44,7 +41,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/my-documents' },
+        data: { navigate, pathname: '/my-documents' },
       },
       isDisplaying: !!sub,
     },
@@ -54,7 +51,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/my-modules' },
+        data: { navigate, pathname: '/my-modules' },
       },
       isDisplaying: !!sub && isCourseCreateSectionFlag(),
     },
@@ -80,7 +77,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { history: navigate, path: '/profiles' },
+        data: { navigate, pathname: '/profiles' },
       },
       isDisplaying: false, // TODO, component Profiles.tsx !!sub,
     },
@@ -126,7 +123,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'HiOutlineAcademicCap',
       captureRight: DICTIONARY.Academy[language],
       classAdded: 'Button_sideMenuItems',
-      action: { typeEvent: 'GO_ACADEMY_SCREEN', data: { history: navigate } },
+      action: { typeEvent: 'GO_SCREEN', data: { navigate } },
       isDisplaying: false,
     },
     // {
@@ -135,7 +132,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
     //   classAdded: 'Button_sideMenuItems',
     //   action: {
     //     typeEvent: 'GO_SCREEN',
-    //     data: { history: navigate, path: '/sep' },
+    //     data: { navigate, pathname: '/sep' },
     //   },
     //   isDisplaying: false,
     // },

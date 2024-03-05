@@ -33,8 +33,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
             childName: 'QuestionScores',
             isActive: true,
             childProps: {
-              moduleCapture:
-                'Исторические деятели России и СССР первой половины XX века',
+              moduleCapture: 'Исторические деятели России и СССР первой половины XX века',
             },
           },
         ],
@@ -54,8 +53,7 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
             childName: 'QuestionScores',
             isActive: true,
             childProps: {
-              moduleCapture:
-                'Исторические деятели России и СССР первой половины XX века',
+              moduleCapture: 'Исторические деятели России и СССР первой половины XX века',
             },
           },
         ],
@@ -68,8 +66,8 @@ export function useflagsDebug(mediaLoadedCoursesString: string) {
         {
           typeEvent: 'GO_SCREEN',
           data: {
-            history: navigate,
-            path: '/d/QbPOPMImLHB/2023-11-20-certificate',
+            navigate,
+            pathname: '/d/QbPOPMImLHB/2023-11-20-certificate',
           },
         }
       )
