@@ -16,14 +16,9 @@ interface GetBuildGitDataType {
  * @import import { getBuildGitData } from './getBuildGitData'
  */
 
-export const getBuildGitData: GetBuildGitDataType = async (
-  pathFull,
-  options
-) => {
+export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) => {
   try {
-    const branchCurrent = await execSync(`git branch --show-current`)
-      .toString()
-      .trim()
+    const branchCurrent = await execSync(`git branch --show-current`).toString().trim()
 
     let getBuildGitDataRes = await execSync(
       `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "date": "%ad",%n  "message": "%f"%n}'`
@@ -31,13 +26,15 @@ export const getBuildGitData: GetBuildGitDataType = async (
       .toString()
       .trim()
 
-    const getBuildGitDataResObjM1: any = JSON.parse(
-      getBuildGitDataRes
-    ) as Object
+    const getBuildGitDataResObjM1: any = JSON.parse(getBuildGitDataRes) as Object
 
-    const date = getDateString({
+    const dateCommit = getDateString({
       timestamp: new Date(getBuildGitDataResObjM1.date),
     })
+    const dateBuild = getDateString({
+      timestamp: new Date(),
+    })
+
     const year = new Date(getBuildGitDataResObjM1.date).getFullYear()
 
     const copyright = `© 2021-${year} Userto Inc.`
@@ -45,7 +42,8 @@ export const getBuildGitData: GetBuildGitDataType = async (
     const getBuildGitDataResObj = {
       ...getBuildGitDataResObjM1,
       branchCurrent,
-      date,
+      dateCommit,
+      dateBuild,
       copyright,
     }
 

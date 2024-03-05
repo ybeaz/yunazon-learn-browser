@@ -107,7 +107,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
-      <div {...propsOut.linkProps} />
+      <NavLink {...propsOut.linkProps} />
     </div>
   )
 }

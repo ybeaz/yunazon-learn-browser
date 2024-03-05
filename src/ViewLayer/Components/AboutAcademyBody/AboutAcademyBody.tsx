@@ -23,7 +23,8 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
   const {
     commit,
     author: { name, email },
-    date,
+    dateBuild,
+    dateCommit,
     message,
     branchCurrent,
     copyright,
@@ -46,12 +47,16 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
         <h3 className='_titleTableBuild'>Current build</h3>
         <section className='_tableBuild'>
           <div className='_row'>
-            <div className='_cell _cell_capture'>Current branch</div>
-            <div className='_cell _cell_text'>{branchCurrent}</div>
+            <div className='_cell _cell_capture'>Date build</div>
+            <div className='_cell _cell_text'>{dateBuild}</div>
           </div>
           <div className='_row'>
-            <div className='_cell _cell_capture'>Date</div>
-            <div className='_cell _cell_text'>{date}</div>
+            <div className='_cell _cell_capture'>Date commit</div>
+            <div className='_cell _cell_text'>{dateCommit}</div>
+          </div>
+          <div className='_row'>
+            <div className='_cell _cell_capture'>Current branch</div>
+            <div className='_cell _cell_text'>{branchCurrent}</div>
           </div>
           <div className='_row'>
             <div className='_cell _cell_capture'>Authors</div>
