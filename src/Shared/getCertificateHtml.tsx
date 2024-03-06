@@ -31,7 +31,7 @@ export const getCertificateHtml: Function = (data: any): string => {
 
   const certificateHtml =
     `<html><head><title>${title}</title>` +
-    // '<NavLink rel="stylesheet" href="/stylesheets/certificateStyles.css">' +
+    // '<link rel="stylesheet" href="/stylesheets/certificateStyles.css">' +
     `<style>${certificateStyles}</style></head>` +
     `<body>${divContents.outerHTML}</body ></html >`
 

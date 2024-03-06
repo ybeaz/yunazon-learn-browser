@@ -108,10 +108,10 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
         <div key={documentID} className='_row _row_weather'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOut.linkToModuleProps} />
+            <div {...propsOut.linkToModuleProps} />
           </div>
           <div className='_cell _document_link'>
-            <NavLink {...propsOut.linkToDocumentProps} />
+            <div {...propsOut.linkToDocumentProps} />
           </div>
           <div className='_cell _remove'>
             <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />

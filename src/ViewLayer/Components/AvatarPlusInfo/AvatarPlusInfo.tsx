@@ -48,13 +48,13 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusI
 
   return (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
-      <NavLink className={getClasses('_link', classProps)} {...propsOut.linkProps}>
+      <div className={getClasses('_link', classProps)} {...propsOut.linkProps}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
           <div className='_capture'>{capture}</div>
           <div className='_text'>{text}</div>
         </div>
-      </NavLink>
+      </div>
     </div>
   )
 }
