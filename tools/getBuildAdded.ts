@@ -40,10 +40,6 @@ export const getBuildAdded: GetBuildAddedType = async (
   const { printRes, parentFunction } = options
 
   try {
-    const pathFull = join(__dirname, '..', `/src/Constants/buildData.const.ts`)
-    await getBuildGitData(pathFull, { printRes: true })
-    consoler('getGitBuildData:', 'yes')
-
     const pathToCssFolder = 'web-build/css'
     await getCreatedFolder(pathToCssFolder)
     consoler('getCreatedFolder for css:', 'yes')
@@ -58,11 +54,7 @@ export const getBuildAdded: GetBuildAddedType = async (
     const sourceIndexHtml: string = `deployment/index-academy.yourails.html`
     const destinationIndexHtml: string = `web-build/index.html`
     const overwriteIndexHtml: boolean = true
-    await getCopiedFileDir(
-      sourceIndexHtml,
-      destinationIndexHtml,
-      overwriteIndexHtml
-    )
+    await getCopiedFileDir(sourceIndexHtml, destinationIndexHtml, overwriteIndexHtml)
     consoler('getCopiedFileDir index.html file:', 'yes')
   } catch (error: any) {
     consolerError('getBuildAdded', { parentFunction, ...error })

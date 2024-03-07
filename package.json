@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",
-    "export:web": "yarn build && yarn minify && ts-node tools/getBuildAdded.ts",
+    "export:web": "ts-node tools/getBuildGitData.ts && yarn build && yarn minify && ts-node tools/getBuildAdded.ts",
     "bundle-report": "webpack-bundle-analyzer --port 4200 web-build/stats.json",
     "jest": "jest --colors",
     "minify": "ts-node tools/getPreparedFilesPublicWeb.ts",
@@ -46,7 +46,7 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.11.0",
     "react-redux": "^9.0.4",
-    "react-router-dom": "^6.3.0",
+    "react-router-dom": "^6.22.2",
     "react-share": "^4.4.1",
     "react-use": "^17.4.2",
     "redux": "^5.0.0",

@@ -74,5 +74,6 @@ if (require.main === module) {
   ;(async () => {
     const pathFull = join(__dirname, '..', `/src/Constants/buildData.const.ts`)
     await getBuildGitData(pathFull, { printRes: true })
+    consoler('getGitBuildData:', 'yes')
   })()
 }

@@ -19,7 +19,10 @@ export type ContentPlateComponentPropsType = {
   handleEvents: HandleEventType
 }
 
-export type ContentPlatePropsType = Omit<ContentPlateComponentPropsType, 'storeStateSlice'>
+export type ContentPlatePropsType = Omit<
+  ContentPlateComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
 
 export type ContentPlatePropsOutType = {
   contentComponentProps: Record<string, any>

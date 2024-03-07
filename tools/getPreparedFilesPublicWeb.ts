@@ -1,5 +1,6 @@
 import { join } from 'path'
 
+import { consoler } from './consoler'
 import { getFilesListInDir } from './getFilesListInDir'
 import { getCopiedFileDir } from './getCopiedFileDir'
 import { givePermission } from './givePermission'
@@ -19,10 +20,7 @@ const getPreparedFilesPublicWeb = async (buildDir: string): Promise<void> => {
   const minifiedFilesList = await getIteratedAndMinifiedFiles(buildDir, jsFiles)
   console.log('\n')
   minifiedFilesList.forEach((file: string) =>
-    console.log(
-      '* getPreparedFilesPublicWeb [20] ',
-      `Minified and compressed code written to ${file}.`
-    )
+    consoler('getPreparedFilesPublicWeb ', `Minified and compressed code written to ${file}.`)
   )
 
   /** @description Give permission to the build directories */

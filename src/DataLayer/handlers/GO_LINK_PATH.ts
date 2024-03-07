@@ -1,6 +1,7 @@
 import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { getRedirected } from '../../Shared/'
 
-export const GO_LINK_PATH: ActionEventType = async (
+export const GO_LINK_PATH: ActionEventType = (
   event,
   { navigate, pathname }: Record<'navigate' | 'pathname', any> = {
     navigate: () => {},
@@ -8,8 +9,11 @@ export const GO_LINK_PATH: ActionEventType = async (
   }
 ) => {
   try {
-    await navigate(pathname)
+    navigate(pathname)
+    setTimeout(() => {
+      if (location.pathname !== pathname) getRedirected(pathname, { isOrigin: true })
+    }, 500)
   } catch (error) {
-    console.error(error)
+    console.error('GO_LINK_PATH [13]', error)
   }
 }

@@ -98,7 +98,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       onClick: (event: any) => {
         handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID },
+          data: { capture, moduleID, contentID, navigate },
         })
         handleEvents(event, {
           typeEvent: 'GO_LINK_PATH',
@@ -114,7 +114,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
-      <div {...propsOut.linkProps} />
+      <NavLink {...propsOut.linkProps} />
     </div>
   )
 }

@@ -45,8 +45,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   let actionsToMount: any[] = []
   if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
 
-  useEffectedInitialRequests(actionsToMount)
-  useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })
+  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
+  useLoadedInitialTeachContent({ isSkipping: false })
 
   const screenType = 'AcademyMatrix'
 

@@ -1,3 +1,5 @@
+import { isParsableString } from '../Shared/isParsableString'
+
 interface GetSetObjToLocalStorageType {
   (key: string, options?: { printRes?: boolean }): any
 }
@@ -7,15 +9,15 @@ interface GetSetObjToLocalStorageType {
  * @run ts-node src/Shared/getLocalStorageReadKeyObj.ts
  * @import import { getLocalStorageReadKeyObj } from '../Shared/getLocalStorageReadKeyObj'
  */
-export const getLocalStorageReadKeyObj: GetSetObjToLocalStorageType = (
-  key: string,
-  options
-) => {
+export const getLocalStorageReadKeyObj: GetSetObjToLocalStorageType = (key: string, options) => {
   let output: any = null
 
   try {
-    const entity = localStorage.getItem(key) || 'null'
-    output = JSON.parse(entity)
+    const entity = localStorage?.getItem(key) || 'null'
+
+    output = entity
+    if (isParsableString(entity)) output = JSON.parse(entity)
+    else if (entity === 'null') output = null
 
     if (options?.printRes) {
       console.log('getLocalStorageReadKeyObj [24]', { output })

@@ -22,13 +22,14 @@ module.exports = {
         const method = 'get'
         const url = `${SERVERS_MAIN.remote}/appBrowser/globalVars.json`
         const options = { headers: { ...headers } }
-        const { data: globalVasr } = await axios[method](url, {}, options)
+        const res = await axios[method](url, {}, options)
+        const globalVar = res?.data
 
         console.info('lessPluginLoadJson [21]', {
-          globalVasr,
-          theme: globalVasr.theme,
+          globalVar,
+          theme: globalVar?.theme,
         })
-        return globalVasr.theme
+        return globalVar?.theme
       } catch (error) {
         console.info('lessPluginLoadJson [24]', { msg: error.message })
       }

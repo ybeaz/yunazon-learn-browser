@@ -90,7 +90,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         <div key={moduleID} className='_row _row_weather'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <div {...propsOut.linkToModuleProps} />
+            <NavLink {...propsOut.linkToModuleProps} />
           </div>
           <div className='_cell _module_duration'>{duration}</div>
           <div className='_cell _module_button_edit'>
