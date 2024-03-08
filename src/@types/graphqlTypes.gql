@@ -1596,20 +1596,20 @@ input ReadModulesConnectionInputType {
   sort: SortModulesInputType
 
   """
-  meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  stages: stages/ statuses/ envs to omit with that selection of the documents
   """
   stagesOmit: [String!] = []
 
-  """meta stages: stages/ statuses/ envs to pick from the set of documents"""
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
   stagesPick: [String!] = []
 
   """
-  meta tags: tags that characterises the content to omit with that selection of the documents
+  tags: tags that characterises the content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  meta tags: tags that characterises the content to pick from the set of documents
+  tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1649,6 +1649,14 @@ input ReadProfilesConnectionInputType {
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortProfilesInputType
+
+  """
+  stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
+  stagesPick: [String!] = []
 
   """user IDs"""
   userIDs: [ID!] = []
