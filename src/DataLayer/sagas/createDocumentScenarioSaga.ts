@@ -11,9 +11,7 @@ import { sendEmailDocument } from './sendEmailDocumentSaga'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 
-function* createDocumentScenarioGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { navigate, creatorID },
   } = params
@@ -32,9 +30,7 @@ function* createDocumentScenarioGenerator(
 
     yield call(readProfile, { data: { profileID: creatorID } })
 
-    const stateSelected: RootStoreType | any = yield select(
-      (state: RootStoreType) => state
-    )
+    const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
     const {
       forms: {
         profileActive: { nameFirst, nameMiddle, nameLast },
@@ -80,26 +76,17 @@ function* createDocumentScenarioGenerator(
 
     const slug = getSlug(capture)
     const pathname = `/d/${documentID}/${slug}`
-    navigate(pathname)
+    yield put(actionSync.GO_LINK_PATH({ navigate, pathname }))
 
     delay(1000)
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info(
-      'createDocumentScenario [82] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('createDocumentScenario [82] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const createDocumentScenario = withDebounce(
-  createDocumentScenarioGenerator,
-  500
-)
+export const createDocumentScenario = withDebounce(createDocumentScenarioGenerator, 500)
 
 export default function* createDocumentScenarioSaga() {
-  yield takeEvery(
-    [actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST().type],
-    createDocumentScenario
-  )
+  yield takeEvery([actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST().type], createDocumentScenario)
 }

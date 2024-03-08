@@ -14,11 +14,7 @@ import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import {
-  withStoreStateSelectedYrl,
-  withPropsYrl,
-  ButtonYrl,
-} from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import {
   GetScenarioDictPropsType,
@@ -41,21 +37,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const {
     stopVideoHandler,
-    storeStateSlice: {
-      language,
-      documents,
-      moduleIDActive,
-      modules,
-      nameFirst,
-      nameMiddle,
-      nameLast,
-      sub,
-    },
+    storeStateSlice: { language, moduleIDActive, modules, nameFirst, nameMiddle, nameLast, sub },
     handleEvents,
   } = props
-
-  const documentsLen = documents.length
-  const pathName = documentsLen && documents[documentsLen - 1]?.pathName
 
   const {
     capture,
@@ -76,22 +60,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
-  passRateIn =
-    passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
+  passRateIn = passRateIn && isParsableFloat(passRateIn) && parseFloat(passRateIn)
   passRateIn = passRateIn ? passRateIn : passRate
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
-  const score: GetAnswersChecked2OutType = getAnswersChecked2(
-    questionsActive,
-    passRateIn
-  )
+  const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
 
   const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
   const { total, right, wrong } = score
   let result = score.result
 
-  const QuestionsWithIncorrectAnswers =
-    DICTIONARY.QuestionsWithIncorrectAnswers[language]
+  const QuestionsWithIncorrectAnswers = DICTIONARY.QuestionsWithIncorrectAnswers[language]
 
   const getScenarioDictProps: GetScenarioDictPropsType = {
     result,
@@ -116,24 +95,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
 
-    if (
-      scenario.scenarioCase === 'success' ||
-      scenario.scenarioCase === 'successNoAuth'
-    ) {
+    if (scenario.scenarioCase === 'success' || scenario.scenarioCase === 'successNoAuth') {
       /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
       handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
 
-      setTimeout(
-        () =>
-          handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }),
-        5000
-      )
+      setTimeout(() => handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }), 5000)
     }
   }, [])
 
-  const getRendedQuestionsWrongAnswered: Function = (
-    questions: any[]
-  ): ReactElement => {
+  const getRendedQuestionsWrongAnswered: Function = (questions: any[]): ReactElement => {
     return (
       <ul className='_ul'>
         {questions.map(question => {
@@ -169,8 +139,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
           {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
         </div>
       ) : null}
-      {scenario.scenarioCase === 'success' ||
-      scenario.scenarioCase === 'successNoAuth' ? (
+      {scenario.scenarioCase === 'success' || scenario.scenarioCase === 'successNoAuth' ? (
         <div className='_buttons'>
           <ButtonYrl {...propsOut.buttonForwardProps} />
         </div>
@@ -181,7 +150,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
 const storeStateSliceProps: string[] = [
   'language',
-  'documents',
   'moduleIDActive',
   'modules',
   'nameFirst',

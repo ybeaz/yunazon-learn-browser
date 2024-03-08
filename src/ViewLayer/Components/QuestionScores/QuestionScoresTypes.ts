@@ -1,11 +1,7 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import {
-  CourseType,
-  ModuleType,
-  MetaCourseType,
-} from '../../../@types/GraphqlTypes'
+import { CourseType, ModuleType, MetaCourseType } from '../../../@types/GraphqlTypes'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
@@ -32,7 +28,6 @@ export type QuestionScoresComponentPropsType = {
   stopVideoHandler: any
   storeStateSlice: {
     language: RootStoreType['language']
-    documents: RootStoreType['documents']
     moduleIDActive: RootStoreType['scorm']['moduleIDActive']
     modules: RootStoreType['modules']
     nameFirst: RootStoreType['forms']['user']['nameFirst']
@@ -61,5 +56,4 @@ export interface QuestionScoresComponentType
   (props: QuestionScoresComponentPropsType): React.ReactElement
 }
 
-export type QuestionScoresType =
-  React.FunctionComponent<QuestionScoresPropsType>
+export type QuestionScoresType = React.FunctionComponent<QuestionScoresPropsType>

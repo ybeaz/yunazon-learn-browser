@@ -197,7 +197,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
-          {!isMobileSearchInput && (
+          {!isMobileSearchInput && isSeachGroup && (
             <div className='_itemButtonMobileSearchToggle'>
               <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
             </div>
@@ -227,7 +227,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
             </div>
           )}
         </div>
-        {isMobileSearchInput ? (
+        {isMobileSearchInput && isSeachGroup ? (
           <div className='__rightMobile'>
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
