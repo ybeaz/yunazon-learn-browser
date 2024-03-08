@@ -12,6 +12,7 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
 
   if (screenActive === 'AcademyMatrix' || screenActive === 'MyModules')
     dispatch(actionAsync.GET_MODULES.REQUEST())
-  else if (screenActive === 'MyDocuments')
-    dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+  else if (screenActive === 'MyDocuments') dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+
+  dispatch(actionSync.TOGGLE_IS_MOBILE_SEARCH_INPUT({ isMobileSearchInput: false }))
 }

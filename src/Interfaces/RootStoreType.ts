@@ -60,6 +60,7 @@ export type ComponentsStateType = {
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
+  isMobileSearchInput: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict

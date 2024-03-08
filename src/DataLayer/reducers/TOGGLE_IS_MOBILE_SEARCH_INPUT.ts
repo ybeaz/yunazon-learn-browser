@@ -2,13 +2,16 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 /**
- * @description Toggling isSummary
+ * @description Toggling isMobileSearchInput
  */
-export const TOGGLE_IS_SUMMARY: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
+export const TOGGLE_IS_MOBILE_SEARCH_INPUT: ReducerType = (
+  store: RootStoreType,
+  { isMobileSearchInput }: any
+): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {
     ...componentsState,
-    isSummary: data,
+    isMobileSearchInput,
   }
   return {
     ...store,

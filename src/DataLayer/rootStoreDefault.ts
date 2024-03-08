@@ -80,6 +80,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
+  isMobileSearchInput: false,
   oAuthStage: null,
   modalFrames: [
     {

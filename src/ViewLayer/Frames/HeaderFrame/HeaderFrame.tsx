@@ -52,6 +52,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     storeStateSlice: {
       authAwsCognitoUserData: { sub, email },
       isSideNavLeftVisible,
+      isMobileSearchInput,
       language,
       profiles,
     },
@@ -165,6 +166,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
         action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
       },
     },
+    buttonMobileSearchToggleProps: {
+      icon: 'MdSearch',
+      classAdded: 'Button_MobileSearchToggle',
+      action: {
+        typeEvent: 'TOGGLE_IS_MOBILE_SEARCH_INPUT',
+        data: { isMobileSearchInput: !isMobileSearchInput },
+      },
+    },
   }
 
   let SideMenuLeft = null
@@ -188,6 +197,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
+          {!isMobileSearchInput && (
+            <div className='_itemButtonMobileSearchToggle'>
+              <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
+            </div>
+          )}
         </div>
         <div className='__main'>
           {isSeachGroup && (
@@ -213,6 +227,11 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
             </div>
           )}
         </div>
+        {isMobileSearchInput ? (
+          <div className='__rightMobile'>
+            <InputGroupYrl {...propsOut.inputGroupProps} />
+          </div>
+        ) : null}
       </div>
       <SideNavigation />
       <ModalFrames />
@@ -223,6 +242,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
 const storeStateSliceProps: string[] = [
   'authAwsCognitoUserData',
   'isSideNavLeftVisible',
+  'isMobileSearchInput',
   'language',
   'profiles',
 ]

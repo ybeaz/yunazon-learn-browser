@@ -2,7 +2,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 /**
- * @description Toggling success confetti
+ * @description Toggling isObjections
  */
 export const TOGGLE_IS_OBJECTIONS: ReducerType = (
   store: RootStoreType,

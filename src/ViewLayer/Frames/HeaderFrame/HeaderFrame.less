@@ -33,6 +33,10 @@
         flex: 1;
         padding: 0 1rem;
       }
+
+      ._itemButtonMobileSearchToggle {
+        display: none;
+      }
     }
 
     .__right {
@@ -79,12 +83,25 @@
   @media @phone, @phone-strict {
     ._content {
       overflow: hidden;
+      flex-direction: column;
       justify-content: space-between;
+
       .__left {
       }
 
+      .__left {
+        ._itemButtonMobileSearchToggle {
+          display: flex;
+          margin-left: auto;
+          margin-top: auto;
+        }
+      }
+
       .__main {
+        flex: none;
+
         ._itemInputGroupYrl {
+          display: none;
         }
       }
 
@@ -106,6 +123,11 @@
         ._itemButtonThemeToggle {
           display: none;
         }
+      }
+
+      .__rightMobile {
+        display: flex;
+        padding-top: 0.25rem;
       }
     }
   }

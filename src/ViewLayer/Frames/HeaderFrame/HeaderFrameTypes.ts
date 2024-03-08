@@ -1,10 +1,7 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
 import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
-import {
-  ButtonYrlPropsType,
-  InputGroupYrlPropsType,
-} from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType, InputGroupYrlPropsType } from '../../ComponentsLibrary/'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type HeaderFrameComponentPropsType = {
@@ -31,15 +28,13 @@ export type HeaderFrameComponentPropsType = {
   storeStateSlice: {
     authAwsCognitoUserData: RootStoreType['authAwsCognitoUserData']
     isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
+    isMobileSearchInput: RootStoreType['componentsState']['isMobileSearchInput']
     language: RootStoreType['language']
     profiles: RootStoreType['profiles']
   }
 }
 
-export type HeaderFramePropsType = Omit<
-  HeaderFrameComponentPropsType,
-  'storeStateSlice'
->
+export type HeaderFramePropsType = Omit<HeaderFrameComponentPropsType, 'storeStateSlice'>
 
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
@@ -54,6 +49,7 @@ export type HeaderFramePropsOutType = {
   avatarPlusInfoProps: AvatarPlusInfoPropsType
   abInCircleProps: AbInCirclePropsType
   inputGroupProps: InputGroupYrlPropsType
+  buttonMobileSearchToggleProps: ButtonYrlPropsType
 }
 
 /**
