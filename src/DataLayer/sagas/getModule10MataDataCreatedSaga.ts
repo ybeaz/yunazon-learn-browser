@@ -18,18 +18,14 @@ import {
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
 
-export function* getModule10MataDataCreatedGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getModule10MataDataCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     /* Add originUri to moduleCreateProgress */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
       return state.forms.inputCourseCreate
     })
 
-    yield put(
-      actionSync.ADD_MODULE_CREATE_DATA({ originUrl: inputCourseCreate })
-    )
+    yield put(actionSync.ADD_MODULE_CREATE_DATA({ originUrl: inputCourseCreate }))
 
     /* Add metaData to moduleCreateProgress */
     yield put(
@@ -39,11 +35,18 @@ export function* getModule10MataDataCreatedGenerator(
       })
     )
 
-    const variables: MutationCreateContentMetaDataArgs = {
+    let variables: MutationCreateContentMetaDataArgs = {
       createContentMetaDataInput: {
-        originUrl: inputCourseCreate,
+        originID: inputCourseCreate,
       },
     }
+
+    if (inputCourseCreate.includes('youtube.com'))
+      variables = {
+        createContentMetaDataInput: {
+          originUrl: inputCourseCreate,
+        },
+      }
 
     const createContentMetaData: any = yield getResponseGraphqlAsync(
       {
@@ -77,17 +80,11 @@ export function* getModule10MataDataCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule10MataDataCreatedSaga [76] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule10MataDataCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule10MataDataCreated = withDebounce(
-  getModule10MataDataCreatedGenerator,
-  500
-)
+export const getModule10MataDataCreated = withDebounce(getModule10MataDataCreatedGenerator, 500)
 
 export default function* getModule10MataDataCreatedSaga() {
   yield takeEvery(

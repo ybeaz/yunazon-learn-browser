@@ -15,8 +15,8 @@ export const DICTIONARY: IDictionary = {
     en: 'Module name',
     ru: 'Название модуля',
   },
-  Module_duration: {
-    en: 'Module duration',
+  Duration: {
+    en: 'Duration',
     ru: 'Продолжительность',
   },
   Edit: {
@@ -877,17 +877,13 @@ export const DICTIONARY: IDictionary = {
     en: (
       <div className='_text'>
         <div className='_line1'>Unique educational service!</div>
-        <div className='_line2'>
-          Сheck your understanding and get the confirmation
-        </div>
+        <div className='_line2'>Сheck your understanding and get the confirmation</div>
       </div>
     ),
     ru: (
       <div className='_text'>
         <div className='_line1'>Уникальный образовательный сервис!</div>
-        <div className='_line2'>
-          Проверьте свое понимание и получите подтверждение
-        </div>
+        <div className='_line2'>Проверьте свое понимание и получите подтверждение</div>
       </div>
     ),
   },

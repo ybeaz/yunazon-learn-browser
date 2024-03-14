@@ -7,9 +7,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* createSiteMapGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     const createSiteMap: any = yield getResponseGraphqlAsync(
       {
@@ -22,12 +20,8 @@ export function* createSiteMapGenerator(
         timeout: 5000,
       }
     )
-    console.info('createSiteMapSaga [33]', { createSiteMap })
   } catch (error: any) {
-    console.info(
-      'createSiteMapSaga [33] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('createSiteMapSaga [33] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

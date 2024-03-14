@@ -24,12 +24,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       // @ts-expect-error
       storeStateApp?.authAwsCognitoUserData?.refresh_token
 
-    const refresh_token_localStorage =
-      getLocalStorageReadKeyObj('refresh_token')
+    const refresh_token_localStorage = getLocalStorageReadKeyObj('refresh_token')
 
     if (refresh_token_App) refresh_token = refresh_token_App
-    else if (refresh_token_localStorage)
-      refresh_token = refresh_token_localStorage
+    else if (refresh_token_localStorage) refresh_token = refresh_token_localStorage
 
     if (!refresh_token) return
 
@@ -59,16 +57,13 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       })
     )
   } catch (error: any) {
-    console.log(
-      'getAuthAwsCognitoUserRefreshedSaga [61] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.log('getAuthAwsCognitoUserRefreshedSaga [61] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
 export const getAuthAwsCognitoUserRefreshed = withDebounce(
   getAuthAwsCognitoUserRefreshedGenerator,
-  500
+  10
 )
 
 /**

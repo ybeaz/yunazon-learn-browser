@@ -108,9 +108,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         <header className='_row _row_header'>
           <div className='_cell _header_date'>{DICTIONARY.Date_of_creation[language]}</div>
           <div className='_cell _header_module_name'>{DICTIONARY.Module_name[language]}</div>
-          <div className='_cell _header_module_duration'>
-            {DICTIONARY.Module_duration[language]}
-          </div>
+          <div className='_cell _header_module_duration'>{DICTIONARY.Duration[language]}</div>
           <div className='_cell _header_module_button_edit'>
             {/* TODO: Add a button and implement edit feature */}
             <div style={{ opacity: 0 }}>{DICTIONARY.Edit[language]}</div>

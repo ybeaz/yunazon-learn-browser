@@ -1574,13 +1574,13 @@ export type ReadModulesConnectionInputType = {
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortModulesInputType>;
-  /** meta stages: stages/ statuses/ envs to omit with that selection of the documents */
+  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
   stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** meta stages: stages/ statuses/ envs to pick from the set of documents */
+  /** stages: stages/ statuses/ envs to pick from the set of documents */
   stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** meta tags: tags that characterises the content to omit with that selection of the documents */
+  /** tags: tags that characterises the content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** meta tags: tags that characterises the content to pick from the set of documents */
+  /** tags: tags that characterises the content to pick from the set of documents */
   tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
@@ -1610,6 +1610,10 @@ export type ReadProfilesConnectionInputType = {
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortProfilesInputType>;
+  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
+  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** stages: stages/ statuses/ envs to pick from the set of documents */
+  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** user IDs */
   userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
