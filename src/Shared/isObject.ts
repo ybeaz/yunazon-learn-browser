@@ -1,20 +1,20 @@
-export type isObjectParamsType = any
+export type IsObjectParamsType = any
 
-export type isObjectResType = boolean
+export type IsObjectResType = boolean
 
-interface isObjectType {
-  (obj: isObjectParamsType, options?: { printRes: boolean }): isObjectResType
+interface IsObjectType {
+  (entity: IsObjectParamsType, options?: { printRes: boolean }): IsObjectResType
 }
 
 /**
  * @description Function to isObject
- * @import import { isObject } from './Shared/isObject'
+ * @import import { isObject } from '../Shared/isObject'
  */
 
-export const isObject: isObjectType = (obj, options) => {
+export const isObject: IsObjectType = (entity, options) => {
   if (options?.printRes) {
-    console.log('isObject', 'obj.constructor.name', obj.constructor.name)
+    console.log('isObject', 'obj.constructor.name', entity.constructor.name)
   }
 
-  return obj != null && obj.constructor.name === 'Object'
+  return entity != null && entity.constructor.name === 'Object'
 }

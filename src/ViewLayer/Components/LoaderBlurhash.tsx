@@ -17,14 +17,14 @@ export const LoaderBlurhash: React.FunctionComponent<any> = (
     isVisibleBlurHash,
     textTooltip,
     isTextTooltip = false,
-    delay = 500000,
+    delay = 500,
     contentComponentName,
   } = props
 
   const [isTextVisible, setIsTextVisible] = useState(false)
 
   setTimeout(() => {
-    setIsTextVisible(true)
+    if (isVisibleBlurHash) setIsTextVisible(true)
   }, delay)
 
   let blurHashClass = isVisibleBlurHash ? '_blockVisible' : '_blockHided'

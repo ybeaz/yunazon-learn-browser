@@ -32,7 +32,7 @@ export const getModuleByCourseIDIndex: GetModuleByCourseIDIndexInterface = ({
   let moduleDescription = module.description
 
   if (modulesTotal === 1) {
-    moduleCapture = courseCapture
+    moduleCapture = moduleCapture
     moduleDescription = courseDescription
   }
 

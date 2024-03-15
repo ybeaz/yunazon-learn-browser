@@ -20,7 +20,7 @@ export const getWriteFile: getWriteFileType = async (
     await fs.writeFile(pathFull, str)
 
     if (options?.printRes) {
-      consoler('getWriteFile', 'getWriteFileRes', str)
+      consoler('getWriteFile', str)
     }
 
     return str

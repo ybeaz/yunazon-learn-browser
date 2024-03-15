@@ -5,6 +5,7 @@ interface GetModuleActiveByCourseIDIndexType {
 }
 
 /**
+ * @status DEPRECIATED
  * @description Function to make a course isSelected based on contentID and index
  * @import import { getModuleActiveByCourseIDIndex } from '../Shared/getModuleActiveByCourseIDIndex'
  */
@@ -13,6 +14,7 @@ export const getModuleActiveByCourseIDIndex: GetModuleActiveByCourseIDIndexType 
     return courses.map((course: CourseType) => {
       let isSelected = false
       const { courseID, modules } = course
+      // @ts-expect-error
       let modulesNext: ModuleType[] = modules || []
       modulesNext = modulesNext.map(module => {
         const { index } = module

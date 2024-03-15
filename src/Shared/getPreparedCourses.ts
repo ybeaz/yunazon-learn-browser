@@ -1,14 +1,12 @@
-import { CoursesConnectionType, CourseType } from '../@types/GraphqlTypes'
+import { CourseType, AcademyPresentCaseEnumType } from '../@types/'
 
-import { getFilteredActiveCoursesModules } from './getFilteredActiveCoursesModules'
-import { getFilteredActiveQuestions } from './getFilteredActiveQuestions'
-import { getProvidedSearchString } from './getProvidedSearchString'
-import { getValidatedCourses } from './getValidatedCourses'
-import { getOptionsShuffled } from './getOptionsShuffled'
-import { getProdidevAnswerDefault } from './getProdidevAnswerDefault'
-import { getProvidedSelectedDefault } from './getProvidedSelectedDefault'
-import { getProvidedID } from './getProvidedID'
+import { getFilteredActiveCoursesModulesDepreciated } from './getFilteredActiveCoursesModulesDepreciated'
+import { getFilteredActiveQuestionsDepreciated } from './getFilteredActiveQuestionsDepreciated'
+import { getValidatedCoursesDepreciated } from './getValidatedCoursesDepreciated'
+import { getOptionsShuffledDepreciated } from './getOptionsShuffledDepreciated'
+import { getProdidedAnswerDefaultDepreciated } from './getProdidedAnswerDefaultDepreciated'
 import { getChainedResponsibility } from './getChainedResponsibility'
+import { getQuestionsPickedRandomlyDepreciated } from '../Shared/getQuestionsPickedRandomlyDepreciated'
 
 export type GetPreparedCoursesParamsType = CourseType[]
 
@@ -34,21 +32,28 @@ export const getPreparedCourses: GetPreparedCoursesType = (
   let coursesNext: CourseType[] = []
 
   try {
-    coursesNext = getChainedResponsibility(courses)
-      .exec(getValidatedCourses)
-      .exec(getFilteredActiveCoursesModules)
-      .exec(getFilteredActiveQuestions)
-      // .exec(getProvidedID)
-      // .exec(getProvidedSelectedDefault)
-      .exec(getProdidevAnswerDefault)
-      .exec(getOptionsShuffled)
-      .exec(getProvidedSearchString).result
+    /* Case: use the whole courses set from API call */
+
+    coursesNext =
+      // .exec(getProvidedSearchString)
+      getChainedResponsibility(courses)
+        .exec(getValidatedCoursesDepreciated)
+        .exec(getFilteredActiveCoursesModulesDepreciated)
+        .exec(getFilteredActiveQuestionsDepreciated)
+        .exec(getQuestionsPickedRandomlyDepreciated)
+        // .exec(getProvidedID)
+        // .exec(getProvidedSelectedDefault)
+        .exec(getProdidedAnswerDefaultDepreciated)
+        .exec(getOptionsShuffledDepreciated).result
 
     if (options?.printRes) {
-      console.log('getMappedConnectionToCourses', { coursesNext })
+      console.log('getPreparedCourses', { coursesNext })
     }
   } catch (error: any) {
-    console.log('getMappedConnectionToCourses', 'Error', error.message)
+    console.log('getPreparedCourses', 'Error', {
+      'error.message': error.message,
+      courses,
+    })
   } finally {
     return coursesNext
   }

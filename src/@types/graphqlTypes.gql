@@ -2,16 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-input AddDocumentInputType {
-  capture: String!
-  contentIDs: [String!]!
-  courseID: ID!
-  description: String
-  env: String!
-  lang: String!
-  meta: MetaInputType!
-  moduleIDs: [String!]!
-  userName: UserNameInputType!
+type AiRequestOptionsType {
+  """response_format"""
+  response_format: String
+}
+
+input AvatarSizeInputType {
+  """height"""
+  height: Float = 0
+
+  """width"""
+  width: Float = 0
 }
 
 type AvatarSizeType {
@@ -22,10 +23,92 @@ type AvatarSizeType {
   width: Float
 }
 
+type BotType {
+  """aiRequestOptions"""
+  aiRequestOptions: AiRequestOptionsType!
+
+  """aiServiceMethod"""
+  aiServiceMethod: String!
+
+  """aiServiceName"""
+  aiServiceName: String!
+
+  """bots ID"""
+  botID: ID
+
+  """comments"""
+  comments: String!
+
+  """bots created date"""
+  dateCreated: Float
+
+  """bots deleted date"""
+  dateDeleted: Float
+
+  """bots updated date"""
+  dateUpdated: Float
+
+  """disclaimerRef"""
+  disclaimerRef: String!
+
+  """isActive"""
+  isActive: Boolean
+
+  """profile ID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String!
+
+  """prompt"""
+  prompt: PromptType!
+
+  """transformFunctionName"""
+  transformFunctionName: String!
+
+  """user ID"""
+  userID: ID
+}
+
+type BotsConnectionType {
+  """[BotsEdgeType]"""
+  edges: [BotsEdgeType!]
+
+  """BotsPageInfoType"""
+  pageInfo: BotsPageInfoType
+}
+
+type BotsEdgeType {
+  """cursor"""
+  cursor: String
+
+  """BotsEdgeType"""
+  node: BotType
+}
+
+type BotsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
 type ChoiceType {
   finish_reason: String!
   index: Int!
   message: MessageChoiceType!
+}
+
+type CollectionUpdateStatusType {
+  """templates ID"""
+  collectionName: ID
+
+  """collection updated date"""
+  dateUpdated: Float
+
+  """status > whether the collection is updated successfully"""
+  statusUpdated: Boolean!
 }
 
 input ComparisonFields {
@@ -43,6 +126,9 @@ enum CompetencyContentType {
 }
 
 type CompetencyTagType {
+  """competency ID"""
+  competencyID: ID!
+
   """contentType"""
   contentType: CompetencyContentType!
 
@@ -52,14 +138,11 @@ type CompetencyTagType {
   """iconName"""
   iconName: String
 
-  """competency ID"""
-  idCompetency: ID!
-
-  """profile ID"""
-  idProfile: ID!
-
   """linkHref"""
   linkHref: String
+
+  """profile ID"""
+  profileID: ID!
 
   """section"""
   section: String
@@ -87,7 +170,7 @@ input CompetencyTagsInputType {
 
 input CompetencyTagsParamsReadType {
   """first item"""
-  idProfile: String
+  profileID: String
 }
 
 type CourseEdgeType {
@@ -117,6 +200,9 @@ type CourseType {
   """course description"""
   description: String!
 
+  """ipClient profile/ user"""
+  ipClient: String
+
   """isActive"""
   isActive: Boolean!
 
@@ -124,16 +210,13 @@ type CourseType {
   language: String!
 
   """courses meta information"""
-  meta: MetaType
+  meta: MetaCourseType
 
   """courses modules"""
-  modules: [ModuleType!]
+  modules: [ModuleCourseType!]
 
-  """courses passRate"""
-  passRate: Float
-
-  """courses questionNumber"""
-  questionNumber: Int!
+  """profile ID"""
+  profileID: ID!
 }
 
 type CoursesConnectionType {
@@ -144,20 +227,6 @@ type CoursesConnectionType {
   pageInfo: CoursesPageInfoType
 }
 
-input CoursesInputType {
-  """courses created date"""
-  coursesDateCreated: Date
-
-  """courses deleted date"""
-  coursesDateDeleted: Date
-
-  """courses updated date"""
-  coursesDateUpdated: Date
-
-  """courses ID"""
-  idCourses: ID
-}
-
 type CoursesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -166,23 +235,353 @@ type CoursesPageInfoType {
   hasNextPage: Boolean
 }
 
+input CreateBotResponseInputType {
+  """botID"""
+  botID: ID
+
+  """profileID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String = null
+
+  """userText"""
+  userText: String!
+}
+
+type CreateBotResponseType {
+  """botID"""
+  botID: ID
+
+  """isBotResponse"""
+  isBotResponse: Boolean
+
+  """length"""
+  length: Float
+
+  """profileID"""
+  profileID: ID
+
+  """profileName"""
+  profileName: String
+
+  """textObj"""
+  textObj: TextObjType
+}
+
+input CreateBotsInputType {
+  """bots ID"""
+  botsID: ID
+}
+
+type CreateContentMetaDataType {
+  """capture"""
+  capture: String
+
+  """course module contentID"""
+  contentID: ID
+
+  """description"""
+  description: String
+
+  """duration"""
+  duration: String
+
+  """isContentMetaData"""
+  isContentMetaData: Boolean
+
+  """language code"""
+  language: String
+
+  """length"""
+  length: Float
+
+  """courses meta tags: tags that characterises the course content"""
+  tags: [String!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsBotType!
+}
+
+input CreateCourseInputType {
+  """course capture"""
+  capture: String!
+
+  """courses ID"""
+  courseID: ID
+
+  """course description"""
+  description: String!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """courses meta information"""
+  meta: MetaCourseInputType
+
+  """courses modules"""
+  modules: [ModuleCourseInputType!]
+
+  """profile ID"""
+  profileID: ID!
+}
+
+input CreateDocumentInputType {
+  """creator of the module"""
+  creator: UpdateProfileInputType!
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
+
+  """module"""
+  module: UpdateModuleInputType!
+}
+
+input CreateModuleInputType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """module objection"""
+  objections: [ObjectionInputType!] = []
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """module questions"""
+  questions: [QuestionInputType!]! = []
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
+
+  """module transcriptList"""
+  transcriptList: [TranscriptObjectInputType!] = []
+}
+
+input CreateOriginInputType {
+  """youtubeID"""
+  originID: String = null
+
+  """youtubeUrl"""
+  originUrl: [String!] = null
+}
+
+input CreateProfileInputType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
+  """avatarSrc"""
+  avatarSize: AvatarSizeInputType
+
+  """avatarSrc"""
+  avatarSrc: String
+
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
+  """user ID"""
+  botID: ID = null
+
+  """contacts"""
+  contacts: [String!] = []
+
+  """description"""
+  description: String
+
+  """disclaimer"""
+  disclaimer: String
+
+  """emails"""
+  emails: [String!] = []
+
+  """help"""
+  help: String
+
+  """socket ID"""
+  idSocket: ID
+
+  """imagePendingSrc"""
+  imagePendingSrc: String
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
+
+  """locations"""
+  locations: [String!] = []
+
+  """messengers"""
+  messengers: [MessengerInputType!] = []
+
+  """nameFirst"""
+  nameFirst: String
+
+  """nameLast"""
+  nameLast: String
+
+  """nameMiddle"""
+  nameMiddle: String
+
+  """pendingText"""
+  pendingText: String
+
+  """phones"""
+  phones: [String!] = []
+
+  """default position profile in the list"""
+  position: Float = 0
+
+  """profile ID"""
+  profileName: String!
+
+  """profileNature"""
+  profileNature: ProfileNatureType!
+
+  """promptExamples"""
+  promptExamples: [String!] = []
+
+  """serviceSections"""
+  serviceSections: [String!] = []
+
+  """serviceSpecs"""
+  serviceSpecs: [String!] = []
+
+  """url. URLs of the item."""
+  urls: [String!]
+
+  """user ID"""
+  userID: ID!
+}
+
+input CreateTemplatesInputType {
+  """templates ID"""
+  templatesID: ID
+}
+
+type CreateYoutubeTranscriptType {
+  """isTranscript"""
+  isTranscript: Boolean
+
+  """length"""
+  length: Float
+
+  """transcript"""
+  transcript: String
+
+  """transcriptList"""
+  transcriptList: [TranscriptObjectBotType!]
+}
+
 """Date custom scalar type"""
 scalar Date
 
+type DocumentEdgeType {
+  """cursor"""
+  cursor: String
+
+  """Document"""
+  node: DocumentType
+}
+
 type DocumentType {
-  capture: String!
-  contentIDs: [String!]!
-  courseID: ID!
-  creationDate: Date!
-  description: String
+  """creator of the module"""
+  creator: ProfileType!
+
+  """documents created date"""
+  dateCreated: Float!
+
+  """documents deleted date"""
+  dateDeleted: Float
+
+  """documents updated date"""
+  dateUpdated: Float!
+
+  """documentID"""
   documentID: ID!
-  env: String!
-  ip: String!
-  lang: String!
-  meta: MetaObjectType!
-  moduleIDs: [String!]!
-  pathName: String!
-  userName: UserNameObjectType!
+
+  """ipClient profile/ user"""
+  ipClient: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """learner, user, student"""
+  learner: ProfileType!
+
+  """module"""
+  module: ModuleType!
+}
+
+type DocumentsConnectionType {
+  """[DocumentsEdgeType]"""
+  edges: [DocumentEdgeType!]
+
+  """DocumentsPageInfoType"""
+  pageInfo: DocumentsPageInfoType
+}
+
+type DocumentsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type ImageDataOpenAiType {
@@ -222,6 +621,14 @@ type MessageChoiceType {
   role: String!
 }
 
+input MessengerInputType {
+  """name"""
+  name: String
+
+  """profileName"""
+  profileName: String
+}
+
 type MessengerType {
   """name"""
   name: String
@@ -230,23 +637,82 @@ type MessengerType {
   profileName: String
 }
 
-input MetaInputType {
+input MetaCourseInputType {
+  """course meta email"""
   email: String!
+
+  """course meta institution"""
   institution: String!
-  isSendingBcc: Boolean!
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean! = false
+
+  """course meta specName"""
   specName: String!
+
+  """course meta specTitle"""
   specTitle: String!
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!] = []
 }
 
-type MetaObjectType {
-  email: String!
-  institution: String!
-  isSendingBcc: Boolean!
-  specName: String!
-  specTitle: String!
+input MetaCoursePartialInputType {
+  """course meta email"""
+  email: String
+
+  """course meta institution"""
+  institution: String
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """course meta specName"""
+  specName: String
+
+  """course meta specTitle"""
+  specTitle: String
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!] = []
 }
 
-type MetaType {
+type MetaCoursePartialType {
+  """course meta email"""
+  email: String
+
+  """course meta institution"""
+  institution: String
+
+  """course meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """course meta specName"""
+  specName: String
+
+  """course meta specTitle"""
+  specTitle: String
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """
+  courses meta tags: tags that characterises the course content, its marketing features
+  """
+  tags: [String!]
+}
+
+type MetaCourseType {
   """course meta email"""
   email: String!
 
@@ -261,9 +727,105 @@ type MetaType {
 
   """course meta specTitle"""
   specTitle: String!
+
+  """courses meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """courses meta tags: tags that characterises the course content"""
+  tags: [String!]
 }
 
-type ModuleType {
+input MetaPartialInputType {
+  """meta email"""
+  email: String
+
+  """meta institution"""
+  institution: String
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """meta specName"""
+  specName: String
+
+  """meta specTitle"""
+  specTitle: String
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """meta tags: tags that characterises the content, its marketing features"""
+  tags: [String!] = []
+}
+
+type MetaPartialType {
+  """meta email"""
+  email: String
+
+  """meta institution"""
+  institution: String
+
+  """meta isSendingBcc"""
+  isSendingBcc: Boolean
+
+  """meta specName"""
+  specName: String
+
+  """meta specTitle"""
+  specTitle: String
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """meta tags: tags that characterises the content, its marketing features"""
+  tags: [String!]
+}
+
+input ModuleCourseInputType {
+  """course module capture"""
+  capture: String!
+
+  """course module contentID"""
+  contentID: ID!
+
+  """course module content type"""
+  contentType: String!
+
+  """course module capture"""
+  description: String
+
+  """course module duration"""
+  duration: String!
+
+  """course module index"""
+  index: Int!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """course module ID"""
+  moduleID: ID
+
+  """course module objection"""
+  objections: [ObjectionCourseInputType!]
+
+  """module passRate"""
+  passRate: Float
+
+  """module questionNumber"""
+  questionNumber: Int!
+
+  """course module questions"""
+  questions: [QuestionCourseInputType!]!
+
+  """course module summary"""
+  summary: [SummaryItemCourseInputType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseInputType = null
+}
+
+type ModuleCourseType {
   """course module capture"""
   capture: String!
 
@@ -288,29 +850,162 @@ type ModuleType {
   """course module ID"""
   moduleID: ID!
 
+  """course module objection"""
+  objections: [ObjectionCourseType!]
+
+  """module passRate"""
+  passRate: Float
+
+  """module questionNumber"""
+  questionNumber: Int!
+
   """course module questions"""
+  questions: [QuestionCourseType!]!
+
+  """course module summary"""
+  summary: [SummaryItemCourseType!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsCourseType
+}
+
+type ModuleEdgeType {
+  """cursor"""
+  cursor: String
+
+  """module"""
+  node: ModuleType
+}
+
+type ModuleType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """module objection"""
+  objections: [ObjectionType!]
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float
+
+  """module questionNumber"""
+  questionNumber: Int!
+
+  """module questions"""
   questions: [QuestionType!]!
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """module summary"""
+  summary: [SummaryItemType!]
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsType
+
+  """transcriptList"""
+  transcriptList: [TranscriptObjectType!]
+}
+
+type ModulesConnectionType {
+  """[ModuleEdgeType]"""
+  edges: [ModuleEdgeType!]
+
+  """ModulesPageInfoType"""
+  pageInfo: ModulesPageInfoType
+}
+
+type ModulesPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type Mutation {
-  addDocument(addDocumentInputType: AddDocumentInputType!): DocumentType!
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
+  createBotResponse(createBotResponseInput: CreateBotResponseInputType!): CreateBotResponseType!
+  createBots(createBotsInput: [CreateBotsInputType!]!): [BotType!]!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
-  createCourses(coursesInput: CoursesInputType!): [CourseType!]!
-  createProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  createTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  createContentMetaData(createContentMetaDataInput: CreateOriginInputType!): CreateContentMetaDataType!
+  createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
+  createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
+  createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
+  createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
+  createSiteMap: SiteMapReportType!
+  createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
+  createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
+  deactivateBots(deactivateBotsIdsInput: [String!]!): [String!]!
+  deactivateCourses(deactivateCoursesIdsInput: [String!]!): [String!]!
+  deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
+  deactivateModules(deactivateModulesIdsInput: [String!]!): [String!]!
+  deactivateProfiles(deactivateProfilesIdsInput: [String!]!): [String!]!
+  deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
+  deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
-  deleteCourses(courseID: String!): [CourseType!]!
-  deleteProfiles(idProfiles: String!): [ProfileType!]!
-  deleteTemplates(idTemplates: String!): [TemplatesType!]!
+  deleteCourses(deleteCoursesIdsInput: [String!]!): [String!]!
+  deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
+  deleteModules(deleteModulesIdsInput: [String!]!): [String!]!
+  deleteProfiles(deleteProfilesIdsInput: [String!]!): [String!]!
+  deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
-  removeDocument(id: String!): Boolean!
   removeRecipe(id: String!): Boolean!
+  updateBots(updateBotsInput: [UpdateBotsInputType!]!): [BotType!]!
+  updateCollections(collections: [String!]!): [CollectionUpdateStatusType!]!
   updateCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
-  updateCourses(coursesInput: CoursesInputType!): [CourseType!]!
-  updateProfiles(profilesInput: ProfilesInputType!): [ProfileType!]!
-  updateTemplates(templatesInput: TemplatesInputType!): [TemplatesType!]!
+  updateCourses(updateCoursesInput: [UpdateCourseInputType!]!): [CourseType!]!
+  updateCoursesMeta(updateCoursesMetaInput: [UpdateCourseMetaInputType!]!): [UpdateCourseMetaType!]!
+  updateDocuments(updateDocumentsInput: [UpdateDocumentInputType!]!): [DocumentType!]!
+  updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
+  updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
+  updateProfiles(updateProfilesInput: [UpdateProfileInputType!]!): [ProfileType!]!
+  updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
 
@@ -320,7 +1015,51 @@ input NewRecipeInputType {
   title: String!
 }
 
-type OptionType {
+input ObjectionCourseInputType {
+  """course module Objection capture"""
+  capture: String = null
+
+  """courses module Objection ID"""
+  objectionID: ID
+
+  """course module Objection text"""
+  text: String = null
+}
+
+type ObjectionCourseType {
+  """course module Objection capture"""
+  capture: String
+
+  """course module Objection ID"""
+  objectionID: ID!
+
+  """course module Objection text"""
+  text: String
+}
+
+input ObjectionInputType {
+  """module Objection capture"""
+  capture: String = null
+
+  """module Objection ID"""
+  objectionID: ID
+
+  """module Objection text"""
+  text: String = null
+}
+
+type ObjectionType {
+  """module Objection capture"""
+  capture: String
+
+  """module Objection ID"""
+  objectionID: ID!
+
+  """module Objection text"""
+  text: String
+}
+
+input OptionCourseInputType {
   """course module question option label"""
   label: String!
 
@@ -328,6 +1067,45 @@ type OptionType {
   optionID: ID
 
   """course module question option status: true or false"""
+  status: Boolean!
+}
+
+type OptionCourseType {
+  """course module question option label"""
+  label: String!
+
+  """courses module question option ID"""
+  optionID: ID
+
+  """course module question option status: true or false"""
+  status: Boolean!
+}
+
+input OptionInputType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
+  """module question option label"""
+  label: String!
+
+  """module question option ID"""
+  optionID: ID
+
+  """module question option status: true or false"""
+  status: Boolean!
+}
+
+type OptionType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
+  """module question option label"""
+  label: String!
+
+  """module question option ID"""
+  optionID: ID
+
+  """module question option status: true or false"""
   status: Boolean!
 }
 
@@ -346,14 +1124,37 @@ enum ProfileNatureType {
 }
 
 type ProfileType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
   """avatarSrc"""
   avatarSize: AvatarSizeType
 
   """avatarSrc"""
   avatarSrc: String
 
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
+  """user ID"""
+  botID: ID
+
   """contacts"""
   contacts: [String!]
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String
 
   """disclaimer"""
   disclaimer: String
@@ -364,20 +1165,22 @@ type ProfileType {
   """help"""
   help: String
 
-  """profile ID"""
-  idProfile: ID!
-
   """socket ID"""
   idSocket: ID
-
-  """user ID"""
-  idUser: ID!
 
   """imagePendingSrc"""
   imagePendingSrc: String
 
+  """ipClient profile/ user"""
+  ipClient: String
+
   """isActive"""
   isActive: Boolean!
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
 
   """locations"""
   locations: [String!]
@@ -391,6 +1194,9 @@ type ProfileType {
   """nameLast"""
   nameLast: String
 
+  """nameMiddle"""
+  nameMiddle: String
+
   """pendingText"""
   pendingText: String
 
@@ -399,6 +1205,9 @@ type ProfileType {
 
   """default position profile in the list"""
   position: Float
+
+  """profile ID"""
+  profileID: ID!
 
   """profile ID"""
   profileName: String!
@@ -415,8 +1224,11 @@ type ProfileType {
   """serviceSpecs"""
   serviceSpecs: [String!]
 
-  """summary"""
-  summary: String
+  """url. URLs of the item."""
+  urls: [String!]
+
+  """user ID"""
+  userID: ID!
 }
 
 type ProfilesConnectionType {
@@ -427,20 +1239,6 @@ type ProfilesConnectionType {
   pageInfo: ProfilesPageInfoType
 }
 
-input ProfilesInputType {
-  """profiles ID"""
-  idProfiles: ID
-
-  """profiles created date"""
-  profilesDateCreated: Date
-
-  """profiles deleted date"""
-  profilesDateDeleted: Date
-
-  """profiles updated date"""
-  profilesDateUpdated: Date
-}
-
 type ProfilesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -449,33 +1247,100 @@ type ProfilesPageInfoType {
   hasNextPage: Boolean
 }
 
+type PromptMessageType {
+  """content"""
+  content: String!
+
+  """role"""
+  role: String!
+}
+
+type PromptType {
+  """messages"""
+  messages: [PromptMessageType!]!
+
+  """model"""
+  model: String
+
+  """n for images"""
+  n: Int
+
+  """prompt for images"""
+  prompt: String
+
+  """response_format for images"""
+  response_format: String
+
+  """size for images"""
+  size: String
+
+  """temperature"""
+  temperature: Float!
+}
+
 type Query {
-  findAllDocuments(skip: Int! = 0, take: Int! = 25): [DocumentType!]!
-  findDocument(documentID: String!): DocumentType!
+  countBots: Int!
+  countCourses: Int!
+  countDocuments: Int!
+  countModules: Int!
+  countProfiles: Int!
+  countTemplates: Int!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getImagesOpenAi(imageOpenAiInput: ImageOpenAiInputType!): ImagesOpenAiType!
   getMessageAssistant(messageAssistantInput: MessageAssistantInputType!): MessageAssistantType!
+  readBots(readBotsInput: [String!]!): [BotType!]!
+  readBotsAll: [BotType!]!
+  readBotsConnection(readBotsConnectionInput: ReadBotsConnectionInputType!): BotsConnectionType!
   readCompetencyTags(params: CompetencyTagsParamsReadType!): [CompetencyTagType!]!
-  readCourse(readCourseInput: ReadCourseInputType!): CourseType!
-  readCourses: [CourseType!]!
+  readCourses(readCoursesInput: [ReadCourseInputType!]!): [CourseType!]!
+  readCoursesAll: [CourseType!]!
   readCoursesConnection(readCoursesConnectionInput: ReadCoursesConnectionInputType!): CoursesConnectionType!
-  readModule(moduleID: String!): ModuleType!
-  readProfiles: [ProfileType!]!
+  readDocuments(readDocumentsIdsInput: [String!]!): [DocumentType!]!
+  readDocumentsAll: [DocumentType!]!
+  readDocumentsConnection(readDocumentsConnectionInput: ReadDocumentsConnectionInputType!): DocumentsConnectionType!
+  readModules(readModulesInput: [ReadModuleInputType!]!): [ModuleType!]!
+  readModulesAll: [ModuleType!]!
+  readModulesConnection(readModulesConnectionInput: ReadModulesConnectionInputType!): ModulesConnectionType!
+  readProfiles(readProfilesInput: [ReadProfileInputType!]!): [ProfileType!]!
+  readProfilesAll: [ProfileType!]!
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
-  readTemplate(idTemplates: String!): TemplatesType!
-  readTemplates: [TemplatesType!]!
+  readRecipe(id: String!): RecipeType!
+  readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
+  readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
+  readTemplatesAll: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
   readUserAuth(userIdAuth: String!): UserModelExtendedType!
   readUserProfile(userIdProfile: String!): UserModelExtendedType!
   readUsers(options: ReadUsersOptions!): UsersType!
-  recipe(id: String!): RecipeType!
-  recipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
   sendEmailDocument(documentID: String!, sendBcc: String!, sendCc: String!, sendTo: String!): DocumentType!
 }
 
-type QuestionType {
+input QuestionCourseInputType {
+  """course module question capture"""
+  capture: String!
+
+  """course module question designType"""
+  designType: String
+
+  """course module question isActive"""
+  isActive: Boolean! = false
+
+  """designType > multi"""
+  multi: Boolean = false
+
+  """course module question options"""
+  options: [OptionCourseInputType!]!
+
+  """courses module question ID"""
+  questionID: ID
+
+  """course module question topic"""
+  topic: String
+}
+
+type QuestionCourseType {
   """course module question capture"""
   capture: String!
 
@@ -489,10 +1354,70 @@ type QuestionType {
   multi: Boolean
 
   """course module question options"""
-  options: [OptionType!]!
+  options: [OptionCourseType!]!
 
   """courses module question ID"""
   questionID: ID
+
+  """course module question topic"""
+  topic: String
+}
+
+input QuestionInputType {
+  """module question capture"""
+  capture: String!
+
+  """module question designType"""
+  designType: String
+
+  """module question isActive"""
+  isActive: Boolean! = false
+
+  """designType > multi"""
+  multi: Boolean = false
+
+  """module question options"""
+  options: [OptionInputType!]!
+
+  """module question ID"""
+  questionID: ID
+
+  """module question topic"""
+  topic: String
+}
+
+type QuestionType {
+  """module question capture"""
+  capture: String!
+
+  """module question designType"""
+  designType: String
+
+  """module question isActive"""
+  isActive: Boolean!
+
+  """designType > multi"""
+  multi: Boolean
+
+  """module question options"""
+  options: [OptionType!]!
+
+  """module question ID"""
+  questionID: ID
+
+  """module question topic"""
+  topic: String
+}
+
+input ReadBotsConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
 }
 
 input ReadCourseInputType {
@@ -504,25 +1429,237 @@ input ReadCourseInputType {
 }
 
 input ReadCoursesConnectionInputType {
-  """after"""
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
   after: String
 
-  """first"""
+  """course module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """courses ID"""
+  courseIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
   first: Int
 
-  """offset"""
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """course module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
   offset: Int
+
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortCoursesInputType
+
+  """
+  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """
+  courses meta stages: stages/ statuses/ envs to pick from the set of documents
+  """
+  stagesPick: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  courses meta tags: tags that characterises the course content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadDocumentsConnectionInputType {
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
+  after: String
+
+  """course module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """courses ID"""
+  courseIDs: [ID!] = []
+
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
+  first: Int
+
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """learner IDs"""
+  learnerIDs: [ID!] = []
+
+  """course module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
+  offset: Int
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortDocumentsInputType
+
+  """
+  documents meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """
+  documents meta stages: stages/ statuses/ envs to pick from the set of documents
+  """
+  stagesPick: [String!] = []
+
+  """
+  documents meta tags: tags that characterises the course content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  documents meta tags: tags that characterises the course content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadModuleInputType {
+  """module ID"""
+  moduleID: ID
+}
+
+input ReadModulesConnectionInputType {
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
+  after: String
+
+  """module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
+  first: Int
+
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
+  offset: Int
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortModulesInputType
+
+  """
+  stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
+  stagesPick: [String!] = []
+
+  """
+  tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  tags: tags that characterises the content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadProfileInputType {
+  """profile ID"""
+  profileID: ID
+
+  """user ID"""
+  userID: ID
 }
 
 input ReadProfilesConnectionInputType {
   """after"""
   after: String
 
+  """bot IDs"""
+  botIDs: [ID!] = []
+
+  """emails"""
+  email: String = null
+
   """first"""
   first: Int
 
+  """isActive"""
+  isActive: Boolean
+
   """offset"""
   offset: Int
+
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortProfilesInputType
+
+  """
+  stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
+  stagesPick: [String!] = []
+
+  """user IDs"""
+  userIDs: [ID!] = []
 }
 
 input ReadTemplatesConnectionInputType {
@@ -567,9 +1704,96 @@ type ResponseMessageType {
   status: String
 }
 
+type SiteMapReportType {
+  """articlesUrls"""
+  articlesUrls: Int
+
+  """rootUrl"""
+  collectionsUrls: Int
+
+  """modulesUrls"""
+  modulesUrls: Int
+}
+
+input SortCoursesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortDocumentsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortModulesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortProfilesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
 type Subscription {
   documentAdded: DocumentType!
   recipeAdded: RecipeType!
+}
+
+input SummaryItemCourseInputType {
+  """course module Summary item capture"""
+  capture: String = null
+
+  """courses module Summary item ID"""
+  summaryItemID: ID
+
+  """course module Summary item text"""
+  text: String = null
+}
+
+type SummaryItemCourseType {
+  """course module Summary item capture"""
+  capture: String
+
+  """course module summary ID"""
+  summaryItemID: ID!
+
+  """course module Summary item text"""
+  text: String
+}
+
+input SummaryItemInputType {
+  """module Summary item capture"""
+  capture: String = null
+
+  """module Summary item ID"""
+  summaryItemID: ID
+
+  """module Summary item text"""
+  text: String = null
+}
+
+type SummaryItemType {
+  """module Summary item capture"""
+  capture: String
+
+  """module summary ID"""
+  summaryItemID: ID!
+
+  """module Summary item text"""
+  text: String
 }
 
 type TemplatesConnectionType {
@@ -588,20 +1812,6 @@ type TemplatesEdgeType {
   node: TemplatesType
 }
 
-input TemplatesInputType {
-  """templates created date"""
-  dateCreated: Date
-
-  """templates deleted date"""
-  dateDeleted: Date
-
-  """templates updated date"""
-  dateUpdated: Date
-
-  """templates ID"""
-  idTemplates: ID
-}
-
 type TemplatesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -612,6 +1822,605 @@ type TemplatesPageInfoType {
 
 type TemplatesType {
   """templates created date"""
+  dateCreated: Float!
+
+  """templates deleted date"""
+  dateDeleted: Float
+
+  """templates updated date"""
+  dateUpdated: Float!
+
+  """isActive"""
+  isActive: Boolean!
+
+  """templates ID"""
+  templatesID: ID
+}
+
+type TextObjType {
+  """contentArray"""
+  contentArray: [String!]!
+
+  """contentType"""
+  contentType: String
+}
+
+type ThumbnailsBotType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataBotType
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataBotType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataBotType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataBotType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataBotType
+}
+
+input ThumbnailsCourseImageDataInputType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String = null
+
+  """width"""
+  width: Int!
+}
+
+type ThumbnailsCourseImageDataType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsCourseInputType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataInputType = null
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataInputType = null
+}
+
+type ThumbnailsCourseType {
+  """thumbnail image default"""
+  default: ThumbnailsCourseImageDataType
+
+  """thumbnail image high"""
+  high: ThumbnailsCourseImageDataType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsCourseImageDataType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsCourseImageDataType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsCourseImageDataType
+}
+
+type ThumbnailsImageDataBotType {
+  """height"""
+  height: Int!
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsImageDataInputType {
+  """height"""
+  height: Int!
+
+  """rel"""
+  rel: String = null
+
+  """type"""
+  type: String = null
+
+  """url"""
+  url: String = null
+
+  """width"""
+  width: Int!
+}
+
+type ThumbnailsImageDataType {
+  """height"""
+  height: Int!
+
+  """rel"""
+  rel: String
+
+  """type"""
+  type: String
+
+  """url"""
+  url: String
+
+  """width"""
+  width: Int!
+}
+
+input ThumbnailsInputType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataInputType = null
+
+  """favicon"""
+  favicon: ThumbnailsImageDataInputType = null
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataInputType = null
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataInputType = null
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataInputType = null
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataInputType = null
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataInputType = null
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataInputType = null
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataInputType = null
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataInputType = null
+}
+
+type ThumbnailsType {
+  """thumbnail image default"""
+  default: ThumbnailsImageDataType
+
+  """favicon"""
+  favicon: ThumbnailsImageDataType
+
+  """thumbnail image high"""
+  high: ThumbnailsImageDataType
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataType
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataType
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataType
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataType
+
+  """thumbnail image maxres"""
+  maxres: ThumbnailsImageDataType
+
+  """thumbnail image medium"""
+  medium: ThumbnailsImageDataType
+
+  """thumbnail image standard"""
+  standard: ThumbnailsImageDataType
+}
+
+type TranscriptObjectBotType {
+  """duration"""
+  duration: Float
+
+  """start"""
+  start: Float
+
+  """text"""
+  text: String
+}
+
+input TranscriptObjectInputType {
+  """duration"""
+  duration: Float = 0
+
+  """start"""
+  start: Float = 0
+
+  """text"""
+  text: String = null
+
+  """transcriptItem ID"""
+  transcriptItemID: ID
+}
+
+type TranscriptObjectType {
+  """duration"""
+  duration: Float
+
+  """start"""
+  start: Float
+
+  """text"""
+  text: String
+
+  """transcriptItem ID"""
+  transcriptItemID: ID
+}
+
+input UpdateBotsInputType {
+  """bots ID"""
+  botsID: ID
+
+  """bots created date"""
+  dateCreated: Float!
+
+  """bots deleted date"""
+  dateDeleted: Float = null
+
+  """bots updated date"""
+  dateUpdated: Float!
+}
+
+input UpdateCourseInputType {
+  """course capture"""
+  capture: String!
+
+  """courses ID"""
+  courseID: ID!
+
+  """courses created date"""
+  dateCreated: Float!
+
+  """courses deleted date"""
+  dateDeleted: Float
+
+  """courses updated date"""
+  dateUpdated: Float!
+
+  """course description"""
+  description: String!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """courses meta information"""
+  meta: MetaCourseInputType
+
+  """courses modules"""
+  modules: [ModuleCourseInputType!]
+
+  """profile ID"""
+  profileID: ID!
+}
+
+input UpdateCourseMetaInputType {
+  """courses ID"""
+  courseID: ID
+
+  """courses meta information"""
+  meta: MetaCoursePartialInputType
+
+  """module ID"""
+  moduleID: ID
+
+  """profile ID"""
+  profileID: ID!
+}
+
+type UpdateCourseMetaType {
+  """courses ID"""
+  courseID: ID
+
+  """courses meta information"""
+  meta: MetaCoursePartialType
+
+  """module ID"""
+  moduleID: ID
+
+  """profile ID"""
+  profileID: ID!
+
+  """updateInfo"""
+  updateInfo: UpdateInfoCourseType
+}
+
+input UpdateDocumentInputType {
+  """creator of the module"""
+  creator: UpdateProfileInputType!
+
+  """documents created date"""
+  dateCreated: Float!
+
+  """documents deleted date"""
+  dateDeleted: Float = null
+
+  """documents updated date"""
+  dateUpdated: Float!
+
+  """documentID"""
+  documentID: ID!
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
+
+  """module"""
+  module: UpdateModuleInputType!
+}
+
+type UpdateInfoCourseType {
+  """acknowledged"""
+  acknowledged: Boolean
+
+  """matchedCount"""
+  matchedCount: Int
+
+  """modifiedCount"""
+  modifiedCount: Int
+
+  """upsertedCount"""
+  upsertedCount: Int
+
+  """upsertedId"""
+  upsertedId: String
+}
+
+type UpdateInfoType {
+  """acknowledged"""
+  acknowledged: Boolean
+
+  """matchedCount"""
+  matchedCount: Int
+
+  """modifiedCount"""
+  modifiedCount: Int
+
+  """upsertedCount"""
+  upsertedCount: Int
+
+  """upsertedId"""
+  upsertedId: String
+}
+
+input UpdateMetaInputType {
+  """creatorID"""
+  creatorID: ID!
+
+  """meta information"""
+  meta: MetaPartialInputType
+
+  """module ID"""
+  moduleID: ID
+
+  """organizationID"""
+  organizationID: ID!
+}
+
+type UpdateMetaType {
+  """creatorID"""
+  creatorID: ID!
+
+  """meta information"""
+  meta: MetaPartialType
+
+  """module ID"""
+  moduleID: ID
+
+  """organizationID"""
+  organizationID: ID!
+
+  """updateInfo"""
+  updateInfo: UpdateInfoType
+}
+
+input UpdateModuleInputType {
+  """capture"""
+  capture: String!
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """module objection"""
+  objections: [ObjectionInputType!] = []
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """module questions"""
+  questions: [QuestionInputType!]! = []
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
+
+  """module transcriptList"""
+  transcriptList: [TranscriptObjectInputType!] = []
+}
+
+input UpdateProfileInputType {
+  """
+  affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
+  """
+  affiliation: String
+
+  """avatarSrc"""
+  avatarSize: AvatarSizeInputType
+
+  """avatarSrc"""
+  avatarSrc: String
+
+  """award. An award won by or for this item. Supersedes awards."""
+  awards: [String!]
+
+  """user ID"""
+  botID: ID = null
+
+  """contacts"""
+  contacts: [String!] = []
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeleted: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String
+
+  """disclaimer"""
+  disclaimer: String
+
+  """emails"""
+  emails: [String!] = []
+
+  """help"""
+  help: String
+
+  """socket ID"""
+  idSocket: ID
+
+  """imagePendingSrc"""
+  imagePendingSrc: String
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """
+  jobTitle. The job title of the person (for example, Financial Manager).
+  """
+  jobTitle: String
+
+  """locations"""
+  locations: [String!] = []
+
+  """messengers"""
+  messengers: [MessengerInputType!] = []
+
+  """nameFirst"""
+  nameFirst: String
+
+  """nameLast"""
+  nameLast: String
+
+  """nameMiddle"""
+  nameMiddle: String
+
+  """pendingText"""
+  pendingText: String
+
+  """phones"""
+  phones: [String!] = []
+
+  """default position profile in the list"""
+  position: Float = 0
+
+  """profile ID"""
+  profileID: ID!
+
+  """profile ID"""
+  profileName: String!
+
+  """profileNature"""
+  profileNature: ProfileNatureType!
+
+  """promptExamples"""
+  promptExamples: [String!] = []
+
+  """serviceSections"""
+  serviceSections: [String!] = []
+
+  """serviceSpecs"""
+  serviceSpecs: [String!] = []
+
+  """url. URLs of the item."""
+  urls: [String!]
+
+  """user ID"""
+  userID: ID!
+}
+
+input UpdateTemplatesInputType {
+  """templates created date"""
   dateCreated: Date
 
   """templates deleted date"""
@@ -621,10 +2430,7 @@ type TemplatesType {
   dateUpdated: Date
 
   """templates ID"""
-  idTemplates: ID
-
-  """isActive"""
-  isActive: Boolean!
+  templatesID: ID
 }
 
 input UserIdDataAwsCognitoInputType {
@@ -711,6 +2517,15 @@ type UserIdDataAwsCognitoType {
 }
 
 input UserInputType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
+
   """user avatar"""
   userAvatar: String
 
@@ -747,15 +2562,6 @@ input UserInputType {
   """user accepted/ visible name as a result of registration"""
   userName: String
 
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
-
   """user accepted/ visible name to display other people"""
   userNameNick: String!
 
@@ -776,6 +2582,14 @@ input UserInputType {
 }
 
 type UserModelExtendedType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
   responseMessage: ResponseMessageType!
 
   """user avatar"""
@@ -826,15 +2640,6 @@ type UserModelExtendedType {
   """user accepted/ visible name as a result of registration"""
   userName: String
 
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
-
   """user accepted/ visible name to display other people"""
   userNameNick: String!
 
@@ -854,19 +2659,16 @@ type UserModelExtendedType {
   userWebLink: String
 }
 
-input UserNameInputType {
-  firstName: String!
-  lastName: String!
-  middleName: String!
-}
-
-type UserNameObjectType {
-  firstName: String!
-  lastName: String!
-  middleName: String!
-}
-
 type UserType {
+  """user first name"""
+  nameFirst: String
+
+  """user last name"""
+  nameLast: String
+
+  """user middle name"""
+  nameMiddle: String
+
   """user avatar"""
   userAvatar: String
 
@@ -914,15 +2716,6 @@ type UserType {
 
   """user accepted/ visible name as a result of registration"""
   userName: String
-
-  """user first name"""
-  userNameFirst: String
-
-  """user last name"""
-  userNameLast: String
-
-  """user middle name"""
-  userNameMiddle: String
 
   """user accepted/ visible name to display other people"""
   userNameNick: String!

@@ -7,6 +7,130 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Date_of_creation: {
+    en: 'Date of creation',
+    ru: 'Дата создания',
+  },
+  Module_name: {
+    en: 'Module name',
+    ru: 'Название модуля',
+  },
+  Duration: {
+    en: 'Duration',
+    ru: 'Продолжительность',
+  },
+  Edit: {
+    en: 'Edit',
+    ru: 'Редактировать',
+  },
+  Remove: {
+    en: 'Remove',
+    ru: 'Удалить',
+  },
+  module: {
+    en: 'module',
+    ru: 'модуль',
+  },
+  course: {
+    en: 'course',
+    ru: 'курс',
+  },
+  document: {
+    en: 'document',
+    ru: 'документ',
+  },
+  Do_you_confirm_removing: {
+    en: 'Do you confirm removing',
+    ru: 'Вы подтверждаете удаление',
+  },
+  cancel: {
+    en: 'cancel',
+    ru: 'отменить',
+  },
+  confirm: {
+    en: 'confirm',
+    ru: 'подтвердить',
+  },
+  stage_metaData: {
+    en: 'getting meta data',
+    ru: 'получение мета данных',
+  },
+  stage_transcript: {
+    en: 'resource obtaining',
+    ru: 'получение ресурса',
+  },
+  stage_summary: {
+    en: 'content preprocessing',
+    ru: 'предобработка контента',
+  },
+  stage_questions: {
+    en: 'module creation',
+    ru: 'создание модуля',
+  },
+  stage_objections: {
+    en: 'objections creation',
+    ru: 'создание возражений',
+  },
+  stage_courseModule: {
+    en: 'finalization',
+    ru: 'завершение',
+  },
+  todo: {
+    en: 'not started',
+    ru: 'не начато',
+  },
+  pending: {
+    en: 'in progress',
+    ru: 'в процессе',
+  },
+  success: {
+    en: 'success',
+    ru: 'успешно закончено',
+  },
+  failure: {
+    en: 'failure',
+    ru: 'произошла ошибка',
+  },
+  Show: {
+    en: 'Show',
+    ru: 'Показать',
+  },
+  Hide: {
+    en: 'Hide',
+    ru: 'Скрыть',
+  },
+  summary: {
+    en: 'summary',
+    ru: 'краткое изложение',
+  },
+  objections: {
+    en: 'objections',
+    ru: 'возражения',
+  },
+  Certificates_Credits_and_diplomas: {
+    en: 'Certificates, Credits and diplomas',
+    ru: 'Сертификаты, кредиты и дипломы',
+  },
+  Create_course: {
+    en: 'Create course',
+    ru: 'Создать курс',
+  },
+  Create_module: {
+    en: 'Create module',
+    ru: 'Создать модуль',
+  },
+  My_courses: {
+    en: 'My courses',
+    ru: 'Мои курсы',
+  },
+  My_modules: {
+    en: 'My modules',
+    ru: 'Мои модули',
+  },
+  My_documents: {
+    en: 'My documents',
+    ru: 'Мои документы',
+  },
   Competencies: {
     en: 'Competencies',
     ru: 'Компетенции',
@@ -753,17 +877,13 @@ export const DICTIONARY: IDictionary = {
     en: (
       <div className='_text'>
         <div className='_line1'>Unique educational service!</div>
-        <div className='_line2'>
-          Сheck your understanding and get the confirmation
-        </div>
+        <div className='_line2'>Сheck your understanding and get the confirmation</div>
       </div>
     ),
     ru: (
       <div className='_text'>
         <div className='_line1'>Уникальный образовательный сервис!</div>
-        <div className='_line2'>
-          Проверьте свое понимание и получите подтверждение
-        </div>
+        <div className='_line2'>Проверьте свое понимание и получите подтверждение</div>
       </div>
     ),
   },
@@ -831,21 +951,25 @@ export const DICTIONARY: IDictionary = {
     en: 'Expertise',
     ru: 'Экспертиза',
   },
-  userNameLast: {
+  nameLast: {
     en: 'last name',
     ru: 'фамилия',
   },
-  userNameFirst: {
+  nameFirst: {
     en: 'first name',
     ru: 'имя',
   },
-  userNameMiddle: {
+  nameMiddle: {
     en: 'middle name',
     ru: 'отчество',
   },
-  ToReceiveCertificate: {
+  ToReceiveCertificateFillTheForm: {
     en: 'To receive a certificate fill the form',
     ru: 'Для получения сертификата заполните форму',
+  },
+  ToReceiveCertificateLogIn: {
+    en: 'To receive a certificate and access your data in the future, please log in',
+    ru: 'Для получения сертификата и доступа к Вашим данным в будущем, пожалуйста, авторизуйтесь',
   },
   correctAnsweresFrom: {
     en: 'correct answeres from',

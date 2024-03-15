@@ -1,17 +1,18 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
-import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrlPropsType, InputGroupYrlPropsType } from '../../ComponentsLibrary/'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
-export type HeaderFramePropsType = {
+export type HeaderFrameComponentPropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
   brandName: string
   moto: string
   logoPath: string
   contentComponentName: string
-  courseCapture?: string
+  moduleCapture?: string
   documentID?: string
-  courseID?: string
+  moduleID?: string
   contentID?: string
   isButtonSideMenuLeft: boolean
   isLogoGroup: boolean
@@ -23,9 +24,17 @@ export type HeaderFramePropsType = {
   isButtonBack: boolean
   isPageActionsGroup: boolean
   isButtonsShare: boolean
-  isInstallMobileAppGroup: boolean
   children?: React.ReactElement
+  storeStateSlice: {
+    authAwsCognitoUserData: RootStoreType['authAwsCognitoUserData']
+    isSideNavLeftVisible: RootStoreType['componentsState']['isSideNavLeftVisible']
+    isMobileSearchInput: RootStoreType['componentsState']['isMobileSearchInput']
+    language: RootStoreType['language']
+    profiles: RootStoreType['profiles']
+  }
 }
+
+export type HeaderFramePropsType = Omit<HeaderFrameComponentPropsType, 'storeStateSlice'>
 
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType
@@ -34,20 +43,21 @@ export type HeaderFramePropsOutType = {
   buttonLeftSideNavigationUnAuthorizedProps: ButtonYrlPropsType
   buttonBackProps: ButtonYrlPropsType
   buttonAddCourseProps: ButtonYrlPropsType
-  buttonAuthUserProps: ButtonYrlPropsType
   buttonThemeToggleProps: ButtonYrlPropsType
   pageActionsProps: any
   logoGroupProps: any
   avatarPlusInfoProps: AvatarPlusInfoPropsType
   abInCircleProps: AbInCirclePropsType
+  inputGroupProps: InputGroupYrlPropsType
+  buttonMobileSearchToggleProps: ButtonYrlPropsType
 }
 
 /**
  * @import import { HeaderFrameType } from './HeaderFrameType'
  */
 export interface HeaderFrameComponentType
-  extends React.FunctionComponent<HeaderFramePropsType> {
-  (props: HeaderFramePropsType): React.ReactElement
+  extends React.FunctionComponent<HeaderFrameComponentPropsType> {
+  (props: HeaderFrameComponentPropsType): React.ReactElement
 }
 
 export type HeaderFrameType = React.FunctionComponent<HeaderFramePropsType>

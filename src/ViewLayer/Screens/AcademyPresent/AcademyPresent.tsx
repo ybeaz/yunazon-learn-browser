@@ -1,37 +1,28 @@
-import React, {
-  useState,
-  useEffect,
-  ReactElement,
-  FunctionComponent,
-} from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
-import { SideNavigation } from '../../Components/SideNavigation'
-import {
-  HeaderFrame,
-  HeaderFramePropsType,
-} from '../../Frames/HeaderFrame/HeaderFrame'
-import { getEffectedRequests } from '../../Hooks/getEffectedRequests'
-import { CarouselQuestions } from '../../Components/CarouselQuestions'
+import { useflagsDebug } from '../../Hooks/useflagsDebug'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { CarouselQuestions } from '../../Components/CarouselQuestions/CarouselQuestions'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getInitialTeachContentLoading } from '../../Hooks/getInitialTeachContentLoading'
+import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { getYouTubePlayerWorkHook } from '../../Hooks/getYouTubePlayerWorkHook'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { LoaderOverlayYrl } from '../../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
-import { PlayerPanel } from '../../Components/PlayerPanel'
+import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
+import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -39,6 +30,7 @@ const COMPONENT: Record<string, React.FunctionComponent<any>> = {
 }
 
 import {
+  AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
   AcademyPresentPropsOutType,
   AcademyPresentComponentType,
@@ -51,90 +43,88 @@ import {
              from '../Components/AcademyPresent/AcademyPresent'
  */
 const AcademyPresentComponent: AcademyPresentComponentType = (
-  props: AcademyPresentPropsType
+  props: AcademyPresentComponentPropsType
 ) => {
+  const {
+    storeStateSlice: {
+      language: languageSite,
+      durationMultiplier,
+      moduleIDActive,
+      modules,
+      mediaLoaded,
+      isSummary: isSummaryStore,
+      isObjections,
+    },
+  } = props
+
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
   const screenType = 'AcademyPresent'
 
-  getEffectedRequests([
-    { type: 'INIT_LOADING', data: { params } },
-    { type: 'GET_MODULE_DATA', data: { moduleID } },
-  ])
-  getInitialTeachContentLoading()
+  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
-  const store = useSelector((store2: RootStoreType) => store2)
-  const {
-    language: languageStore,
-    scorm: { durationMultiplier },
-    courses,
-    isLoaded: { mediaLoaded },
-  } = store
+  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }])
+
+  useLoadedInitialTeachContent()
+  useflagsDebug(mediaLoadedModulesString)
+
+  /* Hide summary by url settings */
+  let isSummaryButton = true
+  let isSummary = isSummaryStore
+  const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
+  if (isSummaryUrlQuery === 'false') {
+    isSummaryButton = false
+    isSummary = false
+  }
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
     CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
     contentComponentName: '',
-    courseCapture: '',
+    capture: '',
     language: '',
-    moduleCapture: '',
-    moduleDescription: '',
+    description: '',
     contentID: '',
     durationObj: { duration: '', units: '' },
-    moduleIndex: 0,
-    modulesTotal: 0,
+    index: 0,
     questionsTotal: 0,
+    summary: [],
+    objections: [],
   })
 
   const {
     CONTENT_ASSIGNED_COMPONENT,
     contentComponentName,
-    courseCapture,
+    capture,
     language,
-    moduleCapture,
-    moduleDescription,
+    description,
     contentID,
     durationObj,
-    moduleIndex,
-    modulesTotal,
     questionsTotal,
+    summary,
+    objections,
   } = moduleState
 
-  const mediaLoadedCoursesString = JSON.stringify([mediaLoaded, courses])
-
   useEffect(() => {
-    if (courses.length && isLoaded === false) {
-      handleEvents(
-        {},
-        { type: 'TOGGLE_START_COURSE', data: { isStarting: false } }
-      )
-
-      handleEvents(
-        {},
-        {
-          type: 'GET_COURSE_QUERY_PR_QN',
-          data: { moduleID },
-        }
-      )
-
+    if (modules.length && isLoaded === false) {
       const {
-        courseCapture: courseCapture2,
+        capture: capture2,
         language: language2,
-        moduleCapture: moduleCapture2,
-        moduleDescription: moduleDescription2,
+        description: description2,
         contentType,
         contentID: contentID2,
         duration,
-        index: moduleIndex2,
-        modulesTotal: modulesTotal2,
+        index: index2,
         questionsTotal: questionsTotal2,
-      } = getModuleByModuleID({ courses, moduleID })
-
-      const durationObj2: DurationObjType = getMultipliedTimeStr(
-        duration,
-        durationMultiplier
+        summary: summary2,
+        objections: objections2,
+      } = getModuleByModuleID(
+        { modules, moduleID: moduleIDActive || moduleID },
+        { parentFunction: 'AcademyPresentComponent' }
       )
+
+      const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
 
@@ -143,33 +133,30 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
         contentComponentName: contentComponentName2,
-        courseCapture: courseCapture2,
+        capture: capture2,
         language: language2,
-        moduleCapture: moduleCapture2,
-        moduleDescription: moduleDescription2,
+        description: description2,
         contentID: contentID2,
-        moduleIndex: moduleIndex2,
-        modulesTotal: modulesTotal2,
+        index: index2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
+        summary: summary2,
+        objections: objections2,
       })
     }
-  }, [mediaLoadedCoursesString])
+  }, [mediaLoadedModulesString])
 
-  const isVisible = mediaLoaded[contentID]
+  const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
-  const {
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-  } = getYouTubePlayerWorkHook({
-    contentComponentName,
-    contentID,
-    width,
-    height,
-  })
+  const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
+    useYouTubePlayerWork({
+      contentComponentName,
+      moduleID,
+      contentID,
+      width,
+      height,
+    })
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
@@ -190,12 +177,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     action: {},
   }
 
-  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageStore],
+      moto: DICTIONARY['Together_know_everything'][languageSite],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -208,13 +195,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isInstallMobileAppGroup: false,
     },
     mainFrameProps: {
       screenType,
     },
     contentComponentProps: {
       ReaderIframe: {
+        moduleID,
         contentID,
         isVisible,
         screenType,
@@ -228,12 +215,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isVisibleBlurHash: !isVisible,
       textTooltip,
       isTextTooltip: true,
-      delay: 5000,
+      delay: 500,
       contentComponentName,
     },
     playerPanelProps: {
-      courseCapture,
-      moduleCapture,
+      capture,
       durationObj,
       screenType,
       isShowingPlay,
@@ -241,22 +227,32 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       buttonPauseProps,
       buttonStopProps,
       isActionButtonDisplaying: false,
-      moduleIndex,
-      modulesTotal,
       questionsTotal,
+    },
+    textStructuredColumnsProps: {
+      summary,
+      objections,
+      isSummaryButton,
+      isSummary,
+      isObjectionsButton: true,
+      isObjections,
+      language: languageSite,
+      titleSummary: 'Summary',
+      titleObjections: 'Objections',
     },
   }
 
   return (
-    <div className='AcademyPresent'>
+    <div className='AcademyPresent' id={`moduleID-${moduleID}`}>
       {isLoaded === true ? (
         <>
           <Helmet>
             <html lang={language} />
             <meta charSet='utf-8' />
-            <title>{moduleCapture}</title>
+            <meta name='viewport' content='width=device-width,initial-scale=1' />
+            <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
-            <meta name='description' content={moduleDescription} />
+            <meta name='description' content={description} />
           </Helmet>
           <MainFrame {...propsOut.mainFrameProps}>
             {/* header */}
@@ -264,27 +260,35 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <CONTENT_ASSIGNED_COMPONENT
-              {...propsOut.contentComponentProps[contentComponentName]}
-            >
-              <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-              <PlayerPanel {...propsOut.playerPanelProps} />
-            </CONTENT_ASSIGNED_COMPONENT>
+            <div className='AcademyPresent__middle-main'>
+              <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
+                <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+                <PlayerPanel {...propsOut.playerPanelProps} />
+              </CONTENT_ASSIGNED_COMPONENT>
+            </div>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}
-            {null}
+            <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
           </MainFrame>
-          <SideNavigation />
-          <LoaderOverlayYrl />
         </>
       ) : null}
     </div>
   )
 }
 
-export const AcademyPresent: AcademyPresentType = React.memo(
-  AcademyPresentComponent
+const storeStateSliceProps: string[] = [
+  'language',
+  'durationMultiplier',
+  'moduleIDActive',
+  'modules',
+  'mediaLoaded',
+  'isSummary',
+  'isObjections',
+]
+export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(AcademyPresentComponent)
 )
 
 export type {

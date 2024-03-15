@@ -1,14 +1,9 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { UserType } from '../../Interfaces/UserType'
-import { IButtonArgs } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrlPropsType } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
 
 interface IGetButtonAuthUser {
-  (
-    user2: UserType,
-    language: string,
-    componentFrom: string,
-    history?: any
-  ): IButtonArgs
+  (user2: UserType, language: string, componentFrom: string, history?: any): ButtonYrlPropsType
 }
 
 /**
@@ -19,20 +14,23 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   user,
   language,
   componentFrom,
-  history = {}
+  navigate = {}
 ) => {
   const { userAvatar, userStatus, userName } = user
 
-  const {
-    imageSrc = null,
-    icon = null,
-    classAdded,
-    tooltipText,
-    captureRight,
-    tooltipPosition,
-    typeEvent,
-    childProps,
-  } = {
+  enum ButtonDictKeyType {
+    'sideMenu+' = 'sideMenu+',
+    'sideMenu+failure' = 'sideMenu+failure',
+    'sideMenu+success' = 'sideMenu+success',
+    'header+' = 'header+',
+    'header+failure' = 'header+failure',
+    'header+success' = 'header+success',
+  }
+
+  // @ts-expect-error
+  const buttonDictKey: ButtonDictKeyType = `${componentFrom}+${userStatus || ''}`
+
+  const buttonsDict: Record<string, any> = {
     'sideMenu+': {
       icon: 'FaUserCircle',
       classAdded: 'Button_authSideMenu',
@@ -54,9 +52,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     'sideMenu+success': {
       imageSrc: userAvatar,
       icon: userAvatar ? null : 'FaUserCircle',
-      classAdded: userAvatar
-        ? 'Button_authSideMenu'
-        : 'Button_authSideMenu_authorized',
+      classAdded: userAvatar ? 'Button_authSideMenu' : 'Button_authSideMenu_authorized',
       tooltipText: userName,
       captureRight: DICTIONARY.Logout[language],
       tooltipPosition: 'right',
@@ -82,15 +78,24 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     'header+success': {
       imageSrc: userAvatar,
       icon: userAvatar ? null : 'FaUserCircle',
-      classAdded: userAvatar
-        ? 'Button_authHeader'
-        : 'Button_authHeader_authorized',
+      classAdded: userAvatar ? 'Button_authHeader' : 'Button_authHeader_authorized',
       tooltipText: userName,
       tooltipPosition: 'bottom',
       typeEvent: 'SET_MODAL_FRAMES',
       childProps: { scenario: { branch: 'signOut', step: '' } },
     },
-  }[`${componentFrom}+${userStatus}`]
+  }[buttonDictKey]
+
+  const {
+    imageSrc = null,
+    icon = null,
+    classAdded,
+    tooltipText,
+    captureRight,
+    tooltipPosition,
+    typeEvent,
+    childProps,
+  } = buttonsDict
 
   const actionMain = {
     typeEvent,
@@ -105,13 +110,10 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   const actionProfile = {
     typeEvent: 'GO_SCREEN',
-    data: { history, path: '/profile' },
+    data: { navigate, pathname: '/profile' },
   }
 
-  const action =
-    `${componentFrom}+${userStatus}` === 'header+success'
-      ? actionProfile
-      : actionMain
+  const action = `${componentFrom}+${userStatus}` === 'header+success' ? actionProfile : actionMain
 
   return {
     imageSrc,

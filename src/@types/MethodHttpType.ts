@@ -29,7 +29,7 @@
       @import import { MethodHttpType } from '../@types/MethodHttpType'
  */
 
-export enum MethodHttpType {
+export enum MethodHttpEnumType {
   get = 'get',
   head = 'head',
   post = 'post',
@@ -39,4 +39,37 @@ export enum MethodHttpType {
   options = 'options',
   trace = 'trace',
   patch = 'patch',
+
+  GET = 'GET',
+  HEAD = 'HEAD',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  CONNECT = 'CONNECT',
+  OPTIONS = 'OPTIONS',
+  TRACE = 'TRACE',
+  PATCH = 'PATCH',
 }
+
+export type MethodHttpType =
+  | MethodHttpEnumType
+  | 'get'
+  | 'GET'
+  | 'delete'
+  | 'DELETE'
+  | 'head'
+  | 'HEAD'
+  | 'options'
+  | 'OPTIONS'
+  | 'post'
+  | 'POST'
+  | 'put'
+  | 'PUT'
+  | 'patch'
+  | 'PATCH'
+  | 'purge'
+  | 'PURGE'
+  | 'link'
+  | 'LINK'
+  | 'unlink'
+  | 'UNLINK'

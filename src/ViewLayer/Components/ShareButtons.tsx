@@ -104,12 +104,12 @@ export const ShareButtons: React.FunctionComponent<any> = (
         iconSize,
       } = item
 
-      const buttonProps = { url, [netTitleField]: netTitle }
+      const buttonProps = { key: url, url, [netTitleField]: netTitle }
       const iconProps = { size: iconSize }
       return (
         <ButtonComponent
           {...buttonProps}
-          onClick={event =>
+          onClick={(event: any) =>
             handleEvents(event, {
               typeEvent: 'CLICK_SOCIAL_NET_BUTTON',
               data: { buttonProps: item },

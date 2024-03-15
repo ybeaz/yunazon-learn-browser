@@ -1,9 +1,22 @@
 .AcademyMatrix {
   display: flex;
+  flex: 1;
+  width: 100%;
+
   &__plates {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    ._plateMatrixPagination {
+      display: flex;
+      ._plateMatrixWrapper {
+        display: flex;
+      }
+      ._paginationNavigationWrapper {
+        display: flex;
+      }
+    }
   }
 
   @media @large {

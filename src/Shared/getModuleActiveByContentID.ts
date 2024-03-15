@@ -1,6 +1,7 @@
 import { CourseType, ModuleType } from '../@types/GraphqlTypes'
 
 /**
+ * @status DEPRECIATED
  * @description Function to make a course isSelected based on contentID
  * @import import { getModuleActiveByContentID } from '../Shared/getModuleActiveByContentID'
  */
@@ -11,6 +12,7 @@ export const getModuleActiveByContentID = (
   return courses.map(course => {
     let isSelected = false
     const { modules } = course
+    // @ts-expect-error
     let modulesNext: ModuleType[] = modules || []
 
     modulesNext = modulesNext.map((module: ModuleType) => {

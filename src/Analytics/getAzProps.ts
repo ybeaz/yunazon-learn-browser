@@ -70,63 +70,63 @@ export const getAzProps: Function = (type: string): AzPropsType => {
     },
 
     PERSONAL_DATA_SUBMITTED: (options: any) => {
-      const { courseCapture } = options
+      const { moduleCapture } = options
       return {
         type: 'click',
         name: 'personal data submitted',
-        value: `{'courseCapture':'${courseCapture}'}`,
+        value: `{'moduleCapture':'${moduleCapture}'}`,
         level: 4,
       }
     },
 
     RESULTS_SUBMITTED: (options: any) => {
-      const { result, courseCapture } = options
+      const { result, moduleCapture } = options
       return {
         type: 'click',
         name: `results submitted: ${result}`,
-        value: `{'courseCapture':'${courseCapture}','result':'${result}'}`,
+        value: `{'moduleCapture':'${moduleCapture}','result':'${result}'}`,
         level: 3,
       }
     },
 
     QUESTIONS_STEPPED_FORWARD: (options: any) => {
-      const { courseCapture, questionsSlideNumber } = options
+      const { moduleCapture, questionsSlideNumber } = options
       return {
         type: 'click',
         name: 'questions: step forward',
-        value: `{'courseCapture':'${courseCapture}','questionsSlideNumber':'${questionsSlideNumber}'}`,
+        value: `{'moduleCapture':'${moduleCapture}','questionsSlideNumber':'${questionsSlideNumber}'}`,
         level: 2,
       }
     },
 
     MODULE_STARTED: (options: any) => {
-      const { courseCapture, courseID, moduleID, contentID } = options
+      const { moduleCapture, courseID, moduleID, contentID } = options
 
       return {
         type: 'click',
         name: 'module started',
-        value: `{'courseCapture':'${courseCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
+        value: `{'moduleCapture':'${moduleCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
         level: 2,
       }
     },
 
     WENT_BACK: (options: any) => {
-      const { result, courseCapture } = options
+      const { result, moduleCapture } = options
       return {
         type: 'click',
         name: `went back: ${result}`,
-        value: `{'result':'${result}','courseCapture':'${courseCapture}'}`,
+        value: `{'result':'${result}','moduleCapture':'${moduleCapture}'}`,
         level: 1,
       }
     },
 
     COURSE_PLATE_CLICKED: (options: any) => {
-      const { courseCapture, courseID, moduleID, contentID } = options
+      const { moduleCapture, courseID, moduleID, contentID } = options
 
       return {
         type: 'click',
         name: 'plate clicked',
-        value: `{'courseCapture':'${courseCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
+        value: `{'moduleCapture':'${moduleCapture}','courseID':'${courseID}','moduleID':'${moduleID}','contentID':'${contentID}'}`,
         level: 1,
       }
     },

@@ -1,18 +1,34 @@
 /**
  * @description Function parse and return object fron url query string
- * @param url
- * @returns
+ * @import import { getParsedUrlQuery } from 'src/Shared/getParsedUrlQuery'
  */
-export const getParsedUrlQuery: Function = (url: string): any => {
+export const getParsedUrlQuery = (url?: string): any => {
   if (!url) url = location.search
   if (!url.length) return {}
 
-  var query = url.substring(1)
+  const query = url.substring(1)
 
-  var result: any = {}
+  const result: any = {}
   query.split('&').forEach(function (part) {
     var item = part.split('=')
     result[item[0]] = decodeURIComponent(item[1])
   })
+  return result
+}
+
+export const getParsedUrlQueryBrowserApi = (url?: string): any => {
+  if (!url) url = location.search
+  if (!url.length) return {}
+
+  const query = url.substring(1)
+
+  const result: any = {}
+
+  const searchParams = new URLSearchParams(query)
+
+  searchParams.forEach((value, key) => {
+    result[key] = value
+  })
+
   return result
 }

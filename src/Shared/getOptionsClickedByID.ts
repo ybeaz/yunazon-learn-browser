@@ -1,40 +1,35 @@
+import { CourseType, ModuleType, QuestionType, OptionType } from '../@types/'
+
 /**
  * @description Function to get answer by optionID
- * @param courses
- * @param optionIDIn
- * @returns any[]
  */
 
-export const getOptionsClickedByID: Function = (
-  courses: any[],
+export const getOptionsClickedByID = (
+  modules: ModuleType[],
   optionIDIn: string,
   multi: boolean
-): any[] => {
-  return courses.map(course => {
-    const { modules } = course
+): ModuleType[] => {
+  return modules.map((module: ModuleType) => {
+    const { questions } = module
 
-    const modulesNext = modules.map(module => {
-      const { questions } = module
+    const questionsNext = questions.map((question: QuestionType) => {
+      const { options } = question
+      const isQuestionWithOptionIDIn = options.find(
+        option => option.optionID === optionIDIn
+      )
 
-      const questionsNext = questions.map(question => {
-        const { options } = question
-        const isQuestionWithOptionIDIn = options.find(
-          option => option.optionID === optionIDIn
-        )
-
-        const optionNext = options.map(option => {
+      const optionNext = options.map(
+        (option: OptionType & { answer?: boolean }) => {
           const { optionID, answer } = option
           let answerNext = multi || !isQuestionWithOptionIDIn ? answer : false
           if (optionID === optionIDIn) answerNext = !answer
           return { ...option, answer: answerNext }
-        })
+        }
+      )
 
-        return { ...question, options: optionNext }
-      })
-
-      return { ...module, questions: questionsNext }
+      return { ...question, options: optionNext }
     })
 
-    return { ...course, modules: modulesNext }
+    return { ...module, questions: questionsNext }
   })
 }

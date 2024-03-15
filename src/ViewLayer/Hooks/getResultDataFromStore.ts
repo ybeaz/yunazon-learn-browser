@@ -3,22 +3,20 @@ import { getActiveCourseData } from '../../Shared/getActiveCourseData'
 
 interface IGetResultDataFromStore {
   result: string
-  courseCapture: string
+  moduleCapture: string | undefined
 }
 
 /**
  * @descriptiion Function to incapsulate a range of repeating steps to return user results from course
- * @param getState
- * @returns
  */
 export const getResultDataFromStore: Function = (
   courses: any[],
   moduleIDActive: string
 ): IGetResultDataFromStore => {
   const {
-    courseActive: { capture: courseCapture },
+    courseActive: { capture: moduleCapture },
     questionsActive,
   } = getActiveCourseData(courses, moduleIDActive)
   const { result } = getAnswersChecked2(questionsActive)
-  return { result, courseCapture }
+  return { result, moduleCapture }
 }

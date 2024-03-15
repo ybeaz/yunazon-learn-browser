@@ -1,17 +1,19 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { useSelector } from 'react-redux'
-import { nanoid } from 'nanoid'
+import useWindowSize from 'react-use/lib/useWindowSize'
+import Confetti from 'react-confetti'
 
-import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
-import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
-import { AuthUser } from '../../Components/AuthUser'
+// import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
+// import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { EmalInputs } from '../../Components/EmalInputs'
+import { ConfirmationYesNoBodyYrl } from '../../ComponentsLibrary/ConfirmationYesNoBodyYrl/ConfirmationYesNoBodyYrl'
+import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { QuestionScores } from '../../Components/QuestionScores'
+import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
+import { AboutAcademyBody } from '../../Components/AboutAcademyBody/AboutAcademyBody'
 
 import {
+  ModalFramesComponentPropsType,
   ModalFramesPropsType,
   ModalFramesPropsOutType,
   ModalFramesComponentType,
@@ -19,11 +21,13 @@ import {
 } from './ModalFramesTypes'
 
 const CHILDREN: Record<string, FunctionComponent<any>> = {
-  SkillExchangeIntro2,
-  SkillExchangeIntro,
-  AuthUser,
+  ConfirmationYesNoBodyYrl,
   EmalInputs,
   QuestionScores,
+  AboutAcademyBody,
+  //AuthUser, Not used in favor of Cognito authetication
+  // SkillExchangeIntro2,
+  // SkillExchangeIntro,
 }
 
 /**
@@ -32,18 +36,19 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
              from '../Components/ModalFrames/ModalFrames'
  */
 const ModalFramesComponent: ModalFramesComponentType = (
-  props: ModalFramesPropsType
+  props: ModalFramesComponentPropsType
 ) => {
-  const store = useSelector((store2: RootStoreType) => store2)
   const {
-    componentsState: { modalFrames },
-  } = store
+    storeStateSlice: { modalFrames, isConfetti },
+  } = props
+
+  const { width, height } = useWindowSize()
 
   const getChildren: Function = (children: any[]): (ReactElement | null)[] => {
     return children.map(child => {
       const { childName, isActive, childProps } = child
       const CHILD = CHILDREN[childName]
-      const key = nanoid()
+      const key = JSON.stringify({ childName, childProps })
 
       if (!CHILD) return null
 
@@ -61,6 +66,12 @@ const ModalFramesComponent: ModalFramesComponentType = (
           action: closeAction,
         },
         childProps,
+        confettiProps: {
+          width,
+          height,
+          run: true,
+          opacity: isConfetti ? 1 : 0,
+        },
       }
 
       return (
@@ -83,6 +94,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
               <CHILD {...propsOut.childProps} />
             </div>
           </div>
+          {isConfetti ? <Confetti {...propsOut.confettiProps} /> : null}
         </div>
       )
     })
@@ -93,7 +105,11 @@ const ModalFramesComponent: ModalFramesComponentType = (
   return <>{getChildren(modalFrames)}</>
 }
 
-export const ModalFrames: ModalFramesType = React.memo(ModalFramesComponent)
+const storeStateSliceProps: string[] = ['modalFrames', 'isConfetti']
+export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(ModalFramesComponent)
+)
 
 export type {
   ModalFramesPropsType,

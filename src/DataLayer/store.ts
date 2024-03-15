@@ -1,9 +1,9 @@
 import { Store } from 'redux'
 import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
+import { coursesInProgressMiddleware } from './middlewares/coursesInProgressMiddleware'
 import thunk from 'redux-thunk'
 
-import { refreshAuthMiddleware } from './middlewares/refreshAuthMiddleware'
 import { indexReducer, IndexReducerType } from './index.reducer'
 import indexSaga from './index.saga'
 
@@ -15,7 +15,13 @@ const createStore: CreateStoreType = indexReducer2 => {
   const sagaMiddleware = createSagaMiddleware()
   const store2 = configureStore({
     reducer: indexReducer2,
-    middleware: [thunk, sagaMiddleware, refreshAuthMiddleware],
+    middleware: [
+      // thunk,
+      sagaMiddleware,
+      coursesInProgressMiddleware,
+      // refreshAuthMiddleware,
+      // setLocalStorageMiddleware,
+    ],
   })
   sagaMiddleware.run(indexSaga)
   return store2

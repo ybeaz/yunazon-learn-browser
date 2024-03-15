@@ -6,14 +6,13 @@ interface GetMultipliedTimeStrInterface {
 
 /**
  * @description Function to multiply time and convert it back to string
- * @param str
- * @param multiplier
- * @returns
  */
 export const getMultipliedTimeStr: GetMultipliedTimeStrInterface = (
   str,
   multiplier
 ) => {
+  if (!str) return { duration: '', units: '' }
+
   const timeArr = str.split(':').map(item => {
     return parseInt(item, 10)
   })

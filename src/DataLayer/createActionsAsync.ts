@@ -53,7 +53,10 @@ export const createAsyncAction: Function = (
  * @returns object of the kind {REQUEST: "ADD_DOCUMENT_REQUEST", SUCCESS: "ADD_DOCUMENT_SUCCESS", FAILURE: "ADD_DOCUMENT_FAILURE"}
  */
 export const createRequestTypesLegacy = (base: string) =>
-  [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
-    acc[type] = `${base}_${type}`
-    return acc
-  }, {})
+  [REQUEST, SUCCESS, FAILURE].reduce(
+    (acc: Record<string, any>, type: string) => {
+      acc[type] = `${base}_${type}`
+      return acc
+    },
+    {}
+  )

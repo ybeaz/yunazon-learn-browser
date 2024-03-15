@@ -7,7 +7,7 @@ export const ONCHANGE_USER_NAME_FIRST: ReducerType = (
 ): RootStoreType => {
   const { forms } = store
   const { user } = forms
-  const userNext = { ...user, userNameFirst: data }
+  const userNext = { ...user, nameFirst: data }
 
   const nextForms = {
     ...forms,

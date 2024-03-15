@@ -3,13 +3,7 @@ import { IconContext } from 'react-icons'
 
 import { getClasses } from '../../../Shared/getClasses'
 
-import { ICONS } from '../../../Constants/icons.const'
-
-interface IconYrlArgs {
-  classAdded: string
-  icon?: string
-  icon2?: string
-}
+import { ICONS } from './iconsYrl.const'
 
 import {
   IconYrlPropsType,
@@ -21,11 +15,26 @@ import {
 /**
  * @description Component to render IconYrl
  * @link React Icons https://react-icons.github.io/react-icons/icons/md/
+ * @propsOut 
+    iconYrlProps: {
+      icon: 'BsFillPersonPlusFill',
+      icon2: null,
+      classAdded: 'IconYrl_Function1',
+    },
  * @import import { IconYrl, IconYrlPropsType, IconYrlPropsOutType, IconYrlType } 
-             from '../ComponentsLibrary/IconYrl/IconYrl'
+             from '../ComponentsLibrary/'
  */
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
-  const { icon = '', icon2 = '', classAdded } = props
+  const {
+    icon = '',
+    icon2 = '',
+    classAdded,
+    isDisplaying = true,
+    isVisible = true,
+  } = props
+
+  const classDisplay = isDisplaying === true ? '' : 'Icon_display_none'
+  const classVisible = isVisible === true ? '' : 'Icon_visible_none'
 
   // @ts-ignore
   const Icon: any = ICONS[icon]
@@ -37,7 +46,13 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   return (
     <>
       {Icon && (
-        <div className={getClasses(`IconYrl`, classAdded)}>
+        <div
+          className={getClasses(`IconYrl`, [
+            classAdded,
+            classDisplay,
+            classVisible,
+          ])}
+        >
           <IconContext.Provider
             value={{
               className: `_icon`,

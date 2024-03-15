@@ -4,10 +4,16 @@
       "path": "."
     },
     {
-      "path": "../yourails_sep_chat_ai/."
+      "path": "../yourails-nestjs-server-4/."
     },
     {
-      "path": "../2023-12-01-Remove_yourails_sep_academy_web/."
+      "path": "../yourails_communication_layer/."
+    },
+    {
+      "path": "../manuals/."
+    },
+    {
+      "path": "../yourails_sep_chat_ai/."
     }
   ],
   "settings": {

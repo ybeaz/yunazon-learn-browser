@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteBase /
+
+# for all requests to www.example.com
+RewriteCond %{HTTP_HOST} ^academy\.yourails\.com$
+# redirect them to new-example
+RewriteRule (.*) https://yourails.com/$1 [R=301,L]

@@ -22,6 +22,7 @@
     height: fit-content;
     max-height: fit-content;
     height: -moz-max-content;
+    border-radius: @borderRadius1P0;
 
     ._close {
       display: flex;
@@ -78,16 +79,13 @@
   }
 }
 
-@media @phone, @phone-strict {
-  .ModalFrames_SkillExchangeIntro {
+.ModalFrames_QuestionScores {
+  @media @phone, @phone-strict {
     .__content {
       top: 1rem;
-    }
-  }
-
-  .ModalFrames_QuestionScores {
-    .__content {
-      top: 1rem;
+      ._inner {
+        padding: 0.5rem;
+      }
     }
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
+import { LoaderOverlayYrl } from '../../ComponentsLibrary/'
 
 import {
+  MainFrameComponentPropsType,
   MainFramePropsType,
   MainFramePropsOutType,
   MainFrameComponentType,
@@ -12,9 +14,7 @@ import {
  * @import import { MainFrame, MainFramePropsType, MainFramePropsOutType, MainFrameType } 
              from '../Components/MainFrame/MainFrame'
  */
-const MainFrameComponent: MainFrameComponentType = (
-  props: MainFramePropsType
-) => {
+const MainFrameComponent: MainFrameComponentType = (props: MainFrameComponentPropsType) => {
   const { screenType, children } = props
 
   const classAdded = screenType ? `MainFrame_${screenType}` : ''
@@ -29,10 +29,8 @@ const MainFrameComponent: MainFrameComponentType = (
         </div>
         <div className='_right'>{children[3]}</div>
       </div>
-      <div className='__comments'>
-        <div className='_in'></div>
-      </div>
       <div className='__footer'>{children[4]}</div>
+      <LoaderOverlayYrl />
     </div>
   )
 }
@@ -40,6 +38,7 @@ const MainFrameComponent: MainFrameComponentType = (
 export const MainFrame: MainFrameType = React.memo(MainFrameComponent)
 
 export type {
+  MainFrameComponentPropsType,
   MainFramePropsType,
   MainFramePropsOutType,
   MainFrameComponentType,

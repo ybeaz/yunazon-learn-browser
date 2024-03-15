@@ -1,41 +1,50 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 import { getClasses } from '../../../Shared/getClasses'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 
 import {
+  LoaderOverlayYrlComponentPropsType,
   LoaderOverlayYrlPropsType,
   LoaderOverlayYrlPropsOutType,
   LoaderOverlayYrlComponentType,
   LoaderOverlayYrlType,
 } from './LoaderOverlayYrlTypes'
 
+const propsDefault = {
+  classMain: 'LoaderOverlay3Yrl',
+}
+
 /**
  * @description Component to render LoaderOverlayYrl
  * @import import { LoaderOverlayYrl, LoaderOverlayYrlPropsType, LoaderOverlayYrlPropsOutType, LoaderOverlayYrlType } 
-             from '../ComponentsLibrary/LoaderOverlayYrl/LoaderOverlayYrl'
+             from '../ComponentsLibrary/'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
-  props: LoaderOverlayYrlPropsType
+  propsIn: LoaderOverlayYrlComponentPropsType
 ) => {
-  const {
-    componentsState: { isLoaderOverlayVisible },
-  } = useSelector((store2: RootStoreType) => store2)
+  const props = { ...propsDefault, ...propsIn }
 
-  const classAdd = isLoaderOverlayVisible ? 'LoaderOverlay_show' : ''
+  const {
+    classMain,
+    storeStateSlice: { isLoaderOverlayVisible },
+  } = props
+
+  const classAdd = isLoaderOverlayVisible ? `${classMain}_show` : ''
 
   const propsOut: LoaderOverlayYrlPropsOutType = {}
 
   return (
-    <div className={getClasses(`LoaderOverlayYrl`, classAdd)}>
+    <div className={getClasses(classMain, classAdd)}>
       <div className={`_spinner`}></div>
     </div>
   )
 }
 
-export const LoaderOverlayYrl: LoaderOverlayYrlType = React.memo(
-  LoaderOverlayYrlComponent
+const storeStateSliceProps: string[] = ['isLoaderOverlayVisible']
+export const LoaderOverlayYrl: LoaderOverlayYrlType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(LoaderOverlayYrlComponent)
 )
 
 export type {

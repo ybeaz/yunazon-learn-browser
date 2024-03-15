@@ -1,10 +1,16 @@
 import { UserType } from '../Interfaces/UserType'
 import {
+  CourseCreateProgressType,
+  CreateModuleStatusEnumType,
   ComponentsStateType,
   SearchFormSepType,
   FormsType,
   RootStoreType,
 } from '../Interfaces/RootStoreType'
+
+import { paginationOffset } from '../Constants/pagination.const'
+
+import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
 export const userStoreDefault: UserType = {
   userAvatar: '',
@@ -25,9 +31,9 @@ export const userStoreDefault: UserType = {
   userMedia: [],
   userName: '',
   userNameNick: '',
-  userNameFirst: '',
-  userNameLast: '',
-  userNameMiddle: '',
+  nameFirst: '',
+  nameLast: '',
+  nameMiddle: '',
   userPasswordAuth: '',
   userPasswordAuth2: '',
   userPhone: null,
@@ -60,17 +66,21 @@ export const searchFormSepDefault: SearchFormSepType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
+  screenActive: 'AcademyMatrix',
+  isObjections: false,
+  isSummary: true,
+  isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
   questionsSlideNumber: 0,
   isModalFrameVisible: false,
   isSideNavLeftVisible: false,
   isLoaderOverlayVisible: false,
-  isDocumentAdded: false,
-  isCourseStarted: false,
+  isModuleStarted: false,
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
+  isMobileSearchInput: false,
   oAuthStage: null,
   modalFrames: [
     {
@@ -81,26 +91,94 @@ export const componentsStateDefault: ComponentsStateType = {
       },
     },
   ],
+  pagination: {
+    pageModules: {
+      first: 0,
+      offset: paginationOffset,
+      hasNextPage: true,
+      endCursor: '',
+    },
+    pageDocuments: {
+      first: 0,
+      offset: paginationOffset,
+      hasNextPage: true,
+      endCursor: '',
+    },
+  },
+  createModuleStages: {
+    metaData: {
+      isActive: true,
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    transcript: {
+      isActive: true,
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    summary: {
+      isActive: true,
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    questions: {
+      isActive: true,
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    objections: {
+      isActive: isObjectionsStageForCourseCreateFlag(),
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+    courseModule: {
+      isActive: true,
+      status: CreateModuleStatusEnumType['todo'],
+      timeCalculated: null,
+    },
+  },
 }
 
 export const formsDefault: FormsType = {
-  searchInput: '',
+  inputCourseCreate: '',
+  inputSearch: '',
   sendTo: '',
   sendCc: '',
-  searchFormSep: searchFormSepDefault,
   userPrev: userStoreDefault,
   user: userStoreDefault,
+  tagsPick: [],
+  tagsOmit: [],
+  profileActive: {
+    nameFirst: '',
+    nameLast: '',
+    nameMiddle: '',
+  },
+}
+
+export const courseCreateProgressDefault: CourseCreateProgressType = {
+  originUrl: '',
+  course: {},
+  metaData: {},
+  questions: [],
+  questionsChunks: [],
+  summary: [],
+  summaryChunks: [],
+  transcript: [],
+  transcriptChunks: [],
 }
 
 export const rootStoreDefault: RootStoreType = {
   analyticsID: null,
   componentsState: componentsStateDefault,
+  modules: [],
   courses: [],
+  moduleCreateProgress: courseCreateProgressDefault,
   documents: [],
-  users: [],
+  articles: [],
+  profiles: [],
   scorm: {
-    courseIDActive: undefined,
-    moduleIDActive: undefined,
+    courseIDActive: null,
+    moduleIDActive: null,
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
@@ -111,7 +189,7 @@ export const rootStoreDefault: RootStoreType = {
     mediaLoaded: {},
   },
   language: 'en',
-  userIdDataAwsCognito: {
+  authAwsCognitoUserData: {
     cognito_groups: [],
     email: null,
     exp: 0,

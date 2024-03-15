@@ -2,14 +2,15 @@ import React, { ReactElement } from 'react'
 import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
 
 export type ButtonYrlPropsType = {
-  icon?: string // react name for the first icon inside the button
-  icon2?: string // react name for the second icon to exchange first one
+  icon?: string | null // react name for the first icon inside the button
+  icon2?: string | null // react name for the second icon to exchange first one
   imageSrc?: string // image source for the image inside the button
   captureLeft?: string | ReactElement // capture on the left of the icon/ image
   captureRight?: string // capture on the right of the icon/ button
   classAdded: string // calss added to the button, to make it css unique
   action?: ActionReduxType // action to assign the button
-  isDisplaying?: boolean // is the button displaing at all
+  isDisplaying?: boolean // is element present on the page and visible/ displaying?
+  isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
   tooltipText?: string // tooltips text for the button to provide user with a promt
   tooltipPosition?: string // options: ['top','right','bottom','left']
   isTooltipVisibleForced?: boolean // is tooltips visible, to manage it

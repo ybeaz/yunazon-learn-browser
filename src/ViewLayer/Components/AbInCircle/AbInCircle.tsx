@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl } from '../../ComponentsLibrary'
+import { withPropsYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -18,8 +18,8 @@ const COLORS_2 = {
   E: '0D9' /*  (Google Material Color: Light Blue 500) */,
   F: '26C' /*  (Google Material Color: Blue 500) */,
   G: '9C6' /*  (Google Material Color: Green 500) */,
-  H: '793' /*  (Google Material Color: Teal 500) */,
-  I: '86E' /*  (Google Material Color: Cyan 500) */,
+  H: '86E' /*  (Google Material Color: Teal 500) */,
+  I: '793' /*  (Google Material Color: Cyan 500) */,
   J: '09C' /*  (Google Material Color: Light Blue 500) */,
   K: '3B8' /*  (Google Material Color: Indigo 500) */,
   L: 'F08' /*  (Google Material Color: Pink 500) */,
@@ -49,10 +49,14 @@ const AbInCircleComponent: AbInCircleComponentType = (
 ) => {
   const { classAdded, text, colors2 } = props
 
-  if (!text) return null
+  if (!text || !text.length) return null
 
-  const text0 = text[0].toUpperCase()
-  const text1 = text[1].toUpperCase()
+  let text0 = text[0].toUpperCase()
+  let text1 = text[1].toUpperCase()
+  if (Array.isArray(text)) {
+    text0 = text[0][0].toUpperCase()
+    text1 = text[1][0].toUpperCase()
+  }
 
   const char0: string = (colors2 && colors2[text0]) || ''
   const char1: string = (colors2 && colors2[text1]) || ''

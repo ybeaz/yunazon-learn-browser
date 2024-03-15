@@ -1,0 +1,59 @@
+.QuestionScores {
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+
+  ._text {
+    display: flex;
+    padding: 1rem 0 1rem 0;
+    flex-direction: column;
+    text-align: initial;
+
+    ._greet {
+      display: flex;
+      font-size: @fontSizeH1;
+      font-family: cursive;
+      padding: 0rem 0rem 0.3rem 0rem;
+    }
+    p {
+      padding: 0.5rem 0 0.5rem 0;
+    }
+  }
+
+  ._qwa {
+    ._capture {
+      ._ul {
+        ._li {
+        }
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._text {
+      ._greet {
+        font-size: @fontSizeH2;
+      }
+      p {
+        font-size: @fontSizeS;
+      }
+    }
+
+    ._qwa {
+      ._capture {
+        font-size: @fontSize;
+      }
+      ._ul {
+        ._li {
+          font-size: @fontSizeS;
+        }
+      }
+    }
+  }
+}

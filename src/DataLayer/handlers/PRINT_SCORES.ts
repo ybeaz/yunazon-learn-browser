@@ -4,7 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 import { getPrintScreenAsPdf } from '../../Shared/getPrintScreenAsPdf'
 const { dispatch } = store
 
-export const PRINT_SCORES: ActionEventType = (event, data) => {
+export const PRINT_SCORES: ActionEventType = (event, data: any) => {
   const { screenType, userName, capture, contentID, meta, description } = data
 
   getPrintScreenAsPdf({
@@ -16,5 +16,5 @@ export const PRINT_SCORES: ActionEventType = (event, data) => {
     contentID,
   })
 
-  dispatch(actionSync.GET_ANSWERS_DEFAULT())
+  dispatch(actionSync.GET_ANSWERS_DEFAULT_DEPRECIATED())
 }

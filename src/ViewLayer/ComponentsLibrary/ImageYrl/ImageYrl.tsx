@@ -12,11 +12,26 @@ import {
 
 /**
  * @description Component to render ImageYrl
+ * @propsOut 
+    imageYrlProps: {
+      classAdded: 'Image_bottom',
+      src: `https://www.w3schools.com/bootstrap5/paris.jpg`,
+    },
  * @import import { ImageYrl, ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlType } 
-             from '../ComponentsLibrary/ImageYrl/ImageYrl'
+             from '../ComponentsLibrary/'
  */
 const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
-  const { classAdded, src, handleEvents: handleEventsCustom, action } = props
+  const {
+    classAdded,
+    src,
+    handleEvents: handleEventsCustom,
+    action,
+    isDisplaying = true,
+    isVisible = true,
+  } = props
+
+  const classDisplay = isDisplaying === true ? '' : 'Image_display_none'
+  const classVisible = isVisible === true ? '' : 'Image_visible_none'
 
   let handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
   handleEventsToUse = action ? handleEventsToUse : () => ({})
@@ -26,7 +41,11 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
 
   return (
     <div
-      className={getClasses('ImageYrl', classAdded)}
+      className={getClasses('ImageYrl', [
+        classAdded,
+        classDisplay,
+        classVisible,
+      ])}
       onClickCapture={(event: React.MouseEvent<HTMLDivElement>) =>
         handleEventsToUse(event, action)
       }

@@ -1,61 +1,44 @@
-import React, { ReactElement } from 'react'
-import {
-  BrowserRouter,
-  useRoutes,
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Routes,
-  Navigate,
-} from 'react-router-dom'
+import React, { ReactElement, FunctionComponent } from 'react'
+import { nanoid } from 'nanoid'
 
-import { ROUTES, RouteType } from '../Constants/routes.const'
-import { Profile } from '../ViewLayer/Screens/Profile'
-import { StubForUserResearch } from '../ViewLayer/Screens/StubForUserResearch'
-import { SkillsExchangeMatrix } from '../ViewLayer/Screens/SkillsExchangeMatrix'
-import { SkillsExchangeMatrixChRP } from '../ViewLayer/Screens/SkillsExchangeMatrixChRP'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { ROUTES, RouteType } from './routes.const'
+import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
+import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
+import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
+import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
+import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
+import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
 import { Error404 } from '../ViewLayer/Screens/Error404'
-import { Certificate } from '../ViewLayer/Screens/Certificate'
+import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
-const PAGES: Record<string, any> = {
-  Profile,
-  StubForUserResearch,
-  SkillsExchangeMatrix,
-  SkillsExchangeMatrixChRP,
+const SCREENS: Record<string, FunctionComponent<any>> = {
+  MyModules,
+  ArticlePresent,
+  AboutAcademy,
   AcademyMatrix,
-  Certificate,
   AcademyPresent,
+  MyDocuments,
+  Profiles,
+  Certificate,
   Error404,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
-  const demoHostName = 'r1.userto.com'
-  const demoPath = '/demo-youtube-learn.html'
-  const rootPath = location.hostname === demoHostName ? demoPath : ''
-
-  interface IGetRoutes {
-    (
-      routesArg: {
-        path: string
-        strict?: boolean
-        exact?: boolean
-        page: string
-        themeDafault: string
-      }[]
-    ): ReactElement[]
-  }
-
-  const routesDict = ROUTES.map((route: RouteType) => {
-    const { page, path, themeDafault, children, errorElement } = route
-    const Element = PAGES[route.page]
-    const elementProps = { rootPath, routeProps: {}, themeDafault }
-    const element = <Element {...elementProps} />
-    return { element, path, children, errorElement }
+  const routesDict = ROUTES.map((route: RouteType, index: number) => {
+    const { screen, path, children, errorElement } = route
+    const Element = SCREENS[screen]
+    const element: ReactElement = <Element />
+    const id = `router-${index}`
+    return { key: id, id, element, path, children, errorElement }
   })
 
   const routes = createBrowserRouter(routesDict)
+
+  useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
 
   return <RouterProvider router={routes} />
 }

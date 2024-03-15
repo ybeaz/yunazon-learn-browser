@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 
 /**
  * @description Hook to load a script, made app works slower
- * @param src
- * @returns void
  * @link https://usehooks.com/useScript/
  * @example const status = useScript('https://analytics.userto.com/assets/azClient.min.js')
  */
@@ -20,6 +18,7 @@ export function useScript(src: string) {
       }
       // Fetch existing script element by src
       // It may have been added by another intance of this hook
+      // @ts-expect-error
       let script: HTMLScriptElement = document.querySelector(
         `script[src="${src}"]`
       )
@@ -34,7 +33,7 @@ export function useScript(src: string) {
         document.body.appendChild(script)
         // Store status in attribute on script
         // This can be read by other instances of this hook
-        const setAttributeFromEvent = event => {
+        const setAttributeFromEvent = (event: any) => {
           script.setAttribute(
             'data-status',
             event.type === 'load' ? 'ready' : 'error'
@@ -44,12 +43,13 @@ export function useScript(src: string) {
         script.addEventListener('error', setAttributeFromEvent)
       } else {
         // Grab existing script status from attribute and set to state.
+        // @ts-expect-error
         setStatus(script.getAttribute('data-status'))
       }
       // Script event handler to update status in state
       // Note: Even if the script already exists we still need to add
       // event handlers to update the state for *this* hook instance.
-      const setStateFromEvent = event => {
+      const setStateFromEvent = (event: any) => {
         setStatus(event.type === 'load' ? 'ready' : 'error')
       }
       // Add event listeners

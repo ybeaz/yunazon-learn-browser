@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary'
+import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsProp } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 
@@ -21,24 +21,23 @@ const classProp2 = {
  * @import import { AvatarPlusInfo, AvatarPlusInfoPropsType, AvatarPlusInfoPropsOutType, AvatarPlusInfoType } 
              from '../Components/AvatarPlusInfo/AvatarPlusInfo'
  */
-const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
-  props: AvatarPlusInfoPropsType
-) => {
-  const {
-    classProps,
-    pathname,
-    handleEvents,
-    typeEvent,
-    imgSrc,
-    capture,
-    text,
-  } = props
+const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusInfoPropsType) => {
+  const { classProps, pathname, handleEvents, typeEvent, imgSrc, capture, text } = props
+
+  const navigate = useNavigate()
 
   const propsOut: AvatarPlusInfoPropsOutType = {
     linkProps: {
       to: pathname ? { pathname } : {},
       onClick: () => {
-        typeEvent && handleEvents ? handleEvents({}, { typeEvent }) : () => {}
+        handleEvents &&
+          handleEvents(
+            {},
+            {
+              typeEvent: 'GO_LINK_PATH',
+              data: { navigate, pathname },
+            }
+          )
       },
     },
     imageProps: {
@@ -49,13 +48,13 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
 
   return (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
-      <Link className={getClasses('_link', classProps)} {...propsOut.linkProps}>
+      <NavLink className={getClasses('_link', classProps)} {...propsOut.linkProps}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
           <div className='_capture'>{capture}</div>
           <div className='_text'>{text}</div>
         </div>
-      </Link>
+      </NavLink>
     </div>
   )
 }

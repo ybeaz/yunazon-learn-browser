@@ -3,6 +3,7 @@ import React from 'react'
 import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { getClasses } from '../../../Shared/getClasses'
 
 import {
   ButtonYrlPropsType,
@@ -13,8 +14,18 @@ import {
 
 /**
  * @description Component to render ButtonYrl
+ * @propsOut 
+    buttonYrlProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_MdBackward2',
+      action: {
+        typeEvent: 'SET_PAGE_CURSOR',
+        data: { myData: 1 },
+      },
+      isDisplaying: true // isButtonSlideBackward,
+    },
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
-             from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+             from '../ComponentsLibrary/'
  */
 const ButtonYrlComponent: ButtonYrlComponentType = (
   props: ButtonYrlPropsType
@@ -28,6 +39,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     classAdded = '',
     action = {},
     isDisplaying = true,
+    isVisible = true,
     tooltipText = '',
     tooltipPosition = 'top',
     isTooltipVisibleForced = false,
@@ -36,7 +48,9 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     children,
   } = props
 
-  const classDisplay = isDisplaying === true ? '' : 'Button_none'
+  const classDisplay = isDisplaying === true ? '' : 'Button_display_none'
+  const classVisible = isVisible === true ? '' : 'Button_visible_none'
+
   const handleEventsToUse = handleEventsCustom
     ? handleEventsCustom
     : handleEvents
@@ -67,7 +81,13 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   }
 
   return (
-    <div className={`ButtonYrl ${classAdded} ${classDisplay}`}>
+    <div
+      className={getClasses('ButtonYrl', [
+        classAdded,
+        classDisplay,
+        classVisible,
+      ])}
+    >
       {tooltipText ? (
         <span className={`__tooltipText ${classTooltipAdd}`}>
           {tooltipText}

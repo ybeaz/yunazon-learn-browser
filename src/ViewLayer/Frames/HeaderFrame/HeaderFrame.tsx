@@ -1,24 +1,22 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
-import * as flags from '../../../FeatureFlags/index'
-import { AuthAwsCognitoLink } from '../../Components/AuthAwsCognitoLink'
-import { getButtonAuthUserProps } from '../../Hooks/getButtonAuthUserProps'
-import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
-import { PageActionsGroup } from '../../Components/PageActionsGroup'
+import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
+// import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
+import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-import { SearchGroup } from '../../Components/SearchGroup'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { getClasses } from '../../../Shared/getClasses'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
+import { InputGroupYrl, ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  HeaderFrameComponentPropsType,
   HeaderFramePropsType,
   HeaderFramePropsOutType,
   HeaderFrameComponentType,
@@ -30,37 +28,35 @@ import {
  * @import import { HeaderFrame, HeaderFramePropsType, HeaderFramePropsOutType, HeaderFrameType } 
              from '../Components/HeaderFrame/HeaderFrame'
  */
-const HeaderFrameComponent: HeaderFrameComponentType = (
-  props: HeaderFramePropsType
-) => {
+const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameComponentPropsType) => {
   const {
+    classAdded,
     brandName,
-    moto,
-    logoPath,
     contentComponentName,
-    courseCapture = '',
-    documentID = '',
-    courseID = '',
     contentID = '',
+    moduleCapture = '',
+    moduleID = '',
+    documentID = '',
     isButtonAddCourse,
     isButtonAuthUser,
     isButtonBack,
     isButtonSideMenuLeft,
     isButtonsShare,
     isButtonThemeToggle,
-    isInstallMobileAppGroup,
     isLogoGroup,
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    logoPath,
+    moto,
+    storeStateSlice: {
+      authAwsCognitoUserData: { sub, email },
+      isSideNavLeftVisible,
+      isMobileSearchInput,
+      language,
+      profiles,
+    },
   } = props
-
-  const {
-    userIdDataAwsCognito: { preferred_username },
-    componentsState: { isSideNavLeftVisible },
-    forms: { user },
-    language,
-  } = useSelector((store2: RootStoreType) => store2)
 
   const navigate = useNavigate()
 
@@ -68,11 +64,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
 
-  const classAddHeaderFrame =
-    contentComponentName === 'ReaderIframe' ||
-    contentComponentName === 'PlayerIframe'
-      ? 'HeaderFrame_AcademyPresent'
-      : `HeaderFrame_${contentComponentName}`
+  const profile = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
+  const nameFirst = profile?.nameFirst || (email && email[0])
+  const nameLast = profile?.nameLast || (email && email[1])
+  const circleTextArr = nameFirst && nameLast ? [nameFirst, nameLast] : []
 
   const propsOut: HeaderFramePropsOutType = {
     selectLanguageProps: {
@@ -87,20 +86,20 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationAvatarProps: {
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationUnAuthorizedProps: {
       icon: 'FaUserCircle',
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
       action: {
-        typeEvent: 'TOGGLE_SIDE_NAVIGATION_LEFT',
+        typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonBackProps: {
@@ -108,7 +107,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       classAdded: 'Button_MdBackward3',
       action: {
         typeEvent: 'GO_BACK_FROM_CERTIFICATE',
-        data: { history: navigate, courseCapture },
+        data: { history: navigate, moduleCapture },
       },
       tooltipText: DICTIONARY['backToCourse'][language],
       tooltipPosition: 'bottom',
@@ -119,13 +118,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       tooltipText: createCourseQuiz,
       tooltipPosition: 'bottom',
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
+      isDisplaying: false /* TODO: Not used so far */,
     },
-    buttonAuthUserProps: getButtonAuthUserProps(
-      user,
-      language,
-      'header',
-      navigate
-    ),
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',
@@ -134,9 +128,9 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
       action: { typeEvent: 'TOGGLE_THEME' },
     },
     pageActionsProps: {
-      courseCapture,
+      moduleCapture,
       documentID,
-      courseID,
+      moduleID,
       contentID,
     },
     logoGroupProps: {
@@ -155,7 +149,30 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
     },
     abInCircleProps: {
       classAdded: '',
-      text: preferred_username,
+      text: circleTextArr,
+    },
+    inputGroupProps: {
+      inputProps: {
+        classAdded: 'Input_search',
+        type: 'text',
+        placeholder: 'Search...',
+        typeEvent: 'ONCHANGE_INPUT_SEARCH',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        storeFormProp: 'inputSearch',
+      },
+      buttonSubmitProps: {
+        icon: 'MdSearch',
+        classAdded: 'Button_MdSearch',
+        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+      },
+    },
+    buttonMobileSearchToggleProps: {
+      icon: 'MdSearch',
+      classAdded: 'Button_MobileSearchToggle',
+      action: {
+        typeEvent: 'TOGGLE_IS_MOBILE_SEARCH_INPUT',
+        data: { isMobileSearchInput: !isMobileSearchInput },
+      },
     },
   }
 
@@ -163,55 +180,42 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
 
   if (isSideNavLeftVisible) {
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationMenuProps} />
-  } else if (preferred_username) {
+  } else if (isButtonAuthUser && sub) {
     SideMenuLeft = (
       <ButtonYrl {...propsOut.buttonLeftSideNavigationAvatarProps}>
         <AbInCircle {...propsOut.abInCircleProps} />
       </ButtonYrl>
     )
-  } else if (!preferred_username)
-    SideMenuLeft = (
-      <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
-    )
+  } else if (isButtonAuthUser && !sub)
+    SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
 
   return (
-    <div
-      id={`id_header_${contentComponentName}`}
-      className={`HeaderFrame ${classAddHeaderFrame}`}
-    >
+    <div id={`id_header_${contentComponentName}`} className={getClasses('HeaderFrame', classAdded)}>
       <div className='_content'>
         <div className='__left'>
-          {isButtonBack && (
-            <Link to={{ pathname: '/academy' }}>
-              <ButtonYrl {...propsOut.buttonBackProps} />
-            </Link>
-          )}
           {isButtonSideMenuLeft && SideMenuLeft}
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
-          {isPageActionsGroup && (
-            <PageActionsGroup {...propsOut.pageActionsProps} />
-          )}
+          {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
+          {!isMobileSearchInput && isSeachGroup && (
+            <div className='_itemButtonMobileSearchToggle'>
+              <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
+            </div>
+          )}
         </div>
         <div className='__main'>
           {isSeachGroup && (
-            <div className='_itemSearchGroup'>
-              <SearchGroup />
+            <div className='_itemInputGroupYrl'>
+              <InputGroupYrl {...propsOut.inputGroupProps} />
             </div>
           )}
         </div>
         <div className='__right'>
-          {isInstallMobileAppGroup && (
-            <div className='_itemInstallMobileAppGroup'>
-              <InstallMobileAppGroup />
-            </div>
-          )}
           {isButtonAddCourse && (
             <div className='_itemButtonAddCourse'>
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
-          {flags.isAwsCognitoAuth() && <AuthAwsCognitoLink />}
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />
@@ -222,19 +226,30 @@ const HeaderFrameComponent: HeaderFrameComponentType = (
               <ButtonYrl {...propsOut.buttonThemeToggleProps} />
             </div>
           )}
-          {isButtonAuthUser && (
-            <div className='_itemButtonAuthUser'>
-              <ButtonYrl {...propsOut.buttonAuthUserProps} />
-            </div>
-          )}
         </div>
+        {isMobileSearchInput && isSeachGroup ? (
+          <div className='__rightMobile'>
+            <InputGroupYrl {...propsOut.inputGroupProps} />
+          </div>
+        ) : null}
       </div>
+      <SideNavigation />
       <ModalFrames />
     </div>
   )
 }
 
-export const HeaderFrame: HeaderFrameType = React.memo(HeaderFrameComponent)
+const storeStateSliceProps: string[] = [
+  'authAwsCognitoUserData',
+  'isSideNavLeftVisible',
+  'isMobileSearchInput',
+  'language',
+  'profiles',
+]
+export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(HeaderFrameComponent)
+)
 
 export type {
   HeaderFramePropsType,

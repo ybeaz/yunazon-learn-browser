@@ -1,0 +1,82 @@
+.LoaderOverlay2Yrl {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+
+  .loadingIcon {
+    width: 5rem;
+    height: 5rem;
+    color: tomato;
+    margin: 50%;
+  }
+
+  ._spinner:before,
+  ._spinner:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border-style: solid;
+    border-top-color: #ecd078;
+    border-right-color: #c02942;
+    border-bottom-color: #542437;
+    border-left-color: #53777a;
+    content: '';
+    transform: translate(-50%, -50%);
+    animation: rotate 1.5s infinite ease-in-out;
+  }
+
+  ._spinner:before {
+    border-width: 5vh;
+  }
+
+  ._spinner:after {
+    width: 15vh;
+    height: 15vh;
+    border-width: 1vh;
+    animation-direction: reverse;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0);
+    }
+
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  &_show {
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  @supports (
+    (-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))
+  ) {
+    &_show {
+      background-color: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(0.33rem);
+      transition: backdrop-filter 5s;
+      -webkit-backdrop-filter: blur(0.33rem);
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

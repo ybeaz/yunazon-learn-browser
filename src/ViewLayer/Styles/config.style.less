@@ -6,30 +6,33 @@
 @md-min: 992px;
 @lg-min: 1200px;
 
-@xs-max: (@sm-min - 1);
-@sm-max: (@md-min - 1);
-@md-max: (@lg-min - 1);
+@xs-max: (@sm-min - 1); // 767px
+@sm-max: (@md-min - 1); // 991px
+@md-max: (@lg-min - 1); // 1199px
 
-@phone: ~'only screen and (max-width: @{xs-min})';
-@phone-strict: ~'only screen and (min-width: @{xs-min}) and (max-width: @{xs-max})';
+@phone: ~'only screen and (min-width: 10px) and (max-width: 767px)';
+@phone-strict: ~'only screen and (min-width: 480px) and (max-width: 767px)';
 
-@tablet: ~'only screen and (min-width: @{sm-min}) and (max-width: @{md-min})';
-@tablet-strict: ~'only screen and (min-width: @{sm-min}) and (max-width: @{sm-max})';
+@tablet: ~'only screen and (min-width: 768px) and (max-width: 991px)';
+@tablet-strict: ~'only screen and (min-width: 768px) and (max-width: 991)';
 
-@desktop: ~'only screen and (min-width: @{md-min}) and (max-width: @{lg-min})';
-@desktop-strict: ~'only screen and (min-width: @{md-min}) and (max-width: @{md-max})';
+@desktop: ~'only screen and (min-width: 992px) and (max-width: 1199px)';
+@desktop-strict: ~'only screen and (min-width: 992px}) and (max-width: 1199px)';
 
-@large: ~'only screen and (min-width: @{lg-min})';
+@large: ~'only screen and (min-width: 1200px)';
 
 @fontSizeH1: 1.7rem;
 @fontSizeH2: 1.3rem;
 @fontSizeH3: 1.2rem;
 @fontSizeH4: 1.1rem;
+@fontSizeH5: 1rem;
 @fontSize: 1rem;
 @fontSizeS: 0.9rem;
 @fontSizeXS: 0.75rem;
 
 @transition: 0.5s;
+@borderRadius1P0: 12px;
+@borderRadius0P5: 6px;
 
 @import (css)
   url('https://fonts.googleapis.com/css?family=Open+Sans|Pinyon+Script|Rochester|Roboto|Noto|sans+serif');
@@ -41,6 +44,7 @@
   background-clip: content-box;
   margin: 0;
   -webkit-print-color-adjust: exact;
+  font-display: swap;
 }
 
 body {

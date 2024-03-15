@@ -69,7 +69,7 @@
       align-items: center;
       flex-direction: row;
       ._capture_left {
-        padding: 0 0.3rem 0 0;
+        padding: 0 0 0 0;
         line-height: 1.1;
       }
       ._icon {
@@ -902,13 +902,13 @@
   .__button {
     flex: 1;
     height: 2.5rem;
+    border-radius: @borderRadius0P5;
 
     &:active,
     &:focus {
     }
 
     ._in {
-      color: rgba(255, 255, 255, 0.8);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1098,6 +1098,105 @@
   }
 }
 
+.Button_NoCancel,
+.Button_YesConfirm,
+.Button_summaryIsSummary,
+.Button_summaryIsObjections {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  max-width: fit-content;
+  border-radius: @borderRadius0P5;
+
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    border-radius: @borderRadius0P5;
+    max-width: fit-content;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1rem;
+      padding: 0 1rem;
+
+      ._capture_left {
+      }
+      ._capture_right {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
+.Button_PaginationNavigationBackward {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  max-width: min-content;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    border-radius: @borderRadius0P5;
+    max-width: min-content;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+      ._capture_left {
+      }
+      ._capture_right {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
+.Button_PaginationNavigationForward {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  max-width: min-content;
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    border-radius: @borderRadius0P5;
+    max-width: min-content;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      height: 1.5rem;
+
+      ._capture_left {
+        padding-left: 2rem;
+        padding-right: 0.75rem;
+      }
+      ._capture_right {
+      }
+    }
+  }
+}
+
 .Button_MdBackward2 {
   flex: 1;
   padding: 0 0 0 0;
@@ -1123,6 +1222,7 @@
   flex: 1;
   padding: 0 0 0 0;
   align-items: center;
+
   .__button {
     flex: 1;
     height: 2.5rem;
@@ -1145,6 +1245,7 @@
   .__button {
     width: 100%;
     height: 2.5rem;
+
     &:active,
     &:focus {
     }
@@ -1153,6 +1254,26 @@
       padding: 0 1rem 0 0;
       ._icon {
         margin: 0 0 0 1rem;
+      }
+    }
+  }
+}
+
+.Button_create_stage_repeat {
+  flex: 1;
+  align-items: center;
+
+  .__button {
+    flex: 1;
+    height: 2.5rem;
+    border-radius: @borderRadius0P5;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      ._icon {
       }
     }
   }
@@ -1210,7 +1331,7 @@
 }
 
 .Button_MdMenu {
-  padding-right: 0.5em;
+  padding-right: 1.6em;
   align-items: center;
   .__button {
     &:active,
@@ -1239,7 +1360,31 @@
   }
 }
 
+.Button_CourseCreateSubmit,
 .Button_MdSearch {
+  .__button {
+    width: 3rem;
+    &:active,
+    &:focus {
+    }
+    ._in {
+      ._icon {
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+  }
+  @media @phone, @phone-strict {
+    .__button {
+      width: 2rem;
+    }
+  }
+}
+
+.Button_DeactivateDocument {
+  display: flex;
+  justify-content: center;
+
   .__button {
     width: 4.5rem;
     &:active,
@@ -1291,6 +1436,10 @@
   }
 }
 
-.Button_none {
+.Button_display_none {
   display: none;
+}
+
+.Button_visible_none {
+  opacity: 0;
 }

@@ -1,41 +1,65 @@
 import { all, fork } from 'redux-saga/effects'
 
+import reateSiteMapSaga from './sagas/createSiteMapSaga'
+import createProfileSaga from './sagas/createProfileSaga'
+import createDocumentScenarioSaga from './sagas/createDocumentScenarioSaga'
+import updateProfileSaga from './sagas/updateProfileSaga'
+import deactivateModulesSaga from './sagas/deactivateModulesSaga'
+import readProfileSaga from './sagas/readProfileSaga'
+import getModulesSaga from './sagas/getModulesSaga'
+import getModule60ModuleCreatedSaga from './sagas/getModule60ModuleCreatedSaga'
+import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreatedSaga'
+import getModule45QuestionsCreatedSaga from './sagas/getModule45QuestionsCreatedSaga'
+import getModule35SummaryCreatedSaga from './sagas/getModule35SummaryCreatedSaga'
+import getModule20TranscriptCreatedSaga from './sagas/getModule20TranscriptCreatedSaga'
+import getModule10MataDataCreatedSaga from './sagas/getModule10MataDataCreatedSaga'
+import getBotResponseSaga from './sagas/getBotResponseSaga'
+import getModuleScenarioSaga from './sagas/getModuleScenarioSaga'
+import readArticleSaga from './sagas/readArticleSaga'
+import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
+import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
+import getDocumentsSaga from './sagas/getDocumentsSaga'
+import getAuthDataSaga from './sagas/getAuthDataSaga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
 import getAuthAwsCognitoUserDataSaga from './sagas/getAuthAwsCognitoUserDataSaga'
-import getCourseDataSaga from './sagas/getCourseData.saga'
-import getLoadedProfilesSaga from './sagas/getLoadedProfiles.saga'
-import getReadUserAuthSaga from './sagas/getReadUserAuth.saga'
-import getSavedUserProfileSaga from './sagas/getSavedUserProfile.saga'
-import getOAuthUiDataSaga from './sagas/getOAuthUiData.saga'
-import getOAuthGoogleSaga from './sagas/getOAuthGoogle.saga'
-import getAuthSignInSaga from './sagas/getAuthSignIn.saga'
-import getAuthRegisteredSaga from './sagas/getAuthRegistered.saga'
-import getSavedAnalyticsSaga from './sagas/getSavedAnalytics.saga'
-import sendEmailDocumentSaga from './sagas/sendEmailDocument.saga'
-import findDocumentSaga from './sagas/findDocument.saga'
-import addDocumentSaga from './sagas/addDocument.saga'
-import getCoursesSaga from './sagas/getCourses.saga'
-import initLoadingSaga from './sagas/initLoading.saga'
+import getModuleSaga from './sagas/getModuleSaga'
+import sendEmailDocumentSaga from './sagas/sendEmailDocumentSaga'
+import readDocumentSaga from './sagas/readDocumentSaga'
+import createDocumentSaga from './sagas/createDocumentSaga'
+import getCoursesSaga from './sagas/getCoursesSaga'
+import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(reateSiteMapSaga),
+    fork(createProfileSaga),
+    fork(createDocumentScenarioSaga),
+    fork(updateProfileSaga),
+    fork(readProfileSaga),
+    fork(getBotResponseSaga),
+    fork(getModule60ModuleCreatedSaga),
+    fork(getModule55ObjectionsCreatedSaga),
+    fork(getModule45QuestionsCreatedSaga),
+    fork(getModule35SummaryCreatedSaga),
+    fork(getModule20TranscriptCreatedSaga),
+    fork(getModule10MataDataCreatedSaga),
+    fork(getModuleScenarioSaga),
+    fork(deactivateModulesSaga),
+    fork(getModulesSaga),
+    fork(readArticleSaga),
+    fork(deactivateCoursesSaga),
+    fork(deactivateDocumentsSaga),
+    fork(getDocumentsSaga),
+    fork(getAuthDataSaga),
     fork(getAuthAwsCognitoUserRevokedSaga),
     fork(getAuthAwsCognitoUserRefreshedSaga),
     fork(getAuthAwsCognitoUserDataSaga),
-    fork(getCourseDataSaga),
-    fork(getLoadedProfilesSaga),
-    fork(getReadUserAuthSaga),
-    fork(getSavedUserProfileSaga),
-    fork(getOAuthUiDataSaga),
-    fork(getOAuthGoogleSaga),
-    fork(getAuthSignInSaga),
-    fork(getAuthRegisteredSaga),
-    fork(getSavedAnalyticsSaga),
+    fork(getModuleSaga),
     fork(sendEmailDocumentSaga),
-    fork(findDocumentSaga),
-    fork(addDocumentSaga),
+    fork(readDocumentSaga),
+    fork(createDocumentSaga),
     fork(getCoursesSaga),
-    fork(initLoadingSaga),
+    fork(getMatrixDataSaga),
   ])
 }

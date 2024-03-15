@@ -1,0 +1,67 @@
+.AboutAcademyBody {
+  display: flex;
+  flex-direction: column;
+
+  ._titleBodyAbout {
+    padding: 0.5rem 1rem;
+    font-size: @fontSizeH2;
+  }
+
+  ._aboutAcademyContent {
+    padding: 1rem;
+
+    ._paragraph {
+      line-height: 2;
+    }
+  }
+
+  ._sectionBuildData {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem 0 33%;
+
+    ._titleTableBuild {
+      font-size: @fontSize;
+      padding: 1rem 0;
+    }
+
+    ._tableBuild {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      display: grid; /* grid containers */
+      // grid-gap: 10px;
+      grid-template-columns: 1fr 3fr; /* two columns */
+      grid-auto-flow: row; /* in column direction */
+
+      ._row {
+        display: contents;
+      }
+
+      ._cell {
+        padding: 0.15rem 0;
+        align-items: center;
+        justify-content: center;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        font-size: @fontSizeS;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._sectionBuildData {
+      padding: 1rem;
+    }
+  }
+}

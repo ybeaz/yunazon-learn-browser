@@ -1,18 +1,13 @@
 import React, { useRef } from 'react'
 
-import { useSelector } from 'react-redux'
 import { getClasses } from '../../../Shared/getClasses'
-
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
-import { UserType } from '../../../Interfaces/UserType'
-import {
-  RootStoreType,
-  FormsType,
-  SearchFormSepType,
-} from '../../../Interfaces/RootStoreType'
-import { IconYrl } from '../IconYrl/IconYrl'
+import { FormsType, SearchFormSepType } from '../../../Interfaces/RootStoreType'
+import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
+import { IconYrl } from '../'
 
 import {
+  InputYrlComponentPropsType,
   InputYrlPropsType,
   InputYrlPropsOutType,
   InputYrlComponentType,
@@ -21,50 +16,56 @@ import {
 
 /**
  * @description Component to render InputYrl
- * @import import { InputYrl, InputYrlPropsType, InputYrlPropsOutType, InputYrlType } 
-             from '../ComponentsLibrary/InputYrl/InputYrl'
+ * @propsOut 
+    inputYrlProps: {
+      classAdded: 'Input_passwordAuth',
+      type: 'text',
+      placeholder: 'myPlaceholder',
+      typeEvent: 'ONCHANGE_USER_PASSWORD_AUTH_2',
+      storeFormGroup: 'user',
+      storeFormProp: 'userPasswordAuth2',
+    },
+ * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
+             from '../ComponentsLibrary/'
  */
-const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
+const InputYrlComponent: InputYrlComponentType = (
+  props: InputYrlComponentPropsType
+) => {
   const {
     tagName = 'input',
     classAdded,
+    key,
     type,
     placeholder,
     typeEvent,
+    typeEventOnEnter,
     storeFormGroup,
     storeFormProp,
     accept,
+    storeStateSlice: { forms },
   } = props
-
-  const store = useSelector((store2: RootStoreType) => store2)
-  const { forms } = store
 
   let value: string | number | string[] = ''
 
-  if (storeFormGroup === 'searchFormSep' && storeFormProp) {
-    const searchFormSepKey = storeFormProp as keyof SearchFormSepType
-    value = forms[storeFormGroup][searchFormSepKey]
-  }
-  if (
-    (storeFormGroup === 'user' || storeFormGroup === 'userPrev') &&
-    storeFormProp
-  ) {
-    const userKey = storeFormProp as keyof UserType
-    value = forms[storeFormGroup][userKey] as any
+  if (storeFormGroup && storeFormProp && forms[storeFormGroup]) {
+    // @ts-expect-error
+    value = forms[storeFormGroup][storeFormProp]
   } else if (storeFormProp) {
     const formsKey = storeFormProp as keyof FormsType
     value = forms[formsKey] as any
   }
 
-  const action = { typeEvent }
+  const action = { typeEvent, data: { storeFormGroup, storeFormProp } }
+  const actionOnEnter = { typeEvent: typeEventOnEnter }
 
   const iconReactProps = {
-    icon: 'AiFillCloseCircle',
+    icon: 'MdClose',
     icon2: 'null',
     classAdded: 'IconYrl_Input',
   }
 
-  const inputFileRef = useRef(null)
+  const inputRef = useRef(null)
+  const textareaRef = useRef(null)
 
   // TODO Make click programmaticaly from another element to change default label
   // https://stackoverflow.com/questions/32433594/how-to-trigger-input-file-event-reactjs-by-another-dom
@@ -81,24 +82,32 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
         {tagName === 'input' && (
           <input
             className={'__input _hidden'}
-            ref={inputFileRef}
+            key={key}
+            ref={inputRef}
             type={type}
             placeholder={placeholder}
             value={value}
             accept={accept}
-            onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+            onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
               handleEvents(event, action)
-            }
+            }}
+            onKeyDown={(event: any) => {
+              if (event.key === 'Enter') {
+                handleEvents(event, actionOnEnter)
+              }
+            }}
           />
         )}
         {tagName === 'textarea' && (
           <textarea
             className={'__input'}
+            key={key}
+            ref={textareaRef}
             placeholder={placeholder}
             onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
               handleEvents(event, action)
             }
-            value={value}
+            defaultValue={value}
           />
         )}
       </div>
@@ -114,7 +123,11 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlPropsType) => {
   )
 }
 
-export const InputYrl: InputYrlType = React.memo(InputYrlComponent)
+const storeStateSliceProps: string[] = ['forms']
+export const InputYrl: InputYrlType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(InputYrlComponent)
+)
 
 export type {
   InputYrlPropsType,

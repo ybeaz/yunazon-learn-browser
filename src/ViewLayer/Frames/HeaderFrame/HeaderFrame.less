@@ -12,11 +12,17 @@
     display: flex;
     flex: 1;
     flex-direction: row;
+    justify-content: space-between;
     padding: 0.7rem 1rem;
 
     .__left {
       display: flex;
+      flex: 3;
       align-items: center;
+
+      ._itemButtonMobileSearchToggle {
+        display: none;
+      }
     }
 
     .__main {
@@ -25,9 +31,11 @@
       justify-content: center;
       align-items: center;
 
-      ._itemSearchGroup {
+      ._itemInputGroupYrl {
         display: flex;
-        width: 40vw;
+        width: 100%;
+        flex: 1;
+        padding: 0 1rem;
       }
     }
 
@@ -75,14 +83,24 @@
   @media @phone, @phone-strict {
     ._content {
       overflow: hidden;
+      flex-direction: column;
       justify-content: space-between;
+
       .__left {
+      }
+
+      .__left {
+        ._itemButtonMobileSearchToggle {
+          display: flex;
+          margin-left: auto;
+          margin-top: auto;
+        }
       }
 
       .__main {
         flex: none;
 
-        ._itemSearchGroup {
+        ._itemInputGroupYrl {
           display: none;
         }
       }
@@ -105,6 +123,11 @@
         ._itemButtonThemeToggle {
           display: none;
         }
+      }
+
+      .__rightMobile {
+        display: flex;
+        padding-top: 0.25rem;
       }
     }
   }

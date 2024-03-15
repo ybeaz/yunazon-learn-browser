@@ -1,5 +1,6 @@
 import { ClientHttpType } from '../@types/ClientHttpType'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
+import { CoursesStageEnumType } from '../@types/CoursesStageEnumType'
 
 const envType: string = getDetectedEnv()
 
@@ -7,10 +8,33 @@ export interface FeatureFlagType {
   (envTypeIn?: string): boolean | any
 }
 
+/**
+ * @description Flag to toggle adding course create functionality
+ *              (Reason is NetAngels is blocked from ChatGPT)
+ */
+export const isCourseCreateSectionFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => (envTypeIn === 'local' ? true : false)
+
+/**
+ * @description Flag to toggle adding objections to the content
+ */
+export const isObjectionsStageForCourseCreateFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
+/**
+ * @description Flag to toggle isLoadingLocalStorageStoreState
+ *      where or not to load initially local storage store state
+ */
+export const selectCoursesStageFlag: FeatureFlagType = (
+  envTypeIn = envType
+) => [CoursesStageEnumType['production2023']]
+
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (
   envTypeIn = envType
-) => ClientHttpType['apolloClient']
+) => ClientHttpType['axiosClient']
 
 /** @description Flag to toggle display of the Cognito signin option in the Header */
 export const isAwsCognitoAuth: FeatureFlagType = (envTypeIn = envType) => true
@@ -22,3 +46,30 @@ export const isGetingSavedAnanlyticsEvent: FeatureFlagType = (
 
 /** @description Flag template */
 export const isTemplate: FeatureFlagType = (envTypeIn = envType) => false
+
+/**
+ * @description Feature flag for development and debugging
+ */
+
+/** @description Flag isDebugModelWindowQuestionScoresSuccess */
+export const isDebugModelWindowQuestionScoresSuccess: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
+/** @description Flag isDebugModelWindowQuestionScoresFailure */
+export const isDebugModelWindowQuestionScoresFailure: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
+/** @description Flag isDebugCertificateRedirectTo */
+export const isDebugCertificateRedirectTo: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+
+/**
+ * @description DEPRECIATED:
+
+export const isLoadingLocalStorageStoreState: FeatureFlagType = (
+  envTypeIn = envType
+) => false
+*/

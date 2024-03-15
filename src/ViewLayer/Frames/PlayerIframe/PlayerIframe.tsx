@@ -15,7 +15,7 @@ import {
 const PlayerIframeComponent: PlayerIframeComponentType = (
   props: PlayerIframePropsType
 ) => {
-  const { contentID, isVisible, children } = props
+  const { moduleID, contentID, isVisible, children } = props
 
   let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
 
@@ -23,12 +23,12 @@ const PlayerIframeComponent: PlayerIframeComponentType = (
 
   return (
     <div className='PlayerIframe'>
-      <div className={`__wrapper ${isVisibleClass}`}>
+      <div className={`_wrapper ${isVisibleClass}`}>
         <div className='_player' id={contentID}></div>
         {children[0]}
       </div>
 
-      <div className='__panel'>{children[1]}</div>
+      <div className='_panel'>{children[1]}</div>
     </div>
   )
 }

@@ -1,17 +1,17 @@
 import { CourseType, ModuleType, QuestionType } from '../@types/GraphqlTypes'
 
-type ModuleActive = ModuleType | { moduleID: undefined; contentID: undefined }
+type ModuleActive = Partial<ModuleType>
 
 export type GetActiveCourseDataResType = {
-  courseActive: CourseType | { courseID: ''; capture: '' }
-  moduleActive: ModuleActive
+  courseActive: Partial<CourseType>
+  moduleActive: Partial<ModuleActive>
   questionsActive: QuestionType[] | []
 }
 
 interface GetActiveCourseDataType {
   (
     courses: CourseType[],
-    moduleIDActive: string | undefined
+    moduleIDActive: string | null
   ): GetActiveCourseDataResType
 }
 
@@ -22,11 +22,11 @@ interface GetActiveCourseDataType {
  */
 export const getActiveCourseData: GetActiveCourseDataType = (
   courses: CourseType[],
-  moduleIDActive: string | undefined
+  moduleIDActive: string | null
 ) => {
   const res: GetActiveCourseDataResType = {
-    courseActive: { courseID: '', capture: '' },
-    moduleActive: { moduleID: undefined, contentID: undefined },
+    courseActive: {},
+    moduleActive: {},
     questionsActive: [],
   }
 
@@ -58,7 +58,6 @@ export const getActiveCourseData: GetActiveCourseDataType = (
       if (isBreaking) break
     }
 
-    // @ts-expect-error
     questionsActive = moduleActive?.questions ? moduleActive.questions : []
 
     return {

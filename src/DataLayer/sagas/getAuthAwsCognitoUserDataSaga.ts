@@ -1,13 +1,18 @@
-import { takeEvery, put } from 'redux-saga/effects'
+import { takeEvery, put, select } from 'redux-saga/effects'
 
+import { QueryGetAuthAwsCognitoUserDataArgs } from '../../@types/GraphqlTypes'
+import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getSetObjToLocalStorage } from '../../Shared/getSetObjToLocalStorage'
-import { getResponseGraphqlAsync } from '../../CommunicationLayer/getResponseGraphqlAsync'
+import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
+export function* getAuthAwsCognitoUserData(
+  params: ActionReduxType | any
+): Iterable<any> {
   const {
     data: { code },
   } = params
@@ -16,7 +21,7 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
 
-    const variables = {
+    const variables: QueryGetAuthAwsCognitoUserDataArgs = {
       userIdDataAwsCognitoInput: {
         code,
         redirect_uri,
@@ -24,23 +29,32 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
       },
     }
 
-    const userIdDataAwsCognito: any = yield getResponseGraphqlAsync({
-      variables,
-      resolveGraphqlName: 'getAuthAwsCognitoUserData',
+    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: 'getAuthAwsCognitoUserData',
+      },
+      {
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
+      }
+    )
+
+    yield getLocalStorageSetObjTo({
+      refresh_token: authAwsCognitoUserData.refresh_token,
     })
 
     yield put(
-      actionSync.SET_USERID_DATA_AWS_COGNITO({
-        userIdDataAwsCognito,
+      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
+        authAwsCognitoUserData,
         source: 'getAuthAwsCognitoUserDataSaga',
       })
     )
-
-    getSetObjToLocalStorage(userIdDataAwsCognito)
   } catch (error: any) {
-    console.log('ERROR getAuthAwsCognitoUserDataSaga', {
-      error: error.message,
-    })
+    console.log(
+      'getAuthAwsCognitoUserDataSaga [53] ERROR',
+      `${error.name}: ${error.message}`
+    )
   }
 }
 
@@ -50,7 +64,7 @@ export function* getAuthAwsCognitoUserData(params: any): Iterable<any> {
  */
 export default function* getAuthAwsCognitoUserDataSaga() {
   yield takeEvery(
-    [actionAsync.GET_USERID_DATA_AWS_COGNITO_ASYNC.REQUEST().type],
+    [actionAsync.GET_AUTH_AWS_COGNITO_USER_DATA.REQUEST().type],
     getAuthAwsCognitoUserData
   )
 }

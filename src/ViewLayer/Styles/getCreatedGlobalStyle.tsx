@@ -1,19 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-
 import { createGlobalStyle } from 'styled-components'
 
 import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getBuiltColor } from './getBuiltColor'
+
 interface IGetCreatedGlobalStyle {
-  (lightness: ILightness, alphas: IAlphas): any
+  (props: { lightness: ILightness; alphas: IAlphas; theme: string }): any
 }
 
-export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
+export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({
   lightness,
-  alphas
-) => {
+  alphas,
+  theme,
+}) => {
   const {
     darker4,
     darker3,
@@ -37,10 +37,6 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     opaciter3,
     opaciter4,
   } = alphas
-
-  const {
-    globalVars: { theme },
-  } = useSelector((store2: RootStoreType) => store2)
 
   if (!theme) return null
 
@@ -67,11 +63,13 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .SelectLanguage .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
-      border-color: ${props2 =>
-        ({
+      border-color: ${(props2: any) => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        }[theme])};}
+        }
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .SearchFormSep .__titleScreen {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
@@ -150,17 +148,20 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input,
-    .Input_userNameFirst .__input,
+    .Input_nameFirst .__input,
     .Input_ageFromToRequired .__input, 
     .Input_descriptionRequired .__input  {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter)};
       background-color: ${props2 =>
         getColor(props2, 'colorSecond', lighter, medial, 'Light')};
-      border-color: ${props2 =>
-        ({
+      border-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorFirst', medial, lighter4, 'Dark'),
           Light: getColor(props2, 'colorGrey', opaciter4, middle, 'Light'),
-        }[theme])};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .Input_ageFromToRequired .__input:active,
     .Input_ageFromToRequired .__input:focus {
@@ -188,8 +189,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input:active,
-    .Input_userNameFirst .__input:active,
-    .Input_userNameFirst .__input:focus,
+    .Input_nameFirst .__input:active,
+    .Input_nameFirst .__input:focus,
     .Input_descriptionRequired .__input:active,
     .Input_descriptionRequired .__input:focus {
       color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
@@ -200,7 +201,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .Input_userInfoAbout .__input::placeholder,
-    .Input_userNameFirst .__input::placeholder,
+    .Input_nameFirst .__input::placeholder,
     .Input_descriptionRequired .__input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
@@ -208,14 +209,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
     
     .Input_userInfoAbout .__input:-ms-input-placeholder,
-    .Input_userNameFirst .__input:-ms-input-placeholder,
+    .Input_nameFirst .__input:-ms-input-placeholder,
     .Input_descriptionRequired .__input:-ms-input-placeholder { /* Internet Explorer 10-11 */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
     }
     
     .Input_userInfoAbout .__input::-ms-input-placeholder,
-    .Input_userNameFirst .__input::-ms-input-placeholder,
+    .Input_nameFirst .__input::-ms-input-placeholder,
     .Input_descriptionRequired .__input::-ms-input-placeholder { /* Microsoft Edge */
       color: ${props2 =>
         getColor(props2, 'colorFirst', medial, darker4, 'Dark')};
@@ -269,6 +270,12 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+    .Button_NoCancel,
+    .Button_create_stage_repeat .__button,
+    .Button_summaryIsSummary .__button,
+    .Button_summaryIsObjections .__button,
+    .Button_PaginationNavigationBackward .__button,
+    .Button_PaginationNavigationForward .__button,
     .Button_MdBackward3 .__button,
     .Button_MdForward2 .__button,
     .Button_CallForActionMatrix .__button,
@@ -316,6 +323,7 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorFirst', medial, darker, 'Dark')};
     }
 
+    .Button_YesConfirm,
     .Button_downLeft .__button {
       background-color: ${props2 =>
         getColor(props2, 'colorSecondLighter3', medial, lighter3)};
@@ -376,11 +384,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     .Button_MdMenu .__button,
     .Button_AddCourse .__button,
     .Button_ThemeToggle .__button {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        }[theme])};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .Button_SiGoogleplay ._in,
     .Button_SiAppstore ._in,
@@ -406,15 +417,8 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
         getColor(props2, 'colorSecondLighter4', medial, lighter4)};
     }
 
-    .Button_MdSearch .__button {
-      border-bottom: solid 1px ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle, 'Dark')};
-      border-right: solid 1px ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle, 'Dark')};
-      border-top: solid 1px ${props2 =>
-        getColor(props2, 'colorSecond', medial, middle, 'Dark')};
-    }
-
+    .Button_DeactivateDocument ._in,
+    .Button_CourseCreateSubmit ._in,
     .Button_MdSearch ._in {
       color: ${props2 =>
         getColor(props2, 'colorFirstLighter', medial, lighter)};
@@ -455,18 +459,23 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .ModalFrames .__content {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', middle, lighter4),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        }[theme])};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     .AuthUser .form, .AuthUser .bottomContainer {
-      background: ${props2 =>
-        ({
+      background: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorGrey', medial, middle),
           Light: getColor(props2, 'colorSecond', medial, middle),
-        }[theme])};}
+        }
+        return DICTIONARY_STYLES[theme]
+      }};}
     
     .AuthUser .header2 {
       color: ${props2 => getColor(props2, 'colorFirst', medial, darker)};
@@ -505,11 +514,14 @@ export const getCreatedGlobalStyle: IGetCreatedGlobalStyle = (
     }
 
     .HeaderFrame {
-      background-color: ${props2 =>
-        ({
+      background-color: ${props2 => {
+        const DICTIONARY_STYLES: Record<string, any> = {
           Dark: getColor(props2, 'colorSecond', medial, middle),
           Light: 'rgb(245, 246, 250)',
-        }[theme])};}
+        }
+
+        return DICTIONARY_STYLES[theme]
+      }};}
 
     body {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};

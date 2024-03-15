@@ -1,0 +1,30 @@
+.ContentPlate {
+  display: flex;
+  padding: 0.5rem;
+  width: 20rem;
+  height: 20rem; // fit-content;
+  overflow: hidden;
+
+  .__shield {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    width: 100%;
+    height: auto;
+    flex-direction: column-reverse;
+
+    .__shield {
+      height: calc(100vw * 12 / 16);
+    }
+  }
+}

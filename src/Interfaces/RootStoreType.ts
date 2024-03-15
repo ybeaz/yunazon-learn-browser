@@ -1,5 +1,29 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType } from '../@types/GraphqlTypes'
+import { ModuleType, CourseType, DocumentType, ProfileType } from '../@types/'
+import { PaginationType } from './PaginationType'
+import { ArticleType } from '../@types/ArticleMockType'
+
+export enum CreateModuleStagesEnumType {
+  metaData = 'metaData',
+  transcript = 'transcript',
+  summary = 'summary',
+  questions = 'questions',
+  objections = 'objections',
+  courseModule = 'courseModule',
+}
+
+export enum CreateModuleStatusEnumType {
+  todo = 'todo',
+  pending = 'pending',
+  success = 'success',
+  failure = 'failure',
+}
+
+export type CreateModuleStageType = {
+  isActive: boolean
+  status: CreateModuleStatusEnumType
+  timeCalculated: number | null
+}
 
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
@@ -14,34 +38,54 @@ export type SearchFormSepType = {
   selectSortBy: string
 }
 
+export enum PaginationNameEnumType {
+  pageModules = 'pageModules',
+  pageDocuments = 'pageDocuments',
+}
+
+export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
+
 export type ComponentsStateType = {
+  screenActive: string
+  isObjections: boolean
+  isSummary: boolean
+  isConfetti: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
   questionsSlideNumber: number
   isModalFrameVisible: boolean
   isSideNavLeftVisible: boolean
   isLoaderOverlayVisible: boolean
-  isDocumentAdded: boolean
-  isCourseStarted: boolean
+  isModuleStarted: boolean
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
+  isMobileSearchInput: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
+  pagination: PaginationDict
+  createModuleStages: Record<CreateModuleStagesEnumType, CreateModuleStageType>
 }
 
 export type FormsType = {
-  searchInput: string
   sendTo: string
   sendCc: string
-  searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
+  inputCourseCreate: string
+  inputSearch: string
+  tagsPick: string[]
+  tagsOmit: string[]
+  profileActive: {
+    nameFirst: string
+    nameLast: string
+    nameMiddle: string
+  }
 }
 
 export type ScormType = {
-  courseIDActive: undefined
-  moduleIDActive: undefined
+  courseIDActive: string | null
+  moduleIDActive: string | null
   numberQuestionsInSlide: number
   durationMultiplier: number
 }
@@ -64,12 +108,42 @@ export type GlobalVarsType = {
   theme: string
 }
 
+export type CourseCreateProgressType = {
+  originUrl: string
+  course: any
+  metaData: any
+  questions: any[]
+  questionsChunks: any[]
+  summary: any[]
+  summaryChunks: any[]
+  transcript: []
+  transcriptChunks: any[]
+}
+
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
+  modules: ModuleType[]
   courses: CourseType[]
-  documents: any[]
-  users: UserType[]
+  moduleCreateProgress: CourseCreateProgressType
+  documents: DocumentType[]
+  articles: ArticleType[]
+  profiles: Pick<
+    ProfileType,
+    | 'profileID'
+    | 'userID'
+    | 'isActive'
+    | 'nameFirst'
+    | 'nameLast'
+    | 'nameMiddle'
+    | 'affiliation'
+    | 'awards'
+    | 'description'
+    | 'jobTitle'
+    | 'urls'
+    | 'avatarSrc'
+    | 'avatarSize'
+  >[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {
@@ -78,6 +152,6 @@ export type RootStoreType = {
     mediaLoaded: any
   }
   language: string
-  userIdDataAwsCognito: UserIdDataAwsCognito
+  authAwsCognitoUserData: UserIdDataAwsCognito
   globalVars: GlobalVarsType
 }

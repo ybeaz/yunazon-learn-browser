@@ -1,5 +1,5 @@
-import { IAge } from '../../../Constants/age.const'
-import { SelectOptionType } from './../Select'
+import { IAge } from '../Constants/age.const'
+import { SelectOptionType } from '../Interfaces'
 
 interface IGetAgeOptions {
   (age: IAge, defaultOption: SelectOptionType): SelectOptionType[]
