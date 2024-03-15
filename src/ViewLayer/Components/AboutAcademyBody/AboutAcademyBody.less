@@ -3,12 +3,12 @@
   flex-direction: column;
 
   ._titleBodyAbout {
-    padding: 0.5rem 0.5rem;
+    padding: 0.5rem 1rem;
     font-size: @fontSizeH2;
   }
 
   ._aboutAcademyContent {
-    padding: 1rem 0.5rem;
+    padding: 1rem;
 
     ._paragraph {
       line-height: 2;
@@ -18,11 +18,11 @@
   ._sectionBuildData {
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 33%;
+    padding: 0 1rem 0 33%;
 
     ._titleTableBuild {
       font-size: @fontSize;
-      padding: 1rem 0.5rem;
+      padding: 1rem 0;
     }
 
     ._tableBuild {
@@ -40,68 +40,15 @@
       }
 
       ._cell {
-        padding: 0.15rem 0.5rem;
+        padding: 0.15rem 0;
         align-items: center;
         justify-content: center;
         overflow-wrap: break-word;
         word-wrap: break-word;
         hyphens: auto;
-        white-space: pre-wrap;
         font-size: @fontSizeS;
-      }
-
-      ._row_branchCurrent {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_branchCurrent {
-      }
-
-      ._row_date {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_date {
-      }
-
-      ._row_author {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_date {
-      }
-
-      ._row_commit {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_commit {
-      }
-
-      ._row_message {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_message {
-      }
-
-      ._row_copyright {
-      }
-
-      ._cell_capture {
-      }
-
-      ._cell_copyright {
+        white-space: pre-line;
+        overflow-wrap: anywhere;
       }
     }
   }
@@ -113,5 +60,8 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+    ._sectionBuildData {
+      padding: 1rem;
+    }
   }
 }

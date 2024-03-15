@@ -25,8 +25,8 @@ export function* getModule20TranscriptCreatedGenerator(
 ): Iterable<any> {
   try {
     /* Add transcript to moduleCreateProgress */
-    const originUrl: any = yield select((state: RootStoreType) => {
-      return state.moduleCreateProgress.originUrl
+    const inputCourseCreate: any = yield select((state: RootStoreType) => {
+      return state.forms.inputCourseCreate
     })
 
     yield put(
@@ -36,11 +36,18 @@ export function* getModule20TranscriptCreatedGenerator(
       })
     )
 
-    const variables: MutationCreateYoutubeTranscriptArgs = {
+    let variables: MutationCreateYoutubeTranscriptArgs = {
       createYoutubeTranscriptInput: {
-        originUrl,
+        originID: inputCourseCreate,
       },
     }
+
+    if (inputCourseCreate.includes('youtube.com'))
+      variables = {
+        createYoutubeTranscriptInput: {
+          originUrl: inputCourseCreate,
+        },
+      }
 
     const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
@@ -54,6 +61,9 @@ export function* getModule20TranscriptCreatedGenerator(
       }
     )
 
+    console.info('getModule20TranscriptCreatedSaga [60]', {
+      createYoutubeTranscript,
+    })
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         transcript: createYoutubeTranscript.transcript,
@@ -90,17 +100,11 @@ export function* getModule20TranscriptCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule20TranscriptCreatedSaga [69] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule20TranscriptCreatedSaga [69] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule20TranscriptCreated = withDebounce(
-  getModule20TranscriptCreatedGenerator,
-  500
-)
+export const getModule20TranscriptCreated = withDebounce(getModule20TranscriptCreatedGenerator, 500)
 
 export default function* getModule20TranscriptCreatedSaga() {
   yield takeEvery(

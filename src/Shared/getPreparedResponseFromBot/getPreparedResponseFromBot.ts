@@ -7,11 +7,7 @@ import { getJsonFromString01 } from './getJsonFromString01'
 import { getJsonFromString02 } from './getJsonFromString02'
 import { getJsonFromString03 } from './getJsonFromString03'
 
-const PARSERS_ARRAY = [
-  getJsonFromString01,
-  getJsonFromString02,
-  getJsonFromString03,
-]
+const PARSERS_ARRAY = [getJsonFromString01, getJsonFromString02, getJsonFromString03]
 
 export type GetPreparedResponseFromBotParamsType = any
 

@@ -3,7 +3,7 @@
  * @param value
  * @returns
  */
-export const isParsableInt: Function = (value: any): boolean => {
+export const isParsableInt = (value: any): boolean => {
   try {
     return typeof parseInt(value, 10) === 'number'
   } catch (error) {

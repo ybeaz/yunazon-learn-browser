@@ -80,6 +80,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isOAuthFacebookScriptLoaded: false,
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
+  isMobileSearchInput: false,
   oAuthStage: null,
   modalFrames: [
     {
@@ -143,11 +144,15 @@ export const formsDefault: FormsType = {
   inputSearch: '',
   sendTo: '',
   sendCc: '',
-  searchFormSep: searchFormSepDefault,
   userPrev: userStoreDefault,
   user: userStoreDefault,
   tagsPick: [],
   tagsOmit: [],
+  profileActive: {
+    nameFirst: '',
+    nameLast: '',
+    nameMiddle: '',
+  },
 }
 
 export const courseCreateProgressDefault: CourseCreateProgressType = {
@@ -170,7 +175,7 @@ export const rootStoreDefault: RootStoreType = {
   moduleCreateProgress: courseCreateProgressDefault,
   documents: [],
   articles: [],
-  users: [],
+  profiles: [],
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,

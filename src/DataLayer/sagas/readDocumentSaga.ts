@@ -29,7 +29,7 @@ function* readDocument(params: ActionReduxType | any): Iterable<any> {
       }
     )
 
-    yield put(actionSync.ADD_DOCUMENT(readDocuments[0]))
+    yield put(actionSync.SET_DOCUMENTS(readDocuments))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

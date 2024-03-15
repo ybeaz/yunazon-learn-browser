@@ -2,12 +2,9 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 /**
- * @description Toggling success confetti
+ * @description Toggling isSummary
  */
-export const TOGGLE_IS_SUMMARY: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+export const TOGGLE_IS_SUMMARY: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { componentsState } = store
   const componentsStateNext = {
     ...componentsState,

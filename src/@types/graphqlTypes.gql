@@ -330,35 +330,20 @@ input CreateCourseInputType {
 }
 
 input CreateDocumentInputType {
-  """capture"""
-  capture: String!
+  """creator of the module"""
+  creator: UpdateProfileInputType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """description"""
-  description: String = null
+  """ipClient profile/ user"""
+  ipClient: String = null
 
   """isActive"""
   isActive: Boolean! = false
 
-  """language"""
-  language: String!
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
 
-  """meta"""
-  meta: MetaDocumentInputType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """userID"""
-  profileID: String!
-
-  """userName"""
-  profileProps: ProfilePropsInputType!
+  """module"""
+  module: UpdateModuleInputType!
 }
 
 input CreateModuleInputType {
@@ -391,9 +376,6 @@ input CreateModuleInputType {
 
   """language code"""
   language: String!
-
-  """DEPRECIATED. meta information"""
-  meta: MetaInputType = null
 
   """module objection"""
   objections: [ObjectionInputType!] = []
@@ -448,6 +430,9 @@ input CreateProfileInputType {
 
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
+
+  """user ID"""
+  botID: ID = null
 
   """contacts"""
   contacts: [String!] = []
@@ -555,26 +540,17 @@ type DocumentEdgeType {
 }
 
 type DocumentType {
-  """course capture"""
-  capture: String!
+  """creator of the module"""
+  creator: ProfileType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """courses created date"""
+  """documents created date"""
   dateCreated: Float!
 
-  """courses deleted date"""
+  """documents deleted date"""
   dateDeleted: Float
 
-  """courses updated date"""
+  """documents updated date"""
   dateUpdated: Float!
-
-  """course description"""
-  description: String!
 
   """documentID"""
   documentID: ID!
@@ -585,23 +561,11 @@ type DocumentType {
   """isActive"""
   isActive: Boolean!
 
-  """language code"""
-  language: String!
+  """learner, user, student"""
+  learner: ProfileType!
 
-  """meta"""
-  meta: MetaDocumentType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """pathName of the document"""
-  pathName: String!
-
-  """profileID"""
-  profileID: ID!
-
-  """userName"""
-  profileProps: ProfilePropsType!
+  """module"""
+  module: ModuleType!
 }
 
 type DocumentsConnectionType {
@@ -771,75 +735,6 @@ type MetaCourseType {
   tags: [String!]
 }
 
-input MetaDocumentInputType {
-  """ email"""
-  email: String = null
-
-  """institution"""
-  institution: String!
-
-  """isSendingBcc to the email"""
-  isSendingBcc: Boolean! = false
-
-  """specName"""
-  specName: String!
-
-  """specTitle"""
-  specTitle: String = null
-
-  """courses meta stages: stages/ statuses/ envs"""
-  stages: [String!] = []
-
-  """courses meta tags: tags that characterises the course content"""
-  tags: [String!] = []
-}
-
-type MetaDocumentType {
-  """ email"""
-  email: String
-
-  """institution"""
-  institution: String!
-
-  """isSendingBcc to the email"""
-  isSendingBcc: Boolean!
-
-  """specName"""
-  specName: String!
-
-  """specTitle"""
-  specTitle: String
-
-  """courses meta stages: stages/ statuses/ envs"""
-  stages: [String!]
-
-  """courses meta tags: tags that characterises the course content"""
-  tags: [String!]
-}
-
-input MetaInputType {
-  """meta email"""
-  email: String!
-
-  """meta institution"""
-  institution: String!
-
-  """meta isSendingBcc"""
-  isSendingBcc: Boolean! = false
-
-  """meta specName"""
-  specName: String!
-
-  """meta specTitle"""
-  specTitle: String!
-
-  """meta stages: stages/ statuses/ envs"""
-  stages: [String!] = []
-
-  """meta tags: tags that characterises the content, its marketing features"""
-  tags: [String!] = []
-}
-
 input MetaPartialInputType {
   """meta email"""
   email: String
@@ -883,29 +778,6 @@ type MetaPartialType {
   stages: [String!]
 
   """meta tags: tags that characterises the content, its marketing features"""
-  tags: [String!]
-}
-
-type MetaType {
-  """meta email"""
-  email: String!
-
-  """meta institution"""
-  institution: String!
-
-  """meta isSendingBcc"""
-  isSendingBcc: Boolean!
-
-  """meta specName"""
-  specName: String!
-
-  """meta specTitle"""
-  specTitle: String!
-
-  """meta stages: stages/ statuses/ envs"""
-  stages: [String!]
-
-  """meta tags: tags that characterises the content"""
   tags: [String!]
 }
 
@@ -1045,9 +917,6 @@ type ModuleType {
   """language code"""
   language: String!
 
-  """DEPRECIATED meta information"""
-  meta: MetaType
-
   """module ID"""
   moduleID: ID!
 
@@ -1108,6 +977,7 @@ type Mutation {
   createDocuments(createDocumentsInput: [CreateDocumentInputType!]!): [DocumentType!]!
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
+  createSiteMap: SiteMapReportType!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -1212,6 +1082,9 @@ type OptionCourseType {
 }
 
 input OptionInputType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
   """module question option label"""
   label: String!
 
@@ -1223,6 +1096,9 @@ input OptionInputType {
 }
 
 type OptionType {
+  """module question option answer: true or false"""
+  answer: Boolean
+
   """module question option label"""
   label: String!
 
@@ -1247,18 +1123,6 @@ enum ProfileNatureType {
   human
 }
 
-input ProfilePropsInputType {
-  nameFirst: String!
-  nameLast: String!
-  nameMiddle: String!
-}
-
-type ProfilePropsType {
-  nameFirst: String!
-  nameLast: String!
-  nameMiddle: String!
-}
-
 type ProfileType {
   """
   affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team.
@@ -1273,6 +1137,9 @@ type ProfileType {
 
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
+
+  """user ID"""
+  botID: ID
 
   """contacts"""
   contacts: [String!]
@@ -1634,6 +1501,9 @@ input ReadDocumentsConnectionInputType {
   """courses ID"""
   courseIDs: [ID!] = []
 
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
   """
   first: Specifies the number of items to return from the beginning of the dataset.
   """
@@ -1645,6 +1515,9 @@ input ReadDocumentsConnectionInputType {
   """language code"""
   language: String = null
 
+  """learner IDs"""
+  learnerIDs: [ID!] = []
+
   """course module IDs"""
   moduleIDs: [ID!] = []
 
@@ -1653,9 +1526,6 @@ input ReadDocumentsConnectionInputType {
   """
   offset: Int
 
-  """profile IDs"""
-  profileIDs: [ID!] = []
-
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -1663,22 +1533,22 @@ input ReadDocumentsConnectionInputType {
   sort: SortDocumentsInputType
 
   """
-  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  documents meta stages: stages/ statuses/ envs to omit with that selection of the documents
   """
   stagesOmit: [String!] = []
 
   """
-  courses meta stages: stages/ statuses/ envs to pick from the set of documents
+  documents meta stages: stages/ statuses/ envs to pick from the set of documents
   """
   stagesPick: [String!] = []
 
   """
-  courses meta tags: tags that characterises the course content to omit with that selection of the documents
+  documents meta tags: tags that characterises the course content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  courses meta tags: tags that characterises the course content to pick from the set of documents
+  documents meta tags: tags that characterises the course content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1696,6 +1566,9 @@ input ReadModulesConnectionInputType {
 
   """module contentIDs"""
   contentIDs: [ID!] = []
+
+  """creator IDs"""
+  creatorIDs: [ID!] = []
 
   """
   first: Specifies the number of items to return from the beginning of the dataset.
@@ -1716,9 +1589,6 @@ input ReadModulesConnectionInputType {
   """
   offset: Int
 
-  """profile IDs"""
-  profileIDs: [ID!] = []
-
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -1726,20 +1596,20 @@ input ReadModulesConnectionInputType {
   sort: SortModulesInputType
 
   """
-  meta stages: stages/ statuses/ envs to omit with that selection of the documents
+  stages: stages/ statuses/ envs to omit with that selection of the documents
   """
   stagesOmit: [String!] = []
 
-  """meta stages: stages/ statuses/ envs to pick from the set of documents"""
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
   stagesPick: [String!] = []
 
   """
-  meta tags: tags that characterises the content to omit with that selection of the documents
+  tags: tags that characterises the content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  meta tags: tags that characterises the content to pick from the set of documents
+  tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1756,6 +1626,12 @@ input ReadProfilesConnectionInputType {
   """after"""
   after: String
 
+  """bot IDs"""
+  botIDs: [ID!] = []
+
+  """emails"""
+  email: String = null
+
   """first"""
   first: Int
 
@@ -1765,11 +1641,25 @@ input ReadProfilesConnectionInputType {
   """offset"""
   offset: Int
 
+  """profile IDs"""
+  profileIDs: [ID!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortProfilesInputType
+
+  """
+  stages: stages/ statuses/ envs to omit with that selection of the documents
+  """
+  stagesOmit: [String!] = []
+
+  """stages: stages/ statuses/ envs to pick from the set of documents"""
+  stagesPick: [String!] = []
+
+  """user IDs"""
+  userIDs: [ID!] = []
 }
 
 input ReadTemplatesConnectionInputType {
@@ -1812,6 +1702,17 @@ type ResponseMessageType {
 
   """status: success or failure"""
   status: String
+}
+
+type SiteMapReportType {
+  """articlesUrls"""
+  articlesUrls: Int
+
+  """rootUrl"""
+  collectionsUrls: Int
+
+  """modulesUrls"""
+  modulesUrls: Int
 }
 
 input SortCoursesInputType {
@@ -2032,6 +1933,12 @@ input ThumbnailsImageDataInputType {
   """height"""
   height: Int!
 
+  """rel"""
+  rel: String = null
+
+  """type"""
+  type: String = null
+
   """url"""
   url: String = null
 
@@ -2042,6 +1949,12 @@ input ThumbnailsImageDataInputType {
 type ThumbnailsImageDataType {
   """height"""
   height: Int!
+
+  """rel"""
+  rel: String
+
+  """type"""
+  type: String
 
   """url"""
   url: String
@@ -2054,8 +1967,23 @@ input ThumbnailsInputType {
   """thumbnail image default"""
   default: ThumbnailsImageDataInputType = null
 
+  """favicon"""
+  favicon: ThumbnailsImageDataInputType = null
+
   """thumbnail image high"""
   high: ThumbnailsImageDataInputType = null
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataInputType = null
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataInputType = null
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataInputType = null
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataInputType = null
 
   """thumbnail image maxres"""
   maxres: ThumbnailsImageDataInputType = null
@@ -2071,8 +1999,23 @@ type ThumbnailsType {
   """thumbnail image default"""
   default: ThumbnailsImageDataType
 
+  """favicon"""
+  favicon: ThumbnailsImageDataType
+
   """thumbnail image high"""
   high: ThumbnailsImageDataType
+
+  """image16x16"""
+  image16x16: ThumbnailsImageDataType
+
+  """image32x32"""
+  image32x32: ThumbnailsImageDataType
+
+  """image192x192"""
+  image192x192: ThumbnailsImageDataType
+
+  """image512x512"""
+  image512x512: ThumbnailsImageDataType
 
   """thumbnail image maxres"""
   maxres: ThumbnailsImageDataType
@@ -2204,26 +2147,17 @@ type UpdateCourseMetaType {
 }
 
 input UpdateDocumentInputType {
-  """course capture"""
-  capture: String!
+  """creator of the module"""
+  creator: UpdateProfileInputType!
 
-  """contentIDs"""
-  contentIDs: [String!]!
-
-  """courseID"""
-  courseID: ID!
-
-  """courses created date"""
+  """documents created date"""
   dateCreated: Float!
 
-  """courses deleted date"""
+  """documents deleted date"""
   dateDeleted: Float = null
 
-  """courses updated date"""
+  """documents updated date"""
   dateUpdated: Float!
-
-  """course description"""
-  description: String!
 
   """documentID"""
   documentID: ID!
@@ -2234,23 +2168,11 @@ input UpdateDocumentInputType {
   """isActive"""
   isActive: Boolean! = false
 
-  """language code"""
-  language: String!
+  """learner, user, student"""
+  learner: UpdateProfileInputType!
 
-  """meta"""
-  meta: MetaDocumentInputType!
-
-  """moduleIDs"""
-  moduleIDs: [String!]!
-
-  """pathName of the document"""
-  pathName: String!
-
-  """profileID"""
-  profileID: ID!
-
-  """userName"""
-  profileProps: ProfilePropsInputType!
+  """module"""
+  module: UpdateModuleInputType!
 }
 
 type UpdateInfoCourseType {
@@ -2358,9 +2280,6 @@ input UpdateModuleInputType {
   """language code"""
   language: String!
 
-  """DEPRECIATED. meta information"""
-  meta: MetaInputType = null
-
   """module ID"""
   moduleID: ID!
 
@@ -2409,6 +2328,9 @@ input UpdateProfileInputType {
 
   """award. An award won by or for this item. Supersedes awards."""
   awards: [String!]
+
+  """user ID"""
+  botID: ID = null
 
   """contacts"""
   contacts: [String!] = []

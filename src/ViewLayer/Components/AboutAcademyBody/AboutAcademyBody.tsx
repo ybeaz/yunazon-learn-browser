@@ -1,9 +1,6 @@
 import React from 'react'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { buildData } from '../../../Constants/buildData.const'
 import {
@@ -26,7 +23,8 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
   const {
     commit,
     author: { name, email },
-    date,
+    dateBuild,
+    dateCommit,
     message,
     branchCurrent,
     copyright,
@@ -39,40 +37,42 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
       <h1 className='_titleBodyAbout'>About Academy YouRails</h1>
       <div className='_aboutAcademyContent'>
         <div className='_paragraph'>
-          YouRails Academy offers a service that converts YouTube videos (texts,
-          audio) into learning content with modules, quizzes and certification
-          helping teaches, businesses and common users to increase engagement
-          through a separation of content and a course itself, fast adding
-          learning features with AI assistance and gamification from the very
-          beginning.
+          YouRails Academy offers a service that converts YouTube videos (texts, audio) into
+          learning content with modules, quizzes and certification helping teaches, businesses and
+          common users to increase engagement through a separation of content and a course itself,
+          fast adding learning features with AI assistance and gamification from the very beginning.
         </div>
       </div>
       <div className='_sectionBuildData'>
         <h3 className='_titleTableBuild'>Current build</h3>
         <section className='_tableBuild'>
-          <div className='_row _row_branchCurrent'>
+          <div className='_row'>
+            <div className='_cell _cell_capture'>Date build</div>
+            <div className='_cell _cell_text'>{dateBuild}</div>
+          </div>
+          <div className='_row'>
+            <div className='_cell _cell_capture'>Date commit</div>
+            <div className='_cell _cell_text'>{dateCommit}</div>
+          </div>
+          <div className='_row'>
             <div className='_cell _cell_capture'>Current branch</div>
-            <div className='_cell _cell_branchCurrent'>{branchCurrent}</div>
+            <div className='_cell _cell_text'>{branchCurrent}</div>
           </div>
-          <div className='_row _row_date'>
-            <div className='_cell _cell_capture'>Date</div>
-            <div className='_cell _cell_date'>{date}</div>
-          </div>
-          <div className='_row _row_author'>
+          <div className='_row'>
             <div className='_cell _cell_capture'>Authors</div>
-            <div className='_cell _cell_date'>{`${name}, ${email}`}</div>
+            <div className='_cell _cell_text'>{`${name}, ${email}`}</div>
           </div>
-          <div className='_row _row_commit'>
+          <div className='_row'>
             <div className='_cell _cell_capture'>Message</div>
-            <div className='_cell _cell_commit'>{message}</div>
+            <div className='_cell _cell_text'>{message}</div>
           </div>
-          <div className='_row _row_message'>
+          <div className='_row'>
             <div className='_cell _cell_capture'>Commit</div>
-            <div className='_cell _cell_message'>{commit}</div>
+            <div className='_cell _cell_text'>{commit}</div>
           </div>
-          <div className='_row _row_copyright'>
+          <div className='_row'>
             <div className='_cell _cell_capture'>Copyright</div>
-            <div className='_cell _cell_copyright'>{copyright}</div>
+            <div className='_cell _cell_text'>{copyright}</div>
           </div>
         </section>
       </div>
@@ -90,10 +90,7 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
 
 const storeStateSliceProps: string[] = []
 export const AboutAcademyBody = withPropsYrl({ buildData })(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(AboutAcademyBodyComponent)
-  )
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AboutAcademyBodyComponent))
 )
 
 export type {

@@ -47,7 +47,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 ) => {
   const {
     storeStateSlice: {
-      language: languageStore,
+      language: languageSite,
       durationMultiplier,
       moduleIDActive,
       modules,
@@ -64,7 +64,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
-  useEffectedInitialRequests([{ type: 'GET_MODULE_DATA', data: { moduleID } }])
+  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }])
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
@@ -119,12 +119,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         questionsTotal: questionsTotal2,
         summary: summary2,
         objections: objections2,
-      } = getModuleByModuleID({ modules, moduleID: moduleIDActive || moduleID })
-
-      const durationObj2: DurationObjType = getMultipliedTimeStr(
-        duration,
-        durationMultiplier
+      } = getModuleByModuleID(
+        { modules, moduleID: moduleIDActive || moduleID },
+        { parentFunction: 'AcademyPresentComponent' }
       )
+
+      const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
 
@@ -149,18 +149,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const isVisible = mediaLoaded[moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
-  const {
-    playVideoHandler,
-    pauseVideoHandler,
-    stopVideoHandler,
-    isShowingPlay,
-  } = useYouTubePlayerWork({
-    contentComponentName,
-    moduleID,
-    contentID,
-    width,
-    height,
-  })
+  const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
+    useYouTubePlayerWork({
+      contentComponentName,
+      moduleID,
+      contentID,
+      width,
+      height,
+    })
 
   const buttonPlayProps = {
     icon: 'MdPlayArrow',
@@ -181,12 +177,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     action: {},
   }
 
-  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageStore]
+  const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageStore],
+      moto: DICTIONARY['Together_know_everything'][languageSite],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -240,7 +236,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isSummary,
       isObjectionsButton: true,
       isObjections,
-      language: languageStore,
+      language: languageSite,
       titleSummary: 'Summary',
       titleObjections: 'Objections',
     },
@@ -253,6 +249,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
           <Helmet>
             <html lang={language} />
             <meta charSet='utf-8' />
+            <meta name='viewport' content='width=device-width,initial-scale=1' />
             <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
             <meta name='description' content={description} />
@@ -263,19 +260,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <>
-              <CONTENT_ASSIGNED_COMPONENT
-                {...propsOut.contentComponentProps[contentComponentName]}
-              >
+            <div className='AcademyPresent__middle-main'>
+              <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>
-              <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
-            </>
+            </div>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}
-            {null}
+            <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
           </MainFrame>
         </>
       ) : null}
@@ -289,7 +283,6 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
-  'preferred_username',
   'isSummary',
   'isObjections',
 ]

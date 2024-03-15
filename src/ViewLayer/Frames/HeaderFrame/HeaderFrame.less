@@ -19,6 +19,10 @@
       display: flex;
       flex: 3;
       align-items: center;
+
+      ._itemButtonMobileSearchToggle {
+        display: none;
+      }
     }
 
     .__main {
@@ -79,8 +83,18 @@
   @media @phone, @phone-strict {
     ._content {
       overflow: hidden;
+      flex-direction: column;
       justify-content: space-between;
+
       .__left {
+      }
+
+      .__left {
+        ._itemButtonMobileSearchToggle {
+          display: flex;
+          margin-left: auto;
+          margin-top: auto;
+        }
       }
 
       .__main {
@@ -109,6 +123,11 @@
         ._itemButtonThemeToggle {
           display: none;
         }
+      }
+
+      .__rightMobile {
+        display: flex;
+        padding-top: 0.25rem;
       }
     }
   }

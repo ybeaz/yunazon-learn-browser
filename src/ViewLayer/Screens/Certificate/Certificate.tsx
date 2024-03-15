@@ -5,79 +5,45 @@ import { Helmet } from 'react-helmet'
 
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DocumentType } from '../../../@types/index'
 import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import {
-  LoaderOverlayYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import {
+  CertificateBodyComponentProps,
   CertificateComponentPropsType,
   CertificateComponentType,
   CertificatePropsOutType,
   CertificateType,
 } from './CertificateTypes'
 
-export const CertificateComponent: CertificateComponentType = (
-  props: CertificateComponentPropsType
-): ReactElement => {
+const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
+  documentFound,
+  language,
+}: CertificateBodyComponentProps) => {
   const {
-    storeStateSlice: { documents, language },
-  } = props
-
-  const params = useParams()
-  const documentID = params?.documentID
-
-  const documentFound = documents.find(
-    (document: DocumentType) => document.documentID === documentID
-  )
-
-  useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } }
-    )
-    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound) {
-      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    }
-  }, [])
-
-  let documentDefault = {
-    profileProps: {
-      nameFirst: '',
-      nameMiddle: '',
-      nameLast: '',
+    documentID,
+    dateCreated,
+    module: { moduleID, capture: moduleCapture, language: languageDoc },
+    creator: {
+      affiliation,
+      jobTitle,
+      nameFirst: nameFirstCreator,
+      nameLast: nameLastCreator,
+      nameMiddle: nameMiddleCreator,
     },
-    meta: {
-      institution: '',
-      specTitle: '',
-      specName: '',
+    learner: {
+      nameFirst: nameFirstLearner,
+      nameLast: nameLastLearner,
+      nameMiddle: nameMiddleLearner,
     },
-    capture: '',
-    courseID: '',
-    moduleIDs: [''],
-    contentID: '',
-    dateCreated: 0,
-    pathName: '',
-    language: '',
-  }
+  } = documentFound
 
-  const {
-    profileProps: { nameFirst = '', nameMiddle = '', nameLast = '' },
-    meta: { institution = '', specTitle = '', specName = '' },
-    capture: moduleCapture = '',
-    courseID = '',
-    moduleIDs = [''],
-    dateCreated = 0,
-    pathName: documentPathName,
-    language: languageDoc = '',
-  } = documentFound || documentDefault
+  const documentSlug = getSlug(moduleCapture)
+  const documentPathName = `/d/${documentID}/${documentSlug}`
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
@@ -97,13 +63,17 @@ export const CertificateComponent: CertificateComponentType = (
     seconds: false,
   })
 
-  const userName = nameMiddle
-    ? `${nameFirst} ${nameMiddle} ${nameLast}`
-    : `${nameFirst} ${nameLast}`
+  const userNameCreator = nameMiddleCreator
+    ? `${nameFirstCreator} ${nameMiddleCreator} ${nameLastCreator}`
+    : `${nameFirstCreator} ${nameLastCreator}`
 
-  const slug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleIDs[0]}/${slug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleIDs[0]}-${slug}`
+  const userNameLearner = nameMiddleLearner
+    ? `${nameFirstLearner} ${nameMiddleLearner} ${nameLastLearner}`
+    : `${nameFirstLearner} ${nameLastLearner}`
+
+  const moduleSlug = getSlug(moduleCapture)
+  const modulePathName = `/m/${moduleID}/${moduleSlug}`
+  const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
@@ -113,7 +83,7 @@ export const CertificateComponent: CertificateComponentType = (
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,
-      moduleID: moduleIDs[0],
+      moduleID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
@@ -132,6 +102,7 @@ export const CertificateComponent: CertificateComponentType = (
       <Helmet>
         <html lang={languageDoc} />
         <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
         <title>{titlePage}</title>
         <link rel='canonical' href={location.href} />
         <meta name='description' content={moduleCapture} />
@@ -147,7 +118,7 @@ export const CertificateComponent: CertificateComponentType = (
         <div className='pm-certificate-border'>
           <div className='pm-certificate-header'>
             <div className='pm-certificate-title cursive'>
-              <h4>{institution}</h4>
+              <h4>{affiliation}</h4>
               <h2>Certificate of Completion</h2>
             </div>
           </div>
@@ -158,7 +129,7 @@ export const CertificateComponent: CertificateComponentType = (
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-certificate-name underline margin-0'>
-                    <span className='pm-name-text bold'>{userName}</span>
+                    <span className='pm-name-text bold'>{userNameLearner}</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                 </div>
@@ -168,12 +139,8 @@ export const CertificateComponent: CertificateComponentType = (
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-earned'>
-                    <span className='pm-earned-text padding-0 block cursive'>
-                      has earned
-                    </span>
-                    <span className='pm-credits-text block bold sans'>
-                      1.0 Credit Hours
-                    </span>
+                    <span className='pm-earned-text padding-0 block cursive'>has earned</span>
+                    <span className='pm-credits-text block bold sans'>1.0 Credit Hours</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className=''></div>
@@ -196,20 +163,14 @@ export const CertificateComponent: CertificateComponentType = (
                 <div className=''>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-course-title underline'>
-                    <span className='pm-credits-text block bold sans'>
-                      {moduleCapture}
-                    </span>
+                    <span className='pm-credits-text block bold sans'>{moduleCapture}</span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='_code'>
                     <span className='_module'>
                       Module link/ No
-                      <a
-                        className='_moduleLink'
-                        href={modulePathName}
-                        target='_blank'
-                      >
-                        {moduleIDs[0]}
+                      <a className='_moduleLink' href={modulePathName} target='_blank'>
+                        {moduleID}
                       </a>
                     </span>
                   </div>
@@ -222,30 +183,22 @@ export const CertificateComponent: CertificateComponentType = (
                 <div className='pm-certificate-footer'>
                   <div className='pm-certified'>
                     <div className='pm-stamp'></div>
-                    <span className='pm-credits-text block sans'>
-                      "Open Internet Academy"
-                    </span>
+                    <span className='pm-credits-text block sans'>"Open Internet Academy"</span>
                     <span className='pm-credits-text block sans'>
                       in partnership with "YouRails.com"
                     </span>
                     <span className='pm-empty-space block underline'></span>
                     <span className='pm-credits-text bold block sans'>
-                      {specName}, {specTitle}
+                      {userNameCreator}, {jobTitle}
                     </span>
                   </div>
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='pm-certified'>
                     <div className='_documentData'>
-                      <span className='_completed'>
-                        Completed {dateCreatedReadable}
-                      </span>
+                      <span className='_completed'>Completed {dateCreatedReadable}</span>
                       <span className='_certificate'>
                         Certificate link/ No
-                        <a
-                          className='_documentLink'
-                          href={documentPathName}
-                          target='_blank'
-                        >
+                        <a className='_documentLink' href={documentPathName} target='_blank'>
                           {documentID}
                         </a>
                       </span>
@@ -260,6 +213,46 @@ export const CertificateComponent: CertificateComponentType = (
           </div>
         </div>
       </div>
+      <LoaderOverlayYrl />
+    </div>
+  )
+}
+
+export const CertificateComponent: CertificateComponentType = (
+  props: CertificateComponentPropsType
+): ReactElement => {
+  const {
+    storeStateSlice: { documents, language },
+  } = props
+
+  const params = useParams()
+  const documentID = params?.documentID
+
+  const documentFound = documents.find(
+    (document: DocumentType) => document.documentID === documentID
+  )
+
+  useEffect(() => {
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
+    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
+    if (Array.isArray(documents) && !documentFound) {
+      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
+    }
+  }, [])
+
+  const propsOut: Record<string, any> = {
+    certificateBodyComponentProps: {
+      documentFound,
+      language,
+    },
+  }
+
+  // TODO: to refactor using MainFrame
+  return (
+    <div className='Certificate' id={documentID}>
+      {documentFound ? (
+        <CertificateBodyComponent {...propsOut.certificateBodyComponentProps} />
+      ) : null}
       <LoaderOverlayYrl />
     </div>
   )
@@ -336,13 +329,7 @@ const StyledSection = styled.section`
         #b2cad6 1px,
         #b2cad6 2px
       );
-      background: repeating-linear-gradient(
-        90deg,
-        #618597,
-        #618597 1px,
-        #b2cad6 1px,
-        #b2cad6 2px
-      );
+      background: repeating-linear-gradient(90deg, #618597, #618597 1px, #b2cad6 1px, #b2cad6 2px);
 
       .outer-border {
         width: 794px;

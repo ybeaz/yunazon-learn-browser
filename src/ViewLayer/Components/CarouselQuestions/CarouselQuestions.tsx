@@ -47,21 +47,20 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     contentID,
     questionNumber,
     questions: questionsActive,
-  } = getModuleByModuleID({
-    moduleID: moduleIDActive || '',
-    modules,
-  })
-
-  const questionsChunked = getChunkedArray(
-    questionsActive,
-    numberQuestionsInSlide
+  } = getModuleByModuleID(
+    {
+      moduleID: moduleIDActive || '',
+      modules,
+    },
+    { parentFunction: 'CarouselQuestionsComponent' }
   )
+
+  const questionsChunked = getChunkedArray(questionsActive, numberQuestionsInSlide)
 
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
       const { questionID } = question
-      const classNameToggleHighlight =
-        index === questionsSlideNumber ? 'active' : ''
+      const classNameToggleHighlight = index === questionsSlideNumber ? 'active' : ''
       return (
         <span
           key={`${questionID}-${index}`}
@@ -123,8 +122,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const CertificateDash = DICTIONARY['Certificate'][language]
   const questionStr = getQuesionString(language, questionsActive.length)
 
-  const youCanCheckYourUnderstanding =
-    DICTIONARY.youCanCheckYourUnderstanding[language]
+  const youCanCheckYourUnderstanding = DICTIONARY.youCanCheckYourUnderstanding[language]
 
   const propsOut: CarouselQuestionsPropsOutType = {
     buttonStartProps: {
@@ -202,7 +200,13 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   }
 
   return (
-    <div className={getClasses('CarouselQuestions', [buttonsClassString])}>
+    <div
+      className={getClasses('CarouselQuestions', [buttonsClassString])}
+      itemScope
+      itemType='https://schema.org/Collection'
+    >
+      <meta itemProp='identifier' content={moduleID} />
+      <meta itemProp='headline' content={`QA: ${capture}`} />
       {questionsActive.length ? getDots(questionsChunked) : null}
       <div className={`__buttons`}>
         <div className='_backward'>

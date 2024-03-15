@@ -6,53 +6,49 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getLocalStorageDeletedCourse } from '../../Shared/getLocalStorageDeletedCourse'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { withDebounce } from '../../Shared/withDebounce'
 
-function* createDocument(params: ActionReduxType | any): Iterable<any> {
-  const {
-    data: {
-      capture,
-      contentID,
-      courseID,
-      description,
-      meta,
-      moduleID,
-      userEmail,
-      nameFirst,
-      nameMiddle,
-      nameLast,
-      navigate,
-    },
-  } = params
-
+function* createDocumentGenerator(
+  params: ActionReduxType | any
+): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select(
     (state: RootStoreType) => state
   )
   const {
+    profiles,
+    modules,
+    scorm: { moduleIDActive },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+  const module = getArrayItemByProp({
+    arr: modules,
+    propName: 'moduleID',
+    propValue: moduleIDActive,
+  })
 
+  const profileCreator = getArrayItemByProp({
+    arr: profiles,
+    propName: 'profileID',
+    propValue: module.creatorID,
+  })
+
+  const profileLearner = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
+
+  try {
     const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
-          courseID: courseID || '000000000000',
-          profileID: sub || '000000000000',
-          moduleIDs: [moduleID],
-          contentIDs: [contentID],
           isActive: true,
-          capture,
-          description,
-          meta,
-          profileProps: {
-            nameFirst: nameFirst,
-            nameMiddle: nameMiddle,
-            nameLast: nameLast,
-          },
-          language: 'en',
+          module,
+          learner: profileLearner,
+          creator: profileCreator,
         },
       ],
     }
@@ -69,17 +65,15 @@ function* createDocument(params: ActionReduxType | any): Iterable<any> {
       }
     )
 
-    yield put(actionSync.ADD_DOCUMENT(createDocuments[0]))
+    yield put(actionSync.SET_DOCUMENTS(createDocuments))
 
-    getLocalStorageDeletedCourse(courseID)
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-
-    navigate(createDocuments[0]?.pathName)
+    return createDocuments
   } catch (error: any) {
     console.info('createDocument [82] ERROR', `${error.name}: ${error.message}`)
   }
 }
+
+export const createDocument = withDebounce(createDocumentGenerator, 500)
 
 export default function* createDocumentSaga() {
   yield takeEvery([actionAsync.CREATE_DOCUMENT.REQUEST().type], createDocument)

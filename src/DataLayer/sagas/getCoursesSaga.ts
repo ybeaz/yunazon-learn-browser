@@ -18,12 +18,8 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getCoursesGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
+export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<any> {
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const {
     componentsState: {
@@ -69,7 +65,7 @@ export function* getCoursesGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: 10000,
       }
     )
 
@@ -80,9 +76,7 @@ export function* getCoursesGenerator(
     yield put(actionSync.SET_COURSES(coursesNext))
 
     const pageInfo = readCoursesConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo })
-    )
+    yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

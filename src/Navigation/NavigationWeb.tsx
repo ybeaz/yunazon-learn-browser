@@ -32,8 +32,8 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     const { screen, path, children, errorElement } = route
     const Element = SCREENS[screen]
     const element: ReactElement = <Element />
-    const id = nanoid()
-    return { id, element, path, children, errorElement }
+    const id = `router-${index}`
+    return { key: id, id, element, path, children, errorElement }
   })
 
   const routes = createBrowserRouter(routesDict)
@@ -42,17 +42,3 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   return <RouterProvider router={routes} />
 }
-
-/* Remove after 2024-01-15
-
-import { Profile } from '../ViewLayer/Screens/Profile'
-import { StubForUserResearch } from '../ViewLayer/Screens/StubForUserResearch'
-import { SkillsExchangeMatrix } from '../ViewLayer/Screens/SkillsExchangeMatrix'
-import { SkillsExchangeMatrixChRP } from '../ViewLayer/Screens/SkillsExchangeMatrixChRP'
-
-  // Profile,
-  // StubForUserResearch,
-  // SkillsExchangeMatrix,
-  // SkillsExchangeMatrixChRP,
-
-*/

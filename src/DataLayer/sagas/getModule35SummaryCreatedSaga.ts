@@ -55,7 +55,7 @@ export function* getModule35SummaryCreatedGenerator(
       }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
 
       const getBotResponseParams: GetBotResponseParamsType = {
-        botID: 'gkHgpq771VuJ',
+        botID: 'yg2vQJbWulaU',
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
         stage: CreateModuleStagesEnumType['summary'],

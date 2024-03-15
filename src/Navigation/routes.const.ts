@@ -31,8 +31,7 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen:
-      'MyModules' /* Screen/Page to display modules and the form to create it */,
+    screen: 'MyModules' /* Screen/Page to display modules and the form to create it */,
     path: `/my-modules`,
     children: [],
     errorElement: 'Error404',
@@ -52,6 +51,12 @@ export const ROUTES: RouteType[] = [
   {
     screen: 'AcademyMatrix',
     path: `/`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    screen: 'AcademyMatrix',
+    path: `/index.html`,
     children: [],
     errorElement: 'Error404',
   },

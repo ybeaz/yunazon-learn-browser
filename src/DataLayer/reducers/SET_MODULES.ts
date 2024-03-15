@@ -10,21 +10,11 @@ export const SET_MODULES: ReducerType = (
 
   /* Making mediaLoaded false for each moduleID by default */
   const mediaLoadedNext = data.reduce(
-    (accum: Record<string, boolean>, course: CourseType) => {
-      const modules = course?.modules || []
-
-      let output = modules.reduce(
-        // @ts-expect-error
-        (accum: Record<string, boolean>, module: ModuleType) => {
-          const { moduleID, contentID } = module
-          let booleanValue = false
-          if (contentID.includes('yourails.com')) booleanValue = true
-          return { ...accum, [moduleID]: booleanValue }
-        },
-        {}
-      )
-
-      return { ...accum, ...output }
+    (accum: Record<string, boolean>, module: ModuleType) => {
+      const { moduleID, contentID } = module
+      let booleanValue = false
+      if (contentID.includes('yourails.com')) booleanValue = true
+      return { ...accum, [moduleID]: booleanValue }
     },
     {}
   )

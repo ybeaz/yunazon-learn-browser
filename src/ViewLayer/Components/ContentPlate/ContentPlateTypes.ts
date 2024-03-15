@@ -1,6 +1,7 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
+import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
 export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -15,11 +16,12 @@ export type ContentPlateComponentPropsType = {
     language: RootStoreType['language']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
   }
+  handleEvents: HandleEventType
 }
 
 export type ContentPlatePropsType = Omit<
   ContentPlateComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type ContentPlatePropsOutType = {

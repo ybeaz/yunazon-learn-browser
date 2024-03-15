@@ -1,5 +1,5 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType, DocumentType } from '../@types/'
+import { ModuleType, CourseType, DocumentType, ProfileType } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
@@ -60,6 +60,7 @@ export type ComponentsStateType = {
   isOAuthFacebookScriptLoaded: boolean
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
+  isMobileSearchInput: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
@@ -69,13 +70,17 @@ export type ComponentsStateType = {
 export type FormsType = {
   sendTo: string
   sendCc: string
-  searchFormSep: SearchFormSepType
   userPrev: UserType
   user: UserType
   inputCourseCreate: string
   inputSearch: string
   tagsPick: string[]
   tagsOmit: string[]
+  profileActive: {
+    nameFirst: string
+    nameLast: string
+    nameMiddle: string
+  }
 }
 
 export type ScormType = {
@@ -123,7 +128,22 @@ export type RootStoreType = {
   moduleCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
   articles: ArticleType[]
-  users: UserType[]
+  profiles: Pick<
+    ProfileType,
+    | 'profileID'
+    | 'userID'
+    | 'isActive'
+    | 'nameFirst'
+    | 'nameLast'
+    | 'nameMiddle'
+    | 'affiliation'
+    | 'awards'
+    | 'description'
+    | 'jobTitle'
+    | 'urls'
+    | 'avatarSrc'
+    | 'avatarSize'
+  >[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

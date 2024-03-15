@@ -15,10 +15,13 @@ export const PLUS_QUESTION_SLIDE: ReducerType = (
   const { questionsSlideNumber } = componentsState
   const { step } = data
 
-  const { questions } = getModuleByModuleID({
-    modules,
-    moduleID: moduleIDActive || '',
-  })
+  const { questions } = getModuleByModuleID(
+    {
+      modules,
+      moduleID: moduleIDActive || '',
+    },
+    { parentFunction: 'PLUS_QUESTION_SLIDE reducer' }
+  )
   const questionsChunked = getChunkedArray(questions, numberQuestionsInSlide)
 
   let questionSlideNumberNext = 0

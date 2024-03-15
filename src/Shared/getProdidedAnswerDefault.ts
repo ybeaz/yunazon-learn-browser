@@ -3,7 +3,7 @@ import { ModuleType, QuestionType, OptionType } from '../@types/GraphqlTypes'
 /**
  * @description Function to add a default answer to each question option
  */
-export const getProdidevAnswerDefault = (
+export const getProdidedAnswerDefault = (
   modules: ModuleType[]
 ): ModuleType[] => {
   return modules.map((module: ModuleType) => {

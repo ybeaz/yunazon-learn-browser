@@ -1,7 +1,14 @@
 import React from 'react'
-import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
-import { ArticleType } from '../../../@types/ArticleMockType'
+import {
+  SummaryItemType,
+  ObjectionType,
+  ProfileType,
+  ThumbnailsType,
+} from '../../../@types/GraphqlTypes.d'
+import { OrganizationType } from '../../../ContentMock/organizationsMock'
 import { SectionType } from '../../../@types/ArticleMockType'
+import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
+import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
 
 export type EntitiyItemType = {
   capture?:
@@ -16,16 +23,26 @@ export type EntitiyItemType = {
 export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   entities: EntitiyItemType[]
-  capture: string
-  captureType: 'headline' | 'alternativeHeadline' | 'genre'
+  capture?: string
+  description?: string
+  tags?: string[]
+  genre: 'article' | 'summary' | 'objections'
+  language: string
+  pathBaseToIcons?: string
+  dateCreated?: number
+  dateUpdated?: number
+  thumbnails: ThumbnailsType
+  creator?: ProfileType
+  organization?: OrganizationType
+  isSeo?: boolean
 }
 
-export type TextStructuredPropsType = Omit<
-  TextStructuredComponentPropsType,
-  'storeStateSlice'
->
+export type TextStructuredPropsType = TextStructuredComponentPropsType
 
-export type TextStructuredPropsOutType = Record<string, any>
+export type TextStructuredPropsOutType = {
+  metaContentServerProps: MetaContentServerPropsType
+  thumbnailsStructuredProps: ThumbnailsStructuredPropsType
+}
 
 /**
  * @import import { TextStructuredComponentPropsType, TextStructuredPropsType, TextStructuredPropsOutType, TextStructuredComponentType, TextStructuredType } from './TextStructuredTypes'

@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+}
+
+.SectionContentWrapper {
+  padding: 5vw;
+  background: rgb(32, 32, 32);
+  color: rgb(215, 215, 215);
+}
+
+.SectionContent {
+  opacity: 0.025;
+  animation-delay: 2.5s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-name: delayChange;
+}
+
+@keyframes delayChange {
+  to {
+    opacity: 1;
+  }
+}

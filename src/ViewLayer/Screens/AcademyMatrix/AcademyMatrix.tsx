@@ -6,10 +6,7 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import {
-  ContentPlate,
-  ContentPlatePropsType,
-} from '../../Components/ContentPlate/ContentPlate'
+import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
@@ -17,10 +14,7 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import {
-  withStoreStateSelectedYrl,
-  withPropsYrl,
-} from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
@@ -36,24 +30,14 @@ import {
  * @import import { AcademyMatrix, AcademyMatrixPropsType, AcademyMatrixPropsOutType, AcademyMatrixType } 
              from '../Components/AcademyMatrix/AcademyMatrix'
  */
-const AcademyMatrixComponent: AcademyMatrixComponentType = (
-  props: AcademyMatrixPropsType
-) => {
+const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: {
-      language,
-      durationMultiplier,
-      modules,
-      isLoadedGlobalVars,
-    },
+    storeStateSlice: { language, durationMultiplier, modules, isLoadedGlobalVars },
     handleEvents,
   } = props
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } })
   }, [])
 
   const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
@@ -61,13 +45,12 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
   let actionsToMount: any[] = []
   if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
 
-  useEffectedInitialRequests(actionsToMount)
-  useLoadedInitialTeachContent({ isSkipping: redirectAuthFrom })
+  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
+  useLoadedInitialTeachContent({ isSkipping: false })
 
   const screenType = 'AcademyMatrix'
 
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } =
-    SITE_META_DATA
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
@@ -75,10 +58,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
 
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj: DurationObjType = getMultipliedTimeStr(
-        duration,
-        durationMultiplier
-      )
+      const durationObj: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
       const contentPlateProps: ContentPlatePropsType = {
         key: moduleID,
         contentComponentName,
@@ -124,6 +104,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (
       <Helmet>
         <html lang={langSite} />
         <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
         <title>{titleSite}</title>
         <link rel='canonical' href={canonicalUrlSite} />
         <meta name='description' content={descriptionSite} />
@@ -160,12 +141,7 @@ const storeStateSliceProps: string[] = [
 ]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
-})(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(AcademyMatrixComponent)
-  )
-)
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
 
 export type {
   AcademyMatrixPropsType,

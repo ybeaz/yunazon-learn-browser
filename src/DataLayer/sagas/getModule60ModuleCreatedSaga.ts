@@ -5,7 +5,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
-
+import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
@@ -18,30 +18,24 @@ import {
 } from '../../Constants/connectionsTimeouts.const'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-export function* getModule60ModuleCreatedGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
-    const { moduleCreateProgress, sub }: any = yield select(
-      (state: RootStoreType) => {
-        return {
-          moduleCreateProgress: state.moduleCreateProgress,
-          sub: state.authAwsCognitoUserData.sub,
-        }
+    const { moduleCreateProgress, sub, profiles }: any = yield select((state: RootStoreType) => {
+      return {
+        moduleCreateProgress: state.moduleCreateProgress,
+        sub: state.authAwsCognitoUserData.sub,
+        profiles: state.profiles,
       }
-    )
+    })
 
-    const { metaData, transcriptList, questions, summary, objections } =
-      moduleCreateProgress
-    const {
-      contentID,
-      capture,
-      description,
-      duration,
-      language,
-      tags,
-      thumbnails,
-    } = metaData
+    const profile = getArrayItemByProp({
+      arr: profiles,
+      propName: 'userID',
+      propValue: sub,
+    })
+
+    const { metaData, transcriptList, questions, summary, objections } = moduleCreateProgress
+    const { contentID, capture, description, duration, language, tags, thumbnails } = metaData
 
     const descriptionNext = summary.reduce(
       (accum: string, summaryItem: any) =>
@@ -59,20 +53,12 @@ export function* getModule60ModuleCreatedGenerator(
     const variables: MutationCreateModulesArgs = {
       createModulesInput: [
         {
-          profileID: sub,
+          creatorID: profile?.profileID,
+          organizationID: '1___oooOOOooo000',
           capture,
           description: descriptionNext,
           language: language ? language : 'en',
           isActive: true,
-          meta: {
-            institution: 'YouRails Academy',
-            specTitle: "Sr. Specialist of the Registrar's Office",
-            specName: 'Laurie Balton',
-            email: 't3531350@yahoo.com',
-            isSendingBcc: true,
-            stages: ['production2023'],
-            tags,
-          },
           index: 0,
           contentType: 'ytID',
           contentID,
@@ -120,21 +106,12 @@ export function* getModule60ModuleCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule60ModuleCreatedSaga [76] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule60ModuleCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule60ModuleCreated = withDebounce(
-  getModule60ModuleCreatedGenerator,
-  500
-)
+export const getModule60ModuleCreated = withDebounce(getModule60ModuleCreatedGenerator, 500)
 
 export default function* getModule60ModuleCreatedSaga() {
-  yield takeEvery(
-    [actionAsync.GET_MODULE_CREATED.REQUEST().type],
-    getModule60ModuleCreated
-  )
+  yield takeEvery([actionAsync.GET_MODULE_CREATED.REQUEST().type], getModule60ModuleCreated)
 }

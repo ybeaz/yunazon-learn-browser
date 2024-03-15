@@ -14,9 +14,7 @@ import {
  * @import import { MainFrame, MainFramePropsType, MainFramePropsOutType, MainFrameType } 
              from '../Components/MainFrame/MainFrame'
  */
-const MainFrameComponent: MainFrameComponentType = (
-  props: MainFrameComponentPropsType
-) => {
+const MainFrameComponent: MainFrameComponentType = (props: MainFrameComponentPropsType) => {
   const { screenType, children } = props
 
   const classAdded = screenType ? `MainFrame_${screenType}` : ''
@@ -30,9 +28,6 @@ const MainFrameComponent: MainFrameComponentType = (
           <div className='_wrapper'>{children[2]}</div>
         </div>
         <div className='_right'>{children[3]}</div>
-      </div>
-      <div className='__comments'>
-        <div className='_in'></div>
       </div>
       <div className='__footer'>{children[4]}</div>
       <LoaderOverlayYrl />

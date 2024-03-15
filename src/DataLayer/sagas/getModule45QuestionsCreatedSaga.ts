@@ -63,7 +63,7 @@ export function* getModule45QuestionsCreatedGenerator(
           : JSON.stringify(summaryChunk, null, 2)
 
       const getBotResponseParams: GetBotResponseParamsType = {
-        botID: 'kSuQwjzwTjvO',
+        botID: 'JeZ6xLpR2RSa',
         profileID: 'tbd3rgTVFkiU',
         profileName: '@t_q_ao_extractor_02_persona',
         stage: CreateModuleStagesEnumType['questions'],

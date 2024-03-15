@@ -1,4 +1,4 @@
-import { takeLatest, takeEvery, put, select } from 'redux-saga/effects'
+import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
 import {
   QueryReadModulesArgs,
@@ -16,7 +16,7 @@ import { getSizeWindow } from '../../Shared/getSizeWindow'
 import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
+function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { moduleID },
   } = params
@@ -32,10 +32,13 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     let moduleInProgres = null
     if (modulesInProgress && modulesInProgress.length)
-      moduleInProgres = getModuleByModuleID({
-        moduleID,
-        modules: modulesInProgress,
-      })
+      moduleInProgres = getModuleByModuleID(
+        {
+          moduleID,
+          modules: modulesInProgress,
+        },
+        { parentFunction: 'getModuleGenerator' }
+      )
 
     const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
 
@@ -92,12 +95,12 @@ function* getModuleDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getModuleData [95] ERROR', `${error.name}: ${error.message}`)
+    console.info('getModule [95] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModuleData = withDebounce(getModuleDataGenerator, 500)
+export const getModule = withDebounce(getModuleGenerator, 500)
 
-export default function* getModuleDataSaga() {
-  yield takeEvery([actionAsync.GET_MODULE_DATA.REQUEST().type], getModuleData)
+export default function* getModuleSaga() {
+  yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)
 }
