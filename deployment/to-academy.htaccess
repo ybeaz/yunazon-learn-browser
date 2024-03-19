@@ -3,4 +3,4 @@
 Options -MultiViews
 RewriteEngine On
 RewriteCond %{HTTPS} off
-RewriteRule (.*) https://academy.yourails.com [R=301,L]
+RewriteRule (.*) https://yourails.com [R=301,L]
