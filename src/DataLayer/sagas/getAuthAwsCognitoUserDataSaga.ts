@@ -28,6 +28,7 @@ export function* getAuthAwsCognitoUserData(
         client_app: ClientAppType['ACADEMY'],
       },
     }
+    console.info('getAuthAwsCognitoUserDataSaga [31]', { variables })
 
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
       {
