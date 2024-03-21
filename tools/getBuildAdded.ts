@@ -51,7 +51,7 @@ export const getBuildAdded: GetBuildAddedType = async (
     await getCopiedFileDir(sourceCss, destinationCss, overwriteCss)
     consoler('getCopiedFileDir loading css file:', 'yes')
 
-    const sourceIndexHtml: string = `deployment/index-academy.yourails.html`
+    const sourceIndexHtml: string = `deployment/index.yourails.html`
     const destinationIndexHtml: string = `web-build/index.html`
     const overwriteIndexHtml: boolean = true
     await getCopiedFileDir(sourceIndexHtml, destinationIndexHtml, overwriteIndexHtml)

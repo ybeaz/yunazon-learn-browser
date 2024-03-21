@@ -44,7 +44,7 @@
 @link https://docs.expo.dev/distribution/publishing-websites/
 
 - In VS Code, `~/Dev/yourails_sep_academy_web/deployment`,
-  - open `/deployment/index-academy.yourails.html`
+  - open `/deployment/index-yourails.html`
   - !!! change version in links for `bundle.min.js` and `main.bundle.min.js`
 - Building
   `yarn export:web`: To build. It runs script from package.json file
