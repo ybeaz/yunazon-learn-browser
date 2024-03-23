@@ -413,7 +413,7 @@ input CreateOriginInputType {
   originID: String = null
 
   """youtubeUrl"""
-  originUrl: [String!] = null
+  originUrl: String = null
 }
 
 input CreateProfileInputType {

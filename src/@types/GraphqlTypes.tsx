@@ -355,7 +355,7 @@ export type CreateOriginInputType = {
   /** youtubeID */
   originID?: InputMaybe<Scalars['String']['input']>;
   /** youtubeUrl */
-  originUrl?: InputMaybe<Array<Scalars['String']['input']>>;
+  originUrl?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CreateProfileInputType = {

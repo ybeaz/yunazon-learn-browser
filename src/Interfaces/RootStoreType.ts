@@ -1,29 +1,18 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType, DocumentType, ProfileType } from '../@types/'
+import {
+  ModuleType,
+  CourseType,
+  DocumentType,
+  ProfileType,
+  CreateModuleStagesEnumType,
+  CreateModuleStatusEnumType,
+  CreateModuleStageType,
+} from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
 
-export enum CreateModuleStagesEnumType {
-  metaData = 'metaData',
-  transcript = 'transcript',
-  summary = 'summary',
-  questions = 'questions',
-  objections = 'objections',
-  courseModule = 'courseModule',
-}
-
-export enum CreateModuleStatusEnumType {
-  todo = 'todo',
-  pending = 'pending',
-  success = 'success',
-  failure = 'failure',
-}
-
-export type CreateModuleStageType = {
-  isActive: boolean
-  status: CreateModuleStatusEnumType
-  timeCalculated: number | null
-}
+export { CreateModuleStagesEnumType, CreateModuleStatusEnumType }
+export type { CreateModuleStageType }
 
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
