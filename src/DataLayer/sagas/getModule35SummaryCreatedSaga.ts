@@ -16,9 +16,7 @@ import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
 
-export function* getModule35SummaryCreatedGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     const transcriptChunks: any = yield select((state: RootStoreType) => {
       return state.moduleCreateProgress.transcriptChunks
@@ -28,8 +26,7 @@ export function* getModule35SummaryCreatedGenerator(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         timeCalculated: Array.isArray(transcriptChunks)
-          ? transcriptChunks.length *
-            connectionsTimeouts.transcriptChunkToSummary
+          ? transcriptChunks.length * connectionsTimeouts.transcriptChunkToSummary
           : null,
       })
     )
@@ -59,8 +56,7 @@ export function* getModule35SummaryCreatedGenerator(
         profileID: 'lojNPRoL4bSQ',
         profileName: '@split_text_persona_summary',
         stage: CreateModuleStagesEnumType['summary'],
-        connectionsTimeoutName:
-          ConnectionsTimeoutNameEnumType['transcriptChunkToSummary'],
+        connectionsTimeoutName: ConnectionsTimeoutNameEnumType['transcriptChunkToSummary'],
         userText: transcriptChunk,
       }
       const summaryItem: any = yield getBotResponse(getBotResponseParams)
@@ -79,10 +75,8 @@ export function* getModule35SummaryCreatedGenerator(
       })
     )
 
-    const summaryChunks: any[][] = getChunkedArray(
-      summary,
-      CHUNKS_FROM_SUMMARY_ARRAY
-    )
+    const summaryChunks: string[][] = getChunkedArray(summary, CHUNKS_FROM_SUMMARY_ARRAY)
+
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
         summaryChunks,
@@ -103,17 +97,11 @@ export function* getModule35SummaryCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule35SummaryCreatedSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule35SummaryCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule35SummaryCreated = withDebounce(
-  getModule35SummaryCreatedGenerator,
-  500
-)
+export const getModule35SummaryCreated = withDebounce(getModule35SummaryCreatedGenerator, 500)
 
 export default function* getModule35SummaryCreatedSaga() {
   yield takeEvery(

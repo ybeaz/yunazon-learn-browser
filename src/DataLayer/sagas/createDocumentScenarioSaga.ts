@@ -10,7 +10,6 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { sendEmailDocument } from './sendEmailDocumentSaga'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
-import { getRedirected } from '../../Shared/'
 
 function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -74,19 +73,17 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
         isSendingBcc: false,
       },
     })
-
     try {
       const slug = getSlug(capture)
       const pathname = `/d/${documentID}/${slug}`
       yield navigate(pathname)
       delay(500)
-      if (location.pathname !== pathname)
+      if (decodeURIComponent(location.pathname) !== pathname)
         window.location.href = `${window.location.origin}${pathname}`
     } catch (error: any) {
       console.error('createDocumentScenarioSaga [86] ERROR', `${error.name}: ${error.message}`)
     }
 
-    delay(1000)
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('createDocumentScenario [92] ERROR', `${error.name}: ${error.message}`)

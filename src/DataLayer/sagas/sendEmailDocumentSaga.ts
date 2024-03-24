@@ -8,16 +8,12 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { withDebounce } from '../../Shared/withDebounce'
 
-function* sendEmailDocumentGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
 
     const variables: QuerySendEmailDocumentArgs = {
@@ -38,8 +34,6 @@ function* sendEmailDocumentGenerator(
         timeout: 5000,
       }
     )
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readDocument [47] ERROR', `${error.name}: ${error.message}`)
     yield put(
@@ -58,8 +52,5 @@ function* sendEmailDocumentGenerator(
 export const sendEmailDocument = withDebounce(sendEmailDocumentGenerator, 500)
 
 export default function* sendEmailDocumentSaga() {
-  yield takeEvery(
-    [actionAsync.SEND_EMAIL_DOCUMENT.REQUEST().type],
-    sendEmailDocument
-  )
+  yield takeEvery([actionAsync.SEND_EMAIL_DOCUMENT.REQUEST().type], sendEmailDocument)
 }
