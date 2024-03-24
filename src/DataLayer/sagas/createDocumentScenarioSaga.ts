@@ -10,6 +10,7 @@ import { withDebounce } from '../../Shared/withDebounce'
 import { sendEmailDocument } from './sendEmailDocumentSaga'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 
 function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -83,10 +84,13 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
     } catch (error: any) {
       console.error('createDocumentScenarioSaga [86] ERROR', `${error.name}: ${error.message}`)
     }
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('createDocumentScenario [92] ERROR', `${error.name}: ${error.message}`)
+  } finally {
+    getLocalStorageSetObjTo({
+      modulesInProgress: [],
+    })
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   }
 }
 
