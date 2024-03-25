@@ -1714,3 +1714,5 @@ WILL: JUST AS IT EXAMPLE HOW THAT'S BEEN IN YOUR NEW CYCLE PUSHING FOR JUSTICE K
 
 export const text42 =
   "so they want to see - this video is brought to you by Prokofiev ah the recommended law firm of founders there's a certain exit horizon so if you are a angel investor you know versus the VC you might have different horizons of how I think it's getting longer I think that greats and all other set of problems not just for PCs but also founders what is he supposed a private tour the quality of the debate is a huge problem so what do we see in the market that kind of addresses that right so we see the secondary markets which is a way for private shareholders to to sell their shares and that's a really new phenomenon and one of the reasons for that the main reasons for that is stay private for a long time also for the VC some of them want to cash out too some of them have limits so you can but sell right away I mean this is a easy to show investor you can just buy or sell buy and sell you know there's this things you can do and this type of investor but in general that that's possible [Music] "
+
+export const text50 = ''

@@ -18,7 +18,7 @@ import {
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
 
-export function* getModule10MataDataCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
+export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     /* Add originUri to moduleCreateProgress */
     const inputCourseCreate: any = yield select((state: RootStoreType) => {
@@ -80,15 +80,15 @@ export function* getModule10MataDataCreatedGenerator(params: ActionReduxType | a
       })
     )
 
-    console.info('getModule10MataDataCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
+    console.info('getModule10MetaDataCreatedSaga [76] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule10MataDataCreated = withDebounce(getModule10MataDataCreatedGenerator, 500)
+export const getModule10MetaDataCreated = withDebounce(getModule10MetaDataCreatedGenerator, 500)
 
-export default function* getModule10MataDataCreatedSaga() {
+export default function* getModule10MetaDataCreatedSaga() {
   yield takeEvery(
     [actionAsync.GET_MODULE_META_DATA_CREATED.REQUEST().type],
-    getModule10MataDataCreated
+    getModule10MetaDataCreated
   )
 }

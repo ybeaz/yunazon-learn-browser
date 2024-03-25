@@ -354,7 +354,7 @@ export type CreateOriginInputType = {
     /** youtubeID */
     originID?: InputMaybe<Scalars['String']['input']>;
     /** youtubeUrl */
-    originUrl?: InputMaybe<Array<Scalars['String']['input']>>;
+    originUrl?: InputMaybe<Scalars['String']['input']>;
 };
 export type CreateProfileInputType = {
     /** affiliation. An organization that this person is affiliated with. For example, a school/university, a club, or a team. */

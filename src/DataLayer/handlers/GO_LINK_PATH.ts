@@ -11,7 +11,8 @@ export const GO_LINK_PATH: ActionEventType = (
   try {
     navigate(pathname)
     setTimeout(() => {
-      if (location.pathname !== pathname) getRedirected(pathname, { isOrigin: true })
+      if (decodeURIComponent(location.pathname) !== pathname)
+        getRedirected(pathname, { isOrigin: true })
     }, 500)
   } catch (error) {
     console.error('GO_LINK_PATH [13]', error)

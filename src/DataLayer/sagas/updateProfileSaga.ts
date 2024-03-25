@@ -14,8 +14,6 @@ function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: MutationUpdateProfilesArgs = {
       updateProfilesInput: [profile],
     }
@@ -33,8 +31,6 @@ function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield put(actionSync.SET_PROFILES(updateProfiles))
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('updateProfile [82] ERROR', `${error.name}: ${error.message}`)
   }
