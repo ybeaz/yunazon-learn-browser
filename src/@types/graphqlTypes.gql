@@ -227,6 +227,14 @@ type CoursesConnectionType {
   pageInfo: CoursesPageInfoType
 }
 
+type CoursesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+}
+
 type CoursesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -300,7 +308,7 @@ type CreateContentMetaDataType {
   tags: [String!]
 
   """thumbnail image data"""
-  thumbnails: ThumbnailsBotType!
+  thumbnails: ThumbnailsBotType
 }
 
 input CreateCourseInputType {
@@ -574,6 +582,14 @@ type DocumentsConnectionType {
 
   """DocumentsPageInfoType"""
   pageInfo: DocumentsPageInfoType
+}
+
+type DocumentsCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
 }
 
 type DocumentsPageInfoType {
@@ -959,6 +975,14 @@ type ModulesConnectionType {
   pageInfo: ModulesPageInfoType
 }
 
+type ModulesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+}
+
 type ModulesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1239,6 +1263,14 @@ type ProfilesConnectionType {
   pageInfo: ProfilesPageInfoType
 }
 
+type ProfilesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+}
+
 type ProfilesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1280,11 +1312,11 @@ type PromptType {
 
 type Query {
   countBots: Int!
-  countCourses: Int!
-  countDocuments: Int!
-  countModules: Int!
-  countProfiles: Int!
-  countTemplates: Int!
+  countCourses: CoursesCountType!
+  countDocuments: DocumentsCountType!
+  countModules: ModulesCountType!
+  countProfiles: ProfilesCountType!
+  countTemplates: TemplatesCountType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -1802,6 +1834,14 @@ type TemplatesConnectionType {
 
   """TemplatesPageInfoType"""
   pageInfo: TemplatesPageInfoType
+}
+
+type TemplatesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
 }
 
 type TemplatesEdgeType {

@@ -12,6 +12,14 @@
   ._textStructuredWrapper {
     display: flex;
     flex-direction: row;
+
+    article:nth-child(1):not(:only-child) {
+      padding-right: 1rem;
+    }
+
+    article:nth-child(2) {
+      padding-left: 1rem;
+    }
   }
 
   @media @large {

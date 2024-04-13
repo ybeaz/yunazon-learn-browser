@@ -214,6 +214,14 @@ export type CoursesConnectionType = {
   pageInfo?: Maybe<CoursesPageInfoType>;
 };
 
+export type CoursesCountType = {
+  __typename?: 'CoursesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+};
+
 export type CoursesPageInfoType = {
   __typename?: 'CoursesPageInfoType';
   /** endCursor */
@@ -273,7 +281,7 @@ export type CreateContentMetaDataType = {
   /** courses meta tags: tags that characterises the course content */
   tags?: Maybe<Array<Scalars['String']['output']>>;
   /** thumbnail image data */
-  thumbnails: ThumbnailsBotType;
+  thumbnails?: Maybe<ThumbnailsBotType>;
 };
 
 export type CreateCourseInputType = {
@@ -472,6 +480,14 @@ export type DocumentsConnectionType = {
   edges?: Maybe<Array<DocumentEdgeType>>;
   /** DocumentsPageInfoType */
   pageInfo?: Maybe<DocumentsPageInfoType>;
+};
+
+export type DocumentsCountType = {
+  __typename?: 'DocumentsCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DocumentsPageInfoType = {
@@ -772,6 +788,14 @@ export type ModulesConnectionType = {
   edges?: Maybe<Array<ModuleEdgeType>>;
   /** ModulesPageInfoType */
   pageInfo?: Maybe<ModulesPageInfoType>;
+};
+
+export type ModulesCountType = {
+  __typename?: 'ModulesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ModulesPageInfoType = {
@@ -1196,6 +1220,14 @@ export type ProfilesConnectionType = {
   pageInfo?: Maybe<ProfilesPageInfoType>;
 };
 
+export type ProfilesCountType = {
+  __typename?: 'ProfilesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+};
+
 export type ProfilesPageInfoType = {
   __typename?: 'ProfilesPageInfoType';
   /** endCursor */
@@ -1233,11 +1265,11 @@ export type PromptType = {
 export type Query = {
   __typename?: 'Query';
   countBots: Scalars['Int']['output'];
-  countCourses: Scalars['Int']['output'];
-  countDocuments: Scalars['Int']['output'];
-  countModules: Scalars['Int']['output'];
-  countProfiles: Scalars['Int']['output'];
-  countTemplates: Scalars['Int']['output'];
+  countCourses: CoursesCountType;
+  countDocuments: DocumentsCountType;
+  countModules: ModulesCountType;
+  countProfiles: ProfilesCountType;
+  countTemplates: TemplatesCountType;
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
@@ -1741,6 +1773,14 @@ export type TemplatesConnectionType = {
   edges?: Maybe<Array<TemplatesEdgeType>>;
   /** TemplatesPageInfoType */
   pageInfo?: Maybe<TemplatesPageInfoType>;
+};
+
+export type TemplatesCountType = {
+  __typename?: 'TemplatesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TemplatesEdgeType = {
