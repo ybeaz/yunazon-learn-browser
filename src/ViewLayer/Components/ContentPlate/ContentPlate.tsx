@@ -66,7 +66,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
-  const getSrcFromThumbnails = (): string =>
+  const plateImageSrc: string =
     thumbnails?.maxres?.url ||
     thumbnails?.high?.url ||
     thumbnails?.medium?.url ||
@@ -86,7 +86,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         moduleID,
         contentID,
         isVisible,
-        isIframe: false,
+        isIframe: !plateImageSrc,
       },
     },
     loaderBlurhashProps: {
@@ -98,7 +98,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
     loaderImageProps: {
       classAdded: 'Image_loaderPlayerFrame',
-      src: getSrcFromThumbnails(),
+      src: plateImageSrc,
       opacity: !isVisible ? 1 : 0,
     },
     playerPanelProps: {
@@ -127,8 +127,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-        {/* <LoaderBlurhash {...propsOut.loaderBlurhashProps} /> */}
-        <ImageYrl {...propsOut.loaderImageProps} />
+        {plateImageSrc ? (
+          <ImageYrl {...propsOut.loaderImageProps} />
+        ) : (
+          <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+        )}
+
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
       <NavLink {...propsOut.linkProps} />
