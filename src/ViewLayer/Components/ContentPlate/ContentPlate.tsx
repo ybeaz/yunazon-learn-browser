@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { withPropsYrl } from '../../ComponentsLibrary/'
+import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
@@ -46,6 +46,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     screenType,
     storeStateSlice: { language, mediaLoaded },
     handleEvents,
+    thumbnails,
   } = props
 
   const navigate = useNavigate()
@@ -65,25 +66,40 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
+  const getSrcFromThumbnails = (): string =>
+    thumbnails?.maxres?.url ||
+    thumbnails?.high?.url ||
+    thumbnails?.medium?.url ||
+    thumbnails?.standard?.url ||
+    thumbnails?.default?.url ||
+    ''
+
   const propsOut: ContentPlatePropsOutType = {
     contentComponentProps: {
       ReaderIframe: {
         moduleID,
         contentID,
         isVisible,
+        isIframe: true,
       },
       PlayerIframe: {
         moduleID,
         contentID,
         isVisible,
+        isIframe: false,
       },
     },
     loaderBlurhashProps: {
-      isVisibleBlurHash: !isVisible,
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
       delay: 500,
       contentComponentName: 'AcademyMatrix',
+      isVisibleBlurHash: !isVisible,
+    },
+    loaderImageProps: {
+      classAdded: 'Image_loaderPlayerFrame',
+      src: getSrcFromThumbnails(),
+      opacity: !isVisible ? 1 : 0,
     },
     playerPanelProps: {
       capture,
@@ -111,7 +127,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-        <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+        {/* <LoaderBlurhash {...propsOut.loaderBlurhashProps} /> */}
+        <ImageYrl {...propsOut.loaderImageProps} />
         <PlayerPanel {...propsOut.playerPanelProps} />
       </CONTENT_ASSIGNED_COMPONENT>
       <NavLink {...propsOut.linkProps} />

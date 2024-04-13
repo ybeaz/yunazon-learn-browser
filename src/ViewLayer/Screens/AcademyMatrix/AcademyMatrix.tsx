@@ -54,7 +54,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
-      const { moduleID, capture, contentType, contentID, duration } = module
+      const { moduleID, capture, contentType, contentID, duration, thumbnails } = module
 
       const contentComponentName = getContentComponentName(contentType)
 
@@ -67,6 +67,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         moduleID,
         contentID,
         screenType,
+        thumbnails,
       }
 
       return <ContentPlate {...contentPlateProps} />

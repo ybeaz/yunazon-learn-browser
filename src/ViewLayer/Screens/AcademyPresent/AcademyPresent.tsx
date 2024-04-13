@@ -204,11 +204,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         moduleID,
         contentID,
         isVisible,
+        isIframe: true,
         screenType,
       },
       PlayerIframe: {
         contentID,
         isVisible,
+        isIframe: true,
       },
     },
     loaderBlurhashProps: {
