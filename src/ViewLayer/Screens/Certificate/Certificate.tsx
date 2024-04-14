@@ -78,7 +78,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,

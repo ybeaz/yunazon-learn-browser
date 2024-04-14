@@ -28,6 +28,7 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
     action,
     isDisplaying = true,
     isVisible = true,
+    opacity = 1,
   } = props
 
   const classDisplay = isDisplaying === true ? '' : 'Image_display_none'
@@ -41,14 +42,9 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
 
   return (
     <div
-      className={getClasses('ImageYrl', [
-        classAdded,
-        classDisplay,
-        classVisible,
-      ])}
-      onClickCapture={(event: React.MouseEvent<HTMLDivElement>) =>
-        handleEventsToUse(event, action)
-      }
+      className={getClasses('ImageYrl', [classAdded, classDisplay, classVisible])}
+      style={{ opacity }}
+      onClickCapture={(event: React.MouseEvent<HTMLDivElement>) => handleEventsToUse(event, action)}
     >
       <img className={`_image ${classCursor}`} src={src} />
     </div>
@@ -57,9 +53,4 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
 
 export const ImageYrl: ImageYrlType = React.memo(ImageYrlComponent)
 
-export type {
-  ImageYrlPropsType,
-  ImageYrlPropsOutType,
-  ImageYrlComponentType,
-  ImageYrlType,
-}
+export type { ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlComponentType, ImageYrlType }

@@ -17,14 +17,11 @@ export type MyModulesComponentPropsType = {
   handleEvents: HandleEventType
 }
 
-export type MyModulesPropsType = Omit<
-  MyModulesComponentPropsType,
-  'storeStateSlice'
->
+export type MyModulesPropsType = Omit<MyModulesComponentPropsType, 'storeStateSlice'>
 
 export type MyModulesPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: MainFramePropsType
+  mainFrameProps: Omit<MainFramePropsType, 'children'>
   myModulesBodyProps: MyModulesBodyPropsType
 }
 

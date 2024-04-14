@@ -12,10 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   ArticlePresentComponentPropsType,
@@ -42,14 +39,10 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const articleID = params?.articleID
 
   const articleFound =
-    articles.find((article: any) => article.articleID === articleID) ||
-    articles[0]
+    articles.find((article: any) => article.articleID === articleID) || articles[0]
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'ArticlePresent' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'ArticlePresent' } })
 
     if (Array.isArray(articles) && !articleFound) {
       handleEvents({}, { typeEvent: 'FIND_ARTICLE', data: articleID })
@@ -59,7 +52,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const propsOut: ArticlePresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
