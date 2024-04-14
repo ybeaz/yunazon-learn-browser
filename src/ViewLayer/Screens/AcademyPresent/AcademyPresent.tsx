@@ -23,6 +23,7 @@ import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
+import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -114,7 +115,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         description: description2,
         contentType,
         contentID: contentID2,
-        duration,
+        duration: duration2,
         index: index2,
         questionsTotal: questionsTotal2,
         summary: summary2,
@@ -124,6 +125,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { parentFunction: 'AcademyPresentComponent' }
       )
 
+      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
@@ -182,7 +185,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageSite],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][languageSite],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

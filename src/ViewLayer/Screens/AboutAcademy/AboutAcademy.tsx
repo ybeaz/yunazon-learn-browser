@@ -10,10 +10,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AboutAcademyBody } from '../../Components/AboutAcademyBody/AboutAcademyBody'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   AboutAcademyComponentPropsType,
@@ -37,16 +34,13 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
   } = props
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } })
   }, [])
 
   const propsOut: AboutAcademyPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

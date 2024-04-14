@@ -9,10 +9,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { MyDocumentsBody } from '../../Components/'
 import { paginationOffset } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
 import {
   MyDocumentsComponentPropsType,
@@ -27,9 +24,7 @@ import {
  * @import import { MyDocuments, MyDocumentsPropsType, MyDocumentsPropsOutType, MyDocumentsType } 
              from '../Components/MyDocuments/MyDocuments'
  */
-const MyDocumentsComponent: MyDocumentsComponentType = (
-  props: MyDocumentsComponentPropsType
-) => {
+const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsComponentPropsType) => {
   const {
     classAdded,
     storeStateSlice: { language, sub, documents },
@@ -41,8 +36,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
   const query = getParsedUrlQueryBrowserApi()
   const first =
     query && query?.[PaginationNameEnumType['pageDocuments']]
-      ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) *
-          paginationOffset -
+      ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) * paginationOffset -
         paginationOffset
       : 0
 
@@ -57,10 +51,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
       )
     }
 
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } })
 
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
@@ -68,7 +59,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -100,9 +91,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          {documents.length ? (
-            <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} />
-          ) : null}
+          {documents.length ? <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} /> : null}
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
@@ -116,10 +105,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (
 
 const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
 export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(MyDocumentsComponent)
-  )
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )
 
 export type {

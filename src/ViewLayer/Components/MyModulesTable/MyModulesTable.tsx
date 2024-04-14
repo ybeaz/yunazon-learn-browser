@@ -16,6 +16,7 @@ import {
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModuleType } from '../../../@types/'
 import { getSlug } from '../../../Shared/getSlug'
+import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 
 /**
  * @description Component to render MyModulesTable
@@ -30,7 +31,10 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
 
   const getModulesTable = (modulesIn: ModuleType[]) => {
     const modulesRows: React.ReactElement[] = modulesIn.map((module: ModuleType) => {
-      const { moduleID, capture, dateCreated, duration } = module
+      const { moduleID, capture, dateCreated, duration: durationStrIn } = module
+
+      const durationObj = getDurationFromYoutubeSnippet(durationStrIn)
+      const { timeReadable: duration } = durationObj
 
       const dateString = getDateString({
         timestamp: dateCreated,

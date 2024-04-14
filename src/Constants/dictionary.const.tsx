@@ -682,6 +682,10 @@ export const DICTIONARY: IDictionary = {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
   },
+  Watch_Videos_With_a_Purpose: {
+    en: 'Watch Videos With a Purpose',
+    ru: 'Смотрите Видео с Целью',
+  },
   Together_know_everything: {
     en: 'Together know everything',
     ru: 'Вместе знаем все',

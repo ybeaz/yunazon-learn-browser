@@ -14,10 +14,7 @@ import {
   CreateModuleStagesEnumType,
   CreateModuleStageType,
 } from '../../../Interfaces/'
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   MyModulesComponentPropsType,
@@ -32,38 +29,25 @@ import {
  * @import import { MyModules, MyModulesPropsType, MyModulesPropsOutType, MyModulesType } 
              from '../Components/MyModules/MyModules'
  */
-const MyModulesComponent: MyModulesComponentType = (
-  props: MyModulesComponentPropsType
-) => {
+const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPropsType) => {
   const {
     classAdded,
-    storeStateSlice: {
-      language,
-      sub,
-      createModuleStages,
-      moduleCreateProgress,
-      modules,
-    },
+    storeStateSlice: { language, sub, createModuleStages, moduleCreateProgress, modules },
     handleEvents,
   } = props
 
-  const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] =
-    useState(false)
+  const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyModules' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyModules' } })
 
     const isStatePendingAny = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = false
         if (
           createModuleStages[item].isActive &&
-          createModuleStages[item].status ===
-            CreateModuleStatusEnumType['pending']
+          createModuleStages[item].status === CreateModuleStatusEnumType['pending']
         )
           output = true
         return output || accum
@@ -76,8 +60,7 @@ const MyModulesComponent: MyModulesComponentType = (
         let output = false
         if (
           createModuleStages[item].isActive &&
-          createModuleStages[item].status ===
-            CreateModuleStatusEnumType['failure']
+          createModuleStages[item].status === CreateModuleStatusEnumType['failure']
         )
           output = true
         return output || accum
@@ -106,8 +89,7 @@ const MyModulesComponent: MyModulesComponentType = (
         let output = true
         if (
           createModuleStages[item].isActive &&
-          createModuleStages[item].status !==
-            CreateModuleStatusEnumType['success']
+          createModuleStages[item].status !== CreateModuleStatusEnumType['success']
         ) {
           output = false
         }
@@ -125,7 +107,7 @@ const MyModulesComponent: MyModulesComponentType = (
   const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -178,15 +160,7 @@ const storeStateSliceProps: string[] = [
   'modules',
 ]
 export const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(MyModulesComponent)
-  )
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent))
 )
 
-export type {
-  MyModulesPropsType,
-  MyModulesPropsOutType,
-  MyModulesComponentType,
-  MyModulesType,
-}
+export type { MyModulesPropsType, MyModulesPropsOutType, MyModulesComponentType, MyModulesType }

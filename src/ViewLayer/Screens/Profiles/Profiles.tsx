@@ -8,10 +8,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   ProfilesComponentPropsType,
@@ -26,25 +23,20 @@ import {
  * @import import { Profiles, ProfilesPropsType, ProfilesPropsOutType, ProfilesType } 
              from '../Components/Profiles/Profiles'
  */
-const ProfilesComponent: ProfilesComponentType = (
-  props: ProfilesComponentPropsType
-) => {
+const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsType) => {
   const {
     classAdded,
     storeStateSlice: { language },
   } = props
 
   useEffect(() => {
-    handleEvents(
-      {},
-      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } }
-    )
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } })
   }, [])
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -88,9 +80,4 @@ export const Profiles = withStoreStateSelectedYrl(
   React.memo(ProfilesComponent)
 )
 
-export type {
-  ProfilesPropsType,
-  ProfilesPropsOutType,
-  ProfilesComponentType,
-  ProfilesType,
-}
+export type { ProfilesPropsType, ProfilesPropsOutType, ProfilesComponentType, ProfilesType }

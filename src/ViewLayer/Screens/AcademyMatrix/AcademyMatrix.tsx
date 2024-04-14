@@ -17,6 +17,7 @@ import { PaginationNavigation } from '../../Components/PaginationNavigation/Pagi
 import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 
 import {
   AcademyMatrixPropsType,
@@ -54,16 +55,19 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
-      const { moduleID, capture, contentType, contentID, duration, thumbnails } = module
+      const { moduleID, capture, contentType, contentID, duration: duration2, thumbnails } = module
 
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
+      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const { timeReadable: duration } = durationObj
+      const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
+
       const contentPlateProps: ContentPlatePropsType = {
         key: moduleID,
         contentComponentName,
         capture,
-        durationObj,
+        durationObj: durationObj2,
         moduleID,
         contentID,
         screenType,
@@ -78,7 +82,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][language],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
