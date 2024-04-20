@@ -8,25 +8,25 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { AboutAcademyBody } from '../../Components/AboutAcademyBody/AboutAcademyBody'
+import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
-  AboutAcademyComponentPropsType,
-  AboutAcademyPropsType,
-  AboutAcademyPropsOutType,
-  AboutAcademyComponentType,
-  AboutAcademyType,
-} from './AboutAcademyTypes'
+  AcademyAboutComponentPropsType,
+  AcademyAboutPropsType,
+  AcademyAboutPropsOutType,
+  AcademyAboutComponentType,
+  AcademyAboutType,
+} from './AcademyAboutTypes'
 
 /**
- * @description Component to render AboutAcademy
- * @import import { AboutAcademy, AboutAcademyPropsType, AboutAcademyPropsOutType, AboutAcademyType } 
-             from '../Components/AboutAcademy/AboutAcademy'
+ * @description Component to render AcademyAbout
+ * @import import { AcademyAbout, AcademyAboutPropsType, AcademyAboutPropsOutType, AcademyAboutType } 
+             from '../Components/AcademyAbout/AcademyAbout'
  */
-const AboutAcademyComponent: AboutAcademyComponentType = (
-  props: AboutAcademyComponentPropsType
+const AcademyAboutComponent: AcademyAboutComponentType = (
+  props: AcademyAboutComponentPropsType
 ) => {
   const {
     classAdded,
@@ -37,7 +37,7 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } })
   }, [])
 
-  const propsOut: AboutAcademyPropsOutType = {
+  const propsOut: AcademyAboutPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
       moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
@@ -55,12 +55,12 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'AboutAcademy',
+      screenType: 'AcademyAbout',
     },
   }
 
   return (
-    <div className={getClasses('AboutAcademy', classAdded)}>
+    <div className={getClasses('AcademyAbout', classAdded)}>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
@@ -68,7 +68,7 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          <AboutAcademyBody />
+          <AcademyAboutBody />
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
@@ -81,14 +81,14 @@ const AboutAcademyComponent: AboutAcademyComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const AboutAcademy = withStoreStateSelectedYrl(
+export const AcademyAbout = withStoreStateSelectedYrl(
   storeStateSliceProps,
-  React.memo(AboutAcademyComponent)
+  React.memo(AcademyAboutComponent)
 )
 
 export type {
-  AboutAcademyPropsType,
-  AboutAcademyPropsOutType,
-  AboutAcademyComponentType,
-  AboutAcademyType,
+  AcademyAboutPropsType,
+  AcademyAboutPropsOutType,
+  AcademyAboutComponentType,
+  AcademyAboutType,
 }

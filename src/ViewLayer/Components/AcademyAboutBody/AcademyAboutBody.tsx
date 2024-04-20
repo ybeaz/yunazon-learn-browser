@@ -4,20 +4,20 @@ import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary
 import { getClasses } from '../../../Shared/getClasses'
 import { buildData } from '../../../Constants/buildData.const'
 import {
-  AboutAcademyBodyComponentPropsType,
-  AboutAcademyBodyPropsType,
-  AboutAcademyBodyPropsOutType,
-  AboutAcademyBodyComponentType,
-  AboutAcademyBodyType,
-} from './AboutAcademyBodyTypes'
+  AcademyAboutBodyComponentPropsType,
+  AcademyAboutBodyPropsType,
+  AcademyAboutBodyPropsOutType,
+  AcademyAboutBodyComponentType,
+  AcademyAboutBodyType,
+} from './AcademyAboutBodyTypes'
 
 /**
- * @description Component to render AboutAcademyBody
- * @import import { AboutAcademyBody, AboutAcademyBodyPropsType, AboutAcademyBodyPropsOutType, AboutAcademyBodyType } 
-             from '../Components/AboutAcademyBody/AboutAcademyBody'
+ * @description Component to render AcademyAboutBody
+ * @import import { AcademyAboutBody, AcademyAboutBodyPropsType, AcademyAboutBodyPropsOutType, AcademyAboutBodyType } 
+             from '../Components/AcademyAboutBody/AcademyAboutBody'
  */
-const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
-  props: AboutAcademyBodyComponentPropsType
+const AcademyAboutBodyComponent: AcademyAboutBodyComponentType = (
+  props: AcademyAboutBodyComponentPropsType
 ) => {
   const { classAdded, buildData, storeStateSlice } = props
   const {
@@ -30,10 +30,10 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
     copyright,
   } = buildData
 
-  const propsOut: AboutAcademyBodyPropsOutType = {}
+  const propsOut: AcademyAboutBodyPropsOutType = {}
 
   return (
-    <div className={getClasses('AboutAcademyBody', classAdded)}>
+    <div className={getClasses('AcademyAboutBody', classAdded)}>
       <h1 className='_titleBodyAbout'>About Academy YouRails</h1>
       <div className='_aboutAcademyContent'>
         <div className='_paragraph'>
@@ -89,13 +89,13 @@ const AboutAcademyBodyComponent: AboutAcademyBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const AboutAcademyBody = withPropsYrl({ buildData })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AboutAcademyBodyComponent))
+export const AcademyAboutBody = withPropsYrl({ buildData })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyAboutBodyComponent))
 )
 
 export type {
-  AboutAcademyBodyPropsType,
-  AboutAcademyBodyPropsOutType,
-  AboutAcademyBodyComponentType,
-  AboutAcademyBodyType,
+  AcademyAboutBodyPropsType,
+  AcademyAboutBodyPropsOutType,
+  AcademyAboutBodyComponentType,
+  AcademyAboutBodyType,
 }

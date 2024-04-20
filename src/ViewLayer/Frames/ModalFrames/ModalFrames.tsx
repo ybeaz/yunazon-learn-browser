@@ -10,7 +10,7 @@ import { ConfirmationYesNoBodyYrl } from '../../ComponentsLibrary/ConfirmationYe
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
-import { AboutAcademyBody } from '../../Components/AboutAcademyBody/AboutAcademyBody'
+import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
 
 import {
   ModalFramesComponentPropsType,
@@ -24,7 +24,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
   ConfirmationYesNoBodyYrl,
   EmalInputs,
   QuestionScores,
-  AboutAcademyBody,
+  AcademyAboutBody,
   //AuthUser, Not used in favor of Cognito authetication
   // SkillExchangeIntro2,
   // SkillExchangeIntro,
@@ -35,9 +35,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
  * @import import { ModalFrames, ModalFramesPropsType, ModalFramesPropsOutType, ModalFramesType } 
              from '../Components/ModalFrames/ModalFrames'
  */
-const ModalFramesComponent: ModalFramesComponentType = (
-  props: ModalFramesComponentPropsType
-) => {
+const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesComponentPropsType) => {
   const {
     storeStateSlice: { modalFrames, isConfetti },
   } = props
@@ -87,9 +85,7 @@ const ModalFramesComponent: ModalFramesComponentType = (
             </span>
             <div
               className='_inner'
-              onClick={event =>
-                handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
-              }
+              onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
             >
               <CHILD {...propsOut.childProps} />
             </div>

@@ -63,7 +63,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
           {
-            childName: 'AboutAcademyBody',
+            childName: 'AcademyAboutBody',
             isActive: true,
             childProps: {},
           },

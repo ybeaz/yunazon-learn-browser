@@ -15,13 +15,11 @@ import {
 const PlayerIframeComponent: PlayerIframeComponentType = (props: PlayerIframePropsType) => {
   const { contentID, isIframe, children } = props
 
-  console.info('PlayerIframe [18]', { children })
-
   return (
     <div className='PlayerIframe'>
       <div className='_isCompleted'>{children[0]}</div>
       <div className='_wrapper'>
-        {isIframe && <div className='_player' id={'contentID'}></div>}
+        {isIframe && <div className='_player' id={contentID}></div>}
         {children[1]}
       </div>
 
