@@ -930,6 +930,9 @@ type ModuleType {
   """isActive"""
   isActive: Boolean!
 
+  """isCompleted"""
+  isCompleted: Boolean
+
   """language code"""
   language: String!
 
@@ -1081,6 +1084,39 @@ type ObjectionType {
 
   """module Objection text"""
   text: String
+}
+
+input OperatorsDocumentsInputType {
+  """operator for contentIDs"""
+  contentIDs: String = null
+
+  """operator for courses ID"""
+  courseIDs: String = null
+
+  """operator for creator IDs"""
+  creatorIDs: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for learner IDs"""
+  learnerIDs: String = null
+
+  """operator for module IDs"""
+  moduleIDs: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagsOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagsPick: String = null
 }
 
 input OptionCourseInputType {
@@ -1527,7 +1563,7 @@ input ReadDocumentsConnectionInputType {
   """
   after: String
 
-  """course module contentIDs"""
+  """contentIDs"""
   contentIDs: [ID!] = []
 
   """courses ID"""
@@ -1550,13 +1586,16 @@ input ReadDocumentsConnectionInputType {
   """learner IDs"""
   learnerIDs: [ID!] = []
 
-  """course module IDs"""
+  """module IDs"""
   moduleIDs: [ID!] = []
 
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """option to setup operator for arguments"""
+  operators: OperatorsDocumentsInputType = null
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -1565,22 +1604,12 @@ input ReadDocumentsConnectionInputType {
   sort: SortDocumentsInputType
 
   """
-  documents meta stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """
-  documents meta stages: stages/ statuses/ envs to pick from the set of documents
-  """
-  stagesPick: [String!] = []
-
-  """
-  documents meta tags: tags that characterises the course content to omit with that selection of the documents
+  documents tags: tags that characterises the content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  documents meta tags: tags that characterises the course content to pick from the set of documents
+  documents tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1612,6 +1641,9 @@ input ReadModulesConnectionInputType {
 
   """language code"""
   language: String = null
+
+  """learner ID"""
+  learnerID: ID = null
 
   """module IDs"""
   moduleIDs: [ID!] = []

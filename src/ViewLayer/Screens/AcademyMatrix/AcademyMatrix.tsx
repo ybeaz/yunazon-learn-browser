@@ -55,8 +55,17 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
-      const { moduleID, capture, contentType, contentID, duration: duration2, thumbnails } = module
+      const {
+        moduleID,
+        capture,
+        isCompleted,
+        contentType,
+        contentID,
+        duration: duration2,
+        thumbnails,
+      } = module
 
+      console.info('AcademyMatrix [68]', { capture, isCompleted })
       const contentComponentName = getContentComponentName(contentType)
 
       const durationObj = getDurationFromYoutubeSnippet(duration2)

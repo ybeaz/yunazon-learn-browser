@@ -49,7 +49,6 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
       searchPhrase: inputSearch,
       tagsPick,
       tagsOmit,
-      stagesPick: [],
       sort: { prop: 'dateCreated', direction: -1 },
       isActive: true,
     }

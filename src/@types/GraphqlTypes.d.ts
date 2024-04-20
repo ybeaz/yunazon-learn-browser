@@ -727,6 +727,8 @@ export type ModuleType = {
     ipClient?: Maybe<Scalars['String']['output']>;
     /** isActive */
     isActive: Scalars['Boolean']['output'];
+    /** isCompleted */
+    isCompleted?: Maybe<Scalars['Boolean']['output']>;
     /** language code */
     language: Scalars['String']['output'];
     /** module ID */
@@ -968,6 +970,26 @@ export type ObjectionType = {
     objectionID: Scalars['ID']['output'];
     /** module Objection text */
     text?: Maybe<Scalars['String']['output']>;
+};
+export type OperatorsDocumentsInputType = {
+    /** operator for contentIDs */
+    contentIDs?: InputMaybe<Scalars['String']['input']>;
+    /** operator for courses ID */
+    courseIDs?: InputMaybe<Scalars['String']['input']>;
+    /** operator for creator IDs */
+    creatorIDs?: InputMaybe<Scalars['String']['input']>;
+    /** operator for language code */
+    language?: InputMaybe<Scalars['String']['input']>;
+    /** operator for learner IDs */
+    learnerIDs?: InputMaybe<Scalars['String']['input']>;
+    /** operator for module IDs */
+    moduleIDs?: InputMaybe<Scalars['String']['input']>;
+    /** operator for searchPhrase */
+    searchPhrase?: InputMaybe<Scalars['String']['input']>;
+    /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+    tagsOmit?: InputMaybe<Scalars['String']['input']>;
+    /** operator for tags: tags that characterises the content to pick from the set of documents */
+    tagsPick?: InputMaybe<Scalars['String']['input']>;
 };
 export type OptionCourseInputType = {
     /** course module question option label */
@@ -1365,7 +1387,7 @@ export type ReadCoursesConnectionInputType = {
 export type ReadDocumentsConnectionInputType = {
     /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
     after?: InputMaybe<Scalars['String']['input']>;
-    /** course module contentIDs */
+    /** contentIDs */
     contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** courses ID */
     courseIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
@@ -1379,21 +1401,19 @@ export type ReadDocumentsConnectionInputType = {
     language?: InputMaybe<Scalars['String']['input']>;
     /** learner IDs */
     learnerIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
-    /** course module IDs */
+    /** module IDs */
     moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
     offset?: InputMaybe<Scalars['Int']['input']>;
+    /** option to setup operator for arguments */
+    operators?: InputMaybe<OperatorsDocumentsInputType>;
     /** searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
     /** option to sort by a field: 1 ascending, -1 descending */
     sort?: InputMaybe<SortDocumentsInputType>;
-    /** documents meta stages: stages/ statuses/ envs to omit with that selection of the documents */
-    stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-    /** documents meta stages: stages/ statuses/ envs to pick from the set of documents */
-    stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
-    /** documents meta tags: tags that characterises the course content to omit with that selection of the documents */
+    /** documents tags: tags that characterises the content to omit with that selection of the documents */
     tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-    /** documents meta tags: tags that characterises the course content to pick from the set of documents */
+    /** documents tags: tags that characterises the content to pick from the set of documents */
     tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 export type ReadModuleInputType = {
@@ -1413,6 +1433,8 @@ export type ReadModulesConnectionInputType = {
     isActive?: InputMaybe<Scalars['Boolean']['input']>;
     /** language code */
     language?: InputMaybe<Scalars['String']['input']>;
+    /** learner ID */
+    learnerID?: InputMaybe<Scalars['ID']['input']>;
     /** module IDs */
     moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
