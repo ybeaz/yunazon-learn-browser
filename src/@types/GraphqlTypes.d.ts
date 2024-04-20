@@ -728,7 +728,7 @@ export type ModuleType = {
     /** isActive */
     isActive: Scalars['Boolean']['output'];
     /** isCompleted */
-    isCompleted?: Maybe<Scalars['Boolean']['output']>;
+    isCompleted: Scalars['Boolean']['output'];
     /** language code */
     language: Scalars['String']['output'];
     /** module ID */
@@ -973,17 +973,29 @@ export type ObjectionType = {
 };
 export type OperatorsDocumentsInputType = {
     /** operator for contentIDs */
-    contentIDs?: InputMaybe<Scalars['String']['input']>;
+    contentID?: InputMaybe<Scalars['String']['input']>;
     /** operator for courses ID */
-    courseIDs?: InputMaybe<Scalars['String']['input']>;
+    courseID?: InputMaybe<Scalars['String']['input']>;
     /** operator for creator IDs */
-    creatorIDs?: InputMaybe<Scalars['String']['input']>;
+    creatorID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for creator IDs */
+    creatorProfileID?: InputMaybe<Scalars['String']['input']>;
     /** operator for language code */
     language?: InputMaybe<Scalars['String']['input']>;
     /** operator for learner IDs */
-    learnerIDs?: InputMaybe<Scalars['String']['input']>;
+    learnerProfileID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for contentIDs */
+    moduleContentID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for creator IDs */
+    moduleCreatorID?: InputMaybe<Scalars['String']['input']>;
     /** operator for module IDs */
-    moduleIDs?: InputMaybe<Scalars['String']['input']>;
+    moduleID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for module IDs */
+    moduleModuleID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+    moduleTagsOmit?: InputMaybe<Scalars['String']['input']>;
+    /** operator for tags: tags that characterises the content to pick from the set of documents */
+    moduleTagsPick?: InputMaybe<Scalars['String']['input']>;
     /** operator for searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
     /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */

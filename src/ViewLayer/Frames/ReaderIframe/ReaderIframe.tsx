@@ -15,7 +15,7 @@ import {
              from '../Components/ReaderIframe/ReaderIframe'
  */
 const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePropsType) => {
-  const { moduleID, contentID, isVisible, isIframe, screenType } = props
+  const { moduleID, contentID, isVisible, isIframe, screenType, children } = props
   const iFrameRef = useRef(null)
 
   let isVisibleClass = isVisible ? '_blockVisible' : '_blockHided'
@@ -24,6 +24,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
 
   return (
     <div className={`ReaderIframe ${classAdded}`}>
+      <div className='_isCompleted'>{children[0]}</div>
       <div className={`_wrapper ${isVisibleClass}`}>
         {isIframe && (
           <iframe
@@ -41,9 +42,9 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
             }}
           ></iframe>
         )}
-        {props.children[0]}
+        {children[1]}
       </div>
-      <div className='_panel'>{props.children[1]}</div>
+      <div className='_panel'>{children[2]}</div>
     </div>
   )
 }

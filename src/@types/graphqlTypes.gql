@@ -931,7 +931,7 @@ type ModuleType {
   isActive: Boolean!
 
   """isCompleted"""
-  isCompleted: Boolean
+  isCompleted: Boolean!
 
   """language code"""
   language: String!
@@ -1088,22 +1088,44 @@ type ObjectionType {
 
 input OperatorsDocumentsInputType {
   """operator for contentIDs"""
-  contentIDs: String = null
+  contentID: String = null
 
   """operator for courses ID"""
-  courseIDs: String = null
+  courseID: String = null
 
   """operator for creator IDs"""
-  creatorIDs: String = null
+  creatorID: String = null
+
+  """operator for creator IDs"""
+  creatorProfileID: String = null
 
   """operator for language code"""
   language: String = null
 
   """operator for learner IDs"""
-  learnerIDs: String = null
+  learnerProfileID: String = null
+
+  """operator for contentIDs"""
+  moduleContentID: String = null
+
+  """operator for creator IDs"""
+  moduleCreatorID: String = null
 
   """operator for module IDs"""
-  moduleIDs: String = null
+  moduleID: String = null
+
+  """operator for module IDs"""
+  moduleModuleID: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  moduleTagsOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  moduleTagsPick: String = null
 
   """operator for searchPhrase"""
   searchPhrase: String = null

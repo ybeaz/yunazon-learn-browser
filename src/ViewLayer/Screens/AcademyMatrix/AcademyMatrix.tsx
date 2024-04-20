@@ -41,11 +41,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } })
   }, [])
 
-  const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
-
-  let actionsToMount: any[] = []
-  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
-
   useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
   useLoadedInitialTeachContent({ isSkipping: false })
 
@@ -65,7 +60,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         thumbnails,
       } = module
 
-      console.info('AcademyMatrix [68]', { capture, isCompleted })
       const contentComponentName = getContentComponentName(contentType)
 
       const durationObj = getDurationFromYoutubeSnippet(duration2)
@@ -76,6 +70,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         key: moduleID,
         contentComponentName,
         capture,
+        isCompleted,
         durationObj: durationObj2,
         moduleID,
         contentID,
