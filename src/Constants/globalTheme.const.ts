@@ -21,7 +21,7 @@ export const GLOBAL_THEME: DefaultTheme = {
   colors: {
     colorFirst: {
       Light: ['rgba', 25, 35, 50, 0.9], // HSLA ['hsla', 0, 0, 12.5, 1], RBG [32, 32, 32]
-      Green: ['rgba', 25, 35, 50, 0.9],
+      Green: ['rgba', 70, 130, 60, 0.9], // hsl(111.43deg 36.84% 37.25% / 90%) rgb(70 130 60 / 90%)
       Dark: ['hsla', 0, 0, 87.5, 1], // RGB [255, 255, 255]
     },
 

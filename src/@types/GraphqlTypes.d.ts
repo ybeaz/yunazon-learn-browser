@@ -984,6 +984,8 @@ export type OperatorsDocumentsInputType = {
     language?: InputMaybe<Scalars['String']['input']>;
     /** operator for learner IDs */
     learnerProfileID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for learner User IDs */
+    learnerUserID?: InputMaybe<Scalars['String']['input']>;
     /** operator for contentIDs */
     moduleContentID?: InputMaybe<Scalars['String']['input']>;
     /** operator for creator IDs */
@@ -1413,6 +1415,8 @@ export type ReadDocumentsConnectionInputType = {
     language?: InputMaybe<Scalars['String']['input']>;
     /** learner IDs */
     learnerIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** learner user IDs */
+    learnerUserIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** module IDs */
     moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
@@ -1447,6 +1451,8 @@ export type ReadModulesConnectionInputType = {
     language?: InputMaybe<Scalars['String']['input']>;
     /** learner ID */
     learnerID?: InputMaybe<Scalars['ID']['input']>;
+    /** learner user ID */
+    learnerUserID?: InputMaybe<Scalars['ID']['input']>;
     /** module IDs */
     moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */

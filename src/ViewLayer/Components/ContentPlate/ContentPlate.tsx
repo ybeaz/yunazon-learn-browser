@@ -92,7 +92,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
     iconCompletedProps: {
       classAdded: 'Icon_isCompleted',
-      icon: 'MdCheckBoxOutlineBlank',
+      icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
     loaderBlurhashProps: {

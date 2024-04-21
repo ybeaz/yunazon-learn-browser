@@ -1105,6 +1105,9 @@ input OperatorsDocumentsInputType {
   """operator for learner IDs"""
   learnerProfileID: String = null
 
+  """operator for learner User IDs"""
+  learnerUserID: String = null
+
   """operator for contentIDs"""
   moduleContentID: String = null
 
@@ -1608,6 +1611,9 @@ input ReadDocumentsConnectionInputType {
   """learner IDs"""
   learnerIDs: [ID!] = []
 
+  """learner user IDs"""
+  learnerUserIDs: [ID!] = []
+
   """module IDs"""
   moduleIDs: [ID!] = []
 
@@ -1666,6 +1672,9 @@ input ReadModulesConnectionInputType {
 
   """learner ID"""
   learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
 
   """module IDs"""
   moduleIDs: [ID!] = []
