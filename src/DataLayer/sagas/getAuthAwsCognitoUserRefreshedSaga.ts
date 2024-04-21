@@ -9,10 +9,8 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getModules } from './getModulesSaga'
-
-let authAwsCognitoRefresheredCounter: number = 0
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
@@ -21,11 +19,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
 
     let refresh_token = null
 
-    const storeStateApp = select((store: RootStoreType) => store)
+    const storeStateApp: any = select((store: RootStoreType) => store)
+    const screenActive = storeStateApp?.componentsState?.screenActive
 
-    const refresh_token_App =
-      // @ts-expect-error
-      storeStateApp?.authAwsCognitoUserData?.refresh_token
+    const refresh_token_App = storeStateApp?.authAwsCognitoUserData?.refresh_token
 
     const refresh_token_localStorage = getLocalStorageReadKeyObj('refresh_token')
 
@@ -59,13 +56,11 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
         source: 'getAuthAwsCognitoUserRefreshedSaga',
       })
     )
-
-    /* Crutch for before deployment to the server in the US */
-    authAwsCognitoRefresheredCounter += 1
-    if (authAwsCognitoRefresheredCounter === 1) {
-      yield getModules()
-    }
   } catch (error: any) {
+    yield getLocalStorageSetObjTo({
+      refresh_token: '',
+      sub: '',
+    })
     console.log('getAuthAwsCognitoUserRefreshedSaga [61] ERROR', `${error.name}: ${error.message}`)
   }
 }

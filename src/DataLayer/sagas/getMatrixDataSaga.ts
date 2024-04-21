@@ -7,19 +7,16 @@ import { getModules } from './getModulesSaga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { paginationOffset } from '../../Constants/pagination.const'
 
-function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
+export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
     const inputSearch = query?.search || ''
-    const tagsPick =
-      (query && query?.tagspick && query?.tagspick.split(',')) || []
-    const tagsOmit =
-      (query && query?.tagsomit && query?.tagsomit.split(',')) || []
+    const tagsPick = (query && query?.tagspick && query?.tagspick.split(',')) || []
+    const tagsOmit = (query && query?.tagsomit && query?.tagsomit.split(',')) || []
     const first =
       query && query?.[PaginationNameEnumType['pageModules']]
-        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
-            paginationOffset -
+        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) * paginationOffset -
           paginationOffset
         : 0
 

@@ -9,10 +9,9 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getModules } from './getModulesSaga'
 
-export function* getAuthAwsCognitoUserData(
-  params: ActionReduxType | any
-): Iterable<any> {
+export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { code },
   } = params
@@ -28,7 +27,6 @@ export function* getAuthAwsCognitoUserData(
         client_app: ClientAppType['ACADEMY'],
       },
     }
-    console.info('getAuthAwsCognitoUserDataSaga [31]', { variables })
 
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
       {
@@ -43,6 +41,7 @@ export function* getAuthAwsCognitoUserData(
 
     yield getLocalStorageSetObjTo({
       refresh_token: authAwsCognitoUserData.refresh_token,
+      sub: authAwsCognitoUserData.sub,
     })
 
     yield put(
@@ -51,11 +50,10 @@ export function* getAuthAwsCognitoUserData(
         source: 'getAuthAwsCognitoUserDataSaga',
       })
     )
+
+    yield getModules()
   } catch (error: any) {
-    console.log(
-      'getAuthAwsCognitoUserDataSaga [53] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.log('getAuthAwsCognitoUserDataSaga [53] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

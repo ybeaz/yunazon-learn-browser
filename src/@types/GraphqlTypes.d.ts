@@ -334,6 +334,8 @@ export type CreateModuleInputType = {
     ipClient?: InputMaybe<Scalars['String']['input']>;
     /** isActive */
     isActive?: Scalars['Boolean']['input'];
+    /** isCompleted */
+    isCompleted?: Scalars['Boolean']['input'];
     /** language code */
     language: Scalars['String']['input'];
     /** module objection */
@@ -1968,6 +1970,8 @@ export type UpdateModuleInputType = {
     ipClient?: InputMaybe<Scalars['String']['input']>;
     /** isActive */
     isActive?: Scalars['Boolean']['input'];
+    /** isCompleted */
+    isCompleted?: Scalars['Boolean']['input'];
     /** language code */
     language: Scalars['String']['input'];
     /** module ID */
