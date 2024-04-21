@@ -3,12 +3,18 @@ import { getRedirected } from '../../Shared/'
 
 export const GO_LINK_PATH: ActionEventType = (
   event,
-  { navigate, pathname }: Record<'navigate' | 'pathname', any> = {
+  { navigate, pathname, isOrigin }: Record<'navigate' | 'pathname' | 'isOrigin', any> = {
     navigate: () => {},
     pathname: '',
+    isOrigin: false,
   }
 ) => {
   try {
+    if (isOrigin) {
+      getRedirected(pathname, { isOrigin: true })
+      return
+    }
+
     navigate(pathname)
     setTimeout(() => {
       if (decodeURIComponent(location.pathname) !== pathname)

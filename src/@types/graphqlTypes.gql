@@ -382,6 +382,9 @@ input CreateModuleInputType {
   """isActive"""
   isActive: Boolean! = false
 
+  """isCompleted"""
+  isCompleted: Boolean! = false
+
   """language code"""
   language: String!
 
@@ -2379,6 +2382,9 @@ input UpdateModuleInputType {
 
   """isActive"""
   isActive: Boolean! = false
+
+  """isCompleted"""
+  isCompleted: Boolean! = false
 
   """language code"""
   language: String!

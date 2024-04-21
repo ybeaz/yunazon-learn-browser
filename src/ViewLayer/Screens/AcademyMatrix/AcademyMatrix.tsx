@@ -44,6 +44,10 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
   useLoadedInitialTeachContent({ isSkipping: false })
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [JSON.stringify(modules)])
+
   const screenType = 'AcademyMatrix'
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA

@@ -16,6 +16,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)
@@ -38,8 +39,10 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   let creatorIDs: string[] = []
   let learnerUserID: string = ''
 
-  if (screenActive === 'AcademyMatrix' && sub) {
-    learnerUserID = sub
+  if (screenActive === 'AcademyMatrix') {
+    let sub_localStorage = getLocalStorageReadKeyObj('sub')
+    sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
+    learnerUserID = sub || sub_localStorage
   } else if (screenActive === 'MyModules' && sub) {
     const profile = getArrayItemByProp({
       arr: profiles,

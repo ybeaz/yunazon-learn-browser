@@ -35,7 +35,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusI
             {},
             {
               typeEvent: 'GO_LINK_PATH',
-              data: { navigate, pathname },
+              data: { navigate, pathname, isOrigin: true },
             }
           )
       },

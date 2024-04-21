@@ -149,7 +149,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     }
   }, [mediaLoadedModulesString])
 
-  const isVisible = mediaLoaded[moduleID] || false
+  const isVisible = mediaLoaded[moduleIDActive || moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
