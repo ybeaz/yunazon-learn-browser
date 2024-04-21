@@ -64,6 +64,7 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
           contentID,
           duration,
           questionNumber: 6,
+          tags: tags || [],
           passRate: 0.75,
           thumbnails,
           questions,

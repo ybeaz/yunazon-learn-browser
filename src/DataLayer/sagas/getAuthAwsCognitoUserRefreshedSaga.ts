@@ -10,6 +10,9 @@ import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { getModules } from './getModulesSaga'
+
+let authAwsCognitoRefresheredCounter: number = 0
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
@@ -56,6 +59,12 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
         source: 'getAuthAwsCognitoUserRefreshedSaga',
       })
     )
+
+    /* Crutch for before deployment to the server in the US */
+    authAwsCognitoRefresheredCounter += 1
+    if (authAwsCognitoRefresheredCounter === 1) {
+      yield getModules()
+    }
   } catch (error: any) {
     console.log('getAuthAwsCognitoUserRefreshedSaga [61] ERROR', `${error.name}: ${error.message}`)
   }

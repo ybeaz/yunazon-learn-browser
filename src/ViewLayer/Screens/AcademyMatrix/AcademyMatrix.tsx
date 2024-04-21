@@ -41,11 +41,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } })
   }, [])
 
-  const redirectAuthFrom = getLocalStorageReadKeyObj('redirectAuthFrom')
-
-  let actionsToMount: any[] = []
-  if (!redirectAuthFrom) actionsToMount = [{ type: 'GET_MATRIX_DATA' }]
-
   useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
   useLoadedInitialTeachContent({ isSkipping: false })
 
@@ -55,7 +50,15 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
-      const { moduleID, capture, contentType, contentID, duration: duration2, thumbnails } = module
+      const {
+        moduleID,
+        capture,
+        isCompleted,
+        contentType,
+        contentID,
+        duration: duration2,
+        thumbnails,
+      } = module
 
       const contentComponentName = getContentComponentName(contentType)
 
@@ -67,6 +70,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         key: moduleID,
         contentComponentName,
         capture,
+        isCompleted,
         durationObj: durationObj2,
         moduleID,
         contentID,

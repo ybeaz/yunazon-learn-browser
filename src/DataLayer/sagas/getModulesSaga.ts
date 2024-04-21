@@ -36,7 +36,11 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   let profiles = stateSelected.profiles
 
   let creatorIDs: string[] = []
-  if (screenActive === 'MyModules' && sub) {
+  let learnerUserID: string = ''
+
+  if (screenActive === 'AcademyMatrix' && sub) {
+    learnerUserID = sub
+  } else if (screenActive === 'MyModules' && sub) {
     const profile = getArrayItemByProp({
       arr: profiles,
       propName: 'userID',
@@ -51,6 +55,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   let readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
+    learnerUserID,
     creatorIDs,
     searchPhrase: inputSearch,
     tagsPick,

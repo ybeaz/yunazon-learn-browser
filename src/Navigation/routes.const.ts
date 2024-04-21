@@ -13,7 +13,7 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen: 'AboutAcademy',
+    screen: 'AcademyAbout',
     path: `/about`,
     children: [],
     errorElement: 'Error404',

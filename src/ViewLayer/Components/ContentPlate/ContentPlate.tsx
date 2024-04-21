@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
+import { ImageYrl, IconYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getSlug } from '../../../Shared/getSlug'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
@@ -40,6 +40,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     classAdded,
     contentComponentName,
     capture,
+    isCompleted,
     durationObj,
     moduleID,
     contentID,
@@ -89,6 +90,11 @@ const ContentPlateComponent: ContentPlateComponentType = (
         isIframe: !plateImageSrc,
       },
     },
+    iconCompletedProps: {
+      classAdded: 'Icon_isCompleted',
+      icon: 'MdCheckCircle',
+      isDisplaying: isCompleted,
+    },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
@@ -127,6 +133,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
+        {isCompleted ? <IconYrl {...propsOut.iconCompletedProps} /> : null}
+
         {plateImageSrc ? (
           <ImageYrl {...propsOut.loaderImageProps} />
         ) : (

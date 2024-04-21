@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ROUTES, RouteType } from './routes.const'
 import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
-import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
+import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
@@ -18,7 +18,7 @@ import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitia
 const SCREENS: Record<string, FunctionComponent<any>> = {
   MyModules,
   ArticlePresent,
-  AboutAcademy,
+  AcademyAbout,
   AcademyMatrix,
   AcademyPresent,
   MyDocuments,
