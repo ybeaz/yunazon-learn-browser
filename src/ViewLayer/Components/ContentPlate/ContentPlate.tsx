@@ -133,7 +133,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-        {isCompleted ? <IconYrl {...propsOut.iconCompletedProps} /> : null}
+        {isCompleted ? (
+          <div className='_isCompleted'>
+            <div className='_cycle' />
+            <IconYrl {...propsOut.iconCompletedProps} />
+          </div>
+        ) : null}
 
         {plateImageSrc ? (
           <ImageYrl {...propsOut.loaderImageProps} />

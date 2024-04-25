@@ -358,6 +358,15 @@ input CreateModuleInputType {
   """capture"""
   capture: String!
 
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
+
   """module contentID"""
   contentID: ID!
 
@@ -396,6 +405,9 @@ input CreateModuleInputType {
 
   """module passRate"""
   passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
 
   """module questionNumber"""
   questionNumber: Int! = 4
@@ -900,6 +912,15 @@ type ModuleType {
   """capture"""
   capture: String!
 
+  """capture channel"""
+  captureChannel: String
+
+  """capture playlist"""
+  capturePlaylist: String
+
+  """module channelID"""
+  channelID: ID!
+
   """module contentID"""
   contentID: ID!
 
@@ -950,6 +971,9 @@ type ModuleType {
 
   """module passRate"""
   passRate: Float
+
+  """module playlistID"""
+  playlistID: ID!
 
   """module questionNumber"""
   questionNumber: Int!
@@ -2350,6 +2374,15 @@ input UpdateModuleInputType {
   """capture"""
   capture: String!
 
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
+
   """module contentID"""
   contentID: ID!
 
@@ -2400,6 +2433,9 @@ input UpdateModuleInputType {
 
   """module passRate"""
   passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
 
   """module questionNumber"""
   questionNumber: Int! = 4

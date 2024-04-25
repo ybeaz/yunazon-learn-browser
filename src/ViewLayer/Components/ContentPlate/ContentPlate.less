@@ -12,6 +12,23 @@
     cursor: pointer;
   }
 
+  ._isCompleted {
+    position: absolute;
+    z-index: 5;
+    right: 10%;
+    top: 10%;
+
+    ._cycle {
+      position: absolute;
+      border-radius: 50%;
+      height: 2rem;
+      width: 2rem;
+      border-width: 0;
+      padding: 0.2rem;
+      z-index: -1;
+    }
+  }
+
   @media @large {
   }
   @media @desktop, @desktop-strict {

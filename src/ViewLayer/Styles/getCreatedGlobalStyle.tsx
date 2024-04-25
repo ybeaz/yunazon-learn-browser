@@ -30,6 +30,10 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
   const output = createGlobalStyle`
 
+    .ContentPlate ._isCompleted ._cycle {
+      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
     .Icon_isCompleted ._icon {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
     }
