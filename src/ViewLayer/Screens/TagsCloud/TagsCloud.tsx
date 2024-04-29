@@ -1,12 +1,14 @@
 import React from 'react'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { getClasses } from '../../../Shared/getClasses'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+
 import {
   TagsCloudComponentPropsType,
   TagsCloudPropsType,
@@ -44,7 +46,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
       isButtonsShare: false,
     },
     mainFrameProps: {
-      screenType: 'ArticlePresent',
+      screenType: 'TagsCloud',
     },
   }
 
@@ -65,9 +67,10 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const TagsCloud: TagsCloudType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(TagsCloudComponent)
+export const TagsCloud: TagsCloudType = React.memo(
+  withPropsYrl({ handleEvents: handleEventsIn })(
+    withStoreStateSelectedYrl(storeStateSliceProps, TagsCloudComponent)
+  )
 )
 
 export type { TagsCloudPropsType, TagsCloudPropsOutType, TagsCloudComponentType, TagsCloudType }

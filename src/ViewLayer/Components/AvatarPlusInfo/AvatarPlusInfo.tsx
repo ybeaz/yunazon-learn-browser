@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
-import { handleEvents as handleEventsProp } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -60,7 +60,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusI
 }
 
 export const AvatarPlusInfo: AvatarPlusInfoType = React.memo(
-  withPropsYrl({ handleEvents: handleEventsProp })(AvatarPlusInfoComponent)
+  withPropsYrl({ handleEvents: handleEventsIn })(AvatarPlusInfoComponent)
 )
 
 export type {

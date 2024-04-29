@@ -10,7 +10,7 @@ import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
-import { handleEvents as handleEventsProp } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 
 import { getClasses } from '../../../Shared/getClasses'
@@ -155,7 +155,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
 const storeStateSliceProps: string[] = ['language', 'mediaLoaded']
 export const ContentPlate = React.memo(
-  withPropsYrl({ handleEvents: handleEventsProp })(
+  withPropsYrl({ handleEvents: handleEventsIn })(
     withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)
   )
 )
