@@ -919,7 +919,7 @@ type ModuleType {
   capturePlaylist: String
 
   """module channelID"""
-  channelID: ID!
+  channelID: ID
 
   """module contentID"""
   contentID: ID!
@@ -973,7 +973,7 @@ type ModuleType {
   passRate: Float
 
   """module playlistID"""
-  playlistID: ID!
+  playlistID: ID
 
   """module questionNumber"""
   questionNumber: Int!

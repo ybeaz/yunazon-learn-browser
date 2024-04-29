@@ -749,7 +749,7 @@ export type ModuleType = {
   /** capture playlist */
   capturePlaylist?: Maybe<Scalars['String']['output']>;
   /** module channelID */
-  channelID: Scalars['ID']['output'];
+  channelID?: Maybe<Scalars['ID']['output']>;
   /** module contentID */
   contentID: Scalars['ID']['output'];
   /** module content type */
@@ -785,7 +785,7 @@ export type ModuleType = {
   /** module passRate */
   passRate?: Maybe<Scalars['Float']['output']>;
   /** module playlistID */
-  playlistID: Scalars['ID']['output'];
+  playlistID?: Maybe<Scalars['ID']['output']>;
   /** module questionNumber */
   questionNumber: Scalars['Int']['output'];
   /** module questions */
