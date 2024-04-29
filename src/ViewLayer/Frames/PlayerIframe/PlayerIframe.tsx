@@ -17,7 +17,7 @@ const PlayerIframeComponent: PlayerIframeComponentType = (props: PlayerIframePro
 
   return (
     <div className='PlayerIframe'>
-      <div className='_isCompleted'>{children[0]}</div>
+      {children[0]}
       <div className='_wrapper'>
         {isIframe && <div className='_player' id={contentID}></div>}
         {children[1]}

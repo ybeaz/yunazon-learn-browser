@@ -318,6 +318,12 @@ export type CreateDocumentInputType = {
 export type CreateModuleInputType = {
     /** capture */
     capture: Scalars['String']['input'];
+    /** capture channel */
+    captureChannel?: InputMaybe<Scalars['String']['input']>;
+    /** capture playlist */
+    capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+    /** module channelID */
+    channelID?: InputMaybe<Scalars['ID']['input']>;
     /** module contentID */
     contentID: Scalars['ID']['input'];
     /** module content type */
@@ -344,6 +350,8 @@ export type CreateModuleInputType = {
     organizationID: Scalars['ID']['input'];
     /** module passRate */
     passRate?: InputMaybe<Scalars['Float']['input']>;
+    /** module playlistID */
+    playlistID?: InputMaybe<Scalars['ID']['input']>;
     /** module questionNumber */
     questionNumber?: Scalars['Int']['input'];
     /** module questions */
@@ -707,6 +715,12 @@ export type ModuleType = {
     __typename?: 'ModuleType';
     /** capture */
     capture: Scalars['String']['output'];
+    /** capture channel */
+    captureChannel?: Maybe<Scalars['String']['output']>;
+    /** capture playlist */
+    capturePlaylist?: Maybe<Scalars['String']['output']>;
+    /** module channelID */
+    channelID?: Maybe<Scalars['ID']['output']>;
     /** module contentID */
     contentID: Scalars['ID']['output'];
     /** module content type */
@@ -741,6 +755,8 @@ export type ModuleType = {
     organizationID: Scalars['ID']['output'];
     /** module passRate */
     passRate?: Maybe<Scalars['Float']['output']>;
+    /** module playlistID */
+    playlistID?: Maybe<Scalars['ID']['output']>;
     /** module questionNumber */
     questionNumber: Scalars['Int']['output'];
     /** module questions */
@@ -1948,6 +1964,12 @@ export type UpdateMetaType = {
 export type UpdateModuleInputType = {
     /** capture */
     capture: Scalars['String']['input'];
+    /** capture channel */
+    captureChannel?: InputMaybe<Scalars['String']['input']>;
+    /** capture playlist */
+    capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+    /** module channelID */
+    channelID?: InputMaybe<Scalars['ID']['input']>;
     /** module contentID */
     contentID: Scalars['ID']['input'];
     /** module content type */
@@ -1982,6 +2004,8 @@ export type UpdateModuleInputType = {
     organizationID: Scalars['ID']['input'];
     /** module passRate */
     passRate?: InputMaybe<Scalars['Float']['input']>;
+    /** module playlistID */
+    playlistID?: InputMaybe<Scalars['ID']['input']>;
     /** module questionNumber */
     questionNumber?: Scalars['Int']['input'];
     /** module questions */

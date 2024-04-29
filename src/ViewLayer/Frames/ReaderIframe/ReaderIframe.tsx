@@ -24,7 +24,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
 
   return (
     <div className={`ReaderIframe ${classAdded}`}>
-      <div className='_isCompleted'>{children[0]}</div>
+      {children[0]}
       <div className={`_wrapper ${isVisibleClass}`}>
         {isIframe && (
           <iframe

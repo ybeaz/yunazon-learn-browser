@@ -69,7 +69,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   }
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables: QueryReadModulesConnectionArgs = {
       readModulesConnectionInput,
