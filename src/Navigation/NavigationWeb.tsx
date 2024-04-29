@@ -1,9 +1,9 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { nanoid } from 'nanoid'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES, RouteType } from './routes.const'
+import { TagsCloud } from '../ViewLayer/Screens/TagsCloud/TagsCloud'
 import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
@@ -16,6 +16,7 @@ import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const SCREENS: Record<string, FunctionComponent<any>> = {
+  TagsCloud,
   MyModules,
   ArticlePresent,
   AcademyAbout,
@@ -38,7 +39,7 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   const routes = createBrowserRouter(routesDict)
 
-  useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
+  // useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
 
   return <RouterProvider router={routes} />
 }

@@ -1,5 +1,5 @@
 export type FooterFramePropsType = {
-  children: React.ReactElement
+  children: React.ReactElement | null
 }
 
 export type FooterFramePropsOutType = Record<string, any>
@@ -7,8 +7,7 @@ export type FooterFramePropsOutType = Record<string, any>
 /**
  * @import import { FooterFrameType } from './FooterFrameType'
  */
-export interface FooterFrameComponentType
-  extends React.FunctionComponent<FooterFramePropsType> {
+export interface FooterFrameComponentType extends React.FunctionComponent<FooterFramePropsType> {
   (props: FooterFramePropsType): React.ReactElement
 }
 

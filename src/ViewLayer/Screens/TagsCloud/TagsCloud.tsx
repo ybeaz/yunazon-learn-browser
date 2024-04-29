@@ -1,8 +1,12 @@
 import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-
 import { getClasses } from '../../../Shared/getClasses'
+import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
+import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
+import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import {
   TagsCloudComponentPropsType,
   TagsCloudPropsType,
@@ -17,14 +21,50 @@ import {
              from '../Components/TagsCloud/TagsCloud'
  */
 const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPropsType) => {
-  const { classAdded, storeStateSlice } = props
+  const {
+    classAdded,
+    storeStateSlice: { language },
+  } = props
 
-  const propsOut: TagsCloudPropsOutType = {}
+  const propsOut: TagsCloudPropsOutType = {
+    headerFrameProps: {
+      brandName: 'YouRails Academy',
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
+      contentComponentName: 'SearchFormSep',
+      isButtonSideMenuLeft: true,
+      isLogoGroup: true,
+      isButtonAddCourse: true,
+      isButtonAuthUser: true,
+      isSelectLanguage: true,
+      isButtonThemeToggle: true,
+      isSeachGroup: false,
+      isButtonBack: false,
+      isPageActionsGroup: false,
+      isButtonsShare: false,
+    },
+    mainFrameProps: {
+      screenType: 'ArticlePresent',
+    },
+  }
 
-  return <div className={getClasses('TagsCloud', classAdded)}>TagsCloud</div>
+  return (
+    <MainFrame {...propsOut.mainFrameProps}>
+      {/* header */}
+      <HeaderFrame {...propsOut.headerFrameProps} />
+      {/* middle-left */}
+      {null}
+      {/* middle-main */}
+      <div className={getClasses('TagsCloud', classAdded)}>TagsCloud</div>
+      {/* middle-right */}
+      {null}
+      {/* footer */}
+      <FooterFrame>{null}</FooterFrame>
+    </MainFrame>
+  )
 }
 
-const storeStateSliceProps: string[] = []
+const storeStateSliceProps: string[] = ['language']
 export const TagsCloud: TagsCloudType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(TagsCloudComponent)

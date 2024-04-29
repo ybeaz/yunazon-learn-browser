@@ -6,6 +6,12 @@ export type RouteType = {
 }
 
 export const ROUTES: RouteType[] = [
+  // {
+  //   screen: 'TagsCloud',
+  //   path: `/tags-cloud`,
+  //   children: [],
+  //   errorElement: 'Error404',
+  // },
   {
     screen: 'ArticlePresent',
     path: `/a/:articleID/:slugArticle?`,
