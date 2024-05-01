@@ -1737,6 +1737,9 @@ input ReadModulesConnectionInputType {
 }
 
 input ReadProfileInputType {
+  """isActive"""
+  isActive: Boolean
+
   """profile ID"""
   profileID: ID
 

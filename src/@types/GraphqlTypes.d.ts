@@ -1489,6 +1489,8 @@ export type ReadModulesConnectionInputType = {
     tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 export type ReadProfileInputType = {
+    /** isActive */
+    isActive?: InputMaybe<Scalars['Boolean']['input']>;
     /** profile ID */
     profileID?: InputMaybe<Scalars['ID']['input']>;
     /** user ID */

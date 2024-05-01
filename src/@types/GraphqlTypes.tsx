@@ -1676,6 +1676,8 @@ export type ReadModulesConnectionInputType = {
 };
 
 export type ReadProfileInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** profile ID */
   profileID?: InputMaybe<Scalars['ID']['input']>;
   /** user ID */

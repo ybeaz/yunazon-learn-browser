@@ -3,6 +3,7 @@ import React from 'react'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
+import { TagsCloudBody } from '../../Components/TagsCloudBody/TagsCloudBody'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
@@ -57,7 +58,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
       {/* middle-left */}
       {null}
       {/* middle-main */}
-      <div className={getClasses('TagsCloud', classAdded)}>TagsCloud</div>
+      <TagsCloudBody />
       {/* middle-right */}
       {null}
       {/* footer */}
