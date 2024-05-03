@@ -1348,6 +1348,7 @@ export type Query = {
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
   readRecipes: Array<RecipeType>;
+  readTagsCloudModules: Array<TagsCloudModulesType>;
   readTemplates: Array<TemplatesType>;
   readTemplatesAll: Array<TemplatesType>;
   readTemplatesConnection: TemplatesConnectionType;
@@ -1446,6 +1447,11 @@ export type QueryReadRecipeArgs = {
 export type QueryReadRecipesArgs = {
   skip?: Scalars['Int']['input'];
   take?: Scalars['Int']['input'];
+};
+
+
+export type QueryReadTagsCloudModulesArgs = {
+  readTagsCloudModulesInput?: InputMaybe<ReadTagsCloudModulesInputType>;
 };
 
 
@@ -1711,6 +1717,15 @@ export type ReadProfilesConnectionInputType = {
   userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 
+export type ReadTagsCloudModulesInputType = {
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+};
+
 export type ReadTemplatesConnectionInputType = {
   /** after */
   after?: InputMaybe<Scalars['String']['input']>;
@@ -1826,6 +1841,18 @@ export type SummaryItemType = {
   summaryItemID: Scalars['ID']['output'];
   /** module Summary item text */
   text?: Maybe<Scalars['String']['output']>;
+};
+
+export type TagsCloudModulesType = {
+  __typename?: 'TagsCloudModulesType';
+  /** tags completed */
+  completed: Scalars['Int']['output'];
+  /** tags count */
+  count: Scalars['Int']['output'];
+  /** module IDs */
+  moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
+  /** tags value */
+  value: Scalars['String']['output'];
 };
 
 export type TemplatesConnectionType = {

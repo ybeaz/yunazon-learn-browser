@@ -2,6 +2,7 @@ import React from 'react'
 import { TagCloud } from 'react-tagcloud'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   TagsCloudBodyComponentPropsType,
@@ -31,6 +32,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const { classAdded, storeStateSlice } = props
 
+  // GET_TAGS_CLOUD_MODULES
+
   const propsOut: TagsCloudBodyPropsOutType = {}
 
   return (
@@ -46,9 +49,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const TagsCloudBody: TagsCloudBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(TagsCloudBodyComponent)
+export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )
 
 export type {

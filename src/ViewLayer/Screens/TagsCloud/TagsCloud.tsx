@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
@@ -27,7 +27,12 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   const {
     classAdded,
     storeStateSlice: { language },
+    handleEvents,
   } = props
+
+  useEffect(() => {
+    handleEvents({}, { typeEvent: 'GET_TAGS_CLOUD_MODULES' })
+  }, [])
 
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {

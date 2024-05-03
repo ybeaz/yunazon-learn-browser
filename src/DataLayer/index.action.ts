@@ -123,6 +123,7 @@ const ACTION_ASYNC: string[] = [
   'SAVE_ANALYTICS',
   'SAVE_USER_PROFILE',
   'SEND_EMAIL_DOCUMENT',
+  'READ_TAGS_CLOUD_MODULES',
 ]
 
 export const actionSync: CreateSyncAction = createSyncActions(ACTIONS_SYNC)

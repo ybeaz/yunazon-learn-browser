@@ -9,7 +9,7 @@ export type TagsCloudComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
   }
-  handleEvents?: HandleEventType
+  handleEvents: HandleEventType
 }
 
 export type TagsCloudPropsType = Omit<TagsCloudComponentPropsType, 'storeStateSlice'>
