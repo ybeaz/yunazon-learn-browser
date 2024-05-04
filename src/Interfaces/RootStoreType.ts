@@ -4,6 +4,7 @@ import {
   CourseType,
   DocumentType,
   ProfileType,
+  TagsCloudModulesType,
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
   CreateModuleStageType,
@@ -133,6 +134,7 @@ export type RootStoreType = {
     | 'avatarSrc'
     | 'avatarSize'
   >[]
+  tagsCloud: TagsCloudModulesType[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 const ACTIONS_SYNC: string[] = [
+  'SET_TAGS_CLOUD',
   'TOGGLE_IS_MOBILE_SEARCH_INPUT',
   'ADD_MODULE_CREATE_DATA',
   'CHANGE_NUM_QUESTIONS_IN_SLIDE',

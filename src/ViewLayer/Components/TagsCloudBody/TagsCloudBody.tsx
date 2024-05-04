@@ -30,9 +30,12 @@ const data = [
 const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   props: TagsCloudBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice } = props
+  const {
+    classAdded,
+    storeStateSlice: { tagsCloud },
+  } = props
 
-  // GET_TAGS_CLOUD_MODULES
+  console.info('TagsCloudBody [35]', { tagsCloud })
 
   const propsOut: TagsCloudBodyPropsOutType = {}
 
@@ -41,14 +44,14 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       <TagCloud
         minSize={12}
         maxSize={35}
-        tags={data}
+        tags={tagsCloud}
         onClick={(tag: any) => alert(`'${tag.value}' was selected!`)}
       />
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = []
+const storeStateSliceProps: string[] = ['tagsCloud']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

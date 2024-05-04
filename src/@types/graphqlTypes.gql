@@ -1789,14 +1789,25 @@ input ReadProfilesConnectionInputType {
 }
 
 input ReadTagsCloudModulesInputType {
-  """isActive"""
-  isActive: Boolean! = true
+  """isCompleted"""
+  isCompleted: Boolean = null
+
+  """isNotCompleted"""
+  isNotCompleted: Boolean = null
 
   """learner ID"""
   learnerID: ID = null
 
   """learner user ID"""
   learnerUserID: ID = null
+
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
+  """searchPhrase"""
+  searchPhrase: String = null
 }
 
 input ReadTemplatesConnectionInputType {

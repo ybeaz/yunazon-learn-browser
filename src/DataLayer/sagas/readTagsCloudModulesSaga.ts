@@ -29,8 +29,8 @@ function* readTagsCloudModulesGenerator(params: ActionReduxType | any): Iterable
 
     const variables: QueryReadTagsCloudModulesArgs = {
       readTagsCloudModulesInput: {
-        isActive: true,
         learnerUserID,
+        minCount: 2,
       },
     }
 
@@ -42,12 +42,12 @@ function* readTagsCloudModulesGenerator(params: ActionReduxType | any): Iterable
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
+        timeout: 10000,
       }
     )
 
     console.info('readTagsCloudModulesSaga [49]', { readTagsCloudModules })
-    // yield put(actionSync.SET_TAGS_CLOUD_MODULES(readTagsCloudModules))
+    yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTagsCloudModules }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

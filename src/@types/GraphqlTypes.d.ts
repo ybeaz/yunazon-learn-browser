@@ -1527,12 +1527,18 @@ export type ReadProfilesConnectionInputType = {
     userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 export type ReadTagsCloudModulesInputType = {
-    /** isActive */
-    isActive?: Scalars['Boolean']['input'];
+    /** isCompleted */
+    isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+    /** isNotCompleted */
+    isNotCompleted?: InputMaybe<Scalars['Boolean']['input']>;
     /** learner ID */
     learnerID?: InputMaybe<Scalars['ID']['input']>;
     /** learner user ID */
     learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+    /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+    minCount?: InputMaybe<Scalars['Int']['input']>;
+    /** searchPhrase */
+    searchPhrase?: InputMaybe<Scalars['String']['input']>;
 };
 export type ReadTemplatesConnectionInputType = {
     /** after */

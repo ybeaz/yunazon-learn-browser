@@ -1,8 +1,11 @@
 import React from 'react'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  storeStateSlice: {
+    tagsCloud: RootStoreType['tagsCloud']
+  }
 }
 
 export type TagsCloudBodyPropsType = Omit<TagsCloudBodyComponentPropsType, 'storeStateSlice'>
