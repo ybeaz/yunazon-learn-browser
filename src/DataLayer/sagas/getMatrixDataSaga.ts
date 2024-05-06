@@ -12,8 +12,8 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const query = getParsedUrlQueryBrowserApi()
 
     const inputSearch = query?.search || ''
-    const tagsPick = (query && query?.tagspick && query?.tagspick.split(',')) || []
-    const tagsOmit = (query && query?.tagsomit && query?.tagsomit.split(',')) || []
+    const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
+    const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
     const first =
       query && query?.[PaginationNameEnumType['pageModules']]
         ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) * paginationOffset -
@@ -25,6 +25,8 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       value: inputSearch,
     }
     yield put(actionSync.SET_INPUT_TO_STORE(data))
+
+    console.info('getMatrixDataSaga [29]', { query, tagsPick, tagsOmit })
 
     yield put(
       actionSync.SET_TAGS_STATE({

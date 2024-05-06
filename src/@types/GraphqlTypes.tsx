@@ -1128,15 +1128,34 @@ export type OperatorsDocumentsInputType = {
   /** operator for module IDs */
   moduleModuleID?: InputMaybe<Scalars['String']['input']>;
   /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
-  moduleTagsOmit?: InputMaybe<Scalars['String']['input']>;
+  moduleTagOmit?: InputMaybe<Scalars['String']['input']>;
   /** operator for tags: tags that characterises the content to pick from the set of documents */
-  moduleTagsPick?: InputMaybe<Scalars['String']['input']>;
+  moduleTagPick?: InputMaybe<Scalars['String']['input']>;
   /** operator for searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
-  tagsOmit?: InputMaybe<Scalars['String']['input']>;
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
   /** operator for tags: tags that characterises the content to pick from the set of documents */
-  tagsPick?: InputMaybe<Scalars['String']['input']>;
+  tagPick?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OperatorsModulesInputType = {
+  /** operator for contentIDs */
+  contentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for courses ID */
+  courseID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  tagPick?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OptionCourseInputType = {
@@ -1596,10 +1615,6 @@ export type ReadCoursesConnectionInputType = {
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortCoursesInputType>;
-  /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** courses meta stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta tags: tags that characterises the course content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta tags: tags that characterises the course content to pick from the set of documents */
@@ -1667,14 +1682,12 @@ export type ReadModulesConnectionInputType = {
   moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsModulesInputType>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortModulesInputType>;
-  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** tags: tags that characterises the content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** tags: tags that characterises the content to pick from the set of documents */
@@ -1709,10 +1722,6 @@ export type ReadProfilesConnectionInputType = {
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortProfilesInputType>;
-  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** user IDs */
   userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };

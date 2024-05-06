@@ -1150,12 +1150,12 @@ input OperatorsDocumentsInputType {
   """
   operator for documents tags: tags that characterises the content to omit with that selection of the documents
   """
-  moduleTagsOmit: String = null
+  moduleTagOmit: String = null
 
   """
   operator for tags: tags that characterises the content to pick from the set of documents
   """
-  moduleTagsPick: String = null
+  moduleTagPick: String = null
 
   """operator for searchPhrase"""
   searchPhrase: String = null
@@ -1163,12 +1163,42 @@ input OperatorsDocumentsInputType {
   """
   operator for documents tags: tags that characterises the content to omit with that selection of the documents
   """
-  tagsOmit: String = null
+  tagOmit: String = null
 
   """
   operator for tags: tags that characterises the content to pick from the set of documents
   """
-  tagsPick: String = null
+  tagPick: String = null
+}
+
+input OperatorsModulesInputType {
+  """operator for contentIDs"""
+  contentID: String = null
+
+  """operator for courses ID"""
+  courseID: String = null
+
+  """operator for creator IDs"""
+  creatorID: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for module IDs"""
+  moduleID: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagPick: String = null
 }
 
 input OptionCourseInputType {
@@ -1590,16 +1620,6 @@ input ReadCoursesConnectionInputType {
   sort: SortCoursesInputType
 
   """
-  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """
-  courses meta stages: stages/ statuses/ envs to pick from the set of documents
-  """
-  stagesPick: [String!] = []
-
-  """
   courses meta tags: tags that characterises the course content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
@@ -1712,19 +1732,14 @@ input ReadModulesConnectionInputType {
   """
   offset: Int
 
+  """option to setup operator for arguments"""
+  operators: OperatorsModulesInputType = null
+
   """searchPhrase"""
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortModulesInputType
-
-  """
-  stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """stages: stages/ statuses/ envs to pick from the set of documents"""
-  stagesPick: [String!] = []
 
   """
   tags: tags that characterises the content to omit with that selection of the documents
@@ -1775,14 +1790,6 @@ input ReadProfilesConnectionInputType {
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortProfilesInputType
-
-  """
-  stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """stages: stages/ statuses/ envs to pick from the set of documents"""
-  stagesPick: [String!] = []
 
   """user IDs"""
   userIDs: [ID!] = []
