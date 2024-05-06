@@ -31,6 +31,7 @@ function* readTagsCloudModulesGenerator(params: ActionReduxType | any): Iterable
       readTagsCloudModulesInput: {
         learnerUserID,
         minCount: 2,
+        limit: 256,
       },
     }
 

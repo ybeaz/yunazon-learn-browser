@@ -1802,6 +1802,11 @@ input ReadTagsCloudModulesInputType {
   learnerUserID: ID = null
 
   """
+  limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs
+  """
+  limit: Int = null
+
+  """
   min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
   """
   minCount: Int = null

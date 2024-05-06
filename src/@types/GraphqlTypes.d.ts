@@ -1535,6 +1535,8 @@ export type ReadTagsCloudModulesInputType = {
     learnerID?: InputMaybe<Scalars['ID']['input']>;
     /** learner user ID */
     learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+    /** limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs */
+    limit?: InputMaybe<Scalars['Int']['input']>;
     /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
     minCount?: InputMaybe<Scalars['Int']['input']>;
     /** searchPhrase */

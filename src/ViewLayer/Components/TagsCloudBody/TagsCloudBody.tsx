@@ -1,6 +1,7 @@
 import React from 'react'
 import { TagCloud } from 'react-tagcloud'
 
+import { TagsCloudModulesType } from '../../../@types'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
@@ -12,18 +13,17 @@ import {
   TagsCloudBodyType,
 } from './TagsCloudBodyTypes'
 
-const data = [
-  { value: 'JavaScript', count: 38 },
-  { value: 'React', count: 30 },
-  { value: 'Nodejs', count: 28 },
-  { value: 'Express.js', count: 25 },
-  { value: 'HTML5', count: 33 },
-  { value: 'MongoDB', count: 18 },
-  { value: 'CSS3', count: 20 },
-]
+const customTagRenderer = (tag: any, size: number, color: string) => {
+  return (
+    <span key={tag.value} style={{ color }} className={`tag-${size}`}>
+      {tag.value}
+    </span>
+  )
+}
 
 /**
  * @description Component to render TagsCloudBody
+ * @link https://www.npmjs.com/package/react-tagcloud
  * @import import { TagsCloudBody, TagsCloudBodyPropsType, TagsCloudBodyPropsOutType, TagsCloudBodyType } 
              from '../Components/TagsCloudBody/TagsCloudBody'
  */
@@ -35,18 +35,28 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     storeStateSlice: { tagsCloud },
   } = props
 
+  const tagsCloudNext = tagsCloud.map((tagCloud: TagsCloudModulesType) => {
+    const { completed, count, value } = tagCloud
+    const completedPercent = ((completed * 100) / count).toFixed()
+    return { value: `${value} ${count} ${completedPercent}%`, count }
+  })
+
   console.info('TagsCloudBody [35]', { tagsCloud })
 
   const propsOut: TagsCloudBodyPropsOutType = {}
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      <TagCloud
-        minSize={12}
-        maxSize={35}
-        tags={tagsCloud}
-        onClick={(tag: any) => alert(`'${tag.value}' was selected!`)}
-      />
+      <div className='_tagCloudWrapper'>
+        <TagCloud
+          minSize={12}
+          maxSize={48}
+          shuffle={false}
+          tags={tagsCloudNext}
+          // renderer={customTagRenderer}
+          onClick={(tag: any) => console.info('TagsCloudBody [67]', { tag })}
+        />
+      </div>
     </div>
   )
 }
