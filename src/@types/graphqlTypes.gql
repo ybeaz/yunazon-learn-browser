@@ -532,6 +532,11 @@ input CreateProfileInputType {
   userID: ID!
 }
 
+input CreateTagsInputType {
+  """tags ID"""
+  tagsID: ID
+}
+
 input CreateTemplatesInputType {
   """templates ID"""
   templatesID: ID
@@ -1032,6 +1037,7 @@ type Mutation {
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
   createSiteMap: SiteMapReportType!
+  createTags(createTagsInput: [CreateTagsInputType!]!): [TagType!]!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -1040,6 +1046,7 @@ type Mutation {
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
   deactivateModules(deactivateModulesIdsInput: [String!]!): [String!]!
   deactivateProfiles(deactivateProfilesIdsInput: [String!]!): [String!]!
+  deactivateTags(deactivateTagsIdsInput: [String!]!): [String!]!
   deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
   deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
@@ -1047,6 +1054,7 @@ type Mutation {
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
   deleteModules(deleteModulesIdsInput: [String!]!): [String!]!
   deleteProfiles(deleteProfilesIdsInput: [String!]!): [String!]!
+  deleteTags(deleteTagsIdsInput: [String!]!): [String!]!
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
@@ -1059,6 +1067,7 @@ type Mutation {
   updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
   updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
   updateProfiles(updateProfilesInput: [UpdateProfileInputType!]!): [ProfileType!]!
+  updateTags(updateTagsInput: [UpdateTagsInputType!]!): [TagType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
 }
@@ -1434,6 +1443,7 @@ type Query {
   countDocuments: DocumentsCountType!
   countModules: ModulesCountType!
   countProfiles: ProfilesCountType!
+  countTags: TagsCountType!
   countTemplates: TemplatesCountType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -1458,7 +1468,10 @@ type Query {
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
   readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
+  readTagsAll: [TagType!]!
   readTagsCloudModules(readTagsCloudModulesInput: ReadTagsCloudModulesInputType): [TagsCloudModulesType!]!
+  readTagsConnection(readTagsConnectionInput: ReadTagsConnectionInputType!): TagsConnectionType!
+  readTagsModules(readTagsModulesInput: ReadTagsModulesInputType!): [TagType!]!
   readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
   readTemplatesAll: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
@@ -1822,6 +1835,44 @@ input ReadTagsCloudModulesInputType {
   searchPhrase: String = null
 }
 
+input ReadTagsConnectionInputType {
+  """after"""
+  after: String
+
+  """first"""
+  first: Int
+
+  """offset"""
+  offset: Int
+}
+
+input ReadTagsModulesInputType {
+  """isCompleted"""
+  isCompleted: Boolean = null
+
+  """isNotCompleted"""
+  isNotCompleted: Boolean = null
+
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
+  """
+  limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs
+  """
+  limit: Int = null
+
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
+  """searchPhrase"""
+  searchPhrase: String = null
+}
+
 input ReadTemplatesConnectionInputType {
   """after"""
   after: String
@@ -1956,6 +2007,35 @@ type SummaryItemType {
   text: String
 }
 
+type TagType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
+  """tags created date"""
+  dateCreated: Float!
+
+  """tags deleted date"""
+  dateDeleted: Float
+
+  """tags updated date"""
+  dateUpdated: Float!
+
+  """isActive"""
+  isActive: Boolean!
+
+  """module IDs"""
+  moduleIDs: [ID!]
+
+  """tags ID"""
+  tagID: ID
+
+  """tags value"""
+  value: String!
+}
+
 type TagsCloudModulesType {
   """tags completed"""
   completed: Int!
@@ -1968,6 +2048,38 @@ type TagsCloudModulesType {
 
   """tags value"""
   value: String!
+}
+
+type TagsConnectionType {
+  """[TagsEdgeType]"""
+  edges: [TagsEdgeType!]
+
+  """TagsPageInfoType"""
+  pageInfo: TagsPageInfoType
+}
+
+type TagsCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+}
+
+type TagsEdgeType {
+  """cursor"""
+  cursor: String
+
+  """TagsEdgeType"""
+  node: TagType
+}
+
+type TagsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
 }
 
 type TemplatesConnectionType {
@@ -2614,6 +2726,20 @@ input UpdateProfileInputType {
 
   """user ID"""
   userID: ID!
+}
+
+input UpdateTagsInputType {
+  """tags created date"""
+  dateCreated: Date
+
+  """tags deleted date"""
+  dateDeleted: Date
+
+  """tags updated date"""
+  dateUpdated: Date
+
+  """tags ID"""
+  tagsID: ID
 }
 
 input UpdateTemplatesInputType {

@@ -433,6 +433,10 @@ export type CreateProfileInputType = {
     /** user ID */
     userID: Scalars['ID']['input'];
 };
+export type CreateTagsInputType = {
+    /** tags ID */
+    tagsID?: InputMaybe<Scalars['ID']['input']>;
+};
 export type CreateTemplatesInputType = {
     /** templates ID */
     templatesID?: InputMaybe<Scalars['ID']['input']>;
@@ -805,6 +809,7 @@ export type Mutation = {
     createModules: Array<ModuleType>;
     createProfiles: Array<ProfileType>;
     createSiteMap: SiteMapReportType;
+    createTags: Array<TagType>;
     createTemplates: Array<TemplatesType>;
     createUser: UserModelExtendedType;
     createYoutubeTranscript: CreateYoutubeTranscriptType;
@@ -813,6 +818,7 @@ export type Mutation = {
     deactivateDocuments: Array<Scalars['String']['output']>;
     deactivateModules: Array<Scalars['String']['output']>;
     deactivateProfiles: Array<Scalars['String']['output']>;
+    deactivateTags: Array<Scalars['String']['output']>;
     deactivateTemplates: Array<Scalars['String']['output']>;
     deleteBots: Array<Scalars['String']['output']>;
     deleteCompetencyTags: Array<CompetencyTagType>;
@@ -820,6 +826,7 @@ export type Mutation = {
     deleteDocuments: Array<Scalars['String']['output']>;
     deleteModules: Array<Scalars['String']['output']>;
     deleteProfiles: Array<Scalars['String']['output']>;
+    deleteTags: Array<Scalars['String']['output']>;
     deleteTemplates: Array<Scalars['String']['output']>;
     deleteUser: UserModelExtendedType;
     removeRecipe: Scalars['Boolean']['output'];
@@ -832,6 +839,7 @@ export type Mutation = {
     updateModules: Array<ModuleType>;
     updateModulesMeta: Array<UpdateMetaType>;
     updateProfiles: Array<ProfileType>;
+    updateTags: Array<TagType>;
     updateTemplates: Array<TemplatesType>;
     updateUser: UserModelExtendedType;
 };
@@ -862,6 +870,9 @@ export type MutationCreateModulesArgs = {
 export type MutationCreateProfilesArgs = {
     createProfilesInput: Array<CreateProfileInputType>;
 };
+export type MutationCreateTagsArgs = {
+    createTagsInput: Array<CreateTagsInputType>;
+};
 export type MutationCreateTemplatesArgs = {
     createTemplatesInput: Array<CreateTemplatesInputType>;
 };
@@ -886,6 +897,9 @@ export type MutationDeactivateModulesArgs = {
 export type MutationDeactivateProfilesArgs = {
     deactivateProfilesIdsInput: Array<Scalars['String']['input']>;
 };
+export type MutationDeactivateTagsArgs = {
+    deactivateTagsIdsInput: Array<Scalars['String']['input']>;
+};
 export type MutationDeactivateTemplatesArgs = {
     deactivateTemplatesIdsInput: Array<Scalars['String']['input']>;
 };
@@ -906,6 +920,9 @@ export type MutationDeleteModulesArgs = {
 };
 export type MutationDeleteProfilesArgs = {
     deleteProfilesIdsInput: Array<Scalars['String']['input']>;
+};
+export type MutationDeleteTagsArgs = {
+    deleteTagsIdsInput: Array<Scalars['String']['input']>;
 };
 export type MutationDeleteTemplatesArgs = {
     deleteTemplatesIdsInput: Array<Scalars['String']['input']>;
@@ -943,6 +960,9 @@ export type MutationUpdateModulesMetaArgs = {
 };
 export type MutationUpdateProfilesArgs = {
     updateProfilesInput: Array<UpdateProfileInputType>;
+};
+export type MutationUpdateTagsArgs = {
+    updateTagsInput: Array<UpdateTagsInputType>;
 };
 export type MutationUpdateTemplatesArgs = {
     updateTemplatesInput: Array<UpdateTemplatesInputType>;
@@ -1214,6 +1234,7 @@ export type Query = {
     countDocuments: DocumentsCountType;
     countModules: ModulesCountType;
     countProfiles: ProfilesCountType;
+    countTags: TagsCountType;
     countTemplates: TemplatesCountType;
     getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
     getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
@@ -1238,7 +1259,10 @@ export type Query = {
     readProfilesConnection: ProfilesConnectionType;
     readRecipe: RecipeType;
     readRecipes: Array<RecipeType>;
+    readTagsAll: Array<TagType>;
     readTagsCloudModules: Array<TagsCloudModulesType>;
+    readTagsConnection: TagsConnectionType;
+    readTagsModules: Array<TagType>;
     readTemplates: Array<TemplatesType>;
     readTemplatesAll: Array<TemplatesType>;
     readTemplatesConnection: TemplatesConnectionType;
@@ -1304,6 +1328,12 @@ export type QueryReadRecipesArgs = {
 };
 export type QueryReadTagsCloudModulesArgs = {
     readTagsCloudModulesInput?: InputMaybe<ReadTagsCloudModulesInputType>;
+};
+export type QueryReadTagsConnectionArgs = {
+    readTagsConnectionInput: ReadTagsConnectionInputType;
+};
+export type QueryReadTagsModulesArgs = {
+    readTagsModulesInput: ReadTagsModulesInputType;
 };
 export type QueryReadTemplatesArgs = {
     readTemplatesInput: Array<Scalars['String']['input']>;
@@ -1550,6 +1580,30 @@ export type ReadTagsCloudModulesInputType = {
     /** searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
 };
+export type ReadTagsConnectionInputType = {
+    /** after */
+    after?: InputMaybe<Scalars['String']['input']>;
+    /** first */
+    first?: InputMaybe<Scalars['Int']['input']>;
+    /** offset */
+    offset?: InputMaybe<Scalars['Int']['input']>;
+};
+export type ReadTagsModulesInputType = {
+    /** isCompleted */
+    isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+    /** isNotCompleted */
+    isNotCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+    /** learner ID */
+    learnerID?: InputMaybe<Scalars['ID']['input']>;
+    /** learner user ID */
+    learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+    /** limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs */
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+    minCount?: InputMaybe<Scalars['Int']['input']>;
+    /** searchPhrase */
+    searchPhrase?: InputMaybe<Scalars['String']['input']>;
+};
 export type ReadTemplatesConnectionInputType = {
     /** after */
     after?: InputMaybe<Scalars['String']['input']>;
@@ -1653,6 +1707,27 @@ export type SummaryItemType = {
     /** module Summary item text */
     text?: Maybe<Scalars['String']['output']>;
 };
+export type TagType = {
+    __typename?: 'TagType';
+    /** tags completed */
+    completed: Scalars['Int']['output'];
+    /** tags count */
+    count: Scalars['Int']['output'];
+    /** tags created date */
+    dateCreated: Scalars['Float']['output'];
+    /** tags deleted date */
+    dateDeleted?: Maybe<Scalars['Float']['output']>;
+    /** tags updated date */
+    dateUpdated: Scalars['Float']['output'];
+    /** isActive */
+    isActive: Scalars['Boolean']['output'];
+    /** module IDs */
+    moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
+    /** tags ID */
+    tagID?: Maybe<Scalars['ID']['output']>;
+    /** tags value */
+    value: Scalars['String']['output'];
+};
 export type TagsCloudModulesType = {
     __typename?: 'TagsCloudModulesType';
     /** tags completed */
@@ -1663,6 +1738,34 @@ export type TagsCloudModulesType = {
     moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
     /** tags value */
     value: Scalars['String']['output'];
+};
+export type TagsConnectionType = {
+    __typename?: 'TagsConnectionType';
+    /** [TagsEdgeType] */
+    edges?: Maybe<Array<TagsEdgeType>>;
+    /** TagsPageInfoType */
+    pageInfo?: Maybe<TagsPageInfoType>;
+};
+export type TagsCountType = {
+    __typename?: 'TagsCountType';
+    /** module count all */
+    countAll?: Maybe<Scalars['Int']['output']>;
+    /** module count isActive */
+    countIsActive?: Maybe<Scalars['Int']['output']>;
+};
+export type TagsEdgeType = {
+    __typename?: 'TagsEdgeType';
+    /** cursor */
+    cursor?: Maybe<Scalars['String']['output']>;
+    /** TagsEdgeType */
+    node?: Maybe<TagType>;
+};
+export type TagsPageInfoType = {
+    __typename?: 'TagsPageInfoType';
+    /** endCursor */
+    endCursor?: Maybe<Scalars['String']['output']>;
+    /** hasNextPage */
+    hasNextPage?: Maybe<Scalars['Boolean']['output']>;
 };
 export type TemplatesConnectionType = {
     __typename?: 'TemplatesConnectionType';
@@ -2129,6 +2232,16 @@ export type UpdateProfileInputType = {
     urls?: InputMaybe<Array<Scalars['String']['input']>>;
     /** user ID */
     userID: Scalars['ID']['input'];
+};
+export type UpdateTagsInputType = {
+    /** tags created date */
+    dateCreated?: InputMaybe<Scalars['Date']['input']>;
+    /** tags deleted date */
+    dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+    /** tags updated date */
+    dateUpdated?: InputMaybe<Scalars['Date']['input']>;
+    /** tags ID */
+    tagsID?: InputMaybe<Scalars['ID']['input']>;
 };
 export type UpdateTemplatesInputType = {
     /** templates created date */
