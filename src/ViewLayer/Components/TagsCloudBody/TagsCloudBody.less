@@ -16,8 +16,11 @@
     text-overflow: ellipsis;
 
     .tag-cloud {
-      display: inline-block;
-      shape-outside: margin-box;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-flow: column;
+      grid-template-rows: repeat(90, 1fr);
+      gap: 1rem 6rem;
 
       .tag-cloud-tag {
         display: inline-block;

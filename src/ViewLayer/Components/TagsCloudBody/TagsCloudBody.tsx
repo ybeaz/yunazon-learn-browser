@@ -49,7 +49,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     <div className={getClasses('TagsCloudBody', classAdded)}>
       <div className='_tagCloudWrapper'>
         <TagCloud
-          minSize={12}
+          minSize={16}
           maxSize={48}
           shuffle={false}
           tags={tagsCloudNext}
