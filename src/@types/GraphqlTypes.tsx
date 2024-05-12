@@ -59,7 +59,7 @@ export type BotType = {
   /** bots created date */
   dateCreated?: Maybe<Scalars['Float']['output']>;
   /** bots deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** bots updated date */
   dateUpdated?: Maybe<Scalars['Float']['output']>;
   /** disclaimerRef */
@@ -157,10 +157,10 @@ export type CompetencyTagType = {
 export type CompetencyTagsInputType = {
   /** competencyTags created date */
   competencyTagsDateCreated?: InputMaybe<Scalars['Date']['input']>;
-  /** competencyTags deleted date */
-  competencyTagsDateDeleted?: InputMaybe<Scalars['Date']['input']>;
   /** competencyTags updated date */
   competencyTagsDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** competencyTags deleted date */
+  competencyTagsdateDeactivated?: InputMaybe<Scalars['Date']['input']>;
   /** competencyTags ID */
   idCompetencyTags?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -168,6 +168,45 @@ export type CompetencyTagsInputType = {
 export type CompetencyTagsParamsReadType = {
   /** first item */
   profileID?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CountDocumentInputType = {
+  /** MongoDB query */
+  queryAll?: InputMaybe<CountQueryParamsDocumentInputType>;
+  /** queryFuncName */
+  queryFuncName?: InputMaybe<Scalars['String']['input']>;
+  /** MongoDB query */
+  queryIsActive?: InputMaybe<CountQueryIsActiveDocumentInputType>;
+  /** MongoDB query */
+  queryParams?: CountQueryParamsDocumentInputType;
+};
+
+export type CountQueryIsActiveDocumentInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CountQueryParamsDocumentInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** learner.userID > learnerUserID */
+  learnerID?: InputMaybe<Scalars['String']['input']>;
+  /** learner.userID > learnerUserID */
+  learnerUserID?: InputMaybe<Scalars['String']['input']>;
+  /** module.moduleID > moduleModuleIDs */
+  moduleModuleIDs?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** module.tags > tag */
+  tag?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CountQueryTemplatesInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CountTemplatesInputType = {
+  /** MongoDB query */
+  query?: CountQueryTemplatesInputType;
 };
 
 export type CourseEdgeType = {
@@ -187,7 +226,7 @@ export type CourseType = {
   /** courses created date */
   dateCreated: Scalars['Float']['output'];
   /** courses deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** courses updated date */
   dateUpdated: Scalars['Float']['output'];
   /** course description */
@@ -220,6 +259,8 @@ export type CoursesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type CoursesPageInfoType = {
@@ -228,6 +269,11 @@ export type CoursesPageInfoType = {
   endCursor?: Maybe<Scalars['String']['output']>;
   /** hasNextPage */
   hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type CreateBotInputType = {
+  /** bots ID */
+  botsID?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type CreateBotResponseInputType = {
@@ -255,11 +301,6 @@ export type CreateBotResponseType = {
   profileName?: Maybe<Scalars['String']['output']>;
   /** textObj */
   textObj?: Maybe<TextObjType>;
-};
-
-export type CreateBotsInputType = {
-  /** bots ID */
-  botsID?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type CreateContentMetaDataType = {
@@ -437,9 +478,19 @@ export type CreateProfileInputType = {
   userID: Scalars['ID']['input'];
 };
 
-export type CreateTagsInputType = {
+export type CreateTagInputType = {
+  /** tags completed */
+  completed: Scalars['Int']['input'];
+  /** tags count */
+  count: Scalars['Int']['input'];
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** tags ID */
-  tagsID?: InputMaybe<Scalars['ID']['input']>;
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** tags value */
+  value: Scalars['String']['input'];
 };
 
 export type CreateTemplatesInputType = {
@@ -474,7 +525,7 @@ export type DocumentType = {
   /** documents created date */
   dateCreated: Scalars['Float']['output'];
   /** documents deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** documents updated date */
   dateUpdated: Scalars['Float']['output'];
   /** documentID */
@@ -503,6 +554,8 @@ export type DocumentsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DocumentsPageInfoType = {
@@ -764,7 +817,7 @@ export type ModuleType = {
   /** created date */
   dateCreated: Scalars['Float']['output'];
   /** deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** updated date */
   dateUpdated: Scalars['Float']['output'];
   /** description */
@@ -821,6 +874,8 @@ export type ModulesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ModulesPageInfoType = {
@@ -876,6 +931,7 @@ export type Mutation = {
   updateTags: Array<TagType>;
   updateTemplates: Array<TemplatesType>;
   updateUser: UserModelExtendedType;
+  upsertTagsAll: Array<TagType>;
 };
 
 
@@ -890,7 +946,7 @@ export type MutationCreateBotResponseArgs = {
 
 
 export type MutationCreateBotsArgs = {
-  createBotsInput: Array<CreateBotsInputType>;
+  createBotsInput: Array<CreateBotInputType>;
 };
 
 
@@ -925,7 +981,7 @@ export type MutationCreateProfilesArgs = {
 
 
 export type MutationCreateTagsArgs = {
-  createTagsInput: Array<CreateTagsInputType>;
+  createTagsInput: Array<CreateTagInputType>;
 };
 
 
@@ -1076,7 +1132,7 @@ export type MutationUpdateProfilesArgs = {
 
 
 export type MutationUpdateTagsArgs = {
-  updateTagsInput: Array<UpdateTagsInputType>;
+  updateTagsInput: Array<UpdateTagInputType>;
 };
 
 
@@ -1187,6 +1243,25 @@ export type OperatorsModulesInputType = {
   tagPick?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type OperatorsTagsInputType = {
+  /** operator for contentIDs */
+  contentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for courses ID */
+  courseID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  tagPick?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type OptionCourseInputType = {
   /** course module question option label */
   label: Scalars['String']['input'];
@@ -1260,7 +1335,7 @@ export type ProfileType = {
   /** created date */
   dateCreated: Scalars['Float']['output'];
   /** deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** updated date */
   dateUpdated: Scalars['Float']['output'];
   /** description */
@@ -1329,6 +1404,8 @@ export type ProfilesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProfilesPageInfoType = {
@@ -1397,8 +1474,8 @@ export type Query = {
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
   readRecipes: Array<RecipeType>;
+  readTags: Array<TagType>;
   readTagsAll: Array<TagType>;
-  readTagsCloudModules: Array<TagsCloudModulesType>;
   readTagsConnection: TagsConnectionType;
   readTagsModules: Array<TagType>;
   readTemplates: Array<TemplatesType>;
@@ -1408,6 +1485,16 @@ export type Query = {
   readUserProfile: UserModelExtendedType;
   readUsers: UsersType;
   sendEmailDocument: DocumentType;
+};
+
+
+export type QueryCountDocumentsArgs = {
+  countDocumentInput?: InputMaybe<CountDocumentInputType>;
+};
+
+
+export type QueryCountTemplatesArgs = {
+  countTemplatesInput: CountTemplatesInputType;
 };
 
 
@@ -1502,8 +1589,8 @@ export type QueryReadRecipesArgs = {
 };
 
 
-export type QueryReadTagsCloudModulesArgs = {
-  readTagsCloudModulesInput?: InputMaybe<ReadTagsCloudModulesInputType>;
+export type QueryReadTagsArgs = {
+  readTagsInput: Array<ReadTagInputType>;
 };
 
 
@@ -1654,6 +1741,8 @@ export type ReadCoursesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -1689,6 +1778,8 @@ export type ReadDocumentsConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** option to setup operator for arguments */
   operators?: InputMaybe<OperatorsDocumentsInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -1727,6 +1818,8 @@ export type ReadModulesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** option to setup operator for arguments */
   operators?: InputMaybe<OperatorsModulesInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -1761,6 +1854,8 @@ export type ReadProfilesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
@@ -1769,7 +1864,9 @@ export type ReadProfilesConnectionInputType = {
   userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
 };
 
-export type ReadTagsCloudModulesInputType = {
+export type ReadTagInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** isCompleted */
   isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
   /** isNotCompleted */
@@ -1784,15 +1881,49 @@ export type ReadTagsCloudModulesInputType = {
   minCount?: InputMaybe<Scalars['Int']['input']>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** tag ID */
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** value */
+  value?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type ReadTagsConnectionInputType = {
-  /** after */
+  /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
   after?: InputMaybe<Scalars['String']['input']>;
-  /** first */
+  /** module contentIDs */
+  contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** creator IDs */
+  creatorIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
-  /** offset */
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsTagsInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortTagsInputType>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sortGraphQl?: InputMaybe<SortGraphQlTagsInputType>;
+  /** tag IDs */
+  tagIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** tags: tags that characterises the content to omit with that selection of the documents */
+  tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** tags: tags that characterises the content to pick from the set of documents */
+  tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
 export type ReadTagsModulesInputType = {
@@ -1819,6 +1950,10 @@ export type ReadTemplatesConnectionInputType = {
   first?: InputMaybe<Scalars['Int']['input']>;
   /** offset */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortTemplatesInputType>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sortGraphQl?: InputMaybe<SortGraphQlTemplatesInputType>;
 };
 
 export type ReadUsersOptions = {
@@ -1871,6 +2006,20 @@ export type SortDocumentsInputType = {
   prop?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SortGraphQlTagsInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortGraphQlTemplatesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type SortModulesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
@@ -1879,6 +2028,20 @@ export type SortModulesInputType = {
 };
 
 export type SortProfilesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortTagsInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortTemplatesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
@@ -1938,7 +2101,7 @@ export type TagType = {
   /** tags created date */
   dateCreated: Scalars['Float']['output'];
   /** tags deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** tags updated date */
   dateUpdated: Scalars['Float']['output'];
   /** isActive */
@@ -1947,18 +2110,6 @@ export type TagType = {
   moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
   /** tags ID */
   tagID?: Maybe<Scalars['ID']['output']>;
-  /** tags value */
-  value: Scalars['String']['output'];
-};
-
-export type TagsCloudModulesType = {
-  __typename?: 'TagsCloudModulesType';
-  /** tags completed */
-  completed: Scalars['Int']['output'];
-  /** tags count */
-  count: Scalars['Int']['output'];
-  /** module IDs */
-  moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
   /** tags value */
   value: Scalars['String']['output'];
 };
@@ -1977,6 +2128,8 @@ export type TagsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TagsEdgeType = {
@@ -2009,6 +2162,8 @@ export type TemplatesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TemplatesEdgeType = {
@@ -2032,7 +2187,7 @@ export type TemplatesType = {
   /** templates created date */
   dateCreated: Scalars['Float']['output'];
   /** templates deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** templates updated date */
   dateUpdated: Scalars['Float']['output'];
   /** isActive */
@@ -2232,7 +2387,7 @@ export type UpdateBotsInputType = {
   /** bots created date */
   dateCreated: Scalars['Float']['input'];
   /** bots deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** bots updated date */
   dateUpdated: Scalars['Float']['input'];
 };
@@ -2245,7 +2400,7 @@ export type UpdateCourseInputType = {
   /** courses created date */
   dateCreated: Scalars['Float']['input'];
   /** courses deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** courses updated date */
   dateUpdated: Scalars['Float']['input'];
   /** course description */
@@ -2293,7 +2448,7 @@ export type UpdateDocumentInputType = {
   /** documents created date */
   dateCreated: Scalars['Float']['input'];
   /** documents deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** documents updated date */
   dateUpdated: Scalars['Float']['input'];
   /** documentID */
@@ -2379,7 +2534,7 @@ export type UpdateModuleInputType = {
   /** created date */
   dateCreated: Scalars['Float']['input'];
   /** deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** updated date */
   dateUpdated: Scalars['Float']['input'];
   /** description */
@@ -2438,7 +2593,7 @@ export type UpdateProfileInputType = {
   /** created date */
   dateCreated: Scalars['Float']['input'];
   /** deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** updated date */
   dateUpdated: Scalars['Float']['input'];
   /** description */
@@ -2491,22 +2646,32 @@ export type UpdateProfileInputType = {
   userID: Scalars['ID']['input'];
 };
 
-export type UpdateTagsInputType = {
+export type UpdateTagInputType = {
+  /** tags completed */
+  completed: Scalars['Int']['input'];
+  /** tags count */
+  count: Scalars['Int']['input'];
   /** tags created date */
-  dateCreated?: InputMaybe<Scalars['Date']['input']>;
+  dateCreated: Scalars['Float']['input'];
   /** tags deleted date */
-  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** tags updated date */
-  dateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  dateUpdated: Scalars['Float']['input'];
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** tags ID */
-  tagsID?: InputMaybe<Scalars['ID']['input']>;
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** tags value */
+  value: Scalars['String']['input'];
 };
 
 export type UpdateTemplatesInputType = {
   /** templates created date */
   dateCreated?: InputMaybe<Scalars['Date']['input']>;
   /** templates deleted date */
-  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Date']['input']>;
   /** templates updated date */
   dateUpdated?: InputMaybe<Scalars['Date']['input']>;
   /** templates ID */
@@ -2622,8 +2787,6 @@ export type UserModelExtendedType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
-  /** user deleted date */
-  userDateDeleted?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -2660,6 +2823,8 @@ export type UserModelExtendedType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
+  /** user deleted date */
+  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UserType = {
@@ -2676,8 +2841,6 @@ export type UserType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
-  /** user deleted date */
-  userDateDeleted?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -2714,6 +2877,8 @@ export type UserType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
+  /** user deleted date */
+  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UsersType = {

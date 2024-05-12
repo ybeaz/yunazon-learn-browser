@@ -43,7 +43,7 @@ type BotType {
   dateCreated: Float
 
   """bots deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """bots updated date"""
   dateUpdated: Float
@@ -158,11 +158,11 @@ input CompetencyTagsInputType {
   """competencyTags created date"""
   competencyTagsDateCreated: Date
 
-  """competencyTags deleted date"""
-  competencyTagsDateDeleted: Date
-
   """competencyTags updated date"""
   competencyTagsDateUpdated: Date
+
+  """competencyTags deleted date"""
+  competencyTagsdateDeactivated: Date
 
   """competencyTags ID"""
   idCompetencyTags: ID
@@ -171,6 +171,52 @@ input CompetencyTagsInputType {
 input CompetencyTagsParamsReadType {
   """first item"""
   profileID: String
+}
+
+input CountDocumentInputType {
+  """MongoDB query"""
+  queryAll: CountQueryParamsDocumentInputType = null
+
+  """queryFuncName"""
+  queryFuncName: String = null
+
+  """MongoDB query"""
+  queryIsActive: CountQueryIsActiveDocumentInputType = null
+
+  """MongoDB query"""
+  queryParams: CountQueryParamsDocumentInputType! = {}
+}
+
+input CountQueryIsActiveDocumentInputType {
+  """isActive"""
+  isActive: Boolean
+}
+
+input CountQueryParamsDocumentInputType {
+  """isActive"""
+  isActive: Boolean
+
+  """learner.userID > learnerUserID"""
+  learnerID: String = null
+
+  """learner.userID > learnerUserID"""
+  learnerUserID: String = null
+
+  """module.moduleID > moduleModuleIDs"""
+  moduleModuleIDs: [String!] = null
+
+  """module.tags > tag"""
+  tag: String = null
+}
+
+input CountQueryTemplatesInputType {
+  """isActive"""
+  isActive: Boolean
+}
+
+input CountTemplatesInputType {
+  """MongoDB query"""
+  query: CountQueryTemplatesInputType! = {}
 }
 
 type CourseEdgeType {
@@ -192,7 +238,7 @@ type CourseType {
   dateCreated: Float!
 
   """courses deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """courses updated date"""
   dateUpdated: Float!
@@ -233,6 +279,9 @@ type CoursesCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type CoursesPageInfoType {
@@ -241,6 +290,11 @@ type CoursesPageInfoType {
 
   """hasNextPage"""
   hasNextPage: Boolean
+}
+
+input CreateBotInputType {
+  """bots ID"""
+  botsID: ID
 }
 
 input CreateBotResponseInputType {
@@ -275,11 +329,6 @@ type CreateBotResponseType {
 
   """textObj"""
   textObj: TextObjType
-}
-
-input CreateBotsInputType {
-  """bots ID"""
-  botsID: ID
 }
 
 type CreateContentMetaDataType {
@@ -532,9 +581,24 @@ input CreateProfileInputType {
   userID: ID!
 }
 
-input CreateTagsInputType {
+input CreateTagInputType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
   """tags ID"""
-  tagsID: ID
+  tagID: ID
+
+  """tags value"""
+  value: String!
 }
 
 input CreateTemplatesInputType {
@@ -575,7 +639,7 @@ type DocumentType {
   dateCreated: Float!
 
   """documents deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """documents updated date"""
   dateUpdated: Float!
@@ -610,6 +674,9 @@ type DocumentsCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type DocumentsPageInfoType {
@@ -939,7 +1006,7 @@ type ModuleType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """updated date"""
   dateUpdated: Float!
@@ -1016,6 +1083,9 @@ type ModulesCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type ModulesPageInfoType {
@@ -1029,7 +1099,7 @@ type ModulesPageInfoType {
 type Mutation {
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
   createBotResponse(createBotResponseInput: CreateBotResponseInputType!): CreateBotResponseType!
-  createBots(createBotsInput: [CreateBotsInputType!]!): [BotType!]!
+  createBots(createBotsInput: [CreateBotInputType!]!): [BotType!]!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   createContentMetaData(createContentMetaDataInput: CreateOriginInputType!): CreateContentMetaDataType!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
@@ -1037,7 +1107,7 @@ type Mutation {
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
   createSiteMap: SiteMapReportType!
-  createTags(createTagsInput: [CreateTagsInputType!]!): [TagType!]!
+  createTags(createTagsInput: [CreateTagInputType!]!): [TagType!]!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -1067,9 +1137,10 @@ type Mutation {
   updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
   updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
   updateProfiles(updateProfilesInput: [UpdateProfileInputType!]!): [ProfileType!]!
-  updateTags(updateTagsInput: [UpdateTagsInputType!]!): [TagType!]!
+  updateTags(updateTagsInput: [UpdateTagInputType!]!): [TagType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
+  upsertTagsAll: [TagType!]!
 }
 
 input NewRecipeInputType {
@@ -1210,6 +1281,36 @@ input OperatorsModulesInputType {
   tagPick: String = null
 }
 
+input OperatorsTagsInputType {
+  """operator for contentIDs"""
+  contentID: String = null
+
+  """operator for courses ID"""
+  courseID: String = null
+
+  """operator for creator IDs"""
+  creatorID: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for module IDs"""
+  moduleID: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagPick: String = null
+}
+
 input OptionCourseInputType {
   """course module question option label"""
   label: String!
@@ -1299,7 +1400,7 @@ type ProfileType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """updated date"""
   dateUpdated: Float!
@@ -1396,6 +1497,9 @@ type ProfilesCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type ProfilesPageInfoType {
@@ -1440,11 +1544,11 @@ type PromptType {
 type Query {
   countBots: Int!
   countCourses: CoursesCountType!
-  countDocuments: DocumentsCountType!
+  countDocuments(countDocumentInput: CountDocumentInputType): DocumentsCountType!
   countModules: ModulesCountType!
   countProfiles: ProfilesCountType!
   countTags: TagsCountType!
-  countTemplates: TemplatesCountType!
+  countTemplates(countTemplatesInput: CountTemplatesInputType!): TemplatesCountType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -1468,8 +1572,8 @@ type Query {
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
   readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
+  readTags(readTagsInput: [ReadTagInputType!]!): [TagType!]!
   readTagsAll: [TagType!]!
-  readTagsCloudModules(readTagsCloudModulesInput: ReadTagsCloudModulesInputType): [TagsCloudModulesType!]!
   readTagsConnection(readTagsConnectionInput: ReadTagsConnectionInputType!): TagsConnectionType!
   readTagsModules(readTagsModulesInput: ReadTagsModulesInputType!): [TagType!]!
   readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
@@ -1626,6 +1730,11 @@ input ReadCoursesConnectionInputType {
   """profile IDs"""
   profileIDs: [ID!] = []
 
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -1685,6 +1794,11 @@ input ReadDocumentsConnectionInputType {
 
   """option to setup operator for arguments"""
   operators: OperatorsDocumentsInputType = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -1748,6 +1862,11 @@ input ReadModulesConnectionInputType {
   """option to setup operator for arguments"""
   operators: OperatorsModulesInputType = null
 
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -1798,6 +1917,11 @@ input ReadProfilesConnectionInputType {
   """profile IDs"""
   profileIDs: [ID!] = []
 
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
@@ -1808,7 +1932,10 @@ input ReadProfilesConnectionInputType {
   userIDs: [ID!] = []
 }
 
-input ReadTagsCloudModulesInputType {
+input ReadTagInputType {
+  """isActive"""
+  isActive: Boolean
+
   """isCompleted"""
   isCompleted: Boolean = null
 
@@ -1833,17 +1960,80 @@ input ReadTagsCloudModulesInputType {
 
   """searchPhrase"""
   searchPhrase: String = null
+
+  """tag ID"""
+  tagID: ID
+
+  """value"""
+  value: ID
 }
 
 input ReadTagsConnectionInputType {
-  """after"""
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
   after: String
 
-  """first"""
+  """module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
   first: Int
 
-  """offset"""
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
   offset: Int
+
+  """option to setup operator for arguments"""
+  operators: OperatorsTagsInputType = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortTagsInputType
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sortGraphQl: SortGraphQlTagsInputType
+
+  """tag IDs"""
+  tagIDs: [ID!] = []
+
+  """
+  tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  tags: tags that characterises the content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
 }
 
 input ReadTagsModulesInputType {
@@ -1882,6 +2072,12 @@ input ReadTemplatesConnectionInputType {
 
   """offset"""
   offset: Int
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortTemplatesInputType
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sortGraphQl: SortGraphQlTemplatesInputType
 }
 
 input ReadUsersOptions {
@@ -1942,6 +2138,22 @@ input SortDocumentsInputType {
   prop: String
 }
 
+input SortGraphQlTagsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortGraphQlTemplatesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
 input SortModulesInputType {
   """sorting direction: 1 ascending, -1 descending"""
   direction: Float
@@ -1951,6 +2163,22 @@ input SortModulesInputType {
 }
 
 input SortProfilesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortTagsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortTemplatesInputType {
   """sorting direction: 1 ascending, -1 descending"""
   direction: Float
 
@@ -2018,7 +2246,7 @@ type TagType {
   dateCreated: Float!
 
   """tags deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """tags updated date"""
   dateUpdated: Float!
@@ -2031,20 +2259,6 @@ type TagType {
 
   """tags ID"""
   tagID: ID
-
-  """tags value"""
-  value: String!
-}
-
-type TagsCloudModulesType {
-  """tags completed"""
-  completed: Int!
-
-  """tags count"""
-  count: Int!
-
-  """module IDs"""
-  moduleIDs: [ID!]
 
   """tags value"""
   value: String!
@@ -2064,6 +2278,9 @@ type TagsCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type TagsEdgeType {
@@ -2096,6 +2313,9 @@ type TemplatesCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type TemplatesEdgeType {
@@ -2119,7 +2339,7 @@ type TemplatesType {
   dateCreated: Float!
 
   """templates deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """templates updated date"""
   dateUpdated: Float!
@@ -2368,7 +2588,7 @@ input UpdateBotsInputType {
   dateCreated: Float!
 
   """bots deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """bots updated date"""
   dateUpdated: Float!
@@ -2385,7 +2605,7 @@ input UpdateCourseInputType {
   dateCreated: Float!
 
   """courses deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """courses updated date"""
   dateUpdated: Float!
@@ -2448,7 +2668,7 @@ input UpdateDocumentInputType {
   dateCreated: Float!
 
   """documents deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """documents updated date"""
   dateUpdated: Float!
@@ -2560,7 +2780,7 @@ input UpdateModuleInputType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """updated date"""
   dateUpdated: Float!
@@ -2648,7 +2868,7 @@ input UpdateProfileInputType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """updated date"""
   dateUpdated: Float!
@@ -2728,18 +2948,33 @@ input UpdateProfileInputType {
   userID: ID!
 }
 
-input UpdateTagsInputType {
+input UpdateTagInputType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
   """tags created date"""
-  dateCreated: Date
+  dateCreated: Float!
 
   """tags deleted date"""
-  dateDeleted: Date
+  dateDeactivated: Float = null
 
   """tags updated date"""
-  dateUpdated: Date
+  dateUpdated: Float!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
 
   """tags ID"""
-  tagsID: ID
+  tagID: ID
+
+  """tags value"""
+  value: String!
 }
 
 input UpdateTemplatesInputType {
@@ -2747,7 +2982,7 @@ input UpdateTemplatesInputType {
   dateCreated: Date
 
   """templates deleted date"""
-  dateDeleted: Date
+  dateDeactivated: Date
 
   """templates updated date"""
   dateUpdated: Date
@@ -2924,9 +3159,6 @@ type UserModelExtendedType {
   """user created date"""
   userDateCreated: Date
 
-  """user deleted date"""
-  userDateDeleted: Date
-
   """user updated date"""
   userDateUpdated: Date
 
@@ -2980,6 +3212,9 @@ type UserModelExtendedType {
 
   """user web site"""
   userWebLink: String
+
+  """user deleted date"""
+  userdateDeactivated: Date
 }
 
 type UserType {
@@ -3001,9 +3236,6 @@ type UserType {
   """user created date"""
   userDateCreated: Date
 
-  """user deleted date"""
-  userDateDeleted: Date
-
   """user updated date"""
   userDateUpdated: Date
 
@@ -3057,6 +3289,9 @@ type UserType {
 
   """user web site"""
   userWebLink: String
+
+  """user deleted date"""
+  userdateDeactivated: Date
 }
 
 type UsersType {

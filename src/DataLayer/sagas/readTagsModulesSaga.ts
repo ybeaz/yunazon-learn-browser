@@ -47,7 +47,6 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
       }
     )
 
-    console.info('readTagsModulesSaga [49]', { readTagsModules })
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTagsModules }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

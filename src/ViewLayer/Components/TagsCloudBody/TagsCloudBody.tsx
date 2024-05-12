@@ -1,7 +1,7 @@
 import React from 'react'
 import { TagCloud } from 'react-tagcloud'
 
-import { TagsCloudModulesType } from '../../../@types'
+import { TagType } from '../../../@types'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
@@ -35,13 +35,14 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     storeStateSlice: { tagsCloud },
   } = props
 
-  const tagsCloudNext = tagsCloud.map((tagCloud: TagsCloudModulesType) => {
+  const tagsCloudNext = tagsCloud.map((tagCloud: TagType) => {
     const { completed, count, value } = tagCloud
+    // console.info('TagsCloudBody [40]', { completed, count, value })
     const completedPercent = ((completed * 100) / count).toFixed()
-    return { value: `${value} ${count} ${completedPercent}%`, count }
+    return { value: `${value} ${count}-${completed}-${completedPercent}%`, count }
   })
 
-  console.info('TagsCloudBody [35]', { tagsCloud })
+  console.info('TagsCloudBody [45]', { tagsCloud })
 
   const propsOut: TagsCloudBodyPropsOutType = {}
 

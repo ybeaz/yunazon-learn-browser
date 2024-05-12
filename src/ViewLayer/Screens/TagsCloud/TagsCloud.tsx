@@ -31,7 +31,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   } = props
 
   useEffect(() => {
-    handleEvents({}, { typeEvent: 'GET_TAGS_CLOUD_MODULES' })
+    handleEvents({}, { typeEvent: 'GET_TAGS_CONNECTION' })
   }, [])
 
   const propsOut: TagsCloudPropsOutType = {
