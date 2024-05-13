@@ -28,8 +28,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  console.info('readTagsConnectionSaga [31]', { screenActive, inputSearch, first, offset, sub })
-
   let learnerUserID: string = ''
   let sub_localStorage = getLocalStorageReadKeyObj('sub')
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
@@ -84,7 +82,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       printRes: false,
     }).result
 
-    console.info('readTagsConnectionSaga [49]', { tags, readTagsConnection })
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))

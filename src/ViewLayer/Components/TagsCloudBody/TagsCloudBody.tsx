@@ -1,6 +1,7 @@
 import React from 'react'
-import { TagCloud } from 'react-tagcloud'
+import { useNavigate } from 'react-router-dom'
 
+import { TagCloud } from 'react-tagcloud'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
@@ -35,7 +36,10 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   const {
     classAdded,
     storeStateSlice: { tagsCloud },
+    handleEvents,
   } = props
+
+  const navigate = useNavigate()
 
   const tagsCloudNext = tagsCloud.map((tagCloud: TagType) => {
     const { completed, count, value } = tagCloud
@@ -56,7 +60,9 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           shuffle={false}
           tags={tagsCloudNext}
           // renderer={customTagRenderer}
-          onClick={(tag: any) => console.info('TagsCloudBody [67]', { tag })}
+          onClick={(tag: any) =>
+            handleEvents({}, { type: 'CLICK_ON_TAG', data: { tag, navigate } })
+          }
         />
       </div>
       <div className='_paginationNavigationWrapper'>

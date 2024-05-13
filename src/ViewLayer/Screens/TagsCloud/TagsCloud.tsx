@@ -32,6 +32,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   useEffect(() => {
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'TagsCloud' } })
+    handleEvents({}, { type: 'SET_TAGS_CLOUD_DATA' })
     handleEvents({}, { typeEvent: 'GET_TAGS_CONNECTION' })
   }, [])
 

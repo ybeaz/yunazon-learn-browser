@@ -19,6 +19,9 @@ import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
+  const operators = params?.data?.operators
+  const moduleIDs = params?.data?.moduleIDs
+
   yield delay(1000)
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
@@ -55,13 +58,10 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     return
   }
 
-  let readModulesConnectionInput: ReadModulesConnectionInputType = {
+  const readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
     operators: { searchPhrase: 'or', tagPick: 'and' },
-    learnerUserID,
-    creatorIDs,
-    searchPhrase: inputSearch,
     searchIn: [
       'capture',
       'contentID',
@@ -73,11 +73,17 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       'summary.capture',
       'summary.text',
     ],
-    tagsPick,
-    tagsOmit,
     sort: { prop: 'dateCreated', direction: -1 },
     isActive: true,
   }
+
+  if (learnerUserID) readModulesConnectionInput.learnerUserID = learnerUserID
+  if (inputSearch) readModulesConnectionInput.searchPhrase = inputSearch
+  if (operators) readModulesConnectionInput.operators = operators
+  if (!!creatorIDs?.length) readModulesConnectionInput.creatorIDs = creatorIDs
+  if (!!moduleIDs?.length) readModulesConnectionInput.moduleIDs = moduleIDs
+  if (!!tagsPick?.length) readModulesConnectionInput.tagsPick = tagsPick
+  if (!!tagsOmit?.length) readModulesConnectionInput.tagsOmit = tagsOmit
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

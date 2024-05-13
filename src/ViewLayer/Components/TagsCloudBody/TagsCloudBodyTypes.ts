@@ -1,6 +1,7 @@
 import React from 'react'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
+import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
 import { PaginationNameEnumType } from '../../../Interfaces/'
 
@@ -9,9 +10,13 @@ export type TagsCloudBodyComponentPropsType = {
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
   }
+  handleEvents: HandleEventType
 }
 
-export type TagsCloudBodyPropsType = Omit<TagsCloudBodyComponentPropsType, 'storeStateSlice'>
+export type TagsCloudBodyPropsType = Omit<
+  TagsCloudBodyComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
 
 export type TagsCloudBodyPropsOutType = {
   paginationNavigationProps: PaginationNavigationPropsType
