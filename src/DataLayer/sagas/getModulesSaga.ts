@@ -55,15 +55,24 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     return
   }
 
-  console.info('getModulesSaga [58]', { tagsPick })
-
   let readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
-    operators: { searchPhrase: 'and', tagPick: 'and' },
+    operators: { searchPhrase: 'or', tagPick: 'and' },
     learnerUserID,
     creatorIDs,
     searchPhrase: inputSearch,
+    searchIn: [
+      'capture',
+      'contentID',
+      'creatorID',
+      'description',
+      'objections.capture',
+      'profileID',
+      'questions.capture',
+      'summary.capture',
+      'summary.text',
+    ],
     tagsPick,
     tagsOmit,
     sort: { prop: 'dateCreated', direction: -1 },

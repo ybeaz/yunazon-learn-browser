@@ -51,12 +51,12 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         language: '',
         searchPhrase: inputSearch,
         searchIn: ['value'],
-        minCount: 2,
-        tagsPick: [],
-        tagsOmit: [],
         operators: {
           searchPhrase: 'or',
         },
+        minCount: 2,
+        tagsPick: [],
+        tagsOmit: [],
         sort: {
           prop: 'count',
           direction: -1,

@@ -33,6 +33,7 @@ export const SET_PAGE_CURSOR: ReducerType = (store: RootStoreType, data: any): R
         PAGINATION_OFFSET[PaginationNameEnumType[paginationName]]
     )
   }
+
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: paginationName,
     searchParamsValue,
