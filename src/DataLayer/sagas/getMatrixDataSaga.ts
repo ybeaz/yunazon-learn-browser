@@ -5,7 +5,7 @@ import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getModules } from './getModulesSaga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
-import { paginationOffset } from '../../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -16,8 +16,9 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
     const first =
       query && query?.[PaginationNameEnumType['pageModules']]
-        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) * paginationOffset -
-          paginationOffset
+        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
+            PAGINATION_OFFSET[PaginationNameEnumType['pageModules']] -
+          PAGINATION_OFFSET[PaginationNameEnumType['pageModules']]
         : 0
 
     const data = {
@@ -25,8 +26,6 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       value: inputSearch,
     }
     yield put(actionSync.SET_INPUT_TO_STORE(data))
-
-    console.info('getMatrixDataSaga [29]', { query, tagsPick, tagsOmit })
 
     yield put(
       actionSync.SET_TAGS_STATE({

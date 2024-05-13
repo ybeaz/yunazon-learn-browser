@@ -1997,6 +1997,11 @@ input ReadTagsConnectionInputType {
   """learner user ID"""
   learnerUserID: ID = null
 
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
   """module IDs"""
   moduleIDs: [ID!] = []
 

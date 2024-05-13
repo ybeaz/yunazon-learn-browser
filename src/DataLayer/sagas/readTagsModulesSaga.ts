@@ -10,6 +10,10 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 import { withDebounce } from '../../Shared/withDebounce'
 
+/**
+ * @status DEPRECIATED in favor of readTagsModulesGenerator
+ * @param params @
+ */
 function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const { data: documentID } = params
 

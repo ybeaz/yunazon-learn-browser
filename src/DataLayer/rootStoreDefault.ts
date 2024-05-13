@@ -6,9 +6,10 @@ import {
   SearchFormSepType,
   FormsType,
   RootStoreType,
+  PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
 
-import { paginationOffset } from '../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../Constants/pagination.const'
 
 import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
@@ -94,13 +95,19 @@ export const componentsStateDefault: ComponentsStateType = {
   pagination: {
     pageModules: {
       first: 0,
-      offset: paginationOffset,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageModules']],
       hasNextPage: true,
       endCursor: '',
     },
     pageDocuments: {
       first: 0,
-      offset: paginationOffset,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']],
+      hasNextPage: true,
+      endCursor: '',
+    },
+    pageTags: {
+      first: 0,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageTags']],
       hasNextPage: true,
       endCursor: '',
     },

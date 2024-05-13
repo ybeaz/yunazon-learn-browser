@@ -9,12 +9,9 @@ import {
   getSetUrlQueryBrowserApi,
   GetSetUrlQueryBrowserApiParamsType,
 } from '../../Shared/getSetUrlQueryBrowserApi'
-import { paginationOffset } from '../../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
-export const SET_PAGE_CURSOR: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+export const SET_PAGE_CURSOR: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { componentsState } = store
   const pagination: PaginationDict = componentsState.pagination
 
@@ -32,7 +29,8 @@ export const SET_PAGE_CURSOR: ReducerType = (
   let searchParamsValue: string = '1'
   if (firstNext && firstNext > 0) {
     searchParamsValue = String(
-      (firstNext + paginationOffset) / paginationOffset
+      (firstNext + PAGINATION_OFFSET[PaginationNameEnumType[paginationName]]) /
+        PAGINATION_OFFSET[PaginationNameEnumType[paginationName]]
     )
   }
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {

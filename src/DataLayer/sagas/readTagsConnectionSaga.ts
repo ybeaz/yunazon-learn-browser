@@ -18,8 +18,17 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const {
+    componentsState: {
+      screenActive,
+      pagination: {
+        pageTags: { first, offset },
+      },
+    },
+    forms: { inputSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
+
+  console.info('readTagsConnectionSaga [31]', { screenActive, inputSearch, first, offset, sub })
 
   let learnerUserID: string = ''
   let sub_localStorage = getLocalStorageReadKeyObj('sub')
@@ -36,12 +45,13 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         contentIDs: [],
         creatorIDs: [],
         learnerUserID,
-        first: 0,
-        offset: 126,
+        first,
+        offset,
         after: '',
         language: '',
-        searchPhrase: '',
+        searchPhrase: inputSearch,
         searchIn: ['value'],
+        minCount: 2,
         tagsPick: [],
         tagsOmit: [],
         operators: {

@@ -1904,6 +1904,8 @@ export type ReadTagsConnectionInputType = {
   learnerID?: InputMaybe<Scalars['ID']['input']>;
   /** learner user ID */
   learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+  minCount?: InputMaybe<Scalars['Int']['input']>;
   /** module IDs */
   moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */

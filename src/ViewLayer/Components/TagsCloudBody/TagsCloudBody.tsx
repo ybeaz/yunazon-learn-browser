@@ -1,10 +1,12 @@
 import React from 'react'
 import { TagCloud } from 'react-tagcloud'
 
+import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
+import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
@@ -37,26 +39,28 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   const tagsCloudNext = tagsCloud.map((tagCloud: TagType) => {
     const { completed, count, value } = tagCloud
-    // console.info('TagsCloudBody [40]', { completed, count, value })
     const completedPercent = ((completed * 100) / count).toFixed()
-    return { value: `${value} ${count}-${completed}-${completedPercent}%`, count }
+    return { value: `${value}: ${count} ${completed} ${completedPercent}%`, count }
   })
 
-  console.info('TagsCloudBody [45]', { tagsCloud })
-
-  const propsOut: TagsCloudBodyPropsOutType = {}
+  const propsOut: TagsCloudBodyPropsOutType = {
+    paginationNavigationProps: { paginationName: PaginationNameEnumType['pageTags'] },
+  }
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
       <div className='_tagCloudWrapper'>
         <TagCloud
           minSize={16}
-          maxSize={48}
+          maxSize={32}
           shuffle={false}
           tags={tagsCloudNext}
           // renderer={customTagRenderer}
           onClick={(tag: any) => console.info('TagsCloudBody [67]', { tag })}
         />
+      </div>
+      <div className='_paginationNavigationWrapper'>
+        <PaginationNavigation {...propsOut.paginationNavigationProps} />
       </div>
     </div>
   )
