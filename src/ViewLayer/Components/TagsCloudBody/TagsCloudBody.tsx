@@ -9,6 +9,10 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import {
+  getIconNameExpertise,
+  GetIconNameExpertiseParamsType,
+} from '../../../Shared/getIconNameExpertise'
+import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
   TagsCloudBodyPropsOutType,
