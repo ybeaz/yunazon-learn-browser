@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  All_modules: {
+    en: 'All modules',
+    ru: 'Все модули',
+  },
   Date_of_creation: {
     en: 'Date of creation',
     ru: 'Дата создания',
