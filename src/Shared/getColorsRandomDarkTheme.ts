@@ -1,5 +1,4 @@
 import { consoler } from './consoler'
-import { consolerError } from './consolerError'
 
 export type GetColorsRandomDarkThemeParamsType = {
   numberOfColors: number
@@ -48,7 +47,7 @@ export const getColorsRandomDarkTheme: GetColorsRandomDarkThemeType = (
   const colors: GetColorsRandomDarkThemeResType = []
 
   try {
-    const contrastThreshold = 12 // 4.5 Minimum contrast ratio for readability (WCAG AA standard)
+    const contrastThreshold = 18 // 4.5 Minimum contrast ratio for readability (WCAG AA standard)
 
     const randomColor = (): string => {
       const r = Math.floor(Math.random() * 256)

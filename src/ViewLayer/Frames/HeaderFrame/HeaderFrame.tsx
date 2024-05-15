@@ -141,7 +141,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     },
     avatarPlusInfoProps: {
       classProps: { _link: '_logoGroup' },
-      typeEvent: 'CLICK_LOGO_GROUP',
+      typeEvent: 'GO_SCREEN',
       capture: brandName,
       text: moto,
       imgSrc: logoPath,

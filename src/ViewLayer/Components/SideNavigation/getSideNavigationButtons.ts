@@ -41,7 +41,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       classAdded: 'Button_sideMenuItems',
       action: {
         typeEvent: 'GO_SCREEN',
-        data: { navigate, pathname: '/m?pageModules=1' },
+        data: { navigate, pathname: '/m' },
       },
       isDisplaying: true,
     },
