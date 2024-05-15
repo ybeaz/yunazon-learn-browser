@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { PaginationNameEnumType } from '../../../Interfaces/'
@@ -57,6 +58,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     return tagsCloudIn.map((tagCloud: TagType, index: number) => {
       const { tagID, completed, count, value } = tagCloud
 
+      const expertiseInfo: GetIconNameExpertiseParamsType = getExpertiseInfo({ completed })
+
       const propsOut: GetTagsCloudListType = {
         buttonIconExpertiseProps: {
           classAdded: 'Button_iconExpertise',
@@ -70,53 +73,45 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         },
       }
 
+      const CustomTooltipContent = () => (
+        <div>
+          <p>This is a custom tooltip content</p>
+          <p>With multiple lines</p>
+        </div>
+      )
+
       return (
         <div
           key={tagID}
           className='_tagCloud'
-          style={{
-            fontSize: `${range[index]}px`,
-            color: colorsRandomDarkTheme[index],
-          }}
           onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
         >
-          <span className='_spanTagName'>{value}</span>
-          <span className='_spanCount'>{count}</span>
-          <span className='_spanCompleted'>{completed}</span>
-          <ButtonYrl {...propsOut.buttonIconExpertiseProps} />
+          <Tooltip title={<CustomTooltipContent />}>
+            <div
+              className='_tagCloudWrapper'
+              style={{
+                fontSize: `${range[index]}px`,
+                color: colorsRandomDarkTheme[index],
+              }}
+            >
+              <span className='_spanTagName'>{value}</span>
+              <span className='_spanCount'>{count}</span>
+              <span className='_spanCompleted'>{completed}</span>
+              <ButtonYrl {...propsOut.buttonIconExpertiseProps} />
+            </div>
+          </Tooltip>
         </div>
       )
     })
   }
 
-  // {`${value}: ${count} ${completed} ${completedPercent}%`}
-
   const propsOut: TagsCloudBodyPropsOutType = {
     paginationNavigationProps: { paginationName: PaginationNameEnumType['pageTags'] },
   }
 
-  // const customTagRenderer = (tag: any, size: number, color: string) => {
-  //   return (
-  //     <span key={tag.value} style={{ color }} className={`tag-${size}`}>
-  //       {tag.value}
-  //     </span>
-  //   )
-  // }
-
-  // <TagCloud
-  //   minSize={16}
-  //   maxSize={32}
-  //   shuffle={false}
-  //   tags={tagsCloudNext}
-  //   renderer={customTagRenderer}
-  //   onClick={(tag: any) =>
-  //     handleEvents({}, { type: 'CLICK_ON_TAG', data: { tag, navigate } })
-  //   }
-  // />
-
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      <div className='_tagCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
+      <div className='_tagsCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
       <div className='_paginationNavigationWrapper'>
         <PaginationNavigation {...propsOut.paginationNavigationProps} />
       </div>

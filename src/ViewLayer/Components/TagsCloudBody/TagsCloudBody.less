@@ -2,7 +2,7 @@
   display: grid;
   padding-top: 2rem;
 
-  ._tagCloudWrapper {
+  ._tagsCloudWrapper {
     width: 90vw;
     // border-radius: 50%;
     // overflow: hidden;
@@ -19,25 +19,29 @@
 
     ._tagCloud {
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 0.5rem;
-      white-space: nowrap;
-      cursor: pointer;
 
-      ._spanTagName {
-        font-size: inherit;
-        color: inherit;
-      }
+      ._tagCloudWrapper {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 0.5rem;
+        white-space: nowrap;
+        cursor: pointer;
 
-      ._spanCount {
-        font-size: inherit;
-        color: inherit;
-      }
+        ._spanTagName {
+          font-size: inherit;
+          color: inherit;
+        }
 
-      ._spanCompleted {
-        font-size: inherit;
-        color: inherit;
+        ._spanCount {
+          font-size: inherit;
+          color: inherit;
+        }
+
+        ._spanCompleted {
+          font-size: inherit;
+          color: inherit;
+        }
       }
     }
   }
