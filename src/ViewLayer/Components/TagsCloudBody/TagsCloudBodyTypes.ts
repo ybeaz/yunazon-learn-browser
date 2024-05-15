@@ -2,7 +2,7 @@ import React from 'react'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
-
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 
 export type TagsCloudBodyComponentPropsType = {
@@ -17,6 +17,10 @@ export type TagsCloudBodyPropsType = Omit<
   TagsCloudBodyComponentPropsType,
   'storeStateSlice' | 'handleEvents'
 >
+
+export type GetTagsCloudListType = {
+  buttonIconExpertiseProps: ButtonYrlPropsType
+}
 
 export type TagsCloudBodyPropsOutType = {
   paginationNavigationProps: PaginationNavigationPropsType

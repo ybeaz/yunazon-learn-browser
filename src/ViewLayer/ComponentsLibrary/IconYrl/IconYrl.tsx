@@ -27,7 +27,9 @@ import {
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   const {
     icon = '',
+    iconColor = undefined,
     icon2 = '',
+    icon2Color = undefined,
     classAdded,
     isDisplaying = true,
     isVisible = true,
@@ -46,16 +48,11 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   return (
     <>
       {Icon && (
-        <div
-          className={getClasses(`IconYrl`, [
-            classAdded,
-            classDisplay,
-            classVisible,
-          ])}
-        >
+        <div className={getClasses(`IconYrl`, [classAdded, classDisplay, classVisible])}>
           <IconContext.Provider
             value={{
               className: `_icon`,
+              color: iconColor,
             }}
           >
             <Icon />
@@ -64,6 +61,7 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
             <IconContext.Provider
               value={{
                 className: `_icon`,
+                color: icon2Color,
               }}
             >
               <Icon2 />
@@ -77,9 +75,4 @@ const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
 
 export const IconYrl: IconYrlType = React.memo(IconYrlComponent)
 
-export type {
-  IconYrlPropsType,
-  IconYrlPropsOutType,
-  IconYrlComponentType,
-  IconYrlType,
-}
+export type { IconYrlPropsType, IconYrlPropsOutType, IconYrlComponentType, IconYrlType }

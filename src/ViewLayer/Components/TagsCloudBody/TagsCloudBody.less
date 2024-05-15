@@ -1,5 +1,6 @@
 .TagsCloudBody {
   display: grid;
+  padding-top: 2rem;
 
   ._tagCloudWrapper {
     width: 90vw;
@@ -10,16 +11,33 @@
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
 
-    .tag-cloud {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-flow: column;
-      grid-template-rows: repeat(42, 1fr);
-      gap: 1rem 6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: column;
+    grid-template-rows: repeat(42, 1fr);
+    gap: 1rem 6rem;
 
-      span {
-        white-space: nowrap;
-        cursor: pointer;
+    ._tagCloud {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      cursor: pointer;
+
+      ._spanTagName {
+        font-size: inherit;
+        color: inherit;
+      }
+
+      ._spanCount {
+        font-size: inherit;
+        color: inherit;
+      }
+
+      ._spanCompleted {
+        font-size: inherit;
+        color: inherit;
       }
     }
   }

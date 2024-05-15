@@ -8,18 +8,13 @@ import {
   GetSetUrlQueryBrowserApiParamsType,
 } from '../../Shared/getSetUrlQueryBrowserApi'
 
-const { dispatch, getState } = store
+const { dispatch } = store
 
-export const CLICK_ON_TAG: ActionEventType = (event, { tag, navigate }: any) => {
-  const { tagsCloud } = getState()
-
-  const tagValue = tag.value.split(':')[0]
-  const tagObj = tagsCloud.find((tag: any) => tag.value === tagValue)
-
+export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate }: any) => {
   dispatch(
     actionAsync.GET_MODULES.REQUEST({
       operators: { moduleID: 'and' },
-      moduleIDs: tagObj.moduleIDs,
+      moduleIDs: tagCloud.moduleIDs,
     })
   )
 
@@ -27,7 +22,7 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tag, navigate }: any) => 
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsPick',
-    searchParamsValue: tagValue,
+    searchParamsValue: tagCloud.value,
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)

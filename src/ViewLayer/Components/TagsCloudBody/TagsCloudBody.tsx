@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { TagCloud } from 'react-tagcloud'
+import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
@@ -12,21 +12,19 @@ import {
   getIconNameExpertise,
   GetIconNameExpertiseParamsType,
 } from '../../../Shared/getIconNameExpertise'
+import { getRangeOfNumbers, GetRangeOfNumbersParamsType } from '../../../Shared/getRangeOfNumbers'
+import {
+  getColorsRandomDarkTheme,
+  GetColorsRandomDarkThemeParamsType,
+} from '../../../Shared/getColorsRandomDarkTheme'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
+  GetTagsCloudListType,
   TagsCloudBodyPropsOutType,
   TagsCloudBodyComponentType,
   TagsCloudBodyType,
 } from './TagsCloudBodyTypes'
-
-const customTagRenderer = (tag: any, size: number, color: string) => {
-  return (
-    <span key={tag.value} style={{ color }} className={`tag-${size}`}>
-      {tag.value}
-    </span>
-  )
-}
 
 /**
  * @description Component to render TagsCloudBody
@@ -45,30 +43,80 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   const navigate = useNavigate()
 
-  const tagsCloudNext = tagsCloud.map((tagCloud: TagType) => {
-    const { completed, count, value } = tagCloud
-    const completedPercent = ((completed * 100) / count).toFixed()
-    return { value: `${value}: ${count} ${completed} ${completedPercent}%`, count }
-  })
+  const getTagsCloudList = (tagsCloudIn: TagType[]) => {
+    const range = getRangeOfNumbers({
+      min: 16,
+      max: 36,
+      steps: tagsCloudIn.length,
+      decimals: 2,
+      isReverse: true,
+    })
+    const colorsRandomDarkTheme = getColorsRandomDarkTheme({
+      numberOfColors: tagsCloudIn.length,
+    })
+    return tagsCloudIn.map((tagCloud: TagType, index: number) => {
+      const { tagID, completed, count, value } = tagCloud
+
+      const propsOut: GetTagsCloudListType = {
+        buttonIconExpertiseProps: {
+          classAdded: 'Button_iconExpertise',
+          icon: getIconNameExpertise({ completed }).iconName,
+          iconColor: colorsRandomDarkTheme[index],
+          action: {
+            typeEvent: '',
+            data: {},
+          },
+          isDisplaying: true,
+        },
+      }
+
+      return (
+        <div
+          key={tagID}
+          className='_tagCloud'
+          style={{
+            fontSize: `${range[index]}px`,
+            color: colorsRandomDarkTheme[index],
+          }}
+          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
+        >
+          <span className='_spanTagName'>{value}</span>
+          <span className='_spanCount'>{count}</span>
+          <span className='_spanCompleted'>{completed}</span>
+          <ButtonYrl {...propsOut.buttonIconExpertiseProps} />
+        </div>
+      )
+    })
+  }
+
+  // {`${value}: ${count} ${completed} ${completedPercent}%`}
 
   const propsOut: TagsCloudBodyPropsOutType = {
     paginationNavigationProps: { paginationName: PaginationNameEnumType['pageTags'] },
   }
 
+  // const customTagRenderer = (tag: any, size: number, color: string) => {
+  //   return (
+  //     <span key={tag.value} style={{ color }} className={`tag-${size}`}>
+  //       {tag.value}
+  //     </span>
+  //   )
+  // }
+
+  // <TagCloud
+  //   minSize={16}
+  //   maxSize={32}
+  //   shuffle={false}
+  //   tags={tagsCloudNext}
+  //   renderer={customTagRenderer}
+  //   onClick={(tag: any) =>
+  //     handleEvents({}, { type: 'CLICK_ON_TAG', data: { tag, navigate } })
+  //   }
+  // />
+
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      <div className='_tagCloudWrapper'>
-        <TagCloud
-          minSize={16}
-          maxSize={32}
-          shuffle={false}
-          tags={tagsCloudNext}
-          // renderer={customTagRenderer}
-          onClick={(tag: any) =>
-            handleEvents({}, { type: 'CLICK_ON_TAG', data: { tag, navigate } })
-          }
-        />
-      </div>
+      <div className='_tagCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
       <div className='_paginationNavigationWrapper'>
         <PaginationNavigation {...propsOut.paginationNavigationProps} />
       </div>

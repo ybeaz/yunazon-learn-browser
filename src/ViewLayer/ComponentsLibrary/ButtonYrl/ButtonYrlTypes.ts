@@ -4,6 +4,8 @@ import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
 export type ButtonYrlPropsType = {
   icon?: string | null // react name for the first icon inside the button
   icon2?: string | null // react name for the second icon to exchange first one
+  iconColor?: string // color for the first icon
+  icon2Color?: string // color for the second icon
   imageSrc?: string // image source for the image inside the button
   captureLeft?: string | ReactElement // capture on the left of the icon/ image
   captureRight?: string // capture on the right of the icon/ button
@@ -24,8 +26,7 @@ export type ButtonYrlPropsOutType = Record<string, any>
 /**
  * @import import { ButtonYrlType } from './ButtonYrlType'
  */
-export interface ButtonYrlComponentType
-  extends React.FunctionComponent<ButtonYrlPropsType> {
+export interface ButtonYrlComponentType extends React.FunctionComponent<ButtonYrlPropsType> {
   (props: ButtonYrlPropsType): React.ReactElement
 }
 
