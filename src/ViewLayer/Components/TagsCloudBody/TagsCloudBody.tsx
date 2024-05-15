@@ -92,10 +92,13 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
             </div>
           )}
           <div>
+            <b>{completed}</b> modules are completed.
+          </div>
+          <div>
             <b>{left}</b> modules to the next level.
           </div>
           <div>
-            <b>{nextName}</b> is the next level
+            <b>{nextName}</b> is the next level.
           </div>
         </div>
       )
