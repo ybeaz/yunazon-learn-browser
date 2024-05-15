@@ -9,10 +9,7 @@ import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import {
-  getIconNameExpertise,
-  GetIconNameExpertiseParamsType,
-} from '../../../Shared/getIconNameExpertise'
+import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
 import { getRangeOfNumbers, GetRangeOfNumbersParamsType } from '../../../Shared/getRangeOfNumbers'
 import {
   getColorsRandomDarkTheme,
@@ -58,12 +55,26 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     return tagsCloudIn.map((tagCloud: TagType, index: number) => {
       const { tagID, completed, count, value } = tagCloud
 
-      const expertiseInfo: GetIconNameExpertiseParamsType = getExpertiseInfo({ completed })
+      const {
+        level,
+        name,
+        min,
+        max,
+        iconName,
+        left,
+        levelNext: {
+          level: nextLevel,
+          name: nextName,
+          min: nextMin,
+          max: nextMax,
+          iconName: nextIconName,
+        },
+      }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
 
       const propsOut: GetTagsCloudListType = {
         buttonIconExpertiseProps: {
           classAdded: 'Button_iconExpertise',
-          icon: getIconNameExpertise({ completed }).iconName,
+          icon: iconName,
           iconColor: colorsRandomDarkTheme[index],
           action: {
             typeEvent: '',
@@ -73,10 +84,19 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         },
       }
 
-      const CustomTooltipContent = () => (
-        <div>
-          <p>This is a custom tooltip content</p>
-          <p>With multiple lines</p>
+      const TooltipContent = () => (
+        <div className='_tooltipContent'>
+          {name && (
+            <div>
+              <b>{name}</b> level of proficiency.
+            </div>
+          )}
+          <div>
+            <b>{left}</b> modules to the next level.
+          </div>
+          <div>
+            <b>{nextName}</b> is the next level
+          </div>
         </div>
       )
 
@@ -86,7 +106,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           className='_tagCloud'
           onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
         >
-          <Tooltip title={<CustomTooltipContent />}>
+          <Tooltip className='_tooltip' title={<TooltipContent />}>
             <div
               className='_tagCloudWrapper'
               style={{

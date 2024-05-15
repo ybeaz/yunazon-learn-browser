@@ -3,7 +3,7 @@
 import { consoler } from '../consoler'
 import { consolerError } from '../consolerError'
 
-import { getIconNameExpertise } from '../getIconNameExpertise'
+import { getExpertiseInfo } from '../getExpertiseInfo'
 
 const tests = [
   {
@@ -69,17 +69,17 @@ const tests = [
 ]
 
 /**
- * @Description Test to challenge function getIconNameExpertise
- * @test yarn jest getIconNameExpertise.test.ts
+ * @Description Test to challenge function getExpertiseInfo
+ * @test yarn jest getExpertiseInfo.test.ts
  *    In debugging mode:
- *       node --inspect-brk getIconNameExpertise.test.ts
+ *       node --inspect-brk getExpertiseInfo.test.ts
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  */
 describe('Algoritms', () => {
-  it.each(tests)('-- getIconNameExpertise.test', ({ isActive, params, expected }) => {
+  it.each(tests)('-- getExpertiseInfo.test', ({ isActive, params, expected }) => {
     if (isActive) {
-      let output = getIconNameExpertise(params)
-      // consoler('getIconNameExpertise.test', { output })
+      let output = getExpertiseInfo(params)
+      // consoler('getExpertiseInfo.test', { output })
 
       expect(output).toEqual(expected)
     }
