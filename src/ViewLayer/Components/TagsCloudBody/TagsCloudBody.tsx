@@ -73,8 +73,18 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
 
       const propsOut: GetTagsCloudListType = {
-        buttonIconExpertiseProps: {
-          classAdded: 'Button_iconExpertise',
+        buttonTagMdCheckProps: {
+          classAdded: 'Button_tagMdCheck',
+          icon: 'MdCheck',
+          iconColor: colorsRandomDarkTheme[index],
+          action: {
+            typeEvent: '',
+            data: {},
+          },
+          isDisplaying: true,
+        },
+        buttonTagExpertiseProps: {
+          classAdded: 'Button_tagExpertise',
           icon: iconName,
           iconColor: colorsRandomDarkTheme[index],
           action: {
@@ -88,19 +98,24 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       const TooltipContent = () => (
         <div className='_tooltipContent'>
           {name && (
-            <div>
+            <div className='_tooltipRow'>
               <b>{name}</b> level of proficiency.
             </div>
           )}
-          <div>
-            <b>{completed}</b> modules are completed.
+          <div className='_tooltipRow'>
+            <b>{completed}</b> of <b>{count}</b> modules are completed.
           </div>
-          <div>
-            <b>{left}</b> modules to the next level.
-          </div>
-          <div>
-            <b>{nextName}</b> is the next level.
-          </div>
+          {completed < count && (
+            <>
+              <div className='_tooltipRow'>
+                <b>{left}</b> modules to the next level.
+              </div>
+              <div className='_tooltipRow'>
+                <b>{nextName}</b> is the next level.
+              </div>
+            </>
+          )}
+          {completed >= count && <div className='_tooltipRow'>You finished. Congratulations.</div>}
         </div>
       )
 
@@ -118,10 +133,12 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
                 color: colorsRandomDarkTheme[index],
               }}
             >
+              {completed >= count && <ButtonYrl {...propsOut.buttonTagMdCheckProps} />}
               <span className='_spanTagName'>{value}</span>
               <span className='_spanCount'>{count}</span>
               <span className='_spanCompleted'>{completed}</span>
-              <ButtonYrl {...propsOut.buttonIconExpertiseProps} />
+
+              <ButtonYrl {...propsOut.buttonTagExpertiseProps} />
             </div>
           </Tooltip>
         </div>

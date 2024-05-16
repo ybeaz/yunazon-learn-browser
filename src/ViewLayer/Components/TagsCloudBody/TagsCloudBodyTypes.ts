@@ -20,7 +20,8 @@ export type TagsCloudBodyPropsType = Omit<
 >
 
 export type GetTagsCloudListType = {
-  buttonIconExpertiseProps: ButtonYrlPropsType
+  buttonTagMdCheckProps: ButtonYrlPropsType
+  buttonTagExpertiseProps: ButtonYrlPropsType
 }
 
 export type TagsCloudBodyPropsOutType = {
