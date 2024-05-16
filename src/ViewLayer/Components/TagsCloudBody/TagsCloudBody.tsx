@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
@@ -35,7 +36,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { tagsCloud },
+    storeStateSlice: { language, tagsCloud },
     handleEvents,
   } = props
 
@@ -134,6 +135,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
+      <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
       <div className='_tagsCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
       <div className='_paginationNavigationWrapper'>
         <PaginationNavigation {...propsOut.paginationNavigationProps} />
@@ -142,7 +144,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['tagsCloud']
+const storeStateSliceProps: string[] = ['language', 'tagsCloud']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

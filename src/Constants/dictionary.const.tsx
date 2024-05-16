@@ -7,6 +7,10 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Knowledege_tags: {
+    en: 'Knowledege tags',
+    ru: 'Теги знаний',
+  },
   All_modules: {
     en: 'All modules',
     ru: 'Все модули',

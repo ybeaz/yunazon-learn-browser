@@ -9,6 +9,7 @@ export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
+    language: RootStoreType['language']
   }
   handleEvents: HandleEventType
 }
