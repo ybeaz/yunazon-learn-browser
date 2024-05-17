@@ -46,6 +46,16 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       isDisplaying: true,
     },
     {
+      icon: 'MdOutlineVideocam',
+      captureRight: DICTIONARY.All_tags[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { navigate, pathname: '/t' },
+      },
+      isDisplaying: true,
+    },
+    {
       icon: 'MdAssignmentTurnedIn',
       captureRight: DICTIONARY.My_documents[language],
       classAdded: 'Button_sideMenuItems',

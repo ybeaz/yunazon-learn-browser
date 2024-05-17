@@ -11,6 +11,10 @@ export const DICTIONARY: IDictionary = {
     en: 'Knowledege tags',
     ru: 'Теги знаний',
   },
+  All_tags: {
+    en: 'All tags',
+    ru: 'Все теги',
+  },
   All_modules: {
     en: 'All modules',
     ru: 'Все модули',
