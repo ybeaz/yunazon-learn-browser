@@ -62,6 +62,12 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'TagsCloud',
+    path: `/t`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
+    screen: 'AcademyMatrix',
     path: `/`,
     children: [],
     errorElement: 'Error404',
