@@ -99,7 +99,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
       delay: 500,
-      contentComponentName: 'AcademyMatrix',
+      contentComponentName,
       isVisibleBlurHash: !isVisible,
     },
     loaderImageProps: {

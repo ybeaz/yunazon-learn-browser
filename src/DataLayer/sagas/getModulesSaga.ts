@@ -42,7 +42,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   let creatorIDs: string[] = []
   let learnerUserID: string = ''
 
-  if (screenActive === 'AcademyMatrix') {
+  if (screenActive === 'AcademyMatrix' || screenActive === 'ModulesPresent') {
     let sub_localStorage = getLocalStorageReadKeyObj('sub')
     sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
     learnerUserID = sub || sub_localStorage

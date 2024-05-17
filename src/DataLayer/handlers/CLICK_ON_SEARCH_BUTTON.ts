@@ -10,7 +10,11 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
     componentsState: { screenActive },
   } = getState() as RootStoreType
 
-  if (screenActive === 'AcademyMatrix' || screenActive === 'MyModules') {
+  if (
+    screenActive === 'AcademyMatrix' ||
+    screenActive === 'ModulesPresent' ||
+    screenActive === 'MyModules'
+  ) {
     dispatch(
       actionSync.SET_PAGE_CURSOR({
         paginationName: PaginationNameEnumType['pageModules'],

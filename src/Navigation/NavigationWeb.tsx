@@ -8,6 +8,7 @@ import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
+import { ModulesPresent } from '../ViewLayer/Screens/ModulesPresent/ModulesPresent'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
@@ -21,6 +22,7 @@ const SCREENS: Record<string, FunctionComponent<any>> = {
   ArticlePresent,
   AcademyAbout,
   AcademyMatrix,
+  ModulesPresent,
   AcademyPresent,
   MyDocuments,
   Profiles,

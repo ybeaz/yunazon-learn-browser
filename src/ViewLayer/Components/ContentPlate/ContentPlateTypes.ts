@@ -8,7 +8,7 @@ import { HandleEventType } from '../../../Interfaces/HandleEventType'
 export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   key: string
-  contentComponentName: string
+  contentComponentName: string | null
   capture: string
   isCompleted: boolean
   durationObj: DurationObjType

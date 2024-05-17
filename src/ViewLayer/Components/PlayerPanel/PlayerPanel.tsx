@@ -19,9 +19,7 @@ import {
  * @import import { PlayerPanel, PlayerPanelPropsType, PlayerPanelPropsOutType, PlayerPanelType } 
              from '../Components/PlayerPanel/PlayerPanel'
  */
-const PlayerPanelComponent: PlayerPanelComponentType = (
-  props: PlayerPanelComponentPropsType
-) => {
+const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelComponentPropsType) => {
   const { classAdded, storeStateSlice } = props
 
   const {
@@ -59,8 +57,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
 
   const numOfBars = 5
   const maxComplexity = 10
-  const questinsAccepted =
-    questionsTotal <= maxComplexity ? questionsTotal : maxComplexity
+  const questinsAccepted = questionsTotal <= maxComplexity ? questionsTotal : maxComplexity
   const curComplexity = (questinsAccepted * numOfBars) / maxComplexity
 
   const featureBarProps = {
@@ -74,10 +71,10 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
   }
 
   const addStyle4Capture =
-    screenType === 'AcademyMatrix' ? `_addStyle4Capture` : ''
+    screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addStyle4Capture` : ''
 
   const addSStyle4Duration =
-    screenType === 'AcademyMatrix' ? `_addSStyle4Duration` : ''
+    screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addSStyle4Duration` : ''
 
   const propsOut: PlayerPanelPropsOutType = {}
 
@@ -98,11 +95,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
         </div>
       </div>
       <div className='__buttons'>
-        {isShowingPlay ? (
-          <ButtonYrl {...buttonPlayProps} />
-        ) : (
-          <ButtonYrl {...buttonPauseProps} />
-        )}
+        {isShowingPlay ? <ButtonYrl {...buttonPlayProps} /> : <ButtonYrl {...buttonPauseProps} />}
         <ButtonYrl {...buttonStopProps} />
       </div>
       <ButtonYrl {...callForActionButtonPros} />
@@ -111,11 +104,10 @@ const PlayerPanelComponent: PlayerPanelComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> =
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(PlayerPanelComponent)
-  )
+export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(PlayerPanelComponent)
+)
 
 export type {
   PlayerPanelPropsType,
