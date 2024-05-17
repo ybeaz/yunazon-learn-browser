@@ -64,7 +64,10 @@ export type FormsType = {
   userPrev: UserType
   user: UserType
   inputCourseCreate: string
-  inputSearch: string
+  modulesSearch: string
+  documentsSearch: string
+  tagsSearch: string
+  coursesSearch: string
   tagsPick: string[]
   tagsOmit: string[]
   profileActive: {

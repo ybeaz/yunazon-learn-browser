@@ -47,7 +47,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         {},
         {
           type: 'ONCHANGE_INPUT_SEARCH',
-          data: { storeFormProp: 'inputSearch', value: '' },
+          data: { storeFormProp: 'documentsSearch', value: '' },
         }
       )
     }

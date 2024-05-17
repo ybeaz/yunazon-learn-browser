@@ -31,6 +31,7 @@ export type HeaderFrameComponentPropsType = {
     isMobileSearchInput: RootStoreType['componentsState']['isMobileSearchInput']
     language: RootStoreType['language']
     profiles: RootStoreType['profiles']
+    screenActive: RootStoreType['componentsState']['screenActive']
   }
 }
 

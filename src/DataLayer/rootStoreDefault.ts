@@ -53,19 +53,6 @@ export const userStoreDefault: UserType = {
   },
 }
 
-export const searchFormSepDefault: SearchFormSepType = {
-  selectSkillsOffered: [],
-  selectSkillsRequired: '',
-  selectCountryRequired: [],
-  selectLanguageRequired: [],
-  inputAgeFromRequired: 0,
-  inputAgeToRequired: 100,
-  selectGenderRequired: [],
-  selectMediaRequired: [],
-  inputDescriptionRequired: '',
-  selectSortBy: '',
-}
-
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: 'AcademyMatrix',
   isObjections: false,
@@ -148,7 +135,10 @@ export const componentsStateDefault: ComponentsStateType = {
 
 export const formsDefault: FormsType = {
   inputCourseCreate: '',
-  inputSearch: '',
+  modulesSearch: '',
+  tagsSearch: '',
+  coursesSearch: '',
+  documentsSearch: '',
   sendTo: '',
   sendCc: '',
   userPrev: userStoreDefault,

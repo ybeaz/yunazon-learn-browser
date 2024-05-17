@@ -29,7 +29,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
         pageDocuments: { first, offset },
       },
     },
-    forms: { inputSearch, tagsPick, tagsOmit },
+    forms: { documentsSearch, tagsPick, tagsOmit },
     profiles,
   } = stateSelected as RootStoreType
 
@@ -46,7 +46,11 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
       first,
       offset,
       learnerIDs: [learnerID],
-      searchPhrase: inputSearch,
+      searchPhrase: documentsSearch,
+      searchIn: ['module.capture', 'module.description', 'module.tags'],
+      operators: {
+        searchPhrase: 'or',
+      },
       tagsPick,
       tagsOmit,
       sort: { prop: 'dateCreated', direction: -1 },

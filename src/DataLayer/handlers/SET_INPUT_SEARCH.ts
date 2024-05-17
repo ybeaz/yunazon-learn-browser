@@ -6,19 +6,11 @@ import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
 const { dispatch, getState } = store
 
 export const SET_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
-  const { si, search, inputSearch } = getParsedUrlQuery()
-
-  const inputSearchIn = !!si
-    ? si
-    : !!search
-      ? search
-      : !!inputSearch
-        ? inputSearch
-        : undefined
+  const { si, modulesSearch } = getParsedUrlQuery()
 
   const data = {
-    storeFormProp: 'inputSearch',
-    value: inputSearchIn,
+    storeFormProp: 'modulesSearch',
+    value: modulesSearch,
   }
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 }

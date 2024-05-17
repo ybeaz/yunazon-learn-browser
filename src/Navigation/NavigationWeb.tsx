@@ -17,17 +17,17 @@ import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const SCREENS: Record<string, FunctionComponent<any>> = {
-  TagsCloud,
-  MyModules,
-  ArticlePresent,
   AcademyAbout,
   AcademyMatrix,
-  ModulesPresent,
   AcademyPresent,
-  MyDocuments,
-  Profiles,
+  ArticlePresent,
   Certificate,
   Error404,
+  ModulesPresent,
+  MyDocuments,
+  MyModules,
+  Profiles,
+  TagsCloud,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {

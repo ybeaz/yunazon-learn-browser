@@ -55,10 +55,22 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       isMobileSearchInput,
       language,
       profiles,
+      screenActive,
     },
   } = props
 
   const navigate = useNavigate()
+
+  const SCREENS_DICT: Record<string, { placeholder: string; storeFormProp: string }> = {
+    AcademyMatrix: { placeholder: 'Search modules...', storeFormProp: 'modulesSearch' },
+    AcademyPresent: { placeholder: '', storeFormProp: '' },
+    ArticlePresent: { placeholder: '', storeFormProp: '' },
+    ModulesPresent: { placeholder: 'Search modules...', storeFormProp: 'modulesSearch' },
+    MyDocuments: { placeholder: 'Search documents...', storeFormProp: 'documentsSearch' },
+    MyModules: { placeholder: 'Search my modules...', storeFormProp: 'modulesSearch' },
+    Profiles: { placeholder: '', storeFormProp: '' },
+    TagsCloud: { placeholder: 'Search tags...', storeFormProp: 'tagsSearch' },
+  }
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 
@@ -155,10 +167,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       inputProps: {
         classAdded: 'Input_search',
         type: 'text',
-        placeholder: 'Search...',
+        placeholder: SCREENS_DICT[screenActive].placeholder,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
-        storeFormProp: 'inputSearch',
+        storeFormProp: SCREENS_DICT[screenActive].storeFormProp,
       },
       buttonSubmitProps: {
         icon: 'MdSearch',
@@ -245,6 +257,7 @@ const storeStateSliceProps: string[] = [
   'isMobileSearchInput',
   'language',
   'profiles',
+  'screenActive',
 ]
 export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
   storeStateSliceProps,

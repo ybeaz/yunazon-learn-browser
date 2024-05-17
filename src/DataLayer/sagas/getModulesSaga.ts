@@ -33,7 +33,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
         pageModules: { first, offset },
       },
     },
-    forms: { inputSearch, tagsPick, tagsOmit },
+    forms: { modulesSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -78,7 +78,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   }
 
   if (learnerUserID) readModulesConnectionInput.learnerUserID = learnerUserID
-  if (inputSearch) readModulesConnectionInput.searchPhrase = inputSearch
+  if (modulesSearch) readModulesConnectionInput.searchPhrase = modulesSearch
   if (operators) readModulesConnectionInput.operators = operators
   if (!!creatorIDs?.length) readModulesConnectionInput.creatorIDs = creatorIDs
   if (!!moduleIDs?.length) readModulesConnectionInput.moduleIDs = moduleIDs

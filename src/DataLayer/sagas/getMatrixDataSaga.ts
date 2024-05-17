@@ -11,7 +11,7 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
-    const inputSearch = query?.search || ''
+    const modulesSearch = query?.modulesSearch || ''
     const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
     const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
     const first =
@@ -22,8 +22,8 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
         : 0
 
     const data = {
-      storeFormProp: 'inputSearch',
-      value: inputSearch,
+      storeFormProp: 'modulesSearch',
+      value: modulesSearch,
     }
     yield put(actionSync.SET_INPUT_TO_STORE(data))
 
