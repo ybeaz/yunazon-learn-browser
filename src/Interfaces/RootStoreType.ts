@@ -4,6 +4,7 @@ import {
   CourseType,
   DocumentType,
   ProfileType,
+  TagType,
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
   CreateModuleStageType,
@@ -30,6 +31,7 @@ export type SearchFormSepType = {
 export enum PaginationNameEnumType {
   pageModules = 'pageModules',
   pageDocuments = 'pageDocuments',
+  pageTags = 'pageTags',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
@@ -133,6 +135,7 @@ export type RootStoreType = {
     | 'avatarSrc'
     | 'avatarSize'
   >[]
+  tagsCloud: TagType[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

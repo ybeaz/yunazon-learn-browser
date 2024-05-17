@@ -24,7 +24,7 @@ export const templateModule: Record<string, any> = {
   language: [isDefined, isString],
   dateCreated: [isDefined, isNumber],
   dateUpdated: [isDefined, isNumber],
-  dateDeleted: [isNotUndefined],
+  dateDeactivated: [isNotUndefined],
   index: [isNumber],
   contentType: [isDefined, isString],
   duration: [isDefined, isString],

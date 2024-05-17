@@ -27,12 +27,12 @@ import {
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
              from '../ComponentsLibrary/'
  */
-const ButtonYrlComponent: ButtonYrlComponentType = (
-  props: ButtonYrlPropsType
-) => {
+const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) => {
   const {
     icon = undefined,
     icon2 = undefined,
+    iconColor = undefined,
+    icon2Color = undefined,
     imageSrc = undefined,
     captureLeft,
     captureRight,
@@ -51,9 +51,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   const classDisplay = isDisplaying === true ? '' : 'Button_display_none'
   const classVisible = isVisible === true ? '' : 'Button_visible_none'
 
-  const handleEventsToUse = handleEventsCustom
-    ? handleEventsCustom
-    : handleEvents
+  const handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
 
   const classTooltipsDictionary: Record<string, string> = {
     top: '_tooltipTop',
@@ -71,7 +69,9 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   const propsOut: ButtonYrlPropsOutType = {
     iconReactProps: {
       icon,
+      iconColor,
       icon2,
+      icon2Color,
       classAdded: `_in IconYrl_${classAdded}`,
     },
     imageProps: {
@@ -81,17 +81,9 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   }
 
   return (
-    <div
-      className={getClasses('ButtonYrl', [
-        classAdded,
-        classDisplay,
-        classVisible,
-      ])}
-    >
+    <div className={getClasses('ButtonYrl', [classAdded, classDisplay, classVisible])}>
       {tooltipText ? (
-        <span className={`__tooltipText ${classTooltipAdd}`}>
-          {tooltipText}
-        </span>
+        <span className={`__tooltipText ${classTooltipAdd}`}>{tooltipText}</span>
       ) : null}
 
       <button
@@ -122,9 +114,4 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
 
 export const ButtonYrl: ButtonYrlType = React.memo(ButtonYrlComponent)
 
-export type {
-  ButtonYrlPropsType,
-  ButtonYrlPropsOutType,
-  ButtonYrlComponentType,
-  ButtonYrlType,
-}
+export type { ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlComponentType, ButtonYrlType }

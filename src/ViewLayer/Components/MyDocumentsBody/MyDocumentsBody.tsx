@@ -142,7 +142,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
-      <h2 className='_screenTitle'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
+      <h2 className='_h2'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
       {getDocumentsTable(documents)}
 
       <div className='_paginationNavigationWrapper'>

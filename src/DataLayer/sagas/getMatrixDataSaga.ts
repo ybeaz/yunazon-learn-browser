@@ -5,19 +5,20 @@ import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getModules } from './getModulesSaga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
-import { paginationOffset } from '../../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     const query = getParsedUrlQueryBrowserApi()
 
     const inputSearch = query?.search || ''
-    const tagsPick = (query && query?.tagspick && query?.tagspick.split(',')) || []
-    const tagsOmit = (query && query?.tagsomit && query?.tagsomit.split(',')) || []
+    const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
+    const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
     const first =
       query && query?.[PaginationNameEnumType['pageModules']]
-        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) * paginationOffset -
-          paginationOffset
+        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
+            PAGINATION_OFFSET[PaginationNameEnumType['pageModules']] -
+          PAGINATION_OFFSET[PaginationNameEnumType['pageModules']]
         : 0
 
     const data = {

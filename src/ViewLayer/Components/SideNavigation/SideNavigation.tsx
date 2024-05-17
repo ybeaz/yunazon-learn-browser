@@ -8,14 +8,8 @@ import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
 
-import {
-  withPropsYrl,
-  ButtonYrl,
-  ButtonYrlPropsType,
-  withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
-
-import { getClasses } from '../../../Shared/getClasses'
+import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl } from '../../ComponentsLibrary/Hooks/withPropsYrl'
 
 import {
   SideNavigationComponentPropsType,
@@ -74,15 +68,11 @@ const SideNavigationComponent: SideNavigationComponentType = (
   return (
     <div
       className={`SideNavigation ${classNameAdd}`}
-      onClick={event =>
-        handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })
-      }
+      onClick={event => handleEvents(event, { typeEvent: 'SET_SIDE_NAVIGATION_LEFT' })}
     >
       <div
         className='__content'
-        onClick={event =>
-          handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })
-        }
+        onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
       >
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
@@ -95,20 +85,11 @@ const SideNavigationComponent: SideNavigationComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = [
-  'sub',
-  'language',
-  'isSideNavLeftVisible',
-]
+const storeStateSliceProps: string[] = ['sub', 'language', 'isSideNavLeftVisible']
 
 export const SideNavigation: React.FunctionComponent = withPropsYrl({
   handleEvents: handleEventsIn,
-})(
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(SideNavigationComponent)
-  )
-)
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(SideNavigationComponent)))
 
 export type {
   SideNavigationPropsType,

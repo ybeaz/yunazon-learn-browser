@@ -3,10 +3,8 @@
  * @param componentType
  * @returns
  */
-export const getContentComponentName: Function = (
-  componentType: string
-): string => {
-  const output = {
+export const getContentComponentName = (componentType: string): string | null => {
+  const output: Record<string, string> = {
     urlArbir: 'ReaderIframe',
     htmlPage: 'ReaderIframe',
     ytID: 'PlayerIframe',

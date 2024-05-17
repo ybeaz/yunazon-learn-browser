@@ -7,7 +7,7 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
-import { paginationOffset } from '../../../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
@@ -34,11 +34,12 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const firstRender = useRef(true)
 
   const query = getParsedUrlQueryBrowserApi()
-  const first =
-    query && query?.[PaginationNameEnumType['pageDocuments']]
-      ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) * paginationOffset -
-        paginationOffset
-      : 0
+  // const first =
+  //   query && query?.[PaginationNameEnumType['pageDocuments']]
+  //     ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) *
+  //         PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']] -
+  //       PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']]
+  //     : 0
 
   useEffect(() => {
     if (firstRender) {

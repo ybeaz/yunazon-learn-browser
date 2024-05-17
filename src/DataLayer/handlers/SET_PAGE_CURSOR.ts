@@ -34,9 +34,8 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
     dispatch(actionAsync.GET_MODULES.REQUEST())
   else if (paginationName === PaginationNameEnumType['pageDocuments'])
     dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+  else if (paginationName === PaginationNameEnumType['pageTags'])
+    dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
 }
 
-export const SET_PAGE_CURSOR: ActionEventType = withDebounce(
-  SET_PAGE_CURSOR_HANDLE,
-  500
-)
+export const SET_PAGE_CURSOR: ActionEventType = withDebounce(SET_PAGE_CURSOR_HANDLE, 500)

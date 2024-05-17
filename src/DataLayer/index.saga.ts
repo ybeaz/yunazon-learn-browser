@@ -1,5 +1,7 @@
 import { all, fork } from 'redux-saga/effects'
 
+import readTagsConnectionSaga from './sagas/readTagsConnectionSaga'
+import readTagsModulesSaga from './sagas/readTagsModulesSaga'
 import reateSiteMapSaga from './sagas/createSiteMapSaga'
 import createProfileSaga from './sagas/createProfileSaga'
 import createDocumentScenarioSaga from './sagas/createDocumentScenarioSaga'
@@ -32,6 +34,8 @@ import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(readTagsConnectionSaga),
+    fork(readTagsModulesSaga),
     fork(reateSiteMapSaga),
     fork(createProfileSaga),
     fork(createDocumentScenarioSaga),

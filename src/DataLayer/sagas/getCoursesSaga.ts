@@ -45,7 +45,6 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     searchPhrase: inputSearch,
     tagsPick,
     tagsOmit,
-    stagesPick: selectCoursesStageFlag(),
     sort: { prop: 'dateCreated', direction: -1 },
     isActive: true,
   }
