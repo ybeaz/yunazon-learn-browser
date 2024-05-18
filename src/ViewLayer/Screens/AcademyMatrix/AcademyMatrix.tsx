@@ -10,7 +10,7 @@ import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
+import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
 
 import {
   AcademyMatrixPropsType,
@@ -61,7 +61,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     mainFrameProps: {
       screenType,
     },
-    modulesBodyProps: {},
   }
 
   return (
@@ -80,7 +79,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <ModulesBody {...propsOut.modulesBodyProps} />
+
+        <AcademyMatrixBody />
         {/* middle-right */}
         {null}
         {/* footer */}
