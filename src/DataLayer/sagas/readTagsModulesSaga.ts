@@ -15,8 +15,6 @@ import { withDebounce } from '../../Shared/withDebounce'
  * @param params @
  */
 function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any> {
-  const { data: documentID } = params
-
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const {

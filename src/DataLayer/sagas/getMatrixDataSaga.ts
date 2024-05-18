@@ -9,6 +9,9 @@ import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
+  const tagsNum = params?.data?.tagsNum
+  const modulesNum = params?.data?.modulesNum
+
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
@@ -17,7 +20,7 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     const modulesSearch = query?.modulesSearch || ''
     const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
     const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
-    const first =
+    const firstPageModules =
       query && query?.[PaginationNameEnumType['pageModules']]
         ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
             PAGINATION_OFFSET[PaginationNameEnumType['pageModules']] -
@@ -39,14 +42,21 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageModules'],
-        first,
+        paginationName: PaginationNameEnumType['pageTags'],
+        first: 0,
       })
     )
 
-    yield getModules({ isLoaderOverlay: false })
+    yield put(
+      actionSync.SET_PAGE_CURSOR({
+        paginationName: PaginationNameEnumType['pageModules'],
+        first: firstPageModules,
+      })
+    )
 
-    yield readTagsConnection({ isLoaderOverlay: false })
+    yield getModules({ data: { isLoaderOverlay: false } })
+
+    yield readTagsConnection({ data: { isLoaderOverlay: false } })
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

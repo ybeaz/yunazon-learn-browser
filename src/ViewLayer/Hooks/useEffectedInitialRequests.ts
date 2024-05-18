@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
-import { actionAsync } from '../../DataLayer/index.action'
+import { actionSync, actionAsync, ACTIONS_SYNC, ACTIONS_ASYNC } from '../../DataLayer/index.action'
 
 export const useEffectedInitialRequests: Function = (
   requestList: string[] | any[],
@@ -15,10 +15,12 @@ export const useEffectedInitialRequests: Function = (
       Promise.all(
         requestList2.map(async (action: string | ActionReduxType) => {
           if (typeof action === 'string') {
-            await dispatch(actionAsync[action].REQUEST())
+            if (ACTIONS_SYNC.includes(action)) await dispatch(actionSync[action]())
+            else if (ACTIONS_ASYNC.includes(action)) await dispatch(actionAsync[action].REQUEST())
           } else if (typeof action !== 'string') {
             const { type = '', data } = action as ActionReduxType
-            await dispatch(actionAsync[type].REQUEST(data))
+            if (ACTIONS_SYNC.includes(type)) await dispatch(actionSync[type](data))
+            else if (ACTIONS_ASYNC.includes(type)) await dispatch(actionAsync[type].REQUEST(data))
           }
         })
       )

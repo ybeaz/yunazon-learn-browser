@@ -11,6 +11,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
+import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
 import {
   ModulesPresentPropsType,
@@ -36,7 +37,17 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
   }, [])
 
-  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA', data: { isLoaderOverlay: true } }])
+  useEffectedInitialRequests([
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
+    },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 36 },
+    },
+    { type: 'GET_MATRIX_DATA', data: { isLoaderOverlay: true } },
+  ])
   useLoadedInitialTeachContent({ isSkipping: false })
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
