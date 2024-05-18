@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
@@ -45,6 +46,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) =
     isTooltipVisibleForced = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
+    hrefTo = '',
     children,
   } = props
 
@@ -80,6 +82,25 @@ const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) =
     },
   }
 
+  const InnerLinkButtonContent = () => (
+    <>
+      {' '}
+      {captureLeft ? (
+        <div className='_in'>
+          <div className={`_capture_left`}>{captureLeft}</div>
+        </div>
+      ) : null}
+      {icon || icon2 ? <IconYrl {...propsOut.iconReactProps} /> : null}
+      {imageSrc && <ImageYrl {...propsOut.imageProps} />}
+      {captureRight ? (
+        <div className='_in'>
+          <div className={`_capture_right`}>{captureRight}</div>
+        </div>
+      ) : null}
+      {children}
+    </>
+  )
+
   return (
     <div className={getClasses('ButtonYrl', [classAdded, classDisplay, classVisible])}>
       {tooltipText ? (
@@ -93,19 +114,13 @@ const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) =
           handleEventsToUse(event, action)
         }
       >
-        {captureLeft ? (
-          <div className='_in'>
-            <div className={`_capture_left`}>{captureLeft}</div>
-          </div>
-        ) : null}
-        {icon || icon2 ? <IconYrl {...propsOut.iconReactProps} /> : null}
-        {imageSrc && <ImageYrl {...propsOut.imageProps} />}
-        {captureRight ? (
-          <div className='_in'>
-            <div className={`_capture_right`}>{captureRight}</div>
-          </div>
-        ) : null}
-        {children}
+        {hrefTo ? (
+          <NavLink className='_navLink' to={hrefTo}>
+            <InnerLinkButtonContent />
+          </NavLink>
+        ) : (
+          <InnerLinkButtonContent />
+        )}
       </button>
       {isUnderlined && <hr className='__underlined' />}
     </div>

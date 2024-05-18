@@ -46,7 +46,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       isDisplaying: true,
     },
     {
-      icon: 'MdOutlineVideocam',
+      icon: 'MdOutlineTag',
       captureRight: DICTIONARY.All_tags[language],
       classAdded: 'Button_sideMenuItems',
       action: {

@@ -1,4 +1,5 @@
 import {
+  MdOutlineTag,
   MdAddShoppingCart,
   MdArrowBackIos,
   MdArrowForwardIos,
@@ -64,6 +65,7 @@ import { GiSnake } from 'react-icons/gi'
 import { HiOutlineAcademicCap } from 'react-icons/hi'
 
 export const ICONS = {
+  MdOutlineTag,
   BsFillPersonPlusFill,
   BsLink45Deg,
   CgDarkMode,

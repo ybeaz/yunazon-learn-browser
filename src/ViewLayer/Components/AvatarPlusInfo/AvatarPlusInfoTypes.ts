@@ -12,11 +12,6 @@ export type AvatarPlusInfoPropsType = {
 }
 
 export type AvatarPlusInfoPropsOutType = {
-  linkProps: {
-    className?: string
-    to: { pathname: string } | {}
-    onClick: () => void
-  }
   imageProps: ImageYrlPropsType
 }
 
@@ -28,5 +23,4 @@ export interface AvatarPlusInfoComponentType
   (props: AvatarPlusInfoPropsType): React.ReactElement
 }
 
-export type AvatarPlusInfoType =
-  React.FunctionComponent<AvatarPlusInfoPropsType>
+export type AvatarPlusInfoType = React.FunctionComponent<AvatarPlusInfoPropsType>

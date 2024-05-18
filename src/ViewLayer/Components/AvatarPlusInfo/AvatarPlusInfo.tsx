@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
@@ -24,22 +24,7 @@ const classProp2 = {
 const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusInfoPropsType) => {
   const { classProps, pathname, handleEvents, typeEvent, imgSrc, capture, text } = props
 
-  const navigate = useNavigate()
-
   const propsOut: AvatarPlusInfoPropsOutType = {
-    linkProps: {
-      to: pathname ? { pathname } : {},
-      onClick: () => {
-        handleEvents &&
-          handleEvents(
-            {},
-            {
-              typeEvent,
-              data: { navigate, pathname, isOrigin: false },
-            }
-          )
-      },
-    },
     imageProps: {
       classAdded: '_avatarPlusInfo',
       src: imgSrc,
@@ -48,7 +33,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (props: AvatarPlusI
 
   return (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
-      <NavLink className={getClasses('_link', classProps)} {...propsOut.linkProps}>
+      <NavLink className={getClasses('_link', classProps)} to={pathname || '/'}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
           <div className='_capture'>{capture}</div>
