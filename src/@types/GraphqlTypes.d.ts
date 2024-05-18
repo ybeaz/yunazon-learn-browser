@@ -349,7 +349,7 @@ export type CreateDocumentInputType = {
     /** learner, user, student */
     learner: UpdateProfileInputType;
     /** module */
-    module: UpdateModuleInputType;
+    module: UpdateModuleForDocumentInputType;
 };
 export type CreateModuleInputType = {
     /** capture */
@@ -524,7 +524,7 @@ export type DocumentType = {
     /** learner, user, student */
     learner: ProfileType;
     /** module */
-    module: ModuleType;
+    module: ModuleForDocumentType;
 };
 export type DocumentsConnectionType = {
     __typename?: 'DocumentsConnectionType';
@@ -762,6 +762,61 @@ export type ModuleEdgeType = {
     cursor?: Maybe<Scalars['String']['output']>;
     /** module */
     node?: Maybe<ModuleType>;
+};
+export type ModuleForDocumentType = {
+    __typename?: 'ModuleForDocumentType';
+    /** capture */
+    capture: Scalars['String']['output'];
+    /** capture channel */
+    captureChannel?: Maybe<Scalars['String']['output']>;
+    /** capture playlist */
+    capturePlaylist?: Maybe<Scalars['String']['output']>;
+    /** module channelID */
+    channelID?: Maybe<Scalars['ID']['output']>;
+    /** module contentID */
+    contentID: Scalars['ID']['output'];
+    /** module content type */
+    contentType: Scalars['String']['output'];
+    /** creatorID */
+    creatorID: Scalars['ID']['output'];
+    /** created date */
+    dateCreated: Scalars['Float']['output'];
+    /** deleted date */
+    dateDeactivated?: Maybe<Scalars['Float']['output']>;
+    /** updated date */
+    dateUpdated: Scalars['Float']['output'];
+    /** description */
+    description: Scalars['String']['output'];
+    /** module duration */
+    duration: Scalars['String']['output'];
+    /** module index */
+    index?: Maybe<Scalars['Int']['output']>;
+    /** ipClient profile/ user */
+    ipClient?: Maybe<Scalars['String']['output']>;
+    /** isActive */
+    isActive: Scalars['Boolean']['output'];
+    /** isCompleted */
+    isCompleted: Scalars['Boolean']['output'];
+    /** language code */
+    language: Scalars['String']['output'];
+    /** module ID */
+    moduleID: Scalars['ID']['output'];
+    /** organizationID */
+    organizationID: Scalars['ID']['output'];
+    /** module passRate */
+    passRate?: Maybe<Scalars['Float']['output']>;
+    /** module playlistID */
+    playlistID?: Maybe<Scalars['ID']['output']>;
+    /** module questionNumber */
+    questionNumber: Scalars['Int']['output'];
+    /** meta stages: stages/ statuses/ envs */
+    stages?: Maybe<Array<Scalars['String']['output']>>;
+    /** module summary */
+    summary?: Maybe<Array<SummaryItemType>>;
+    /** meta tags: tags that characterises the content */
+    tags?: Maybe<Array<Scalars['String']['output']>>;
+    /** thumbnail image data */
+    thumbnails?: Maybe<ThumbnailsType>;
 };
 export type ModuleType = {
     __typename?: 'ModuleType';
@@ -1552,6 +1607,8 @@ export type ReadDocumentsConnectionInputType = {
     courseIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** creator IDs */
     creatorIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+    /** document IDs */
+    documentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** first: Specifies the number of items to return from the beginning of the dataset. */
     first?: InputMaybe<Scalars['Int']['input']>;
     /** isActive */
@@ -2198,7 +2255,7 @@ export type UpdateDocumentInputType = {
     /** learner, user, student */
     learner: UpdateProfileInputType;
     /** module */
-    module: UpdateModuleInputType;
+    module: UpdateModuleForDocumentInputType;
 };
 export type UpdateInfoCourseType = {
     __typename?: 'UpdateInfoCourseType';
@@ -2248,6 +2305,60 @@ export type UpdateMetaType = {
     organizationID: Scalars['ID']['output'];
     /** updateInfo */
     updateInfo?: Maybe<UpdateInfoType>;
+};
+export type UpdateModuleForDocumentInputType = {
+    /** capture */
+    capture: Scalars['String']['input'];
+    /** capture channel */
+    captureChannel?: InputMaybe<Scalars['String']['input']>;
+    /** capture playlist */
+    capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+    /** module channelID */
+    channelID?: InputMaybe<Scalars['ID']['input']>;
+    /** module contentID */
+    contentID: Scalars['ID']['input'];
+    /** module content type */
+    contentType: Scalars['String']['input'];
+    /** creatorID */
+    creatorID: Scalars['ID']['input'];
+    /** created date */
+    dateCreated: Scalars['Float']['input'];
+    /** deleted date */
+    dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
+    /** updated date */
+    dateUpdated: Scalars['Float']['input'];
+    /** description */
+    description: Scalars['String']['input'];
+    /** module duration */
+    duration: Scalars['String']['input'];
+    /** module index */
+    index?: InputMaybe<Scalars['Int']['input']>;
+    /** ipClient profile/ user */
+    ipClient?: InputMaybe<Scalars['String']['input']>;
+    /** isActive */
+    isActive?: Scalars['Boolean']['input'];
+    /** isCompleted */
+    isCompleted?: Scalars['Boolean']['input'];
+    /** language code */
+    language: Scalars['String']['input'];
+    /** module ID */
+    moduleID: Scalars['ID']['input'];
+    /** organizationID */
+    organizationID: Scalars['ID']['input'];
+    /** module passRate */
+    passRate?: InputMaybe<Scalars['Float']['input']>;
+    /** module playlistID */
+    playlistID?: InputMaybe<Scalars['ID']['input']>;
+    /** module questionNumber */
+    questionNumber?: Scalars['Int']['input'];
+    /** meta stages: stages/ statuses/ envs */
+    stages?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** module summary */
+    summary?: InputMaybe<Array<SummaryItemInputType>>;
+    /** meta tags: tags that characterises the content */
+    tags?: InputMaybe<Array<Scalars['String']['input']>>;
+    /** thumbnail image data */
+    thumbnails?: InputMaybe<ThumbnailsInputType>;
 };
 export type UpdateModuleInputType = {
     /** capture */

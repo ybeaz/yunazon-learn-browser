@@ -33,14 +33,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
 
   const firstRender = useRef(true)
 
-  const query = getParsedUrlQueryBrowserApi()
-  // const first =
-  //   query && query?.[PaginationNameEnumType['pageDocuments']]
-  //     ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) *
-  //         PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']] -
-  //       PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']]
-  //     : 0
-
   useEffect(() => {
     if (firstRender) {
       handleEvents(
@@ -51,9 +43,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } })
-
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 

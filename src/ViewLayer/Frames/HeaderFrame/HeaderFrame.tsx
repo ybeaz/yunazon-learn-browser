@@ -167,10 +167,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       inputProps: {
         classAdded: 'Input_search',
         type: 'text',
-        placeholder: SCREENS_DICT[screenActive].placeholder,
+        placeholder: SCREENS_DICT[screenActive]?.placeholder,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
-        storeFormProp: SCREENS_DICT[screenActive].storeFormProp,
+        storeFormProp: SCREENS_DICT[screenActive]?.storeFormProp,
       },
       buttonSubmitProps: {
         icon: 'MdSearch',

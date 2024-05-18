@@ -400,7 +400,7 @@ input CreateDocumentInputType {
   learner: UpdateProfileInputType!
 
   """module"""
-  module: UpdateModuleInputType!
+  module: UpdateModuleForDocumentInputType!
 }
 
 input CreateModuleInputType {
@@ -657,7 +657,7 @@ type DocumentType {
   learner: ProfileType!
 
   """module"""
-  module: ModuleType!
+  module: ModuleForDocumentType!
 }
 
 type DocumentsConnectionType {
@@ -978,6 +978,86 @@ type ModuleEdgeType {
 
   """module"""
   node: ModuleType
+}
+
+type ModuleForDocumentType {
+  """capture"""
+  capture: String!
+
+  """capture channel"""
+  captureChannel: String
+
+  """capture playlist"""
+  capturePlaylist: String
+
+  """module channelID"""
+  channelID: ID
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeactivated: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """isCompleted"""
+  isCompleted: Boolean!
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float
+
+  """module playlistID"""
+  playlistID: ID
+
+  """module questionNumber"""
+  questionNumber: Int!
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """module summary"""
+  summary: [SummaryItemType!]
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsType
 }
 
 type ModuleType {
@@ -1766,6 +1846,9 @@ input ReadDocumentsConnectionInputType {
 
   """creator IDs"""
   creatorIDs: [ID!] = []
+
+  """document IDs"""
+  documentIDs: [ID!] = []
 
   """
   first: Specifies the number of items to return from the beginning of the dataset.
@@ -2691,7 +2774,7 @@ input UpdateDocumentInputType {
   learner: UpdateProfileInputType!
 
   """module"""
-  module: UpdateModuleInputType!
+  module: UpdateModuleForDocumentInputType!
 }
 
 type UpdateInfoCourseType {
@@ -2757,6 +2840,86 @@ type UpdateMetaType {
 
   """updateInfo"""
   updateInfo: UpdateInfoType
+}
+
+input UpdateModuleForDocumentInputType {
+  """capture"""
+  capture: String!
+
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeactivated: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """isCompleted"""
+  isCompleted: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
 }
 
 input UpdateModuleInputType {
