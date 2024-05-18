@@ -1,4 +1,6 @@
 import React from 'react'
+import { TagsCloudBodyPropsType } from '../TagsCloudBody/TagsCloudBodyTypes'
+import { ModulesBodyPropsType } from '../ModulesBody/ModulesBodyTypes'
 
 export type AcademyMatrixBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -10,7 +12,10 @@ export type AcademyMatrixBodyPropsType = Omit<
   'storeStateSlice'
 >
 
-export type AcademyMatrixBodyPropsOutType = Record<string, any>
+export type AcademyMatrixBodyPropsOutType = {
+  tagsCloudBodyProps: TagsCloudBodyPropsType
+  modulesBodyProps: ModulesBodyPropsType
+}
 
 /**
  * @import import { AcademyMatrixBodyComponentPropsType, AcademyMatrixBodyPropsType, AcademyMatrixBodyPropsOutType, AcademyMatrixBodyComponentType, AcademyMatrixBodyType } from './AcademyMatrixBodyTypes'

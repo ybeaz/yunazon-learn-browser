@@ -23,15 +23,22 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
 ) => {
   const { classAdded, storeStateSlice } = props
 
-  const propsOut: AcademyMatrixBodyPropsOutType = {}
+  const propsOut: AcademyMatrixBodyPropsOutType = {
+    tagsCloudBodyProps: {
+      classAdded: 'TagsCloudBody_AcademyMatrixBody',
+    },
+    modulesBodyProps: {
+      classAdded: 'ModulesBody_AcademyMatrixBody',
+    },
+  }
 
   return (
     <div className={getClasses('AcademyMatrixBody', classAdded)}>
       <div className='_tagsCloudBodyWrapper'>
-        <TagsCloudBody />
+        <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
       </div>
       <div className='_modulesBodyWrapper'>
-        <ModulesBody />
+        <ModulesBody {...propsOut.modulesBodyProps} />
       </div>
     </div>
   )
