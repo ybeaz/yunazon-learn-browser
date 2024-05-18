@@ -19,6 +19,7 @@ import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
+  const isLoaderOverlay = params?.data?.isLoaderOverlay
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
 
@@ -86,7 +87,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   if (!!tagsOmit?.length) readModulesConnectionInput.tagsOmit = tagsOmit
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables: QueryReadModulesConnectionArgs = {
       readModulesConnectionInput,
@@ -113,7 +114,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     const pageInfo = readModulesConnection?.pageInfo
     yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getModulesSaga [77] ERROR', `${error.name}: ${error.message}`)
   }

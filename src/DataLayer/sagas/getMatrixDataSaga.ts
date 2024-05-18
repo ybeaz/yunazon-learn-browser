@@ -4,11 +4,14 @@ import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getModules } from './getModulesSaga'
+import { readTagsConnection } from './readTagsConnectionSaga'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+
     const query = getParsedUrlQueryBrowserApi()
 
     const modulesSearch = query?.modulesSearch || ''
@@ -41,7 +44,11 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       })
     )
 
-    yield getModules()
+    yield getModules({ isLoaderOverlay: false })
+
+    yield readTagsConnection({ isLoaderOverlay: false })
+
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }

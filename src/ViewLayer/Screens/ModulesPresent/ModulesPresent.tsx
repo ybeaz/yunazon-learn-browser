@@ -36,7 +36,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
   }, [])
 
-  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
+  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA', data: { isLoaderOverlay: true } }])
   useLoadedInitialTeachContent({ isSkipping: false })
 
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
