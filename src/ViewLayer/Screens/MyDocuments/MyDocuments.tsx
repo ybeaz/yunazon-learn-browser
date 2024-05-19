@@ -11,6 +11,7 @@ import { MyDocumentsBody } from '../../Components/'
 import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
 import {
   MyDocumentsComponentPropsType,
@@ -35,6 +36,8 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const screenType = ScreensEnumType['MyDocuments']
   const firstRender = useRef(true)
 
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
+
   useEffect(() => {
     if (firstRender) {
       handleEvents(
@@ -45,7 +48,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 

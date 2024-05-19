@@ -36,9 +36,7 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 
   const screenType = ScreensEnumType['Profiles']
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-  }, [])
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   const propsOut: AcademyAboutPropsOutType = {
     headerFrameProps: {

@@ -10,6 +10,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import {
   CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
@@ -41,9 +42,9 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
   const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] = useState(false)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
+  useEffect(() => {
     const isStatePendingAny = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {
         let output = false

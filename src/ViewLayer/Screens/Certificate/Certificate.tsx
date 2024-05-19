@@ -12,6 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import {
   CertificateBodyComponentProps,
@@ -47,9 +48,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
   const documentSlug = getSlug(moduleCapture)
   const documentPathName = `/d/${documentID}/${documentSlug}`
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-  }, [])
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 

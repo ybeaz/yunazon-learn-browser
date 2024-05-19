@@ -43,9 +43,9 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const articleFound =
     articles.find((article: any) => article.articleID === articleID) || articles[0]
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
+  useEffect(() => {
     if (Array.isArray(articles) && !articleFound) {
       handleEvents({}, { typeEvent: 'FIND_ARTICLE', data: articleID })
     }

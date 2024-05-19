@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react'
 import { ScreensEnumType } from '../../Interfaces/ScreensEnumType'
 
 export const Error404: React.FunctionComponent = (): ReactElement => {
-  const screenType = ScreensEnumType['TagsCloud']
+  const screenType = ScreensEnumType['Error404']
 
   return (
     <div className='Error404'>

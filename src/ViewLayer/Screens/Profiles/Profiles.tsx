@@ -32,9 +32,7 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 
   const screenType = ScreensEnumType['Profiles']
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-  }, [])
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
