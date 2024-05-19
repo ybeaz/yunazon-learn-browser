@@ -29,6 +29,8 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
   const first = pagination[paginationName]?.first || 0
   const last = first + pagination[paginationName].offset
 
+  console.info('PaginationNavigation [32]', { pagination, paginationName, first, last })
+
   const propsOut: PaginationNavigationPropsOutType = {
     buttonCoursesBackwardProps: {
       icon: 'MdArrowBackIos',
@@ -61,11 +63,10 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
   )
 }
 
-export const PaginationNavigation: PaginationNavigationType =
-  withStoreStateSelectedYrl(
-    ['pagination'],
-    React.memo(PaginationNavigationComponent)
-  )
+export const PaginationNavigation: PaginationNavigationType = withStoreStateSelectedYrl(
+  ['pagination'],
+  React.memo(PaginationNavigationComponent)
+)
 
 export type {
   PaginationNavigationPropsType,

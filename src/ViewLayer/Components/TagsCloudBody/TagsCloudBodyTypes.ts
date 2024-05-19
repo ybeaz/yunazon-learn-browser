@@ -10,6 +10,7 @@ export type TagsCloudBodyComponentPropsType = {
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
     language: RootStoreType['language']
+    screenActive: RootStoreType['componentsState']['screenActive']
     pageTags: PaginationType
   }
   handleEvents: HandleEventType

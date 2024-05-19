@@ -10,6 +10,8 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
 import {
   TagsCloudComponentPropsType,
@@ -33,11 +35,19 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   const screenType = ScreensEnumType['TagsCloud']
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-    handleEvents({}, { type: 'SET_TAGS_CLOUD_DATA' })
-    handleEvents({}, { typeEvent: 'GET_TAGS_CONNECTION' })
-  }, [])
+  useEffectedInitialRequests([
+    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+    { type: 'SET_TAGS_CLOUD_DATA' },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
+    },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 120 },
+    },
+    { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } },
+  ])
 
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {

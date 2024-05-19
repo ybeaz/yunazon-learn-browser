@@ -42,7 +42,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, tagsCloud, pageTags },
+    storeStateSlice: { language, tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
 
@@ -177,9 +177,11 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      <div className='_itemInputGroupYrl'>
-        <InputGroupYrl {...propsOut.inputGroupProps} />
-      </div>
+      {screenActive === ScreensEnumType['AcademyMatrix'] && (
+        <div className='_itemInputGroupYrl'>
+          <InputGroupYrl {...propsOut.inputGroupProps} />
+        </div>
+      )}
       <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
       <div
         className='_tagsCloudWrapper'
@@ -194,7 +196,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'tagsCloud', 'pageTags']
+const storeStateSliceProps: string[] = ['language', 'tagsCloud', 'pageTags', 'screenActive']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

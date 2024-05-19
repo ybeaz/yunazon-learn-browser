@@ -34,11 +34,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const screenType = ScreensEnumType['AcademyMatrix']
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-  }, [])
-
   useEffectedInitialRequests([
+    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     {
       type: 'SET_PAGINATION_OFFSET',
       data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },

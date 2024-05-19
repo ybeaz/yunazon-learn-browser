@@ -3,7 +3,16 @@ import { useDispatch } from 'react-redux'
 
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { actionSync, actionAsync, ACTIONS_SYNC, ACTIONS_ASYNC } from '../../DataLayer/index.action'
+import { handleEvents } from '../../DataLayer/index.handleEvents'
+import * as handleEventsAll from '../../DataLayer/handlers'
 
+/**
+ * @description useEffectedInitialRequests
+ * @comment The function consider action types to select its sourcein the following sequence:
+ * - handler actions
+ * - Sync actions
+ * - Async actions
+ */
 export const useEffectedInitialRequests: Function = (
   requestList: string[] | any[],
   triggers: any[] = []
@@ -19,7 +28,8 @@ export const useEffectedInitialRequests: Function = (
             else if (ACTIONS_ASYNC.includes(action)) await dispatch(actionAsync[action].REQUEST())
           } else if (typeof action !== 'string') {
             const { type = '', data } = action as ActionReduxType
-            if (ACTIONS_SYNC.includes(type)) await dispatch(actionSync[type](data))
+            if (Object.keys(handleEventsAll).includes(type)) await handleEvents({}, action)
+            else if (ACTIONS_SYNC.includes(type)) await dispatch(actionSync[type](data))
             else if (ACTIONS_ASYNC.includes(type)) await dispatch(actionAsync[type].REQUEST(data))
           }
         })

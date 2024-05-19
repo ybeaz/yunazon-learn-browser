@@ -34,20 +34,17 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
 
   const screenType = ScreensEnumType['ModulesPresent']
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-  }, [])
-
   useEffectedInitialRequests([
+    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     {
       type: 'SET_PAGINATION_OFFSET',
       data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
     },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 36 },
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 120 },
     },
-    { type: 'GET_MATRIX_DATA', data: { isLoaderOverlay: true } },
+    { type: 'GET_MODULES_CONNECTION', data: { isLoaderOverlay: true } },
   ])
   useLoadedInitialTeachContent({ isSkipping: false })
 
