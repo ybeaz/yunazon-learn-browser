@@ -6,15 +6,28 @@ import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStor
 const { dispatch, getState } = store
 
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
+  console.info('CLICK_ON_SEARCH_BUTTON [10]', { data })
+
   const {
     componentsState: { screenActive },
   } = getState() as RootStoreType
 
-  if (
-    screenActive === 'AcademyMatrix' ||
-    screenActive === 'ModulesPresent' ||
-    screenActive === 'MyModules'
-  ) {
+  if (screenActive === 'AcademyMatrix') {
+    if (data?.storeFormProp === 'tagsSearch') {
+      dispatch(
+        actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
+      )
+      dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+    } else if (!data || data?.storeFormProp === 'modulesSearch') {
+      dispatch(
+        actionSync.SET_PAGE_CURSOR({
+          paginationName: PaginationNameEnumType['pageModules'],
+          first: 0,
+        })
+      )
+      dispatch(actionAsync.GET_MODULES.REQUEST())
+    }
+  } else if (screenActive === 'ModulesPresent' || screenActive === 'MyModules') {
     dispatch(
       actionSync.SET_PAGE_CURSOR({
         paginationName: PaginationNameEnumType['pageModules'],

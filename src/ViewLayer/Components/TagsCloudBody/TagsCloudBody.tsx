@@ -163,17 +163,29 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         placeholder: SCREENS_DICT[ScreensEnumType['TagsCloud']].placeholder,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        dataEventOnEnter: {
+          storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
+        },
         storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
       },
       buttonSubmitProps: {
         icon: 'MdSearch',
         classAdded: 'Button_MdSearch',
-        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+        action: {
+          typeEvent: 'CLICK_ON_SEARCH_BUTTON',
+          data: { storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp },
+        },
       },
     },
   }
 
-  console.info('TagsCloudBody [153]', {})
+  let gridTemplateColumns: string = 'repeat(3, 1fr)'
+  let gridTemplateRows: string = `repeat(${pageTags.offset / 3}, 1fr)`
+
+  if (screenActive === ScreensEnumType['AcademyMatrix']) {
+    gridTemplateColumns = 'repeat(1, 1fr)'
+    gridTemplateRows = `repeat(${pageTags.offset}, 1fr)`
+  }
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
@@ -185,7 +197,10 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
       <div
         className='_tagsCloudWrapper'
-        style={{ gridTemplateRows: `repeat(${pageTags.offset}, 1fr)` }}
+        style={{
+          gridTemplateColumns,
+          gridTemplateRows,
+        }}
       >
         {getTagsCloudList(tagsCloud)}
       </div>

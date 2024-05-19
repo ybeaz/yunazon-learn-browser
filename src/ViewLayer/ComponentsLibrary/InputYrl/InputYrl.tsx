@@ -28,9 +28,7 @@ import {
  * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
              from '../ComponentsLibrary/'
  */
-const InputYrlComponent: InputYrlComponentType = (
-  props: InputYrlComponentPropsType
-) => {
+const InputYrlComponent: InputYrlComponentType = (props: InputYrlComponentPropsType) => {
   const {
     tagName = 'input',
     classAdded,
@@ -39,6 +37,7 @@ const InputYrlComponent: InputYrlComponentType = (
     placeholder,
     typeEvent,
     typeEventOnEnter,
+    dataEventOnEnter,
     storeFormGroup,
     storeFormProp,
     accept,
@@ -56,7 +55,7 @@ const InputYrlComponent: InputYrlComponentType = (
   }
 
   const action = { typeEvent, data: { storeFormGroup, storeFormProp } }
-  const actionOnEnter = { typeEvent: typeEventOnEnter }
+  const actionOnEnter = { typeEvent: typeEventOnEnter, data: dataEventOnEnter }
 
   const iconReactProps = {
     icon: 'MdClose',
@@ -129,9 +128,4 @@ export const InputYrl: InputYrlType = withStoreStateSelectedYrl(
   React.memo(InputYrlComponent)
 )
 
-export type {
-  InputYrlPropsType,
-  InputYrlPropsOutType,
-  InputYrlComponentType,
-  InputYrlType,
-}
+export type { InputYrlPropsType, InputYrlPropsOutType, InputYrlComponentType, InputYrlType }

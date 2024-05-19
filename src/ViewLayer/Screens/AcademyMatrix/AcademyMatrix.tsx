@@ -38,7 +38,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 20 },
     },
     {
       type: 'SET_PAGINATION_OFFSET',

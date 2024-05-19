@@ -1,10 +1,6 @@
 import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
-import {
-  QueryReadModulesArgs,
-  ModuleType,
-  AcademyPresentCaseEnumType,
-} from '../../@types/'
+import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -17,9 +13,7 @@ import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
-  const {
-    data: { moduleID },
-  } = params
+  const moduleID = params?.data?.moduleID
 
   let modulesNext: ModuleType[] = []
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
@@ -27,8 +21,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const modulesInProgress =
-      getLocalStorageReadKeyObj('modulesInProgress') || []
+    const modulesInProgress = getLocalStorageReadKeyObj('modulesInProgress') || []
 
     let moduleInProgres = null
     if (modulesInProgress && modulesInProgress.length)
@@ -48,8 +41,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
 
       caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
       const isAnswered = getCheckedModulesAnswered(modulesNext)
-      if (isAnswered)
-        caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
+      if (isAnswered) caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
     } else {
       /* Case: initial loading */
       const variables: QueryReadModulesArgs = {
@@ -81,9 +73,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
       yield put(actionSync.TOGGLE_START_MODULE(true))
 
       if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
-        const data = [
-          { childName: 'QuestionScores', isActive: true, childProps: {} },
-        ]
+        const data = [{ childName: 'QuestionScores', isActive: true, childProps: {} }]
         yield put(actionSync.SET_MODAL_FRAMES(data))
       }
     }
