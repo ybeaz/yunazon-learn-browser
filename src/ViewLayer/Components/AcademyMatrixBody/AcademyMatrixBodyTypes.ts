@@ -1,10 +1,13 @@
 import React from 'react'
 import { TagsCloudBodyPropsType } from '../TagsCloudBody/TagsCloudBodyTypes'
 import { ModulesBodyPropsType } from '../ModulesBody/ModulesBodyTypes'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type AcademyMatrixBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  storeStateSlice: {
+    language: RootStoreType['language']
+  }
 }
 
 export type AcademyMatrixBodyPropsType = Omit<

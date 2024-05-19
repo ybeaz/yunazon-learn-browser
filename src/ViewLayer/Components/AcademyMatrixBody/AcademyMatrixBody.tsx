@@ -5,6 +5,8 @@ import { ModulesBody } from '../ModulesBody/ModulesBody'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
+
 import {
   AcademyMatrixBodyComponentPropsType,
   AcademyMatrixBodyPropsType,
@@ -21,11 +23,15 @@ import {
 const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   props: AcademyMatrixBodyComponentPropsType
 ) => {
-  const { classAdded, storeStateSlice } = props
+  const {
+    classAdded,
+    storeStateSlice: { language },
+  } = props
 
   const propsOut: AcademyMatrixBodyPropsOutType = {
     tagsCloudBodyProps: {
       classAdded: 'TagsCloudBody_AcademyMatrixBody',
+      headline: DICTIONARY.All_tags[language],
     },
     modulesBodyProps: {
       classAdded: 'ModulesBody_AcademyMatrixBody',
@@ -44,7 +50,7 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = []
+const storeStateSliceProps: string[] = ['language']
 export const AcademyMatrixBody: AcademyMatrixBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(AcademyMatrixBodyComponent)

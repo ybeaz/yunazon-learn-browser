@@ -3,6 +3,7 @@ import { HandleEventType } from '../../../Interfaces/HandleEventType'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/'
+import { TagsCloudBodyPropsType } from '../../Components/TagsCloudBody/TagsCloudBody'
 
 export type TagsCloudComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -17,6 +18,7 @@ export type TagsCloudPropsType = Omit<TagsCloudComponentPropsType, 'storeStateSl
 export type TagsCloudPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
+  tagsCloudBodyProps: TagsCloudBodyPropsType
 }
 
 /**

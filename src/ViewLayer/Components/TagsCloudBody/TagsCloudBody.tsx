@@ -1,10 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { SCREENS_DICT } from '../../../Constants/screensDict.const'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
 import {
@@ -17,11 +16,8 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
-import { getRangeOfNumbers, GetRangeOfNumbersParamsType } from '../../../Shared/getRangeOfNumbers'
-import {
-  getColorsRandomDarkTheme,
-  GetColorsRandomDarkThemeParamsType,
-} from '../../../Shared/getColorsRandomDarkTheme'
+import { getRangeOfNumbers } from '../../../Shared/getRangeOfNumbers'
+import { getColorsRandomDarkTheme } from '../../../Shared/getColorsRandomDarkTheme'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
@@ -42,6 +38,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const {
     classAdded,
+    headline,
     storeStateSlice: { language, tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
@@ -190,12 +187,18 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      {screenActive === ScreensEnumType['AcademyMatrix'] && (
-        <div className='_itemInputGroupYrl'>
-          <InputGroupYrl {...propsOut.inputGroupProps} />
-        </div>
+      {screenActive === ScreensEnumType['AcademyMatrix'] ? (
+        <>
+          <div className='_inputGroupYrlWrapper'>
+            <InputGroupYrl {...propsOut.inputGroupProps} />
+          </div>
+          <NavLink className='_headlineNavLink' to={'/t'}>
+            <h2 className='_h2'>{headline}</h2>
+          </NavLink>
+        </>
+      ) : (
+        <h2 className='_h2'>{headline}</h2>
       )}
-      <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
       <div
         className='_tagsCloudWrapper'
         style={{

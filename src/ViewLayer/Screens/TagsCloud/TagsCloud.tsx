@@ -69,6 +69,9 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
     mainFrameProps: {
       screenType: 'TagsCloud',
     },
+    tagsCloudBodyProps: {
+      headline: DICTIONARY.Knowledege_tags[language],
+    },
   }
 
   return (
@@ -78,7 +81,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
       {/* middle-left */}
       {null}
       {/* middle-main */}
-      <TagsCloudBody />
+      <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
       {/* middle-right */}
       {null}
       {/* footer */}

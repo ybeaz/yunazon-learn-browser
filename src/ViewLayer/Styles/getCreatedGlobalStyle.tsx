@@ -260,6 +260,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
     }
 
+    .TagsCloudBody ._headlineNavLink,
     .ant-tooltip-content ._tooltipContent ._tooltipRow,
     .Button_ForgetPassword ._in,
     .Button_SignUp ._in,

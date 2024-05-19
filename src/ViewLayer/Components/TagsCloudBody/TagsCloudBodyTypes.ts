@@ -7,6 +7,7 @@ import { PaginationType } from '../../../Interfaces/'
 
 export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  headline: string
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
     language: RootStoreType['language']

@@ -1,7 +1,12 @@
 .TagsCloudBody {
-  display: grid;
-  padding-top: 2rem;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+
+  ._inputGroupYrlWrapper {
+    margin-left: -0.5rem;
+  }
 
   ._h2 {
     display: flex;
@@ -23,6 +28,7 @@
 
     ._tagCloud {
       display: flex;
+      overflow: scroll;
 
       ._tagCloudWrapper {
         display: flex;
@@ -57,7 +63,17 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
-    padding: 2rem 1rem;
+    width: 100vw;
+    padding: 0rem 1rem;
+
+    ._inputGroupYrlWrapper {
+      margin-left: 0;
+      width: 100vw;
+
+      .InputGroupYrl ._inputWrapper {
+        width: 85%;
+      }
+    }
 
     ._tagsCloudWrapper {
       grid-template-columns: repeat(1, 1fr);
@@ -69,7 +85,16 @@
 }
 
 .TagsCloudBody_AcademyMatrixBody {
-  display: grid;
+  gap: 1rem;
+
+  ._headlineNavLink {
+    ._h2 {
+      display: flex;
+      align-self: flex-start;
+      text-transform: capitalize;
+      padding-bottom: 0;
+    }
+  }
 
   ._tagsCloudWrapper {
     display: grid;
