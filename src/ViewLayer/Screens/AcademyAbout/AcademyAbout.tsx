@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -33,8 +34,10 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
     storeStateSlice: { language },
   } = props
 
+  const screenType = ScreensEnumType['Profiles']
+
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
   }, [])
 
   const propsOut: AcademyAboutPropsOutType = {

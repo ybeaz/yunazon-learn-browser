@@ -8,6 +8,7 @@ import {
   RootStoreType,
   PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
+import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
 
 import { PAGINATION_OFFSET } from '../Constants/pagination.const'
 
@@ -54,7 +55,7 @@ export const userStoreDefault: UserType = {
 }
 
 export const componentsStateDefault: ComponentsStateType = {
-  screenActive: 'AcademyMatrix',
+  screenActive: ScreensEnumType['AcademyMatrix'],
   isObjections: false,
   isSummary: true,
   isConfetti: false,

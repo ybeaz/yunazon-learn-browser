@@ -11,6 +11,7 @@ import {
 } from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
+import { ScreensEnumType } from './ScreensEnumType'
 
 export { CreateModuleStagesEnumType, CreateModuleStatusEnumType }
 export type { CreateModuleStageType }
@@ -37,7 +38,7 @@ export enum PaginationNameEnumType {
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
-  screenActive: string
+  screenActive: ScreensEnumType
   isObjections: boolean
   isSummary: boolean
   isConfetti: boolean

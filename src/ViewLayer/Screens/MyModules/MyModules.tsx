@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
@@ -36,11 +37,12 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
     handleEvents,
   } = props
 
+  const screenType = ScreensEnumType['MyModules']
   const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] = useState(false)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyModules' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
 
     const isStatePendingAny = Object.values(CreateModuleStagesEnumType).reduce(
       (accum: boolean, item: CreateModuleStagesEnumType) => {

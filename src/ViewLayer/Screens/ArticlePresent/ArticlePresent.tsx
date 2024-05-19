@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
@@ -35,6 +36,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
     storeStateSlice: { articles, language },
   } = props
 
+  const screenType = ScreensEnumType['ArticlePresent']
   const params = useParams()
   const articleID = params?.articleID
 
@@ -42,7 +44,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
     articles.find((article: any) => article.articleID === articleID) || articles[0]
 
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'ArticlePresent' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
 
     if (Array.isArray(articles) && !articleFound) {
       handleEvents({}, { typeEvent: 'FIND_ARTICLE', data: articleID })

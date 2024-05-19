@@ -66,12 +66,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       },
     }
 
-    console.info('readTagsConnectionSaga [71]', {
-      offset,
-      params,
-      variables,
-    })
-
     const readTagsConnection: any = yield getResponseGraphqlAsync(
       {
         variables,

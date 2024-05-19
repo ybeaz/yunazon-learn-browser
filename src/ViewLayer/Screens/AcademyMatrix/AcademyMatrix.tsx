@@ -1,6 +1,7 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
@@ -31,7 +32,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     handleEvents,
   } = props
 
-  const screenType = 'AcademyMatrix'
+  const screenType = ScreensEnumType['AcademyMatrix']
 
   useEffect(() => {
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })

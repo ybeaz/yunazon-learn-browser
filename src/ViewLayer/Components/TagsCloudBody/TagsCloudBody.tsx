@@ -2,11 +2,17 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { SCREENS_DICT } from '../../../Constants/screensDict.const'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  ButtonYrl,
+  InputGroupYrl,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
@@ -36,7 +42,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, tagsCloud },
+    storeStateSlice: { language, tagsCloud, pageTags },
     handleEvents,
   } = props
 
@@ -147,13 +153,40 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   }
 
   const propsOut: TagsCloudBodyPropsOutType = {
-    paginationNavigationProps: { paginationName: PaginationNameEnumType['pageTags'] },
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageTags'],
+    },
+    inputGroupProps: {
+      inputProps: {
+        classAdded: 'Input_search',
+        type: 'text',
+        placeholder: SCREENS_DICT[ScreensEnumType['TagsCloud']].placeholder,
+        typeEvent: 'ONCHANGE_INPUT_SEARCH',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
+      },
+      buttonSubmitProps: {
+        icon: 'MdSearch',
+        classAdded: 'Button_MdSearch',
+        action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
+      },
+    },
   }
+
+  console.info('TagsCloudBody [153]', {})
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
+      <div className='_itemInputGroupYrl'>
+        <InputGroupYrl {...propsOut.inputGroupProps} />
+      </div>
       <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
-      <div className='_tagsCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
+      <div
+        className='_tagsCloudWrapper'
+        style={{ gridTemplateRows: `repeat(${pageTags.offset}, 1fr)` }}
+      >
+        {getTagsCloudList(tagsCloud)}
+      </div>
       <div className='_paginationNavigationWrapper'>
         <PaginationNavigation {...propsOut.paginationNavigationProps} />
       </div>
@@ -161,7 +194,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'tagsCloud']
+const storeStateSliceProps: string[] = ['language', 'tagsCloud', 'pageTags']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
@@ -31,6 +32,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
     handleEvents,
   } = props
 
+  const screenType = ScreensEnumType['MyDocuments']
   const firstRender = useRef(true)
 
   useEffect(() => {
@@ -43,7 +45,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 

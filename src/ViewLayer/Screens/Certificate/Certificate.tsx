@@ -3,6 +3,7 @@ import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { DocumentType } from '../../../@types/index'
@@ -42,8 +43,13 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
     },
   } = documentFound
 
+  const screenType = ScreensEnumType['Certificate']
   const documentSlug = getSlug(moduleCapture)
   const documentPathName = `/d/${documentID}/${documentSlug}`
+
+  useEffect(() => {
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
+  }, [])
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 

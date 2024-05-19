@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
-// import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
+import { SCREENS_DICT } from '../../../Constants/screensDict.const'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
@@ -60,17 +60,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
   } = props
 
   const navigate = useNavigate()
-
-  const SCREENS_DICT: Record<string, { placeholder: string; storeFormProp: string }> = {
-    AcademyMatrix: { placeholder: 'Search modules...', storeFormProp: 'modulesSearch' },
-    AcademyPresent: { placeholder: '', storeFormProp: '' },
-    ArticlePresent: { placeholder: '', storeFormProp: '' },
-    ModulesPresent: { placeholder: 'Search modules...', storeFormProp: 'modulesSearch' },
-    MyDocuments: { placeholder: 'Search documents...', storeFormProp: 'documentsSearch' },
-    MyModules: { placeholder: 'Search my modules...', storeFormProp: 'modulesSearch' },
-    Profiles: { placeholder: '', storeFormProp: '' },
-    TagsCloud: { placeholder: 'Search tags...', storeFormProp: 'tagsSearch' },
-  }
 
   const createCourseQuiz = DICTIONARY.createCourseQuiz[language]
 

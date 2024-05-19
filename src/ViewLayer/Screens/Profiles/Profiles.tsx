@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
@@ -29,8 +30,10 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
     storeStateSlice: { language },
   } = props
 
+  const screenType = ScreensEnumType['Profiles']
+
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Profiles' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
   }, [])
 
   const propsOut: ProfilesPropsOutType = {

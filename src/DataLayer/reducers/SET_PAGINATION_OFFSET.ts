@@ -13,8 +13,6 @@ export const SET_PAGINATION_OFFSET: ReducerType = (
   }
   componentsStateNext.pagination[paginationName].offset = offset
 
-  console.info('SET_PAGINATION_OFFSET reducer [16]', { data })
-
   const storeNext = { ...store, componentsState: componentsStateNext }
   return storeNext
 }

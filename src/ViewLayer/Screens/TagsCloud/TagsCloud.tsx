@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
@@ -30,8 +31,10 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
     handleEvents,
   } = props
 
+  const screenType = ScreensEnumType['TagsCloud']
+
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'TagsCloud' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
     handleEvents({}, { type: 'SET_TAGS_CLOUD_DATA' })
     handleEvents({}, { typeEvent: 'GET_TAGS_CONNECTION' })
   }, [])
