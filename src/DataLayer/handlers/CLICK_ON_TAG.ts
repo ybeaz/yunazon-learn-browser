@@ -18,7 +18,7 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate }: any
     })
   )
 
-  GO_LINK_PATH({}, { navigate, pathname: `/m`, isOrigin: false })
+  if (navigate) GO_LINK_PATH({}, { navigate, pathname: `/m`, isOrigin: false })
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsPick',

@@ -46,7 +46,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     handleEvents,
   } = props
 
-  const navigate = useNavigate()
+  let navigate: any = useNavigate()
+  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
 
   const getTagsCloudList = (tagsCloudIn: TagType[]) => {
     const range = getRangeOfNumbers({
