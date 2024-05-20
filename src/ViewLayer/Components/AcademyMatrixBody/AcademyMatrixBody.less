@@ -5,6 +5,7 @@
   ._tagsCloudBodyWrapper {
     display: flex;
     flex: 1;
+    min-width: 25vw;
   }
 
   ._modulesBodyWrapper {
@@ -23,7 +24,12 @@
   @media @phone, @phone-strict {
     flex-direction: column;
 
+    ._tagsCloudBodyWrapper {
+      flex: 1;
+    }
+
     ._modulesBodyWrapper {
+      flex: 1;
       padding-left: 0;
     }
   }
