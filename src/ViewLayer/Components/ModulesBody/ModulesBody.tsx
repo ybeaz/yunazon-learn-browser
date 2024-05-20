@@ -80,7 +80,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
       {screenActive === ScreensEnumType['AcademyMatrix'] ? (
-        <NavLink className='_headlineNavLink' to={'/t'}>
+        <NavLink className='_headlineNavLink' to={'/m'}>
           <h2 className='_h2'>{headline}</h2>
         </NavLink>
       ) : (

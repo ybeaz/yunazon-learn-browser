@@ -260,6 +260,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
     }
 
+    .ModulesBody_AcademyMatrixBody ._headlineNavLink,
     .TagsCloudBody ._headlineNavLink,
     .ant-tooltip-content ._tooltipContent ._tooltipRow,
     .Button_ForgetPassword ._in,
