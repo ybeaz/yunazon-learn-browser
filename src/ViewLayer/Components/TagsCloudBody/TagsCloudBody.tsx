@@ -182,7 +182,9 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   if (screenActive === ScreensEnumType['AcademyMatrix']) {
     gridTemplateColumns = 'repeat(1, 1fr)'
-    gridTemplateRows = `repeat(${pageTags.offset}, 1fr)`
+
+    let rowsNum = tagsCloud.length >= pageTags.offset ? pageTags.offset : tagsCloud.length
+    gridTemplateRows = `repeat(${rowsNum}, 1fr)`
   }
 
   return (
@@ -208,9 +210,11 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       >
         {getTagsCloudList(tagsCloud)}
       </div>
-      <div className='_paginationNavigationWrapper'>
-        <PaginationNavigation {...propsOut.paginationNavigationProps} />
-      </div>
+      {pageTags.offset <= tagsCloud.length && (
+        <div className='_paginationNavigationWrapper'>
+          <PaginationNavigation {...propsOut.paginationNavigationProps} />
+        </div>
+      )}
     </div>
   )
 }
