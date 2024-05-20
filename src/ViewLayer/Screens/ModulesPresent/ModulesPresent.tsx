@@ -70,7 +70,9 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
     mainFrameProps: {
       screenType,
     },
-    modulesBodyProps: {},
+    modulesBodyProps: {
+      headline: DICTIONARY['All_interactive_videos'][language],
+    },
   }
 
   return (

@@ -15,9 +15,9 @@ export const DICTIONARY: IDictionary = {
     en: 'All tags',
     ru: 'Все теги',
   },
-  All_modules: {
-    en: 'All modules',
-    ru: 'Все модули',
+  All_interactive_videos: {
+    en: 'All interactive videos',
+    ru: 'Все интерактивные видео',
   },
   Date_of_creation: {
     en: 'Date of creation',

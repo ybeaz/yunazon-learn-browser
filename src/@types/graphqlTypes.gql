@@ -1277,7 +1277,7 @@ input OperatorsDocumentsInputType {
   """operator for contentIDs"""
   contentID: String = null
 
-  """operator for courses ID"""
+  """operator for course ID"""
   courseID: String = null
 
   """operator for creator IDs"""
@@ -1285,6 +1285,9 @@ input OperatorsDocumentsInputType {
 
   """operator for creator IDs"""
   creatorProfileID: String = null
+
+  """operator for document ID"""
+  documentID: String = null
 
   """operator for language code"""
   language: String = null

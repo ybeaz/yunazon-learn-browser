@@ -1,14 +1,15 @@
 .ContentPlate {
+  --plate-width: 21rem;
+
   display: flex;
-  padding: 0.5rem;
-  width: 20rem;
-  height: 18rem; // fit-content;
+  width: var(--plate-width);
+  height: auto;
   overflow: hidden;
 
   .__shield {
     position: absolute;
-    width: 20rem;
-    height: inherit;
+    width: var(--plate-width);
+    height: 18rem;
     cursor: pointer;
   }
 

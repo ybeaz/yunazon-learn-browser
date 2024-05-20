@@ -39,7 +39,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   const {
     classAdded,
     headline,
-    storeStateSlice: { language, tagsCloud, pageTags, screenActive },
+    storeStateSlice: { tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
 
@@ -219,7 +219,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'tagsCloud', 'pageTags', 'screenActive']
+const storeStateSliceProps: string[] = ['tagsCloud', 'pageTags', 'screenActive']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

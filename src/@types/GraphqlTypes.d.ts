@@ -1118,12 +1118,14 @@ export type ObjectionType = {
 export type OperatorsDocumentsInputType = {
     /** operator for contentIDs */
     contentID?: InputMaybe<Scalars['String']['input']>;
-    /** operator for courses ID */
+    /** operator for course ID */
     courseID?: InputMaybe<Scalars['String']['input']>;
     /** operator for creator IDs */
     creatorID?: InputMaybe<Scalars['String']['input']>;
     /** operator for creator IDs */
     creatorProfileID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for document ID */
+    documentID?: InputMaybe<Scalars['String']['input']>;
     /** operator for language code */
     language?: InputMaybe<Scalars['String']['input']>;
     /** operator for learner IDs */

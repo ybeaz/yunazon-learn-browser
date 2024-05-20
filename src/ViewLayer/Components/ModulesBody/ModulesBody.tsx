@@ -1,5 +1,7 @@
 import React, { ReactElement, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { ModuleType } from '../../../@types/GraphqlTypes'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
@@ -26,6 +28,7 @@ import {
 const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyComponentPropsType) => {
   const {
     classAdded,
+    headline,
     storeStateSlice: { screenActive, durationMultiplier, modules, isLoadedGlobalVars },
   } = props
 
@@ -76,7 +79,13 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
-      {' '}
+      {screenActive === ScreensEnumType['AcademyMatrix'] ? (
+        <NavLink className='_headlineNavLink' to={'/t'}>
+          <h2 className='_h2'>{headline}</h2>
+        </NavLink>
+      ) : (
+        <h2 className='_h2'>{headline}</h2>
+      )}
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>

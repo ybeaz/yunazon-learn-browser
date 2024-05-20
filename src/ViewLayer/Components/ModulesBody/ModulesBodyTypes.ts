@@ -4,6 +4,7 @@ import { RootStoreType } from '../../../Interfaces/'
 
 export type ModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  headline: string
   storeStateSlice: {
     durationMultiplier: RootStoreType['scorm']['durationMultiplier']
     modules: RootStoreType['modules']

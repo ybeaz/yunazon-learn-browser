@@ -1,5 +1,14 @@
 .ModulesBody {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  ._h2 {
+    display: flex;
+    align-self: flex-start;
+    text-transform: capitalize;
+    padding-bottom: 1rem;
+  }
 
   @media @large {
   }
@@ -12,5 +21,14 @@
 }
 
 .ModulesBody_AcademyMatrixBody {
-  display: flex;
+  gap: 1rem;
+
+  ._headlineNavLink {
+    ._h2 {
+      display: flex;
+      align-self: flex-start;
+      text-transform: capitalize;
+      padding-bottom: 0;
+    }
+  }
 }

@@ -10,7 +10,6 @@ export type TagsCloudBodyComponentPropsType = {
   headline: string
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
-    language: RootStoreType['language']
     screenActive: RootStoreType['componentsState']['screenActive']
     pageTags: PaginationType
   }
