@@ -1,4 +1,4 @@
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, FormsType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
 import {
@@ -13,17 +13,15 @@ export const SET_INPUT_TO_STORE: ReducerType = (store: RootStoreType, data: any)
 
   const { forms } = store
 
-  let formsNext = { ...forms }
+  let formsNext: any = { ...forms }
   if (storeFormGroup && storeFormProp && value !== undefined)
     formsNext = { ...forms, [storeFormGroup]: { [storeFormProp]: value } }
   else if (storeFormProp && value !== undefined) formsNext = { ...forms, [storeFormProp]: value }
 
-  if (storeFormProp === 'modulesSearch') {
-    const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-      searchParamsName: 'modulesSearch',
-      searchParamsValue: formsNext.modulesSearch,
-    }
-    getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: storeFormProp,
+    searchParamsValue: formsNext[storeFormProp],
   }
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
   return { ...store, forms: formsNext }
 }

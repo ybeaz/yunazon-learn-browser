@@ -17,7 +17,10 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
     const query = getParsedUrlQueryBrowserApi()
 
-    const modulesSearch = query?.modulesSearch || ''
+    const search: any = {
+      modulesSearch: query?.modulesSearch || '',
+      tagsSearch: query?.tagsSearch || '',
+    }
     const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
     const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
     const firstPageModules =
@@ -27,11 +30,15 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
           PAGINATION_OFFSET[PaginationNameEnumType['pageModules']]
         : 0
 
-    const data = {
-      storeFormProp: 'modulesSearch',
-      value: modulesSearch,
+    Object.keys(search).forEach(searchQuery => {})
+
+    for (const searchQueryName in search) {
+      const data = {
+        storeFormProp: searchQueryName,
+        value: search[searchQueryName],
+      }
+      yield put(actionSync.SET_INPUT_TO_STORE(data))
     }
-    yield put(actionSync.SET_INPUT_TO_STORE(data))
 
     yield put(
       actionSync.SET_TAGS_STATE({

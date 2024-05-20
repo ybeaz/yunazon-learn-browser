@@ -6,8 +6,6 @@ import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStor
 const { dispatch, getState } = store
 
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
-  console.info('CLICK_ON_SEARCH_BUTTON [10]', { data })
-
   const {
     componentsState: { screenActive },
   } = getState() as RootStoreType
