@@ -56,6 +56,7 @@ export const userStoreDefault: UserType = {
 
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
+  tagsSearchForModules: null,
   isObjections: false,
   isSummary: true,
   isConfetti: false,

@@ -13,19 +13,13 @@ const { dispatch } = store
 export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate }: any) => {
   dispatch(
     actionAsync.GET_MODULES.REQUEST({
-      operators: { moduleID: 'and' },
       moduleIDs: tagCloud.moduleIDs,
     })
   )
 
+  console.info('CLICK_ON_TAG [31]', { tagCloud, navigate })
+
   if (navigate) GO_LINK_PATH({}, { navigate, pathname: `/m`, isOrigin: false })
-
-  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-    searchParamsName: 'tagsPick',
-    searchParamsValue: tagCloud.value,
-  }
-
-  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
 
   dispatch(
     actionSync.SET_PAGE_CURSOR({

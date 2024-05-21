@@ -5,6 +5,7 @@ import {
   QueryReadModulesConnectionArgs,
 } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
+import { ModuleType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
@@ -19,9 +20,10 @@ import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
-  const isLoaderOverlay = params?.data?.isLoaderOverlay
+  const isLoaderOverlay = params?.data?.isLoaderOverlay || false
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
+  const isWithinModuleIDs = params?.data?.isWithinModuleIDs || false
 
   yield delay(1000)
 
@@ -35,6 +37,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       },
     },
     forms: { modulesSearch, tagsPick, tagsOmit },
+    modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -62,7 +65,6 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   const readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
     offset,
-    operators: { searchPhrase: 'or', tagPick: 'and' },
     searchIn: [
       'capture',
       'contentID',
@@ -79,12 +81,41 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   }
 
   if (learnerUserID) readModulesConnectionInput.learnerUserID = learnerUserID
-  if (modulesSearch) readModulesConnectionInput.searchPhrase = modulesSearch
+  if (modulesSearch) {
+    readModulesConnectionInput.searchPhrase = modulesSearch
+    readModulesConnectionInput.operators = { searchPhrase: 'or' }
+  }
   if (operators) readModulesConnectionInput.operators = operators
   if (!!creatorIDs?.length) readModulesConnectionInput.creatorIDs = creatorIDs
-  if (!!moduleIDs?.length) readModulesConnectionInput.moduleIDs = moduleIDs
-  if (!!tagsPick?.length) readModulesConnectionInput.tagsPick = tagsPick
-  if (!!tagsOmit?.length) readModulesConnectionInput.tagsOmit = tagsOmit
+  if (!!moduleIDs?.length) {
+    readModulesConnectionInput.moduleIDs = moduleIDs
+    readModulesConnectionInput.first = 0
+    readModulesConnectionInput.offset = moduleIDs.length + 1
+    readModulesConnectionInput.operators = {
+      ...readModulesConnectionInput.operators,
+      moduleID: 'and',
+    }
+  }
+  if (isWithinModuleIDs) {
+    const modulesIDsFromModules = modules.map((module: ModuleType) => module.moduleID)
+    readModulesConnectionInput.moduleIDs = modulesIDsFromModules
+    readModulesConnectionInput.first = 0
+    readModulesConnectionInput.offset = modulesIDsFromModules.length
+    readModulesConnectionInput.operators = {
+      ...readModulesConnectionInput.operators,
+      moduleID: 'and',
+    }
+  }
+  if (!!tagsPick?.length) {
+    readModulesConnectionInput.tagsPick = tagsPick
+    readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
+  }
+  if (!!tagsOmit?.length) {
+    readModulesConnectionInput.tagsOmit = tagsOmit
+    readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
+  }
+
+  console.info('getModulesSaga [109]', { tagsPick, readModulesConnectionInput })
 
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

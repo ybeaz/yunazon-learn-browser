@@ -12,6 +12,7 @@ const { dispatch } = store
 
 export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
   dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'modulesSearch', value: '' }))
+  dispatch(actionSync.SET_TAGS_STATE({ tagsPick: [], tagsOmit: [] }))
 
   dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true }))
   ;['modulesSearch'].forEach((searchParamsName: string) => {

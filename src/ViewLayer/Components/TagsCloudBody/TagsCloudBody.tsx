@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
@@ -41,6 +42,9 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     storeStateSlice: { tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
+
+  let navigate: any = useNavigate()
+  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
 
   const getTagsCloudList = (tagsCloudIn: TagType[]) => {
     const range = getRangeOfNumbers({
@@ -123,7 +127,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         <div
           key={tagID}
           className='_tagCloud'
-          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud } })}
+          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
         >
           <Tooltip className='_tooltip' title={<TooltipContent />}>
             <div

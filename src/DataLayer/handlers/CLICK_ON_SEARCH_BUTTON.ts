@@ -1,4 +1,5 @@
 import { store } from '../store'
+import { ModuleType } from '../../@types/'
 import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
@@ -8,31 +9,33 @@ const { dispatch, getState } = store
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
   const {
     componentsState: { screenActive },
+    modules,
   } = getState() as RootStoreType
 
   if (screenActive === 'AcademyMatrix') {
-    if (data?.storeFormProp === 'tagsSearch') {
-      dispatch(
-        actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
-      )
-      dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
-    } else if (!data || data?.storeFormProp === 'modulesSearch') {
+    if (!data || data?.storeFormProp === 'modulesSearch') {
       dispatch(
         actionSync.SET_PAGE_CURSOR({
           paginationName: PaginationNameEnumType['pageModules'],
           first: 0,
         })
       )
-      dispatch(actionAsync.GET_MODULES.REQUEST())
+      dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true, isWithinModuleIDs: true }))
+    } else if (data?.storeFormProp === 'tagsSearch') {
+      dispatch(
+        actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
+      )
+      dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
     }
   } else if (screenActive === 'ModulesPresent' || screenActive === 'MyModules') {
+    const moduleIDs = modules.map((module: ModuleType) => module.moduleID)
     dispatch(
       actionSync.SET_PAGE_CURSOR({
         paginationName: PaginationNameEnumType['pageModules'],
         first: 0,
       })
     )
-    dispatch(actionAsync.GET_MODULES.REQUEST())
+    dispatch(actionAsync.GET_MODULES.REQUEST({ moduleIDs }))
   } else if (screenActive === 'MyDocuments') {
     dispatch(
       actionSync.SET_PAGE_CURSOR({

@@ -79,11 +79,9 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
-      {screenActive === ScreensEnumType['AcademyMatrix'] && (
-        <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
-          {headline}
-        </h2>
-      )}
+      <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
+        {headline}
+      </h2>
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
