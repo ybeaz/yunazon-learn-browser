@@ -1,5 +1,4 @@
 import React from 'react'
-import { useNavigate, NavLink } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
@@ -42,9 +41,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     storeStateSlice: { tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
-
-  let navigate: any = useNavigate()
-  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
 
   const getTagsCloudList = (tagsCloudIn: TagType[]) => {
     const range = getRangeOfNumbers({
@@ -127,7 +123,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         <div
           key={tagID}
           className='_tagCloud'
-          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
+          onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud } })}
         >
           <Tooltip className='_tooltip' title={<TooltipContent />}>
             <div
@@ -194,9 +190,9 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           <div className='_inputGroupYrlWrapper'>
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
-          <NavLink className='_headlineNavLink' to={'/t'}>
-            <h2 className='_h2'>{headline}</h2>
-          </NavLink>
+          <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
+            {headline}
+          </h2>
         </>
       ) : (
         <h2 className='_h2'>{headline}</h2>

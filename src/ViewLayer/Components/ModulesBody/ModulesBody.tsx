@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { ModuleType } from '../../../@types/GraphqlTypes'
@@ -10,7 +9,7 @@ import { getContentComponentName } from '../../../Shared/getContentComponentName
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   ModulesBodyComponentPropsType,
@@ -29,6 +28,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   const {
     classAdded,
     headline,
+    handleEvents,
     storeStateSlice: { screenActive, durationMultiplier, modules, isLoadedGlobalVars },
   } = props
 
@@ -79,12 +79,10 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
-      {screenActive === ScreensEnumType['AcademyMatrix'] ? (
-        <NavLink className='_headlineNavLink' to={'/m'}>
-          <h2 className='_h2'>{headline}</h2>
-        </NavLink>
-      ) : (
-        <h2 className='_h2'>{headline}</h2>
+      {screenActive === ScreensEnumType['AcademyMatrix'] && (
+        <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
+          {headline}
+        </h2>
       )}
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
@@ -104,9 +102,8 @@ const storeStateSliceProps: string[] = [
   'modules',
   'isLoadedGlobalVars',
 ]
-export const ModulesBody: ModulesBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ModulesBodyComponent)
+export const ModulesBody: ModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesBodyComponent))
 )
 
 export type {
