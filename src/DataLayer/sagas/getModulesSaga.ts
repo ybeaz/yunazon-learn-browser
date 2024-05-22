@@ -90,7 +90,10 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     readModulesConnectionInput.operators = { searchPhrase: 'or' }
   }
   if (operators) readModulesConnectionInput.operators = operators
-  if (!!creatorIDs?.length) readModulesConnectionInput.creatorIDs = creatorIDs
+  if (!!creatorIDs?.length) {
+    readModulesConnectionInput.creatorIDs = creatorIDs
+    readModulesConnectionInput.operators = { creatorID: 'and' }
+  }
   if (!!moduleIDs?.length) {
     readModulesConnectionInput.moduleIDs = moduleIDs
     readModulesConnectionInput.first = 0

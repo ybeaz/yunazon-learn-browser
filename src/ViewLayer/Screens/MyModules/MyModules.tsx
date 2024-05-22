@@ -4,18 +4,12 @@ import { useDispatch } from 'react-redux'
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
-import { actionAsync } from '../../../DataLayer/index.action'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import {
-  CreateModuleStatusEnumType,
-  CreateModuleStagesEnumType,
-  CreateModuleStageType,
-} from '../../../Interfaces/'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
@@ -102,7 +96,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
     )
 
     if (sub && (isStateTodoAll || isStateSuccessAll)) {
-      dispatch(actionAsync.GET_MODULES.REQUEST())
+      handleEvents({}, { type: 'GET_MODULES_CONNECTION' })
     }
     // TODO: to research why courses couses cycling call on prod
   }, [JSON.stringify({ sub, createModuleStages, modulesLen: modules.length })])
