@@ -5,6 +5,10 @@ import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getModules } from './getModulesSaga'
 import { readTagsConnection } from './readTagsConnectionSaga'
+import {
+  getSetUrlQueryBrowserApi,
+  GetSetUrlQueryBrowserApiParamsType,
+} from '../../Shared/getSetUrlQueryBrowserApi'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
@@ -14,38 +18,18 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
-    const query = getParsedUrlQueryBrowserApi()
-
-    const search: any = {
-      modulesSearch: query?.modulesSearch || '',
-      tagsSearch: query?.tagsSearch || '',
-    }
-    const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
-    const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
-    const firstPageModules =
-      query && query?.[PaginationNameEnumType['pageModules']]
-        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
-            PAGINATION_OFFSET[PaginationNameEnumType['pageModules']] -
-          PAGINATION_OFFSET[PaginationNameEnumType['pageModules']]
-        : 0
-
-    Object.keys(search).forEach(searchQuery => {})
-
-    for (const searchQueryName in search) {
-      const data = {
-        storeFormProp: searchQueryName,
-        value: search[searchQueryName],
+    ;[
+      'modulesSearch',
+      'tagsSearch',
+      PaginationNameEnumType['pageTags'],
+      PaginationNameEnumType['pageModules'],
+    ].forEach((searchParamsName: string) => {
+      const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+        searchParamsName,
+        searchParamsValue: '',
       }
-      yield put(actionSync.SET_INPUT_TO_STORE(data))
-    }
-
-    yield put(
-      actionSync.SET_TAGS_STATE({
-        tagsPick,
-        tagsOmit,
-      })
-    )
+      getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+    })
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
@@ -57,7 +41,7 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     yield put(
       actionSync.SET_PAGE_CURSOR({
         paginationName: PaginationNameEnumType['pageModules'],
-        first: firstPageModules,
+        first: 0,
       })
     )
 

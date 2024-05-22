@@ -8,7 +8,7 @@ const { dispatch, getState } = store
 
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
   const {
-    componentsState: { screenActive },
+    componentsState: { screenActive, modulesSearchApplied, tagsSearchForModules },
     modules,
     forms: { modulesSearch },
   } = getState() as RootStoreType
@@ -21,7 +21,8 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
           first: 0,
         })
       )
-      dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true, isWithinModuleIDs: true }))
+
+      dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true, isWithinModuleIDs: false }))
       dispatch(
         actionSync.SET_COMPONENTS_STATE({
           componentsStateProp: 'modulesSearchApplied',

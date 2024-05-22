@@ -2,6 +2,8 @@ import React from 'react'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { IconLabelWithClosePropsType } from '../IconLabelWithClose/IconLabelWithClose'
+import { IconYrlPropsType } from '../../ComponentsLibrary/'
 
 export type ModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -23,6 +25,9 @@ export type ModulesBodyPropsType = Omit<
 >
 
 export type ModulesBodyPropsOutType = {
+  iconArrowForwardProps: IconYrlPropsType
+  iconLabelWithCloseTagProps: IconLabelWithClosePropsType
+  iconLabelWithCloseSearchProps: IconLabelWithClosePropsType
   paginationNavigationProps: PaginationNavigationPropsType
 }
 

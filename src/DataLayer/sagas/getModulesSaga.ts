@@ -32,14 +32,18 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   const {
     componentsState: {
       screenActive,
+      modulesSearchApplied,
+      tagsSearchForModules,
       pagination: {
         pageModules: { first, offset },
       },
     },
-    forms: { modulesSearch, tagsPick, tagsOmit },
+    forms: { modulesSearch, tagsPick: tagsPickIn, tagsOmit },
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
+
+  const tagsPick = tagsSearchForModules ? [tagsSearchForModules] : tagsPickIn
 
   let profiles = stateSelected.profiles
 
@@ -115,7 +119,11 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
 
-  console.info('getModulesSaga [109]', { tagsPick, readModulesConnectionInput })
+  console.info('getModulesSaga [109]', {
+    readModulesConnectionInput,
+    modulesSearchApplied,
+    tagsSearchForModules,
+  })
 
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))

@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { ModuleType } from '../../../@types/GraphqlTypes'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
@@ -11,6 +11,7 @@ import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
+import { IconLabelWithClose } from '../IconLabelWithClose/IconLabelWithClose'
 import {
   ModulesBodyComponentPropsType,
   ModulesBodyPropsType,
@@ -79,6 +80,29 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   }
 
   const propsOut: ModulesBodyPropsOutType = {
+    iconLabelWithCloseTagProps: {
+      classAdded: '_iconLabelWithCloseTag',
+      icon: 'MdTag',
+      capture: tagsSearchForModules || '',
+      action: {
+        type: 'CLICK_ON_TAG',
+        data: { tagCloud: { value: null } },
+      },
+    },
+    iconLabelWithCloseSearchProps: {
+      classAdded: '_iconLabelWithCloseSearch',
+      icon: 'MdSearch',
+      capture: modulesSearchApplied || '',
+      action: {
+        type: 'ONCHANGE_INPUT_SEARCH',
+        data: { storeFormProp: 'modulesSearch', value: '' },
+      },
+    },
+    iconArrowForwardProps: {
+      classAdded: 'Icon_ArrowForward',
+      icon: 'MdArrowForwardIos',
+      isDisplaying: true,
+    },
     paginationNavigationProps: {
       paginationName: PaginationNameEnumType['pageModules'],
     },
@@ -92,14 +116,14 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         </h2>
         {tagsSearchForModules && (
           <div className='_tagsSearchForModulesWrapper'>
-            <div className='_tagsSearchForModulesIcon'>{' > '}</div>
-            <div className='_tagsSearchForModulesValue'>{tagsSearchForModules}</div>
+            <IconYrl {...propsOut.iconArrowForwardProps} />
+            <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
           </div>
         )}
         {modulesSearchApplied && (
           <div className='_modulesSearchWrapper'>
-            <div className='_modulesSearchIcon'>{' > '}</div>
-            <div className='_modulesSearchValue'>{modulesSearchApplied}</div>
+            <IconYrl {...propsOut.iconArrowForwardProps} />
+            <IconLabelWithClose {...propsOut.iconLabelWithCloseSearchProps} />
           </div>
         )}
       </div>

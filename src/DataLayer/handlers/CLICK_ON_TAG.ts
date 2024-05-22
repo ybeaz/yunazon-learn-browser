@@ -10,18 +10,17 @@ import {
 
 const { dispatch } = store
 
-export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate }: any) => {
-  dispatch(
-    actionAsync.GET_MODULES.REQUEST({
-      moduleIDs: tagCloud.moduleIDs,
-      isLoaderOverlay: true,
-    })
-  )
-
+export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null }: any) => {
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'tagsSearchForModules',
       value: tagCloud.value,
+    })
+  )
+
+  dispatch(
+    actionAsync.GET_MODULES.REQUEST({
+      isLoaderOverlay: true,
     })
   )
 
