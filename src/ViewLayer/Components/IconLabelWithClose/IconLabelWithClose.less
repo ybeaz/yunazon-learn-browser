@@ -1,32 +1,30 @@
 .IconLabelWithClose {
   display: flex;
+  border-radius: 6px;
 
   .Icon_IconLabelWithClose {
     display: flex;
+    align-items: center;
+    padding: 0 0.15rem 0 0.25rem;
 
-    ._in {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: row;
-      ._capture_left {
-        padding: 0 0.3rem 0 0;
-      }
-      ._icon {
-        height: 1.5rem;
-        width: 1.5rem;
-      }
+    ._icon {
+      height: 1.25rem;
+      width: 1.25rem;
     }
   }
 
   ._capture {
     display: flex;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    line-height: 1.75rem;
   }
 
   .Button_IconLabelWithClose {
     display: flex;
     position: relative;
     background-color: inherit;
+    padding: 0.15rem 0.25rem 0 0.15rem;
 
     ._navLink {
       display: flex;
@@ -107,8 +105,8 @@
           line-height: 1.1;
         }
         ._icon {
-          height: 1.5rem;
-          width: 1.5rem;
+          height: 1rem;
+          width: 1rem;
         }
         ._capture_right {
           padding: 0 0 0 0.3rem;

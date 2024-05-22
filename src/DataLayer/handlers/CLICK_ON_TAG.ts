@@ -24,8 +24,6 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
     })
   )
 
-  console.info('CLICK_ON_TAG [31]', { tagCloud, navigate })
-
   if (navigate) GO_LINK_PATH({}, { navigate, pathname: `/m`, isOrigin: false })
 
   dispatch(

@@ -331,6 +331,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorActiveDarker', medial, darker)};
     }
 
+    .IconLabelWithClose,
     .Button_MdForward .__button {
       color:  ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};

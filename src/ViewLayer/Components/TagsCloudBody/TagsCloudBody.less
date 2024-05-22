@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  width: 100%;
 
   ._inputGroupYrlWrapper {
     margin-left: -0.5rem;
@@ -27,7 +28,7 @@
 
     ._tagCloud {
       display: flex;
-      overflow: scroll;
+      width: 100%;
 
       ._tagCloudWrapper {
         display: flex;
@@ -62,17 +63,7 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
-    width: 100vw;
     padding: 0rem 1rem;
-
-    ._inputGroupYrlWrapper {
-      margin-left: 0;
-      width: 100vw;
-
-      .InputGroupYrl ._inputWrapper {
-        width: 85%;
-      }
-    }
 
     ._tagsCloudWrapper {
       grid-template-columns: repeat(1, 1fr);
@@ -101,9 +92,22 @@
 
   ._tagsCloudWrapper {
     display: grid;
-    // grid-template-columns: repeat(3, 1fr); See in the component
-    // grid-template-rows: repeat(128, 1fr); See in the component
-    width: auto;
+    grid-template-columns: 1fr;
+    height: 67vh;
+    overflow-y: scroll;
+    width: 100%;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._tagsCloudWrapper {
+      height: 25vh;
+    }
   }
 }
 

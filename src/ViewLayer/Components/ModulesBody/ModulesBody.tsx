@@ -82,7 +82,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   const propsOut: ModulesBodyPropsOutType = {
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',
-      icon: 'MdTag',
+      icon: 'MdOutlineTag',
       capture: tagsSearchForModules || '',
       action: {
         type: 'CLICK_ON_TAG',
@@ -115,13 +115,13 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
           {headline}
         </h2>
         {tagsSearchForModules && (
-          <div className='_tagsSearchForModulesWrapper'>
+          <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
           </div>
         )}
         {modulesSearchApplied && (
-          <div className='_modulesSearchWrapper'>
+          <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseSearchProps} />
           </div>

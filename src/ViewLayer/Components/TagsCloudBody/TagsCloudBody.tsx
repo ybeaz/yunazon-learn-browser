@@ -194,9 +194,11 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           <div className='_inputGroupYrlWrapper'>
             <InputGroupYrl {...propsOut.inputGroupProps} />
           </div>
-          <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
-            {headline}
-          </h2>
+          <div className='_headlineWrapper'>
+            <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
+              {headline}
+            </h2>
+          </div>
         </>
       ) : (
         <h2 className='_h2'>{headline}</h2>

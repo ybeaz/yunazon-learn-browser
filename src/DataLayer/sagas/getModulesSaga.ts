@@ -122,12 +122,6 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
 
-  console.info('getModulesSaga [109]', {
-    readModulesConnectionInput,
-    modulesSearchApplied,
-    tagsSearchForModules,
-  })
-
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
