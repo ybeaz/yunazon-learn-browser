@@ -40,6 +40,7 @@ export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 export type ComponentsStateType = {
   screenActive: ScreensEnumType
   tagsSearchForModules: string | null
+  modulesSearchApplied: string | null
   isObjections: boolean
   isSummary: boolean
   isConfetti: boolean

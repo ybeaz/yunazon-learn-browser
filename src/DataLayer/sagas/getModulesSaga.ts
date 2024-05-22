@@ -100,7 +100,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     const modulesIDsFromModules = modules.map((module: ModuleType) => module.moduleID)
     readModulesConnectionInput.moduleIDs = modulesIDsFromModules
     readModulesConnectionInput.first = 0
-    readModulesConnectionInput.offset = modulesIDsFromModules.length
+    readModulesConnectionInput.offset = modulesIDsFromModules.length + 1
     readModulesConnectionInput.operators = {
       ...readModulesConnectionInput.operators,
       moduleID: 'and',

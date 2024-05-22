@@ -23,7 +23,6 @@ export const SET_INPUT_TO_STORE: ReducerType = (store: RootStoreType, data: any)
     searchParamsValue: formsNext[storeFormProp],
   }
 
-  console.info('SET_INPUT_TO_STORE reducer[26]', { storeFormGroup, storeFormProp, value })
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
   return { ...store, forms: formsNext }
 }

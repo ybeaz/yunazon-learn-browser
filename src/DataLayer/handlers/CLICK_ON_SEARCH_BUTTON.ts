@@ -10,6 +10,7 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
   const {
     componentsState: { screenActive },
     modules,
+    forms: { modulesSearch },
   } = getState() as RootStoreType
 
   if (screenActive === 'AcademyMatrix') {
@@ -21,6 +22,12 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
         })
       )
       dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true, isWithinModuleIDs: true }))
+      dispatch(
+        actionSync.SET_COMPONENTS_STATE({
+          componentsStateProp: 'modulesSearchApplied',
+          value: modulesSearch,
+        })
+      )
     } else if (data?.storeFormProp === 'tagsSearch') {
       dispatch(
         actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
@@ -36,6 +43,12 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
       })
     )
     dispatch(actionAsync.GET_MODULES.REQUEST({ moduleIDs }))
+    dispatch(
+      actionSync.SET_COMPONENTS_STATE({
+        componentsStateProp: 'modulesSearchApplied',
+        value: modulesSearch,
+      })
+    )
   } else if (screenActive === 'MyDocuments') {
     dispatch(
       actionSync.SET_PAGE_CURSOR({

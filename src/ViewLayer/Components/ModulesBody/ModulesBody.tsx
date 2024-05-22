@@ -29,7 +29,14 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     classAdded,
     headline,
     handleEvents,
-    storeStateSlice: { screenActive, durationMultiplier, modules, isLoadedGlobalVars },
+    storeStateSlice: {
+      screenActive,
+      durationMultiplier,
+      modules,
+      isLoadedGlobalVars,
+      tagsSearchForModules,
+      modulesSearchApplied,
+    },
   } = props
 
   useEffect(() => {
@@ -79,9 +86,23 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
-      <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
-        {headline}
-      </h2>
+      <div className='_h2Wrapper'>
+        <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
+          {headline}
+        </h2>
+        {tagsSearchForModules && (
+          <div className='_tagsSearchForModulesWrapper'>
+            <div className='_tagsSearchForModulesIcon'>{' > '}</div>
+            <div className='_tagsSearchForModulesValue'>{tagsSearchForModules}</div>
+          </div>
+        )}
+        {modulesSearchApplied && (
+          <div className='_modulesSearchWrapper'>
+            <div className='_modulesSearchIcon'>{' > '}</div>
+            <div className='_modulesSearchValue'>{modulesSearchApplied}</div>
+          </div>
+        )}
+      </div>
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
@@ -99,6 +120,8 @@ const storeStateSliceProps: string[] = [
   'durationMultiplier',
   'modules',
   'isLoadedGlobalVars',
+  'tagsSearchForModules',
+  'modulesSearchApplied',
 ]
 export const ModulesBody: ModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesBodyComponent))

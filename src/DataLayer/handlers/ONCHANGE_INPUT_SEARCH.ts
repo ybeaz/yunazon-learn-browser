@@ -17,5 +17,13 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
   }
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 
-  if (!value) CLICK_ON_SEARCH_BUTTON({}, { storeFormProp })
+  if (!value) {
+    CLICK_ON_SEARCH_BUTTON({}, { storeFormProp })
+
+    let componentsStateProp: string | null = null
+    if (storeFormProp === 'tagsSearch') componentsStateProp = 'tagsSearchForModules'
+    if (storeFormProp === 'modulesSearch') componentsStateProp = 'modulesSearchApplied'
+
+    if (componentsStateProp) dispatch(actionSync.SET_COMPONENTS_STATE({ componentsStateProp }))
+  }
 }

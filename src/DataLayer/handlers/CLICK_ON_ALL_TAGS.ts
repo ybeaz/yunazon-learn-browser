@@ -12,6 +12,14 @@ const { dispatch } = store
 
 export const CLICK_ON_ALL_TAGS: ActionEventType = event => {
   dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'tagsSearch', value: '' }))
+
+  // dispatch(
+  //   actionSync.SET_COMPONENTS_STATE({
+  //     componentsStateProp: 'tagsSearchForModules',
+  //     value: null,
+  //   })
+  // )
+
   dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST({ isLoaderOverlay: true }))
   ;['tagsPick', 'tagsSearch'].forEach((searchParamsName: string) => {
     const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {

@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 export const ACTIONS_SYNC: string[] = [
+  'SET_COMPONENTS_STATE',
   'SET_PAGINATION_OFFSET',
   'SET_TAGS_CLOUD',
   'TOGGLE_IS_MOBILE_SEARCH_INPUT',

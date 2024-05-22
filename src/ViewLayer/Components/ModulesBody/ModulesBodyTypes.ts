@@ -11,6 +11,8 @@ export type ModulesBodyComponentPropsType = {
     modules: RootStoreType['modules']
     isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
     screenActive: RootStoreType['componentsState']['screenActive']
+    tagsSearchForModules: RootStoreType['componentsState']['tagsSearchForModules']
+    modulesSearchApplied: RootStoreType['componentsState']['modulesSearchApplied']
   }
   handleEvents: HandleEventType
 }

@@ -14,6 +14,14 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate }: any
   dispatch(
     actionAsync.GET_MODULES.REQUEST({
       moduleIDs: tagCloud.moduleIDs,
+      isLoaderOverlay: true,
+    })
+  )
+
+  dispatch(
+    actionSync.SET_COMPONENTS_STATE({
+      componentsStateProp: 'tagsSearchForModules',
+      value: tagCloud.value,
     })
   )
 
