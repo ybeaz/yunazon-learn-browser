@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
@@ -33,6 +35,8 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
   } = props
 
   const screenType = ScreensEnumType['MyModules']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const [isShowModuleCreateProgress, setIsShowModuleCreateProgress] = useState(false)
   const dispatch = useDispatch()
 
@@ -132,6 +136,15 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
 
   return (
     <div className={getClasses('MyModules', classAdded)}>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />

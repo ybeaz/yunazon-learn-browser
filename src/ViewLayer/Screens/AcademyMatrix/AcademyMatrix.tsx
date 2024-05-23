@@ -33,6 +33,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   } = props
 
   const screenType = ScreensEnumType['AcademyMatrix']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
@@ -48,8 +49,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   ])
 
   useLoadedInitialTeachContent({ isSkipping: false })
-
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {

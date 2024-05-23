@@ -41,6 +41,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const screenType = ScreensEnumType['ArticlePresent']
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+
   const params = useParams()
   const articleID = params?.articleID
 

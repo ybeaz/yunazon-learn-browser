@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -10,6 +11,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
@@ -34,6 +36,8 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   } = props
 
   const screenType = ScreensEnumType['TagsCloud']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
@@ -75,18 +79,29 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   }
 
   return (
-    <MainFrame {...propsOut.mainFrameProps}>
-      {/* header */}
-      <HeaderFrame {...propsOut.headerFrameProps} />
-      {/* middle-left */}
-      {null}
-      {/* middle-main */}
-      <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
-      {/* middle-right */}
-      {null}
-      {/* footer */}
-      <FooterFrame>{null}</FooterFrame>
-    </MainFrame>
+    <div className={getClasses('TagsCloud')}>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
+      <MainFrame {...propsOut.mainFrameProps}>
+        {/* header */}
+        <HeaderFrame {...propsOut.headerFrameProps} />
+        {/* middle-left */}
+        {null}
+        {/* middle-main */}
+        <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
+        {/* middle-right */}
+        {null}
+        {/* footer */}
+        <FooterFrame>{null}</FooterFrame>
+      </MainFrame>
+    </div>
   )
 }
 

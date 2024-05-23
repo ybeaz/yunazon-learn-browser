@@ -33,6 +33,8 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
   } = props
 
   const screenType = ScreensEnumType['ModulesPresent']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
@@ -47,8 +49,6 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
     { type: 'GET_MODULES_CONNECTION', data: { isLoaderOverlay: true } },
   ])
   useLoadedInitialTeachContent({ isSkipping: false })
-
-  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
 
   const propsOut: ModulesPresentPropsOutType = {
     headerFrameProps: {
@@ -83,7 +83,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
         <meta name='viewport' content='width=device-width,initial-scale=1' />
         <meta name='google' content='notranslate' />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrlSite} />
+        <link rel='canonical' href={canonicalUrl} />
         <meta name='description' content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>

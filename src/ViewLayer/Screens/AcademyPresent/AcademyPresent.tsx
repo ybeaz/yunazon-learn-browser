@@ -62,6 +62,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const params = useParams()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+
   const screenType = ScreensEnumType['AcademyPresent']
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
