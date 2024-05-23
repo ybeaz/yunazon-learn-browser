@@ -131,7 +131,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
   }
 
   return (
-    <div className={getClasses('ContentPlate')} key={moduleID} id={moduleID}>
+    <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         {isCompleted ? (
           <div className='_isCompleted'>
