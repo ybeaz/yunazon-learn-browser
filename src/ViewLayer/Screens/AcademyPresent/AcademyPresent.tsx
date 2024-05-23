@@ -256,6 +256,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             <html lang={language} />
             <meta charSet='utf-8' />
             <meta name='viewport' content='width=device-width,initial-scale=1' />
+            <meta name='google' content='notranslate' />
             <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
             <meta name='description' content={description} />

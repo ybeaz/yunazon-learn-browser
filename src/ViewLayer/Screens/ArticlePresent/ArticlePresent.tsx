@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -12,6 +13,7 @@ import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
+import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
@@ -37,6 +39,8 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   } = props
 
   const screenType = ScreensEnumType['ArticlePresent']
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const params = useParams()
   const articleID = params?.articleID
 
@@ -78,6 +82,15 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 
   return (
     <div className={getClasses('ArticlePresent', classAdded)} id={articleID}>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />
