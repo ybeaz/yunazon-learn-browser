@@ -3,7 +3,6 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 import { ButtonYrlPropsType, InputGroupYrlPropsType } from '../../ComponentsLibrary/'
-import { PaginationType } from '../../../Interfaces/'
 
 export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -11,7 +10,7 @@ export type TagsCloudBodyComponentPropsType = {
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
     screenActive: RootStoreType['componentsState']['screenActive']
-    pageTags: PaginationType
+    pageTags: RootStoreType['componentsState']['pagination']['pageTags']
   }
   handleEvents: HandleEventType
 }

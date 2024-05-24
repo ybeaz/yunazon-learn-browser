@@ -15,6 +15,7 @@ export type ModulesBodyComponentPropsType = {
     screenActive: RootStoreType['componentsState']['screenActive']
     tagsSearchForModules: RootStoreType['componentsState']['tagsSearchForModules']
     modulesSearchApplied: RootStoreType['componentsState']['modulesSearchApplied']
+    pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }
   handleEvents: HandleEventType
 }

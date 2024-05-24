@@ -33,8 +33,6 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
     profiles,
   } = stateSelected as RootStoreType
 
-  console.info('getDocumentsSaga [36]', { sub, profiles })
-
   if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
 
   const { profileIDs } = getUserProfileData({ sub, screenActive, profiles })
@@ -50,6 +48,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
       searchIn: ['module.capture', 'module.description', 'module.tags'],
       operators: {
         searchPhrase: 'or',
+        learnerProfileID: 'and',
       },
       tagsPick,
       tagsOmit,

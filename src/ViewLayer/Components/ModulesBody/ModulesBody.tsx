@@ -37,6 +37,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       isLoadedGlobalVars,
       tagsSearchForModules,
       modulesSearchApplied,
+      pageModules,
     },
   } = props
 
@@ -130,9 +131,11 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
-          <div className='_paginationNavigationWrapper'>
-            <PaginationNavigation {...propsOut.paginationNavigationProps} />
-          </div>
+          {pageModules.offset <= modules.length && (
+            <div className='_paginationNavigationWrapper'>
+              <PaginationNavigation {...propsOut.paginationNavigationProps} />
+            </div>
+          )}
         </div>
       ) : null}
     </div>
@@ -146,6 +149,7 @@ const storeStateSliceProps: string[] = [
   'isLoadedGlobalVars',
   'tagsSearchForModules',
   'modulesSearchApplied',
+  'pageModules',
 ]
 export const ModulesBody: ModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesBodyComponent))
