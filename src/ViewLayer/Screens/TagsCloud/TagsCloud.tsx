@@ -12,6 +12,8 @@ import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
@@ -39,16 +41,24 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
+  const { width } = getSizeWindow()
+  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
+  if (width <= 480) {
+    pageModulesOffset = 9
+    pageTagsOffset = 36
+  }
+
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     { type: 'SET_TAGS_CLOUD_DATA' },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
     },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 120 },
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
     },
     { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } },
   ])

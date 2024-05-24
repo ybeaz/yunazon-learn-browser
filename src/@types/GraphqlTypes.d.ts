@@ -1169,6 +1169,12 @@ export type OperatorsModulesInputType = {
     /** operator for tags: tags that characterises the content to pick from the set of documents */
     tagPick?: InputMaybe<Scalars['String']['input']>;
 };
+export type OperatorsProfilesInputType = {
+    /** operator for courses ID */
+    profileID?: InputMaybe<Scalars['String']['input']>;
+    /** operator for module IDs */
+    userID?: InputMaybe<Scalars['String']['input']>;
+};
 export type OperatorsTagsInputType = {
     /** operator for contentIDs */
     contentID?: InputMaybe<Scalars['String']['input']>;
@@ -1697,6 +1703,8 @@ export type ReadProfilesConnectionInputType = {
     isActive?: InputMaybe<Scalars['Boolean']['input']>;
     /** offset */
     offset?: InputMaybe<Scalars['Int']['input']>;
+    /** option to setup operator for arguments */
+    operators?: InputMaybe<OperatorsProfilesInputType>;
     /** profile IDs */
     profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
     /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */

@@ -1364,6 +1364,14 @@ input OperatorsModulesInputType {
   tagPick: String = null
 }
 
+input OperatorsProfilesInputType {
+  """operator for courses ID"""
+  profileID: String = null
+
+  """operator for module IDs"""
+  userID: String = null
+}
+
 input OperatorsTagsInputType {
   """operator for contentIDs"""
   contentID: String = null
@@ -1999,6 +2007,9 @@ input ReadProfilesConnectionInputType {
 
   """offset"""
   offset: Int
+
+  """option to setup operator for arguments"""
+  operators: OperatorsProfilesInputType = null
 
   """profile IDs"""
   profileIDs: [ID!] = []

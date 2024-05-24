@@ -8,7 +8,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { ModuleType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, FragmentEnumType } from '../../../../yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
@@ -133,6 +133,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       {
         variables,
         resolveGraphqlName: 'readModulesConnection',
+        fragmentName: FragmentEnumType['ModuleTypeForMartix'],
       },
       {
         ...getHeadersAuthDict(),
@@ -141,9 +142,10 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       }
     )
 
-    let modulesNext: any = getChainedResponsibility(readModulesConnection)
-      .exec(getMappedConnectionToItems, { printRes: false })
-      .exec(getPreparedModules).result
+    let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
+      getMappedConnectionToItems,
+      { printRes: false }
+    ).result
 
     yield put(actionSync.SET_MODULES(modulesNext))
 

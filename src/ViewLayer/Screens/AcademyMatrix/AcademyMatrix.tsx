@@ -36,6 +36,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const { width } = getSizeWindow()
   let pageModulesOffset = PAGINATION_OFFSET['pageModules']
@@ -90,7 +91,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         <meta name='viewport' content='width=device-width,initial-scale=1' />
         <meta name='google' content='notranslate' />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrlSite} />
+        <link rel='canonical' href={canonicalUrl} />
         <meta name='description' content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>

@@ -8,11 +8,13 @@ import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialReques
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
 
 import {
   ModulesPresentPropsType,
@@ -36,15 +38,23 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
+  const { width } = getSizeWindow()
+  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
+  if (width <= 480) {
+    pageModulesOffset = 9
+    pageTagsOffset = 24
+  }
+
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: 10 },
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
     },
     {
       type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: 120 },
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
     },
     { type: 'GET_MODULES_CONNECTION', data: { isLoaderOverlay: true } },
   ])
