@@ -12,12 +12,10 @@ import { getResponseGraphqlAsync, FragmentEnumType } from '../../../../yourails_
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getUserProfileData } from '../../Shared/getUserProfileData'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false
@@ -32,7 +30,6 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   const {
     componentsState: {
       screenActive,
-      modulesSearchApplied,
       tagsSearchForModules,
       pagination: {
         pageModules: { first, offset },
@@ -47,24 +44,9 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
 
   let profiles = stateSelected.profiles
 
-  let creatorIDs: string[] = []
-  let learnerUserID: string = ''
+  if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
 
-  if (screenActive === 'AcademyMatrix' || screenActive === 'ModulesPresent') {
-    let sub_localStorage = getLocalStorageReadKeyObj('sub')
-    sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
-    learnerUserID = sub || sub_localStorage
-  } else if (screenActive === 'MyModules' && sub) {
-    const profile = getArrayItemByProp({
-      arr: profiles,
-      propName: 'userID',
-      propValue: sub,
-    })
-
-    creatorIDs = [profile?.profileID]
-  } else if (screenActive === 'MyModules' && !sub) {
-    return
-  }
+  const { profileIDs, learnerUserID } = getUserProfileData({ sub, screenActive, profiles })
 
   const readModulesConnectionInput: ReadModulesConnectionInputType = {
     first,
@@ -90,8 +72,8 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     readModulesConnectionInput.operators = { searchPhrase: 'or' }
   }
   if (operators) readModulesConnectionInput.operators = operators
-  if (!!creatorIDs?.length) {
-    readModulesConnectionInput.creatorIDs = creatorIDs
+  if (!!profileIDs?.length) {
+    readModulesConnectionInput.creatorIDs = profileIDs
     readModulesConnectionInput.operators = { creatorID: 'and' }
   }
   if (!!moduleIDs?.length) {
