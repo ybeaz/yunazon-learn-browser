@@ -119,6 +119,10 @@ const ContentPlateComponent: ContentPlateComponentType = (
       to: { pathname },
       onClick: (event: any) => {
         handleEvents(event, {
+          typeEvent: 'SET_MODULES',
+          data: [],
+        })
+        handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID, navigate },
         })

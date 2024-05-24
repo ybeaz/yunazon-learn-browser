@@ -30,7 +30,6 @@ export const templateModule: Record<string, any> = {
   duration: [isDefined, isString],
   questionNumber: [isDefined, isNumber],
   passRate: [isDefined, isNumber],
-  transcriptList: [isDefined, isArray],
   summary: [isDefined, isArray],
   questions: [isDefined, isArray],
   objections: [isDefined, isArray],

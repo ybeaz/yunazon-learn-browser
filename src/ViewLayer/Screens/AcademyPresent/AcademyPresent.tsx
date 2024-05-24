@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
@@ -81,7 +81,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     isSummary = false
   }
 
-  const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
     CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
     contentComponentName: '',
@@ -110,7 +109,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   } = moduleState
 
   useEffect(() => {
-    if (modules.length && isLoaded === false) {
+    if (modules.length) {
       const {
         capture: capture2,
         language: language2,
@@ -132,8 +131,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
-
-      setIsLoaded(true)
 
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
@@ -251,7 +248,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   return (
     <div className='AcademyPresent' id={`moduleID-${moduleID}`}>
-      {isLoaded === true ? (
+      {modules.length ? (
         <>
           <Helmet>
             <html lang={language} />
