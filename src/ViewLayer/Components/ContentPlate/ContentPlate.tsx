@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
 import { ImageYrl, IconYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -140,24 +141,38 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
   }
 
-  console.info('ContentPlate [138]', { tags })
+  const contentPlateTooltipContentIsCompleted = (
+    <div className='_contentPlateTooltipContentIsCompleted'>
+      {DICTIONARY['Completed'][language]}
+    </div>
+  )
+
+  const contentPlateTooltipContentTags = (
+    <div className='_contentPlateTooltipContentTags'>
+      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+    </div>
+  )
 
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <>
           {isCompleted ? (
-            <div className='_isCompleted'>
-              <div className='_cycle' />
-              <IconYrl {...propsOut.iconCompletedProps} />
-            </div>
+            <Tooltip className='_tooltip' title={contentPlateTooltipContentIsCompleted}>
+              <div className='_isCompleted'>
+                <div className='_cycle' />
+                <IconYrl {...propsOut.iconCompletedProps} />
+              </div>
+            </Tooltip>
           ) : null}
 
           {!!tags?.length ? (
-            <div className='_tagsTooltip'>
-              <div className='_cycle' />
-              <IconYrl {...propsOut.iconTagsTooltipProps} />
-            </div>
+            <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
+              <div className='_tagsTooltip'>
+                <div className='_cycle' />
+                <IconYrl {...propsOut.iconTagsTooltipProps} />
+              </div>
+            </Tooltip>
           ) : null}
         </>
 

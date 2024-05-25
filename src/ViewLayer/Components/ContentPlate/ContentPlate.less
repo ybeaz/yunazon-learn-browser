@@ -64,3 +64,28 @@
     }
   }
 }
+
+.ant-tooltip-content {
+  .ant-tooltip-inner {
+    min-width: max-content;
+    border-radius: 1rem;
+    background-color: hsla(0, 0%, 9.5%, 1);
+    border-color: hsla(0, 0%, 9.5%, 1);
+    padding: 0;
+
+    ._contentPlateTooltipContentIsCompleted,
+    ._contentPlateTooltipContentTags {
+      display: flex;
+      flex-direction: column;
+      padding: 0.5rem;
+      display: flex;
+      max-height: 30rem;
+      overflow-y: scroll;
+
+      ._tooltipRow {
+        white-space: nowrap;
+        color: inherit;
+      }
+    }
+  }
+}
