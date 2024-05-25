@@ -16,6 +16,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from '../../Shared/getUserProfileData'
+import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false
@@ -40,7 +41,14 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  const tagsPick = tagsSearchForModules ? [tagsSearchForModules] : tagsPickIn
+  const queryParams = getParsedUrlQueryBrowserApi()
+  const tagsSearch = queryParams?.tagsSearch || null
+
+  const tagsPick = tagsSearchForModules
+    ? [tagsSearchForModules]
+    : tagsSearch
+      ? [tagsSearch]
+      : tagsPickIn
 
   let profiles = stateSelected.profiles
 
@@ -130,6 +138,14 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     ).result
 
     yield put(actionSync.SET_MODULES(modulesNext))
+
+    if (tagsPick.length && tagsPick[0])
+      yield put(
+        actionSync.SET_COMPONENTS_STATE({
+          componentsStateProp: 'tagsSearchForModules',
+          value: tagsPick[0],
+        })
+      )
 
     const pageInfo = readModulesConnection?.pageInfo
     yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))

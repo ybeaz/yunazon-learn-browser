@@ -9,8 +9,6 @@ import {
   getSetUrlQueryBrowserApi,
   GetSetUrlQueryBrowserApiParamsType,
 } from '../../Shared/getSetUrlQueryBrowserApi'
-import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
-import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   const tagsNum = params?.data?.tagsNum
@@ -20,7 +18,6 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     ;[
       'modulesSearch',
-      'tagsSearch',
       PaginationNameEnumType['pageTags'],
       PaginationNameEnumType['pageModules'],
     ].forEach((searchParamsName: string) => {

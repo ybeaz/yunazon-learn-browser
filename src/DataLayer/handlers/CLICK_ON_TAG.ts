@@ -11,6 +11,12 @@ import {
 const { dispatch } = store
 
 export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null }: any) => {
+  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: 'tagsSearch',
+    searchParamsValue: tagCloud.value,
+  }
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'tagsSearchForModules',
