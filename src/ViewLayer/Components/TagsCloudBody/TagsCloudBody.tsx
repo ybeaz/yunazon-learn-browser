@@ -99,8 +99,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         },
       }
 
-      const TagsCloudBodyTooltipContentTagButton = () => (
-        <div className='TagsCloudBodyTooltipContentTagButton'>
+      const tagsCloudBodyTooltipContentTagButton = (
+        <div className='_tagsCloudBodyTooltipContentTagButton'>
           {name && (
             <div className='_tooltipRow'>
               <b>{name}</b> level of proficiency.
@@ -129,7 +129,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           className='_tagCloud'
           onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
         >
-          <Tooltip className='_tooltip' title={<TagsCloudBodyTooltipContentTagButton />}>
+          <Tooltip className='_tooltip' title={tagsCloudBodyTooltipContentTagButton}>
             <div
               className='_tagCloudWrapper'
               style={{

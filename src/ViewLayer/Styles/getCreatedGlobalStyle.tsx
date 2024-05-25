@@ -255,7 +255,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentIsCompleted,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentTags,
-    div.ant-tooltip-content  > div > div.TagsCloudBodyTooltipContentTagButton,
+    div.ant-tooltip-content  > div > div._tagsCloudBodyTooltipContentTagButton,
     .ModulesBody_AcademyMatrixBody ._headlineNavLink,
     .TagsCloudBody ._headlineNavLink,
     .Button_ForgetPassword ._in,
