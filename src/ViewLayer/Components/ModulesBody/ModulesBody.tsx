@@ -54,6 +54,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         contentType,
         contentID,
         duration: duration2,
+        tags,
         thumbnails,
       } = module
 
@@ -72,6 +73,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         moduleID,
         contentID,
         screenType: screenActive,
+        tags,
         thumbnails,
       }
 

@@ -12,7 +12,7 @@ const { dispatch } = store
 
 export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null }: any) => {
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-    searchParamsName: 'tagsSearch',
+    searchParamsName: 'tagsPick',
     searchParamsValue: tagCloud.value,
   }
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)

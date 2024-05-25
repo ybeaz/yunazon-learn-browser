@@ -42,12 +42,12 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   } = stateSelected as RootStoreType
 
   const queryParams = getParsedUrlQueryBrowserApi()
-  const tagsSearch = queryParams?.tagsSearch || null
+  const tagsPickUrl = queryParams?.tagsPick || null
 
   const tagsPick = tagsSearchForModules
     ? [tagsSearchForModules]
-    : tagsSearch
-      ? [tagsSearch]
+    : tagsPickUrl
+      ? [tagsPickUrl]
       : tagsPickIn
 
   let profiles = stateSelected.profiles

@@ -30,6 +30,16 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
   const output = createGlobalStyle`
 
+    .Icon_TagsTooltip ._icon,
+    .PlayerPanel ._capture,
+    .AvatarPlusInfo,
+    .AvatarPlusInfo > ._link > ._captureText,
+    .LogoGroup,
+    .AbInCircle,
+    .Button_MdClose ._in {
+      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
+    }
+
     .ContentPlate ._isCompleted ._cycle {
       background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
@@ -203,23 +213,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       border-color: ${props2 => getColor(props2, 'colorSecond', medial, middle, 'Dark')};
     }
 
-    .PlayerPanel ._capture {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
-    .AvatarPlusInfo,
-    .AvatarPlusInfo > ._link > ._captureText { 
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
-    .LogoGroup {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
-    .AbInCircle { 
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
     .SideNavigation .__content {
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
@@ -308,10 +301,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     .Button_MdClose .__button {
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, lighter4)};
-    }
-
-    .Button_MdClose ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .Button_sideMenuItems .__button {
@@ -450,7 +439,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
     }
     
-
+    .ContentPlate ._tagsTooltip ._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
       background: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }

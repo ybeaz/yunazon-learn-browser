@@ -47,6 +47,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     screenType,
     storeStateSlice: { language, mediaLoaded },
     handleEvents,
+    tags,
     thumbnails,
   } = props
 
@@ -95,6 +96,11 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
+    iconTagsTooltipProps: {
+      classAdded: 'Icon_TagsTooltip',
+      icon: 'MdOutlineTag',
+      isDisplaying: true,
+    },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
@@ -134,15 +140,26 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
   }
 
+  console.info('ContentPlate [138]', { tags })
+
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-        {isCompleted ? (
-          <div className='_isCompleted'>
-            <div className='_cycle' />
-            <IconYrl {...propsOut.iconCompletedProps} />
-          </div>
-        ) : null}
+        <>
+          {isCompleted ? (
+            <div className='_isCompleted'>
+              <div className='_cycle' />
+              <IconYrl {...propsOut.iconCompletedProps} />
+            </div>
+          ) : null}
+
+          {!!tags?.length ? (
+            <div className='_tagsTooltip'>
+              <div className='_cycle' />
+              <IconYrl {...propsOut.iconTagsTooltipProps} />
+            </div>
+          ) : null}
+        </>
 
         {plateImageSrc ? (
           <ImageYrl {...propsOut.loaderImageProps} />
