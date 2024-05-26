@@ -11,9 +11,6 @@ import {
 } from '../../Shared/getSetUrlQueryBrowserApi'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
-  const tagsNum = params?.data?.tagsNum
-  const modulesNum = params?.data?.modulesNum
-
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
     ;[
@@ -42,9 +39,9 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       })
     )
 
-    yield getModules({ data: { isLoaderOverlay: false } })
+    yield put(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: false }))
 
-    yield readTagsConnection({ data: { isLoaderOverlay: false } })
+    yield put(actionAsync.READ_TAGS_CONNECTION.REQUEST({ isLoaderOverlay: false }))
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

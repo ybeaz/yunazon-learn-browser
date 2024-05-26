@@ -56,8 +56,6 @@ export const getUserProfileData: GetUserProfileDataType = (
     learnerUserID: '',
   }
 
-  if (!sub) return output
-
   if (screenActive === 'AcademyMatrix' || screenActive === 'ModulesPresent') {
     let sub_localStorage = getLocalStorageReadKeyObj('sub')
     sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
