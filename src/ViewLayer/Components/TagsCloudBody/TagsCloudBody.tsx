@@ -178,13 +178,9 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   }
 
   let gridTemplateColumns: string = 'repeat(3, 1fr)'
-  let gridTemplateRows: string = `repeat(${pageTags.offset / 3}, 1fr)`
 
   if (screenActive === ScreensEnumType['AcademyMatrix']) {
     gridTemplateColumns = 'repeat(1, 1fr)'
-
-    let rowsNum = tagsCloud.length >= pageTags.offset ? pageTags.offset : tagsCloud.length
-    gridTemplateRows = `repeat(${rowsNum}, 1fr)`
   }
 
   return (
@@ -207,7 +203,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         className='_tagsCloudWrapper'
         style={{
           gridTemplateColumns,
-          gridTemplateRows,
         }}
       >
         {getTagsCloudList(tagsCloud)}

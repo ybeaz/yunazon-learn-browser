@@ -13,7 +13,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
 import { getClasses } from '../../../Shared/getClasses'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
@@ -66,6 +66,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
   const slug = getSlug(capture)
   const pathname = `/m/${moduleID}/${slug}`
+  const { width: widthSizeWindow } = getSizeWindow()
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
@@ -166,7 +167,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
             </Tooltip>
           ) : null}
 
-          {!!tags?.length ? (
+          {!!tags?.length && widthSizeWindow > 480 ? (
             <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
               <div className='_tagsTooltip'>
                 <div className='_cycle' />
