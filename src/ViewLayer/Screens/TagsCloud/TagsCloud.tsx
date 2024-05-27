@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
@@ -9,6 +11,11 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
 import {
   TagsCloudComponentPropsType,
@@ -30,11 +37,31 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
     handleEvents,
   } = props
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'TagsCloud' } })
-    handleEvents({}, { type: 'SET_TAGS_CLOUD_DATA' })
-    handleEvents({}, { typeEvent: 'GET_TAGS_CONNECTION' })
-  }, [])
+  const screenType = ScreensEnumType['TagsCloud']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+
+  const { width } = getSizeWindow()
+  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
+  if (width <= 480) {
+    pageModulesOffset = 9
+    pageTagsOffset = 36
+  }
+
+  useEffectedInitialRequests([
+    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+    { type: 'SET_TAGS_CLOUD_DATA' },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
+    },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
+    },
+    { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } },
+  ])
 
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {
@@ -56,21 +83,35 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
     mainFrameProps: {
       screenType: 'TagsCloud',
     },
+    tagsCloudBodyProps: {
+      headline: DICTIONARY.Knowledege_tags[language],
+    },
   }
 
   return (
-    <MainFrame {...propsOut.mainFrameProps}>
-      {/* header */}
-      <HeaderFrame {...propsOut.headerFrameProps} />
-      {/* middle-left */}
-      {null}
-      {/* middle-main */}
-      <TagsCloudBody />
-      {/* middle-right */}
-      {null}
-      {/* footer */}
-      <FooterFrame>{null}</FooterFrame>
-    </MainFrame>
+    <div className={getClasses('TagsCloud')}>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
+      <MainFrame {...propsOut.mainFrameProps}>
+        {/* header */}
+        <HeaderFrame {...propsOut.headerFrameProps} />
+        {/* middle-left */}
+        {null}
+        {/* middle-main */}
+        <TagsCloudBody {...propsOut.tagsCloudBodyProps} />
+        {/* middle-right */}
+        {null}
+        {/* footer */}
+        <FooterFrame>{null}</FooterFrame>
+      </MainFrame>
+    </div>
   )
 }
 

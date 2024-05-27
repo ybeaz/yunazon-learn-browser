@@ -8,6 +8,7 @@ import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
 import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
+import { ModulesPresent } from '../ViewLayer/Screens/ModulesPresent/ModulesPresent'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
@@ -16,16 +17,17 @@ import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const SCREENS: Record<string, FunctionComponent<any>> = {
-  TagsCloud,
-  MyModules,
-  ArticlePresent,
   AcademyAbout,
   AcademyMatrix,
   AcademyPresent,
-  MyDocuments,
-  Profiles,
+  ArticlePresent,
   Certificate,
   Error404,
+  ModulesPresent,
+  MyDocuments,
+  MyModules,
+  Profiles,
+  TagsCloud,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {

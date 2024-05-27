@@ -10,12 +10,8 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { withDebounce } from '../../Shared/withDebounce'
 
-function* createDocumentGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
-  const stateSelected: RootStoreType | any = yield select(
-    (state: RootStoreType) => state
-  )
+function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
   const {
     profiles,
     modules,
@@ -42,11 +38,17 @@ function* createDocumentGenerator(
   })
 
   try {
+    const moduleForDocument = { ...module }
+
+    ;['transcriptList', 'questions', 'objections'].forEach(
+      (prop: string) => delete moduleForDocument[prop]
+    )
+
     const variables: MutationCreateDocumentsArgs = {
       createDocumentsInput: [
         {
           isActive: true,
-          module,
+          module: moduleForDocument,
           learner: profileLearner,
           creator: profileCreator,
         },

@@ -13,7 +13,7 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
-  const { data: documentID } = params
+  const isLoaderOverlay = params?.data?.isLoaderOverlay
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
@@ -24,7 +24,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         pageTags: { first, offset },
       },
     },
-    forms: { inputSearch, tagsPick, tagsOmit },
+    forms: { tagsSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -34,7 +34,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   learnerUserID = sub || sub_localStorage
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
     const variables: QueryReadTagsConnectionArgs = {
       readTagsConnectionInput: {
@@ -47,7 +47,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         offset,
         after: '',
         language: '',
-        searchPhrase: inputSearch,
+        searchPhrase: tagsSearch,
         searchIn: ['value'],
         operators: {
           searchPhrase: 'or',
@@ -84,7 +84,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
 
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
+    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readTagsConnection [35] ERROR', `${error.name}: ${error.message}`)
   }

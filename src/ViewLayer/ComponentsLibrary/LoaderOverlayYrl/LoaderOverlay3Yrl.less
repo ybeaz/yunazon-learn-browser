@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  z-index: 1;
+  z-index: 30;
   left: 0;
   top: 0;
   width: 100%;
@@ -85,9 +85,7 @@
     background-color: rgba(255, 255, 255, 0.85);
   }
 
-  @supports (
-    (-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))
-  ) {
+  @supports ((-webkit-backdrop-filter: blur(2em)) or (backdrop-filter: blur(2em))) {
     &_show {
       background-color: rgba(255, 255, 255, 0);
       backdrop-filter: blur(0.33rem);

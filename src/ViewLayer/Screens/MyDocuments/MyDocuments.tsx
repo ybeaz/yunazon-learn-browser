@@ -1,15 +1,19 @@
 import React, { useEffect, useRef } from 'react'
+import { Helmet } from 'react-helmet'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
 import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
 import {
   MyDocumentsComponentPropsType,
@@ -31,15 +35,12 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
     handleEvents,
   } = props
 
+  const screenType = ScreensEnumType['MyDocuments']
+  const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const firstRender = useRef(true)
 
-  const query = getParsedUrlQueryBrowserApi()
-  // const first =
-  //   query && query?.[PaginationNameEnumType['pageDocuments']]
-  //     ? parseInt(query?.[PaginationNameEnumType['pageDocuments']], 10) *
-  //         PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']] -
-  //       PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']]
-  //     : 0
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   useEffect(() => {
     if (firstRender) {
@@ -47,13 +48,10 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         {},
         {
           type: 'ONCHANGE_INPUT_SEARCH',
-          data: { storeFormProp: 'inputSearch', value: '' },
+          data: { storeFormProp: 'documentsSearch', value: '' },
         }
       )
     }
-
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'MyDocuments' } })
-
     if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
   }, [sub])
 
@@ -85,6 +83,15 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
 
   return (
     <div className={getClasses('MyDocuments', classAdded)}>
+      <Helmet>
+        <html lang={langSite} />
+        <meta charSet='utf-8' />
+        <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
+        <title>{titleSite}</title>
+        <link rel='canonical' href={canonicalUrl} />
+        <meta name='description' content={descriptionSite} />
+      </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
         {/* header */}
         <HeaderFrame {...propsOut.headerFrameProps} />

@@ -3,8 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const BundleAnalyzerPlugin =
-  require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // css/css module
 const cssRegex = /\.css$/
@@ -37,11 +36,11 @@ module.exports = () => {
       new WebpackBar(),
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
-      new BundleAnalyzerPlugin({
-        analyzerMode: 'disabled',
-        generateStatsFile: true,
-        statsOptions: { source: false },
-      }),
+      // new BundleAnalyzerPlugin({
+      //   analyzerMode: 'disabled',
+      //   generateStatsFile: true,
+      //   statsOptions: { source: false },
+      // }),
       /* Need to research configuration, pro/cons
       new webpack.DllReferencePlugin({
         context: __dirname,
@@ -60,10 +59,7 @@ module.exports = () => {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
         '@abs': path.resolve(__dirname, './src'),
-        '@communication': path.resolve(
-          __dirname,
-          '../yourails_communication_layer'
-        ),
+        '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
     },
     module: {
@@ -113,12 +109,7 @@ module.exports = () => {
         {
           test: stylRegex,
           exclude: stylModuleRegex,
-          use: [
-            'style-loader',
-            'css-loader',
-            'postcss-loader',
-            'stylus-loader',
-          ],
+          use: ['style-loader', 'css-loader', 'postcss-loader', 'stylus-loader'],
         },
         {
           test: stylModuleRegex,

@@ -4,44 +4,46 @@ import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getModules } from './getModulesSaga'
-import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
-import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
+import { readTagsConnection } from './readTagsConnectionSaga'
+import {
+  getSetUrlQueryBrowserApi,
+  GetSetUrlQueryBrowserApiParamsType,
+} from '../../Shared/getSetUrlQueryBrowserApi'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
-    const query = getParsedUrlQueryBrowserApi()
-
-    const inputSearch = query?.search || ''
-    const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
-    const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
-    const first =
-      query && query?.[PaginationNameEnumType['pageModules']]
-        ? parseInt(query?.[PaginationNameEnumType['pageModules']], 10) *
-            PAGINATION_OFFSET[PaginationNameEnumType['pageModules']] -
-          PAGINATION_OFFSET[PaginationNameEnumType['pageModules']]
-        : 0
-
-    const data = {
-      storeFormProp: 'inputSearch',
-      value: inputSearch,
-    }
-    yield put(actionSync.SET_INPUT_TO_STORE(data))
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+    ;[
+      'modulesSearch',
+      PaginationNameEnumType['pageTags'],
+      PaginationNameEnumType['pageModules'],
+    ].forEach((searchParamsName: string) => {
+      const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+        searchParamsName,
+        searchParamsValue: '',
+      }
+      getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+    })
 
     yield put(
-      actionSync.SET_TAGS_STATE({
-        tagsPick,
-        tagsOmit,
+      actionSync.SET_PAGE_CURSOR({
+        paginationName: PaginationNameEnumType['pageTags'],
+        first: 0,
       })
     )
 
     yield put(
       actionSync.SET_PAGE_CURSOR({
         paginationName: PaginationNameEnumType['pageModules'],
-        first,
+        first: 0,
       })
     )
 
-    yield getModules()
+    yield put(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: false }))
+
+    yield put(actionAsync.READ_TAGS_CONNECTION.REQUEST({ isLoaderOverlay: false }))
+
+    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }

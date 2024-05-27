@@ -8,6 +8,7 @@ import {
   RootStoreType,
   PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
+import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
 
 import { PAGINATION_OFFSET } from '../Constants/pagination.const'
 
@@ -53,21 +54,10 @@ export const userStoreDefault: UserType = {
   },
 }
 
-export const searchFormSepDefault: SearchFormSepType = {
-  selectSkillsOffered: [],
-  selectSkillsRequired: '',
-  selectCountryRequired: [],
-  selectLanguageRequired: [],
-  inputAgeFromRequired: 0,
-  inputAgeToRequired: 100,
-  selectGenderRequired: [],
-  selectMediaRequired: [],
-  inputDescriptionRequired: '',
-  selectSortBy: '',
-}
-
 export const componentsStateDefault: ComponentsStateType = {
-  screenActive: 'AcademyMatrix',
+  screenActive: ScreensEnumType['AcademyMatrix'],
+  tagsSearchForModules: null,
+  modulesSearchApplied: null,
   isObjections: false,
   isSummary: true,
   isConfetti: false,
@@ -148,7 +138,10 @@ export const componentsStateDefault: ComponentsStateType = {
 
 export const formsDefault: FormsType = {
   inputCourseCreate: '',
-  inputSearch: '',
+  modulesSearch: '',
+  tagsSearch: '',
+  coursesSearch: '',
+  documentsSearch: '',
   sendTo: '',
   sendCc: '',
   userPrev: userStoreDefault,

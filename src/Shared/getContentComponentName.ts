@@ -3,12 +3,12 @@
  * @param componentType
  * @returns
  */
-export const getContentComponentName = (componentType: string): string | null => {
+export const getContentComponentName = (componentType: string): string => {
   const output: Record<string, string> = {
     urlArbir: 'ReaderIframe',
     htmlPage: 'ReaderIframe',
     ytID: 'PlayerIframe',
   }
 
-  return output[componentType] ? output[componentType] : null
+  return output[componentType] ? output[componentType] : 'PlayerIframe'
 }

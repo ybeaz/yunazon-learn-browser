@@ -55,7 +55,7 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
-    screen: 'AcademyMatrix',
+    screen: 'ModulesPresent',
     path: `/m`,
     children: [],
     errorElement: 'Error404',

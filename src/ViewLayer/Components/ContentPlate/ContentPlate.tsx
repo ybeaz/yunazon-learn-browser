@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
 import { ImageYrl, IconYrl, withPropsYrl } from '../../ComponentsLibrary/'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
@@ -12,7 +13,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
 import { getClasses } from '../../../Shared/getClasses'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
@@ -47,6 +48,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     screenType,
     storeStateSlice: { language, mediaLoaded },
     handleEvents,
+    tags,
     thumbnails,
   } = props
 
@@ -64,6 +66,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
   const slug = getSlug(capture)
   const pathname = `/m/${moduleID}/${slug}`
+  const { width: widthSizeWindow } = getSizeWindow()
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
@@ -95,11 +98,16 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
+    iconTagsTooltipProps: {
+      classAdded: 'Icon_TagsTooltip',
+      icon: 'MdOutlineTag',
+      isDisplaying: true,
+    },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],
       isTextTooltip: true,
       delay: 500,
-      contentComponentName: 'AcademyMatrix',
+      contentComponentName,
       isVisibleBlurHash: !isVisible,
     },
     loaderImageProps: {
@@ -119,6 +127,10 @@ const ContentPlateComponent: ContentPlateComponentType = (
       to: { pathname },
       onClick: (event: any) => {
         handleEvents(event, {
+          typeEvent: 'SET_MODULES',
+          data: [],
+        })
+        handleEvents(event, {
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID, navigate },
         })
@@ -130,15 +142,40 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
   }
 
+  const contentPlateTooltipContentIsCompleted = (
+    <div className='_contentPlateTooltipContentIsCompleted'>
+      {DICTIONARY['Completed'][language]}
+    </div>
+  )
+
+  const contentPlateTooltipContentTags = (
+    <div className='_contentPlateTooltipContentTags'>
+      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+    </div>
+  )
+
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-        {isCompleted ? (
-          <div className='_isCompleted'>
-            <div className='_cycle' />
-            <IconYrl {...propsOut.iconCompletedProps} />
-          </div>
-        ) : null}
+        <>
+          {isCompleted ? (
+            <Tooltip className='_tooltip' title={contentPlateTooltipContentIsCompleted}>
+              <div className='_isCompleted'>
+                <div className='_cycle' />
+                <IconYrl {...propsOut.iconCompletedProps} />
+              </div>
+            </Tooltip>
+          ) : null}
+
+          {!!tags?.length && widthSizeWindow > 480 ? (
+            <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
+              <div className='_tagsTooltip'>
+                <div className='_cycle' />
+                <IconYrl {...propsOut.iconTagsTooltipProps} />
+              </div>
+            </Tooltip>
+          ) : null}
+        </>
 
         {plateImageSrc ? (
           <ImageYrl {...propsOut.loaderImageProps} />

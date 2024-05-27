@@ -2,20 +2,22 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { SCREENS_DICT } from '../../../Constants/screensDict.const'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  ButtonYrl,
+  InputGroupYrl,
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+} from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
-import { getRangeOfNumbers, GetRangeOfNumbersParamsType } from '../../../Shared/getRangeOfNumbers'
-import {
-  getColorsRandomDarkTheme,
-  GetColorsRandomDarkThemeParamsType,
-} from '../../../Shared/getColorsRandomDarkTheme'
+import { getRangeOfNumbers } from '../../../Shared/getRangeOfNumbers'
+import { getColorsRandomDarkTheme } from '../../../Shared/getColorsRandomDarkTheme'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,
@@ -36,11 +38,13 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, tagsCloud },
+    headline,
+    storeStateSlice: { tagsCloud, pageTags, screenActive },
     handleEvents,
   } = props
 
-  const navigate = useNavigate()
+  let navigate: any = useNavigate()
+  if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
 
   const getTagsCloudList = (tagsCloudIn: TagType[]) => {
     const range = getRangeOfNumbers({
@@ -95,8 +99,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         },
       }
 
-      const TooltipContent = () => (
-        <div className='_tooltipContent'>
+      const tagsCloudBodyTooltipContentTagButton = (
+        <div className='_tagsCloudBodyTooltipContentTagButton'>
           {name && (
             <div className='_tooltipRow'>
               <b>{name}</b> level of proficiency.
@@ -125,7 +129,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           className='_tagCloud'
           onClick={() => handleEvents({}, { type: 'CLICK_ON_TAG', data: { tagCloud, navigate } })}
         >
-          <Tooltip className='_tooltip' title={<TooltipContent />}>
+          <Tooltip className='_tooltip' title={tagsCloudBodyTooltipContentTagButton}>
             <div
               className='_tagCloudWrapper'
               style={{
@@ -147,21 +151,72 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   }
 
   const propsOut: TagsCloudBodyPropsOutType = {
-    paginationNavigationProps: { paginationName: PaginationNameEnumType['pageTags'] },
+    paginationNavigationProps: {
+      paginationName: PaginationNameEnumType['pageTags'],
+    },
+    inputGroupProps: {
+      inputProps: {
+        classAdded: 'Input_search',
+        type: 'text',
+        placeholder: SCREENS_DICT[ScreensEnumType['TagsCloud']].placeholder,
+        typeEvent: 'ONCHANGE_INPUT_SEARCH',
+        typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        dataEventOnEnter: {
+          storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
+        },
+        storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
+      },
+      buttonSubmitProps: {
+        icon: 'MdSearch',
+        classAdded: 'Button_MdSearch',
+        action: {
+          typeEvent: 'CLICK_ON_SEARCH_BUTTON',
+          data: { storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp },
+        },
+      },
+    },
+  }
+
+  let gridTemplateColumns: string = 'repeat(3, 1fr)'
+
+  if (screenActive === ScreensEnumType['AcademyMatrix']) {
+    gridTemplateColumns = 'repeat(1, 1fr)'
   }
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      <h2 className='_h2'>{DICTIONARY.Knowledege_tags[language]}</h2>
-      <div className='_tagsCloudWrapper'>{getTagsCloudList(tagsCloud)}</div>
-      <div className='_paginationNavigationWrapper'>
-        <PaginationNavigation {...propsOut.paginationNavigationProps} />
+      {screenActive === ScreensEnumType['AcademyMatrix'] ? (
+        <>
+          <div className='_inputGroupYrlWrapper'>
+            <InputGroupYrl {...propsOut.inputGroupProps} />
+          </div>
+          <div className='_headlineWrapper'>
+            <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_TAGS' })}>
+              {headline}
+            </h2>
+          </div>
+        </>
+      ) : (
+        <h2 className='_h2'>{headline}</h2>
+      )}
+      <div
+        className='_tagsCloudWrapper'
+        style={{
+          gridTemplateColumns,
+        }}
+      >
+        {getTagsCloudList(tagsCloud)}
       </div>
+      {pageTags.offset <= tagsCloud.length && (
+        <div className='_paginationNavigationWrapper'>
+          <PaginationNavigation {...propsOut.paginationNavigationProps} />
+        </div>
+      )}
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'tagsCloud']
+const storeStateSliceProps: string[] = ['tagsCloud', 'pageTags', 'screenActive']
 export const TagsCloudBody: TagsCloudBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(TagsCloudBodyComponent))
 )

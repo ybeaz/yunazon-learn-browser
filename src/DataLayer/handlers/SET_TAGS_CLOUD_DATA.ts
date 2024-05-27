@@ -10,7 +10,7 @@ const { dispatch, getState } = store
 export const SET_TAGS_CLOUD_DATA: ActionEventType = (event, dataIn) => {
   const query = getParsedUrlQueryBrowserApi()
 
-  const inputSearch = query?.search || ''
+  const tagsSearch = query?.tagsSearch || ''
   const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
   const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
   const first =
@@ -22,8 +22,8 @@ export const SET_TAGS_CLOUD_DATA: ActionEventType = (event, dataIn) => {
 
   dispatch(
     actionSync.SET_INPUT_TO_STORE({
-      storeFormProp: 'inputSearch',
-      value: inputSearch,
+      storeFormProp: 'tagsSearch',
+      value: tagsSearch,
     })
   )
 

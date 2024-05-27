@@ -1,6 +1,6 @@
 /**
  * @description Function parse and return object fron url query string
- * @import import { getParsedUrlQuery } from 'src/Shared/getParsedUrlQuery'
+ * @import import { getParsedUrlQuery } from '../Shared/getParsedUrlQuery'
  */
 export const getParsedUrlQuery = (url?: string): any => {
   if (!url) url = location.search
@@ -16,6 +16,10 @@ export const getParsedUrlQuery = (url?: string): any => {
   return result
 }
 
+/**
+ * @description Function parse and return object fron url query string
+ * @import import { getParsedUrlQueryBrowserApi } from '../Shared/getParsedUrlQuery'
+ */
 export const getParsedUrlQueryBrowserApi = (url?: string): any => {
   if (!url) url = location.search
   if (!url.length) return {}

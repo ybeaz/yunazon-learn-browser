@@ -1,0 +1,37 @@
+.AcademyMatrixBody {
+  display: flex;
+  flex-direction: row;
+
+  ._tagsCloudBodyWrapper {
+    display: flex;
+    flex: 1;
+    min-width: 25vw;
+  }
+
+  ._modulesBodyWrapper {
+    display: flex;
+    flex: 3;
+    align-items: flex-start;
+    padding-left: 1rem;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    flex-direction: column;
+    width: 100vw;
+
+    ._tagsCloudBodyWrapper {
+      flex: 1;
+    }
+
+    ._modulesBodyWrapper {
+      flex: 1;
+      padding-left: 0;
+    }
+  }
+}

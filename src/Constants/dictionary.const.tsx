@@ -7,13 +7,21 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Completed: {
+    en: 'Completed',
+    ru: 'Пройдено',
+  },
   Knowledege_tags: {
     en: 'Knowledege tags',
     ru: 'Теги знаний',
   },
-  All_modules: {
-    en: 'All modules',
-    ru: 'Все модули',
+  All_tags: {
+    en: 'All tags',
+    ru: 'Все теги',
+  },
+  All_interactive_videos: {
+    en: 'All interactive videos',
+    ru: 'Все интерактивные видео',
   },
   Date_of_creation: {
     en: 'Date of creation',

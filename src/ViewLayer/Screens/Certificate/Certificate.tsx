@@ -3,6 +3,7 @@ import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { DocumentType } from '../../../@types/index'
@@ -11,6 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import {
   CertificateBodyComponentProps,
@@ -42,8 +44,11 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
     },
   } = documentFound
 
+  const screenType = ScreensEnumType['Certificate']
   const documentSlug = getSlug(moduleCapture)
   const documentPathName = `/d/${documentID}/${documentSlug}`
+
+  useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
 
@@ -103,6 +108,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
         <html lang={languageDoc} />
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
         <title>{titlePage}</title>
         <link rel='canonical' href={location.href} />
         <meta name='description' content={moduleCapture} />

@@ -14,8 +14,8 @@ export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): Ro
   let tagsPickNext = tagsPickState
   let tagsOmitNext = tagsOmitState
 
-  if (tagsPick && tagsPick.length) tagsPickNext = tagsPick
-  if (tagsOmit && tagsOmit.length) tagsOmitNext = tagsOmit
+  if (tagsPick) tagsPickNext = tagsPick
+  if (tagsOmit) tagsOmitNext = tagsOmit
 
   const formsNext = { ...forms, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 

@@ -2,14 +2,15 @@ import React from 'react'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { PaginationNameEnumType } from '../../../Interfaces/'
+import { ButtonYrlPropsType, InputGroupYrlPropsType } from '../../ComponentsLibrary/'
 
 export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  headline: string
   storeStateSlice: {
     tagsCloud: RootStoreType['tagsCloud']
-    language: RootStoreType['language']
+    screenActive: RootStoreType['componentsState']['screenActive']
+    pageTags: RootStoreType['componentsState']['pagination']['pageTags']
   }
   handleEvents: HandleEventType
 }
@@ -26,6 +27,7 @@ export type GetTagsCloudListType = {
 
 export type TagsCloudBodyPropsOutType = {
   paginationNavigationProps: PaginationNavigationPropsType
+  inputGroupProps: InputGroupYrlPropsType
 }
 
 /**

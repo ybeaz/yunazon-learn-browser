@@ -20,6 +20,7 @@ export type ContentPlateComponentPropsType = {
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
   }
   handleEvents: HandleEventType
+  tags?: ModuleType['tags']
   thumbnails?: ModuleType['thumbnails']
 }
 
@@ -31,6 +32,7 @@ export type ContentPlatePropsType = Omit<
 export type ContentPlatePropsOutType = {
   contentComponentProps: Record<string, any>
   iconCompletedProps: IconYrlPropsType
+  iconTagsTooltipProps: IconYrlPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
   playerPanelProps: PlayerPanelPropsType

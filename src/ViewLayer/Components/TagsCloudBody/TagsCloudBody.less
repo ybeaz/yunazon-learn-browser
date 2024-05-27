@@ -1,7 +1,12 @@
 .TagsCloudBody {
-  display: grid;
-  padding-top: 2rem;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+
+  ._inputGroupYrlWrapper {
+    margin-left: -0.5rem;
+  }
 
   ._h2 {
     display: flex;
@@ -20,14 +25,16 @@
     shape-outside: margin-box;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
+    align-content: baseline;
 
     ._tagCloud {
       display: flex;
+      width: 100%;
 
       ._tagCloudWrapper {
         display: flex;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         gap: 0.5rem;
         white-space: nowrap;
         cursor: pointer;
@@ -57,13 +64,50 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
-    padding: 2rem 1rem;
+    padding: 0rem 1rem;
 
     ._tagsCloudWrapper {
       grid-template-columns: repeat(1, 1fr);
       grid-template-rows: none;
       grid-auto-flow: row;
       gap: 1rem 0rem;
+    }
+  }
+}
+
+.TagsCloudBody_AcademyMatrixBody {
+  &:extend(TagsCloudBody);
+  flex: 1;
+  gap: 1rem;
+
+  ._h2 {
+    display: flex;
+    align-self: flex-start;
+    text-transform: capitalize;
+    padding: 0;
+    font-size: @fontSizeH4;
+    line-height: 2.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  ._tagsCloudWrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 67vh;
+    overflow-y: scroll;
+    width: 100%;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._tagsCloudWrapper {
+      height: 25vh;
     }
   }
 }
@@ -76,13 +120,14 @@
     border-color: hsla(0, 0%, 9.5%, 1);
     padding: 0;
 
-    ._tooltipContent {
+    ._tagsCloudBodyTooltipContentTagButton {
       display: flex;
       flex-direction: column;
       padding: 1rem;
 
       ._tooltipRow {
         white-space: nowrap;
+        color: inherit;
       }
     }
   }

@@ -49,6 +49,9 @@ export type MyModulesBodyComponentPropsType = {
   moduleCreateProgress: RootStoreType['moduleCreateProgress']
   modules: RootStoreType['modules']
   isShowModuleCreateProgress: boolean
+  storeStateSlice: {
+    pageModules: RootStoreType['componentsState']['pagination']['pageModules']
+  }
 }
 
 export type MyModulesBodyPropsType = Omit<

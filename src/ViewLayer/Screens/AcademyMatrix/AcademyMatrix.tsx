@@ -1,23 +1,20 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
-import { ModuleType } from '../../../@types/GraphqlTypes'
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
-import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
+import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { withStoreStateSelectedYrl, withPropsYrl } from '../../ComponentsLibrary/'
-import { getLocalStorageReadKeyObj } from '../../../Shared/getLocalStorageReadKeyObj'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
+import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { getSizeWindow } from '../../../Shared/getSizeWindow'
 
 import {
   AcademyMatrixPropsType,
@@ -33,59 +30,36 @@ import {
  */
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: { language, durationMultiplier, modules, isLoadedGlobalVars },
+    storeStateSlice: { language },
     handleEvents,
   } = props
 
-  useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'AcademyMatrix' } })
-  }, [])
-
-  useEffectedInitialRequests([{ type: 'GET_MATRIX_DATA' }])
-  useLoadedInitialTeachContent({ isSkipping: false })
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [JSON.stringify(modules)])
-
-  const screenType = 'AcademyMatrix'
-
+  const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
-    const plates = modules2.map((module: ModuleType) => {
-      const {
-        moduleID,
-        capture,
-        isCompleted,
-        contentType,
-        contentID,
-        duration: duration2,
-        thumbnails,
-      } = module
-
-      const contentComponentName = getContentComponentName(contentType)
-
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
-      const { timeReadable: duration } = durationObj
-      const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
-
-      const contentPlateProps: ContentPlatePropsType = {
-        key: moduleID,
-        contentComponentName,
-        capture,
-        isCompleted,
-        durationObj: durationObj2,
-        moduleID,
-        contentID,
-        screenType,
-        thumbnails,
-      }
-
-      return <ContentPlate {...contentPlateProps} />
-    })
-    return <div className='AcademyMatrix__plates'>{plates}</div>
+  const { width } = getSizeWindow()
+  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
+  if (width <= 480) {
+    pageModulesOffset = 9
+    pageTagsOffset = 24
   }
+
+  useEffectedInitialRequests([
+    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
+    },
+    {
+      type: 'SET_PAGINATION_OFFSET',
+      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
+    },
+    { type: 'GET_MATRIX_DATA' },
+  ])
+
+  useLoadedInitialTeachContent({ isSkipping: false })
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
@@ -107,9 +81,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     mainFrameProps: {
       screenType,
     },
-    paginationNavigationProps: {
-      paginationName: PaginationNameEnumType['pageModules'],
-    },
   }
 
   return (
@@ -118,8 +89,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         <html lang={langSite} />
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width,initial-scale=1' />
+        <meta name='google' content='notranslate' />
         <title>{titleSite}</title>
-        <link rel='canonical' href={canonicalUrlSite} />
+        <link rel='canonical' href={canonicalUrl} />
         <meta name='description' content={descriptionSite} />
       </Helmet>
       <MainFrame {...propsOut.mainFrameProps}>
@@ -128,14 +100,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        {modules.length && isLoadedGlobalVars ? (
-          <div className='_plateMatrixPagination'>
-            <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
-            <div className='_paginationNavigationWrapper'>
-              <PaginationNavigation {...propsOut.paginationNavigationProps} />
-            </div>
-          </div>
-        ) : null}
+
+        <AcademyMatrixBody />
         {/* middle-right */}
         {null}
         {/* footer */}
@@ -145,13 +111,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   )
 }
 
-const storeStateSliceProps: string[] = [
-  'language',
-  'durationMultiplier',
-  'modules',
-  'isLoadedGlobalVars',
-  'isLoadedCourses',
-]
+const storeStateSliceProps: string[] = ['language']
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))

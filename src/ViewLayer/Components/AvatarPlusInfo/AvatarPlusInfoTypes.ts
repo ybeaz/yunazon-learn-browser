@@ -1,32 +1,32 @@
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 import { ImageYrlPropsType } from '../../ComponentsLibrary/'
-
-export type AvatarPlusInfoPropsType = {
+import { NavLinkProps } from 'react-router-dom'
+export type AvatarPlusInfoComponentPropsType = {
   classProps?: Record<string, string | string[]>
   pathname?: string
-  handleEvents?: HandleEventType
+  handleEvents: HandleEventType
   typeEvent?: string
   imgSrc?: string
   capture: string
   text: string
 }
 
+export type AvatarPlusInfoPropsType = Omit<
+  AvatarPlusInfoComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
+
 export type AvatarPlusInfoPropsOutType = {
-  linkProps: {
-    className?: string
-    to: { pathname: string } | {}
-    onClick: () => void
-  }
   imageProps: ImageYrlPropsType
+  navLinkProps: NavLinkProps
 }
 
 /**
  * @import import { AvatarPlusInfoType } from './AvatarPlusInfoType'
  */
 export interface AvatarPlusInfoComponentType
-  extends React.FunctionComponent<AvatarPlusInfoPropsType> {
-  (props: AvatarPlusInfoPropsType): React.ReactElement
+  extends React.FunctionComponent<AvatarPlusInfoComponentPropsType> {
+  (props: AvatarPlusInfoComponentPropsType): React.ReactElement
 }
 
-export type AvatarPlusInfoType =
-  React.FunctionComponent<AvatarPlusInfoPropsType>
+export type AvatarPlusInfoType = React.FunctionComponent<AvatarPlusInfoPropsType>

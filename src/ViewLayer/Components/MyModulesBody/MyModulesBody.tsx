@@ -46,6 +46,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
     modules,
     createModuleStages,
     isShowModuleCreateProgress,
+    storeStateSlice: { pageModules },
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
@@ -167,20 +168,19 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       <div className='_messageWrapper'></div>
       <div className='_modulesBodyWrapper'>
         {modules.length ? <MyModulesTable {...propsOut.myModulesTableProps} /> : null}
-        <div className='_paginationNavigationWrapper'>
-          {modules.length ? <PaginationNavigation {...propsOut.paginationNavigationProps} /> : null}
-        </div>
+        {pageModules.offset <= modules.length && (
+          <div className='_paginationNavigationWrapper'>
+            {modules.length ? (
+              <PaginationNavigation {...propsOut.paginationNavigationProps} />
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = [
-  'language',
-  'createModuleStages',
-  'moduleCreateProgress',
-  'modules',
-]
+const storeStateSliceProps: string[] = ['pageModules']
 export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(MyModulesBodyComponent)

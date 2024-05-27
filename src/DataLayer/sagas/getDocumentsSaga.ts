@@ -12,11 +12,10 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { getUserProfileData } from '../../Shared/getUserProfileData'
 
 export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)
@@ -25,19 +24,18 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
   const {
     authAwsCognitoUserData: { sub },
     componentsState: {
+      screenActive,
       pagination: {
         pageDocuments: { first, offset },
       },
     },
-    forms: { inputSearch, tagsPick, tagsOmit },
+    forms: { documentsSearch, tagsPick, tagsOmit },
     profiles,
   } = stateSelected as RootStoreType
 
-  const { profileID: learnerID } = getArrayItemByProp({
-    arr: profiles,
-    propName: 'userID',
-    propValue: sub,
-  })
+  if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
+
+  const { profileIDs } = getUserProfileData({ sub, screenActive, profiles })
 
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -45,8 +43,13 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
     const readDocumentsConnectionInput: ReadDocumentsConnectionInputType = {
       first,
       offset,
-      learnerIDs: [learnerID],
-      searchPhrase: inputSearch,
+      learnerIDs: profileIDs,
+      searchPhrase: documentsSearch,
+      searchIn: ['module.capture', 'module.description', 'module.tags'],
+      operators: {
+        searchPhrase: 'or',
+        learnerProfileID: 'and',
+      },
       tagsPick,
       tagsOmit,
       sort: { prop: 'dateCreated', direction: -1 },
