@@ -436,10 +436,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
       border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
-
-    .CheckRadioGroup ._checkdiv:hover input ~ .checkmark {
-      background-color: ${props2 => getColor(props2, 'colorSecondLighter2', medial, lighter2)};
-    }
     
     .ContentPlate ._tagsTooltip ._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
