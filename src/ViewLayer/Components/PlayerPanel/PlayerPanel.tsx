@@ -83,12 +83,12 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
       <div className='__info'>
         <div className='_captureDuration'>
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
-          <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
         </div>
         <div className='_metaData'>
-          <div className='_successTried'>
+          <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
+          {/* <div className='_successTried'>
             <SuccessTried {...successTriedProps} />
-          </div>
+          </div> */}
           <div className='_difficulty'>
             <FeatureBar {...featureBarProps} />
           </div>
