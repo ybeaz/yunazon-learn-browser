@@ -31,6 +31,12 @@ export const ROUTES: RouteType[] = [
     errorElement: 'Error404',
   },
   {
+    screen: 'Certificate2',
+    path: `/d2/:documentID/:slugDocument?`,
+    children: [],
+    errorElement: 'Error404',
+  },
+  {
     screen: 'Profiles',
     path: `/profiles`,
     children: [],

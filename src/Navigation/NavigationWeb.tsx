@@ -13,6 +13,7 @@ import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPrese
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
+import { Certificate2 } from '../ViewLayer/Screens/Certificate2/Certificate2'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
@@ -22,6 +23,7 @@ const SCREENS: Record<string, FunctionComponent<any>> = {
   AcademyPresent,
   ArticlePresent,
   Certificate,
+  Certificate2,
   Error404,
   ModulesPresent,
   MyDocuments,

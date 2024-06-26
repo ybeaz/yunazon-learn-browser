@@ -3,7 +3,7 @@ import { ModuleType, AcademyPresentCaseEnumType } from '../@types/'
 import { getFilteredActiveModulesQuestions } from './getFilteredActiveModulesQuestions'
 import { getValidatedModules } from './getValidatedEntity/getValidatedModules'
 import { getOptionsShuffled } from './getOptionsShuffled'
-import { getProdidedAnswerDefault } from './getProdidedAnswerDefault'
+import { getProvidedAnswerDefault } from './getProvidedAnswerDefault'
 import { getChainedResponsibility } from './getChainedResponsibility'
 import { getQuestionsPickedRandomly } from '../Shared/getQuestionsPickedRandomly'
 
@@ -12,10 +12,7 @@ export type GetPreparedModulesParamsType = ModuleType[]
 export type GetPreparedModulesResType = ModuleType[]
 
 interface GetPreparedModulesType {
-  (
-    params: GetPreparedModulesParamsType,
-    options?: { printRes: boolean }
-  ): GetPreparedModulesResType
+  (params: GetPreparedModulesParamsType, options?: { printRes: boolean }): GetPreparedModulesResType
 }
 
 /**
@@ -24,10 +21,7 @@ interface GetPreparedModulesType {
  * @import import { getPreparedModules } from '../../Shared/getPreparedModules'
  */
 
-export const getPreparedModules: GetPreparedModulesType = (
-  modules: ModuleType[],
-  options
-) => {
+export const getPreparedModules: GetPreparedModulesType = (modules: ModuleType[], options) => {
   let modulesNext: ModuleType[] = []
 
   try {
@@ -39,7 +33,7 @@ export const getPreparedModules: GetPreparedModulesType = (
         .exec(getValidatedModules)
         .exec(getFilteredActiveModulesQuestions)
         .exec(getQuestionsPickedRandomly)
-        .exec(getProdidedAnswerDefault)
+        .exec(getProvidedAnswerDefault)
         .exec(getOptionsShuffled).result
 
     if (options?.printRes) {
