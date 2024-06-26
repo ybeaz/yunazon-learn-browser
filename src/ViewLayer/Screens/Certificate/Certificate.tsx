@@ -264,7 +264,7 @@ export const CertificateComponent: CertificateComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'documents', 'language']
+const storeStateSliceProps: string[] = ['language', 'documents']
 export const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CertificateComponent)

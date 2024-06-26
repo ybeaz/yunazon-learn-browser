@@ -1,5 +1,6 @@
 .Certificate2 {
   display: flex;
+  flex-direction: column;
 
   @media @large {
   }
@@ -8,5 +9,19 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+  }
+}
+
+@media print {
+  @page {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  body {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  .Certificate2_noPrint {
+    display: none;
   }
 }

@@ -1,13 +1,22 @@
 import React from 'react'
 
+import { DocumentType } from '../../../@types/GraphqlTypes'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
+
 export type Certificate2ComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  storeStateSlice: any
+  storeStateSlice: {
+    language: RootStoreType['language']
+    documents: RootStoreType['documents']
+  }
 }
 
 export type Certificate2PropsType = Omit<Certificate2ComponentPropsType, 'storeStateSlice'>
 
-export type Certificate2PropsOutType = Record<string, any>
+export type Certificate2PropsOutType = {
+  headerFrameProps: HeaderFramePropsType
+}
 
 /**
  * @import import { Certificate2ComponentPropsType, Certificate2PropsType, Certificate2PropsOutType, Certificate2ComponentType, Certificate2Type } from './Certificate2Types'
