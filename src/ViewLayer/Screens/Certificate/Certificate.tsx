@@ -174,7 +174,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                   <div className=''>{/* <!-- LEAVE EMPTY --> */}</div>
                   <div className='_code'>
                     <span className='_module'>
-                      Module link/ No
+                      Module No
                       <a className='_moduleLink' href={modulePathName} target='_blank'>
                         {moduleID}
                       </a>
@@ -203,7 +203,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
                     <div className='_documentData'>
                       <span className='_completed'>Completed {dateCreatedReadable}</span>
                       <span className='_certificate'>
-                        Certificate link/ No
+                        Certificate No
                         <a className='_documentLink' href={documentPathName} target='_blank'>
                           {documentID}
                         </a>

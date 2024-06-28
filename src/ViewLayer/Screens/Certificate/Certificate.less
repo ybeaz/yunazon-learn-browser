@@ -74,13 +74,7 @@
       #b2cad6 1px,
       #b2cad6 2px
     );
-    background: repeating-linear-gradient(
-      90deg,
-      #618597,
-      #618597 1px,
-      #b2cad6 1px,
-      #b2cad6 2px
-    );
+    background: repeating-linear-gradient(90deg, #618597, #618597 1px, #b2cad6 1px, #b2cad6 2px);
 
     .outer-border {
       width: 794px;
@@ -236,15 +230,25 @@
 }
 
 @media print {
+  html,
+  body {
+    page-break-after: avoid;
+  }
   @page {
+    size: A4;
     margin-top: 0;
     margin-bottom: 0;
+    page-break-after: avoid;
   }
   body {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+    #root {
+      height: inherit;
+    }
   }
-  .Certificate_noPrint {
+  .Certificate2_noPrint {
     display: none;
   }
 }

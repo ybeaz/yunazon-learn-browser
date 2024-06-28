@@ -11,7 +11,12 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { LoaderOverlayYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
+import {
+  CertificateFrameA,
+  CertificateFrameAPropsType,
+  CertificateFrameAPropsOutType,
+  CertificateFrameAType,
+} from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
 
 import { withPropsYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
@@ -32,19 +37,7 @@ import {
 const documentFoundDefault = {
   dateCreated: 0,
   module: { moduleID: '', capture: '', language: '' },
-  creator: {
-    affiliation: '',
-    jobTitle: '',
-    nameFirst: '',
-    nameLast: '',
-    nameMiddle: '',
-  },
-  learner: {
-    nameFirst: '',
-    nameLast: '',
-    nameMiddle: '',
-  },
-}
+} as DocumentType
 
 /**
  * @description Component to render Certificate2
@@ -63,35 +56,20 @@ const Certificate2Component: Certificate2ComponentType = (
   const params = useParams()
   const documentID = params?.documentID
 
-  const documentFound = documents.find(
-    (document: DocumentType) => document.documentID === documentID
-  )
+  const documentFound: DocumentType =
+    documents.find((document: DocumentType) => document.documentID === documentID) || documents[0]
 
   const {
     dateCreated,
     module: { moduleID, capture: moduleCapture, language: languageDoc },
-    creator: {
-      affiliation,
-      jobTitle,
-      nameFirst: nameFirstCreator,
-      nameLast: nameLastCreator,
-      nameMiddle: nameMiddleCreator,
-    },
-    learner: {
-      nameFirst: nameFirstLearner,
-      nameLast: nameLastLearner,
-      nameMiddle: nameMiddleLearner,
-    },
   } = documentFound || documentFoundDefault
 
   const screenType = ScreensEnumType['Certificate2']
-  const documentSlug = getSlug(moduleCapture)
-  const documentPathName = `/d/${documentID}/${documentSlug}`
 
   useEffect(() => {
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
-    handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound) {
+    // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
+    if (Array.isArray(documents) && !documentFound?.documentID) {
       handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
     }
   }, [])
@@ -128,23 +106,32 @@ const Certificate2Component: Certificate2ComponentType = (
       isPageActionsGroup: true,
       isButtonsShare: true,
     },
+    certificate2BodyProps: {
+      document: documentFound,
+    },
   }
 
   return (
     <div className={getClasses('Certificate2', classAdded)}>
-      <Helmet>
-        <html lang={languageDoc} />
-        <meta charSet='utf-8' />
-        <meta name='viewport' content='width=device-width,initial-scale=1' />
-        <meta name='google' content='notranslate' />
-        <title>{titlePage}</title>
-        <link rel='canonical' href={location.href} />
-        <meta name='description' content={moduleCapture} />
-      </Helmet>
-      <div className='_headerFrameWrapper Certificate2_noPrint'>
-        <HeaderFrame {...propsOut.headerFrameProps} />
-      </div>
-      <Certificate2Body />
+      {documentFound?.documentID && (
+        <>
+          <Helmet>
+            <html lang={languageDoc} />
+            <meta charSet='utf-8' />
+            <meta name='viewport' content='width=device-width,initial-scale=1' />
+            <meta name='google' content='notranslate' />
+            <title>{titlePage}</title>
+            <link rel='canonical' href={location.href} />
+            <meta name='description' content={moduleCapture} />
+          </Helmet>
+          <div className='_headerFrameWrapper Certificate2_noPrint'>
+            <HeaderFrame {...propsOut.headerFrameProps} />
+          </div>
+          <CertificateFrameA>
+            <Certificate2Body {...propsOut.certificate2BodyProps} />
+          </CertificateFrameA>
+        </>
+      )}
     </div>
   )
 }

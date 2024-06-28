@@ -3,6 +3,7 @@ import React from 'react'
 import { DocumentType } from '../../../@types/GraphqlTypes'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
+import { Certificate2BodyPropsType } from '../../Components/Certificate2Body/Certificate2Body'
 
 export type Certificate2ComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -16,6 +17,7 @@ export type Certificate2PropsType = Omit<Certificate2ComponentPropsType, 'storeS
 
 export type Certificate2PropsOutType = {
   headerFrameProps: HeaderFramePropsType
+  certificate2BodyProps: Certificate2BodyPropsType
 }
 
 /**
