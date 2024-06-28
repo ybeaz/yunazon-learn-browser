@@ -1,9 +1,7 @@
 import React from 'react'
-import { DocumentType } from '../../../@types/index'
 
 export type Certificate2BodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  document: DocumentType
   storeStateSlice: any
 }
 

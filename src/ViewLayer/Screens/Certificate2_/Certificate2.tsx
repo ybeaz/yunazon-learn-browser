@@ -86,8 +86,7 @@ const Certificate2Component: Certificate2ComponentType = (
   const modulePathName = `/m/${moduleID}/${moduleSlug}`
   const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
 
-  const propsOut: any = {
-    // Certificate2PropsOutType
+  const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
       moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
