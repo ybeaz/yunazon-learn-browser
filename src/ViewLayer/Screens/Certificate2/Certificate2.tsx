@@ -125,7 +125,7 @@ const Certificate2Component: Certificate2ComponentType = (
             <link rel='canonical' href={location.href} />
             <meta name='description' content={moduleCapture} />
           </Helmet>
-          <div className='_headerFrameWrapper Certificate2_noPrint'>
+          <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
           <CertificateFrameA>
@@ -133,6 +133,7 @@ const Certificate2Component: Certificate2ComponentType = (
           </CertificateFrameA>
         </>
       )}
+      <LoaderOverlayYrl />
     </div>
   )
 }

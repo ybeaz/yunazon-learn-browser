@@ -113,7 +113,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
         <link rel='canonical' href={location.href} />
         <meta name='description' content={moduleCapture} />
       </Helmet>
-      <div className='_buttons Certificate_noPrint'>
+      <div className='_buttons _noPrint'>
         <HeaderFrame {...propsOut.headerFrameProps} />
       </div>
 

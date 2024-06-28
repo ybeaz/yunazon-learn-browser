@@ -67,6 +67,25 @@ h6 {
   height: 100vh;
 }
 
+@media print {
+  size: A4 auto;
+  @page {
+    size: A4 auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    page-break-after: avoid;
+  }
+
+  #root {
+    height: inherit;
+    div {
+      ._noPrint {
+        display: none;
+      }
+    }
+  }
+}
+
 /*
 font-family: 'Lucida Grande', Helvetica, Arial, sans-serif;
 {

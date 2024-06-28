@@ -12,24 +12,3 @@
   @media @phone, @phone-strict {
   }
 }
-
-@media print {
-  size: A4 auto;
-  @page {
-    size: A4 auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    page-break-after: avoid;
-  }
-
-  #root {
-    background-color: white;
-    height: inherit;
-    .Certificate2 {
-      background-color: white;
-      .Certificate2_noPrint {
-        display: none;
-      }
-    }
-  }
-}
