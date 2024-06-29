@@ -1,7 +1,88 @@
 .Certificate2Body {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 3rem;
+
+  .cursive {
+    font-family: 'Pinyon Script', cursive;
+  }
+
+  .sans {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .underline {
+    border-bottom: 1px solid #777;
+    padding: 5px;
+    margin-bottom: 15px;
+  }
+
+  ._titlesWrapper {
+    display: flex;
+    justify-content: center;
+
+    ._affiliation {
+      display: flex;
+    }
+
+    ._title {
+      .cursive();
+      display: flex;
+      font-size: @fontSizeH1 * 2;
+    }
+  }
+
+  ._nameLearner {
+    display: flex;
+  }
+
+  ._achievement {
+    display: flex;
+  }
+
+  ._descriptionCourse {
+    display: flex;
+  }
+
+  ._modulesList {
+    display: flex;
+  }
+
+  ._labelModuleIds {
+    display: flex;
+  }
+
+  ._moduleLinksWrapper {
+    display: flex;
+  }
+
+  ._moduleLinks {
+    display: flex;
+  }
+
+  ._institution {
+    display: flex;
+  }
+
+  ._nameServiceProvider {
+    display: flex;
+  }
+
+  ._dateCompleted {
+    display: flex;
+  }
+
+  ._documentLinkWrapper {
+    display: flex;
+  }
+
+  ._documentLink {
+    display: flex;
+  }
 
   @media @large {
   }

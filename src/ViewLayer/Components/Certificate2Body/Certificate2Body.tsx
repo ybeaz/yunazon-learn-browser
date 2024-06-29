@@ -80,22 +80,24 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
   return (
     <div className={getClasses('Certificate2Body', classAdded)}>
-      <h4>{affiliation}</h4>
-      <h2>Certificate of Completion</h2>
-      <div>{nameLearner}</div>
-      <div>has earned 1.0 Credit Hours</div>
-      <div>while completing the training module entitled</div>
-      <div>{moduleCapture}</div>
-      <div>Module No</div>
-      <div>
-        <a className='_moduleLink' href={modulePathName} target='_blank'>
+      <div className='_titlesWrapper'>
+        <h4 className='_affiliation'>{affiliation}</h4>
+        <h2 className='_title'>Certificate of Completion</h2>
+      </div>
+      <div className='_nameLearner'>{nameLearner}</div>
+      <div className='_achievement'>has earned 1.0 Credit Hours</div>
+      <div className='_descriptionCourse'>while completing the training module entitled</div>
+      <div className='_modulesList'>{moduleCapture}</div>
+      <div className='_labelModuleIds'>Module No</div>
+      <div className='_moduleLinksWrapper'>
+        <a className='_moduleLinks' href={modulePathName} target='_blank'>
           {moduleID}
         </a>
       </div>
-      <div>"Open Internet Academy"</div>
-      <div>in partnership with "YouRails.com"</div>
-      <div>Completed {dateCreatedReadable}</div>
-      <div>
+      <div className='_institution'>"Open Internet Academy"</div>
+      <div className='_nameServiceProvider'>in partnership with "YouRails.com"</div>
+      <div className='_dateCompleted'>Completed {dateCreatedReadable}</div>
+      <div className='_documentLinkWrapper'>
         <a className='_documentLink' href={documentPathName} target='_blank'>
           {documentID}
         </a>
