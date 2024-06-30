@@ -2,7 +2,8 @@
   align-self: center;
   width: 90%;
   margin-top: 2rem;
-  border: transparent solid 10rem;
+  height: calc(100vh - 10rem);
+  border: transparent solid 8rem;
   // border-image-source: url(https://m.media-amazon.com/images/I/41zcSWiYniL._AC_.jpg);
   border-image-slice: 100;
   border-image-repeat: round;
@@ -23,5 +24,9 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone, @phone-strict {
+  }
+
+  @media print {
+    margin: 0;
   }
 }

@@ -52,7 +52,10 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-    if (sub) handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
+    if (sub) {
+      handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
+      handleEvents({}, { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } })
+    }
   }, [sub])
 
   const propsOut: MyDocumentsPropsOutType = {
