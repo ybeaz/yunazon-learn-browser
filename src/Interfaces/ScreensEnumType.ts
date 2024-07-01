@@ -8,5 +8,6 @@ export enum ScreensEnumType {
   Profiles = 'Profiles',
   TagsCloud = 'TagsCloud',
   Certificate = 'Certificate',
+  Certificate2 = 'Certificate2',
   Error404 = 'Error404',
 }

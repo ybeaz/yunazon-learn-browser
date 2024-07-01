@@ -456,9 +456,27 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
         return DICTIONARY_STYLES[theme]
       }};}
 
-    body {
+    .CertificateFrameA {
+      color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+      background: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+    }
+
+    .Certificate2,
+    .Certificate,
+    .MainFrame {
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
+    }
+
+
+    @media print {
+      #root {
+        background-color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+        .Certificate2,
+        .Certificate {
+          background-color: ${props2 => getColor(props2, 'colorFirst', medial, lighter4)};
+        }
+      }
     }
   `
 

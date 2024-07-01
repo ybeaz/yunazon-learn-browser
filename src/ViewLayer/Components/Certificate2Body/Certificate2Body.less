@@ -1,0 +1,145 @@
+.Certificate2Body {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+
+  .cursive {
+    font-family: 'Pinyon Script', cursive;
+  }
+
+  .sans {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .underline {
+    border-bottom: 1px solid #777;
+    padding: 5px;
+  }
+
+  ._sectionWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  ._sectionWrapperGapNone {
+    ._sectionWrapper();
+    gap: 0;
+  }
+
+  ._sectionWrapperRow {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  ._sectionWrapperUnderlined {
+    .underline();
+    display: flex;
+    justify-content: center;
+  }
+
+  ._affiliation {
+    display: flex;
+  }
+
+  ._title {
+    .cursive();
+    display: flex;
+    font-size: @fontSizeH1 * 1.5;
+  }
+
+  ._nameLearner {
+    display: flex;
+    font-size: @fontSizeH2;
+  }
+
+  ._labelAchievement {
+    .cursive();
+    display: flex;
+    font-size: 1.35rem;
+  }
+
+  ._achievement {
+    display: flex;
+  }
+
+  ._labelDescription {
+    .cursive();
+    display: flex;
+    font-size: 1.5rem;
+  }
+
+  ._courseCapture {
+    display: flex;
+    font-size: @fontSizeH2;
+  }
+
+  ._labelCourse {
+    display: flex;
+    white-space: pre;
+  }
+
+  ._moduleLinks {
+    display: flex;
+  }
+
+  ._institution {
+    display: flex;
+  }
+
+  ._nameServiceProvider {
+    display: flex;
+  }
+
+  ._dateCompleted {
+    display: flex;
+    white-space: pre;
+  }
+
+  ._labelDocument {
+    display: flex;
+    white-space: pre;
+  }
+
+  ._documentLink {
+    display: flex;
+  }
+
+  ._stamp {
+    position: absolute;
+    background-image: url(https://yourails.com/images/certified-stamp.png);
+    width: 13rem;
+    height: 13rem;
+    bottom: 13rem;
+    background-repeat: round;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+
+  @media print {
+    padding: 1rem;
+    gap: 0.5rem;
+
+    ._titlesWrapper {
+      ._title {
+        font-size: @fontSizeH1 * 1.25;
+      }
+    }
+  }
+}
