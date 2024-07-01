@@ -8,24 +8,21 @@ export type InputYrlComponentPropsType = {
   placeholder: string // placeholder text
   typeEvent: string // typeEvent to trigger the proper action
   typeEventOnEnter?: string // typeEventOnEnter to trigger the action when the user presses Enter
+  dataEventOnEnter?: any // dataEventOnEnter data for the action when the user presses Enter
   storeFormGroup?: keyof FormsType // sub property in store.form to keep data
   storeFormProp?: string // name of the property in store.form that stores data
   accept?: string // accepted files' format for type='file', for example, 'image/png, image/jpeg, image/jpg'
   storeStateSlice: { forms: FormsType }
 }
 
-export type InputYrlPropsType = Omit<
-  InputYrlComponentPropsType,
-  'storeStateSlice'
->
+export type InputYrlPropsType = Omit<InputYrlComponentPropsType, 'storeStateSlice'>
 
 export type InputYrlPropsOutType = Record<string, any>
 
 /**
  * @import import { InputYrlType } from './InputYrlType'
  */
-export interface InputYrlComponentType
-  extends React.FunctionComponent<InputYrlComponentPropsType> {
+export interface InputYrlComponentType extends React.FunctionComponent<InputYrlComponentPropsType> {
   (props: InputYrlComponentPropsType): React.ReactElement
 }
 

@@ -1,4 +1,4 @@
 export enum CLIENTS_URI {
-  remote = 'https://academy.yourails.com',
+  remote = 'https://yourails.com',
   local = 'http://localhost:3440',
 }

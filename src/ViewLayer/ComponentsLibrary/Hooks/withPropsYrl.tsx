@@ -19,9 +19,7 @@ export interface WithPropsYrlType {
  * @import import { withPropsYrl } from './YrlNativeViewLibrary'
  */
 
-export const withPropsYrl: WithPropsYrlType = (
-  extraProps: WithPropsYrlPropsType
-) =>
+export const withPropsYrl: WithPropsYrlType = (extraProps: WithPropsYrlPropsType = {}) =>
   function (Component: FunctionComponent<any>) {
     return function WrappedComponent(props: any) {
       const propsNext = { ...props, ...extraProps }

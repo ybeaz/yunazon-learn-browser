@@ -1,7 +1,5 @@
 import React, { ReactElement, useMemo } from 'react'
-import { nanoid } from 'nanoid'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { QuestionType } from '../../../@types/GraphqlTypes'
 import {
   getModuleByModuleID,
   getQuesionString,
@@ -45,7 +43,6 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     capture,
     moduleID,
     contentID,
-    questionNumber,
     questions: questionsActive,
   } = getModuleByModuleID(
     {
@@ -208,6 +205,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       <meta itemProp='identifier' content={moduleID} />
       <meta itemProp='headline' content={`QA: ${capture}`} />
       {questionsActive.length ? getDots(questionsChunked) : null}
+      {isModuleStarted && getSlides(questionsChunked)}
       <div className={`__buttons`}>
         <div className='_backward'>
           <ButtonYrl {...propsOut.buttonSlideBackwardProps} />
@@ -225,7 +223,6 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
           <ButtonYrl {...propsOut.buttonStartProps} />
         </div>
       </div>
-      {isModuleStarted && getSlides(questionsChunked)}
     </div>
   )
 }

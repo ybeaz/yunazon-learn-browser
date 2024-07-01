@@ -11,8 +11,8 @@ export const SET_SIDE_NAVIGATION_LEFT: ReducerType = (
   const { isSideNavLeftVisible: isSideNavLeftVisibleStore } = componentsState
 
   let isSideNavLeftVisible = !isSideNavLeftVisibleStore
-  if (isSideNavLeftVisibleIn !== undefined)
-    isSideNavLeftVisible = isSideNavLeftVisibleIn
+
+  if (isSideNavLeftVisibleIn !== undefined) isSideNavLeftVisible = isSideNavLeftVisibleIn
 
   const componentsStateNext = {
     ...componentsState,

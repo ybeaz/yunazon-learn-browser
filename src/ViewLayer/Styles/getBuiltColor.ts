@@ -34,6 +34,7 @@ export const getBuiltColor =
     const alphaNext = alpha + alpha2
 
     const percent = colorFormat === 'hsla' ? '%' : ''
+    const divider = colorFormat === 'rgba' ? '/' : ''
     const color = `${colorFormat}(${redOrHue}, ${greenOrSaturation}${percent}, ${blueOrLightnessNext}${percent}, ${alphaNext})`
 
     return color

@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
+import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
@@ -23,6 +24,7 @@ import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
+import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -59,8 +61,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const params = useParams()
   const moduleID = params.moduleID || ''
-  const canonicalUrl = `${SERVERS_MAIN.remote}${location.pathname}`
-  const screenType = 'AcademyPresent'
+  const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+
+  const screenType = ScreensEnumType['AcademyPresent']
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
@@ -78,7 +81,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     isSummary = false
   }
 
-  const [isLoaded, setIsLoaded] = useState(false)
   const [moduleState, setModuleState] = useState({
     CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
     contentComponentName: '',
@@ -107,14 +109,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   } = moduleState
 
   useEffect(() => {
-    if (modules.length && isLoaded === false) {
+    if (modules.length) {
       const {
         capture: capture2,
         language: language2,
         description: description2,
         contentType,
         contentID: contentID2,
-        duration,
+        duration: duration2,
         index: index2,
         questionsTotal: questionsTotal2,
         summary: summary2,
@@ -124,11 +126,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { parentFunction: 'AcademyPresentComponent' }
       )
 
+      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
-
-      setIsLoaded(true)
 
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
@@ -146,7 +148,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     }
   }, [mediaLoadedModulesString])
 
-  const isVisible = mediaLoaded[moduleID] || false
+  const isVisible = mediaLoaded[moduleIDActive || moduleID] || false
 
   const { width, height } = VIDEO_RESOLUTION
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
@@ -182,7 +184,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Together_know_everything'][languageSite],
+      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][languageSite],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
@@ -204,11 +206,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         moduleID,
         contentID,
         isVisible,
+        isIframe: true,
         screenType,
       },
       PlayerIframe: {
         contentID,
         isVisible,
+        isIframe: true,
       },
     },
     loaderBlurhashProps: {
@@ -244,12 +248,13 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   return (
     <div className='AcademyPresent' id={`moduleID-${moduleID}`}>
-      {isLoaded === true ? (
+      {modules.length ? (
         <>
           <Helmet>
             <html lang={language} />
             <meta charSet='utf-8' />
             <meta name='viewport' content='width=device-width,initial-scale=1' />
+            <meta name='google' content='notranslate' />
             <title>{capture}</title>
             <link rel='canonical' href={canonicalUrl} />
             <meta name='description' content={description} />
@@ -262,6 +267,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-main */}
             <div className='AcademyPresent__middle-main'>
               <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
+                {null}
                 <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
                 <PlayerPanel {...propsOut.playerPanelProps} />
               </CONTENT_ASSIGNED_COMPONENT>

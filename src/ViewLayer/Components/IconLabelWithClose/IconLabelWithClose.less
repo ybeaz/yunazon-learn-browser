@@ -1,0 +1,132 @@
+.IconLabelWithClose {
+  display: flex;
+  border-radius: 6px;
+
+  .Icon_IconLabelWithClose {
+    display: flex;
+    align-items: center;
+    padding: 0 0.15rem 0 0.25rem;
+
+    ._icon {
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  }
+
+  ._capture {
+    display: flex;
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    line-height: 1.75rem;
+  }
+
+  .Button_IconLabelWithClose {
+    display: flex;
+    position: relative;
+    background-color: inherit;
+    padding: 0.15rem 0.25rem 0 0.15rem;
+
+    ._navLink {
+      display: flex;
+      font-style: unset;
+      text-decoration: none;
+      justify-content: center;
+      padding: 0 0 0 0;
+      align-items: center;
+    }
+
+    ._tooltipTop {
+      width: 120px;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -60px;
+    }
+
+    ._tooltipRight {
+      top: -5px;
+      left: 105%;
+    }
+
+    ._tooltipBottom {
+      width: 120px;
+      top: 110%;
+      left: 50%;
+      margin-left: -60px;
+    }
+
+    ._tooltipLeft {
+      width: 120px;
+      top: -5px;
+      right: 105%;
+    }
+
+    .__tooltipText {
+      visibility: hidden;
+      text-align: center;
+      border-radius: 6px;
+      padding: 0.5rem;
+      font-size: @fontSizeS;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+    }
+
+    .__tooltipTextVisible {
+      visibility: visible;
+    }
+
+    &:hover .__tooltipText {
+      visibility: visible;
+    }
+
+    .__button {
+      display: flex;
+      background-color: inherit;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      border-radius: 1px;
+      margin: 0;
+      padding: 0;
+      border: none;
+      &:active,
+      &:focus {
+        outline: none;
+        text-size-adjust: 100%;
+      }
+      ._in {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        ._capture_left {
+          padding: 0 0 0 0;
+          line-height: 1.1;
+        }
+        ._icon {
+          height: 1rem;
+          width: 1rem;
+        }
+        ._capture_right {
+          padding: 0 0 0 0.3rem;
+          line-height: 1.1;
+        }
+      }
+    }
+
+    .__underlined {
+      display: flex;
+      width: 95%;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

@@ -9,6 +9,9 @@ export type MyDocumentsBodyComponentPropsType = {
   documents: RootStoreType['documents']
   language: RootStoreType['language']
   handleEvents: HandleEventType
+  storeStateSlice: {
+    pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
+  }
 }
 
 export type MyDocumentsBodyPropsType = Omit<
@@ -34,5 +37,4 @@ export interface MyDocumentsBodyComponentType
   (props: MyDocumentsBodyComponentPropsType): React.ReactElement
 }
 
-export type MyDocumentsBodyType =
-  React.FunctionComponent<MyDocumentsBodyPropsType>
+export type MyDocumentsBodyType = React.FunctionComponent<MyDocumentsBodyPropsType>

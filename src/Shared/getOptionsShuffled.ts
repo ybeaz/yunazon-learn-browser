@@ -8,6 +8,8 @@ export const getOptionsShuffled = (modules: ModuleType[]): ModuleType[] => {
   return modules.map((module: ModuleType) => {
     const { questions } = module
 
+    if (!questions) return module
+
     const questionsNext = questions.map((question: QuestionType) => {
       const { options } = question
 

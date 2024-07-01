@@ -43,6 +43,7 @@
   box-sizing: border-box;
   background-clip: content-box;
   margin: 0;
+  print-color-adjust: exact;
   -webkit-print-color-adjust: exact;
   font-display: swap;
 }
@@ -64,6 +65,25 @@ h6 {
 #root {
   width: inherit;
   flex: 1;
+  height: 100vh;
+}
+
+@media print {
+  @page {
+    size: A4 auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    page-break-after: avoid;
+  }
+
+  #root {
+    height: inherit;
+    div {
+      ._noPrint {
+        display: none;
+      }
+    }
+  }
 }
 
 /*

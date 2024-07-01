@@ -1,29 +1,20 @@
 import { UserType } from './UserType'
-import { ModuleType, CourseType, DocumentType, ProfileType } from '../@types/'
+import {
+  ModuleType,
+  CourseType,
+  DocumentType,
+  ProfileType,
+  TagType,
+  CreateModuleStagesEnumType,
+  CreateModuleStatusEnumType,
+  CreateModuleStageType,
+} from '../@types/'
 import { PaginationType } from './PaginationType'
 import { ArticleType } from '../@types/ArticleMockType'
+import { ScreensEnumType } from './ScreensEnumType'
 
-export enum CreateModuleStagesEnumType {
-  metaData = 'metaData',
-  transcript = 'transcript',
-  summary = 'summary',
-  questions = 'questions',
-  objections = 'objections',
-  courseModule = 'courseModule',
-}
-
-export enum CreateModuleStatusEnumType {
-  todo = 'todo',
-  pending = 'pending',
-  success = 'success',
-  failure = 'failure',
-}
-
-export type CreateModuleStageType = {
-  isActive: boolean
-  status: CreateModuleStatusEnumType
-  timeCalculated: number | null
-}
+export { CreateModuleStagesEnumType, CreateModuleStatusEnumType }
+export type { CreateModuleStageType }
 
 export type SearchFormSepType = {
   selectSkillsOffered: string[]
@@ -41,12 +32,15 @@ export type SearchFormSepType = {
 export enum PaginationNameEnumType {
   pageModules = 'pageModules',
   pageDocuments = 'pageDocuments',
+  pageTags = 'pageTags',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
-  screenActive: string
+  screenActive: ScreensEnumType
+  tagsSearchForModules: string | null
+  modulesSearchApplied: string | null
   isObjections: boolean
   isSummary: boolean
   isConfetti: boolean
@@ -73,7 +67,10 @@ export type FormsType = {
   userPrev: UserType
   user: UserType
   inputCourseCreate: string
-  inputSearch: string
+  modulesSearch: string
+  documentsSearch: string
+  tagsSearch: string
+  coursesSearch: string
   tagsPick: string[]
   tagsOmit: string[]
   profileActive: {
@@ -144,6 +141,7 @@ export type RootStoreType = {
     | 'avatarSrc'
     | 'avatarSize'
   >[]
+  tagsCloud: TagType[]
   scorm: ScormType
   forms: FormsType
   isLoaded: {

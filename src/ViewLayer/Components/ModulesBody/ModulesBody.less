@@ -1,0 +1,78 @@
+.ModulesBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  ._h2Wrapper {
+    display: flex;
+    align-items: center;
+
+    ._h2 {
+      display: flex;
+      align-self: flex-start;
+      text-transform: capitalize;
+      padding-bottom: 1rem;
+      line-height: 2.25rem;
+      font-size: @fontSizeH4;
+    }
+    ._iconLabelWithCloseWrapper {
+      display: flex;
+      align-items: center;
+      padding-bottom: 1rem;
+
+      .Icon_ArrowForward {
+        display: flex;
+        align-items: center;
+        padding: 0 0.3rem 0 0.5rem;
+
+        ._icon {
+          height: 1rem;
+          width: 1rem;
+        }
+      }
+
+      ._tagsSearchForModulesIcon {
+        display: flex;
+        align-items: center;
+      }
+      ._tagsSearchForModulesValue {
+        display: flex;
+        align-items: center;
+      }
+
+      ._modulesSearchIcon {
+        display: flex;
+        align-items: center;
+      }
+      ._modulesSearchValue {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}
+
+.ModulesBody_AcademyMatrixBody {
+  padding: 0rem 1rem;
+  gap: 1rem;
+
+  ._h2 {
+    display: flex;
+    align-self: flex-start;
+    text-transform: capitalize;
+    padding: 0;
+    font-size: @fontSizeH4;
+    line-height: 2.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}

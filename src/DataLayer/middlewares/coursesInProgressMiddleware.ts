@@ -11,7 +11,7 @@ const setLocalStorageCoursesInProgress = (...args: any) => {
   // const courses = storeState.courses
   // const coursesJsonString = JSON.stringify(courses)
   getLocalStorageSetObjTo({
-    modulesInProgress: storeState.courses,
+    modulesInProgress: storeState.modules,
   })
 }
 
@@ -19,18 +19,17 @@ const setLocalStorageCoursesInProgress = (...args: any) => {
  * @description Middleware to coursesInProgressMiddleware
  * @import import { coursesInProgressMiddleware } from './middlewares/coursesInProgressMiddleware'
  */
-export const coursesInProgressMiddleware: Middleware =
-  store => next => action => {
-    const result = next(action)
+export const coursesInProgressMiddleware: Middleware = store => next => action => {
+  const result = next(action)
 
-    const { type: actionType } = action
-    const actionsMandatoryToSetLocalStorage = ['CLICK_CHECK']
+  const { type: actionType } = action
+  const actionsMandatoryToSetLocalStorage = ['CLICK_CHECK']
 
-    const storeState = store.getState()
+  const storeState = store.getState()
 
-    if (actionsMandatoryToSetLocalStorage.includes(actionType)) {
-      setLocalStorageCoursesInProgress(storeState)
-    }
-
-    return result
+  if (actionsMandatoryToSetLocalStorage.includes(actionType)) {
+    setLocalStorageCoursesInProgress(storeState)
   }
+
+  return result
+}

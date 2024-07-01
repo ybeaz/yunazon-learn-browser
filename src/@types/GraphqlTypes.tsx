@@ -59,7 +59,7 @@ export type BotType = {
   /** bots created date */
   dateCreated?: Maybe<Scalars['Float']['output']>;
   /** bots deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** bots updated date */
   dateUpdated?: Maybe<Scalars['Float']['output']>;
   /** disclaimerRef */
@@ -157,10 +157,10 @@ export type CompetencyTagType = {
 export type CompetencyTagsInputType = {
   /** competencyTags created date */
   competencyTagsDateCreated?: InputMaybe<Scalars['Date']['input']>;
-  /** competencyTags deleted date */
-  competencyTagsDateDeleted?: InputMaybe<Scalars['Date']['input']>;
   /** competencyTags updated date */
   competencyTagsDateUpdated?: InputMaybe<Scalars['Date']['input']>;
+  /** competencyTags deleted date */
+  competencyTagsdateDeactivated?: InputMaybe<Scalars['Date']['input']>;
   /** competencyTags ID */
   idCompetencyTags?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -168,6 +168,45 @@ export type CompetencyTagsInputType = {
 export type CompetencyTagsParamsReadType = {
   /** first item */
   profileID?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CountDocumentInputType = {
+  /** MongoDB query */
+  queryAll?: InputMaybe<CountQueryParamsDocumentInputType>;
+  /** queryFuncName */
+  queryFuncName?: InputMaybe<Scalars['String']['input']>;
+  /** MongoDB query */
+  queryIsActive?: InputMaybe<CountQueryIsActiveDocumentInputType>;
+  /** MongoDB query */
+  queryParams?: CountQueryParamsDocumentInputType;
+};
+
+export type CountQueryIsActiveDocumentInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CountQueryParamsDocumentInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** learner.userID > learnerUserID */
+  learnerID?: InputMaybe<Scalars['String']['input']>;
+  /** learner.userID > learnerUserID */
+  learnerUserID?: InputMaybe<Scalars['String']['input']>;
+  /** module.moduleID > moduleModuleIDs */
+  moduleModuleIDs?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** module.tags > tag */
+  tag?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type CountQueryTemplatesInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type CountTemplatesInputType = {
+  /** MongoDB query */
+  query?: CountQueryTemplatesInputType;
 };
 
 export type CourseEdgeType = {
@@ -187,7 +226,7 @@ export type CourseType = {
   /** courses created date */
   dateCreated: Scalars['Float']['output'];
   /** courses deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** courses updated date */
   dateUpdated: Scalars['Float']['output'];
   /** course description */
@@ -214,12 +253,27 @@ export type CoursesConnectionType = {
   pageInfo?: Maybe<CoursesPageInfoType>;
 };
 
+export type CoursesCountType = {
+  __typename?: 'CoursesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
+};
+
 export type CoursesPageInfoType = {
   __typename?: 'CoursesPageInfoType';
   /** endCursor */
   endCursor?: Maybe<Scalars['String']['output']>;
   /** hasNextPage */
   hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type CreateBotInputType = {
+  /** bots ID */
+  botsID?: InputMaybe<Scalars['ID']['input']>;
 };
 
 export type CreateBotResponseInputType = {
@@ -249,11 +303,6 @@ export type CreateBotResponseType = {
   textObj?: Maybe<TextObjType>;
 };
 
-export type CreateBotsInputType = {
-  /** bots ID */
-  botsID?: InputMaybe<Scalars['ID']['input']>;
-};
-
 export type CreateContentMetaDataType = {
   __typename?: 'CreateContentMetaDataType';
   /** capture */
@@ -273,7 +322,7 @@ export type CreateContentMetaDataType = {
   /** courses meta tags: tags that characterises the course content */
   tags?: Maybe<Array<Scalars['String']['output']>>;
   /** thumbnail image data */
-  thumbnails: ThumbnailsBotType;
+  thumbnails?: Maybe<ThumbnailsBotType>;
 };
 
 export type CreateCourseInputType = {
@@ -305,12 +354,18 @@ export type CreateDocumentInputType = {
   /** learner, user, student */
   learner: UpdateProfileInputType;
   /** module */
-  module: UpdateModuleInputType;
+  module: UpdateModuleForDocumentInputType;
 };
 
 export type CreateModuleInputType = {
   /** capture */
   capture: Scalars['String']['input'];
+  /** capture channel */
+  captureChannel?: InputMaybe<Scalars['String']['input']>;
+  /** capture playlist */
+  capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+  /** module channelID */
+  channelID?: InputMaybe<Scalars['ID']['input']>;
   /** module contentID */
   contentID: Scalars['ID']['input'];
   /** module content type */
@@ -327,6 +382,8 @@ export type CreateModuleInputType = {
   ipClient?: InputMaybe<Scalars['String']['input']>;
   /** isActive */
   isActive?: Scalars['Boolean']['input'];
+  /** isCompleted */
+  isCompleted?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
   /** module objection */
@@ -335,6 +392,8 @@ export type CreateModuleInputType = {
   organizationID: Scalars['ID']['input'];
   /** module passRate */
   passRate?: InputMaybe<Scalars['Float']['input']>;
+  /** module playlistID */
+  playlistID?: InputMaybe<Scalars['ID']['input']>;
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
@@ -355,7 +414,7 @@ export type CreateOriginInputType = {
   /** youtubeID */
   originID?: InputMaybe<Scalars['String']['input']>;
   /** youtubeUrl */
-  originUrl?: InputMaybe<Array<Scalars['String']['input']>>;
+  originUrl?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CreateProfileInputType = {
@@ -419,6 +478,21 @@ export type CreateProfileInputType = {
   userID: Scalars['ID']['input'];
 };
 
+export type CreateTagInputType = {
+  /** tags completed */
+  completed: Scalars['Int']['input'];
+  /** tags count */
+  count: Scalars['Int']['input'];
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** tags ID */
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** tags value */
+  value: Scalars['String']['input'];
+};
+
 export type CreateTemplatesInputType = {
   /** templates ID */
   templatesID?: InputMaybe<Scalars['ID']['input']>;
@@ -451,7 +525,7 @@ export type DocumentType = {
   /** documents created date */
   dateCreated: Scalars['Float']['output'];
   /** documents deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** documents updated date */
   dateUpdated: Scalars['Float']['output'];
   /** documentID */
@@ -463,7 +537,7 @@ export type DocumentType = {
   /** learner, user, student */
   learner: ProfileType;
   /** module */
-  module: ModuleType;
+  module: ModuleForDocumentType;
 };
 
 export type DocumentsConnectionType = {
@@ -472,6 +546,16 @@ export type DocumentsConnectionType = {
   edges?: Maybe<Array<DocumentEdgeType>>;
   /** DocumentsPageInfoType */
   pageInfo?: Maybe<DocumentsPageInfoType>;
+};
+
+export type DocumentsCountType = {
+  __typename?: 'DocumentsCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DocumentsPageInfoType = {
@@ -714,10 +798,16 @@ export type ModuleEdgeType = {
   node?: Maybe<ModuleType>;
 };
 
-export type ModuleType = {
-  __typename?: 'ModuleType';
+export type ModuleForDocumentType = {
+  __typename?: 'ModuleForDocumentType';
   /** capture */
   capture: Scalars['String']['output'];
+  /** capture channel */
+  captureChannel?: Maybe<Scalars['String']['output']>;
+  /** capture playlist */
+  capturePlaylist?: Maybe<Scalars['String']['output']>;
+  /** module channelID */
+  channelID?: Maybe<Scalars['ID']['output']>;
   /** module contentID */
   contentID: Scalars['ID']['output'];
   /** module content type */
@@ -727,7 +817,7 @@ export type ModuleType = {
   /** created date */
   dateCreated: Scalars['Float']['output'];
   /** deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** updated date */
   dateUpdated: Scalars['Float']['output'];
   /** description */
@@ -740,6 +830,64 @@ export type ModuleType = {
   ipClient?: Maybe<Scalars['String']['output']>;
   /** isActive */
   isActive: Scalars['Boolean']['output'];
+  /** isCompleted */
+  isCompleted: Scalars['Boolean']['output'];
+  /** language code */
+  language: Scalars['String']['output'];
+  /** module ID */
+  moduleID: Scalars['ID']['output'];
+  /** organizationID */
+  organizationID: Scalars['ID']['output'];
+  /** module passRate */
+  passRate?: Maybe<Scalars['Float']['output']>;
+  /** module playlistID */
+  playlistID?: Maybe<Scalars['ID']['output']>;
+  /** module questionNumber */
+  questionNumber: Scalars['Int']['output'];
+  /** meta stages: stages/ statuses/ envs */
+  stages?: Maybe<Array<Scalars['String']['output']>>;
+  /** module summary */
+  summary?: Maybe<Array<SummaryItemType>>;
+  /** meta tags: tags that characterises the content */
+  tags?: Maybe<Array<Scalars['String']['output']>>;
+  /** thumbnail image data */
+  thumbnails?: Maybe<ThumbnailsType>;
+};
+
+export type ModuleType = {
+  __typename?: 'ModuleType';
+  /** capture */
+  capture: Scalars['String']['output'];
+  /** capture channel */
+  captureChannel?: Maybe<Scalars['String']['output']>;
+  /** capture playlist */
+  capturePlaylist?: Maybe<Scalars['String']['output']>;
+  /** module channelID */
+  channelID?: Maybe<Scalars['ID']['output']>;
+  /** module contentID */
+  contentID: Scalars['ID']['output'];
+  /** module content type */
+  contentType: Scalars['String']['output'];
+  /** creatorID */
+  creatorID: Scalars['ID']['output'];
+  /** created date */
+  dateCreated: Scalars['Float']['output'];
+  /** deleted date */
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
+  /** updated date */
+  dateUpdated: Scalars['Float']['output'];
+  /** description */
+  description: Scalars['String']['output'];
+  /** module duration */
+  duration: Scalars['String']['output'];
+  /** module index */
+  index?: Maybe<Scalars['Int']['output']>;
+  /** ipClient profile/ user */
+  ipClient?: Maybe<Scalars['String']['output']>;
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** isCompleted */
+  isCompleted: Scalars['Boolean']['output'];
   /** language code */
   language: Scalars['String']['output'];
   /** module ID */
@@ -750,6 +898,8 @@ export type ModuleType = {
   organizationID: Scalars['ID']['output'];
   /** module passRate */
   passRate?: Maybe<Scalars['Float']['output']>;
+  /** module playlistID */
+  playlistID?: Maybe<Scalars['ID']['output']>;
   /** module questionNumber */
   questionNumber: Scalars['Int']['output'];
   /** module questions */
@@ -774,6 +924,16 @@ export type ModulesConnectionType = {
   pageInfo?: Maybe<ModulesPageInfoType>;
 };
 
+export type ModulesCountType = {
+  __typename?: 'ModulesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
+};
+
 export type ModulesPageInfoType = {
   __typename?: 'ModulesPageInfoType';
   /** endCursor */
@@ -794,6 +954,7 @@ export type Mutation = {
   createModules: Array<ModuleType>;
   createProfiles: Array<ProfileType>;
   createSiteMap: SiteMapReportType;
+  createTags: Array<TagType>;
   createTemplates: Array<TemplatesType>;
   createUser: UserModelExtendedType;
   createYoutubeTranscript: CreateYoutubeTranscriptType;
@@ -802,6 +963,7 @@ export type Mutation = {
   deactivateDocuments: Array<Scalars['String']['output']>;
   deactivateModules: Array<Scalars['String']['output']>;
   deactivateProfiles: Array<Scalars['String']['output']>;
+  deactivateTags: Array<Scalars['String']['output']>;
   deactivateTemplates: Array<Scalars['String']['output']>;
   deleteBots: Array<Scalars['String']['output']>;
   deleteCompetencyTags: Array<CompetencyTagType>;
@@ -809,6 +971,7 @@ export type Mutation = {
   deleteDocuments: Array<Scalars['String']['output']>;
   deleteModules: Array<Scalars['String']['output']>;
   deleteProfiles: Array<Scalars['String']['output']>;
+  deleteTags: Array<Scalars['String']['output']>;
   deleteTemplates: Array<Scalars['String']['output']>;
   deleteUser: UserModelExtendedType;
   removeRecipe: Scalars['Boolean']['output'];
@@ -821,8 +984,10 @@ export type Mutation = {
   updateModules: Array<ModuleType>;
   updateModulesMeta: Array<UpdateMetaType>;
   updateProfiles: Array<ProfileType>;
+  updateTags: Array<TagType>;
   updateTemplates: Array<TemplatesType>;
   updateUser: UserModelExtendedType;
+  upsertTagsAll: Array<TagType>;
 };
 
 
@@ -837,7 +1002,7 @@ export type MutationCreateBotResponseArgs = {
 
 
 export type MutationCreateBotsArgs = {
-  createBotsInput: Array<CreateBotsInputType>;
+  createBotsInput: Array<CreateBotInputType>;
 };
 
 
@@ -868,6 +1033,11 @@ export type MutationCreateModulesArgs = {
 
 export type MutationCreateProfilesArgs = {
   createProfilesInput: Array<CreateProfileInputType>;
+};
+
+
+export type MutationCreateTagsArgs = {
+  createTagsInput: Array<CreateTagInputType>;
 };
 
 
@@ -911,6 +1081,11 @@ export type MutationDeactivateProfilesArgs = {
 };
 
 
+export type MutationDeactivateTagsArgs = {
+  deactivateTagsIdsInput: Array<Scalars['String']['input']>;
+};
+
+
 export type MutationDeactivateTemplatesArgs = {
   deactivateTemplatesIdsInput: Array<Scalars['String']['input']>;
 };
@@ -943,6 +1118,11 @@ export type MutationDeleteModulesArgs = {
 
 export type MutationDeleteProfilesArgs = {
   deleteProfilesIdsInput: Array<Scalars['String']['input']>;
+};
+
+
+export type MutationDeleteTagsArgs = {
+  deleteTagsIdsInput: Array<Scalars['String']['input']>;
 };
 
 
@@ -1007,6 +1187,11 @@ export type MutationUpdateProfilesArgs = {
 };
 
 
+export type MutationUpdateTagsArgs = {
+  updateTagsInput: Array<UpdateTagInputType>;
+};
+
+
 export type MutationUpdateTemplatesArgs = {
   updateTemplatesInput: Array<UpdateTemplatesInputType>;
 };
@@ -1058,6 +1243,88 @@ export type ObjectionType = {
   objectionID: Scalars['ID']['output'];
   /** module Objection text */
   text?: Maybe<Scalars['String']['output']>;
+};
+
+export type OperatorsDocumentsInputType = {
+  /** operator for contentIDs */
+  contentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for course ID */
+  courseID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorProfileID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for document ID */
+  documentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** operator for learner IDs */
+  learnerProfileID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for learner User IDs */
+  learnerUserID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for contentIDs */
+  moduleContentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  moduleCreatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleModuleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  moduleTagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  moduleTagPick?: InputMaybe<Scalars['String']['input']>;
+  /** operator for searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  tagPick?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OperatorsModulesInputType = {
+  /** operator for contentIDs */
+  contentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for courses ID */
+  courseID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  tagPick?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OperatorsProfilesInputType = {
+  /** operator for courses ID */
+  profileID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  userID?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type OperatorsTagsInputType = {
+  /** operator for contentIDs */
+  contentID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for courses ID */
+  courseID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for creator IDs */
+  creatorID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** operator for module IDs */
+  moduleID?: InputMaybe<Scalars['String']['input']>;
+  /** operator for searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** operator for documents tags: tags that characterises the content to omit with that selection of the documents */
+  tagOmit?: InputMaybe<Scalars['String']['input']>;
+  /** operator for tags: tags that characterises the content to pick from the set of documents */
+  tagPick?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type OptionCourseInputType = {
@@ -1133,7 +1400,7 @@ export type ProfileType = {
   /** created date */
   dateCreated: Scalars['Float']['output'];
   /** deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** updated date */
   dateUpdated: Scalars['Float']['output'];
   /** description */
@@ -1196,6 +1463,16 @@ export type ProfilesConnectionType = {
   pageInfo?: Maybe<ProfilesPageInfoType>;
 };
 
+export type ProfilesCountType = {
+  __typename?: 'ProfilesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
+};
+
 export type ProfilesPageInfoType = {
   __typename?: 'ProfilesPageInfoType';
   /** endCursor */
@@ -1233,11 +1510,12 @@ export type PromptType = {
 export type Query = {
   __typename?: 'Query';
   countBots: Scalars['Int']['output'];
-  countCourses: Scalars['Int']['output'];
-  countDocuments: Scalars['Int']['output'];
-  countModules: Scalars['Int']['output'];
-  countProfiles: Scalars['Int']['output'];
-  countTemplates: Scalars['Int']['output'];
+  countCourses: CoursesCountType;
+  countDocuments: DocumentsCountType;
+  countModules: ModulesCountType;
+  countProfiles: ProfilesCountType;
+  countTags: TagsCountType;
+  countTemplates: TemplatesCountType;
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
@@ -1261,6 +1539,10 @@ export type Query = {
   readProfilesConnection: ProfilesConnectionType;
   readRecipe: RecipeType;
   readRecipes: Array<RecipeType>;
+  readTags: Array<TagType>;
+  readTagsAll: Array<TagType>;
+  readTagsConnection: TagsConnectionType;
+  readTagsModules: Array<TagType>;
   readTemplates: Array<TemplatesType>;
   readTemplatesAll: Array<TemplatesType>;
   readTemplatesConnection: TemplatesConnectionType;
@@ -1268,6 +1550,16 @@ export type Query = {
   readUserProfile: UserModelExtendedType;
   readUsers: UsersType;
   sendEmailDocument: DocumentType;
+};
+
+
+export type QueryCountDocumentsArgs = {
+  countDocumentInput?: InputMaybe<CountDocumentInputType>;
+};
+
+
+export type QueryCountTemplatesArgs = {
+  countTemplatesInput: CountTemplatesInputType;
 };
 
 
@@ -1359,6 +1651,21 @@ export type QueryReadRecipeArgs = {
 export type QueryReadRecipesArgs = {
   skip?: Scalars['Int']['input'];
   take?: Scalars['Int']['input'];
+};
+
+
+export type QueryReadTagsArgs = {
+  readTagsInput: Array<ReadTagInputType>;
+};
+
+
+export type QueryReadTagsConnectionArgs = {
+  readTagsConnectionInput: ReadTagsConnectionInputType;
+};
+
+
+export type QueryReadTagsModulesArgs = {
+  readTagsModulesInput: ReadTagsModulesInputType;
 };
 
 
@@ -1499,14 +1806,12 @@ export type ReadCoursesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortCoursesInputType>;
-  /** courses meta stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** courses meta stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta tags: tags that characterises the course content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** courses meta tags: tags that characterises the course content to pick from the set of documents */
@@ -1516,12 +1821,14 @@ export type ReadCoursesConnectionInputType = {
 export type ReadDocumentsConnectionInputType = {
   /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
   after?: InputMaybe<Scalars['String']['input']>;
-  /** course module contentIDs */
+  /** contentIDs */
   contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** courses ID */
   courseIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** creator IDs */
   creatorIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** document IDs */
+  documentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** first: Specifies the number of items to return from the beginning of the dataset. */
   first?: InputMaybe<Scalars['Int']['input']>;
   /** isActive */
@@ -1530,21 +1837,23 @@ export type ReadDocumentsConnectionInputType = {
   language?: InputMaybe<Scalars['String']['input']>;
   /** learner IDs */
   learnerIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
-  /** course module IDs */
+  /** learner user IDs */
+  learnerUserIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** module IDs */
   moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsDocumentsInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortDocumentsInputType>;
-  /** documents meta stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** documents meta stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** documents meta tags: tags that characterises the course content to omit with that selection of the documents */
+  /** documents tags: tags that characterises the content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** documents meta tags: tags that characterises the course content to pick from the set of documents */
+  /** documents tags: tags that characterises the content to pick from the set of documents */
   tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
@@ -1566,18 +1875,22 @@ export type ReadModulesConnectionInputType = {
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** language code */
   language?: InputMaybe<Scalars['String']['input']>;
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
   /** module IDs */
   moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
   /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsModulesInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortModulesInputType>;
-  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** tags: tags that characterises the content to omit with that selection of the documents */
   tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
   /** tags: tags that characterises the content to pick from the set of documents */
@@ -1585,6 +1898,8 @@ export type ReadModulesConnectionInputType = {
 };
 
 export type ReadProfileInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** profile ID */
   profileID?: InputMaybe<Scalars['ID']['input']>;
   /** user ID */
@@ -1604,18 +1919,99 @@ export type ReadProfilesConnectionInputType = {
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
   /** offset */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsProfilesInputType>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
   /** option to sort by a field: 1 ascending, -1 descending */
   sort?: InputMaybe<SortProfilesInputType>;
-  /** stages: stages/ statuses/ envs to omit with that selection of the documents */
-  stagesOmit?: InputMaybe<Array<Scalars['String']['input']>>;
-  /** stages: stages/ statuses/ envs to pick from the set of documents */
-  stagesPick?: InputMaybe<Array<Scalars['String']['input']>>;
   /** user IDs */
   userIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+};
+
+export type ReadTagInputType = {
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isCompleted */
+  isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isNotCompleted */
+  isNotCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs */
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+  minCount?: InputMaybe<Scalars['Int']['input']>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** tag ID */
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** value */
+  value?: InputMaybe<Scalars['ID']['input']>;
+};
+
+export type ReadTagsConnectionInputType = {
+  /** after: Specifies a cursor that indicates the starting point for the next set of data to retrieve. */
+  after?: InputMaybe<Scalars['String']['input']>;
+  /** module contentIDs */
+  contentIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** creator IDs */
+  creatorIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** first: Specifies the number of items to return from the beginning of the dataset. */
+  first?: InputMaybe<Scalars['Int']['input']>;
+  /** isActive */
+  isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** language code */
+  language?: InputMaybe<Scalars['String']['input']>;
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+  minCount?: InputMaybe<Scalars['Int']['input']>;
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number */
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to setup operator for arguments */
+  operators?: InputMaybe<OperatorsTagsInputType>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortTagsInputType>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sortGraphQl?: InputMaybe<SortGraphQlTagsInputType>;
+  /** tag IDs */
+  tagIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** tags: tags that characterises the content to omit with that selection of the documents */
+  tagsOmit?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** tags: tags that characterises the content to pick from the set of documents */
+  tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
+export type ReadTagsModulesInputType = {
+  /** isCompleted */
+  isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isNotCompleted */
+  isNotCompleted?: InputMaybe<Scalars['Boolean']['input']>;
+  /** learner ID */
+  learnerID?: InputMaybe<Scalars['ID']['input']>;
+  /** learner user ID */
+  learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs */
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
+  minCount?: InputMaybe<Scalars['Int']['input']>;
+  /** searchPhrase */
+  searchPhrase?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ReadTemplatesConnectionInputType = {
@@ -1625,6 +2021,10 @@ export type ReadTemplatesConnectionInputType = {
   first?: InputMaybe<Scalars['Int']['input']>;
   /** offset */
   offset?: InputMaybe<Scalars['Int']['input']>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sort?: InputMaybe<SortTemplatesInputType>;
+  /** option to sort by a field: 1 ascending, -1 descending */
+  sortGraphQl?: InputMaybe<SortGraphQlTemplatesInputType>;
 };
 
 export type ReadUsersOptions = {
@@ -1677,6 +2077,20 @@ export type SortDocumentsInputType = {
   prop?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type SortGraphQlTagsInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortGraphQlTemplatesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type SortModulesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
@@ -1685,6 +2099,20 @@ export type SortModulesInputType = {
 };
 
 export type SortProfilesInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortTagsInputType = {
+  /** sorting direction: 1 ascending, -1 descending */
+  direction?: InputMaybe<Scalars['Float']['input']>;
+  /** property name to sort by */
+  prop?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type SortTemplatesInputType = {
   /** sorting direction: 1 ascending, -1 descending */
   direction?: InputMaybe<Scalars['Float']['input']>;
   /** property name to sort by */
@@ -1735,12 +2163,78 @@ export type SummaryItemType = {
   text?: Maybe<Scalars['String']['output']>;
 };
 
+export type TagType = {
+  __typename?: 'TagType';
+  /** tags completed */
+  completed: Scalars['Int']['output'];
+  /** tags count */
+  count: Scalars['Int']['output'];
+  /** tags created date */
+  dateCreated: Scalars['Float']['output'];
+  /** tags deleted date */
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
+  /** tags updated date */
+  dateUpdated: Scalars['Float']['output'];
+  /** isActive */
+  isActive: Scalars['Boolean']['output'];
+  /** module IDs */
+  moduleIDs?: Maybe<Array<Scalars['ID']['output']>>;
+  /** tags ID */
+  tagID?: Maybe<Scalars['ID']['output']>;
+  /** tags value */
+  value: Scalars['String']['output'];
+};
+
+export type TagsConnectionType = {
+  __typename?: 'TagsConnectionType';
+  /** [TagsEdgeType] */
+  edges?: Maybe<Array<TagsEdgeType>>;
+  /** TagsPageInfoType */
+  pageInfo?: Maybe<TagsPageInfoType>;
+};
+
+export type TagsCountType = {
+  __typename?: 'TagsCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
+};
+
+export type TagsEdgeType = {
+  __typename?: 'TagsEdgeType';
+  /** cursor */
+  cursor?: Maybe<Scalars['String']['output']>;
+  /** TagsEdgeType */
+  node?: Maybe<TagType>;
+};
+
+export type TagsPageInfoType = {
+  __typename?: 'TagsPageInfoType';
+  /** endCursor */
+  endCursor?: Maybe<Scalars['String']['output']>;
+  /** hasNextPage */
+  hasNextPage?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type TemplatesConnectionType = {
   __typename?: 'TemplatesConnectionType';
   /** [TemplatesEdgeType] */
   edges?: Maybe<Array<TemplatesEdgeType>>;
   /** TemplatesPageInfoType */
   pageInfo?: Maybe<TemplatesPageInfoType>;
+};
+
+export type TemplatesCountType = {
+  __typename?: 'TemplatesCountType';
+  /** module count all */
+  countAll?: Maybe<Scalars['Int']['output']>;
+  /** module count isActive */
+  countIsActive?: Maybe<Scalars['Int']['output']>;
+  /** module count with params */
+  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TemplatesEdgeType = {
@@ -1764,7 +2258,7 @@ export type TemplatesType = {
   /** templates created date */
   dateCreated: Scalars['Float']['output'];
   /** templates deleted date */
-  dateDeleted?: Maybe<Scalars['Float']['output']>;
+  dateDeactivated?: Maybe<Scalars['Float']['output']>;
   /** templates updated date */
   dateUpdated: Scalars['Float']['output'];
   /** isActive */
@@ -1964,7 +2458,7 @@ export type UpdateBotsInputType = {
   /** bots created date */
   dateCreated: Scalars['Float']['input'];
   /** bots deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** bots updated date */
   dateUpdated: Scalars['Float']['input'];
 };
@@ -1977,7 +2471,7 @@ export type UpdateCourseInputType = {
   /** courses created date */
   dateCreated: Scalars['Float']['input'];
   /** courses deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** courses updated date */
   dateUpdated: Scalars['Float']['input'];
   /** course description */
@@ -2025,7 +2519,7 @@ export type UpdateDocumentInputType = {
   /** documents created date */
   dateCreated: Scalars['Float']['input'];
   /** documents deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** documents updated date */
   dateUpdated: Scalars['Float']['input'];
   /** documentID */
@@ -2037,7 +2531,7 @@ export type UpdateDocumentInputType = {
   /** learner, user, student */
   learner: UpdateProfileInputType;
   /** module */
-  module: UpdateModuleInputType;
+  module: UpdateModuleForDocumentInputType;
 };
 
 export type UpdateInfoCourseType = {
@@ -2093,9 +2587,15 @@ export type UpdateMetaType = {
   updateInfo?: Maybe<UpdateInfoType>;
 };
 
-export type UpdateModuleInputType = {
+export type UpdateModuleForDocumentInputType = {
   /** capture */
   capture: Scalars['String']['input'];
+  /** capture channel */
+  captureChannel?: InputMaybe<Scalars['String']['input']>;
+  /** capture playlist */
+  capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+  /** module channelID */
+  channelID?: InputMaybe<Scalars['ID']['input']>;
   /** module contentID */
   contentID: Scalars['ID']['input'];
   /** module content type */
@@ -2105,7 +2605,7 @@ export type UpdateModuleInputType = {
   /** created date */
   dateCreated: Scalars['Float']['input'];
   /** deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** updated date */
   dateUpdated: Scalars['Float']['input'];
   /** description */
@@ -2118,6 +2618,63 @@ export type UpdateModuleInputType = {
   ipClient?: InputMaybe<Scalars['String']['input']>;
   /** isActive */
   isActive?: Scalars['Boolean']['input'];
+  /** isCompleted */
+  isCompleted?: Scalars['Boolean']['input'];
+  /** language code */
+  language: Scalars['String']['input'];
+  /** module ID */
+  moduleID: Scalars['ID']['input'];
+  /** organizationID */
+  organizationID: Scalars['ID']['input'];
+  /** module passRate */
+  passRate?: InputMaybe<Scalars['Float']['input']>;
+  /** module playlistID */
+  playlistID?: InputMaybe<Scalars['ID']['input']>;
+  /** module questionNumber */
+  questionNumber?: Scalars['Int']['input'];
+  /** meta stages: stages/ statuses/ envs */
+  stages?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** module summary */
+  summary?: InputMaybe<Array<SummaryItemInputType>>;
+  /** meta tags: tags that characterises the content */
+  tags?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** thumbnail image data */
+  thumbnails?: InputMaybe<ThumbnailsInputType>;
+};
+
+export type UpdateModuleInputType = {
+  /** capture */
+  capture: Scalars['String']['input'];
+  /** capture channel */
+  captureChannel?: InputMaybe<Scalars['String']['input']>;
+  /** capture playlist */
+  capturePlaylist?: InputMaybe<Scalars['String']['input']>;
+  /** module channelID */
+  channelID?: InputMaybe<Scalars['ID']['input']>;
+  /** module contentID */
+  contentID: Scalars['ID']['input'];
+  /** module content type */
+  contentType: Scalars['String']['input'];
+  /** creatorID */
+  creatorID: Scalars['ID']['input'];
+  /** created date */
+  dateCreated: Scalars['Float']['input'];
+  /** deleted date */
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
+  /** updated date */
+  dateUpdated: Scalars['Float']['input'];
+  /** description */
+  description: Scalars['String']['input'];
+  /** module duration */
+  duration: Scalars['String']['input'];
+  /** module index */
+  index?: InputMaybe<Scalars['Int']['input']>;
+  /** ipClient profile/ user */
+  ipClient?: InputMaybe<Scalars['String']['input']>;
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** isCompleted */
+  isCompleted?: Scalars['Boolean']['input'];
   /** language code */
   language: Scalars['String']['input'];
   /** module ID */
@@ -2128,6 +2685,8 @@ export type UpdateModuleInputType = {
   organizationID: Scalars['ID']['input'];
   /** module passRate */
   passRate?: InputMaybe<Scalars['Float']['input']>;
+  /** module playlistID */
+  playlistID?: InputMaybe<Scalars['ID']['input']>;
   /** module questionNumber */
   questionNumber?: Scalars['Int']['input'];
   /** module questions */
@@ -2160,7 +2719,7 @@ export type UpdateProfileInputType = {
   /** created date */
   dateCreated: Scalars['Float']['input'];
   /** deleted date */
-  dateDeleted?: InputMaybe<Scalars['Float']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
   /** updated date */
   dateUpdated: Scalars['Float']['input'];
   /** description */
@@ -2213,11 +2772,32 @@ export type UpdateProfileInputType = {
   userID: Scalars['ID']['input'];
 };
 
+export type UpdateTagInputType = {
+  /** tags completed */
+  completed: Scalars['Int']['input'];
+  /** tags count */
+  count: Scalars['Int']['input'];
+  /** tags created date */
+  dateCreated: Scalars['Float']['input'];
+  /** tags deleted date */
+  dateDeactivated?: InputMaybe<Scalars['Float']['input']>;
+  /** tags updated date */
+  dateUpdated: Scalars['Float']['input'];
+  /** isActive */
+  isActive?: Scalars['Boolean']['input'];
+  /** module IDs */
+  moduleIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
+  /** tags ID */
+  tagID?: InputMaybe<Scalars['ID']['input']>;
+  /** tags value */
+  value: Scalars['String']['input'];
+};
+
 export type UpdateTemplatesInputType = {
   /** templates created date */
   dateCreated?: InputMaybe<Scalars['Date']['input']>;
   /** templates deleted date */
-  dateDeleted?: InputMaybe<Scalars['Date']['input']>;
+  dateDeactivated?: InputMaybe<Scalars['Date']['input']>;
   /** templates updated date */
   dateUpdated?: InputMaybe<Scalars['Date']['input']>;
   /** templates ID */
@@ -2333,8 +2913,6 @@ export type UserModelExtendedType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
-  /** user deleted date */
-  userDateDeleted?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -2371,6 +2949,8 @@ export type UserModelExtendedType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
+  /** user deleted date */
+  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UserType = {
@@ -2387,8 +2967,6 @@ export type UserType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
-  /** user deleted date */
-  userDateDeleted?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -2425,6 +3003,8 @@ export type UserType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
+  /** user deleted date */
+  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UsersType = {

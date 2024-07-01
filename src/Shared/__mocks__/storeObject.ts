@@ -68,8 +68,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'IQuitP6Re5BX',
-                  label:
-                    'Чтобы программист знал, за что отвечаст эта часть кода',
+                  label: 'Чтобы программист знал, за что отвечаст эта часть кода',
                   status: true,
                   answer: false,
                 },
@@ -455,8 +454,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'wFiiUT7up6xj',
-                  label:
-                    'Технические системы развиваются по определенным активным законам.',
+                  label: 'Технические системы развиваются по определенным активным законам.',
                   status: true,
                   answer: false,
                 },
@@ -489,8 +487,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 's0eBl93zORgV',
-                  label:
-                    'Противоречие - это согласие между разными частями системы.',
+                  label: 'Противоречие - это согласие между разными частями системы.',
                   status: false,
                   answer: false,
                 },
@@ -502,8 +499,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'iXB6C2pAght5',
-                  label:
-                    'Противоречие - это отсутствие конфликта между разными частями системы.',
+                  label: 'Противоречие - это отсутствие конфликта между разными частями системы.',
                   status: false,
                   answer: false,
                 },
@@ -523,8 +519,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'd6HnrAN4MWzz',
-                  label:
-                    'Только люди с определенными способностями могут изобретать.',
+                  label: 'Только люди с определенными способностями могут изобретать.',
                   status: false,
                   answer: false,
                 },
@@ -562,8 +557,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'rRVshJXs3Cd7',
-                  label:
-                    'Приемы устранения противоречий - это случайные методы решения проблем.',
+                  label: 'Приемы устранения противоречий - это случайные методы решения проблем.',
                   status: false,
                   answer: false,
                 },
@@ -608,8 +602,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'xnbtpSNgyGY3',
-                  label:
-                    'Нет, изучение ТРИЗ требует достаточно больших усилий.',
+                  label: 'Нет, изучение ТРИЗ требует достаточно больших усилий.',
                   status: true,
                   answer: false,
                 },
@@ -715,8 +708,7 @@ export const storeObject = {
             },
             {
               questionID: 'bdgfS05C7xNs',
-              capture:
-                'Какие основные группы приемов для разрешения противоречий существуют?',
+              capture: 'Какие основные группы приемов для разрешения противоречий существуют?',
               isActive: true,
               options: [
                 {
@@ -747,8 +739,7 @@ export const storeObject = {
             },
             {
               questionID: 'jaBV8SK2vrQY',
-              capture:
-                'Какой пример разрешения противоречий во времени приводится в тексте?',
+              capture: 'Какой пример разрешения противоречий во времени приводится в тексте?',
               isActive: true,
               options: [
                 {
@@ -779,8 +770,7 @@ export const storeObject = {
             },
             {
               questionID: 'oFCTltr8bh5A',
-              capture:
-                'Какой пример разрешения противоречий в системе приводится в тексте?',
+              capture: 'Какой пример разрешения противоречий в системе приводится в тексте?',
               isActive: true,
               options: [
                 {
@@ -811,8 +801,7 @@ export const storeObject = {
             },
             {
               questionID: 'je1Velx7ery1',
-              capture:
-                'Какой пример разрешения противоречий в над системе приводится в тексте?',
+              capture: 'Какой пример разрешения противоречий в над системе приводится в тексте?',
               isActive: true,
               options: [
                 {
@@ -879,8 +868,7 @@ export const storeObject = {
           questions: [
             {
               questionID: 'jvteMiBU79Tr',
-              capture:
-                'Что делали люди, чтобы стать счастливыми согласно легенде?',
+              capture: 'Что делали люди, чтобы стать счастливыми согласно легенде?',
               isActive: true,
               options: [
                 {
@@ -911,8 +899,7 @@ export const storeObject = {
             },
             {
               questionID: 'jFlXiAhsUfoH',
-              capture:
-                'Какой совет дал мудрец юношам перед их путешествием в горы?',
+              capture: 'Какой совет дал мудрец юношам перед их путешествием в горы?',
               isActive: true,
               options: [
                 {
@@ -948,8 +935,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'mXCW9CfimoA7',
-                  label:
-                    'Вынесение части операций из перегруженного момента времени',
+                  label: 'Вынесение части операций из перегруженного момента времени',
                   status: true,
                   answer: false,
                 },
@@ -961,8 +947,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'wTZ6mUo2r1CP',
-                  label:
-                    'Использование новых технологий для ускорения процесса',
+                  label: 'Использование новых технологий для ускорения процесса',
                   status: false,
                   answer: false,
                 },
@@ -976,8 +961,7 @@ export const storeObject = {
             },
             {
               questionID: 'dM4uiNJs5h7E',
-              capture:
-                'Какие варианты реализации принципа предварительного исполнения существуют?',
+              capture: 'Какие варианты реализации принципа предварительного исполнения существуют?',
               isActive: true,
               options: [
                 {
@@ -1013,8 +997,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'wGDTJk3VLxcm',
-                  label:
-                    'Помещают специальное вещество внутрь мячика перед склеиванием',
+                  label: 'Помещают специальное вещество внутрь мячика перед склеиванием',
                   status: true,
                   answer: false,
                 },
@@ -1026,8 +1009,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'bSGwjC4JfDQD',
-                  label:
-                    'Используют воздух, заключенный внутри мячика при производстве',
+                  label: 'Используют воздух, заключенный внутри мячика при производстве',
                   status: false,
                   answer: false,
                 },
@@ -1078,8 +1060,7 @@ export const storeObject = {
     },
     {
       courseID: 'cj8dDTHGJBY',
-      capture:
-        'Eukaryopolis - The City of Animal Cells: Crash Course Biology #4',
+      capture: 'Eukaryopolis - The City of Animal Cells: Crash Course Biology #4',
       description:
         'Hank tells us about the city of Eukaryopolis - the animal cell that is responsible for all the cool things that happen in our bodies.',
       language: 'ru',
@@ -1183,8 +1164,7 @@ export const storeObject = {
             },
             {
               questionID: 'lMwtmyYICm8d',
-              capture:
-                'Does the cytoplasm provide infrastructure for ALL organelles?',
+              capture: 'Does the cytoplasm provide infrastructure for ALL organelles?',
               isActive: true,
               options: [
                 {
@@ -1259,8 +1239,7 @@ export const storeObject = {
             },
             {
               questionID: 'kKVbxmXsLoUg',
-              capture:
-                'What is the name of the particles that make up the Golgi apparatus?',
+              capture: 'What is the name of the particles that make up the Golgi apparatus?',
               isActive: true,
               options: [
                 {
@@ -1413,8 +1392,7 @@ export const storeObject = {
             },
             {
               questionID: 'rtndg0SpMlZz',
-              capture:
-                'What distinguishes hydrophobic substances from hydrophilic substances?',
+              capture: 'What distinguishes hydrophobic substances from hydrophilic substances?',
               isActive: true,
               options: [
                 {
@@ -1459,8 +1437,7 @@ export const storeObject = {
             },
             {
               questionID: 'ibAcOJZkDZ5v',
-              capture:
-                'The main property of ice that influenced all life on earth?',
+              capture: 'The main property of ice that influenced all life on earth?',
               isActive: true,
               options: [
                 {
@@ -1536,8 +1513,7 @@ export const storeObject = {
     },
     {
       courseID: 'H8WJ2KENlK0',
-      capture:
-        'Biological Molecules - You Are What You Eat: Crash Course Biology #3',
+      capture: 'Biological Molecules - You Are What You Eat: Crash Course Biology #3',
       description:
         'Hank talks about the molecules that make up every living thing - carbohydrates, lipids, and proteins - and how we find them in our environment and in the food that we eat.',
       language: 'ru',
@@ -1571,8 +1547,7 @@ export const storeObject = {
               options: [
                 {
                   optionID: 'qnvxe69QBaZl',
-                  label:
-                    'He stated that to be healthy you need to eat all three types of foods.',
+                  label: 'He stated that to be healthy you need to eat all three types of foods.',
                   status: true,
                   answer: false,
                 },
@@ -1585,15 +1560,13 @@ export const storeObject = {
                 },
                 {
                   optionID: 'mrjOnt27UeRP',
-                  label:
-                    'He was the first to discover the chemical composition of urea',
+                  label: 'He was the first to discover the chemical composition of urea',
                   status: true,
                   answer: false,
                 },
                 {
                   optionID: 'tckdbbqonYxF',
-                  label:
-                    'He compiled a teaching on the complete process of urine excretion.',
+                  label: 'He compiled a teaching on the complete process of urine excretion.',
                   status: false,
                   answer: false,
                 },
@@ -1738,8 +1711,7 @@ export const storeObject = {
             },
             {
               questionID: 'rwEkx4B4Zr6Q',
-              capture:
-                'What determines the form and function of an amino acid?',
+              capture: 'What determines the form and function of an amino acid?',
               isActive: true,
               options: [
                 {
@@ -1805,8 +1777,7 @@ export const storeObject = {
           questions: [
             {
               questionID: 'euO0BXTA8ekI',
-              capture:
-                'What kind of plant appeared during the time of the dinosaurs?',
+              capture: 'What kind of plant appeared during the time of the dinosaurs?',
               isActive: true,
               options: [
                 {
@@ -1856,8 +1827,7 @@ export const storeObject = {
             },
             {
               questionID: 'ic2YwnBE1peM',
-              capture:
-                'What is the difference between eukaryotic and prokaryotic cells?',
+              capture: 'What is the difference between eukaryotic and prokaryotic cells?',
               isActive: true,
               options: [
                 {
@@ -1975,8 +1945,7 @@ export const storeObject = {
     },
     {
       courseID: '_6bkzHLI2T8',
-      capture:
-        'Жизнедеятельность клетки, её деление и рост. Видеоурок по биологии',
+      capture: 'Жизнедеятельность клетки, её деление и рост. Видеоурок по биологии',
       description:
         'На этом уроке мы поговорим о том, каким образом клетка осуществляет свою жизнедеятельность.',
       language: 'ru',
@@ -2152,8 +2121,7 @@ export const storeObject = {
                 },
                 {
                   optionID: 'c710Rki4HoWW',
-                  label:
-                    'Клетка приобретает особенности во внутреннем строении',
+                  label: 'Клетка приобретает особенности во внутреннем строении',
                   status: true,
                   answer: false,
                 },
@@ -2173,7 +2141,7 @@ export const storeObject = {
     durationMultiplier: 1,
   },
   forms: {
-    inputSearch: '',
+    modulesSearch: '',
     sendTo: '',
     sendCc: '',
     searchFormSep: {
@@ -2298,7 +2266,7 @@ export const storeObject = {
     titleSite: 'Academy YouRails - Teach curious; Learn from inspired',
     descriptionSite:
       'Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates',
-    canonicalUrlSite: 'https://academy.yourails.com',
+    canonicalUrlSite: 'https://yourails.com',
     langSite: 'en',
     theme: 'Dark',
   },

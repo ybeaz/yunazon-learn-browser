@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
@@ -27,12 +28,12 @@ import {
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
              from '../ComponentsLibrary/'
  */
-const ButtonYrlComponent: ButtonYrlComponentType = (
-  props: ButtonYrlPropsType
-) => {
+const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) => {
   const {
     icon = undefined,
     icon2 = undefined,
+    iconColor = undefined,
+    icon2Color = undefined,
     imageSrc = undefined,
     captureLeft,
     captureRight,
@@ -45,15 +46,14 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     isTooltipVisibleForced = false,
     isUnderlined = false,
     handleEvents: handleEventsCustom,
+    hrefTo = '',
     children,
   } = props
 
   const classDisplay = isDisplaying === true ? '' : 'Button_display_none'
   const classVisible = isVisible === true ? '' : 'Button_visible_none'
 
-  const handleEventsToUse = handleEventsCustom
-    ? handleEventsCustom
-    : handleEvents
+  const handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
 
   const classTooltipsDictionary: Record<string, string> = {
     top: '_tooltipTop',
@@ -71,7 +71,9 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
   const propsOut: ButtonYrlPropsOutType = {
     iconReactProps: {
       icon,
+      iconColor,
       icon2,
+      icon2Color,
       classAdded: `_in IconYrl_${classAdded}`,
     },
     imageProps: {
@@ -80,18 +82,29 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
     },
   }
 
+  const InnerLinkButtonContent = () => (
+    <>
+      {' '}
+      {captureLeft ? (
+        <div className='_in'>
+          <div className={`_capture_left`}>{captureLeft}</div>
+        </div>
+      ) : null}
+      {icon || icon2 ? <IconYrl {...propsOut.iconReactProps} /> : null}
+      {imageSrc && <ImageYrl {...propsOut.imageProps} />}
+      {captureRight ? (
+        <div className='_in'>
+          <div className={`_capture_right`}>{captureRight}</div>
+        </div>
+      ) : null}
+      {children}
+    </>
+  )
+
   return (
-    <div
-      className={getClasses('ButtonYrl', [
-        classAdded,
-        classDisplay,
-        classVisible,
-      ])}
-    >
+    <div className={getClasses('ButtonYrl', [classAdded, classDisplay, classVisible])}>
       {tooltipText ? (
-        <span className={`__tooltipText ${classTooltipAdd}`}>
-          {tooltipText}
-        </span>
+        <span className={`__tooltipText ${classTooltipAdd}`}>{tooltipText}</span>
       ) : null}
 
       <button
@@ -101,19 +114,13 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
           handleEventsToUse(event, action)
         }
       >
-        {captureLeft ? (
-          <div className='_in'>
-            <div className={`_capture_left`}>{captureLeft}</div>
-          </div>
-        ) : null}
-        {icon || icon2 ? <IconYrl {...propsOut.iconReactProps} /> : null}
-        {imageSrc && <ImageYrl {...propsOut.imageProps} />}
-        {captureRight ? (
-          <div className='_in'>
-            <div className={`_capture_right`}>{captureRight}</div>
-          </div>
-        ) : null}
-        {children}
+        {hrefTo ? (
+          <NavLink className='_navLink' to={hrefTo}>
+            <InnerLinkButtonContent />
+          </NavLink>
+        ) : (
+          <InnerLinkButtonContent />
+        )}
       </button>
       {isUnderlined && <hr className='__underlined' />}
     </div>
@@ -122,9 +129,4 @@ const ButtonYrlComponent: ButtonYrlComponentType = (
 
 export const ButtonYrl: ButtonYrlType = React.memo(ButtonYrlComponent)
 
-export type {
-  ButtonYrlPropsType,
-  ButtonYrlPropsOutType,
-  ButtonYrlComponentType,
-  ButtonYrlType,
-}
+export type { ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlComponentType, ButtonYrlType }

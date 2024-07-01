@@ -105,10 +105,7 @@ export const useYouTubePlayerWork = ({
           setPlayer(Player)
         })
       } catch (error: any) {
-        console.error(
-          'useYouTubePlayerWork [68]',
-          error.name + ': ' + error.message
-        )
+        console.error('useYouTubePlayerWork [68]', error.name + ': ' + error.message)
       }
     }
   }
@@ -118,8 +115,7 @@ export const useYouTubePlayerWork = ({
   }, [contentID])
 
   useEffect(() => {
-    if (stopVideoHandler && playerState.data === 0)
-      stopVideoHandler({}, {}, player)
+    if (stopVideoHandler && playerState.data === 0) stopVideoHandler({}, {}, player)
   }, [playerState.data])
 
   return {

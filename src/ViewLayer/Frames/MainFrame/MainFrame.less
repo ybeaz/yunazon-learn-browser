@@ -10,20 +10,17 @@
     flex-direction: row;
 
     ._left {
-      display: none; // flex;
-      flex: 1;
+      display: none;
     }
     ._main {
       display: flex;
-      flex: 7;
+      flex: 1;
+
       ._wrapper {
-        flex: 1;
       }
     }
     ._right {
-      display: flex;
-      flex: 3;
-      flex-direction: column;
+      display: none;
     }
   }
 
@@ -62,6 +59,11 @@
     ._main {
       display: flex;
       flex: 10;
+      ._wrapper {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
     }
     ._right {
       display: flex;
@@ -70,7 +72,7 @@
   }
 }
 
-.MainFrame_AboutAcademy {
+.MainFrame_AcademyAbout {
   .__middle {
     ._left {
       display: flex;
@@ -115,6 +117,11 @@
       display: flex;
       flex: 6;
       padding: 2rem 0;
+      ._wrapper {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
     }
     ._right {
       display: flex;
@@ -123,17 +130,69 @@
   }
 }
 
-// .MainFrame_Profile,
-// .MainFrame_StubForUserResearch,
-// .MainFrame_SkillsExchangeMatrix,
-// .MainFrame_SkillsExchangeMatrixChRP {
-//   .__middle {
-//     ._left {
-//       display: flex;
-//       flex: 3;
-//     }
-//     ._main {
-//       flex: 6;
-//     }
-//   }
-// }
+.MainFrame_TagsCloud {
+  .__middle {
+    ._main {
+      ._wrapper {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.MainFrame_AcademyPresent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0;
+
+  .__middle {
+    display: flex;
+    padding: 0.7rem 1rem 0 1rem;
+    flex-direction: row;
+
+    ._left {
+      display: none;
+      flex: 1;
+    }
+    ._main {
+      display: flex;
+      flex: 7;
+      ._wrapper {
+        flex: 1;
+      }
+    }
+    ._right {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+    }
+  }
+
+  .__footer {
+    padding: 0 1rem;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+    padding: 0rem 0rem 0rem 0rem;
+
+    .__middle {
+      flex-direction: column;
+      padding: 0 1rem;
+    }
+  }
+  @media @phone, @phone-strict {
+    padding: 0rem 0rem 0rem 0rem;
+
+    .__middle {
+      flex-direction: column;
+      padding: 0 0 0 0;
+    }
+  }
+}

@@ -61,11 +61,10 @@ const PaginationNavigationComponent: PaginationNavigationComponentType = (
   )
 }
 
-export const PaginationNavigation: PaginationNavigationType =
-  withStoreStateSelectedYrl(
-    ['pagination'],
-    React.memo(PaginationNavigationComponent)
-  )
+export const PaginationNavigation: PaginationNavigationType = withStoreStateSelectedYrl(
+  ['pagination'],
+  React.memo(PaginationNavigationComponent)
+)
 
 export type {
   PaginationNavigationPropsType,

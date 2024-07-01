@@ -43,7 +43,7 @@ type BotType {
   dateCreated: Float
 
   """bots deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """bots updated date"""
   dateUpdated: Float
@@ -158,11 +158,11 @@ input CompetencyTagsInputType {
   """competencyTags created date"""
   competencyTagsDateCreated: Date
 
-  """competencyTags deleted date"""
-  competencyTagsDateDeleted: Date
-
   """competencyTags updated date"""
   competencyTagsDateUpdated: Date
+
+  """competencyTags deleted date"""
+  competencyTagsdateDeactivated: Date
 
   """competencyTags ID"""
   idCompetencyTags: ID
@@ -171,6 +171,52 @@ input CompetencyTagsInputType {
 input CompetencyTagsParamsReadType {
   """first item"""
   profileID: String
+}
+
+input CountDocumentInputType {
+  """MongoDB query"""
+  queryAll: CountQueryParamsDocumentInputType = null
+
+  """queryFuncName"""
+  queryFuncName: String = null
+
+  """MongoDB query"""
+  queryIsActive: CountQueryIsActiveDocumentInputType = null
+
+  """MongoDB query"""
+  queryParams: CountQueryParamsDocumentInputType! = {}
+}
+
+input CountQueryIsActiveDocumentInputType {
+  """isActive"""
+  isActive: Boolean
+}
+
+input CountQueryParamsDocumentInputType {
+  """isActive"""
+  isActive: Boolean
+
+  """learner.userID > learnerUserID"""
+  learnerID: String = null
+
+  """learner.userID > learnerUserID"""
+  learnerUserID: String = null
+
+  """module.moduleID > moduleModuleIDs"""
+  moduleModuleIDs: [String!] = null
+
+  """module.tags > tag"""
+  tag: String = null
+}
+
+input CountQueryTemplatesInputType {
+  """isActive"""
+  isActive: Boolean
+}
+
+input CountTemplatesInputType {
+  """MongoDB query"""
+  query: CountQueryTemplatesInputType! = {}
 }
 
 type CourseEdgeType {
@@ -192,7 +238,7 @@ type CourseType {
   dateCreated: Float!
 
   """courses deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """courses updated date"""
   dateUpdated: Float!
@@ -227,12 +273,28 @@ type CoursesConnectionType {
   pageInfo: CoursesPageInfoType
 }
 
+type CoursesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
+}
+
 type CoursesPageInfoType {
   """endCursor"""
   endCursor: String
 
   """hasNextPage"""
   hasNextPage: Boolean
+}
+
+input CreateBotInputType {
+  """bots ID"""
+  botsID: ID
 }
 
 input CreateBotResponseInputType {
@@ -269,11 +331,6 @@ type CreateBotResponseType {
   textObj: TextObjType
 }
 
-input CreateBotsInputType {
-  """bots ID"""
-  botsID: ID
-}
-
 type CreateContentMetaDataType {
   """capture"""
   capture: String
@@ -300,7 +357,7 @@ type CreateContentMetaDataType {
   tags: [String!]
 
   """thumbnail image data"""
-  thumbnails: ThumbnailsBotType!
+  thumbnails: ThumbnailsBotType
 }
 
 input CreateCourseInputType {
@@ -343,12 +400,21 @@ input CreateDocumentInputType {
   learner: UpdateProfileInputType!
 
   """module"""
-  module: UpdateModuleInputType!
+  module: UpdateModuleForDocumentInputType!
 }
 
 input CreateModuleInputType {
   """capture"""
   capture: String!
+
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
 
   """module contentID"""
   contentID: ID!
@@ -374,6 +440,9 @@ input CreateModuleInputType {
   """isActive"""
   isActive: Boolean! = false
 
+  """isCompleted"""
+  isCompleted: Boolean! = false
+
   """language code"""
   language: String!
 
@@ -385,6 +454,9 @@ input CreateModuleInputType {
 
   """module passRate"""
   passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
 
   """module questionNumber"""
   questionNumber: Int! = 4
@@ -413,7 +485,7 @@ input CreateOriginInputType {
   originID: String = null
 
   """youtubeUrl"""
-  originUrl: [String!] = null
+  originUrl: String = null
 }
 
 input CreateProfileInputType {
@@ -509,6 +581,26 @@ input CreateProfileInputType {
   userID: ID!
 }
 
+input CreateTagInputType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """tags ID"""
+  tagID: ID
+
+  """tags value"""
+  value: String!
+}
+
 input CreateTemplatesInputType {
   """templates ID"""
   templatesID: ID
@@ -547,7 +639,7 @@ type DocumentType {
   dateCreated: Float!
 
   """documents deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """documents updated date"""
   dateUpdated: Float!
@@ -565,7 +657,7 @@ type DocumentType {
   learner: ProfileType!
 
   """module"""
-  module: ModuleType!
+  module: ModuleForDocumentType!
 }
 
 type DocumentsConnectionType {
@@ -574,6 +666,17 @@ type DocumentsConnectionType {
 
   """DocumentsPageInfoType"""
   pageInfo: DocumentsPageInfoType
+}
+
+type DocumentsCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type DocumentsPageInfoType {
@@ -877,9 +980,18 @@ type ModuleEdgeType {
   node: ModuleType
 }
 
-type ModuleType {
+type ModuleForDocumentType {
   """capture"""
   capture: String!
+
+  """capture channel"""
+  captureChannel: String
+
+  """capture playlist"""
+  capturePlaylist: String
+
+  """module channelID"""
+  channelID: ID
 
   """module contentID"""
   contentID: ID!
@@ -894,7 +1006,7 @@ type ModuleType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """updated date"""
   dateUpdated: Float!
@@ -914,6 +1026,89 @@ type ModuleType {
   """isActive"""
   isActive: Boolean!
 
+  """isCompleted"""
+  isCompleted: Boolean!
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float
+
+  """module playlistID"""
+  playlistID: ID
+
+  """module questionNumber"""
+  questionNumber: Int!
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!]
+
+  """module summary"""
+  summary: [SummaryItemType!]
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!]
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsType
+}
+
+type ModuleType {
+  """capture"""
+  capture: String!
+
+  """capture channel"""
+  captureChannel: String
+
+  """capture playlist"""
+  capturePlaylist: String
+
+  """module channelID"""
+  channelID: ID
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeactivated: Float
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String
+
+  """isActive"""
+  isActive: Boolean!
+
+  """isCompleted"""
+  isCompleted: Boolean!
+
   """language code"""
   language: String!
 
@@ -928,6 +1123,9 @@ type ModuleType {
 
   """module passRate"""
   passRate: Float
+
+  """module playlistID"""
+  playlistID: ID
 
   """module questionNumber"""
   questionNumber: Int!
@@ -959,6 +1157,17 @@ type ModulesConnectionType {
   pageInfo: ModulesPageInfoType
 }
 
+type ModulesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
+}
+
 type ModulesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -970,7 +1179,7 @@ type ModulesPageInfoType {
 type Mutation {
   addRecipe(newRecipeData: NewRecipeInputType!): RecipeType!
   createBotResponse(createBotResponseInput: CreateBotResponseInputType!): CreateBotResponseType!
-  createBots(createBotsInput: [CreateBotsInputType!]!): [BotType!]!
+  createBots(createBotsInput: [CreateBotInputType!]!): [BotType!]!
   createCompetencyTags(competencyTagsInput: CompetencyTagsInputType!): [CompetencyTagType!]!
   createContentMetaData(createContentMetaDataInput: CreateOriginInputType!): CreateContentMetaDataType!
   createCourses(createCoursesInput: [CreateCourseInputType!]!): [CourseType!]!
@@ -978,6 +1187,7 @@ type Mutation {
   createModules(createModulesInput: [CreateModuleInputType!]!): [ModuleType!]!
   createProfiles(createProfilesInput: [CreateProfileInputType!]!): [ProfileType!]!
   createSiteMap: SiteMapReportType!
+  createTags(createTagsInput: [CreateTagInputType!]!): [TagType!]!
   createTemplates(createTemplatesInput: [CreateTemplatesInputType!]!): [TemplatesType!]!
   createUser(userInputType: UserInputType!): UserModelExtendedType!
   createYoutubeTranscript(createYoutubeTranscriptInput: CreateOriginInputType!): CreateYoutubeTranscriptType!
@@ -986,6 +1196,7 @@ type Mutation {
   deactivateDocuments(deactivateDocumentsIdsInput: [String!]!): [String!]!
   deactivateModules(deactivateModulesIdsInput: [String!]!): [String!]!
   deactivateProfiles(deactivateProfilesIdsInput: [String!]!): [String!]!
+  deactivateTags(deactivateTagsIdsInput: [String!]!): [String!]!
   deactivateTemplates(deactivateTemplatesIdsInput: [String!]!): [String!]!
   deleteBots(deleteBotsIdsInput: [String!]!): [String!]!
   deleteCompetencyTags(idCompetencyTags: String!): [CompetencyTagType!]!
@@ -993,6 +1204,7 @@ type Mutation {
   deleteDocuments(deleteDocumentsIdsInput: [String!]!): [String!]!
   deleteModules(deleteModulesIdsInput: [String!]!): [String!]!
   deleteProfiles(deleteProfilesIdsInput: [String!]!): [String!]!
+  deleteTags(deleteTagsIdsInput: [String!]!): [String!]!
   deleteTemplates(deleteTemplatesIdsInput: [String!]!): [String!]!
   deleteUser(userIdAuth: String!, userIdProfile: String!): UserModelExtendedType!
   removeRecipe(id: String!): Boolean!
@@ -1005,8 +1217,10 @@ type Mutation {
   updateModules(updateModulesInput: [UpdateModuleInputType!]!): [ModuleType!]!
   updateModulesMeta(updateModulesMetaInput: [UpdateMetaInputType!]!): [UpdateMetaType!]!
   updateProfiles(updateProfilesInput: [UpdateProfileInputType!]!): [ProfileType!]!
+  updateTags(updateTagsInput: [UpdateTagInputType!]!): [TagType!]!
   updateTemplates(updateTemplatesInput: [UpdateTemplatesInputType!]!): [TemplatesType!]!
   updateUser(userInputType2: UserInputType!): UserModelExtendedType!
+  upsertTagsAll: [TagType!]!
 }
 
 input NewRecipeInputType {
@@ -1057,6 +1271,135 @@ type ObjectionType {
 
   """module Objection text"""
   text: String
+}
+
+input OperatorsDocumentsInputType {
+  """operator for contentIDs"""
+  contentID: String = null
+
+  """operator for course ID"""
+  courseID: String = null
+
+  """operator for creator IDs"""
+  creatorID: String = null
+
+  """operator for creator IDs"""
+  creatorProfileID: String = null
+
+  """operator for document ID"""
+  documentID: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for learner IDs"""
+  learnerProfileID: String = null
+
+  """operator for learner User IDs"""
+  learnerUserID: String = null
+
+  """operator for contentIDs"""
+  moduleContentID: String = null
+
+  """operator for creator IDs"""
+  moduleCreatorID: String = null
+
+  """operator for module IDs"""
+  moduleID: String = null
+
+  """operator for module IDs"""
+  moduleModuleID: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  moduleTagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  moduleTagPick: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagPick: String = null
+}
+
+input OperatorsModulesInputType {
+  """operator for contentIDs"""
+  contentID: String = null
+
+  """operator for courses ID"""
+  courseID: String = null
+
+  """operator for creator IDs"""
+  creatorID: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for module IDs"""
+  moduleID: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagPick: String = null
+}
+
+input OperatorsProfilesInputType {
+  """operator for courses ID"""
+  profileID: String = null
+
+  """operator for module IDs"""
+  userID: String = null
+}
+
+input OperatorsTagsInputType {
+  """operator for contentIDs"""
+  contentID: String = null
+
+  """operator for courses ID"""
+  courseID: String = null
+
+  """operator for creator IDs"""
+  creatorID: String = null
+
+  """operator for language code"""
+  language: String = null
+
+  """operator for module IDs"""
+  moduleID: String = null
+
+  """operator for searchPhrase"""
+  searchPhrase: String = null
+
+  """
+  operator for documents tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagOmit: String = null
+
+  """
+  operator for tags: tags that characterises the content to pick from the set of documents
+  """
+  tagPick: String = null
 }
 
 input OptionCourseInputType {
@@ -1148,7 +1491,7 @@ type ProfileType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """updated date"""
   dateUpdated: Float!
@@ -1239,6 +1582,17 @@ type ProfilesConnectionType {
   pageInfo: ProfilesPageInfoType
 }
 
+type ProfilesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
+}
+
 type ProfilesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1280,11 +1634,12 @@ type PromptType {
 
 type Query {
   countBots: Int!
-  countCourses: Int!
-  countDocuments: Int!
-  countModules: Int!
-  countProfiles: Int!
-  countTemplates: Int!
+  countCourses: CoursesCountType!
+  countDocuments(countDocumentInput: CountDocumentInputType): DocumentsCountType!
+  countModules: ModulesCountType!
+  countProfiles: ProfilesCountType!
+  countTags: TagsCountType!
+  countTemplates(countTemplatesInput: CountTemplatesInputType!): TemplatesCountType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -1308,6 +1663,10 @@ type Query {
   readProfilesConnection(readProfilesConnectionInput: ReadProfilesConnectionInputType!): ProfilesConnectionType!
   readRecipe(id: String!): RecipeType!
   readRecipes(skip: Int! = 0, take: Int! = 25): [RecipeType!]!
+  readTags(readTagsInput: [ReadTagInputType!]!): [TagType!]!
+  readTagsAll: [TagType!]!
+  readTagsConnection(readTagsConnectionInput: ReadTagsConnectionInputType!): TagsConnectionType!
+  readTagsModules(readTagsModulesInput: ReadTagsModulesInputType!): [TagType!]!
   readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
   readTemplatesAll: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
@@ -1462,21 +1821,16 @@ input ReadCoursesConnectionInputType {
   """profile IDs"""
   profileIDs: [ID!] = []
 
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortCoursesInputType
-
-  """
-  courses meta stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """
-  courses meta stages: stages/ statuses/ envs to pick from the set of documents
-  """
-  stagesPick: [String!] = []
 
   """
   courses meta tags: tags that characterises the course content to omit with that selection of the documents
@@ -1495,7 +1849,7 @@ input ReadDocumentsConnectionInputType {
   """
   after: String
 
-  """course module contentIDs"""
+  """contentIDs"""
   contentIDs: [ID!] = []
 
   """courses ID"""
@@ -1503,6 +1857,9 @@ input ReadDocumentsConnectionInputType {
 
   """creator IDs"""
   creatorIDs: [ID!] = []
+
+  """document IDs"""
+  documentIDs: [ID!] = []
 
   """
   first: Specifies the number of items to return from the beginning of the dataset.
@@ -1518,13 +1875,24 @@ input ReadDocumentsConnectionInputType {
   """learner IDs"""
   learnerIDs: [ID!] = []
 
-  """course module IDs"""
+  """learner user IDs"""
+  learnerUserIDs: [ID!] = []
+
+  """module IDs"""
   moduleIDs: [ID!] = []
 
   """
   offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
   """
   offset: Int
+
+  """option to setup operator for arguments"""
+  operators: OperatorsDocumentsInputType = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -1533,22 +1901,12 @@ input ReadDocumentsConnectionInputType {
   sort: SortDocumentsInputType
 
   """
-  documents meta stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """
-  documents meta stages: stages/ statuses/ envs to pick from the set of documents
-  """
-  stagesPick: [String!] = []
-
-  """
-  documents meta tags: tags that characterises the course content to omit with that selection of the documents
+  documents tags: tags that characterises the content to omit with that selection of the documents
   """
   tagsOmit: [String!] = []
 
   """
-  documents meta tags: tags that characterises the course content to pick from the set of documents
+  documents tags: tags that characterises the content to pick from the set of documents
   """
   tagsPick: [String!] = []
 }
@@ -1581,6 +1939,12 @@ input ReadModulesConnectionInputType {
   """language code"""
   language: String = null
 
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
   """module IDs"""
   moduleIDs: [ID!] = []
 
@@ -1589,19 +1953,19 @@ input ReadModulesConnectionInputType {
   """
   offset: Int
 
+  """option to setup operator for arguments"""
+  operators: OperatorsModulesInputType = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
   """searchPhrase"""
   searchPhrase: String = null
 
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortModulesInputType
-
-  """
-  stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """stages: stages/ statuses/ envs to pick from the set of documents"""
-  stagesPick: [String!] = []
 
   """
   tags: tags that characterises the content to omit with that selection of the documents
@@ -1615,6 +1979,9 @@ input ReadModulesConnectionInputType {
 }
 
 input ReadProfileInputType {
+  """isActive"""
+  isActive: Boolean
+
   """profile ID"""
   profileID: ID
 
@@ -1641,8 +2008,16 @@ input ReadProfilesConnectionInputType {
   """offset"""
   offset: Int
 
+  """option to setup operator for arguments"""
+  operators: OperatorsProfilesInputType = null
+
   """profile IDs"""
   profileIDs: [ID!] = []
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
 
   """searchPhrase"""
   searchPhrase: String = null
@@ -1650,16 +2025,144 @@ input ReadProfilesConnectionInputType {
   """option to sort by a field: 1 ascending, -1 descending"""
   sort: SortProfilesInputType
 
-  """
-  stages: stages/ statuses/ envs to omit with that selection of the documents
-  """
-  stagesOmit: [String!] = []
-
-  """stages: stages/ statuses/ envs to pick from the set of documents"""
-  stagesPick: [String!] = []
-
   """user IDs"""
   userIDs: [ID!] = []
+}
+
+input ReadTagInputType {
+  """isActive"""
+  isActive: Boolean
+
+  """isCompleted"""
+  isCompleted: Boolean = null
+
+  """isNotCompleted"""
+  isNotCompleted: Boolean = null
+
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
+  """
+  limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs
+  """
+  limit: Int = null
+
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """tag ID"""
+  tagID: ID
+
+  """value"""
+  value: ID
+}
+
+input ReadTagsConnectionInputType {
+  """
+  after: Specifies a cursor that indicates the starting point for the next set of data to retrieve.
+  """
+  after: String
+
+  """module contentIDs"""
+  contentIDs: [ID!] = []
+
+  """creator IDs"""
+  creatorIDs: [ID!] = []
+
+  """
+  first: Specifies the number of items to return from the beginning of the dataset.
+  """
+  first: Int
+
+  """isActive"""
+  isActive: Boolean
+
+  """language code"""
+  language: String = null
+
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """
+  offset: Similar to "First," it specifies the maximum number of items to return. if offset === 0 then the function returns ALL docs after the first number
+  """
+  offset: Int
+
+  """option to setup operator for arguments"""
+  operators: OperatorsTagsInputType = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!] = []
+
+  """searchPhrase"""
+  searchPhrase: String = null
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortTagsInputType
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sortGraphQl: SortGraphQlTagsInputType
+
+  """tag IDs"""
+  tagIDs: [ID!] = []
+
+  """
+  tags: tags that characterises the content to omit with that selection of the documents
+  """
+  tagsOmit: [String!] = []
+
+  """
+  tags: tags that characterises the content to pick from the set of documents
+  """
+  tagsPick: [String!] = []
+}
+
+input ReadTagsModulesInputType {
+  """isCompleted"""
+  isCompleted: Boolean = null
+
+  """isNotCompleted"""
+  isNotCompleted: Boolean = null
+
+  """learner ID"""
+  learnerID: ID = null
+
+  """learner user ID"""
+  learnerUserID: ID = null
+
+  """
+  limit value limits the output by the threshold of the count value. if limit === 0 || undefined || null then the function returns ALL docs
+  """
+  limit: Int = null
+
+  """
+  min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCount: Int = null
+
+  """searchPhrase"""
+  searchPhrase: String = null
 }
 
 input ReadTemplatesConnectionInputType {
@@ -1671,6 +2174,12 @@ input ReadTemplatesConnectionInputType {
 
   """offset"""
   offset: Int
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sort: SortTemplatesInputType
+
+  """option to sort by a field: 1 ascending, -1 descending"""
+  sortGraphQl: SortGraphQlTemplatesInputType
 }
 
 input ReadUsersOptions {
@@ -1731,6 +2240,22 @@ input SortDocumentsInputType {
   prop: String
 }
 
+input SortGraphQlTagsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortGraphQlTemplatesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
 input SortModulesInputType {
   """sorting direction: 1 ascending, -1 descending"""
   direction: Float
@@ -1740,6 +2265,22 @@ input SortModulesInputType {
 }
 
 input SortProfilesInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortTagsInputType {
+  """sorting direction: 1 ascending, -1 descending"""
+  direction: Float
+
+  """property name to sort by"""
+  prop: String
+}
+
+input SortTemplatesInputType {
   """sorting direction: 1 ascending, -1 descending"""
   direction: Float
 
@@ -1796,12 +2337,87 @@ type SummaryItemType {
   text: String
 }
 
+type TagType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
+  """tags created date"""
+  dateCreated: Float!
+
+  """tags deleted date"""
+  dateDeactivated: Float
+
+  """tags updated date"""
+  dateUpdated: Float!
+
+  """isActive"""
+  isActive: Boolean!
+
+  """module IDs"""
+  moduleIDs: [ID!]
+
+  """tags ID"""
+  tagID: ID
+
+  """tags value"""
+  value: String!
+}
+
+type TagsConnectionType {
+  """[TagsEdgeType]"""
+  edges: [TagsEdgeType!]
+
+  """TagsPageInfoType"""
+  pageInfo: TagsPageInfoType
+}
+
+type TagsCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
+}
+
+type TagsEdgeType {
+  """cursor"""
+  cursor: String
+
+  """TagsEdgeType"""
+  node: TagType
+}
+
+type TagsPageInfoType {
+  """endCursor"""
+  endCursor: String
+
+  """hasNextPage"""
+  hasNextPage: Boolean
+}
+
 type TemplatesConnectionType {
   """[TemplatesEdgeType]"""
   edges: [TemplatesEdgeType!]
 
   """TemplatesPageInfoType"""
   pageInfo: TemplatesPageInfoType
+}
+
+type TemplatesCountType {
+  """module count all"""
+  countAll: Int
+
+  """module count isActive"""
+  countIsActive: Int
+
+  """module count with params"""
+  countParams: Int
 }
 
 type TemplatesEdgeType {
@@ -1825,7 +2441,7 @@ type TemplatesType {
   dateCreated: Float!
 
   """templates deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """templates updated date"""
   dateUpdated: Float!
@@ -2074,7 +2690,7 @@ input UpdateBotsInputType {
   dateCreated: Float!
 
   """bots deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """bots updated date"""
   dateUpdated: Float!
@@ -2091,7 +2707,7 @@ input UpdateCourseInputType {
   dateCreated: Float!
 
   """courses deleted date"""
-  dateDeleted: Float
+  dateDeactivated: Float
 
   """courses updated date"""
   dateUpdated: Float!
@@ -2154,7 +2770,7 @@ input UpdateDocumentInputType {
   dateCreated: Float!
 
   """documents deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """documents updated date"""
   dateUpdated: Float!
@@ -2172,7 +2788,7 @@ input UpdateDocumentInputType {
   learner: UpdateProfileInputType!
 
   """module"""
-  module: UpdateModuleInputType!
+  module: UpdateModuleForDocumentInputType!
 }
 
 type UpdateInfoCourseType {
@@ -2240,9 +2856,18 @@ type UpdateMetaType {
   updateInfo: UpdateInfoType
 }
 
-input UpdateModuleInputType {
+input UpdateModuleForDocumentInputType {
   """capture"""
   capture: String!
+
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
 
   """module contentID"""
   contentID: ID!
@@ -2257,7 +2882,7 @@ input UpdateModuleInputType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """updated date"""
   dateUpdated: Float!
@@ -2277,6 +2902,89 @@ input UpdateModuleInputType {
   """isActive"""
   isActive: Boolean! = false
 
+  """isCompleted"""
+  isCompleted: Boolean! = false
+
+  """language code"""
+  language: String!
+
+  """module ID"""
+  moduleID: ID!
+
+  """organizationID"""
+  organizationID: ID!
+
+  """module passRate"""
+  passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
+
+  """module questionNumber"""
+  questionNumber: Int! = 4
+
+  """meta stages: stages/ statuses/ envs"""
+  stages: [String!] = []
+
+  """module summary"""
+  summary: [SummaryItemInputType!] = []
+
+  """meta tags: tags that characterises the content"""
+  tags: [String!] = []
+
+  """thumbnail image data"""
+  thumbnails: ThumbnailsInputType = null
+}
+
+input UpdateModuleInputType {
+  """capture"""
+  capture: String!
+
+  """capture channel"""
+  captureChannel: String = null
+
+  """capture playlist"""
+  capturePlaylist: String = null
+
+  """module channelID"""
+  channelID: ID = null
+
+  """module contentID"""
+  contentID: ID!
+
+  """module content type"""
+  contentType: String!
+
+  """creatorID"""
+  creatorID: ID!
+
+  """created date"""
+  dateCreated: Float!
+
+  """deleted date"""
+  dateDeactivated: Float = null
+
+  """updated date"""
+  dateUpdated: Float!
+
+  """description"""
+  description: String!
+
+  """module duration"""
+  duration: String!
+
+  """module index"""
+  index: Int
+
+  """ipClient profile/ user"""
+  ipClient: String = null
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """isCompleted"""
+  isCompleted: Boolean! = false
+
   """language code"""
   language: String!
 
@@ -2291,6 +2999,9 @@ input UpdateModuleInputType {
 
   """module passRate"""
   passRate: Float = 0.75
+
+  """module playlistID"""
+  playlistID: ID = null
 
   """module questionNumber"""
   questionNumber: Int! = 4
@@ -2339,7 +3050,7 @@ input UpdateProfileInputType {
   dateCreated: Float!
 
   """deleted date"""
-  dateDeleted: Float = null
+  dateDeactivated: Float = null
 
   """updated date"""
   dateUpdated: Float!
@@ -2419,12 +3130,41 @@ input UpdateProfileInputType {
   userID: ID!
 }
 
+input UpdateTagInputType {
+  """tags completed"""
+  completed: Int!
+
+  """tags count"""
+  count: Int!
+
+  """tags created date"""
+  dateCreated: Float!
+
+  """tags deleted date"""
+  dateDeactivated: Float = null
+
+  """tags updated date"""
+  dateUpdated: Float!
+
+  """isActive"""
+  isActive: Boolean! = false
+
+  """module IDs"""
+  moduleIDs: [ID!] = []
+
+  """tags ID"""
+  tagID: ID
+
+  """tags value"""
+  value: String!
+}
+
 input UpdateTemplatesInputType {
   """templates created date"""
   dateCreated: Date
 
   """templates deleted date"""
-  dateDeleted: Date
+  dateDeactivated: Date
 
   """templates updated date"""
   dateUpdated: Date
@@ -2601,9 +3341,6 @@ type UserModelExtendedType {
   """user created date"""
   userDateCreated: Date
 
-  """user deleted date"""
-  userDateDeleted: Date
-
   """user updated date"""
   userDateUpdated: Date
 
@@ -2657,6 +3394,9 @@ type UserModelExtendedType {
 
   """user web site"""
   userWebLink: String
+
+  """user deleted date"""
+  userdateDeactivated: Date
 }
 
 type UserType {
@@ -2678,9 +3418,6 @@ type UserType {
   """user created date"""
   userDateCreated: Date
 
-  """user deleted date"""
-  userDateDeleted: Date
-
   """user updated date"""
   userDateUpdated: Date
 
@@ -2734,6 +3471,9 @@ type UserType {
 
   """user web site"""
   userWebLink: String
+
+  """user deleted date"""
+  userdateDeactivated: Date
 }
 
 type UsersType {

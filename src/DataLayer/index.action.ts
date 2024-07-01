@@ -2,7 +2,10 @@ import { createSyncActions, CreateSyncAction } from './createActionsSync'
 import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
-const ACTIONS_SYNC: string[] = [
+export const ACTIONS_SYNC: string[] = [
+  'SET_COMPONENTS_STATE',
+  'SET_PAGINATION_OFFSET',
+  'SET_TAGS_CLOUD',
   'TOGGLE_IS_MOBILE_SEARCH_INPUT',
   'ADD_MODULE_CREATE_DATA',
   'CHANGE_NUM_QUESTIONS_IN_SLIDE',
@@ -83,7 +86,7 @@ const ACTIONS_SYNC: string[] = [
 ]
 
 // Asynchroneous actions for saga
-const ACTION_ASYNC: string[] = [
+export const ACTIONS_ASYNC: string[] = [
   'CREATE_SITE_MAP',
   'CREATE_PROFILE',
   'CREATE_DOCUMENT_SCENARIO',
@@ -123,10 +126,12 @@ const ACTION_ASYNC: string[] = [
   'SAVE_ANALYTICS',
   'SAVE_USER_PROFILE',
   'SEND_EMAIL_DOCUMENT',
+  'READ_TAGS_CLOUD_MODULES',
+  'READ_TAGS_CONNECTION',
 ]
 
 export const actionSync: CreateSyncAction = createSyncActions(ACTIONS_SYNC)
-export const actionAsync: CreateAsyncAction = createAsyncAction(ACTION_ASYNC)
+export const actionAsync: CreateAsyncAction = createAsyncAction(ACTIONS_ASYNC)
 
 // Example of the sync action
 // export const TEST_ACTION: Function = (data: any = true): ActionReduxType => ({

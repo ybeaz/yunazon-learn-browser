@@ -5,10 +5,7 @@ import {
   GetSetUrlQueryBrowserApiParamsType,
 } from '../../Shared/getSetUrlQueryBrowserApi'
 
-export const SET_TAGS_STATE: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { forms } = store
   const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = forms
 
@@ -17,23 +14,21 @@ export const SET_TAGS_STATE: ReducerType = (
   let tagsPickNext = tagsPickState
   let tagsOmitNext = tagsOmitState
 
-  if (tagsPick && tagsPick.length) tagsPickNext = tagsPick
-  if (tagsOmit && tagsOmit.length) tagsOmitNext = tagsOmit
+  if (tagsPick) tagsPickNext = tagsPick
+  if (tagsOmit) tagsOmitNext = tagsOmit
 
   const formsNext = { ...forms, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-    searchParamsName: 'tagspick',
-    searchParamsValue:
-      (tagsPick && tagsPick.length && tagsPick.join(',')) || undefined,
+    searchParamsName: 'tagsPick',
+    searchParamsValue: (tagsPick && tagsPick.length && tagsPick.join(',')) || undefined,
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
 
   const getSetUrlQueryBrowserApiParams2: GetSetUrlQueryBrowserApiParamsType = {
-    searchParamsName: 'tagsomit',
-    searchParamsValue:
-      (tagsOmit && tagsOmit.length && tagsOmit.join(',')) || undefined,
+    searchParamsName: 'tagsOmit',
+    searchParamsValue: (tagsOmit && tagsOmit.length && tagsOmit.join(',')) || undefined,
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams2)

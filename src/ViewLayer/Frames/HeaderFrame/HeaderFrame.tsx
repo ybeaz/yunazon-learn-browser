@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
-// import { InstallMobileAppGroup } from '../../Components/InstallMobileAppGroup'
+import { SCREENS_DICT } from '../../../Constants/screensDict.const'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
@@ -55,6 +55,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       isMobileSearchInput,
       language,
       profiles,
+      screenActive,
     },
   } = props
 
@@ -141,7 +142,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     },
     avatarPlusInfoProps: {
       classProps: { _link: '_logoGroup' },
-      typeEvent: 'CLICK_LOGO_GROUP',
+      typeEvent: 'GO_SCREEN',
       capture: brandName,
       text: moto,
       imgSrc: logoPath,
@@ -155,10 +156,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       inputProps: {
         classAdded: 'Input_search',
         type: 'text',
-        placeholder: 'Search...',
+        placeholder: SCREENS_DICT[screenActive]?.placeholder,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
-        storeFormProp: 'inputSearch',
+        storeFormProp: SCREENS_DICT[screenActive]?.storeFormProp,
       },
       buttonSubmitProps: {
         icon: 'MdSearch',
@@ -245,6 +246,7 @@ const storeStateSliceProps: string[] = [
   'isMobileSearchInput',
   'language',
   'profiles',
+  'screenActive',
 ]
 export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
   storeStateSliceProps,

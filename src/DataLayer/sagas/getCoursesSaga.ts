@@ -28,7 +28,7 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
         pageModules: { first, offset },
       },
     },
-    forms: { inputSearch, tagsPick, tagsOmit },
+    forms: { coursesSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -42,10 +42,9 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     first,
     offset,
     profileIDs,
-    searchPhrase: inputSearch,
+    searchPhrase: coursesSearch,
     tagsPick,
     tagsOmit,
-    stagesPick: selectCoursesStageFlag(),
     sort: { prop: 'dateCreated', direction: -1 },
     isActive: true,
   }

@@ -26,7 +26,13 @@ import { getSlug } from '../../../Shared/getSlug'
 const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   props: MyDocumentsBodyComponentPropsType
 ) => {
-  const { classAdded, handleEvents, documents, language } = props
+  const {
+    classAdded,
+    handleEvents,
+    documents,
+    language,
+    storeStateSlice: { pageDocuments },
+  } = props
 
   const navigate = useNavigate()
 
@@ -142,17 +148,19 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
-      <h2 className='_screenTitle'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
+      <h2 className='_h2'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
       {getDocumentsTable(documents)}
 
-      <div className='_paginationNavigationWrapper'>
-        <PaginationNavigation {...propsOut.paginationNavigationProps} />
-      </div>
+      {pageDocuments.offset <= documents.length && (
+        <div className='_paginationNavigationWrapper'>
+          <PaginationNavigation {...propsOut.paginationNavigationProps} />
+        </div>
+      )}
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = []
+const storeStateSliceProps: string[] = ['pageDocuments']
 export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsBodyComponent))
 )

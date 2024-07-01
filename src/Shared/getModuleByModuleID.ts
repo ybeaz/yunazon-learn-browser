@@ -25,10 +25,7 @@ const optionsDefault: Required<GetModuleByModuleIDOptionsType> = {
  * @description Function to return module by provided moduleID
  * @import import { getModuleByModuleID } from '../Shared/getModuleByModuleID'
  */
-export const getModuleByModuleID: GetModuleByModuleIDType = (
-  { modules, moduleID },
-  optionsIn
-) => {
+export const getModuleByModuleID: GetModuleByModuleIDType = ({ modules, moduleID }, optionsIn) => {
   const options: Required<GetModuleByModuleIDOptionsType> = {
     ...optionsDefault,
     ...optionsIn,
@@ -36,18 +33,18 @@ export const getModuleByModuleID: GetModuleByModuleIDType = (
 
   const { printRes, parentFunction } = options
 
-  let output: GetModuleByModuleIDResType = []
+  let output: GetModuleByModuleIDResType = {}
 
   try {
-    const module =
-      modules.find((module2: ModuleType) => module2.moduleID === moduleID) ||
-      modules[0]
+    const module = modules.find((module2: ModuleType) => module2.moduleID === moduleID)
 
-    const { questions } = module
-    const questionsTotal = questions.length
-    output = {
-      ...module,
-      questionsTotal,
+    if (module && module.questions) {
+      const questionsTotal = module.questions.length
+
+      output = {
+        ...module,
+        questionsTotal,
+      }
     }
   } catch (error: any) {
     console.log('getModuleByModuleID', 'Error', {

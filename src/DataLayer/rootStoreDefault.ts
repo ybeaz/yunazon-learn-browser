@@ -6,9 +6,11 @@ import {
   SearchFormSepType,
   FormsType,
   RootStoreType,
+  PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
+import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
 
-import { paginationOffset } from '../Constants/pagination.const'
+import { PAGINATION_OFFSET } from '../Constants/pagination.const'
 
 import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
@@ -52,21 +54,10 @@ export const userStoreDefault: UserType = {
   },
 }
 
-export const searchFormSepDefault: SearchFormSepType = {
-  selectSkillsOffered: [],
-  selectSkillsRequired: '',
-  selectCountryRequired: [],
-  selectLanguageRequired: [],
-  inputAgeFromRequired: 0,
-  inputAgeToRequired: 100,
-  selectGenderRequired: [],
-  selectMediaRequired: [],
-  inputDescriptionRequired: '',
-  selectSortBy: '',
-}
-
 export const componentsStateDefault: ComponentsStateType = {
-  screenActive: 'AcademyMatrix',
+  screenActive: ScreensEnumType['AcademyMatrix'],
+  tagsSearchForModules: null,
+  modulesSearchApplied: null,
   isObjections: false,
   isSummary: true,
   isConfetti: false,
@@ -94,13 +85,19 @@ export const componentsStateDefault: ComponentsStateType = {
   pagination: {
     pageModules: {
       first: 0,
-      offset: paginationOffset,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageModules']],
       hasNextPage: true,
       endCursor: '',
     },
     pageDocuments: {
       first: 0,
-      offset: paginationOffset,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageDocuments']],
+      hasNextPage: true,
+      endCursor: '',
+    },
+    pageTags: {
+      first: 0,
+      offset: PAGINATION_OFFSET[PaginationNameEnumType['pageTags']],
       hasNextPage: true,
       endCursor: '',
     },
@@ -141,7 +138,10 @@ export const componentsStateDefault: ComponentsStateType = {
 
 export const formsDefault: FormsType = {
   inputCourseCreate: '',
-  inputSearch: '',
+  modulesSearch: '',
+  tagsSearch: '',
+  coursesSearch: '',
+  documentsSearch: '',
   sendTo: '',
   sendCc: '',
   userPrev: userStoreDefault,
@@ -176,6 +176,7 @@ export const rootStoreDefault: RootStoreType = {
   documents: [],
   articles: [],
   profiles: [],
+  tagsCloud: [],
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,
@@ -202,7 +203,7 @@ export const rootStoreDefault: RootStoreType = {
     titleSite: 'Academy YouRails - Teach curious; Learn from inspired',
     descriptionSite:
       'Behind every great human achievement there are teachers who helped to get on top. Courses, tests, certificates',
-    canonicalUrlSite: 'https://academy.yourails.com',
+    canonicalUrlSite: 'https://yourails.com',
     langSite: 'en',
     theme: 'Dark',
   },

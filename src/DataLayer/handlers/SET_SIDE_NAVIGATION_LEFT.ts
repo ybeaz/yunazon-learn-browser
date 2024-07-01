@@ -7,5 +7,5 @@ const { dispatch } = store
 export const SET_SIDE_NAVIGATION_LEFT: ActionEventType = (event, data) => {
   event.stopPropagation()
 
-  dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT())
+  dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT(data))
 }

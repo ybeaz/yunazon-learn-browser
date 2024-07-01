@@ -36,6 +36,26 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       isDisplaying: true,
     },
     {
+      icon: 'MdOutlineVideocam',
+      captureRight: DICTIONARY.All_interactive_videos[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { navigate, pathname: '/m' },
+      },
+      isDisplaying: true,
+    },
+    {
+      icon: 'MdOutlineTag',
+      captureRight: DICTIONARY.All_tags[language],
+      classAdded: 'Button_sideMenuItems',
+      action: {
+        typeEvent: 'GO_SCREEN',
+        data: { navigate, pathname: '/t' },
+      },
+      isDisplaying: true,
+    },
+    {
       icon: 'MdAssignmentTurnedIn',
       captureRight: DICTIONARY.My_documents[language],
       classAdded: 'Button_sideMenuItems',
@@ -63,7 +83,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
           {
-            childName: 'AboutAcademyBody',
+            childName: 'AcademyAboutBody',
             isActive: true,
             childProps: {},
           },

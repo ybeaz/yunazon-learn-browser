@@ -24,6 +24,25 @@
   opacity: 0;
 }
 
+.Image_loaderPlayerFrame {
+  --delay: 0.5s;
+  position: absolute;
+  width: 100%;
+  transition: all var(--delay) ease;
+  -webkit-transition: all var(--delay) ease;
+  -moz-transition: all var(--delay) ease;
+  -o-transition: all var(--delay) ease;
+  -ms-transition: all var(--delay) ease;
+
+  ._image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+}
+
 .Image_bottom {
   display: flex;
   flex-direction: row;

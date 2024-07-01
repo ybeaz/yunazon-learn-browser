@@ -3,19 +3,14 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { QueryReadProfilesArgs } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import {
-  getResponseGraphqlAsync,
-  FragmentEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, FragmentEnumType } from '../../../../yourails_communication_layer'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
 
 export type GetBotResponseParamsType = never
 
-export function* readProfileGenerator(
-  params: GetBotResponseParamsType
-): Iterable<any> {
+export function* readProfileGenerator(params: GetBotResponseParamsType): Iterable<any> {
   const {
     data: { userID, profileID },
   } = params
@@ -26,6 +21,7 @@ export function* readProfileGenerator(
         {
           profileID,
           userID,
+          isActive: true,
         },
       ],
     }
@@ -47,10 +43,7 @@ export function* readProfileGenerator(
 
     return readProfiles[0]
   } catch (error: any) {
-    console.info(
-      'readProfileSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('readProfileSaga  [110] ERROR', `${error.name}: ${error.message}`)
     return { nameFirst: null, nameMiddle: null, nameLast: null }
   }
 }

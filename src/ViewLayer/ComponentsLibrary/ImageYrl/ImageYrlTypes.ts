@@ -7,6 +7,7 @@ export type ImageYrlPropsType = {
   handleEvents?: Function
   isDisplaying?: boolean // is element present on the page and visible/ displaying?
   isVisible?: boolean // element is present on the page, but if it is visible/ displaying?
+  opacity?: number
 }
 
 export type ImageYrlPropsOutType = Record<string, any>
@@ -14,8 +15,7 @@ export type ImageYrlPropsOutType = Record<string, any>
 /**
  * @import import { ImageYrlType } from './ImageYrlType'
  */
-export interface ImageYrlComponentType
-  extends React.FunctionComponent<ImageYrlPropsType> {
+export interface ImageYrlComponentType extends React.FunctionComponent<ImageYrlPropsType> {
   (props: ImageYrlPropsType): React.ReactElement
 }
 

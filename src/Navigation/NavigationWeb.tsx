@@ -1,30 +1,35 @@
 import React, { ReactElement, FunctionComponent } from 'react'
-import { nanoid } from 'nanoid'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { ROUTES, RouteType } from './routes.const'
+import { TagsCloud } from '../ViewLayer/Screens/TagsCloud/TagsCloud'
 import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
 import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
-import { AboutAcademy } from '../ViewLayer/Screens/AboutAcademy/AboutAcademy'
+import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
 import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
+import { ModulesPresent } from '../ViewLayer/Screens/ModulesPresent/ModulesPresent'
 import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
 import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
 import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
 import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
+import { Certificate2 } from '../ViewLayer/Screens/Certificate2/Certificate2'
 import { Error404 } from '../ViewLayer/Screens/Error404'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
 
 const SCREENS: Record<string, FunctionComponent<any>> = {
-  MyModules,
-  ArticlePresent,
-  AboutAcademy,
+  AcademyAbout,
   AcademyMatrix,
   AcademyPresent,
-  MyDocuments,
-  Profiles,
+  ArticlePresent,
   Certificate,
+  Certificate2,
   Error404,
+  ModulesPresent,
+  MyDocuments,
+  MyModules,
+  Profiles,
+  TagsCloud,
 }
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {

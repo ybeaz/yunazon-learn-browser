@@ -7,6 +7,22 @@ export const DICTIONARY: IDictionary = {
     en: '_',
     ru: '_',
   },
+  Completed: {
+    en: 'Completed',
+    ru: 'Пройдено',
+  },
+  Knowledege_tags: {
+    en: 'Knowledege tags',
+    ru: 'Теги знаний',
+  },
+  All_tags: {
+    en: 'All tags',
+    ru: 'Все теги',
+  },
+  All_interactive_videos: {
+    en: 'All interactive videos',
+    ru: 'Все интерактивные видео',
+  },
   Date_of_creation: {
     en: 'Date of creation',
     ru: 'Дата создания',
@@ -681,6 +697,10 @@ export const DICTIONARY: IDictionary = {
   You_are_suggesting_to_exchange: {
     en: 'You are suggesting to exchange',
     ru: 'Вы предлагаете для обмена',
+  },
+  Watch_Videos_With_a_Purpose: {
+    en: 'Watch Videos With a Purpose',
+    ru: 'Смотрите Видео с Целью',
   },
   Together_know_everything: {
     en: 'Together know everything',

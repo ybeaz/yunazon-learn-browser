@@ -1,5 +1,7 @@
 import { all, fork } from 'redux-saga/effects'
 
+import readTagsConnectionSaga from './sagas/readTagsConnectionSaga'
+import readTagsModulesSaga from './sagas/readTagsModulesSaga'
 import reateSiteMapSaga from './sagas/createSiteMapSaga'
 import createProfileSaga from './sagas/createProfileSaga'
 import createDocumentScenarioSaga from './sagas/createDocumentScenarioSaga'
@@ -12,7 +14,7 @@ import getModule55ObjectionsCreatedSaga from './sagas/getModule55ObjectionsCreat
 import getModule45QuestionsCreatedSaga from './sagas/getModule45QuestionsCreatedSaga'
 import getModule35SummaryCreatedSaga from './sagas/getModule35SummaryCreatedSaga'
 import getModule20TranscriptCreatedSaga from './sagas/getModule20TranscriptCreatedSaga'
-import getModule10MataDataCreatedSaga from './sagas/getModule10MataDataCreatedSaga'
+import getModule10MetaDataCreatedSaga from './sagas/getModule10MetaDataCreatedSaga'
 import getBotResponseSaga from './sagas/getBotResponseSaga'
 import getModuleScenarioSaga from './sagas/getModuleScenarioSaga'
 import readArticleSaga from './sagas/readArticleSaga'
@@ -32,6 +34,8 @@ import getMatrixDataSaga from './sagas/getMatrixDataSaga'
 
 export default function* indexSaga() {
   yield all([
+    fork(readTagsConnectionSaga),
+    fork(readTagsModulesSaga),
     fork(reateSiteMapSaga),
     fork(createProfileSaga),
     fork(createDocumentScenarioSaga),
@@ -43,7 +47,7 @@ export default function* indexSaga() {
     fork(getModule45QuestionsCreatedSaga),
     fork(getModule35SummaryCreatedSaga),
     fork(getModule20TranscriptCreatedSaga),
-    fork(getModule10MataDataCreatedSaga),
+    fork(getModule10MetaDataCreatedSaga),
     fork(getModuleScenarioSaga),
     fork(deactivateModulesSaga),
     fork(getModulesSaga),

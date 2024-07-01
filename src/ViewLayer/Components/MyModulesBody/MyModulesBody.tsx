@@ -46,11 +46,11 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
     modules,
     createModuleStages,
     isShowModuleCreateProgress,
+    storeStateSlice: { pageModules },
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
-    (key: CreateModuleStagesEnumType) =>
-      createModuleStages[key].isActive === true
+    (key: CreateModuleStagesEnumType) => createModuleStages[key].isActive === true
   ).length
   const width: string = `${String(Math.round((100 * stagesNo) / 6))}%`
 
@@ -106,9 +106,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         return (
           <div key={stageName} className='_stage'>
             <div className='_stageDesription'>
-              <div className='_capture'>
-                {DICTIONARY[`stage_${stageName}`][language]}
-              </div>
+              <div className='_capture'>{DICTIONARY[`stage_${stageName}`][language]}</div>
               <div className='_status'>{DICTIONARY[`${status}`][language]}</div>
             </div>
             <div className='_stageVisualisation'>
@@ -163,33 +161,26 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
   return (
     <div className={getClasses('MyModulesBody', classAdded)}>
       <div className='_inputGroupWrapper' style={{ width }}>
-        <h3 className='_h2'>{DICTIONARY.Create_module[language]}</h3>
+        <h2 className='_h2'>{DICTIONARY.Create_module[language]}</h2>
         <InputGroupYrl {...propsOut.inputGroupProps} />
       </div>
-      <div className='_stagesWrapper'>
-        {isShowModuleCreateProgress ? getStages(stages) : null}
-      </div>
+      <div className='_stagesWrapper'>{isShowModuleCreateProgress ? getStages(stages) : null}</div>
       <div className='_messageWrapper'></div>
       <div className='_modulesBodyWrapper'>
-        {modules.length ? (
-          <MyModulesTable {...propsOut.myModulesTableProps} />
-        ) : null}
-        <div className='_paginationNavigationWrapper'>
-          {modules.length ? (
-            <PaginationNavigation {...propsOut.paginationNavigationProps} />
-          ) : null}
-        </div>
+        {modules.length ? <MyModulesTable {...propsOut.myModulesTableProps} /> : null}
+        {pageModules.offset <= modules.length && (
+          <div className='_paginationNavigationWrapper'>
+            {modules.length ? (
+              <PaginationNavigation {...propsOut.paginationNavigationProps} />
+            ) : null}
+          </div>
+        )}
       </div>
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = [
-  'language',
-  'createModuleStages',
-  'moduleCreateProgress',
-  'modules',
-]
+const storeStateSliceProps: string[] = ['pageModules']
 export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(MyModulesBodyComponent)

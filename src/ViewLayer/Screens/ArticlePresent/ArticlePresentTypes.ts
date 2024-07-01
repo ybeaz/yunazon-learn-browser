@@ -13,14 +13,11 @@ export type ArticlePresentComponentPropsType = {
   }
 }
 
-export type ArticlePresentPropsType = Omit<
-  ArticlePresentComponentPropsType,
-  'storeStateSlice'
->
+export type ArticlePresentPropsType = Omit<ArticlePresentComponentPropsType, 'storeStateSlice'>
 
 export type ArticlePresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: MainFramePropsType
+  mainFrameProps: Omit<MainFramePropsType, 'children'>
   articlePresentBodyProps: ArticlePresentBodyPropsType
 }
 
@@ -32,5 +29,4 @@ export interface ArticlePresentComponentType
   (props: ArticlePresentComponentPropsType): React.ReactElement
 }
 
-export type ArticlePresentType =
-  React.FunctionComponent<ArticlePresentPropsType>
+export type ArticlePresentType = React.FunctionComponent<ArticlePresentPropsType>

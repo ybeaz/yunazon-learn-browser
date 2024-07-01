@@ -1,6 +1,8 @@
+import { ModuleType } from '../../../@types/GraphqlTypes'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
+import { ImageYrlPropsType, IconYrlPropsType } from '../../ComponentsLibrary/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
 export type ContentPlateComponentPropsType = {
@@ -8,6 +10,7 @@ export type ContentPlateComponentPropsType = {
   key: string
   contentComponentName: string
   capture: string
+  isCompleted: boolean
   durationObj: DurationObjType
   moduleID: string
   contentID: string
@@ -17,6 +20,8 @@ export type ContentPlateComponentPropsType = {
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
   }
   handleEvents: HandleEventType
+  tags?: ModuleType['tags']
+  thumbnails?: ModuleType['thumbnails']
 }
 
 export type ContentPlatePropsType = Omit<
@@ -26,7 +31,10 @@ export type ContentPlatePropsType = Omit<
 
 export type ContentPlatePropsOutType = {
   contentComponentProps: Record<string, any>
+  iconCompletedProps: IconYrlPropsType
+  iconTagsTooltipProps: IconYrlPropsType
   loaderBlurhashProps: any
+  loaderImageProps: ImageYrlPropsType
   playerPanelProps: PlayerPanelPropsType
   linkProps: any
 }

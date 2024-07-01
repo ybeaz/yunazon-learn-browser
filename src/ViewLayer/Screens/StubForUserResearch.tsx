@@ -18,9 +18,9 @@ interface StubForUserResearchArgs {
   themeDafault: string
 }
 
-export const StubForUserResearch: React.FunctionComponent<
-  StubForUserResearchArgs
-> = (props: StubForUserResearchArgs): ReactElement => {
+export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArgs> = (
+  props: StubForUserResearchArgs
+): ReactElement => {
   const { themeDafault } = props
   useEffect(() => {
     handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
@@ -28,7 +28,7 @@ export const StubForUserResearch: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    moto: DICTIONARY['Together_know_everything']['en'], // TODO: make it dynamic from store
+    moto: DICTIONARY['Watch_Videos_With_a_Purpose']['en'], // TODO: make it dynamic from store
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenuLeft: true,
