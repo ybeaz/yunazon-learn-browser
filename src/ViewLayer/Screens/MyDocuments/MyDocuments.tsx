@@ -102,7 +102,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         {null}
         {/* middle-main */}
         <div>
-          {documents.length ? <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} /> : null}
+          <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} />
         </div>
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
