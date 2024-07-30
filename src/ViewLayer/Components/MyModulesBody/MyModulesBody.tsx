@@ -168,7 +168,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       <div className='_messageWrapper'></div>
       <div className='_modulesBodyWrapper'>
         {modules.length ? <MyModulesTable {...propsOut.myModulesTableProps} /> : null}
-        {pageModules.offset <= modules.length && (
+        {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
           <div className='_paginationNavigationWrapper'>
             {modules.length ? (
               <PaginationNavigation {...propsOut.paginationNavigationProps} />

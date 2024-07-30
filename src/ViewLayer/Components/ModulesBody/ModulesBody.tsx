@@ -133,7 +133,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       {modules.length && isLoadedGlobalVars ? (
         <div className='_plateMatrixPagination'>
           <div className='_plateMatrixWrapper'>{getPlateMatix(modules)}</div>
-          {pageModules.offset <= modules.length && (
+          {!(pageModules.first === 0 && pageModules.offset > modules.length) && (
             <div className='_paginationNavigationWrapper'>
               <PaginationNavigation {...propsOut.paginationNavigationProps} />
             </div>

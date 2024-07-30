@@ -151,7 +151,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
       <h2 className='_h2'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
       {getDocumentsTable(documents)}
 
-      {pageDocuments.offset <= documents.length && (
+      {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
         <div className='_paginationNavigationWrapper'>
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>

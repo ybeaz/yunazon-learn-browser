@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
@@ -83,6 +83,11 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
     }).result
 
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
+
+    const pageInfo = readTagsConnection?.pageInfo
+    yield put(
+      actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo })
+    )
 
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

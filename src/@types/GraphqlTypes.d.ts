@@ -1645,6 +1645,8 @@ export type ReadDocumentsConnectionInputType = {
     tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 export type ReadModuleInputType = {
+    /** contnent ID */
+    contentID?: InputMaybe<Scalars['ID']['input']>;
     /** module ID */
     moduleID?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -1791,6 +1793,8 @@ export type ReadTagsModulesInputType = {
     limit?: InputMaybe<Scalars['Int']['input']>;
     /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
     minCount?: InputMaybe<Scalars['Int']['input']>;
+    /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+    searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
     /** searchPhrase */
     searchPhrase?: InputMaybe<Scalars['String']['input']>;
 };

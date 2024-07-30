@@ -1912,6 +1912,9 @@ input ReadDocumentsConnectionInputType {
 }
 
 input ReadModuleInputType {
+  """contnent ID"""
+  contentID: ID
+
   """module ID"""
   moduleID: ID
 }
@@ -2160,6 +2163,11 @@ input ReadTagsModulesInputType {
   min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
   """
   minCount: Int = null
+
+  """
+  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  """
+  searchIn: [String!]
 
   """searchPhrase"""
   searchPhrase: String = null

@@ -14,7 +14,7 @@ import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
@@ -75,7 +75,12 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     yield put(actionSync.SET_COURSES(coursesNext))
 
     const pageInfo = readCoursesConnection?.pageInfo
-    yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))
+    yield put(
+      actionSync.SET_PAGE_INFO({
+        paginationName: PaginationNameEnumType['pageModules'],
+        ...pageInfo,
+      })
+    )
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

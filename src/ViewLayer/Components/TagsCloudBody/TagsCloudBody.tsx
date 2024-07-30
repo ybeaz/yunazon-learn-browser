@@ -183,6 +183,13 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     gridTemplateColumns = 'repeat(1, 1fr)'
   }
 
+  console.info('ModulesBody [186]', {
+    tagsCloud,
+    'pageTags.offset': pageTags.offset,
+    'tags.length': tagsCloud.length,
+    pageTags,
+  })
+
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
       {screenActive === ScreensEnumType['AcademyMatrix'] ? (
@@ -207,7 +214,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       >
         {getTagsCloudList(tagsCloud)}
       </div>
-      {pageTags.offset <= tagsCloud.length && (
+      {!(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
         <div className='_paginationNavigationWrapper'>
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>

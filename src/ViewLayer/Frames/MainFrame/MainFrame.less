@@ -6,7 +6,6 @@
 
   .__middle {
     display: flex;
-    padding: 0.7rem 1rem 0 1rem;
     flex-direction: row;
 
     ._left {
@@ -194,5 +193,48 @@
       flex-direction: column;
       padding: 0 0 0 0;
     }
+  }
+}
+
+.MainFrame_AcademyMatrix {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0;
+
+  .__middle {
+    display: flex;
+    padding: 0.7rem 1rem 2rem 1rem;
+    flex-direction: row;
+
+    ._left {
+      display: none;
+      flex: 1;
+    }
+    ._main {
+      display: flex;
+      flex: 7;
+      ._wrapper {
+        flex: 1;
+      }
+    }
+    ._right {
+      display: flex;
+      flex: 3;
+      flex-direction: column;
+    }
+  }
+
+  .__footer {
+    padding: 0 1rem;
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
   }
 }

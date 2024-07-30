@@ -12,7 +12,7 @@ import { getResponseGraphqlAsync } from '../../../../yourails_communication_laye
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from '../../Shared/getUserProfileData'
@@ -81,7 +81,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
     const pageInfo = readDocumentsConnection?.pageInfo
     yield put(
       actionSync.SET_PAGE_INFO({
-        paginationName: 'pageDocuments',
+        paginationName: PaginationNameEnumType['pageDocuments'],
         ...pageInfo,
       })
     )
