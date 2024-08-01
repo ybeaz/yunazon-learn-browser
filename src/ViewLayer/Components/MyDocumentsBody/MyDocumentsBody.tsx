@@ -148,7 +148,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
-      <h2 className='_h2'>{DICTIONARY.Certificates_Credits_and_diplomas[language]}</h2>
+      <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>
       {getDocumentsTable(documents)}
 
       {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (

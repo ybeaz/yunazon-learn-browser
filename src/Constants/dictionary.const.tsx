@@ -123,9 +123,13 @@ export const DICTIONARY: IDictionary = {
     en: 'objections',
     ru: 'возражения',
   },
-  Certificates_Credits_and_diplomas: {
-    en: 'Certificates, Credits and diplomas',
-    ru: 'Сертификаты, кредиты и дипломы',
+  Credits: {
+    en: 'Credits',
+    ru: 'Кредиты',
+  },
+  Certificates_and_diplomas: {
+    en: 'Certificates and diplomas',
+    ru: 'Сертификаты и дипломы',
   },
   Create_course: {
     en: 'Create course',
