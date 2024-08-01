@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { Collapse } from 'antd'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
@@ -149,7 +150,17 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>
-      {getDocumentsTable(documents)}
+      <Collapse
+        collapsible='icon'
+        defaultActiveKey={['1']}
+        items={[
+          {
+            key: '1',
+            label: 'This panel can only be collapsed by clicking icon',
+            children: <div>{getDocumentsTable(documents)}</div>,
+          },
+        ]}
+      />
 
       {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
         <div className='_paginationNavigationWrapper'>
