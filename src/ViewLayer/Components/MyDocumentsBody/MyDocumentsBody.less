@@ -1,5 +1,6 @@
 .MyDocumentsBody {
   display: flex;
+  width: 100%;
   flex-direction: column;
   padding-top: 3rem;
 
@@ -8,11 +9,28 @@
     text-decoration: none;
   }
 
+  ._credits {
+    color: inherit;
+    border: none;
+
+    .ant-collapse-item {
+      border: none;
+
+      .ant-collapse-header {
+        color: inherit;
+      }
+      .ant-collapse-content {
+        color: inherit;
+        background-color: inherit;
+        border: none;
+      }
+    }
+  }
+
   ._h2 {
     display: flex;
     align-self: flex-start;
     text-transform: capitalize;
-    padding-bottom: 1rem;
   }
 
   ._documentsTable {

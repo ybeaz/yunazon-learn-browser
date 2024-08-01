@@ -149,24 +149,48 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
 
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
-      <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>
       <Collapse
+        className='_credits'
         collapsible='icon'
         defaultActiveKey={['1']}
         items={[
           {
             key: '1',
-            label: 'This panel can only be collapsed by clicking icon',
-            children: <div>{getDocumentsTable(documents)}</div>,
+            label: <h2 className='_h2'>{DICTIONARY.Certificates_and_diplomas[language]}</h2>,
+            children: (
+              <div>
+                {getDocumentsTable(documents)}
+                {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
+                  <div className='_paginationNavigationWrapper'>
+                    <PaginationNavigation {...propsOut.paginationNavigationProps} />
+                  </div>
+                )}
+              </div>
+            ),
           },
         ]}
       />
-
-      {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
-        <div className='_paginationNavigationWrapper'>
-          <PaginationNavigation {...propsOut.paginationNavigationProps} />
-        </div>
-      )}
+      <Collapse
+        className='_credits'
+        collapsible='icon'
+        defaultActiveKey={['1']}
+        items={[
+          {
+            key: '1',
+            label: <h2 className='_h2'>{DICTIONARY.Credits[language]}</h2>,
+            children: (
+              <div>
+                {getDocumentsTable(documents)}
+                {!(pageDocuments.first === 0 && pageDocuments.offset > documents.length) && (
+                  <div className='_paginationNavigationWrapper'>
+                    <PaginationNavigation {...propsOut.paginationNavigationProps} />
+                  </div>
+                )}
+              </div>
+            ),
+          },
+        ]}
+      />
     </div>
   )
 }
