@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Collapse } from 'antd'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, ButtonYrl } from '../../ComponentsLibrary/'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   DocumentsTablePropsOutType,
@@ -192,9 +192,8 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = []
 export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsBodyComponent))
+  React.memo(MyDocumentsBodyComponent)
 )
 
 export type {
