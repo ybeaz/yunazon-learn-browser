@@ -2,7 +2,7 @@ import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { CreditsTablePropsType, PaginationNavigationPropsType } from '../../Components/'
+import { CreditsTablePropsType, TagsDocsTablePropsType } from '../../Components/'
 
 export type MyDocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -19,6 +19,7 @@ export type MyDocumentsBodyPropsType = Omit<
 >
 
 export type MyDocumentsBodyPropsOutType = {
+  tagsDocsTableProps: TagsDocsTablePropsType
   creditsTableProps: CreditsTablePropsType
 }
 

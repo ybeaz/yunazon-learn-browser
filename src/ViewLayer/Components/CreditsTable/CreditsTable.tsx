@@ -45,7 +45,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
       const pathnameModule = `/m/${moduleID}/${getSlug(capture)}`
       const pathnameDocument = `/d/${documentID}`
 
-      const propsOut: CreditsTableItemPropsOutType = {
+      const propsOutItem: CreditsTableItemPropsOutType = {
         linkToModuleProps: {
           className: '__shield',
           to: { pathname: pathnameModule },
@@ -107,13 +107,13 @@ const CreditsTableComponent: CreditsTableComponentType = (
         <div key={documentID} className='_row _row_weather'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOut.linkToModuleProps} />
+            <NavLink {...propsOutItem.linkToModuleProps} />
           </div>
           <div className='_cell _document_link'>
-            <NavLink {...propsOut.linkToDocumentProps} />
+            <NavLink {...propsOutItem.linkToDocumentProps} />
           </div>
           <div className='_cell _remove'>
-            <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
+            <ButtonYrl {...propsOutItem.buttonDeactivateDocumentProps} />
           </div>
         </div>
       )

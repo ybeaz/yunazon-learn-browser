@@ -11,6 +11,7 @@ import {
   MyDocumentsBodyType,
 } from './MyDocumentsBodyTypes'
 import { CreditsTable } from '../CreditsTable/CreditsTable'
+import { TagsDocsTable } from '../TagsDocsTable/TagsDocsTable'
 
 /**
  * @description Component to render MyDocumentsBody
@@ -23,6 +24,11 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   const { classAdded, documents, tagsCloud, pageDocuments, pageTags, language } = props
 
   const propsOut = {
+    tagsDocsTableProps: {
+      tagsCloud,
+      pageTags,
+      language,
+    },
     creditsTableProps: {
       documents,
       pageDocuments,
@@ -43,7 +49,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
             {
               key: '1',
               label: <h2 className='_h2'>{DICTIONARY.Certificates_and_diplomas[language]}</h2>,
-              children: <CreditsTable {...propsOut.creditsTableProps} />,
+              children: <TagsDocsTable {...propsOut.tagsDocsTableProps} />,
             },
           ]}
         />
