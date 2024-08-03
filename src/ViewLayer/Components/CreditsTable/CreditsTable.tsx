@@ -104,7 +104,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
       }
 
       return (
-        <div key={documentID} className='_row _row_weather'>
+        <div key={documentID} className='_row _row_credits'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
             <NavLink {...propsOutItem.linkToModuleProps} />
@@ -120,7 +120,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
     })
 
     return (
-      <section className={getClasses('_documentsTable', classAdded)}>
+      <section className={getClasses('_creditsTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_date'>Date</div>
           <div className='_cell _header_module_name'>Module name</div>

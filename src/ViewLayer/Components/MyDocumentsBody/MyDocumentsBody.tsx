@@ -42,7 +42,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       {!!tagsCloud.length && (
         <Collapse
-          className='_credits'
+          className='_collapse'
           collapsible='icon'
           defaultActiveKey={['1']}
           items={[
@@ -56,7 +56,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
       )}
       {!!documents.length && (
         <Collapse
-          className='_credits'
+          className='_collapse'
           collapsible='icon'
           defaultActiveKey={['1']}
           items={[

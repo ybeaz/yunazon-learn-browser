@@ -2,6 +2,128 @@
   display: flex;
   flex-direction: column;
 
+  ._tagsCloudTable {
+    display: grid; /* grid containers */
+    width: 100%;
+    // grid-gap: 10px;
+    grid-template-columns: 1fr 5fr 1fr 1fr; /* six columns */
+    grid-auto-flow: row; /* in column direction */
+
+    ._header {
+      display: contents; /* the child elements would be grid items */
+    }
+
+    ._row {
+      display: contents; /* the child elements would be grid items */
+    }
+
+    ._row_header {
+      ._cell {
+        padding: 1rem 0.5rem;
+        align-items: center;
+        justify-content: center;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        white-space: pre-wrap;
+      }
+
+      /* Another option for compatibility */
+      .compatibility-long-words {
+        white-space: pre-wrap;
+      }
+
+      ._header_date {
+        border: 1px solid;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-color: lightgrey;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+        white-space: nowrap;
+      }
+      ._header_module_name {
+        border: 1px solid;
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-color: lightgrey;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+      }
+      ._header_document_link {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+      ._header_remove {
+        border-top: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        text-align: center;
+      }
+    }
+
+    ._row_tagsCloud {
+      ._cell {
+        display: flex;
+        align-items: center;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+        border-color: lightgrey;
+        padding: 0.5rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+        white-space: pre-wrap;
+      }
+
+      ._date {
+        border-left: 1px solid;
+        border-color: lightgrey;
+        justify-content: center;
+        white-space: nowrap;
+      }
+
+      ._module_name {
+        border-left: 1px solid;
+        border-color: lightgrey;
+        cursor: pointer;
+      }
+
+      ._document_link {
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      ._remove {
+        justify-content: center;
+      }
+    }
+
+    @media @large {
+    }
+    @media @desktop, @desktop-strict {
+    }
+    @media @tablet, @tablet-strict {
+    }
+    @media @phone, @phone-strict {
+      ._row_header {
+        ._cell {
+          font-size: small;
+        }
+      }
+      ._row_tagsCloud {
+        ._cell {
+          font-size: small;
+        }
+      }
+    }
+  }
+
   @media @large {
   }
   @media @desktop, @desktop-strict {

@@ -110,7 +110,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       }
 
       return (
-        <div key={tagID} className='_row _row_weather'>
+        <div key={tagID} className='_row _row_tagsCloud'>
           <div className='_cell _date'>{value}</div>
           {/* <div className='_cell _module_name'>
             <NavLink {...propsOut.linkToModuleProps} />
@@ -126,7 +126,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
     })
 
     return (
-      <section className={getClasses('_documentsTable', classAdded)}>
+      <section className={getClasses('_tagsCloudTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_date'>Date</div>
           <div className='_cell _header_module_name'>Module name</div>
