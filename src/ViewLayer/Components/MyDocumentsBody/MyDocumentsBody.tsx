@@ -27,13 +27,8 @@ import { getSlug } from '../../../Shared/getSlug'
 const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   props: MyDocumentsBodyComponentPropsType
 ) => {
-  const {
-    classAdded,
-    handleEvents,
-    documents,
-    language,
-    storeStateSlice: { pageDocuments },
-  } = props
+  const { classAdded, handleEvents, documents, tagsCloud, pageDocuments, pageTags, language } =
+    props
 
   const navigate = useNavigate()
 
@@ -147,6 +142,8 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
     },
   }
 
+  console.info('MyDocumentsBody [152]', { tagsCloud, pageDocuments, pageTags })
+
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       <Collapse
@@ -195,7 +192,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['pageDocuments']
+const storeStateSliceProps: string[] = []
 export const MyDocumentsBody = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsBodyComponent))
 )

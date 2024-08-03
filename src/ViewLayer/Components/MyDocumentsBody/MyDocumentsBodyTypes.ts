@@ -6,12 +6,12 @@ import { PaginationNavigationPropsType } from '../../Components/'
 
 export type MyDocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  documents: RootStoreType['documents']
   language: RootStoreType['language']
+  documents: RootStoreType['documents']
+  tagsCloud: RootStoreType['tagsCloud']
+  pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
+  pageTags: RootStoreType['componentsState']['pagination']['pageTags']
   handleEvents: HandleEventType
-  storeStateSlice: {
-    pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
-  }
 }
 
 export type MyDocumentsBodyPropsType = Omit<

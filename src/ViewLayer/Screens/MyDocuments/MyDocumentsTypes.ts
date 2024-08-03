@@ -10,6 +10,9 @@ export type MyDocumentsComponentPropsType = {
     language: RootStoreType['language']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
     documents: RootStoreType['documents']
+    tagsCloud: RootStoreType['tagsCloud']
+    pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
+    pageTags: RootStoreType['componentsState']['pagination']['pageTags']
   }
   handleEvents: HandleEventType
 }

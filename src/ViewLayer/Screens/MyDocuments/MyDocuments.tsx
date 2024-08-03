@@ -31,7 +31,7 @@ import {
 const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsComponentPropsType) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub, documents },
+    storeStateSlice: { language, sub, documents, tagsCloud, pageDocuments, pageTags },
     handleEvents,
   } = props
 
@@ -79,8 +79,11 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
       screenType: 'MyDocuments',
     },
     myMyDocumentsBodyProps: {
-      documents,
       language,
+      documents,
+      tagsCloud,
+      pageDocuments,
+      pageTags,
     },
   }
 
@@ -112,7 +115,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
+const storeStateSliceProps: string[] = [
+  'language',
+  'sub',
+  'documents',
+  'tagsCloud',
+  'pageDocuments',
+  'pageTags',
+]
 export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )
