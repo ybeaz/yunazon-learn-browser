@@ -6,7 +6,7 @@
     display: grid; /* grid containers */
     width: 100%;
     // grid-gap: 10px;
-    grid-template-columns: 3fr 1fr 1fr 1fr 1fr; /* six columns */
+    grid-template-columns: 3fr 1fr 1fr 1fr; /* six columns */
     grid-auto-flow: row; /* in column direction */
 
     ._header {
@@ -43,16 +43,7 @@
         text-align: center;
         white-space: nowrap;
       }
-      ._header_completed {
-        border: 1px solid;
-        border-top: 1px solid;
-        border-right: 1px solid;
-        border-color: lightgrey;
-        border-bottom: 1px solid;
-        border-color: lightgrey;
-        text-align: center;
-      }
-      ._header_total {
+      ._header_completedTotal {
         border: 1px solid;
         border-top: 1px solid;
         border-right: 1px solid;
@@ -98,14 +89,7 @@
         white-space: nowrap;
       }
 
-      ._completed {
-        justify-content: center;
-        border-left: 1px solid;
-        border-color: lightgrey;
-        cursor: pointer;
-      }
-
-      ._total {
+      ._completedTotal {
         justify-content: center;
         border-left: 1px solid;
         border-color: lightgrey;
@@ -113,12 +97,15 @@
       }
 
       ._level {
-        justify-content: center;
       }
 
       ._document_link {
         justify-content: center;
         cursor: pointer;
+      }
+
+      ._span {
+        padding: 0 0.5rem;
       }
     }
 

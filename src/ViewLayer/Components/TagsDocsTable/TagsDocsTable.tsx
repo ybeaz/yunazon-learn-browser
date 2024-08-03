@@ -7,6 +7,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { TagType } from '../../../@types/'
 import { getClasses, getDateString, getSlug } from '../../../Shared/'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
+import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
 import { PaginationNameEnumType } from '../../../Interfaces'
 import {
   TagsDocsTableItemPropsOutType,
@@ -43,6 +44,22 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         moduleIDs,
       } = tagCloud
 
+      const {
+        level,
+        name: levelName,
+        min,
+        max,
+        iconName,
+        left,
+        levelNext: {
+          level: nextLevel,
+          name: nextName,
+          min: nextMin,
+          max: nextMax,
+          iconName: nextIconName,
+        },
+      }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
+
       // const dateString = getDateString({
       //   timestamp: dateCreated,
       //   style: 'US',
@@ -52,82 +69,51 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       // const pathnameDocument = `/d/${documentID}`
 
       const propsOutItem: TagsDocsTableItemPropsOutType = {
-        // linkToModuleProps: {
-        //   className: '__shield',
-        //   to: { pathname: pathnameModule },
-        //   children: capture,
-        //   onClick: (event: any) => {
-        //     handleEvents(event, {
-        //       typeEvent: 'GO_LINK_PATH',
-        //       data: { navigate, pathname: pathnameModule },
-        //     })
-        //   },
-        // },
-        // linkToDocumentProps: {
-        //   className: '__shield',
-        //   to: { pathname: pathnameDocument },
-        //   children: 'Link',
-        //   onClick: (event: any) => {
-        //     handleEvents(event, {
-        //       typeEvent: 'GO_LINK_PATH',
-        //       data: { navigate, pathname: pathnameDocument },
-        //     })
-        //   },
-        // },
-        // buttonDeactivateDocumentProps: {
-        //   icon: 'MdDeleteOutline',
-        //   classAdded: 'Button_DeactivateModule',
-        //   action: {
-        //     typeEvent: 'SET_MODAL_FRAMES',
-        //     data: [
-        //       {
-        //         childName: 'ConfirmationYesNoBodyYrl',
-        //         isActive: true,
-        //         childProps: {
-        //           message: [
-        //             `${DICTIONARY['Do_you_confirm_removing'][language]} ${DICTIONARY['document'][language]} No ${documentID}`,
-        //             `${capture}?`,
-        //           ],
-        //           captureButton4Yes: DICTIONARY['confirm'][language],
-        //           captureButton4No: DICTIONARY['cancel'][language],
-        //           action4Yes: {
-        //             typeEvent: 'CLICK_ON_DEACTIVATE_DOCUMENT',
-        //             data: { documentsIDs: [documentID] },
-        //           },
-        //           action4No: {
-        //             typeEvent: 'SET_MODAL_FRAMES',
-        //             data: {
-        //               childName: 'ConfirmationYesNoBodyYrl',
-        //               isActive: false,
-        //             },
-        //           },
-        //           buttonRight: 'NoCancel',
-        //         },
-        //       },
-        //     ],
-        //   },
-        // },
+        buttonTagMdCheckProps: {
+          classAdded: 'Button_tagMdCheck',
+          icon: 'MdCheck',
+          // iconColor: colorsRandomDarkTheme[index],
+          action: {
+            typeEvent: '',
+            data: {},
+          },
+          isDisplaying: true,
+        },
+        buttonTagExpertiseProps: {
+          classAdded: 'Button_tagExpertise',
+          icon: iconName,
+          // iconColor: colorsRandomDarkTheme[index],
+          action: {
+            typeEvent: '',
+            data: {},
+          },
+          isDisplaying: true,
+        },
       }
 
       return (
         <div key={tagID} className='_row _row_tagsCloud'>
           <div className='_cell _name'>{value}</div>
-          <div className='_cell _completed'>{completed}</div>
-          <div className='_cell _total'>{count}</div>
-          <div className='_cell _level'>Advanced</div>
+          <div className='_cell _completedTotal'>
+            <span className='_span'>{completed}</span>/<span className='_span'>{count}</span>
+          </div>
+          <div className='_cell _level'>
+            <>
+              <span className='_span'>
+                <ButtonYrl {...propsOutItem.buttonTagExpertiseProps} />
+              </span>
+              <span className='_span'>{levelName}</span>
+              {completed >= count && (
+                <span className='_span'>
+                  <ButtonYrl {...propsOutItem.buttonTagMdCheckProps} />
+                </span>
+              )}
+            </>
+          </div>
           <div className='_cell _document_link'>
             doc_link
             {/* <NavLink {...propsOut.linkToDocumentProps} /> */}
           </div>
-          {/* <div className='_cell _module_name'>
-            <NavLink {...propsOut.linkToModuleProps} />
-          </div>
-          <div className='_cell _document_link'>
-            <NavLink {...propsOut.linkToDocumentProps} />
-          </div>
-          <div className='_cell _remove'>
-            <ButtonYrl {...propsOut.buttonDeactivateDocumentProps} />
-          </div> */}
         </div>
       )
     })
@@ -136,8 +122,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       <section className={getClasses('_tagsCloudTable', classAdded)}>
         <header className='_row _row_header'>
           <div className='_cell _header_name'>Name</div>
-          <div className='_cell _header_completed'>Completed</div>
-          <div className='_cell _header_total'>Total</div>
+          <div className='_cell _header_completedTotal'>Completed / Total</div>
           <div className='_cell _header_level'>Level</div>
           <div className='_cell _header_document_link'>Document</div>
         </header>
