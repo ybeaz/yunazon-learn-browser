@@ -111,7 +111,13 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
 
       return (
         <div key={tagID} className='_row _row_tagsCloud'>
-          <div className='_cell _date'>{value}</div>
+          <div className='_cell _name'>{value}</div>
+          <div className='_cell _completed'>{completed}</div>
+          <div className='_cell _level'>Advanced</div>
+          <div className='_cell _document_link'>
+            doc_link
+            {/* <NavLink {...propsOut.linkToDocumentProps} /> */}
+          </div>
           {/* <div className='_cell _module_name'>
             <NavLink {...propsOut.linkToModuleProps} />
           </div>
@@ -128,10 +134,10 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
     return (
       <section className={getClasses('_tagsCloudTable', classAdded)}>
         <header className='_row _row_header'>
-          <div className='_cell _header_date'>Date</div>
-          <div className='_cell _header_module_name'>Module name</div>
+          <div className='_cell _header_name'>Name</div>
+          <div className='_cell _header_completed'>Completed</div>
+          <div className='_cell _header_level'>Level</div>
           <div className='_cell _header_document_link'>Document</div>
-          <div className='_cell _header_remove'>Remove</div>
         </header>
 
         {documentsRows}
