@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { getSlug } from '../../../Shared/getSlug'
 import { getDateString } from '../../../Shared/getDateString'

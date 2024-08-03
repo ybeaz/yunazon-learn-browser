@@ -2,7 +2,7 @@ import React from 'react'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
-import { PaginationNavigationPropsType } from '../../Components/'
+import { CreditsTablePropsType, PaginationNavigationPropsType } from '../../Components/'
 
 export type MyDocumentsBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -11,7 +11,6 @@ export type MyDocumentsBodyComponentPropsType = {
   tagsCloud: RootStoreType['tagsCloud']
   pageDocuments: RootStoreType['componentsState']['pagination']['pageDocuments']
   pageTags: RootStoreType['componentsState']['pagination']['pageTags']
-  handleEvents: HandleEventType
 }
 
 export type MyDocumentsBodyPropsType = Omit<
@@ -19,14 +18,8 @@ export type MyDocumentsBodyPropsType = Omit<
   'storeStateSlice' | 'handleEvents'
 >
 
-export type DocumentsTablePropsOutType = {
-  linkToDocumentProps: any
-  linkToModuleProps: any
-  buttonDeactivateDocumentProps: ButtonYrlPropsType
-}
-
 export type MyDocumentsBodyPropsOutType = {
-  paginationNavigationProps: PaginationNavigationPropsType
+  creditsTableProps: CreditsTablePropsType
 }
 
 /**
