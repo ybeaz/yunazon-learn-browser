@@ -148,7 +148,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
   return (
     <div className={getClasses('TagsDocsTable', classAdded)}>
       {getTagsDocsTable(tagsCloud)}
-      {!(pageTags.first === 0 && pageTags.offset > pageTags.length) && (
+      {!(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
         <div className='_paginationNavigationWrapper'>
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>
