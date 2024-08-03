@@ -113,6 +113,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         <div key={tagID} className='_row _row_tagsCloud'>
           <div className='_cell _name'>{value}</div>
           <div className='_cell _completed'>{completed}</div>
+          <div className='_cell _total'>{count}</div>
           <div className='_cell _level'>Advanced</div>
           <div className='_cell _document_link'>
             doc_link
@@ -136,6 +137,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         <header className='_row _row_header'>
           <div className='_cell _header_name'>Name</div>
           <div className='_cell _header_completed'>Completed</div>
+          <div className='_cell _header_total'>Total</div>
           <div className='_cell _header_level'>Level</div>
           <div className='_cell _header_document_link'>Document</div>
         </header>
