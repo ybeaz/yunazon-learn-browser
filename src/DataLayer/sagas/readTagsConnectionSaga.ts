@@ -24,7 +24,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         pageTags: { first, offset },
       },
     },
-    forms: { tagsSearch, tagsPick, tagsOmit },
+    forms: { documentsSearch, tagsSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -32,6 +32,8 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   let sub_localStorage = getLocalStorageReadKeyObj('sub')
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
+
+  console.info('readTagsConnectionSaga [36]', { documentsSearch, tagsSearch })
 
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -47,7 +49,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         offset,
         after: '',
         language: '',
-        searchPhrase: tagsSearch,
+        searchPhrase: tagsSearch || documentsSearch,
         searchIn: ['value'],
         operators: {
           searchPhrase: 'or',
@@ -59,10 +61,10 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
           prop: 'count',
           direction: -1,
         },
-        // sortGraphQl: {
-        //   prop: 'completed',
-        //   direction: -1,
-        // },
+        sortGraphQl: {
+          prop: 'completed',
+          direction: -1,
+        },
       },
     }
 

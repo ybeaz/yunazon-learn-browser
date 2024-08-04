@@ -102,6 +102,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
               <span className='_span'>
                 <ButtonYrl {...propsOutItem.buttonTagExpertiseProps} />
               </span>
+              <span className='_span'>{level}</span>
               <span className='_span'>{levelName}</span>
               {completed >= count && (
                 <span className='_span'>
@@ -111,7 +112,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
             </>
           </div>
           <div className='_cell _document_link'>
-            doc_link
+            {tagID}
             {/* <NavLink {...propsOut.linkToDocumentProps} /> */}
           </div>
         </div>
