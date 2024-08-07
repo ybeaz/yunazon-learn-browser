@@ -4,7 +4,10 @@ import { MutationCreateBotResponseArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,
@@ -30,17 +33,8 @@ export type GetBotResponseParamsType = {
   userText: string
 }
 
-export function* getBotResponseGenerator(
-  params: GetBotResponseParamsType
-): Iterable<any> {
-  const {
-    botID,
-    profileID,
-    profileName,
-    userText,
-    stage,
-    connectionsTimeoutName,
-  } = params
+export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iterable<any> {
+  const { botID, profileID, profileName, userText, stage, connectionsTimeoutName } = params
 
   try {
     const variables: MutationCreateBotResponseArgs = {
@@ -55,7 +49,7 @@ export function* getBotResponseGenerator(
     const createBotResponse: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createBotResponse',
+        resolveGraphqlName: ResolveGraphqlEnumType['createBotResponse'],
       },
       {
         ...getHeadersAuthDict(),
@@ -78,10 +72,7 @@ export function* getBotResponseGenerator(
       })
     )
 
-    console.info(
-      'getBotResponseSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getBotResponseSaga  [110] ERROR', `${error.name}: ${error.message}`)
   }
 }
 

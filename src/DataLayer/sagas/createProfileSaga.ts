@@ -1,13 +1,13 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import {
-  MutationCreateProfilesArgs,
-  ProfileNatureType,
-} from '../../@types/GraphqlTypes'
+import { MutationCreateProfilesArgs, ProfileNatureType } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
@@ -56,7 +56,7 @@ function* createProfileGenerator(params: ActionReduxType | any): Iterable<any> {
     const createProfiles: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createProfiles',
+        resolveGraphqlName: ResolveGraphqlEnumType['createProfiles'],
       },
       {
         ...getHeadersAuthDict(),

@@ -50,14 +50,15 @@ const Certificate2Component: Certificate2ComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { documents, language },
+    storeStateSlice: { tagsCloud, documents, language },
   } = props
 
   const params = useParams()
-  const documentID = params?.documentID
+  const tagID = params?.tagID
 
   const documentFound: DocumentType =
-    documents.find((document: DocumentType) => document.documentID === documentID) || documents[0]
+    documents.find((document: DocumentType) => document.documentID === 'YXpXTswNX0gq') ||
+    documents[0]
 
   const {
     dateCreated,
@@ -69,9 +70,19 @@ const Certificate2Component: Certificate2ComponentType = (
   useEffect(() => {
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
     // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound?.documentID) {
-      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    }
+    // if (Array.isArray(documents) && !documentFound?.documentID) {
+    handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: 'YXpXTswNX0gq' })
+    handleEvents(
+      {},
+      {
+        typeEvent: 'GET_TAGS',
+        data: {
+          isLoaderOverlay: true,
+          tagID,
+        },
+      }
+    )
+    // }
   }, [])
 
   const dateMilitaty = getDateString({
@@ -94,8 +105,8 @@ const Certificate2Component: Certificate2ComponentType = (
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
-      documentID,
       moduleID,
+      tagID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,

@@ -9,15 +9,13 @@ export type PageActionsGroupComponentPropsType = {
   documentID?: string
   moduleID?: string
   contentID?: string
+  tagID?: string
   storeStateSlice: {
     language: RootStoreType['language']
   }
 }
 
-export type PageActionsGroupPropsType = Omit<
-  PageActionsGroupComponentPropsType,
-  'storeStateSlice'
->
+export type PageActionsGroupPropsType = Omit<PageActionsGroupComponentPropsType, 'storeStateSlice'>
 
 export type PageActionsGroupPropsOutType = {
   buttonPrintProps: ButtonYrlPropsType
@@ -33,5 +31,4 @@ export interface PageActionsGroupComponentType
   (props: PageActionsGroupComponentPropsType): React.ReactElement
 }
 
-export type PageActionsGroupType =
-  React.FunctionComponent<PageActionsGroupPropsType>
+export type PageActionsGroupType = React.FunctionComponent<PageActionsGroupPropsType>

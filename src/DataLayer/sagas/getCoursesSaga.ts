@@ -7,7 +7,10 @@ import {
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
@@ -59,7 +62,7 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     const readCoursesConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readCoursesConnection',
+        resolveGraphqlName: ResolveGraphqlEnumType['readCoursesConnection'],
       },
       {
         ...getHeadersAuthDict(),

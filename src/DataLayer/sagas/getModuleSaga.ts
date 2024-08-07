@@ -2,7 +2,11 @@ import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
 import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
-import { getResponseGraphqlAsync, FragmentEnumType } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+  FragmentEnumType,
+} from '../../../../yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
@@ -51,7 +55,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
       const readModules: any = yield getResponseGraphqlAsync(
         {
           variables,
-          resolveGraphqlName: 'readModules',
+          resolveGraphqlName: ResolveGraphqlEnumType['readModules'],
           fragmentName: FragmentEnumType['ModuleTypeStandard'],
         },
         {

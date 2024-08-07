@@ -87,6 +87,7 @@ export const ACTIONS_SYNC: string[] = [
 
 // Asynchroneous actions for saga
 export const ACTIONS_ASYNC: string[] = [
+  'READ_TAGS',
   'CREATE_SITE_MAP',
   'CREATE_PROFILE',
   'CREATE_DOCUMENT_SCENARIO',

@@ -19,6 +19,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
     documentID,
     moduleID,
     contentID,
+    tagID,
     storeStateSlice: { language },
   } = props
 
@@ -28,7 +29,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
       classAdded: 'Button_UseCertificate',
       action: {
         typeEvent: 'PRINT_DOCUMENT',
-        data: { moduleCapture, documentID, moduleID, contentID },
+        data: { moduleCapture, documentID, moduleID, contentID, tagID },
       },
       tooltipText: DICTIONARY['sendToPrint'][language],
       tooltipPosition: 'bottom',

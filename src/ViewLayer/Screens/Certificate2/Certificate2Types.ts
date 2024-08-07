@@ -9,6 +9,7 @@ export type Certificate2ComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     language: RootStoreType['language']
+    tagsCloud: RootStoreType['tagsCloud']
     documents: RootStoreType['documents']
   }
 }

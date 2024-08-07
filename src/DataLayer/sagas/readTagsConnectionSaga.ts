@@ -3,7 +3,10 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { QueryReadTagsConnectionArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
@@ -14,6 +17,7 @@ import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToIt
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay
+  const tagID = params?.data?.tagID
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
@@ -33,7 +37,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
 
-  console.info('readTagsConnectionSaga [36]', { documentsSearch, tagsSearch })
+  console.info('readTagsConnectionSaga [36]', { tagID, documentsSearch, tagsSearch })
 
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
@@ -68,10 +72,12 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       },
     }
 
+    if (tagID) variables.readTagsConnectionInput.tagIDs = [tagID]
+
     const readTagsConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readTagsConnection',
+        resolveGraphqlName: ResolveGraphqlEnumType['readTagsConnection'],
       },
       {
         ...getHeadersAuthDict(),

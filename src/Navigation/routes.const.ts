@@ -32,7 +32,7 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'Certificate2',
-    path: `/q/:documentID/:slugDocument?`, // qualification
+    path: `/q/:tagID/:slugDocument?`, // qualification
     children: [],
     errorElement: 'Error404',
   },

@@ -5,7 +5,10 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
@@ -42,7 +45,7 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'getAuthAwsCognitoUserRefreshed',
+        resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserRefreshed'],
       },
       {
         clientHttpType: selectGraphqlHttpClientFlag(),
