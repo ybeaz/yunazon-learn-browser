@@ -37,8 +37,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
 
-  console.info('readTagsConnectionSaga [36]', { tagID, documentsSearch, tagsSearch })
-
   try {
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 

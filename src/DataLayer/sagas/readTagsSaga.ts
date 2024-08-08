@@ -36,13 +36,11 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
     const variables: QueryReadTagsArgs = {
       readTagsInput: [
         {
-          tagID: 'WMgZefGDJekz',
-          learnerUserID: 'f4a89478-6051-705d-e938-db84b3be0aeb',
+          tagID,
+          learnerUserID: sub_localStorage,
         },
       ],
     }
-
-    console.info('readTagsSaga [42]', { variables, tagID, sub_localStorage, sub })
 
     const readTags: any = yield getResponseGraphqlAsync(
       {
@@ -56,9 +54,7 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
       }
     )
 
-    console.info('readTagsSaga [61]', { readTags })
-
-    // yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
+    yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
 
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

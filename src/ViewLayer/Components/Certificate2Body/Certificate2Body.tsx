@@ -20,28 +20,39 @@ import {
 const Certificate2BodyComponent: Certificate2BodyComponentType = (
   props: Certificate2BodyComponentPropsType
 ) => {
-  const {
-    classAdded,
-    document,
-    storeStateSlice: { language },
-  } = props
+  const { classAdded, language, profile, tagCloud } = props
+
+  const documentID = tagCloud.tagID
+  const dateCreated = tagCloud.dateCreated
+  const affiliation = 'Open Internet Academy'
+  const moduleID = tagCloud.tagID
+  const moduleCapture = tagCloud.value
+  const languageDoc = language
+
+  const nameFirstLearner = profile.nameFirst
+  const nameLastLearner = profile.nameLast
+  const nameMiddleLearner = profile.nameMiddle
+
+  const nameFirstCreator = 'Alex'
+  const nameLastCreator = 'Polus'
+  const nameMiddleCreator = ''
 
   const {
-    documentID,
-    dateCreated,
-    module: { moduleID, capture: moduleCapture, language: languageDoc },
-    creator: {
-      affiliation,
-      jobTitle,
-      nameFirst: nameFirstCreator,
-      nameLast: nameLastCreator,
-      nameMiddle: nameMiddleCreator,
-    },
-    learner: {
-      nameFirst: nameFirstLearner,
-      nameLast: nameLastLearner,
-      nameMiddle: nameMiddleLearner,
-    },
+    // documentID,
+    // dateCreated,
+    // module: { moduleID, capture: moduleCapture, language: languageDoc },
+    // creator: {
+    //   affiliation,
+    //   jobTitle,
+    //   nameFirst: nameFirstCreator,
+    //   nameLast: nameLastCreator,
+    //   nameMiddle: nameMiddleCreator,
+    // },
+    // learner: {
+    //   nameFirst: nameFirstLearner,
+    //   nameLast: nameLastLearner,
+    //   nameMiddle: nameMiddleLearner,
+    // },
   } = document
 
   const moduleSlug = getSlug(moduleCapture)
@@ -71,9 +82,10 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   const propsOut: Certificate2BodyPropsOutType = {}
 
   console.info('Certificate2Body [51]', {
+    tagCloud,
     moduleCapture,
     modulePathName,
-    affiliation,
+    // affiliation,
     nameCreator,
     nameLearner,
   })

@@ -1,8 +1,12 @@
 import React from 'react'
-import { DocumentType } from '../../../@types/index'
+import { TagType, ProfileType, DocumentType } from '../../../@types/index'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type Certificate2BodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  language: RootStoreType['language']
+  profile: ProfileType
+  tagCloud: TagType
   document: DocumentType
   storeStateSlice: any
 }

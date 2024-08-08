@@ -4,8 +4,9 @@ import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
+import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { DocumentType } from '../../../@types/index'
+import { TagType, ProfileType, DocumentType } from '../../../@types/index'
 import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -50,11 +51,20 @@ const Certificate2Component: Certificate2ComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { tagsCloud, documents, language },
+    storeStateSlice: { language, sub, tagsCloud, profiles, documents },
   } = props
 
   const params = useParams()
   const tagID = params?.tagID
+
+  const tagCloudFound: TagType =
+    tagsCloud.find((tagCloud: TagType) => tagCloud.tagID === tagID) || tagsCloud[0]
+
+  const profileFound: ProfileType = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
 
   const documentFound: DocumentType =
     documents.find((document: DocumentType) => document.documentID === 'YXpXTswNX0gq') ||
@@ -71,19 +81,20 @@ const Certificate2Component: Certificate2ComponentType = (
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
     // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
     // if (Array.isArray(documents) && !documentFound?.documentID) {
-    handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: 'YXpXTswNX0gq' })
-    handleEvents(
-      {},
-      {
-        typeEvent: 'GET_TAGS',
-        data: {
-          isLoaderOverlay: true,
-          tagID,
-        },
-      }
-    )
+    // handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: 'YXpXTswNX0gq' })
+    if (sub)
+      handleEvents(
+        {},
+        {
+          typeEvent: 'GET_TAGS',
+          data: {
+            isLoaderOverlay: true,
+            tagID,
+          },
+        }
+      )
     // }
-  }, [])
+  }, [sub])
 
   const dateMilitaty = getDateString({
     timestamp: dateCreated,
@@ -97,8 +108,7 @@ const Certificate2Component: Certificate2ComponentType = (
   const modulePathName = `/m/${moduleID}/${moduleSlug}`
   const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
 
-  const propsOut: any = {
-    // Certificate2PropsOutType
+  const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
       moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
@@ -119,13 +129,25 @@ const Certificate2Component: Certificate2ComponentType = (
       isButtonsShare: true,
     },
     certificate2BodyProps: {
+      language,
+      profile: profileFound,
+      tagCloud: tagCloudFound,
       document: documentFound,
     },
   }
 
+  console.info('Certificate2 [126]', {
+    language,
+    profiles,
+    sub,
+    profileFound,
+    tagCloudFound,
+    tagsCloud,
+  })
+
   return (
     <div className={getClasses('Certificate2', classAdded)}>
-      {documentFound?.documentID && (
+      {tagCloudFound?.tagID && (
         <>
           <Helmet>
             <html lang={languageDoc} />
@@ -149,7 +171,7 @@ const Certificate2Component: Certificate2ComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'documents']
+const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud', 'documents']
 export const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(Certificate2Component)
