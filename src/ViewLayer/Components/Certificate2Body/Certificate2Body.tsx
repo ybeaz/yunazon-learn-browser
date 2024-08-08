@@ -37,24 +37,6 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   const nameLastCreator = 'Polus'
   const nameMiddleCreator = ''
 
-  const {
-    // documentID,
-    // dateCreated,
-    // module: { moduleID, capture: moduleCapture, language: languageDoc },
-    // creator: {
-    //   affiliation,
-    //   jobTitle,
-    //   nameFirst: nameFirstCreator,
-    //   nameLast: nameLastCreator,
-    //   nameMiddle: nameMiddleCreator,
-    // },
-    // learner: {
-    //   nameFirst: nameFirstLearner,
-    //   nameLast: nameLastLearner,
-    //   nameMiddle: nameMiddleLearner,
-    // },
-  } = document
-
   const moduleSlug = getSlug(moduleCapture)
   const modulePathName = `/m/${moduleID}/${moduleSlug}`
 

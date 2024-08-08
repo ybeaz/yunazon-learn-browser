@@ -7,7 +7,6 @@ export type Certificate2BodyComponentPropsType = {
   language: RootStoreType['language']
   profile: ProfileType
   tagCloud: TagType
-  document: DocumentType
   storeStateSlice: any
 }
 

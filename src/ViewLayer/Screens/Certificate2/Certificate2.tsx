@@ -35,10 +35,17 @@ import {
   Certificate2Type,
 } from './Certificate2Types'
 
-const documentFoundDefault = {
+const tagCloudFoundDefault = {
+  tagID: '',
   dateCreated: 0,
-  module: { moduleID: '', capture: '', language: '' },
-} as DocumentType
+  dateUpdated: 0,
+  dateDeactivated: null,
+  isActive: true,
+  value: '',
+  count: 0,
+  completed: 0,
+  moduleIDs: [],
+} as TagType
 
 /**
  * @description Component to render Certificate2
@@ -51,14 +58,16 @@ const Certificate2Component: Certificate2ComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub, tagsCloud, profiles, documents },
+    storeStateSlice: { language, sub, tagsCloud, profiles },
   } = props
 
   const params = useParams()
   const tagID = params?.tagID
 
   const tagCloudFound: TagType =
-    tagsCloud.find((tagCloud: TagType) => tagCloud.tagID === tagID) || tagsCloud[0]
+    tagsCloud.find((tagCloud: TagType) => tagCloud.tagID === tagID) ||
+    tagsCloud[0] ||
+    tagCloudFoundDefault
 
   const profileFound: ProfileType = getArrayItemByProp({
     arr: profiles,
@@ -66,19 +75,10 @@ const Certificate2Component: Certificate2ComponentType = (
     propValue: sub,
   })
 
-  const documentFound: DocumentType =
-    documents.find((document: DocumentType) => document.documentID === 'YXpXTswNX0gq') ||
-    documents[0]
-
-  const {
-    dateCreated,
-    module: { moduleID, capture: moduleCapture, language: languageDoc },
-  } = documentFound || documentFoundDefault
-
   const screenType = ScreensEnumType['Certificate2']
 
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
     // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
     // if (Array.isArray(documents) && !documentFound?.documentID) {
     // handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: 'YXpXTswNX0gq' })
@@ -97,16 +97,17 @@ const Certificate2Component: Certificate2ComponentType = (
   }, [sub])
 
   const dateMilitaty = getDateString({
-    timestamp: dateCreated,
+    timestamp: Date.now(),
     style: 'military',
     hours: false,
     minutes: false,
     seconds: false,
   })
 
-  const moduleSlug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleID}/${moduleSlug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
+  // const moduleSlug = getSlug(tagCloudFound.value)
+  // const modulePathName = `/m/${tagCloudFound.tagID}/${moduleSlug}`
+  const moduleCapture = tagCloudFound.value
+  const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
 
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
@@ -114,8 +115,6 @@ const Certificate2Component: Certificate2ComponentType = (
       moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
-      moduleCapture: moduleCapture,
-      moduleID,
       tagID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -132,7 +131,6 @@ const Certificate2Component: Certificate2ComponentType = (
       language,
       profile: profileFound,
       tagCloud: tagCloudFound,
-      document: documentFound,
     },
   }
 
@@ -150,7 +148,7 @@ const Certificate2Component: Certificate2ComponentType = (
       {tagCloudFound?.tagID && (
         <>
           <Helmet>
-            <html lang={languageDoc} />
+            <html lang={language} />
             <meta charSet='utf-8' />
             <meta name='viewport' content='width=device-width,initial-scale=1' />
             <meta name='google' content='notranslate' />
@@ -171,7 +169,7 @@ const Certificate2Component: Certificate2ComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud', 'documents']
+const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud']
 export const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(Certificate2Component)
