@@ -7,10 +7,9 @@ export type Certificate2BodyComponentPropsType = {
   language: RootStoreType['language']
   profile: ProfileType
   tagCloud: TagType
-  storeStateSlice: any
 }
 
-export type Certificate2BodyPropsType = Omit<Certificate2BodyComponentPropsType, 'storeStateSlice'>
+export type Certificate2BodyPropsType = Certificate2BodyComponentPropsType
 
 export type Certificate2BodyPropsOutType = Record<string, any>
 

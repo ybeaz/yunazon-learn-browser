@@ -53,6 +53,11 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       const pathnameDocument = `/q/${tagID}`
 
       const propsOutItem: TagsDocsTableItemPropsOutType = {
+        linkToAcademyMatrixTaggedProps: {
+          className: '__shield',
+          to: { pathname: '/', search: `tagsPick=${value}&pageTags=1&pageModules=1` },
+          children: value,
+        },
         iconTagMdCheckProps: {
           classAdded: 'Button_tagMdCheck',
           icon: 'MdCheck',
@@ -73,7 +78,9 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
 
       return (
         <div key={tagID} className='_row _row_tagsCloud'>
-          <div className='_cell _name'>{value}</div>
+          <div className='_cell _name'>
+            <NavLink {...propsOutItem.linkToAcademyMatrixTaggedProps} />
+          </div>
           <div className='_cell _completedTotal'>
             <span className='_span'>{completed}</span>/<span className='_span'>{count}</span>
           </div>

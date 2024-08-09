@@ -4,6 +4,7 @@ import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { getSlug } from '../../../Shared/getSlug'
 import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
+import { getNameString } from '../../../Shared/getNameString'
 import {
   Certificate2BodyComponentPropsType,
   Certificate2BodyPropsType,
@@ -33,52 +34,23 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   const dateCreated = tagCloud.dateCreated
   const institution = 'Open Internet Academy'
   const tagValue = tagCloud.value
-  const languageDoc = language
 
   const nameFirstLearner = profile.nameFirst
   const nameLastLearner = profile.nameLast
   const nameMiddleLearner = profile.nameMiddle
-
-  const nameFirstCreator = 'Alex'
-  const nameLastCreator = 'Polus'
-  const nameMiddleCreator = ''
 
   const documentSlug = getSlug(tagValue)
   const documentPathName = `/q/${tagID}/${documentSlug}`
 
   const date = new Date(dateCreated)
 
-  const nameCreator = nameMiddleCreator
-    ? `${nameFirstCreator} ${nameMiddleCreator} ${nameLastCreator}`
-    : `${nameFirstCreator} ${nameLastCreator}`
-
-  const nameLearner = nameMiddleLearner
-    ? `${nameFirstLearner} ${nameMiddleLearner} ${nameLastLearner}`
-    : `${nameFirstLearner} ${nameLastLearner}`
-
-  const propsOut: Certificate2BodyPropsOutType = {}
-
-  console.info('Certificate2Body [51]', {
-    documentName,
-    tagCloud,
-    tagValue,
-    nameCreator,
-    nameLearner,
+  const nameLearner = getNameString({
+    nameFirst: nameFirstLearner,
+    nameLast: nameLastLearner,
+    nameMiddle: nameMiddleLearner,
   })
 
-  /*
-
-by successfully completing a comprehensive training program consisting of 6 modules.
-
-Through dedication and hard work, John has mastered the skills and knowledge required, showing a high level of proficiency and commitment.
-
-Awarded this [Day] day of [Month], [Year], this certificate recognizes your remarkable accomplishments and the significant effort invested in achieving this milestone.
-
-<div className='_labelDescription'>
-          Through dedication and hard work, {nameLearner} has mastered the skills and knowledge
-          required, showing a high level of proficiency and commitment.
-        </div>
-  */
+  const propsOut: Certificate2BodyPropsOutType = {}
 
   return (
     <div className={getClasses('Certificate2Body', classAdded)}>
@@ -105,7 +77,7 @@ Awarded this [Day] day of [Month], [Year], this certificate recognizes your rema
       <div className='_sectionWrapper'>
         <div className='_labelAchievement'>
           for successfully completing&nbsp;<b>{completed}&nbsp;modules</b>&nbsp;in the comprehensive
-          training programs.
+          training program at
         </div>
       </div>
 
@@ -132,11 +104,7 @@ Awarded this [Day] day of [Month], [Year], this certificate recognizes your rema
   )
 }
 
-const storeStateSliceProps: string[] = []
-export const Certificate2Body: Certificate2BodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(Certificate2BodyComponent)
-)
+export const Certificate2Body: Certificate2BodyType = React.memo(Certificate2BodyComponent)
 
 export type {
   Certificate2BodyPropsType,

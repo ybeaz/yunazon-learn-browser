@@ -131,15 +131,6 @@ const Certificate2Component: Certificate2ComponentType = (
     },
   }
 
-  console.info('Certificate2 [126]', {
-    language,
-    profiles,
-    sub,
-    profileFound,
-    tagCloudFound,
-    tagsCloud,
-  })
-
   return (
     <div className={getClasses('Certificate2', classAdded)}>
       {tagCloudFound?.tagID && (

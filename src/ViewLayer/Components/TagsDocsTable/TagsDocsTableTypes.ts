@@ -14,6 +14,7 @@ export type TagsDocsTableComponentPropsType = {
 }
 
 export type TagsDocsTableItemPropsOutType = {
+  linkToAcademyMatrixTaggedProps: NavLinkProps
   iconTagExpertiseProps: IconYrlPropsType
   iconTagMdCheckProps: IconYrlPropsType
   linkToDocumentProps: NavLinkProps
