@@ -44,11 +44,10 @@
   ._sectionWrapperUnderlined {
     .underline();
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-  }
-
-  ._affiliation {
-    display: flex;
+    gap: 10px;
   }
 
   ._title {
@@ -57,15 +56,18 @@
     font-size: @fontSizeH1 * 1.5;
   }
 
+  ._awardedTo {
+    display: flex;
+  }
+
   ._nameLearner {
     display: flex;
     font-size: @fontSizeH2;
   }
 
   ._labelAchievement {
-    .cursive();
     display: flex;
-    font-size: 1.35rem;
+    text-align: center;
   }
 
   ._achievement {
@@ -73,23 +75,15 @@
   }
 
   ._labelDescription {
-    .cursive();
     display: flex;
-    font-size: 1.5rem;
+    text-align: center;
+    width: 55%;
   }
 
   ._courseCapture {
     display: flex;
     font-size: @fontSizeH2;
-  }
-
-  ._labelCourse {
-    display: flex;
-    white-space: pre;
-  }
-
-  ._moduleLinks {
-    display: flex;
+    text-transform: capitalize;
   }
 
   ._institution {

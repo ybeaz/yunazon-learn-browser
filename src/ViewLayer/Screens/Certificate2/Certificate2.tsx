@@ -79,9 +79,6 @@ const Certificate2Component: Certificate2ComponentType = (
 
   useEffect(() => {
     handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
-    // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    // if (Array.isArray(documents) && !documentFound?.documentID) {
-    // handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: 'YXpXTswNX0gq' })
     if (sub)
       handleEvents(
         {},
