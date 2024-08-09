@@ -125,7 +125,7 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
           <div className='pm-certificate-header'>
             <div className='pm-certificate-title cursive'>
               <h4>{affiliation}</h4>
-              <h2>Certificate of Completion</h2>
+              <h2>Credit Confirmation</h2>
             </div>
           </div>
 

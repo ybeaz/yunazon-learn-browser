@@ -3,7 +3,6 @@ import React from 'react'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { getSlug } from '../../../Shared/getSlug'
-import { getDateString } from '../../../Shared/getDateString'
 import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
 import {
   Certificate2BodyComponentPropsType,
@@ -28,9 +27,11 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   const expertiseInfo = getExpertiseInfo({ completed })
 
   const documentName = expertiseInfo.documentName
+  const levelName = expertiseInfo.name
+
   const tagID = tagCloud.tagID
   const dateCreated = tagCloud.dateCreated
-  const affiliation = 'Open Internet Academy'
+  const institution = 'Open Internet Academy'
   const tagValue = tagCloud.value
   const languageDoc = language
 
@@ -45,15 +46,7 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   const documentSlug = getSlug(tagValue)
   const documentPathName = `/q/${tagID}/${documentSlug}`
 
-  const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
-
-  const dateCreatedReadable = getDateString({
-    timestamp: dateCreated,
-    style: dateStyle,
-    hours: false,
-    minutes: false,
-    seconds: false,
-  })
+  const date = new Date(dateCreated)
 
   const nameCreator = nameMiddleCreator
     ? `${nameFirstCreator} ${nameMiddleCreator} ${nameLastCreator}`
@@ -69,7 +62,6 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
     documentName,
     tagCloud,
     tagValue,
-    // affiliation,
     nameCreator,
     nameLearner,
   })
@@ -81,6 +73,11 @@ by successfully completing a comprehensive training program consisting of 6 modu
 Through dedication and hard work, John has mastered the skills and knowledge required, showing a high level of proficiency and commitment.
 
 Awarded this [Day] day of [Month], [Year], this certificate recognizes your remarkable accomplishments and the significant effort invested in achieving this milestone.
+
+<div className='_labelDescription'>
+          Through dedication and hard work, {nameLearner} has mastered the skills and knowledge
+          required, showing a high level of proficiency and commitment.
+        </div>
   */
 
   return (
@@ -96,10 +93,9 @@ Awarded this [Day] day of [Month], [Year], this certificate recognizes your rema
 
       <div className='_sectionWrapper'>
         <div className='_labelAchievement'>
-          in recognition of achievements and excellence in the following subject
+          in recognition of achievements at the level of&nbsp;<b>{levelName}</b>&nbsp;in the
+          following subject
         </div>
-        {/* <div className='_achievement'>training consisted of {completed} modules</div>
-        <div className='_labelDescription'>while completing the training module entitled</div> */}
       </div>
 
       <div className='_sectionWrapperUnderlined'>
@@ -108,28 +104,27 @@ Awarded this [Day] day of [Month], [Year], this certificate recognizes your rema
 
       <div className='_sectionWrapper'>
         <div className='_labelAchievement'>
-          for successfully completing the comprehensive training programs consisting of {completed}{' '}
-          modules.
-        </div>
-        <div className='_labelDescription'>
-          Through dedication and hard work, {nameLearner} has mastered the skills and knowledge
-          required, showing a high level of proficiency and commitment.
+          for successfully completing&nbsp;<b>{completed}&nbsp;modules</b>&nbsp;in the comprehensive
+          training programs.
         </div>
       </div>
 
-      <div className='_sectionWrapperGapNone'>
-        <div className='_institution'>{affiliation}</div>
+      <div className='_sectionWrapperUnderlined'>
+        <div className='_institution'>{institution}</div>
         <div className='_nameServiceProvider'>in partnership with YouRails.com</div>
       </div>
 
-      <div className='_sectionWrapperUnderlined'></div>
-
-      <div className='_sectionWrapperRow'>
-        <div className='_dateCompleted'>Completed {dateCreatedReadable} </div>
-        <div className='_labelDocument'>Certificate No </div>
-        <a className='_documentLink' href={documentPathName} target='_blank'>
-          {tagID}
-        </a>
+      <div className='_sectionWrapper'>
+        <div className='_dateCompleted'>
+          Awarded this {date.getDate()} day of {date.toLocaleString('default', { month: 'long' })},{' '}
+          {date.getFullYear()} year.{' '}
+        </div>
+        <div className='_labelDocument'>
+          Certificate No&nbsp;
+          <a className='_documentLink' href={documentPathName} target='_blank'>
+            {tagID}
+          </a>
+        </div>
       </div>
 
       <div className='_stamp'></div>

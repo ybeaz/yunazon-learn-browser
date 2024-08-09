@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { IconYrlPropsType } from '../../ComponentsLibrary/'
 import { PaginationNavigationPropsType } from '../../Components/'
 
 export type TagsDocsTableComponentPropsType = {
@@ -13,12 +13,11 @@ export type TagsDocsTableComponentPropsType = {
   handleEvents: HandleEventType
 }
 
-export type TagsDocsTableItemPropsOutType = any
-//   {
-//   linkToDocumentProps: NavLinkProps
-//   linkToModuleProps: NavLinkProps
-//   buttonDeactivateDocumentProps: ButtonYrlPropsType
-// }
+export type TagsDocsTableItemPropsOutType = {
+  iconTagExpertiseProps: IconYrlPropsType
+  iconTagMdCheckProps: IconYrlPropsType
+  linkToDocumentProps: NavLinkProps
+}
 
 export type TagsDocsTablePropsType = Omit<TagsDocsTableComponentPropsType, 'handleEvents'>
 

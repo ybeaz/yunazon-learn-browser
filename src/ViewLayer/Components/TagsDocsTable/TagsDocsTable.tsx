@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, IconYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { TagType } from '../../../@types/'
 import { getClasses, getDateString, getSlug } from '../../../Shared/'
@@ -47,47 +47,27 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       const {
         level,
         name: levelName,
-        min,
-        max,
         iconName,
-        left,
-        levelNext: {
-          level: nextLevel,
-          name: nextName,
-          min: nextMin,
-          max: nextMax,
-          iconName: nextIconName,
-        },
       }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
 
-      // const dateString = getDateString({
-      //   timestamp: dateCreated,
-      //   style: 'US',
-      // })
-
-      // const pathnameModule = `/m/${moduleID}/${getSlug(capture)}`
-      // const pathnameDocument = `/d/${documentID}`
+      const pathnameDocument = `/q/${tagID}`
 
       const propsOutItem: TagsDocsTableItemPropsOutType = {
-        buttonTagMdCheckProps: {
+        iconTagMdCheckProps: {
           classAdded: 'Button_tagMdCheck',
           icon: 'MdCheck',
-          // iconColor: colorsRandomDarkTheme[index],
-          action: {
-            typeEvent: '',
-            data: {},
-          },
           isDisplaying: true,
         },
-        buttonTagExpertiseProps: {
+        iconTagExpertiseProps: {
           classAdded: 'Button_tagExpertise',
           icon: iconName,
-          // iconColor: colorsRandomDarkTheme[index],
-          action: {
-            typeEvent: '',
-            data: {},
-          },
           isDisplaying: true,
+        },
+        linkToDocumentProps: {
+          className: '__shield',
+          to: { pathname: pathnameDocument },
+          target: '_blank',
+          children: 'Link',
         },
       }
 
@@ -100,20 +80,19 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
           <div className='_cell _level'>
             <>
               <span className='_span'>
-                <ButtonYrl {...propsOutItem.buttonTagExpertiseProps} />
+                <IconYrl {...propsOutItem.iconTagExpertiseProps} />
               </span>
               <span className='_span'>{level}</span>
               <span className='_span'>{levelName}</span>
               {completed >= count && (
                 <span className='_span'>
-                  <ButtonYrl {...propsOutItem.buttonTagMdCheckProps} />
+                  <IconYrl {...propsOutItem.iconTagMdCheckProps} />
                 </span>
               )}
             </>
           </div>
           <div className='_cell _document_link'>
-            {tagID}
-            {/* <NavLink {...propsOut.linkToDocumentProps} /> */}
+            <NavLink {...propsOutItem.linkToDocumentProps} />
           </div>
         </div>
       )
