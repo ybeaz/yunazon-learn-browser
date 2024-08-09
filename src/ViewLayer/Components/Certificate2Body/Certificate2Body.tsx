@@ -32,7 +32,7 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
   const tagID = tagCloud.tagID
   const dateCreated = tagCloud.dateCreated
-  const institution = 'Open Internet Academy'
+  const institution = 'The YouRails Academy'
   const tagValue = tagCloud.value
 
   const nameFirstLearner = profile.nameFirst
@@ -83,7 +83,7 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
       <div className='_sectionWrapperUnderlined'>
         <div className='_institution'>{institution}</div>
-        <div className='_nameServiceProvider'>in partnership with YouRails.com</div>
+        {/* <div className='_nameServiceProvider'>in partnership with YouRails.com</div> */}
       </div>
 
       <div className='_sectionWrapper'>
