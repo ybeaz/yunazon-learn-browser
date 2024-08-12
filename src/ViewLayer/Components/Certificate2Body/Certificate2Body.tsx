@@ -23,12 +23,14 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 ) => {
   const { classAdded, language, profile, tagCloud } = props
 
+  const count = tagCloud.count
   const completed = tagCloud.completed
 
   const expertiseInfo = getExpertiseInfo({ completed })
 
   const documentName = expertiseInfo.documentName
-  const levelName = expertiseInfo.name
+  let levelName = expertiseInfo.name
+  if (count === completed) levelName = 'Course Finished'
 
   const tagID = tagCloud.tagID
   const dateCreated = tagCloud.dateCreated
@@ -83,7 +85,6 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
       <div className='_sectionWrapperUnderlined'>
         <div className='_institution'>{institution}</div>
-        {/* <div className='_nameServiceProvider'>in partnership with YouRails.com</div> */}
       </div>
 
       <div className='_sectionWrapper'>

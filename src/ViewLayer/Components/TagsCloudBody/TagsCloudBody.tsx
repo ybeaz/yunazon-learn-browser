@@ -183,13 +183,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     gridTemplateColumns = 'repeat(1, 1fr)'
   }
 
-  console.info('ModulesBody [186]', {
-    tagsCloud,
-    'pageTags.offset': pageTags.offset,
-    'tags.length': tagsCloud.length,
-    pageTags,
-  })
-
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
       {screenActive === ScreensEnumType['AcademyMatrix'] ? (
