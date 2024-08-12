@@ -4,6 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 import { CLICK_ON_SEARCH_BUTTON } from './CLICK_ON_SEARCH_BUTTON'
 
 const { dispatch } = store
+let valuePrev = ''
 
 export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
   const storeFormGroup = dataIn && dataIn.storeFormGroup
@@ -17,7 +18,7 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
   }
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 
-  if (!value) {
+  if (!value && valuePrev) {
     CLICK_ON_SEARCH_BUTTON({}, { storeFormProp })
 
     let componentsStateProp: string | null = null
@@ -25,4 +26,6 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
 
     if (componentsStateProp) dispatch(actionSync.SET_COMPONENTS_STATE({ componentsStateProp }))
   }
+
+  valuePrev = value
 }

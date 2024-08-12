@@ -1666,7 +1666,7 @@ type Query {
   readTags(readTagsInput: [ReadTagInputType!]!): [TagType!]!
   readTagsAll: [TagType!]!
   readTagsConnection(readTagsConnectionInput: ReadTagsConnectionInputType!): TagsConnectionType!
-  readTagsModules(readTagsModulesInput: ReadTagsModulesInputType!): [TagType!]!
+  readTagsModulesAll(readTagsModulesAllInput: ReadTagsModulesAllInputType!): [TagType!]!
   readTemplates(readTemplatesInput: [String!]!): [TemplatesType!]!
   readTemplatesAll: [TemplatesType!]!
   readTemplatesConnection(readTemplatesConnectionInput: ReadTemplatesConnectionInputType!): TemplatesConnectionType!
@@ -2098,6 +2098,11 @@ input ReadTagsConnectionInputType {
   learnerUserID: ID = null
 
   """
+  min minCompleted value limits the output by the threshold of the minCompleted value. if minCompleted === 0 || undefined || nullthen the function returns ALL docs
+  """
+  minCompleted: Int = null
+
+  """
   min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs
   """
   minCount: Int = null
@@ -2141,7 +2146,7 @@ input ReadTagsConnectionInputType {
   tagsPick: [String!] = []
 }
 
-input ReadTagsModulesInputType {
+input ReadTagsModulesAllInputType {
   """isCompleted"""
   isCompleted: Boolean = null
 

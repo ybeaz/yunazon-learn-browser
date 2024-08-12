@@ -101,9 +101,7 @@ const Certificate2Component: Certificate2ComponentType = (
     seconds: false,
   })
 
-  // const moduleSlug = getSlug(tagCloudFound.value)
-  // const modulePathName = `/m/${tagCloudFound.tagID}/${moduleSlug}`
-  const moduleCapture = tagCloudFound.value
+  const tagCloudValue = tagCloudFound.value
   const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
 
   const propsOut: Certificate2PropsOutType = {
@@ -142,7 +140,7 @@ const Certificate2Component: Certificate2ComponentType = (
             <meta name='google' content='notranslate' />
             <title>{titlePage}</title>
             <link rel='canonical' href={location.href} />
-            <meta name='description' content={moduleCapture} />
+            <meta name='description' content={tagCloudValue} />
           </Helmet>
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />

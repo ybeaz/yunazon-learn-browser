@@ -3,8 +3,6 @@ import { takeEvery, call, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getModules } from './getModulesSaga'
-import { readTagsConnection } from './readTagsConnectionSaga'
 import {
   getSetUrlQueryBrowserApi,
   GetSetUrlQueryBrowserApiParamsType,

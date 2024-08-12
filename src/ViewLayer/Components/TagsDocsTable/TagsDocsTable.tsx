@@ -28,8 +28,6 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
 ) => {
   const { classAdded, handleEvents, tagsCloud, pageTags, language } = props
 
-  const navigate = useNavigate()
-
   const getTagsDocsTable = (tagsCloudIn: TagType[]) => {
     const documentsRows: React.ReactElement[] = tagsCloudIn.map((tagCloud: TagType) => {
       const {
@@ -50,12 +48,14 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         iconName,
       }: GetExpertiseInfoResType = getExpertiseInfo({ completed })
 
-      const pathnameDocument = `/q/${tagID}`
+      const valueEscaped = value.replace(/#/g, '%23')
+
+      const pathnameDocument = `/q/${tagID}/${valueEscaped}`
 
       const propsOutItem: TagsDocsTableItemPropsOutType = {
         linkToAcademyMatrixTaggedProps: {
           className: '__shield',
-          to: { pathname: '/', search: `tagsPick=${value}&pageTags=1&pageModules=1` },
+          to: { pathname: '/', search: `tagsPick=${valueEscaped}&pageTags=1&pageModules=1` },
           children: value,
         },
         iconTagMdCheckProps: {

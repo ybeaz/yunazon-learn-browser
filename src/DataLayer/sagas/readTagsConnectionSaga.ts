@@ -17,7 +17,9 @@ import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToIt
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay
-  const tagID = params?.data?.tagID
+  const minCount = params?.data?.minCount
+  const minCompleted = params?.data?.minCompleted
+  const offsetIn = params?.data?.offset
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
@@ -25,12 +27,14 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
     componentsState: {
       screenActive,
       pagination: {
-        pageTags: { first, offset },
+        pageTags: { first, offset: offsetStore },
       },
     },
     forms: { documentsSearch, tagsSearch, tagsPick, tagsOmit },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
+
+  const offset = offsetIn || offsetStore
 
   let learnerUserID: string = ''
   let sub_localStorage = getLocalStorageReadKeyObj('sub')
@@ -56,7 +60,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
         operators: {
           searchPhrase: 'or',
         },
-        minCount: 2,
         tagsPick: [],
         tagsOmit: [],
         sort: {
@@ -70,7 +73,8 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       },
     }
 
-    if (tagID) variables.readTagsConnectionInput.tagIDs = [tagID]
+    variables.readTagsConnectionInput.minCount = minCount || 3
+    if (minCompleted) variables.readTagsConnectionInput.minCompleted = minCompleted
 
     const readTagsConnection: any = yield getResponseGraphqlAsync(
       {
