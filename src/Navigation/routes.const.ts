@@ -26,13 +26,13 @@ export const ROUTES: RouteType[] = [
   },
   {
     screen: 'Certificate',
-    path: `/d/:documentID/:slugDocument?`,
+    path: `/d/:documentID/:slugDocument?`, // document
     children: [],
     errorElement: 'Error404',
   },
   {
     screen: 'Certificate2',
-    path: `/d2/:documentID/:slugDocument?`,
+    path: `/q/:tagID/:slugDocument?`, // qualification
     children: [],
     errorElement: 'Error404',
   },

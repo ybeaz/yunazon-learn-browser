@@ -3,7 +3,10 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from '../../Shared/withDebounce'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
@@ -12,7 +15,7 @@ export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable
     const createSiteMap: any = yield getResponseGraphqlAsync(
       {
         variables: {},
-        resolveGraphqlName: 'createSiteMap',
+        resolveGraphqlName: ResolveGraphqlEnumType['createSiteMap'],
       },
       {
         ...getHeadersAuthDict(),

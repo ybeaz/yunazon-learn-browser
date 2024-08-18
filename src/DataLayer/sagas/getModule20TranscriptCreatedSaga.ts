@@ -4,7 +4,10 @@ import { MutationCreateYoutubeTranscriptArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 
 import {
   RootStoreType,
@@ -52,7 +55,7 @@ export function* getModule20TranscriptCreatedGenerator(
     const createYoutubeTranscript: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'createYoutubeTranscript',
+        resolveGraphqlName: ResolveGraphqlEnumType['createYoutubeTranscript'],
       },
       {
         ...getHeadersAuthDict(),

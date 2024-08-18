@@ -4,8 +4,9 @@ import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
+import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { DocumentType } from '../../../@types/index'
+import { TagType, ProfileType, DocumentType } from '../../../@types/index'
 import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -34,10 +35,17 @@ import {
   Certificate2Type,
 } from './Certificate2Types'
 
-const documentFoundDefault = {
+const tagCloudFoundDefault = {
+  tagID: '',
   dateCreated: 0,
-  module: { moduleID: '', capture: '', language: '' },
-} as DocumentType
+  dateUpdated: 0,
+  dateDeactivated: null,
+  isActive: true,
+  value: '',
+  count: 0,
+  completed: 0,
+  moduleIDs: [],
+} as TagType
 
 /**
  * @description Component to render Certificate2
@@ -50,52 +58,59 @@ const Certificate2Component: Certificate2ComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { documents, language },
+    storeStateSlice: { language, sub, tagsCloud, profiles },
   } = props
 
   const params = useParams()
-  const documentID = params?.documentID
+  const tagID = params?.tagID
 
-  const documentFound: DocumentType =
-    documents.find((document: DocumentType) => document.documentID === documentID) || documents[0]
+  const tagCloudFound: TagType =
+    tagsCloud.find((tagCloud: TagType) => tagCloud.tagID === tagID) ||
+    tagsCloud[0] ||
+    tagCloudFoundDefault
 
-  const {
-    dateCreated,
-    module: { moduleID, capture: moduleCapture, language: languageDoc },
-  } = documentFound || documentFoundDefault
+  const profileFound: ProfileType = getArrayItemByProp({
+    arr: profiles,
+    propName: 'userID',
+    propValue: sub,
+  })
 
   const screenType = ScreensEnumType['Certificate2']
 
   useEffect(() => {
-    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: 'Certificate' } })
-    // handleEvents({}, { typeEvent: 'CLOSE_MODAL_GET_SCORES' })
-    if (Array.isArray(documents) && !documentFound?.documentID) {
-      handleEvents({}, { typeEvent: 'FIND_DOCUMENT', data: documentID })
-    }
-  }, [])
+    handleEvents({}, { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } })
+    if (sub)
+      handleEvents(
+        {},
+        {
+          typeEvent: 'GET_TAGS',
+          data: {
+            isLoaderOverlay: true,
+            tagID,
+          },
+        }
+      )
+    // }
+  }, [sub])
 
   const dateMilitaty = getDateString({
-    timestamp: dateCreated,
+    timestamp: Date.now(),
     style: 'military',
     hours: false,
     minutes: false,
     seconds: false,
   })
 
-  const moduleSlug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleID}/${moduleSlug}`
-  const titlePage = `${dateMilitaty}-certificate-${moduleID}-${moduleSlug}`
+  const tagCloudValue = tagCloudFound.value
+  const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
 
-  const propsOut: any = {
-    // Certificate2PropsOutType
+  const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
       moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
-      moduleCapture: moduleCapture,
-      documentID,
-      moduleID,
+      tagID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: false,
@@ -108,22 +123,24 @@ const Certificate2Component: Certificate2ComponentType = (
       isButtonsShare: true,
     },
     certificate2BodyProps: {
-      document: documentFound,
+      language,
+      profile: profileFound,
+      tagCloud: tagCloudFound,
     },
   }
 
   return (
     <div className={getClasses('Certificate2', classAdded)}>
-      {documentFound?.documentID && (
+      {tagCloudFound?.tagID && (
         <>
           <Helmet>
-            <html lang={languageDoc} />
+            <html lang={language} />
             <meta charSet='utf-8' />
             <meta name='viewport' content='width=device-width,initial-scale=1' />
             <meta name='google' content='notranslate' />
             <title>{titlePage}</title>
             <link rel='canonical' href={location.href} />
-            <meta name='description' content={moduleCapture} />
+            <meta name='description' content={tagCloudValue} />
           </Helmet>
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
@@ -138,7 +155,7 @@ const Certificate2Component: Certificate2ComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'documents']
+const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud']
 export const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(Certificate2Component)

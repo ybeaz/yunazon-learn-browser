@@ -5,7 +5,10 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
@@ -31,7 +34,7 @@ export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Itera
     const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'getAuthAwsCognitoUserData',
+        resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserData'],
       },
       {
         clientHttpType: selectGraphqlHttpClientFlag(),

@@ -207,7 +207,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       >
         {getTagsCloudList(tagsCloud)}
       </div>
-      {pageTags.offset <= tagsCloud.length && (
+      {!(pageTags.first === 0 && pageTags.offset > tagsCloud.length) && (
         <div className='_paginationNavigationWrapper'>
           <PaginationNavigation {...propsOut.paginationNavigationProps} />
         </div>

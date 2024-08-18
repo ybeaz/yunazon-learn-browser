@@ -31,7 +31,7 @@ import {
 const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsComponentPropsType) => {
   const {
     classAdded,
-    storeStateSlice: { language, sub, documents },
+    storeStateSlice: { language, sub, documents, tagsCloud, pageDocuments, pageTags },
     handleEvents,
   } = props
 
@@ -54,7 +54,13 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
     }
     if (sub) {
       handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
-      handleEvents({}, { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } })
+      handleEvents(
+        {},
+        {
+          type: 'GET_TAGS_CONNECTION',
+          data: { offset: 1000, minCount: 3, minCompleted: 3, isLoaderOverlay: true },
+        }
+      )
     }
   }, [sub])
 
@@ -79,8 +85,11 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
       screenType: 'MyDocuments',
     },
     myMyDocumentsBodyProps: {
-      documents,
       language,
+      documents,
+      tagsCloud,
+      pageDocuments,
+      pageTags,
     },
   }
 
@@ -101,9 +110,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         {/* middle-left */}
         {null}
         {/* middle-main */}
-        <div>
-          {documents.length ? <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} /> : null}
-        </div>
+        <MyDocumentsBody {...propsOut.myMyDocumentsBodyProps} />
         {/* <ProfileBody {...propsOut.profileBodyProps} /> */}
         {/* middle-right */}
         {null}
@@ -114,7 +121,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'sub', 'documents']
+const storeStateSliceProps: string[] = [
+  'language',
+  'sub',
+  'documents',
+  'tagsCloud',
+  'pageDocuments',
+  'pageTags',
+]
 export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )

@@ -14,6 +14,7 @@ export type HeaderFrameComponentPropsType = {
   documentID?: string
   moduleID?: string
   contentID?: string
+  tagID?: string
   isButtonSideMenuLeft: boolean
   isLogoGroup: boolean
   isButtonAddCourse: boolean

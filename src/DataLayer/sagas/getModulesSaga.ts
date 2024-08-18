@@ -8,11 +8,15 @@ import { ActionReduxType } from '../../Interfaces'
 import { ModuleType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync, FragmentEnumType } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+  FragmentEnumType,
+} from '../../../../yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from '../../Shared/getUserProfileData'
@@ -122,7 +126,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
     const readModulesConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readModulesConnection',
+        resolveGraphqlName: ResolveGraphqlEnumType['readModulesConnection'],
         fragmentName: FragmentEnumType['ModuleTypeForMartix'],
       },
       {
@@ -148,7 +152,12 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       )
 
     const pageInfo = readModulesConnection?.pageInfo
-    yield put(actionSync.SET_PAGE_INFO({ paginationName: 'pageModules', ...pageInfo }))
+    yield put(
+      actionSync.SET_PAGE_INFO({
+        paginationName: PaginationNameEnumType['pageModules'],
+        ...pageInfo,
+      })
+    )
 
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {

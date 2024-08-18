@@ -3,7 +3,10 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { QueryReadTagsModulesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
@@ -40,7 +43,7 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
     const readTagsModules: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readTagsModules',
+        resolveGraphqlName: ResolveGraphqlEnumType['readTagsModules'],
       },
       {
         ...getHeadersAuthDict(),

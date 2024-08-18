@@ -3,7 +3,10 @@ import { takeEvery, put } from 'redux-saga/effects'
 import { QuerySendEmailDocumentArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { withDebounce } from '../../Shared/withDebounce'
@@ -26,7 +29,7 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
     const sendEmailDocument: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'sendEmailDocument',
+        resolveGraphqlName: ResolveGraphqlEnumType['sendEmailDocument'],
       },
       {
         ...getHeadersAuthDict(),

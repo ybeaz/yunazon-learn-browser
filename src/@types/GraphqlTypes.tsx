@@ -1542,7 +1542,7 @@ export type Query = {
   readTags: Array<TagType>;
   readTagsAll: Array<TagType>;
   readTagsConnection: TagsConnectionType;
-  readTagsModules: Array<TagType>;
+  readTagsModulesAll: Array<TagType>;
   readTemplates: Array<TemplatesType>;
   readTemplatesAll: Array<TemplatesType>;
   readTemplatesConnection: TemplatesConnectionType;
@@ -1664,8 +1664,8 @@ export type QueryReadTagsConnectionArgs = {
 };
 
 
-export type QueryReadTagsModulesArgs = {
-  readTagsModulesInput: ReadTagsModulesInputType;
+export type QueryReadTagsModulesAllArgs = {
+  readTagsModulesAllInput: ReadTagsModulesAllInputType;
 };
 
 
@@ -1858,6 +1858,8 @@ export type ReadDocumentsConnectionInputType = {
 };
 
 export type ReadModuleInputType = {
+  /** contnent ID */
+  contentID?: InputMaybe<Scalars['ID']['input']>;
   /** module ID */
   moduleID?: InputMaybe<Scalars['ID']['input']>;
 };
@@ -1973,6 +1975,8 @@ export type ReadTagsConnectionInputType = {
   learnerID?: InputMaybe<Scalars['ID']['input']>;
   /** learner user ID */
   learnerUserID?: InputMaybe<Scalars['ID']['input']>;
+  /** min minCompleted value limits the output by the threshold of the minCompleted value. if minCompleted === 0 || undefined || nullthen the function returns ALL docs */
+  minCompleted?: InputMaybe<Scalars['Int']['input']>;
   /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
   minCount?: InputMaybe<Scalars['Int']['input']>;
   /** module IDs */
@@ -1997,7 +2001,7 @@ export type ReadTagsConnectionInputType = {
   tagsPick?: InputMaybe<Array<Scalars['String']['input']>>;
 };
 
-export type ReadTagsModulesInputType = {
+export type ReadTagsModulesAllInputType = {
   /** isCompleted */
   isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
   /** isNotCompleted */
@@ -2010,6 +2014,8 @@ export type ReadTagsModulesInputType = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
   minCount?: InputMaybe<Scalars['Int']['input']>;
+  /** search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts */
+  searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
 };

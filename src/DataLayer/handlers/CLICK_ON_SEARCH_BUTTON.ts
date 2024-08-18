@@ -47,6 +47,14 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
       })
     )
     dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+
+    dispatch(
+      actionSync.SET_PAGE_CURSOR({
+        paginationName: PaginationNameEnumType['pageTags'],
+        first: 0,
+      })
+    )
+    dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
   } else if (screenActive === 'TagsCloud') {
     dispatch(
       actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })

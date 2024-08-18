@@ -7,12 +7,15 @@ import {
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from '../../Shared/getUserProfileData'
@@ -62,7 +65,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
     const readDocumentsConnection: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'readDocumentsConnection',
+        resolveGraphqlName: ResolveGraphqlEnumType['readDocumentsConnection'],
       },
       {
         ...getHeadersAuthDict(),
@@ -81,7 +84,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
     const pageInfo = readDocumentsConnection?.pageInfo
     yield put(
       actionSync.SET_PAGE_INFO({
-        paginationName: 'pageDocuments',
+        paginationName: PaginationNameEnumType['pageDocuments'],
         ...pageInfo,
       })
     )

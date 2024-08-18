@@ -100,7 +100,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
         {/* middle-left */}
         {null}
         {/* middle-main */}
-
         <AcademyMatrixBody />
         {/* middle-right */}
         {null}

@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { getSlug } from '../../../Shared/getSlug'
-import { getDateString } from '../../../Shared/getDateString'
+import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
+import { getNameString } from '../../../Shared/getNameString'
 import {
   Certificate2BodyComponentPropsType,
   Certificate2BodyPropsType,
@@ -20,105 +21,83 @@ import {
 const Certificate2BodyComponent: Certificate2BodyComponentType = (
   props: Certificate2BodyComponentPropsType
 ) => {
-  const {
-    classAdded,
-    document,
-    storeStateSlice: { language },
-  } = props
+  const { classAdded, language, profile, tagCloud } = props
 
-  const {
-    documentID,
-    dateCreated,
-    module: { moduleID, capture: moduleCapture, language: languageDoc },
-    creator: {
-      affiliation,
-      jobTitle,
-      nameFirst: nameFirstCreator,
-      nameLast: nameLastCreator,
-      nameMiddle: nameMiddleCreator,
-    },
-    learner: {
-      nameFirst: nameFirstLearner,
-      nameLast: nameLastLearner,
-      nameMiddle: nameMiddleLearner,
-    },
-  } = document
+  const count = tagCloud.count
+  const completed = tagCloud.completed
 
-  const moduleSlug = getSlug(moduleCapture)
-  const modulePathName = `/m/${moduleID}/${moduleSlug}`
+  const expertiseInfo = getExpertiseInfo({ completed })
 
-  const documentSlug = getSlug(moduleCapture)
-  const documentPathName = `/d/${documentID}/${documentSlug}`
+  const documentName = expertiseInfo.documentName
+  let levelName = expertiseInfo.name
+  if (count === completed) levelName = 'Course Finished'
 
-  const dateStyle = language === 'en' ? 'US' : language === 'ru' ? 'EU' : 'EU'
+  const tagID = tagCloud.tagID
+  const dateCreated = tagCloud.dateCreated
+  const institution = 'The YouRails Academy'
+  const tagValue = tagCloud.value
 
-  const dateCreatedReadable = getDateString({
-    timestamp: dateCreated,
-    style: dateStyle,
-    hours: false,
-    minutes: false,
-    seconds: false,
+  const nameFirstLearner = profile.nameFirst
+  const nameLastLearner = profile.nameLast
+  const nameMiddleLearner = profile.nameMiddle
+
+  const documentSlug = getSlug(tagValue)
+  const documentPathName = `/q/${tagID}/${documentSlug}`
+
+  const date = new Date(dateCreated)
+
+  const nameLearner = getNameString({
+    nameFirst: nameFirstLearner,
+    nameLast: nameLastLearner,
+    nameMiddle: nameMiddleLearner,
   })
-
-  const nameCreator = nameMiddleCreator
-    ? `${nameFirstCreator} ${nameMiddleCreator} ${nameLastCreator}`
-    : `${nameFirstCreator} ${nameLastCreator}`
-
-  const nameLearner = nameMiddleLearner
-    ? `${nameFirstLearner} ${nameMiddleLearner} ${nameLastLearner}`
-    : `${nameFirstLearner} ${nameLastLearner}`
 
   const propsOut: Certificate2BodyPropsOutType = {}
-
-  console.info('Certificate2Body [51]', {
-    moduleCapture,
-    modulePathName,
-    affiliation,
-    nameCreator,
-    nameLearner,
-  })
 
   return (
     <div className={getClasses('Certificate2Body', classAdded)}>
       <div className='_sectionWrapper'>
-        <h4 className='_affiliation'>{affiliation}</h4>
-        <h2 className='_title'>Certificate of Completion</h2>
+        <h2 className='_title'>{documentName}</h2>
       </div>
 
       <div className='_sectionWrapperUnderlined'>
+        <div className='_awardedTo'>Awarded to</div>
         <div className='_nameLearner'>{nameLearner}</div>
       </div>
 
       <div className='_sectionWrapper'>
-        <div className='_labelAchievement'>has earned</div>
-        <div className='_achievement'>1.0 Credit Hours</div>
-        <div className='_labelDescription'>while completing the training module entitled</div>
+        <div className='_labelAchievement'>
+          in recognition of achievements at the level of&nbsp;<b>{levelName}</b>&nbsp;in the
+          following subject
+        </div>
       </div>
 
       <div className='_sectionWrapperUnderlined'>
-        <div className='_courseCapture'>{moduleCapture}</div>
+        <div className='_courseCapture'>{tagValue}</div>
       </div>
 
-      <div className='_sectionWrapperRow'>
-        <div className='_labelCourse'>Module No </div>
-        <a className='_moduleLinks' href={modulePathName} target='_blank'>
-          {moduleID}
-        </a>
+      <div className='_sectionWrapper'>
+        <div className='_labelAchievement'>
+          for successfully completing&nbsp;<b>{completed}&nbsp;modules</b>&nbsp;in the comprehensive
+          training program at
+        </div>
       </div>
 
-      <div className='_sectionWrapperGapNone'>
-        <div className='_institution'>"Open Internet Academy"</div>
-        <div className='_nameServiceProvider'>in partnership with "YouRails.com"</div>
+      <div className='_sectionWrapperUnderlined'>
+        <div className='_institution'>{institution}</div>
       </div>
 
-      <div className='_sectionWrapperUnderlined'></div>
-
-      <div className='_sectionWrapperRow'>
-        <div className='_dateCompleted'>Completed {dateCreatedReadable} </div>
-        <div className='_labelDocument'>Certificate No </div>
-        <a className='_documentLink' href={documentPathName} target='_blank'>
-          {documentID}
-        </a>
+      <div className='_sectionWrapper'>
+        <div className='_dateCompleted'>
+          Awarded this {date.getDate()} day of {date.toLocaleString('default', { month: 'long' })},{' '}
+          {date.getFullYear()} year.{' '}
+        </div>
+        <div className='_labelDocument'>
+          Certificate No&nbsp;
+          <a className='_documentLink' href={documentPathName} target='_blank'>
+            {tagID}
+          </a>
+        </div>
       </div>
 
       <div className='_stamp'></div>
@@ -126,11 +105,7 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
   )
 }
 
-const storeStateSliceProps: string[] = []
-export const Certificate2Body: Certificate2BodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(Certificate2BodyComponent)
-)
+export const Certificate2Body: Certificate2BodyType = React.memo(Certificate2BodyComponent)
 
 export type {
   Certificate2BodyPropsType,

@@ -31,7 +31,7 @@ export const getParsedUrlQueryBrowserApi = (url?: string): any => {
   const searchParams = new URLSearchParams(query)
 
   searchParams.forEach((value, key) => {
-    result[key] = value
+    result[key] = value.replace(/%23/g, '#')
   })
 
   return result

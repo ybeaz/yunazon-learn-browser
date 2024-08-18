@@ -3,15 +3,16 @@ import { takeEvery, put, call } from 'redux-saga/effects'
 import { MutationDeactivateCoursesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync } from '../../../../yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+} from '../../../../yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getCourses } from './getCoursesSaga'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
-function* deactivateCoursesGenerator(
-  params: ActionReduxType | any
-): Iterable<any> {
+function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { coursesIDs },
   } = params
@@ -26,7 +27,7 @@ function* deactivateCoursesGenerator(
     const deactivateCourses: any = yield getResponseGraphqlAsync(
       {
         variables,
-        resolveGraphqlName: 'deactivateCourses',
+        resolveGraphqlName: ResolveGraphqlEnumType['deactivateCourses'],
       },
       {
         ...getHeadersAuthDict(),
@@ -45,18 +46,12 @@ function* deactivateCoursesGenerator(
       })
     )
   } catch (error: any) {
-    console.info(
-      'deactivateCourses [41] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('deactivateCourses [41] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
 export const deactivateCourses = withDebounce(deactivateCoursesGenerator, 500)
 
 export default function* deactivateCoursesSaga() {
-  yield takeEvery(
-    [actionAsync.DEACTIVATE_COURSES.REQUEST().type],
-    deactivateCourses
-  )
+  yield takeEvery([actionAsync.DEACTIVATE_COURSES.REQUEST().type], deactivateCourses)
 }
