@@ -21,10 +21,12 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, useMediaQueryResYrl } from '../../ComponentsLibrary/'
 import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { isOnLandScape } from '../../../Shared/isOnLandScape'
+import { isMobile } from '../../../Shared/isMobile'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -60,12 +62,18 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   } = props
 
   const params = useParams()
+
+  const { innerWidth, innerHeight } = window
+  // const { width: mediaWidth, height: mediaHeight } = useMediaQueryResYrl()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
 
   useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }])
 
@@ -149,6 +157,21 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   }, [mediaLoadedModulesString])
 
   const isVisible = mediaLoaded[moduleIDActive || moduleID] || false
+
+  useEffect(() => {
+    const reportWindowSize = () => {
+      setWindowWidth(window.innerWidth)
+
+      if (isMobile())
+        if (isOnLandScape()) setIsHeaderFrame(false)
+        else setIsHeaderFrame(true)
+    }
+    /* Trigger this function on resize */
+    window.addEventListener('resize', reportWindowSize)
+
+    /* Cleanup for componentWillUnmount */
+    return () => window.removeEventListener('resize', reportWindowSize)
+  }, [])
 
   const { width, height } = VIDEO_RESOLUTION
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
@@ -261,7 +284,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
           </Helmet>
           <MainFrame {...propsOut.mainFrameProps}>
             {/* header */}
-            <HeaderFrame {...propsOut.headerFrameProps} />
+            {isHeaderFrame ? <HeaderFrame {...propsOut.headerFrameProps} /> : null}
             {/* middle-left */}
             {null}
             {/* middle-main */}

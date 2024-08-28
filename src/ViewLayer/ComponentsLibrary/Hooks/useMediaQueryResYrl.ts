@@ -33,8 +33,7 @@ export interface UseMediaQueryResYrlType {
   Wide screens xl 1621 - 16000'
  */
 export const useMediaQueryResYrl: UseMediaQueryResYrlType = () => {
-  // @ts-expect-error   Need to update this to get compatible with web
-  const { width, height } = Dimensions.get('window')
+  const { innerWidth: width, innerHeight: height } = window
 
   const isXsDevice = useMediaQuery({
     query: '(min-width: 320px) and (max-width: 480px)',
@@ -60,8 +59,7 @@ export const useMediaQueryResYrl: UseMediaQueryResYrlType = () => {
   if (isXlDevice) deviceType = 'xlDevice'
 
   let screenCase: any = 'xsSmMd'
-  if (deviceType === 'lgDevice' || deviceType === 'xlDevice')
-    screenCase = 'lgXl'
+  if (deviceType === 'lgDevice' || deviceType === 'xlDevice') screenCase = 'lgXl'
 
   return {
     deviceType,

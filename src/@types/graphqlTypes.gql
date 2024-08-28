@@ -2660,7 +2660,10 @@ type TranscriptObjectBotType {
   """duration"""
   duration: Float
 
-  """start"""
+  """end ms"""
+  end: Float
+
+  """start ms"""
   start: Float
 
   """text"""
@@ -2671,7 +2674,10 @@ input TranscriptObjectInputType {
   """duration"""
   duration: Float = 0
 
-  """start"""
+  """end ms"""
+  end: Float = 0
+
+  """start ms"""
   start: Float = 0
 
   """text"""
@@ -2685,7 +2691,10 @@ type TranscriptObjectType {
   """duration"""
   duration: Float
 
-  """start"""
+  """end ms"""
+  end: Float
+
+  """start ms"""
   start: Float
 
   """text"""
