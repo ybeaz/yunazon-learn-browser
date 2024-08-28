@@ -2170,7 +2170,9 @@ export type TranscriptObjectBotType = {
     __typename?: 'TranscriptObjectBotType';
     /** duration */
     duration?: Maybe<Scalars['Float']['output']>;
-    /** start */
+    /** end ms */
+    end?: Maybe<Scalars['Float']['output']>;
+    /** start ms */
     start?: Maybe<Scalars['Float']['output']>;
     /** text */
     text?: Maybe<Scalars['String']['output']>;
@@ -2178,7 +2180,9 @@ export type TranscriptObjectBotType = {
 export type TranscriptObjectInputType = {
     /** duration */
     duration?: InputMaybe<Scalars['Float']['input']>;
-    /** start */
+    /** end ms */
+    end?: InputMaybe<Scalars['Float']['input']>;
+    /** start ms */
     start?: InputMaybe<Scalars['Float']['input']>;
     /** text */
     text?: InputMaybe<Scalars['String']['input']>;
@@ -2189,7 +2193,9 @@ export type TranscriptObjectType = {
     __typename?: 'TranscriptObjectType';
     /** duration */
     duration?: Maybe<Scalars['Float']['output']>;
-    /** start */
+    /** end ms */
+    end?: Maybe<Scalars['Float']['output']>;
+    /** start ms */
     start?: Maybe<Scalars['Float']['output']>;
     /** text */
     text?: Maybe<Scalars['String']['output']>;
