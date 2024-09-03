@@ -3,6 +3,7 @@ import { takeEvery, call, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 import {
   getSetUrlQueryBrowserApi,
   GetSetUrlQueryBrowserApiParamsType,
@@ -23,19 +24,35 @@ export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
       getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
     })
 
-    yield put(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageTags'],
-        first: 0,
-      })
-    )
+    const urlQuery = getSetUrlQueryBrowserApi(undefined)
 
-    yield put(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageModules'],
-        first: 0,
-      })
-    )
+    /* Setting up tag page cursor*/
+    let firstPageTags: number = 0
+    if (urlQuery?.query && PaginationNameEnumType['pageTags'] in urlQuery.query) {
+      firstPageTags =
+        (parseInt(urlQuery.query[PaginationNameEnumType['pageTags']], 10) - 1) *
+        PAGINATION_OFFSET['pageTags']
+      yield put(
+        actionSync.SET_PAGE_CURSOR({
+          paginationName: PaginationNameEnumType['pageTags'],
+          first: firstPageTags,
+        })
+      )
+    }
+
+    /* Setting up modules page cursor*/
+    let firstPageModules = 0
+    if (urlQuery?.query && PaginationNameEnumType['pageModules'] in urlQuery.query) {
+      firstPageModules =
+        (parseInt(urlQuery.query[PaginationNameEnumType['pageModules']], 10) - 1) *
+        PAGINATION_OFFSET['pageModules']
+      yield put(
+        actionSync.SET_PAGE_CURSOR({
+          paginationName: PaginationNameEnumType['pageModules'],
+          first: firstPageModules,
+        })
+      )
+    }
 
     yield put(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: false }))
 
