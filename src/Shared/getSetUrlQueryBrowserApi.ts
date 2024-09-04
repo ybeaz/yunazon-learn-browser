@@ -55,9 +55,8 @@ export const getSetUrlQueryBrowserApi: GetSetUrlQueryBrowserApiType = (
   let output: GetSetUrlQueryBrowserApiResType = { href: window.location.href, query }
 
   try {
-    if (searchParamsName && searchParamsValue) {
+    if (searchParamsName) {
       const searchParamsValuePrev = query?.[searchParamsName]
-
       if (searchParamsValuePrev !== searchParamsValue) {
         let url = new URL(window.location.href)
         if (!searchParamsValue) {
@@ -72,7 +71,7 @@ export const getSetUrlQueryBrowserApi: GetSetUrlQueryBrowserApiType = (
     }
 
     if (printRes) {
-      console.log('getSetUrlQueryBrowserApi [43]', { output })
+      console.log('getSetUrlQueryBrowserApi [79]', { params, output })
     }
   } catch (error: any) {
     console.log('getSetUrlQueryBrowserApi', 'Error', {
@@ -94,6 +93,6 @@ if (require.main === module) {
       searchParamsValue: 'string',
     }
     const output = getSetUrlQueryBrowserApi(input, { printRes: true })
-    console.log('getSetUrlQueryBrowserApi [60]', { input, output })
+    console.log('getSetUrlQueryBrowserApi [101]', { input, output })
   })()
 }
