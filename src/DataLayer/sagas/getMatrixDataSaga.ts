@@ -12,11 +12,7 @@ import {
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-    ;[
-      'modulesSearch',
-      PaginationNameEnumType['pageTags'],
-      PaginationNameEnumType['pageModules'],
-    ].forEach((searchParamsName: string) => {
+    ;['modulesSearch'].forEach((searchParamsName: string) => {
       const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
         searchParamsName,
         searchParamsValue: '',
