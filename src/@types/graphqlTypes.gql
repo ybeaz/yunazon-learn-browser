@@ -78,6 +78,11 @@ type BotsConnectionType {
   pageInfo: BotsPageInfoType
 }
 
+type BotsDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
+}
+
 type BotsEdgeType {
   """cursor"""
   cursor: String
@@ -152,6 +157,11 @@ type CompetencyTagType {
 
   """tooltips"""
   tooltips: String
+}
+
+type CompetencyTagsDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
 }
 
 input CompetencyTagsInputType {
@@ -282,6 +292,11 @@ type CoursesCountType {
 
   """module count with params"""
   countParams: Int
+}
+
+type CoursesDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
 }
 
 type CoursesPageInfoType {
@@ -677,6 +692,11 @@ type DocumentsCountType {
 
   """module count with params"""
   countParams: Int
+}
+
+type DocumentsDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
 }
 
 type DocumentsPageInfoType {
@@ -1168,6 +1188,11 @@ type ModulesCountType {
   countParams: Int
 }
 
+type ModulesDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
+}
+
 type ModulesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1593,6 +1618,11 @@ type ProfilesCountType {
   countParams: Int
 }
 
+type ProfilesDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
+}
+
 type ProfilesPageInfoType {
   """endCursor"""
   endCursor: String
@@ -1640,6 +1670,14 @@ type Query {
   countProfiles: ProfilesCountType!
   countTags: TagsCountType!
   countTemplates(countTemplatesInput: CountTemplatesInputType!): TemplatesCountType!
+  dropIndexesBots: BotsDropIndexesType!
+  dropIndexesCompetencyTags: CompetencyTagsDropIndexesType!
+  dropIndexesCourses: CoursesDropIndexesType!
+  dropIndexesDocuments: DocumentsDropIndexesType!
+  dropIndexesModules: ModulesDropIndexesType!
+  dropIndexesProfiles: ProfilesDropIndexesType!
+  dropIndexesTags: TagsDropIndexesType!
+  dropIndexesTemplates: TemplatesDropIndexesType!
   getAuthAwsCognitoUserData(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRefreshed(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
   getAuthAwsCognitoUserRevoked(userIdDataAwsCognitoInput: UserIdDataAwsCognitoInputType!): UserIdDataAwsCognitoType!
@@ -2398,6 +2436,11 @@ type TagsCountType {
   countParams: Int
 }
 
+type TagsDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
+}
+
 type TagsEdgeType {
   """cursor"""
   cursor: String
@@ -2431,6 +2474,11 @@ type TemplatesCountType {
 
   """module count with params"""
   countParams: Int
+}
+
+type TemplatesDropIndexesType {
+  """drop indexes status"""
+  status: Boolean
 }
 
 type TemplatesEdgeType {

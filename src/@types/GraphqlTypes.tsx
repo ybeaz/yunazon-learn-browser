@@ -86,6 +86,12 @@ export type BotsConnectionType = {
   pageInfo?: Maybe<BotsPageInfoType>;
 };
 
+export type BotsDropIndexesType = {
+  __typename?: 'BotsDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type BotsEdgeType = {
   __typename?: 'BotsEdgeType';
   /** cursor */
@@ -152,6 +158,12 @@ export type CompetencyTagType = {
   title?: Maybe<Scalars['String']['output']>;
   /** tooltips */
   tooltips?: Maybe<Scalars['String']['output']>;
+};
+
+export type CompetencyTagsDropIndexesType = {
+  __typename?: 'CompetencyTagsDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type CompetencyTagsInputType = {
@@ -261,6 +273,12 @@ export type CoursesCountType = {
   countIsActive?: Maybe<Scalars['Int']['output']>;
   /** module count with params */
   countParams?: Maybe<Scalars['Int']['output']>;
+};
+
+export type CoursesDropIndexesType = {
+  __typename?: 'CoursesDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type CoursesPageInfoType = {
@@ -556,6 +574,12 @@ export type DocumentsCountType = {
   countIsActive?: Maybe<Scalars['Int']['output']>;
   /** module count with params */
   countParams?: Maybe<Scalars['Int']['output']>;
+};
+
+export type DocumentsDropIndexesType = {
+  __typename?: 'DocumentsDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type DocumentsPageInfoType = {
@@ -932,6 +956,12 @@ export type ModulesCountType = {
   countIsActive?: Maybe<Scalars['Int']['output']>;
   /** module count with params */
   countParams?: Maybe<Scalars['Int']['output']>;
+};
+
+export type ModulesDropIndexesType = {
+  __typename?: 'ModulesDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ModulesPageInfoType = {
@@ -1473,6 +1503,12 @@ export type ProfilesCountType = {
   countParams?: Maybe<Scalars['Int']['output']>;
 };
 
+export type ProfilesDropIndexesType = {
+  __typename?: 'ProfilesDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type ProfilesPageInfoType = {
   __typename?: 'ProfilesPageInfoType';
   /** endCursor */
@@ -1516,6 +1552,14 @@ export type Query = {
   countProfiles: ProfilesCountType;
   countTags: TagsCountType;
   countTemplates: TemplatesCountType;
+  dropIndexesBots: BotsDropIndexesType;
+  dropIndexesCompetencyTags: CompetencyTagsDropIndexesType;
+  dropIndexesCourses: CoursesDropIndexesType;
+  dropIndexesDocuments: DocumentsDropIndexesType;
+  dropIndexesModules: ModulesDropIndexesType;
+  dropIndexesProfiles: ProfilesDropIndexesType;
+  dropIndexesTags: TagsDropIndexesType;
+  dropIndexesTemplates: TemplatesDropIndexesType;
   getAuthAwsCognitoUserData: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRefreshed: UserIdDataAwsCognitoType;
   getAuthAwsCognitoUserRevoked: UserIdDataAwsCognitoType;
@@ -2209,6 +2253,12 @@ export type TagsCountType = {
   countParams?: Maybe<Scalars['Int']['output']>;
 };
 
+export type TagsDropIndexesType = {
+  __typename?: 'TagsDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type TagsEdgeType = {
   __typename?: 'TagsEdgeType';
   /** cursor */
@@ -2241,6 +2291,12 @@ export type TemplatesCountType = {
   countIsActive?: Maybe<Scalars['Int']['output']>;
   /** module count with params */
   countParams?: Maybe<Scalars['Int']['output']>;
+};
+
+export type TemplatesDropIndexesType = {
+  __typename?: 'TemplatesDropIndexesType';
+  /** drop indexes status */
+  status?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type TemplatesEdgeType = {
