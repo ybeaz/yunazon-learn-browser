@@ -28,9 +28,6 @@ export type ExpertiseElementType = {
 export type IconLibType = 'fa'
 export type ExpertiseLevelType = ExpertiseElementType[]
 
-const borderImageSourceUrlDefault: string =
-  'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg'
-
 export const EXPERTISE_LEVELS: ExpertiseLevelType = [
   {
     level: 1,
