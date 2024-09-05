@@ -22,12 +22,7 @@ import {
 
 import { withPropsYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
-import {
-  Certificate2Body,
-  Certificate2BodyPropsType,
-  Certificate2BodyPropsOutType,
-  Certificate2BodyType,
-} from '../../Components/Certificate2Body/Certificate2Body'
+import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {
   Certificate2ComponentPropsType,
   Certificate2PropsType,
@@ -35,6 +30,10 @@ import {
   Certificate2ComponentType,
   Certificate2Type,
 } from './Certificate2Types'
+
+const CERTIFICATE_FRAMES_DICT: Record<string, CertificateFrameAType> = {
+  CertificateFrameA,
+}
 
 const tagCloudFoundDefault = {
   tagID: '',
@@ -107,6 +106,8 @@ const Certificate2Component: Certificate2ComponentType = (
   const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
   const expertiseInfo = getExpertiseInfo({ completed })
 
+  const CertificateFrame = CERTIFICATE_FRAMES_DICT['CertificateFrameA']
+
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
@@ -124,6 +125,9 @@ const Certificate2Component: Certificate2ComponentType = (
       isButtonBack: true,
       isPageActionsGroup: true,
       isButtonsShare: true,
+    },
+    certificateFrameProps: {
+      borderImageSourceUrl: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
     },
     certificate2BodyProps: {
       language,
@@ -149,9 +153,9 @@ const Certificate2Component: Certificate2ComponentType = (
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
-          <CertificateFrameA>
+          <CertificateFrame>
             <Certificate2Body {...propsOut.certificate2BodyProps} />
-          </CertificateFrameA>
+          </CertificateFrame>
         </>
       )}
       <LoaderOverlayYrl />

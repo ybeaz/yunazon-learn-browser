@@ -24,10 +24,10 @@ const BORDER_IMAGE_SORCE_URALS_CONST: Record<string, string> = {
 const CertificateFrameAComponent: CertificateFrameAComponentType = (
   props: CertificateFrameAComponentPropsType
 ) => {
-  const { classAdded, children, ornament } = props
+  const { classAdded, children, borderImageSourceUrl } = props
 
   const propsOut: CertificateFrameAPropsOutType = {
-    borderImageSourceUrlProps: ornament || BORDER_IMAGE_SORCE_URALS_CONST.ornamentB,
+    borderImageSourceUrlProps: borderImageSourceUrl || BORDER_IMAGE_SORCE_URALS_CONST.ornamentB,
   }
 
   return (

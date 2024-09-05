@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react'
 
 export type CertificateFrameAComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  ornament?: string
-  children: ReactElement | null
+  borderImageSourceUrl?: string
+  children?: ReactElement | null
 }
 
 export type CertificateFrameAPropsType = Omit<
