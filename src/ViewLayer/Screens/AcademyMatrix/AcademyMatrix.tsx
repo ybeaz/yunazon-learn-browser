@@ -38,13 +38,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const { width } = getSizeWindow()
-  let pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  let pageTagsOffset = PAGINATION_OFFSET['pageTags']
-  if (width <= 480) {
-    pageModulesOffset = 9
-    pageTagsOffset = 24
-  }
+  const pageModulesOffset = PAGINATION_OFFSET['pageModules']
+  const pageTagsOffset = PAGINATION_OFFSET['pageTags']
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },

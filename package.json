@@ -103,5 +103,9 @@
     "webpack-manifest-plugin": "^5.0.0",
     "webpack-merge": "^5.8.0",
     "webpackbar": "^5.0.2"
+  },
+  "engines": {
+    "node": "19.9.0",
+    "yarn": "1.22.17"
   }
 }

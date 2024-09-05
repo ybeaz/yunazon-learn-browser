@@ -2,11 +2,7 @@ import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import { selectStoreSlice } from '../ComponentsLibrary/Hooks/selectStoreSlice'
-import {
-  GLOBAL_THEME,
-  LIGHTNESS,
-  ALPHAS,
-} from '../../Constants/globalTheme.const'
+import { GLOBAL_THEME, LIGHTNESS, ALPHAS } from '../../Constants/globalTheme.const'
 import { CreatedGlobalStyle } from './getCreatedGlobalStyle'
 
 /**
@@ -25,7 +21,7 @@ export const GlobalTheme: React.FunctionComponent<GlobalThemePropsType> = (
     try {
       document.getElementsByTagName('body')[0].style.display = 'none'
       require(`./index.style.less`)
-      document.getElementsByTagName('body')[0].style.display = 'flex'
+      document.getElementsByTagName('body')[0].style.display = 'block'
     } catch (error: any) {
       console.info('RouterScreensConfig [115]', { msg: error.message })
     }

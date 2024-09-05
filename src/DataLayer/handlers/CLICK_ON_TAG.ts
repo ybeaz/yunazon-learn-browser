@@ -15,7 +15,11 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
     searchParamsName: 'tagsPick',
     searchParamsValue: tagCloud.value,
   }
-  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
+    printRes: false,
+    parentFunction: 'CLICK_ON_TAG',
+  })
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
