@@ -105,6 +105,7 @@ const Certificate2Component: Certificate2ComponentType = (
   const completed = tagCloudFound.completed
   const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
   const expertiseInfo = getExpertiseInfo({ completed })
+  const borderImageSourceUrl = expertiseInfo.borderImageSourceUrl
 
   const CertificateFrame = CERTIFICATE_FRAMES_DICT['CertificateFrameA']
 
@@ -127,7 +128,7 @@ const Certificate2Component: Certificate2ComponentType = (
       isButtonsShare: true,
     },
     certificateFrameProps: {
-      borderImageSourceUrl: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
+      borderImageSourceUrl,
     },
     certificate2BodyProps: {
       language,
@@ -153,7 +154,7 @@ const Certificate2Component: Certificate2ComponentType = (
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
-          <CertificateFrame>
+          <CertificateFrame {...propsOut.certificateFrameProps}>
             <Certificate2Body {...propsOut.certificate2BodyProps} />
           </CertificateFrame>
         </>

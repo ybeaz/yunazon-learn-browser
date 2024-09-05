@@ -72,6 +72,12 @@ h6 {
 }
 
 @media print {
+  html,
+  body {
+    width: 297mm;
+    height: 210mm;
+  }
+
   @page {
     size: A4 auto;
     margin-top: 0;
@@ -80,7 +86,14 @@ h6 {
   }
 
   #root {
-    height: inherit;
+    height: unset;
+    max-height: unset;
+    min-height: unset;
+    .Certificate2 {
+      height: unset;
+      max-height: unset;
+      min-height: unset;
+    }
     div {
       ._noPrint {
         display: none;

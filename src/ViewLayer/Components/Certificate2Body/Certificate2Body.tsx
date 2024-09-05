@@ -30,7 +30,7 @@ const Certificate2BodyComponent: Certificate2BodyComponentType = (
 
   const tagID = tagCloud.tagID
   const dateCreated = tagCloud.dateCreated
-  const institution = 'The YouRails Academy'
+  const institution = 'YouRails Academy'
   const tagValue = tagCloud.value
 
   const nameFirstLearner = profile.nameFirst
