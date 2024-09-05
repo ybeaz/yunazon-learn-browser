@@ -9,7 +9,7 @@ import {
   CertificateFrameAType,
 } from './CertificateFrameATypes'
 
-const BORDER_IMAGE_SORCE_URALS_DICT: Record<string, string> = {
+const BORDER_IMAGE_SORCE_URALS_CONST: Record<string, string> = {
   cogwheels: 'https://cdn.pixabay.com/photo/2018/05/11/16/38/gears-3390986_960_720.jpg',
   ornamentA: 'https://m.media-amazon.com/images/I/41zcSWiYniL._AC_.jpg',
   ornamentB: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
@@ -24,10 +24,10 @@ const BORDER_IMAGE_SORCE_URALS_DICT: Record<string, string> = {
 const CertificateFrameAComponent: CertificateFrameAComponentType = (
   props: CertificateFrameAComponentPropsType
 ) => {
-  const { classAdded, children } = props
+  const { classAdded, children, ornament } = props
 
   const propsOut: CertificateFrameAPropsOutType = {
-    borderImageSourceUrlProps: BORDER_IMAGE_SORCE_URALS_DICT.ornamentB,
+    borderImageSourceUrlProps: ornament || BORDER_IMAGE_SORCE_URALS_CONST.ornamentB,
   }
 
   return (

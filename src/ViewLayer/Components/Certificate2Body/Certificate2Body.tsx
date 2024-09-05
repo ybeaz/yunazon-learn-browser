@@ -1,9 +1,7 @@
 import React from 'react'
 
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { getSlug } from '../../../Shared/getSlug'
-import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
 import { getNameString } from '../../../Shared/getNameString'
 import {
   Certificate2BodyComponentPropsType,
@@ -21,12 +19,10 @@ import {
 const Certificate2BodyComponent: Certificate2BodyComponentType = (
   props: Certificate2BodyComponentPropsType
 ) => {
-  const { classAdded, language, profile, tagCloud } = props
+  const { classAdded, language, profile, tagCloud, expertiseInfo } = props
 
   const count = tagCloud.count
   const completed = tagCloud.completed
-
-  const expertiseInfo = getExpertiseInfo({ completed })
 
   const documentName = expertiseInfo.documentName
   let levelName = expertiseInfo.name

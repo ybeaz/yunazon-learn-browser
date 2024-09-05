@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
+import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
 import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { TagType, ProfileType, DocumentType } from '../../../@types/index'
@@ -102,7 +103,9 @@ const Certificate2Component: Certificate2ComponentType = (
   })
 
   const tagCloudValue = tagCloudFound.value
+  const completed = tagCloudFound.completed
   const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
+  const expertiseInfo = getExpertiseInfo({ completed })
 
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
@@ -126,6 +129,7 @@ const Certificate2Component: Certificate2ComponentType = (
       language,
       profile: profileFound,
       tagCloud: tagCloudFound,
+      expertiseInfo,
     },
   }
 

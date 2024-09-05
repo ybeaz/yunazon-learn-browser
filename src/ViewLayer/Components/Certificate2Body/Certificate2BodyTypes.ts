@@ -1,12 +1,13 @@
 import React from 'react'
 import { TagType, ProfileType, DocumentType } from '../../../@types/index'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-
+import { GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
 export type Certificate2BodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   language: RootStoreType['language']
   profile: ProfileType
   tagCloud: TagType
+  expertiseInfo: GetExpertiseInfoResType
 }
 
 export type Certificate2BodyPropsType = Certificate2BodyComponentPropsType
