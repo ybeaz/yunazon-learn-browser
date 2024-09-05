@@ -1,18 +1,18 @@
 export const BORDER_IMAGE_SORCE_URALS: Record<string, string> = {
   default: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
   1: 'https://static8.depositphotos.com/1070439/922/v/450/depositphotos_9228333-stock-illustration-calligraphy-ornamental-decorative-frame.jpg',
-  2: 'https://as1.ftcdn.net/v2/jpg/02/09/91/80/1000_F_209918023_NOLYJ3xmJeS0KRgGy9rAGp2yhHRzqay4.jpg',
+  2: 'https://img.freepik.com/premium-vector/hand-drawn-diploma-border-frame_23-2151194163.jpg?ga=GA1.1.399173598.1725509946&semt=ais_hybrid',
   3: 'https://m.media-amazon.com/images/I/41zcSWiYniL._AC_.jpg',
   4: 'https://m.media-amazon.com/images/I/41ORQTzhk6L._AC_.jpg',
-  5: 'https://static.vecteezy.com/system/resources/thumbnails/044/240/796/small_2x/black-frame-for-name-tag-vintage-line-prayer-frame-pattern-for-decoration-vector.jpg',
-  6: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  7: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  8: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  9: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  10: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  11: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  12: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
-  13: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
+  5: 'https://thumbs.dreamstime.com/b/floral-frame-border-certificate-crown-blank-template-122760353.jpg',
+  6: 'https://thumbs.dreamstime.com/b/blue-floral-border-certificates-crown-certificates-blue-floral-border-certificates-crown-122802880.jpg',
+  7: 'https://img.freepik.com/free-vector/hand-drawn-diploma-border-frame_23-2151194184.jpg',
+  8: 'https://www.freestock.com/450/freestock_134670728.jpg',
+  9: 'https://img.freepik.com/free-vector/hand-drawn-diploma-border-frame_23-2151194172.jpg?semt=ais_hybrid',
+  10: 'https://w7.pngwing.com/pngs/852/883/png-transparent-blue-and-white-invitation-template-frame-text-structure-area-pattern-empty-certificate-template-border-rectangle-academic-certificate.png',
+  11: 'https://media.istockphoto.com/id/172740259/ja/%E3%82%B9%E3%83%88%E3%83%83%E3%82%AF%E3%83%95%E3%82%A9%E3%83%88/%E5%88%B8%E3%81%AE%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0.jpg?s=612x612&w=0&k=20&c=ECRQTZ5dhcInEvDRZep6WF1QkiRUKfYb7U5D2bUIzuw=',
+  12: 'https://img.freepik.com/free-vector/hand-drawn-diploma-border-frame_23-2151194184.jpg?ga=GA1.1.399173598.1725509946&semt=ais_hybrid',
+  13: 'https://img.freepik.com/free-vector/hand-drawn-diploma-border-frame_23-2151194166.jpg?ga=GA1.1.399173598.1725509946&semt=ais_hybrid',
   14: 'https://m.media-amazon.com/images/I/51Kheqk1i6L._AC_.jpg',
 }
 
@@ -75,7 +75,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 20,
     iconName: 'FaUserGraduate',
     documentName: 'Certificate of Excellence',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[5],
   },
   {
     level: 6,
@@ -84,7 +84,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 24,
     iconName: 'FaUserTie',
     documentName: 'Certificate of Recognition',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[6],
   },
   {
     level: 7,
@@ -93,7 +93,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 28,
     iconName: 'FaUserShield',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[7],
   },
   {
     level: 8,
@@ -102,7 +102,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 32,
     iconName: 'FaUserMd',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[8],
   },
   {
     level: 9,
@@ -111,7 +111,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 36,
     iconName: 'FaUserNinja',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[9],
   },
   {
     level: 10,
@@ -120,7 +120,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 40,
     iconName: 'FaWandMagicSparkles',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[10],
   },
   {
     level: 11,
@@ -129,7 +129,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 44,
     iconName: 'FaHatWizard',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[11],
   },
   {
     level: 12,
@@ -138,7 +138,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 48,
     iconName: 'GiSnake',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[12],
   },
   {
     level: 13,
@@ -147,7 +147,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 52,
     iconName: 'FaRegSun',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[13],
   },
   {
     level: 14,
@@ -156,7 +156,7 @@ export const EXPERTISE_LEVELS: ExpertiseLevelType = [
     max: 1000000,
     iconName: 'FaMountainSun',
     documentName: 'Dimploma',
-    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS.default,
+    borderImageSourceUrl: BORDER_IMAGE_SORCE_URALS[14],
   },
 ]
 
