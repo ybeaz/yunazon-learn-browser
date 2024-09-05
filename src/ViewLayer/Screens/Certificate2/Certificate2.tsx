@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { getDateString } from '../../../Shared/getDateString'
+import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
 import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { TagType, ProfileType, DocumentType } from '../../../@types/index'
@@ -21,12 +22,7 @@ import {
 
 import { withPropsYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
-import {
-  Certificate2Body,
-  Certificate2BodyPropsType,
-  Certificate2BodyPropsOutType,
-  Certificate2BodyType,
-} from '../../Components/Certificate2Body/Certificate2Body'
+import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {
   Certificate2ComponentPropsType,
   Certificate2PropsType,
@@ -34,6 +30,10 @@ import {
   Certificate2ComponentType,
   Certificate2Type,
 } from './Certificate2Types'
+
+const CERTIFICATE_FRAMES_DICT: Record<string, CertificateFrameAType> = {
+  CertificateFrameA,
+}
 
 const tagCloudFoundDefault = {
   tagID: '',
@@ -102,7 +102,12 @@ const Certificate2Component: Certificate2ComponentType = (
   })
 
   const tagCloudValue = tagCloudFound.value
+  const completed = tagCloudFound.completed
   const titlePage = `${dateMilitaty}-qualification-${tagCloudFound.tagID}-${tagCloudFound.value}`
+  const expertiseInfo = getExpertiseInfo({ completed })
+  const borderImageSourceUrl = expertiseInfo.borderImageSourceUrl
+
+  const CertificateFrame = CERTIFICATE_FRAMES_DICT['CertificateFrameA']
 
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
@@ -122,10 +127,14 @@ const Certificate2Component: Certificate2ComponentType = (
       isPageActionsGroup: true,
       isButtonsShare: true,
     },
+    certificateFrameProps: {
+      borderImageSourceUrl,
+    },
     certificate2BodyProps: {
       language,
       profile: profileFound,
       tagCloud: tagCloudFound,
+      expertiseInfo,
     },
   }
 
@@ -145,9 +154,9 @@ const Certificate2Component: Certificate2ComponentType = (
           <div className='_headerFrameWrapper _noPrint'>
             <HeaderFrame {...propsOut.headerFrameProps} />
           </div>
-          <CertificateFrameA>
+          <CertificateFrame {...propsOut.certificateFrameProps}>
             <Certificate2Body {...propsOut.certificate2BodyProps} />
-          </CertificateFrameA>
+          </CertificateFrame>
         </>
       )}
       <LoaderOverlayYrl />
