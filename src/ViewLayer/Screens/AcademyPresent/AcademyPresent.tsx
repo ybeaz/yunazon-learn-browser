@@ -101,6 +101,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     questionsTotal: 0,
     summary: [],
     objections: [],
+    article: [],
   })
 
   const {
@@ -114,6 +115,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     questionsTotal,
     summary,
     objections,
+    article,
   } = moduleState
 
   useEffect(() => {
@@ -129,6 +131,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         questionsTotal: questionsTotal2,
         summary: summary2,
         objections: objections2,
+        article: article2,
       } = getModuleByModuleID(
         { modules, moduleID: moduleIDActive || moduleID },
         { parentFunction: 'AcademyPresentComponent' }
@@ -152,6 +155,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         durationObj: durationObj2,
         summary: summary2,
         objections: objections2,
+        article: article2,
       })
     }
   }, [mediaLoadedModulesString])
@@ -259,6 +263,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     textStructuredColumnsProps: {
       summary,
       objections,
+      article,
       isSummaryButton,
       isSummary,
       isObjectionsButton: true,
@@ -266,6 +271,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       language: languageSite,
       titleSummary: 'Summary',
       titleObjections: 'Objections',
+      titleArticle: 'Article',
     },
   }
 

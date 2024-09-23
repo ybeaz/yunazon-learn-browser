@@ -1,11 +1,12 @@
 import React from 'react'
-import { SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
+import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types/GraphqlTypes.d'
 import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type TextStructuredColumnsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  article: ArticleItemType[][]
   summary: SummaryItemType[]
   objections: ObjectionType[]
   isSummaryButton: boolean
@@ -15,6 +16,7 @@ export type TextStructuredColumnsComponentPropsType = {
   language: RootStoreType['language']
   titleSummary: string
   titleObjections: string
+  titleArticle: string
 }
 
 export type TextStructuredColumnsPropsType = Omit<
@@ -30,6 +32,7 @@ export type TextStructuredColumnsPropsOut2Type = {
 export type TextStructuredColumnsPropsOutType = {
   summaryProps: TextStructuredPropsType
   objectionsProps: TextStructuredPropsType
+  articleProps: TextStructuredPropsType
 }
 
 /**
@@ -40,5 +43,4 @@ export interface TextStructuredColumnsComponentType
   (props: TextStructuredColumnsComponentPropsType): React.ReactElement
 }
 
-export type TextStructuredColumnsType =
-  React.FunctionComponent<TextStructuredColumnsPropsType>
+export type TextStructuredColumnsType = React.FunctionComponent<TextStructuredColumnsPropsType>

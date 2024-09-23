@@ -1,4 +1,4 @@
-import { Maybe, Scalars, ProfilePropsType } from '../@types/GraphqlTypes.d'
+import { Maybe, Scalars } from '../@types/GraphqlTypes.d'
 
 export type SectionType = {
   capture: Maybe<Scalars['String']['output']>

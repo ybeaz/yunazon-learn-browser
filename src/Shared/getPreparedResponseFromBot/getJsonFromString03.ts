@@ -51,8 +51,7 @@ export const getJsonFromString03: GetJsonFromString03Type = (
   let isDone: GetJsonFromString03ResType['isDone'] = false
 
   try {
-    const regex =
-      /[{\[]{1}([,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]|".*?")+[}\]]{1}/gis
+    const regex = /[{\[]{1}([,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]|".*?")+[}\]]{1}/gim
 
     const matches = input.match(regex) || []
     output = [...matches.map((m: string) => JSON.parse(m))].flat(12)

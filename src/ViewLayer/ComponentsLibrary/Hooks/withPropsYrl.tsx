@@ -1,7 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react'
-import { createSelector } from 'reselect'
-
-import { isFunction } from '../../../Shared/'
+import React, { FunctionComponent } from 'react'
 
 export type WithPropsYrlPropsType = Record<string, any>
 
@@ -26,3 +23,11 @@ export const withPropsYrl: WithPropsYrlType = (extraProps: WithPropsYrlPropsType
       return <Component {...propsNext} />
     }
   }
+
+/*
+
+export const AbInCircle = withPropsYrl({ colors2: COLORS_2 })(
+  AbInCircleComponent
+)
+  
+  */

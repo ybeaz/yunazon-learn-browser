@@ -1,14 +1,11 @@
 import React from 'react'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-  ButtonYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import { GenreEnumType } from '../../../@types/GenreType'
 import {
   TextStructuredColumnsComponentPropsType,
   TextStructuredColumnsPropsType,
@@ -30,6 +27,7 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
     classAdded,
     summary,
     objections,
+    article,
     isSummaryButton,
     isSummary,
     isObjectionsButton,
@@ -37,14 +35,14 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
     language,
     titleSummary,
     titleObjections,
+    titleArticle,
   } = props
 
   let buttonSummaryIsSummaryCaptureLeft = DICTIONARY.Show[language]
   if (isSummary) buttonSummaryIsSummaryCaptureLeft = DICTIONARY.Hide[language]
 
   let buttonSummaryIsObjectionsCaptureLeft = DICTIONARY.Show[language]
-  if (isObjections)
-    buttonSummaryIsObjectionsCaptureLeft = DICTIONARY.Hide[language]
+  if (isObjections) buttonSummaryIsObjectionsCaptureLeft = DICTIONARY.Hide[language]
 
   const propsOut2: TextStructuredColumnsPropsOut2Type = {
     buttonSummaryIsSummaryProps: {
@@ -73,24 +71,25 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
     summaryProps: {
       entities: summary,
       capture: titleSummary,
-      captureType: 'genre',
+      genre: GenreEnumType['summary'],
     },
     objectionsProps: {
       entities: objections,
       capture: titleObjections,
-      captureType: 'genre',
+      genre: GenreEnumType['objections'],
+    },
+    articleProps: {
+      entities: (Array.isArray(article) && article.length && article[0]) || [],
+      capture: titleArticle,
+      genre: GenreEnumType['article'],
     },
   }
 
   return (
     <div className={getClasses('TextStructuredColumns', classAdded)}>
       <div className='_buttonsWrapper'>
-        {isSummaryButton ? (
-          <ButtonYrl {...propsOut2.buttonSummaryIsSummaryProps} />
-        ) : null}
-        {isObjectionsButton ? (
-          <ButtonYrl {...propsOut2.buttonSummaryIsObjectionsProps} />
-        ) : null}
+        {isSummaryButton ? <ButtonYrl {...propsOut2.buttonSummaryIsSummaryProps} /> : null}
+        {isObjectionsButton ? <ButtonYrl {...propsOut2.buttonSummaryIsObjectionsProps} /> : null}
       </div>
       <div className='_textStructuredWrapper'>
         {isSummary && summary && summary.length ? (
@@ -99,17 +98,17 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
         {isObjections && objections && objections.length ? (
           <TextStructured {...propsOut.objectionsProps} />
         ) : null}
+        {article && article.length ? <TextStructured {...propsOut.articleProps} /> : null}
       </div>
     </div>
   )
 }
 
 const storeStateSliceProps: string[] = []
-export const TextStructuredColumns: TextStructuredColumnsType =
-  withStoreStateSelectedYrl(
-    storeStateSliceProps,
-    React.memo(TextStructuredColumnsComponent)
-  )
+export const TextStructuredColumns: TextStructuredColumnsType = withStoreStateSelectedYrl(
+  storeStateSliceProps,
+  React.memo(TextStructuredColumnsComponent)
+)
 
 export type {
   TextStructuredColumnsPropsType,

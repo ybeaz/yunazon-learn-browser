@@ -56,7 +56,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
     language,
     dateCreated: dateCreatedIn,
     dateUpdated,
-    thumbnails,
+    thumbnails = {},
     creator = propsDefault.creator,
     organization = propsDefault.organization,
     isSeo = false,
@@ -69,40 +69,39 @@ const TextStructuredComponent: TextStructuredComponentType = (
 
       const divs = entityItem?.divs
 
-      let isTextIdent = true
-      if (entityItem?.options?.isTextIdent !== undefined)
-        isTextIdent = entityItem?.options?.isTextIdent
-
       let divContent: string | ReactElement | ReactElement[] | null = text ? (
-        <span itemProp='text'>{text}</span>
+        <span className='_span' itemProp='text'>
+          {text}
+        </span>
       ) : null
 
       /* Create content */
-      if (!text && divs && divs.length && entityItem?.options?.isList === undefined) {
+      if (
+        !text &&
+        divs &&
+        divs.length &&
+        (entityItem?.options?.style === undefined || entityItem?.options?.style === 'p')
+      ) {
         divContent = divs.map((div: string) => {
           const key = nanoid()
           return (
-            <p
-              key={key}
-              className={`_paragraph ${!isTextIdent ? '_noTextIdent' : ''}`}
-              itemProp='text'
-            >
+            <span key={key} className='_span' itemProp='text'>
               {div}
-            </p>
+            </span>
           )
         })
       } else if (
         !text &&
         divs &&
         divs.length &&
-        (entityItem?.options?.isList === 'olStyle' || entityItem?.options?.isList === 'ulStyle')
+        (entityItem?.options?.style === 'ol' || entityItem?.options?.style === 'ul')
       ) {
         const listContent = divs.map((div: string) => {
           const key = nanoid()
           return (
             <li
               key={key}
-              className={`_li ${!isTextIdent ? '_noTextIdent' : ''}`}
+              className={`_li`}
               itemType='http://schema.org/ListItem'
               itemProp='itemListElement'
             >
@@ -112,13 +111,13 @@ const TextStructuredComponent: TextStructuredComponentType = (
         })
 
         /* Wrap content (<li>) with <ol> or <ul> */
-        if (entityItem?.options?.isList === 'olStyle')
+        if (entityItem?.options?.style === 'ol')
           divContent = (
             <ol className='_olStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
             </ol>
           )
-        else if (entityItem?.options?.isList === 'ulStyle')
+        else if (entityItem?.options?.style === 'ul')
           divContent = (
             <ul className='_ulStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
@@ -132,7 +131,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
           <h3 className='_capture' itemProp='alternativeHeadline'>
             {capture}
           </h3>
-          <div className='_text'>{divContent}</div>
+          <p className='_paragraph'>{divContent}</p>
         </div>
       )
     })
@@ -148,6 +147,8 @@ const TextStructuredComponent: TextStructuredComponentType = (
     captureValue = getCapitalizedFirstCharWords(genre)
     captureItemProp = 'genre'
   }
+
+  console.info('TextStructured [149]', { captureValue })
 
   const propsOut = {
     thumbnailsStructuredProps: {
@@ -168,7 +169,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
       itemType='https://schema.org/Article'
     >
       <h2 className='_h2' itemProp={captureItemProp}>
-        {`${getCapitalizedFirstCharWords(genre)} ${isSeo ? ':' : ''} ${captureValue}`}
+        {isSeo ? `${getCapitalizedFirstCharWords(genre)}: ${captureValue}` : captureValue}
       </h2>
       {isSeo ? (
         <>

@@ -1,23 +1,21 @@
 import React from 'react'
 import {
+  ArticleItemType,
   SummaryItemType,
   ObjectionType,
   ProfileType,
   ThumbnailsType,
 } from '../../../@types/GraphqlTypes.d'
 import { OrganizationType } from '../../../ContentMock/organizationsMock'
-import { SectionType } from '../../../@types/ArticleMockType'
 import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
+import { GenreType } from '../../../@types/GenreType'
 
 export type EntitiyItemType = {
-  capture?:
-    | SummaryItemType['capture']
-    | ObjectionType['capture']
-    | SectionType['capture']
+  capture?: SummaryItemType['capture'] | ObjectionType['capture'] | ArticleItemType['capture']
   text?: SummaryItemType['text'] | ObjectionType['text']
-  divs?: SectionType['divs']
-  options?: SectionType['options']
+  divs?: ArticleItemType['divs']
+  options?: ArticleItemType['options']
 }
 
 export type TextStructuredComponentPropsType = {
@@ -26,12 +24,12 @@ export type TextStructuredComponentPropsType = {
   capture?: string
   description?: string
   tags?: string[]
-  genre: 'article' | 'summary' | 'objections'
-  language: string
+  genre: GenreType
+  language?: string
   pathBaseToIcons?: string
   dateCreated?: number
   dateUpdated?: number
-  thumbnails: ThumbnailsType
+  thumbnails?: ThumbnailsType
   creator?: ProfileType
   organization?: OrganizationType
   isSeo?: boolean
@@ -52,5 +50,4 @@ export interface TextStructuredComponentType
   (props: TextStructuredComponentPropsType): React.ReactElement
 }
 
-export type TextStructuredType =
-  React.FunctionComponent<TextStructuredPropsType>
+export type TextStructuredType = React.FunctionComponent<TextStructuredPropsType>

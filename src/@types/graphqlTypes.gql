@@ -7,6 +7,44 @@ type AiRequestOptionsType {
   response_format: String
 }
 
+input ArticleIItemOptionsInputType {
+  """module Article item options type"""
+  style: StyleInputEnumType!
+}
+
+type ArticleIItemOptionsType {
+  """module Article item options type"""
+  style: StyleEnumType!
+}
+
+input ArticleItemInputType {
+  """module Article item ID"""
+  articleItemID: ID
+
+  """module Article item capture"""
+  capture: String = null
+
+  """module Article item divs"""
+  divs: [String!] = null
+
+  """module Article item options for divs"""
+  options: ArticleIItemOptionsInputType = null
+}
+
+type ArticleItemType {
+  """module Article ID"""
+  articleItemID: ID!
+
+  """module Article item capture"""
+  capture: String
+
+  """module Article item divs"""
+  divs: [String!]
+
+  """module Article item options for divs"""
+  options: ArticleIItemOptionsType
+}
+
 input AvatarSizeInputType {
   """height"""
   height: Float = 0
@@ -419,6 +457,9 @@ input CreateDocumentInputType {
 }
 
 input CreateModuleInputType {
+  """module article"""
+  article: [[ArticleItemInputType!]!] = []
+
   """capture"""
   capture: String!
 
@@ -627,9 +668,6 @@ type CreateYoutubeTranscriptType {
 
   """length"""
   length: Float
-
-  """transcript"""
-  transcript: String
 
   """transcriptList"""
   transcriptList: [TranscriptObjectBotType!]
@@ -1081,6 +1119,9 @@ type ModuleForDocumentType {
 }
 
 type ModuleType {
+  """module article"""
+  article: [[ArticleItemType!]!]
+
   """capture"""
   capture: String!
 
@@ -1135,7 +1176,7 @@ type ModuleType {
   """module ID"""
   moduleID: ID!
 
-  """module objection"""
+  """module objections"""
   objections: [ObjectionType!]
 
   """organizationID"""
@@ -1977,6 +2018,24 @@ input ReadModulesConnectionInputType {
   """isActive"""
   isActive: Boolean
 
+  """isArticle query modules with or without article"""
+  isArticle: Boolean
+
+  """isObjectionsList query modules with or without objections"""
+  isObjectionsList: Boolean
+
+  """isQuestionsList query modules with or without questions"""
+  isQuestionsList: Boolean
+
+  """isSummary query modules with or without summary"""
+  isSummary: Boolean
+
+  """isTagsList query modules with or without tags"""
+  isTagsList: Boolean
+
+  """isTranscriptList query modules with or without transcriptList"""
+  isTranscriptList: Boolean
+
   """language code"""
   language: String = null
 
@@ -2337,6 +2396,18 @@ input SortTemplatesInputType {
 
   """property name to sort by"""
   prop: String
+}
+
+enum StyleEnumType {
+  ol
+  p
+  ul
+}
+
+enum StyleInputEnumType {
+  ol
+  p
+  ul
 }
 
 type Subscription {
@@ -3007,6 +3078,9 @@ input UpdateModuleForDocumentInputType {
 }
 
 input UpdateModuleInputType {
+  """module article"""
+  article: [[ArticleItemInputType!]!] = []
+
   """capture"""
   capture: String!
 
