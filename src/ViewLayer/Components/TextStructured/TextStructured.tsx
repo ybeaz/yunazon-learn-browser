@@ -68,34 +68,22 @@ const TextStructuredComponent: TextStructuredComponentType = (
       const text = entityItem?.text
 
       const divs = entityItem?.divs
+      const style = entityItem?.options?.style
 
-      let divContent: string | ReactElement | ReactElement[] | null = text ? (
-        <span className='_span' itemProp='text'>
+      let content: string | ReactElement | ReactElement[] | null = text ? (
+        <p className='_paragraph' itemProp={'text'}>
           {text}
-        </span>
+        </p>
       ) : null
 
-      /* Create content */
-      if (
-        !text &&
-        divs &&
-        divs.length &&
-        (entityItem?.options?.style === undefined || entityItem?.options?.style === 'p')
-      ) {
-        divContent = divs.map((div: string) => {
-          const key = nanoid()
-          return (
-            <span key={key} className='_span' itemProp='text'>
-              {div}
-            </span>
-          )
-        })
-      } else if (
-        !text &&
-        divs &&
-        divs.length &&
-        (entityItem?.options?.style === 'ol' || entityItem?.options?.style === 'ul')
-      ) {
+      /* Create content for divs */
+      if (!text && divs && divs.length && (style === undefined || style === 'p')) {
+        content = (
+          <p className='_paragraph' itemProp={'text'}>
+            {divs.reduce((content: string, div: string) => `${content} ${div}`, '').trim()}
+          </p>
+        )
+      } else if (!text && divs && divs.length && (style === 'ol' || style === 'ul')) {
         const listContent = divs.map((div: string) => {
           const key = nanoid()
           return (
@@ -111,14 +99,14 @@ const TextStructuredComponent: TextStructuredComponentType = (
         })
 
         /* Wrap content (<li>) with <ol> or <ul> */
-        if (entityItem?.options?.style === 'ol')
-          divContent = (
+        if (style === 'ol')
+          content = (
             <ol className='_olStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
             </ol>
           )
-        else if (entityItem?.options?.style === 'ul')
-          divContent = (
+        else if (style === 'ul')
+          content = (
             <ul className='_ulStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
             </ul>
@@ -131,7 +119,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
           <h3 className='_capture' itemProp='alternativeHeadline'>
             {capture}
           </h3>
-          <p className='_paragraph'>{divContent}</p>
+          {content}
         </div>
       )
     })
