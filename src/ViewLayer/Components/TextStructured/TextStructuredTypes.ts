@@ -1,17 +1,10 @@
 import React from 'react'
-import {
-  ArticleItemType,
-  SummaryItemType,
-  ObjectionType,
-  ProfileType,
-  ThumbnailsType,
-} from '../../../@types/GraphqlTypes.d'
-import { OrganizationType } from '../../../ContentMock/organizationsMock'
+import { ArticleItemType, SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
 import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
-import { GenreType } from '../../../@types/GenreType'
 
 export type EntitiyItemType = {
+  articleItemID?: ArticleItemType['articleItemID']
   capture?: SummaryItemType['capture'] | ObjectionType['capture'] | ArticleItemType['capture']
   text?: SummaryItemType['text'] | ObjectionType['text']
   divs?: ArticleItemType['divs']

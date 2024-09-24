@@ -10,13 +10,7 @@ import { OrganizationType } from '../../../ContentMock/organizationsMock'
 import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
 import { GenreType } from '../../../@types/GenreType'
-
-export type EntitiyItemType = {
-  capture?: SummaryItemType['capture'] | ObjectionType['capture'] | ArticleItemType['capture']
-  text?: SummaryItemType['text'] | ObjectionType['text']
-  divs?: ArticleItemType['divs']
-  options?: ArticleItemType['options']
-}
+import { EntitiyItemType, TextStructuredPropsType } from '../TextStructured/TextStructured'
 
 export type TextArticleStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -40,6 +34,7 @@ export type TextArticleStructuredPropsType = TextArticleStructuredComponentProps
 export type TextArticleStructuredPropsOutType = {
   metaContentServerProps: MetaContentServerPropsType
   thumbnailsStructuredProps: ThumbnailsStructuredPropsType
+  testStructuredProps: TextStructuredPropsType
 }
 
 /**

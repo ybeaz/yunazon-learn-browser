@@ -4,7 +4,13 @@ import { getClasses } from '../../../Shared/getClasses'
 import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirstCharWords'
 import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
-import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import { TextStructured } from '../TextStructured/TextStructured'
+import {
+  TextsPartsStructured,
+  TextsPartsStructuredPropsType,
+  TextsPartsStructuredPropsOutType,
+  TextsPartsStructuredType,
+} from '../TextsPartsStructured/TextsPartsStructured'
 
 import {
   TextArticleStructuredComponentPropsType,

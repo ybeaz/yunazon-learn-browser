@@ -115,6 +115,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
 export const TextStructured: TextStructuredType = React.memo(TextStructuredComponent)
 
 export type {
+  EntitiyItemType,
   TextStructuredPropsType,
   TextStructuredPropsOutType,
   TextStructuredComponentType,

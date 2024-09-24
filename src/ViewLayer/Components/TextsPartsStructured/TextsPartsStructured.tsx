@@ -12,16 +12,20 @@ import {
 
 /**
  * @description Component to render TextsPartsStructured
- * @import import { TextsPartsStructured, TextsPartsStructuredPropsType, TextsPartsStructuredPropsOutType, TextsPartsStructuredType } 
-             from '../Components/TextsPartsStructured/TextsPartsStructured'
+ * @import import { TextsPartsStructured, 
+    TextsPartsStructuredPropsType, 
+    TextsPartsStructuredPropsOutType,
+    TextsPartsStructuredType } from '../Components/TextsPartsStructured/TextsPartsStructured'
  */
 const TextsPartsStructuredComponent: TextsPartsStructuredComponentType = (
   props: TextsPartsStructuredComponentPropsType
 ) => {
-  const { classAdded } = props
+  const { classAdded, entities } = props
 
   const propsOut: TextsPartsStructuredPropsOutType = {
-    textStructuredProps: {},
+    testStructuredProps: {
+      entities,
+    },
   }
 
   return (

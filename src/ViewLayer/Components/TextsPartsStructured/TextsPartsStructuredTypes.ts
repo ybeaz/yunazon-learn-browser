@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { EntitiyItemType } from '../TextStructured/TextStructured'
+
 export type TextsPartsStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
+  entities: EntitiyItemType[]
 }
 
 export type TextsPartsStructuredPropsType = TextsPartsStructuredComponentPropsType
