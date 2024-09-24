@@ -84,7 +84,7 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
       genre: GenreEnumType['objections'],
     },
     articleProps: {
-      entities: (Array.isArray(article) && article.length && article[0]) || [],
+      entities: article,
       capture: titleArticle,
       genre: GenreEnumType['article'],
     },

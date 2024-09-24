@@ -10,11 +10,12 @@ import { OrganizationType } from '../../../ContentMock/organizationsMock'
 import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
 import { GenreType } from '../../../@types/GenreType'
-import { EntitiyItemType, TextStructuredPropsType } from '../TextStructured/TextStructured'
+import { EntitiyItemType } from '../TextStructured/TextStructured'
+import { TextsPartsStructuredPropsType } from '../TextsPartsStructured/TextsPartsStructured'
 
 export type TextArticleStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  entities: EntitiyItemType[]
+  entities: EntitiyItemType[] | EntitiyItemType[][]
   capture?: string
   description?: string
   tags?: string[]
@@ -34,7 +35,7 @@ export type TextArticleStructuredPropsType = TextArticleStructuredComponentProps
 export type TextArticleStructuredPropsOutType = {
   metaContentServerProps: MetaContentServerPropsType
   thumbnailsStructuredProps: ThumbnailsStructuredPropsType
-  testStructuredProps: TextStructuredPropsType
+  textsPartsStructuredProps: TextsPartsStructuredPropsType
 }
 
 /**

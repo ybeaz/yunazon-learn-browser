@@ -4,7 +4,7 @@ import { EntitiyItemType } from '../TextStructured/TextStructured'
 
 export type TextsPartsStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  entities: EntitiyItemType[]
+  entities: EntitiyItemType[] | EntitiyItemType[][]
 }
 
 export type TextsPartsStructuredPropsType = TextsPartsStructuredComponentPropsType

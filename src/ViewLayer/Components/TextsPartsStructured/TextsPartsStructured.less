@@ -1,5 +1,18 @@
 .TextsPartsStructured {
   display: flex;
+  flex-direction: column;
+
+  ._textPart {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ._capturePart {
+    display: flex;
+    padding: 1rem 0;
+    font-size: @fontSizeH3;
+    margin: 0;
+  }
 
   @media @large {
   }

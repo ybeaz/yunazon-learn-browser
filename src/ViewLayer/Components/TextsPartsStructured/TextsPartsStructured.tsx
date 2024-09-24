@@ -1,6 +1,7 @@
 import React from 'react'
+import { nanoid } from 'nanoid'
 
-import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import { TextStructured, EntitiyItemType } from '../../Components/TextStructured/TextStructured'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   TextsPartsStructuredComponentPropsType,
@@ -20,17 +21,34 @@ import {
 const TextsPartsStructuredComponent: TextsPartsStructuredComponentType = (
   props: TextsPartsStructuredComponentPropsType
 ) => {
-  const { classAdded, entities } = props
+  const { classAdded, entities: entitiesIn } = props
 
-  const propsOut: TextsPartsStructuredPropsOutType = {
-    testStructuredProps: {
-      entities,
-    },
+  const entities = Array.isArray(entitiesIn[0]) ? entitiesIn : ([entitiesIn] as EntitiyItemType[][])
+
+  const getTestsPartsStructured = (entitiesArgs: EntitiyItemType[][]) => {
+    return entitiesArgs.map((entitiesArg: EntitiyItemType[], index: number) => {
+      const propsOut: TextsPartsStructuredPropsOutType = {
+        textStructuredProps: {
+          entities: entitiesArg,
+        },
+      }
+
+      const key = nanoid()
+      const headline = entitiesArgs.length > 1 && index > 0 && `Part ${index + 1}`
+
+      return (
+        <div key={key} className='_textPart'>
+          {headline && <h2 className='_capturePart'>{headline}</h2>}
+          <TextStructured {...propsOut.textStructuredProps} />
+        </div>
+      )
+    })
   }
 
   return (
     <div className={getClasses('TextsPartsStructured', classAdded)}>
-      <TextStructured {...propsOut.textStructuredProps} />
+      {/* @ts-expect-error */}
+      {getTestsPartsStructured(entities)}
     </div>
   )
 }

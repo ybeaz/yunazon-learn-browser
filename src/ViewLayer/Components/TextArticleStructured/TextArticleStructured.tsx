@@ -4,13 +4,7 @@ import { getClasses } from '../../../Shared/getClasses'
 import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirstCharWords'
 import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
-import { TextStructured } from '../TextStructured/TextStructured'
-import {
-  TextsPartsStructured,
-  TextsPartsStructuredPropsType,
-  TextsPartsStructuredPropsOutType,
-  TextsPartsStructuredType,
-} from '../TextsPartsStructured/TextsPartsStructured'
+import { TextsPartsStructured } from '../TextsPartsStructured/TextsPartsStructured'
 
 import {
   TextArticleStructuredComponentPropsType,
@@ -88,7 +82,7 @@ const TextArticleStructuredComponent: TextArticleStructuredComponentType = (
       creator,
       organization,
     },
-    testStructuredProps: {
+    textsPartsStructuredProps: {
       entities,
     },
   }
@@ -147,7 +141,7 @@ const TextArticleStructuredComponent: TextArticleStructuredComponentType = (
         </>
       ) : null}
       <div itemProp='articleBody'>
-        <TextStructured {...propsOut.testStructuredProps} />
+        <TextsPartsStructured {...propsOut.textsPartsStructuredProps} />
       </div>
       {isSeo ? (
         <>

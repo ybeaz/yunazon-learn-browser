@@ -5,6 +5,8 @@ import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServ
 
 export type EntitiyItemType = {
   articleItemID?: ArticleItemType['articleItemID']
+  summaryItemID?: SummaryItemType['summaryItemID']
+  objectionID?: ObjectionType['objectionID']
   capture?: SummaryItemType['capture'] | ObjectionType['capture'] | ArticleItemType['capture']
   text?: SummaryItemType['text'] | ObjectionType['text']
   divs?: ArticleItemType['divs']
