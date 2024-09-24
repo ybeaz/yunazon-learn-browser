@@ -21,18 +21,6 @@ export type EntitiyItemType = {
 export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   entities: EntitiyItemType[]
-  capture?: string
-  description?: string
-  tags?: string[]
-  genre: GenreType
-  language?: string
-  pathBaseToIcons?: string
-  dateCreated?: number
-  dateUpdated?: number
-  thumbnails?: ThumbnailsType
-  creator?: ProfileType
-  organization?: OrganizationType
-  isSeo?: boolean
 }
 
 export type TextStructuredPropsType = TextStructuredComponentPropsType

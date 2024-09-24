@@ -4,7 +4,12 @@ import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../Compon
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
-import { TextStructured } from '../../Components/TextStructured/TextStructured'
+import {
+  TextArticleStructured,
+  TextArticleStructuredPropsType,
+  TextArticleStructuredPropsOutType,
+  TextArticleStructuredType,
+} from '../TextArticleStructured/TextArticleStructured'
 import { GenreEnumType } from '../../../@types/GenreType'
 import {
   TextStructuredColumnsComponentPropsType,
@@ -93,12 +98,12 @@ const TextStructuredColumnsComponent: TextStructuredColumnsComponentType = (
       </div>
       <div className='_textStructuredWrapper'>
         {isSummary && summary && summary.length ? (
-          <TextStructured {...propsOut.summaryProps} />
+          <TextArticleStructured {...propsOut.summaryProps} />
         ) : null}
         {isObjections && objections && objections.length ? (
-          <TextStructured {...propsOut.objectionsProps} />
+          <TextArticleStructured {...propsOut.objectionsProps} />
         ) : null}
-        {article && article.length ? <TextStructured {...propsOut.articleProps} /> : null}
+        {article && article.length ? <TextArticleStructured {...propsOut.articleProps} /> : null}
       </div>
     </div>
   )

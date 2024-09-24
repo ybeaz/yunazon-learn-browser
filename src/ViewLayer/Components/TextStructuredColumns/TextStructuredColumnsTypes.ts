@@ -3,6 +3,12 @@ import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types
 import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import {
+  TextArticleStructured,
+  TextArticleStructuredPropsType,
+  TextArticleStructuredPropsOutType,
+  TextArticleStructuredType,
+} from '../TextArticleStructured/TextArticleStructured'
 
 export type TextStructuredColumnsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -30,9 +36,9 @@ export type TextStructuredColumnsPropsOut2Type = {
 }
 
 export type TextStructuredColumnsPropsOutType = {
-  summaryProps: TextStructuredPropsType
-  objectionsProps: TextStructuredPropsType
-  articleProps: TextStructuredPropsType
+  summaryProps: TextArticleStructuredPropsType
+  objectionsProps: TextArticleStructuredPropsType
+  articleProps: TextArticleStructuredPropsType
 }
 
 /**

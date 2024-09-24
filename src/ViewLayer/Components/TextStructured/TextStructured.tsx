@@ -2,9 +2,6 @@ import React, { ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
 import { getClasses } from '../../../Shared/getClasses'
-import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirstCharWords'
-import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
-import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
 
 import {
   EntitiyItemType,
@@ -47,20 +44,7 @@ const propsDefault: any = {
 const TextStructuredComponent: TextStructuredComponentType = (
   props: TextStructuredComponentPropsType
 ) => {
-  const {
-    classAdded,
-    entities,
-    capture,
-    tags = [],
-    genre,
-    language,
-    dateCreated: dateCreatedIn,
-    dateUpdated,
-    thumbnails = {},
-    creator = propsDefault.creator,
-    organization = propsDefault.organization,
-    isSeo = false,
-  } = props
+  const { entities } = props
 
   const getTextStructured = (arrayIn: EntitiyItemType[]): ReactElement[] => {
     return arrayIn.map((entityItem: EntitiyItemType) => {
@@ -125,92 +109,7 @@ const TextStructuredComponent: TextStructuredComponentType = (
     })
   }
 
-  const dateCreated = dateCreatedIn && new Date(dateCreatedIn).toUTCString()
-  const dateModified = dateUpdated && new Date(dateUpdated).toUTCString()
-  const datePublished = dateCreated && dateUpdated && new Date(dateUpdated).toUTCString()
-
-  let captureValue = capture
-  let captureItemProp = 'headline'
-  if (!isSeo && !capture && (genre === 'summary' || genre === 'objections')) {
-    captureValue = getCapitalizedFirstCharWords(genre)
-    captureItemProp = 'genre'
-  }
-
-  console.info('TextStructured [149]', { captureValue })
-
-  const propsOut = {
-    thumbnailsStructuredProps: {
-      thumbnails,
-      nameEntity: capture || '',
-      itemPropName: 'thumbnail',
-    },
-    metaContentServerProps: {
-      creator,
-      organization,
-    },
-  }
-
-  return (
-    <article
-      className={getClasses('TextStructured', classAdded)}
-      itemScope
-      itemType='https://schema.org/Article'
-    >
-      <h2 className='_h2' itemProp={captureItemProp}>
-        {isSeo ? `${getCapitalizedFirstCharWords(genre)}: ${captureValue}` : captureValue}
-      </h2>
-      {isSeo ? (
-        <>
-          <div>
-            <span>Genre: </span>
-            <span itemProp={'genre'}>{genre}</span>
-          </div>
-          {language ? (
-            <div>
-              <span>Language: </span>
-              <span itemProp='inLanguage'>{language}</span>
-            </div>
-          ) : null}
-          {tags.length ? (
-            <div>
-              <span>Keywords: </span>
-              <span itemProp='keywords'>{tags.join(', ')}</span>
-            </div>
-          ) : null}
-          {dateCreated ? (
-            <div>
-              <span>Created: </span>
-              <span itemProp='dateCreated'>{dateCreated}</span>
-            </div>
-          ) : null}
-          {dateModified ? (
-            <div>
-              <span>Modified: </span>
-              <span itemProp='dateModified'>{dateModified}</span>
-            </div>
-          ) : null}
-          {datePublished ? (
-            <div>
-              <span>Published: </span>
-              <span itemProp='datePublished'>{datePublished}</span>
-            </div>
-          ) : null}
-          {thumbnails && Object.keys(thumbnails).length ? (
-            <div>
-              <div>Image:</div>
-              <ThumbnailsStructured {...propsOut.thumbnailsStructuredProps} />
-            </div>
-          ) : null}
-        </>
-      ) : null}
-      <div itemProp='articleBody'>{getTextStructured(entities)}</div>
-      {isSeo ? (
-        <>
-          <MetaContentServer {...propsOut.metaContentServerProps} />
-        </>
-      ) : null}
-    </article>
-  )
+  return <div itemProp='articleBody'>{getTextStructured(entities)}</div>
 }
 
 export const TextStructured: TextStructuredType = React.memo(TextStructuredComponent)
