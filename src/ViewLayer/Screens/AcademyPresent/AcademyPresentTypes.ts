@@ -4,7 +4,6 @@ import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
-import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
 import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 export type AcademyPresentComponentPropsType = {
@@ -19,18 +18,15 @@ export type AcademyPresentComponentPropsType = {
   }
 }
 
-export type AcademyPresentPropsType = Omit<
-  AcademyPresentComponentPropsType,
-  'storeStateSlice'
->
+export type AcademyPresentPropsType = Omit<AcademyPresentComponentPropsType, 'storeStateSlice'>
 
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
-  contentComponentProps: Record<string, any>
+  contentSectionProps: any
+  contentAssignedComponentProps: Record<string, any>
   loaderBlurhashProps: LoaderBlurhashPropsType
   playerPanelProps: PlayerPanelPropsType
-  textStructuredColumnsProps: TextStructuredColumnsPropsType
 }
 
 /**
@@ -41,5 +37,4 @@ export interface AcademyPresentComponentType
   (props: AcademyPresentComponentPropsType): React.ReactElement
 }
 
-export type AcademyPresentType =
-  React.FunctionComponent<AcademyPresentPropsType>
+export type AcademyPresentType = React.FunctionComponent<AcademyPresentPropsType>

@@ -22,11 +22,19 @@ import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl, useMediaQueryResYrl } from '../../ComponentsLibrary/'
-import { TextStructuredColumns } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
+import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
+import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
+import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
+import {
+  ContentSection,
+  ContentSectionPropsType,
+  ContentSectionPropsOutType,
+  ContentSectionType,
+} from '../../Components/ContentSection/ContentSection'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -207,6 +215,53 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   }
 
   const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
+  const contentAssignedComponentProps: Record<string, any> = {
+    ReaderIframe: {
+      moduleID,
+      contentID,
+      isVisible,
+      isIframe: true,
+      screenType,
+    },
+    PlayerIframe: {
+      contentID,
+      isVisible,
+      isIframe: true,
+    },
+  }
+  const playerPanelProps: PlayerPanelPropsType = {
+    capture,
+    durationObj,
+    screenType,
+    isShowingPlay,
+    buttonPlayProps,
+    buttonPauseProps,
+    buttonStopProps,
+    isActionButtonDisplaying: false,
+    questionsTotal,
+  }
+
+  const loaderBlurhashProps: LoaderBlurhashPropsType = {
+    isVisibleBlurHash: !isVisible,
+    textTooltip,
+    isTextTooltip: true,
+    delay: 500,
+    contentComponentName,
+  }
+
+  const textStructuredColumnsProps: TextStructuredColumnsPropsType = {
+    summary,
+    objections,
+    article,
+    isSummaryButton,
+    isSummary,
+    isObjectionsButton: true,
+    isObjections,
+    language: languageSite,
+    titleSummary: 'Summary',
+    titleObjections: 'Objections',
+    titleArticle: 'Article',
+  }
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
@@ -228,51 +283,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     mainFrameProps: {
       screenType,
     },
-    contentComponentProps: {
-      ReaderIframe: {
-        moduleID,
-        contentID,
-        isVisible,
-        isIframe: true,
-        screenType,
-      },
-      PlayerIframe: {
-        contentID,
-        isVisible,
-        isIframe: true,
-      },
+    contentSectionProps: {
+      CONTENT_ASSIGNED_COMPONENT,
+      contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
+      playerPanelProps,
+      loaderBlurhashProps,
+      textStructuredColumnsProps,
     },
-    loaderBlurhashProps: {
-      isVisibleBlurHash: !isVisible,
-      textTooltip,
-      isTextTooltip: true,
-      delay: 500,
-      contentComponentName,
-    },
-    playerPanelProps: {
-      capture,
-      durationObj,
-      screenType,
-      isShowingPlay,
-      buttonPlayProps,
-      buttonPauseProps,
-      buttonStopProps,
-      isActionButtonDisplaying: false,
-      questionsTotal,
-    },
-    textStructuredColumnsProps: {
-      summary,
-      objections,
-      article,
-      isSummaryButton,
-      isSummary,
-      isObjectionsButton: true,
-      isObjections,
-      language: languageSite,
-      titleSummary: 'Summary',
-      titleObjections: 'Objections',
-      titleArticle: 'Article',
-    },
+    contentAssignedComponentProps,
+    loaderBlurhashProps,
+    playerPanelProps,
   }
 
   return (
@@ -295,16 +315,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
             {/* middle-main */}
             <div className='AcademyPresent__middle-main'>
-              <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
-                {null}
-                <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-                <PlayerPanel {...propsOut.playerPanelProps} />
-              </CONTENT_ASSIGNED_COMPONENT>
+              <ContentSection {...propsOut.contentSectionProps} />
             </div>
             {/* middle-right */}
             <CarouselQuestions />
             {/* footer */}
-            <TextStructuredColumns {...propsOut.textStructuredColumnsProps} />
+            {null}
           </MainFrame>
         </>
       ) : null}
