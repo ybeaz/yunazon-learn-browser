@@ -7,6 +7,7 @@ import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { GenreEnumType } from '../../../@types/GenreType'
 import { TextArticleStructured } from '../TextArticleStructured/TextArticleStructured'
 import {
+  TextStructuredComponentsPropsType,
   ContentSectionComponentPropsType,
   ContentSectionPropsType,
   ContentSectionPropsOutType,
@@ -16,7 +17,7 @@ import {
 
 /**
  * @description Component to render ContentSection
- * @import import { ContentSection, ContentSectionPropsType, ContentSectionPropsOutType, ContentSectionType } 
+ * @import import { TextStructuredComponentsPropsType, ContentSection, ContentSectionPropsType, ContentSectionPropsOutType, ContentSectionType } 
              from '../Components/ContentSection/ContentSection'
  */
 const ContentSectionComponent: ContentSectionComponentType = (
@@ -28,7 +29,7 @@ const ContentSectionComponent: ContentSectionComponentType = (
     contentAssignedComponentProps,
     playerPanelProps,
     loaderBlurhashProps,
-    textStructuredColumnsProps,
+    textStructuredComponentsProps,
   } = props
 
   const {
@@ -36,14 +37,12 @@ const ContentSectionComponent: ContentSectionComponentType = (
     objections,
     article,
     isSummaryButton,
-    isSummary,
     isObjectionsButton,
-    isObjections,
     language,
     titleSummary,
     titleObjections,
     titleArticle,
-  } = textStructuredColumnsProps
+  } = textStructuredComponentsProps
 
   const propsOut: ContentSectionPropsOutType = {
     CONTENT_ASSIGNED_COMPONENT,
@@ -88,6 +87,7 @@ export const ContentSection: ContentSectionType = withStoreStateSelectedYrl(
 )
 
 export type {
+  TextStructuredComponentsPropsType,
   ContentSectionPropsType,
   ContentSectionPropsOutType,
   ContentSectionComponentType,

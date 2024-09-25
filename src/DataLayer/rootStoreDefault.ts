@@ -58,8 +58,6 @@ export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
   tagsSearchForModules: null,
   modulesSearchApplied: null,
-  isObjections: false,
-  isSummary: true,
   isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,

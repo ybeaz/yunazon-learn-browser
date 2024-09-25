@@ -28,12 +28,9 @@ import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import {
   ContentSection,
-  ContentSectionPropsType,
-  ContentSectionPropsOutType,
-  ContentSectionType,
+  TextStructuredComponentsPropsType,
 } from '../../Components/ContentSection/ContentSection'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
@@ -64,8 +61,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       modules,
       mediaLoaded,
-      isSummary: isSummaryStore,
-      isObjections,
     },
   } = props
 
@@ -87,15 +82,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
-
-  /* Hide summary by url settings */
-  let isSummaryButton = true
-  let isSummary = isSummaryStore
-  const { isSummary: isSummaryUrlQuery } = getParsedUrlQuery()
-  if (isSummaryUrlQuery === 'false') {
-    isSummaryButton = false
-    isSummary = false
-  }
 
   const [moduleState, setModuleState] = useState({
     CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
@@ -249,14 +235,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     contentComponentName,
   }
 
-  const textStructuredColumnsProps: TextStructuredColumnsPropsType = {
+  const textStructuredComponentsProps: TextStructuredComponentsPropsType = {
     summary,
     objections,
     article,
-    isSummaryButton,
-    isSummary,
+    isSummaryButton: true,
     isObjectionsButton: true,
-    isObjections,
     language: languageSite,
     titleSummary: 'Summary',
     titleObjections: 'Objections',
@@ -288,7 +272,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
       playerPanelProps,
       loaderBlurhashProps,
-      textStructuredColumnsProps,
+      textStructuredComponentsProps,
     },
     contentAssignedComponentProps,
     loaderBlurhashProps,
@@ -334,8 +318,6 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
-  'isSummary',
-  'isObjections',
 ]
 export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
   storeStateSliceProps,

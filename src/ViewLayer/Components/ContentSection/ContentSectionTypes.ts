@@ -1,8 +1,22 @@
 import React from 'react'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 import { TextArticleStructuredPropsType } from '../TextArticleStructured/TextArticleStructured'
+import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types/GraphqlTypes.d'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
+
+export type TextStructuredComponentsPropsType = {
+  classAdded?: string | string[] | Record<string, string | string[]>
+  article: ArticleItemType[][]
+  summary: SummaryItemType[]
+  objections: ObjectionType[]
+  isSummaryButton: boolean
+  isObjectionsButton: boolean
+  language: RootStoreType['language']
+  titleSummary: string
+  titleObjections: string
+  titleArticle: string
+}
 
 export type ContentSectionComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -10,7 +24,7 @@ export type ContentSectionComponentPropsType = {
   contentAssignedComponentProps: Record<string, any>
   playerPanelProps: PlayerPanelPropsType
   loaderBlurhashProps: LoaderBlurhashPropsType
-  textStructuredColumnsProps: TextStructuredColumnsPropsType
+  textStructuredComponentsProps: TextStructuredComponentsPropsType
   storeStateSlice: any
 }
 

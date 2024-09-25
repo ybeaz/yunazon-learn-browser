@@ -4,7 +4,6 @@ import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
-import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -13,8 +12,6 @@ export type AcademyPresentComponentPropsType = {
     moduleIDActive: RootStoreType['scorm']['courseIDActive']
     modules: RootStoreType['modules']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
-    isObjections: RootStoreType['componentsState']['isObjections']
-    isSummary: RootStoreType['componentsState']['isSummary']
   }
 }
 
