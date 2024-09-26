@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 
@@ -30,6 +30,10 @@ import { isMobile } from '../../../Shared/isMobile'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { GenreEnumType } from '../../../@types/GenreType'
+import {
+  getRearrangedArrayByIndex,
+  GetRearrangedArrayByIndexParamsType,
+} from '../../../Shared/getRearrangedArrayByIndex'
 import {
   ContentSection,
   TextStructuredComponentsPropsType,
@@ -67,6 +71,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   } = props
 
   const params = useParams()
+  const counterRef = useRef(0)
 
   const { innerWidth, innerHeight } = window
   // const { width: mediaWidth, height: mediaHeight } = useMediaQueryResYrl()
@@ -259,7 +264,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
-  const contentArray: any[] = [
+  const contentArrayIn: any[] = [
     {
       typeIn: 'player',
       component: (
@@ -290,6 +295,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   ]
 
+  const [contentArray, setContentArray] = useState<any[]>([])
+
+  const modulesString = JSON.stringify(modules)
+
+  useEffect(() => {
+    setContentArray(contentArrayIn)
+  }, [modulesString])
+
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
@@ -311,7 +324,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       screenType,
     },
     contentSectionProps: {
-      contentArray,
+      contentArray: counterRef.current === 0 ? contentArrayIn : contentArray,
     },
     buttonPlayerUpProps: {
       icon: '',
@@ -324,7 +337,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       icon: '',
       classAdded: 'Button_summaryUp',
       captureLeft: DICTIONARY.summary[language],
-      handleEvents: () => {},
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'summary',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
       isDisplaying: summary && summary.length ? true : false,
     },
     buttonArticleUpProps: {
