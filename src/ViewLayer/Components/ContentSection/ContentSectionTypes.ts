@@ -4,6 +4,7 @@ import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { TextArticleStructuredPropsType } from '../TextArticleStructured/TextArticleStructured'
 import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types/GraphqlTypes.d'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type TextStructuredComponentsPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -31,6 +32,10 @@ export type ContentSectionComponentPropsType = {
 export type ContentSectionPropsType = Omit<ContentSectionComponentPropsType, 'storeStateSlice'>
 
 export type ContentSectionPropsOutType = {
+  buttonPlayerUpProps: ButtonYrlPropsType
+  buttonArticleUpProps: ButtonYrlPropsType
+  buttonSummaryUpProps: ButtonYrlPropsType
+  buttonObjectionsUpProps: ButtonYrlPropsType
   CONTENT_ASSIGNED_COMPONENT: any
   contentAssignedComponentProps: Record<string, any>
   playerPanelProps: PlayerPanelPropsType

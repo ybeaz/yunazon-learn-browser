@@ -1,11 +1,16 @@
 import React from 'react'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { GenreEnumType } from '../../../@types/GenreType'
 import { TextArticleStructured } from '../TextArticleStructured/TextArticleStructured'
+import {
+  getRearrangedArrayByIndex,
+  GetRearrangedArrayByIndexParamsType,
+} from '../../../Shared/getRearrangedArrayByIndex'
 import {
   TextStructuredComponentsPropsType,
   ContentSectionComponentPropsType,
@@ -32,23 +37,59 @@ const ContentSectionComponent: ContentSectionComponentType = (
     textStructuredComponentsProps,
   } = props
 
-  const {
-    summary,
-    objections,
-    article,
-    isSummaryButton,
-    isObjectionsButton,
-    language,
-    titleSummary,
-    titleObjections,
-    titleArticle,
-  } = textStructuredComponentsProps
+  const { summary, objections, article, language, titleSummary, titleObjections, titleArticle } =
+    textStructuredComponentsProps
 
   const propsOut: ContentSectionPropsOutType = {
+    buttonPlayerUpProps: {
+      icon: '',
+      classAdded: 'Button_playerUp',
+      captureLeft: DICTIONARY.media[language],
+      action: {
+        typeEvent: 'TOGGLE_IS_SUMMARY',
+        data: {},
+      },
+      isDisplaying: true,
+    },
+    buttonSummaryUpProps: {
+      icon: '',
+      classAdded: 'Button_summaryUp',
+      captureLeft: DICTIONARY.summary[language],
+      action: {
+        typeEvent: 'TOGGLE_IS_SUMMARY',
+        data: {},
+      },
+      isDisplaying: summary && summary.length ? true : false,
+    },
+    buttonArticleUpProps: {
+      icon: '',
+      classAdded: 'Button_articleUp',
+      captureLeft: DICTIONARY.article[language],
+      action: {
+        typeEvent: 'TOGGLE_IS_SUMMARY',
+        data: {},
+      },
+      isDisplaying: article && article.length ? true : false,
+    },
+    buttonObjectionsUpProps: {
+      icon: '',
+      captureLeft: DICTIONARY.objections[language],
+      classAdded: 'Button_objectionsUp',
+      action: {
+        typeEvent: 'TOGGLE_IS_OBJECTIONS',
+        data: {},
+      },
+      isDisplaying: objections && objections.length ? true : false,
+    },
     CONTENT_ASSIGNED_COMPONENT,
     contentAssignedComponentProps,
     playerPanelProps,
     loaderBlurhashProps,
+    articleProps: {
+      entities: article,
+      capture: titleArticle,
+      genre: GenreEnumType['article'],
+    },
     summaryProps: {
       entities: summary,
       capture: titleSummary,
@@ -59,23 +100,46 @@ const ContentSectionComponent: ContentSectionComponentType = (
       capture: titleObjections,
       genre: GenreEnumType['objections'],
     },
-    articleProps: {
-      entities: article,
-      capture: titleArticle,
-      genre: GenreEnumType['article'],
-    },
   }
+
+  const contentArray: any[] = [
+    {
+      typeIn: 'player',
+      component: (
+        <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentAssignedComponentProps}>
+          {null}
+          <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
+          <PlayerPanel {...propsOut.playerPanelProps} />
+        </CONTENT_ASSIGNED_COMPONENT>
+      ),
+    },
+    {
+      typeIn: 'summary',
+      component: summary && summary.length && <TextArticleStructured {...propsOut.summaryProps} />,
+    },
+    {
+      typeIn: 'article',
+      component: article && article.length && <TextArticleStructured {...propsOut.articleProps} />,
+    },
+    {
+      typeIn: 'objections',
+      component: objections && objections.length && (
+        <TextArticleStructured {...propsOut.objectionsProps} />
+      ),
+    },
+  ]
 
   return (
     <div className={getClasses('ContentSection', classAdded)}>
-      <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentAssignedComponentProps}>
-        {null}
-        <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
-        <PlayerPanel {...propsOut.playerPanelProps} />
-      </CONTENT_ASSIGNED_COMPONENT>
-      {summary && summary.length && <TextArticleStructured {...propsOut.summaryProps} />}
-      {objections && objections.length && <TextArticleStructured {...propsOut.objectionsProps} />}
-      {article && article.length && <TextArticleStructured {...propsOut.articleProps} />}
+      <div className='_buttonsWrapper'>
+        <ButtonYrl {...propsOut.buttonPlayerUpProps} />
+        <ButtonYrl {...propsOut.buttonArticleUpProps} />
+        <ButtonYrl {...propsOut.buttonSummaryUpProps} />
+        <ButtonYrl {...propsOut.buttonObjectionsUpProps} />
+      </div>
+      <div className='_contentWrapper'>
+        {contentArray.map((ContentItem: any) => ContentItem.component)}
+      </div>
     </div>
   )
 }
