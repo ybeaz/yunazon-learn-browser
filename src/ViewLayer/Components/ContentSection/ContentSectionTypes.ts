@@ -21,29 +21,12 @@ export type TextStructuredComponentsPropsType = {
 
 export type ContentSectionComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  CONTENT_ASSIGNED_COMPONENT: any
-  contentAssignedComponentProps: Record<string, any>
-  playerPanelProps: PlayerPanelPropsType
-  loaderBlurhashProps: LoaderBlurhashPropsType
-  textStructuredComponentsProps: TextStructuredComponentsPropsType
-  storeStateSlice: any
+  contentArray: any[]
 }
 
 export type ContentSectionPropsType = Omit<ContentSectionComponentPropsType, 'storeStateSlice'>
 
-export type ContentSectionPropsOutType = {
-  buttonPlayerUpProps: ButtonYrlPropsType
-  buttonArticleUpProps: ButtonYrlPropsType
-  buttonSummaryUpProps: ButtonYrlPropsType
-  buttonObjectionsUpProps: ButtonYrlPropsType
-  CONTENT_ASSIGNED_COMPONENT: any
-  contentAssignedComponentProps: Record<string, any>
-  playerPanelProps: PlayerPanelPropsType
-  loaderBlurhashProps: LoaderBlurhashPropsType
-  summaryProps: TextArticleStructuredPropsType
-  objectionsProps: TextArticleStructuredPropsType
-  articleProps: TextArticleStructuredPropsType
-}
+export type ContentSectionPropsOutType = {}
 
 /**
  * @import import { ContentSectionComponentPropsType, ContentSectionPropsType, ContentSectionPropsOutType, ContentSectionComponentType, ContentSectionType } from './ContentSectionTypes'

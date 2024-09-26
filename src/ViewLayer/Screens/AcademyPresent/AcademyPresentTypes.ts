@@ -2,8 +2,8 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
-import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
+import { ContentSectionPropsType } from '../../Components/ContentSection/ContentSection'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -20,10 +20,11 @@ export type AcademyPresentPropsType = Omit<AcademyPresentComponentPropsType, 'st
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
-  contentSectionProps: any
-  contentAssignedComponentProps: Record<string, any>
-  loaderBlurhashProps: LoaderBlurhashPropsType
-  playerPanelProps: PlayerPanelPropsType
+  contentSectionProps: ContentSectionPropsType
+  buttonPlayerUpProps: ButtonYrlPropsType
+  buttonArticleUpProps: ButtonYrlPropsType
+  buttonSummaryUpProps: ButtonYrlPropsType
+  buttonObjectionsUpProps: ButtonYrlPropsType
 }
 
 /**

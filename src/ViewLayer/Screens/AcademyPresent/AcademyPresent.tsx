@@ -21,13 +21,15 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import { withStoreStateSelectedYrl, useMediaQueryResYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
+import { GenreEnumType } from '../../../@types/GenreType'
 import {
   ContentSection,
   TextStructuredComponentsPropsType,
@@ -235,17 +237,58 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     contentComponentName,
   }
 
-  const textStructuredComponentsProps: TextStructuredComponentsPropsType = {
-    summary,
-    objections,
-    article,
-    isSummaryButton: true,
-    isObjectionsButton: true,
-    language: languageSite,
-    titleSummary: 'Summary',
-    titleObjections: 'Objections',
-    titleArticle: 'Article',
+  const propsOutM1 = {
+    CONTENT_ASSIGNED_COMPONENT,
+    contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
+    playerPanelProps,
+    loaderBlurhashProps,
+    articleProps: {
+      entities: article,
+      capture: 'Article',
+      genre: GenreEnumType['article'],
+    },
+    summaryProps: {
+      entities: summary,
+      capture: 'Summary',
+      genre: GenreEnumType['summary'],
+    },
+    objectionsProps: {
+      entities: objections,
+      capture: 'Objections',
+      genre: GenreEnumType['objections'],
+    },
   }
+
+  const contentArray: any[] = [
+    {
+      typeIn: 'player',
+      component: (
+        <CONTENT_ASSIGNED_COMPONENT {...propsOutM1.contentAssignedComponentProps}>
+          <></>
+          <LoaderBlurhash {...propsOutM1.loaderBlurhashProps} />
+          <PlayerPanel {...propsOutM1.playerPanelProps} />
+        </CONTENT_ASSIGNED_COMPONENT>
+      ),
+    },
+    {
+      typeIn: 'summary',
+      component: summary && summary.length && (
+        <TextArticleStructured {...propsOutM1.summaryProps} />
+      ),
+    },
+    {
+      typeIn: 'article',
+      component: article && article.length && (
+        <TextArticleStructured {...propsOutM1.articleProps} />
+      ),
+    },
+    {
+      typeIn: 'objections',
+      component: objections && objections.length && (
+        <TextArticleStructured {...propsOutM1.objectionsProps} />
+      ),
+    },
+  ]
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
@@ -268,15 +311,36 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       screenType,
     },
     contentSectionProps: {
-      CONTENT_ASSIGNED_COMPONENT,
-      contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
-      playerPanelProps,
-      loaderBlurhashProps,
-      textStructuredComponentsProps,
+      contentArray,
     },
-    contentAssignedComponentProps,
-    loaderBlurhashProps,
-    playerPanelProps,
+    buttonPlayerUpProps: {
+      icon: '',
+      classAdded: 'Button_playerUp',
+      captureLeft: DICTIONARY.media[language],
+      handleEvents: () => {},
+      isDisplaying: true,
+    },
+    buttonSummaryUpProps: {
+      icon: '',
+      classAdded: 'Button_summaryUp',
+      captureLeft: DICTIONARY.summary[language],
+      handleEvents: () => {},
+      isDisplaying: summary && summary.length ? true : false,
+    },
+    buttonArticleUpProps: {
+      icon: '',
+      classAdded: 'Button_articleUp',
+      captureLeft: DICTIONARY.article[language],
+      handleEvents: () => {},
+      isDisplaying: article && article.length ? true : false,
+    },
+    buttonObjectionsUpProps: {
+      icon: '',
+      captureLeft: DICTIONARY.objections[language],
+      classAdded: 'Button_objectionsUp',
+      handleEvents: () => {},
+      isDisplaying: objections && objections.length ? true : false,
+    },
   }
 
   return (
@@ -299,6 +363,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {null}
             {/* middle-main */}
             <div className='AcademyPresent__middle-main'>
+              <div className='_buttonsWrapper'>
+                <ButtonYrl {...propsOut.buttonPlayerUpProps} />
+                <ButtonYrl {...propsOut.buttonArticleUpProps} />
+                <ButtonYrl {...propsOut.buttonSummaryUpProps} />
+                <ButtonYrl {...propsOut.buttonObjectionsUpProps} />
+              </div>
               <ContentSection {...propsOut.contentSectionProps} />
             </div>
             {/* middle-right */}
