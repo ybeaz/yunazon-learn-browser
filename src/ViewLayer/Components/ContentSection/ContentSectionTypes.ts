@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement, JSXElementConstructor } from 'react'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { TextArticleStructuredPropsType } from '../TextArticleStructured/TextArticleStructured'
@@ -19,9 +19,14 @@ export type TextStructuredComponentsPropsType = {
   titleArticle: string
 }
 
+export type ContentArrayItemType = {
+  typeIn: string
+  component: 0 | Element | React.JSX.Element
+}
+
 export type ContentSectionComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  contentArray: any[]
+  contentArray: ContentArrayItemType[]
 }
 
 export type ContentSectionPropsType = Omit<ContentSectionComponentPropsType, 'storeStateSlice'>

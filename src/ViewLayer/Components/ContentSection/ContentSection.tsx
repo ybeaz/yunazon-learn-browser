@@ -12,6 +12,7 @@ import {
   GetRearrangedArrayByIndexParamsType,
 } from '../../../Shared/getRearrangedArrayByIndex'
 import {
+  ContentArrayItemType,
   TextStructuredComponentsPropsType,
   ContentSectionComponentPropsType,
   ContentSectionPropsType,
@@ -30,57 +31,10 @@ const ContentSectionComponent: ContentSectionComponentType = (
 ) => {
   const { classAdded, contentArray } = props
 
-  const propsOut: ContentSectionPropsOutType = {
-    // buttonPlayerUpProps: {
-    //   icon: '',
-    //   classAdded: 'Button_playerUp',
-    //   captureLeft: DICTIONARY.media[language],
-    //   action: {
-    //     typeEvent: 'TOGGLE_IS_SUMMARY',
-    //     data: {},
-    //   },
-    //   isDisplaying: true,
-    // },
-    // buttonSummaryUpProps: {
-    //   icon: '',
-    //   classAdded: 'Button_summaryUp',
-    //   captureLeft: DICTIONARY.summary[language],
-    //   action: {
-    //     typeEvent: 'TOGGLE_IS_SUMMARY',
-    //     data: {},
-    //   },
-    //   isDisplaying: summary && summary.length ? true : false,
-    // },
-    // buttonArticleUpProps: {
-    //   icon: '',
-    //   classAdded: 'Button_articleUp',
-    //   captureLeft: DICTIONARY.article[language],
-    //   action: {
-    //     typeEvent: 'TOGGLE_IS_SUMMARY',
-    //     data: {},
-    //   },
-    //   isDisplaying: article && article.length ? true : false,
-    // },
-    // buttonObjectionsUpProps: {
-    //   icon: '',
-    //   captureLeft: DICTIONARY.objections[language],
-    //   classAdded: 'Button_objectionsUp',
-    //   action: {
-    //     typeEvent: 'TOGGLE_IS_OBJECTIONS',
-    //     data: {},
-    //   },
-    //   isDisplaying: objections && objections.length ? true : false,
-    // },
-  }
+  const propsOut: ContentSectionPropsOutType = {}
 
   return (
     <div className={getClasses('ContentSection', classAdded)}>
-      <div className='_buttonsWrapper'>
-        {/* <ButtonYrl {...propsOut.buttonPlayerUpProps} />
-        <ButtonYrl {...propsOut.buttonArticleUpProps} />
-        <ButtonYrl {...propsOut.buttonSummaryUpProps} />
-        <ButtonYrl {...propsOut.buttonObjectionsUpProps} /> */}
-      </div>
       <div className='_contentWrapper'>
         {contentArray.map((ContentItem: any) => ContentItem.component)}
       </div>
@@ -95,6 +49,7 @@ export const ContentSection: ContentSectionType = withStoreStateSelectedYrl(
 )
 
 export type {
+  ContentArrayItemType,
   TextStructuredComponentsPropsType,
   ContentSectionPropsType,
   ContentSectionPropsOutType,

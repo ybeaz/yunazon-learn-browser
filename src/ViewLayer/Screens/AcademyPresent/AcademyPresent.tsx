@@ -11,23 +11,18 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
-import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
-import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
 import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
-import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
-import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { GenreEnumType } from '../../../@types/GenreType'
 import {
@@ -36,7 +31,7 @@ import {
 } from '../../../Shared/getRearrangedArrayByIndex'
 import {
   ContentSection,
-  TextStructuredComponentsPropsType,
+  ContentArrayItemType,
 } from '../../Components/ContentSection/ContentSection'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
@@ -143,7 +138,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
-      console.info('AcademyPresent [152]', { contentComponentName2, contentType })
 
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
@@ -230,7 +224,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
-  const contentArrayIn: any[] = [
+  const contentArrayIn: ContentArrayItemType[] = [
     {
       typeIn: 'player',
       component: (
@@ -290,7 +284,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       icon: '',
       classAdded: 'Button_playerUp',
       captureLeft: DICTIONARY.media[language],
-      handleEvents: () => {},
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'player',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
       isDisplaying: true,
     },
     buttonSummaryUpProps: {
@@ -311,14 +312,28 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       icon: '',
       classAdded: 'Button_articleUp',
       captureLeft: DICTIONARY.article[language],
-      handleEvents: () => {},
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'article',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
       isDisplaying: article && article.length ? true : false,
     },
     buttonObjectionsUpProps: {
       icon: '',
       captureLeft: DICTIONARY.objections[language],
       classAdded: 'Button_objectionsUp',
-      handleEvents: () => {},
+      handleEvents: () => {
+        const contentArrayNext = getRearrangedArrayByIndex({
+          arrayIn: contentArrayIn,
+          typeIn: 'objections',
+        })
+        counterRef.current = 1
+        setContentArray(contentArrayNext)
+      },
       isDisplaying: objections && objections.length ? true : false,
     },
   }
@@ -345,8 +360,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             <div className='AcademyPresent__middle-main'>
               <div className='_buttonsWrapper'>
                 <ButtonYrl {...propsOut.buttonPlayerUpProps} />
-                <ButtonYrl {...propsOut.buttonArticleUpProps} />
                 <ButtonYrl {...propsOut.buttonSummaryUpProps} />
+                <ButtonYrl {...propsOut.buttonArticleUpProps} />
                 <ButtonYrl {...propsOut.buttonObjectionsUpProps} />
               </div>
               {contentComponentName && <ContentSection {...propsOut.contentSectionProps} />}
