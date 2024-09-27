@@ -15,7 +15,7 @@ import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
+import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
@@ -41,7 +41,7 @@ import {
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
-  PlayerIframe,
+  PlayerYoutubeIframe,
 }
 
 import {
@@ -91,7 +91,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   useflagsDebug(mediaLoadedModulesString)
 
   const [moduleState, setModuleState] = useState({
-    CONTENT_ASSIGNED_COMPONENT: PlayerIframe,
+    CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframe,
     contentComponentName: '',
     capture: '',
     language: '',
@@ -143,6 +143,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
       const contentComponentName2 = getContentComponentName(contentType)
+      console.info('AcademyPresent [152]', { contentComponentName2, contentType })
 
       setModuleState({
         CONTENT_ASSIGNED_COMPONENT: COMPONENT[contentComponentName2],
@@ -178,35 +179,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     return () => window.removeEventListener('resize', reportWindowSize)
   }, [])
 
-  const { width, height } = VIDEO_RESOLUTION
-  const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
-    useYouTubePlayerWork({
-      contentComponentName,
-      moduleID,
-      contentID,
-      width,
-      height,
-    })
-
-  const buttonPlayProps = {
-    icon: 'MdPlayArrow',
-    classAdded: 'Button_MdPlayArrow',
-    handleEvents: playVideoHandler,
-    action: {},
-  }
-  const buttonPauseProps = {
-    icon: 'MdPause',
-    classAdded: 'Button_MdPause',
-    handleEvents: pauseVideoHandler,
-    action: {},
-  }
-  const buttonStopProps = {
-    icon: 'MdRemoveCircle',
-    classAdded: 'Button_MdRemoveCircle',
-    handleEvents: stopVideoHandler,
-    action: {},
-  }
-
   const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
   const contentAssignedComponentProps: Record<string, any> = {
     ReaderIframe: {
@@ -216,22 +188,17 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isIframe: true,
       screenType,
     },
-    PlayerIframe: {
+    PlayerYoutubeIframe: {
+      contentComponentName,
+      moduleID,
       contentID,
       isVisible,
       isIframe: true,
+      capture,
+      durationObj,
+      screenType,
+      questionsTotal,
     },
-  }
-  const playerPanelProps: PlayerPanelPropsType = {
-    capture,
-    durationObj,
-    screenType,
-    isShowingPlay,
-    buttonPlayProps,
-    buttonPauseProps,
-    buttonStopProps,
-    isActionButtonDisplaying: false,
-    questionsTotal,
   }
 
   const loaderBlurhashProps: LoaderBlurhashPropsType = {
@@ -245,7 +212,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOutM1 = {
     CONTENT_ASSIGNED_COMPONENT,
     contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
-    playerPanelProps,
     loaderBlurhashProps,
     articleProps: {
       entities: article,
@@ -271,7 +237,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         <CONTENT_ASSIGNED_COMPONENT {...propsOutM1.contentAssignedComponentProps}>
           <></>
           <LoaderBlurhash {...propsOutM1.loaderBlurhashProps} />
-          <PlayerPanel {...propsOutM1.playerPanelProps} />
+          <></>
         </CONTENT_ASSIGNED_COMPONENT>
       ),
     },
@@ -296,12 +262,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   ]
 
   const [contentArray, setContentArray] = useState<any[]>([])
-
-  const modulesString = JSON.stringify(modules)
-
-  useEffect(() => {
-    setContentArray(contentArrayIn)
-  }, [modulesString])
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
@@ -389,7 +349,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
                 <ButtonYrl {...propsOut.buttonSummaryUpProps} />
                 <ButtonYrl {...propsOut.buttonObjectionsUpProps} />
               </div>
-              <ContentSection {...propsOut.contentSectionProps} />
+              {contentComponentName && <ContentSection {...propsOut.contentSectionProps} />}
             </div>
             {/* middle-right */}
             <CarouselQuestions />

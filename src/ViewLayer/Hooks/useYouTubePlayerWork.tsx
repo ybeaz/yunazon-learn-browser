@@ -65,13 +65,13 @@ export const useYouTubePlayerWork = ({
 
   const onChangePlayerStateHandler = (state: any) => {
     if (state.data === 0) {
-      // console.info('useYouTubePlayerWork [21] PlayerIframe event on end is captured', { state })
+      // console.info('useYouTubePlayerWork [21] PlayerYoutubeIframe event on end is captured', { state })
     }
     setPlayerState(state)
   }
 
   async function onYouTubeIframeAPIReady(videoId: string) {
-    if (contentComponentName === 'PlayerIframe') {
+    if (contentComponentName === 'PlayerYoutubeIframe') {
       try {
         // @ts-expect-error
         window['YT'].ready(function () {
@@ -126,10 +126,3 @@ export const useYouTubePlayerWork = ({
     isShowingPlay,
   }
 }
-
-// const getLoadedPlayerScript = () => {
-//   var tag = document.createElement('script')
-//   tag.src = 'https://www.youtube.com/iframe_api'
-//   const firstScriptTag = document.getElementsByTagName('script')[0]
-//   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
-// }

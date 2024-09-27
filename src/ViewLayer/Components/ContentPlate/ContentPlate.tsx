@@ -10,7 +10,7 @@ import { LoaderBlurhash } from '../LoaderBlurhash'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
-import { PlayerIframe } from '../../Frames/PlayerIframe/PlayerIframe'
+import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getSizeWindow } from '../../../Shared/getSizeWindow'
@@ -18,7 +18,7 @@ import { getClasses } from '../../../Shared/getClasses'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
-  PlayerIframe,
+  PlayerYoutubeIframe,
 }
 
 import {
@@ -86,11 +86,16 @@ const ContentPlateComponent: ContentPlateComponentType = (
         isVisible,
         isIframe: true,
       },
-      PlayerIframe: {
+      PlayerYoutubeIframe: {
+        contentComponentName,
         moduleID,
         contentID,
         isVisible,
         isIframe: !plateImageSrc,
+        capture,
+        durationObj,
+        screenType,
+        questionsTotal: 0,
       },
     },
     iconCompletedProps: {

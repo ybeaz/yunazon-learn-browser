@@ -21,6 +21,7 @@ import {
  */
 const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelComponentPropsType) => {
   const { classAdded, storeStateSlice } = props
+  console.info('PlayerPanel [24]', { props })
 
   const {
     capture,
