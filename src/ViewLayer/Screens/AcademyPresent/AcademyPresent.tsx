@@ -357,7 +357,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
             {/* middle-left */}
             {null}
             {/* middle-main */}
-            <div className='AcademyPresent__middle-main'>
+            <div className='_middleWrapper'>
               <div className='_buttonsWrapper'>
                 <ButtonYrl {...propsOut.buttonPlayerUpProps} />
                 <ButtonYrl {...propsOut.buttonSummaryUpProps} />
