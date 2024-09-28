@@ -68,8 +68,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const params = useParams()
   const counterRef = useRef(0)
 
-  const { innerWidth, innerHeight } = window
-  // const { width: mediaWidth, height: mediaHeight } = useMediaQueryResYrl()
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
@@ -181,6 +179,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isVisible,
       isIframe: true,
       screenType,
+      isNoSeoIndexing: true,
     },
     PlayerYoutubeIframe: {
       contentComponentName,
@@ -192,6 +191,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       durationObj,
       screenType,
       questionsTotal,
+      isNoSeoIndexing: true,
     },
   }
 

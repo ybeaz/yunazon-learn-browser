@@ -1,13 +1,10 @@
-import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { ReactNode } from 'react'
 
 export type NoSeoIndexingYrlComponentPropsType = {
-  classMain?: 'NoSeoIndexingYrl' | 'LoaderOverlay2Yrl' | 'LoaderOverlay3Yrl'
-  storeStateSlice: {
-    isLoaderOverlayVisible: RootStoreType['componentsState']['isLoaderOverlayVisible']
-  }
+  children: ReactNode
 }
 
-export type NoSeoIndexingYrlPropsType = Omit<NoSeoIndexingYrlComponentPropsType, 'storeStateSlice'>
+export type NoSeoIndexingYrlPropsType = NoSeoIndexingYrlComponentPropsType
 
 export type NoSeoIndexingYrlPropsOutType = Record<string, any>
 

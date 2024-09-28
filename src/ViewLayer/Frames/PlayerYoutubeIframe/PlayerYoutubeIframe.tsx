@@ -2,6 +2,7 @@ import React from 'react'
 import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
+import { withConditionalWrapperYrl, NoSeoIndexingYrl } from '../../ComponentsLibrary'
 import {
   PlayerYoutubeIframePropsType,
   PlayerYoutubeIframePropsOutType,
@@ -87,7 +88,10 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
   )
 }
 
-export const PlayerYoutubeIframe: PlayerYoutubeIframeType = React.memo(PlayerYoutubeIframeComponent)
+export const PlayerYoutubeIframe: PlayerYoutubeIframeType = withConditionalWrapperYrl(
+  (props: any) => !!props.isNoSeoIndexing,
+  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+)(React.memo(PlayerYoutubeIframeComponent))
 
 export type {
   PlayerYoutubeIframePropsType,

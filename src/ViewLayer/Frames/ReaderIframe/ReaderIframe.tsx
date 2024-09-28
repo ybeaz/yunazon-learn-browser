@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
+import { withConditionalWrapperYrl, NoSeoIndexingYrl } from '../../ComponentsLibrary'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
 import {
@@ -49,7 +50,10 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
   )
 }
 
-export const ReaderIframe: ReaderIframeType = React.memo(ReaderIframeComponent)
+export const ReaderIframe: ReaderIframeType = withConditionalWrapperYrl(
+  (props: any) => !!props.isNoSeoIndexing,
+  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+)(React.memo(ReaderIframeComponent))
 
 export type {
   ReaderIframePropsType,

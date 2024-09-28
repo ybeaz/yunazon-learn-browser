@@ -75,6 +75,14 @@ import {
   withIsNoYesSeoIndexingYrl,
 } from './Hooks/withIsNoYesSeoIndexingYrl'
 
+import {
+  NoSeoIndexingYrl,
+  NoSeoIndexingYrlPropsType,
+  NoSeoIndexingYrlPropsOutType,
+  NoSeoIndexingYrlComponentType,
+  NoSeoIndexingYrlType,
+} from './NoSeoIndexingYrl/NoSeoIndexingYrl'
+
 export type {
   WithIsNoSeoIndexingYrlType,
   ConditionFunctionType,
@@ -117,6 +125,10 @@ export {
 }
 
 export type {
+  NoSeoIndexingYrlPropsType,
+  NoSeoIndexingYrlPropsOutType,
+  NoSeoIndexingYrlComponentType,
+  NoSeoIndexingYrlType,
   ConfirmationYesNoBodyYrlPropsType,
   ConfirmationYesNoBodyYrlType,
   InputGroupYrlPropsType,
@@ -134,6 +146,7 @@ export type {
 }
 
 export {
+  NoSeoIndexingYrl,
   ConfirmationYesNoBodyYrl,
   InputGroupYrl,
   ButtonYrl,

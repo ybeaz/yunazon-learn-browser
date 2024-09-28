@@ -5,7 +5,7 @@ import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirs
 import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
 import { TextsPartsStructured } from '../TextsPartsStructured/TextsPartsStructured'
-import { withConditionalWrapperYrl } from '../../ComponentsLibrary'
+import { withConditionalWrapperYrl, NoSeoIndexingYrl } from '../../ComponentsLibrary'
 import {
   TextArticleStructuredComponentPropsType,
   TextArticleStructuredPropsType,
@@ -155,13 +155,7 @@ const TextArticleStructuredComponent: TextArticleStructuredComponentType = (
 
 export const TextArticleStructured: TextArticleStructuredType = withConditionalWrapperYrl(
   (props: any) => !!props.isNoSeoIndexing,
-  ({ children }) => (
-    <div data-nosnippet>
-      <div>{`<!--googleoff: all-->`}</div>
-      <noindex>{children}</noindex>
-      <div>{`<!--googleon: all-->`}</div>
-    </div>
-  )
+  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
 )(React.memo(TextArticleStructuredComponent))
 
 export type {

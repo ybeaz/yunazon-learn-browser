@@ -1,6 +1,7 @@
 import React, { ComponentType, FunctionComponent } from 'react'
 
 import { withConditionalWrapperYrl } from './withConditionalWrapperYrl'
+import { NoSeoIndexingYrl } from '../NoSeoIndexingYrl/NoSeoIndexingYrl'
 
 type WithIsNoSeoIndexingYrlPropsType = { isNoSeoIndexing?: boolean }
 
@@ -21,13 +22,7 @@ const withIsNoYesSeoIndexingYrl: WithIsNoSeoIndexingYrlType = <
 ) =>
   withConditionalWrapperYrl(
     (props: P) => props.isNoSeoIndexing || false,
-    ({ children }) => (
-      <div data-nosnippet>
-        <div>{`<!--googleoff: all-->`}</div>
-        <noindex>{children}</noindex>
-        <div>{`<!--googleon: all-->`}</div>
-      </div>
-    )
+    ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
   )(Component)
 
 export { withIsNoYesSeoIndexingYrl, WithIsNoSeoIndexingYrlType, WithIsNoSeoIndexingYrlPropsType }

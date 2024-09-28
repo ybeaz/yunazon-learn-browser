@@ -11,41 +11,22 @@ import {
   NoSeoIndexingYrlType,
 } from './NoSeoIndexingYrlTypes'
 
-const propsDefault = {
-  classMain: 'LoaderOverlay3Yrl',
-}
-
 /**
  * @description Component to render NoSeoIndexingYrl
  * @import import { NoSeoIndexingYrl, NoSeoIndexingYrlPropsType, NoSeoIndexingYrlPropsOutType, NoSeoIndexingYrlType } 
              from '../ComponentsLibrary/'
  */
-const NoSeoIndexingYrlComponent: NoSeoIndexingYrlComponentType = (
-  propsIn: NoSeoIndexingYrlComponentPropsType
-) => {
-  const props = { ...propsDefault, ...propsIn }
-
-  const {
-    classMain,
-    storeStateSlice: { isLoaderOverlayVisible },
-  } = props
-
-  const classAdd = isLoaderOverlayVisible ? `${classMain}_show` : ''
-
-  const propsOut: NoSeoIndexingYrlPropsOutType = {}
-
-  return (
-    <div className={getClasses(classMain, classAdd)}>
-      <div className={`_spinner`}></div>
-    </div>
-  )
-}
-
-const storeStateSliceProps: string[] = ['isLoaderOverlayVisible']
-export const NoSeoIndexingYrl: NoSeoIndexingYrlType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(NoSeoIndexingYrlComponent)
+const NoSeoIndexingYrlComponent: NoSeoIndexingYrlComponentType = ({
+  children,
+}: NoSeoIndexingYrlComponentPropsType) => (
+  <div className='NoSeoIndexingYrl' data-nosnippet>
+    <div className='_hiddenTag'>{`<!--googleoff: all-->`}</div>
+    <noindex>{children}</noindex>
+    <div className='_hiddenTag'>{`<!--googleon: all-->`}</div>
+  </div>
 )
+
+export const NoSeoIndexingYrl: NoSeoIndexingYrlType = NoSeoIndexingYrlComponent
 
 export type {
   NoSeoIndexingYrlPropsType,
