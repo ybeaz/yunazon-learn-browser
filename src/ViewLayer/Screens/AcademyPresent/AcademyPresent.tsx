@@ -78,7 +78,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
 
-  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }])
+  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }], [moduleID])
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
