@@ -209,18 +209,21 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     loaderBlurhashProps,
     articleProps: {
       entities: article,
-      capture: 'Article',
+      capture,
       genre: GenreEnumType['article'],
+      isNoSeoIndexing: false,
     },
     summaryProps: {
       entities: summary,
       capture: 'Summary',
       genre: GenreEnumType['summary'],
+      isNoSeoIndexing: true,
     },
     objectionsProps: {
       entities: objections,
       capture: 'Objections',
       genre: GenreEnumType['objections'],
+      isNoSeoIndexing: true,
     },
   }
 

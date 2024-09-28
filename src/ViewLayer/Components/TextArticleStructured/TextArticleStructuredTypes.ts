@@ -27,6 +27,7 @@ export type TextArticleStructuredComponentPropsType = {
   thumbnails?: ThumbnailsType
   creator?: ProfileType
   organization?: OrganizationType
+  isNoSeoIndexing?: boolean
   isSeo?: boolean
 }
 

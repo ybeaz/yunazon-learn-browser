@@ -10,11 +10,7 @@ import {
   InputGroupYrl,
 } from './InputGroupYrl/InputGroupYrl'
 
-import {
-  ButtonYrl,
-  ButtonYrlPropsType,
-  ButtonYrlType,
-} from './ButtonYrl/ButtonYrl'
+import { ButtonYrl, ButtonYrlPropsType, ButtonYrlType } from './ButtonYrl/ButtonYrl'
 import { IconYrl, IconYrlPropsType, IconYrlType } from './IconYrl/IconYrl'
 import { ImageYrl, ImageYrlPropsType, ImageYrlType } from './ImageYrl/ImageYrl'
 import { InputYrl, InputYrlPropsType, InputYrlType } from './InputYrl/InputYrl'
@@ -24,11 +20,7 @@ import {
   LoaderOverlayYrlType,
 } from './LoaderOverlayYrl/LoaderOverlayYrl'
 
-import {
-  useAnimatedYrl,
-  UseAnimatedYrlType,
-  UseAnimatedYrlPropsType,
-} from './Hooks/useAnimatedYrl'
+import { useAnimatedYrl, UseAnimatedYrlType, UseAnimatedYrlPropsType } from './Hooks/useAnimatedYrl'
 
 import { useIntervalYrl, UseIntervalYrlType } from './Hooks/useIntervalYrl'
 
@@ -51,10 +43,7 @@ import {
   WithStoreStateSliceYrlPropsType,
 } from './Hooks/withStoreStateSliceYrl'
 
-import {
-  withUseContextYrl,
-  WithUseContextYrlType,
-} from './Hooks/withUseContextYrl'
+import { withUseContextYrl, WithUseContextYrlType } from './Hooks/withUseContextYrl'
 
 import {
   WithPropsYrlPropsType,
@@ -71,14 +60,21 @@ import {
   withElementDimensionsYrlType,
 } from './Hooks/withElementDimensionsYrl'
 
-import {
-  selectStoreSlice,
-  SelectStoreSliceParamsType,
-} from './Hooks/selectStoreSlice'
+import { selectStoreSlice, SelectStoreSliceParamsType } from './Hooks/selectStoreSlice'
 
 import { withStoreStateSelectedYrl } from './Hooks/withStoreStateSelectedYrl'
 
+import {
+  ConditionFunctionType,
+  WrapperPropsType,
+  WithConditionalWrapperYrlType,
+  withConditionalWrapperYrl,
+} from './Hooks/withConditionalWrapperYrl'
+
 export type {
+  ConditionFunctionType,
+  WrapperPropsType,
+  WithConditionalWrapperYrlType,
   WithPropsYrlPropsType,
   WithPropsM1YrlType,
   WithPropsYrlType,
@@ -107,6 +103,7 @@ export {
   withPropsYrl,
   withStoreStateYrl,
   withStoreStateSliceYrl,
+  withConditionalWrapperYrl,
   withUseContextYrl,
   withElementDimensionsYrl,
   withStoreStateSelectedYrl,

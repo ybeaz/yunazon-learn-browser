@@ -5,7 +5,7 @@ import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirs
 import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
 import { TextsPartsStructured } from '../TextsPartsStructured/TextsPartsStructured'
-
+import { withConditionalWrapperYrl } from '../../ComponentsLibrary'
 import {
   TextArticleStructuredComponentPropsType,
   TextArticleStructuredPropsType,
@@ -59,6 +59,7 @@ const TextArticleStructuredComponent: TextArticleStructuredComponentType = (
     creator = propsDefault.creator,
     organization = propsDefault.organization,
     isSeo = false,
+    isNoSeoIndexing = false,
   } = props
 
   const dateCreated = dateCreatedIn && new Date(dateCreatedIn).toUTCString()
@@ -152,9 +153,16 @@ const TextArticleStructuredComponent: TextArticleStructuredComponentType = (
   )
 }
 
-export const TextArticleStructured: TextArticleStructuredType = React.memo(
-  TextArticleStructuredComponent
-)
+export const TextArticleStructured: TextArticleStructuredType = withConditionalWrapperYrl(
+  (props: any) => !!props.isNoSeoIndexing,
+  ({ children }) => (
+    <div data-nosnippet>
+      <div>{`<!--googleoff: all-->`}</div>
+      <noindex>{children}</noindex>
+      <div>{`<!--googleon: all-->`}</div>
+    </div>
+  )
+)(React.memo(TextArticleStructuredComponent))
 
 export type {
   TextArticleStructuredPropsType,
