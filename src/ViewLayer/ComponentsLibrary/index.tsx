@@ -70,8 +70,13 @@ import {
   WithConditionalWrapperYrlType,
   withConditionalWrapperYrl,
 } from './Hooks/withConditionalWrapperYrl'
+import {
+  WithIsNoSeoIndexingYrlType,
+  withIsNoYesSeoIndexingYrl,
+} from './Hooks/withIsNoYesSeoIndexingYrl'
 
 export type {
+  WithIsNoSeoIndexingYrlType,
   ConditionFunctionType,
   WrapperPropsType,
   WithConditionalWrapperYrlType,
@@ -104,6 +109,7 @@ export {
   withStoreStateYrl,
   withStoreStateSliceYrl,
   withConditionalWrapperYrl,
+  withIsNoYesSeoIndexingYrl,
   withUseContextYrl,
   withElementDimensionsYrl,
   withStoreStateSelectedYrl,
