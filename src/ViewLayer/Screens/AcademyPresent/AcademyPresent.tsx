@@ -285,7 +285,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     buttonPlayerUpProps: {
       icon: '',
       classAdded: 'Button_playerUp',
-      captureLeft: DICTIONARY.media[language],
+      captureLeft: DICTIONARY.media[languageSite],
       handleEvents: () => {
         const contentArrayNext = getRearrangedArrayByIndex({
           arrayIn: contentArrayIn,
@@ -299,7 +299,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     buttonSummaryUpProps: {
       icon: '',
       classAdded: 'Button_summaryUp',
-      captureLeft: DICTIONARY.summary[language],
+      captureLeft: DICTIONARY.summary[languageSite],
       handleEvents: () => {
         const contentArrayNext = getRearrangedArrayByIndex({
           arrayIn: contentArrayIn,
@@ -313,7 +313,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     buttonArticleUpProps: {
       icon: '',
       classAdded: 'Button_articleUp',
-      captureLeft: DICTIONARY.article[language],
+      captureLeft: DICTIONARY.article[languageSite],
       handleEvents: () => {
         const contentArrayNext = getRearrangedArrayByIndex({
           arrayIn: contentArrayIn,
@@ -326,7 +326,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
     buttonObjectionsUpProps: {
       icon: '',
-      captureLeft: DICTIONARY.objections[language],
+      captureLeft: DICTIONARY.objections[languageSite],
       classAdded: 'Button_objectionsUp',
       handleEvents: () => {
         const contentArrayNext = getRearrangedArrayByIndex({
