@@ -21,7 +21,7 @@ export type TextStructuredComponentsPropsType = {
 
 export type ContentArrayItemType = {
   typeIn: string
-  component: 0 | Element | React.JSX.Element
+  component: Element | React.JSX.Element | null
 }
 
 export type ContentSectionComponentPropsType = {

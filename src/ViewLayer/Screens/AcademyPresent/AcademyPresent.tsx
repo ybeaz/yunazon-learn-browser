@@ -240,21 +240,20 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
     {
       typeIn: 'summary',
-      component: summary && summary.length && (
-        <TextArticleStructured {...propsOutM1.summaryProps} />
-      ),
+      component:
+        summary && summary.length ? <TextArticleStructured {...propsOutM1.summaryProps} /> : null,
     },
     {
       typeIn: 'article',
-      component: article && article.length && (
-        <TextArticleStructured {...propsOutM1.articleProps} />
-      ),
+      component:
+        article && article.length ? <TextArticleStructured {...propsOutM1.articleProps} /> : null,
     },
     {
       typeIn: 'objections',
-      component: objections && objections.length && (
-        <TextArticleStructured {...propsOutM1.objectionsProps} />
-      ),
+      component:
+        objections && objections.length ? (
+          <TextArticleStructured {...propsOutM1.objectionsProps} />
+        ) : null,
     },
   ]
 
