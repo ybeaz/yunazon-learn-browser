@@ -4,6 +4,12 @@
 
 ## How to section, architecture / development notes
 
+### How to link a package with yalc?
+
+1. Terminal > (in the directory of the new package - sender) `yarn build && yalc publish --push`
+2. Terminal > (in the main directory - receiver)
+   `yalc link yourails_communication_layer`
+
 ### How to add icon to the project
 
 - Find a name of the icon (e.g. `MdLightbulbOutline`) by the link `https://react-icons.github.io/react-icons/icons/md/`

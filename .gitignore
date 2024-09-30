@@ -64,3 +64,5 @@ workspace.code-workspace
 ~$swipeFileSep.xlsx
 web-build
 archive
+.yalc
+yalc.lock
