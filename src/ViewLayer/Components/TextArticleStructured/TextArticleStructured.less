@@ -1,0 +1,55 @@
+.TextArticleStructured {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 2rem;
+
+  ._h2 {
+    font-size: @fontSizeH2;
+    align-self: center;
+    padding: 2rem 0;
+    text-transform: capitalize;
+  }
+
+  ._captureTextWrapper {
+    flex-direction: column;
+
+    ._capture {
+      padding: 1rem 0;
+      font-size: @fontSizeH3;
+    }
+
+    ._paragraph {
+      padding: 0.5rem 0;
+      line-height: 1.5;
+    }
+
+    ._span {
+      display: iinline;
+    }
+
+    ._noTextIdent {
+      text-indent: 0rem;
+    }
+
+    ._olStyle {
+    }
+
+    ._ulStyle {
+    }
+
+    ._li {
+      line-height: 1.5;
+      padding: 0.5rem 0;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+  }
+}

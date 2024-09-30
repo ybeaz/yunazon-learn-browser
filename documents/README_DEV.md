@@ -4,6 +4,13 @@
 
 ## How to section, architecture / development notes
 
+### How to link a package with yalc and run changes?
+
+1. Terminal > (in the directory of the new package - sender) `yarn build && yalc publish --push`
+2. Terminal > (in the main directory - receiver)
+   `yalc link yourails_communication_layer`
+3. Terminal > (in the directory of the new package - sender) `yarn build && yalc push`
+
 ### How to add icon to the project
 
 - Find a name of the icon (e.g. `MdLightbulbOutline`) by the link `https://react-icons.github.io/react-icons/icons/md/`
@@ -37,6 +44,11 @@
 - Add the name of this component to the `src/Constants/routes.const.ts` file
 - Add the component to the `PAGES` dictionary in the `src/Navigation/NavigationWeb.tsx` file
 - Check navigation working in the address browser field
+
+### How do publish yourails_communication_layer
+
+- Terminal >
+  `cd ~/Dev/yourails_communication_layer/ && eval $(ssh-agent -s); ssh-add ~/.ssh/2020-10-19-rsa && npm init && npm publish`,
 
 ### How to build and deploy web.yourails.com
 

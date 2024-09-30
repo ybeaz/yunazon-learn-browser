@@ -7,7 +7,7 @@ import {
   getResponseGraphqlAsync,
   ResolveGraphqlEnumType,
   FragmentEnumType,
-} from '../../../../yourails_communication_layer'
+} from 'yourails_communication_layer'
 import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'

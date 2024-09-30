@@ -18,10 +18,7 @@ export type PlayerPanelComponentPropsType = {
   }
 }
 
-export type PlayerPanelPropsType = Omit<
-  PlayerPanelComponentPropsType,
-  'storeStateSlice'
->
+export type PlayerPanelPropsType = Omit<PlayerPanelComponentPropsType, 'storeStateSlice'>
 
 export type PlayerPanelPropsOutType = Record<string, any>
 

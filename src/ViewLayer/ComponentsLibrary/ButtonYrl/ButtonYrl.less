@@ -982,6 +982,7 @@
     flex: 1;
     height: 2.5rem;
     justify-content: space-evenly;
+    border-radius: @borderRadius0P5;
 
     &:active,
     &:focus {
@@ -1107,6 +1108,40 @@
   }
 }
 
+.Button_playerUp,
+.Button_summaryUp,
+.Button_articleUp,
+.Button_objectionsUp {
+  flex: 1;
+  padding: 0 0 0 0;
+  align-items: center;
+  max-width: fit-content;
+
+  .__button {
+    flex: 1;
+    border-radius: @borderRadius0P5;
+    max-width: fit-content;
+
+    &:active,
+    &:focus {
+    }
+
+    ._in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      padding: 0.5rem;
+
+      ._capture_left {
+      }
+      ._capture_right {
+        padding-right: 2rem;
+      }
+    }
+  }
+}
+
 .Button_NoCancel,
 .Button_YesConfirm,
 .Button_summaryIsSummary,
@@ -1115,7 +1150,6 @@
   padding: 0 0 0 0;
   align-items: center;
   max-width: fit-content;
-  border-radius: @borderRadius0P5;
 
   .__button {
     flex: 1;

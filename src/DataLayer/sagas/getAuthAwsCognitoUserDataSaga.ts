@@ -5,10 +5,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'

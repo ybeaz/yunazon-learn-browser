@@ -2,10 +2,8 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
-import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
-import { TextStructuredPropsType } from '../../Components/TextStructured/TextStructured'
-import { TextStructuredColumnsPropsType } from '../../Components/TextStructuredColumns/TextStructuredColumns'
+import { ContentSectionPropsType } from '../../Components/ContentSection/ContentSection'
+import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -14,23 +12,19 @@ export type AcademyPresentComponentPropsType = {
     moduleIDActive: RootStoreType['scorm']['courseIDActive']
     modules: RootStoreType['modules']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
-    isObjections: RootStoreType['componentsState']['isObjections']
-    isSummary: RootStoreType['componentsState']['isSummary']
   }
 }
 
-export type AcademyPresentPropsType = Omit<
-  AcademyPresentComponentPropsType,
-  'storeStateSlice'
->
+export type AcademyPresentPropsType = Omit<AcademyPresentComponentPropsType, 'storeStateSlice'>
 
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
   mainFrameProps: Omit<MainFramePropsType, 'children'>
-  contentComponentProps: Record<string, any>
-  loaderBlurhashProps: LoaderBlurhashPropsType
-  playerPanelProps: PlayerPanelPropsType
-  textStructuredColumnsProps: TextStructuredColumnsPropsType
+  contentSectionProps: ContentSectionPropsType
+  buttonPlayerUpProps: ButtonYrlPropsType
+  buttonArticleUpProps: ButtonYrlPropsType
+  buttonSummaryUpProps: ButtonYrlPropsType
+  buttonObjectionsUpProps: ButtonYrlPropsType
 }
 
 /**
@@ -41,5 +35,4 @@ export interface AcademyPresentComponentType
   (props: AcademyPresentComponentPropsType): React.ReactElement
 }
 
-export type AcademyPresentType =
-  React.FunctionComponent<AcademyPresentPropsType>
+export type AcademyPresentType = React.FunctionComponent<AcademyPresentPropsType>

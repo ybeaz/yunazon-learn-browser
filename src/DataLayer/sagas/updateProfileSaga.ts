@@ -3,10 +3,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { MutationUpdateProfilesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withDebounce } from '../../Shared/withDebounce'

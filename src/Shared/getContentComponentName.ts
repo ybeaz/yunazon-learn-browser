@@ -7,8 +7,8 @@ export const getContentComponentName = (componentType: string): string => {
   const output: Record<string, string> = {
     urlArbir: 'ReaderIframe',
     htmlPage: 'ReaderIframe',
-    ytID: 'PlayerIframe',
+    ytID: 'PlayerYoutubeIframe',
   }
 
-  return output[componentType] ? output[componentType] : 'PlayerIframe'
+  return output[componentType] ? output[componentType] : 'PlayerYoutubeIframe'
 }

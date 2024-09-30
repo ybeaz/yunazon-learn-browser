@@ -3,10 +3,7 @@ import { takeEvery, put } from 'redux-saga/effects'
 import { QuerySendEmailDocumentArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { withDebounce } from '../../Shared/withDebounce'

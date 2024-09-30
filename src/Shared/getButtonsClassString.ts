@@ -24,11 +24,11 @@ export const getButtonsClassString: Function = (
   questionsChunked: any[],
   isModuleStarted: boolean
 ): GetButtonsClassString => {
-  const { total: questionsTotal, answered: questionsAnswered } =
-    getAnswersChecked2(questionsActive)
+  const { total: questionsTotal, answered: questionsAnswered } = getAnswersChecked2(questionsActive)
 
-  const { total: chunkLen, answered: questionsChunkAnswered } =
-    getAnswersChecked2(questionsChunked[questionsSlideNumber])
+  const { total: chunkLen, answered: questionsChunkAnswered } = getAnswersChecked2(
+    questionsChunked[questionsSlideNumber]
+  )
 
   let isButtonSlideStart = false
   let isButtonSlideBackward = false
@@ -70,7 +70,7 @@ export const getButtonsClassString: Function = (
   if (!isModuleStarted) {
     isButtonSlideStart = true
     buttonRight = 'display_startModule'
-  } else if (!questionsActive.length) {
+  } else if (!questionsActive?.length) {
     isButtonSlideStart = false
     isButtonSlideBackward = false
     isButtonSlideForward = false

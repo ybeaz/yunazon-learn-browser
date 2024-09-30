@@ -43,7 +43,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     capture,
     moduleID,
     contentID,
-    questions: questionsActive,
+    questions: questionsActive = [],
   } = getModuleByModuleID(
     {
       moduleID: moduleIDActive || '',

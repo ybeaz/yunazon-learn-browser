@@ -29,6 +29,40 @@ export type AiRequestOptionsType = {
   response_format?: Maybe<Scalars['String']['output']>;
 };
 
+export type ArticleIItemOptionsInputType = {
+  /** module Article item options type */
+  style: StyleInputEnumType;
+};
+
+export type ArticleIItemOptionsType = {
+  __typename?: 'ArticleIItemOptionsType';
+  /** module Article item options type */
+  style: StyleEnumType;
+};
+
+export type ArticleItemInputType = {
+  /** module Article item ID */
+  articleItemID?: InputMaybe<Scalars['ID']['input']>;
+  /** module Article item capture */
+  capture?: InputMaybe<Scalars['String']['input']>;
+  /** module Article item divs */
+  divs?: InputMaybe<Array<Scalars['String']['input']>>;
+  /** module Article item options for divs */
+  options?: InputMaybe<ArticleIItemOptionsInputType>;
+};
+
+export type ArticleItemType = {
+  __typename?: 'ArticleItemType';
+  /** module Article ID */
+  articleItemID: Scalars['ID']['output'];
+  /** module Article item capture */
+  capture?: Maybe<Scalars['String']['output']>;
+  /** module Article item divs */
+  divs?: Maybe<Array<Scalars['String']['output']>>;
+  /** module Article item options for divs */
+  options?: Maybe<ArticleIItemOptionsType>;
+};
+
 export type AvatarSizeInputType = {
   /** height */
   height?: InputMaybe<Scalars['Float']['input']>;
@@ -271,8 +305,6 @@ export type CoursesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type CoursesDropIndexesType = {
@@ -376,6 +408,8 @@ export type CreateDocumentInputType = {
 };
 
 export type CreateModuleInputType = {
+  /** module article */
+  article?: InputMaybe<Array<Array<ArticleItemInputType>>>;
   /** capture */
   capture: Scalars['String']['input'];
   /** capture channel */
@@ -522,8 +556,6 @@ export type CreateYoutubeTranscriptType = {
   isTranscript?: Maybe<Scalars['Boolean']['output']>;
   /** length */
   length?: Maybe<Scalars['Float']['output']>;
-  /** transcript */
-  transcript?: Maybe<Scalars['String']['output']>;
   /** transcriptList */
   transcriptList?: Maybe<Array<TranscriptObjectBotType>>;
 };
@@ -572,8 +604,6 @@ export type DocumentsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DocumentsDropIndexesType = {
@@ -880,6 +910,8 @@ export type ModuleForDocumentType = {
 
 export type ModuleType = {
   __typename?: 'ModuleType';
+  /** module article */
+  article?: Maybe<Array<Array<ArticleItemType>>>;
   /** capture */
   capture: Scalars['String']['output'];
   /** capture channel */
@@ -916,7 +948,7 @@ export type ModuleType = {
   language: Scalars['String']['output'];
   /** module ID */
   moduleID: Scalars['ID']['output'];
-  /** module objection */
+  /** module objections */
   objections?: Maybe<Array<ObjectionType>>;
   /** organizationID */
   organizationID: Scalars['ID']['output'];
@@ -954,8 +986,6 @@ export type ModulesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ModulesDropIndexesType = {
@@ -1499,8 +1529,6 @@ export type ProfilesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProfilesDropIndexesType = {
@@ -1919,6 +1947,18 @@ export type ReadModulesConnectionInputType = {
   first?: InputMaybe<Scalars['Int']['input']>;
   /** isActive */
   isActive?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isArticle query modules with or without article */
+  isArticle?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isObjectionsList query modules with or without objections */
+  isObjectionsList?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isQuestionsList query modules with or without questions */
+  isQuestionsList?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isSummary query modules with or without summary */
+  isSummary?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isTagsList query modules with or without tags */
+  isTagsList?: InputMaybe<Scalars['Boolean']['input']>;
+  /** isTranscriptList query modules with or without transcriptList */
+  isTranscriptList?: InputMaybe<Scalars['Boolean']['input']>;
   /** language code */
   language?: InputMaybe<Scalars['String']['input']>;
   /** learner ID */
@@ -2169,6 +2209,18 @@ export type SortTemplatesInputType = {
   prop?: InputMaybe<Scalars['String']['input']>;
 };
 
+export enum StyleEnumType {
+  Ol = 'ol',
+  P = 'p',
+  Ul = 'ul'
+}
+
+export enum StyleInputEnumType {
+  Ol = 'ol',
+  P = 'p',
+  Ul = 'ul'
+}
+
 export type Subscription = {
   __typename?: 'Subscription';
   documentAdded: DocumentType;
@@ -2249,8 +2301,6 @@ export type TagsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TagsDropIndexesType = {
@@ -2289,8 +2339,6 @@ export type TemplatesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TemplatesDropIndexesType = {
@@ -2711,6 +2759,8 @@ export type UpdateModuleForDocumentInputType = {
 };
 
 export type UpdateModuleInputType = {
+  /** module article */
+  article?: InputMaybe<Array<Array<ArticleItemInputType>>>;
   /** capture */
   capture: Scalars['String']['input'];
   /** capture channel */

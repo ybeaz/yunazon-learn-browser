@@ -20,7 +20,7 @@ import {
              from '../Components/PlayerPanel/PlayerPanel'
  */
 const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelComponentPropsType) => {
-  const { classAdded, storeStateSlice } = props
+  const { classAdded } = props
 
   const {
     capture,
@@ -104,7 +104,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const PlayerPanel: React.FunctionComponent<PlayerPanelPropsType> = withStoreStateSelectedYrl(
+export const PlayerPanel: PlayerPanelType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(PlayerPanelComponent)
 )

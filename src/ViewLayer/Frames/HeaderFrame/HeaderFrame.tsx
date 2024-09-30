@@ -13,7 +13,13 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
-import { InputGroupYrl, ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import {
+  InputGroupYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+  withConditionalWrapperYrl,
+  NoSeoIndexingYrl,
+} from '../../ComponentsLibrary/'
 
 import {
   HeaderFrameComponentPropsType,
@@ -191,7 +197,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
 
   return (
-    <div id={`id_header_${contentComponentName}`} className={getClasses('HeaderFrame', classAdded)}>
+    <div className={getClasses('HeaderFrame', classAdded)}>
       <div className='_content'>
         <div className='__left'>
           {isButtonSideMenuLeft && SideMenuLeft}
@@ -248,10 +254,10 @@ const storeStateSliceProps: string[] = [
   'profiles',
   'screenActive',
 ]
-export const HeaderFrame: HeaderFrameType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(HeaderFrameComponent)
-)
+export const HeaderFrame: HeaderFrameType = withConditionalWrapperYrl(
+  (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
+  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+)(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(HeaderFrameComponent)))
 
 export type {
   HeaderFramePropsType,

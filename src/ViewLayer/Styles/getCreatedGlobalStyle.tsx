@@ -230,6 +230,11 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+
+    .Button_playerUp .__button,
+    .Button_summaryUp .__button,
+    .Button_articleUp .__button,
+    .Button_objectionsUp .__button,
     .Button_NoCancel,
     .Button_create_stage_repeat .__button,
     .Button_summaryIsSummary .__button,

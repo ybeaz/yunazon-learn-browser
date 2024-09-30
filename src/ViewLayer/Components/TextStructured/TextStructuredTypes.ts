@@ -1,40 +1,21 @@
 import React from 'react'
-import {
-  SummaryItemType,
-  ObjectionType,
-  ProfileType,
-  ThumbnailsType,
-} from '../../../@types/GraphqlTypes.d'
-import { OrganizationType } from '../../../ContentMock/organizationsMock'
-import { SectionType } from '../../../@types/ArticleMockType'
+import { ArticleItemType, SummaryItemType, ObjectionType } from '../../../@types/GraphqlTypes.d'
 import { ThumbnailsStructuredPropsType } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServerPropsType } from '../MetaContentServer/MetaContentServer'
 
 export type EntitiyItemType = {
-  capture?:
-    | SummaryItemType['capture']
-    | ObjectionType['capture']
-    | SectionType['capture']
+  articleItemID?: ArticleItemType['articleItemID']
+  summaryItemID?: SummaryItemType['summaryItemID']
+  objectionID?: ObjectionType['objectionID']
+  capture?: SummaryItemType['capture'] | ObjectionType['capture'] | ArticleItemType['capture']
   text?: SummaryItemType['text'] | ObjectionType['text']
-  divs?: SectionType['divs']
-  options?: SectionType['options']
+  divs?: ArticleItemType['divs']
+  options?: ArticleItemType['options']
 }
 
 export type TextStructuredComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   entities: EntitiyItemType[]
-  capture?: string
-  description?: string
-  tags?: string[]
-  genre: 'article' | 'summary' | 'objections'
-  language: string
-  pathBaseToIcons?: string
-  dateCreated?: number
-  dateUpdated?: number
-  thumbnails: ThumbnailsType
-  creator?: ProfileType
-  organization?: OrganizationType
-  isSeo?: boolean
 }
 
 export type TextStructuredPropsType = TextStructuredComponentPropsType
@@ -52,5 +33,4 @@ export interface TextStructuredComponentType
   (props: TextStructuredComponentPropsType): React.ReactElement
 }
 
-export type TextStructuredType =
-  React.FunctionComponent<TextStructuredPropsType>
+export type TextStructuredType = React.FunctionComponent<TextStructuredPropsType>

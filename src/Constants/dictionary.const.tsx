@@ -115,9 +115,17 @@ export const DICTIONARY: IDictionary = {
     en: 'Hide',
     ru: 'Скрыть',
   },
+  media: {
+    en: 'media',
+    ru: 'медиа',
+  },
+  article: {
+    en: 'article',
+    ru: 'статья',
+  },
   summary: {
     en: 'summary',
-    ru: 'краткое изложение',
+    ru: 'конспект',
   },
   objections: {
     en: 'objections',

@@ -2,9 +2,6 @@ import React, { ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
 import { getClasses } from '../../../Shared/getClasses'
-import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirstCharWords'
-import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
-import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
 
 import {
   EntitiyItemType,
@@ -47,20 +44,7 @@ const propsDefault: any = {
 const TextStructuredComponent: TextStructuredComponentType = (
   props: TextStructuredComponentPropsType
 ) => {
-  const {
-    classAdded,
-    entities,
-    capture,
-    tags = [],
-    genre,
-    language,
-    dateCreated: dateCreatedIn,
-    dateUpdated,
-    thumbnails,
-    creator = propsDefault.creator,
-    organization = propsDefault.organization,
-    isSeo = false,
-  } = props
+  const { entities } = props
 
   const getTextStructured = (arrayIn: EntitiyItemType[]): ReactElement[] => {
     return arrayIn.map((entityItem: EntitiyItemType) => {
@@ -68,41 +52,28 @@ const TextStructuredComponent: TextStructuredComponentType = (
       const text = entityItem?.text
 
       const divs = entityItem?.divs
+      const style = entityItem?.options?.style
 
-      let isTextIdent = true
-      if (entityItem?.options?.isTextIdent !== undefined)
-        isTextIdent = entityItem?.options?.isTextIdent
-
-      let divContent: string | ReactElement | ReactElement[] | null = text ? (
-        <span itemProp='text'>{text}</span>
+      let content: string | ReactElement | ReactElement[] | null = text ? (
+        <p className='_paragraph' itemProp={'text'}>
+          {text}
+        </p>
       ) : null
 
-      /* Create content */
-      if (!text && divs && divs.length && entityItem?.options?.isList === undefined) {
-        divContent = divs.map((div: string) => {
-          const key = nanoid()
-          return (
-            <p
-              key={key}
-              className={`_paragraph ${!isTextIdent ? '_noTextIdent' : ''}`}
-              itemProp='text'
-            >
-              {div}
-            </p>
-          )
-        })
-      } else if (
-        !text &&
-        divs &&
-        divs.length &&
-        (entityItem?.options?.isList === 'olStyle' || entityItem?.options?.isList === 'ulStyle')
-      ) {
+      /* Create content for divs */
+      if (!text && divs && divs.length && (style === undefined || style === 'p')) {
+        content = (
+          <p className='_paragraph' itemProp={'text'}>
+            {divs.reduce((content: string, div: string) => `${content} ${div}`, '').trim()}
+          </p>
+        )
+      } else if (!text && divs && divs.length && (style === 'ol' || style === 'ul')) {
         const listContent = divs.map((div: string) => {
           const key = nanoid()
           return (
             <li
               key={key}
-              className={`_li ${!isTextIdent ? '_noTextIdent' : ''}`}
+              className={`_li`}
               itemType='http://schema.org/ListItem'
               itemProp='itemListElement'
             >
@@ -112,14 +83,14 @@ const TextStructuredComponent: TextStructuredComponentType = (
         })
 
         /* Wrap content (<li>) with <ol> or <ul> */
-        if (entityItem?.options?.isList === 'olStyle')
-          divContent = (
+        if (style === 'ol')
+          content = (
             <ol className='_olStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
             </ol>
           )
-        else if (entityItem?.options?.isList === 'ulStyle')
-          divContent = (
+        else if (style === 'ul')
+          content = (
             <ul className='_ulStyle' itemScope itemType='http://schema.org/ItemList'>
               {listContent}
             </ul>
@@ -132,101 +103,19 @@ const TextStructuredComponent: TextStructuredComponentType = (
           <h3 className='_capture' itemProp='alternativeHeadline'>
             {capture}
           </h3>
-          <div className='_text'>{divContent}</div>
+          {content}
         </div>
       )
     })
   }
 
-  const dateCreated = dateCreatedIn && new Date(dateCreatedIn).toUTCString()
-  const dateModified = dateUpdated && new Date(dateUpdated).toUTCString()
-  const datePublished = dateCreated && dateUpdated && new Date(dateUpdated).toUTCString()
-
-  let captureValue = capture
-  let captureItemProp = 'headline'
-  if (!isSeo && !capture && (genre === 'summary' || genre === 'objections')) {
-    captureValue = getCapitalizedFirstCharWords(genre)
-    captureItemProp = 'genre'
-  }
-
-  const propsOut = {
-    thumbnailsStructuredProps: {
-      thumbnails,
-      nameEntity: capture || '',
-      itemPropName: 'thumbnail',
-    },
-    metaContentServerProps: {
-      creator,
-      organization,
-    },
-  }
-
-  return (
-    <article
-      className={getClasses('TextStructured', classAdded)}
-      itemScope
-      itemType='https://schema.org/Article'
-    >
-      <h2 className='_h2' itemProp={captureItemProp}>
-        {`${getCapitalizedFirstCharWords(genre)} ${isSeo ? ':' : ''} ${captureValue}`}
-      </h2>
-      {isSeo ? (
-        <>
-          <div>
-            <span>Genre: </span>
-            <span itemProp={'genre'}>{genre}</span>
-          </div>
-          {language ? (
-            <div>
-              <span>Language: </span>
-              <span itemProp='inLanguage'>{language}</span>
-            </div>
-          ) : null}
-          {tags.length ? (
-            <div>
-              <span>Keywords: </span>
-              <span itemProp='keywords'>{tags.join(', ')}</span>
-            </div>
-          ) : null}
-          {dateCreated ? (
-            <div>
-              <span>Created: </span>
-              <span itemProp='dateCreated'>{dateCreated}</span>
-            </div>
-          ) : null}
-          {dateModified ? (
-            <div>
-              <span>Modified: </span>
-              <span itemProp='dateModified'>{dateModified}</span>
-            </div>
-          ) : null}
-          {datePublished ? (
-            <div>
-              <span>Published: </span>
-              <span itemProp='datePublished'>{datePublished}</span>
-            </div>
-          ) : null}
-          {thumbnails && Object.keys(thumbnails).length ? (
-            <div>
-              <div>Image:</div>
-              <ThumbnailsStructured {...propsOut.thumbnailsStructuredProps} />
-            </div>
-          ) : null}
-        </>
-      ) : null}
-      <div itemProp='articleBody'>{getTextStructured(entities)}</div>
-      {isSeo ? (
-        <>
-          <MetaContentServer {...propsOut.metaContentServerProps} />
-        </>
-      ) : null}
-    </article>
-  )
+  return <div itemProp='articleBody'>{getTextStructured(entities)}</div>
 }
 
 export const TextStructured: TextStructuredType = React.memo(TextStructuredComponent)
 
 export type {
+  EntitiyItemType,
   TextStructuredPropsType,
   TextStructuredPropsOutType,
   TextStructuredComponentType,
