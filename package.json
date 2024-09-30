@@ -55,7 +55,7 @@
     "reselect": "^5.0.1",
     "styled-components": "^6.1.0",
     "ts-node": "^10.9.1",
-    "yourails_communication_layer": "^0.1.2"
+    "yourails_communication_layer": "^0.8.0"
   },
   "devDependencies": {
     "@swc/core": "^1.3.53",

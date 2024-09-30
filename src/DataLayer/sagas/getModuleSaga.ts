@@ -6,7 +6,7 @@ import {
   getResponseGraphqlAsync,
   ResolveGraphqlEnumType,
   FragmentEnumType,
-} from '../../../../yourails_communication_layer'
+} from 'yourails_communication_layer'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
