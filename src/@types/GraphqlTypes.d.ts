@@ -301,8 +301,6 @@ export type CoursesCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type CoursesDropIndexesType = {
     __typename?: 'CoursesDropIndexesType';
@@ -584,8 +582,6 @@ export type DocumentsCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type DocumentsDropIndexesType = {
     __typename?: 'DocumentsDropIndexesType';
@@ -944,8 +940,6 @@ export type ModulesCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type ModulesDropIndexesType = {
     __typename?: 'ModulesDropIndexesType';
@@ -1384,8 +1378,6 @@ export type ProfilesCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type ProfilesDropIndexesType = {
     __typename?: 'ProfilesDropIndexesType';
@@ -2057,8 +2049,6 @@ export type TagsCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type TagsDropIndexesType = {
     __typename?: 'TagsDropIndexesType';
@@ -2092,8 +2082,6 @@ export type TemplatesCountType = {
     countAll?: Maybe<Scalars['Int']['output']>;
     /** module count isActive */
     countIsActive?: Maybe<Scalars['Int']['output']>;
-    /** module count with params */
-    countParams?: Maybe<Scalars['Int']['output']>;
 };
 export type TemplatesDropIndexesType = {
     __typename?: 'TemplatesDropIndexesType';

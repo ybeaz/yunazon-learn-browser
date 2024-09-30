@@ -327,9 +327,6 @@ type CoursesCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type CoursesDropIndexesType {
@@ -727,9 +724,6 @@ type DocumentsCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type DocumentsDropIndexesType {
@@ -1224,9 +1218,6 @@ type ModulesCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type ModulesDropIndexesType {
@@ -1654,9 +1645,6 @@ type ProfilesCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type ProfilesDropIndexesType {
@@ -2502,9 +2490,6 @@ type TagsCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type TagsDropIndexesType {
@@ -2542,9 +2527,6 @@ type TemplatesCountType {
 
   """module count isActive"""
   countIsActive: Int
-
-  """module count with params"""
-  countParams: Int
 }
 
 type TemplatesDropIndexesType {

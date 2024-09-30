@@ -305,8 +305,6 @@ export type CoursesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type CoursesDropIndexesType = {
@@ -606,8 +604,6 @@ export type DocumentsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type DocumentsDropIndexesType = {
@@ -990,8 +986,6 @@ export type ModulesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ModulesDropIndexesType = {
@@ -1535,8 +1529,6 @@ export type ProfilesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type ProfilesDropIndexesType = {
@@ -2309,8 +2301,6 @@ export type TagsCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TagsDropIndexesType = {
@@ -2349,8 +2339,6 @@ export type TemplatesCountType = {
   countAll?: Maybe<Scalars['Int']['output']>;
   /** module count isActive */
   countIsActive?: Maybe<Scalars['Int']['output']>;
-  /** module count with params */
-  countParams?: Maybe<Scalars['Int']['output']>;
 };
 
 export type TemplatesDropIndexesType = {
