@@ -4,10 +4,7 @@ import { MutationCreateModulesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import {
   RootStoreType,

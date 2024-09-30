@@ -3,10 +3,7 @@ import { takeEvery, put, call } from 'redux-saga/effects'
 import { MutationDeactivateCoursesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-} from '../../../../yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getCourses } from './getCoursesSaga'
 import { withDebounce } from '../../Shared/withDebounce'

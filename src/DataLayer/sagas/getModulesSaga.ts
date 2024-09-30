@@ -12,7 +12,7 @@ import {
   getResponseGraphqlAsync,
   ResolveGraphqlEnumType,
   FragmentEnumType,
-} from '../../../../yourails_communication_layer'
+} from 'yourails_communication_layer'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
