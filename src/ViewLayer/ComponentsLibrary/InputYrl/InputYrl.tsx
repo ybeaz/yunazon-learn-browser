@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
 
 import { getClasses } from '../../../Shared/getClasses'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { FormsType, SearchFormSepType } from '../../../Interfaces/RootStoreType'
 import { withStoreStateSelectedYrl } from '../Hooks/withStoreStateSelectedYrl'
 import { IconYrl } from '../'
@@ -42,6 +41,7 @@ const InputYrlComponent: InputYrlComponentType = (props: InputYrlComponentPropsT
     storeFormProp,
     accept,
     storeStateSlice: { forms },
+    handleEvents,
   } = props
 
   let value: string | number | string[] = ''

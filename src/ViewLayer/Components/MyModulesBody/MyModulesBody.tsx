@@ -142,6 +142,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         classAdded: '',
         type: 'text',
         placeholder: 'Add resource url...',
+        handleEvents,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_MODULE_CREATE_SUBMIT',
         storeFormProp: 'inputCourseCreate',

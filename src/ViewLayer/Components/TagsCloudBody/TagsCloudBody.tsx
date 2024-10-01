@@ -81,6 +81,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           classAdded: 'Button_tagMdCheck',
           icon: 'MdCheck',
           iconColor: colorsRandomDarkTheme[index],
+          handleEvents,
           action: {
             typeEvent: '',
             data: {},
@@ -91,6 +92,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
           classAdded: 'Button_tagExpertise',
           icon: iconName,
           iconColor: colorsRandomDarkTheme[index],
+          handleEvents,
           action: {
             typeEvent: '',
             data: {},
@@ -161,6 +163,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
         placeholder: SCREENS_DICT[ScreensEnumType['TagsCloud']].placeholder,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
+        handleEvents,
         dataEventOnEnter: {
           storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
         },
@@ -169,6 +172,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
       buttonSubmitProps: {
         icon: 'MdSearch',
         classAdded: 'Button_MdSearch',
+        handleEvents,
         action: {
           typeEvent: 'CLICK_ON_SEARCH_BUTTON',
           data: { storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp },

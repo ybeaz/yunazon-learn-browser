@@ -2,16 +2,27 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { withPropsYrl, ButtonYrl, InputYrl } from '../ComponentsLibrary/'
+import {
+  withPropsYrl,
+  ButtonYrl,
+  ButtonYrlPropsType,
+  InputYrl,
+  InputYrlPropsType,
+} from '../ComponentsLibrary/'
 import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 
-interface AvatarArgs {
+type AvatarPropsType = {
   handleEvents: HandleEventType
 }
 
-export const AvatarComponent: React.FunctionComponent<AvatarArgs> = ({
+type AvatarPropsOutType = {
+  buttonAvatarProps: ButtonYrlPropsType
+  inputAvatarFileProps: InputYrlPropsType
+}
+
+export const AvatarComponent: React.FunctionComponent<AvatarPropsType> = ({
   handleEvents,
-}: AvatarArgs): ReactElement => {
+}: AvatarPropsType): ReactElement => {
   const {
     language,
     forms: {
@@ -19,7 +30,7 @@ export const AvatarComponent: React.FunctionComponent<AvatarArgs> = ({
     },
   } = useSelector((store: RootStoreType) => store)
 
-  const propsOut = {
+  const propsOut: AvatarPropsOutType = {
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
@@ -35,20 +46,13 @@ export const AvatarComponent: React.FunctionComponent<AvatarArgs> = ({
       isUnderlined: false,
       handleEvents,
     },
-    imageAvatarDefaultProps: {
-      classAdded: 'Image_ProfileBody_avatar_default',
-      src: userAvatar,
-    },
-    imageAvatarProps: {
-      classAdded: 'Image_ProfileBody_avatar',
-      src: userAvatar,
-    },
     inputAvatarFileProps: {
       classAdded: 'Input_ProfileBody_avatar',
       type: 'file',
       placeholder: '',
       typeEvent: 'GET_AVATAR_PATH',
       accept: 'image/png, image/jpeg, image/jpg',
+      handleEvents,
     },
   }
 
@@ -66,6 +70,6 @@ export const AvatarComponent: React.FunctionComponent<AvatarArgs> = ({
   )
 }
 
-export const Avatar: React.FunctionComponent<AvatarArgs> = withPropsYrl({
+export const Avatar: React.FunctionComponent<AvatarPropsType> = withPropsYrl({
   handleEvents: handleEventsIn,
 })(React.memo(AvatarComponent))

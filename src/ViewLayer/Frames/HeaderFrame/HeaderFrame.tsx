@@ -175,6 +175,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
         classAdded: 'Input_search',
         type: 'text',
         placeholder: SCREENS_DICT[screenActive]?.placeholder,
+        handleEvents,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_SEARCH_BUTTON',
         storeFormProp: SCREENS_DICT[screenActive]?.storeFormProp,

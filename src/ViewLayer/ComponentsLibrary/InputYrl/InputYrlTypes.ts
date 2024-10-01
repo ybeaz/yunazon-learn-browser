@@ -13,6 +13,7 @@ export type InputYrlComponentPropsType = {
   storeFormProp?: string // name of the property in store.form that stores data
   accept?: string // accepted files' format for type='file', for example, 'image/png, image/jpeg, image/jpg'
   storeStateSlice: { forms: FormsType }
+  handleEvents: Function
 }
 
 export type InputYrlPropsType = Omit<InputYrlComponentPropsType, 'storeStateSlice'>

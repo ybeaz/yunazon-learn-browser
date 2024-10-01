@@ -1,9 +1,11 @@
 import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type FormInputNamesPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   language: string
   buttonForwardProps: ButtonYrlPropsType
+  handleEvents: HandleEventType
 }
 
 export type FormInputNamesPropsOutType = {
@@ -21,5 +23,4 @@ export interface FormInputNamesComponentType
   (props: FormInputNamesPropsType): React.ReactElement
 }
 
-export type FormInputNamesType =
-  React.FunctionComponent<FormInputNamesPropsType>
+export type FormInputNamesType = React.FunctionComponent<FormInputNamesPropsType>
