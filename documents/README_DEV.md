@@ -6,10 +6,14 @@
 
 ### How to link a package with yalc and run changes?
 
-1. Terminal > (in the directory of the new package - sender) `yarn build && yalc publish --push`
-2. Terminal > (in the main directory - receiver)
+1. Terminal > (in the main directory - receiver)
+   `yarn add yourails_communication_layer`
+   `yarn add yourails_view_layer_web`
+2. Terminal > (in the directory of the new package - sender) `yarn build && yalc publish --push`
+3. Terminal > (in the main directory - receiver)
    `yalc link yourails_communication_layer`
-3. Terminal > (in the directory of the new package - sender) `yarn build && yalc push`
+   `yalc link yourails_view_layer_web`
+4. Terminal > (in the directory of the new package - sender) `yarn build && yalc push`
 
 ### How to add icon to the project
 

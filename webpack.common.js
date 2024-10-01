@@ -65,10 +65,38 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(jsx|js|ts|tsx)?$/,
-          use: ['thread-loader', 'swc-loader'],
-          include: path.resolve(__dirname, 'src'),
+          test: /\.(jsx|js|ts|tsx)?$/, // You already have this rule
+          use: [
+            'thread-loader',
+            {
+              loader: 'swc-loader',
+              options: {
+                jsc: {
+                  parser: {
+                    syntax: 'typescript', // If you're using TypeScript
+                    tsx: true, // Enable JSX parsing in TypeScript
+                    jsx: true, // For regular JSX files
+                  },
+                  transform: {
+                    react: {
+                      pragma: 'React.createElement', // Defaults to React
+                      pragmaFrag: 'React.Fragment',
+                      throwIfNamespace: false, // React namespace handling
+                      development: process.env.NODE_ENV === 'development',
+                      useBuiltins: true, // Optimizes React usage
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          include: path.resolve(__dirname, 'src'), // Make sure it includes your source folder
         },
+        // {
+        //   test: /\.(jsx|js|ts|tsx)?$/,
+        //   use: ['thread-loader', 'swc-loader'],
+        //   include: path.resolve(__dirname, 'src'),
+        // },
         {
           test: cssRegex,
           exclude: cssModuleRegex,

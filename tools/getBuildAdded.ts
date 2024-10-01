@@ -56,6 +56,13 @@ export const getBuildAdded: GetBuildAddedType = async (
     const overwriteIndexHtml: boolean = true
     await getCopiedFileDir(sourceIndexHtml, destinationIndexHtml, overwriteIndexHtml)
     consoler('getCopiedFileDir index.html file:', 'yes')
+
+    const fileNamePackageJson: string = 'package.json'
+    const sourcePackageJson: string = fileNamePackageJson
+    const destinationPackageJson: string = `web-build/package.json`
+    const overwritePackageJson: boolean = true
+    await getCopiedFileDir(sourcePackageJson, destinationPackageJson, overwritePackageJson)
+    consoler('getCopiedFileDir package.json file:', 'yes')
   } catch (error: any) {
     consolerError('getBuildAdded', { parentFunction, ...error })
   } finally {
