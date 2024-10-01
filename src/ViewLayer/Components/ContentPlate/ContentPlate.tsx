@@ -118,6 +118,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     loaderImageProps: {
       classAdded: 'Image_loaderPlayerFrame',
       src: plateImageSrc,
+      handleEvents,
       opacity: !isVisible ? 1 : 0,
     },
     playerPanelProps: {

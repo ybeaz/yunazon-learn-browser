@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom'
 
 import { ImageYrl } from './../ImageYrl/ImageYrl'
 import { IconYrl } from './../IconYrl/IconYrl'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {

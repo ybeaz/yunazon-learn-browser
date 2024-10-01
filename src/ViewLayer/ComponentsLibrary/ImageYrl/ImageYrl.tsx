@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -24,7 +23,7 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
   const {
     classAdded,
     src,
-    handleEvents: handleEventsCustom,
+    handleEvents,
     action,
     isDisplaying = true,
     isVisible = true,
@@ -34,8 +33,6 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
   const classDisplay = isDisplaying === true ? '' : 'Image_display_none'
   const classVisible = isVisible === true ? '' : 'Image_visible_none'
 
-  let handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
-  handleEventsToUse = action ? handleEventsToUse : () => ({})
   const classCursor = action ? '_cursor' : ''
 
   const propsOut: ImageYrlPropsOutType = {}
@@ -44,7 +41,7 @@ const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
     <div
       className={getClasses('ImageYrl', [classAdded, classDisplay, classVisible])}
       style={{ opacity }}
-      onClickCapture={(event: React.MouseEvent<HTMLDivElement>) => handleEventsToUse(event, action)}
+      onClickCapture={(event: React.MouseEvent<HTMLDivElement>) => handleEvents(event, action)}
     >
       <img className={`_image ${classCursor}`} src={src} />
     </div>

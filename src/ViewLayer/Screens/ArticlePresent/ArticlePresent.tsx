@@ -4,10 +4,8 @@ import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { ImageYrl } from '../../ComponentsLibrary/ImageYrl/ImageYrl'
-import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
+import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
@@ -15,7 +13,6 @@ import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialReques
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   ArticlePresentComponentPropsType,

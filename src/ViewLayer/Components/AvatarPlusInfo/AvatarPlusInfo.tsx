@@ -29,6 +29,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
   const propsOut: AvatarPlusInfoPropsOutType = {
     imageProps: {
       classAdded: '_avatarPlusInfo',
+      handleEvents,
       src: imgSrc,
     },
     navLinkProps: {
