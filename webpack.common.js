@@ -92,11 +92,6 @@ module.exports = () => {
           ],
           include: path.resolve(__dirname, 'src'), // Make sure it includes your source folder
         },
-        // {
-        //   test: /\.(jsx|js|ts|tsx)?$/,
-        //   use: ['thread-loader', 'swc-loader'],
-        //   include: path.resolve(__dirname, 'src'),
-        // },
         {
           test: cssRegex,
           exclude: cssModuleRegex,
