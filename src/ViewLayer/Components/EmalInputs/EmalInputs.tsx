@@ -1,11 +1,12 @@
 import React from 'react'
 
 import {
+  withPropsYrl,
   InputYrl,
   ButtonYrl,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
-
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
   EmalInputsComponentPropsType,
   EmalInputsPropsType,
@@ -19,25 +20,13 @@ import {
  * @import import { EmalInputs, EmalInputsPropsType, EmalInputsPropsOutType, EmalInputsType } 
              from '../Components/EmalInputs/EmalInputs'
  */
-const EmalInputsComponent: EmalInputsComponentType = (
-  props: EmalInputsComponentPropsType
-) => {
+const EmalInputsComponent: EmalInputsComponentType = (props: EmalInputsComponentPropsType) => {
   const {
     classAdded,
     documentID,
     storeStateSlice: { documents, sendTo, sendCc },
+    handleEvents,
   } = props
-
-  // const documentsLen = documents?.length
-  // let documentDefault = {
-  //   meta: {
-  //     email: '',
-  //     isSendingBcc: false,
-  //   },
-  // }
-  // const {
-  //   // meta: { email: emailBcc = '', isSendingBcc = false },
-  // } = (documentsLen && documents[documentsLen - 1]) || documentDefault
 
   const propsOut: EmalInputsPropsOutType = {
     inputEmailToProps: {
@@ -59,6 +48,7 @@ const EmalInputsComponent: EmalInputsComponentType = (
     buttonForwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdForward',
+      handleEvents,
       action: {
         typeEvent: 'SEND_EMAIL_DOCUMENT',
         data: {
@@ -93,14 +83,9 @@ const EmalInputsComponent: EmalInputsComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['documents', 'sendTo', 'sendCc']
-export const EmalInputs = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(EmalInputsComponent)
+
+export const EmalInputs: EmalInputsType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(EmalInputsComponent))
 )
 
-export type {
-  EmalInputsPropsType,
-  EmalInputsPropsOutType,
-  EmalInputsComponentType,
-  EmalInputsType,
-}
+export type { EmalInputsPropsType, EmalInputsPropsOutType, EmalInputsComponentType, EmalInputsType }

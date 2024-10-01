@@ -18,7 +18,8 @@ import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYout
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
@@ -386,9 +387,9 @@ const storeStateSliceProps: string[] = [
   'modules',
   'mediaLoaded',
 ]
-export const AcademyPresent: AcademyPresentType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(AcademyPresentComponent)
+
+export const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent))
 )
 
 export type {

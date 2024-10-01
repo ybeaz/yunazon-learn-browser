@@ -66,6 +66,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
         buttonDeactivateDocumentProps: {
           icon: 'MdDeleteOutline',
           classAdded: 'Button_DeactivateModule',
+          handleEvents,
           action: {
             typeEvent: 'SET_MODAL_FRAMES',
             data: [

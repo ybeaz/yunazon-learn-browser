@@ -17,7 +17,7 @@ export type ButtonYrlPropsType = {
   tooltipPosition?: string // options: ['top','right','bottom','left']
   isTooltipVisibleForced?: boolean // is tooltips visible, to manage it
   isUnderlined?: boolean // is the button underlined to highlight on of the buttons
-  handleEvents?: Function // to pass handleEvents custom functioon instead of the action
+  handleEvents: Function // to pass handleEvents custom functioon instead of the action
   hrefTo?: string // to pass href to the button
   children?: string | ReactElement
 }

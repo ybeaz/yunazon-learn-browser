@@ -1,5 +1,6 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type EmalInputsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -9,12 +10,10 @@ export type EmalInputsComponentPropsType = {
     sendTo: RootStoreType['forms']['sendTo']
     sendCc: RootStoreType['forms']['sendCc']
   }
+  handleEvents: HandleEventType
 }
 
-export type EmalInputsPropsType = Omit<
-  EmalInputsComponentPropsType,
-  'storeStateSlice'
->
+export type EmalInputsPropsType = Omit<EmalInputsComponentPropsType, 'storeStateSlice'>
 
 export type EmalInputsPropsOutType = {
   inputEmailToProps: InputYrlPropsType

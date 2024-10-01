@@ -2,11 +2,14 @@ import React, { ReactElement, FunctionComponent } from 'react'
 import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
 
-// import { SkillExchangeIntro2 } from '../../Components/SkillExchangeIntro2'
-// import { SkillExchangeIntro } from '../../Components/SkillExchangeIntro'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { ConfirmationYesNoBodyYrl } from '../../ComponentsLibrary/ConfirmationYesNoBodyYrl/ConfirmationYesNoBodyYrl'
+import {
+  withPropsYrl,
+  ButtonYrl,
+  withStoreStateSelectedYrl,
+  ConfirmationYesNoBodyYrl,
+} from '../../ComponentsLibrary/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
@@ -38,6 +41,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
 const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesComponentPropsType) => {
   const {
     storeStateSlice: { modalFrames, isConfetti },
+    handleEvents,
   } = props
 
   const { width, height } = useWindowSize()
@@ -61,6 +65,7 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
         buttonCloseProps: {
           icon: 'MdClose',
           classAdded: 'Button_MdClose',
+          handleEvents,
           action: closeAction,
         },
         childProps,
@@ -102,9 +107,9 @@ const ModalFramesComponent: ModalFramesComponentType = (props: ModalFramesCompon
 }
 
 const storeStateSliceProps: string[] = ['modalFrames', 'isConfetti']
-export const ModalFrames: ModalFramesType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ModalFramesComponent)
+
+export const ModalFrames: ModalFramesType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModalFramesComponent))
 )
 
 export type {

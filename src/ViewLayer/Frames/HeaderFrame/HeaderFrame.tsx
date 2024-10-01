@@ -14,12 +14,17 @@ import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
 import {
+  withPropsYrl,
   InputGroupYrl,
   ButtonYrl,
   withStoreStateSelectedYrl,
   withConditionalWrapperYrl,
   NoSeoIndexingYrl,
 } from '../../ComponentsLibrary/'
+import {
+  handleEvents as handleEventsIn,
+  HandleEventType,
+} from '../../../DataLayer/index.handleEvents'
 
 import {
   HeaderFrameComponentPropsType,
@@ -63,6 +68,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       profiles,
       screenActive,
     },
+    handleEvents,
   } = props
 
   const navigate = useNavigate()
@@ -92,12 +98,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     buttonLeftSideNavigationMenuProps: {
       icon: 'MdMenu',
       classAdded: 'Button_MdMenu',
+      handleEvents,
       action: {
         typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
     },
     buttonLeftSideNavigationAvatarProps: {
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
+      handleEvents,
       action: {
         typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
@@ -105,6 +113,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     buttonLeftSideNavigationUnAuthorizedProps: {
       icon: 'FaUserCircle',
       classAdded: 'Button_buttonLeftSideNavigationAvatar',
+      handleEvents,
       action: {
         typeEvent: 'SET_SIDE_NAVIGATION_LEFT',
       },
@@ -112,6 +121,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     buttonBackProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdBackward3',
+      handleEvents,
       action: {
         typeEvent: 'GO_BACK_FROM_CERTIFICATE',
         data: { history: navigate, moduleCapture },
@@ -124,6 +134,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       classAdded: 'Button_AddCourse',
       tooltipText: createCourseQuiz,
       tooltipPosition: 'bottom',
+      handleEvents,
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
       isDisplaying: false /* TODO: Not used so far */,
     },
@@ -132,6 +143,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       classAdded: 'Button_ThemeToggle',
       tooltipText: toggleTheme,
       tooltipPosition: 'bottom',
+      handleEvents,
       action: { typeEvent: 'TOGGLE_THEME' },
     },
     pageActionsProps: {
@@ -170,12 +182,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       buttonSubmitProps: {
         icon: 'MdSearch',
         classAdded: 'Button_MdSearch',
+        handleEvents,
         action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
       },
     },
     buttonMobileSearchToggleProps: {
       icon: 'MdSearch',
       classAdded: 'Button_MobileSearchToggle',
+      handleEvents,
       action: {
         typeEvent: 'TOGGLE_IS_MOBILE_SEARCH_INPUT',
         data: { isMobileSearchInput: !isMobileSearchInput },
@@ -254,10 +268,13 @@ const storeStateSliceProps: string[] = [
   'profiles',
   'screenActive',
 ]
-export const HeaderFrame: HeaderFrameType = withConditionalWrapperYrl(
-  (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
-  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
-)(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(HeaderFrameComponent)))
+
+export const HeaderFrame: HeaderFrameType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withConditionalWrapperYrl(
+    (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
+    ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+  )(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(HeaderFrameComponent)))
+)
 
 export type {
   HeaderFramePropsType,

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { InputYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { InputYrl } from '../../ComponentsLibrary/'
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
@@ -16,9 +16,7 @@ import {
  * @import import { FormInputNames, FormInputNamesPropsType, FormInputNamesType } 
              from '../Components/FormInputNames/FormInputNames'
  */
-const FormInputNamesComponent: FormInputNamesComponentType = (
-  props: FormInputNamesPropsType
-) => {
+const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNamesPropsType) => {
   const { classAdded, language, buttonForwardProps } = props
 
   const nameLastLabel = DICTIONARY.nameLast[language]

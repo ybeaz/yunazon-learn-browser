@@ -16,6 +16,7 @@ import {
   RootStoreType,
   HandleEventPropsType,
 } from '../../../Interfaces/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type StagesType = {
   name: string
@@ -52,6 +53,7 @@ export type MyModulesBodyComponentPropsType = {
   storeStateSlice: {
     pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }
+  handleEvents: HandleEventType
 }
 
 export type MyModulesBodyPropsType = Omit<

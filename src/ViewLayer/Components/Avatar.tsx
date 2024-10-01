@@ -2,14 +2,16 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
+import { withPropsYrl, ButtonYrl, InputYrl } from '../ComponentsLibrary/'
+import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 
-interface AvatarArgs {}
+interface AvatarArgs {
+  handleEvents: HandleEventType
+}
 
-export const Avatar: React.FunctionComponent<AvatarArgs> = (
-  props: AvatarArgs
-): ReactElement => {
+export const AvatarComponent: React.FunctionComponent<AvatarArgs> = ({
+  handleEvents,
+}: AvatarArgs): ReactElement => {
   const {
     language,
     forms: {
@@ -31,6 +33,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
       tooltipPosition: '',
       isTooltipVisibleForced: false,
       isUnderlined: false,
+      handleEvents,
     },
     imageAvatarDefaultProps: {
       classAdded: 'Image_ProfileBody_avatar_default',
@@ -62,3 +65,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     </div>
   )
 }
+
+export const Avatar: React.FunctionComponent<AvatarArgs> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(AvatarComponent))

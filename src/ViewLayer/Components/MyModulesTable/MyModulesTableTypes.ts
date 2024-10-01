@@ -1,7 +1,8 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type MyModulesTableComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -30,5 +31,4 @@ export interface MyModulesTableComponentType
   (props: MyModulesTableComponentPropsType): React.ReactElement
 }
 
-export type MyModulesTableType =
-  React.FunctionComponent<MyModulesTablePropsType>
+export type MyModulesTableType = React.FunctionComponent<MyModulesTablePropsType>

@@ -7,11 +7,11 @@ import {
   CreateModuleStageType,
 } from '../../../Interfaces/'
 import {
+  withPropsYrl,
   InputGroupYrl,
   IconYrl,
   ImageYrl,
   ButtonYrl,
-  withPropsYrl,
   withStoreStateSelectedYrl,
 } from '../../ComponentsLibrary/'
 import { Timer } from '../Timer/Timer'
@@ -47,6 +47,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
     createModuleStages,
     isShowModuleCreateProgress,
     storeStateSlice: { pageModules },
+    handleEvents,
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
@@ -98,6 +99,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
           buttonRepeatProps: {
             classAdded: 'Button_create_stage_repeat',
             icon: 'MdOutlineReplay',
+            handleEvents,
             action,
             isDisplaying: status === CreateModuleStatusEnumType['failure'],
           },
@@ -146,6 +148,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       buttonSubmitProps: {
         classAdded: 'Button_CourseCreateSubmit',
         icon: 'MdOutlineSend',
+        handleEvents,
         action: { typeEvent: 'CLICK_ON_MODULE_CREATE_SUBMIT' },
       },
     },
@@ -181,9 +184,9 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['pageModules']
-export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(MyModulesBodyComponent)
+
+export const MyModulesBody: MyModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesBodyComponent))
 )
 
 export type {

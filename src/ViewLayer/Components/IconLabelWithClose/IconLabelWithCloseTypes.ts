@@ -1,17 +1,19 @@
 import React from 'react'
 import { ButtonYrlPropsType, IconYrlPropsType } from '../../ComponentsLibrary/'
 import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type IconLabelWithCloseComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   icon: string
   capture: string
   action: ActionReduxType
+  handleEvents: HandleEventType
 }
 
 export type IconLabelWithClosePropsType = Omit<
   IconLabelWithCloseComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type IconLabelWithClosePropsOutType = {

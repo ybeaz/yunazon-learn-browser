@@ -7,8 +7,8 @@ import {
   getChunkedArray,
 } from '../../../Shared/'
 import { CheckRadioGroup } from '../CheckRadioGroup'
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import { getClasses } from '../../../Shared/getClasses'
 
@@ -37,6 +37,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       modules,
       language,
     },
+    handleEvents,
   } = props
 
   const {
@@ -132,6 +133,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       ),
       icon: 'MdForward',
       classAdded: 'Button_startModule',
+      handleEvents,
       action: {
         typeEvent: 'TOGGLE_START_MODULE',
         data: {
@@ -149,6 +151,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonSlideBackwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdBackward2',
+      handleEvents,
       action: {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: { step: -1 },
@@ -158,6 +161,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonSlideForwardProps: {
       icon: 'MdForward',
       classAdded: 'Button_MdForward2',
+      handleEvents,
       action: {
         typeEvent: 'PLUS_QUESTION_SLIDE',
         data: { step: 1 },
@@ -168,6 +172,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       icon: 'MdForward',
       icon2: 'HiOutlineAcademicCap',
       classAdded: 'Button_MdForward',
+      handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -183,6 +188,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     buttonBlockProps: {
       icon: 'MdForward',
       classAdded: 'Button_downLeft',
+      handleEvents,
       action: {
         typeEvent: 'TOGGLE_START_MODULE',
         data: {
@@ -235,10 +241,10 @@ const storeStateSliceProps: string[] = [
   'modules',
   'language',
 ]
-export const CarouselQuestions = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(CarouselQuestionsComponent)
-)
+
+export const CarouselQuestions: CarouselQuestionsType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(CarouselQuestionsComponent)))
 
 export type {
   CarouselQuestionsPropsType,

@@ -45,15 +45,13 @@ const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) =
     tooltipPosition = 'top',
     isTooltipVisibleForced = false,
     isUnderlined = false,
-    handleEvents: handleEventsCustom,
+    handleEvents,
     hrefTo = '',
     children,
   } = props
 
   const classDisplay = isDisplaying === true ? '' : 'Button_display_none'
   const classVisible = isVisible === true ? '' : 'Button_visible_none'
-
-  const handleEventsToUse = handleEventsCustom ? handleEventsCustom : handleEvents
 
   const classTooltipsDictionary: Record<string, string> = {
     top: '_tooltipTop',
@@ -110,9 +108,7 @@ const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) =
       <button
         className={`__button`}
         type='button'
-        onClickCapture={(event: React.MouseEvent<HTMLButtonElement>) =>
-          handleEventsToUse(event, action)
-        }
+        onClickCapture={(event: React.MouseEvent<HTMLButtonElement>) => handleEvents(event, action)}
       >
         {hrefTo ? (
           <NavLink className='_navLink' to={hrefTo}>

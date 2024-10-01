@@ -4,6 +4,7 @@ import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { ContentSectionPropsType } from '../../Components/ContentSection/ContentSection'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type AcademyPresentComponentPropsType = {
   storeStateSlice: {
@@ -13,9 +14,13 @@ export type AcademyPresentComponentPropsType = {
     modules: RootStoreType['modules']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
   }
+  handleEvents: HandleEventType
 }
 
-export type AcademyPresentPropsType = Omit<AcademyPresentComponentPropsType, 'storeStateSlice'>
+export type AcademyPresentPropsType = Omit<
+  AcademyPresentComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
 
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType

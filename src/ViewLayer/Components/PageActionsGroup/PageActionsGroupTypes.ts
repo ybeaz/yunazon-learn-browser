@@ -2,6 +2,7 @@ import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type PageActionsGroupComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -13,9 +14,13 @@ export type PageActionsGroupComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
   }
+  handleEvents: HandleEventType
 }
 
-export type PageActionsGroupPropsType = Omit<PageActionsGroupComponentPropsType, 'storeStateSlice'>
+export type PageActionsGroupPropsType = Omit<
+  PageActionsGroupComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
 
 export type PageActionsGroupPropsOutType = {
   buttonPrintProps: ButtonYrlPropsType

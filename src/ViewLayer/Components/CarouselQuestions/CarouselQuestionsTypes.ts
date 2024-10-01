@@ -1,5 +1,8 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-
+import {
+  handleEvents as handleEventsIn,
+  HandleEventType,
+} from '../../../DataLayer/index.handleEvents'
 import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
 
 export type CarouselQuestionsComponentPropsType = {
@@ -12,11 +15,12 @@ export type CarouselQuestionsComponentPropsType = {
     modules: RootStoreType['modules']
     language: RootStoreType['language']
   }
+  handleEvents: HandleEventType
 }
 
 export type CarouselQuestionsPropsType = Omit<
   CarouselQuestionsComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type CarouselQuestionsPropsOutType = {
@@ -35,5 +39,4 @@ export interface CarouselQuestionsComponentType
   (props: CarouselQuestionsComponentPropsType): React.ReactElement
 }
 
-export type CarouselQuestionsType =
-  React.FunctionComponent<CarouselQuestionsPropsType>
+export type CarouselQuestionsType = React.FunctionComponent<CarouselQuestionsPropsType>
