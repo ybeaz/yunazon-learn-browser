@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
-// import { ButtonYrl } from 'yourails_view_layer_web'
-import { ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from 'yourails_view_layer_web'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
@@ -20,7 +19,6 @@ import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYout
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'

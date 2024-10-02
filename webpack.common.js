@@ -64,6 +64,21 @@ module.exports = () => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.(js|jsx|ts|tsx)$/,
+        //   exclude: /node_modules/,
+        //   // exclude: /node_modules\/(?!yourails_view_layer_web)/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+        //     },
+        //   },
+        //   include: [
+        //     path.resolve(__dirname, 'src'),
+        //     // path.resolve(__dirname, 'node_modules/yourails_view_layer_web'),
+        //   ],
+        // },
         {
           test: /\.(jsx|js|ts|tsx)?$/, // You already have this rule
           use: [
