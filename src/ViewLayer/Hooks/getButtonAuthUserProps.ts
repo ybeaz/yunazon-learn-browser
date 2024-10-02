@@ -1,9 +1,14 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { UserType } from '../../Interfaces/UserType'
-import { ButtonYrlPropsType } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 interface IGetButtonAuthUser {
-  (user2: UserType, language: string, componentFrom: string, history?: any): ButtonYrlPropsType
+  (
+    user2: UserType,
+    language: string,
+    componentFrom: string,
+    history?: any
+  ): Omit<ButtonYrlPropsType, 'handleEvents'>
 }
 
 /**

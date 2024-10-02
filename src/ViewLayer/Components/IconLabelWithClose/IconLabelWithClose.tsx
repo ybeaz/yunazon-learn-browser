@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl, IconYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, IconYrl, ButtonYrl } from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import { getClasses } from '../../../Shared/getClasses'

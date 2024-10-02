@@ -25,7 +25,7 @@ import {
       isDisplaying: true // isButtonSlideBackward,
     },
  * @import import { ButtonYrl, ButtonYrlPropsType, ButtonYrlPropsOutType, ButtonYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const ButtonYrlComponent: ButtonYrlComponentType = (props: ButtonYrlPropsType) => {
   const {

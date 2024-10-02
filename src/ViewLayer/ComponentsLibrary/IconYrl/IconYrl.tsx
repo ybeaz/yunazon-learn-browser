@@ -22,7 +22,7 @@ import {
       classAdded: 'IconYrl_Function1',
     },
  * @import import { IconYrl, IconYrlPropsType, IconYrlPropsOutType, IconYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const IconYrlComponent: IconYrlComponentType = (props: IconYrlPropsType) => {
   const {

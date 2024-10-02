@@ -1,6 +1,6 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { withPropsYrl, ImageYrl } from '../ComponentsLibrary/'
+import { withPropsYrl, ImageYrl } from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'

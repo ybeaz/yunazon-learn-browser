@@ -5,7 +5,7 @@ import {
   InputYrl,
   ButtonYrl,
   withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+} from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import {
   EmalInputsComponentPropsType,

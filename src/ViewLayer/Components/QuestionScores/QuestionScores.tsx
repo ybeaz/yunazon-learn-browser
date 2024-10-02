@@ -14,7 +14,7 @@ import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
-import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_view_layer_web'
 
 import {
   GetScenarioDictPropsType,

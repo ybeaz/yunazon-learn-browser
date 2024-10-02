@@ -1,4 +1,4 @@
-import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_view_layer_web'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type FormInputNamesPropsType = {

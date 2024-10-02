@@ -1,7 +1,6 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { InputYrl } from '../../ComponentsLibrary/InputYrl/InputYrl'
+import { ButtonYrl, InputYrl } from 'yourails_view_layer_web'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
@@ -30,7 +29,7 @@ import {
         action: { typeEvent: 'CLICK_ON_SEARCH_BUTTON' },
       },
     },
- * @import import { InputGroupYrl, InputGroupYrlPropsType } from '../ComponentsLibrary/'
+ * @import import { InputGroupYrl, InputGroupYrlPropsType } from 'yourails_view_layer_web'
  */
 export const InputGroupYrl: InputGroupYrlComponentType = (
   props: InputGroupYrlComponentPropsType

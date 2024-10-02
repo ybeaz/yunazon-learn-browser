@@ -13,7 +13,7 @@ import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { withPropsYrl, ButtonYrl } from '../ComponentsLibrary/'
+import { withPropsYrl, ButtonYrl } from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 import { UserType } from '../../Interfaces/UserType'
 

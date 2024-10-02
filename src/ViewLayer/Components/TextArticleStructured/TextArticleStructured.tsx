@@ -5,7 +5,7 @@ import { getCapitalizedFirstCharWords } from '../../../Shared/getCapitalizedFirs
 import { ThumbnailsStructured } from '../ThumbnailsStructured/ThumbnailsStructured'
 import { MetaContentServer } from '../MetaContentServer/MetaContentServer'
 import { TextsPartsStructured } from '../TextsPartsStructured/TextsPartsStructured'
-import { withConditionalWrapperYrl, NoSeoIndexingYrl } from '../../ComponentsLibrary'
+import { withConditionalWrapperYrl, NoSeoIndexingYrl } from 'yourails_view_layer_web'
 import {
   TextArticleStructuredComponentPropsType,
   TextArticleStructuredPropsType,

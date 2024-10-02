@@ -14,7 +14,7 @@ import {
 /**
  * @description Component to render NoSeoIndexingYrl
  * @import import { NoSeoIndexingYrl, NoSeoIndexingYrlPropsType, NoSeoIndexingYrlPropsOutType, NoSeoIndexingYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const NoSeoIndexingYrlComponent: NoSeoIndexingYrlComponentType = ({
   children,

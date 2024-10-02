@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-import { withConditionalWrapperYrl, NoSeoIndexingYrl } from '../../ComponentsLibrary'
+import { withConditionalWrapperYrl, NoSeoIndexingYrl } from 'yourails_view_layer_web'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 
 import {

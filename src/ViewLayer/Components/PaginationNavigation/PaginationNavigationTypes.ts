@@ -1,4 +1,4 @@
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 import { RootStoreType, PaginationNameEnumType } from '../../../Interfaces'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 

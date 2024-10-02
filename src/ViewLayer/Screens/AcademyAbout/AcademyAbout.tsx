@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withStoreStateSelectedYrl } from 'yourails_view_layer_web'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'

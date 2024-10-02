@@ -3,7 +3,7 @@ import {
   handleEvents as handleEventsIn,
   HandleEventType,
 } from '../../../DataLayer/index.handleEvents'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 export type CarouselQuestionsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

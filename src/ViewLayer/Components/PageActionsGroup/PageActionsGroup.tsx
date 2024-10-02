@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 

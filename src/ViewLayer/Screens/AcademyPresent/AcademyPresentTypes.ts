@@ -3,7 +3,7 @@ import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { ContentSectionPropsType } from '../../Components/ContentSection/ContentSection'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type AcademyPresentComponentPropsType = {

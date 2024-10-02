@@ -13,7 +13,7 @@ import {
   ImageYrl,
   ButtonYrl,
   withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+} from 'yourails_view_layer_web'
 import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'

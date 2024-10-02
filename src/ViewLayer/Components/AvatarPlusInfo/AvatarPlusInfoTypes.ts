@@ -1,5 +1,5 @@
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
-import { ImageYrlPropsType } from '../../ComponentsLibrary/'
+import { ImageYrlPropsType } from 'yourails_view_layer_web'
 import { NavLinkProps } from 'react-router-dom'
 export type AvatarPlusInfoComponentPropsType = {
   classProps?: Record<string, string | string[]>

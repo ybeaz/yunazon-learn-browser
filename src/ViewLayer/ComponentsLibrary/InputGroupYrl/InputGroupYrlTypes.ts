@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { InputYrlPropsType, ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 export type InputGroupYrlComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -8,10 +8,7 @@ export type InputGroupYrlComponentPropsType = {
   buttonSubmitProps: ButtonYrlPropsType
 }
 
-export type InputGroupYrlPropsType = Omit<
-  InputGroupYrlComponentPropsType,
-  'storeStateSlice'
->
+export type InputGroupYrlPropsType = Omit<InputGroupYrlComponentPropsType, 'storeStateSlice'>
 
 export type InputGroupYrlPropsOutType = {
   inputProps: InputYrlPropsType

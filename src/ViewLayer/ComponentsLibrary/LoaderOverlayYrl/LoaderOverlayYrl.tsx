@@ -18,7 +18,7 @@ const propsDefault = {
 /**
  * @description Component to render LoaderOverlayYrl
  * @import import { LoaderOverlayYrl, LoaderOverlayYrlPropsType, LoaderOverlayYrlPropsOutType, LoaderOverlayYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const LoaderOverlayYrlComponent: LoaderOverlayYrlComponentType = (
   propsIn: LoaderOverlayYrlComponentPropsType

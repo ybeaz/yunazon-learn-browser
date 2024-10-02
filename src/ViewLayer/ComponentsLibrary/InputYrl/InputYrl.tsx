@@ -25,7 +25,7 @@ import {
       storeFormProp: 'userPasswordAuth2',
     },
  * @import import { InputYrl, InputYrlPropsType, InputYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const InputYrlComponent: InputYrlComponentType = (props: InputYrlComponentPropsType) => {
   const {

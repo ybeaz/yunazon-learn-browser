@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect } from 'react'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { ModuleType } from '../../../@types/GraphqlTypes'
-import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
 import { getContentComponentName } from '../../../Shared/getContentComponentName'

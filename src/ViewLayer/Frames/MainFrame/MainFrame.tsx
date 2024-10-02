@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoaderOverlayYrl } from '../../ComponentsLibrary/'
+import { LoaderOverlayYrl } from 'yourails_view_layer_web'
 
 import {
   MainFrameComponentPropsType,

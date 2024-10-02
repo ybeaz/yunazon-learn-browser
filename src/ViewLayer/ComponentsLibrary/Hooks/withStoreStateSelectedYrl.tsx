@@ -1,13 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { selectStoreSlice } from '../../ComponentsLibrary/'
+import { selectStoreSlice } from 'yourails_view_layer_web'
 
 export type WithStoreStateSelectedYrlPropsType = FunctionComponent<any>
 
 export interface WithStoreStateSelectedYrlType {
-  (
-    arrProps: string[],
-    Component: WithStoreStateSelectedYrlPropsType
-  ): FunctionComponent
+  (arrProps: string[], Component: WithStoreStateSelectedYrlPropsType): FunctionComponent
 }
 
 /**
@@ -21,10 +18,12 @@ export interface WithStoreStateSelectedYrlType {
 
 export const mediaParamsDefault: any = {}
 
-export const withStoreStateSelectedYrl: WithStoreStateSelectedYrlType =
-  function (arrProps, Component) {
-    return function WrappedComponent(props: any) {
-      const storeStateSlice = selectStoreSlice(arrProps)
-      return <Component {...props} storeStateSlice={storeStateSlice} />
-    }
+export const withStoreStateSelectedYrl: WithStoreStateSelectedYrlType = function (
+  arrProps,
+  Component
+) {
+  return function WrappedComponent(props: any) {
+    const storeStateSlice = selectStoreSlice(arrProps)
+    return <Component {...props} storeStateSlice={storeStateSlice} />
   }
+}

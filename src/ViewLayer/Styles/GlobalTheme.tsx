@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
-import { selectStoreSlice } from '../ComponentsLibrary/Hooks/selectStoreSlice'
+import { selectStoreSlice } from 'yourails_view_layer_web'
 import { GLOBAL_THEME, LIGHTNESS, ALPHAS } from '../../Constants/globalTheme.const'
 import { CreatedGlobalStyle } from './getCreatedGlobalStyle'
 

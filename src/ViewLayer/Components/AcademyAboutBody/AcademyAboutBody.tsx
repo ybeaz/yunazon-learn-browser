@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
 import { getClasses } from '../../../Shared/getClasses'
 import { buildData } from '../../../Constants/buildData.const'
 import {

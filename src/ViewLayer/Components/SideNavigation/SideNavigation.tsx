@@ -8,8 +8,8 @@ import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
 
-import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { withPropsYrl } from '../../ComponentsLibrary/Hooks/withPropsYrl'
+import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl } from 'yourails_view_layer_web'
 
 import {
   SideNavigationComponentPropsType,

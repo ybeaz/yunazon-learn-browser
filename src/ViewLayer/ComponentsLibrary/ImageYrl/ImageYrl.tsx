@@ -17,7 +17,7 @@ import {
       src: `https://www.w3schools.com/bootstrap5/paris.jpg`,
     },
  * @import import { ImageYrl, ImageYrlPropsType, ImageYrlPropsOutType, ImageYrlType } 
-             from '../ComponentsLibrary/'
+             from 'yourails_view_layer_web'
  */
 const ImageYrlComponent: ImageYrlComponentType = (props: ImageYrlPropsType) => {
   const {
