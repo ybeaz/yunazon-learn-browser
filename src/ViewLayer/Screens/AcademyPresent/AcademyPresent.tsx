@@ -29,12 +29,8 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
-import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 import { GenreEnumType } from '../../../@types/GenreType'
-import {
-  getRearrangedArrayByIndex,
-  GetRearrangedArrayByIndexParamsType,
-} from '../../../Shared/getRearrangedArrayByIndex'
+import { getRearrangedArrayByIndex } from '../../../Shared/getRearrangedArrayByIndex'
 import {
   ContentSection,
   ContentArrayItemType,

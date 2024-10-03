@@ -1,5 +1,4 @@
 export * from './ArticlePresentBody/ArticlePresentBody'
-export * from './TextStructured/TextStructured'
 export * from './AbInCircle/AbInCircle'
 export * from './AvatarPlusInfo/AvatarPlusInfo'
 export * from './CarouselQuestions/CarouselQuestions'
