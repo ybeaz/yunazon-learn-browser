@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
-import { withPropsYrl, withStoreStateSelectedYrl, ButtonYrl } from 'yourails_view_layer_web'
+import {
+  withPropsYrl,
+  withStoreStateSelectedYrl,
+  ButtonYrl,
+  TextArticleStructuredYrl,
+} from 'yourails_view_layer_web'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
@@ -20,7 +25,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
+// import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
 import { isOnLandScape } from '../../../Shared/isOnLandScape'
 import { isMobile } from '../../../Shared/isMobile'
@@ -34,6 +39,8 @@ import {
   ContentSection,
   ContentArrayItemType,
 } from '../../Components/ContentSection/ContentSection'
+import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
+import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -41,6 +48,7 @@ const COMPONENT: Record<string, React.FunctionComponent<any>> = {
 }
 
 import {
+  AcademyPresentPropsM1OutType,
   AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
   AcademyPresentPropsOutType,
@@ -85,7 +93,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   useflagsDebug(mediaLoadedModulesString)
 
   const [moduleState, setModuleState] = useState({
-    CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframe,
+    CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframe as PlayerYoutubeIframeType | ReaderIframeType,
     contentComponentName: '',
     capture: '',
     language: '',
@@ -196,18 +204,16 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
-  const loaderBlurhashProps: LoaderBlurhashPropsType = {
-    isVisibleBlurHash: !isVisible,
-    textTooltip,
-    isTextTooltip: true,
-    delay: 500,
-    contentComponentName,
-  }
-
-  const propsOutM1 = {
+  const propsM1Out: AcademyPresentPropsM1OutType = {
     CONTENT_ASSIGNED_COMPONENT,
     contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
-    loaderBlurhashProps,
+    loaderBlurhashProps: {
+      isVisibleBlurHash: !isVisible,
+      textTooltip,
+      isTextTooltip: true,
+      delay: 500,
+      contentComponentName,
+    },
     articleProps: {
       entities: article,
       capture,
@@ -232,9 +238,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'player',
       component: (
-        <CONTENT_ASSIGNED_COMPONENT {...propsOutM1.contentAssignedComponentProps}>
+        <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
           <></>
-          <LoaderBlurhash {...propsOutM1.loaderBlurhashProps} />
+          <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
           <></>
         </CONTENT_ASSIGNED_COMPONENT>
       ),
@@ -242,18 +248,22 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? <TextArticleStructured {...propsOutM1.summaryProps} /> : null,
+        summary && summary.length ? (
+          <TextArticleStructuredYrl {...propsM1Out.summaryProps} />
+        ) : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? <TextArticleStructured {...propsOutM1.articleProps} /> : null,
+        article && article.length ? (
+          <TextArticleStructuredYrl {...propsM1Out.articleProps} />
+        ) : null,
     },
     {
       typeIn: 'objections',
       component:
         objections && objections.length ? (
-          <TextArticleStructured {...propsOutM1.objectionsProps} />
+          <TextArticleStructuredYrl {...propsM1Out.objectionsProps} />
         ) : null,
     },
   ]

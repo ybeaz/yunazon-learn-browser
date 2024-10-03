@@ -1,10 +1,6 @@
-import React, { ReactElement, JSXElementConstructor } from 'react'
-import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
-import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
-import { TextArticleStructuredPropsType } from '../TextArticleStructured/TextArticleStructured'
+import React from 'react'
 import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types/GraphqlTypes.d'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 export type TextStructuredComponentsPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
