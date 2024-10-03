@@ -109,7 +109,11 @@ const TextStructuredComponent: TextStructuredComponentType = (
     })
   }
 
-  return <div itemProp='articleBody'>{getTextStructured(entities)}</div>
+  return (
+    <div className='TextStructured' itemProp='articleBody'>
+      {getTextStructured(entities)}
+    </div>
+  )
 }
 
 export const TextStructured: TextStructuredType = React.memo(TextStructuredComponent)
