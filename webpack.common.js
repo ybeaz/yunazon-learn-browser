@@ -25,9 +25,6 @@ module.exports = () => {
       index: './src/index.tsx',
     },
     target: 'web',
-    output: {
-      path: path.resolve(__dirname, 'web-build/'),
-    },
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
