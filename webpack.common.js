@@ -56,7 +56,7 @@ module.exports = () => {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
         '@abs': path.resolve(__dirname, './src'),
-        '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
+        // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
     },
     module: {
