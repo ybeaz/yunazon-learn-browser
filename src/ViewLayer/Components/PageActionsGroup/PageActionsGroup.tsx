@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { ButtonYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
 import {
@@ -21,12 +22,14 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
     contentID,
     tagID,
     storeStateSlice: { language },
+    handleEvents,
   } = props
 
   const propsOut: PageActionsGroupPropsOutType = {
     buttonPrintProps: {
       icon: 'MdPrint',
       classAdded: 'Button_UseCertificate',
+      handleEvents,
       action: {
         typeEvent: 'PRINT_DOCUMENT',
         data: { moduleCapture, documentID, moduleID, contentID, tagID },
@@ -38,6 +41,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
     buttonEmailProps: {
       icon: 'MdMailOutline',
       classAdded: 'Button_UseCertificate',
+      handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -55,6 +59,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
     buttonCopyLinkProps: {
       icon: 'BsLink45Deg',
       classAdded: 'Button_UseCertificate',
+      handleEvents,
       action: {
         typeEvent: 'COPY_URL_TO_CLIPBOARD',
         data: { moduleCapture, documentID, moduleID, contentID },
@@ -76,7 +81,7 @@ export const PageActionsGroupComponent: PageActionsGroupComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const PageActionsGroup: PageActionsGroupType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(PageActionsGroupComponent)
-)
+
+export const PageActionsGroup: PageActionsGroupType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(PageActionsGroupComponent)))

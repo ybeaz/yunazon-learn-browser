@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
+import { ImageYrl } from 'yourails_view_layer_web'
 
-import { ImageYrl } from '../ViewLayer/ComponentsLibrary/ImageYrl/ImageYrl'
-import { LanguagesType } from '../Interfaces/LanguagesType'
-import { IDictionary } from '../Constants/dictionary.const'
-import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
+import { LanguagesType } from '../../Interfaces/LanguagesType'
+import { IDictionary } from '../../Constants/dictionary.const'
+import { SelectOptionAntDType } from '../../Interfaces/SelectOptionAntDType'
 
 const { Option } = SelectAntd
 
@@ -21,7 +21,7 @@ interface IGetLanguagesOptionsJsx {
 /**
  * @description Funciton to get array of JSX option elements - language options
  */
-export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
+export const GetLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
   LANGUAGES,
   language,
   svgFileDir,
@@ -29,11 +29,13 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 ) => {
   return Object.keys(LANGUAGES).map((ln: string) => {
     const value = LANGUAGES[ln]['639-1']
+    // @ts-expect-error
     const [label] = LANGUAGES[ln][language]
     const twoChar6391 = LANGUAGES[ln]['639-1']
     const key = nanoid()
 
     let labelNext = label
+    // @ts-expect-error
     labelNext = LANGUAGES[ln][twoChar6391]
       ? labelNext // LANGUAGES[ln][twoChar6391]
       : labelNext
@@ -43,6 +45,7 @@ export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
     const imageProps = {
       classAdded: `Image_languagesOptions ${classAdded}`,
       src: `${svgFileDir}${svgFile}`,
+      handleEvents: () => {},
     }
 
     return (
@@ -84,6 +87,7 @@ export const getLanguagesOptions2: IGetLanguagesOptions2 = (
   defaultOption2
 ) => {
   const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
+    // @ts-expect-error
     const [label] = languages2[ln][language2]
     return { label, value: ln }
   })

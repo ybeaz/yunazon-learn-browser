@@ -1,11 +1,7 @@
 import React from 'react'
 
-import {
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-  IconYrl,
-  ButtonYrl,
-} from '../../ComponentsLibrary/'
+import { withPropsYrl, IconYrl, ButtonYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import { getClasses } from '../../../Shared/getClasses'
 import {
@@ -24,7 +20,7 @@ import {
 const IconLabelWithCloseComponent: IconLabelWithCloseComponentType = (
   props: IconLabelWithCloseComponentPropsType
 ) => {
-  const { classAdded, icon, capture, action } = props
+  const { classAdded, icon, capture, action, handleEvents } = props
 
   const propsOut: IconLabelWithClosePropsOutType = {
     iconLabelProps: {
@@ -35,6 +31,7 @@ const IconLabelWithCloseComponent: IconLabelWithCloseComponentType = (
     buttonCloseProps: {
       icon: 'MdClose',
       classAdded: 'Button_IconLabelWithClose',
+      handleEvents,
       action,
       isDisplaying: true,
       tooltipText: '',
@@ -53,7 +50,9 @@ const IconLabelWithCloseComponent: IconLabelWithCloseComponentType = (
   )
 }
 
-export const IconLabelWithClose: IconLabelWithCloseType = React.memo(IconLabelWithCloseComponent)
+export const IconLabelWithClose: IconLabelWithCloseType = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(IconLabelWithCloseComponent))
 
 export type {
   IconLabelWithClosePropsType,

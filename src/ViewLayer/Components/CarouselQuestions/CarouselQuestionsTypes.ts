@@ -1,6 +1,9 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import {
+  handleEvents as handleEventsIn,
+  HandleEventType,
+} from '../../../DataLayer/index.handleEvents'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 export type CarouselQuestionsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -12,11 +15,12 @@ export type CarouselQuestionsComponentPropsType = {
     modules: RootStoreType['modules']
     language: RootStoreType['language']
   }
+  handleEvents: HandleEventType
 }
 
 export type CarouselQuestionsPropsType = Omit<
   CarouselQuestionsComponentPropsType,
-  'storeStateSlice'
+  'storeStateSlice' | 'handleEvents'
 >
 
 export type CarouselQuestionsPropsOutType = {
@@ -35,5 +39,4 @@ export interface CarouselQuestionsComponentType
   (props: CarouselQuestionsComponentPropsType): React.ReactElement
 }
 
-export type CarouselQuestionsType =
-  React.FunctionComponent<CarouselQuestionsPropsType>
+export type CarouselQuestionsType = React.FunctionComponent<CarouselQuestionsPropsType>

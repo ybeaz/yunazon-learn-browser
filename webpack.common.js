@@ -25,9 +25,6 @@ module.exports = () => {
       index: './src/index.tsx',
     },
     target: 'web',
-    output: {
-      path: path.resolve(__dirname, 'web-build/'),
-    },
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
@@ -59,15 +56,53 @@ module.exports = () => {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
         '@abs': path.resolve(__dirname, './src'),
-        '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
+        // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
     },
     module: {
       rules: [
+        // {
+        //   test: /\.(js|jsx|ts|tsx)$/,
+        //   exclude: /node_modules/,
+        //   // exclude: /node_modules\/(?!yourails_view_layer_web)/,
+        //   use: {
+        //     loader: 'babel-loader',
+        //     options: {
+        //       presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+        //     },
+        //   },
+        //   include: [
+        //     path.resolve(__dirname, 'src'),
+        //     // path.resolve(__dirname, 'node_modules/yourails_view_layer_web'),
+        //   ],
+        // },
         {
-          test: /\.(jsx|js|ts|tsx)?$/,
-          use: ['thread-loader', 'swc-loader'],
-          include: path.resolve(__dirname, 'src'),
+          test: /\.(jsx|js|ts|tsx)?$/, // You already have this rule
+          use: [
+            'thread-loader',
+            {
+              loader: 'swc-loader',
+              options: {
+                jsc: {
+                  parser: {
+                    syntax: 'typescript', // If you're using TypeScript
+                    tsx: true, // Enable JSX parsing in TypeScript
+                    jsx: true, // For regular JSX files
+                  },
+                  transform: {
+                    react: {
+                      pragma: 'React.createElement', // Defaults to React
+                      pragmaFrag: 'React.Fragment',
+                      throwIfNamespace: false, // React namespace handling
+                      development: process.env.NODE_ENV === 'development',
+                      useBuiltins: true, // Optimizes React usage
+                    },
+                  },
+                },
+              },
+            },
+          ],
+          include: path.resolve(__dirname, 'src'), // Make sure it includes your source folder
         },
         {
           test: cssRegex,

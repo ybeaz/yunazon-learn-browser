@@ -7,13 +7,13 @@ import {
   CreateModuleStageType,
 } from '../../../Interfaces/'
 import {
+  withPropsYrl,
   InputGroupYrl,
   IconYrl,
   ImageYrl,
   ButtonYrl,
-  withPropsYrl,
   withStoreStateSelectedYrl,
-} from '../../ComponentsLibrary/'
+} from 'yourails_view_layer_web'
 import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { getClasses } from '../../../Shared/getClasses'
@@ -47,6 +47,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
     createModuleStages,
     isShowModuleCreateProgress,
     storeStateSlice: { pageModules },
+    handleEvents,
   } = props
 
   const stagesNo = Object.values(CreateModuleStagesEnumType).filter(
@@ -76,6 +77,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
           },
           imagePendingProps: {
             classAdded: 'Image_pending',
+            handleEvents,
             src: 'https://yourails.com/images/loading/loading01.gif',
             isDisplaying: status === CreateModuleStatusEnumType['pending'],
           },
@@ -98,6 +100,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
           buttonRepeatProps: {
             classAdded: 'Button_create_stage_repeat',
             icon: 'MdOutlineReplay',
+            handleEvents,
             action,
             isDisplaying: status === CreateModuleStatusEnumType['failure'],
           },
@@ -139,6 +142,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
         classAdded: '',
         type: 'text',
         placeholder: 'Add resource url...',
+        handleEvents,
         typeEvent: 'ONCHANGE_INPUT_SEARCH',
         typeEventOnEnter: 'CLICK_ON_MODULE_CREATE_SUBMIT',
         storeFormProp: 'inputCourseCreate',
@@ -146,6 +150,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
       buttonSubmitProps: {
         classAdded: 'Button_CourseCreateSubmit',
         icon: 'MdOutlineSend',
+        handleEvents,
         action: { typeEvent: 'CLICK_ON_MODULE_CREATE_SUBMIT' },
       },
     },
@@ -181,9 +186,9 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['pageModules']
-export const MyModulesBody: MyModulesBodyType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(MyModulesBodyComponent)
+
+export const MyModulesBody: MyModulesBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesBodyComponent))
 )
 
 export type {

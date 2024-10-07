@@ -40,7 +40,7 @@ export const getBuildAdded: GetBuildAddedType = async (
   const { printRes, parentFunction } = options
 
   try {
-    const pathToCssFolder = 'web-build/css'
+    const pathToCssFolder = 'web-build/dist/css'
     await getCreatedFolder(pathToCssFolder)
     consoler('getCreatedFolder for css:', 'yes')
 
@@ -52,10 +52,17 @@ export const getBuildAdded: GetBuildAddedType = async (
     consoler('getCopiedFileDir loading css file:', 'yes')
 
     const sourceIndexHtml: string = `deployment/index.yourails.html`
-    const destinationIndexHtml: string = `web-build/index.html`
+    const destinationIndexHtml: string = `web-build/dist/index.html`
     const overwriteIndexHtml: boolean = true
     await getCopiedFileDir(sourceIndexHtml, destinationIndexHtml, overwriteIndexHtml)
     consoler('getCopiedFileDir index.html file:', 'yes')
+
+    const fileNamePackageJson: string = 'package.json'
+    const sourcePackageJson: string = fileNamePackageJson
+    const destinationPackageJson: string = `web-build/package.json`
+    const overwritePackageJson: boolean = true
+    await getCopiedFileDir(sourcePackageJson, destinationPackageJson, overwritePackageJson)
+    consoler('getCopiedFileDir package.json file:', 'yes')
   } catch (error: any) {
     consolerError('getBuildAdded', { parentFunction, ...error })
   } finally {

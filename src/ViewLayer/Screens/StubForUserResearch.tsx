@@ -1,27 +1,27 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { ImageYrl } from '../ComponentsLibrary/ImageYrl/ImageYrl'
+import { withPropsYrl, ImageYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
-interface StubForUserResearchArgs {
+interface StubForUserResearchPropsType {
   routeProps: {
     location: {
       pathname: string
     }
   }
   themeDafault: string
+  handleEvents: HandleEventType
 }
 
-export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArgs> = (
-  props: StubForUserResearchArgs
-): ReactElement => {
-  const { themeDafault } = props
+export const StubForUserResearchComponent: React.FunctionComponent<
+  StubForUserResearchPropsType
+> = ({ handleEvents, themeDafault }: StubForUserResearchPropsType): ReactElement => {
   useEffect(() => {
     handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
   }, [])
@@ -52,6 +52,7 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
   const imageBottomProps = {
     classAdded: 'Image_bottom',
     src: `${SERVERS_MAIN.remote}/images/city.svg`,
+    handleEvents,
   }
 
   return (
@@ -73,3 +74,8 @@ export const StubForUserResearch: React.FunctionComponent<StubForUserResearchArg
     </div>
   )
 }
+
+export const StubForUserResearch: React.FunctionComponent<StubForUserResearchPropsType> =
+  withPropsYrl({
+    handleEvents: handleEventsIn,
+  })(React.memo(StubForUserResearchComponent))

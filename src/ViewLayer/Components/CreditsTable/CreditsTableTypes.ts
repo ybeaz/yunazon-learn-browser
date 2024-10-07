@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 import { PaginationNavigationPropsType } from '../../Components/'
 
 export type CreditsTableComponentPropsType = {

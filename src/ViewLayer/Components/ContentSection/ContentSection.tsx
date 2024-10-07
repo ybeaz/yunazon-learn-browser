@@ -1,16 +1,7 @@
 import React from 'react'
 
-import { withStoreStateSelectedYrl, ButtonYrl } from '../../ComponentsLibrary/'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { withStoreStateSelectedYrl } from 'yourails_view_layer_web'
 import { getClasses } from '../../../Shared/getClasses'
-import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
-import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
-import { GenreEnumType } from '../../../@types/GenreType'
-import { TextArticleStructured } from '../TextArticleStructured/TextArticleStructured'
-import {
-  getRearrangedArrayByIndex,
-  GetRearrangedArrayByIndexParamsType,
-} from '../../../Shared/getRearrangedArrayByIndex'
 import {
   ContentArrayItemType,
   TextStructuredComponentsPropsType,

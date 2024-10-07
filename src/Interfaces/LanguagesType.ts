@@ -1,4 +1,4 @@
-export interface LanguageType {
+export type LanguageType = {
   '639-1'?: string
   '639-2'?: string
   '639-2/B'?: string

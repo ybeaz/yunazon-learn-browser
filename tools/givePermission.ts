@@ -1,5 +1,8 @@
 import fsSync, { promises as fs } from 'fs'
 
+import { consoler } from './consoler'
+import { consolerError } from './consolerError'
+
 import { getSplitedStrDirFile } from './getSplitedStrDirFile'
 
 /**

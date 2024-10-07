@@ -10,7 +10,7 @@ body {
 
 .SectionContent {
   opacity: 0.025;
-  animation-delay: 2.5s;
+  animation-delay: 2s;
   animation-duration: 1s;
   animation-fill-mode: forwards;
   animation-iteration-count: 1;

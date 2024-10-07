@@ -13,23 +13,24 @@ import { GENDER } from '../../Constants/gender.const'
 import { LANGUAGES } from '../../Constants/languages.const'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
-import { PropsAddedType } from '../../Interfaces/PropsAddedType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { withPropsYrl, ButtonYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 import { UserType } from '../../Interfaces/UserType'
 
 interface IOptionStandard {
   label: string
   value: string
 }
-interface IProfilePlateArgs {
+interface ProfilePlatePropsType {
   profile: UserType
   language: string
+  handleEvents: HandleEventType
 }
 
-export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
-  props: IProfilePlateArgs
+export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsType> = (
+  props: ProfilePlatePropsType
 ): ReactElement => {
-  const { language, profile } = props
+  const { language, profile, handleEvents } = props
 
   const {
     userAvatar,
@@ -72,6 +73,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
       tooltipPosition: '',
       isTooltipVisibleForced: false,
       isUnderlined: false,
+      handleEvents,
     },
     selectCommonPart: {
       allowClear: false,
@@ -93,8 +95,10 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     userSkillsExpertiseProps() {
       return {
         ...this.selectCommonPart,
+        // @ts-expect-error
         ...getSelectAntdAddedProps(userSkillsExpertise),
         options: getOptionsAntdStandard(
+          // @ts-expect-error
           userSkillsExpertise,
           CATEGORIES_TO_EXCHANGE,
           language
@@ -104,31 +108,36 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     userLanguagesProps() {
       return {
         ...this.selectCommonPart,
+        // @ts-expect-error
         ...getSelectAntdAddedProps(userLanguages),
+        // @ts-expect-error
         options: getOptionsUserLanguages(userLanguages, LANGUAGES, language),
       }
     },
     userMediaProps() {
       return {
         ...this.selectCommonPart,
+        // @ts-expect-error
         ...getSelectAntdAddedProps(userMedia),
+        // @ts-expect-error
         options: getOptionsAntdStandard(userMedia, MEDIA, language),
       }
     },
     userGenderProps() {
       return {
         ...this.selectCommonPart,
+        // @ts-expect-error
         ...getSelectAntdAddedProps([userGender]),
-        options: userGender
-          ? getOptionsAntdStandard([userGender], GENDER, language)
-          : [],
+        options: userGender ? getOptionsAntdStandard([userGender], GENDER, language) : [],
       }
     },
     userLocaleCountryProps() {
       return {
         ...this.selectCommonPart,
+        // @ts-expect-error
         ...getSelectAntdAddedProps([userLocaleCountry]),
         options: getOptionsUserLocaleCountry(
+          // @ts-expect-error
           userLocaleCountry,
           COUNTRIES,
           language
@@ -190,3 +199,7 @@ export const ProfilePlate: React.FunctionComponent<IProfilePlateArgs> = (
     </div>
   )
 }
+
+export const ProfilePlate: React.FunctionComponent<ProfilePlatePropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(ProfilePlateComponent))

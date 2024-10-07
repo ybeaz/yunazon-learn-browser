@@ -1218,6 +1218,24 @@ type ModulesCountType {
 
   """module count isActive"""
   countIsActive: Int
+
+  """module count with article"""
+  countIsArticle: Int
+
+  """module count with objections"""
+  countIsObjectionsList: Int
+
+  """module count with questions"""
+  countIsQuestionsList: Int
+
+  """module count with summary"""
+  countIsSummary: Int
+
+  """module count with tags"""
+  countIsTagsList: Int
+
+  """module count with transcriptList"""
+  countIsTranscriptList: Int
 }
 
 type ModulesDropIndexesType {
@@ -1889,7 +1907,7 @@ input ReadCoursesConnectionInputType {
   profileIDs: [ID!] = []
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -1957,7 +1975,7 @@ input ReadDocumentsConnectionInputType {
   operators: OperatorsDocumentsInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2045,7 +2063,7 @@ input ReadModulesConnectionInputType {
   operators: OperatorsModulesInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2103,7 +2121,7 @@ input ReadProfilesConnectionInputType {
   profileIDs: [ID!] = []
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2204,7 +2222,7 @@ input ReadTagsConnectionInputType {
   operators: OperatorsTagsInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2255,7 +2273,7 @@ input ReadTagsModulesAllInputType {
   minCount: Int = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/seachInFieldsMax.ts
+  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
   """
   searchIn: [String!]
 

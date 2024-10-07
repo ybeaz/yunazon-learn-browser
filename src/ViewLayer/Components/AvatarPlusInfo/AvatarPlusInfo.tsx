@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
-import { ImageYrl, withPropsYrl } from '../../ComponentsLibrary/'
+import { ImageYrl, withPropsYrl } from 'yourails_view_layer_web'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 
@@ -29,6 +29,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
   const propsOut: AvatarPlusInfoPropsOutType = {
     imageProps: {
       classAdded: '_avatarPlusInfo',
+      handleEvents,
       src: imgSrc,
     },
     navLinkProps: {

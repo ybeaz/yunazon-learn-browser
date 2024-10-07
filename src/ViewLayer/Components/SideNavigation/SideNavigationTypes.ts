@@ -1,6 +1,6 @@
 import React from 'react'
 import { RootStoreType, ActionEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType } from 'yourails_view_layer_web'
 
 export type GetSideNavigationButtonsProps = {
   navigate: any
@@ -22,10 +22,7 @@ export type SideNavigationComponentPropsType = {
   handleEvents: ActionEventType
 }
 
-export type SideNavigationPropsType = Omit<
-  SideNavigationComponentPropsType,
-  'storeStateSlice'
->
+export type SideNavigationPropsType = Omit<SideNavigationComponentPropsType, 'storeStateSlice'>
 
 export type SideNavigationPropsOutType = Record<string, any>
 
@@ -37,5 +34,4 @@ export interface SideNavigationComponentType
   (props: SideNavigationComponentPropsType): React.ReactElement
 }
 
-export type SideNavigationType =
-  React.FunctionComponent<SideNavigationPropsType>
+export type SideNavigationType = React.FunctionComponent<SideNavigationPropsType>

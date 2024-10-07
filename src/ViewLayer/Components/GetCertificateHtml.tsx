@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom'
 import { renderToString } from 'react-dom/server'
 
-import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
-import { CertificateStyledString as certificateStyles } from '../ViewLayer/Screens/Certificate/CertificateStyle'
+import { Certificate } from '../Screens/Certificate/Certificate'
+import { CertificateStyledString as certificateStyles } from '../Screens/Certificate/CertificateStyle'
 
 const SCREENS: Record<string, any> = {
   Certificate,
@@ -14,7 +14,7 @@ const SCREENS: Record<string, any> = {
  * @link https://stackoverflow.com/questions/18191893/generate-pdf-from-html-in-div-using-javascript
  * @cli to compile less to css yunazon-learn-browser % lessc /Users/rcheskidov/dev/yunazon-learn-browser/src/ViewLayer/Screens/Certificate.less /Users/rcheskidov/dev/yunazon-learn-browser/src/ViewLayer/Screens/Certificate.css
  */
-export const getCertificateHtml: Function = (data: any): string => {
+export const GetCertificateHtml: Function = (data: any): string => {
   const { screenType, ...screenToPrintProps } = data
   const { userName } = screenToPrintProps
 

@@ -1,26 +1,26 @@
 {
   "folders": [
     {
-      "path": "."
+      "path": ".",
     },
     {
-      "path": "../yourails-nestjs-server-4/."
+      "path": "../yourails-nestjs-server-4/.",
+    },
+    // {
+    //   "path": "../yourails_communication_layer/.",
+    // },
+    {
+      "path": "../manuals/.",
     },
     {
-      "path": "../yourails_communication_layer/."
+      "path": "./node_modules/antd",
     },
-    {
-      "path": "../manuals/."
-    },
-    {
-      "path": "../yourails_sep_chat_ai/."
-    }
   ],
   "settings": {
     "grammarly.files.include": [
       "**/README.md",
       "**/readme.md",
-      "**/*.txt"
+      "**/*.txt",
       // "**/*.ts"
     ],
     "grammarly.files.exclude": ["/Users/admin/Dev/archive.txt"],
@@ -45,7 +45,7 @@
       "**/bin": true,
       "**/dist": true,
       "**/public": true,
-      "**/node_modules": true
+      "**/node_modules": true,
     },
     "javascript.validate.enable": true,
     "editor.find.autoFindInSelection": "never",
@@ -55,7 +55,7 @@
       "**/.factorypath": true,
       "**/.project": true,
       "**/.settings": true,
-      "**/node_modules": true
+      "**/node_modules": true,
     },
     "eslint.experimental.incrementalSync": true,
     "eslint.lintTask.enable": true,
@@ -64,28 +64,28 @@
     "eslint.packageManager": "yarn",
     "[html]": {
       "editor.defaultFormatter": "vscode.html-language-features",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
 
       "editor.quickSuggestions": {
-        "strings": true
+        "strings": true,
       },
-      "editor.suggest.insertMode": "replace"
+      "editor.suggest.insertMode": "replace",
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[python]": {
       "editor.defaultFormatter": "ms-python.python",
-      "editor.formatOnSave": true
+      "editor.formatOnSave": true,
     },
     "python.formatting.provider": "yapf",
     "python.formatting.yapfPath": "C:\\ProgramData\\envCondaPy379\\Scripts\\yapf.exe",
@@ -121,6 +121,6 @@
     "editor.fontLigatures": false,
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "javascript.suggest.completeFunctionCalls": true,
-    "typescript.suggest.completeFunctionCalls": true
-  }
+    "typescript.suggest.completeFunctionCalls": true,
+  },
 }

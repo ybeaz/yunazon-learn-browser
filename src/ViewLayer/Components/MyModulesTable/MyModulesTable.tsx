@@ -2,8 +2,8 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, withStoreStateSelectedYrl } from '../../ComponentsLibrary/'
-import { ButtonYrl } from '../../ComponentsLibrary/ButtonYrl/ButtonYrl'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses, getDateString } from '../../../Shared/'
 import {
   ModulesTablePropsOutType,
@@ -13,7 +13,6 @@ import {
   MyModulesTableComponentType,
   MyModulesTableType,
 } from './MyModulesTableTypes'
-import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModuleType } from '../../../@types/'
 import { getSlug } from '../../../Shared/getSlug'
 import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
@@ -66,6 +65,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         buttonDeactivateModuleProps: {
           icon: 'MdDeleteOutline',
           classAdded: 'Button_DeactivateModule',
+          handleEvents,
           action: {
             typeEvent: 'SET_MODAL_FRAMES',
             data: [
@@ -142,8 +142,11 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
 }
 
 const storeStateSliceProps: string[] = []
-export const MyModulesTable = withPropsYrl({ handleEvents: handleEventsIn })(
-  withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesTableComponent))
+
+export const MyModulesTable: MyModulesTableType = withPropsYrl({ handleEvents: handleEventsIn })(
+  withPropsYrl({ handleEvents: handleEventsIn })(
+    withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesTableComponent))
+  )
 )
 
 export type {

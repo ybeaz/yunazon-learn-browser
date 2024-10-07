@@ -6,7 +6,7 @@ import {
   IconYrlPropsType,
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
-} from '../../ComponentsLibrary/'
+} from 'yourails_view_layer_web'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 
@@ -16,6 +16,7 @@ import {
   RootStoreType,
   HandleEventPropsType,
 } from '../../../Interfaces/'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type StagesType = {
   name: string
@@ -52,6 +53,7 @@ export type MyModulesBodyComponentPropsType = {
   storeStateSlice: {
     pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }
+  handleEvents: HandleEventType
 }
 
 export type MyModulesBodyPropsType = Omit<

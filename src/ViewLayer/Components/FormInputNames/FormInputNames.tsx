@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { InputYrl, ButtonYrl } from '../../ComponentsLibrary/'
+import { withPropsYrl, InputYrl } from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
@@ -16,10 +17,8 @@ import {
  * @import import { FormInputNames, FormInputNamesPropsType, FormInputNamesType } 
              from '../Components/FormInputNames/FormInputNames'
  */
-const FormInputNamesComponent: FormInputNamesComponentType = (
-  props: FormInputNamesPropsType
-) => {
-  const { classAdded, language, buttonForwardProps } = props
+const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNamesPropsType) => {
+  const { classAdded, language, buttonForwardProps, handleEvents } = props
 
   const nameLastLabel = DICTIONARY.nameLast[language]
   const nameFirstLabel = DICTIONARY.nameFirst[language]
@@ -30,6 +29,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       classAdded: 'Input_name',
       type: 'text',
       placeholder: 'first name...',
+      handleEvents,
       typeEvent: 'ONCHANGE_FORMS_GROUP_PROP',
       storeFormGroup: 'profileActive',
       storeFormProp: 'nameFirst',
@@ -38,6 +38,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       classAdded: 'Input_name',
       type: 'text',
       placeholder: 'second name...',
+      handleEvents,
       typeEvent: 'ONCHANGE_FORMS_GROUP_PROP',
       storeFormGroup: 'profileActive',
       storeFormProp: 'nameMiddle',
@@ -46,6 +47,7 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
       classAdded: 'Input_name',
       type: 'text',
       placeholder: 'last name...',
+      handleEvents,
       typeEvent: 'ONCHANGE_FORMS_GROUP_PROP',
       storeFormGroup: 'profileActive',
       storeFormProp: 'nameLast',
@@ -73,7 +75,9 @@ const FormInputNamesComponent: FormInputNamesComponentType = (
   )
 }
 
-export const FormInputNames = React.memo(FormInputNamesComponent)
+export const FormInputNames: FormInputNamesType = withPropsYrl({ handleEvents: handleEventsIn })(
+  React.memo(FormInputNamesComponent)
+)
 
 export type {
   FormInputNamesPropsType,

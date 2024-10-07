@@ -1,8 +1,9 @@
 import { SelectLanguagePropsType } from '../../Components/SelectLanguage'
 import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
-import { ButtonYrlPropsType, InputGroupYrlPropsType } from '../../ComponentsLibrary/'
+import { ButtonYrlPropsType, InputGroupYrlPropsType } from 'yourails_view_layer_web'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type HeaderFrameComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -34,9 +35,13 @@ export type HeaderFrameComponentPropsType = {
     profiles: RootStoreType['profiles']
     screenActive: RootStoreType['componentsState']['screenActive']
   }
+  handleEvents: HandleEventType
 }
 
-export type HeaderFramePropsType = Omit<HeaderFrameComponentPropsType, 'storeStateSlice'>
+export type HeaderFramePropsType = Omit<
+  HeaderFrameComponentPropsType,
+  'storeStateSlice' | 'handleEvents'
+>
 
 export type HeaderFramePropsOutType = {
   selectLanguageProps: SelectLanguagePropsType

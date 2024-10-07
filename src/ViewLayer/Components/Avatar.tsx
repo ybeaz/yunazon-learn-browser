@@ -2,14 +2,27 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ButtonYrl } from '../ComponentsLibrary/ButtonYrl/ButtonYrl'
-import { InputYrl } from '../ComponentsLibrary/InputYrl/InputYrl'
+import {
+  withPropsYrl,
+  ButtonYrl,
+  ButtonYrlPropsType,
+  InputYrl,
+  InputYrlPropsType,
+} from 'yourails_view_layer_web'
+import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 
-interface AvatarArgs {}
+type AvatarPropsType = {
+  handleEvents: HandleEventType
+}
 
-export const Avatar: React.FunctionComponent<AvatarArgs> = (
-  props: AvatarArgs
-): ReactElement => {
+type AvatarPropsOutType = {
+  buttonAvatarProps: ButtonYrlPropsType
+  inputAvatarFileProps: InputYrlPropsType
+}
+
+export const AvatarComponent: React.FunctionComponent<AvatarPropsType> = ({
+  handleEvents,
+}: AvatarPropsType): ReactElement => {
   const {
     language,
     forms: {
@@ -17,7 +30,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     },
   } = useSelector((store: RootStoreType) => store)
 
-  const propsOut = {
+  const propsOut: AvatarPropsOutType = {
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
@@ -31,14 +44,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
       tooltipPosition: '',
       isTooltipVisibleForced: false,
       isUnderlined: false,
-    },
-    imageAvatarDefaultProps: {
-      classAdded: 'Image_ProfileBody_avatar_default',
-      src: userAvatar,
-    },
-    imageAvatarProps: {
-      classAdded: 'Image_ProfileBody_avatar',
-      src: userAvatar,
+      handleEvents,
     },
     inputAvatarFileProps: {
       classAdded: 'Input_ProfileBody_avatar',
@@ -46,6 +52,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
       placeholder: '',
       typeEvent: 'GET_AVATAR_PATH',
       accept: 'image/png, image/jpeg, image/jpg',
+      handleEvents,
     },
   }
 
@@ -62,3 +69,7 @@ export const Avatar: React.FunctionComponent<AvatarArgs> = (
     </div>
   )
 }
+
+export const Avatar: React.FunctionComponent<AvatarPropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(AvatarComponent))
