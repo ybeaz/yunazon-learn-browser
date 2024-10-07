@@ -3,9 +3,9 @@ import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
 import { ImageYrl } from 'yourails_view_layer_web'
 
-import { LanguagesType } from '../Interfaces/LanguagesType'
-import { IDictionary } from '../Constants/dictionary.const'
-import { SelectOptionAntDType } from '../Interfaces/SelectOptionAntDType'
+import { LanguagesType } from '../../Interfaces/LanguagesType'
+import { IDictionary } from '../../Constants/dictionary.const'
+import { SelectOptionAntDType } from '../../Interfaces/SelectOptionAntDType'
 
 const { Option } = SelectAntd
 
@@ -21,7 +21,7 @@ interface IGetLanguagesOptionsJsx {
 /**
  * @description Funciton to get array of JSX option elements - language options
  */
-export const getLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
+export const GetLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
   LANGUAGES,
   language,
   svgFileDir,

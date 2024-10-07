@@ -1,4 +1,4 @@
-export interface SelectOptionType {
+export type SelectOptionType = {
   defaultSelected?: boolean
   selected: boolean
   text?: string
