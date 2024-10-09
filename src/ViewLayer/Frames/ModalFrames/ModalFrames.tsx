@@ -7,7 +7,7 @@ import {
   ButtonYrl,
   withStoreStateSelectedYrl,
   ConfirmationYesNoBodyYrl,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'

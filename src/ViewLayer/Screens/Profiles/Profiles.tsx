@@ -11,7 +11,7 @@ import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   ProfilesComponentPropsType,

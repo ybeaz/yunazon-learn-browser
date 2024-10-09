@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
+const nodeExternals = require('webpack-node-externals')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // css/css module
@@ -33,6 +35,7 @@ module.exports = () => {
       new WebpackBar(),
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
+      new NodePolyfillPlugin(),
       // new BundleAnalyzerPlugin({
       //   analyzerMode: 'disabled',
       //   generateStatsFile: true,
@@ -52,11 +55,37 @@ module.exports = () => {
       }),
       */
     ],
+    // externals: [
+    //   nodeExternals({
+    //     modulesDir: path.resolve(__dirname, './node_modules'),
+    //   }),
+    //   nodeExternals(),
+    // ],
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
         '@abs': path.resolve(__dirname, './src'),
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
+      },
+      fallback: {
+        '@noble/hashes/sha3': false,
+        '@noble/hashes/utils': false,
+        'js-sha3': false,
+        assert: false,
+        child_process: false,
+        cluster: false,
+        crypto: false,
+        dotenv: false,
+        fs: false,
+        http: false,
+        http2: false,
+        https: false,
+        ncp: false,
+        net: false,
+        path: false,
+        stream: false,
+        tls: false,
+        zlib: false,
       },
     },
     module: {

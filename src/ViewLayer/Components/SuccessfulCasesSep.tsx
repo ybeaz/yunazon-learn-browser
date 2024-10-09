@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { withPropsYrl, ImageYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { SERVERS_MAIN } from '../../Constants/servers.const'

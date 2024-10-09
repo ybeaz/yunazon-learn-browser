@@ -12,7 +12,7 @@ import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from '../../../Shared/getClasses'
 import {
   MyModulesComponentPropsType,

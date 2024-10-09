@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
-import { ImageYrl } from 'yourails_view_layer_web'
+import { ImageYrl } from 'yourails_common'
 
 import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { IDictionary } from '../../Constants/dictionary.const'

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type PageActionsGroupComponentPropsType = {

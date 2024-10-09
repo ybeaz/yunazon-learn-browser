@@ -1,4 +1,4 @@
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { GetSideNavigationButtonsProps, GetSideNavigationButtons } from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'

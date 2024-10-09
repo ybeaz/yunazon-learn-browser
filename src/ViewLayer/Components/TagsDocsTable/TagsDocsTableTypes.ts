@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 
 import { RootStoreType, HandleEventType } from '../../../Interfaces/'
-import { IconYrlPropsType } from 'yourails_view_layer_web'
+import { IconYrlPropsType } from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 
 export type TagsDocsTableComponentPropsType = {

@@ -1,6 +1,6 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { CourseType, ModuleType, MetaCourseType } from '../../../@types/GraphqlTypes'
 import { ResultType } from '../../../Shared/getAnswersChecked2'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'

@@ -6,7 +6,7 @@ import {
   withStoreStateSelectedYrl,
   ButtonYrl,
   TextArticleStructuredYrl,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'

@@ -1890,7 +1890,7 @@ export type ReadCoursesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
@@ -1929,7 +1929,7 @@ export type ReadDocumentsConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** option to setup operator for arguments */
   operators?: InputMaybe<OperatorsDocumentsInputType>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
@@ -1983,7 +1983,7 @@ export type ReadModulesConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** option to setup operator for arguments */
   operators?: InputMaybe<OperatorsModulesInputType>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax.ts */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
@@ -2021,7 +2021,7 @@ export type ReadProfilesConnectionInputType = {
   operators?: InputMaybe<OperatorsProfilesInputType>;
   /** profile IDs */
   profileIDs?: InputMaybe<Array<Scalars['ID']['input']>>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax.ts */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
@@ -2081,7 +2081,7 @@ export type ReadTagsConnectionInputType = {
   offset?: InputMaybe<Scalars['Int']['input']>;
   /** option to setup operator for arguments */
   operators?: InputMaybe<OperatorsTagsInputType>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax.ts */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;
@@ -2110,7 +2110,7 @@ export type ReadTagsModulesAllInputType = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   /** min count value limits the output by the threshold of the count value. if minCount === 0 || undefined || nullthen the function returns ALL docs */
   minCount?: InputMaybe<Scalars['Int']['input']>;
-  /** search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts */
+  /** search in - array of fields to search in, see the list in SeachInFieldsMax.ts */
   searchIn?: InputMaybe<Array<Scalars['String']['input']>>;
   /** searchPhrase */
   searchPhrase?: InputMaybe<Scalars['String']['input']>;

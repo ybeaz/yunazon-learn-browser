@@ -3,7 +3,7 @@ import React from 'react'
 import { TagsCloudBody } from '../TagsCloudBody/TagsCloudBody'
 import { ModulesBody } from '../ModulesBody/ModulesBody'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from '../../../Shared/getClasses'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
