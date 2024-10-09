@@ -59,8 +59,8 @@
     "reselect": "^5.0.1",
     "styled-components": "^6.1.0",
     "ts-node": "^10.9.1",
-    "yarn": "^1.22.22",
-    "yourails_common": "^0.2.0",
+    "yarn": "@1.22.17",
+    "yourails_common": "^0.3.1",
     "yourails_communication_layer": "^0.8.0",
     "yourails_view_layer_web": "^0.1.5"
   },
@@ -110,12 +110,12 @@
     "webpack-dev-server": "^4.13.3",
     "webpack-manifest-plugin": "^5.0.0",
     "webpack-merge": "^5.8.0",
+    "webpack-node-externals": "^3.0.0",
     "webpackbar": "^5.0.2",
     "yalc": "^1.0.0-pre.53"
   },
   "engines": {
     "node": "v20.18.0",
-    "yarn": "1.22",
     "npm": "10.8.2"
   }
 }
