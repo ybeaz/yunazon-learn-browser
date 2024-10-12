@@ -57,6 +57,10 @@ module.exports = () => {
         '@abs': path.resolve(__dirname, './src'),
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
+      fallback: {
+        fs: false,
+        path: require.resolve('path-browserify'),
+      },
     },
     externals: [
       'stream',

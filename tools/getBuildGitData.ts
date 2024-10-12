@@ -69,6 +69,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
 /**
  * @description Here the file is being run directly
+ * @run ts-node tools/getBuildGitData.ts
  */
 if (require.main === module) {
   ;(async () => {
