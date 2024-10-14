@@ -1858,7 +1858,7 @@ input ReadBotsConnectionInputType {
   after: String
 
   """first"""
-  first: Int
+  first: Int = 0
 
   """offset"""
   offset: Int
@@ -1907,7 +1907,7 @@ input ReadCoursesConnectionInputType {
   profileIDs: [ID!] = []
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax
   """
   searchIn: [String!] = []
 
@@ -1975,7 +1975,7 @@ input ReadDocumentsConnectionInputType {
   operators: OperatorsDocumentsInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax
   """
   searchIn: [String!] = []
 
@@ -2063,7 +2063,7 @@ input ReadModulesConnectionInputType {
   operators: OperatorsModulesInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2121,7 +2121,7 @@ input ReadProfilesConnectionInputType {
   profileIDs: [ID!] = []
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2222,7 +2222,7 @@ input ReadTagsConnectionInputType {
   operators: OperatorsTagsInputType = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax.ts
   """
   searchIn: [String!] = []
 
@@ -2273,7 +2273,7 @@ input ReadTagsModulesAllInputType {
   minCount: Int = null
 
   """
-  search in - array of fields to search in, see the list in src/constants/SeachInFieldsMax.ts
+  search in - array of fields to search in, see the list in SeachInFieldsMax.ts
   """
   searchIn: [String!]
 

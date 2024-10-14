@@ -6,6 +6,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = env => {
   return merge(common(env), {
@@ -19,6 +20,9 @@ module.exports = env => {
       new WebpackManifestPlugin(),
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash].css',
+      }),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: [path.join(__dirname, "'web-build/dist/**/*")],
       }),
     ],
     optimization: {
