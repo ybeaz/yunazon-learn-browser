@@ -4,10 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
-import {
-  getSetUrlQueryBrowserApi,
-  GetSetUrlQueryBrowserApiParamsType,
-} from '../../Shared/getSetUrlQueryBrowserApi'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {

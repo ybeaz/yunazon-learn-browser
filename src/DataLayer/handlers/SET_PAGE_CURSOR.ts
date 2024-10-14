@@ -7,7 +7,7 @@ import {
 } from '../../Interfaces/RootStoreType'
 import { PaginationType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 const { dispatch, getState } = store
 

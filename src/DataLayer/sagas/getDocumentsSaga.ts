@@ -13,7 +13,7 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from '../../Shared/getUserProfileData'
 

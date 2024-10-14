@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getCourses } from './getCoursesSaga'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<any> {

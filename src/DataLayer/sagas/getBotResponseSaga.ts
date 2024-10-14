@@ -10,7 +10,7 @@ import {
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
 } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import {
   connectionsTimeouts,

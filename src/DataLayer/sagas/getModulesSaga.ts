@@ -7,16 +7,20 @@ import {
 import { ActionReduxType } from '../../Interfaces'
 import { ModuleType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
+import {
+  getHeadersAuthDict,
+  getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+  FragmentEnumType,
+  getChainedResponsibility,
+  getMappedConnectionToItems,
+  withDebounce,
+  getUserProfileData,
+  getParsedUrlQueryBrowserApi,
+} from 'yourails_common'
 
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getUserProfileData } from '../../Shared/getUserProfileData'
-import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false

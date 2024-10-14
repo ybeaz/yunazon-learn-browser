@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { getModules } from './getModulesSaga'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<any> {

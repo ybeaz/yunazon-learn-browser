@@ -11,21 +11,19 @@ import {
   connectionsTimeouts,
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 
 export function* getModule45QuestionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const { summary, summaryChunks }: any = yield select(
-      (state: RootStoreType) => {
-        return {
-          summary: state.moduleCreateProgress.summary,
-          summaryChunks: state.moduleCreateProgress.summaryChunks,
-        }
+    const { summary, summaryChunks }: any = yield select((state: RootStoreType) => {
+      return {
+        summary: state.moduleCreateProgress.summary,
+        summaryChunks: state.moduleCreateProgress.summaryChunks,
       }
-    )
+    })
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
@@ -58,17 +56,14 @@ export function* getModule45QuestionsCreatedGenerator(
       }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
 
       const userText =
-        typeof summaryChunk === 'string'
-          ? summaryChunk
-          : JSON.stringify(summaryChunk, null, 2)
+        typeof summaryChunk === 'string' ? summaryChunk : JSON.stringify(summaryChunk, null, 2)
 
       const getBotResponseParams: GetBotResponseParamsType = {
         botID: 'JeZ6xLpR2RSa',
         profileID: 'tbd3rgTVFkiU',
         profileName: '@t_q_ao_extractor_02_persona',
         stage: CreateModuleStagesEnumType['questions'],
-        connectionsTimeoutName:
-          ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
+        connectionsTimeoutName: ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
         userText,
       }
       const questionsChunk: any = yield getBotResponse(getBotResponseParams)
@@ -115,17 +110,11 @@ export function* getModule45QuestionsCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule45QuestionsCreatedSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule45QuestionsCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule45QuestionsCreated = withDebounce(
-  getModule45QuestionsCreatedGenerator,
-  500
-)
+export const getModule45QuestionsCreated = withDebounce(getModule45QuestionsCreatedGenerator, 500)
 
 export default function* getModule45QuestionsCreatedSaga() {
   yield takeEvery(

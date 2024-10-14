@@ -8,7 +8,7 @@ import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 /**
  * @status DEPRECIATED in favor of readTagsModulesGenerator

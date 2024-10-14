@@ -8,7 +8,7 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)

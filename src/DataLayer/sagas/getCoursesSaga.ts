@@ -15,7 +15,7 @@ import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToIt
 import { getPreparedCourses } from '../../Shared/getPreparedCourses'
 import { selectCoursesStageFlag } from '../../FeatureFlags'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<any> {

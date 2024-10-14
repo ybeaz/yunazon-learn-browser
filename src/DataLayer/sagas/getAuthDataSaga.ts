@@ -11,7 +11,7 @@ import { getRedirected } from '../../Shared/getRedirected'
 import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
 import { getLocalStorageDeletedObjFrom } from '../../Shared/getLocalStorageDeletedObjFrom'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -46,9 +46,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       yield call(getAuthAwsCognitoUserRefreshed)
     }
 
-    let stateSelected: RootStoreType | any = yield select(
-      (state: RootStoreType) => state
-    )
+    let stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
     const {
       authAwsCognitoUserData: { sub, email },

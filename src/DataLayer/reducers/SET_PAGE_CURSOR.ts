@@ -5,10 +5,7 @@ import {
   PaginationNameEnumType,
 } from '../../Interfaces/RootStoreType'
 import { PaginationType } from '../../Interfaces'
-import {
-  getSetUrlQueryBrowserApi,
-  GetSetUrlQueryBrowserApiParamsType,
-} from '../../Shared/getSetUrlQueryBrowserApi'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 
 export const SET_PAGE_CURSOR: ReducerType = (store: RootStoreType, data: any): RootStoreType => {

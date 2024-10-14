@@ -7,7 +7,7 @@ import {
   CreateModuleStatusEnumType,
 } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { getModule10MetaDataCreated } from './getModule10MetaDataCreatedSaga'
 import { getModule20TranscriptCreated } from './getModule20TranscriptCreatedSaga'
 import { getModule35SummaryCreated } from './getModule35SummaryCreatedSaga'

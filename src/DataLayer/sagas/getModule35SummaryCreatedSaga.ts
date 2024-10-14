@@ -11,7 +11,7 @@ import {
   connectionsTimeouts,
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { getChunkedArray } from '../../Shared/getChunkedArray'
 import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
