@@ -7,11 +7,11 @@ import {
   ResolveGraphqlEnumType,
   FragmentEnumType,
 } from 'yourails_communication_layer'
-import {} from // getResponseGraphqlAsync,
-// getCreatedFolder,
-// ResolveGraphqlEnumType,
-// FragmentEnumType
-'yourails_common'
+// import {
+//   getResponseGraphqlAsync,
+//   ResolveGraphqlEnumType,
+//   FragmentEnumType,
+// } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
