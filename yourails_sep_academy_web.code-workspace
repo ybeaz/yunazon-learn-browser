@@ -6,14 +6,11 @@
     {
       "path": "../yourails-nestjs-server-4/.",
     },
-    // {
-    //   "path": "../yourails_communication_layer/.",
-    // },
     {
-      "path": "../manuals/.",
+      "path": "./node_modules/yourails_common",
     },
     {
-      "path": "./node_modules/antd",
+      "path": "../manuals/.",
     },
   ],
   "settings": {

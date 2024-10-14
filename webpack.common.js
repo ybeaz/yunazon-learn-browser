@@ -55,6 +55,8 @@ module.exports = () => {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
         '@abs': path.resolve(__dirname, './src'),
+        yourails_common: path.resolve(__dirname, 'node_modules/yourails_common'),
+
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
       fallback: {
@@ -120,7 +122,11 @@ module.exports = () => {
               },
             },
           ],
-          include: path.resolve(__dirname, 'src'), // Make sure it includes your source folder
+          include: [
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'node_modules/yourails_common'),
+            path.resolve(__dirname, '.yalc/yourails_common'),
+          ], // Make sure it includes your source folder
         },
         {
           test: cssRegex,

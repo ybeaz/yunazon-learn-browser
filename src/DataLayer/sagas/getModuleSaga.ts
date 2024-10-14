@@ -2,12 +2,17 @@ import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
 import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
-// import {
-//   getResponseGraphqlAsync,
-//   ResolveGraphqlEnumType,
-//   FragmentEnumType,
-// } from 'yourails_communication_layer'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
+import {
+  // getResponseGraphqlAsync,
+  ResolveGraphqlEnumType,
+  FragmentEnumType,
+} from 'yourails_communication_layer'
+import {
+  getResponseGraphqlAsync,
+  // getCreatedFolder,
+  // ResolveGraphqlEnumType,
+  // FragmentEnumType
+} from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
@@ -71,7 +76,6 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
     yield put(actionSync.SET_MODULES(modulesNext))
-
     if (
       caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
       caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
@@ -99,4 +103,13 @@ export const getModule = withDebounce(getModuleGenerator, 500)
 
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)
+}
+
+// Remove this after debugging
+if (require.main === module) {
+  const path = `${__dirname}/text2`
+  console.info('getModuleSaga [109]', { path })
+  // getCreatedFolder(path)
+} else {
+  console.info('We are in a module', 'green')
 }
