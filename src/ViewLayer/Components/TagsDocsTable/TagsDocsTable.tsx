@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, IconYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, IconYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { TagType } from '../../../@types/'
 import { getClasses, getDateString, getSlug } from '../../../Shared/'

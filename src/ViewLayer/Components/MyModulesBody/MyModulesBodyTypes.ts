@@ -6,7 +6,7 @@ import {
   IconYrlPropsType,
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 

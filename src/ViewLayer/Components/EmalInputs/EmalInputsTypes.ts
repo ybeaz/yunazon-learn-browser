@@ -1,5 +1,5 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 
 export type EmalInputsComponentPropsType = {

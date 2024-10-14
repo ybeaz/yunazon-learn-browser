@@ -1,6 +1,6 @@
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { UserType } from '../../Interfaces/UserType'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { ButtonYrlPropsType } from 'yourails_common'
 
 interface IGetButtonAuthUser {
   (

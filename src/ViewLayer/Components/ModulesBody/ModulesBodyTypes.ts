@@ -3,7 +3,7 @@ import { PaginationNavigationPropsType } from '../../Components/'
 import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 import { IconLabelWithClosePropsType } from '../IconLabelWithClose/IconLabelWithClose'
-import { IconYrlPropsType } from 'yourails_view_layer_web'
+import { IconYrlPropsType } from 'yourails_common'
 
 export type ModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

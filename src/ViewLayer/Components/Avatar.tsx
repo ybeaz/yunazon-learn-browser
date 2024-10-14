@@ -8,7 +8,7 @@ import {
   ButtonYrlPropsType,
   InputYrl,
   InputYrlPropsType,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
 
 type AvatarPropsType = {

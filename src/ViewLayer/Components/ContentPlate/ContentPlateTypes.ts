@@ -2,7 +2,7 @@ import { ModuleType } from '../../../@types/GraphqlTypes'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from '../../../Interfaces/DurationObjType'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
-import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_view_layer_web'
+import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
 import { HandleEventType } from '../../../Interfaces/HandleEventType'
 
 export type ContentPlateComponentPropsType = {

@@ -6,12 +6,7 @@ import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { SCREENS_DICT } from '../../../Constants/screensDict.const'
 import { PaginationNameEnumType } from '../../../Interfaces/'
 import { TagType } from '../../../@types'
-import {
-  ButtonYrl,
-  InputGroupYrl,
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from 'yourails_view_layer_web'
+import { ButtonYrl, InputGroupYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'

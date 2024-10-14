@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonYrlPropsType, IconYrlPropsType } from 'yourails_view_layer_web'
+import { ButtonYrlPropsType, IconYrlPropsType } from 'yourails_common'
 import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
 import { HandleEventType } from '../../../DataLayer/index.handleEvents'
 

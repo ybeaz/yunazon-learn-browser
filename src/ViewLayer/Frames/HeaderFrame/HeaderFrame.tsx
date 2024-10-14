@@ -20,7 +20,7 @@ import {
   withStoreStateSelectedYrl,
   withConditionalWrapperYrl,
   NoSeoIndexingYrl,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import {
   handleEvents as handleEventsIn,
   HandleEventType,

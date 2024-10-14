@@ -7,7 +7,7 @@ import {
   getChunkedArray,
 } from '../../../Shared/'
 import { CheckRadioGroup } from '../CheckRadioGroup'
-import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import { getClasses } from '../../../Shared/getClasses'

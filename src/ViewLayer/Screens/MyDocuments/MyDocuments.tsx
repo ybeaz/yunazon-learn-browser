@@ -12,7 +12,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { MyDocumentsBody } from '../../Components/'
 import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
 import {

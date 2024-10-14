@@ -11,7 +11,7 @@ import { getSlug } from '../../../Shared/getSlug'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import {

@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { useNavigate } from 'react-router-dom'
-import { ImageYrl, withPropsYrl } from 'yourails_view_layer_web'
+import { ImageYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from '../../../Shared/getClasses'
 

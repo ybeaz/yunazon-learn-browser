@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { withPropsYrl } from 'yourails_view_layer_web'
+import { withPropsYrl } from 'yourails_common'
 import { getClasses } from '../../../Shared/getClasses'
 
 import {
