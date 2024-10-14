@@ -1,16 +1,12 @@
 import React, { useEffect, ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { isParsableFloat } from '../../../Shared/isParsableFloat'
-import { getParsedUrlQuery } from '../../../Shared/getParsedUrlQuery'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getQuestionsWrongAnswered } from '../../../Shared/getQuestionsWrongAnswered'
-import {
-  getAnswersChecked2,
-  GetAnswersChecked2OutType,
-  ResultType,
-} from '../../../Shared/getAnswersChecked2'
-import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
+import { isParsableFloat } from 'yourails_common'
+import { getParsedUrlQuery } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { getQuestionsWrongAnswered } from 'yourails_common'
+import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
@@ -123,6 +119,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     formInputNamesProps: {
       language,
       buttonForwardProps: scenario.buttonForwardProps,
+      handleEvents,
     },
     buttonForwardProps: scenario.buttonForwardProps,
   }

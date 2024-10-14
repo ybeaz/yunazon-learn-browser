@@ -3,12 +3,11 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { getDateString } from '../../../Shared/getDateString'
-import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
-import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
+import { getDateString } from 'yourails_common'
+import { getExpertiseInfo } from 'yourails_common'
+import { getArrayItemByProp } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { TagType, ProfileType, DocumentType } from '../../../@types/index'
-import { getSlug } from '../../../Shared/getSlug'
+import { TagType, ProfileType, DocumentType } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
@@ -20,7 +19,6 @@ import {
   CertificateFrameAType,
 } from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
 
-import { withPropsYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {

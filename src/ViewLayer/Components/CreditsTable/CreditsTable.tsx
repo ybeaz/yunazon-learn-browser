@@ -5,7 +5,7 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withPropsYrl, ButtonYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { DocumentType } from '../../../@types/'
-import { getClasses, getDateString, getSlug } from '../../../Shared/'
+import { getClasses, getDateString, getSlug } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { PaginationNameEnumType } from '../../../Interfaces'
 import {

@@ -13,7 +13,6 @@ import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { SERVERS_MAIN } from '../../../Constants/servers.const'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
-import { getSizeWindow } from '../../../Shared/getSizeWindow'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 

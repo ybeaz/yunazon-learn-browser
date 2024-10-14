@@ -10,9 +10,9 @@ import { ButtonYrl, InputGroupYrl, withPropsYrl, withStoreStateSelectedYrl } fro
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
-import { getRangeOfNumbers } from '../../../Shared/getRangeOfNumbers'
-import { getColorsRandomDarkTheme } from '../../../Shared/getColorsRandomDarkTheme'
+import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
+import { getRangeOfNumbers } from 'yourails_common'
+import { getColorsRandomDarkTheme } from 'yourails_common'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,

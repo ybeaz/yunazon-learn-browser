@@ -4,7 +4,7 @@ import { Tooltip } from 'antd'
 
 import { ImageYrl, IconYrl, withPropsYrl } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getSlug } from '../../../Shared/getSlug'
+import { getSlug } from 'yourails_common'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
 import { LoaderBlurhash } from '../LoaderBlurhash'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
@@ -13,7 +13,7 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from 'yourails_common'
-import { getSizeWindow } from '../../../Shared/getSizeWindow'
+import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {

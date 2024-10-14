@@ -14,7 +14,7 @@ import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { getClasses, getParsedUrlQueryBrowserApi } from '../../../Shared/'
+import { getClasses } from 'yourails_common'
 import {
   MyDocumentsComponentPropsType,
   MyDocumentsPropsType,

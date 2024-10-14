@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { buildData } from '../../../Constants/buildData.const'
 import {
   AcademyAboutBodyComponentPropsType,

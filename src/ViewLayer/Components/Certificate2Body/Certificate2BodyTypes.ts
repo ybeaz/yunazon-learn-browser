@@ -1,7 +1,7 @@
 import React from 'react'
-import { TagType, ProfileType, DocumentType } from '../../../@types/index'
+import { TagType, ProfileType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
+import { GetExpertiseInfoResType } from 'yourails_common'
 export type Certificate2BodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   language: RootStoreType['language']

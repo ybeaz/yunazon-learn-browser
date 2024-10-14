@@ -5,7 +5,7 @@ import {
   getQuesionString,
   getButtonsClassString,
   getChunkedArray,
-} from '../../../Shared/'
+} from 'yourails_common'
 import { CheckRadioGroup } from '../CheckRadioGroup'
 import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'

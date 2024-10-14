@@ -1,13 +1,12 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withPropsYrl, IconYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { TagType } from '../../../@types/'
-import { getClasses, getDateString, getSlug } from '../../../Shared/'
+import { TagType } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
+import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
 import { PaginationNameEnumType } from '../../../Interfaces'
 import {
   TagsDocsTableItemPropsOutType,
