@@ -12,7 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   ProfilesComponentPropsType,
   ProfilesPropsType,

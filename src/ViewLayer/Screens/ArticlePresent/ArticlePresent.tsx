@@ -13,7 +13,7 @@ import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialReques
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
 import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   ArticlePresentComponentPropsType,
   ArticlePresentPropsType,

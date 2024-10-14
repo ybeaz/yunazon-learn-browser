@@ -2,7 +2,7 @@ import React from 'react'
 
 import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 
 import {
   PaginationNavigationComponentPropsType,

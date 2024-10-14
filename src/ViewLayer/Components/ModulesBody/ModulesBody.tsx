@@ -10,7 +10,7 @@ import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
 import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { IconLabelWithClose } from '../IconLabelWithClose/IconLabelWithClose'
 import {
   ModulesBodyComponentPropsType,

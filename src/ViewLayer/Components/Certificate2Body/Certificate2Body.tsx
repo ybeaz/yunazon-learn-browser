@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { getSlug } from '../../../Shared/getSlug'
 import { getNameString } from '../../../Shared/getNameString'
 import {

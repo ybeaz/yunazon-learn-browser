@@ -11,7 +11,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   AcademyAboutComponentPropsType,
   AcademyAboutPropsType,

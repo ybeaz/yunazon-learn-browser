@@ -4,7 +4,7 @@ import { TagsCloudBody } from '../TagsCloudBody/TagsCloudBody'
 import { ModulesBody } from '../ModulesBody/ModulesBody'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 
 import {

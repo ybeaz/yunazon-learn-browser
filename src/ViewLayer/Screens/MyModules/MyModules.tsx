@@ -13,7 +13,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   MyModulesComponentPropsType,
   MyModulesPropsType,

@@ -21,7 +21,7 @@ import {
 } from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
 
 import { withPropsYrl } from 'yourails_common'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {
   Certificate2ComponentPropsType,

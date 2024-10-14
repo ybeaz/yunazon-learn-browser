@@ -16,7 +16,7 @@ import {
 } from 'yourails_common'
 import { Timer } from '../Timer/Timer'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyModulesTable } from '../MyModulesTable/MyModulesTable'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'

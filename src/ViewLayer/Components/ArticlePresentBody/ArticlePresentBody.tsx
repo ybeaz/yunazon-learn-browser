@@ -2,7 +2,7 @@ import React from 'react'
 
 import { TextStructuredYrl } from 'yourails_common'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   ArticlePresentBodyComponentPropsType,
   ArticlePresentBodyPropsType,

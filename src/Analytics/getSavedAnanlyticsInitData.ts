@@ -2,16 +2,16 @@ import { store } from '../DataLayer/store'
 import { actionAsync } from '../DataLayer/index.action'
 
 import * as flags from '../FeatureFlags/index'
-import { cookie } from '../Shared/cookie'
-import { mediaSizeCrossBrowser } from '../Shared/mediaSizeCrossBrowser'
-import { COOKIE_ANALYTICSID_NAME } from '../Constants/cookieAnalyticsIDName.const'
+import { cookie } from 'yourails_common'
+import { mediaSizeCrossBrowser } from 'yourails_common'
+import { COOKIE_ANALYTICSID_NAME } from 'yourails_common'
 
 const { dispatch } = store
 
 export const getSavedAnanlyticsInitData: Function = () => {
   if (!flags.isGetingSavedAnanlyticsEvent()) return
 
-  let analyticsID: string = cookie.get(COOKIE_ANALYTICSID_NAME)
+  let analyticsID: string | undefined = cookie.get(COOKIE_ANALYTICSID_NAME)
   const { href, hostname, pathname, search } = location
 
   if (analyticsID && analyticsID !== 'null') {

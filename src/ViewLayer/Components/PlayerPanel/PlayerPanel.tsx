@@ -5,7 +5,7 @@ import { SuccessTried } from '../SuccessTried'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   PlayerPanelComponentPropsType,
   PlayerPanelPropsType,

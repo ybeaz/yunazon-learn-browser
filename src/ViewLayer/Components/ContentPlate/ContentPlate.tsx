@@ -14,7 +14,7 @@ import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYout
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from '../../../Shared/getSizeWindow'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
