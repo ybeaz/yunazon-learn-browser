@@ -8,11 +8,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { ModuleType } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-  FragmentEnumType,
-} from 'yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 
 import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
 import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'

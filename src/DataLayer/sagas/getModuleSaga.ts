@@ -2,16 +2,7 @@ import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
 import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
 import { ActionReduxType } from '../../Interfaces'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-  FragmentEnumType,
-} from 'yourails_communication_layer'
-// import {
-//   getResponseGraphqlAsync,
-//   ResolveGraphqlEnumType,
-//   FragmentEnumType,
-// } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getPreparedModules } from '../../Shared/getPreparedModules'
 import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
