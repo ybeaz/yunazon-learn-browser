@@ -39,6 +39,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
     navigate,
     sub,
     language,
+    handleEvents,
   })
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
