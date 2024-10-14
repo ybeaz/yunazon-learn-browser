@@ -2,12 +2,10 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { MutationCreateProfilesArgs, ProfileNatureType } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
-import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
 import { withDebounce } from 'yourails_common'
 
 function* createProfileGenerator(params: ActionReduxType | any): Iterable<any> {

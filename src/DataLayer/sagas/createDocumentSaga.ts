@@ -7,7 +7,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { getArrayItemByProp } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 
 function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> {

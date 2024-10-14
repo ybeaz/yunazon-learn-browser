@@ -1,11 +1,8 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import {
-  ReadModulesConnectionInputType,
-  QueryReadModulesConnectionArgs,
-} from '../../@types/GraphqlTypes'
+import { ReadModulesConnectionInputType, QueryReadModulesConnectionArgs } from 'yourails_common'
 import { ActionReduxType } from '../../Interfaces'
-import { ModuleType } from '../../@types/GraphqlTypes'
+import { ModuleType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'

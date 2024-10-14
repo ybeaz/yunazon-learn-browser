@@ -1,7 +1,7 @@
 import { ProfileType } from '../../@types/GraphqlTypes'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { getUniqArrBy } from '../../Shared/getUniqArrBy'
+import { getUniqArrBy } from 'yourails_common'
 
 export const SET_PROFILES: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { profiles } = store

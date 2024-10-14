@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { getOptionsShuffledDepreciated } from '../../Shared/getOptionsShuffledDepreciated'
-import { getProdidedAnswerDefaultDepreciated } from '../../Shared/getProdidedAnswerDefaultDepreciated'
+import { getOptionsShuffledDepreciated } from 'yourails_common'
+import { getProdidedAnswerDefaultDepreciated } from 'yourails_common'
 
 export const GET_ANSWERS_DEFAULT_DEPRECIATED: ReducerType = (
   store: RootStoreType,

@@ -4,12 +4,12 @@ import { QueryGetAuthAwsCognitoUserRefreshedArgs } from '../../@types/GraphqlTyp
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
+import { getDetectedEnv } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { ClientAppType } from '../../@types/ClientAppType'
 import { withDebounce } from 'yourails_common'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {

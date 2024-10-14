@@ -1,5 +1,5 @@
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
 
 export const SET_AUTH_AWS_COGNITO_USER_DATA: ReducerType = (store, data) => {
   const { source, authAwsCognitoUserData: authAwsCognitoUserDataIn } = data
@@ -13,10 +13,8 @@ export const SET_AUTH_AWS_COGNITO_USER_DATA: ReducerType = (store, data) => {
 
   let refresh_token = ''
   if (refresh_token_in) refresh_token = refresh_token_in
-  else if (refresh_token_storeStateApp)
-    refresh_token = refresh_token_storeStateApp
-  else if (refresh_token_localStorage)
-    refresh_token = refresh_token_localStorage
+  else if (refresh_token_storeStateApp) refresh_token = refresh_token_storeStateApp
+  else if (refresh_token_localStorage) refresh_token = refresh_token_localStorage
 
   const authAwsCognitoUserDataNext = {
     ...authAwsCognitoUserDataIn,
