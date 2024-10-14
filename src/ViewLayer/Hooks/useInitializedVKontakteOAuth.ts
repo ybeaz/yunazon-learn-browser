@@ -1,17 +1,15 @@
 import { useEffect } from 'react'
 
-import { timeout } from '../../Shared/timeout'
+import { timeout } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
+import { getPrependedExternalScript } from 'yourails_common'
 
 /**
  * @description Make initial call for data and pupulate it to the store
  * @link https://vk.com/dev/Login?aid=7910949&mode=2
  * @link https://vk.com/dev/widget_auth
  */
-export const useInitializedVKontakteOAuth: Function = (
-  branch: string
-): void => {
+export const useInitializedVKontakteOAuth: Function = (branch: string): void => {
   useEffect(() => {
     const scriptProps = {
       src: 'https://vk.com/js/api/openapi.js?169',

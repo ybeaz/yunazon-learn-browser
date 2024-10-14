@@ -16,10 +16,7 @@ import {
   connectionsTimeouts,
   ConnectionsTimeoutNameEnumType,
 } from '../../Constants/connectionsTimeouts.const'
-import {
-  getPreparedResponseFromBot,
-  GetPreparedResponseFromBotParamsType,
-} from '../../Shared/getPreparedResponseFromBot/getPreparedResponseFromBot'
+import { getPreparedResponseFromBot, GetPreparedResponseFromBotParamsType } from 'yourails_common'
 
 export type GetBotResponseParamsType = {
   botID: string

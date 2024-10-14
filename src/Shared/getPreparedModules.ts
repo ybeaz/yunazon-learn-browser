@@ -18,7 +18,7 @@ interface GetPreparedModulesType {
 /**
  * @description Function to getPreparedModules
  * @run ts-node src/shared/utils/getPreparedModules.ts
- * @import import { getPreparedModules } from '../../Shared/getPreparedModules'
+ * @import import { getPreparedModules } from '..'
  */
 
 export const getPreparedModules: GetPreparedModulesType = (modules: ModuleType[], options) => {

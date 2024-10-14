@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
-import { getUniqArrBy } from '../../Shared/getUniqArrBy'
-import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
+import { getUniqArrBy } from 'yourails_common'
+import { getCreatedStyleElement } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
 export interface SelectOptionType {

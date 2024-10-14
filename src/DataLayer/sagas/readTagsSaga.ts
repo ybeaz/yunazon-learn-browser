@@ -7,10 +7,8 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
 
 function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay

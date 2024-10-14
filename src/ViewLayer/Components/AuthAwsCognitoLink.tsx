@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom'
 
 import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from '../../Constants/aws.const'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
+import { getDetectedEnv } from 'yourails_common'
 import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { getParsedUrlQuery } from 'yourails_common'
 import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
 import { IconYrl, withStoreStateSelectedYrl } from 'yourails_common'
 

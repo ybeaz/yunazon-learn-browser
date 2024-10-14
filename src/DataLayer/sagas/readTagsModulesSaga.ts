@@ -1,13 +1,13 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryReadTagsModulesArgs } from '../../@types/GraphqlTypes'
+import { QueryReadTagsModulesAllArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 
 /**
@@ -29,8 +29,8 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables: QueryReadTagsModulesArgs = {
-      readTagsModulesInput: {
+    const variables: QueryReadTagsModulesAllArgs = {
+      readTagsModulesAllInput: {
         learnerUserID,
         minCount: 2,
         limit: 256,

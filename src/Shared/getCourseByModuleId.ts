@@ -23,13 +23,10 @@ interface GetCourseByModuleIdType {
  * @description Function to getCourseByModuleId
  * @test see test on server side
  * @run ts-node src/shared/utils/getCourseByModuleId.ts
- * @import import { getCourseByModuleId } from '../../Shared/getCourseByModuleId'
+ * @import import { getCourseByModuleId } from '..'
  */
 
-export const getCourseByModuleId: GetCourseByModuleIdType = (
-  { moduleID, courses },
-  options
-) => {
+export const getCourseByModuleId: GetCourseByModuleIdType = ({ moduleID, courses }, options) => {
   let res: GetCourseByModuleIdResType = null
   let breakVar: boolean = false
 

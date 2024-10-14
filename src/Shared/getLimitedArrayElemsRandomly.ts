@@ -4,10 +4,7 @@ import { getArrShuffled } from './getArrShuffled'
  * @description Funciton to return a set of elements from array but randomly
  * @status Required TODO: not to change the order
  */
-export const getLimitedArrayElemsRandomly: Function = (
-  arrIn: any[],
-  limit: number
-): any[] => {
+export const getLimitedArrayElemsRandomly: Function = (arrIn: any[], limit: number): any[] => {
   const indexName = 'indexQWERTY'
 
   let arrNext = arrIn.map((item, index) => {
@@ -37,7 +34,7 @@ export const getLimitedArrayElemsRandomly: Function = (
 }
 
 // Testing and debugging
-// import { getLimitedArrayElemsRandomly } from '../../Shared/getLimitedArrayElemsRandomly'
+// import { getLimitedArrayElemsRandomly } from '..'
 // const arrIn = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 // const arrLimitedRandom = new Array(5)
 //   .fill(true)

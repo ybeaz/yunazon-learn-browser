@@ -2,7 +2,7 @@ import { promises as fs } from 'fs'
 
 import { consoler } from '../consoler'
 import { consolerError } from '../consolerError'
-import { isStringJsonParsable } from '../../Shared/isStringJsonParsable'
+import { isStringJsonParsable } from 'yourails_common'
 
 export type GetJsonFromString01ParamsType = any
 

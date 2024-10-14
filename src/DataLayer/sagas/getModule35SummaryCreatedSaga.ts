@@ -13,7 +13,7 @@ import {
 } from '../../Constants/connectionsTimeouts.const'
 import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
-import { getChunkedArray } from '../../Shared/getChunkedArray'
+import { getChunkedArray } from 'yourails_common'
 import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
 
 export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {

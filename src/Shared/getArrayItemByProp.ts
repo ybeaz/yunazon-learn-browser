@@ -7,15 +7,12 @@ type GetArrayItemByIdPropsType = {
 type GetArrayItemByIdOptionsType = {}
 
 interface GetArrayItemByIdType {
-  (
-    params: GetArrayItemByIdPropsType,
-    options?: GetArrayItemByIdOptionsType
-  ): any | undefined
+  (params: GetArrayItemByIdPropsType, options?: GetArrayItemByIdOptionsType): any | undefined
 }
 
 /**
  * @description Function to getArrayItemByProp
- * @import import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+ * @import import { getArrayItemByProp } from '..'
  */
 
 export const getArrayItemByProp: GetArrayItemByIdType = (

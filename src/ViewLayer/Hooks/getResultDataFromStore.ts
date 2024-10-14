@@ -1,5 +1,5 @@
-import { getAnswersChecked2 } from '../../Shared/getAnswersChecked2'
-import { getActiveCourseData } from '../../Shared/getActiveCourseData'
+import { getAnswersChecked2 } from 'yourails_common'
+import { getActiveCourseData } from 'yourails_common'
 
 interface IGetResultDataFromStore {
   result: string

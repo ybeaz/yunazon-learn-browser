@@ -5,7 +5,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
+import { getArrayItemByProp } from 'yourails_common'
 import {
   RootStoreType,
   CreateModuleStagesEnumType,

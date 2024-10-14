@@ -10,12 +10,13 @@ import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common' // import { getResponseGraphqlAsync } from 'yourails_common'
 // import { getResponseGraphqlAsync } from 'yourails_common'
 
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { getChainedResponsibility } from 'yourails_common'
+import { getMappedConnectionToItems } from 'yourails_common'
+import { PaginationNameEnumType } from 'yourails_common'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getUserProfileData } from '../../Shared/getUserProfileData'
+import { getUserProfileData } from 'yourails_common'
 
 export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)

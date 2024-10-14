@@ -1,14 +1,12 @@
 import React, { useRef, ReactElement } from 'react'
 
-import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'
+import { getRandomNumBetween } from 'yourails_common'
 interface SuccessTriedArgs {
   tooltipText: string
   tooltipPosition: string
 }
 
-export const SuccessTried: React.FunctionComponent<SuccessTriedArgs> = (
-  props
-): ReactElement => {
+export const SuccessTried: React.FunctionComponent<SuccessTriedArgs> = (props): ReactElement => {
   const { tooltipText, tooltipPosition } = props
 
   const classTooltipAdd = {

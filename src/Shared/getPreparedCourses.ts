@@ -13,22 +13,16 @@ export type GetPreparedCoursesParamsType = CourseType[]
 export type GetPreparedCoursesResType = CourseType[]
 
 interface GetPreparedCoursesType {
-  (
-    params: GetPreparedCoursesParamsType,
-    options?: { printRes: boolean }
-  ): GetPreparedCoursesResType
+  (params: GetPreparedCoursesParamsType, options?: { printRes: boolean }): GetPreparedCoursesResType
 }
 
 /**
  * @description Function to getPreparedCourses
  * @run ts-node src/shared/utils/getPreparedCourses.ts
- * @import import { getPreparedCourses } from '../../Shared/getPreparedCourses'
+ * @import import { getPreparedCourses } from '..'
  */
 
-export const getPreparedCourses: GetPreparedCoursesType = (
-  courses: CourseType[],
-  options
-) => {
+export const getPreparedCourses: GetPreparedCoursesType = (courses: CourseType[], options) => {
   let coursesNext: CourseType[] = []
 
   try {
