@@ -1,6 +1,6 @@
 import { store } from '../store'
 import { ActionEventType } from '../../Interfaces/ActionEventType'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
+import { getParsedUrlQuery } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store

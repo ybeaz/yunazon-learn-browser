@@ -5,7 +5,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getHeadersAuthDict } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 
 function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<any> {

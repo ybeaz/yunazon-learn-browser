@@ -2,7 +2,7 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { QueryReadProfilesArgs } from '../../@types/GraphqlTypes'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'

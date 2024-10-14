@@ -6,7 +6,7 @@ import {
 } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common' // import { getResponseGraphqlAsync } from 'yourails_common'
 // import { getResponseGraphqlAsync } from 'yourails_common'
 

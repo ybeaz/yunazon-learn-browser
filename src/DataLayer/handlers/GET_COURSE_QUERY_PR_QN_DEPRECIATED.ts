@@ -1,9 +1,7 @@
 import { store } from '../store'
 import { ActionEventType } from '../../Interfaces/ActionEventType'
 import { actionSync } from '../../DataLayer/index.action'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { isParsableInt } from '../../Shared/isParsableInt'
-import { getCourseByModuleId } from '../../Shared/getCourseByModuleId'
+import { ModuleType, getParsedUrlQuery, isParsableInt, getCourseByModuleId } from 'yourails_common'
 
 const { dispatch, getState } = store
 
@@ -14,10 +12,7 @@ const { dispatch, getState } = store
  * PR/RP - pass rate
  *
  */
-export const GET_COURSE_QUERY_PR_QN_DEPRECIATED: ActionEventType = (
-  event,
-  data
-) => {
+export const GET_COURSE_QUERY_PR_QN_DEPRECIATED: ActionEventType = (event, data) => {
   const moduleID = data?.moduleID
 
   const { courses } = getState()
@@ -29,30 +24,19 @@ export const GET_COURSE_QUERY_PR_QN_DEPRECIATED: ActionEventType = (
 
   if (!modules.length) return
 
-  const moduleIndex = modules.findIndex(module => module.moduleID === moduleID)
+  const moduleIndex = modules.findIndex((module: ModuleType) => module.moduleID === moduleID)
 
   let questionNumberNext: number = modules[moduleIndex].questionNumber
   let passRateNext: number = modules[moduleIndex]?.passRate || 0.75
 
   const { pr, rp, qn, nq } = getParsedUrlQuery()
 
-  if (
-    (qn || nq) &&
-    qn !== 'all' &&
-    qn !== 'inf' &&
-    nq !== 'all' &&
-    nq !== 'inf'
-  ) {
+  if ((qn || nq) && qn !== 'all' && qn !== 'inf' && nq !== 'all' && nq !== 'inf') {
     const questionNumberQuery: string = qn ? qn : nq ? nq : '6'
     questionNumberNext = isParsableInt(questionNumberQuery)
       ? parseInt(questionNumberQuery, 10)
       : questionNumberNext
-  } else if (
-    ((qn || nq) && qn === 'all') ||
-    qn === 'inf' ||
-    nq === 'all' ||
-    nq === 'inf'
-  ) {
+  } else if (((qn || nq) && qn === 'all') || qn === 'inf' || nq === 'all' || nq === 'inf') {
     questionNumberNext = modules[moduleIndex].questions.length
   }
 

@@ -4,7 +4,7 @@ import { MutationUpdateProfilesArgs } from '../../@types/GraphqlTypes'
 import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withDebounce } from 'yourails_common'
 

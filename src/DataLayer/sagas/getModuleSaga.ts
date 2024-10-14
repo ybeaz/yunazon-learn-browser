@@ -94,12 +94,3 @@ export const getModule = withDebounce(getModuleGenerator, 500)
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)
 }
-
-// Remove this after debugging
-if (require.main === module) {
-  const path = `${__dirname}/text2`
-  console.info('getModuleSaga [109]', { path })
-  // getCreatedFolder(path)
-} else {
-  console.info('We are in a module', 'green')
-}

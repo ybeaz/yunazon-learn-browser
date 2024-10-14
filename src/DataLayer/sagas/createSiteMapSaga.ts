@@ -4,7 +4,7 @@ import { ActionReduxType } from '../../Interfaces'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable<any> {
