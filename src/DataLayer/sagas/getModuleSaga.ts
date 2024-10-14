@@ -1,15 +1,15 @@
 import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
-import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
+import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from 'yourails_common'
 import { ActionReduxType } from '../../Interfaces'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getPreparedModules } from '../../Shared/getPreparedModules'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getCheckedModulesAnswered } from '../../Shared/getCheckedModulesAnswered'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getSizeWindow } from '../../Shared/getSizeWindow'
-import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
+import { getPreparedModules } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getCheckedModulesAnswered } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
+import { getSizeWindow } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
