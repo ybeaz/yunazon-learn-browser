@@ -29,7 +29,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { isOnLandScape } from 'yourails_common'
 import { isMobile } from 'yourails_common'
-import { GenreEnumType } from '../../../@types/GenreType'
+import { GenreEnumType } from 'yourails_common'
 import { getRearrangedArrayByIndex } from 'yourails_common'
 import {
   ContentSection,

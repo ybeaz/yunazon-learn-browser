@@ -1,6 +1,5 @@
 import { ClientHttpType } from 'yourails_common'
 import { getDetectedEnv } from 'yourails_common'
-import { CoursesStageEnumType } from 'yourails_common'
 
 const envType: string = getDetectedEnv()
 
@@ -19,14 +18,6 @@ export const isCourseCreateSectionFlag: FeatureFlagType = (envTypeIn = envType) 
  * @description Flag to toggle adding objections to the content
  */
 export const isObjectionsStageForCourseCreateFlag: FeatureFlagType = (envTypeIn = envType) => false
-
-/**
- * @description Flag to toggle isLoadingLocalStorageStoreState
- *      where or not to load initially local storage store state
- */
-export const selectCoursesStageFlag: FeatureFlagType = (envTypeIn = envType) => [
-  CoursesStageEnumType['production2023'],
-]
 
 /** @description Flag to select Http client for graphql connection */
 export const selectGraphqlHttpClientFlag: FeatureFlagType = (envTypeIn = envType) =>

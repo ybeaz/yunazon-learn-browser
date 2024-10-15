@@ -1,6 +1,10 @@
-import { RootStoreType, CreateModuleStageType, ReducerType } from '../../Interfaces/'
+import { RootStoreType, ReducerType } from '../../Interfaces/'
 
-import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import {
+  CreateModuleStageType,
+  CreateModuleStatusEnumType,
+  CreateModuleStagesEnumType,
+} from 'yourails_common'
 
 type DataType = {
   stage: CreateModuleStagesEnumType

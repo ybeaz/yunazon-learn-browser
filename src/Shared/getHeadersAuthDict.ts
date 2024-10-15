@@ -1,6 +1,6 @@
 import { consoler } from './consoler'
 import { CLIENTS_URI } from '../Constants/clientsUri.const'
-import { ClientAppType } from '../@types/ClientAppType'
+import { ClientAppEnumType } from 'yourails_common'
 import { getDetectedEnv } from '../Shared/getDetectedEnv'
 import { getLocalStorageReadKeyObj } from './getLocalStorageReadKeyObj'
 
@@ -40,7 +40,7 @@ export const getHeadersAuthDict: GetHeadersAuthDictType = (
 
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
-    const client_app = ClientAppType['ACADEMY']
+    const client_app = ClientAppEnumType['ACADEMY']
 
     if (refresh_token && redirect_uri && client_app) {
       headersAuthDict = {
