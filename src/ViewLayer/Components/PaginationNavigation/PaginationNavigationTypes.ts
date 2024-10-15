@@ -1,6 +1,6 @@
 import { ButtonYrlPropsType } from 'yourails_common'
 import { RootStoreType, PaginationNameEnumType } from '../../../Interfaces'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 
 export type PaginationNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

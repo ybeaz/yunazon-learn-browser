@@ -1,7 +1,8 @@
 import React, { useEffect, ReactElement } from 'react'
 
 import { withPropsYrl, ImageYrl } from 'yourails_common'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'

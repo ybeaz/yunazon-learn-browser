@@ -1,7 +1,7 @@
 import React from 'react'
 import { ButtonYrlPropsType, IconYrlPropsType } from 'yourails_common'
 import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 
 export type IconLabelWithCloseComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

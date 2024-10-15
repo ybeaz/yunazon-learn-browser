@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 import { withPropsYrl, ButtonYrl, ImageYrl } from 'yourails_common'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { ActionReduxType } from '../../Interfaces/ActionReduxType'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
@@ -56,6 +57,7 @@ export const UsersOnlineComponent: React.FunctionComponent<UsersOnlinePropsType>
       const imageProps = {
         classAdded: 'Image_UsersOnline',
         src: `${SERVERS_MAIN.remote}/images/faces_mamba/${fileName}`,
+        handleEvents,
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
           data: {

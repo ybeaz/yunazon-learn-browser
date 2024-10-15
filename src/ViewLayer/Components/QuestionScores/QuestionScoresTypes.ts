@@ -3,7 +3,7 @@ import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { CourseType, ModuleType, MetaCourseType } from '../../../@types/GraphqlTypes'
 import { ResultType } from 'yourails_common'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 
 export type GetScenarioDictPropsType = {
   result: ResultType

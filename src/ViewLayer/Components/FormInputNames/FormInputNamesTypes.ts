@@ -1,5 +1,5 @@
 import { InputYrlPropsType, ButtonYrlPropsType } from 'yourails_common'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 
 export type FormInputNamesPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

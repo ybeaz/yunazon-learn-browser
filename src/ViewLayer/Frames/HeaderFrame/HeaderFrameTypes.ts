@@ -3,7 +3,7 @@ import { AvatarPlusInfoPropsType } from '../../Components/AvatarPlusInfo/AvatarP
 import { AbInCirclePropsType } from '../../Components/AbInCircle/AbInCircle'
 import { ButtonYrlPropsType, InputGroupYrlPropsType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 
 export type HeaderFrameComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

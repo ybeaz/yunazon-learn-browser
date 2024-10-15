@@ -9,8 +9,8 @@ import {
   InputYrl,
   InputYrlPropsType,
 } from 'yourails_common'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
-
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 type AvatarPropsType = {
   handleEvents: HandleEventType
 }

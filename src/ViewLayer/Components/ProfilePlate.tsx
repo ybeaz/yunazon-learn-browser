@@ -14,7 +14,8 @@ import { LANGUAGES } from 'yourails_common'
 import { CATEGORIES_TO_EXCHANGE } from '../../Constants/categoriesToExchange.const'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 import { withPropsYrl, ButtonYrl } from 'yourails_common'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { UserType } from '../../Interfaces/UserType'
 
 interface IOptionStandard {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 import { ButtonYrlPropsType, InputGroupYrlPropsType } from 'yourails_common'
 
 export type TagsCloudBodyComponentPropsType = {

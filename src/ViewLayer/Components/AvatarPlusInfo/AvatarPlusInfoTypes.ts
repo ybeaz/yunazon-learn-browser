@@ -1,4 +1,4 @@
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 import { ImageYrlPropsType } from 'yourails_common'
 import { NavLinkProps } from 'react-router-dom'
 export type AvatarPlusInfoComponentPropsType = {
