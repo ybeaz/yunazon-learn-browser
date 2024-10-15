@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
 import { withPropsYrl, ImageYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'

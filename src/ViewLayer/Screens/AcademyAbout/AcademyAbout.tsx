@@ -5,7 +5,7 @@ import { DICTIONARY } from 'yourails_common'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
 

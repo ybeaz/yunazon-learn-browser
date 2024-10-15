@@ -1,6 +1,6 @@
 const axios = require('axios').default
 
-import { SERVERS_MAIN } from '../../Constants/servers.const' // ${SERVERS_MAIN.remote}
+import { SERVERS_MAIN } from 'yourails_common' // ${SERVERS_MAIN.remote}
 
 /**
  * @description: Not used, experimented with changing less files directly

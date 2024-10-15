@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 import { ScreensEnumType } from 'yourails_common'
-import { SCREENS_DICT } from '../../../Constants/screensDict.const'
+import { SCREENS_DICT } from 'yourails_common'
 import { PaginationNameEnumType } from 'yourails_common'
 import { TagType } from 'yourails_common'
 import { ButtonYrl, InputGroupYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'

@@ -7,7 +7,7 @@ import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 
 interface StubForUserResearchPropsType {

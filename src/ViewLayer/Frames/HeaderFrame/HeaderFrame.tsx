@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
-import { SCREENS_DICT } from '../../../Constants/screensDict.const'
+import { SCREENS_DICT } from 'yourails_common'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
 import { getArrayItemByProp } from 'yourails_common'

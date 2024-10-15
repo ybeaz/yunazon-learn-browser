@@ -8,7 +8,7 @@ import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
 const USERS_MAMBA_FACES = [
   { fileName: '1868053633_square_small.jpg', userName: '' },

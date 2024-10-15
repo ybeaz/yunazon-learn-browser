@@ -10,7 +10,7 @@ import { DICTIONARY } from 'yourails_common'
 import { TagType, ProfileType, DocumentType } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import {
   CertificateFrameA,

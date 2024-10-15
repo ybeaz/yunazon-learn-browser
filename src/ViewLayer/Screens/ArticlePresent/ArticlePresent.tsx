@@ -7,11 +7,11 @@ import { DICTIONARY } from 'yourails_common'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SITE_META_DATA } from 'yourails_common'
 
 import { getClasses } from 'yourails_common'
 import {
