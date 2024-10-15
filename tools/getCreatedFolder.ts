@@ -1,6 +1,6 @@
 import fs, { promises as promisesFs } from 'fs'
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
+import { consoler } from 'yourails_common'
+import { consolerError } from 'yourails_common'
 
 interface GetCreatedFolderType {
   (path: string, options?: { printRes: boolean }): Promise<any>

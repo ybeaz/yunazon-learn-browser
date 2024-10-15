@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs'
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
+import { consoler } from 'yourails_common'
+import { consolerError } from 'yourails_common'
 
 interface getWriteFileType {
   (pathFull: string, str: string, options?: { printRes: boolean }): Promise<any>
@@ -11,11 +11,7 @@ interface getWriteFileType {
  * @import import { getWriteFile } from './getWriteFile'
  */
 
-export const getWriteFile: getWriteFileType = async (
-  pathFull,
-  str,
-  options
-) => {
+export const getWriteFile: getWriteFileType = async (pathFull, str, options) => {
   try {
     await fs.writeFile(pathFull, str)
 
