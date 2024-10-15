@@ -1,10 +1,1 @@
-import { BuildDataType } from 'yourails_common'
-export const buildData: BuildDataType = {
-  commit: '0624eacd4f73b8ebe48894c98e871faf99578fda',
-  author: { name: 'Roman Ches', email: 'contact@yourails.com' },
-  message: 'perf-feat-extract-yourails_view_layer-III-stage-III',
-  branchCurrent: 'B-0.82.4',
-  dateCommit: '2024-10-09 07:16',
-  dateBuild: '2024-10-10 20:57',
-  copyright: '© 2021-2024 Userto Inc.',
-}
+import { BuildDataType } from 'yourails_common'; export const buildData: BuildDataType = {"commit":"3a14a906b96790c0777d6d2a7be8ca8966e0c7c3","author":{"name":"Roman Ches","email":"contact@yourails.com"},"dateCommit":"NaN-aN-aN aN:aN","message":"perf-feat-extract-yourails_view_layer-IV-stage-XXV","branchCurrent":"B-0.83.0","dateBuild":"2024-10-14 19:37","copyright":"© 2021-NaN Userto Inc."}

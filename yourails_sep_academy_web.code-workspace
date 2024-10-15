@@ -52,7 +52,7 @@
       "**/.factorypath": true,
       "**/.project": true,
       "**/.settings": true,
-      "**/node_modules": true,
+      "**/node_modules": false,
     },
     "eslint.experimental.incrementalSync": true,
     "eslint.lintTask.enable": true,
