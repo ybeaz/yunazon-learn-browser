@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'

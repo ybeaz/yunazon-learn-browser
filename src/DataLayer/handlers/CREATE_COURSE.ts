@@ -1,4 +1,4 @@
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { handleEvents } from '../index.handleEvents'
 
 export const CREATE_COURSE: ActionEventType = (event, data) => {

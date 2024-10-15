@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { DICTIONARY } from '../../Constants/dictionary.const'
 
 const { getState } = store

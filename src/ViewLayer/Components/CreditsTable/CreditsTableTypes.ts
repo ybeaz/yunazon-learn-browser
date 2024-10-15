@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 

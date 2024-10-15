@@ -1,6 +1,6 @@
 import { store } from '../store'
 import { ModuleType } from '../../@types/'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 

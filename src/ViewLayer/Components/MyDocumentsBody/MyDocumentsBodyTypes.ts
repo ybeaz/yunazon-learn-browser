@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
 import { ButtonYrlPropsType } from 'yourails_common'
 import { CreditsTablePropsType, TagsDocsTablePropsType } from '../../Components/'
 

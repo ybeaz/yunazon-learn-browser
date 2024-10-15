@@ -1,6 +1,7 @@
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { ModulesBodyPropsType } from '../../Components/ModulesBody/ModulesBody'
 
 export type ModulesPresentPropsType = {

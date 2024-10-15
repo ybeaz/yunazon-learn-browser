@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getOpenedUrlInNewTab } from 'yourails_common'
 

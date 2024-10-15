@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 
 export const SELECT_SKILLS_REQ: ActionEventType = (event, data) => {
   const arrSelected =

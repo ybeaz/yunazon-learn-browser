@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 import { GO_LINK_PATH } from './GO_LINK_PATH'
 const { dispatch } = store

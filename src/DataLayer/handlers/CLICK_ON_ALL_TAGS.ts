@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionAsync, actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'

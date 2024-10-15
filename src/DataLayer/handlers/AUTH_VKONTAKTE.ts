@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
@@ -10,12 +10,7 @@ export const AUTH_VKONTAKTE: ActionEventType = (event, data) => {
   } = getState()
   if (oAuthStage !== 'signInWithVkontakte') return
 
-  const {
-    last_name: nameLast,
-    first_name: nameFirst,
-    photo: picture,
-    uid: userIdExternal,
-  } = data
+  const { last_name: nameLast, first_name: nameFirst, photo: picture, uid: userIdExternal } = data
 
   // const dataExample = {
   //   first_name: 'Роман',
