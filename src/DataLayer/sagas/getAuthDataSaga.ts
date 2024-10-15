@@ -1,7 +1,7 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'

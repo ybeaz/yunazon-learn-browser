@@ -1,6 +1,6 @@
 import React from 'react'
 import { ButtonYrlPropsType, IconYrlPropsType } from 'yourails_common'
-import { ActionReduxType } from '../../../Interfaces/ActionReduxType'
+import { ActionReduxType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type IconLabelWithCloseComponentPropsType = {

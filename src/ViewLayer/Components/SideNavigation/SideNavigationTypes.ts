@@ -1,6 +1,6 @@
 import React from 'react'
-import { RootStoreType, ActionEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from 'yourails_common'
+import { RootStoreType } from '../../../Interfaces/'
+import { ButtonYrlPropsType, ActionEventType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type GetSideNavigationButtonsProps = {

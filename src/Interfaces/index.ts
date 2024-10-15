@@ -3,8 +3,6 @@
  */
 
 export * from './PaginationType'
-export * from './ActionEventType'
-export * from './ActionReduxType'
 export * from './AnalyticsInputType'
 export * from './AzPropsType'
 export * from './CategoryType'

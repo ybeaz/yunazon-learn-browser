@@ -1,7 +1,4 @@
-interface ActionReduxType {
-  type: string
-  data?: any
-}
+import { ActionReduxType } from 'yourails_common'
 
 export interface CreateSyncAction {
   [key: string]: Function
@@ -12,9 +9,7 @@ export interface CreateSyncAction {
  * @param actions
  * @returns
  */
-export const createSyncActions: Function = (
-  actions: string[]
-): CreateSyncAction => {
+export const createSyncActions: Function = (actions: string[]): CreateSyncAction => {
   return actions.reduce((actionsSync, currentAction) => {
     const currentActionNext = {
       [currentAction]: (data: any): ActionReduxType => ({

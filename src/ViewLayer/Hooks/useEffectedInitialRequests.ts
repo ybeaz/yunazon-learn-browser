@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { ActionReduxType } from '../../Interfaces/ActionReduxType'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync, ACTIONS_SYNC, ACTIONS_ASYNC } from '../../DataLayer/index.action'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import * as handleEventsAll from '../../DataLayer/handlers'

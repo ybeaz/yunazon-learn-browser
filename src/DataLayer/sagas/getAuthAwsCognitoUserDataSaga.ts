@@ -1,7 +1,7 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { QueryGetAuthAwsCognitoUserDataArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from 'yourails_common'

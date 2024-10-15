@@ -1,6 +1,6 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import {
   RootStoreType,

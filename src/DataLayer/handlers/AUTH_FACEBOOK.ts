@@ -18,7 +18,7 @@ export const AUTH_FACEBOOK: ActionEventType = (event, data) => {
     },
     id: userIdExternal,
     name: userName,
-  } = data
+  } = data as Record<string, any>
 
   dispatch(
     actionAsync.GET_OAUTH_UI_DATA.REQUEST({

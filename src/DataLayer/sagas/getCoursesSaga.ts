@@ -4,7 +4,7 @@ import {
   ReadCoursesConnectionInputType,
   QueryReadCoursesConnectionArgs,
 } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common' // import { getResponseGraphqlAsync } from 'yourails_common'
