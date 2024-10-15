@@ -5,7 +5,7 @@ import { ModulesBody } from '../ModulesBody/ModulesBody'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 
 import {
   AcademyMatrixBodyComponentPropsType,

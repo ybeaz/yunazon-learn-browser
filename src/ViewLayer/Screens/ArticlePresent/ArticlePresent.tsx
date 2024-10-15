@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'

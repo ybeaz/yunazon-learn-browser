@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { withPropsYrl, ButtonYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { DocumentType } from '../../../@types/'

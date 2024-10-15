@@ -11,7 +11,7 @@ import {
   withStoreStateSelectedYrl,
 } from 'yourails_common'
 import { Timer } from '../Timer/Timer'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyModulesTable } from '../MyModulesTable/MyModulesTable'

@@ -2,7 +2,7 @@ import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
+import { PAGINATION_OFFSET } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 
 const { dispatch, getState } = store

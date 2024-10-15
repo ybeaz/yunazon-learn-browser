@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FeatureBar } from '../FeatureBar'
 import { SuccessTried } from '../SuccessTried'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 
 import { getClasses } from 'yourails_common'

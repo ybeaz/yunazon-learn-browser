@@ -1,5 +1,5 @@
 import { ButtonYrlPropsType } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { GetSideNavigationButtonsProps, GetSideNavigationButtons } from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'

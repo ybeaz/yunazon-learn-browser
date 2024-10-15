@@ -1,4 +1,4 @@
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { UserType } from 'yourails_common'
 import { ButtonYrlPropsType } from 'yourails_common'
 

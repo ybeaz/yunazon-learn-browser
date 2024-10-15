@@ -1,6 +1,6 @@
 import React from 'react'
 import { getQuesionString } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
 
 export type GetScenarioDictResType = any

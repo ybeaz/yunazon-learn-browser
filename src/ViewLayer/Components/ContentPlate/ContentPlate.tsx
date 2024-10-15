@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
 import { ImageYrl, IconYrl, withPropsYrl } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { getSlug } from 'yourails_common'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
 import { LoaderBlurhash } from '../LoaderBlurhash'

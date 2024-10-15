@@ -8,7 +8,7 @@ import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from '../../Constants/servers.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 
 interface StubForUserResearchPropsType {
   routeProps: {

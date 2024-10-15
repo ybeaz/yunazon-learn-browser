@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
+import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
 

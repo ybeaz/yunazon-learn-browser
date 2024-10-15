@@ -3,7 +3,7 @@ import React from 'react'
 import { withPropsYrl, InputYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from 'yourails_common'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 
 import {
   FormInputNamesPropsType,

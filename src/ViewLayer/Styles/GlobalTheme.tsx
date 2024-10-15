@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import { ThemeProvider } from 'styled-components'
 
 import { selectStoreSlice } from 'yourails_common'
-import { GLOBAL_THEME, LIGHTNESS, ALPHAS } from '../../Constants/globalTheme.const'
+import { GLOBAL_THEME, LIGHTNESS, ALPHAS } from 'yourails_common'
 import { CreatedGlobalStyle } from './getCreatedGlobalStyle'
 
 /**

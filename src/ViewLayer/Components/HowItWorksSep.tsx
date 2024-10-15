@@ -6,7 +6,7 @@ import { withPropsYrl, ImageYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
 import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 
 interface HowItWorksSepPropsType {
   handleEvents: HandleEventType

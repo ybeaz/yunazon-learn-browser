@@ -1,5 +1,5 @@
 import React, { ReactElement, useMemo } from 'react'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import {
   getModuleByModuleID,
   getQuesionString,
