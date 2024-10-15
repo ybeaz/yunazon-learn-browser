@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DocumentType } from '../../../@types/GraphqlTypes'
+import { DocumentType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { Certificate2BodyPropsType } from '../../Components/Certificate2Body/Certificate2Body'

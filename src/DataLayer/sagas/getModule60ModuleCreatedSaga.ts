@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateModulesArgs } from '../../@types/GraphqlTypes'
+import { MutationCreateModulesArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'

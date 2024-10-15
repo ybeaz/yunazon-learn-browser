@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateYoutubeTranscriptArgs } from '../../@types/GraphqlTypes'
+import { MutationCreateYoutubeTranscriptArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'

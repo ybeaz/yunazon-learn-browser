@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
 
-import { MutationDeactivateCoursesArgs } from '../../@types/GraphqlTypes'
+import { MutationDeactivateCoursesArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'

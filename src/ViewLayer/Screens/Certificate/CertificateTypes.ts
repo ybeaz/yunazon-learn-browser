@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DocumentType } from '../../../@types/GraphqlTypes'
+import { DocumentType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 
@@ -17,10 +17,7 @@ export type CertificateComponentPropsType = {
   }
 }
 
-export type CertificatePropsType = Omit<
-  CertificateComponentPropsType,
-  'storeStateSlice'
->
+export type CertificatePropsType = Omit<CertificateComponentPropsType, 'storeStateSlice'>
 
 export type CertificatePropsOutType = {
   headerFrameProps: HeaderFramePropsType

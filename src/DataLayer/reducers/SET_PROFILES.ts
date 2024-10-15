@@ -1,4 +1,4 @@
-import { ProfileType } from '../../@types/GraphqlTypes'
+import { ProfileType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getUniqArrBy } from 'yourails_common'

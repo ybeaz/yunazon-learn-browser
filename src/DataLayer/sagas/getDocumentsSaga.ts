@@ -1,9 +1,6 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import {
-  ReadDocumentsConnectionInputType,
-  QueryReadDocumentsConnectionArgs,
-} from '../../@types/GraphqlTypes'
+import { ReadDocumentsConnectionInputType, QueryReadDocumentsConnectionArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'

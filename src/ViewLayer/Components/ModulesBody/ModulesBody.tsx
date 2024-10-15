@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect } from 'react'
 
-import { ModuleType } from '../../../@types/GraphqlTypes'
+import { ModuleType } from 'yourails_common'
 import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'

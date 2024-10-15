@@ -1,6 +1,6 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryGetAuthAwsCognitoUserRefreshedArgs } from '../../@types/GraphqlTypes'
+import { QueryGetAuthAwsCognitoUserRefreshedArgs } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
