@@ -3,7 +3,7 @@ import {
   ActionEventType,
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
-} from '../../Interfaces/'
+} from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store

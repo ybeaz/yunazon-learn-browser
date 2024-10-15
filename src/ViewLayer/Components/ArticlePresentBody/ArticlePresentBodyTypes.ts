@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { ArticleType } from '../../../@types/ArticleMockType'
-import { TextStructuredPropsType } from '../TextStructured/TextStructured'
+import { TextStructuredYrlPropsType } from 'yourails_common'
 
 export type ArticlePresentBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  article: ArticleType
+  article: any
 }
 
 export type ArticlePresentBodyPropsType = Omit<
@@ -14,7 +13,7 @@ export type ArticlePresentBodyPropsType = Omit<
 >
 
 export type ArticlePresentBodyPropsOutType = {
-  textStructuredProps: TextStructuredPropsType
+  textStructuredProps: TextStructuredYrlPropsType
 }
 
 /**
@@ -25,5 +24,4 @@ export interface ArticlePresentBodyComponentType
   (props: ArticlePresentBodyComponentPropsType): React.ReactElement
 }
 
-export type ArticlePresentBodyType =
-  React.FunctionComponent<ArticlePresentBodyPropsType>
+export type ArticlePresentBodyType = React.FunctionComponent<ArticlePresentBodyPropsType>

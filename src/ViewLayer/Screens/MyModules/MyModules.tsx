@@ -11,7 +11,8 @@ import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
+
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {

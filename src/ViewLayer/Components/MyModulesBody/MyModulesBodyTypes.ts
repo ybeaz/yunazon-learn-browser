@@ -11,11 +11,8 @@ import {
 import { PaginationNavigationPropsType } from '../../Components/'
 import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 
-import {
-  CreateModuleStatusEnumType,
-  CreateModuleStagesEnumType,
-  RootStoreType,
-} from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type StagesType = {

@@ -1,4 +1,4 @@
-import { CourseType, AcademyPresentCaseEnumType } from '../@types/'
+import { CourseType } from 'yourails_common'
 
 import { getFilteredActiveCoursesModulesDepreciated } from './getFilteredActiveCoursesModulesDepreciated'
 import { getFilteredActiveQuestionsDepreciated } from './getFilteredActiveQuestionsDepreciated'

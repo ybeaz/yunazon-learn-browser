@@ -1,4 +1,4 @@
-import { ModuleType, AcademyPresentCaseEnumType } from '../@types/'
+import { ModuleType } from 'yourails_common'
 
 import { getFilteredActiveModulesQuestions } from './getFilteredActiveModulesQuestions'
 import { getValidatedModules } from './getValidatedEntity/getValidatedModules'

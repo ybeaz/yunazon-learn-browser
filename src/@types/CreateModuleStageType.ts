@@ -1,4 +1,4 @@
-import { CreateModuleStatusEnumType } from './CreateModuleStatusEnumType'
+import { CreateModuleStatusEnumType } from 'yourails_common'
 
 export type CreateModuleStageType = {
   isActive: boolean

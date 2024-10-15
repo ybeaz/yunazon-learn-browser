@@ -5,11 +5,8 @@ import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import {

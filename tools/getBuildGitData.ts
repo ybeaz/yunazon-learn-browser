@@ -21,7 +21,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
     const branchCurrent = await execSync(`git branch --show-current`).toString().trim()
 
     let getBuildGitDataRes = await execSync(
-      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "date": "%ad",%n  "message": "%f"%n}'`
+      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "dateCommit": "%ad",%n  "message": "%f"%n}'`
     )
       .toString()
       .trim()
@@ -49,7 +49,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
     getBuildGitDataRes = JSON.stringify(getBuildGitDataResObj)
 
-    getBuildGitDataRes = `import { BuildDataType } from '../@types/BuildDataType'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
+    getBuildGitDataRes = `import { BuildDataType } from 'yourails_common'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
 
     await getWriteFile(pathFull, getBuildGitDataRes)
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BuildDataType } from '../../../@types/BuildDataType'
+import { BuildDataType } from 'yourails_common'
 
 export type AcademyAboutBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

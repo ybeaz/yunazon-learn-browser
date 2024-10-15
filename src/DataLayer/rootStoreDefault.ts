@@ -1,14 +1,13 @@
 import { UserType } from 'yourails_common'
 import {
   CourseCreateProgressType,
-  CreateModuleStatusEnumType,
   ComponentsStateType,
-  SearchFormSepType,
   FormsType,
   RootStoreType,
   PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
-import { ScreensEnumType } from 'yourails_common'
+
+import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
 
 import { PAGINATION_OFFSET } from 'yourails_common'
 
