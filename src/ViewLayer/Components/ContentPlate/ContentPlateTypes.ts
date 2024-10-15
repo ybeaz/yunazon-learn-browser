@@ -1,9 +1,9 @@
-import { ModuleType } from '../../../@types/GraphqlTypes'
+import { ModuleType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { DurationObjType } from 'yourails_common'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
 import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 
 export type ContentPlateComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

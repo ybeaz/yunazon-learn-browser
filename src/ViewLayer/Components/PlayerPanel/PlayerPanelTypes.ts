@@ -1,5 +1,5 @@
 import React from 'react'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { DurationObjType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type PlayerPanelComponentPropsType = {

@@ -1,5 +1,4 @@
-import { Children, ReactNode } from 'react'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { DurationObjType } from 'yourails_common'
 import { PlayerPanelPropsType } from '../../Components/PlayerPanel/PlayerPanel'
 
 export type PlayerYoutubeIframePropsType = {
