@@ -1,5 +1,5 @@
 import React from 'react'
-import { VIDEO_RESOLUTION } from '../../../Constants/videoResolution.const'
+import { VIDEO_RESOLUTION } from 'yourails_common'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
 import { withConditionalWrapperYrl, NoSeoIndexingYrl } from 'yourails_common'
