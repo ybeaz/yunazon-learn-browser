@@ -62,9 +62,7 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.5.3",
-    "yourails_communication_layer": "^0.8.0",
-    "yourails_view_layer_web": "^0.1.5"
+    "yourails_common": "^0.5.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
