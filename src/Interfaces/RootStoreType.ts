@@ -9,7 +9,7 @@ import {
   CreateModuleStatusEnumType,
   CreateModuleStageType,
 } from '../@types/'
-import { PaginationType } from './PaginationType'
+import { PaginationType } from 'yourails_common'
 import { ArticleType } from '../@types/ArticleMockType'
 import { ScreensEnumType } from './ScreensEnumType'
 

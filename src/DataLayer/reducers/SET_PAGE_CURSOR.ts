@@ -4,7 +4,7 @@ import {
   PaginationDict,
   PaginationNameEnumType,
 } from '../../Interfaces/RootStoreType'
-import { PaginationType } from '../../Interfaces'
+import { PaginationType } from 'yourails_common'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
 

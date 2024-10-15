@@ -4,12 +4,9 @@ import {
   PaginationDict,
   PaginationNameEnumType,
 } from '../../Interfaces/RootStoreType'
-import { PaginationType } from '../../Interfaces'
+import { PaginationType } from 'yourails_common'
 
-export const SET_PAGE_INFO: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+export const SET_PAGE_INFO: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { componentsState } = store
   const pagination: PaginationDict = componentsState.pagination
 
