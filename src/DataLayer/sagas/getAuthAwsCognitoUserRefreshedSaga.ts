@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import { ClientAppType } from '../../@types/ClientAppType'
+import { ClientAppEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
@@ -35,7 +35,7 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       userIdDataAwsCognitoInput: {
         refresh_token,
         redirect_uri,
-        client_app: ClientAppType['ACADEMY'],
+        client_app: ClientAppEnumType['ACADEMY'],
       },
     }
 

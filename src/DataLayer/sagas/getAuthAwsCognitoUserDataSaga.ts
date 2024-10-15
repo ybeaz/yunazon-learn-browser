@@ -6,7 +6,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { CLIENTS_URI } from '../../Constants/clientsUri.const'
 import { getDetectedEnv } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
-import { ClientAppType } from '../../@types/ClientAppType'
+import { ClientAppEnumType } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getModules } from './getModulesSaga'
@@ -24,7 +24,7 @@ export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Itera
       userIdDataAwsCognitoInput: {
         code,
         redirect_uri,
-        client_app: ClientAppType['ACADEMY'],
+        client_app: ClientAppEnumType['ACADEMY'],
       },
     }
 

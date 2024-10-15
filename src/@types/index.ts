@@ -1,5 +1,5 @@
 // export * from './AcademyPresentCaseEnumType'
-export * from './ClientAppType'
+// export * from './ClientAppType'
 export * from './ClientHttpType'
 export * from './ConnectionType'
 // export * from './CreateModuleStagesEnumType'
