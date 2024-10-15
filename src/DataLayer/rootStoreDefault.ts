@@ -8,7 +8,7 @@ import {
   RootStoreType,
   PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
-import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 
 import { PAGINATION_OFFSET } from '../Constants/pagination.const'
 

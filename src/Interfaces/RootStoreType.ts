@@ -11,7 +11,7 @@ import {
 } from '../@types/'
 import { PaginationType } from 'yourails_common'
 import { ArticleType } from '../@types/ArticleMockType'
-import { ScreensEnumType } from './ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 
 export { CreateModuleStagesEnumType, CreateModuleStatusEnumType }
 export type { CreateModuleStageType }

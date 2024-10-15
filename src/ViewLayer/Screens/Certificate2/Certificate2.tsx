@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { getDateString } from 'yourails_common'
 import { getExpertiseInfo } from 'yourails_common'
 import { getArrayItemByProp } from 'yourails_common'

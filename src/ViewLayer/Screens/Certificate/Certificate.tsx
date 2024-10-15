@@ -3,7 +3,7 @@ import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { getDateString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { DocumentType } from 'yourails_common'

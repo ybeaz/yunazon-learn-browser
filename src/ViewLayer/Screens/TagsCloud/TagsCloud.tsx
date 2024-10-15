@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'

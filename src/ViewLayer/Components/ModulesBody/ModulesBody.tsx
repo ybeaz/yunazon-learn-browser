@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
 import { ModuleType } from '../../../@types/GraphqlTypes'
 import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'

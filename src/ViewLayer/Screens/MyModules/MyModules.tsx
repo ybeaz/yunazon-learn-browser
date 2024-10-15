@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'

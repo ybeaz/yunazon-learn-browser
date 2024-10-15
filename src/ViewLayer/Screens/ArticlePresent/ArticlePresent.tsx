@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'

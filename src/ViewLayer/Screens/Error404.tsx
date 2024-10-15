@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 
-import { ScreensEnumType } from '../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 
 export const Error404: React.FunctionComponent = (): ReactElement => {
   const screenType = ScreensEnumType['Error404']

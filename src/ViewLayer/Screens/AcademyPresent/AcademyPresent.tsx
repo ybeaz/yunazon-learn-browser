@@ -8,7 +8,7 @@ import {
   TextArticleStructuredYrl,
 } from 'yourails_common'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'

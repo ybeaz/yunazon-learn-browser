@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from '../../../Constants/dictionary.const'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
