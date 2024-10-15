@@ -4,13 +4,8 @@ import { nanoid } from 'nanoid'
 import { getUniqArrBy } from 'yourails_common'
 import { getCreatedStyleElement } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
-export interface SelectOptionType {
-  defaultSelected?: boolean
-  selected: boolean
-  text?: string
-  value?: string
-}
+import { HandleEventPropsType, SelectOptionType } from 'yourails_common'
+
 interface ISelectArgs {
   classAdded: string
   multiple?: boolean

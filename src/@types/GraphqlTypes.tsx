@@ -3043,6 +3043,8 @@ export type UserModelExtendedType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
+  /** user deleted date */
+  userDateDeactivated?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -3079,8 +3081,6 @@ export type UserModelExtendedType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
-  /** user deleted date */
-  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UserType = {
@@ -3097,6 +3097,8 @@ export type UserType = {
   userBirthYear?: Maybe<Scalars['Float']['output']>;
   /** user created date */
   userDateCreated?: Maybe<Scalars['Date']['output']>;
+  /** user deleted date */
+  userDateDeactivated?: Maybe<Scalars['Date']['output']>;
   /** user updated date */
   userDateUpdated?: Maybe<Scalars['Date']['output']>;
   /** user email */
@@ -3133,8 +3135,6 @@ export type UserType = {
   userTimeZone?: Maybe<Scalars['String']['output']>;
   /** user web site */
   userWebLink?: Maybe<Scalars['String']['output']>;
-  /** user deleted date */
-  userdateDeactivated?: Maybe<Scalars['Date']['output']>;
 };
 
 export type UsersType = {

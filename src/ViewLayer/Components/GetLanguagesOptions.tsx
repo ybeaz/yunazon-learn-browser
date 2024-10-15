@@ -5,7 +5,7 @@ import { ImageYrl } from 'yourails_common'
 
 import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { IDictionary } from '../../Constants/dictionary.const'
-import { SelectOptionAntDType } from '../../Interfaces/SelectOptionAntDType'
+import { SelectOptionAntDType } from 'yourails_common'
 
 const { Option } = SelectAntd
 

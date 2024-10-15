@@ -7,7 +7,7 @@ import { getDetectedEnv } from 'yourails_common'
 import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 import { getParsedUrlQuery } from 'yourails_common'
-import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
+import { UserAwsCognitoAuthType } from 'yourails_common'
 import { IconYrl, withStoreStateSelectedYrl } from 'yourails_common'
 
 interface GetLinkAuthUserPropsType {

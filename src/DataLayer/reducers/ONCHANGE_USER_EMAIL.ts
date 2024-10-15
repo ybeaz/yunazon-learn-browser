@@ -1,6 +1,6 @@
 import { FormsType, RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { UserType } from '../../Interfaces/UserType'
+import { UserType } from 'yourails_common'
 
 export const ONCHANGE_USER_EMAIL: ReducerType = (
   store: RootStoreType,

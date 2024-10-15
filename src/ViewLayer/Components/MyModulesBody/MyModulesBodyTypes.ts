@@ -2,6 +2,7 @@ import React from 'react'
 
 import { TimerPropsType } from '../Timer/Timer'
 import {
+  HandleEventPropsType,
   ImageYrlPropsType,
   IconYrlPropsType,
   ButtonYrlPropsType,
@@ -14,7 +15,6 @@ import {
   CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
   RootStoreType,
-  HandleEventPropsType,
 } from '../../../Interfaces/'
 import { HandleEventType } from 'yourails_common'
 

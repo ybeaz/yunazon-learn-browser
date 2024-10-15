@@ -3485,6 +3485,9 @@ type UserModelExtendedType {
   """user created date"""
   userDateCreated: Date
 
+  """user deleted date"""
+  userDateDeactivated: Date
+
   """user updated date"""
   userDateUpdated: Date
 
@@ -3538,9 +3541,6 @@ type UserModelExtendedType {
 
   """user web site"""
   userWebLink: String
-
-  """user deleted date"""
-  userdateDeactivated: Date
 }
 
 type UserType {
@@ -3562,6 +3562,9 @@ type UserType {
   """user created date"""
   userDateCreated: Date
 
+  """user deleted date"""
+  userDateDeactivated: Date
+
   """user updated date"""
   userDateUpdated: Date
 
@@ -3615,9 +3618,6 @@ type UserType {
 
   """user web site"""
   userWebLink: String
-
-  """user deleted date"""
-  userdateDeactivated: Date
 }
 
 type UsersType {

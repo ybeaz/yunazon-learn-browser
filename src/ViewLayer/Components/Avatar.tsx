@@ -34,7 +34,7 @@ export const AvatarComponent: React.FunctionComponent<AvatarPropsType> = ({
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
-      imageSrc: userAvatar,
+      imageSrc: userAvatar || '',
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_Avatar',

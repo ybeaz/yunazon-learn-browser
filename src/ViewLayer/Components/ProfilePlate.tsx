@@ -16,7 +16,7 @@ import { DICTIONARY } from '../../Constants/dictionary.const'
 import { withPropsYrl, ButtonYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
 import { HandleEventType } from 'yourails_common'
-import { UserType } from '../../Interfaces/UserType'
+import { UserType } from 'yourails_common'
 
 interface IOptionStandard {
   label: string
@@ -64,7 +64,7 @@ export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsTyp
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
-      imageSrc: userAvatar,
+      imageSrc: userAvatar || '',
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_Avatar',
