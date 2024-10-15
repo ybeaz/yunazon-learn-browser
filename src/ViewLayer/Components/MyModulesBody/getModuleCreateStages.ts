@@ -8,7 +8,7 @@ import {
 
 /**
  * @description Function to getCourseCreateStages
- * @run ts-node src/shared/utils/getCourseCreateStages.ts
+ * @run ts-node ...
  *    In debugging mode:
  *       node --inspect-brk -r ts-node/register src/shared/utils/getCourseCreateStages.ts
  *       chrome://inspect/#devices > Open dedicated DevTools for Node

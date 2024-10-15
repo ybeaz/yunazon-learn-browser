@@ -6,9 +6,9 @@ import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
 
 /**
  * @description Function to getSideNavigationButtons
- * @run ts-node src/shared/utils/getSideNavigationButtons.ts
+ * @run ts-node ...
  *    In debugging mode:
- *       node --inspect-brk -r ts-node/register src/shared/utils/getSideNavigationButtons.ts
+ *       node --inspect-brk -r ts-node/register ...
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  * @import import { getSideNavigationButtons, GetSideNavigationButtonsParamsType } from './getSideNavigationButtons'
  */
