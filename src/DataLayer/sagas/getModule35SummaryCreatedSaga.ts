@@ -4,14 +4,11 @@ import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { getChunkedArray } from 'yourails_common'
-import { CHUNKS_FROM_SUMMARY_ARRAY } from '../../Constants/chunkParamsLlm.const'
+import { CHUNKS_FROM_SUMMARY_ARRAY } from 'yourails_common'
 
 export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -23,7 +20,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['summary'],
         timeCalculated: Array.isArray(transcriptChunks)
-          ? transcriptChunks.length * connectionsTimeouts.transcriptChunkToSummary
+          ? transcriptChunks.length * CONNECTIONS_TIMEOUTS.transcriptChunkToSummary
           : null,
       })
     )
@@ -46,7 +43,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
             `getModule35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['summary']} is timed out`
           )
         }
-      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
+      }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['transcriptChunkToSummary']] + 1500)
 
       const getBotResponseParams: GetBotResponseParamsType = {
         botID: 'yg2vQJbWulaU',

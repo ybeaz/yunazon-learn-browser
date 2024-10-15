@@ -4,10 +4,7 @@ import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 
@@ -26,7 +23,7 @@ export function* getModule45QuestionsCreatedGenerator(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         timeCalculated: Array.isArray(summary)
-          ? summaryChunks.length * connectionsTimeouts.summaryChunkToQuestions
+          ? summaryChunks.length * CONNECTIONS_TIMEOUTS.summaryChunkToQuestions
           : null,
       })
     )
@@ -50,7 +47,7 @@ export function* getModule45QuestionsCreatedGenerator(
             `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['questions']} is timed out`
           )
         }
-      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
+      }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
 
       const userText =
         typeof summaryChunk === 'string' ? summaryChunk : JSON.stringify(summaryChunk, null, 2)

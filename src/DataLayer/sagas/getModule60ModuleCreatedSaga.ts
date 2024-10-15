@@ -9,10 +9,7 @@ import { getArrayItemByProp } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
@@ -80,7 +77,7 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.standard],
       }
     )
 

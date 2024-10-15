@@ -1,7 +1,7 @@
 import { ActionEventType } from 'yourails_common'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
+import { CLIENTS_URI } from 'yourails_common'
 import { getDetectedEnv } from 'yourails_common'
-import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from '../../Constants/aws.const'
+import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from 'yourails_common'
 import { getRedirected } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
 

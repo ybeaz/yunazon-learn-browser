@@ -6,7 +6,7 @@ import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 
 export type GetBotResponseParamsType = never
 
@@ -35,7 +35,7 @@ export function* readProfileGenerator(params: GetBotResponseParamsType): Iterabl
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts['standard'],
+        timeout: CONNECTIONS_TIMEOUTS['standard'],
       }
     )
 

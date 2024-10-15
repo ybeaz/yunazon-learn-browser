@@ -10,10 +10,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 
 export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -53,7 +50,7 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.metaData],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.metaData],
       }
     )
 

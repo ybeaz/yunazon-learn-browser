@@ -14,11 +14,8 @@ import {
 } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getChunkedString } from 'yourails_common'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import { CHUNKS_FROM_TRANSCRIPT_STRING } from '../../Constants/chunkParamsLlm.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { CHUNKS_FROM_TRANSCRIPT_STRING } from 'yourails_common'
 
 export function* getModule20TranscriptCreatedGenerator(
   params: ActionReduxType | any
@@ -57,7 +54,7 @@ export function* getModule20TranscriptCreatedGenerator(
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.transcript],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.transcript],
       }
     )
 

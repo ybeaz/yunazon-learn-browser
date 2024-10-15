@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from '../../Constants/aws.const'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
+import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from 'yourails_common'
+import { CLIENTS_URI } from 'yourails_common'
 import { getDetectedEnv } from 'yourails_common'
 import { SERVERS } from '../../Constants/servers.const'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
