@@ -2,7 +2,7 @@ import { join } from 'path'
 
 import { consoler } from 'yourails_common'
 import { consolerError } from 'yourails_common'
-import { getWriteFile } from './getWriteFile'
+import { getWritrenFileAsync } from 'yourails_common'
 import { execSync } from 'child_process'
 import { getDateString } from 'yourails_common'
 
@@ -51,7 +51,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
     getBuildGitDataRes = `import { BuildDataType } from 'yourails_common'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
 
-    await getWriteFile(pathFull, getBuildGitDataRes)
+    await getWritrenFileAsync(pathFull, getBuildGitDataRes)
 
     if (options?.printRes) {
       consoler('getBuildGitData', {

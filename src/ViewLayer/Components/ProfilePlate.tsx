@@ -96,38 +96,27 @@ export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsTyp
     userSkillsExpertiseProps() {
       return {
         ...this.selectCommonPart,
-        // @ts-expect-error
         ...getSelectAntdAddedProps(userSkillsExpertise),
-        options: getOptionsAntdStandard(
-          // @ts-expect-error
-          userSkillsExpertise,
-          CATEGORIES_TO_EXCHANGE,
-          language
-        ),
+        options: getOptionsAntdStandard(userSkillsExpertise, CATEGORIES_TO_EXCHANGE, language),
       }
     },
     userLanguagesProps() {
       return {
         ...this.selectCommonPart,
-        // @ts-expect-error
         ...getSelectAntdAddedProps(userLanguages),
-        // @ts-expect-error
         options: getOptionsUserLanguages(userLanguages, LANGUAGES, language),
       }
     },
     userMediaProps() {
       return {
         ...this.selectCommonPart,
-        // @ts-expect-error
         ...getSelectAntdAddedProps(userMedia),
-        // @ts-expect-error
         options: getOptionsAntdStandard(userMedia, MEDIA, language),
       }
     },
     userGenderProps() {
       return {
         ...this.selectCommonPart,
-        // @ts-expect-error
         ...getSelectAntdAddedProps([userGender]),
         options: userGender ? getOptionsAntdStandard([userGender], GENDER, language) : [],
       }
@@ -135,14 +124,8 @@ export const ProfilePlateComponent: React.FunctionComponent<ProfilePlatePropsTyp
     userLocaleCountryProps() {
       return {
         ...this.selectCommonPart,
-        // @ts-expect-error
         ...getSelectAntdAddedProps([userLocaleCountry]),
-        options: getOptionsUserLocaleCountry(
-          // @ts-expect-error
-          userLocaleCountry,
-          COUNTRIES,
-          language
-        ),
+        options: getOptionsUserLocaleCountry(userLocaleCountry, COUNTRIES, language),
       }
     },
   }

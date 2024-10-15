@@ -19,7 +19,6 @@ export const Palette: React.FunctionComponent<PaletteArgs> = (props: PaletteArgs
       },
     }
 
-    // @ts-expect-error
     return handleObject[typeLocalEvent]()
   }
 

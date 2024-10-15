@@ -159,6 +159,5 @@ export const getAzProps: Function = (type: string): AzPropsType => {
     },
   }
 
-  // @ts-expect-error
   return output[type]
 }
