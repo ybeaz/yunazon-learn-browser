@@ -56,7 +56,7 @@ module.exports = () => {
       alias: {
         '@abs': path.resolve(__dirname, './src'),
         yourails_common: path.resolve(__dirname, 'node_modules/yourails_common'),
-
+        zlib: require.resolve('browserify-zlib'),
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
       fallback: {

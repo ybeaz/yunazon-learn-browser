@@ -5,7 +5,7 @@ import {
   withPropsYrl,
   withStoreStateSelectedYrl,
   ButtonYrl,
-  TextArticleStructuredYrl,
+  ArticleStructuredYrl,
 } from 'yourails_common'
 
 import { ScreensEnumType } from 'yourails_common'
@@ -211,21 +211,36 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       contentComponentName,
     },
     articleProps: {
-      entities: article,
-      capture,
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['article'],
+      // @ts-expect-error
+      module: moduleState,
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: false,
     },
     summaryProps: {
-      entities: summary,
-      capture: 'Summary',
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['summary'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Summary' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: true,
     },
     objectionsProps: {
-      entities: objections,
-      capture: 'Objections',
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['objections'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Objections' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: true,
     },
   }
@@ -244,22 +259,18 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.summaryProps} />
-        ) : null,
+        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.articleProps} />
-        ) : null,
+        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
     },
     {
       typeIn: 'objections',
       component:
         objections && objections.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
         ) : null,
     },
   ]

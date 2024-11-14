@@ -4,6 +4,7 @@
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
+    "bumpYourailsCommon": "yarn policies set-version 1.22.17 && yarn remove yourails_common && yarn add yourails_common && rm -rf node_modules && rm -rf yarn.lock && yarn cache clean && yarn install",
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "removeDir": "ts-node tools/getRemovedFilesInDirectory.ts",
     "build": "webpack --config webpack.prod.js",
@@ -62,7 +63,7 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.5.3"
+    "yourails_common": "^0.6.1"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
