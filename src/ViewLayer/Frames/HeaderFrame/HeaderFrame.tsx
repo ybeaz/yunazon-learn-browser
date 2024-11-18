@@ -2,13 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { SideNavigation } from '../../Components/SideNavigation/SideNavigation'
-import { SCREENS_DICT } from '../../../Constants/screensDict.const'
+import { SCREENS_DICT } from 'yourails_common'
 import { PageActionsGroup } from '../../Components/PageActionsGroup/PageActionsGroup'
 import { ShareButtons } from '../../Components/ShareButtons'
-import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
-import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getClasses } from '../../../Shared/getClasses'
+import { getArrayItemByProp } from 'yourails_common'
+import { LANGUAGES_APP } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
@@ -20,7 +20,7 @@ import {
   withStoreStateSelectedYrl,
   withConditionalWrapperYrl,
   NoSeoIndexingYrl,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import {
   handleEvents as handleEventsIn,
   HandleEventType,

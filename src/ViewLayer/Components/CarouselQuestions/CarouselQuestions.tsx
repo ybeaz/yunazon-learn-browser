@@ -1,16 +1,16 @@
 import React, { ReactElement, useMemo } from 'react'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import {
   getModuleByModuleID,
   getQuesionString,
   getButtonsClassString,
   getChunkedArray,
-} from '../../../Shared/'
+} from 'yourails_common'
 import { CheckRadioGroup } from '../CheckRadioGroup'
-import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 
 import {
   CarouselQuestionsComponentPropsType,

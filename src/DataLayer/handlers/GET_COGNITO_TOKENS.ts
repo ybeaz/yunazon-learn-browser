@@ -1,5 +1,5 @@
 import { actionAsync } from '../../DataLayer/index.action'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { store } from '../store'
 
 const { dispatch, getState } = store

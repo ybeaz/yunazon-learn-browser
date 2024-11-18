@@ -1,25 +1,16 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateBotResponseArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationCreateBotResponseArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import {
-  getPreparedResponseFromBot,
-  GetPreparedResponseFromBotParamsType,
-} from '../../Shared/getPreparedResponseFromBot/getPreparedResponseFromBot'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { getPreparedResponseFromBot, GetPreparedResponseFromBotParamsType } from 'yourails_common'
 
 export type GetBotResponseParamsType = {
   botID: string
@@ -51,7 +42,7 @@ export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iter
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[connectionsTimeoutName],
+        timeout: CONNECTIONS_TIMEOUTS[connectionsTimeoutName],
       }
     )
 

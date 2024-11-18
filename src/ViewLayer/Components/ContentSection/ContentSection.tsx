@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { withStoreStateSelectedYrl } from 'yourails_view_layer_web'
-import { getClasses } from '../../../Shared/getClasses'
+import { withStoreStateSelectedYrl } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   ContentArrayItemType,
   TextStructuredComponentsPropsType,

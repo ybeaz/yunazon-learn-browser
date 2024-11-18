@@ -1,14 +1,14 @@
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ButtonYrlPropsType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { GetSideNavigationButtonsProps, GetSideNavigationButtons } from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
 
 /**
  * @description Function to getSideNavigationButtons
- * @run ts-node src/shared/utils/getSideNavigationButtons.ts
+ * @run ts-node ...
  *    In debugging mode:
- *       node --inspect-brk -r ts-node/register src/shared/utils/getSideNavigationButtons.ts
+ *       node --inspect-brk -r ts-node/register ...
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
  * @import import { getSideNavigationButtons, GetSideNavigationButtonsParamsType } from './getSideNavigationButtons'
  */
@@ -16,12 +16,14 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
   navigate,
   language,
   sub,
+  handleEvents,
 }: GetSideNavigationButtonsProps): ButtonYrlPropsType[] => {
   const sideNavigationButtons: ButtonYrlPropsType[] = [
     {
       icon: 'MdLogin',
       captureRight: DICTIONARY.Login[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'CLICK_ON_SIGN_IN' },
       isDisplaying: isAwsCognitoAuth() && !sub,
     },
@@ -29,6 +31,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdHome',
       captureRight: DICTIONARY.Home[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/' },
@@ -39,6 +42,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdOutlineVideocam',
       captureRight: DICTIONARY.All_interactive_videos[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/m' },
@@ -49,6 +53,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdOutlineTag',
       captureRight: DICTIONARY.All_tags[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/t' },
@@ -59,6 +64,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdAssignmentTurnedIn',
       captureRight: DICTIONARY.My_documents[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/my-documents' },
@@ -69,6 +75,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdCastForEducation',
       captureRight: DICTIONARY.My_courses[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/my-modules' },
@@ -79,6 +86,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdLightbulbOutline',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',
         data: [
@@ -95,6 +103,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdPerson',
       captureRight: DICTIONARY.My_profile[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'GO_SCREEN',
         data: { navigate, pathname: '/profiles' },
@@ -105,6 +114,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdQueue',
       captureRight: DICTIONARY.createCourseQuiz[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: {
         typeEvent: 'CREATE_COURSE',
         data: { contentComponentName: 'SideNavigation' },
@@ -115,6 +125,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdFlag',
       captureRight: DICTIONARY.About[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'DEV_STAGE' },
       isDisplaying: false, // TODO, true,
     },
@@ -122,6 +133,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdAddShoppingCart',
       captureRight: DICTIONARY.Services[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'DEV_STAGE' },
       isDisplaying: false, // TODO, true,
     },
@@ -129,6 +141,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdContactMail',
       captureRight: DICTIONARY.Contacts[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'DEV_STAGE' },
       isDisplaying: false, // TODO, true,
     },
@@ -136,6 +149,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'MdLogout',
       captureRight: DICTIONARY.Logout[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'CLICK_ON_SIGN_OUT' },
       isDisplaying: isAwsCognitoAuth() && !!sub,
     },
@@ -143,6 +157,7 @@ export const getSideNavigationButtons: GetSideNavigationButtons = ({
       icon: 'HiOutlineAcademicCap',
       captureRight: DICTIONARY.Academy[language],
       classAdded: 'Button_sideMenuItems',
+      handleEvents,
       action: { typeEvent: 'GO_SCREEN', data: { navigate } },
       isDisplaying: false,
     },

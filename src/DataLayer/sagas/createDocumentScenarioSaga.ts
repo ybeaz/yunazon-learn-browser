@@ -1,17 +1,16 @@
 import { call, takeEvery, put, delay, select } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getSlug } from '../../Shared/getSlug'
+import { getSlug } from 'yourails_common'
 import { createDocument } from './createDocumentSaga'
 import { readProfile } from './readProfileSaga'
 import { updateProfile } from './updateProfileSaga'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { sendEmailDocument } from './sendEmailDocumentSaga'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
-
+import { getArrayItemByProp } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { navigate, creatorID },

@@ -5,32 +5,32 @@ import {
   withPropsYrl,
   withStoreStateSelectedYrl,
   ButtonYrl,
-  TextArticleStructuredYrl,
-} from 'yourails_view_layer_web'
+  ArticleStructuredYrl,
+} from 'yourails_common'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
+import { ScreensEnumType } from 'yourails_common'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { CarouselQuestions } from '../../Components/CarouselQuestions/CarouselQuestions'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getContentComponentName } from '../../../Shared/getContentComponentName'
+import { DICTIONARY } from 'yourails_common'
+import { getContentComponentName } from 'yourails_common'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
-import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { DurationObjType } from '../../../Interfaces/DurationObjType'
+import { getMultipliedTimeStr } from 'yourails_common'
+import { DurationObjType } from 'yourails_common'
 import { LoaderBlurhash } from '../../Components/LoaderBlurhash'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { PlayerYoutubeIframe } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { getModuleByModuleID } from '../../../Shared/getModuleByModuleID'
+import { SERVERS_MAIN } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 // import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
-import { isOnLandScape } from '../../../Shared/isOnLandScape'
-import { isMobile } from '../../../Shared/isMobile'
-import { GenreEnumType } from '../../../@types/GenreType'
-import { getRearrangedArrayByIndex } from '../../../Shared/getRearrangedArrayByIndex'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
+import { isOnLandScape } from 'yourails_common'
+import { isMobile } from 'yourails_common'
+import { GenreEnumType } from 'yourails_common'
+import { getRearrangedArrayByIndex } from 'yourails_common'
 import {
   ContentSection,
   ContentArrayItemType,
@@ -211,21 +211,36 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       contentComponentName,
     },
     articleProps: {
-      entities: article,
-      capture,
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['article'],
+      // @ts-expect-error
+      module: moduleState,
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: false,
     },
     summaryProps: {
-      entities: summary,
-      capture: 'Summary',
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['summary'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Summary' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: true,
     },
     objectionsProps: {
-      entities: objections,
-      capture: 'Objections',
+      classAdded: undefined,
+      scriptID: undefined,
       genre: GenreEnumType['objections'],
+      // @ts-expect-error
+      module: { ...moduleState, capture: 'Objections' },
+      organization: undefined,
+      creator: undefined,
+      isSeo: false,
       isNoSeoIndexing: true,
     },
   }
@@ -244,22 +259,18 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.summaryProps} />
-        ) : null,
+        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.articleProps} />
-        ) : null,
+        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
     },
     {
       typeIn: 'objections',
       component:
         objections && objections.length ? (
-          <TextArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
         ) : null,
     },
   ]

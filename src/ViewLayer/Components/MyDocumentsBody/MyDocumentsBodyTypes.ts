@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { RootStoreType } from '../../../Interfaces/'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { CreditsTablePropsType, TagsDocsTablePropsType } from '../../Components/'
 
 export type MyDocumentsBodyComponentPropsType = {

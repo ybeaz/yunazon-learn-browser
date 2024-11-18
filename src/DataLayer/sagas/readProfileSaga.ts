@@ -1,16 +1,12 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryReadProfilesArgs } from '../../@types/GraphqlTypes'
+import { QueryReadProfilesArgs } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-  FragmentEnumType,
-} from 'yourails_communication_layer'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { connectionsTimeouts } from '../../Constants/connectionsTimeouts.const'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 
 export type GetBotResponseParamsType = never
 
@@ -39,7 +35,7 @@ export function* readProfileGenerator(params: GetBotResponseParamsType): Iterabl
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts['standard'],
+        timeout: CONNECTIONS_TIMEOUTS['standard'],
       }
     )
 

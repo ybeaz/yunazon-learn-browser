@@ -1,10 +1,10 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { withDebounce } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable<any> {

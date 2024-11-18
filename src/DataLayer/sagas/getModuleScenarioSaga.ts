@@ -1,13 +1,9 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import {
-  RootStoreType,
-  ActionReduxType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces'
+import { RootStoreType } from '../../Interfaces'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { withDebounce } from '../../Shared/withDebounce'
+import { ActionReduxType, withDebounce } from 'yourails_common'
 import { getModule10MetaDataCreated } from './getModule10MetaDataCreatedSaga'
 import { getModule20TranscriptCreated } from './getModule20TranscriptCreatedSaga'
 import { getModule35SummaryCreated } from './getModule35SummaryCreatedSaga'

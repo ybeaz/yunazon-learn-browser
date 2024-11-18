@@ -1,24 +1,15 @@
 import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
 
-import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from '../../@types/'
-import { ActionReduxType } from '../../Interfaces'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-  FragmentEnumType,
-} from 'yourails_communication_layer'
-import {} from // getResponseGraphqlAsync,
-// getCreatedFolder,
-// ResolveGraphqlEnumType,
-// FragmentEnumType
-'yourails_common'
+import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getPreparedModules } from '../../Shared/getPreparedModules'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getCheckedModulesAnswered } from '../../Shared/getCheckedModulesAnswered'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getSizeWindow } from '../../Shared/getSizeWindow'
-import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
+import { getPreparedModules } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getCheckedModulesAnswered } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
+import { getSizeWindow } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
@@ -102,13 +93,4 @@ export const getModule = withDebounce(getModuleGenerator, 500)
 
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)
-}
-
-// Remove this after debugging
-if (require.main === module) {
-  const path = `${__dirname}/text2`
-  console.info('getModuleSaga [109]', { path })
-  // getCreatedFolder(path)
-} else {
-  console.info('We are in a module', 'green')
 }

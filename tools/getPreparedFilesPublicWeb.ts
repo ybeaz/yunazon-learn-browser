@@ -1,9 +1,8 @@
 import { join } from 'path'
 
-import { consoler } from './consoler'
-import { getFilesListInDir } from './getFilesListInDir'
-import { getCopiedFileDir } from './getCopiedFileDir'
-import { givePermission } from './givePermission'
+import { consoler } from 'yourails_common'
+import { getFilesListInDir } from 'yourails_common'
+import { getGivenPermission } from 'yourails_common'
 import { getIteratedAndMinifiedFiles } from './getIteratedAndMinifiedFiles'
 
 /**
@@ -24,7 +23,7 @@ const getPreparedFilesPublicWeb = async (buildDir: string): Promise<void> => {
   )
 
   /** @description Give permission to the build directories */
-  await givePermission(buildDir)
+  await getGivenPermission(buildDir)
 }
 
 /**

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFramePropsType } from '../../Frames/'

@@ -1,24 +1,23 @@
-import { UserType } from '../Interfaces/UserType'
+import { UserType } from 'yourails_common'
 import {
   CourseCreateProgressType,
-  CreateModuleStatusEnumType,
   ComponentsStateType,
-  SearchFormSepType,
   FormsType,
   RootStoreType,
   PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
-import { ScreensEnumType } from '../Interfaces/ScreensEnumType'
 
-import { PAGINATION_OFFSET } from '../Constants/pagination.const'
+import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
+
+import { PAGINATION_OFFSET } from 'yourails_common'
 
 import { isObjectionsStageForCourseCreateFlag } from '../FeatureFlags'
 
-export const userStoreDefault: UserType = {
+export const userStoreDefault: UserType | any = {
   userAvatar: '',
   userBirthYear: null,
   userDateCreated: '',
-  userDateDeleted: '',
+  userDateDeactivated: '',
   userDateUpdated: '',
   userEmail: '',
   userGender: '',

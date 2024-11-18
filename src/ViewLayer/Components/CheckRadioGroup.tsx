@@ -1,8 +1,8 @@
 import React, { ReactElement, useRef } from 'react'
 
-import { getRandomNumBetween } from '../../Shared/getRandomNumBetween'
-import { getDesignType } from '../../Shared/getDesignType'
-import { getAnswerByOptionID } from '../../Shared/getAnswerByOptionID'
+import { getRandomNumBetween } from 'yourails_common'
+import { getDesignType } from 'yourails_common'
+import { getAnswerByOptionID } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 interface CheckRadioGroupArgs {
   courseID?: string

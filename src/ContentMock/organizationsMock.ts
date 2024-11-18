@@ -1,4 +1,4 @@
-import { OrganizationType } from '../@types/OrganizationType'
+import { OrganizationType } from 'yourails_common'
 
 export const organizations: OrganizationType[] = [
   {
@@ -6,7 +6,7 @@ export const organizations: OrganizationType[] = [
     isActive: true,
     dateCreated: 1640995200000,
     dateUpdated: 1707024205906,
-    dateDeleted: null,
+    dateDeactivated: null,
     name: 'YouRails Academy',
     brand: 'Teach curious; Learn from inspired',
     description:

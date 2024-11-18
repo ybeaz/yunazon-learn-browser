@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { SITE_META_DATA } from 'yourails_common'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from '../../../Interfaces/'
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
-import { getClasses } from '../../../Shared/getClasses'
+
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   MyModulesComponentPropsType,
   MyModulesPropsType,

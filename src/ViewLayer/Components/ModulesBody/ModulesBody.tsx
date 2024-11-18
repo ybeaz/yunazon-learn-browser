@@ -1,16 +1,15 @@
 import React, { ReactElement, useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { ModuleType } from '../../../@types/GraphqlTypes'
-import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { ModuleType } from 'yourails_common'
+import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { ContentPlate, ContentPlatePropsType } from '../../Components/ContentPlate/ContentPlate'
-import { getContentComponentName } from '../../../Shared/getContentComponentName'
-import { getMultipliedTimeStr } from '../../../Shared/getMultipliedTimeStr'
-import { DurationObjType, PaginationNameEnumType } from '../../../Interfaces/'
+import { getContentComponentName } from 'yourails_common'
+import { getMultipliedTimeStr } from 'yourails_common'
+import { DurationObjType, PaginationNameEnumType } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { IconLabelWithClose } from '../IconLabelWithClose/IconLabelWithClose'
 import {
   ModulesBodyComponentPropsType,

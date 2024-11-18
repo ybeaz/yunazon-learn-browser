@@ -1,8 +1,8 @@
 import React from 'react'
 import { Collapse } from 'antd'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getClasses } from '../../../Shared/'
+import { DICTIONARY } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import {
   MyDocumentsBodyComponentPropsType,
   MyDocumentsBodyPropsType,

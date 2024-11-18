@@ -1,5 +1,5 @@
 import { Middleware } from '@reduxjs/toolkit'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 
 /**
  * @description Function to setLocalStorageCoursesInProgress, for now only one active

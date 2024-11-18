@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
+import { getPrependedExternalScript } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 /**

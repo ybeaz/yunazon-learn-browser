@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-import { timeout } from '../../Shared/timeout'
+import { timeout } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { getPrependedExternalScript } from '../../Shared/getPrependedExternalScript'
+import { getPrependedExternalScript } from 'yourails_common'
 
 declare global {
   interface Window {
@@ -35,8 +35,7 @@ export const useInitializedGoogleOAuth: Function = (): void => {
         await getPrependedExternalScript(scriptProps)
         await timeout(1000)
         await window.google.accounts.id.initialize({
-          client_id:
-            '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
+          client_id: '756709380715-92ni8gbaiddbee18c1l63pjeu0pc1u27.apps.googleusercontent.com',
           prompt_parent_id: 'g_id_onload',
           cancel_on_tap_outside: false,
           callback: handleCredentialResponse,
@@ -62,10 +61,7 @@ export const useInitializedGoogleOAuth: Function = (): void => {
         //   }
         // })
 
-        handleEvents(
-          {},
-          { typeEvent: 'SET_OAUTH_GOOGLE_SCRIPT_STATE', data: true }
-        )
+        handleEvents({}, { typeEvent: 'SET_OAUTH_GOOGLE_SCRIPT_STATE', data: true })
       } catch (error: any) {
         console.info('useInitializedGoogleOAuth [34]', {
           message: error.message,

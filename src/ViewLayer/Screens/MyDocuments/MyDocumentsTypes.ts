@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
 import { MainFramePropsType, HeaderFramePropsType } from '../../Frames/'
 import { MyDocumentsBodyPropsType } from '../../Components/'
 

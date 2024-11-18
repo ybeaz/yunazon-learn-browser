@@ -1,9 +1,9 @@
-import { ActionEventType } from '../../Interfaces/ActionEventType'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from '../../Constants/aws.const'
-import { getRedirected } from '../../Shared/getRedirected'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { ActionEventType } from 'yourails_common'
+import { CLIENTS_URI } from 'yourails_common'
+import { getDetectedEnv } from 'yourails_common'
+import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from 'yourails_common'
+import { getRedirected } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 
 export const CLICK_ON_SIGN_IN: ActionEventType = (event, data) => {
   if (window.location.pathname !== '/')

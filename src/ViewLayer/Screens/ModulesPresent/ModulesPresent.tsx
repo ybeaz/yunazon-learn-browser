@@ -1,20 +1,19 @@
 import React, { useEffect, ReactElement } from 'react'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachContent'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
-import { PAGINATION_OFFSET } from '../../../Constants/pagination.const'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_view_layer_web'
+import { SITE_META_DATA } from 'yourails_common'
+import { PAGINATION_OFFSET } from 'yourails_common'
+import { SERVERS_MAIN } from 'yourails_common'
+import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
 import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
-import { getSizeWindow } from '../../../Shared/getSizeWindow'
 
 import {
   ModulesPresentPropsType,

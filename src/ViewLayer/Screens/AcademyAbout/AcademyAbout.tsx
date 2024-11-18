@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { FooterFrame } from '../../Frames/FooterFrame/FooterFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { SERVERS_MAIN } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   AcademyAboutComponentPropsType,
   AcademyAboutPropsType,

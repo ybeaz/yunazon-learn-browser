@@ -1,21 +1,15 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationCreateModulesArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationCreateModulesArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getArrayItemByProp } from '../../Shared/getArrayItemByProp'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getArrayItemByProp } from 'yourails_common'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
@@ -83,7 +77,7 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
       {
         ...getHeadersAuthDict(),
         clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: connectionsTimeouts[ConnectionsTimeoutNameEnumType.standard],
+        timeout: CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType.standard],
       }
     )
 

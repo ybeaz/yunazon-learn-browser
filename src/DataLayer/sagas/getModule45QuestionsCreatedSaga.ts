@@ -1,37 +1,29 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import {
-  RootStoreType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-} from '../../Interfaces/RootStoreType'
-import {
-  connectionsTimeouts,
-  ConnectionsTimeoutNameEnumType,
-} from '../../Constants/connectionsTimeouts.const'
-import { withDebounce } from '../../Shared/withDebounce'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 
 export function* getModule45QuestionsCreatedGenerator(
   params: ActionReduxType | any
 ): Iterable<any> {
   try {
-    const { summary, summaryChunks }: any = yield select(
-      (state: RootStoreType) => {
-        return {
-          summary: state.moduleCreateProgress.summary,
-          summaryChunks: state.moduleCreateProgress.summaryChunks,
-        }
+    const { summary, summaryChunks }: any = yield select((state: RootStoreType) => {
+      return {
+        summary: state.moduleCreateProgress.summary,
+        summaryChunks: state.moduleCreateProgress.summaryChunks,
       }
-    )
+    })
 
     yield put(
       actionSync.SET_MODULE_CREATE_STATUS({
         stage: CreateModuleStagesEnumType['questions'],
         timeCalculated: Array.isArray(summary)
-          ? summaryChunks.length * connectionsTimeouts.summaryChunkToQuestions
+          ? summaryChunks.length * CONNECTIONS_TIMEOUTS.summaryChunkToQuestions
           : null,
       })
     )
@@ -55,20 +47,17 @@ export function* getModule45QuestionsCreatedGenerator(
             `getCourse35SummaryCreatedSaga [57] connection ${CreateModuleStagesEnumType['questions']} is timed out`
           )
         }
-      }, connectionsTimeouts[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
+      }, CONNECTIONS_TIMEOUTS[ConnectionsTimeoutNameEnumType['summaryChunkToQuestions']] + 1500)
 
       const userText =
-        typeof summaryChunk === 'string'
-          ? summaryChunk
-          : JSON.stringify(summaryChunk, null, 2)
+        typeof summaryChunk === 'string' ? summaryChunk : JSON.stringify(summaryChunk, null, 2)
 
       const getBotResponseParams: GetBotResponseParamsType = {
         botID: 'JeZ6xLpR2RSa',
         profileID: 'tbd3rgTVFkiU',
         profileName: '@t_q_ao_extractor_02_persona',
         stage: CreateModuleStagesEnumType['questions'],
-        connectionsTimeoutName:
-          ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
+        connectionsTimeoutName: ConnectionsTimeoutNameEnumType['summaryChunkToQuestions'],
         userText,
       }
       const questionsChunk: any = yield getBotResponse(getBotResponseParams)
@@ -115,17 +104,11 @@ export function* getModule45QuestionsCreatedGenerator(
       })
     )
 
-    console.info(
-      'getModule45QuestionsCreatedSaga  [110] ERROR',
-      `${error.name}: ${error.message}`
-    )
+    console.info('getModule45QuestionsCreatedSaga  [110] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule45QuestionsCreated = withDebounce(
-  getModule45QuestionsCreatedGenerator,
-  500
-)
+export const getModule45QuestionsCreated = withDebounce(getModule45QuestionsCreatedGenerator, 500)
 
 export default function* getModule45QuestionsCreatedSaga() {
   yield takeEvery(

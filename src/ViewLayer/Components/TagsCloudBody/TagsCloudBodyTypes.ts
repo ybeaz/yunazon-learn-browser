@@ -1,8 +1,8 @@
 import React from 'react'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { PaginationNavigationPropsType } from '../../Components/'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
-import { ButtonYrlPropsType, InputGroupYrlPropsType } from 'yourails_view_layer_web'
+import { HandleEventType } from 'yourails_common'
+import { ButtonYrlPropsType, InputGroupYrlPropsType } from 'yourails_common'
 
 export type TagsCloudBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

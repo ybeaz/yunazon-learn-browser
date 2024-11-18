@@ -1,8 +1,9 @@
 import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 
-import { RootStoreType, HandleEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { RootStoreType } from '../../../Interfaces/'
+import { HandleEventType } from 'yourails_common'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 
 export type CreditsTableComponentPropsType = {

@@ -1,4 +1,4 @@
-import { UserType } from './UserType'
+import { UserType } from 'yourails_common'
 import {
   ModuleType,
   CourseType,
@@ -8,10 +8,10 @@ import {
   CreateModuleStagesEnumType,
   CreateModuleStatusEnumType,
   CreateModuleStageType,
-} from '../@types/'
-import { PaginationType } from './PaginationType'
-import { ArticleType } from '../@types/ArticleMockType'
-import { ScreensEnumType } from './ScreensEnumType'
+} from 'yourails_common'
+import { PaginationType } from 'yourails_common'
+import { ArticleItemType } from 'yourails_common'
+import { ScreensEnumType } from 'yourails_common'
 
 export { CreateModuleStagesEnumType, CreateModuleStatusEnumType }
 export type { CreateModuleStageType }
@@ -122,7 +122,7 @@ export type RootStoreType = {
   courses: CourseType[]
   moduleCreateProgress: CourseCreateProgressType
   documents: DocumentType[]
-  articles: ArticleType[]
+  articles: ArticleItemType[]
   profiles: Pick<
     ProfileType,
     | 'profileID'

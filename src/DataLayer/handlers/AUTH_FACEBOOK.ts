@@ -1,5 +1,5 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionAsync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
@@ -18,7 +18,7 @@ export const AUTH_FACEBOOK: ActionEventType = (event, data) => {
     },
     id: userIdExternal,
     name: userName,
-  } = data
+  } = data as Record<string, any>
 
   dispatch(
     actionAsync.GET_OAUTH_UI_DATA.REQUEST({

@@ -1,21 +1,17 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import {
-  ReadCoursesConnectionInputType,
-  QueryReadCoursesConnectionArgs,
-} from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { ReadCoursesConnectionInputType, QueryReadCoursesConnectionArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer' // import { getResponseGraphqlAsync } from 'yourails_communication_layer'
-// import { getResponseGraphqlAsync } from 'yourails_communication_layer'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common' // import { getResponseGraphqlAsync } from 'yourails_common'
+// import { getResponseGraphqlAsync } from 'yourails_common'
 
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { getPreparedCourses } from '../../Shared/getPreparedCourses'
-import { selectCoursesStageFlag } from '../../FeatureFlags'
+import { getChainedResponsibility } from 'yourails_common'
+import { getMappedConnectionToItems } from 'yourails_common'
+import { getPreparedCourses } from 'yourails_common'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<any> {

@@ -2,22 +2,17 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { SCREENS_DICT } from '../../../Constants/screensDict.const'
-import { PaginationNameEnumType } from '../../../Interfaces/'
-import { TagType } from '../../../@types'
-import {
-  ButtonYrl,
-  InputGroupYrl,
-  withPropsYrl,
-  withStoreStateSelectedYrl,
-} from 'yourails_view_layer_web'
+import { ScreensEnumType } from 'yourails_common'
+import { SCREENS_DICT } from 'yourails_common'
+import { PaginationNameEnumType } from 'yourails_common'
+import { TagType } from 'yourails_common'
+import { ButtonYrl, InputGroupYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import { getExpertiseInfo, GetExpertiseInfoResType } from '../../../Shared/getExpertiseInfo'
-import { getRangeOfNumbers } from '../../../Shared/getRangeOfNumbers'
-import { getColorsRandomDarkTheme } from '../../../Shared/getColorsRandomDarkTheme'
+import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
+import { getRangeOfNumbers } from 'yourails_common'
+import { getColorsRandomDarkTheme } from 'yourails_common'
 import {
   TagsCloudBodyComponentPropsType,
   TagsCloudBodyPropsType,

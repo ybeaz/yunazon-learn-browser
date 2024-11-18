@@ -1,4 +1,4 @@
-import type { ActionEventType, HandleEventType } from '../Interfaces/'
+import type { ActionEventType, HandleEventType } from 'yourails_common'
 
 import * as handleEventsAll from './handlers'
 

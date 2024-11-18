@@ -1,9 +1,9 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
-import { CourseType, ModuleType, MetaCourseType } from '../../../@types/GraphqlTypes'
-import { ResultType } from '../../../Shared/getAnswersChecked2'
-import { HandleEventType } from '../../../Interfaces/HandleEventType'
+import { ButtonYrlPropsType } from 'yourails_common'
+import { CourseType, ModuleType, MetaCourseType } from 'yourails_common'
+import { ResultType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type GetScenarioDictPropsType = {
   result: ResultType

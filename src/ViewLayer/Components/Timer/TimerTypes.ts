@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ClassAddedType } from '../../../Shared/getClasses'
+import { ClassAddedType } from 'yourails_common'
 
 export type TimerComponentPropsType = {
   classAdded?: string
@@ -17,8 +17,7 @@ export type TimerPropsOutType = Record<string, any>
 /**
  * @import import { TimerComponentPropsType, TimerPropsType, TimerPropsOutType, TimerComponentType, TimerType } from './TimerTypes'
  */
-export interface TimerComponentType
-  extends React.FunctionComponent<TimerComponentPropsType> {
+export interface TimerComponentType extends React.FunctionComponent<TimerComponentPropsType> {
   (props: TimerComponentPropsType): React.ReactElement
 }
 

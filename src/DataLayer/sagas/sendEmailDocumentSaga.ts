@@ -1,12 +1,12 @@
 import { takeEvery, put } from 'redux-saga/effects'
 
-import { QuerySendEmailDocumentArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { QuerySendEmailDocumentArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getHeadersAuthDict } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 
 function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   const {

@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 
 const { getState, dispatch } = store
 

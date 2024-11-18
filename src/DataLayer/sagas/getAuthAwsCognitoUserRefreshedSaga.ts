@@ -1,15 +1,15 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryGetAuthAwsCognitoUserRefreshedArgs } from '../../@types/GraphqlTypes'
+import { QueryGetAuthAwsCognitoUserRefreshedArgs } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { ClientAppType } from '../../@types/ClientAppType'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getLocalStorageSetObjTo } from '../../Shared/getLocalStorageSetObjTo'
+import { CLIENTS_URI } from 'yourails_common'
+import { getDetectedEnv } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { ClientAppEnumType } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
@@ -35,7 +35,7 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
       userIdDataAwsCognitoInput: {
         refresh_token,
         redirect_uri,
-        client_app: ClientAppType['ACADEMY'],
+        client_app: ClientAppEnumType['ACADEMY'],
       },
     }
 

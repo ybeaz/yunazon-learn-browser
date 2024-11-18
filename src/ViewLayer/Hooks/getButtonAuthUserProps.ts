@@ -1,6 +1,6 @@
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { UserType } from '../../Interfaces/UserType'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { DICTIONARY } from 'yourails_common'
+import { UserType } from 'yourails_common'
+import { ButtonYrlPropsType } from 'yourails_common'
 
 interface IGetButtonAuthUser {
   (
@@ -21,6 +21,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
   componentFrom,
   navigate = {}
 ) => {
+  // @ts-expect-error
   const { userAvatar, userStatus, userName } = user
 
   enum ButtonDictKeyType {

@@ -8,9 +8,9 @@ import {
   ButtonYrlPropsType,
   InputYrl,
   InputYrlPropsType,
-} from 'yourails_view_layer_web'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
-
+} from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 type AvatarPropsType = {
   handleEvents: HandleEventType
 }
@@ -34,7 +34,7 @@ export const AvatarComponent: React.FunctionComponent<AvatarPropsType> = ({
     buttonAvatarProps: {
       icon: userAvatar ? null : 'FaUserCircle',
       icon2: null,
-      imageSrc: userAvatar,
+      imageSrc: userAvatar || '',
       captureLeft: '',
       captureRight: '',
       classAdded: 'Button_Avatar',

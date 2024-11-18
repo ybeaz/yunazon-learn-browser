@@ -66,3 +66,9 @@ web-build
 archive
 .yalc
 yalc.lock
+.yarn
+
+src/@types/GraphqlTypes.d.ts
+src/@types/GraphqlTypes.js
+src/@types/GraphqlTypes.tsx
+src/@types/graphqlTypes.gql

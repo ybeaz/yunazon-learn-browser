@@ -2,21 +2,18 @@ import React from 'react'
 
 import { TimerPropsType } from '../Timer/Timer'
 import {
+  HandleEventPropsType,
   ImageYrlPropsType,
   IconYrlPropsType,
   ButtonYrlPropsType,
   InputGroupYrlPropsType,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import { PaginationNavigationPropsType } from '../../Components/'
 import { MyModulesTablePropsType } from '../MyModulesTable/MyModulesTable'
 
-import {
-  CreateModuleStatusEnumType,
-  CreateModuleStagesEnumType,
-  RootStoreType,
-  HandleEventPropsType,
-} from '../../../Interfaces/'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { RootStoreType } from '../../../Interfaces/'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type StagesType = {
   name: string

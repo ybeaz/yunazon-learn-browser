@@ -1,17 +1,17 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getAuthAwsCognitoUserData } from './getAuthAwsCognitoUserDataSaga'
 import { getAuthAwsCognitoUserRefreshed } from './getAuthAwsCognitoUserRefreshedSaga'
 import { readProfile } from './readProfileSaga'
 import { createProfile } from './createProfileSaga'
-import { getRedirected } from '../../Shared/getRedirected'
-import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { getLocalStorageDeletedObjFrom } from '../../Shared/getLocalStorageDeletedObjFrom'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getRedirected } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { getLocalStorageDeletedObjFrom } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 
 function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -46,9 +46,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       yield call(getAuthAwsCognitoUserRefreshed)
     }
 
-    let stateSelected: RootStoreType | any = yield select(
-      (state: RootStoreType) => state
-    )
+    let stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
     const {
       authAwsCognitoUserData: { sub, email },

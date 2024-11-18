@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   TestReactComponentPropsType,
   TestReactPropsType,

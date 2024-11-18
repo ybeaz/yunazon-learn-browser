@@ -1,11 +1,7 @@
 import React, { useMemo } from 'react'
 
-import {
-  PaginationNameEnumType,
-  CreateModuleStagesEnumType,
-  CreateModuleStatusEnumType,
-  CreateModuleStageType,
-} from '../../../Interfaces/'
+import { PaginationNameEnumType } from '../../../Interfaces/'
+import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import {
   withPropsYrl,
   InputGroupYrl,
@@ -13,10 +9,10 @@ import {
   ImageYrl,
   ButtonYrl,
   withStoreStateSelectedYrl,
-} from 'yourails_view_layer_web'
+} from 'yourails_common'
 import { Timer } from '../Timer/Timer'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { getClasses } from '../../../Shared/getClasses'
+import { DICTIONARY } from 'yourails_common'
+import { getClasses } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyModulesTable } from '../MyModulesTable/MyModulesTable'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'

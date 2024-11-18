@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { getClasses } from '../../../../Shared/getClasses'
-import { BORDER_IMAGE_SORCE_URALS } from '../../../../Constants/expertiseLevels.const'
+import { getClasses } from 'yourails_common'
+import { BORDER_IMAGE_SORCE_URALS } from 'yourails_common'
 import {
   CertificateFrameAComponentPropsType,
   CertificateFrameAPropsType,

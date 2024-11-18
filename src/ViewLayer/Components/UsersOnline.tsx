@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-import { withPropsYrl, ButtonYrl, ImageYrl } from 'yourails_view_layer_web'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
-import { DICTIONARY } from '../../Constants/dictionary.const'
-import { ActionReduxType } from '../../Interfaces/ActionReduxType'
+import { withPropsYrl, ButtonYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
 const USERS_MAMBA_FACES = [
   { fileName: '1868053633_square_small.jpg', userName: '' },
@@ -56,6 +57,7 @@ export const UsersOnlineComponent: React.FunctionComponent<UsersOnlinePropsType>
       const imageProps = {
         classAdded: 'Image_UsersOnline',
         src: `${SERVERS_MAIN.remote}/images/faces_mamba/${fileName}`,
+        handleEvents,
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',
           data: {

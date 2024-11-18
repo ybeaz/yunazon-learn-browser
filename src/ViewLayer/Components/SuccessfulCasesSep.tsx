@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { withPropsYrl, ImageYrl } from 'yourails_view_layer_web'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 
 interface SuccessfulCasesSepPropsType {
   handleEvents: HandleEventType

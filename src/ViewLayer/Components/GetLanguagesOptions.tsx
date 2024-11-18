@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
-import { ImageYrl } from 'yourails_view_layer_web'
+import { ImageYrl } from 'yourails_common'
 
 import { LanguagesType } from '../../Interfaces/LanguagesType'
 import { IDictionary } from '../../Constants/dictionary.const'
-import { SelectOptionAntDType } from '../../Interfaces/SelectOptionAntDType'
+import { SelectOptionAntDType } from 'yourails_common'
 
 const { Option } = SelectAntd
 
@@ -29,13 +29,11 @@ export const GetLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
 ) => {
   return Object.keys(LANGUAGES).map((ln: string) => {
     const value = LANGUAGES[ln]['639-1']
-    // @ts-expect-error
     const [label] = LANGUAGES[ln][language]
     const twoChar6391 = LANGUAGES[ln]['639-1']
     const key = nanoid()
 
     let labelNext = label
-    // @ts-expect-error
     labelNext = LANGUAGES[ln][twoChar6391]
       ? labelNext // LANGUAGES[ln][twoChar6391]
       : labelNext
@@ -87,7 +85,6 @@ export const getLanguagesOptions2: IGetLanguagesOptions2 = (
   defaultOption2
 ) => {
   const lagnguagesMapped = Object.keys(languages2).map((ln: string) => {
-    // @ts-expect-error
     const [label] = languages2[ln][language2]
     return { label, value: ln }
   })

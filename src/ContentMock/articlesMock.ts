@@ -1,6 +1,6 @@
-import { ArticleType } from '../@types/ArticleMockType'
+import { ArticleItemType } from 'yourails_common'
 
-export const articles: ArticleType[] = [
+export const articles: (ArticleItemType | any)[] = [
   {
     articleID: 'ipc6N2IPV4gA',
     dateCreated: 122345,

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from '../../Constants/aws.const'
-import { CLIENTS_URI } from '../../Constants/clientsUri.const'
-import { getDetectedEnv } from '../../Shared/getDetectedEnv'
-import { SERVERS } from '../../Constants/servers.const'
+import { AWS_COGNITO_URL, AWS_COGNITO_CLIENT_ID } from 'yourails_common'
+import { CLIENTS_URI } from 'yourails_common'
+import { getDetectedEnv } from 'yourails_common'
+import { SERVERS } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { getParsedUrlQuery } from '../../Shared/getParsedUrlQuery'
-import { UserAwsCognitoAuthType } from '../../Interfaces/UserAwsCognitoAuthType'
-import { IconYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { getParsedUrlQuery } from 'yourails_common'
+import { UserAwsCognitoAuthType } from 'yourails_common'
+import { IconYrl, withStoreStateSelectedYrl } from 'yourails_common'
 
 interface GetLinkAuthUserPropsType {
   (userAwsCognitoAuth: UserAwsCognitoAuthType): {

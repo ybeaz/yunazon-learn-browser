@@ -2,18 +2,18 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { ScreensEnumType } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { withStoreStateSelectedYrl } from 'yourails_common'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
+import { SERVERS_MAIN } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
-import { SITE_META_DATA } from '../../../Constants/siteMetaData.const'
+import { SITE_META_DATA } from 'yourails_common'
 
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import {
   ArticlePresentComponentPropsType,
   ArticlePresentPropsType,

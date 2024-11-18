@@ -1,12 +1,12 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { MutationUpdateProfilesArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationUpdateProfilesArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
   const {

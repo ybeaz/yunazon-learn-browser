@@ -1,12 +1,12 @@
 import { takeEvery, put, call } from 'redux-saga/effects'
 
-import { MutationDeactivateModulesArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { MutationDeactivateModulesArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getHeadersAuthDict } from 'yourails_common'
 import { getModules } from './getModulesSaga'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
 function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<any> {

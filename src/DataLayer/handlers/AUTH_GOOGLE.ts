@@ -1,7 +1,7 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getOpenedUrlInNewTab } from '../../Shared/getOpenedUrlInNewTab'
+import { getOpenedUrlInNewTab } from 'yourails_common'
 
 const { dispatch, getState } = store
 
@@ -11,7 +11,7 @@ export const AUTH_GOOGLE: ActionEventType = (event, data) => {
   } = getState()
   if (oAuthStage !== 'signInWithGoogle') return
 
-  const response = data[0]
+  const response = data && data[0]
 
   if (response === null) {
     const data2 = [

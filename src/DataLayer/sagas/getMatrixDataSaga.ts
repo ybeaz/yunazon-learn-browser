@@ -1,13 +1,10 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects'
 
-import { ActionReduxType } from '../../Interfaces'
+import { ActionReduxType } from 'yourails_common'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { PAGINATION_OFFSET } from '../../Constants/pagination.const'
-import {
-  getSetUrlQueryBrowserApi,
-  GetSetUrlQueryBrowserApiParamsType,
-} from '../../Shared/getSetUrlQueryBrowserApi'
+import { PAGINATION_OFFSET } from 'yourails_common'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {

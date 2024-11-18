@@ -1,5 +1,5 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { HandleEventType } from '../../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 
 export type ModalFramesComponentPropsType = {
   children?: React.ReactElement

@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { LANGUAGES_APP } from '../../../Constants/languagesApp.const'
+import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
 
-import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
-import { withPropsYrl } from 'yourails_view_layer_web'
+import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourails_common'
+import { withPropsYrl } from 'yourails_common'
 
 import {
   SideNavigationComponentPropsType,
@@ -39,6 +39,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
     navigate,
     sub,
     language,
+    handleEvents,
   })
 
   const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {

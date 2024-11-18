@@ -1,16 +1,13 @@
+// @ts-nocheck
+
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import { nanoid } from 'nanoid'
 
-import { getUniqArrBy } from '../../Shared/getUniqArrBy'
-import { getCreatedStyleElement } from '../../Shared/getCreatedStyleElement'
+import { getUniqArrBy } from 'yourails_common'
+import { getCreatedStyleElement } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-import { HandleEventPropsType } from '../../Interfaces/HandleEventPropsType'
-export interface SelectOptionType {
-  defaultSelected?: boolean
-  selected: boolean
-  text?: string
-  value?: string
-}
+import { HandleEventPropsType, SelectOptionType } from 'yourails_common'
+
 interface ISelectArgs {
   classAdded: string
   multiple?: boolean
@@ -65,7 +62,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       '8': 0.2,
     }
 
-    // @ts-expect-error
     const factorK = k[String(size2)]
 
     const hBase2 = factorK * size2
@@ -105,9 +101,7 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
   useEffect(() => {
     getInjectedAnimationToSelect({ size2: sizeIn, delay2: 1.6 })
 
-    // @ts-expect-error
     setOptionsState(options)
-    // @ts-expect-error
     setOptionsState2(options)
     onBlurRef.current = onBlurState
     setOnBlurState(true)
@@ -180,7 +174,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       optionsSelected[0].value === event.target.value
     ) {
       const optionsStateNext = getOptionsNext(optionsState, [event.target.value])
-      // @ts-expect-error
       setOptionsState(optionsStateNext)
     }
   }
@@ -196,7 +189,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
       : [event.target.value]
 
     const optionsStateNext = getOptionsNext(optionsState, arrSelected)
-    // @ts-expect-error
     setOptionsState(optionsStateNext)
 
     const dataSelected = optionsStateNext
@@ -216,7 +208,6 @@ export const Select: React.FunctionComponent<ISelectArgs> = (props: ISelectArgs)
   const SELECT_ON_MOUSE_LEAVE = (): void => {
     if (onBlurRef.current === false) return
 
-    // @ts-expect-error
     let optionsNext = optionsState.filter(item => item.selected === true)
     // @ts-expect-error
     if (optionsState.filter(item => item.selected === true).length === 0) {

@@ -1,10 +1,10 @@
+import { RootStoreType, ReducerType } from '../../Interfaces/'
+
 import {
-  RootStoreType,
   CreateModuleStageType,
   CreateModuleStatusEnumType,
   CreateModuleStagesEnumType,
-  ReducerType,
-} from '../../Interfaces/'
+} from 'yourails_common'
 
 type DataType = {
   stage: CreateModuleStagesEnumType
@@ -26,8 +26,7 @@ export const SET_MODULE_CREATE_STATUS: ReducerType = (
   let createModuleStateNext: CreateModuleStageType = createModuleStages[stage]
   if (dataKeys.includes('isActive'))
     createModuleStateNext = { ...createModuleStages[stage], isActive }
-  if (dataKeys.includes('status'))
-    createModuleStateNext = { ...createModuleStages[stage], status }
+  if (dataKeys.includes('status')) createModuleStateNext = { ...createModuleStages[stage], status }
   if (dataKeys.includes('timeCalculated'))
     createModuleStateNext = { ...createModuleStages[stage], timeCalculated }
 

@@ -1,13 +1,10 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
-import {
-  RootStoreType,
-  PaginationDict,
-  PaginationNameEnumType,
-} from '../../Interfaces/RootStoreType'
-import { PaginationType } from '../../Interfaces'
+import { ActionEventType } from 'yourails_common'
+import { RootStoreType, PaginationDict } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
+import { PaginationType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { withDebounce } from '../../Shared/withDebounce'
+import { withDebounce } from 'yourails_common'
 
 const { dispatch, getState } = store
 

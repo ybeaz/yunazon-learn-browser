@@ -1,13 +1,14 @@
 import React, { useEffect, ReactElement } from 'react'
 
-import { withPropsYrl, ImageYrl } from 'yourails_view_layer_web'
-import { handleEvents as handleEventsIn, HandleEventType } from '../../DataLayer/index.handleEvents'
+import { withPropsYrl, ImageYrl } from 'yourails_common'
+import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
+import { HandleEventType } from 'yourails_common'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
 import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
-import { SERVERS_MAIN } from '../../Constants/servers.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SERVERS_MAIN } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 
 interface StubForUserResearchPropsType {
   routeProps: {

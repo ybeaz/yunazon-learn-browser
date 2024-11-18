@@ -1,5 +1,5 @@
-import { ActionEventType } from '../../Interfaces/ActionEventType'
-import { getRedirected } from '../../Shared/'
+import { ActionEventType } from 'yourails_common'
+import { getRedirected } from 'yourails_common'
 
 export const GO_LINK_PATH: ActionEventType = (
   event,

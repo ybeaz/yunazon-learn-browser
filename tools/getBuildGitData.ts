@@ -1,10 +1,10 @@
 import { join } from 'path'
 
-import { consoler } from './consoler'
-import { consolerError } from './consolerError'
-import { getWriteFile } from './getWriteFile'
+import { consoler } from 'yourails_common'
+import { consolerError } from 'yourails_common'
+import { getWritrenFileAsync } from 'yourails_common'
 import { execSync } from 'child_process'
-import { getDateString } from '../src/Shared/getDateString'
+import { getDateString } from 'yourails_common'
 
 interface GetBuildGitDataType {
   (pathFull: string, options?: { printRes: boolean }): Promise<any>
@@ -21,7 +21,7 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
     const branchCurrent = await execSync(`git branch --show-current`).toString().trim()
 
     let getBuildGitDataRes = await execSync(
-      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "date": "%ad",%n  "message": "%f"%n}'`
+      `git log -1 --pretty=format:'{%n  "commit": "%H",%n  "author": {%n    "name": "%aN",%n    "email": "%aE"%n  },%n  "dateCommit": "%ad",%n  "message": "%f"%n}'`
     )
       .toString()
       .trim()
@@ -49,9 +49,9 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
     getBuildGitDataRes = JSON.stringify(getBuildGitDataResObj)
 
-    getBuildGitDataRes = `import { BuildDataType } from '../@types/BuildDataType'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
+    getBuildGitDataRes = `import { BuildDataType } from 'yourails_common'; export const buildData: BuildDataType = ${getBuildGitDataRes}`
 
-    await getWriteFile(pathFull, getBuildGitDataRes)
+    await getWritrenFileAsync(pathFull, getBuildGitDataRes)
 
     if (options?.printRes) {
       consoler('getBuildGitData', {

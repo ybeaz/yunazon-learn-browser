@@ -1,26 +1,20 @@
 import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
-import {
-  ReadModulesConnectionInputType,
-  QueryReadModulesConnectionArgs,
-} from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
-import { ModuleType } from '../../@types/GraphqlTypes'
+import { ReadModulesConnectionInputType, QueryReadModulesConnectionArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
+import { ModuleType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
-import {
-  getResponseGraphqlAsync,
-  ResolveGraphqlEnumType,
-  FragmentEnumType,
-} from 'yourails_communication_layer'
+import { getHeadersAuthDict } from 'yourails_common'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
 
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getChainedResponsibility } from 'yourails_common'
+import { getMappedConnectionToItems } from 'yourails_common'
+import { PaginationNameEnumType } from 'yourails_common'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getUserProfileData } from '../../Shared/getUserProfileData'
-import { getParsedUrlQueryBrowserApi } from '../../Shared/getParsedUrlQuery'
+import { getUserProfileData } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false

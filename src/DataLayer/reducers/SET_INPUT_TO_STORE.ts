@@ -1,10 +1,7 @@
 import { RootStoreType, FormsType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 
-import {
-  getSetUrlQueryBrowserApi,
-  GetSetUrlQueryBrowserApiParamsType,
-} from '../../Shared/getSetUrlQueryBrowserApi'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 export const SET_INPUT_TO_STORE: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const storeFormGroup = data && data?.storeFormGroup

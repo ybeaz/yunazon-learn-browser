@@ -1,14 +1,14 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryReadTagsModulesArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { QueryReadTagsModulesAllArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { withDebounce } from '../../Shared/withDebounce'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 
 /**
  * @status DEPRECIATED in favor of readTagsModulesGenerator
@@ -29,8 +29,8 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
   try {
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
 
-    const variables: QueryReadTagsModulesArgs = {
-      readTagsModulesInput: {
+    const variables: QueryReadTagsModulesAllArgs = {
+      readTagsModulesAllInput: {
         learnerUserID,
         minCount: 2,
         limit: 256,

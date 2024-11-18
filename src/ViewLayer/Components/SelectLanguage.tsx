@@ -2,10 +2,10 @@ import React, { ReactElement } from 'react'
 import { Select as SelectAntd } from 'antd'
 // import 'antd/dist/antd.css'
 
-import { LanguagesType } from '../../Interfaces/LanguagesType'
+import { LanguagesType } from 'yourails_common'
 import { GetLanguagesOptionsJsx } from './GetLanguagesOptions'
-import { SVG_FILE_DIR } from '../../Constants/languages.const'
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { SVG_FILE_DIR } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 export type SelectLanguagePropsType = {

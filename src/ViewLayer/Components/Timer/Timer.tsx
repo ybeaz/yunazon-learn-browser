@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import { getClasses, ClassAddedType } from '../../../Shared/getClasses'
+import { getClasses, ClassAddedType } from 'yourails_common'
 import {
   TimerComponentPropsType,
   TimerPropsType,
@@ -15,19 +15,12 @@ import {
              from '../Components/Timer/Timer'
  */
 const TimerComponent: TimerComponentType = (props: TimerComponentPropsType) => {
-  const {
-    miliseconds,
-    isStoping = false,
-    isDisplaying = true,
-    isVisible = true,
-  } = props
+  const { miliseconds, isStoping = false, isDisplaying = true, isVisible = true } = props
 
   const classAdded: string = props?.classAdded || ''
 
-  const classDisplay =
-    miliseconds && isDisplaying === true ? '' : 'Timer_display_none'
-  const classVisible =
-    miliseconds && isVisible === true ? '' : 'Timer_visible_none'
+  const classDisplay = miliseconds && isDisplaying === true ? '' : 'Timer_display_none'
+  const classVisible = miliseconds && isVisible === true ? '' : 'Timer_visible_none'
 
   const secondsInitial = miliseconds ? Math.round(miliseconds / 1000) : 0
 
@@ -58,9 +51,7 @@ const TimerComponent: TimerComponentType = (props: TimerComponentPropsType) => {
   const propsOut: TimerPropsOutType = {}
 
   return (
-    <div
-      className={getClasses('Timer', [classAdded, classDisplay, classVisible])}
-    >
+    <div className={getClasses('Timer', [classAdded, classDisplay, classVisible])}>
       <div className='_number'>{timerState}</div>
     </div>
   )

@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { DICTIONARY } from 'yourails_common'
+import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getClasses, getDateString } from '../../../Shared/'
+import { getClasses, getDateString } from 'yourails_common'
 import {
   ModulesTablePropsOutType,
   MyModulesTableComponentPropsType,
@@ -13,9 +13,9 @@ import {
   MyModulesTableComponentType,
   MyModulesTableType,
 } from './MyModulesTableTypes'
-import { ModuleType } from '../../../@types/'
-import { getSlug } from '../../../Shared/getSlug'
-import { getDurationFromYoutubeSnippet } from '../../../Shared/getDurationFromYoutubeSnippet'
+import { ModuleType } from 'yourails_common'
+import { getSlug } from 'yourails_common'
+import { getDurationFromYoutubeSnippet } from 'yourails_common'
 
 /**
  * @description Component to render MyModulesTable

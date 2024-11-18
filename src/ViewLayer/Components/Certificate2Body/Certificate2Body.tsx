@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { getClasses } from '../../../Shared/getClasses'
-import { getSlug } from '../../../Shared/getSlug'
-import { getNameString } from '../../../Shared/getNameString'
+import { getClasses } from 'yourails_common'
+import { getSlug } from 'yourails_common'
+import { getNameString } from 'yourails_common'
 import {
   Certificate2BodyComponentPropsType,
   Certificate2BodyPropsType,

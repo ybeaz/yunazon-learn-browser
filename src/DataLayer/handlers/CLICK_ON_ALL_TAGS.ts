@@ -1,12 +1,8 @@
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 import { actionAsync, actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { GO_LINK_PATH } from './GO_LINK_PATH'
-import {
-  getSetUrlQueryBrowserApi,
-  GetSetUrlQueryBrowserApiParamsType,
-} from '../../Shared/getSetUrlQueryBrowserApi'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 const { dispatch } = store
 

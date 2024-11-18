@@ -1,7 +1,7 @@
-import { DICTIONARY } from '../../Constants/dictionary.const'
+import { DICTIONARY } from 'yourails_common'
 import { handleEvents } from '../index.handleEvents'
 import { store } from '../store'
-import { ActionEventType } from '../../Interfaces/ActionEventType'
+import { ActionEventType } from 'yourails_common'
 
 const { dispatch, getState } = store
 

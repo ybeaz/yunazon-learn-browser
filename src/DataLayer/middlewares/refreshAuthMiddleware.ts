@@ -1,7 +1,7 @@
 import { Middleware } from '@reduxjs/toolkit'
 
 import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
-import { getDebouncedFunc } from '../..//Shared/getDebouncedFunc'
+import { getDebouncedFunc } from 'yourails_common'
 import { actionAsync } from '../../DataLayer/index.action'
 
 /**

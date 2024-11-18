@@ -1,11 +1,10 @@
-import { AzPropsType } from '../Interfaces/AzPropsType'
+import { AzPropsType } from 'yourails_common'
 
 export const getAzProps: Function = (type: string): AzPropsType => {
   const output = {
     // NOT USED
     VISIT_TOPIC: (options: any) => {
-      const { netTitle, documentCapture, documentID, courseID, contentID } =
-        options
+      const { netTitle, documentCapture, documentID, courseID, contentID } = options
 
       return {
         type: 'mouseleave',
@@ -25,8 +24,7 @@ export const getAzProps: Function = (type: string): AzPropsType => {
     },
 
     CLICK_SOCIAL_NET_BUTTON: (options: any) => {
-      const { netTitle, documentCapture, documentID, courseID, contentID } =
-        options
+      const { netTitle, documentCapture, documentID, courseID, contentID } = options
 
       return {
         type: 'click',
@@ -131,7 +129,7 @@ export const getAzProps: Function = (type: string): AzPropsType => {
       }
     },
 
-    FROM_CERTIFICATE_WENT_BACK: options => {
+    FROM_CERTIFICATE_WENT_BACK: (options: any) => {
       const { documentCapture } = options
       return {
         type: 'click',

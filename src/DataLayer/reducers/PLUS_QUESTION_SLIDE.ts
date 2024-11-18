@@ -1,7 +1,7 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { getChunkedArray } from '../../Shared/getChunkedArray'
-import { getModuleByModuleID } from '../../Shared/getModuleByModuleID'
+import { getChunkedArray } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
 
 export const PLUS_QUESTION_SLIDE: ReducerType = (
   store: RootStoreType,

@@ -1,17 +1,16 @@
-import { ArticleType } from '../../@types/ArticleMockType'
+import { ArticleItemType } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { getUniqArrBy } from '../../Shared/getUniqArrBy'
+import { getUniqArrBy } from 'yourails_common'
 
-export const SET_ARTICLES: ReducerType = (
-  store: RootStoreType,
-  data: any
-): RootStoreType => {
+/**
+ * TODO: Not ready for production
+ */
+export const SET_ARTICLES: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { articles } = store
-  const articlesNext = getUniqArrBy(
-    ['articleID'],
-    [...data, ...articles]
-  ).filter((article: ArticleType) => article.isActive === true)
+  const articlesNext = getUniqArrBy(['articleID'], [...data, ...articles]).filter(
+    (article: ArticleItemType) => article
+  )
 
   return {
     ...store,

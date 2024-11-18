@@ -1,16 +1,12 @@
 import React from 'react'
-import { ResultType } from '../../../Shared/getAnswersChecked2'
-import { getQuesionString } from '../../../Shared/getQuesionString'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
+import { getQuesionString } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
 
 export type GetScenarioDictResType = any
 
 interface GetScenarioDictType {
-  (
-    props: GetScenarioDictPropsType,
-    options?: { printRes?: boolean }
-  ): GetScenarioDictResType
+  (props: GetScenarioDictPropsType, options?: { printRes?: boolean }): GetScenarioDictResType
 }
 
 /**
@@ -18,9 +14,7 @@ interface GetScenarioDictType {
  * @run ts-node src/shared/utils/getScenarioDict.ts
  * @import import { getScenarioDict } from './getScenarioDict'
  */
-export const getScenarioDict: GetScenarioDictType = (
-  props: GetScenarioDictPropsType
-) => {
+export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictPropsType) => {
   const {
     language,
     right,
@@ -45,10 +39,8 @@ export const getScenarioDict: GetScenarioDictType = (
 
   const question = getQuesionString(language, right)
 
-  const ToReceiveCertificateFillTheForm =
-    DICTIONARY.ToReceiveCertificateFillTheForm[language]
-  const ToReceiveCertificateLogIn =
-    DICTIONARY.ToReceiveCertificateLogIn[language]
+  const ToReceiveCertificateFillTheForm = DICTIONARY.ToReceiveCertificateFillTheForm[language]
+  const ToReceiveCertificateLogIn = DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
   const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
   const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
@@ -59,8 +51,7 @@ export const getScenarioDict: GetScenarioDictType = (
   const ThisIsNotEnough = DICTIONARY.ThisIsNotEnough[language]
   const from = DICTIONARY.from[language]
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
-  const YouWereCommittedToSuccess =
-    DICTIONARY.YouWereCommittedToSuccess[language]
+  const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
 
   // @ts-expect-error
   const scenario: Record<string, any> = {

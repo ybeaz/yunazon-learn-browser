@@ -1,16 +1,14 @@
 import { takeEvery, put, select } from 'redux-saga/effects'
 
-import { QueryReadTagsArgs } from '../../@types/GraphqlTypes'
-import { ActionReduxType } from '../../Interfaces'
+import { QueryReadTagsArgs } from 'yourails_common'
+import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_communication_layer'
-import { getHeadersAuthDict } from '../../Shared/getHeadersAuthDict'
+import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
+import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
-import { getLocalStorageReadKeyObj } from '../../Shared/getLocalStorageReadKeyObj'
-import { withDebounce } from '../../Shared/withDebounce'
-import { getChainedResponsibility } from '../../Shared/getChainedResponsibility'
-import { getMappedConnectionToItems } from '../../Shared/getMappedConnectionToItems'
+import { getLocalStorageReadKeyObj } from 'yourails_common'
+import { withDebounce } from 'yourails_common'
 
 function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay

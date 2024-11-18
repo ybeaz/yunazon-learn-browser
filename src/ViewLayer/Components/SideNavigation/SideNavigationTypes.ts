@@ -1,11 +1,13 @@
 import React from 'react'
-import { RootStoreType, ActionEventType } from '../../../Interfaces/'
-import { ButtonYrlPropsType } from 'yourails_view_layer_web'
+import { RootStoreType } from '../../../Interfaces/'
+import { ButtonYrlPropsType, ActionEventType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
 
 export type GetSideNavigationButtonsProps = {
   navigate: any
   language: RootStoreType['language']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
+  handleEvents: HandleEventType
 }
 
 export interface GetSideNavigationButtons {

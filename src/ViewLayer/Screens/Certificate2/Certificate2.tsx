@@ -2,17 +2,16 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
-import { ScreensEnumType } from '../../../Interfaces/ScreensEnumType'
-import { getDateString } from '../../../Shared/getDateString'
-import { getExpertiseInfo } from '../../../Shared/getExpertiseInfo'
-import { getArrayItemByProp } from '../../../Shared/getArrayItemByProp'
-import { DICTIONARY } from '../../../Constants/dictionary.const'
-import { TagType, ProfileType, DocumentType } from '../../../@types/index'
-import { getSlug } from '../../../Shared/getSlug'
+import { ScreensEnumType } from 'yourails_common'
+import { getDateString } from 'yourails_common'
+import { getExpertiseInfo } from 'yourails_common'
+import { getArrayItemByProp } from 'yourails_common'
+import { DICTIONARY } from 'yourails_common'
+import { TagType, ProfileType, DocumentType } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
-import { SERVERS_MAIN } from '../../../Constants/servers.const'
-import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_view_layer_web'
+import { SERVERS_MAIN } from 'yourails_common'
+import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import {
   CertificateFrameA,
   CertificateFrameAPropsType,
@@ -20,8 +19,7 @@ import {
   CertificateFrameAType,
 } from '../../Frames/CertificateFrames/CertificateFrameA/CertificateFrameA'
 
-import { withPropsYrl } from 'yourails_view_layer_web'
-import { getClasses } from '../../../Shared/getClasses'
+import { getClasses } from 'yourails_common'
 import { Certificate2Body } from '../../Components/Certificate2Body/Certificate2Body'
 import {
   Certificate2ComponentPropsType,
