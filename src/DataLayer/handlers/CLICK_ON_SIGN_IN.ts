@@ -10,6 +10,6 @@ export const CLICK_ON_SIGN_IN: ActionEventType = (event, data) => {
     getLocalStorageSetObjTo({ redirectAuthFrom: decodeURIComponent(window.location.pathname) })
   const environment = getDetectedEnv()
   const redirect_url: CLIENTS_URI = CLIENTS_URI[environment]
-  const linkSignIn = `${AWS_COGNITO_URL}/login?client_id=${AWS_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirect_url}&&scope=email+openid+profile`
+  const linkSignIn = `${AWS_COGNITO_URL}/login?client_id=${AWS_COGNITO_CLIENT_ID}&response_type=code&redirect_uri=${redirect_url}&scope=email+openid+profile`
   getRedirected(linkSignIn)
 }
