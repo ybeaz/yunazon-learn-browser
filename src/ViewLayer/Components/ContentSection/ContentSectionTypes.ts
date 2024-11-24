@@ -1,5 +1,5 @@
 import React from 'react'
-import { SummaryItemType, ObjectionType, ArticleItemType } from '../../../@types/GraphqlTypes.d'
+import { SummaryItemType, ObjectionType, ArticleItemType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 
 export type TextStructuredComponentsPropsType = {

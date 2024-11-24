@@ -1,6 +1,6 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { CourseType, ModuleType } from '../../@types/GraphqlTypes.d'
+import { ModuleType } from 'yourails_common'
 
 export const SET_MODULES: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
   const { isLoaded } = store

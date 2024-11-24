@@ -36,6 +36,7 @@ const MyDocumentsBodyComponent: MyDocumentsBodyComponentType = (
     },
   }
 
+  console.info('MyDocumentsBody [39]', { documents, 'documents.length': documents.length })
   return (
     <div className={getClasses('MyDocumentsBody', classAdded)}>
       {!!tagsCloud.length && (
