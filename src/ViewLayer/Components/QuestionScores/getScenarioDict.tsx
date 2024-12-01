@@ -2,7 +2,7 @@ import React from 'react'
 import { getQuesionString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
-
+import { handleEvents } from '../../../DataLayer/index.handleEvents'
 export type GetScenarioDictResType = any
 
 interface GetScenarioDictType {
@@ -53,7 +53,6 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
 
-  // @ts-expect-error
   const scenario: Record<string, any> = {
     success: {
       scenarioCase,
@@ -79,6 +78,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
             navigate,
           },
         },
+        handleEvents,
       },
     },
 
@@ -102,6 +102,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
           typeEvent: 'CLICK_ON_SIGN_IN',
           data: {},
         },
+        handleEvents,
       },
     },
 
@@ -125,6 +126,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         action: {
           typeEvent: 'CLOSE_MODAL_GET_SCORES',
         },
+        handleEvents,
       },
     },
 
@@ -159,6 +161,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
             contentID,
           },
         },
+        handleEvents,
       },
     },
   }[scenarioCase]
