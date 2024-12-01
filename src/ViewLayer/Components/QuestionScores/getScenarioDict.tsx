@@ -2,7 +2,9 @@ import React from 'react'
 import { getQuesionString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
-import { handleEvents } from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { withPropsYrl } from 'yourails_common'
+
 export type GetScenarioDictResType = any
 
 interface GetScenarioDictType {
@@ -30,6 +32,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     creatorID,
     sub,
     navigate,
+    handleEvents,
   } = props
 
   let scenarioCase: string = props.result || ''
