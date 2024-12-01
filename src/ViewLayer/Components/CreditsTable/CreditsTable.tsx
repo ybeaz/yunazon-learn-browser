@@ -92,6 +92,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
                     },
                   },
                   buttonRight: 'NoCancel',
+                  handleEvents,
                 },
               },
             ],
