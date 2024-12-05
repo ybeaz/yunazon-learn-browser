@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { actionSync } from '../../DataLayer/index.action'
@@ -26,35 +26,55 @@ export const useYouTubePlayerWork = ({
   height,
   width,
 }: UseYouTubePlayerWorkPropsType): UseYouTubePlayerWorkType => {
-  const playerDefault = {
-    playVideo: () => {},
-    pauseVideo: () => {},
-    stopVideo: () => {},
-  }
+  const playerRef = useRef(null)
 
   const dispatch = useDispatch()
 
-  const [player, setPlayer] = useState(playerDefault)
+  // const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
   const [playerState, setPlayerState] = useState({ data: 1000 })
 
-  function playVideoHandler(event = {}, action = {}, playerIn = player) {
-    playerIn && playerIn.playVideo()
-    setIsShowingPlay(false)
+  /** Does not work properly */
+  function playVideoHandler(event = {}, action = {}, playerIn = playerRef.current) {
+    try {
+      playerIn && playerIn.playVideo()
+      setIsShowingPlay(false)
+    } catch (error) {
+      console.info('useYouTubePlayerWork [43]', {
+        error,
+      })
+    }
   }
 
-  function pauseVideoHandler(event = {}, action = {}, playerIn = player) {
-    playerIn && playerIn.pauseVideo()
-    setIsShowingPlay(true)
+  /** Does not work properly */
+  function pauseVideoHandler(event = {}, action = {}, playerIn = playerRef.current) {
+    try {
+      playerIn && playerIn.pauseVideo()
+      setIsShowingPlay(true)
+    } catch (error) {
+      console.info('useYouTubePlayerWork [55]', {
+        error,
+      })
+    }
   }
 
-  function stopVideoHandler(event = {}, action = {}, playerIn = player) {
-    playerIn && playerIn.stopVideo()
-    setIsShowingPlay(true)
+  /** Does not work properly */
+  function stopVideoHandler(event = {}, action = {}, playerIn = playerRef.current) {
+    try {
+      playerIn && playerIn.stopVideo()
+      setIsShowingPlay(true)
+    } catch (error) {
+      console.info('useYouTubePlayerWork [67]', {
+        error,
+      })
+    }
   }
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event: any) {
+    console.info('useYouTubePlayerWork [75]', {
+      'playerRef.current.stopVideo': playerRef.current && playerRef.current.stopVideo,
+    })
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: moduleID,
@@ -73,13 +93,11 @@ export const useYouTubePlayerWork = ({
   async function onYouTubeIframeAPIReady(videoId: string) {
     if (contentComponentName === 'PlayerYoutubeIframe') {
       try {
-        // @ts-expect-error
         window['YT'].ready(function () {
-          // @ts-expect-error
-          const Player = new window['YT'].Player(videoId, {
+          playerRef.current = new window['YT'].Player(videoId, {
+            videoId,
             height,
             width,
-            videoId,
             title: 'YouTube video player',
             frameBorder: '0',
             allow:
@@ -101,22 +119,30 @@ export const useYouTubePlayerWork = ({
             host: 'https://www.youtube.com',
             origin: window.location.origin,
           })
-
-          setPlayer(Player)
         })
       } catch (error: any) {
-        console.error('useYouTubePlayerWork [68]', error.name + ': ' + error.message)
+        console.error('useYouTubePlayerWork [121]', error.name + ': ' + error.message)
       }
     }
   }
 
   useEffect(() => {
-    setTimeout(() => onYouTubeIframeAPIReady(contentID), 1000)
+    setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 250)
+    setTimeout(() => {
+      console.info('useYouTubePlayerWork [132]', {
+        'playerRef.current.stopVideo': playerRef.current && playerRef.current.stopVideo,
+      })
+    }, 1250)
+    return () => {
+      if (playerRef.current) {
+        playerRef.current.destroy()
+      }
+    }
   }, [contentID])
 
   useEffect(() => {
-    if (stopVideoHandler && playerState.data === 0) stopVideoHandler({}, {}, player)
-  }, [playerState.data])
+    if (stopVideoHandler && playerState.data === 0) stopVideoHandler({}, {}, playerRef.current)
+  }, [playerState.data, contentID])
 
   return {
     onPlayerReady,
