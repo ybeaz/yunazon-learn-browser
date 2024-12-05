@@ -9,7 +9,7 @@ import {
 import { CheckRadioGroup } from '../CheckRadioGroup'
 import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-
+import { isMobile } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 
 import {
@@ -144,9 +144,9 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
         },
       },
       isDisplaying: isButtonSlideStart,
-      tooltipText: youCanCheckYourUnderstanding,
+      tooltipText: '', // youCanCheckYourUnderstanding,
       tooltipPosition: 'bottom',
-      isTooltipVisibleForced: true,
+      isTooltipVisibleForced: false,
     },
     buttonSlideBackwardProps: {
       icon: 'MdForward',
@@ -210,7 +210,7 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
     >
       <meta itemProp='identifier' content={moduleID} />
       <meta itemProp='headline' content={`QA: ${capture}`} />
-      {questionsActive.length ? getDots(questionsChunked) : null}
+      {questionsActive.length && !isMobile() ? getDots(questionsChunked) : null}
       {isModuleStarted && getSlides(questionsChunked)}
       <div className={`__buttons`}>
         <div className='_backward'>

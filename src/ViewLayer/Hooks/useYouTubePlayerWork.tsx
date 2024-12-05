@@ -72,9 +72,6 @@ export const useYouTubePlayerWork = ({
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event: any) {
-    console.info('useYouTubePlayerWork [75]', {
-      'playerRef.current.stopVideo': playerRef.current && playerRef.current.stopVideo,
-    })
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: moduleID,
@@ -128,11 +125,6 @@ export const useYouTubePlayerWork = ({
 
   useEffect(() => {
     setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 250)
-    setTimeout(() => {
-      console.info('useYouTubePlayerWork [132]', {
-        'playerRef.current.stopVideo': playerRef.current && playerRef.current.stopVideo,
-      })
-    }, 1250)
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy()

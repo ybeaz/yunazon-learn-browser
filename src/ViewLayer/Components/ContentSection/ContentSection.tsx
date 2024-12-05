@@ -22,8 +22,6 @@ const ContentSectionComponent: ContentSectionComponentType = (
 ) => {
   const { classAdded, contentArray } = props
 
-  const propsOut: ContentSectionPropsOutType = {}
-
   return (
     <div className={getClasses('ContentSection', classAdded)}>
       <div className='_contentWrapper'>

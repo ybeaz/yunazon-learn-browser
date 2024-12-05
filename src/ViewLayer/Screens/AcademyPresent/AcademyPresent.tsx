@@ -249,22 +249,35 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'player',
       component: (
-        <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
-          <></>
-          <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
-          <></>
-        </CONTENT_ASSIGNED_COMPONENT>
+        <>
+          <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
+            <></>
+            <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
+            <></>
+          </CONTENT_ASSIGNED_COMPONENT>
+          {isMobile() && <CarouselQuestions />}
+        </>
       ),
     },
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
+        summary && summary.length ? (
+          <>
+            <ArticleStructuredYrl {...propsM1Out.summaryProps} />
+            {isMobile() && <CarouselQuestions />}
+          </>
+        ) : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
+        article && article.length ? (
+          <>
+            <ArticleStructuredYrl {...propsM1Out.articleProps} />
+            {isMobile() && <CarouselQuestions />}
+          </>
+        ) : null,
     },
     {
       typeIn: 'objections',
@@ -387,7 +400,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
               {contentComponentName && <ContentSection {...propsOut.contentSectionProps} />}
             </div>
             {/* middle-right */}
-            <CarouselQuestions />
+            {!isMobile() && <CarouselQuestions />}
             {/* footer */}
             {null}
           </MainFrame>
