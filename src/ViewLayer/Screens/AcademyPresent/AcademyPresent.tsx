@@ -25,7 +25,6 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { SERVERS_MAIN } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-// import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { isOnLandScape } from 'yourails_common'
 import { isMobile } from 'yourails_common'
@@ -249,35 +248,22 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'player',
       component: (
-        <>
-          <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
-            <></>
-            <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
-            <></>
-          </CONTENT_ASSIGNED_COMPONENT>
-          {isMobile() && <CarouselQuestions />}
-        </>
+        <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
+          <></>
+          <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
+          <></>
+        </CONTENT_ASSIGNED_COMPONENT>
       ),
     },
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? (
-          <>
-            <ArticleStructuredYrl {...propsM1Out.summaryProps} />
-            {isMobile() && <CarouselQuestions />}
-          </>
-        ) : null,
+        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? (
-          <>
-            <ArticleStructuredYrl {...propsM1Out.articleProps} />
-            {isMobile() && <CarouselQuestions />}
-          </>
-        ) : null,
+        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
     },
     {
       typeIn: 'objections',
@@ -311,7 +297,20 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       screenType,
     },
     contentSectionProps: {
-      contentArray: counterRef.current === 0 ? contentArrayIn : contentArray,
+      contentArray: (counterRef.current === 0 ? contentArrayIn : contentArray).map(
+        (item: ContentArrayItemType, index: number) =>
+          index === 0 && isMobile()
+            ? {
+                ...item,
+                component: (
+                  <div>
+                    {item.component as React.ReactElement<any>}
+                    <CarouselQuestions />
+                  </div>
+                ),
+              }
+            : item
+      ),
     },
     buttonPlayerUpProps: {
       icon: '',

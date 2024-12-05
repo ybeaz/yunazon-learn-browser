@@ -58,18 +58,10 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const getDots: Function = (questions: any[]): ReactElement => {
     const dotsJSX = questions.map((question, index) => {
       const { questionID } = question
-      const classNameToggleHighlight = index === questionsSlideNumber ? 'active' : ''
+      const classNameToggleHighlight =
+        !isButtonSlideStart && index === questionsSlideNumber ? 'active' : ''
       return (
-        <span
-          key={`${questionID}-${index}`}
-          className={`_dot ${classNameToggleHighlight}`}
-          onClick={event =>
-            handleEvents(event, {
-              typeEvent: 'SET_QUESTION_SLIDE',
-              data: index,
-            })
-          }
-        ></span>
+        <span key={`${questionID}-${index}`} className={`_dot ${classNameToggleHighlight}`}></span>
       )
     })
 
