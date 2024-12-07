@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { DICTIONARY } from 'yourails_common'
 import { withPropsYrl, ButtonYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { DocumentType } from '../../../@types/'
+import { DocumentType } from 'yourails_common'
 import { getClasses, getDateString, getSlug } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { PaginationNameEnumType } from '../../../Interfaces'
@@ -92,6 +92,7 @@ const CreditsTableComponent: CreditsTableComponentType = (
                     },
                   },
                   buttonRight: 'NoCancel',
+                  handleEvents,
                 },
               },
             ],

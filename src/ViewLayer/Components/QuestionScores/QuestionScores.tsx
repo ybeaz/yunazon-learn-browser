@@ -84,6 +84,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     creatorID: creatorID || '',
     sub,
     navigate,
+    handleEvents,
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)

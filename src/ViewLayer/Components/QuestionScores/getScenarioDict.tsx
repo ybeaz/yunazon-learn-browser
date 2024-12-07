@@ -2,6 +2,8 @@ import React from 'react'
 import { getQuesionString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
+import { withPropsYrl } from 'yourails_common'
 
 export type GetScenarioDictResType = any
 
@@ -30,6 +32,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     creatorID,
     sub,
     navigate,
+    handleEvents,
   } = props
 
   let scenarioCase: string = props.result || ''
@@ -53,7 +56,6 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
 
-  // @ts-expect-error
   const scenario: Record<string, any> = {
     success: {
       scenarioCase,
@@ -79,6 +81,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
             navigate,
           },
         },
+        handleEvents,
       },
     },
 
@@ -102,6 +105,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
           typeEvent: 'CLICK_ON_SIGN_IN',
           data: {},
         },
+        handleEvents,
       },
     },
 
@@ -125,6 +129,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         action: {
           typeEvent: 'CLOSE_MODAL_GET_SCORES',
         },
+        handleEvents,
       },
     },
 
@@ -159,6 +164,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
             contentID,
           },
         },
+        handleEvents,
       },
     },
   }[scenarioCase]

@@ -25,7 +25,6 @@ import { ReaderIframe } from '../../Frames/ReaderIframe/ReaderIframe'
 import { SERVERS_MAIN } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-// import { TextArticleStructured } from '../../Components/TextArticleStructured/TextArticleStructured'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
 import { isOnLandScape } from 'yourails_common'
 import { isMobile } from 'yourails_common'
@@ -298,7 +297,20 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       screenType,
     },
     contentSectionProps: {
-      contentArray: counterRef.current === 0 ? contentArrayIn : contentArray,
+      contentArray: (counterRef.current === 0 ? contentArrayIn : contentArray).map(
+        (item: ContentArrayItemType, index: number) =>
+          index === 0 && isMobile()
+            ? {
+                ...item,
+                component: (
+                  <div>
+                    {item.component as React.ReactElement<any>}
+                    <CarouselQuestions />
+                  </div>
+                ),
+              }
+            : item
+      ),
     },
     buttonPlayerUpProps: {
       icon: '',
@@ -387,7 +399,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
               {contentComponentName && <ContentSection {...propsOut.contentSectionProps} />}
             </div>
             {/* middle-right */}
-            <CarouselQuestions />
+            {!isMobile() && <CarouselQuestions />}
             {/* footer */}
             {null}
           </MainFrame>

@@ -30,6 +30,10 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
     imageProps: {
       classAdded: '_avatarPlusInfo',
       handleEvents,
+      action: {
+        typeEvent: 'GO_LINK_PATH',
+        data: { navigate, pathname: '/' },
+      },
       src: imgSrc,
     },
     navLinkProps: {

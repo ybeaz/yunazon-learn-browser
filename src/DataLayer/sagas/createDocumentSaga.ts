@@ -40,7 +40,7 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
   try {
     const moduleForDocument = { ...module }
 
-    ;['transcriptList', 'questions', 'objections'].forEach(
+    ;['article', 'transcriptList', 'questions', 'objections'].forEach(
       (prop: string) => delete moduleForDocument[prop]
     )
 

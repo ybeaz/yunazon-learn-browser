@@ -1,6 +1,5 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
-import { CourseType, ModuleType } from '../../@types/GraphqlTypes.d'
 
 export const SET_COMPONENTS_STATE: ReducerType = (
   store: RootStoreType,
