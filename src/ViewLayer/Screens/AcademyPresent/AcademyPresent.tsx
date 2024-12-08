@@ -43,6 +43,7 @@ const COMPONENT: Record<string, React.FunctionComponent<any>> = {
 }
 
 import {
+  ContentComponentPropsType,
   AcademyPresentPropsM1OutType,
   AcademyPresentComponentPropsType,
   AcademyPresentPropsType,
@@ -95,6 +96,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     description: '',
     contentID: '',
     durationObj: { duration: '', units: '' },
+    tags: [],
     index: 0,
     questionsTotal: 0,
     summary: [],
@@ -110,6 +112,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     description,
     contentID,
     durationObj,
+    tags,
     questionsTotal,
     summary,
     objections,
@@ -125,6 +128,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         contentType,
         contentID: contentID2,
         duration: duration2,
+        tags: tags2,
         index: index2,
         questionsTotal: questionsTotal2,
         summary: summary2,
@@ -151,6 +155,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         index: index2,
         questionsTotal: questionsTotal2,
         durationObj: durationObj2,
+        tags: tags2,
         summary: summary2,
         objections: objections2,
         article: article2,
@@ -176,14 +181,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   }, [])
 
   const textTooltip = DICTIONARY['pleaseRefreshWindow'][languageSite]
-  const contentAssignedComponentProps: Record<string, any> = {
+  const contentComponentProps: ContentComponentPropsType = {
     ReaderIframe: {
       moduleID,
       contentID,
       isVisible,
       isIframe: true,
       screenType,
-      isNoSeoIndexing: true,
+      tags,
     },
     PlayerYoutubeIframe: {
       contentComponentName,
@@ -193,15 +198,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isIframe: true,
       capture,
       durationObj,
+      tags,
       screenType,
       questionsTotal,
-      isNoSeoIndexing: true,
     },
   }
 
   const propsM1Out: AcademyPresentPropsM1OutType = {
     CONTENT_ASSIGNED_COMPONENT,
-    contentAssignedComponentProps: contentAssignedComponentProps[contentComponentName],
+    contentAssignedComponentProps: contentComponentProps[contentComponentName],
     loaderBlurhashProps: {
       isVisibleBlurHash: !isVisible,
       textTooltip,
