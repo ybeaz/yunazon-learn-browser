@@ -3,24 +3,24 @@ import { Tooltip } from 'antd'
 import { IconYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
-  TooltipImageListComponentPropsType,
-  TooltipImageListPropsType,
-  TooltipImageListPropsOutType,
-  TooltipImageListComponentType,
-  TooltipImageListType,
-} from './TooltipImageListTypes'
+  TooltipImageContentComponentPropsType,
+  TooltipImageContentPropsType,
+  TooltipImageContentPropsOutType,
+  TooltipImageContentComponentType,
+  TooltipImageContentType,
+} from './TooltipImageContentTypes'
 
 /**
- * @description Component to render TooltipImageList
- * @import import { TooltipImageList, TooltipImageListPropsType, TooltipImageListPropsOutType, TooltipImageListType } 
-             from '../Components/TooltipImageList/TooltipImageList'
+ * @description Component to render TooltipImageContent
+ * @import import { TooltipImageContent, TooltipImageContentPropsType, TooltipImageContentPropsOutType, TooltipImageContentType } 
+             from '../Components/TooltipImageContent/TooltipImageContent'
  */
-const TooltipImageListComponent: TooltipImageListComponentType = (
-  props: TooltipImageListComponentPropsType
+const TooltipImageContentComponent: TooltipImageContentComponentType = (
+  props: TooltipImageContentComponentPropsType
 ) => {
   const { classAdded, tags, widthSizeWindow } = props
 
-  const propsOut: TooltipImageListPropsOutType = {
+  const propsOut: TooltipImageContentPropsOutType = {
     iconTagsTooltipProps: {
       classAdded: 'Icon_TagsTooltip',
       icon: 'MdOutlineTag',
@@ -35,7 +35,7 @@ const TooltipImageListComponent: TooltipImageListComponentType = (
   )
 
   return (
-    <div className={getClasses('TooltipImageList', classAdded)}>
+    <div className={getClasses('TooltipImageContent', classAdded)}>
       {!!tags?.length && widthSizeWindow > 480 ? (
         <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
           <div className='_tagsTooltip'>
@@ -48,7 +48,7 @@ const TooltipImageListComponent: TooltipImageListComponentType = (
   )
 }
 
-const TooltipImageList: TooltipImageListType = React.memo(TooltipImageListComponent)
+const TooltipImageContent: TooltipImageContentType = React.memo(TooltipImageContentComponent)
 
-export type { TooltipImageListPropsType, TooltipImageListType }
-export { TooltipImageList }
+export type { TooltipImageContentPropsType, TooltipImageContentType }
+export { TooltipImageContent }

@@ -15,7 +15,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
-import { TooltipImageList } from '../../Components/TooltipImageList/TooltipImageList'
+import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
@@ -107,8 +107,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
-    tooltipImageListProps: {
-      classAdded: '_contentPlate_tooltipImageList',
+    tooltipImageContentProps: {
+      classAdded: '_contentPlate_tooltipImageContent',
       tags,
       widthSizeWindow,
     },
@@ -153,7 +153,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
   }
 
-  const contentPlateTooltipContentIsCompleted = (
+  const tooltipTitleContent = (
     <div className='_contentPlateTooltipContentIsCompleted'>
       {DICTIONARY['Completed'][language]}
     </div>
@@ -164,14 +164,14 @@ const ContentPlateComponent: ContentPlateComponentType = (
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <>
           {isCompleted ? (
-            <Tooltip className='_tooltip' title={contentPlateTooltipContentIsCompleted}>
+            <Tooltip className='_tooltip' title={tooltipTitleContent}>
               <div className='_isCompleted'>
                 <div className='_cycle' />
                 <IconYrl {...propsOut.iconCompletedProps} />
               </div>
             </Tooltip>
           ) : null}
-          <TooltipImageList {...propsOut.tooltipImageListProps} />
+          <TooltipImageContent {...propsOut.tooltipImageContentProps} />
         </>
 
         {plateImageSrc ? (

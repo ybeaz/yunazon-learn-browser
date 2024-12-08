@@ -1,7 +1,7 @@
 import React from 'react'
 import { DurationObjType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { TooltipImageListPropsType } from '../../Components/TooltipImageList/TooltipImageList'
+import { TooltipImageContentPropsType } from '../../Components/TooltipImageContent/TooltipImageContent'
 
 export type PlayerPanelComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -23,7 +23,7 @@ export type PlayerPanelComponentPropsType = {
 export type PlayerPanelPropsType = Omit<PlayerPanelComponentPropsType, 'storeStateSlice'>
 
 export type PlayerPanelPropsOutType = {
-  tooltipImageListProps: TooltipImageListPropsType
+  tooltipImageContentProps: TooltipImageContentPropsType
 }
 
 /**
