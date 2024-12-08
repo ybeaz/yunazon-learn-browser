@@ -15,7 +15,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
-import { TooltipTags } from '../../Components/TooltipTags/TooltipTags'
+import { TooltipImageList } from '../../Components/TooltipImageList/TooltipImageList'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
@@ -105,7 +105,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
-    tooltipTagsProps: {
+    tooltipImageListProps: {
+      classAdded: '_contentPlate_tooltipImageList',
       tags,
       widthSizeWindow,
     },
@@ -167,7 +168,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
               </div>
             </Tooltip>
           ) : null}
-          <TooltipTags {...propsOut.tooltipTagsProps} />
+          <TooltipImageList {...propsOut.tooltipImageListProps} />
         </>
 
         {plateImageSrc ? (

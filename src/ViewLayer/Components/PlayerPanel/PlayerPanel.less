@@ -27,9 +27,23 @@
     }
 
     ._metaData {
-      flex-direction: column;
       display: flex;
-      flex: 1;
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1rem;
+      line-height: 1.5rem;
+
+      ._playerPanel_tooltipImageList {
+        div._cycle {
+          position: inherit;
+        }
+
+        div.IconYrl.Icon_TagsTooltip {
+          margin-top: -1.6rem;
+        }
+      }
 
       ._duration {
         display: flex;

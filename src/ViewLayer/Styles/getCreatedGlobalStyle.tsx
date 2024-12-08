@@ -1,7 +1,7 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
-import { ILightness, IAlphas } from '../../Constants/globalTheme.const'
+import { ILightness, IAlphas } from 'yourails_common'
 import { getBuiltColor } from './getBuiltColor'
 
 interface IGetCreatedGlobalStyle {
@@ -442,6 +442,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
     
+    .PlayerPanel ._metaData ._tagsTooltip ._cycle,
     .ContentPlate ._tagsTooltip ._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
       background: ${props2 => getColor(props2, 'colorActive', medial, middle)};

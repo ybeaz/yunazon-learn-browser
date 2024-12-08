@@ -36,7 +36,6 @@ import {
 } from '../../Components/ContentSection/ContentSection'
 import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
-import { TooltipTags } from '../../Components/TooltipTags/TooltipTags'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -214,10 +213,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       delay: 500,
       contentComponentName,
     },
-    tooltipTagsProps: {
-      tags,
-      widthSizeWindow,
-    },
     articleProps: {
       classAdded: undefined,
       scriptID: undefined,
@@ -253,18 +248,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
-  const contentPlateTooltipContentTags = (
-    <div className='_contentPlateTooltipContentTags'>
-      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
-    </div>
-  )
-
   const contentArrayIn: ContentArrayItemType[] = [
     {
       typeIn: 'player',
       component: (
         <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
-          <TooltipTags {...propsM1Out.tooltipTagsProps} />
           <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
           <></>
         </CONTENT_ASSIGNED_COMPONENT>

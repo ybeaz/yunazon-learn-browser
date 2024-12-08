@@ -5,7 +5,7 @@ import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
 import { ReaderIframePropsType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframePropsType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
-import { TooltipTagsPropsType } from '../../Components/TooltipTags/TooltipTags'
+import { TooltipImageListPropsType } from '../../Components/TooltipImageList/TooltipImageList'
 import { HandleEventType } from 'yourails_common'
 
 export type ContentPlateComponentPropsType = {
@@ -38,7 +38,7 @@ export type ContentPlatePropsOutType = {
     PlayerYoutubeIframe: PlayerYoutubeIframePropsType
   }
   iconCompletedProps: IconYrlPropsType
-  tooltipTagsProps: TooltipTagsPropsType
+  tooltipImageListProps: TooltipImageListPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
   playerPanelProps: PlayerPanelPropsType

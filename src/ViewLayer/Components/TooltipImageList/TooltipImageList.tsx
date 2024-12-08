@@ -3,22 +3,24 @@ import { Tooltip } from 'antd'
 import { IconYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
-  TooltipTagsComponentPropsType,
-  TooltipTagsPropsType,
-  TooltipTagsPropsOutType,
-  TooltipTagsComponentType,
-  TooltipTagsType,
-} from './TooltipTagsTypes'
+  TooltipImageListComponentPropsType,
+  TooltipImageListPropsType,
+  TooltipImageListPropsOutType,
+  TooltipImageListComponentType,
+  TooltipImageListType,
+} from './TooltipImageListTypes'
 
 /**
- * @description Component to render TooltipTags
- * @import import { TooltipTags, TooltipTagsPropsType, TooltipTagsPropsOutType, TooltipTagsType } 
-             from '../Components/TooltipTags/TooltipTags'
+ * @description Component to render TooltipImageList
+ * @import import { TooltipImageList, TooltipImageListPropsType, TooltipImageListPropsOutType, TooltipImageListType } 
+             from '../Components/TooltipImageList/TooltipImageList'
  */
-const TooltipTagsComponent: TooltipTagsComponentType = (props: TooltipTagsComponentPropsType) => {
+const TooltipImageListComponent: TooltipImageListComponentType = (
+  props: TooltipImageListComponentPropsType
+) => {
   const { classAdded, tags, widthSizeWindow } = props
 
-  const propsOut: TooltipTagsPropsOutType = {
+  const propsOut: TooltipImageListPropsOutType = {
     iconTagsTooltipProps: {
       classAdded: 'Icon_TagsTooltip',
       icon: 'MdOutlineTag',
@@ -33,7 +35,7 @@ const TooltipTagsComponent: TooltipTagsComponentType = (props: TooltipTagsCompon
   )
 
   return (
-    <div className={getClasses('TooltipTags', classAdded)}>
+    <div className={getClasses('TooltipImageList', classAdded)}>
       {!!tags?.length && widthSizeWindow > 480 ? (
         <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
           <div className='_tagsTooltip'>
@@ -46,7 +48,7 @@ const TooltipTagsComponent: TooltipTagsComponentType = (props: TooltipTagsCompon
   )
 }
 
-const TooltipTags: TooltipTagsType = React.memo(TooltipTagsComponent)
+const TooltipImageList: TooltipImageListType = React.memo(TooltipImageListComponent)
 
-export type { TooltipTagsPropsType, TooltipTagsType }
-export { TooltipTags }
+export type { TooltipImageListPropsType, TooltipImageListType }
+export { TooltipImageList }

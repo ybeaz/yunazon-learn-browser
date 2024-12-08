@@ -4,7 +4,7 @@ import { FeatureBar } from '../FeatureBar'
 import { SuccessTried } from '../SuccessTried'
 import { DICTIONARY } from 'yourails_common'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
-
+import { TooltipImageList } from '../../Components/TooltipImageList/TooltipImageList'
 import { getClasses } from 'yourails_common'
 import {
   PlayerPanelComponentPropsType,
@@ -76,7 +76,13 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
   const addSStyle4Duration =
     screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addSStyle4Duration` : ''
 
-  const propsOut: PlayerPanelPropsOutType = {}
+  const propsOut: PlayerPanelPropsOutType = {
+    tooltipImageListProps: {
+      classAdded: '_playerPanel_tooltipImageList',
+      tags: ['abc', 'def', 'ghi'],
+      widthSizeWindow: 1000,
+    },
+  }
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
@@ -85,6 +91,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
         <div className='_metaData'>
+          <TooltipImageList {...propsOut.tooltipImageListProps} />
           <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
           {/* <div className='_successTried'>
             <SuccessTried {...successTriedProps} />
