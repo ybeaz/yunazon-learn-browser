@@ -1,11 +1,11 @@
 import React from 'react'
-
+export type RenderFunction = () => React.ReactNode
 import { IconYrlPropsType } from 'yourails_common'
 
 export type TooltipImageContentComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  widthSizeWindow: number
-  tags: string[]
+  tooltipTitleContent?: React.ReactNode | RenderFunction
+  isTooltip: boolean
 }
 
 export type TooltipImageContentPropsType = Omit<

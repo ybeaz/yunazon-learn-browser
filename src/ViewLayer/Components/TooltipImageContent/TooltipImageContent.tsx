@@ -18,7 +18,7 @@ import {
 const TooltipImageContentComponent: TooltipImageContentComponentType = (
   props: TooltipImageContentComponentPropsType
 ) => {
-  const { classAdded, tags, widthSizeWindow } = props
+  const { classAdded, tooltipTitleContent, isTooltip } = props
 
   const propsOut: TooltipImageContentPropsOutType = {
     iconTagsTooltipProps: {
@@ -28,23 +28,19 @@ const TooltipImageContentComponent: TooltipImageContentComponentType = (
     },
   }
 
-  const contentPlateTooltipContentTags = (
-    <div className='_contentPlateTooltipContentTags'>
-      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
-    </div>
-  )
-
   return (
-    <div className={getClasses('TooltipImageContent', classAdded)}>
-      {!!tags?.length && widthSizeWindow > 480 ? (
-        <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
-          <div className='_tagsTooltip'>
-            <div className='_cycle' />
-            <IconYrl {...propsOut.iconTagsTooltipProps} />
-          </div>
-        </Tooltip>
+    <>
+      {isTooltip ? (
+        <div className={getClasses('TooltipImageContent', classAdded)}>
+          <Tooltip className='_tooltip' title={tooltipTitleContent}>
+            <div className='_tagsTooltip'>
+              <div className='_cycle' />
+              <IconYrl {...propsOut.iconTagsTooltipProps} />
+            </div>
+          </Tooltip>
+        </div>
       ) : null}
-    </div>
+    </>
   )
 }
 

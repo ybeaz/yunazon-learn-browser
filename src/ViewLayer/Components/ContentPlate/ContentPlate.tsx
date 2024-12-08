@@ -109,8 +109,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
     tooltipImageContentProps: {
       classAdded: '_contentPlate_tooltipImageContent',
-      tags,
-      widthSizeWindow,
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentTags'>
+          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+        </div>
+      ),
+      isTooltip: !!tags?.length && getSizeWindow().width > 480,
     },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],

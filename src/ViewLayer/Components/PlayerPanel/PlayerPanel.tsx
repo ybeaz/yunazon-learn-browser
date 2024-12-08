@@ -5,7 +5,7 @@ import { SuccessTried } from '../SuccessTried'
 import { DICTIONARY } from 'yourails_common'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
-import { getClasses } from 'yourails_common'
+import { getSizeWindow } from 'yourails_common'
 import {
   PlayerPanelComponentPropsType,
   PlayerPanelPropsType,
@@ -80,8 +80,12 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
   const propsOut: PlayerPanelPropsOutType = {
     tooltipImageContentProps: {
       classAdded: '_playerPanel_tooltipImageContent',
-      tags,
-      widthSizeWindow: 1000,
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentTags'>
+          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+        </div>
+      ),
+      isTooltip: !!tags?.length && getSizeWindow().width > 480,
     },
   }
 
