@@ -14,6 +14,7 @@ export type PlayerPanelComponentPropsType = {
   buttonStopProps?: any
   isActionButtonDisplaying: boolean
   questionsTotal?: number
+  tags: string[]
   storeStateSlice: {
     language: RootStoreType['language']
   }

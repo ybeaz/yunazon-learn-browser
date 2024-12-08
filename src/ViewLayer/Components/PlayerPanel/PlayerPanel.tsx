@@ -33,6 +33,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     isActionButtonDisplaying: isDisplaying,
     questionsTotal = 0,
     storeStateSlice: { language },
+    tags,
   } = props
 
   const certificate = DICTIONARY.certificate[language]
@@ -79,7 +80,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
   const propsOut: PlayerPanelPropsOutType = {
     tooltipImageListProps: {
       classAdded: '_playerPanel_tooltipImageList',
-      tags: ['abc', 'def', 'ghi'],
+      tags,
       widthSizeWindow: 1000,
     },
   }

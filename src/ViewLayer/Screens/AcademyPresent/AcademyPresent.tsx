@@ -189,6 +189,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isVisible,
       isIframe: true,
       screenType,
+      tags,
     },
     PlayerYoutubeIframe: {
       contentComponentName,
@@ -200,6 +201,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       durationObj,
       screenType,
       questionsTotal,
+      tags,
     },
   }
 

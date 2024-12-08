@@ -87,6 +87,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         isVisible,
         isIframe: true,
         screenType,
+        tags,
       },
       PlayerYoutubeIframe: {
         contentComponentName,
@@ -98,6 +99,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         durationObj,
         screenType,
         questionsTotal: 0,
+        tags,
       },
     },
     iconCompletedProps: {
