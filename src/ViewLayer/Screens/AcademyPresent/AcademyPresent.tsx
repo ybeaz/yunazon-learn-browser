@@ -7,7 +7,7 @@ import {
   ButtonYrl,
   ArticleStructuredYrl,
 } from 'yourails_common'
-
+import { getSizeWindow } from 'yourails_common'
 import { ScreensEnumType } from 'yourails_common'
 import { useflagsDebug } from '../../Hooks/useflagsDebug'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
@@ -36,6 +36,7 @@ import {
 } from '../../Components/ContentSection/ContentSection'
 import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
+import { TooltipTags } from '../../Components/TooltipTags/TooltipTags'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -72,6 +73,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const params = useParams()
   const counterRef = useRef(0)
+  const { width: widthSizeWindow } = getSizeWindow()
 
   const moduleID = params.moduleID || ''
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
@@ -80,7 +82,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
 
   useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }], [moduleID])
@@ -188,7 +190,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isVisible,
       isIframe: true,
       screenType,
-      tags,
     },
     PlayerYoutubeIframe: {
       contentComponentName,
@@ -198,7 +199,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isIframe: true,
       capture,
       durationObj,
-      tags,
       screenType,
       questionsTotal,
     },
@@ -213,6 +213,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       isTextTooltip: true,
       delay: 500,
       contentComponentName,
+    },
+    tooltipTagsProps: {
+      tags,
+      widthSizeWindow,
     },
     articleProps: {
       classAdded: undefined,
@@ -249,12 +253,18 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
+  const contentPlateTooltipContentTags = (
+    <div className='_contentPlateTooltipContentTags'>
+      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+    </div>
+  )
+
   const contentArrayIn: ContentArrayItemType[] = [
     {
       typeIn: 'player',
       component: (
         <CONTENT_ASSIGNED_COMPONENT {...propsM1Out.contentAssignedComponentProps}>
-          <></>
+          <TooltipTags {...propsM1Out.tooltipTagsProps} />
           <LoaderBlurhash {...propsM1Out.loaderBlurhashProps} />
           <></>
         </CONTENT_ASSIGNED_COMPONENT>

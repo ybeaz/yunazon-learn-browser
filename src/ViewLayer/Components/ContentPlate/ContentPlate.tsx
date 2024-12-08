@@ -15,6 +15,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
+import { TooltipTags } from '../../Components/TooltipTags/TooltipTags'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
@@ -97,7 +98,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
         durationObj,
         screenType,
         questionsTotal: 0,
-        tags,
       },
     },
     iconCompletedProps: {
@@ -105,10 +105,9 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
-    iconTagsTooltipProps: {
-      classAdded: 'Icon_TagsTooltip',
-      icon: 'MdOutlineTag',
-      isDisplaying: true,
+    tooltipTagsProps: {
+      tags,
+      widthSizeWindow,
     },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],
@@ -156,12 +155,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
     </div>
   )
 
-  const contentPlateTooltipContentTags = (
-    <div className='_contentPlateTooltipContentTags'>
-      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
-    </div>
-  )
-
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
@@ -174,15 +167,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
               </div>
             </Tooltip>
           ) : null}
-
-          {!!tags?.length && widthSizeWindow > 480 ? (
-            <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
-              <div className='_tagsTooltip'>
-                <div className='_cycle' />
-                <IconYrl {...propsOut.iconTagsTooltipProps} />
-              </div>
-            </Tooltip>
-          ) : null}
+          <TooltipTags {...propsOut.tooltipTagsProps} />
         </>
 
         {plateImageSrc ? (

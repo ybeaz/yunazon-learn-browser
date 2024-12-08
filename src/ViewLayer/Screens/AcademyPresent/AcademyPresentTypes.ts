@@ -11,6 +11,7 @@ import {
   PlayerYoutubeIframeType,
   PlayerYoutubeIframePropsType,
 } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
+import { TooltipTagsPropsType } from '../../Components/TooltipTags/TooltipTags'
 import { LoaderBlurhashPropsType } from '../../Components/LoaderBlurhash'
 
 export type AcademyPresentComponentPropsType = {
@@ -37,6 +38,7 @@ export type ContentComponentPropsType = {
 export type AcademyPresentPropsM1OutType = {
   CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframeType | ReaderIframeType
   contentAssignedComponentProps: PlayerYoutubeIframePropsType | ReaderIframePropsType | any
+  tooltipTagsProps: TooltipTagsPropsType
   loaderBlurhashProps: LoaderBlurhashPropsType
   articleProps: ArticleStructuredYrlPropsType
   summaryProps: ArticleStructuredYrlPropsType
