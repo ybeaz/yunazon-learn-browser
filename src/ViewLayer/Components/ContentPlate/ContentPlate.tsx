@@ -107,8 +107,17 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
-    tooltipImageContentProps: {
-      classAdded: '_contentPlate_tooltipImageContent',
+    tooltipTagsProps: {
+      classAdded: '_contentPlate_tooltipTags',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentTags'>
+          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+        </div>
+      ),
+      isTooltip: !!tags?.length && getSizeWindow().width > 480,
+    },
+    tooltipIsCompletedProps: {
+      classAdded: '_contentPlate_tooltipIsCompleted',
       tooltipTitleContent: (
         <div className='_contentPlateTooltipContentTags'>
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
@@ -175,7 +184,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
               </div>
             </Tooltip>
           ) : null}
-          <TooltipImageContent {...propsOut.tooltipImageContentProps} />
+          <TooltipImageContent {...propsOut.tooltipTagsProps} />
         </>
 
         {plateImageSrc ? (

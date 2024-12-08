@@ -78,8 +78,8 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addSStyle4Duration` : ''
 
   const propsOut: PlayerPanelPropsOutType = {
-    tooltipImageContentProps: {
-      classAdded: '_playerPanel_tooltipImageContent',
+    tooltipTagsProps: {
+      classAdded: '_playerPanel_tooltipTags',
       tooltipTitleContent: (
         <div className='_contentPlateTooltipContentTags'>
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
@@ -96,7 +96,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
         <div className='_metaData'>
-          <TooltipImageContent {...propsOut.tooltipImageContentProps} />
+          <TooltipImageContent {...propsOut.tooltipTagsProps} />
           <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
           {/* <div className='_successTried'>
             <SuccessTried {...successTriedProps} />

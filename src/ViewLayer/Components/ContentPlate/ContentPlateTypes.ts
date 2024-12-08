@@ -38,7 +38,8 @@ export type ContentPlatePropsOutType = {
     PlayerYoutubeIframe: PlayerYoutubeIframePropsType
   }
   iconCompletedProps: IconYrlPropsType
-  tooltipImageContentProps: TooltipImageContentPropsType
+  tooltipTagsProps: TooltipImageContentPropsType
+  tooltipIsCompletedProps: TooltipImageContentPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
   // playerPanelProps: PlayerPanelPropsType
