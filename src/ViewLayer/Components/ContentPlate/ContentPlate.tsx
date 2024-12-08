@@ -125,13 +125,14 @@ const ContentPlateComponent: ContentPlateComponentType = (
       handleEvents,
       opacity: !isVisible ? 1 : 0,
     },
-    playerPanelProps: {
-      capture,
-      durationObj,
-      screenType,
-      isShowingPlay,
-      isActionButtonDisplaying: true,
-    },
+    // playerPanelProps: {
+    //   capture,
+    //   durationObj,
+    //   screenType,
+    //   isShowingPlay,
+    //   isActionButtonDisplaying: true,
+    //   tags,
+    // },
     linkProps: {
       className: '__shield',
       to: { pathname },
@@ -179,7 +180,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
           <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         )}
 
-        <PlayerPanel {...propsOut.playerPanelProps} />
+        {/* TODO: remove <PlayerPanel {...propsOut.playerPanelProps} /> */}
       </CONTENT_ASSIGNED_COMPONENT>
       <NavLink {...propsOut.linkProps} />
     </div>

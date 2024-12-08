@@ -88,7 +88,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
       <div className='__info'>
-        <div className='_captureDuration'>
+        <div className='_captureWrapper'>
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
         <div className='_metaData'>

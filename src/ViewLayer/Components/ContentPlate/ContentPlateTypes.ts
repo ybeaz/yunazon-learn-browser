@@ -41,7 +41,7 @@ export type ContentPlatePropsOutType = {
   tooltipImageListProps: TooltipImageListPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
-  playerPanelProps: PlayerPanelPropsType
+  // playerPanelProps: PlayerPanelPropsType
   linkProps: any
 }
 
