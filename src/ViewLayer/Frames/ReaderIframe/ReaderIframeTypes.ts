@@ -4,7 +4,7 @@ export type ReaderIframePropsType = {
   isVisible: boolean
   isIframe: boolean
   screenType: string
-  children: React.ReactElement[]
+  children?: React.ReactElement[]
 }
 
 export type ReaderIframePropsOutType = Record<string, any>

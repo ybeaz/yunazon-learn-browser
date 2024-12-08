@@ -28,6 +28,7 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     durationObj,
     screenType,
     questionsTotal,
+    tags,
   } = props
   const { width, height } = VIDEO_RESOLUTION
 
@@ -72,6 +73,8 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
       questionsTotal,
     },
   }
+
+  console.info('PlayerYoutubeIframe [77]', { tags })
 
   return (
     <div className='PlayerYoutubeIframe'>

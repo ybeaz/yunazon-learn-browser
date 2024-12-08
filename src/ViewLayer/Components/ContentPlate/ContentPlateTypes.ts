@@ -2,6 +2,8 @@ import { ModuleType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from 'yourails_common'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
+import { ReaderIframePropsType } from '../../Frames/ReaderIframe/ReaderIframe'
+import { PlayerYoutubeIframePropsType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
@@ -30,7 +32,10 @@ export type ContentPlatePropsType = Omit<
 >
 
 export type ContentPlatePropsOutType = {
-  contentComponentProps: Record<string, any>
+  contentComponentProps: {
+    ReaderIframe: ReaderIframePropsType
+    PlayerYoutubeIframe: PlayerYoutubeIframePropsType
+  }
   iconCompletedProps: IconYrlPropsType
   iconTagsTooltipProps: IconYrlPropsType
   loaderBlurhashProps: any

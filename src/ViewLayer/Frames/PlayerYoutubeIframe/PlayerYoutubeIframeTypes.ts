@@ -11,7 +11,8 @@ export type PlayerYoutubeIframePropsType = {
   durationObj: DurationObjType
   screenType: string
   questionsTotal: number
-  children: React.ReactElement[]
+  tags: string[]
+  children?: React.ReactElement[]
 }
 
 export type PlayerYoutubeIframePropsOutType = {
