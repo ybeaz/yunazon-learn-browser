@@ -40,10 +40,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
-    .ContentPlate ._isCompleted ._cycle {
-      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
-    }
-
     .LogoGroup_StubForUserResearch .__div,
     .LogoGroup_StubForUserResearch .__div ._img,
     .LogoGroup_SkillsExchangeMatrix .__div,
@@ -443,11 +439,15 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle,
     .TooltipImageContent._contentPlate_tooltipTags div._cycle,
     .CheckRadioGroup input:checked ~ .checkmark {
-      background: ${props2 => getColor(props2, 'colorActive', medial, middle)};
+      background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
       
     .Icon_isCompleted ._icon {
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
+    }
+
+    .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle {
+      background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
     .RadioButton .checkmark:after {

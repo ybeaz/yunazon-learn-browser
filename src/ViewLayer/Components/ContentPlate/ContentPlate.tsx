@@ -186,14 +186,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <>
-          {/* {isCompleted ? (
-            <Tooltip className='_tooltip' title={tooltipTitleContent}>
-              <div className='_isCompleted'>
-                <div className='_cycle' />
-                <IconYrl {...propsOut.iconCompletedProps} />
-              </div>
-            </Tooltip>
-          ) : null} */}
           <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
           <TooltipImageContent {...propsOut.tooltipTagsProps} />
         </>
