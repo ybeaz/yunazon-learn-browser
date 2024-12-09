@@ -434,7 +434,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
-
+    .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
     .TooltipImageContent._playerPanel_tooltipTags div._cycle,
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle,
     .TooltipImageContent._contentPlate_tooltipTags div._cycle,
@@ -446,6 +446,8 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle, 'Green')};
     }
 
+
+    .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle {
       background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }

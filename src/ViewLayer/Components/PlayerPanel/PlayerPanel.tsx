@@ -78,6 +78,20 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addSStyle4Duration` : ''
 
   const propsOut: PlayerPanelPropsOutType = {
+    tooltipIsCompletedProps: {
+      classAdded: '_playerPanel_tooltipIsCompleted',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentIsCompleted'>
+          {DICTIONARY['Completed'][language]}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_isCompleted',
+        icon: 'MdCheckCircle',
+        isDisplaying: false, // isCompleted,
+      },
+      isTooltip: false, // isCompleted,
+    },
     tooltipTagsProps: {
       classAdded: '_playerPanel_tooltipTags',
       tooltipTitleContent: (
@@ -101,6 +115,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
         <div className='_metaData'>
+          <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
           <TooltipImageContent {...propsOut.tooltipTagsProps} />
           <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
           {/* <div className='_successTried'>

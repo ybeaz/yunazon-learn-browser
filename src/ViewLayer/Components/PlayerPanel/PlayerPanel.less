@@ -40,16 +40,6 @@
       gap: 1rem;
       line-height: 1.5rem;
 
-      ._playerPanel_tooltipTags {
-        div._cycle {
-          position: inherit;
-        }
-
-        div.IconYrl.Icon_TagsTooltip {
-          margin-top: -1.6rem;
-        }
-      }
-
       ._duration {
         display: flex;
         justify-content: flex-end;
@@ -105,7 +95,6 @@
     .__info {
       ._capture {
         font-size: @fontSize;
-        min-height: 2.5rem;
       }
     }
   }
@@ -120,10 +109,20 @@
   @media @phone {
     padding: 0.7rem 1rem 1rem 1rem;
     .__info {
-      ._capture {
-        font-size: @fontSizeS;
-        min-height: 2.5rem;
-        max-width: 67vw;
+      ._captureWrapper {
+        display: flex;
+
+        ._capture {
+          font-size: @fontSizeS;
+          min-height: 2.5rem;
+          max-width: 67vw;
+        }
+      }
+      ._metaData {
+        align-items: flex-start;
+        ._difficulty {
+          display: none;
+        }
       }
     }
   }
