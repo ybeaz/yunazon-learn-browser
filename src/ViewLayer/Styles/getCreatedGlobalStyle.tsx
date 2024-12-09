@@ -40,7 +40,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 
-    .ContentPlate ._isCompleted ._cycle {
+    .TooltipImageContent._contentPlate_tooltipIsCompleted > div > div._cycle {
       background-color: ${props2 => getColor(props2, 'colorFirst', medial, middle)};
     }
 

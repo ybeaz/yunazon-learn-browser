@@ -18,15 +18,17 @@ import {
 const TooltipImageContentComponent: TooltipImageContentComponentType = (
   props: TooltipImageContentComponentPropsType
 ) => {
-  const { classAdded, tooltipTitleContent, isTooltip } = props
+  const { classAdded, tooltipTitleContent, tooltipIconProps, isTooltip } = props
 
-  const propsOut: TooltipImageContentPropsOutType = {
-    iconTagsTooltipProps: {
-      classAdded: 'Icon_TagsTooltip',
-      icon: 'MdOutlineTag',
-      isDisplaying: true,
-    },
-  }
+  // const propsOut: TooltipImageContentPropsOutType = {
+  //   iconTagsTooltipProps:
+
+  //   {
+  //     classAdded: 'Icon_TagsTooltip',
+  //     icon: 'MdOutlineTag',
+  //     isDisplaying: true,
+  //   },
+  // }
 
   return (
     <>
@@ -35,7 +37,7 @@ const TooltipImageContentComponent: TooltipImageContentComponentType = (
           <Tooltip className='_tooltip' title={tooltipTitleContent}>
             <div className='_tagsTooltip'>
               <div className='_cycle' />
-              <IconYrl {...propsOut.iconTagsTooltipProps} />
+              <IconYrl {...tooltipIconProps} />
             </div>
           </Tooltip>
         </div>

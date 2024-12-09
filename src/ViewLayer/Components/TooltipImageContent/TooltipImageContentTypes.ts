@@ -5,6 +5,7 @@ import { IconYrlPropsType } from 'yourails_common'
 export type TooltipImageContentComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   tooltipTitleContent?: React.ReactNode | RenderFunction
+  tooltipIconProps: IconYrlPropsType
   isTooltip: boolean
 }
 
@@ -13,9 +14,7 @@ export type TooltipImageContentPropsType = Omit<
   'storeStateSlice'
 >
 
-export type TooltipImageContentPropsOutType = {
-  iconTagsTooltipProps: IconYrlPropsType
-}
+export type TooltipImageContentPropsOutType = {}
 
 /**
  * @import import { TooltipImageContentComponentPropsType, TooltipImageContentPropsType, TooltipImageContentPropsOutType, TooltipImageContentComponentType, TooltipImageContentType } from './TooltipImageContentTypes'
