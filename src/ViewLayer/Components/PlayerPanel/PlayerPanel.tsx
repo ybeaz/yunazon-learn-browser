@@ -85,6 +85,11 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
         </div>
       ),
+      tooltipIconProps: {
+        classAdded: 'Icon_TagsTooltip',
+        icon: 'MdOutlineTag',
+        isDisplaying: true,
+      },
       isTooltip: !!tags?.length && getSizeWindow().width > 480,
     },
   }

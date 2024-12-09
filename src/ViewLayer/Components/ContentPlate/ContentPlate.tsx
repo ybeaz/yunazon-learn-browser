@@ -107,6 +107,20 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
+    tooltipIsCompletedProps: {
+      classAdded: '_contentPlate_tooltipIsCompleted',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentIsCompleted'>
+          {DICTIONARY['Completed'][language]}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_isCompleted',
+        icon: 'MdCheckCircle',
+        isDisplaying: isCompleted,
+      },
+      isTooltip: isCompleted,
+    },
     tooltipTagsProps: {
       classAdded: '_contentPlate_tooltipTags',
       tooltipTitleContent: (
@@ -114,15 +128,11 @@ const ContentPlateComponent: ContentPlateComponentType = (
           {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
         </div>
       ),
-      isTooltip: !!tags?.length && getSizeWindow().width > 480,
-    },
-    tooltipIsCompletedProps: {
-      classAdded: '_contentPlate_tooltipIsCompleted',
-      tooltipTitleContent: (
-        <div className='_contentPlateTooltipContentTags'>
-          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
-        </div>
-      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_TagsTooltip',
+        icon: 'MdOutlineTag',
+        isDisplaying: true,
+      },
       isTooltip: !!tags?.length && getSizeWindow().width > 480,
     },
     loaderBlurhashProps: {
@@ -176,14 +186,15 @@ const ContentPlateComponent: ContentPlateComponentType = (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <>
-          {isCompleted ? (
+          {/* {isCompleted ? (
             <Tooltip className='_tooltip' title={tooltipTitleContent}>
               <div className='_isCompleted'>
                 <div className='_cycle' />
                 <IconYrl {...propsOut.iconCompletedProps} />
               </div>
             </Tooltip>
-          ) : null}
+          ) : null} */}
+          <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
           <TooltipImageContent {...propsOut.tooltipTagsProps} />
         </>
 

@@ -18,24 +18,16 @@ import {
 const TooltipImageContentComponent: TooltipImageContentComponentType = (
   props: TooltipImageContentComponentPropsType
 ) => {
-  const { classAdded, tooltipTitleContent, isTooltip } = props
-
-  const propsOut: TooltipImageContentPropsOutType = {
-    iconTagsTooltipProps: {
-      classAdded: 'Icon_TagsTooltip',
-      icon: 'MdOutlineTag',
-      isDisplaying: true,
-    },
-  }
+  const { classAdded, tooltipTitleContent, tooltipIconProps, isTooltip } = props
 
   return (
     <>
       {isTooltip ? (
         <div className={getClasses('TooltipImageContent', classAdded)}>
           <Tooltip className='_tooltip' title={tooltipTitleContent}>
-            <div className='_tagsTooltip'>
+            <div className='_cycleIconWrapper'>
               <div className='_cycle' />
-              <IconYrl {...propsOut.iconTagsTooltipProps} />
+              <IconYrl {...tooltipIconProps} />
             </div>
           </Tooltip>
         </div>
