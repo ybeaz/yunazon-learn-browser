@@ -11,6 +11,7 @@ import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getChainedResponsibility } from 'yourails_common'
 import { getMappedConnectionToItems } from 'yourails_common'
+import { PAGINATION_OFFSET } from 'yourails_common'
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay
@@ -85,9 +86,13 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       }
     )
 
-    let tags: any = getChainedResponsibility(readTagsConnection).exec(getMappedConnectionToItems, {
-      printRes: false,
-    }).result
+    let tags: any = getChainedResponsibility(readTagsConnection)
+      .exec(getMappedConnectionToItems, {
+        printRes: false,
+      })
+      .exec((tags: any) =>
+        tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags'])
+      ).result
 
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
 

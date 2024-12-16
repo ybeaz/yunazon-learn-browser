@@ -41,8 +41,6 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         moduleIDs,
       } = tagCloud
 
-      console.info('TagsDocsTable [44]', { completed, count, tagCloud })
-
       const {
         level,
         name: levelName,
