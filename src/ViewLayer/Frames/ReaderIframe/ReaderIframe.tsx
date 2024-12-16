@@ -32,6 +32,7 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
             ref={iFrameRef}
             className='_reader'
             src={`${contentID}`}
+            loading='lazy'
             width='640'
             height='340'
             frameBorder='0'
