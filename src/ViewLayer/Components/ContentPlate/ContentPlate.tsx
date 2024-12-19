@@ -15,6 +15,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
+import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
@@ -85,6 +86,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
         contentID,
         isVisible,
         isIframe: true,
+        screenType,
+        tags,
       },
       PlayerYoutubeIframe: {
         contentComponentName,
@@ -96,6 +99,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
         durationObj,
         screenType,
         questionsTotal: 0,
+        tags,
       },
     },
     iconCompletedProps: {
@@ -103,10 +107,33 @@ const ContentPlateComponent: ContentPlateComponentType = (
       icon: 'MdCheckCircle',
       isDisplaying: isCompleted,
     },
-    iconTagsTooltipProps: {
-      classAdded: 'Icon_TagsTooltip',
-      icon: 'MdOutlineTag',
-      isDisplaying: true,
+    tooltipIsCompletedProps: {
+      classAdded: '_contentPlate_tooltipIsCompleted',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentIsCompleted'>
+          {DICTIONARY['Completed'][language]}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_isCompleted',
+        icon: 'MdCheckCircle',
+        isDisplaying: isCompleted,
+      },
+      isTooltip: isCompleted,
+    },
+    tooltipTagsProps: {
+      classAdded: '_contentPlate_tooltipTags',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentTags'>
+          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_TagsTooltip',
+        icon: 'MdOutlineTag',
+        isDisplaying: true,
+      },
+      isTooltip: !!tags?.length && getSizeWindow().width > 480,
     },
     loaderBlurhashProps: {
       textTooltip: DICTIONARY['pleaseWait'][language],
@@ -121,13 +148,14 @@ const ContentPlateComponent: ContentPlateComponentType = (
       handleEvents,
       opacity: !isVisible ? 1 : 0,
     },
-    playerPanelProps: {
-      capture,
-      durationObj,
-      screenType,
-      isShowingPlay,
-      isActionButtonDisplaying: true,
-    },
+    // playerPanelProps: {
+    //   capture,
+    //   durationObj,
+    //   screenType,
+    //   isShowingPlay,
+    //   isActionButtonDisplaying: true,
+    //   tags,
+    // },
     linkProps: {
       className: '__shield',
       to: { pathname },
@@ -148,15 +176,9 @@ const ContentPlateComponent: ContentPlateComponentType = (
     },
   }
 
-  const contentPlateTooltipContentIsCompleted = (
+  const tooltipTitleContent = (
     <div className='_contentPlateTooltipContentIsCompleted'>
       {DICTIONARY['Completed'][language]}
-    </div>
-  )
-
-  const contentPlateTooltipContentTags = (
-    <div className='_contentPlateTooltipContentTags'>
-      {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
     </div>
   )
 
@@ -164,23 +186,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
     <div className={getClasses('ContentPlate')} key={moduleID}>
       <CONTENT_ASSIGNED_COMPONENT {...propsOut.contentComponentProps[contentComponentName]}>
         <>
-          {isCompleted ? (
-            <Tooltip className='_tooltip' title={contentPlateTooltipContentIsCompleted}>
-              <div className='_isCompleted'>
-                <div className='_cycle' />
-                <IconYrl {...propsOut.iconCompletedProps} />
-              </div>
-            </Tooltip>
-          ) : null}
-
-          {!!tags?.length && widthSizeWindow > 480 ? (
-            <Tooltip className='_tooltip' title={contentPlateTooltipContentTags}>
-              <div className='_tagsTooltip'>
-                <div className='_cycle' />
-                <IconYrl {...propsOut.iconTagsTooltipProps} />
-              </div>
-            </Tooltip>
-          ) : null}
+          <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
+          <TooltipImageContent {...propsOut.tooltipTagsProps} />
         </>
 
         {plateImageSrc ? (
@@ -189,7 +196,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
           <LoaderBlurhash {...propsOut.loaderBlurhashProps} />
         )}
 
-        <PlayerPanel {...propsOut.playerPanelProps} />
+        {/* TODO: remove <PlayerPanel {...propsOut.playerPanelProps} /> */}
       </CONTENT_ASSIGNED_COMPONENT>
       <NavLink {...propsOut.linkProps} />
     </div>

@@ -29,6 +29,11 @@ export type AcademyPresentPropsType = Omit<
   'storeStateSlice' | 'handleEvents'
 >
 
+export type ContentComponentPropsType = {
+  ReaderIframe: ReaderIframePropsType
+  PlayerYoutubeIframe: PlayerYoutubeIframePropsType
+}
+
 export type AcademyPresentPropsM1OutType = {
   CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframeType | ReaderIframeType
   contentAssignedComponentProps: PlayerYoutubeIframePropsType | ReaderIframePropsType | any

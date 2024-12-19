@@ -29,15 +29,24 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
     const getBuildGitDataResObjM1: any = JSON.parse(getBuildGitDataRes) as Object
 
     const dateCommit = getDateString({
-      timestamp: new Date(getBuildGitDataResObjM1.date),
+      timestamp: new Date(getBuildGitDataResObjM1.dateCommit),
     })
     const dateBuild = getDateString({
       timestamp: new Date(),
     })
 
-    const year = new Date(getBuildGitDataResObjM1.date).getFullYear()
+    const year = new Date(getBuildGitDataResObjM1.dateCommit).getFullYear()
 
     const copyright = `© 2021-${year} Userto Inc.`
+
+    consoler('getBuildGitData [30]', {
+      getBuildGitDataRes,
+      getBuildGitDataResObjM1,
+      dateCommit,
+      dateBuild,
+      year,
+      copyright,
+    })
 
     const getBuildGitDataResObj = {
       ...getBuildGitDataResObjM1,

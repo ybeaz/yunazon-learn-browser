@@ -2,7 +2,10 @@ import { ModuleType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from 'yourails_common'
 import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
+import { ReaderIframePropsType } from '../../Frames/ReaderIframe/ReaderIframe'
+import { PlayerYoutubeIframePropsType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
+import { TooltipImageContentPropsType } from '../../Components/TooltipImageContent/TooltipImageContent'
 import { HandleEventType } from 'yourails_common'
 
 export type ContentPlateComponentPropsType = {
@@ -30,12 +33,16 @@ export type ContentPlatePropsType = Omit<
 >
 
 export type ContentPlatePropsOutType = {
-  contentComponentProps: Record<string, any>
+  contentComponentProps: {
+    ReaderIframe: ReaderIframePropsType
+    PlayerYoutubeIframe: PlayerYoutubeIframePropsType
+  }
   iconCompletedProps: IconYrlPropsType
-  iconTagsTooltipProps: IconYrlPropsType
+  tooltipTagsProps: TooltipImageContentPropsType
+  tooltipIsCompletedProps: TooltipImageContentPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
-  playerPanelProps: PlayerPanelPropsType
+  // playerPanelProps: PlayerPanelPropsType
   linkProps: any
 }
 

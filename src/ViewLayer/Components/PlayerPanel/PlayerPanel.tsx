@@ -4,8 +4,8 @@ import { FeatureBar } from '../FeatureBar'
 import { SuccessTried } from '../SuccessTried'
 import { DICTIONARY } from 'yourails_common'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
-
-import { getClasses } from 'yourails_common'
+import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
+import { getSizeWindow } from 'yourails_common'
 import {
   PlayerPanelComponentPropsType,
   PlayerPanelPropsType,
@@ -33,6 +33,7 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
     isActionButtonDisplaying: isDisplaying,
     questionsTotal = 0,
     storeStateSlice: { language },
+    tags,
   } = props
 
   const certificate = DICTIONARY.certificate[language]
@@ -76,15 +77,46 @@ const PlayerPanelComponent: PlayerPanelComponentType = (props: PlayerPanelCompon
   const addSStyle4Duration =
     screenType === 'AcademyMatrix' || screenType === 'ModulesPresent' ? `_addSStyle4Duration` : ''
 
-  const propsOut: PlayerPanelPropsOutType = {}
+  const propsOut: PlayerPanelPropsOutType = {
+    tooltipIsCompletedProps: {
+      classAdded: '_playerPanel_tooltipIsCompleted',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentIsCompleted'>
+          {DICTIONARY['Completed'][language]}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_isCompleted',
+        icon: 'MdCheckCircle',
+        isDisplaying: false, // isCompleted,
+      },
+      isTooltip: false, // isCompleted,
+    },
+    tooltipTagsProps: {
+      classAdded: '_playerPanel_tooltipTags',
+      tooltipTitleContent: (
+        <div className='_contentPlateTooltipContentTags'>
+          {!!tags?.length && tags.map((tag: string) => <div key={`tag-${tag}`}>{tag}</div>)}
+        </div>
+      ),
+      tooltipIconProps: {
+        classAdded: 'Icon_TagsTooltip',
+        icon: 'MdOutlineTag',
+        isDisplaying: true,
+      },
+      isTooltip: !!tags?.length && getSizeWindow().width > 480,
+    },
+  }
 
   return (
     <div className={`PlayerPanel PlayerPanel_${screenType}`}>
       <div className='__info'>
-        <div className='_captureDuration'>
+        <div className='_captureWrapper'>
           <div className={`_capture ${addStyle4Capture}`}>{`${capture}`}</div>
         </div>
         <div className='_metaData'>
+          <TooltipImageContent {...propsOut.tooltipIsCompletedProps} />
+          <TooltipImageContent {...propsOut.tooltipTagsProps} />
           <div className={`_duration ${addSStyle4Duration}`}>{duration}</div>
           {/* <div className='_successTried'>
             <SuccessTried {...successTriedProps} />

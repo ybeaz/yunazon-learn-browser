@@ -13,41 +13,6 @@
     cursor: pointer;
   }
 
-  ._isCompleted {
-    position: absolute;
-    z-index: 5;
-    right: 10%;
-    top: 10%;
-
-    ._cycle {
-      position: absolute;
-      border-radius: 50%;
-      height: 2rem;
-      width: 2rem;
-      border-width: 0;
-      padding: 0.2rem;
-      z-index: -1;
-    }
-  }
-
-  ._tagsTooltip {
-    position: absolute;
-    z-index: 5;
-    right: 10%;
-    top: 55%;
-
-    ._cycle {
-      position: absolute;
-      border-radius: 50%;
-      height: 1.7rem;
-      width: 1.7rem;
-      border-width: 0;
-      z-index: -1;
-      right: -0.1rem;
-      bottom: -0.1rem;
-    }
-  }
-
   @media @large {
   }
   @media @desktop, @desktop-strict {
@@ -61,31 +26,6 @@
 
     .__shield {
       height: calc(100vw * 12 / 16);
-    }
-  }
-}
-
-.ant-tooltip-content {
-  .ant-tooltip-inner {
-    min-width: max-content;
-    border-radius: 1rem;
-    background-color: hsla(0, 0%, 9.5%, 1);
-    border-color: hsla(0, 0%, 9.5%, 1);
-    padding: 0;
-
-    ._contentPlateTooltipContentIsCompleted,
-    ._contentPlateTooltipContentTags {
-      display: flex;
-      flex-direction: column;
-      padding: 0.5rem;
-      display: flex;
-      max-height: 30rem;
-      overflow-y: scroll;
-
-      ._tooltipRow {
-        white-space: nowrap;
-        color: inherit;
-      }
     }
   }
 }
