@@ -4,7 +4,7 @@ import { actionSync } from '../../DataLayer/index.action'
 
 const { dispatch, getState } = store
 
-export const SET_INPUT_SEARCH_FROM_QUERY: ActionEventType = (event, dataIn) => {
+export const SET_INPUT_SEARCH_QUERY_TO_STATE: ActionEventType = (event, dataIn) => {
   const { queryUrl } = getState()
   console.info('SET_INPUT_SEARCH_FROM_QUERY [11]', { queryUrl })
 

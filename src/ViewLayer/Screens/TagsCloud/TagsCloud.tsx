@@ -45,7 +45,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    { type: 'SET_TAGS_CLOUD_DATA' },
+    { type: 'SET_TAGS_CLOUD_QUERY_TO_STATE' },
     {
       type: 'SET_PAGINATION_OFFSET',
       data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },

@@ -6,10 +6,9 @@ import { PAGINATION_OFFSET } from 'yourails_common'
 
 const { dispatch, getState } = store
 
-export const SET_TAGS_CLOUD_DATA: ActionEventType = (event, dataIn) => {
+export const SET_TAGS_CLOUD_QUERY_TO_STATE: ActionEventType = (event, dataIn) => {
   const { queryUrl: query } = getState()
 
-  const tagsSearch = query?.tagsSearch || ''
   const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
   const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
   const first =
@@ -18,13 +17,6 @@ export const SET_TAGS_CLOUD_DATA: ActionEventType = (event, dataIn) => {
           PAGINATION_OFFSET[PaginationNameEnumType['pageTags']] -
         PAGINATION_OFFSET[PaginationNameEnumType['pageTags']]
       : 0
-
-  dispatch(
-    actionSync.SET_INPUT_TO_STORE({
-      storeFormProp: 'tagsSearch',
-      value: tagsSearch,
-    })
-  )
 
   dispatch(
     actionSync.SET_TAGS_STATE({

@@ -43,7 +43,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     { type: 'SET_QUERY_URL_HANDLER', data: { isReplacing: true } },
-    { type: 'SET_INPUT_SEARCH_FROM_QUERY' },
+    { type: 'SET_INPUT_SEARCH_QUERY_TO_STATE' },
     {
       type: 'SET_PAGINATION_OFFSET',
       data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
