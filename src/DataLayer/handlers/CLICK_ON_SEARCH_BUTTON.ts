@@ -25,7 +25,12 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
         })
       )
 
-      dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true, isWithinModuleIDs: false }))
+      dispatch(
+        actionAsync.READ_MODULES_CONNECTION.REQUEST({
+          isLoaderOverlay: true,
+          isWithinModuleIDs: false,
+        })
+      )
       dispatch(
         actionSync.SET_COMPONENTS_STATE({
           componentsStateProp: 'modulesSearchApplied',

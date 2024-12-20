@@ -26,7 +26,7 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
   )
 
   dispatch(
-    actionAsync.GET_MODULES.REQUEST({
+    actionAsync.READ_MODULES_CONNECTION.REQUEST({
       isLoaderOverlay: true,
     })
   )

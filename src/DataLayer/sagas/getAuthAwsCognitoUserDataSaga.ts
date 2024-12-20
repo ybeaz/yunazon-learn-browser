@@ -9,7 +9,7 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { ClientAppEnumType } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { getModules } from './getModulesSaga'
+import { readModulesConnection } from './readModulesConnectionSaga'
 
 export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Iterable<any> {
   const {
@@ -51,7 +51,7 @@ export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Itera
       })
     )
 
-    yield getModules()
+    yield readModulesConnection()
   } catch (error: any) {
     console.log('getAuthAwsCognitoUserDataSaga [53] ERROR', `${error.name}: ${error.message}`)
   }

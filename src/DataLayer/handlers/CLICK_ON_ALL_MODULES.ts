@@ -23,14 +23,7 @@ export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
   )
   dispatch(actionSync.SET_TAGS_STATE({ tagsPick: [], tagsOmit: [] }))
 
-  dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true }))
-  ;['modulesSearch'].forEach((searchParamsName: string) => {
-    const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-      searchParamsName,
-      searchParamsValue: '',
-    }
-    getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
-  })
+  dispatch(actionAsync.READ_MODULES_CONNECTION.REQUEST({ isLoaderOverlay: true }))
 
   dispatch(
     actionSync.SET_PAGE_CURSOR({

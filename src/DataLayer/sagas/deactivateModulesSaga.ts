@@ -5,7 +5,7 @@ import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
-import { getModules } from './getModulesSaga'
+import { readModulesConnection } from './readModulesConnectionSaga'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 
@@ -33,7 +33,7 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
       }
     )
 
-    yield call(getModules)
+    yield call(readModulesConnection)
 
     yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(

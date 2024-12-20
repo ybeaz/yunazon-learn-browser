@@ -15,7 +15,7 @@ import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
 
-export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
+export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
@@ -47,7 +47,7 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       ? [tagsPickUrl]
       : tagsPickIn
 
-  console.info('getModulesSaga [74]', {
+  console.info('readModulesConnectionSaga [74]', {
     tagsPick,
     'queryUrl?.tagsPick': queryUrl?.tagsPick,
   })
@@ -159,12 +159,12 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
 
     if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
-    console.info('getModulesSaga [77] ERROR', `${error.name}: ${error.message}`)
+    console.info('readModulesConnectionSaga [77] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModules = withDebounce(getModulesGenerator, 500)
+export const readModulesConnection = withDebounce(readModulesConnectionGenerator, 500)
 
-export default function* getModulesSaga() {
-  yield takeEvery([actionAsync.GET_MODULES.REQUEST().type], getModules)
+export default function* readModulesConnectionSaga() {
+  yield takeEvery([actionAsync.READ_MODULES_CONNECTION.REQUEST().type], readModulesConnection)
 }
