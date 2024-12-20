@@ -1,17 +1,17 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
-import { getParsedUrlQuery } from 'yourails_common'
 
 const { dispatch, getState } = store
 
 export const SET_INPUT_SEARCH_FROM_QUERY: ActionEventType = (event, dataIn) => {
-  const query = getParsedUrlQuery()
+  const { queryUrl } = getState()
+  console.info('SET_INPUT_SEARCH_FROM_QUERY [11]', { queryUrl })
 
-  Object.keys(query).forEach((queryName: string) => {
+  Object.keys(queryUrl).forEach((queryName: string) => {
     const data = {
       storeFormProp: queryName,
-      value: query[queryName],
+      value: queryUrl[queryName],
     }
     dispatch(actionSync.SET_INPUT_TO_STORE(data))
   })

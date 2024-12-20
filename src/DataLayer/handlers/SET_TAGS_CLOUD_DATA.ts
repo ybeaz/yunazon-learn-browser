@@ -3,12 +3,11 @@ import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
 import { PAGINATION_OFFSET } from 'yourails_common'
-import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 
 const { dispatch, getState } = store
 
 export const SET_TAGS_CLOUD_DATA: ActionEventType = (event, dataIn) => {
-  const query = getParsedUrlQueryBrowserApi()
+  const { queryUrl: query } = getState()
 
   const tagsSearch = query?.tagsSearch || ''
   const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []

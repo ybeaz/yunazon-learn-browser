@@ -14,7 +14,6 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
-import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 
 export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false
@@ -35,18 +34,23 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       },
     },
     forms: { modulesSearch, tagsPick: tagsPickIn, tagsOmit },
+    queryUrl,
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  const queryParams = getParsedUrlQueryBrowserApi()
-  const tagsPickUrl = queryParams?.tagsPick || null
+  const tagsPickUrl = queryUrl?.tagsPick || null
 
   const tagsPick = tagsSearchForModules
     ? [tagsSearchForModules]
     : tagsPickUrl
       ? [tagsPickUrl]
       : tagsPickIn
+
+  console.info('getModulesSaga [74]', {
+    tagsPick,
+    'queryUrl?.tagsPick': queryUrl?.tagsPick,
+  })
 
   let profiles = stateSelected.profiles
 

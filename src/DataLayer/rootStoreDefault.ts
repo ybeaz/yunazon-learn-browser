@@ -174,6 +174,9 @@ export const rootStoreDefault: RootStoreType = {
   articles: [],
   profiles: [],
   tagsCloud: [],
+  queryUrl: {
+    pageModules: '1',
+  },
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,

@@ -18,6 +18,13 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
   }
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 
+  console.info('ONCHANGE_INPUT_SEARCH handle [20]', {
+    storeFormGroup,
+    storeFormProp,
+    value,
+    data,
+  })
+
   if (!value && valuePrev) {
     CLICK_ON_SEARCH_BUTTON({}, { storeFormProp })
 
