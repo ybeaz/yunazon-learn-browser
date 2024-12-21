@@ -14,27 +14,30 @@ const getQueryUrlReducerData = ({
   queryName: string | PaginationNameEnumType
 }): { reducerFunc: any; data: any } => {
   const QUERY_URL_TO_REDUCER_DATA_MAP = {
-    // pageModules: {
-    //   reducerFunc: actionSync.SET_PAGE_CURSOR,
-    //   data: {
-    //     paginationName: queryName,
-    //     first: queryUrl[queryName],
-    //   },
-    // },
-    // pageTags: {
-    //   reducerFunc: actionSync.SET_PAGE_CURSOR,
-    //   data: {
-    //     paginationName: queryName,
-    //     first: queryUrl[queryName],
-    //   },
-    // },
-    // pageDocuments: {
-    //   reducerFunc: actionSync.SET_PAGE_CURSOR,
-    //   data: {
-    //     paginationName: queryName,
-    //     first: queryUrl[queryName],
-    //   },
-    // },
+    pageModules: {
+      reducerFunc: actionSync.SET_PAGE_CURSOR,
+      data: {
+        paginationName: queryName,
+        first: queryUrl[queryName],
+        direction: 'set',
+      },
+    },
+    pageTags: {
+      reducerFunc: actionSync.SET_PAGE_CURSOR,
+      data: {
+        paginationName: queryName,
+        first: queryUrl[queryName],
+        direction: 'set',
+      },
+    },
+    pageDocuments: {
+      reducerFunc: actionSync.SET_PAGE_CURSOR,
+      data: {
+        paginationName: queryName,
+        first: queryUrl[queryName],
+        direction: 'set',
+      },
+    },
     inputCourseCreate: {
       reducerFunc: actionSync.SET_INPUT_TO_STORE,
       data: {

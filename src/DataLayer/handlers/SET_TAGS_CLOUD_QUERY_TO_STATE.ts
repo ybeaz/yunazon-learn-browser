@@ -11,12 +11,7 @@ export const SET_TAGS_CLOUD_QUERY_TO_STATE: ActionEventType = (event, dataIn) =>
 
   const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
   const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
-  const first =
-    query && query?.[PaginationNameEnumType['pageTags']]
-      ? parseInt(query?.[PaginationNameEnumType['pageTags']], 10) *
-          PAGINATION_OFFSET[PaginationNameEnumType['pageTags']] -
-        PAGINATION_OFFSET[PaginationNameEnumType['pageTags']]
-      : 0
+  const first = (query && query?.[PaginationNameEnumType['pageTags']]) || 0
 
   dispatch(
     actionSync.SET_TAGS_STATE({
