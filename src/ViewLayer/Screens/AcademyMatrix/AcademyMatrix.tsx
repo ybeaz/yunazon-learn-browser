@@ -9,11 +9,9 @@ import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachC
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from 'yourails_common'
 import { SERVERS_MAIN } from 'yourails_common'
-import { PAGINATION_OFFSET } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-import { PaginationNameEnumType } from 'yourails_common'
 
 import {
   AcademyMatrixPropsType,
@@ -37,21 +35,10 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  const pageTagsOffset = PAGINATION_OFFSET['pageTags']
-
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     { type: 'SET_QUERY_URL_HANDLER', data: { isReplacing: true } },
     { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
-    // {
-    //   type: 'SET_PAGINATION_OFFSET',
-    //   data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
-    // },
-    // {
-    //   type: 'SET_PAGINATION_OFFSET',
-    //   data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
-    // },
     { type: 'GET_MATRIX_DATA' },
   ])
 

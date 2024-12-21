@@ -1,32 +1,16 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
-import { RootStoreType, PaginationDict } from '../../Interfaces/RootStoreType'
 import { PaginationNameEnumType } from 'yourails_common'
-import { PaginationType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from 'yourails_common'
 
 const { dispatch, getState } = store
 
 export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
-  const { componentsState } = getState() as RootStoreType
-  const pagination: PaginationDict = componentsState.pagination
-
   const direction = data?.direction || 'next'
   const first = data?.first || 0
   const paginationName: PaginationNameEnumType = data?.paginationName
 
-  // const paginationSlice: PaginationType = pagination[paginationName]
-  // const { first = 0, offset, hasNextPage } = paginationSlice
-
-  // let firstNext = data?.first || 0
-
-  // if (direction === 'set') firstNext = firstNext
-  // else if (direction === 'next' && hasNextPage) firstNext = first + offset
-  // else if (direction === 'next' && !hasNextPage) firstNext = first
-  // else if (direction === 'prev' && first >= offset) firstNext = first - offset
-
-  console.info('SET_PAGE_CURSOR handle [28]', { first, paginationName, direction })
   dispatch(actionSync.SET_PAGE_CURSOR({ paginationName, first, direction }))
 
   if (paginationName === PaginationNameEnumType['pageModules'])

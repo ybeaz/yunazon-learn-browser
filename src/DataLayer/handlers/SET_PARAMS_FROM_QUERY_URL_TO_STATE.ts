@@ -68,17 +68,6 @@ export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataI
 
   Object.keys(queryUrl).forEach((queryName: string) => {
     const { data, reducerFunc } = getQueryUrlReducerData({ queryUrl, queryName })
-    console.info('SET_PARAMS_FROM_QUERY_URL_TO_STATE [68]', {
-      data,
-      reducerFunc,
-      queryName,
-      queryUrl,
-    })
-
-    // const data = {
-    //   storeFormProp: queryName,
-    //   value: queryUrl[queryName],
-    // }
     reducerFunc && dispatch(reducerFunc(data))
   })
 }

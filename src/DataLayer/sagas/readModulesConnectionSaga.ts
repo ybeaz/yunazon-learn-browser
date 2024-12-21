@@ -47,13 +47,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       ? [tagsPickUrl]
       : tagsPickIn
 
-  console.info('readModulesConnectionSaga [74]', {
-    first,
-    offset,
-    tagsPick,
-    'queryUrl?.tagsPick': queryUrl?.tagsPick,
-  })
-
   let profiles = stateSelected.profiles
 
   if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
