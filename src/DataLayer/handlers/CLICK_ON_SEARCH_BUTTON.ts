@@ -1,7 +1,8 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 const { dispatch, getState } = store
 

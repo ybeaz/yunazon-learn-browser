@@ -48,6 +48,8 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       : tagsPickIn
 
   console.info('readModulesConnectionSaga [74]', {
+    first,
+    offset,
     tagsPick,
     'queryUrl?.tagsPick': queryUrl?.tagsPick,
   })

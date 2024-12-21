@@ -13,7 +13,7 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 import {
   ModulesPresentPropsType,

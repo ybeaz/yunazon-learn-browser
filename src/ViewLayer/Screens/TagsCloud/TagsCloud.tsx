@@ -14,7 +14,7 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { SITE_META_DATA } from 'yourails_common'
 import { PAGINATION_OFFSET } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 import {
   TagsCloudComponentPropsType,

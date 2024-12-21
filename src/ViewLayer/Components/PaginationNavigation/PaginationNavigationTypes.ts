@@ -1,5 +1,6 @@
 import { ButtonYrlPropsType } from 'yourails_common'
-import { RootStoreType, PaginationNameEnumType } from '../../../Interfaces'
+import { RootStoreType } from '../../../Interfaces'
+import { PaginationNameEnumType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type PaginationNavigationComponentPropsType = {

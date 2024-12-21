@@ -7,7 +7,7 @@ import { TagType } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
-import { PaginationNameEnumType } from '../../../Interfaces'
+import { PaginationNameEnumType } from 'yourails_common'
 import {
   TagsDocsTableItemPropsOutType,
   TagsDocsTableComponentPropsType,

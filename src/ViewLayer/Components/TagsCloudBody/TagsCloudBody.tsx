@@ -147,10 +147,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
     })
   }
 
-  console.info('TagsCloudBody [150]', {
-    storeFormProp: SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp,
-  })
-
   const propsOut: TagsCloudBodyPropsOutType = {
     paginationNavigationProps: {
       paginationName: PaginationNameEnumType['pageTags'],

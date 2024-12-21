@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import { PaginationNameEnumType } from '../../../Interfaces/'
+import { PaginationNameEnumType } from 'yourails_common'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import {
   withPropsYrl,

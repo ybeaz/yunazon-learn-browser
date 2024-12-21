@@ -10,7 +10,8 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { getChainedResponsibility } from 'yourails_common'
 import { getMappedConnectionToItems } from 'yourails_common'
 import { getPreparedCourses } from 'yourails_common'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 

@@ -1,9 +1,6 @@
 import { ReducerType } from '../../Interfaces/ReducerType'
-import {
-  RootStoreType,
-  PaginationDict,
-  PaginationNameEnumType,
-} from '../../Interfaces/RootStoreType'
+import { RootStoreType, PaginationDict } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 import { PaginationType } from 'yourails_common'
 
 export const SET_PAGE_INFO: ReducerType = (store: RootStoreType, data: any): RootStoreType => {

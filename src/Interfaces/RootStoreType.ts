@@ -10,6 +10,7 @@ import {
   CreateModuleStageType,
 } from 'yourails_common'
 import { PaginationType } from 'yourails_common'
+import { PaginationNameEnumType } from 'yourails_common'
 import { ArticleItemType } from 'yourails_common'
 import { ScreensEnumType } from 'yourails_common'
 
@@ -27,12 +28,6 @@ export type SearchFormSepType = {
   selectMediaRequired: string[]
   inputDescriptionRequired: string
   selectSortBy: string
-}
-
-export enum PaginationNameEnumType {
-  pageModules = 'pageModules',
-  pageDocuments = 'pageDocuments',
-  pageTags = 'pageTags',
 }
 
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>

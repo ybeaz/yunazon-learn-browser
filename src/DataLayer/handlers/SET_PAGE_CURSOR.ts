@@ -25,6 +25,7 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
   else if (direction === 'next' && !hasNextPage) firstNext = first
   else if (direction === 'prev' && first >= offset) firstNext = first - offset
 
+  console.info('SET_PAGE_CURSOR [28]', { firstNext })
   dispatch(actionSync.SET_PAGE_CURSOR({ paginationName, first: firstNext }))
 
   if (paginationName === PaginationNameEnumType['pageModules'])

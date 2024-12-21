@@ -4,8 +4,8 @@ import {
   ComponentsStateType,
   FormsType,
   RootStoreType,
-  PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
 

@@ -7,7 +7,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { DocumentType } from 'yourails_common'
 import { getClasses, getDateString, getSlug } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import { PaginationNameEnumType } from '../../../Interfaces'
+import { PaginationNameEnumType } from 'yourails_common'
 import {
   CreditsTableItemPropsOutType,
   CreditsTableComponentPropsType,
