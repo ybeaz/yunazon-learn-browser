@@ -67,8 +67,12 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       modules,
       mediaLoaded,
+      // @ts-expect-error
+      queryUrl,
     },
   } = props
+
+  console.info('AcademyPresent [73]', { queryUrl })
 
   const params = useParams()
   const counterRef = useRef(0)
@@ -420,6 +424,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
+  'queryUrl',
 ]
 
 export const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(

@@ -11,6 +11,8 @@ export const SET_QUERY_URL_HANDLER: ActionEventType = (event, dataIn) => {
   const { queryUrl: queryUrlState } = getState()
   const queryUrl = getParsedUrlQueryBrowserApi()
 
+  console.info('SET_QUERY_URL_HANDLER', { queryUrlKeys, queryUrl, isReplacing })
+
   let query = isReplacing ? queryUrl : { ...queryUrlState, ...queryUrl }
   if (queryIn) query = isReplacing ? queryIn : { ...queryUrlState, ...queryUrl, ...queryIn }
   query = queryUrlKeys.reduce((accum: any, key: string) => {

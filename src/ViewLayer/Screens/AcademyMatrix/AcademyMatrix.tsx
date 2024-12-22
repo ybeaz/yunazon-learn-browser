@@ -27,9 +27,15 @@ import {
  */
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: { language },
+    storeStateSlice: {
+      language,
+      // @ts-expect-error
+      queryUrl,
+    },
     handleEvents,
   } = props
+
+  console.info('AcademyMatrix [38]', { queryUrl })
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
@@ -93,7 +99,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
+const storeStateSliceProps: string[] = ['language', 'queryUrl']
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
