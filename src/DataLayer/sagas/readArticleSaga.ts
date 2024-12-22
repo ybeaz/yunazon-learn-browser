@@ -3,8 +3,8 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { withDebounce } from 'yourails_common'
-
 import { articles } from '../../ContentMock/articlesMock'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 
 export function* readArticleGenerator(params: ActionReduxType | any): Iterable<any> {
   const { data: articleID } = params

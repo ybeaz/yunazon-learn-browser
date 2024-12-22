@@ -14,6 +14,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay || false
@@ -151,14 +152,15 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
         ...pageInfo,
       })
     )
-
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readModulesConnectionSaga [77] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const readModulesConnection = withDebounce(readModulesConnectionGenerator, 500)
+export const readModulesConnection = withDebounce(
+  withLoaderWrapperSaga(readModulesConnectionGenerator),
+  500
+)
 
 export default function* readModulesConnectionSaga() {
   yield takeEvery([actionAsync.READ_MODULES_CONNECTION.REQUEST().type], readModulesConnection)

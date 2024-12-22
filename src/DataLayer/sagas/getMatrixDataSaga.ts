@@ -2,6 +2,7 @@ import { takeEvery, call, put, select } from 'redux-saga/effects'
 
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {

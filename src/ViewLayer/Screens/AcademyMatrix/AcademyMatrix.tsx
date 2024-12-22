@@ -45,7 +45,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     { type: 'SET_QUERY_URL_HANDLER', data: { isReplacing: true } },
     { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
-    { type: 'GET_MATRIX_DATA' },
+    // { type: 'GET_MATRIX_DATA' },
+    { type: 'READ_MODULES_CONNECTION' },
+    { type: 'READ_TAGS_CONNECTION' },
   ])
 
   useLoadedInitialTeachContent({ isSkipping: false })
