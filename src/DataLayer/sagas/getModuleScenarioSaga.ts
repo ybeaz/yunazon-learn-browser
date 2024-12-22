@@ -114,7 +114,13 @@ export function* getModuleScenarioGenerator(params: ActionReduxType | any): Iter
   }
 }
 
-export const getModuleScenario = withDebounce(getModuleScenarioGenerator, 500)
+export const getModuleScenario = withDebounce(
+  withTryCatchFinallySaga(getModuleScenarioGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModuleScenarioSaga() {
   yield takeEvery([actionAsync.GET_MODULE_SCENARIO.REQUEST().type], getModuleScenario)

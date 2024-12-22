@@ -65,7 +65,13 @@ export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iter
   }
 }
 
-export const getBotResponse = withDebounce(getBotResponseGenerator, 500)
+export const getBotResponse = withDebounce(
+  withTryCatchFinallySaga(getBotResponseGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getBotResponseSaga() {
   yield takeEvery([actionAsync.GET_BOT_RESPONSE.REQUEST().type], getBotResponse)

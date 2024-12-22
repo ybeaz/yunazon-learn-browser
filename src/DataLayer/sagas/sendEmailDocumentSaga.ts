@@ -51,7 +51,10 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
 }
 
 export const sendEmailDocument = withDebounce(
-  withLoaderWrapperSaga(sendEmailDocumentGenerator),
+  withTryCatchFinallySaga(withLoaderWrapperSaga(sendEmailDocumentGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
   500
 )
 

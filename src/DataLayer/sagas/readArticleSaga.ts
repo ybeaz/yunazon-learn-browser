@@ -19,7 +19,13 @@ export function* readArticleGenerator(params: ActionReduxType | any): Iterable<a
   }
 }
 
-export const readArticle = withDebounce(withLoaderWrapperSaga(readArticleGenerator), 500)
+export const readArticle = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readArticleGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* readArticleSaga() {
   yield takeEvery([actionAsync.FIND_ARTICLE.REQUEST().type], readArticle)

@@ -88,7 +88,13 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
   }
 }
 
-export const getDocuments = withDebounce(withLoaderWrapperSaga(getDocumentsGenerator), 500)
+export const getDocuments = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(getDocumentsGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getDocumentsSaga() {
   yield takeEvery([actionAsync.GET_DOCUMENTS.REQUEST().type], getDocuments)

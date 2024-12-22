@@ -109,7 +109,13 @@ export function* getModule45QuestionsCreatedGenerator(
   }
 }
 
-export const getModule45QuestionsCreated = withDebounce(getModule45QuestionsCreatedGenerator, 500)
+export const getModule45QuestionsCreated = withDebounce(
+  withTryCatchFinallySaga(getModule45QuestionsCreatedGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule45QuestionsCreatedSaga() {
   yield takeEvery(

@@ -83,7 +83,13 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
   }
 }
 
-export const getCourses = withDebounce(withLoaderWrapperSaga(getCoursesGenerator), 500)
+export const getCourses = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(getCoursesGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getCoursesSaga() {
   yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)

@@ -109,7 +109,13 @@ export function* getModule55ObjectionsCreatedGenerator(
   }
 }
 
-export const getModule55ObjectionsCreated = withDebounce(getModule55ObjectionsCreatedGenerator, 500)
+export const getModule55ObjectionsCreated = withDebounce(
+  withTryCatchFinallySaga(getModule55ObjectionsCreatedGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule55ObjectionsCreatedSaga() {
   yield takeEvery(

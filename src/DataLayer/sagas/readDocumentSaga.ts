@@ -35,7 +35,12 @@ function* readDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-const readDocument = withLoaderWrapperSaga(readDocumentGenerator)
+const readDocument = withLoaderWrapperSaga(
+  withTryCatchFinallySaga(readDocumentGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  })
+)
 
 export default function* readDocumentSaga() {
   yield takeEvery([actionAsync.FIND_DOCUMENT.REQUEST().type], readDocument)

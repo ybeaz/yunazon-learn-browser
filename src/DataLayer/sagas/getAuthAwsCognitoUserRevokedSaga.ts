@@ -12,7 +12,7 @@ import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
-function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
+function* getAuthAwsCognitoUserRevokedGenerator(): Iterable<any> {
   try {
     const envType = getDetectedEnv()
     const redirect_uri = CLIENTS_URI[envType]
@@ -66,6 +66,14 @@ function* getAuthAwsCognitoUserRevoked(): Iterable<any> {
     console.log('getAuthAwsCognitoUserRevokedSaga [65] ERROR', `${error.name}: ${error.message}`)
   }
 }
+
+export const getAuthAwsCognitoUserRevoked = withTryCatchFinallySaga(
+  getAuthAwsCognitoUserRevokedGenerator,
+  {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }
+)
 
 /**
  * @description Function to getAuthAwsCognitoUserRevokedSaga

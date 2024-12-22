@@ -87,7 +87,13 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-export const getModule = withDebounce(withLoaderWrapperSaga(getModuleGenerator), 500)
+export const getModule = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(getModuleGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)

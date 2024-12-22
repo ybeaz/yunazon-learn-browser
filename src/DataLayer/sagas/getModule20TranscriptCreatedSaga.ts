@@ -99,7 +99,13 @@ export function* getModule20TranscriptCreatedGenerator(
   }
 }
 
-export const getModule20TranscriptCreated = withDebounce(getModule20TranscriptCreatedGenerator, 500)
+export const getModule20TranscriptCreated = withDebounce(
+  withTryCatchFinallySaga(getModule20TranscriptCreatedGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule20TranscriptCreatedSaga() {
   yield takeEvery(

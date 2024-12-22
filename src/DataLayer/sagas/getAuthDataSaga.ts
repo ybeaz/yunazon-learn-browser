@@ -104,7 +104,13 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-export const getAuthData = withDebounce(getAuthDataGenerator, 500)
+export const getAuthData = withDebounce(
+  withTryCatchFinallySaga(getAuthDataGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getAuthDataSaga() {
   yield takeEvery([actionAsync.GET_AUTH_DATA.REQUEST().type], getAuthData)

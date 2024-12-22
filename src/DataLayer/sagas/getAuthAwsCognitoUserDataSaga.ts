@@ -12,7 +12,7 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { readModulesConnection } from './readModulesConnectionSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
-export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Iterable<any> {
+export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
     data: { code },
   } = params
@@ -57,6 +57,14 @@ export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Itera
     console.log('getAuthAwsCognitoUserDataSaga [53] ERROR', `${error.name}: ${error.message}`)
   }
 }
+
+export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(
+  getAuthAwsCognitoUserDataGenerator,
+  {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }
+)
 
 /**
  * @description Function to getAuthAwsCognitoUserDataSaga

@@ -1,5 +1,5 @@
 export const withTryCatchFinallySaga: (
-  saga: (params: any[]) => Iterable<any>,
+  saga: (params: any) => Iterable<any>,
   options?: { optionsDefault?: { funcParent?: string }; resDefault?: any }
 ) => any = (saga: any, options?: any): any => {
   const { optionsDefault: { funcParent } = { funcParent: '' }, resDefault = null } = options || {}

@@ -96,7 +96,13 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
   }
 }
 
-export const getModule35SummaryCreated = withDebounce(getModule35SummaryCreatedGenerator, 500)
+export const getModule35SummaryCreated = withDebounce(
+  withTryCatchFinallySaga(getModule35SummaryCreatedGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule35SummaryCreatedSaga() {
   yield takeEvery(

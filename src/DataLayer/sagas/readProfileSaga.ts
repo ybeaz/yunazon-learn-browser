@@ -49,7 +49,13 @@ export function* readProfileGenerator(params: GetBotResponseParamsType): Iterabl
   }
 }
 
-export const readProfile = withDebounce(readProfileGenerator, 500)
+export const readProfile = withDebounce(
+  withTryCatchFinallySaga(readProfileGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* readProfileSaga() {
   yield takeEvery([actionAsync.GET_PROFILE.REQUEST().type], readProfile)

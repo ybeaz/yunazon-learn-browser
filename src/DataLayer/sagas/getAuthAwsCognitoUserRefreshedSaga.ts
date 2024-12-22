@@ -67,7 +67,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
 }
 
 export const getAuthAwsCognitoUserRefreshed = withDebounce(
-  getAuthAwsCognitoUserRefreshedGenerator,
+  withTryCatchFinallySaga(getAuthAwsCognitoUserRefreshedGenerator, {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
   10
 )
 

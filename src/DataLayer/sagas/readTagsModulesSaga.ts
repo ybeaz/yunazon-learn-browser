@@ -55,7 +55,13 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
   }
 }
 
-export const readTagsModules = withDebounce(withLoaderWrapperSaga(readTagsModulesGenerator), 500)
+export const readTagsModules = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readTagsModulesGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* readTagsModulesSaga() {
   yield takeEvery([actionAsync.READ_TAGS_CLOUD_MODULES.REQUEST().type], readTagsModules)

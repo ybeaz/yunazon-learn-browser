@@ -79,7 +79,13 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
   }
 }
 
-export const getModule10MetaDataCreated = withDebounce(getModule10MetaDataCreatedGenerator, 500)
+export const getModule10MetaDataCreated = withDebounce(
+  withTryCatchFinallySaga(getModule10MetaDataCreatedGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule10MetaDataCreatedSaga() {
   yield takeEvery(

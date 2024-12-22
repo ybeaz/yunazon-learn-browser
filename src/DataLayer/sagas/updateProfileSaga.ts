@@ -37,7 +37,13 @@ function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-export const updateProfile = withDebounce(updateProfileGenerator, 500)
+export const updateProfile = withDebounce(
+  withTryCatchFinallySaga(updateProfileGenerator, {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* updateProfileSaga() {
   yield takeEvery([actionAsync.UPDATE_PROFILE.REQUEST().type], updateProfile)
