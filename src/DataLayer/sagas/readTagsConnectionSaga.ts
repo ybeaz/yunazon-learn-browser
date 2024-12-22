@@ -14,6 +14,8 @@ import { getChainedResponsibility } from 'yourails_common'
 import { getMappedConnectionToItems } from 'yourails_common'
 import { PAGINATION_OFFSET } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
+import { withTryCatchFinallyWrapper } from 'yourails_common'
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay
@@ -41,72 +43,71 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
 
-  try {
-    const variables: QueryReadTagsConnectionArgs = {
-      readTagsConnectionInput: {
-        isActive: true,
-        tagIDs: [],
-        contentIDs: [],
-        creatorIDs: [],
-        learnerUserID,
-        first,
-        offset,
-        after: '',
-        language: '',
-        searchPhrase: tagsSearch || documentsSearch,
-        searchIn: ['value'],
-        operators: {
-          searchPhrase: 'or',
-        },
-        tagsPick: [],
-        tagsOmit: [],
-        sort: {
-          prop: 'count',
-          direction: -1,
-        },
-        sortGraphQl: {
-          prop: 'completed',
-          direction: -1,
-        },
+  const variables: QueryReadTagsConnectionArgs = {
+    readTagsConnectionInput: {
+      isActive: true,
+      tagIDs: [],
+      contentIDs: [],
+      creatorIDs: [],
+      learnerUserID,
+      first,
+      offset,
+      after: '',
+      language: '',
+      searchPhrase: tagsSearch || documentsSearch,
+      searchIn: ['value'],
+      operators: {
+        searchPhrase: 'or',
       },
-    }
-
-    variables.readTagsConnectionInput.minCount = minCount || 3
-    if (minCompleted) variables.readTagsConnectionInput.minCompleted = minCompleted
-
-    const readTagsConnection: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readTagsConnection'],
+      tagsPick: [],
+      tagsOmit: [],
+      sort: {
+        prop: 'count',
+        direction: -1,
       },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
-
-    let tags: any = getChainedResponsibility(readTagsConnection)
-      .exec(getMappedConnectionToItems, {
-        printRes: false,
-      })
-      .exec((tags: any) =>
-        tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags'])
-      ).result
-
-    yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
-
-    const pageInfo = readTagsConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo })
-    )
-  } catch (error: any) {
-    console.info('readTagsConnection [35] ERROR', `${error.name}: ${error.message}`)
+      sortGraphQl: {
+        prop: 'completed',
+        direction: -1,
+      },
+    },
   }
+
+  variables.readTagsConnectionInput.minCount = minCount || 3
+  if (minCompleted) variables.readTagsConnectionInput.minCompleted = minCompleted
+
+  const readTagsConnection: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readTagsConnection'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
+    }
+  )
+
+  let tags: any = getChainedResponsibility(readTagsConnection)
+    .exec(getMappedConnectionToItems, {
+      printRes: false,
+    })
+    .exec((tags: any) =>
+      tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags'])
+    ).result
+
+  yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: tags }))
+
+  const pageInfo = readTagsConnection?.pageInfo
+  yield put(
+    actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo })
+  )
 }
 
 export const readTagsConnection = withDebounce(
-  withLoaderWrapperSaga(readTagsConnectionGenerator),
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readTagsConnectionGenerator), {
+    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    resDefault: [],
+  }),
   500
 )
 
