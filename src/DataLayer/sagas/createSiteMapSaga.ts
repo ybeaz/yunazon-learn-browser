@@ -9,21 +9,17 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable<any> {
-  try {
-    const createSiteMap: any = yield getResponseGraphqlAsync(
-      {
-        variables: {},
-        resolveGraphqlName: ResolveGraphqlEnumType['createSiteMap'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-  } catch (error: any) {
-    console.info('createSiteMapSaga [33] ERROR', `${error.name}: ${error.message}`)
-  }
+  const createSiteMap: any = yield getResponseGraphqlAsync(
+    {
+      variables: {},
+      resolveGraphqlName: ResolveGraphqlEnumType['createSiteMap'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
 }
 
 export const createSiteMap = withDebounce(

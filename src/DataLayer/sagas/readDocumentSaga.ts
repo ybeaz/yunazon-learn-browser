@@ -12,27 +12,23 @@ import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 function* readDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   const { data: documentID } = params
 
-  try {
-    const variables: QueryReadDocumentsArgs = {
-      readDocumentsIdsInput: [documentID],
-    }
-
-    const readDocuments: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readDocuments'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield put(actionSync.SET_DOCUMENTS(readDocuments))
-  } catch (error: any) {
-    console.info('readDocument [35] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryReadDocumentsArgs = {
+    readDocumentsIdsInput: [documentID],
   }
+
+  const readDocuments: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readDocuments'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield put(actionSync.SET_DOCUMENTS(readDocuments))
 }
 
 const readDocument = withLoaderWrapperSaga(

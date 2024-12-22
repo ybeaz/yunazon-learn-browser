@@ -48,39 +48,35 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     isActive: true,
   }
 
-  try {
-    const variables: QueryReadCoursesConnectionArgs = {
-      readCoursesConnectionInput,
-    }
-
-    const readCoursesConnection: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readCoursesConnection'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
-
-    let coursesNext: any = getChainedResponsibility(readCoursesConnection)
-      .exec(getMappedConnectionToItems, { printRes: false })
-      .exec(getPreparedCourses).result
-
-    yield put(actionSync.SET_COURSES(coursesNext))
-
-    const pageInfo = readCoursesConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({
-        paginationName: PaginationNameEnumType['pageModules'],
-        ...pageInfo,
-      })
-    )
-  } catch (error: any) {
-    console.info('getCoursesSaga [77] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryReadCoursesConnectionArgs = {
+    readCoursesConnectionInput,
   }
+
+  const readCoursesConnection: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readCoursesConnection'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
+    }
+  )
+
+  let coursesNext: any = getChainedResponsibility(readCoursesConnection)
+    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getPreparedCourses).result
+
+  yield put(actionSync.SET_COURSES(coursesNext))
+
+  const pageInfo = readCoursesConnection?.pageInfo
+  yield put(
+    actionSync.SET_PAGE_INFO({
+      paginationName: PaginationNameEnumType['pageModules'],
+      ...pageInfo,
+    })
+  )
 }
 
 export const getCourses = withDebounce(

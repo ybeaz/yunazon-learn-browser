@@ -10,13 +10,9 @@ import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 export function* readArticleGenerator(params: ActionReduxType | any): Iterable<any> {
   const { data: articleID } = params
 
-  try {
-    let articleNext: any = articles.find((article: any) => article.articleID === articleID)
+  let articleNext: any = articles.find((article: any) => article.articleID === articleID)
 
-    yield put(actionSync.SET_ARTICLES([articleNext]))
-  } catch (error: any) {
-    console.info('readArticleSaga [33] ERROR', `${error.name}: ${error.message}`)
-  }
+  yield put(actionSync.SET_ARTICLES([articleNext]))
 }
 
 export const readArticle = withDebounce(

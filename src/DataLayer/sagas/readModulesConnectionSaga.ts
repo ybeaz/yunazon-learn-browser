@@ -110,49 +110,45 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
 
-  try {
-    const variables: QueryReadModulesConnectionArgs = {
-      readModulesConnectionInput,
+  const variables: QueryReadModulesConnectionArgs = {
+    readModulesConnectionInput,
+  }
+
+  const readModulesConnection: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readModulesConnection'],
+      fragmentName: FragmentEnumType['ModuleTypeForMartix'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
     }
+  )
 
-    const readModulesConnection: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readModulesConnection'],
-        fragmentName: FragmentEnumType['ModuleTypeForMartix'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
+  let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
+    getMappedConnectionToItems,
+    { printRes: false }
+  ).result
 
-    let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
-      getMappedConnectionToItems,
-      { printRes: false }
-    ).result
+  yield put(actionSync.SET_MODULES(modulesNext))
 
-    yield put(actionSync.SET_MODULES(modulesNext))
-
-    if (tagsPick.length && tagsPick[0])
-      yield put(
-        actionSync.SET_COMPONENTS_STATE({
-          componentsStateProp: 'tagsSearchForModules',
-          value: tagsPick[0],
-        })
-      )
-
-    const pageInfo = readModulesConnection?.pageInfo
+  if (tagsPick.length && tagsPick[0])
     yield put(
-      actionSync.SET_PAGE_INFO({
-        paginationName: PaginationNameEnumType['pageModules'],
-        ...pageInfo,
+      actionSync.SET_COMPONENTS_STATE({
+        componentsStateProp: 'tagsSearchForModules',
+        value: tagsPick[0],
       })
     )
-  } catch (error: any) {
-    console.info('readModulesConnectionSaga [77] ERROR', `${error.name}: ${error.message}`)
-  }
+
+  const pageInfo = readModulesConnection?.pageInfo
+  yield put(
+    actionSync.SET_PAGE_INFO({
+      paginationName: PaginationNameEnumType['pageModules'],
+      ...pageInfo,
+    })
+  )
 }
 
 export const readModulesConnection = withDebounce(

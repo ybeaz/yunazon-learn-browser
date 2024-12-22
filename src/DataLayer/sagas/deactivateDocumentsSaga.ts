@@ -16,34 +16,30 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
     data: { documentsIDs },
   } = params
 
-  try {
-    const variables: MutationDeactivateDocumentsArgs = {
-      deactivateDocumentsIdsInput: documentsIDs,
-    }
-
-    const deactivateDocuments: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['deactivateDocuments'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield call(getDocuments)
-
-    yield put(
-      actionSync.SET_MODAL_FRAMES({
-        childName: 'ConfirmationYesNoBodyYrl',
-        isActive: false,
-      })
-    )
-  } catch (error: any) {
-    console.info('deactivateDocuments [41] ERROR', `${error.name}: ${error.message}`)
+  const variables: MutationDeactivateDocumentsArgs = {
+    deactivateDocumentsIdsInput: documentsIDs,
   }
+
+  const deactivateDocuments: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['deactivateDocuments'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield call(getDocuments)
+
+  yield put(
+    actionSync.SET_MODAL_FRAMES({
+      childName: 'ConfirmationYesNoBodyYrl',
+      isActive: false,
+    })
+  )
 }
 
 export const deactivateDocuments = withDebounce(

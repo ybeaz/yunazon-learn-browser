@@ -16,34 +16,30 @@ function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<an
     data: { coursesIDs },
   } = params
 
-  try {
-    const variables: MutationDeactivateCoursesArgs = {
-      deactivateCoursesIdsInput: coursesIDs,
-    }
-
-    const deactivateCourses: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['deactivateCourses'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield call(getCourses)
-
-    yield put(
-      actionSync.SET_MODAL_FRAMES({
-        childName: 'ConfirmationYesNoBodyYrl',
-        isActive: false,
-      })
-    )
-  } catch (error: any) {
-    console.info('deactivateCourses [41] ERROR', `${error.name}: ${error.message}`)
+  const variables: MutationDeactivateCoursesArgs = {
+    deactivateCoursesIdsInput: coursesIDs,
   }
+
+  const deactivateCourses: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['deactivateCourses'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield call(getCourses)
+
+  yield put(
+    actionSync.SET_MODAL_FRAMES({
+      childName: 'ConfirmationYesNoBodyYrl',
+      isActive: false,
+    })
+  )
 }
 
 export const deactivateCourses = withDebounce(

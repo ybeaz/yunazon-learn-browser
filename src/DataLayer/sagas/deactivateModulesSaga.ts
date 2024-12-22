@@ -16,34 +16,30 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
     data: { modulesIDs },
   } = params
 
-  try {
-    const variables: MutationDeactivateModulesArgs = {
-      deactivateModulesIdsInput: modulesIDs,
-    }
-
-    const deactivateModules: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['deactivateModules'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield call(readModulesConnection)
-
-    yield put(
-      actionSync.SET_MODAL_FRAMES({
-        childName: 'ConfirmationYesNoBodyYrl',
-        isActive: false,
-      })
-    )
-  } catch (error: any) {
-    console.info('deactivateModules [41] ERROR', `${error.name}: ${error.message}`)
+  const variables: MutationDeactivateModulesArgs = {
+    deactivateModulesIdsInput: modulesIDs,
   }
+
+  const deactivateModules: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['deactivateModules'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield call(readModulesConnection)
+
+  yield put(
+    actionSync.SET_MODAL_FRAMES({
+      childName: 'ConfirmationYesNoBodyYrl',
+      isActive: false,
+    })
+  )
 }
 
 export const deactivateModules = withDebounce(

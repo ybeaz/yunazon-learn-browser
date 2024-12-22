@@ -17,45 +17,41 @@ export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | an
     data: { code },
   } = params
 
-  try {
-    const envType = getDetectedEnv()
-    const redirect_uri = CLIENTS_URI[envType]
+  const envType = getDetectedEnv()
+  const redirect_uri = CLIENTS_URI[envType]
 
-    const variables: QueryGetAuthAwsCognitoUserDataArgs = {
-      userIdDataAwsCognitoInput: {
-        code,
-        redirect_uri,
-        client_app: ClientAppEnumType['ACADEMY'],
-      },
-    }
-
-    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserData'],
-      },
-      {
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield getLocalStorageSetObjTo({
-      refresh_token: authAwsCognitoUserData.refresh_token,
-      sub: authAwsCognitoUserData.sub,
-    })
-
-    yield put(
-      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
-        authAwsCognitoUserData,
-        source: 'getAuthAwsCognitoUserDataSaga',
-      })
-    )
-
-    yield readModulesConnection()
-  } catch (error: any) {
-    console.log('getAuthAwsCognitoUserDataSaga [53] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryGetAuthAwsCognitoUserDataArgs = {
+    userIdDataAwsCognitoInput: {
+      code,
+      redirect_uri,
+      client_app: ClientAppEnumType['ACADEMY'],
+    },
   }
+
+  const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserData'],
+    },
+    {
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield getLocalStorageSetObjTo({
+    refresh_token: authAwsCognitoUserData.refresh_token,
+    sub: authAwsCognitoUserData.sub,
+  })
+
+  yield put(
+    actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
+      authAwsCognitoUserData,
+      source: 'getAuthAwsCognitoUserDataSaga',
+    })
+  )
+
+  yield readModulesConnection()
 }
 
 export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(

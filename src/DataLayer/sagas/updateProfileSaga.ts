@@ -14,27 +14,23 @@ function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
     data: { profile },
   } = params
 
-  try {
-    const variables: MutationUpdateProfilesArgs = {
-      updateProfilesInput: [profile],
-    }
-
-    const updateProfiles: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['updateProfiles'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield put(actionSync.SET_PROFILES(updateProfiles))
-  } catch (error: any) {
-    console.info('updateProfile [82] ERROR', `${error.name}: ${error.message}`)
+  const variables: MutationUpdateProfilesArgs = {
+    updateProfilesInput: [profile],
   }
+
+  const updateProfiles: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['updateProfiles'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield put(actionSync.SET_PROFILES(updateProfiles))
 }
 
 export const updateProfile = withDebounce(

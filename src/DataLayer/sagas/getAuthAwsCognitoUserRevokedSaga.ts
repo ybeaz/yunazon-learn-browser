@@ -13,58 +13,54 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* getAuthAwsCognitoUserRevokedGenerator(): Iterable<any> {
-  try {
-    const envType = getDetectedEnv()
-    const redirect_uri = CLIENTS_URI[envType]
+  const envType = getDetectedEnv()
+  const redirect_uri = CLIENTS_URI[envType]
 
-    let refresh_token = null
+  let refresh_token = null
 
-    const storeStateApp = select((store: RootStoreType) => store)
+  const storeStateApp = select((store: RootStoreType) => store)
 
-    const refresh_token_App =
-      // @ts-expect-error
-      storeStateApp?.authAwsCognitoUserData?.refresh_token
+  const refresh_token_App =
+    // @ts-expect-error
+    storeStateApp?.authAwsCognitoUserData?.refresh_token
 
-    const refresh_token_localStorage = getLocalStorageReadKeyObj('refresh_token')
+  const refresh_token_localStorage = getLocalStorageReadKeyObj('refresh_token')
 
-    if (refresh_token_App) refresh_token = refresh_token_App
-    else if (refresh_token_localStorage) refresh_token = refresh_token_localStorage
+  if (refresh_token_App) refresh_token = refresh_token_App
+  else if (refresh_token_localStorage) refresh_token = refresh_token_localStorage
 
-    if (!refresh_token) return
+  if (!refresh_token) return
 
-    const variables: QueryGetAuthAwsCognitoUserRevokedArgs = {
-      userIdDataAwsCognitoInput: {
-        refresh_token,
-        redirect_uri,
-        client_app: ClientAppEnumType['ACADEMY'],
-      },
-    }
-
-    const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserRevoked'],
-      },
-      {
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield put(
-      actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
-        authAwsCognitoUserData,
-        source: 'getAuthAwsCognitoUserRevokedSaga',
-      })
-    )
-
-    getLocalStorageSetObjTo({
-      refresh_token: '',
-      sub: '',
-    })
-  } catch (error: any) {
-    console.log('getAuthAwsCognitoUserRevokedSaga [65] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryGetAuthAwsCognitoUserRevokedArgs = {
+    userIdDataAwsCognitoInput: {
+      refresh_token,
+      redirect_uri,
+      client_app: ClientAppEnumType['ACADEMY'],
+    },
   }
+
+  const authAwsCognitoUserData: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['getAuthAwsCognitoUserRevoked'],
+    },
+    {
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield put(
+    actionSync.SET_AUTH_AWS_COGNITO_USER_DATA({
+      authAwsCognitoUserData,
+      source: 'getAuthAwsCognitoUserRevokedSaga',
+    })
+  )
+
+  getLocalStorageSetObjTo({
+    refresh_token: '',
+    sub: '',
+  })
 }
 
 export const getAuthAwsCognitoUserRevoked = withTryCatchFinallySaga(

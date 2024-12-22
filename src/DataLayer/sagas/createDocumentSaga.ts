@@ -38,42 +38,38 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
     propValue: sub,
   })
 
-  try {
-    const moduleForDocument = { ...module }
+  const moduleForDocument = { ...module }
 
-    ;['article', 'transcriptList', 'questions', 'objections'].forEach(
-      (prop: string) => delete moduleForDocument[prop]
-    )
+  ;['article', 'transcriptList', 'questions', 'objections'].forEach(
+    (prop: string) => delete moduleForDocument[prop]
+  )
 
-    const variables: MutationCreateDocumentsArgs = {
-      createDocumentsInput: [
-        {
-          isActive: true,
-          module: moduleForDocument,
-          learner: profileLearner,
-          creator: profileCreator,
-        },
-      ],
-    }
-
-    const createDocuments: any = yield getResponseGraphqlAsync(
+  const variables: MutationCreateDocumentsArgs = {
+    createDocumentsInput: [
       {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['createDocuments'],
+        isActive: true,
+        module: moduleForDocument,
+        learner: profileLearner,
+        creator: profileCreator,
       },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 5000,
-      }
-    )
-
-    yield put(actionSync.SET_DOCUMENTS(createDocuments))
-
-    return createDocuments
-  } catch (error: any) {
-    console.info('createDocument [82] ERROR', `${error.name}: ${error.message}`)
+    ],
   }
+
+  const createDocuments: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['createDocuments'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 5000,
+    }
+  )
+
+  yield put(actionSync.SET_DOCUMENTS(createDocuments))
+
+  return createDocuments
 }
 
 export const createDocument = withDebounce(

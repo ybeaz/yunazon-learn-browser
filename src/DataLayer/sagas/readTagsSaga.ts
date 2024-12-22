@@ -27,32 +27,28 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
 
-  try {
-    const variables: QueryReadTagsArgs = {
-      readTagsInput: [
-        {
-          tagID,
-          learnerUserID: sub_localStorage,
-        },
-      ],
-    }
-
-    const readTags: any = yield getResponseGraphqlAsync(
+  const variables: QueryReadTagsArgs = {
+    readTagsInput: [
       {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readTags'],
+        tagID,
+        learnerUserID: sub_localStorage,
       },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
-
-    yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
-  } catch (error: any) {
-    console.info('readTags [35] ERROR', `${error.name}: ${error.message}`)
+    ],
   }
+
+  const readTags: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readTags'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
+    }
+  )
+
+  yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
 }
 
 export const readTags = withDebounce(
