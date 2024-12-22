@@ -47,7 +47,10 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
 }
 
 export const deactivateModules = withDebounce(
-  withLoaderWrapperSaga(deactivateModulesGenerator),
+  withTryCatchFinallySaga(withLoaderWrapperSaga(deactivateModulesGenerator), {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
   500
 )
 

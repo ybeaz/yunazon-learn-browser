@@ -1,16 +1,16 @@
 export const withTryCatchFinallySaga: (
-  saga: (...args: any[]) => Generator,
+  saga: (params: any[]) => Iterable<any>,
   options?: { optionsDefault?: { funcParent?: string }; resDefault?: any }
 ) => any = (saga: any, options?: any): any => {
   const { optionsDefault: { funcParent } = { funcParent: '' }, resDefault = null } = options || {}
 
   const funcParentAdd = funcParent ? { funcParent } : {}
 
-  return function* (...args: any) {
+  return function* (params: any) {
     let result = resDefault
 
     try {
-      result = yield saga(...args)
+      result = yield saga(params)
     } catch (error) {
       console.info(
         '📕 %cwithTryCatchFinallySaga [15] %cERROR',

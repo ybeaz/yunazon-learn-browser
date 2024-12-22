@@ -94,7 +94,10 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
 }
 
 export const createDocumentScenario = withDebounce(
-  withLoaderWrapperSaga(createDocumentScenarioGenerator),
+  withTryCatchFinallySaga(withLoaderWrapperSaga(createDocumentScenarioGenerator), {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
   500
 )
 

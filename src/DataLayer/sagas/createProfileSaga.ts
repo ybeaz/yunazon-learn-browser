@@ -69,7 +69,13 @@ function* createProfileGenerator(params: ActionReduxType | any): Iterable<any> {
   }
 }
 
-export const createProfile = withDebounce(createProfileGenerator, 500)
+export const createProfile = withDebounce(
+  withTryCatchFinallySaga(createProfileGenerator, {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* createProfileSaga() {
   yield takeEvery([actionAsync.CREATE_PROFILE.REQUEST().type], createProfile)

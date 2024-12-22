@@ -76,7 +76,13 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
   }
 }
 
-export const createDocument = withDebounce(createDocumentGenerator, 500)
+export const createDocument = withDebounce(
+  withTryCatchFinallySaga(createDocumentGenerator, {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* createDocumentSaga() {
   yield takeEvery([actionAsync.CREATE_DOCUMENT.REQUEST().type], createDocument)

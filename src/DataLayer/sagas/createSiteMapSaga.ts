@@ -26,7 +26,13 @@ export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable
   }
 }
 
-export const createSiteMap = withDebounce(createSiteMapGenerator, 500)
+export const createSiteMap = withDebounce(
+  withTryCatchFinallySaga(createSiteMapGenerator, {
+    optionsDefault: { funcParent: '' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* createSiteMapSaga() {
   yield takeEvery([actionAsync.CREATE_SITE_MAP.REQUEST().type], createSiteMap)
