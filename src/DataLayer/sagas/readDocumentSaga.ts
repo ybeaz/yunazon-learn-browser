@@ -37,7 +37,7 @@ function* readDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
 
 const readDocument = withLoaderWrapperSaga(
   withTryCatchFinallySaga(readDocumentGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'readDocumentSaga' },
     resDefault: [],
   })
 )

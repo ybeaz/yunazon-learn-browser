@@ -71,7 +71,7 @@ function* createProfileGenerator(params: ActionReduxType | any): Iterable<any> {
 
 export const createProfile = withDebounce(
   withTryCatchFinallySaga(createProfileGenerator, {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'createProfileSaga' },
     resDefault: [],
   }),
   500

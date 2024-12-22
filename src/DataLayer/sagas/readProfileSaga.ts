@@ -51,7 +51,7 @@ export function* readProfileGenerator(params: GetBotResponseParamsType): Iterabl
 
 export const readProfile = withDebounce(
   withTryCatchFinallySaga(readProfileGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'readProfileSaga' },
     resDefault: [],
   }),
   500

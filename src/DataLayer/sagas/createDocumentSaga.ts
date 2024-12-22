@@ -78,7 +78,7 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
 
 export const createDocument = withDebounce(
   withTryCatchFinallySaga(createDocumentGenerator, {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'createDocumentSaga' },
     resDefault: [],
   }),
   500

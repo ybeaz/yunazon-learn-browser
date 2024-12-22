@@ -89,7 +89,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
 
 export const getModule = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(getModuleGenerator), {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getModuleSaga' },
     resDefault: [],
   }),
   500

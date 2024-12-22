@@ -95,7 +95,7 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
 
 export const createDocumentScenario = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(createDocumentScenarioGenerator), {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'createDocumentScenarioSagaa' },
     resDefault: [],
   }),
   500

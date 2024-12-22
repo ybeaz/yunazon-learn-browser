@@ -28,7 +28,7 @@ export function* createSiteMapGenerator(params: ActionReduxType | any): Iterable
 
 export const createSiteMap = withDebounce(
   withTryCatchFinallySaga(createSiteMapGenerator, {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'createSiteMapSaga' },
     resDefault: [],
   }),
   500

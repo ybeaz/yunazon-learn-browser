@@ -157,7 +157,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
 
 export const readModulesConnection = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(readModulesConnectionGenerator), {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'readModulesConnectionSaga' },
     resDefault: [],
   }),
   500

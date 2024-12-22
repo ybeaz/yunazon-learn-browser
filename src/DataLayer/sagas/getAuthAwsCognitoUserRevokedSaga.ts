@@ -70,7 +70,7 @@ function* getAuthAwsCognitoUserRevokedGenerator(): Iterable<any> {
 export const getAuthAwsCognitoUserRevoked = withTryCatchFinallySaga(
   getAuthAwsCognitoUserRevokedGenerator,
   {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'getAuthAwsCognitoUserRevokedSaga' },
     resDefault: [],
   }
 )

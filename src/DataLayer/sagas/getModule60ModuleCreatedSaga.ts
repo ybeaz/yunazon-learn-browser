@@ -108,7 +108,7 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
 
 export const getModule60ModuleCreated = withDebounce(
   withTryCatchFinallySaga(getModule60ModuleCreatedGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getModule60ModuleCreatedSaga' },
     resDefault: [],
   }),
   500

@@ -48,7 +48,7 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
 
 export const deactivateDocuments = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(deactivateDocumentsGenerator), {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'deactivateDocumentsSaga' },
     resDefault: [],
   }),
   500

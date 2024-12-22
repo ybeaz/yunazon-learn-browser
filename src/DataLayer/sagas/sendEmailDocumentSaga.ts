@@ -52,7 +52,7 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
 
 export const sendEmailDocument = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(sendEmailDocumentGenerator), {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'sendEmailDocumentSaga' },
     resDefault: [],
   }),
   500

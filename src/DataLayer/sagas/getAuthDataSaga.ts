@@ -106,7 +106,7 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
 
 export const getAuthData = withDebounce(
   withTryCatchFinallySaga(getAuthDataGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getAuthDataSaga' },
     resDefault: [],
   }),
   500

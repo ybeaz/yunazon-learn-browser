@@ -61,7 +61,7 @@ export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | an
 export const getAuthAwsCognitoUserData = withTryCatchFinallySaga(
   getAuthAwsCognitoUserDataGenerator,
   {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'getAuthAwsCognitoUserDataSaga' },
     resDefault: [],
   }
 )

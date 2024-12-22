@@ -39,7 +39,7 @@ function* updateProfileGenerator(params: ActionReduxType | any): Iterable<any> {
 
 export const updateProfile = withDebounce(
   withTryCatchFinallySaga(updateProfileGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'updateProfileSaga' },
     resDefault: [],
   }),
   500

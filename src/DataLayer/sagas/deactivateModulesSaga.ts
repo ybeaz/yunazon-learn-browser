@@ -48,7 +48,7 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
 
 export const deactivateModules = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(deactivateModulesGenerator), {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'deactivateModulesSaga' },
     resDefault: [],
   }),
   500

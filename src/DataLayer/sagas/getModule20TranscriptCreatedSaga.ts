@@ -101,7 +101,7 @@ export function* getModule20TranscriptCreatedGenerator(
 
 export const getModule20TranscriptCreated = withDebounce(
   withTryCatchFinallySaga(getModule20TranscriptCreatedGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getModule20TranscriptCreatedSaga' },
     resDefault: [],
   }),
   500

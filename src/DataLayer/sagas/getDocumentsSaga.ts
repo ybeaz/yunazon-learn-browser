@@ -90,7 +90,7 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
 
 export const getDocuments = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(getDocumentsGenerator), {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getDocumentsSaga' },
     resDefault: [],
   }),
   500

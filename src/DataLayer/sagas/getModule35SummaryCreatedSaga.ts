@@ -98,7 +98,7 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
 
 export const getModule35SummaryCreated = withDebounce(
   withTryCatchFinallySaga(getModule35SummaryCreatedGenerator, {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'getModule35SummaryCreatedSaga' },
     resDefault: [],
   }),
   500

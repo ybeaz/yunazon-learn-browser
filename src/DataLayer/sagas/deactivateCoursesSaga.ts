@@ -48,7 +48,7 @@ function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<an
 
 export const deactivateCourses = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(deactivateCoursesGenerator), {
-    optionsDefault: { funcParent: '' },
+    optionsDefault: { funcParent: 'deactivateCoursesSaga' },
     resDefault: [],
   }),
   500

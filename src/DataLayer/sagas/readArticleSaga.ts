@@ -21,7 +21,7 @@ export function* readArticleGenerator(params: ActionReduxType | any): Iterable<a
 
 export const readArticle = withDebounce(
   withTryCatchFinallySaga(withLoaderWrapperSaga(readArticleGenerator), {
-    optionsDefault: { funcParent: 'readTagsConnectionSaga' },
+    optionsDefault: { funcParent: 'readArticleSaga' },
     resDefault: [],
   }),
   500
