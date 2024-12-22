@@ -27,8 +27,6 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   learnerUserID = sub || sub_localStorage
 
   try {
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: QueryReadTagsArgs = {
       readTagsInput: [
         {
@@ -51,14 +49,12 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
     )
 
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
-
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readTags [35] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const readTags = withDebounce(readTagsGenerator, 500)
+export const readTags = withDebounce(withLoaderWrapperSaga(readTagsGenerator), 500)
 
 export default function* readTagsSaga() {
   yield takeEvery([actionAsync.READ_TAGS.REQUEST().type], readTags)

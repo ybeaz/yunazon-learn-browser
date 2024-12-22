@@ -20,8 +20,6 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const modulesInProgress = getLocalStorageReadKeyObj('modulesInProgress') || []
 
     let moduleInProgres = null
@@ -83,14 +81,12 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     if (width <= 480) {
       yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
     }
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getModule [95] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getModule = withDebounce(getModuleGenerator, 500)
+export const getModule = withDebounce(withLoaderWrapperSaga(getModuleGenerator), 500)
 
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)

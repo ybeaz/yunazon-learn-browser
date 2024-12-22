@@ -16,8 +16,6 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: MutationDeactivateDocumentsArgs = {
       deactivateDocumentsIdsInput: documentsIDs,
     }
@@ -36,7 +34,6 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
 
     yield call(getDocuments)
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(
       actionSync.SET_MODAL_FRAMES({
         childName: 'ConfirmationYesNoBodyYrl',
@@ -48,7 +45,10 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
   }
 }
 
-export const deactivateDocuments = withDebounce(deactivateDocumentsGenerator, 500)
+export const deactivateDocuments = withDebounce(
+  withLoaderWrapperSaga(deactivateDocumentsGenerator),
+  500
+)
 
 export default function* deactivateDocumentsSaga() {
   yield takeEvery([actionAsync.DEACTIVATE_DOCUMENTS.REQUEST().type], deactivateDocuments)

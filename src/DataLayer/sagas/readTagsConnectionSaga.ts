@@ -42,8 +42,6 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   learnerUserID = sub || sub_localStorage
 
   try {
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: QueryReadTagsConnectionArgs = {
       readTagsConnectionInput: {
         isActive: true,
@@ -102,14 +100,15 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
     yield put(
       actionSync.SET_PAGE_INFO({ paginationName: PaginationNameEnumType['pageTags'], ...pageInfo })
     )
-
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readTagsConnection [35] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const readTagsConnection = withDebounce(readTagsConnectionGenerator, 500)
+export const readTagsConnection = withDebounce(
+  withLoaderWrapperSaga(readTagsConnectionGenerator),
+  500
+)
 
 export default function* readTagsConnectionSaga() {
   yield takeEvery([actionAsync.READ_TAGS_CONNECTION.REQUEST().type], readTagsConnection)

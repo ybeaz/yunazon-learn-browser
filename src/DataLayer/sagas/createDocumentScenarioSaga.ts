@@ -18,8 +18,6 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const data2 = [
       {
         childName: 'QuestionScores',
@@ -90,11 +88,13 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
     getLocalStorageSetObjTo({
       modulesInProgress: [],
     })
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   }
 }
 
-export const createDocumentScenario = withDebounce(createDocumentScenarioGenerator, 500)
+export const createDocumentScenario = withDebounce(
+  withLoaderWrapperSaga(createDocumentScenarioGenerator),
+  500
+)
 
 export default function* createDocumentScenarioSaga() {
   yield takeEvery([actionAsync.CREATE_DOCUMENT_SCENARIO.REQUEST().type], createDocumentScenario)

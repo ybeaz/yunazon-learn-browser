@@ -6,13 +6,9 @@ import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 
 export function* getMatrixData(params: ActionReduxType | any): Iterable<any> {
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     yield put(actionAsync.READ_MODULES_CONNECTION.REQUEST({ isLoaderOverlay: false }))
 
     yield put(actionAsync.READ_TAGS_CONNECTION.REQUEST({ isLoaderOverlay: false }))
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getMatrixData [46] ERROR', `${error.name}: ${error.message}`)
   }

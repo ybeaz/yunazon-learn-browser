@@ -16,8 +16,6 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: MutationDeactivateModulesArgs = {
       deactivateModulesIdsInput: modulesIDs,
     }
@@ -36,7 +34,6 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
 
     yield call(readModulesConnection)
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(
       actionSync.SET_MODAL_FRAMES({
         childName: 'ConfirmationYesNoBodyYrl',
@@ -48,7 +45,10 @@ function* deactivateModulesGenerator(params: ActionReduxType | any): Iterable<an
   }
 }
 
-export const deactivateModules = withDebounce(deactivateModulesGenerator, 500)
+export const deactivateModules = withDebounce(
+  withLoaderWrapperSaga(deactivateModulesGenerator),
+  500
+)
 
 export default function* deactivateModulesSaga() {
   yield takeEvery([actionAsync.DEACTIVATE_MODULES.REQUEST().type], deactivateModules)

@@ -48,8 +48,6 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
   }
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-
     const variables: QueryReadCoursesConnectionArgs = {
       readCoursesConnectionInput,
     }
@@ -79,14 +77,12 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
         ...pageInfo,
       })
     )
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getCoursesSaga [77] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getCourses = withDebounce(getCoursesGenerator, 500)
+export const getCourses = withDebounce(withLoaderWrapperSaga(getCoursesGenerator), 500)
 
 export default function* getCoursesSaga() {
   yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)

@@ -37,8 +37,6 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
   const { profileIDs } = getUserProfileData({ sub, screenActive, profiles })
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const readDocumentsConnectionInput: ReadDocumentsConnectionInputType = {
       first,
       offset,
@@ -84,14 +82,12 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
         ...pageInfo,
       })
     )
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('getDocumentsSaga [44] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const getDocuments = withDebounce(getDocumentsGenerator, 500)
+export const getDocuments = withDebounce(withLoaderWrapperSaga(getDocumentsGenerator), 500)
 
 export default function* getDocumentsSaga() {
   yield takeEvery([actionAsync.GET_DOCUMENTS.REQUEST().type], getDocuments)

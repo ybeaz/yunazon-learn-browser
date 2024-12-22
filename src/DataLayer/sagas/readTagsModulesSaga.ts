@@ -28,8 +28,6 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
   learnerUserID = sub || sub_localStorage
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: QueryReadTagsModulesAllArgs = {
       readTagsModulesAllInput: {
         learnerUserID,
@@ -51,14 +49,12 @@ function* readTagsModulesGenerator(params: ActionReduxType | any): Iterable<any>
     )
 
     yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTagsModules }))
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   } catch (error: any) {
     console.info('readTagsModules [35] ERROR', `${error.name}: ${error.message}`)
   }
 }
 
-export const readTagsModules = withDebounce(readTagsModulesGenerator, 500)
+export const readTagsModules = withDebounce(withLoaderWrapperSaga(readTagsModulesGenerator), 500)
 
 export default function* readTagsModulesSaga() {
   yield takeEvery([actionAsync.READ_TAGS_CLOUD_MODULES.REQUEST().type], readTagsModules)

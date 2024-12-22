@@ -17,7 +17,6 @@ import { getUserProfileData } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
-  const isLoaderOverlay = params?.data?.isLoaderOverlay || false
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
   const isWithinModuleIDs = params?.data?.isWithinModuleIDs || false
@@ -111,8 +110,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   }
 
   try {
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: QueryReadModulesConnectionArgs = {
       readModulesConnectionInput,
     }

@@ -46,11 +46,13 @@ function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<an
         },
       ])
     )
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
   }
 }
 
-export const sendEmailDocument = withDebounce(sendEmailDocumentGenerator, 500)
+export const sendEmailDocument = withDebounce(
+  withLoaderWrapperSaga(sendEmailDocumentGenerator),
+  500
+)
 
 export default function* sendEmailDocumentSaga() {
   yield takeEvery([actionAsync.SEND_EMAIL_DOCUMENT.REQUEST().type], sendEmailDocument)

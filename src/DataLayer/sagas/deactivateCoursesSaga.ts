@@ -16,8 +16,6 @@ function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<an
   } = params
 
   try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
     const variables: MutationDeactivateCoursesArgs = {
       deactivateCoursesIdsInput: coursesIDs,
     }
@@ -36,7 +34,6 @@ function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<an
 
     yield call(getCourses)
 
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
     yield put(
       actionSync.SET_MODAL_FRAMES({
         childName: 'ConfirmationYesNoBodyYrl',
@@ -48,7 +45,10 @@ function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<an
   }
 }
 
-export const deactivateCourses = withDebounce(deactivateCoursesGenerator, 500)
+export const deactivateCourses = withDebounce(
+  withLoaderWrapperSaga(deactivateCoursesGenerator),
+  500
+)
 
 export default function* deactivateCoursesSaga() {
   yield takeEvery([actionAsync.DEACTIVATE_COURSES.REQUEST().type], deactivateCourses)
