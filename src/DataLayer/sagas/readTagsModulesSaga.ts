@@ -10,6 +10,7 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 /**
  * @status DEPRECIATED in favor of readTagsModulesGenerator

@@ -9,6 +9,7 @@ import { getCourses } from './getCoursesSaga'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* deactivateCoursesGenerator(params: ActionReduxType | any): Iterable<any> {
   const {

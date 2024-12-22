@@ -15,6 +15,7 @@ import { PaginationNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)

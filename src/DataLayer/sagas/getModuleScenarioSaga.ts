@@ -11,6 +11,7 @@ import { getModule45QuestionsCreated } from './getModule45QuestionsCreatedSaga'
 import { getModule55ObjectionsCreated } from './getModule55ObjectionsCreatedSaga'
 import { getModule60ModuleCreated } from './getModule60ModuleCreatedSaga'
 import { createSiteMap } from './createSiteMapSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModuleScenarioGenerator(params: ActionReduxType | any): Iterable<any> {
   try {

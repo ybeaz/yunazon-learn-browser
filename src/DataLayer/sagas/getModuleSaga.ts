@@ -12,6 +12,7 @@ import { getSizeWindow } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID

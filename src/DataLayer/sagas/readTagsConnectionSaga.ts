@@ -15,7 +15,6 @@ import { getMappedConnectionToItems } from 'yourails_common'
 import { PAGINATION_OFFSET } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
-import { withTryCatchFinallyWrapper } from 'yourails_common'
 
 function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay

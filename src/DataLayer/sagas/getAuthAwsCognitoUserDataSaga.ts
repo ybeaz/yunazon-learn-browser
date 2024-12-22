@@ -10,6 +10,7 @@ import { ClientAppEnumType } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { readModulesConnection } from './readModulesConnectionSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getAuthAwsCognitoUserData(params: ActionReduxType | any): Iterable<any> {
   const {
