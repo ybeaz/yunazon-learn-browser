@@ -53,7 +53,7 @@ const getQueryUrlReducerData = ({
       reducerFunc: actionSync.SET_INPUT_TO_STORE,
       data: { storeFormProp: queryName, value: queryUrl[queryName] },
     },
-    tagsPick: { reducerFunc: null, data: {} },
+    tagsPick: { reducerFunc: actionSync.SET_TAGS_STATE, data: {} },
     emailCC: { reducerFunc: null, data: {} },
     code: { reducerFunc: null, data: {} },
   }
