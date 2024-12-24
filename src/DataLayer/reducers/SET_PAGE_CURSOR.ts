@@ -13,24 +13,29 @@ export const SET_PAGE_CURSOR: ReducerType = (
     direction: 'init' | 'set' | 'next' | 'prev'
   }
 ): RootStoreType => {
-  const { first: firstIn, direction = 'next', paginationName } = data
+  const { first: firstIn, direction = 'set', paginationName } = data
 
   const { componentsState } = store
   const pagination: PaginationDict = componentsState.pagination
 
   const paginationSlice: PaginationType = pagination[paginationName]
 
-  const { first = 0, offset, hasNextPage } = paginationSlice
+  const { first: firstState = 0, offset, hasNextPage } = paginationSlice
 
-  let firstNext: number = (
-    isNumber(firstIn || 0) ? firstIn : typeof firstIn === 'string' ? parseInt(firstIn, 10) : 0
-  ) as number
+  /**
+   * @description firstState, firstIn, firstNext are in numbers of entities on the page: 0, 10, 20, etc.
+   *              searchParamsValue is in numbers of offsets: 1, 2, 3, etc.
+   */
+
+  let firstNext: number = 0
+  if (firstIn && typeof firstIn === 'number') firstNext = (firstIn - 1) * offset
+  else if (firstIn && typeof firstIn === 'string') firstNext = (parseInt(firstIn, 10) - 1) * offset
+  else if (firstState) firstNext = firstState
 
   if (direction === 'init') firstNext = 0
-  else if (direction === 'set') firstNext = firstNext * offset - offset
-  else if (direction === 'next' && hasNextPage) firstNext = first + offset
-  else if (direction === 'next' && !hasNextPage) firstNext = first
-  else if (direction === 'prev' && first >= offset) firstNext = first - offset
+  else if (direction === 'set') firstNext = firstNext
+  else if (direction === 'next' && hasNextPage) firstNext = firstNext + offset
+  else if (direction === 'prev' && firstNext >= 1) firstNext = firstNext - offset
 
   const paginationNext = {
     ...pagination,
@@ -40,11 +45,10 @@ export const SET_PAGE_CURSOR: ReducerType = (
   const componentsStateNext = { ...componentsState, pagination: paginationNext }
 
   let searchParamsValue: string = '1'
-  if (firstNext && firstNext > 0) {
-    searchParamsValue = String(
-      (firstNext + PAGINATION_OFFSET[PaginationNameEnumType[paginationName]]) /
-        PAGINATION_OFFSET[PaginationNameEnumType[paginationName]]
-    )
+  if (firstNext === 0 || firstNext === 1) {
+    searchParamsValue = '1'
+  } else {
+    searchParamsValue = String((firstNext + offset) / offset)
   }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {

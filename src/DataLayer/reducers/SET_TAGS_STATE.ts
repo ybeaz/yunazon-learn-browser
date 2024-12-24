@@ -3,10 +3,12 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
-  const { forms } = store
-  const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = forms
+  const { queryUrl: query, forms } = store
 
-  const { tagsPick, tagsOmit } = data
+  const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
+  const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
+
+  const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = forms
 
   let tagsPickNext = tagsPickState
   let tagsOmitNext = tagsOmitState
