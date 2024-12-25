@@ -34,6 +34,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       durationMultiplier,
       modules,
       isLoadedGlobalVars,
+      tagsPick,
       tagsSearchForModules,
       modulesSearchApplied,
       pageModules,
@@ -80,6 +81,8 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     })
     return <div className='AcademyMatrix__plates'>{plates}</div>
   }
+
+  console.info('ModulesBody [84]', { tagsSearchForModules, tagsPick })
 
   const propsOut: ModulesBodyPropsOutType = {
     iconLabelWithCloseTagProps: {
@@ -148,6 +151,7 @@ const storeStateSliceProps: string[] = [
   'durationMultiplier',
   'modules',
   'isLoadedGlobalVars',
+  'tagsPick',
   'tagsSearchForModules',
   'modulesSearchApplied',
   'pageModules',
