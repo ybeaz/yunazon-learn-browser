@@ -33,8 +33,10 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       pagination: {
         pageModules: { first, offset },
       },
+      tagsPick: tagsPickIn,
+      tagsOmit,
     },
-    forms: { modulesSearch, tagsPick: tagsPickIn, tagsOmit },
+    forms: { modulesSearch },
     queryUrl,
     modules,
     authAwsCognitoUserData: { sub },

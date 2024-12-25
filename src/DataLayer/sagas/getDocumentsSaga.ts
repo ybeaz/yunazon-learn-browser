@@ -28,8 +28,10 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
       pagination: {
         pageDocuments: { first, offset },
       },
+      tagsPick,
+      tagsOmit,
     },
-    forms: { documentsSearch, tagsPick, tagsOmit },
+    forms: { documentsSearch },
     profiles,
   } = stateSelected as RootStoreType
 

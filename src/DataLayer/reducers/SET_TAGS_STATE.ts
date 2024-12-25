@@ -3,12 +3,12 @@ import { ReducerType } from '../../Interfaces/ReducerType'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
-  const { queryUrl: query, forms } = store
+  const { queryUrl: query, componentsState } = store
 
   const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
   const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
 
-  const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = forms
+  const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = componentsState
 
   let tagsPickNext = tagsPickState
   let tagsOmitNext = tagsOmitState
@@ -18,7 +18,7 @@ export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): Ro
 
   console.info('SET_TAGS_STATE reducer [19]', { tagsPickNext, tagsPick, tagsPickState })
 
-  const formsNext = { ...forms, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
+  const componentsStateNext = { ...componentsState, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsPick',
@@ -34,5 +34,5 @@ export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): Ro
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams2)
 
-  return { ...store, forms: formsNext }
+  return { ...store, componentsState: componentsStateNext }
 }

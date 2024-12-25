@@ -26,8 +26,10 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
       pagination: {
         pageModules: { first, offset },
       },
+      tagsPick,
+      tagsOmit,
     },
-    forms: { coursesSearch, tagsPick, tagsOmit },
+    forms: { coursesSearch },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 

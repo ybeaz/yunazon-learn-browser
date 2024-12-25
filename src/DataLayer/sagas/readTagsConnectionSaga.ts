@@ -30,8 +30,10 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       pagination: {
         pageTags: { first, offset: offsetStore },
       },
+      tagsPick,
+      tagsOmit,
     },
-    forms: { documentsSearch, tagsSearch, tagsPick, tagsOmit },
+    forms: { documentsSearch, tagsSearch },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 

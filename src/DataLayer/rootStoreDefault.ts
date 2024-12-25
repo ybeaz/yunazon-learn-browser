@@ -57,6 +57,8 @@ export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
   tagsSearchForModules: null,
   modulesSearchApplied: null,
+  tagsPick: [],
+  tagsOmit: [],
   isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
@@ -143,8 +145,6 @@ export const formsDefault: FormsType = {
   sendCc: '',
   userPrev: userStoreDefault,
   user: userStoreDefault,
-  tagsPick: [],
-  tagsOmit: [],
   profileActive: {
     nameFirst: '',
     nameLast: '',

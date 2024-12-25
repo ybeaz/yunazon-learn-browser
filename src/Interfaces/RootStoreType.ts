@@ -36,6 +36,8 @@ export type ComponentsStateType = {
   screenActive: ScreensEnumType
   tagsSearchForModules: string | null
   modulesSearchApplied: string | null
+  tagsPick: string[]
+  tagsOmit: string[]
   isConfetti: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
@@ -64,8 +66,6 @@ export type FormsType = {
   documentsSearch: string
   tagsSearch: string
   coursesSearch: string
-  tagsPick: string[]
-  tagsOmit: string[]
   profileActive: {
     nameFirst: string
     nameLast: string
