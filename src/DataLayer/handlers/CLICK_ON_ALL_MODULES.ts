@@ -11,8 +11,8 @@ export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
-      componentsStateProp: 'tagsSearchForModules',
-      value: null,
+      componentsStateProp: 'tagsPick',
+      value: [],
     })
   )
   dispatch(

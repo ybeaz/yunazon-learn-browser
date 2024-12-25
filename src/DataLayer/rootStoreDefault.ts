@@ -55,7 +55,6 @@ export const userStoreDefault: UserType | any = {
 
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
-  tagsSearchForModules: null,
   modulesSearchApplied: null,
   tagsPick: [],
   tagsOmit: [],
@@ -174,9 +173,6 @@ export const rootStoreDefault: RootStoreType = {
   articles: [],
   profiles: [],
   tagsCloud: [],
-  queryUrl: {
-    pageModules: '1',
-  },
   scorm: {
     courseIDActive: null,
     moduleIDActive: null,

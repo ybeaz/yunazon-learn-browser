@@ -35,7 +35,6 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       modules,
       isLoadedGlobalVars,
       tagsPick,
-      tagsSearchForModules,
       modulesSearchApplied,
       pageModules,
     },
@@ -82,16 +81,16 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     return <div className='AcademyMatrix__plates'>{plates}</div>
   }
 
-  console.info('ModulesBody [84]', { tagsSearchForModules, tagsPick })
+  console.info('ModulesBody [84]', { tagsPick })
 
   const propsOut: ModulesBodyPropsOutType = {
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',
       icon: 'MdOutlineTag',
-      capture: tagsSearchForModules || '',
+      capture: tagsPick[0] || '',
       action: {
         type: 'CLICK_ON_TAG',
-        data: { tagCloud: { value: null } },
+        data: { tagCloud: { value: undefined } },
       },
     },
     iconLabelWithCloseSearchProps: {
@@ -119,7 +118,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
           {headline}
         </h2>
-        {tagsSearchForModules && (
+        {tagsPick.length && (
           <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
@@ -152,7 +151,6 @@ const storeStateSliceProps: string[] = [
   'modules',
   'isLoadedGlobalVars',
   'tagsPick',
-  'tagsSearchForModules',
   'modulesSearchApplied',
   'pageModules',
 ]

@@ -8,7 +8,7 @@ const { dispatch, getState } = store
 
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
   const {
-    componentsState: { screenActive, modulesSearchApplied, tagsSearchForModules },
+    componentsState: { screenActive },
     modules,
     forms: { modulesSearch },
   } = getState() as RootStoreType

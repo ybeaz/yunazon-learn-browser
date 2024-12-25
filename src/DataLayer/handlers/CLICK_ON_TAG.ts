@@ -8,6 +8,10 @@ import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yo
 const { dispatch } = store
 
 export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null }: any) => {
+  const {
+    componentsState: { tagsPick },
+  } = store.getState()
+
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsPick',
     searchParamsValue: tagCloud.value,
@@ -18,10 +22,19 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
     parentFunction: 'CLICK_ON_TAG',
   })
 
+  let tagsPickValueNext = []
+  if (tagCloud?.value) tagsPickValueNext = [...tagsPick, tagCloud.value]
+
+  console.info('CLICK_ON_TAG handle [28]', {
+    tagsPickValueNext,
+    tagsPick,
+    tagCloud,
+  })
+
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
-      componentsStateProp: 'tagsSearchForModules',
-      value: tagCloud.value,
+      componentsStateProp: 'tagsPick',
+      value: tagsPickValueNext,
     })
   )
 

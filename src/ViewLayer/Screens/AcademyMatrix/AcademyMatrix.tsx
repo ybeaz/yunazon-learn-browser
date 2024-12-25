@@ -31,11 +31,16 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       language,
       // @ts-expect-error
       queryUrl,
+      // @ts-expect-error
+      tagsPick,
+      // @ts-expect-error
+      componentsState,
+      // @ts-expect-error
+      forms,
     },
-    handleEvents,
   } = props
 
-  console.info('AcademyMatrix [38]', { queryUrl })
+  console.info('AcademyMatrix [38]', { forms, componentsState, tagsPick, queryUrl })
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
@@ -43,7 +48,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    { type: 'SET_QUERY_URL_HANDLER', data: { isReplacing: true } },
     { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
     { type: 'GET_MODULES_CONNECTION' },
     { type: 'GET_TAGS_CONNECTION' },
@@ -100,7 +104,13 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'queryUrl']
+const storeStateSliceProps: string[] = [
+  'language',
+  'queryUrl',
+  'tagsPick',
+  'componentsState',
+  'forms',
+]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))

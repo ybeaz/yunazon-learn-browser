@@ -1,35 +1,38 @@
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { ReducerType } from '../../Interfaces/ReducerType'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 
 export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): RootStoreType => {
-  const { queryUrl: query, componentsState } = store
+  const queryUrl = getParsedUrlQueryBrowserApi()
 
-  const tagsPick = (query && query?.tagsPick && query?.tagsPick.split(',')) || []
-  const tagsOmit = (query && query?.tagsOmit && query?.tagsOmit.split(',')) || []
+  const { componentsState } = store
+
+  const tagsPickQuery = (queryUrl && queryUrl?.tagsPick && queryUrl?.tagsPick.split(',')) || []
+  const tagsOmitQuery = (queryUrl && queryUrl?.tagsOmit && queryUrl?.tagsOmit.split(',')) || []
 
   const { tagsPick: tagsPickState, tagsOmit: tagsOmitState } = componentsState
 
   let tagsPickNext = tagsPickState
   let tagsOmitNext = tagsOmitState
 
-  if (tagsPick) tagsPickNext = tagsPick
-  if (tagsOmit) tagsOmitNext = tagsOmit
+  if (tagsPickQuery) tagsPickNext = tagsPickQuery
+  if (tagsOmitQuery) tagsOmitNext = tagsOmitQuery
 
-  console.info('SET_TAGS_STATE reducer [19]', { tagsPickNext, tagsPick, tagsPickState })
+  console.info('SET_TAGS_STATE reducer [19]', { tagsPickNext, tagsPickQuery, tagsPickState })
 
   const componentsStateNext = { ...componentsState, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsPick',
-    searchParamsValue: (tagsPick && tagsPick.length && tagsPick.join(',')) || undefined,
+    searchParamsValue: (tagsPickNext && tagsPickNext.length && tagsPickNext.join(',')) || undefined,
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
 
   const getSetUrlQueryBrowserApiParams2: GetSetUrlQueryBrowserApiParamsType = {
     searchParamsName: 'tagsOmit',
-    searchParamsValue: (tagsOmit && tagsOmit.length && tagsOmit.join(',')) || undefined,
+    searchParamsValue: (tagsOmitNext && tagsOmitNext.length && tagsOmitNext.join(',')) || undefined,
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams2)

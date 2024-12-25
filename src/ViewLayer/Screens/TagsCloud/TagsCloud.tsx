@@ -45,7 +45,6 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    { type: 'SET_QUERY_URL_HANDLER', data: { isReplacing: true } },
     { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
     { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } },
   ])

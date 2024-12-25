@@ -29,11 +29,10 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   const {
     componentsState: {
       screenActive,
-      tagsSearchForModules,
       pagination: {
         pageModules: { first, offset },
       },
-      tagsPick: tagsPickIn,
+      tagsPick: tagsPickState,
       tagsOmit,
     },
     forms: { modulesSearch },
@@ -42,13 +41,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  const tagsPickUrl = queryUrl?.tagsPick || null
-
-  const tagsPick = tagsSearchForModules
-    ? [tagsSearchForModules]
-    : tagsPickUrl
-      ? [tagsPickUrl]
-      : tagsPickIn
+  console.info('readModulesConnectionSaga [127]', { queryUrl, tagsPickState })
 
   let profiles = stateSelected.profiles
 
@@ -103,8 +96,8 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       moduleID: 'and',
     }
   }
-  if (!!tagsPick?.length) {
-    readModulesConnectionInput.tagsPick = tagsPick
+  if (tagsPickState.length) {
+    readModulesConnectionInput.tagsPick = tagsPickState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
   if (!!tagsOmit?.length) {
@@ -129,20 +122,14 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     }
   )
 
+  console.info('readModulesConnectionSaga [127]', { readModulesConnection })
+
   let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
     getMappedConnectionToItems,
     { printRes: false }
   ).result
 
   yield put(actionSync.SET_MODULES(modulesNext))
-
-  if (tagsPick.length && tagsPick[0])
-    yield put(
-      actionSync.SET_COMPONENTS_STATE({
-        componentsStateProp: 'tagsSearchForModules',
-        value: tagsPick[0],
-      })
-    )
 
   const pageInfo = readModulesConnection?.pageInfo
   yield put(

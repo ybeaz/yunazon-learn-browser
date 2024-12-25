@@ -1,7 +1,7 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionSync } from '../../DataLayer/index.action'
-import { PAGINATION_OFFSET } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { PaginationNameEnumType } from 'yourails_common'
 
 const { dispatch, getState } = store
@@ -69,24 +69,21 @@ const getQueryUrlReducerData = ({
         data: { storeFormProp: queryName, value: queryUrl[queryName] },
       },
     ],
-    tagsPick: [{ reducerFunc: actionSync.SET_TAGS_STATE, data: {} }],
+    tagsPick: [
+      {
+        reducerFunc: actionSync.SET_COMPONENTS_STATE,
+        data: { componentsStateProp: 'tagsPick', value: queryUrl[queryName].split(',') },
+      },
+    ],
     emailCC: [{ reducerFunc: null, data: {} }],
     code: [{ reducerFunc: null, data: {} }],
   }
-
-  // dispatch(
-  //   actionSync.SET_COMPONENTS_STATE({
-  //     componentsStateProp: 'modulesSearchApplied',
-  //     value: modulesSearch,
-  //   })
-  // )
 
   return QUERY_URL_TO_REDUCER_DATA_MAP[queryName] ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName] : []
 }
 
 export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataIn) => {
-  const { queryUrl } = getState()
-
+  const queryUrl = getParsedUrlQueryBrowserApi()
   Object.keys(queryUrl).forEach((queryName: string) => {
     const reducerArray = getQueryUrlReducerData({ queryUrl, queryName })
     reducerArray.length && reducerArray.map(({ reducerFunc, data }) => dispatch(reducerFunc(data)))

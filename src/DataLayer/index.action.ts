@@ -3,7 +3,6 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 export const ACTIONS_SYNC: string[] = [
-  'SET_QUERY_URL_STATE',
   'SET_COMPONENTS_STATE',
   'SET_PAGINATION_OFFSET',
   'SET_TAGS_CLOUD',

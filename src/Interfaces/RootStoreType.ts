@@ -34,7 +34,6 @@ export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
   screenActive: ScreensEnumType
-  tagsSearchForModules: string | null
   modulesSearchApplied: string | null
   tagsPick: string[]
   tagsOmit: string[]
@@ -110,20 +109,6 @@ export type CourseCreateProgressType = {
   transcriptChunks: any[]
 }
 
-export const queryUrlKeys: string[] = [
-  'pageModules',
-  'pageTags',
-  'pageDocuments',
-  'inputCourseCreate',
-  'modulesSearch',
-  'tagsSearch',
-  'tagsPick',
-  'emailCC',
-  'code',
-] as const
-type QueryUrlKeysType = (typeof queryUrlKeys)[number]
-export type QueryUrlType = Partial<Record<QueryUrlKeysType, string>>
-
 export type RootStoreType = {
   analyticsID: string | null
   componentsState: ComponentsStateType
@@ -149,7 +134,6 @@ export type RootStoreType = {
     | 'avatarSize'
   >[]
   tagsCloud: TagType[]
-  queryUrl: QueryUrlType
   scorm: ScormType
   forms: FormsType
   isLoaded: {
