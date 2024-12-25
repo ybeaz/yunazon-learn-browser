@@ -72,8 +72,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   } = props
 
-  console.info('AcademyPresent [73]', { queryUrl })
-
   const params = useParams()
   const counterRef = useRef(0)
   const { width: widthSizeWindow } = getSizeWindow()

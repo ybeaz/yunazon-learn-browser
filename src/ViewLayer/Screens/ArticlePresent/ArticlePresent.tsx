@@ -96,7 +96,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
         {null}
         {/* middle-main */}
         <div>
-          {articleFound && articleFound.articleID ? (
+          {articleFound && articleFound.articleItemID ? (
             <ArticlePresentBody {...propsOut.articlePresentBodyProps} />
           ) : null}
         </div>
