@@ -19,8 +19,6 @@ export const SET_TAGS_STATE: ReducerType = (store: RootStoreType, data: any): Ro
   if (tagsPickQuery) tagsPickNext = tagsPickQuery
   if (tagsOmitQuery) tagsOmitNext = tagsOmitQuery
 
-  console.info('SET_TAGS_STATE reducer [19]', { tagsPickNext, tagsPickQuery, tagsPickState })
-
   const componentsStateNext = { ...componentsState, tagsPick: tagsPickNext, tagsOmit: tagsOmitNext }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {

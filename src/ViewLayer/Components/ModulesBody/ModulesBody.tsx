@@ -98,7 +98,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       icon: 'MdSearch',
       capture: modulesSearchApplied || '',
       action: {
-        type: 'ONCHANGE_INPUT_SEARCH',
+        type: 'CLICK_ON_CANCEL_SEARCH_APPLIED',
         data: { storeFormProp: 'modulesSearch', value: '' },
       },
     },
@@ -118,7 +118,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
           {headline}
         </h2>
-        {tagsPick.length && (
+        {!!tagsPick.length && (
           <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
