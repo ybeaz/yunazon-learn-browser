@@ -81,8 +81,6 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     return <div className='AcademyMatrix__plates'>{plates}</div>
   }
 
-  console.info('ModulesBody [84]', { tagsPick })
-
   const propsOut: ModulesBodyPropsOutType = {
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',

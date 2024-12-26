@@ -25,12 +25,6 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
   let tagsPickValueNext = []
   if (tagCloud?.value) tagsPickValueNext = [...tagsPick, tagCloud.value]
 
-  console.info('CLICK_ON_TAG handle [28]', {
-    tagsPickValueNext,
-    tagsPick,
-    tagCloud,
-  })
-
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'tagsPick',

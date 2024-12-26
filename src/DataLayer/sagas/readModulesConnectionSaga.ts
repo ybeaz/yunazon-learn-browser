@@ -36,12 +36,9 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       tagsOmit,
     },
     forms: { modulesSearch },
-    queryUrl,
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
-
-  console.info('readModulesConnectionSaga [127]', { queryUrl, tagsPickState })
 
   let profiles = stateSelected.profiles
 
@@ -121,8 +118,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       timeout: 10000,
     }
   )
-
-  console.info('readModulesConnectionSaga [127]', { readModulesConnection })
 
   let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
     getMappedConnectionToItems,

@@ -40,8 +40,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     },
   } = props
 
-  console.info('AcademyMatrix [38]', { forms, componentsState, tagsPick, queryUrl })
-
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
