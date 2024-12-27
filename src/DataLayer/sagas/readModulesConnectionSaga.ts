@@ -29,13 +29,14 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   const {
     componentsState: {
       screenActive,
+      modulesSearchApplied,
       pagination: {
         pageModules: { first, offset },
       },
       tagsPick: tagsPickState,
       tagsOmit,
     },
-    forms: { modulesSearch },
+    // forms: { modulesSearch },
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
@@ -65,8 +66,8 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   }
 
   if (learnerUserID) readModulesConnectionInput.learnerUserID = learnerUserID
-  if (modulesSearch) {
-    readModulesConnectionInput.searchPhrase = modulesSearch
+  if (modulesSearchApplied) {
+    readModulesConnectionInput.searchPhrase = modulesSearchApplied
     readModulesConnectionInput.operators = { searchPhrase: 'or' }
   }
   if (operators) readModulesConnectionInput.operators = operators

@@ -30,10 +30,10 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       pagination: {
         pageTags: { first, offset: offsetStore },
       },
-      tagsPick,
-      tagsOmit,
+      tagsSearchApplied,
+      documentsSearchApplied,
     },
-    forms: { documentsSearch, tagsSearch },
+    // forms: { documentsSearch, tagsSearch },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -55,7 +55,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
       offset,
       after: '',
       language: '',
-      searchPhrase: tagsSearch || documentsSearch,
+      searchPhrase: tagsSearchApplied || documentsSearchApplied,
       searchIn: ['value'],
       operators: {
         searchPhrase: 'or',

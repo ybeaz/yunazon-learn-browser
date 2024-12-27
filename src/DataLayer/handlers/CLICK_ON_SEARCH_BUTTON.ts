@@ -6,11 +6,74 @@ import { PaginationNameEnumType } from 'yourails_common'
 
 const { dispatch, getState } = store
 
+const getSetModules = (searchValue: string) => {
+  dispatch(
+    actionSync.SET_PAGE_CURSOR({
+      paginationName: PaginationNameEnumType['pageModules'],
+      first: 0,
+    })
+  )
+
+  dispatch(
+    actionSync.SET_COMPONENTS_STATE({
+      componentsStateProp: 'modulesSearchApplied',
+      value: searchValue,
+    })
+  )
+
+  dispatch(
+    actionAsync.READ_MODULES_CONNECTION.REQUEST({
+      isLoaderOverlay: true,
+      isWithinModuleIDs: false,
+    })
+  )
+}
+
+const getSetTags = (searchValue: string) => {
+  dispatch(
+    actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
+  )
+
+  dispatch(
+    actionSync.SET_COMPONENTS_STATE({
+      componentsStateProp: 'tagsSearchApplied',
+      value: searchValue,
+    })
+  )
+
+  dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+}
+
+const getSetDocuments = (searchValue: string) => {
+  dispatch(
+    actionSync.SET_PAGE_CURSOR({
+      paginationName: PaginationNameEnumType['pageDocuments'],
+      first: 0,
+    })
+  )
+
+  dispatch(
+    actionSync.SET_COMPONENTS_STATE({
+      componentsStateProp: 'documentsSearchApplied',
+      value: searchValue,
+    })
+  )
+
+  dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+
+  dispatch(
+    actionSync.SET_PAGE_CURSOR({
+      paginationName: PaginationNameEnumType['pageTags'],
+      first: 0,
+    })
+  )
+  dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+}
+
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
   const {
     componentsState: { screenActive },
-    modules,
-    forms: { modulesSearch },
+    forms: { modulesSearch, tagsSearch, documentsSearch },
   } = getState() as RootStoreType
 
   if (
@@ -19,52 +82,21 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
     screenActive === 'MyModules'
   ) {
     if (!data || data?.storeFormProp === 'modulesSearch') {
-      dispatch(
-        actionSync.SET_PAGE_CURSOR({
-          paginationName: PaginationNameEnumType['pageModules'],
-          first: 0,
-        })
-      )
+      getSetModules(modulesSearch)
 
-      dispatch(
-        actionAsync.READ_MODULES_CONNECTION.REQUEST({
-          isLoaderOverlay: true,
-          isWithinModuleIDs: false,
-        })
-      )
-      dispatch(
-        actionSync.SET_COMPONENTS_STATE({
-          componentsStateProp: 'modulesSearchApplied',
-          value: modulesSearch,
-        })
-      )
+      getSetTags(modulesSearch)
     } else if (data?.storeFormProp === 'tagsSearch') {
-      dispatch(
-        actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
-      )
-      dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+      console.info('CLICK_ON_SEARCH_BUTTON [95]', {
+        screenActive,
+        modulesSearch,
+        'data?.storeFormProp': data?.storeFormProp,
+      })
+      getSetTags(tagsSearch)
     }
   } else if (screenActive === 'MyDocuments') {
-    dispatch(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageDocuments'],
-        first: 0,
-      })
-    )
-    dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
-
-    dispatch(
-      actionSync.SET_PAGE_CURSOR({
-        paginationName: PaginationNameEnumType['pageTags'],
-        first: 0,
-      })
-    )
-    dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+    getSetDocuments(documentsSearch)
   } else if (screenActive === 'TagsCloud') {
-    dispatch(
-      actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
-    )
-    dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+    getSetTags(tagsSearch)
   }
 
   dispatch(actionSync.TOGGLE_IS_MOBILE_SEARCH_INPUT({ isMobileSearchInput: false }))

@@ -31,7 +31,7 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
   const propsOut: AcademyMatrixBodyPropsOutType = {
     tagsCloudBodyProps: {
       classAdded: 'TagsCloudBody_AcademyMatrixBody',
-      headline: DICTIONARY.All_tags[language],
+      headline: DICTIONARY.Tags[language],
     },
     modulesBodyProps: {
       classAdded: 'ModulesBody_AcademyMatrixBody',

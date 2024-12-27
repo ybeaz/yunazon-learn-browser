@@ -184,7 +184,7 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
 
   return (
     <div className={getClasses('TagsCloudBody', classAdded)}>
-      {screenActive === ScreensEnumType['AcademyMatrix'] ? (
+      {false && screenActive === ScreensEnumType['AcademyMatrix'] ? (
         <>
           <div className='_inputGroupYrlWrapper'>
             <InputGroupYrl {...propsOut.inputGroupProps} />
