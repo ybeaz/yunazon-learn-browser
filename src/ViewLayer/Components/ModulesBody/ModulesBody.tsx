@@ -96,7 +96,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       icon: 'MdSearch',
       capture: modulesSearchApplied || '',
       action: {
-        type: 'CLICK_ON_CANCEL_SEARCH_APPLIED',
+        type: 'CLICK_ON_CANCEL_APPLIED_SEARCH',
         data: { storeFormProp: 'modulesSearch', value: '' },
       },
     },

@@ -5,7 +5,7 @@ import { ONCHANGE_INPUT_SEARCH } from './ONCHANGE_INPUT_SEARCH'
 
 const { dispatch, getState } = store
 
-export const CLICK_ON_CANCEL_SEARCH_APPLIED: ActionEventType = (event, dataIn) => {
+export const CLICK_ON_CANCEL_APPLIED_SEARCH: ActionEventType = (event, dataIn) => {
   ONCHANGE_INPUT_SEARCH({}, { storeFormProp: 'modulesSearch', value: '' })
 
   const data = {

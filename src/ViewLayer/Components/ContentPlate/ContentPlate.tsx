@@ -168,10 +168,10 @@ const ContentPlateComponent: ContentPlateComponentType = (
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID, navigate },
         })
-        handleEvents(event, {
-          typeEvent: 'GO_LINK_PATH',
-          data: { navigate, pathname },
-        })
+        // handleEvents(event, {
+        //   typeEvent: 'GO_LINK_PATH',
+        //   data: { navigate, pathname },
+        // })
       },
     },
   }

@@ -6,11 +6,10 @@ const { dispatch } = store
 
 export const SELECT_MODULE: ActionEventType = (
   event,
-  data: Record<'capture' | 'moduleID' | 'contentID' | 'navigate', any> = {
+  data: Record<'capture' | 'moduleID' | 'contentID', any> = {
     capture: '',
     moduleID: '',
     contentID: '',
-    navigate: () => {},
   }
 ) => {
   try {

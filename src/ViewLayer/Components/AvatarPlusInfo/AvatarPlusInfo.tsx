@@ -31,8 +31,8 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
       classAdded: '_avatarPlusInfo',
       handleEvents,
       action: {
-        typeEvent: 'GO_LINK_PATH',
-        data: { navigate, pathname: '/' },
+        typeEvent: null,
+        data: {},
       },
       src: imgSrc,
     },
@@ -43,8 +43,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
         handleEvents(
           {},
           {
-            typeEvent: 'GO_LINK_PATH',
-            data: { navigate, pathname: '/' },
+            typeEvent: 'CLICK_ON_CANCEL_APPLIED_ALL',
           }
         ),
     },

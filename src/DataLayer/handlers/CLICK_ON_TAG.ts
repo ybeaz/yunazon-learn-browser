@@ -7,7 +7,10 @@ import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yo
 
 const { dispatch } = store
 
-export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null }: any) => {
+export const CLICK_ON_TAG: ActionEventType = (
+  event,
+  { tagCloud }: { tagCloud: { value: string } }
+) => {
   const {
     componentsState: { tagsPick },
   } = store.getState()
@@ -37,8 +40,6 @@ export const CLICK_ON_TAG: ActionEventType = (event, { tagCloud, navigate = null
       isLoaderOverlay: true,
     })
   )
-
-  if (navigate) GO_LINK_PATH({}, { navigate, pathname: `/m`, isOrigin: false })
 
   dispatch(
     actionSync.SET_PAGE_CURSOR({
