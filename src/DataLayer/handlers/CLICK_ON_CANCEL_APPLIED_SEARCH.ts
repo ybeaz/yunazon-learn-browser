@@ -7,9 +7,16 @@ const { dispatch, getState } = store
 
 export const CLICK_ON_CANCEL_APPLIED_SEARCH: ActionEventType = (event, dataIn) => {
   ONCHANGE_INPUT_SEARCH({}, { storeFormProp: 'modulesSearch', value: '' })
+  ONCHANGE_INPUT_SEARCH({}, { storeFormProp: 'tagsSearch', value: '' })
 
-  const data = {
+  let data = {
     componentsStateProp: 'modulesSearchApplied',
+    value: '',
+  }
+  dispatch(actionSync.SET_COMPONENTS_STATE(data))
+
+  data = {
+    componentsStateProp: 'tagsSearchApplied',
     value: '',
   }
   dispatch(actionSync.SET_COMPONENTS_STATE(data))
