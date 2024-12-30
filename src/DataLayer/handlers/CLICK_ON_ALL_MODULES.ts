@@ -28,7 +28,7 @@ export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
-      first: 0,
+      first: 1,
     })
   )
 }

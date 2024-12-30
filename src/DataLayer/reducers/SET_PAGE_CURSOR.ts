@@ -23,13 +23,16 @@ export const SET_PAGE_CURSOR: ReducerType = (
   const { first: firstState = 0, offset, hasNextPage } = paginationSlice
 
   /**
-   * @description firstState, firstIn, firstNext are in numbers of entities on the page: 0, 10, 20, etc.
-   *              searchParamsValue is in numbers of offsets: 1, 2, 3, etc.
+   * @description firstState, firstNext are in numbers of entities on the page: 0, 10, 20, etc.
+   *              firstIn and searchParamsValue is in numbers of offsets: 1, 2, 3, etc.
    */
 
   let firstNext: number = 0
-  if (firstIn && typeof firstIn === 'number') firstNext = (firstIn - 1) * offset
-  else if (firstIn && typeof firstIn === 'string') firstNext = (parseInt(firstIn, 10) - 1) * offset
+  const firstInNumber =
+    typeof firstIn === 'string'
+      ? parseInt(firstIn, 10)
+      : (typeof firstIn === 'number' && firstIn) || 0
+  if (firstIn) firstNext = firstInNumber > 0 ? (firstInNumber - 1) * offset : 0
   else if (firstState) firstNext = firstState
 
   if (direction === 'init') firstNext = 0

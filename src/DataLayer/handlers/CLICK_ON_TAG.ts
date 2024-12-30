@@ -44,7 +44,7 @@ export const CLICK_ON_TAG: ActionEventType = (
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
-      first: 0,
+      first: 1,
     })
   )
 }

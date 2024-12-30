@@ -10,7 +10,7 @@ const getSetModules = (searchValue: string) => {
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
-      first: 0,
+      first: 1,
     })
   )
 
@@ -31,7 +31,7 @@ const getSetModules = (searchValue: string) => {
 
 const getSetTags = (searchValue: string) => {
   dispatch(
-    actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 0 })
+    actionSync.SET_PAGE_CURSOR({ paginationName: PaginationNameEnumType['pageTags'], first: 1 })
   )
 
   dispatch(
@@ -48,7 +48,7 @@ const getSetDocuments = (searchValue: string) => {
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageDocuments'],
-      first: 0,
+      first: 1,
     })
   )
 
@@ -64,7 +64,7 @@ const getSetDocuments = (searchValue: string) => {
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageTags'],
-      first: 0,
+      first: 1,
     })
   )
   dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
