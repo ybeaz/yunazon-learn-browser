@@ -34,9 +34,8 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
         pageModules: { first, offset },
       },
       tagsPick: tagsPickState,
-      tagsOmit,
+      tagsOmit: tagsOmitState,
     },
-    // forms: { modulesSearch },
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
@@ -98,8 +97,8 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     readModulesConnectionInput.tagsPick = tagsPickState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
-  if (!!tagsOmit?.length) {
-    readModulesConnectionInput.tagsOmit = tagsOmit
+  if (tagsOmitState.length) {
+    readModulesConnectionInput.tagsOmit = tagsOmitState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
 

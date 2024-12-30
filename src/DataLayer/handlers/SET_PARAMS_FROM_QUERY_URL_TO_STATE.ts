@@ -12,7 +12,7 @@ const getQueryUrlReducerData = ({
 }: {
   queryUrl: string
   queryName: string | PaginationNameEnumType
-}): { reducerFunc: any; data: any }[] => {
+}): { queryNamesArray: string[]; reducerArray: { reducerFunc: any; data: any }[] } => {
   const QUERY_URL_TO_REDUCER_DATA_MAP = {
     pageModules: [
       {
@@ -76,20 +76,29 @@ const getQueryUrlReducerData = ({
     tagsPick: [
       {
         reducerFunc: actionSync.SET_COMPONENTS_STATE,
-        data: { componentsStateProp: 'tagsPick', value: queryUrl[queryName].split(',') },
+        data: {
+          componentsStateProp: 'tagsPick',
+          value: queryName && queryUrl[queryName] ? queryUrl[queryName].split(',') : [],
+        },
       },
     ],
-    emailCC: [{ reducerFunc: null, data: {} }],
-    code: [{ reducerFunc: null, data: {} }],
+    // emailCC: [{ reducerFunc: null, data: {} }],
+    // code: [{ reducerFunc: null, data: {} }],
   }
 
-  return QUERY_URL_TO_REDUCER_DATA_MAP[queryName] ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName] : []
+  return {
+    queryNamesArray: Object.keys(QUERY_URL_TO_REDUCER_DATA_MAP),
+    reducerArray: QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
+      ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
+      : [],
+  }
 }
 
 export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataIn) => {
   const queryUrl = getParsedUrlQueryBrowserApi()
-  Object.keys(queryUrl).forEach((queryName: string) => {
-    const reducerArray = getQueryUrlReducerData({ queryUrl, queryName })
+  const queryNamesArray = getQueryUrlReducerData({ queryUrl: '', queryName: '' }).queryNamesArray
+  queryNamesArray.forEach((queryName: string) => {
+    const reducerArray = getQueryUrlReducerData({ queryUrl, queryName }).reducerArray
     reducerArray.length && reducerArray.map(({ reducerFunc, data }) => dispatch(reducerFunc(data)))
   })
 }

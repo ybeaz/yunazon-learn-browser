@@ -1,4 +1,5 @@
-import React, { useEffect, ReactElement } from 'react'
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from 'yourails_common'
@@ -43,13 +44,20 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+  const [searchParams] = useSearchParams()
+  const allParams = Object.fromEntries(searchParams)
 
-  useEffectedInitialRequests([
-    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
-    { type: 'GET_MODULES_CONNECTION' },
-    { type: 'GET_TAGS_CONNECTION' },
-  ])
+  useEffectedInitialRequests(
+    [
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'GET_MODULES_CONNECTION' },
+      { type: 'GET_TAGS_CONNECTION' },
+    ],
+    []
+    /* This provides consistentgo back experience, but with flickering/ twinkle/ blinking
+    [JSON.stringify({ allParams, 'location.search': location.search })] */
+  )
 
   useLoadedInitialTeachContent({ isSkipping: false })
 

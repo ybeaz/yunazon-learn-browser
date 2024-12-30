@@ -56,10 +56,6 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
               typeEvent: 'SELECT_MODULE',
               data: { capture, moduleID, contentID, navigate },
             })
-            handleEvents(event, {
-              typeEvent: 'GO_LINK_PATH',
-              data: { navigate, pathname: pathnameModule },
-            })
           },
         },
         buttonDeactivateModuleProps: {

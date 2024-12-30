@@ -50,18 +50,14 @@ const CreditsTableComponent: CreditsTableComponentType = (
           className: '__shield',
           to: { pathname: pathnameModule },
           children: capture,
-          onClick: (event: any) => {
-            handleEvents(event, {
-              typeEvent: 'GO_LINK_PATH',
-              data: { navigate, pathname: pathnameModule },
-            })
-          },
+          onClick: (event: any) => {},
         },
         linkToDocumentProps: {
           className: '__shield',
           to: { pathname: pathnameDocument },
           target: '_blank',
           children: 'Link',
+          onClick: (event: any) => {},
         },
         buttonDeactivateDocumentProps: {
           icon: 'MdDeleteOutline',

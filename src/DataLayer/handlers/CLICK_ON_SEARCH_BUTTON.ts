@@ -86,11 +86,6 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
 
       getSetTags(modulesSearch)
     } else if (data?.storeFormProp === 'tagsSearch') {
-      console.info('CLICK_ON_SEARCH_BUTTON [95]', {
-        screenActive,
-        modulesSearch,
-        'data?.storeFormProp': data?.storeFormProp,
-      })
       getSetTags(tagsSearch)
     }
   } else if (screenActive === 'MyDocuments') {
