@@ -114,6 +114,13 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
 
   const youCanCheckYourUnderstanding = DICTIONARY.youCanCheckYourUnderstanding[language]
 
+  console.info('CarouselQuestions [120]', {
+    questionsActive,
+    questionsActiveLength: questionsActive.length,
+    questionsChunked,
+    questionsChunkedLength: questionsChunked.length,
+  })
+
   const propsOut: CarouselQuestionsPropsOutType = {
     buttonStartProps: {
       captureLeft: (

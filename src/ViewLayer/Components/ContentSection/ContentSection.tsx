@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, { Fragment } from 'react'
+import { nanoid } from 'nanoid'
 import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
@@ -25,7 +25,9 @@ const ContentSectionComponent: ContentSectionComponentType = (
   return (
     <div className={getClasses('ContentSection', classAdded)}>
       <div className='_contentWrapper'>
-        {contentArray.map((ContentItem: any) => ContentItem.component)}
+        {contentArray.map((ContentItem: any, index: number) => (
+          <Fragment key={`contentArray-${index}`}>{ContentItem.component}</Fragment>
+        ))}
       </div>
     </div>
   )
