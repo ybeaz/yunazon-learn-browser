@@ -26,6 +26,8 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
     propValue: moduleIDActive,
   })
 
+  console.info('createDocumentSaga [29]', { module })
+
   const profileCreator = getArrayItemByProp({
     arr: profiles,
     propName: 'profileID',

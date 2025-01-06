@@ -181,6 +181,7 @@ export const rootStoreDefault: RootStoreType = {
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
+  urlParamsQuery: { sendCc: '', sendBcc: '' },
   forms: formsDefault,
   isLoaded: {
     isLoadedGlobalVars: true,

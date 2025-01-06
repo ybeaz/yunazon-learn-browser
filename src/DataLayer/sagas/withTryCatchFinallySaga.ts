@@ -19,7 +19,7 @@ export const withTryCatchFinallySaga: (
         {
           ...funcParentAdd,
           funcName: saga.name,
-          error,
+          error: { ...error, stack: error?.stack.split('\n') },
         }
       )
     } finally {

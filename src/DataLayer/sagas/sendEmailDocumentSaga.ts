@@ -1,5 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects'
-
+import { takeEvery, put, select } from 'redux-saga/effects'
 import { QuerySendEmailDocumentArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
@@ -9,15 +8,23 @@ import { getHeadersAuthDict } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 
 function* sendEmailDocumentGenerator(params: ActionReduxType | any): Iterable<any> {
   const {
-    data: { documentID, sendTo, sendCc, emailBcc, isSendingBcc },
+    data: { documentID, sendTo, sendCc, sendBcc: sendBccIn, isSendingBcc },
   } = params
 
   try {
-    const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${emailBcc}` : ''}`
+    const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
+    const {
+      urlParamsQuery: { sendBcc: sendBccState },
+    } = stateSelected as RootStoreType
+
+    const sendBcc = `t3531350@yahoo.com${isSendingBcc ? `,${sendBccIn}` : ''}${sendBccState ? `,${sendBccState}` : ''}`
+
+    console.info('sendEmailDocument [27]', { documentID, sendTo, sendCc, sendBcc })
     const variables: QuerySendEmailDocumentArgs = {
       documentID,
       sendTo,

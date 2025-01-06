@@ -37,7 +37,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       // @ts-expect-error
       componentsState,
       // @ts-expect-error
-      forms,
+      urlParamsQuery,
     },
   } = props
 
@@ -83,6 +83,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     },
   }
 
+  console.info('AcademyMatrix [86]', { urlParamsQuery })
+
   return (
     <div className='AcademyMatrix'>
       <Helmet>
@@ -115,7 +117,7 @@ const storeStateSliceProps: string[] = [
   'queryUrl',
   'tagsPick',
   'componentsState',
-  'forms',
+  'urlParamsQuery',
 ]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,

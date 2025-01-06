@@ -8,7 +8,7 @@ export const SET_INPUT_TO_STORE: ReducerType = (store: RootStoreType, data: any)
 
   const { forms } = store
 
-  let formsNext: any = { ...forms }
+  let formsNext: FormsType = { ...forms }
   if (storeFormGroup && storeFormProp && value !== undefined)
     formsNext = { ...forms, [storeFormGroup]: { [storeFormProp]: value } }
   else if (storeFormProp && value !== undefined) formsNext = { ...forms, [storeFormProp]: value }

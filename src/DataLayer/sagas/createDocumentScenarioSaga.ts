@@ -19,6 +19,11 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
     data: { navigate, creatorID },
   } = params
 
+  const stateSelected10: RootStoreType | any = yield select((state: RootStoreType) => state)
+  const {
+    componentsState: { createModuleStages: createModuleStages10 },
+  } = stateSelected10
+
   const data2 = [
     {
       childName: 'QuestionScores',
@@ -69,7 +74,7 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
       documentID,
       sendTo: emails[0] || '',
       sendCc: '',
-      emailBcc: '',
+      sendBcc: '',
       isSendingBcc: false,
     },
   })

@@ -74,6 +74,8 @@ export type FormsType = {
   }
 }
 
+export type UrlParamsQueryType = { sendCc: string; sendBcc: string }
+
 export type ScormType = {
   courseIDActive: string | null
   moduleIDActive: string | null
@@ -137,6 +139,7 @@ export type RootStoreType = {
   >[]
   tagsCloud: TagType[]
   scorm: ScormType
+  urlParamsQuery: UrlParamsQueryType
   forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean

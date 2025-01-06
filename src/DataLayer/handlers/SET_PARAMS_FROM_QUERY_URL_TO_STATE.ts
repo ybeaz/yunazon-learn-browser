@@ -82,8 +82,24 @@ const getQueryUrlReducerData = ({
         },
       },
     ],
-    // emailCC: [{ reducerFunc: null, data: {} }],
-    // code: [{ reducerFunc: null, data: {} }],
+    sendCc: [
+      {
+        reducerFunc: actionSync.SET_URLPARAMSQUERY_TO_STORE,
+        data: {
+          propName: queryName,
+          value: queryUrl[queryName],
+        },
+      },
+    ],
+    sendBcc: [
+      {
+        reducerFunc: actionSync.SET_URLPARAMSQUERY_TO_STORE,
+        data: {
+          propName: queryName,
+          value: queryUrl[queryName],
+        },
+      },
+    ],
   }
 
   return {
