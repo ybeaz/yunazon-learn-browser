@@ -32,7 +32,10 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
     const modulesRows: React.ReactElement[] = modulesIn.map((module: ModuleType) => {
       const { moduleID, capture, dateCreated, duration: durationStrIn, contentID } = module
 
-      const durationObj = getDurationFromYoutubeSnippet(durationStrIn)
+      const durationObj = getDurationFromYoutubeSnippet(durationStrIn, {
+        printRes: false,
+        funcParent: 'MyModulesTable',
+      })
       const { timeReadable: duration } = durationObj
 
       const dateString = getDateString({

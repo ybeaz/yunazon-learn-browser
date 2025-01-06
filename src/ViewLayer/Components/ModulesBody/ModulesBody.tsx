@@ -59,7 +59,10 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        printRes: false,
+        funcParent: 'ModulesBody',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 

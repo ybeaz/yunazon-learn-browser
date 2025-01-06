@@ -142,7 +142,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { parentFunction: 'AcademyPresentComponent' }
       )
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        printRes: false,
+        funcParent: 'AcademyPresent',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
