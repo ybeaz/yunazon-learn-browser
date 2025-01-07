@@ -1,6 +1,7 @@
 import { HandleEventType } from 'yourails_common'
 import { ImageYrlPropsType } from 'yourails_common'
-import { NavLinkProps } from 'react-router-dom'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
+
 export type AvatarPlusInfoComponentPropsType = {
   classProps?: Record<string, string | string[]>
   pathname?: string
@@ -18,7 +19,7 @@ export type AvatarPlusInfoPropsType = Omit<
 
 export type AvatarPlusInfoPropsOutType = {
   imageProps: ImageYrlPropsType
-  navLinkProps: NavLinkProps
+  navLinkProps: NavLinkWithQueryPropsType
 }
 
 /**

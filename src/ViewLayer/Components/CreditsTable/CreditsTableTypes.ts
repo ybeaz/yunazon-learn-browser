@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLinkProps } from 'react-router-dom'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from 'yourails_common'
@@ -15,8 +15,8 @@ export type CreditsTableComponentPropsType = {
 }
 
 export type CreditsTableItemPropsOutType = {
-  linkToDocumentProps: NavLinkProps
-  linkToModuleProps: NavLinkProps
+  linkToDocumentProps: NavLinkWithQueryPropsType
+  linkToModuleProps: NavLinkWithQueryPropsType
   buttonDeactivateDocumentProps: ButtonYrlPropsType
 }
 

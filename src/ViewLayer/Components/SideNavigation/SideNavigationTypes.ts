@@ -14,6 +14,17 @@ export interface GetSideNavigationButtons {
   (props: GetSideNavigationButtonsProps): ButtonYrlPropsType[]
 }
 
+export type GetSideNavigationDictProps = {
+  navigate: any
+  language: RootStoreType['language']
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
+  handleEvents: HandleEventType
+}
+
+export interface GetSideNavigationDict {
+  (props: GetSideNavigationButtonsProps): ButtonYrlPropsType[]
+}
+
 export type SideNavigationComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
