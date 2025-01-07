@@ -9,6 +9,7 @@ import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationItemsPropsArr } from './getSideNavigationItemsPropsArr'
 import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { withPropsYrl } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 import {
   GetSideNavigationItemsResType,
@@ -50,6 +51,15 @@ const SideNavigationComponent: SideNavigationComponentType = (
       (sideNavigationItemsProp: GetSideNavigationItemsResType) => {
         const { navLinkProps, buttonYrlProps } = sideNavigationItemsProp
         const key = nanoid()
+        if (navLinkProps) {
+          return (
+            <div key={key} className='_item'>
+              <NavLinkWithQuery {...navLinkProps} key={key}>
+                <ButtonYrl {...buttonYrlProps} />
+              </NavLinkWithQuery>
+            </div>
+          )
+        } // <NavLinkWithQuery {...propsOut.navLinkProps}>
         return (
           <div key={key} className='_item'>
             <ButtonYrl {...buttonYrlProps} />

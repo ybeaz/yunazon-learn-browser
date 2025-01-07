@@ -20,7 +20,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
 }: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsResType[] => {
   const sideNavigationItemsProps: GetSideNavigationItemsResType[] = [
     {
-      navLinkProps: undefined, // { to: { pathname: '' } },
+      navLinkProps: undefined,
       buttonYrlProps: {
         icon: 'MdLogin',
         captureRight: DICTIONARY.Login[language],
@@ -31,7 +31,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/' }},
+      navLinkProps: { to: { pathname: '/' } },
       buttonYrlProps: {
         icon: 'MdHome',
         captureRight: DICTIONARY.Home[language],
@@ -39,13 +39,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/' },
+          data: {},
         },
         isDisplaying: true,
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/m' }},
+      navLinkProps: { to: { pathname: '/m' } },
       buttonYrlProps: {
         icon: 'MdOutlineVideocam',
         captureRight: DICTIONARY.All_interactive_videos[language],
@@ -53,13 +53,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/m' },
+          data: {},
         },
         isDisplaying: true,
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/t' }},
+      navLinkProps: { to: { pathname: '/t' } },
       buttonYrlProps: {
         icon: 'MdOutlineTag',
         captureRight: DICTIONARY.All_tags[language],
@@ -67,13 +67,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/t' },
+          data: {},
         },
         isDisplaying: true,
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/my-documents' }},
+      navLinkProps: { to: { pathname: '/my-documents' } },
       buttonYrlProps: {
         icon: 'MdAssignmentTurnedIn',
         captureRight: DICTIONARY.My_documents[language],
@@ -81,13 +81,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/my-documents' },
+          data: {},
         },
         isDisplaying: !!sub,
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/my-modules' }},
+      navLinkProps: { to: { pathname: '/my-modules' } },
       buttonYrlProps: {
         icon: 'MdCastForEducation',
         captureRight: DICTIONARY.My_courses[language],
@@ -95,13 +95,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/my-modules' },
+          data: {},
         },
         isDisplaying: !!sub && isCourseCreateSectionFlag(),
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '' }},
+      navLinkProps: undefined,
       buttonYrlProps: {
         icon: 'MdLightbulbOutline',
         captureRight: DICTIONARY.About[language],
@@ -121,7 +121,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '/profiles' }},
+      navLinkProps: { to: { pathname: '/profiles' } },
       buttonYrlProps: {
         icon: 'MdPerson',
         captureRight: DICTIONARY.My_profile[language],
@@ -129,13 +129,13 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
         handleEvents,
         action: {
           typeEvent: 'GO_SCREEN',
-          data: { navigate, pathname: '/profiles' },
+          data: {},
         },
         isDisplaying: false, // TODO, component Profiles.tsx !!sub,
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '' }},
+      navLinkProps: undefined,
       buttonYrlProps: {
         icon: 'MdAddShoppingCart',
         captureRight: DICTIONARY.Services[language],
@@ -146,7 +146,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '' }},
+      navLinkProps: undefined,
       buttonYrlProps: {
         icon: 'MdLogout',
         captureRight: DICTIONARY.Logout[language],
@@ -157,7 +157,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: undefined, // {to: { pathname: '' }},
+      navLinkProps: undefined,
       buttonYrlProps: {
         icon: 'MdContactMail',
         captureRight: DICTIONARY.Contacts[language],
