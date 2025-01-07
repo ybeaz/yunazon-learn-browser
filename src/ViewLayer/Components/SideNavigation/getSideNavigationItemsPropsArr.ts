@@ -18,9 +18,9 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
   sub,
   handleEvents,
 }: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsResType[] => {
-  const sideNavigationButtons: GetSideNavigationItemsResType[] = [
+  const sideNavigationItemsProps: GetSideNavigationItemsResType[] = [
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // { to: { pathname: '' } },
       buttonYrlProps: {
         icon: 'MdLogin',
         captureRight: DICTIONARY.Login[language],
@@ -31,7 +31,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/' }},
       buttonYrlProps: {
         icon: 'MdHome',
         captureRight: DICTIONARY.Home[language],
@@ -45,7 +45,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/m' }},
       buttonYrlProps: {
         icon: 'MdOutlineVideocam',
         captureRight: DICTIONARY.All_interactive_videos[language],
@@ -59,7 +59,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/t' }},
       buttonYrlProps: {
         icon: 'MdOutlineTag',
         captureRight: DICTIONARY.All_tags[language],
@@ -73,7 +73,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/my-documents' }},
       buttonYrlProps: {
         icon: 'MdAssignmentTurnedIn',
         captureRight: DICTIONARY.My_documents[language],
@@ -87,7 +87,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/my-modules' }},
       buttonYrlProps: {
         icon: 'MdCastForEducation',
         captureRight: DICTIONARY.My_courses[language],
@@ -101,7 +101,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '' }},
       buttonYrlProps: {
         icon: 'MdLightbulbOutline',
         captureRight: DICTIONARY.About[language],
@@ -121,7 +121,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '/profiles' }},
       buttonYrlProps: {
         icon: 'MdPerson',
         captureRight: DICTIONARY.My_profile[language],
@@ -135,32 +135,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
-      buttonYrlProps: {
-        icon: 'MdQueue',
-        captureRight: DICTIONARY.createCourseQuiz[language],
-        classAdded: 'Button_sideMenuItems',
-        handleEvents,
-        action: {
-          typeEvent: 'CREATE_COURSE',
-          data: { contentComponentName: 'SideNavigation' },
-        },
-        isDisplaying: false, // TODO,
-      },
-    },
-    {
-      navLinkProps: {},
-      buttonYrlProps: {
-        icon: 'MdFlag',
-        captureRight: DICTIONARY.About[language],
-        classAdded: 'Button_sideMenuItems',
-        handleEvents,
-        action: { typeEvent: 'DEV_STAGE' },
-        isDisplaying: false, // TODO, true,
-      },
-    },
-    {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '' }},
       buttonYrlProps: {
         icon: 'MdAddShoppingCart',
         captureRight: DICTIONARY.Services[language],
@@ -171,18 +146,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
-      buttonYrlProps: {
-        icon: 'MdContactMail',
-        captureRight: DICTIONARY.Contacts[language],
-        classAdded: 'Button_sideMenuItems',
-        handleEvents,
-        action: { typeEvent: 'DEV_STAGE' },
-        isDisplaying: false, // TODO, true,
-      },
-    },
-    {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '' }},
       buttonYrlProps: {
         icon: 'MdLogout',
         captureRight: DICTIONARY.Logout[language],
@@ -193,17 +157,17 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       },
     },
     {
-      navLinkProps: {},
+      navLinkProps: undefined, // {to: { pathname: '' }},
       buttonYrlProps: {
-        icon: 'HiOutlineAcademicCap',
-        captureRight: DICTIONARY.Academy[language],
+        icon: 'MdContactMail',
+        captureRight: DICTIONARY.Contacts[language],
         classAdded: 'Button_sideMenuItems',
         handleEvents,
-        action: { typeEvent: 'GO_SCREEN', data: { navigate } },
-        isDisplaying: false,
+        action: { typeEvent: 'DEV_STAGE' },
+        isDisplaying: false, // TODO, true,
       },
     },
   ]
 
-  return sideNavigationButtons
+  return sideNavigationItemsProps
 }

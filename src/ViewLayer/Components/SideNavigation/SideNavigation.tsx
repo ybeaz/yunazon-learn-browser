@@ -6,9 +6,8 @@ import { nanoid } from 'nanoid'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
-import { getSideNavigationButtons } from './getSideNavigationButtons'
 import { getSideNavigationItemsPropsArr } from './getSideNavigationItemsPropsArr'
-import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourails_common'
+import { ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { withPropsYrl } from 'yourails_common'
 
 import {
@@ -36,24 +35,6 @@ const SideNavigationComponent: SideNavigationComponentType = (
 
   const navigate = useNavigate()
 
-  const buttonPropsArr: ButtonYrlPropsType[] = getSideNavigationButtons({
-    navigate,
-    sub,
-    language,
-    handleEvents,
-  })
-
-  const getButtons: Function = (buttonPropsArrIn: ButtonYrlPropsType[]): ReactElement[] => {
-    return buttonPropsArrIn.map(buttonProps => {
-      const key = nanoid()
-      return (
-        <div key={key} className='_item'>
-          <ButtonYrl {...buttonProps} />
-        </div>
-      )
-    })
-  }
-
   const sideNavigationItemsPropsArr: GetSideNavigationItemsResType[] =
     getSideNavigationItemsPropsArr({
       navigate,
@@ -62,15 +43,20 @@ const SideNavigationComponent: SideNavigationComponentType = (
       handleEvents,
     })
 
-  const getSiteMenuItems: Function = (buttonPropsArrIn: ButtonYrlPropsType[]): ReactElement[] => {
-    return buttonPropsArrIn.map(buttonProps => {
-      const key = nanoid()
-      return (
-        <div key={key} className='_item'>
-          <ButtonYrl {...buttonProps} />
-        </div>
-      )
-    })
+  const getSiteMenuItems: Function = (
+    sideNavigationItemsPropsArrIn: GetSideNavigationItemsResType[]
+  ): ReactElement[] => {
+    return sideNavigationItemsPropsArrIn.map(
+      (sideNavigationItemsProp: GetSideNavigationItemsResType) => {
+        const { navLinkProps, buttonYrlProps } = sideNavigationItemsProp
+        const key = nanoid()
+        return (
+          <div key={key} className='_item'>
+            <ButtonYrl {...buttonYrlProps} />
+          </div>
+        )
+      }
+    )
   }
 
   const classNameAdd = isSideNavLeftVisible ? 'SideNavigation_show' : ''
@@ -99,7 +85,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
           <div className='_groupItem _languageSelect'>
             <SelectLanguage {...languageSelectProps} />
           </div>
-          {getButtons(buttonPropsArr)}
+          {getSiteMenuItems(sideNavigationItemsPropsArr)}
         </div>
       </div>
     </div>

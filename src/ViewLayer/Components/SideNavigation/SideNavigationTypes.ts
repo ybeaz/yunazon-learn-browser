@@ -4,17 +4,6 @@ import { ButtonYrlPropsType, ActionEventType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
-export type GetSideNavigationButtonsProps = {
-  navigate: any
-  language: RootStoreType['language']
-  sub: RootStoreType['authAwsCognitoUserData']['sub']
-  handleEvents: HandleEventType
-}
-
-export interface GetSideNavigationButtons {
-  (props: GetSideNavigationButtonsProps): ButtonYrlPropsType[]
-}
-
 export type GetSideNavigationItemsPropsArrPropsType = {
   navigate: any
   language: RootStoreType['language']
@@ -23,7 +12,7 @@ export type GetSideNavigationItemsPropsArrPropsType = {
 }
 
 export type GetSideNavigationItemsResType = {
-  navLinkProps: NavLinkWithQueryPropsType
+  navLinkProps?: NavLinkWithQueryPropsType
   buttonYrlProps: ButtonYrlPropsType
 }
 

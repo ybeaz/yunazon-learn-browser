@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getCreatedUrlSearchQuery } from 'yourails_common'
