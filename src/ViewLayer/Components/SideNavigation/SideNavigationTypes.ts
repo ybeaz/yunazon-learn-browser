@@ -14,14 +14,14 @@ export interface GetSideNavigationButtons {
   (props: GetSideNavigationButtonsProps): ButtonYrlPropsType[]
 }
 
-export type GetSideNavigationDictProps = {
+export type GetSideNavigationItemsPropsArrProps = {
   navigate: any
   language: RootStoreType['language']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
   handleEvents: HandleEventType
 }
 
-export interface GetSideNavigationDict {
+export interface GetSideNavigationItemsPropsArr {
   (props: GetSideNavigationButtonsProps): ButtonYrlPropsType[]
 }
 

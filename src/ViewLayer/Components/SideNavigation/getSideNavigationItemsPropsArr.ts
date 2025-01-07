@@ -1,19 +1,22 @@
 import { ButtonYrlPropsType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
-import { GetSideNavigationDictProps, GetSideNavigationDict } from './SideNavigationTypes'
+import {
+  GetSideNavigationItemsPropsArrProps,
+  GetSideNavigationItemsPropsArr,
+} from './SideNavigationTypes'
 import { isAwsCognitoAuth } from '../../../FeatureFlags'
 import { isCourseCreateSectionFlag } from '../../../FeatureFlags'
 
 /**
- * @description Function to getSideNavigationDict
- * @import import { getSideNavigationDict, GetSideNavigationDictParamsType } from './getSideNavigationDict'
+ * @description Function to getSideNavigationItemsPropsArr
+ * @import import { getSideNavigationItemsPropsArr, GetSideNavigationItemsPropsArrParamsType } from './getSideNavigationItemsPropsArr'
  */
-export const getSideNavigationDict: GetSideNavigationDict = ({
+export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArr = ({
   navigate,
   language,
   sub,
   handleEvents,
-}: GetSideNavigationDictProps): ButtonYrlPropsType[] => {
+}: GetSideNavigationItemsPropsArrProps): ButtonYrlPropsType[] => {
   const sideNavigationButtons: ButtonYrlPropsType[] = [
     {
       icon: 'MdLogin',

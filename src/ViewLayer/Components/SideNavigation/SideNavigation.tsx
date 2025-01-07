@@ -7,7 +7,7 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { LANGUAGES_APP } from 'yourails_common'
 import { SelectLanguage, SelectLanguagePropsType } from '../SelectLanguage'
 import { getSideNavigationButtons } from './getSideNavigationButtons'
-
+import { getSideNavigationItemsPropsArr } from './getSideNavigationItemsPropsArr'
 import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourails_common'
 import { withPropsYrl } from 'yourails_common'
 
@@ -42,8 +42,26 @@ const SideNavigationComponent: SideNavigationComponentType = (
     handleEvents,
   })
 
-  const getButtons: Function = (buttonPropsArr2: any[]): ReactElement[] => {
-    return buttonPropsArr2.map(buttonProps => {
+  const getButtons: Function = (buttonPropsArrIn: ButtonYrlPropsType[]): ReactElement[] => {
+    return buttonPropsArrIn.map(buttonProps => {
+      const key = nanoid()
+      return (
+        <div key={key} className='_item'>
+          <ButtonYrl {...buttonProps} />
+        </div>
+      )
+    })
+  }
+
+  const sideNavigationItemsPropsArr: ButtonYrlPropsType[] = getSideNavigationItemsPropsArr({
+    navigate,
+    sub,
+    language,
+    handleEvents,
+  })
+
+  const getSiteMenuItems: Function = (buttonPropsArrIn: ButtonYrlPropsType[]): ReactElement[] => {
+    return buttonPropsArrIn.map(buttonProps => {
       const key = nanoid()
       return (
         <div key={key} className='_item'>
