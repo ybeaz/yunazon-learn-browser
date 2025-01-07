@@ -12,6 +12,7 @@ import { ButtonYrl, ButtonYrlPropsType, withStoreStateSelectedYrl } from 'yourai
 import { withPropsYrl } from 'yourails_common'
 
 import {
+  GetSideNavigationItemsResType,
   SideNavigationComponentPropsType,
   SideNavigationPropsType,
   SideNavigationPropsOutType,
@@ -53,12 +54,13 @@ const SideNavigationComponent: SideNavigationComponentType = (
     })
   }
 
-  const sideNavigationItemsPropsArr: ButtonYrlPropsType[] = getSideNavigationItemsPropsArr({
-    navigate,
-    sub,
-    language,
-    handleEvents,
-  })
+  const sideNavigationItemsPropsArr: GetSideNavigationItemsResType[] =
+    getSideNavigationItemsPropsArr({
+      navigate,
+      sub,
+      language,
+      handleEvents,
+    })
 
   const getSiteMenuItems: Function = (buttonPropsArrIn: ButtonYrlPropsType[]): ReactElement[] => {
     return buttonPropsArrIn.map(buttonProps => {
