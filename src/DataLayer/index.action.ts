@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 export const ACTIONS_SYNC: string[] = [
+  'SET_URLPARAMSQUERY_TO_STORE',
   'SET_COMPONENTS_STATE',
   'SET_PAGINATION_OFFSET',
   'SET_TAGS_CLOUD',
@@ -91,7 +92,7 @@ export const ACTIONS_ASYNC: string[] = [
   'CREATE_DOCUMENT_SCENARIO',
   'UPDATE_PROFILE',
   'GET_PROFILE',
-  'GET_MODULES',
+  'READ_MODULES_CONNECTION',
   'GET_BOT_RESPONSE',
   'GET_MODULE_MODULE_CREATED',
   'GET_MODULE_OBJECTIONS_CREATED',
@@ -120,7 +121,6 @@ export const ACTIONS_ASYNC: string[] = [
   'GET_MODULE',
   'GET_OAUTH_GOOGLE',
   'GET_OAUTH_UI_DATA',
-  'GET_MATRIX_DATA',
   'READ_USER_AUTH',
   'SAVE_ANALYTICS',
   'SAVE_USER_PROFILE',

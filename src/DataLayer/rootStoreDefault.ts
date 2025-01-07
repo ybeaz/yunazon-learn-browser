@@ -4,8 +4,8 @@ import {
   ComponentsStateType,
   FormsType,
   RootStoreType,
-  PaginationNameEnumType,
 } from '../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 import { ScreensEnumType, CreateModuleStatusEnumType } from 'yourails_common'
 
@@ -55,8 +55,11 @@ export const userStoreDefault: UserType | any = {
 
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
-  tagsSearchForModules: null,
   modulesSearchApplied: null,
+  tagsSearchApplied: null,
+  documentsSearchApplied: null,
+  tagsPick: [],
+  tagsOmit: [],
   isConfetti: false,
   isSepAdvancedSearch: false,
   isShownPalette: false,
@@ -143,8 +146,6 @@ export const formsDefault: FormsType = {
   sendCc: '',
   userPrev: userStoreDefault,
   user: userStoreDefault,
-  tagsPick: [],
-  tagsOmit: [],
   profileActive: {
     nameFirst: '',
     nameLast: '',
@@ -180,6 +181,7 @@ export const rootStoreDefault: RootStoreType = {
     numberQuestionsInSlide: 2,
     durationMultiplier: 1,
   },
+  urlParamsQuery: { sendCc: '', sendBcc: '' },
   forms: formsDefault,
   isLoaded: {
     isLoadedGlobalVars: true,

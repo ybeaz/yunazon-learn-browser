@@ -14,7 +14,7 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { SITE_META_DATA } from 'yourails_common'
 import { PAGINATION_OFFSET } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 
 import {
   TagsCloudComponentPropsType,
@@ -45,15 +45,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    { type: 'SET_TAGS_CLOUD_DATA' },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
-    },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
-    },
+    { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
     { type: 'GET_TAGS_CONNECTION', data: { isLoaderOverlay: true } },
   ])
 

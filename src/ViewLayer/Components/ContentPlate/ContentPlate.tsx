@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
-import { Tooltip } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
-import { ImageYrl, IconYrl, withPropsYrl } from 'yourails_common'
+import { ImageYrl, withPropsYrl } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getSlug } from 'yourails_common'
 import { PlayerPanel } from '../PlayerPanel/PlayerPanel'
@@ -16,6 +15,7 @@ import { withStoreStateSelectedYrl } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
@@ -47,7 +47,11 @@ const ContentPlateComponent: ContentPlateComponentType = (
     moduleID,
     contentID,
     screenType,
-    storeStateSlice: { language, mediaLoaded },
+    storeStateSlice: {
+      language,
+      mediaLoaded,
+      urlParamsQuery: { sendCc, sendBcc },
+    },
     handleEvents,
     tags,
     thumbnails,
@@ -66,8 +70,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
   })
 
   const slug = getSlug(capture)
+
   const pathname = `/m/${moduleID}/${slug}`
-  const { width: widthSizeWindow } = getSizeWindow()
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
@@ -168,10 +172,6 @@ const ContentPlateComponent: ContentPlateComponentType = (
           typeEvent: 'SELECT_MODULE',
           data: { capture, moduleID, contentID, navigate },
         })
-        handleEvents(event, {
-          typeEvent: 'GO_LINK_PATH',
-          data: { navigate, pathname },
-        })
       },
     },
   }
@@ -198,12 +198,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
 
         {/* TODO: remove <PlayerPanel {...propsOut.playerPanelProps} /> */}
       </CONTENT_ASSIGNED_COMPONENT>
-      <NavLink {...propsOut.linkProps} />
+      <NavLinkWithQuery {...propsOut.linkProps} />
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = ['language', 'mediaLoaded']
+const storeStateSliceProps: string[] = ['language', 'mediaLoaded', 'urlParamsQuery']
 export const ContentPlate = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn })(
     withStoreStateSelectedYrl(storeStateSliceProps, ContentPlateComponent)

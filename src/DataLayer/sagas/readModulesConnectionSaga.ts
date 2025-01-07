@@ -14,10 +14,10 @@ import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
-import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
-export function* getModulesGenerator(params: ActionReduxType | any): Iterable<any> {
-  const isLoaderOverlay = params?.data?.isLoaderOverlay || false
+export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
   const isWithinModuleIDs = params?.data?.isWithinModuleIDs || false
@@ -29,24 +29,16 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   const {
     componentsState: {
       screenActive,
-      tagsSearchForModules,
+      modulesSearchApplied,
       pagination: {
         pageModules: { first, offset },
       },
+      tagsPick: tagsPickState,
+      tagsOmit: tagsOmitState,
     },
-    forms: { modulesSearch, tagsPick: tagsPickIn, tagsOmit },
     modules,
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
-
-  const queryParams = getParsedUrlQueryBrowserApi()
-  const tagsPickUrl = queryParams?.tagsPick || null
-
-  const tagsPick = tagsSearchForModules
-    ? [tagsSearchForModules]
-    : tagsPickUrl
-      ? [tagsPickUrl]
-      : tagsPickIn
 
   let profiles = stateSelected.profiles
 
@@ -73,8 +65,8 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
   }
 
   if (learnerUserID) readModulesConnectionInput.learnerUserID = learnerUserID
-  if (modulesSearch) {
-    readModulesConnectionInput.searchPhrase = modulesSearch
+  if (modulesSearchApplied) {
+    readModulesConnectionInput.searchPhrase = modulesSearchApplied
     readModulesConnectionInput.operators = { searchPhrase: 'or' }
   }
   if (operators) readModulesConnectionInput.operators = operators
@@ -101,66 +93,56 @@ export function* getModulesGenerator(params: ActionReduxType | any): Iterable<an
       moduleID: 'and',
     }
   }
-  if (!!tagsPick?.length) {
-    readModulesConnectionInput.tagsPick = tagsPick
+  if (tagsPickState.length) {
+    readModulesConnectionInput.tagsPick = tagsPickState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
-  if (!!tagsOmit?.length) {
-    readModulesConnectionInput.tagsOmit = tagsOmit
+  if (tagsOmitState.length) {
+    readModulesConnectionInput.tagsOmit = tagsOmitState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
   }
 
-  try {
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+  const variables: QueryReadModulesConnectionArgs = {
+    readModulesConnectionInput,
+  }
 
-    const variables: QueryReadModulesConnectionArgs = {
-      readModulesConnectionInput,
+  const readModulesConnection: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readModulesConnection'],
+      fragmentName: FragmentEnumType['ModuleTypeForMartix'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
     }
+  )
 
-    const readModulesConnection: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readModulesConnection'],
-        fragmentName: FragmentEnumType['ModuleTypeForMartix'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
+  let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
+    getMappedConnectionToItems,
+    { printRes: false }
+  ).result
 
-    let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
-      getMappedConnectionToItems,
-      { printRes: false }
-    ).result
+  yield put(actionSync.SET_MODULES(modulesNext))
 
-    yield put(actionSync.SET_MODULES(modulesNext))
-
-    if (tagsPick.length && tagsPick[0])
-      yield put(
-        actionSync.SET_COMPONENTS_STATE({
-          componentsStateProp: 'tagsSearchForModules',
-          value: tagsPick[0],
-        })
-      )
-
-    const pageInfo = readModulesConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({
-        paginationName: PaginationNameEnumType['pageModules'],
-        ...pageInfo,
-      })
-    )
-
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error: any) {
-    console.info('getModulesSaga [77] ERROR', `${error.name}: ${error.message}`)
-  }
+  const pageInfo = readModulesConnection?.pageInfo
+  yield put(
+    actionSync.SET_PAGE_INFO({
+      paginationName: PaginationNameEnumType['pageModules'],
+      ...pageInfo,
+    })
+  )
 }
 
-export const getModules = withDebounce(getModulesGenerator, 500)
+export const readModulesConnection = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readModulesConnectionGenerator), {
+    optionsDefault: { funcParent: 'readModulesConnectionSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
-export default function* getModulesSaga() {
-  yield takeEvery([actionAsync.GET_MODULES.REQUEST().type], getModules)
+export default function* readModulesConnectionSaga() {
+  yield takeEvery([actionAsync.READ_MODULES_CONNECTION.REQUEST().type], readModulesConnection)
 }

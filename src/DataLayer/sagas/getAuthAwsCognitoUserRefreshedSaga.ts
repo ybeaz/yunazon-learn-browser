@@ -11,6 +11,7 @@ import { withDebounce } from 'yourails_common'
 import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
   try {
@@ -66,7 +67,10 @@ export function* getAuthAwsCognitoUserRefreshedGenerator(): Iterable<any> {
 }
 
 export const getAuthAwsCognitoUserRefreshed = withDebounce(
-  getAuthAwsCognitoUserRefreshedGenerator,
+  withTryCatchFinallySaga(getAuthAwsCognitoUserRefreshedGenerator, {
+    optionsDefault: { funcParent: 'getAuthAwsCognitoUserRefreshedSaga' },
+    resDefault: [],
+  }),
   10
 )
 

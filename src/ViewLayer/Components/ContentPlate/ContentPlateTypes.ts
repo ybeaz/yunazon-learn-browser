@@ -1,7 +1,7 @@
 import { ModuleType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { DurationObjType } from 'yourails_common'
-import { PlayerPanelPropsType } from '../PlayerPanel/PlayerPanel'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { ReaderIframePropsType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframePropsType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { ImageYrlPropsType, IconYrlPropsType } from 'yourails_common'
@@ -21,6 +21,7 @@ export type ContentPlateComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
+    urlParamsQuery: RootStoreType['urlParamsQuery']
   }
   handleEvents: HandleEventType
   tags?: ModuleType['tags']
@@ -42,8 +43,7 @@ export type ContentPlatePropsOutType = {
   tooltipIsCompletedProps: TooltipImageContentPropsType
   loaderBlurhashProps: any
   loaderImageProps: ImageYrlPropsType
-  // playerPanelProps: PlayerPanelPropsType
-  linkProps: any
+  linkProps: NavLinkWithQueryPropsType
 }
 
 /**

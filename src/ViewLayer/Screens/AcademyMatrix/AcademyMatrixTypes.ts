@@ -7,7 +7,6 @@ export type AcademyMatrixPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
   }
-  handleEvents: HandleEventType
 }
 
 export type AcademyMatrixPropsOutType = {

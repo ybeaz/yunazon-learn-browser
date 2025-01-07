@@ -1,4 +1,5 @@
-import React, { useEffect, ReactElement } from 'react'
+import React from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 
 import { ScreensEnumType } from 'yourails_common'
@@ -9,11 +10,9 @@ import { useLoadedInitialTeachContent } from '../../Hooks/useLoadedInitialTeachC
 import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SITE_META_DATA } from 'yourails_common'
 import { SERVERS_MAIN } from 'yourails_common'
-import { PAGINATION_OFFSET } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
 
 import {
   AcademyMatrixPropsType,
@@ -30,28 +29,23 @@ import {
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
     storeStateSlice: { language },
-    handleEvents,
   } = props
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  const pageTagsOffset = PAGINATION_OFFSET['pageTags']
-
-  useEffectedInitialRequests([
-    { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageModules'], offset: pageModulesOffset },
-    },
-    {
-      type: 'SET_PAGINATION_OFFSET',
-      data: { paginationName: PaginationNameEnumType['pageTags'], offset: pageTagsOffset },
-    },
-    { type: 'GET_MATRIX_DATA' },
-  ])
+  useEffectedInitialRequests(
+    [
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'GET_MODULES_CONNECTION' },
+      { type: 'GET_TAGS_CONNECTION' },
+    ],
+    []
+    /* This provides consistentgo back experience, but with flickering/ twinkle/ blinking
+    [JSON.stringify({ allParams, 'location.search': location.search })] */
+  )
 
   useLoadedInitialTeachContent({ isSkipping: false })
 
@@ -104,7 +98,13 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
+const storeStateSliceProps: string[] = [
+  'language',
+  'queryUrl',
+  'tagsPick',
+  'componentsState',
+  'urlParamsQuery',
+]
 export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))

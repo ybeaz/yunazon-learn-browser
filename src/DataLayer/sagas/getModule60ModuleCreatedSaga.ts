@@ -11,6 +11,7 @@ import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails
 import { withDebounce } from 'yourails_common'
 import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -105,7 +106,13 @@ export function* getModule60ModuleCreatedGenerator(params: ActionReduxType | any
   }
 }
 
-export const getModule60ModuleCreated = withDebounce(getModule60ModuleCreatedGenerator, 500)
+export const getModule60ModuleCreated = withDebounce(
+  withTryCatchFinallySaga(getModule60ModuleCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule60ModuleCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule60ModuleCreatedSaga() {
   yield takeEvery([actionAsync.GET_MODULE_CREATED.REQUEST().type], getModule60ModuleCreated)

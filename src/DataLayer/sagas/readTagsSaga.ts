@@ -6,9 +6,11 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getLocalStorageReadKeyObj } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   const isLoaderOverlay = params?.data?.isLoaderOverlay
@@ -25,39 +27,37 @@ function* readTagsGenerator(params: ActionReduxType | any): Iterable<any> {
   sub_localStorage = sub_localStorage && sub_localStorage !== '""' ? sub_localStorage : ''
   learnerUserID = sub || sub_localStorage
 
-  try {
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
-
-    const variables: QueryReadTagsArgs = {
-      readTagsInput: [
-        {
-          tagID,
-          learnerUserID: sub_localStorage,
-        },
-      ],
-    }
-
-    const readTags: any = yield getResponseGraphqlAsync(
+  const variables: QueryReadTagsArgs = {
+    readTagsInput: [
       {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readTags'],
+        tagID,
+        learnerUserID: sub_localStorage,
       },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
-
-    yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
-
-    if (isLoaderOverlay) yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error: any) {
-    console.info('readTags [35] ERROR', `${error.name}: ${error.message}`)
+    ],
   }
+
+  const readTags: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readTags'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
+    }
+  )
+
+  yield put(actionSync.SET_TAGS_CLOUD({ tagsCloud: readTags }))
 }
 
-export const readTags = withDebounce(readTagsGenerator, 500)
+export const readTags = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readTagsGenerator), {
+    optionsDefault: { funcParent: 'readTagsSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* readTagsSaga() {
   yield takeEvery([actionAsync.READ_TAGS.REQUEST().type], readTags)

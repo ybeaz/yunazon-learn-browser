@@ -10,6 +10,7 @@ import {
   CreateModuleStageType,
 } from 'yourails_common'
 import { PaginationType } from 'yourails_common'
+import { PaginationNameEnumType } from 'yourails_common'
 import { ArticleItemType } from 'yourails_common'
 import { ScreensEnumType } from 'yourails_common'
 
@@ -29,18 +30,15 @@ export type SearchFormSepType = {
   selectSortBy: string
 }
 
-export enum PaginationNameEnumType {
-  pageModules = 'pageModules',
-  pageDocuments = 'pageDocuments',
-  pageTags = 'pageTags',
-}
-
 export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
   screenActive: ScreensEnumType
-  tagsSearchForModules: string | null
   modulesSearchApplied: string | null
+  tagsSearchApplied: string | null
+  documentsSearchApplied: string | null
+  tagsPick: string[]
+  tagsOmit: string[]
   isConfetti: boolean
   isSepAdvancedSearch: boolean
   isShownPalette: boolean
@@ -69,14 +67,14 @@ export type FormsType = {
   documentsSearch: string
   tagsSearch: string
   coursesSearch: string
-  tagsPick: string[]
-  tagsOmit: string[]
   profileActive: {
     nameFirst: string
     nameLast: string
     nameMiddle: string
   }
 }
+
+export type UrlParamsQueryType = { sendCc: string; sendBcc: string }
 
 export type ScormType = {
   courseIDActive: string | null
@@ -141,6 +139,7 @@ export type RootStoreType = {
   >[]
   tagsCloud: TagType[]
   scorm: ScormType
+  urlParamsQuery: UrlParamsQueryType
   forms: FormsType
   isLoaded: {
     isLoadedGlobalVars: boolean

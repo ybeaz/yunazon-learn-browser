@@ -5,7 +5,6 @@
 
   ._h2Wrapper {
     display: flex;
-    align-items: center;
 
     ._h2 {
       display: flex;
@@ -18,7 +17,6 @@
     ._iconLabelWithCloseWrapper {
       display: flex;
       align-items: center;
-      padding-bottom: 1rem;
 
       .Icon_ArrowForward {
         display: flex;
@@ -31,11 +29,11 @@
         }
       }
 
-      ._tagsSearchForModulesIcon {
+      ._tagsPickIcon {
         display: flex;
         align-items: center;
       }
-      ._tagsSearchForModulesValue {
+      ._tagsPickValue {
         display: flex;
         align-items: center;
       }
@@ -65,14 +63,35 @@
   padding: 0rem 1rem;
   gap: 1rem;
 
-  ._h2 {
-    display: flex;
-    align-self: flex-start;
-    text-transform: capitalize;
-    padding: 0;
-    font-size: @fontSizeH4;
-    line-height: 2.25rem;
-    cursor: pointer;
-    text-decoration: underline;
+  ._h2Wrapper {
+    ._h2 {
+      display: flex;
+      align-self: flex-start;
+      text-transform: capitalize;
+      padding: 0;
+      font-size: @fontSizeH4;
+      line-height: 2.25rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  @media @large {
+  }
+  @media @desktop, @desktop-strict {
+  }
+  @media @tablet, @tablet-strict {
+  }
+  @media @phone, @phone-strict {
+    ._h2Wrapper {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      ._iconLabelWithCloseWrapper {
+        .Icon_ArrowForward {
+          padding: 0 0.3rem 0 0;
+        }
+      }
+    }
   }
 }

@@ -67,6 +67,8 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       moduleIDActive,
       modules,
       mediaLoaded,
+      // @ts-expect-error
+      urlParamsQuery: { sendCc, sendBcc },
     },
   } = props
 
@@ -84,7 +86,14 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
 
-  useEffectedInitialRequests([{ type: 'GET_MODULE', data: { moduleID } }], [moduleID])
+  useEffectedInitialRequests(
+    [
+      { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
+      // { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'GET_MODULE', data: { moduleID } },
+    ],
+    [moduleID]
+  )
 
   useLoadedInitialTeachContent()
   useflagsDebug(mediaLoadedModulesString)
@@ -140,7 +149,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         { parentFunction: 'AcademyPresentComponent' }
       )
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        printRes: false,
+        funcParent: 'AcademyPresent',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
@@ -420,6 +432,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
+  'urlParamsQuery',
 ]
 
 export const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(

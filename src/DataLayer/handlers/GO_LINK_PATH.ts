@@ -16,6 +16,7 @@ export const GO_LINK_PATH: ActionEventType = (
     }
 
     navigate(pathname)
+
     setTimeout(() => {
       if (decodeURIComponent(location.pathname) !== pathname)
         getRedirected(pathname, { isOrigin: true })

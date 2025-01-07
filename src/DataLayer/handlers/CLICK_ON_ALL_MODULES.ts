@@ -1,7 +1,7 @@
 import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionAsync, actionSync } from '../../DataLayer/index.action'
-import { PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 const { dispatch } = store
@@ -11,8 +11,8 @@ export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
-      componentsStateProp: 'tagsSearchForModules',
-      value: null,
+      componentsStateProp: 'tagsPick',
+      value: [],
     })
   )
   dispatch(
@@ -23,19 +23,12 @@ export const CLICK_ON_ALL_MODULES: ActionEventType = event => {
   )
   dispatch(actionSync.SET_TAGS_STATE({ tagsPick: [], tagsOmit: [] }))
 
-  dispatch(actionAsync.GET_MODULES.REQUEST({ isLoaderOverlay: true }))
-  ;['modulesSearch'].forEach((searchParamsName: string) => {
-    const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
-      searchParamsName,
-      searchParamsValue: '',
-    }
-    getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams)
-  })
+  dispatch(actionAsync.READ_MODULES_CONNECTION.REQUEST({ isLoaderOverlay: true }))
 
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: PaginationNameEnumType['pageModules'],
-      first: 0,
+      first: 1,
     })
   )
 }

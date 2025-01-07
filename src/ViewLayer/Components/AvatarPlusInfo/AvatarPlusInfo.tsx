@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { useNavigate } from 'react-router-dom'
 import { ImageYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
@@ -31,20 +31,19 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
       classAdded: '_avatarPlusInfo',
       handleEvents,
       action: {
-        typeEvent: 'GO_LINK_PATH',
-        data: { navigate, pathname: '/' },
+        typeEvent: null,
+        data: {},
       },
       src: imgSrc,
     },
     navLinkProps: {
       className: getClasses('_link', classProps),
-      to: pathname || '/',
+      to: { pathname: pathname || '/' },
       onClick: () =>
         handleEvents(
           {},
           {
-            typeEvent: 'GO_LINK_PATH',
-            data: { navigate, pathname: '/' },
+            typeEvent: 'CLICK_ON_CANCEL_APPLIED_ALL',
           }
         ),
     },
@@ -52,13 +51,13 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
 
   return (
     <div className={getClasses('AvatarPlusInfo', classProps)}>
-      <NavLink {...propsOut.navLinkProps}>
+      <NavLinkWithQuery {...propsOut.navLinkProps}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
           <div className='_capture'>{capture}</div>
           <div className='_text'>{text}</div>
         </div>
-      </NavLink>
+      </NavLinkWithQuery>
     </div>
   )
 }

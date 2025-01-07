@@ -11,6 +11,8 @@ import { withDebounce } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
@@ -18,78 +20,76 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   let modulesNext: ModuleType[] = []
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
 
-  try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(true))
+  const modulesInProgress = getLocalStorageReadKeyObj('modulesInProgress') || []
 
-    const modulesInProgress = getLocalStorageReadKeyObj('modulesInProgress') || []
+  let moduleInProgres = null
+  if (modulesInProgress && modulesInProgress.length)
+    moduleInProgres = getModuleByModuleID(
+      {
+        moduleID,
+        modules: modulesInProgress,
+      },
+      { parentFunction: 'getModuleGenerator' }
+    )
 
-    let moduleInProgres = null
-    if (modulesInProgress && modulesInProgress.length)
-      moduleInProgres = getModuleByModuleID(
-        {
-          moduleID,
-          modules: modulesInProgress,
-        },
-        { parentFunction: 'getModuleGenerator' }
-      )
+  const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
 
-    const moduleIDInProgres = moduleInProgres && moduleInProgres.moduleID
+  /* Case: use moduleInProgress from the localStorage */
+  if (modulesInProgress && modulesInProgress.length && moduleIDInProgres) {
+    modulesNext = modulesInProgress
 
-    /* Case: use moduleInProgress from the localStorage */
-    if (modulesInProgress && modulesInProgress.length && moduleIDInProgres) {
-      modulesNext = modulesInProgress
+    caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
+    const isAnswered = getCheckedModulesAnswered(modulesNext)
+    if (isAnswered) caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
+  } else {
+    /* Case: initial loading */
+    const variables: QueryReadModulesArgs = {
+      readModulesInput: [{ moduleID }],
+    }
 
-      caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
-      const isAnswered = getCheckedModulesAnswered(modulesNext)
-      if (isAnswered) caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
-    } else {
-      /* Case: initial loading */
-      const variables: QueryReadModulesArgs = {
-        readModulesInput: [{ moduleID }],
+    const readModules: any = yield getResponseGraphqlAsync(
+      {
+        variables,
+        resolveGraphqlName: ResolveGraphqlEnumType['readModules'],
+        fragmentName: FragmentEnumType['ModuleTypeStandard'],
+      },
+      {
+        clientHttpType: selectGraphqlHttpClientFlag(),
+        timeout: 5000,
       }
+    )
 
-      const readModules: any = yield getResponseGraphqlAsync(
-        {
-          variables,
-          resolveGraphqlName: ResolveGraphqlEnumType['readModules'],
-          fragmentName: FragmentEnumType['ModuleTypeStandard'],
-        },
-        {
-          clientHttpType: selectGraphqlHttpClientFlag(),
-          timeout: 5000,
-        }
-      )
+    modulesNext = getPreparedModules(readModules)
+  }
 
-      modulesNext = getPreparedModules(readModules)
+  yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
+
+  yield put(actionSync.SET_MODULES(modulesNext))
+  if (
+    caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
+    caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
+  ) {
+    yield put(actionSync.TOGGLE_START_MODULE(true))
+
+    if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
+      const data = [{ childName: 'QuestionScores', isActive: true, childProps: {} }]
+      yield put(actionSync.SET_MODAL_FRAMES(data))
     }
+  }
 
-    yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
-
-    yield put(actionSync.SET_MODULES(modulesNext))
-    if (
-      caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
-      caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
-    ) {
-      yield put(actionSync.TOGGLE_START_MODULE(true))
-
-      if (caseScenario === AcademyPresentCaseEnumType['moduleCompleted']) {
-        const data = [{ childName: 'QuestionScores', isActive: true, childProps: {} }]
-        yield put(actionSync.SET_MODAL_FRAMES(data))
-      }
-    }
-
-    const { width } = getSizeWindow()
-    if (width <= 480) {
-      yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
-    }
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error: any) {
-    console.info('getModule [95] ERROR', `${error.name}: ${error.message}`)
+  const { width } = getSizeWindow()
+  if (width <= 480) {
+    yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
   }
 }
 
-export const getModule = withDebounce(getModuleGenerator, 500)
+export const getModule = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(getModuleGenerator), {
+    optionsDefault: { funcParent: 'getModuleSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModuleSaga() {
   yield takeEvery([actionAsync.GET_MODULE.REQUEST().type], getModule)

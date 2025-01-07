@@ -10,9 +10,12 @@ import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common
 import { getChainedResponsibility } from 'yourails_common'
 import { getMappedConnectionToItems } from 'yourails_common'
 import { getPreparedCourses } from 'yourails_common'
-import { RootStoreType, PaginationNameEnumType } from '../../Interfaces/RootStoreType'
+import { RootStoreType } from '../../Interfaces/RootStoreType'
+import { PaginationNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
+import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<any> {
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
@@ -23,8 +26,10 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
       pagination: {
         pageModules: { first, offset },
       },
+      tagsPick,
+      tagsOmit,
     },
-    forms: { coursesSearch, tagsPick, tagsOmit },
+    forms: { coursesSearch },
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
@@ -45,46 +50,44 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
     isActive: true,
   }
 
-  try {
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-
-    const variables: QueryReadCoursesConnectionArgs = {
-      readCoursesConnectionInput,
-    }
-
-    const readCoursesConnection: any = yield getResponseGraphqlAsync(
-      {
-        variables,
-        resolveGraphqlName: ResolveGraphqlEnumType['readCoursesConnection'],
-      },
-      {
-        ...getHeadersAuthDict(),
-        clientHttpType: selectGraphqlHttpClientFlag(),
-        timeout: 10000,
-      }
-    )
-
-    let coursesNext: any = getChainedResponsibility(readCoursesConnection)
-      .exec(getMappedConnectionToItems, { printRes: false })
-      .exec(getPreparedCourses).result
-
-    yield put(actionSync.SET_COURSES(coursesNext))
-
-    const pageInfo = readCoursesConnection?.pageInfo
-    yield put(
-      actionSync.SET_PAGE_INFO({
-        paginationName: PaginationNameEnumType['pageModules'],
-        ...pageInfo,
-      })
-    )
-
-    yield put(actionSync.TOGGLE_LOADER_OVERLAY(false))
-  } catch (error: any) {
-    console.info('getCoursesSaga [77] ERROR', `${error.name}: ${error.message}`)
+  const variables: QueryReadCoursesConnectionArgs = {
+    readCoursesConnectionInput,
   }
+
+  const readCoursesConnection: any = yield getResponseGraphqlAsync(
+    {
+      variables,
+      resolveGraphqlName: ResolveGraphqlEnumType['readCoursesConnection'],
+    },
+    {
+      ...getHeadersAuthDict(),
+      clientHttpType: selectGraphqlHttpClientFlag(),
+      timeout: 10000,
+    }
+  )
+
+  let coursesNext: any = getChainedResponsibility(readCoursesConnection)
+    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getPreparedCourses).result
+
+  yield put(actionSync.SET_COURSES(coursesNext))
+
+  const pageInfo = readCoursesConnection?.pageInfo
+  yield put(
+    actionSync.SET_PAGE_INFO({
+      paginationName: PaginationNameEnumType['pageModules'],
+      ...pageInfo,
+    })
+  )
 }
 
-export const getCourses = withDebounce(getCoursesGenerator, 500)
+export const getCourses = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(getCoursesGenerator), {
+    optionsDefault: { funcParent: 'getCoursesSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getCoursesSaga() {
   yield takeEvery([actionAsync.GET_COURSES.REQUEST().type], getCourses)

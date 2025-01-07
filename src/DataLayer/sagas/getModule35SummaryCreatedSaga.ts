@@ -9,6 +9,7 @@ import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { getChunkedArray } from 'yourails_common'
 import { CHUNKS_FROM_SUMMARY_ARRAY } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
   try {
@@ -95,7 +96,13 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
   }
 }
 
-export const getModule35SummaryCreated = withDebounce(getModule35SummaryCreatedGenerator, 500)
+export const getModule35SummaryCreated = withDebounce(
+  withTryCatchFinallySaga(getModule35SummaryCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule35SummaryCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule35SummaryCreatedSaga() {
   yield takeEvery(

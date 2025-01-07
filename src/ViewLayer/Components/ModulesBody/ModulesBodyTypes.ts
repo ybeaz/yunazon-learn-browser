@@ -13,7 +13,7 @@ export type ModulesBodyComponentPropsType = {
     modules: RootStoreType['modules']
     isLoadedGlobalVars: RootStoreType['isLoaded']['isLoadedGlobalVars']
     screenActive: RootStoreType['componentsState']['screenActive']
-    tagsSearchForModules: RootStoreType['componentsState']['tagsSearchForModules']
+    tagsPick: RootStoreType['componentsState']['tagsPick']
     modulesSearchApplied: RootStoreType['componentsState']['modulesSearchApplied']
     pageModules: RootStoreType['componentsState']['pagination']['pageModules']
   }

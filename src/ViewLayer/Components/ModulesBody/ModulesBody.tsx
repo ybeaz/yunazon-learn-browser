@@ -34,7 +34,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       durationMultiplier,
       modules,
       isLoadedGlobalVars,
-      tagsSearchForModules,
+      tagsPick,
       modulesSearchApplied,
       pageModules,
     },
@@ -59,7 +59,10 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
 
       const contentComponentName = getContentComponentName(contentType)
 
-      const durationObj = getDurationFromYoutubeSnippet(duration2)
+      const durationObj = getDurationFromYoutubeSnippet(duration2, {
+        printRes: false,
+        funcParent: 'ModulesBody',
+      })
       const { timeReadable: duration } = durationObj
       const durationObj2: DurationObjType = getMultipliedTimeStr(duration, durationMultiplier)
 
@@ -85,10 +88,10 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',
       icon: 'MdOutlineTag',
-      capture: tagsSearchForModules || '',
+      capture: tagsPick[0] || '',
       action: {
         type: 'CLICK_ON_TAG',
-        data: { tagCloud: { value: null } },
+        data: { tagCloud: { value: undefined } },
       },
     },
     iconLabelWithCloseSearchProps: {
@@ -96,7 +99,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       icon: 'MdSearch',
       capture: modulesSearchApplied || '',
       action: {
-        type: 'ONCHANGE_INPUT_SEARCH',
+        type: 'CLICK_ON_CANCEL_APPLIED_SEARCH',
         data: { storeFormProp: 'modulesSearch', value: '' },
       },
     },
@@ -116,7 +119,7 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
         <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
           {headline}
         </h2>
-        {tagsSearchForModules && (
+        {!!tagsPick.length && (
           <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />
             <IconLabelWithClose {...propsOut.iconLabelWithCloseTagProps} />
@@ -148,7 +151,7 @@ const storeStateSliceProps: string[] = [
   'durationMultiplier',
   'modules',
   'isLoadedGlobalVars',
-  'tagsSearchForModules',
+  'tagsPick',
   'modulesSearchApplied',
   'pageModules',
 ]

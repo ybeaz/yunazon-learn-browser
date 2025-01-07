@@ -36,5 +36,6 @@ export const useEffectedInitialRequests: Function = (
       )
 
     makeDispatchAsyncWrappered(requestList)
+    return () => {}
   }, triggers)
 }

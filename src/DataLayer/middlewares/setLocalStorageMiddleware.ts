@@ -1,11 +1,11 @@
 import { Middleware } from '@reduxjs/toolkit'
 
-import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from '../../Constants/aws.const'
+import { AWS_COGNITO_REFRESH_AUTH_TOKEN_DELAY } from 'yourails_common'
 import { getDebouncedFunc } from 'yourails_common'
 import { getLocalStorageStoreStateSet, GetLocalStorageStoreStateSetType } from 'yourails_common'
 import { RootStoreType } from 'src/Interfaces'
 
-/**getModulesSaga [77]
+/**
  * @description Function to run setLocalStorageMiddleware
  * @import import { getRefreshedAuthAwsCongito } from './middlewares/getRefreshedAuthAwsCongito'
  */

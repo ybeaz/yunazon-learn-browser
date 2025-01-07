@@ -7,6 +7,7 @@ import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails
 import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule55ObjectionsCreatedGenerator(
   params: ActionReduxType | any
@@ -108,7 +109,13 @@ export function* getModule55ObjectionsCreatedGenerator(
   }
 }
 
-export const getModule55ObjectionsCreated = withDebounce(getModule55ObjectionsCreatedGenerator, 500)
+export const getModule55ObjectionsCreated = withDebounce(
+  withTryCatchFinallySaga(getModule55ObjectionsCreatedGenerator, {
+    optionsDefault: { funcParent: 'getModule55ObjectionsCreatedSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getModule55ObjectionsCreatedSaga() {
   yield takeEvery(

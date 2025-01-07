@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLinkProps } from 'react-router-dom'
 
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from 'yourails_common'
 import { IconYrlPropsType } from 'yourails_common'
@@ -15,10 +15,10 @@ export type TagsDocsTableComponentPropsType = {
 }
 
 export type TagsDocsTableItemPropsOutType = {
-  linkToAcademyMatrixTaggedProps: NavLinkProps
+  linkToAcademyMatrixTaggedProps: NavLinkWithQueryPropsType
   iconTagExpertiseProps: IconYrlPropsType
   iconTagMdCheckProps: IconYrlPropsType
-  linkToDocumentProps: NavLinkProps
+  linkToDocumentProps: NavLinkWithQueryPropsType
 }
 
 export type TagsDocsTablePropsType = Omit<TagsDocsTableComponentPropsType, 'handleEvents'>

@@ -11,6 +11,7 @@ import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_common'
 import { getPreparedResponseFromBot, GetPreparedResponseFromBotParamsType } from 'yourails_common'
+import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export type GetBotResponseParamsType = {
   botID: string
@@ -64,7 +65,13 @@ export function* getBotResponseGenerator(params: GetBotResponseParamsType): Iter
   }
 }
 
-export const getBotResponse = withDebounce(getBotResponseGenerator, 500)
+export const getBotResponse = withDebounce(
+  withTryCatchFinallySaga(getBotResponseGenerator, {
+    optionsDefault: { funcParent: 'getBotResponseSaga' },
+    resDefault: [],
+  }),
+  500
+)
 
 export default function* getBotResponseSaga() {
   yield takeEvery([actionAsync.GET_BOT_RESPONSE.REQUEST().type], getBotResponse)

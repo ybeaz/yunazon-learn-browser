@@ -7,7 +7,8 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { DocumentType } from 'yourails_common'
 import { getClasses, getDateString, getSlug } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
-import { PaginationNameEnumType } from '../../../Interfaces'
+import { PaginationNameEnumType } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import {
   CreditsTableItemPropsOutType,
   CreditsTableComponentPropsType,
@@ -50,18 +51,14 @@ const CreditsTableComponent: CreditsTableComponentType = (
           className: '__shield',
           to: { pathname: pathnameModule },
           children: capture,
-          onClick: (event: any) => {
-            handleEvents(event, {
-              typeEvent: 'GO_LINK_PATH',
-              data: { navigate, pathname: pathnameModule },
-            })
-          },
+          onClick: (event: any) => {},
         },
         linkToDocumentProps: {
           className: '__shield',
           to: { pathname: pathnameDocument },
           target: '_blank',
           children: 'Link',
+          onClick: (event: any) => {},
         },
         buttonDeactivateDocumentProps: {
           icon: 'MdDeleteOutline',
@@ -104,10 +101,10 @@ const CreditsTableComponent: CreditsTableComponentType = (
         <div key={documentID} className='_row _row_credits'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOutItem.linkToModuleProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToModuleProps} />
           </div>
           <div className='_cell _document_link'>
-            <NavLink {...propsOutItem.linkToDocumentProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToDocumentProps} />
           </div>
           <div className='_cell _remove'>
             <ButtonYrl {...propsOutItem.buttonDeactivateDocumentProps} />

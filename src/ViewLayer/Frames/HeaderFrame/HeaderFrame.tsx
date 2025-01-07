@@ -21,10 +21,7 @@ import {
   withConditionalWrapperYrl,
   NoSeoIndexingYrl,
 } from 'yourails_common'
-import {
-  handleEvents as handleEventsIn,
-  HandleEventType,
-} from '../../../DataLayer/index.handleEvents'
+import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 
 import {
   HeaderFrameComponentPropsType,
