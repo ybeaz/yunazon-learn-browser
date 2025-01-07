@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { DICTIONARY } from 'yourails_common'
 import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
@@ -16,6 +16,7 @@ import {
 import { ModuleType } from 'yourails_common'
 import { getSlug } from 'yourails_common'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 /**
  * @description Component to render MyModulesTable
@@ -101,7 +102,7 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
         <div key={moduleID} className='_row _row_weather'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOut.linkToModuleProps} />
+            <NavLinkWithQuery {...propsOut.linkToModuleProps} />
           </div>
           <div className='_cell _module_duration'>{duration}</div>
           <div className='_cell _module_button_edit'>

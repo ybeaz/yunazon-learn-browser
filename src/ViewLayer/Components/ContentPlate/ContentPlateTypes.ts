@@ -21,6 +21,7 @@ export type ContentPlateComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     mediaLoaded: RootStoreType['isLoaded']['mediaLoaded']
+    urlParamsQuery: RootStoreType['urlParamsQuery']
   }
   handleEvents: HandleEventType
   tags?: ModuleType['tags']

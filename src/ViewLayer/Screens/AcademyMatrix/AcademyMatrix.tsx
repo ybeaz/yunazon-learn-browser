@@ -28,24 +28,12 @@ import {
  */
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: {
-      language,
-      // @ts-expect-error
-      queryUrl,
-      // @ts-expect-error
-      tagsPick,
-      // @ts-expect-error
-      componentsState,
-      // @ts-expect-error
-      urlParamsQuery,
-    },
+    storeStateSlice: { language },
   } = props
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
-  const [searchParams] = useSearchParams()
-  const allParams = Object.fromEntries(searchParams)
 
   useEffectedInitialRequests(
     [
@@ -82,8 +70,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       screenType,
     },
   }
-
-  console.info('AcademyMatrix [86]', { urlParamsQuery })
 
   return (
     <div className='AcademyMatrix'>

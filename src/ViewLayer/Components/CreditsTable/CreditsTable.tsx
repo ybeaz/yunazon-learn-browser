@@ -8,6 +8,7 @@ import { DocumentType } from 'yourails_common'
 import { getClasses, getDateString, getSlug } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { PaginationNameEnumType } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import {
   CreditsTableItemPropsOutType,
   CreditsTableComponentPropsType,
@@ -100,10 +101,10 @@ const CreditsTableComponent: CreditsTableComponentType = (
         <div key={documentID} className='_row _row_credits'>
           <div className='_cell _date'>{dateString}</div>
           <div className='_cell _module_name'>
-            <NavLink {...propsOutItem.linkToModuleProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToModuleProps} />
           </div>
           <div className='_cell _document_link'>
-            <NavLink {...propsOutItem.linkToDocumentProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToDocumentProps} />
           </div>
           <div className='_cell _remove'>
             <ButtonYrl {...propsOutItem.buttonDeactivateDocumentProps} />

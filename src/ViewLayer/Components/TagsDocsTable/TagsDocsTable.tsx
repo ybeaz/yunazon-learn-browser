@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
 
 import { withPropsYrl, IconYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
@@ -8,6 +7,7 @@ import { getClasses } from 'yourails_common'
 import { PaginationNavigation } from '../../Components/PaginationNavigation/PaginationNavigation'
 import { getExpertiseInfo, GetExpertiseInfoResType } from 'yourails_common'
 import { PaginationNameEnumType } from 'yourails_common'
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import {
   TagsDocsTableItemPropsOutType,
   TagsDocsTableComponentPropsType,
@@ -78,7 +78,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       return (
         <div key={tagID} className='_row _row_tagsCloud'>
           <div className='_cell _name'>
-            <NavLink {...propsOutItem.linkToAcademyMatrixTaggedProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToAcademyMatrixTaggedProps} />
           </div>
           <div className='_cell _completedTotal'>
             <span className='_span'>{completed}</span>/<span className='_span'>{count}</span>
@@ -98,7 +98,7 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
             </>
           </div>
           <div className='_cell _document_link'>
-            <NavLink {...propsOutItem.linkToDocumentProps} />
+            <NavLinkWithQuery {...propsOutItem.linkToDocumentProps} />
           </div>
         </div>
       )
