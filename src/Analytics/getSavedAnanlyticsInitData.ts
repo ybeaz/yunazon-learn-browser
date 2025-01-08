@@ -3,7 +3,7 @@ import { actionAsync } from '../DataLayer/index.action'
 
 import * as flags from '../FeatureFlags/index'
 import { cookie } from 'yourails_common'
-import { mediaSizeCrossBrowser } from 'yourails_common'
+import { getMediaSizeCrossBrowser } from 'yourails_common'
 import { COOKIE_ANALYTICSID_NAME } from 'yourails_common'
 
 const { dispatch } = store
@@ -21,7 +21,7 @@ export const getSavedAnanlyticsInitData: Function = () => {
       days: 1,
     })
   } else {
-    const { width, height } = mediaSizeCrossBrowser(global)
+    const { width, height } = getMediaSizeCrossBrowser(global)
     const { referrer } = document
 
     const dataNext: any = {

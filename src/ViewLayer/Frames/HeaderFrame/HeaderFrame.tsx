@@ -74,7 +74,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
 
-  const show_QR_code = DICTIONARY.Show_QR_code[language]
+  const showQrCode = DICTIONARY.Show_QR_code[language]
 
   const profile = getArrayItemByProp({
     arr: profiles,
@@ -140,7 +140,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     buttonQrCodeModalToggleProps: {
       icon: 'MdQrCode2',
       classAdded: 'Button_QrCodeModalToggle',
-      tooltipText: show_QR_code,
+      tooltipText: showQrCode,
       tooltipPosition: 'bottom',
       handleEvents,
       action: { typeEvent: 'SET_QR_CODE_MODAL', data: { isActive: true } },
