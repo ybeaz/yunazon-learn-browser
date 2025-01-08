@@ -135,6 +135,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
       isDisplaying: false /* TODO: Not used so far */,
     },
+    buttonQrCodeModalToggleProps: {
+      icon: 'MdQrCode2',
+      classAdded: 'Button_QrCodeModalToggle',
+      tooltipText: toggleTheme,
+      tooltipPosition: 'bottom',
+      handleEvents,
+      action: { typeEvent: 'TOGGLE_THEME' },
+    },
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
       classAdded: 'Button_ThemeToggle',
@@ -217,8 +225,9 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
           {!isMobileSearchInput && isSeachGroup && (
-            <div className='_itemButtonMobileSearchToggle'>
+            <div className='_itemButtonMobileToggle'>
               <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
+              <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
             </div>
           )}
         </div>
@@ -235,6 +244,9 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
+          <div className='_itemButtonQrCodeModalToggle'>
+            <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
+          </div>
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />

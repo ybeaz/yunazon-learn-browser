@@ -50,6 +50,7 @@ export type HeaderFramePropsOutType = {
   buttonLeftSideNavigationUnAuthorizedProps: ButtonYrlPropsType
   buttonBackProps: ButtonYrlPropsType
   buttonAddCourseProps: ButtonYrlPropsType
+  buttonQrCodeModalToggleProps: ButtonYrlPropsType
   buttonThemeToggleProps: ButtonYrlPropsType
   pageActionsProps: any
   logoGroupProps: any
