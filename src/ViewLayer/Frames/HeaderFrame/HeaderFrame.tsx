@@ -224,12 +224,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
-          {!isMobileSearchInput && isSeachGroup && (
-            <div className='_itemButtonMobileToggle'>
+
+          <div className='_itemButtonMobileToggle'>
+            {!isMobileSearchInput && isSeachGroup && (
               <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
-              <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
-            </div>
-          )}
+            )}
+            <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
+          </div>
         </div>
         <div className='__main'>
           {isSeachGroup && (
