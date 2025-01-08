@@ -10,7 +10,7 @@ export const SET_QR_CODE_MODAL: ActionEventType = (event, data) => {
   dispatch(
     actionSync.SET_MODAL_FRAMES([
       {
-        childName: 'EmalInputs',
+        childName: 'QrCodeModalBody',
         isActive,
         childProps: {},
       },
