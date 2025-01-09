@@ -19,6 +19,7 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
     value,
   }
 
+  console.info('ONCHANGE_INPUT_SEARCH [22]', { data })
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 
   if (!value && valuePrev) {

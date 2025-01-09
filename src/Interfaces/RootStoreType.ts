@@ -60,6 +60,7 @@ export type ComponentsStateType = {
 export type FormsType = {
   sendTo: string
   sendCc: string
+  sendBcc: string
   userPrev: UserType
   user: UserType
   inputCourseCreate: string

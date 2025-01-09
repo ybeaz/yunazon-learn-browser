@@ -144,6 +144,7 @@ export const formsDefault: FormsType = {
   documentsSearch: '',
   sendTo: '',
   sendCc: '',
+  sendBcc: '',
   userPrev: userStoreDefault,
   user: userStoreDefault,
   profileActive: {
