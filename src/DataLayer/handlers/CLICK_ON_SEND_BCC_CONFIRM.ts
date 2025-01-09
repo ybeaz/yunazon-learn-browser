@@ -22,4 +22,11 @@ export const CLICK_ON_SEND_BCC_CONFIRM: ActionEventType = (event, data) => {
   console.info('CLICK_ON_SEND_BCC_CONFIRM [11]', { sendBccValue })
 
   dispatch(actionSync.SET_URLPARAMSQUERY_TO_STORE({ propName: 'sendBcc', value: sendBccValue }))
+
+  dispatch(
+    actionSync.SET_COMPONENTS_STATE({
+      componentsStateProp: 'isSendBccInputVisible',
+      value: false,
+    })
+  )
 }

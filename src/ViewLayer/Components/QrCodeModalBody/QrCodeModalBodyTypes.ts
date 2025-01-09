@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
-import { InputGroupYrlPropsType } from 'yourails_common'
+import { InputGroupYrlPropsType, ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 
 export type QrCodeModalBodyComponentPropsType = {
@@ -9,6 +9,7 @@ export type QrCodeModalBodyComponentPropsType = {
   storeStateSlice: {
     language: RootStoreType['language']
     screenActive: RootStoreType['componentsState']['screenActive']
+    isSendBccInputVisible: RootStoreType['componentsState']['isSendBccInputVisible']
   }
   handleEvents: HandleEventType
 }
@@ -17,7 +18,8 @@ export type QrCodeModalBodyPropsType = Omit<QrCodeModalBodyComponentPropsType, '
 
 export type QrCodeModalBodyPropsOutType = {
   qRCodeSvgProps: { value: string; size: number }
-  inputGroupProps: InputGroupYrlPropsType
+  inputSendBccProps: InputGroupYrlPropsType
+  buttonIsSendBccVisibleProps: ButtonYrlPropsType
 }
 
 /**

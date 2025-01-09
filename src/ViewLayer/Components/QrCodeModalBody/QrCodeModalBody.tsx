@@ -2,7 +2,7 @@ import React from 'react'
 
 import { DICTIONARY } from 'yourails_common'
 import { SCREENS_DICT } from 'yourails_common'
-import { withStoreStateSelectedYrl, InputGroupYrl, withPropsYrl } from 'yourails_common'
+import { withStoreStateSelectedYrl, InputGroupYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 import { getMediaSizeCrossBrowser } from 'yourails_common'
 import { QRCodeSVG } from 'qrcode.react'
 import { getClasses } from 'yourails_common'
@@ -27,7 +27,7 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
 ) => {
   const {
     classAdded,
-    storeStateSlice: { language, screenActive = 'QrCodeModal' },
+    storeStateSlice: { language, screenActive = 'QrCodeModal', isSendBccInputVisible },
     handleEvents,
   } = props
 
@@ -39,18 +39,9 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
   const { width, height } = getMediaSizeCrossBrowser(global)
   const qrCodeSize = Math.min(width, height) / 2
 
-  console.info('QrCodeModalBody [27]', {
-    SCREENS_DICT,
-    'SCREENS_DICT[screenActive]?.storeFormProp': SCREENS_DICT[screenActive]?.storeFormProp,
-    url,
-    qrCodeSize,
-    width,
-    height,
-  })
-
   const propsOut: QrCodeModalBodyPropsOutType = {
     qRCodeSvgProps: { value: url, size: qrCodeSize },
-    inputGroupProps: {
+    inputSendBccProps: {
       inputProps: {
         classAdded: 'Input_search',
         type: 'email',
@@ -65,7 +56,15 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
         classAdded: 'Button_MdSearch',
         handleEvents,
         action: { typeEvent: 'CLICK_ON_SEND_BCC_CONFIRM' },
+        isDisplaying: true,
       },
+    },
+    buttonIsSendBccVisibleProps: {
+      icon: 'MdOutlineEmail',
+      classAdded: 'Button_MdSearch',
+      handleEvents,
+      action: { typeEvent: 'TOGGLE_IS_SEND_BCC_INPUT_VISIBLE' },
+      isDisplaying: !isSendBccInputVisible,
     },
   }
 
@@ -76,14 +75,20 @@ const QrCodeModalBodyComponent: QrCodeModalBodyComponentType = (
         <QRCodeSVG {...propsOut.qRCodeSvgProps} />
       </div>
 
-      <div className='_inputGroupYrl'>
-        <InputGroupYrl {...propsOut.inputGroupProps} />
+      {isSendBccInputVisible && (
+        <div className='_inputSendBcc'>
+          <InputGroupYrl {...propsOut.inputSendBccProps} />
+        </div>
+      )}
+
+      <div className='_buttonIsSendBccVisible'>
+        <ButtonYrl {...propsOut.buttonIsSendBccVisibleProps} />
       </div>
     </div>
   )
 }
 
-const storeStateSliceProps: string[] = ['language']
+const storeStateSliceProps: string[] = ['language', 'isSendBccInputVisible']
 const QrCodeModalBody: QrCodeModalBodyType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(QrCodeModalBodyComponent))
 )

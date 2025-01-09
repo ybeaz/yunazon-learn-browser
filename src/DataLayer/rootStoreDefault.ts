@@ -55,6 +55,7 @@ export const userStoreDefault: UserType | any = {
 
 export const componentsStateDefault: ComponentsStateType = {
   screenActive: ScreensEnumType['AcademyMatrix'],
+  isSendBccInputVisible: false,
   modulesSearchApplied: null,
   tagsSearchApplied: null,
   documentsSearchApplied: null,
