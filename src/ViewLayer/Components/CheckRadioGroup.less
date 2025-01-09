@@ -1,7 +1,7 @@
 .CheckRadioGroup {
   display: flex;
   flex-direction: column;
-  padding: 1rem 0 2rem 0;
+  padding: 1rem;
 
   .__capture {
     display: flex;
@@ -79,6 +79,8 @@
   @media @tablet, @tablet-strict {
   }
   @media @phone-strict {
+    padding: 0;
+
     .__capture {
       font-size: @fontSize;
     }
@@ -89,6 +91,8 @@
     }
   }
   @media @phone {
+    padding: 0;
+
     .__capture {
       font-size: @fontSizeS;
     }
