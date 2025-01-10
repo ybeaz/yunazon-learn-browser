@@ -12,7 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { ArticlePresentBody } from '../../Components/ArticlePresentBody/ArticlePresentBody'
 import { SITE_META_DATA } from 'yourails_common'
-
+import { getTagLine } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
   ArticlePresentComponentPropsType,
@@ -56,7 +56,7 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
   const propsOut: ArticlePresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

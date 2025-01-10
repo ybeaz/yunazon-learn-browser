@@ -8,7 +8,7 @@ import { MainFrame } from '../../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
-
+import { getTagLine } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
   AcademyAboutComponentPropsType,
@@ -38,7 +38,7 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
   const propsOut: AcademyAboutPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

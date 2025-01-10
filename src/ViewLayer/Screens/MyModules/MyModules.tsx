@@ -11,7 +11,7 @@ import { SITE_META_DATA } from 'yourails_common'
 import { MyModulesBody } from '../../Components/MyModulesBody/MyModulesBody'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-
+import { getTagLine } from 'yourails_common'
 import { CreateModuleStatusEnumType, CreateModuleStagesEnumType } from 'yourails_common'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
@@ -109,7 +109,7 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
   const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

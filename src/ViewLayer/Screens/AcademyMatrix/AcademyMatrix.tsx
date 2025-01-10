@@ -13,7 +13,7 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-
+import { getTagLine } from 'yourails_common'
 import {
   AcademyMatrixPropsType,
   AcademyMatrixPropsOutType,
@@ -52,7 +52,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

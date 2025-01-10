@@ -36,6 +36,7 @@ import {
 } from '../../Components/ContentSection/ContentSection'
 import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
+import { getTagLine } from 'yourails_common'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -296,7 +297,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][languageSite],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

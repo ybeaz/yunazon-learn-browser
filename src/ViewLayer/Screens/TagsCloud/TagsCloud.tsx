@@ -12,9 +12,8 @@ import { getClasses } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { SERVERS_MAIN } from 'yourails_common'
 import { SITE_META_DATA } from 'yourails_common'
-import { PAGINATION_OFFSET } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-import { PaginationNameEnumType } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 
 import {
   TagsCloudComponentPropsType,
@@ -40,9 +39,6 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
-  const pageModulesOffset = PAGINATION_OFFSET['pageModules']
-  const pageTagsOffset = PAGINATION_OFFSET['pageTags']
-
   useEffectedInitialRequests([
     { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
     { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
@@ -52,7 +48,7 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

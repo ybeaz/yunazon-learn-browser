@@ -10,7 +10,7 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { SITE_META_DATA } from 'yourails_common'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
-
+import { getTagLine } from 'yourails_common'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
@@ -41,7 +41,7 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
