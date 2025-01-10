@@ -1,4 +1,4 @@
-import { getMinifiedBundle } from 'yourails_common'
+import { getMinifiedBundle } from '@yourails_common'
 
 interface GetIteratedAndMinifiedFilesType {
   (inputDir: string, jsFiles: string[]): Promise<string[]>

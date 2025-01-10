@@ -1,10 +1,10 @@
 import { join } from 'path'
 
-import { consoler } from 'yourails_common'
-import { consolerError } from 'yourails_common'
-import { getWritrenFileAsync } from 'yourails_common'
+import { consoler } from '@yourails_common'
+import { consolerError } from '@yourails_common'
+import { getWritrenFileAsync } from '@yourails_common'
 import { execSync } from 'child_process'
-import { getDateString } from 'yourails_common'
+import { getDateString } from '@yourails_common'
 
 interface GetBuildGitDataType {
   (pathFull: string, options?: { printRes: boolean }): Promise<any>

@@ -1,8 +1,8 @@
 import { join } from 'path'
 
-import { consoler } from 'yourails_common'
-import { getFilesListInDir } from 'yourails_common'
-import { getGivenPermission } from 'yourails_common'
+import { consoler } from '@yourails_common'
+import { getFilesListInDir } from '@yourails_common'
+import { getGivenPermission } from '@yourails_common'
 import { getIteratedAndMinifiedFiles } from './getIteratedAndMinifiedFiles'
 
 /**
