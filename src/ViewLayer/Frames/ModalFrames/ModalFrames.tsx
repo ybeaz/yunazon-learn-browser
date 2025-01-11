@@ -14,6 +14,7 @@ import { EmalInputs } from '../../Components/EmalInputs/EmalInputs'
 import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { QuestionScores } from '../../Components/QuestionScores/QuestionScores'
 import { AcademyAboutBody } from '../../Components/AcademyAboutBody/AcademyAboutBody'
+import { QrCodeModalBody } from '../../Components/QrCodeModalBody/QrCodeModalBody'
 
 import {
   ModalFramesComponentPropsType,
@@ -28,6 +29,7 @@ const CHILDREN: Record<string, FunctionComponent<any>> = {
   EmalInputs,
   QuestionScores,
   AcademyAboutBody,
+  QrCodeModalBody,
   //AuthUser, Not used in favor of Cognito authetication
   // SkillExchangeIntro2,
   // SkillExchangeIntro,

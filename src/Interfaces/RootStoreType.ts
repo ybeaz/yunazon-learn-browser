@@ -34,6 +34,7 @@ export type PaginationDict = Record<PaginationNameEnumType, PaginationType>
 
 export type ComponentsStateType = {
   screenActive: ScreensEnumType
+  isSendBccInputVisible: boolean
   modulesSearchApplied: string | null
   tagsSearchApplied: string | null
   documentsSearchApplied: string | null
@@ -60,6 +61,7 @@ export type ComponentsStateType = {
 export type FormsType = {
   sendTo: string
   sendCc: string
+  sendBcc: string
   userPrev: UserType
   user: UserType
   inputCourseCreate: string

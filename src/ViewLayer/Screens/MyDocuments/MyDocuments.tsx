@@ -11,7 +11,7 @@ import { SITE_META_DATA } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { MyDocumentsBody } from '../../Components/'
 import { PAGINATION_OFFSET } from 'yourails_common'
-import { PaginationNameEnumType } from '../../../Interfaces/RootStoreType'
+import { getTagLine } from 'yourails_common'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getClasses } from 'yourails_common'
@@ -67,7 +67,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

@@ -74,6 +74,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
 
   const toggleTheme = DICTIONARY['Toggle site theme'][language]
 
+  const showQrCode = DICTIONARY.Show_QR_code[language]
+
   const profile = getArrayItemByProp({
     arr: profiles,
     propName: 'userID',
@@ -134,6 +136,14 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       handleEvents,
       action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
       isDisplaying: false /* TODO: Not used so far */,
+    },
+    buttonQrCodeModalToggleProps: {
+      icon: 'MdQrCode2',
+      classAdded: 'Button_QrCodeModalToggle',
+      tooltipText: showQrCode,
+      tooltipPosition: 'bottom',
+      handleEvents,
+      action: { typeEvent: 'SET_QR_CODE_MODAL', data: { isActive: true } },
     },
     buttonThemeToggleProps: {
       icon: 'CgDarkMode',
@@ -216,11 +226,13 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
           {isLogoGroup && <AvatarPlusInfo {...propsOut.avatarPlusInfoProps} />}
           {isPageActionsGroup && <PageActionsGroup {...propsOut.pageActionsProps} />}
           {isButtonsShare && <ShareButtons />}
-          {!isMobileSearchInput && isSeachGroup && (
-            <div className='_itemButtonMobileSearchToggle'>
+
+          <div className='_itemButtonMobileToggle'>
+            {!isMobileSearchInput && isSeachGroup && (
               <ButtonYrl {...propsOut.buttonMobileSearchToggleProps} />
-            </div>
-          )}
+            )}
+            <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
+          </div>
         </div>
         <div className='__main'>
           {isSeachGroup && (
@@ -235,6 +247,9 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
               <ButtonYrl {...propsOut.buttonAddCourseProps} />
             </div>
           )}
+          <div className='_itemButtonQrCodeModalToggle'>
+            <ButtonYrl {...propsOut.buttonQrCodeModalToggleProps} />
+          </div>
           {isSelectLanguage && (
             <div className='_itemLanguageSelect'>
               <SelectLanguage {...propsOut.selectLanguageProps} />

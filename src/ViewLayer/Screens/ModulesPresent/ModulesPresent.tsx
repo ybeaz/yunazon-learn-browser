@@ -14,7 +14,7 @@ import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { ModulesBody } from '../../Components/ModulesBody/ModulesBody'
 import { PaginationNameEnumType } from 'yourails_common'
-
+import { getTagLine } from 'yourails_common'
 import {
   ModulesPresentPropsType,
   ModulesPresentPropsOutType,
@@ -57,7 +57,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
   const propsOut: ModulesPresentPropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails Academy',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,

@@ -12,6 +12,7 @@ import { handleEvents } from '../../../DataLayer/index.handleEvents'
 import { HeaderFrame } from '../../Frames/HeaderFrame/HeaderFrame'
 import { SERVERS_MAIN } from 'yourails_common'
 import { LoaderOverlayYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 import {
   CertificateFrameA,
   CertificateFrameAPropsType,
@@ -110,7 +111,7 @@ const Certificate2Component: Certificate2ComponentType = (
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
       brandName: 'YouRails',
-      moto: DICTIONARY['Watch_Videos_With_a_Purpose'][language],
+      moto: getTagLine({ language }),
       logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       tagID,

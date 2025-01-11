@@ -1,7 +1,7 @@
 import { join } from 'path'
 import fs, { promises as promisesFs } from 'fs'
-import { consoler } from 'yourails_common'
-import { consolerError } from 'yourails_common'
+import { consoler } from '@yourails_common'
+import { consolerError } from '@yourails_common'
 
 type GetRemovedFilesInDirectoryOptionsType = {
   printRes?: boolean

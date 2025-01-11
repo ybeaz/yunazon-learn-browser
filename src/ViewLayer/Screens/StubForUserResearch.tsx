@@ -9,6 +9,7 @@ import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 
 interface StubForUserResearchPropsType {
   routeProps: {
@@ -29,7 +30,7 @@ export const StubForUserResearchComponent: React.FunctionComponent<
 
   const headerFrameProps = {
     brandName: 'YouRails',
-    moto: DICTIONARY['Watch_Videos_With_a_Purpose']['en'], // TODO: make it dynamic from store
+    moto: getTagLine(), // TODO: make it dynamic from store
     logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenuLeft: true,

@@ -20,7 +20,7 @@
       flex: 3;
       align-items: center;
 
-      ._itemButtonMobileSearchToggle {
+      ._itemButtonMobileToggle {
         display: none;
       }
     }
@@ -47,6 +47,11 @@
 
       ._itemInstallMobileAppGroup {
         display: none;
+      }
+
+      ._itemButtonQrCodeModalToggle {
+        ._itemButton;
+        padding: 0 0.5rem;
       }
 
       ._itemButtonAddCourse {
@@ -91,10 +96,11 @@
       }
 
       .__left {
-        ._itemButtonMobileSearchToggle {
+        ._itemButtonMobileToggle {
           display: flex;
-          margin-left: auto;
-          margin-top: auto;
+          justify-content: space-evenly;
+          align-items: center;
+          width: 100%;
         }
       }
 
@@ -111,6 +117,9 @@
 
         ._itemInstallMobileAppGroup {
           ._itemButton;
+        }
+        ._itemButtonQrCodeModalToggle {
+          display: none;
         }
         ._itemButtonAddCourse {
           display: none;
