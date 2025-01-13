@@ -3,6 +3,7 @@ import { ActionEventType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { PaginationNameEnumType } from 'yourails_common'
+import { CLICK_ON_TAG } from './CLICK_ON_TAG'
 
 const { dispatch, getState } = store
 
@@ -12,6 +13,13 @@ const getSetModules = (searchValue: string) => {
       paginationName: PaginationNameEnumType['pageModules'],
       first: 1,
     })
+  )
+
+  CLICK_ON_TAG(
+    {},
+    {
+      tagCloud: { value: null },
+    }
   )
 
   dispatch(
