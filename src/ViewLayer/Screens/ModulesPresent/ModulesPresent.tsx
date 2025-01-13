@@ -75,7 +75,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
       screenType,
     },
     modulesBodyProps: {
-      headline: DICTIONARY['All_interactive_videos'][language],
+      headline: DICTIONARY['See_all'][language],
     },
   }
 

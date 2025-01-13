@@ -35,7 +35,7 @@ const AcademyMatrixBodyComponent: AcademyMatrixBodyComponentType = (
     },
     modulesBodyProps: {
       classAdded: 'ModulesBody_AcademyMatrixBody',
-      headline: DICTIONARY['All_interactive_videos'][language],
+      headline: DICTIONARY['See_all'][language],
     },
   }
 
