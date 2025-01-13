@@ -15,12 +15,13 @@ const getSetModules = (searchValue: string) => {
     })
   )
 
-  CLICK_ON_TAG(
-    {},
-    {
-      tagCloud: { value: null },
-    }
-  )
+  if (searchValue)
+    CLICK_ON_TAG(
+      {},
+      {
+        tagCloud: { value: null },
+      }
+    )
 
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
