@@ -16,6 +16,7 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
+import { getSortedArrayEntityTags } from 'yourails_common'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const operators = params?.data?.operators
@@ -119,10 +120,9 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     }
   )
 
-  let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
-    getMappedConnectionToItems,
-    { printRes: false }
-  ).result
+  let modulesNext: any = getChainedResponsibility(readModulesConnection)
+    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getSortedArrayEntityTags).result
 
   yield put(actionSync.SET_MODULES(modulesNext))
 
