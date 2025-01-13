@@ -18,7 +18,6 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
   sub,
   handleEvents,
 }: GetSideNavigationItemsPropsArrPropsType): GetSideNavigationItemsResType[] => {
-  console.info('getSideNavigationItemsPropsArr [21]', { 'DICTIONARY.See_all': DICTIONARY.See_all })
   const sideNavigationItemsProps: GetSideNavigationItemsResType[] = [
     {
       navLinkProps: undefined,

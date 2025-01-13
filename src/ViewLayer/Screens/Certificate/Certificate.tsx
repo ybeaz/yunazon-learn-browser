@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import React, { useEffect, ReactElement } from 'react'
 import styled from 'styled-components'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { ScreensEnumType } from 'yourails_common'
 import { getDateString } from 'yourails_common'

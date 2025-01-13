@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'

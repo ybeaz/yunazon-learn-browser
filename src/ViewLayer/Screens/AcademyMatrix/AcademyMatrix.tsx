@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'

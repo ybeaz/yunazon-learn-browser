@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.87.1",
+  "version": "0.88.0",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
@@ -34,7 +34,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/react-helmet": "^6.1.9",
+    "@types/react-helmet": "^6.1.11",
     "add": "^2.0.6",
     "antd": "^5.4.4",
     "axios": "^1.6.0",
@@ -51,7 +51,7 @@
     "react-blurhash": "^0.3.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^4.11.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.22.2",
