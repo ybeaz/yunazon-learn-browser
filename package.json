@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.88.0",
+  "version": "0.88.1",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
@@ -65,7 +65,7 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.9.3"
+    "yourails_common": "^0.10.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
