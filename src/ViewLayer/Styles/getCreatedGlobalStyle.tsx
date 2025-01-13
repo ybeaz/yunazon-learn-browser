@@ -224,6 +224,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     }
 
 
+    .Button_MdForward .__button,
     .Button_playerUp .__button,
     .Button_summaryUp .__button,
     .Button_articleUp .__button,
@@ -234,6 +235,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
     .Button_summaryIsObjections .__button,
     .Button_PaginationNavigationBackward .__button,
     .Button_PaginationNavigationForward .__button,
+    .Button_MdBackward2 .__button,
     .Button_MdBackward3 .__button,
     .Button_MdForward2 .__button,
     .Button_CallForActionMatrix .__button,
@@ -251,14 +253,38 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
     }
 
+
+    .Icon_TagsTooltip ._icon,
+    .AuthUser .vl-innertext,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentIsCompleted,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentTags,
     div.ant-tooltip-content  > div > div._tagsCloudBodyTooltipContentTagButton,
     .TagsCloudBody ._headlineNavLink,
+    .Button_downLeft ._in,
+    .Button_MdForward ._in,
+    .Button_playerUp ._in,
+    .Button_summaryUp ._in,
+    .Button_articleUp ._in,
+    .Button_objectionsUp ._in,
+    .Button_NoCancel ._in,
+    .Button_create_stage_repeat  ._in,
+    .Button_summaryIsSummary  ._in,
+    .Button_summaryIsObjections  ._in,
+    .Button_PaginationNavigationBackward ._in,
+    .Button_PaginationNavigationForward ._in,
+    .Button_MdBackward2 ._in,
+    .Button_MdBackward3 ._in,
+    .Button_MdForward2 ._in,
+    .Button_CallForActionMatrix ._in,
+    .Button_UseCertificate ._in,
+    .Button_AuthSignInUpBack ._in,
+    .Button_AuthSignInUp ._in,
+    .Button_сontinueIntroSep ._in,
+    .Button_startModule ._in,
+    .Button_BackToTop ._in,
+    .Button_searchSepActive ._in,
     .Button_ForgetPassword ._in,
     .Button_SignUp ._in,
-    .Button_AuthSignInUp ._in,
-    .Button_AuthSignInUpBack ._in,
     .Button_AuthGoogle ._in,
     .Button_AuthVkontakte ._in,
     .Button_AuthFacebook ._in {
@@ -277,17 +303,9 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: #3b5998;
     }
 
-    .Button_UseCertificate ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
-    }
-
     .Button_YesConfirm,
     .Button_downLeft .__button {
-      background-color: ${props2 => getColor(props2, 'colorSecondLighter3', medial, lighter3)};
-    }
-
-    .Button_downLeft ._in {
-      color: ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
+      background-color: ${props2 => getColor(props2, 'colorSecondLighter3', medial, lighter3, 'Dark')};
     }
 
     .Button_MdBlock .__button {
@@ -311,16 +329,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorSecond', medial, middle)};
     }
 
-    .Button_MdBackward3 ._in {
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
-    }
-
-    .Button_MdBackward2 .__button {
-      background-color: ${props2 => getColor(props2, 'colorActiveDarker', medial, darker)};
-    }
-
-    .IconLabelWithClose,
-    .Button_MdForward .__button {
+    .IconLabelWithClose {
       color:  ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
       background-color: ${props2 => getColor(props2, 'colorActive', medial, middle)};
     }
@@ -422,7 +431,6 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
 
     .AuthUser .vl-innertext {
       background: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
-      color: ${props2 => getColor(props2, 'colorFirst', medial, darker, 'Dark')};
     }
 
     .CheckRadioGroup ._capture {
