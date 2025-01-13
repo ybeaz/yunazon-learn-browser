@@ -1,5 +1,6 @@
 import React, { ReactElement, useEffect } from 'react'
 
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { ModuleType } from 'yourails_common'
 import { IconYrl, withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { getDurationFromYoutubeSnippet } from 'yourails_common'
@@ -85,6 +86,20 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   }
 
   const propsOut: ModulesBodyPropsOutType = {
+    h2Props: {
+      className: '_h2',
+    },
+    navLinkProps: {
+      className: getClasses('_link'),
+      to: { pathname: '/' },
+      onClick: () =>
+        handleEvents(
+          {},
+          {
+            typeEvent: 'CLICK_ON_CANCEL_APPLIED_FILTERS',
+          }
+        ),
+    },
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',
       icon: 'MdOutlineTag',
@@ -116,9 +131,9 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
   return (
     <div className={getClasses('ModulesBody', classAdded)}>
       <div className='_h2Wrapper'>
-        <h2 className='_h2' onClick={() => handleEvents({}, { type: 'CLICK_ON_ALL_MODULES' })}>
-          {headline}
-        </h2>
+        <NavLinkWithQuery {...propsOut.navLinkProps}>
+          <h2 {...propsOut.h2Props}>{headline}</h2>
+        </NavLinkWithQuery>
         {!!tagsPick.length && (
           <div className='_iconLabelWithCloseWrapper'>
             <IconYrl {...propsOut.iconArrowForwardProps} />

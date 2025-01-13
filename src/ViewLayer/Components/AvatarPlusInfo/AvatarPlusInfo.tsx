@@ -43,7 +43,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
         handleEvents(
           {},
           {
-            typeEvent: 'CLICK_ON_CANCEL_APPLIED_ALL',
+            typeEvent: 'CLICK_ON_CANCEL_APPLIED_FILTERS',
           }
         ),
     },
