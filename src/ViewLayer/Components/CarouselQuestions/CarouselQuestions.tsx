@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from 'react'
+import React, { ReactElement } from 'react'
 import { DICTIONARY } from 'yourails_common'
 import {
   getModuleByModuleID,
@@ -11,6 +11,7 @@ import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_com
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { isMobile } from 'yourails_common'
 import { getClasses } from 'yourails_common'
+import { TextToSpeech } from '../../Components/TextToSpeech/TextToSpeech'
 
 import {
   CarouselQuestionsComponentPropsType,
@@ -74,7 +75,9 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
       const checkRadioGroupProps = { ...question }
       return (
         <div key={questionID}>
-          <CheckRadioGroup {...checkRadioGroupProps} />
+          <TextToSpeech>
+            <CheckRadioGroup {...checkRadioGroupProps} />
+          </TextToSpeech>
         </div>
       )
     })

@@ -85,6 +85,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
+    "csv-writer": "^1.6.0",
     "html-webpack-plugin": "^5.5.1",
     "jest": "28.0.2",
     "less": "^4.1.3",
