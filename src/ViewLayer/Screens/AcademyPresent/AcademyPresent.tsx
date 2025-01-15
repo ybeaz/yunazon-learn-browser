@@ -289,13 +289,19 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'article',
       component:
-        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
+        article && article.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.articleProps} />
+          </TextToSpeechYrl>
+        ) : null,
     },
     {
       typeIn: 'objections',
       component:
         objections && objections.length ? (
-          <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          </TextToSpeechYrl>
         ) : null,
     },
   ]
