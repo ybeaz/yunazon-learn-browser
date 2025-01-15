@@ -4,6 +4,7 @@ import {
   HandleEventType,
 } from '../../../DataLayer/index.handleEvents'
 import { ButtonYrlPropsType } from 'yourails_common'
+import { TextToSpeechYrlPropsType } from 'yourails_common'
 
 export type CarouselQuestionsComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>

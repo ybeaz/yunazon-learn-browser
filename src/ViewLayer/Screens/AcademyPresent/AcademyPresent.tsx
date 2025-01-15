@@ -37,6 +37,7 @@ import {
 import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { getTagLine } from 'yourails_common'
+import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -228,6 +229,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       delay: 500,
       contentComponentName,
     },
+    textToSpeechYrlProps: {
+      classAdded: 'TextToSpeechYrl_AcademyPresent',
+    },
     articleProps: {
       classAdded: undefined,
       scriptID: undefined,
@@ -276,7 +280,11 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
+        summary && summary.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.summaryProps} />
+          </TextToSpeechYrl>
+        ) : null,
     },
     {
       typeIn: 'article',

@@ -253,7 +253,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       background-color: ${props2 => getColor(props2, 'colorGrey', medial, middle)};
     }
 
-
+    .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button ._in,
     .Icon_TagsTooltip ._icon,
     .AuthUser .vl-innertext,
     div.ant-tooltip-content  > div > div._contentPlateTooltipContentIsCompleted,
@@ -442,6 +442,7 @@ export const CreatedGlobalStyle: IGetCreatedGlobalStyle = ({ lightness, alphas, 
       border: solid 1.5px ${props2 => getColor(props2, 'colorFirstDarker', medial, darker)};
     }
 
+    .TextToSpeechYrl ._textToSpeechYrlbuttonsWrapper .__button,
     .TooltipImageContent._playerPanel_tooltipIsCompleted div._cycle,
     .TooltipImageContent._playerPanel_tooltipTags div._cycle,
     .TooltipImageContent._contentPlate_tooltipIsCompleted div._cycle,
