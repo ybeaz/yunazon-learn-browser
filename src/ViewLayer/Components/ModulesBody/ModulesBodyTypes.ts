@@ -4,6 +4,7 @@ import { RootStoreType } from '../../../Interfaces/'
 import { HandleEventType } from 'yourails_common'
 import { IconLabelWithClosePropsType } from '../IconLabelWithClose/IconLabelWithClose'
 import { IconYrlPropsType } from 'yourails_common'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 export type ModulesBodyComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -26,6 +27,8 @@ export type ModulesBodyPropsType = Omit<
 >
 
 export type ModulesBodyPropsOutType = {
+  h2Props: React.HTMLAttributes<HTMLHeadingElement>
+  navLinkProps: NavLinkWithQueryPropsType
   iconArrowForwardProps: IconYrlPropsType
   iconLabelWithCloseTagProps: IconLabelWithClosePropsType
   iconLabelWithCloseSearchProps: IconLabelWithClosePropsType

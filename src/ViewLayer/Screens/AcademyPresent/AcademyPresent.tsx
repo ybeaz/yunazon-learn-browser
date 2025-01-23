@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
 import {
   withPropsYrl,
@@ -37,6 +37,7 @@ import {
 import { ReaderIframeType } from '../../Frames/ReaderIframe/ReaderIframe'
 import { PlayerYoutubeIframeType } from '../../Frames/PlayerYoutubeIframe/PlayerYoutubeIframe'
 import { getTagLine } from 'yourails_common'
+import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
 
 const COMPONENT: Record<string, React.FunctionComponent<any>> = {
   ReaderIframe,
@@ -228,6 +229,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       delay: 500,
       contentComponentName,
     },
+    textToSpeechYrlProps: {
+      classAdded: 'TextToSpeechYrl_AcademyPresent',
+    },
     articleProps: {
       classAdded: undefined,
       scriptID: undefined,
@@ -276,18 +280,28 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     {
       typeIn: 'summary',
       component:
-        summary && summary.length ? <ArticleStructuredYrl {...propsM1Out.summaryProps} /> : null,
+        summary && summary.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.summaryProps} />
+          </TextToSpeechYrl>
+        ) : null,
     },
     {
       typeIn: 'article',
       component:
-        article && article.length ? <ArticleStructuredYrl {...propsM1Out.articleProps} /> : null,
+        article && article.length ? (
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.articleProps} />
+          </TextToSpeechYrl>
+        ) : null,
     },
     {
       typeIn: 'objections',
       component:
         objections && objections.length ? (
-          <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          <TextToSpeechYrl {...propsM1Out.textToSpeechYrlProps}>
+            <ArticleStructuredYrl {...propsM1Out.objectionsProps} />
+          </TextToSpeechYrl>
         ) : null,
     },
   ]

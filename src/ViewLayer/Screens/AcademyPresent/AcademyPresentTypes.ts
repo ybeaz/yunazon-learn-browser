@@ -6,6 +6,7 @@ import { ContentSectionPropsType } from '../../Components/ContentSection/Content
 import { ButtonYrlPropsType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { ArticleStructuredYrlPropsType } from 'yourails_common'
+import { TextToSpeechYrlPropsType } from 'yourails_common'
 import { ReaderIframeType, ReaderIframePropsType } from '../../Frames/ReaderIframe/ReaderIframe'
 import {
   PlayerYoutubeIframeType,
@@ -38,6 +39,7 @@ export type AcademyPresentPropsM1OutType = {
   CONTENT_ASSIGNED_COMPONENT: PlayerYoutubeIframeType | ReaderIframeType
   contentAssignedComponentProps: PlayerYoutubeIframePropsType | ReaderIframePropsType | any
   loaderBlurhashProps: LoaderBlurhashPropsType
+  textToSpeechYrlProps: TextToSpeechYrlPropsType
   articleProps: ArticleStructuredYrlPropsType
   summaryProps: ArticleStructuredYrlPropsType
   objectionsProps: ArticleStructuredYrlPropsType

@@ -48,7 +48,7 @@ export const getSideNavigationItemsPropsArr: GetSideNavigationItemsPropsArrType 
       navLinkProps: { to: { pathname: '/m' } },
       buttonYrlProps: {
         icon: 'MdOutlineVideocam',
-        captureRight: DICTIONARY.All_interactive_videos[language],
+        captureRight: DICTIONARY.See_all[language],
         classAdded: 'Button_sideMenuItems',
         handleEvents,
         action: {

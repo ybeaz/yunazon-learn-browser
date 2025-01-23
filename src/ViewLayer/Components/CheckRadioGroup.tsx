@@ -4,7 +4,8 @@ import { getRandomNumBetween } from 'yourails_common'
 import { getDesignType } from 'yourails_common'
 import { getAnswerByOptionID } from 'yourails_common'
 import { handleEvents } from '../../DataLayer/index.handleEvents'
-interface CheckRadioGroupArgs {
+
+export type CheckRadioGroupPropsType = {
   courseID?: string
   moduleID: string
   questionID: string
@@ -13,7 +14,7 @@ interface CheckRadioGroupArgs {
   options: any[]
 }
 
-export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupArgs> = ({
+export const CheckRadioGroup: React.FunctionComponent<CheckRadioGroupPropsType> = ({
   questionID,
   capture,
   topic,

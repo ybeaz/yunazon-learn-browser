@@ -1,11 +1,11 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.87.1",
+  "version": "0.88.5",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
     "buildYourailsCommon": "rm -rf node_modules/yourails_common/node_modules && tsc -p tsconfig.yourails_common.json",
-    "bumpYourailsCommon": "yarn policies set-version 1.22.17 && yarn remove yourails_common && yarn add yourails_common && rm -rf node_modules && rm -rf yarn.lock && yarn cache clean && yarn install",
+    "bump": "yarn remove yourails_common && yarn add yourails_common && yarn buildYourailsCommon",
     "start:dev": "webpack serve --port 3440 --config webpack.dev.js --hot",
     "removeDir": "ts-node tools/getRemovedFilesInDirectory.ts",
     "build": "webpack --config webpack.prod.js",
@@ -34,7 +34,7 @@
     "@babel/preset-env": "^7.25.4",
     "@babel/preset-react": "^7.24.7",
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/react-helmet": "^6.1.9",
+    "@types/react-helmet": "^6.1.11",
     "add": "^2.0.6",
     "antd": "^5.4.4",
     "axios": "^1.6.0",
@@ -51,7 +51,7 @@
     "react-blurhash": "^0.3.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
-    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^4.11.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.22.2",
@@ -65,7 +65,7 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.9.3"
+    "yourails_common": "^0.10.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
@@ -85,6 +85,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^5.0.0",
+    "csv-writer": "^1.6.0",
     "html-webpack-plugin": "^5.5.1",
     "jest": "28.0.2",
     "less": "^4.1.3",

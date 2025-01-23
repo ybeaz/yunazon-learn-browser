@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo } from 'react'
+import React, { ReactElement } from 'react'
 import { DICTIONARY } from 'yourails_common'
 import {
   getModuleByModuleID,
@@ -6,7 +6,8 @@ import {
   getButtonsClassString,
   getChunkedArray,
 } from 'yourails_common'
-import { CheckRadioGroup } from '../CheckRadioGroup'
+import { TextToSpeechYrl, TextToSpeechYrlPropsType } from 'yourails_common'
+import { CheckRadioGroup, CheckRadioGroupPropsType } from '../CheckRadioGroup'
 import { withPropsYrl, ButtonYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { isMobile } from 'yourails_common'
@@ -71,10 +72,22 @@ const CarouselQuestionsComponent: CarouselQuestionsComponentType = (
   const getSlidesChunk: Function = (questions: any[]): ReactElement[] => {
     return questions.map(question => {
       const { questionID } = question
-      const checkRadioGroupProps = { ...question }
+
+      const propsOut: {
+        textToSpeechYrlProps?: TextToSpeechYrlPropsType
+        checkRadioGroupProps: CheckRadioGroupPropsType
+      } = {
+        textToSpeechYrlProps: {
+          classAdded: 'TextToSpeechYrl_CarouselQuestions',
+        },
+        checkRadioGroupProps: { ...question },
+      }
+
       return (
         <div key={questionID}>
-          <CheckRadioGroup {...checkRadioGroupProps} />
+          <TextToSpeechYrl {...propsOut.textToSpeechYrlProps}>
+            <CheckRadioGroup {...propsOut.checkRadioGroupProps} />
+          </TextToSpeechYrl>
         </div>
       )
     })

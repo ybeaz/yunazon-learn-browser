@@ -6,7 +6,7 @@ import { CLICK_ON_CANCEL_APPLIED_SEARCH } from './CLICK_ON_CANCEL_APPLIED_SEARCH
 
 const { dispatch, getState } = store
 
-export const CLICK_ON_CANCEL_APPLIED_ALL: ActionEventType = (event, dataIn) => {
+export const CLICK_ON_CANCEL_APPLIED_FILTERS: ActionEventType = (event, dataIn) => {
   dispatch(
     actionSync.SET_PAGE_CURSOR({
       paginationName: 'pageModules',

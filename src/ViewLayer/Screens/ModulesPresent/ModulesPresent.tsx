@@ -1,5 +1,5 @@
 import React, { useEffect, ReactElement } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 import { ScreensEnumType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
@@ -75,7 +75,7 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
       screenType,
     },
     modulesBodyProps: {
-      headline: DICTIONARY['All_interactive_videos'][language],
+      headline: DICTIONARY['See_all'][language],
     },
   }
 

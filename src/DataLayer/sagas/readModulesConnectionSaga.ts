@@ -16,6 +16,7 @@ import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { getUserProfileData } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
+import { getSortedArrayEntityTags } from 'yourails_common'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
   const operators = params?.data?.operators
@@ -50,15 +51,17 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     first,
     offset,
     searchIn: [
-      'capture',
       'contentID',
       'creatorID',
-      'description',
-      'objections.capture',
       'profileID',
-      'questions.capture',
+      'capture',
+      'description',
       'summary.capture',
-      'summary.text',
+      'article.capture',
+      'tags',
+      // 'summary.text',
+      // 'questions.capture',
+      // 'objections.capture',
     ],
     sort: { prop: 'dateCreated', direction: -1 },
     isActive: true,
@@ -119,10 +122,9 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     }
   )
 
-  let modulesNext: any = getChainedResponsibility(readModulesConnection).exec(
-    getMappedConnectionToItems,
-    { printRes: false }
-  ).result
+  let modulesNext: any = getChainedResponsibility(readModulesConnection)
+    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getSortedArrayEntityTags).result
 
   yield put(actionSync.SET_MODULES(modulesNext))
 
