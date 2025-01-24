@@ -450,9 +450,11 @@ const storeStateSliceProps: string[] = [
   'urlParamsQuery',
 ]
 
-export const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
+const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent))
 )
+
+export { AcademyPresent as default }
 
 export type {
   AcademyPresentPropsType,

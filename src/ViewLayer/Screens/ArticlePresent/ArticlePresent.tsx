@@ -111,10 +111,12 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['articles', 'language']
-export const ArticlePresent = withStoreStateSelectedYrl(
+const ArticlePresent = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(ArticlePresentComponent)
 )
+
+export { ArticlePresent as default }
 
 export type {
   ArticlePresentPropsType,

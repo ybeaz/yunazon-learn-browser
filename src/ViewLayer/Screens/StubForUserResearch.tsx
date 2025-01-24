@@ -77,7 +77,8 @@ export const StubForUserResearchComponent: React.FunctionComponent<
   )
 }
 
-export const StubForUserResearch: React.FunctionComponent<StubForUserResearchPropsType> =
-  withPropsYrl({
-    handleEvents: handleEventsIn,
-  })(React.memo(StubForUserResearchComponent))
+const StubForUserResearch: React.FunctionComponent<StubForUserResearchPropsType> = withPropsYrl({
+  handleEvents: handleEventsIn,
+})(React.memo(StubForUserResearchComponent))
+
+export { StubForUserResearch as default }

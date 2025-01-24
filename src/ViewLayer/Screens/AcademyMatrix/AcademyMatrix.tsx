@@ -105,9 +105,11 @@ const storeStateSliceProps: string[] = [
   'componentsState',
   'urlParamsQuery',
 ]
-export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
+const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
+
+export { AcademyMatrix as default }
 
 export type {
   AcademyMatrixPropsType,

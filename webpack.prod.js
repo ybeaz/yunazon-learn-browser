@@ -33,9 +33,6 @@ module.exports = env => {
         }),
         new CssMinimizerPlugin(),
       ],
-      splitChunks: {
-        chunks: 'async',
-      },
     },
   })
 }

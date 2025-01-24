@@ -1,36 +1,10 @@
-import React, { ReactElement, FunctionComponent } from 'react'
-
+import React, { ReactElement, Suspense, FunctionComponent, lazy } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import { ROUTES, RouteType } from './routes.const'
-import { TagsCloud } from '../ViewLayer/Screens/TagsCloud/TagsCloud'
-import { MyModules } from '../ViewLayer/Screens/MyModules/MyModules'
-import { ArticlePresent } from '../ViewLayer/Screens/ArticlePresent/ArticlePresent'
-import { AcademyAbout } from '../ViewLayer/Screens/AcademyAbout/AcademyAbout'
-import { AcademyMatrix } from '../ViewLayer/Screens/AcademyMatrix/AcademyMatrix'
-import { ModulesPresent } from '../ViewLayer/Screens/ModulesPresent/ModulesPresent'
-import { AcademyPresent } from '../ViewLayer/Screens/AcademyPresent/AcademyPresent'
-import { MyDocuments } from '../ViewLayer/Screens/MyDocuments/MyDocuments'
-import { Profiles } from '../ViewLayer/Screens/Profiles/Profiles'
-import { Certificate } from '../ViewLayer/Screens/Certificate/Certificate'
-import { Certificate2 } from '../ViewLayer/Screens/Certificate2/Certificate2'
-import { Error404 } from '../ViewLayer/Screens/Error404'
+import { SCREENS } from './screensConst'
+import { ROUTES, RouteType } from './routesConst'
 import { useEffectedInitialRequests } from '../ViewLayer/Hooks/useEffectedInitialRequests'
-
-const SCREENS: Record<string, FunctionComponent<any>> = {
-  AcademyAbout,
-  AcademyMatrix,
-  AcademyPresent,
-  ArticlePresent,
-  Certificate,
-  Certificate2,
-  Error404,
-  ModulesPresent,
-  MyDocuments,
-  MyModules,
-  Profiles,
-  TagsCloud,
-}
+import { LoaderBlurhash } from '../ViewLayer/Components/LoaderBlurhash'
 
 export const RouterScreensConfig: React.FunctionComponent<any> = () => {
   const routesDict = ROUTES.map((route: RouteType, index: number) => {
@@ -43,7 +17,11 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
 
   const routes = createBrowserRouter(routesDict)
 
-  useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }])
+  useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }], [])
 
-  return <RouterProvider router={routes} />
+  return (
+    <Suspense fallback={<LoaderBlurhash />}>
+      <RouterProvider router={routes} />
+    </Suspense>
+  )
 }

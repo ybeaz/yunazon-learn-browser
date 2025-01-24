@@ -265,10 +265,12 @@ export const CertificateComponent: CertificateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'documents']
-export const Certificate: CertificateType = withStoreStateSelectedYrl(
+const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CertificateComponent)
 )
+
+export { Certificate as default }
 
 // export const Certificate: React.ComponentClass<any> = withRouter(
 //   CertificateOrigin

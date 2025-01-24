@@ -164,10 +164,12 @@ const Certificate2Component: Certificate2ComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'sub', 'profiles', 'tagsCloud']
-export const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
+const Certificate2: Certificate2Type = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(Certificate2Component)
 )
+
+export { Certificate2 as default }
 
 export type {
   Certificate2PropsType,

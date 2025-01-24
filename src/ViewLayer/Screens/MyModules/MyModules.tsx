@@ -170,8 +170,10 @@ const storeStateSliceProps: string[] = [
   'moduleCreateProgress',
   'modules',
 ]
-export const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
+const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent))
 )
+
+export { MyModules as default }
 
 export type { MyModulesPropsType, MyModulesPropsOutType, MyModulesComponentType, MyModulesType }

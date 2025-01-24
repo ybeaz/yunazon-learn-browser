@@ -107,9 +107,11 @@ const ModulesPresentComponent: ModulesPresentComponentType = (props: ModulesPres
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const ModulesPresent: ModulesPresentType = withPropsYrl({
+const ModulesPresent: ModulesPresentType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ModulesPresentComponent)))
+
+export { ModulesPresent as default }
 
 export type {
   ModulesPresentPropsType,

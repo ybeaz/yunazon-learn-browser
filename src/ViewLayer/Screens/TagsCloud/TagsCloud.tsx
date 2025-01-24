@@ -98,10 +98,12 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const TagsCloud: TagsCloudType = React.memo(
+const TagsCloud: TagsCloudType = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn })(
     withStoreStateSelectedYrl(storeStateSliceProps, TagsCloudComponent)
   )
 )
+
+export { TagsCloud as default }
 
 export type { TagsCloudPropsType, TagsCloudPropsOutType, TagsCloudComponentType, TagsCloudType }

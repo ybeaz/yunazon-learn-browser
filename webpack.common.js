@@ -211,5 +211,17 @@ module.exports = () => {
         },
       ],
     },
+    optimization: {
+      splitChunks: {
+        chunks: 'all' /* 'async' is more conservative */,
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
   }
 }

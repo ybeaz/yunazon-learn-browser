@@ -1,7 +1,8 @@
+import { lazy } from 'react'
 import ReactDOM from 'react-dom'
 import { renderToString } from 'react-dom/server'
 
-import { Certificate } from '../Screens/Certificate/Certificate'
+const Certificate = lazy(() => import('../Screens/Certificate/Certificate'))
 import { CertificateStyledString as certificateStyles } from '../Screens/Certificate/CertificateStyle'
 
 const SCREENS: Record<string, any> = {

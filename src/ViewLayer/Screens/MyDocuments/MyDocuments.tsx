@@ -129,9 +129,11 @@ const storeStateSliceProps: string[] = [
   'pageDocuments',
   'pageTags',
 ]
-export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
+const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )
+
+export { MyDocuments as default }
 
 export type {
   MyDocumentsPropsType,

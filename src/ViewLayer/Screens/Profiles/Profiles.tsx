@@ -89,9 +89,8 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const Profiles = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ProfilesComponent)
-)
+const Profiles = withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ProfilesComponent))
+
+export { Profiles as default }
 
 export type { ProfilesPropsType, ProfilesPropsOutType, ProfilesComponentType, ProfilesType }

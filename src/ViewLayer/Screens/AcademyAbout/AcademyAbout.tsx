@@ -79,10 +79,12 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const AcademyAbout = withStoreStateSelectedYrl(
+const AcademyAbout = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(AcademyAboutComponent)
 )
+
+export { AcademyAbout as default }
 
 export type {
   AcademyAboutPropsType,
