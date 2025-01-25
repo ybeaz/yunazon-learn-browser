@@ -54,8 +54,8 @@ module.exports = () => {
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
-        '@abs': path.resolve(__dirname, './src'),
         yourails_common: path.resolve(__dirname, 'node_modules/yourails_common'),
+        '@yourails_common': path.resolve(__dirname, 'node_modules/@yourails_common'),
         zlib: require.resolve('browserify-zlib'),
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
@@ -64,6 +64,9 @@ module.exports = () => {
         path: require.resolve('path-browserify'),
         zlib: require.resolve('browserify-zlib'),
       },
+    },
+    snapshot: {
+      managedPaths: [/^(.+?[\\/]node_modules[\\/](?!(@yourails_common))(@.+?[\\/])?.+?)[\\/]/],
     },
     externals: [
       'stream',

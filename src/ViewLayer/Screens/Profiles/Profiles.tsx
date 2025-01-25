@@ -40,9 +40,6 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,

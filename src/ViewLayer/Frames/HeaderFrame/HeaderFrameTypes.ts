@@ -7,9 +7,6 @@ import { HandleEventType } from 'yourails_common'
 
 export type HeaderFrameComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  brandName: string
-  moto: string
-  logoPath: string
   contentComponentName: string
   moduleCapture?: string
   documentID?: string

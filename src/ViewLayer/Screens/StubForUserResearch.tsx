@@ -4,12 +4,11 @@ import { withPropsYrl, ImageYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../DataLayer/index.handleEvents'
 import { HandleEventType } from 'yourails_common'
 import { FooterFrame } from '../Frames/FooterFrame/FooterFrame'
-import { HeaderFrame } from '../Frames/HeaderFrame/HeaderFrame'
+import { HeaderFrame, HeaderFramePropsType } from '../Frames/HeaderFrame/HeaderFrame'
 import { StubUserGoodbye } from '../Components/StubUserGoodbye'
 import { MainFrame } from '../Frames/MainFrame/MainFrame'
 import { SERVERS_MAIN } from 'yourails_common'
-import { DICTIONARY } from 'yourails_common'
-import { getTagLine } from 'yourails_common'
+import { MainFramePropsType } from '../Frames/MainFrame/MainFrame'
 
 interface StubForUserResearchPropsType {
   routeProps: {
@@ -28,10 +27,7 @@ export const StubForUserResearchComponent: React.FunctionComponent<
     handleEvents({}, { typeEvent: 'SET_THEME', data: themeDafault })
   }, [])
 
-  const headerFrameProps = {
-    brandName: 'YouRails',
-    moto: getTagLine(), // TODO: make it dynamic from store
-    logoPath: `${SERVERS_MAIN.remote}/images/logoYouRailsV21.png`,
+  const headerFrameProps: HeaderFramePropsType = {
     contentComponentName: 'StubForUserResearch',
     isButtonSideMenuLeft: true,
     isLogoGroup: true,
@@ -45,10 +41,8 @@ export const StubForUserResearchComponent: React.FunctionComponent<
     isButtonsShare: false,
   }
 
-  const mainFrameProps = {
+  const mainFrameProps: MainFramePropsType = {
     screenType: 'StubForUserResearch',
-    contentComponentName: 'none',
-    brandName: 'YouRails',
   }
 
   const imageBottomProps = {

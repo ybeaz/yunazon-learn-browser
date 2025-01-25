@@ -66,9 +66,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,

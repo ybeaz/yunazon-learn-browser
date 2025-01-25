@@ -13,6 +13,9 @@ import { SelectLanguage } from '../../Components/SelectLanguage'
 import { ModalFrames } from '../../Frames/ModalFrames/ModalFrames'
 import { AvatarPlusInfo } from '../../Components/AvatarPlusInfo/AvatarPlusInfo'
 import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
+import { YOURAILS_ORGANIZATION } from 'yourails_common'
+import { SERVERS_MAIN } from 'yourails_common'
+import { getTagLine } from 'yourails_common'
 import {
   withPropsYrl,
   InputGroupYrl,
@@ -39,7 +42,6 @@ import {
 const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameComponentPropsType) => {
   const {
     classAdded,
-    brandName,
     contentComponentName,
     contentID = '',
     moduleCapture = '',
@@ -55,8 +57,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
-    logoPath,
-    moto,
     storeStateSlice: {
       authAwsCognitoUserData: { sub, email },
       isSideNavLeftVisible,
@@ -67,6 +67,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     },
     handleEvents,
   } = props
+
+  const { brand: brandName } = YOURAILS_ORGANIZATION
+  const moto = getTagLine()
+  const logoPath = `${SERVERS_MAIN.remote}/images/logoYouRails.png`
 
   const navigate = useNavigate()
 

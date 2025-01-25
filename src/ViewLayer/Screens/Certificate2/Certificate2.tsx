@@ -110,9 +110,6 @@ const Certificate2Component: Certificate2ComponentType = (
 
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       tagID,
       isButtonSideMenuLeft: true,

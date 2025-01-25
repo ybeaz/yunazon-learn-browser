@@ -21,7 +21,6 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
 
   const jsonModule = (window as any)?.__DATA_YOURAILS__?.jsonModule
-  console.info('getModuleSaga [24]', { jsonModule })
 
   const modulesInProgress = getLocalStorageReadKeyObj('modulesInProgress') || []
 
@@ -44,7 +43,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     caseScenario = AcademyPresentCaseEnumType['moduleInProgress']
     const isAnswered = getCheckedModulesAnswered(modulesNext)
     if (isAnswered) caseScenario = AcademyPresentCaseEnumType['moduleCompleted']
-  } else if (jsonModule && jsonModule?.moduleID) {
+  } else if (jsonModule && jsonModule?.moduleID === moduleID) {
     modulesNext = getPreparedModules([jsonModule])
   } else {
     /* Case: initial loading */

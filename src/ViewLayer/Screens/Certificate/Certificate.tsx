@@ -82,9 +82,6 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,

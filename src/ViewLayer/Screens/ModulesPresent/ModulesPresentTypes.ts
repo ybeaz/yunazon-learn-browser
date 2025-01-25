@@ -13,7 +13,7 @@ export type ModulesPresentPropsType = {
 
 export type ModulesPresentPropsOutType = {
   headerFrameProps: Omit<HeaderFramePropsType, 'storeStateSlice'>
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   modulesBodyProps: ModulesBodyPropsType
 }
 

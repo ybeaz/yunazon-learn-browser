@@ -22,7 +22,7 @@ export type MyModulesPropsType = Omit<MyModulesComponentPropsType, 'storeStateSl
 
 export type MyModulesPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   myModulesBodyProps: MyModulesBodyPropsType
 }
 

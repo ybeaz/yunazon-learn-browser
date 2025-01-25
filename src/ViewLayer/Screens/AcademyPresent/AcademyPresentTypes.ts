@@ -47,7 +47,7 @@ export type AcademyPresentPropsM1OutType = {
 
 export type AcademyPresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   contentSectionProps: ContentSectionPropsType
   buttonPlayerUpProps: ButtonYrlPropsType
   buttonArticleUpProps: ButtonYrlPropsType
