@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.88.5",
+  "version": "0.89.0",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
@@ -10,7 +10,7 @@
     "removeDir": "ts-node tools/getRemovedFilesInDirectory.ts",
     "build": "webpack --config webpack.prod.js",
     "minify": "ts-node tools/getPreparedFilesPublicWeb.ts",
-    "export:web": "yarn buildYourailsCommon && ts-node tools/getBuildGitData.ts && yarn removeDir && yarn build && yarn minify && ts-node tools/copyDistributionFiles.ts",
+    "export:web": "yarn buildYourailsCommon && ts-node tools/getBuildGitData.ts && yarn removeDir && yarn build && ts-node tools/copyDistributionFiles.ts",
     "pub": "yarn export:web && eval $(ssh-agent -s); ssh-add ~/.ssh/2020-10-19-rsa && yarn init ./web-build && yarn publish ./web-build",
     "bundle-report": "webpack-bundle-analyzer --port 4200 web-build/stats.json",
     "jest": "jest --colors",
