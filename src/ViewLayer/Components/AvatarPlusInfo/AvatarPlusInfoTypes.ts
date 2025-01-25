@@ -10,6 +10,7 @@ export type AvatarPlusInfoComponentPropsType = {
   imgSrc?: string
   capture: string
   text: string
+  isTitle?: boolean
 }
 
 export type AvatarPlusInfoPropsType = Omit<

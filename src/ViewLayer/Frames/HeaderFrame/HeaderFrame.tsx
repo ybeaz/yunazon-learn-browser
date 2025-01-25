@@ -57,6 +57,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
+    isAvatarPlusInfoTitle = false,
     storeStateSlice: {
       authAwsCognitoUserData: { sub, email },
       isSideNavLeftVisible,
@@ -176,6 +177,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       text: moto,
       imgSrc: logoPath,
       pathname: '/',
+      isTitle: isAvatarPlusInfoTitle,
     },
     abInCircleProps: {
       classAdded: '',
