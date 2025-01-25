@@ -62,7 +62,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       isButtonBack: false,
       isPageActionsGroup: false,
       isButtonsShare: false,
-      isAvatarPlusInfoTitle: true,
     },
     mainFrameProps: {
       screenType,

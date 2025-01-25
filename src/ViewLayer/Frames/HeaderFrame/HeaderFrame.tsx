@@ -16,6 +16,7 @@ import { AbInCircle } from '../../Components/AbInCircle/AbInCircle'
 import { YOURAILS_ORGANIZATION } from 'yourails_common'
 import { SERVERS_MAIN } from 'yourails_common'
 import { getTagLine } from 'yourails_common'
+import { ScreensEnumType } from 'yourails_common'
 import {
   withPropsYrl,
   InputGroupYrl,
@@ -57,7 +58,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     isPageActionsGroup,
     isSeachGroup,
     isSelectLanguage,
-    isAvatarPlusInfoTitle = false,
     storeStateSlice: {
       authAwsCognitoUserData: { sub, email },
       isSideNavLeftVisible,
@@ -177,7 +177,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       text: moto,
       imgSrc: logoPath,
       pathname: '/',
-      isTitle: isAvatarPlusInfoTitle,
+      isTitle: screenActive === ScreensEnumType.AcademyMatrix,
     },
     abInCircleProps: {
       classAdded: '',
@@ -223,6 +223,8 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     )
   } else if (isButtonAuthUser && !sub)
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
+
+  console.info('HeaderFrame [227]', { props })
 
   return (
     <div className={getClasses('HeaderFrame', classAdded)}>
@@ -289,10 +291,17 @@ const storeStateSliceProps: string[] = [
 ]
 
 export const HeaderFrame: HeaderFrameType = withPropsYrl({ handleEvents: handleEventsIn })(
-  withConditionalWrapperYrl(
-    (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
-    ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
-  )(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(HeaderFrameComponent)))
+  withStoreStateSelectedYrl(
+    storeStateSliceProps,
+    withConditionalWrapperYrl(
+      (props: any) =>
+        props?.storeStateSlice?.screenActive !== ScreensEnumType.AcademyMatrix &&
+        props?.isNoSeoIndexing === undefined
+          ? true
+          : !!props.isNoSeoIndexing,
+      NoSeoIndexingYrl
+    )(React.memo(HeaderFrameComponent))
+  )
 )
 
 export type {

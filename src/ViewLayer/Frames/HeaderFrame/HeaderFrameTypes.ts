@@ -23,7 +23,6 @@ export type HeaderFrameComponentPropsType = {
   isButtonBack: boolean
   isPageActionsGroup: boolean
   isButtonsShare: boolean
-  isAvatarPlusInfoTitle?: boolean
   children?: React.ReactElement
   storeStateSlice: {
     authAwsCognitoUserData: RootStoreType['authAwsCognitoUserData']

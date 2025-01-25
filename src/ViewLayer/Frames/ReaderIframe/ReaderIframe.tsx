@@ -52,8 +52,8 @@ const ReaderIframeComponent: ReaderIframeComponentType = (props: ReaderIframePro
 }
 
 export const ReaderIframe: ReaderIframeType = withConditionalWrapperYrl(
-  (props: any) => !!props.isNoSeoIndexing,
-  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+  (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
+  NoSeoIndexingYrl
 )(React.memo(ReaderIframeComponent))
 
 export type {

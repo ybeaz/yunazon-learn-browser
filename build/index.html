@@ -15,7 +15,7 @@
   <div id="root"></div>
 </body>
 
-<div id="getContextDataToBrowserString"
+<!-- <div id="getContextDataToBrowserString"
   data-function="function getContextDataToBrowser(mainPropName, arrId) { ; window[mainPropName] = arrId.reduce((accum, id) => { try { const element = document.getElementById(id); const contextDataText = element && element.textContent; const contextData = JSON.parse(contextDataText || '{}'); return { ...accum, [id]: contextData }; } catch (error) { return { ...accum, [id]: {} }; } }, {});}"
   style="display: none;">
 </div>
@@ -23,6 +23,6 @@
   const getContextDataToBrowserString = document.getElementById('getContextDataToBrowserString').getAttribute('data-function');
   const getContextDataToBrowser = new Function('return ' + getContextDataToBrowserString)();
   getContextDataToBrowser('__DATA_YOURAILS__', ['jsonModule', 'jsonLdArticle', 'jsonLdQuestions'])
-</script>
+</script> -->
 
 </html>

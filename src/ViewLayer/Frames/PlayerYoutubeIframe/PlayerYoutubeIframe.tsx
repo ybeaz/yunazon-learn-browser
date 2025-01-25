@@ -91,8 +91,8 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
 }
 
 export const PlayerYoutubeIframe: PlayerYoutubeIframeType = withConditionalWrapperYrl(
-  (props: any) => !!props.isNoSeoIndexing,
-  ({ children }) => <NoSeoIndexingYrl>{children}</NoSeoIndexingYrl>
+  (props: any) => (props?.isNoSeoIndexing === undefined ? true : !!props.isNoSeoIndexing),
+  NoSeoIndexingYrl
 )(React.memo(PlayerYoutubeIframeComponent))
 
 export type {
