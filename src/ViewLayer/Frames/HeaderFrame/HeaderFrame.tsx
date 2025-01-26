@@ -177,7 +177,10 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       text: moto,
       imgSrc: logoPath,
       pathname: '/',
-      isTitle: screenActive === ScreensEnumType.AcademyMatrix,
+      isTitle:
+        screenActive === ScreensEnumType.AcademyMatrix ||
+        screenActive === ScreensEnumType.ModulesPresent ||
+        screenActive === ScreensEnumType.TagsCloud,
     },
     abInCircleProps: {
       classAdded: '',
@@ -223,8 +226,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
     )
   } else if (isButtonAuthUser && !sub)
     SideMenuLeft = <ButtonYrl {...propsOut.buttonLeftSideNavigationUnAuthorizedProps} />
-
-  console.info('HeaderFrame [227]', { props })
 
   return (
     <div className={getClasses('HeaderFrame', classAdded)}>
