@@ -1,4 +1,8 @@
-import { getMinifiedBundle } from '@yourails_common'
+import {
+  getMinifiedBundle,
+  GetMinifiedBundleParamsType,
+  GetMinifiedBundleOptionsType,
+} from '@yourails_common'
 
 interface GetIteratedAndMinifiedFilesType {
   (inputDir: string, jsFiles: string[]): Promise<string[]>
@@ -13,16 +17,25 @@ export const getIteratedAndMinifiedFiles: GetIteratedAndMinifiedFilesType = asyn
 ) => {
   let output: string[] = []
   jsFiles.forEach((file: string) => {
-    const inputFile = `${inputDir}/js/${file}`
+    const inputFileIn = `${inputDir}/js/${file}`
     const includesMainPrefix = file.includes('main')
 
-    const outputFile = includesMainPrefix
+    const outputFileIn = includesMainPrefix
       ? `${inputDir}/js/main.bundle.min.js`
       : `${inputDir}/js/bundle.min.js`
 
-    getMinifiedBundle(inputFile, outputFile)
+    const getMinifiedBundleParams: GetMinifiedBundleParamsType = {
+      inputFileIn,
+      outputFileIn,
+    }
+    const getMinifiedBundleOptions: GetMinifiedBundleOptionsType = {
+      isUglifying: true,
+      isWritingNotMinified: true,
+    }
 
-    output.push(outputFile)
+    getMinifiedBundle(getMinifiedBundleParams, getMinifiedBundleOptions)
+
+    output.push(outputFileIn)
   })
 
   return output
