@@ -57,6 +57,7 @@ export const UsersOnlineComponent: React.FunctionComponent<UsersOnlinePropsType>
       const imageProps = {
         classAdded: 'Image_UsersOnline',
         src: `${SERVERS_MAIN.remote}/images/faces_mamba/${fileName}`,
+        alt: `${fileName} ${userName}`,
         handleEvents,
         action: {
           typeEvent: 'SEP_CLICK_BUTTON_SEARCH',

@@ -76,11 +76,11 @@ const ContentPlateComponent: ContentPlateComponentType = (
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
   const plateImageSrc: string =
-    thumbnails?.maxres?.url ||
-    thumbnails?.high?.url ||
-    thumbnails?.medium?.url ||
     thumbnails?.standard?.url ||
+    thumbnails?.medium?.url ||
     thumbnails?.default?.url ||
+    thumbnails?.high?.url ||
+    thumbnails?.maxres?.url ||
     ''
 
   const propsOut: ContentPlatePropsOutType = {
@@ -149,6 +149,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     loaderImageProps: {
       classAdded: 'Image_loaderPlayerFrame',
       src: plateImageSrc,
+      alt: 'loading, please wait',
       handleEvents,
       opacity: !isVisible ? 1 : 0,
     },

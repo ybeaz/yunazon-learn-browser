@@ -20,6 +20,7 @@ export const SuccessfulCasesSepComponent: React.FunctionComponent<SuccessfulCase
     collageImageFaceProps: {
       classAdded: 'Image_collageImageFace',
       src: `${SERVERS_MAIN.remote}/images/collage-happy-multicultural-people-faces-211122-3x3-41.jpg`,
+      alt: 'collage image face',
       handleEvents,
       action: {
         typeEvent: 'SET_MODAL_FRAMES',

@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
+import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 
 export type AcademyAboutComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -11,7 +13,10 @@ export type AcademyAboutComponentPropsType = {
 
 export type AcademyAboutPropsType = Omit<AcademyAboutComponentPropsType, 'storeStateSlice'>
 
-export type AcademyAboutPropsOutType = Record<string, any>
+export type AcademyAboutPropsOutType = {
+  headerFrameProps: HeaderFramePropsType
+  mainFrameProps: MainFramePropsType
+}
 
 /**
  * @import import { AcademyAboutComponentPropsType, AcademyAboutPropsType, AcademyAboutPropsOutType, AcademyAboutComponentType, AcademyAboutType } from './AcademyAboutTypes'

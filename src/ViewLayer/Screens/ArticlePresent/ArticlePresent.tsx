@@ -55,9 +55,6 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 
   const propsOut: ArticlePresentPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -111,10 +108,12 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['articles', 'language']
-export const ArticlePresent = withStoreStateSelectedYrl(
+const ArticlePresent = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(ArticlePresentComponent)
 )
+
+export { ArticlePresent as default }
 
 export type {
   ArticlePresentPropsType,

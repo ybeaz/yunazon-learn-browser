@@ -39,15 +39,6 @@ export const getBuildGitData: GetBuildGitDataType = async (pathFull, options) =>
 
     const copyright = `© 2021-${year} Userto Inc.`
 
-    consoler('getBuildGitData [30]', {
-      getBuildGitDataRes,
-      getBuildGitDataResObjM1,
-      dateCommit,
-      dateBuild,
-      year,
-      copyright,
-    })
-
     const getBuildGitDataResObj = {
       ...getBuildGitDataResObjM1,
       branchCurrent,

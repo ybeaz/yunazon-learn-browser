@@ -25,7 +25,7 @@ export type MyDocumentsPropsType = Omit<
 
 export type MyDocumentsPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   myMyDocumentsBodyProps: MyDocumentsBodyPropsType
 }
 

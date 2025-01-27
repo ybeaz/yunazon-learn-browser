@@ -3,8 +3,8 @@ import { Select as SelectAntd } from 'antd'
 import { nanoid } from 'nanoid'
 import { ImageYrl } from 'yourails_common'
 
-import { LanguagesType } from '../../Interfaces/LanguagesType'
-import { IDictionary } from '../../Constants/dictionary.const'
+import { LanguagesType } from 'yourails_common'
+import { DictionaryType } from 'yourails_common'
 import { SelectOptionAntDType } from 'yourails_common'
 
 const { Option } = SelectAntd
@@ -43,6 +43,7 @@ export const GetLanguagesOptionsJsx: IGetLanguagesOptionsJsx = (
     const imageProps = {
       classAdded: `Image_languagesOptions ${classAdded}`,
       src: `${svgFileDir}${svgFile}`,
+      alt: labelNext,
       handleEvents: () => {},
     }
 
@@ -64,7 +65,7 @@ interface IGetLanguagesOptions {
   (
     LANGUAGES: LanguagesType,
     languages: string[],
-    defaultOption2: IDictionary
+    defaultOption2: DictionaryType
   ): SelectOptionAntDType[]
 }
 
@@ -72,7 +73,7 @@ interface IGetLanguagesOptions2 {
   (
     languages2: LanguagesType,
     language2: string,
-    defaultOption2: IDictionary
+    defaultOption2: DictionaryType
   ): SelectOptionAntDType[]
 }
 

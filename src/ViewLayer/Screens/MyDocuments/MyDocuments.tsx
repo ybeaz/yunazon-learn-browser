@@ -66,9 +66,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -129,9 +126,11 @@ const storeStateSliceProps: string[] = [
   'pageDocuments',
   'pageTags',
 ]
-export const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
+const MyDocuments = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyDocumentsComponent))
 )
+
+export { MyDocuments as default }
 
 export type {
   MyDocumentsPropsType,

@@ -40,9 +40,6 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -89,9 +86,8 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const Profiles = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(ProfilesComponent)
-)
+const Profiles = withStoreStateSelectedYrl(storeStateSliceProps, React.memo(ProfilesComponent))
+
+export { Profiles as default }
 
 export type { ProfilesPropsType, ProfilesPropsOutType, ProfilesComponentType, ProfilesType }

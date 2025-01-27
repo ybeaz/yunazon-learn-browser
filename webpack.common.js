@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // css/css module
 const cssRegex = /\.css$/
@@ -32,11 +31,6 @@ module.exports = () => {
       }),
       new WebpackBar(),
       new webpack.ProgressPlugin(),
-      // new BundleAnalyzerPlugin({
-      //   analyzerMode: 'disabled',
-      //   generateStatsFile: true,
-      //   statsOptions: { source: false },
-      // }),
       /* Need to research configuration, pro/cons
       new webpack.DllReferencePlugin({
         context: __dirname,
@@ -54,8 +48,8 @@ module.exports = () => {
     resolve: {
       extensions: ['.tsx', '.jsx', '.ts', '.js', '.json', '.wasm'],
       alias: {
-        '@abs': path.resolve(__dirname, './src'),
         yourails_common: path.resolve(__dirname, 'node_modules/yourails_common'),
+        '@yourails_common': path.resolve(__dirname, 'node_modules/@yourails_common'),
         zlib: require.resolve('browserify-zlib'),
         // '@communication': path.resolve(__dirname, '../yourails_communication_layer'),
       },
@@ -64,6 +58,9 @@ module.exports = () => {
         path: require.resolve('path-browserify'),
         zlib: require.resolve('browserify-zlib'),
       },
+    },
+    snapshot: {
+      managedPaths: [/^(.+?[\\/]node_modules[\\/](?!(@yourails_common))(@.+?[\\/])?.+?)[\\/]/],
     },
     externals: [
       'stream',
@@ -210,6 +207,18 @@ module.exports = () => {
           type: 'asset/resource',
         },
       ],
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all' /* 'async' is more conservative */,
+        cacheGroups: {
+          vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
     },
   }
 }

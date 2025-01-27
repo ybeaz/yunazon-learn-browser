@@ -2,7 +2,7 @@ import React from 'react'
 import { HandleEventType } from 'yourails_common'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { HeaderFramePropsType } from '../../Frames/HeaderFrame/HeaderFrame'
-import { MainFramePropsType } from '../../Frames/'
+import { MainFramePropsType } from '../../Frames/MainFrame/MainFrame'
 import { TagsCloudBodyPropsType } from '../../Components/TagsCloudBody/TagsCloudBody'
 
 export type TagsCloudComponentPropsType = {
@@ -17,7 +17,7 @@ export type TagsCloudPropsType = Omit<TagsCloudComponentPropsType, 'storeStateSl
 
 export type TagsCloudPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   tagsCloudBodyProps: TagsCloudBodyPropsType
 }
 

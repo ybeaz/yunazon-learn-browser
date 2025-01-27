@@ -1,8 +1,10 @@
 import React from 'react'
 
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { YOURAILS_ORGANIZATION } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import { buildData } from '../../../Constants/buildData.const'
+import { getTagLine } from 'yourails_common'
 import {
   AcademyAboutBodyComponentPropsType,
   AcademyAboutBodyPropsType,
@@ -30,18 +32,16 @@ const AcademyAboutBodyComponent: AcademyAboutBodyComponentType = (
     copyright,
   } = buildData
 
+  const { brand, description } = YOURAILS_ORGANIZATION
+
   const propsOut: AcademyAboutBodyPropsOutType = {}
 
   return (
     <div className={getClasses('AcademyAboutBody', classAdded)}>
-      <h1 className='_titleBodyAbout'>About Academy YouRails</h1>
+      <h1 className='_titleBodyAbout'>About {brand}</h1>
       <div className='_aboutAcademyContent'>
-        <div className='_paragraph'>
-          YouRails Academy offers a service that converts YouTube videos (texts, audio) into
-          learning content with modules, quizzes and certification helping teaches, businesses and
-          common users to increase engagement through a separation of content and a course itself,
-          fast adding learning features with AI assistance and gamification from the very beginning.
-        </div>
+        <div className='_paragraph'>{getTagLine()}</div>
+        <div className='_paragraph'>{description}</div>
       </div>
       <div className='_sectionBuildData'>
         <h3 className='_titleTableBuild'>Current build</h3>

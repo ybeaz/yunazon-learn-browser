@@ -17,7 +17,7 @@ export type ArticlePresentPropsType = Omit<ArticlePresentComponentPropsType, 'st
 
 export type ArticlePresentPropsOutType = {
   headerFrameProps: HeaderFramePropsType
-  mainFrameProps: Omit<MainFramePropsType, 'children'>
+  mainFrameProps: MainFramePropsType
   articlePresentBodyProps: ArticlePresentBodyPropsType
 }
 

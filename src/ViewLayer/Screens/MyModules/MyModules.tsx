@@ -108,9 +108,6 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
 
   const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -170,8 +167,10 @@ const storeStateSliceProps: string[] = [
   'moduleCreateProgress',
   'modules',
 ]
-export const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
+const MyModules = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(MyModulesComponent))
 )
+
+export { MyModules as default }
 
 export type { MyModulesPropsType, MyModulesPropsOutType, MyModulesComponentType, MyModulesType }

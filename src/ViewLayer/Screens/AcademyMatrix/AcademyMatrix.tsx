@@ -51,9 +51,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -105,9 +102,11 @@ const storeStateSliceProps: string[] = [
   'componentsState',
   'urlParamsQuery',
 ]
-export const AcademyMatrix: AcademyMatrixType = withPropsYrl({
+const AcademyMatrix: AcademyMatrixType = withPropsYrl({
   handleEvents: handleEventsIn,
 })(withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyMatrixComponent)))
+
+export { AcademyMatrix as default }
 
 export type {
   AcademyMatrixPropsType,

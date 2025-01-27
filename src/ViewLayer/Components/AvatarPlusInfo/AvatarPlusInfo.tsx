@@ -22,7 +22,16 @@ import {
 const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
   props: AvatarPlusInfoComponentPropsType
 ) => {
-  const { classProps, pathname, handleEvents, typeEvent, imgSrc, capture, text } = props
+  const {
+    classProps,
+    pathname,
+    handleEvents,
+    typeEvent,
+    imgSrc,
+    capture,
+    text,
+    isTitle = false,
+  } = props
 
   const navigate = useNavigate()
 
@@ -35,6 +44,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
         data: {},
       },
       src: imgSrc,
+      alt: capture,
     },
     navLinkProps: {
       className: getClasses('_link', classProps),
@@ -54,8 +64,17 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
       <NavLinkWithQuery {...propsOut.navLinkProps}>
         <ImageYrl {...propsOut.imageProps} />
         <div className='_captureText'>
-          <div className='_capture'>{capture}</div>
-          <div className='_text'>{text}</div>
+          {isTitle ? (
+            <>
+              <h1 className='_capture'>{capture}</h1>
+              <h2 className='_text'>{text}</h2>
+            </>
+          ) : (
+            <>
+              <div className='_capture'>{capture}</div>
+              <div className='_text'>{text}</div>
+            </>
+          )}
         </div>
       </NavLinkWithQuery>
     </div>

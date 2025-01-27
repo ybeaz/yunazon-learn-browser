@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.88.5",
+  "version": "0.89.5",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
@@ -10,7 +10,7 @@
     "removeDir": "ts-node tools/getRemovedFilesInDirectory.ts",
     "build": "webpack --config webpack.prod.js",
     "minify": "ts-node tools/getPreparedFilesPublicWeb.ts",
-    "export:web": "yarn buildYourailsCommon && ts-node tools/getBuildGitData.ts && yarn removeDir && yarn build && yarn minify && ts-node tools/copyDistributionFiles.ts",
+    "export:web": "yarn buildYourailsCommon && ts-node tools/getBuildGitData.ts && yarn removeDir && yarn build && ts-node tools/copyDistributionFiles.ts",
     "pub": "yarn export:web && eval $(ssh-agent -s); ssh-add ~/.ssh/2020-10-19-rsa && yarn init ./web-build && yarn publish ./web-build",
     "bundle-report": "webpack-bundle-analyzer --port 4200 web-build/stats.json",
     "jest": "jest --colors",
@@ -52,7 +52,6 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.5",
-    "react-icons": "^4.11.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.22.2",
     "react-share": "^4.4.1",
@@ -65,7 +64,7 @@
     "ts-node": "^10.9.1",
     "yargs": "17.7.2",
     "yarn": "@1.22.17",
-    "yourails_common": "^0.10.2"
+    "yourails_common": "^0.11.2"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.24.7",
@@ -118,6 +117,7 @@
     "webpack-manifest-plugin": "^5.0.0",
     "webpack-merge": "^5.8.0",
     "webpack-node-externals": "^3.0.0",
+    "webpack-stats-plugin": "^1.1.3",
     "webpackbar": "^5.0.2",
     "yalc": "^1.0.0-pre.53"
   },

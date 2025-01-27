@@ -5,7 +5,7 @@ export type MainFrameComponentPropsType = {
   children: (ReactElement | null)[]
 }
 
-export type MainFramePropsType = Omit<MainFrameComponentPropsType, 'storeStateSlice'>
+export type MainFramePropsType = Omit<MainFrameComponentPropsType, 'children' | 'storeStateSlice'>
 
 export type MainFramePropsOutType = Record<string, any>
 

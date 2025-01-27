@@ -75,6 +75,7 @@ const MyModulesBodyComponent: MyModulesBodyComponentType = (
             classAdded: 'Image_pending',
             handleEvents,
             src: 'https://yourails.com/images/loading/loading01.gif',
+            alt: 'loading, please wait',
             isDisplaying: status === CreateModuleStatusEnumType['pending'],
           },
           timerProps: {

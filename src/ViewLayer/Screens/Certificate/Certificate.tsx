@@ -82,9 +82,6 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,
@@ -265,10 +262,12 @@ export const CertificateComponent: CertificateComponentType = (
 }
 
 const storeStateSliceProps: string[] = ['language', 'documents']
-export const Certificate: CertificateType = withStoreStateSelectedYrl(
+const Certificate: CertificateType = withStoreStateSelectedYrl(
   storeStateSliceProps,
   React.memo(CertificateComponent)
 )
+
+export { Certificate as default }
 
 // export const Certificate: React.ComponentClass<any> = withRouter(
 //   CertificateOrigin

@@ -47,9 +47,6 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -98,10 +95,12 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 }
 
 const storeStateSliceProps: string[] = ['language']
-export const TagsCloud: TagsCloudType = React.memo(
+const TagsCloud: TagsCloudType = React.memo(
   withPropsYrl({ handleEvents: handleEventsIn })(
     withStoreStateSelectedYrl(storeStateSliceProps, TagsCloudComponent)
   )
 )
+
+export { TagsCloud as default }
 
 export type { TagsCloudPropsType, TagsCloudPropsOutType, TagsCloudComponentType, TagsCloudType }

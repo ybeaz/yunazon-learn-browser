@@ -310,9 +310,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
-      brandName: 'YouRails Academy',
-      moto: getTagLine({ language }),
-      logoPath: `${SERVERS_MAIN.remote}/images/logoYouRails.png`,
       contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
@@ -450,9 +447,11 @@ const storeStateSliceProps: string[] = [
   'urlParamsQuery',
 ]
 
-export const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
+const AcademyPresent: AcademyPresentType = withPropsYrl({ handleEvents: handleEventsIn })(
   withStoreStateSelectedYrl(storeStateSliceProps, React.memo(AcademyPresentComponent))
 )
+
+export { AcademyPresent as default }
 
 export type {
   AcademyPresentPropsType,
