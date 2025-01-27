@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBar = require('webpackbar')
 const webpack = require('webpack')
 const nodeExternals = require('webpack-node-externals')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 // css/css module
 const cssRegex = /\.css$/
@@ -32,11 +31,6 @@ module.exports = () => {
       }),
       new WebpackBar(),
       new webpack.ProgressPlugin(),
-      // new BundleAnalyzerPlugin({
-      //   analyzerMode: 'disabled',
-      //   generateStatsFile: true,
-      //   statsOptions: { source: false },
-      // }),
       /* Need to research configuration, pro/cons
       new webpack.DllReferencePlugin({
         context: __dirname,

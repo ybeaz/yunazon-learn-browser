@@ -44,6 +44,7 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
         data: {},
       },
       src: imgSrc,
+      alt: capture,
     },
     navLinkProps: {
       className: getClasses('_link', classProps),

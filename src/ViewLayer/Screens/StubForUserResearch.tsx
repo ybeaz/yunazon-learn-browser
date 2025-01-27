@@ -48,6 +48,7 @@ export const StubForUserResearchComponent: React.FunctionComponent<
   const imageBottomProps = {
     classAdded: 'Image_bottom',
     src: `${SERVERS_MAIN.remote}/images/city.svg`,
+    alt: 'research and development',
     handleEvents,
   }
 

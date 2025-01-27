@@ -57,6 +57,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'sideMenu+success': {
       imageSrc: userAvatar,
+      imageAlt: 'user avatar',
       icon: userAvatar ? null : 'FaUserCircle',
       classAdded: userAvatar ? 'Button_authSideMenu' : 'Button_authSideMenu_authorized',
       tooltipText: userName,
@@ -83,6 +84,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
     },
     'header+success': {
       imageSrc: userAvatar,
+      imageAlt: 'user avatar',
       icon: userAvatar ? null : 'FaUserCircle',
       classAdded: userAvatar ? 'Button_authHeader' : 'Button_authHeader_authorized',
       tooltipText: userName,
@@ -94,6 +96,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   const {
     imageSrc = null,
+    imageAlt = null,
     icon = null,
     classAdded,
     tooltipText,
@@ -123,6 +126,7 @@ export const getButtonAuthUserProps: IGetButtonAuthUser = (
 
   return {
     imageSrc,
+    imageAlt,
     icon,
     captureRight,
     classAdded,

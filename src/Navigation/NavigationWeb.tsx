@@ -15,13 +15,27 @@ export const RouterScreensConfig: React.FunctionComponent<any> = () => {
     return { key: id, id, element, path, children, errorElement }
   })
 
-  const routes = createBrowserRouter(routesDict)
+  const routes = createBrowserRouter(routesDict, {
+    future: {
+      v7_skipActionErrorRevalidation: true,
+    },
+  })
 
   useEffectedInitialRequests([{ type: 'GET_AUTH_DATA' }], [])
 
+  const propsOut: any = {
+    routerProviderProps: {
+      router: routes,
+      future: {
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      },
+    },
+  }
+
   return (
     <Suspense fallback={<LoaderBlurhash />}>
-      <RouterProvider router={routes} />
+      <RouterProvider {...propsOut.routerProviderProps} />
     </Suspense>
   )
 }
