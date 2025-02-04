@@ -8,7 +8,7 @@ import { CONNECTIONS_TIMEOUTS, ConnectionsTimeoutNameEnumType } from 'yourails_c
 import { withDebounce } from 'yourails_common'
 import { getBotResponse, GetBotResponseParamsType } from './getBotResponseSaga'
 import { getChunkedArray } from 'yourails_common'
-import { CHUNKS_FROM_SUMMARY_ARRAY } from 'yourails_common'
+import { CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS } from 'yourails_common'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | any): Iterable<any> {
@@ -70,7 +70,10 @@ export function* getModule35SummaryCreatedGenerator(params: ActionReduxType | an
       })
     )
 
-    const summaryChunks: string[][] = getChunkedArray(summary, CHUNKS_FROM_SUMMARY_ARRAY)
+    const summaryChunks: string[][] = getChunkedArray(
+      summary,
+      CHUNKS_FROM_SUMMARY_ARRAY_FOR_QUESTIONS
+    )
 
     yield put(
       actionSync.ADD_MODULE_CREATE_DATA({
