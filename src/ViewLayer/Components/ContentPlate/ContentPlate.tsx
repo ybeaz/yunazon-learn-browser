@@ -151,35 +151,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
       handleEvents,
       opacity: !isVisible ? 1 : 0,
     },
-    // playerPanelProps: {
-    //   capture,
-    //   durationObj,
-    //   screenType,
-    //   isShowingPlay,
-    //   isActionButtonDisplaying: true,
-    //   tags,
-    // },
     linkProps: {
       className: '__shield',
       to: { pathname, search: queryUrl },
-      onClick: (event: any) => {
-        handleEvents(event, {
-          typeEvent: 'SET_MODULES',
-          data: [],
-        })
-        handleEvents(event, {
-          typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID, navigate },
-        })
-      },
+      onClick: (event: any) => {},
     },
   }
-
-  const tooltipTitleContent = (
-    <div className='_contentPlateTooltipContentIsCompleted'>
-      {DICTIONARY['Completed'][language]}
-    </div>
-  )
 
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>

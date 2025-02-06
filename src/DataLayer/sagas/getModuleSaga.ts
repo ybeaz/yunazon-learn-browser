@@ -1,5 +1,6 @@
-import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
+import { takeLatest, takeEvery, select, put, call } from 'redux-saga/effects'
 
+import { RootStoreType } from '../../Interfaces'
 import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
@@ -16,6 +17,9 @@ import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
+
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
+  const { modules } = stateSelected
 
   let modulesNext: ModuleType[] = []
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
@@ -62,6 +66,8 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
         timeout: 5000,
       }
     )
+
+    console.info('getModuleSaga [72]', { modules, modulesNext })
 
     modulesNext = getPreparedModules(readModules)
   }
