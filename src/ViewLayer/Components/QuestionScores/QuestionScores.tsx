@@ -1,5 +1,6 @@
 import React, { useEffect, ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
 import { isParsableFloat } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
@@ -116,7 +117,55 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
-  const propsOut: QuestionScoresPropsOutType = {
+  const propsOut: QuestionScoresPropsOutType & any = {
+    buttonNextTaskProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_UseCertificate',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      // tooltipText: DICTIONARY.Next_Task[language],
+      // tooltipPosition: 'top',
+      captureLeft: DICTIONARY.Next_Task[language],
+    },
+    buttonViewRewardProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_UseCertificate',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      tooltipText: DICTIONARY.View_Reward[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.View_Reward[language],
+    },
+    buttonSeeAchievementsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_UseCertificate',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      tooltipText: DICTIONARY.See_Achievements[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.See_Achievements[language],
+    },
+    buttonAllMissionsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_UseCertificate',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      tooltipText: DICTIONARY.All_Missions[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.All_Missions[language],
+    },
     formInputNamesProps: {
       language,
       buttonForwardProps: scenario.buttonForwardProps,
@@ -125,14 +174,38 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     buttonForwardProps: scenario.buttonForwardProps,
   }
 
+  const buttonNextTaskTooltipText = (
+    <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_Task[language]}</div>
+  )
+
   console.info('QuestionScores [128]', { 'scenario.message': scenario.message })
 
   return (
     <div className='QuestionScores'>
-      <div>Congratulations</div>
-      <div>Go to next shorts</div>
-      <div>Go to next shorts</div>
-      <div>Go to next shorts</div>
+      <div className='_text'>
+        <div className='_greet'>{DICTIONARY.Congratulations[language]}!</div>
+        <div>
+          <span>{DICTIONARY.You_ve_completed_the_task_successfully[language]}.</span>
+          <span> </span>
+          <span>{DICTIONARY.Keep_going[language]}!</span>
+        </div>
+      </div>
+
+      <div className='_buttons'>
+        <Tooltip className='_tooltip' title={'Something different'}>
+          Something different
+        </Tooltip>
+        <Tooltip className='_tooltip' title={DICTIONARY.Next_Task[language]}>
+          <>
+            <ButtonYrl {...propsOut.buttonNextTaskProps} />
+          </>
+        </Tooltip>
+        <ButtonYrl {...propsOut.buttonViewRewardProps} />
+
+        <ButtonYrl {...propsOut.buttonSeeAchievementsProps} />
+
+        <ButtonYrl {...propsOut.buttonAllMissionsProps} />
+      </div>
       <br />
       <hr />
       <br />
