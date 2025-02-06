@@ -54,7 +54,16 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
       const propsOutItem: TagsDocsTableItemPropsOutType = {
         linkToAcademyMatrixTaggedProps: {
           className: '__shield',
-          to: { pathname: '/', search: `tagsPick=${valueEscaped}&pageTags=1&pageModules=1` },
+          to: {
+            pathname: `/`,
+            search: {
+              tagsPick: value,
+              pageTags: 1,
+              pageModules: 1,
+            },
+
+            // `tagsPick=${valueEscaped}&pageTags=1&pageModules=1`,
+          },
           children: value,
         },
         iconTagMdCheckProps: {
@@ -74,6 +83,11 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
           children: 'Link',
         },
       }
+
+      console.info('', {
+        'propsOutItem.linkToAcademyMatrixTaggedProps.to.search':
+          propsOutItem.linkToAcademyMatrixTaggedProps.to.search,
+      })
 
       return (
         <div key={tagID} className='_row _row_tagsCloud'>

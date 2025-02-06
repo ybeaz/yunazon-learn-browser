@@ -125,8 +125,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     buttonForwardProps: scenario.buttonForwardProps,
   }
 
+  console.info('QuestionScores [128]', { 'scenario.message': scenario.message })
+
   return (
     <div className='QuestionScores'>
+      <div>Congratulations</div>
+      <div>Go to next shorts</div>
+      <div>Go to next shorts</div>
+      <div>Go to next shorts</div>
+      <br />
+      <hr />
+      <br />
       <div className='_text'>{scenario.message}</div>
       {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />

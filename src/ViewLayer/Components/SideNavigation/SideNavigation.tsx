@@ -59,7 +59,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
               </NavLinkWithQuery>
             </div>
           )
-        } // <NavLinkWithQuery {...propsOut.navLinkProps}>
+        }
         return (
           <div key={key} className='_item'>
             <ButtonYrl {...buttonYrlProps} />
