@@ -17,6 +17,8 @@ import { getClasses } from 'yourails_common'
 import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
 import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
   PlayerYoutubeIframe,
@@ -47,11 +49,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     moduleID,
     contentID,
     screenType,
-    storeStateSlice: {
-      language,
-      mediaLoaded,
-      urlParamsQuery: { sendCc, sendBcc },
-    },
+    storeStateSlice: { language, mediaLoaded, urlParamsQuery },
     handleEvents,
     tags,
     thumbnails,
@@ -70,8 +68,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
   })
 
   const slug = getSlug(capture)
-
   const pathname = `/m/${moduleID}/${slug}`
+  const queryUrl = getParsedUrlQueryBrowserApi()
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
@@ -163,7 +161,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     // },
     linkProps: {
       className: '__shield',
-      to: { pathname },
+      to: { pathname, search: queryUrl },
       onClick: (event: any) => {
         handleEvents(event, {
           typeEvent: 'SET_MODULES',
