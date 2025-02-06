@@ -192,10 +192,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </div>
 
       <div className='_buttons'>
-        <Tooltip className='_tooltip' title={'Something different'}>
-          Something different
-        </Tooltip>
-        <Tooltip className='_tooltip' title={DICTIONARY.Next_Task[language]}>
+        <Tooltip className='_tooltip' title={buttonNextTaskTooltipText}>
           <>
             <ButtonYrl {...propsOut.buttonNextTaskProps} />
           </>
