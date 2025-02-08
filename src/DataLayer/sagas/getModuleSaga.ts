@@ -18,6 +18,8 @@ import {
   getReplacedArrObjsByPropNameVal,
   GetReplacedArrObjsByPropNameValParamsType,
 } from 'yourails_common'
+import { readModulesConnection } from './readModulesConnectionSaga'
+
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
 
@@ -101,8 +103,8 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
   }
 
-  console.info('getModuleSaga [105]', { modulesNext2, modulesNext, modules })
   if (!modules.length) {
+    yield call(readModulesConnection, { data: { isAddingModules: true, moduleID } })
   }
 }
 

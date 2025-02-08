@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
+import { ModuleType } from 'yourails_common'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -81,11 +82,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const { width: widthSizeWindow } = getSizeWindow()
 
   const moduleID = params.moduleID || ''
+  const moduleActive = getModuleByModuleID(
+    { modules, moduleID: moduleIDActive || moduleID },
+    { parentFunction: 'AcademyPresentComponent' }
+  )
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']
 
-  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
+  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, moduleActive])
 
   console.info('AcademyPresent [90]', { modules, componentsState, urlParamsQuery })
 
@@ -150,10 +155,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         summary: summary2,
         objections: objections2,
         article: article2,
-      } = getModuleByModuleID(
-        { modules, moduleID: moduleIDActive || moduleID },
-        { parentFunction: 'AcademyPresentComponent' }
-      )
+      } = moduleActive
 
       const durationObj = getDurationFromYoutubeSnippet(duration2, {
         printRes: false,
