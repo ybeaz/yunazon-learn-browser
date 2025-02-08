@@ -5,6 +5,6 @@ import { GO_LINK_PATH } from './GO_LINK_PATH'
 const { dispatch } = store
 
 export const GO_SCREEN: ActionEventType = (event, data) => {
-  if (data && data?.pathname) GO_LINK_PATH({}, data)
+  // if (data && data?.pathname) GO_LINK_PATH({}, data)
   dispatch(actionSync.SET_SIDE_NAVIGATION_LEFT(data))
 }

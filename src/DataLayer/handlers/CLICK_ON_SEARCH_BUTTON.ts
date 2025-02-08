@@ -33,7 +33,6 @@ const getSetModules = (searchValue: string) => {
   dispatch(
     actionAsync.READ_MODULES_CONNECTION.REQUEST({
       isLoaderOverlay: true,
-      isWithinModuleIDs: false,
     })
   )
 }

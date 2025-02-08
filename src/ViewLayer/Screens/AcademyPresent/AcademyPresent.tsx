@@ -70,7 +70,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modules,
       mediaLoaded,
       // @ts-expect-error
-      urlParamsQuery: { sendCc, sendBcc },
+      componentsState,
+      // @ts-expect-error
+      urlParamsQuery,
     },
   } = props
 
@@ -85,7 +87,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
 
-  console.info('AcademyPresent [88]', { modules })
+  console.info('AcademyPresent [90]', { modules, componentsState, urlParamsQuery })
 
   const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
@@ -93,7 +95,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   useEffectedInitialRequests(
     [
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-      // { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
       { type: 'GET_MODULE', data: { moduleID } },
     ],
     [moduleID]
@@ -446,6 +448,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
+  'componentsState',
   'urlParamsQuery',
 ]
 

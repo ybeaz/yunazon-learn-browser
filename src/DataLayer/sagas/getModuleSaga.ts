@@ -14,7 +14,10 @@ import { getModuleByModuleID } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
-
+import {
+  getReplacedArrObjsByPropNameVal,
+  GetReplacedArrObjsByPropNameValParamsType,
+} from 'yourails_common'
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
 
@@ -67,14 +70,20 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
       }
     )
 
-    console.info('getModuleSaga [72]', { modules, modulesNext })
-
     modulesNext = getPreparedModules(readModules)
   }
 
+  const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {
+    arrObjs: modules,
+    objIn: modulesNext[0],
+    propName: 'moduleID',
+    propValue: moduleID,
+  }
+  const modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
+
   yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
-  yield put(actionSync.SET_MODULES(modulesNext))
+  yield put(actionSync.SET_MODULES(modulesNext2))
   if (
     caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
     caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
@@ -90,6 +99,10 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const { width } = getSizeWindow()
   if (width <= 480) {
     yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
+  }
+
+  console.info('getModuleSaga [105]', { modulesNext2, modulesNext, modules })
+  if (!modules.length) {
   }
 }
 

@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 
 import { useNavigate } from 'react-router-dom'
-import { nanoid } from 'nanoid'
 
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { LANGUAGES_APP } from 'yourails_common'
@@ -48,20 +47,19 @@ const SideNavigationComponent: SideNavigationComponentType = (
     sideNavigationItemsPropsArrIn: GetSideNavigationItemsResType[]
   ): ReactElement[] => {
     return sideNavigationItemsPropsArrIn.map(
-      (sideNavigationItemsProp: GetSideNavigationItemsResType) => {
+      (sideNavigationItemsProp: GetSideNavigationItemsResType, index: number) => {
         const { navLinkProps, buttonYrlProps } = sideNavigationItemsProp
-        const key = nanoid()
         if (navLinkProps) {
           return (
-            <div key={key} className='_item'>
-              <NavLinkWithQuery {...navLinkProps} key={key}>
+            <div key={`sideNavLinkItem-${index}`} className='_item'>
+              <NavLinkWithQuery {...navLinkProps}>
                 <ButtonYrl {...buttonYrlProps} />
               </NavLinkWithQuery>
             </div>
           )
         }
         return (
-          <div key={key} className='_item'>
+          <div key={`sideNavigationItem-${index}`} className='_item'>
             <ButtonYrl {...buttonYrlProps} />
           </div>
         )
@@ -89,7 +87,7 @@ const SideNavigationComponent: SideNavigationComponentType = (
     >
       <div
         className='__content'
-        onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
+        // onClick={event => handleEvents(event, { typeEvent: 'STOP_PROPAGATION' })}
       >
         <div className='__menuGroup'>
           <div className='_groupItem _languageSelect'>
