@@ -84,11 +84,6 @@ const TagsDocsTableComponent: TagsDocsTableComponentType = (
         },
       }
 
-      console.info('', {
-        'propsOutItem.linkToAcademyMatrixTaggedProps.to.search':
-          propsOutItem.linkToAcademyMatrixTaggedProps.to.search,
-      })
-
       return (
         <div key={tagID} className='_row _row_tagsCloud'>
           <div className='_cell _name'>

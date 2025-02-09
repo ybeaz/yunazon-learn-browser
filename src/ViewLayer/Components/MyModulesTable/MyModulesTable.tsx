@@ -49,18 +49,12 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
       const propsOut: ModulesTablePropsOutType = {
         linkToModuleProps: {
           className: '__shield',
-          to: { pathname: pathnameModule },
-          children: capture,
-          onClick: (event: any) => {
-            handleEvents(event, {
-              typeEvent: 'SET_MODULES',
-              data: [],
-            })
-            handleEvents(event, {
-              typeEvent: 'SELECT_MODULE',
-              data: { capture, moduleID, contentID, navigate },
-            })
+          to: {
+            pathname: pathnameModule,
+            search: { pageModules: 1, pageTags: 1, pageDocuments: 1 },
           },
+          children: capture,
+          onClick: (event: any) => {},
         },
         buttonDeactivateModuleProps: {
           icon: 'MdDeleteOutline',

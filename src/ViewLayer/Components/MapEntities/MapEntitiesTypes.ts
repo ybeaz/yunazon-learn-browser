@@ -2,8 +2,8 @@ import React from 'react'
 
 export type MapEntitiesComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  geoUrl: string
-  markers: any[]
+  geoUrl?: string
+  markers?: any[]
 }
 
 export type MapEntitiesPropsType = Omit<MapEntitiesComponentPropsType, 'storeStateSlice'>

@@ -3,7 +3,6 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { QueryGetAuthAwsCognitoUserDataArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS_URI } from 'yourails_common'
 import { getDetectedEnv } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { ClientAppEnumType } from 'yourails_common'
@@ -18,7 +17,7 @@ export function* getAuthAwsCognitoUserDataGenerator(params: ActionReduxType | an
   } = params
 
   const envType = getDetectedEnv()
-  const redirect_uri = CLIENTS_URI[envType]
+  const redirect_uri = location.origin
 
   const variables: QueryGetAuthAwsCognitoUserDataArgs = {
     userIdDataAwsCognitoInput: {

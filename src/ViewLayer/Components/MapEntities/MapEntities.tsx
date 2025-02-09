@@ -8,7 +8,7 @@ import {
   ComposableMapProps,
 } from 'react-simple-maps'
 
-import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
+import { IconYrl } from 'yourails_common'
 import { getClasses } from 'yourails_common'
 import {
   MapEntitiesComponentPropsType,
@@ -23,18 +23,39 @@ const ComposableMapFC = ({ children }: { children: any }) =>
     projection: 'geoAzimuthalEqualArea',
     projectionConfig: {
       rotate: [58, 20, 0],
-      scale: 600,
+      scale: 500,
     },
     children,
   })
 
+const geoUrlExample =
+  'https://raw.githubusercontent.com/deldersveld/topojson/master/continents/south-america.json'
+
+const markersExample = [
+  {
+    name: 'Buenos Aires',
+    coordinates: [-58.3816, -34.6037],
+  },
+  { name: 'La Paz', coordinates: [-68.1193, -16.4897] },
+  { name: 'Brasilia', coordinates: [-47.8825, -15.7942] },
+  { name: 'Santiago', coordinates: [-70.6693, -33.4489] },
+  { name: 'Bogota', coordinates: [-74.0721, 4.711] },
+  { name: 'Quito', coordinates: [-78.4678, -0.1807] },
+  { name: 'Georgetown', coordinates: [-58.1551, 6.8013] },
+  { name: 'Asuncion', coordinates: [-57.5759, -25.2637] },
+  { name: 'Paramaribo', coordinates: [-55.2038, 5.852] },
+  { name: 'Montevideo', coordinates: [-56.1645, -34.9011] },
+  { name: 'Caracas', coordinates: [-66.9036, 10.4806] },
+  { name: 'Lima', coordinates: [-77.0428, -12.0464] },
+]
+
 /**
- * @description Component to render MapEntities
+ * @description NOT USED: Component to render MapEntities
  * @import import { MapEntities, MapEntitiesPropsType, MapEntitiesPropsOutType, MapEntitiesType } 
              from '../Components/MapEntities/MapEntities'
  */
 const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesComponentPropsType) => {
-  const { classAdded, geoUrl, markers } = props
+  const { classAdded, geoUrl = geoUrlExample, markers = markersExample } = props
 
   const propsOut: MapEntitiesPropsOutType = {}
 
@@ -50,13 +71,13 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
             ))
           }
         </Geographies>
-        {markers.map(({ name, coordinates, markerOffset }) => (
+        {markers.map(({ name, coordinates }) => (
           // @ts-ignore
           <Marker key={name} coordinates={coordinates}>
             <g
               fill='none'
               stroke='#FF5533'
-              strokeWidth='2'
+              strokeWidth='3'
               strokeLinecap='round'
               strokeLinejoin='round'
               transform='translate(-12, -24)'
@@ -66,8 +87,14 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
             </g>
             <text
               textAnchor='middle'
-              y={markerOffset}
-              style={{ fontFamily: 'system-ui', fill: '#5D5A6D' }}
+              y={48}
+              style={{
+                fontFamily: 'system-ui',
+                fill: '#5D5A6D',
+                fontSize: '32px',
+                fontWeight: 'bold',
+              }}
+              fontSize='48px'
             >
               {name}
             </text>
@@ -78,11 +105,7 @@ const MapEntitiesComponent: MapEntitiesComponentType = (props: MapEntitiesCompon
   )
 }
 
-const storeStateSliceProps: string[] = []
-const MapEntities: MapEntitiesType = withStoreStateSelectedYrl(
-  storeStateSliceProps,
-  React.memo(MapEntitiesComponent)
-)
+const MapEntities: MapEntitiesType = React.memo(MapEntitiesComponent)
 
 export type { MapEntitiesPropsType, MapEntitiesType }
 export { MapEntities }

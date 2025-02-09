@@ -3,7 +3,6 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 import { QueryGetAuthAwsCognitoUserRevokedArgs } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
-import { CLIENTS_URI } from 'yourails_common'
 import { getDetectedEnv } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { ClientAppEnumType } from 'yourails_common'
@@ -14,7 +13,7 @@ import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
 function* getAuthAwsCognitoUserRevokedGenerator(): Iterable<any> {
   const envType = getDetectedEnv()
-  const redirect_uri = CLIENTS_URI[envType]
+  const redirect_uri = location.origin
 
   let refresh_token = null
 

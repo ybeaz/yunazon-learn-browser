@@ -92,7 +92,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, moduleActive])
 
-  console.info('AcademyPresent [90]', { modules, componentsState, urlParamsQuery })
+  // console.info('AcademyPresent [90]', { modules, componentsState, urlParamsQuery })
 
   const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))

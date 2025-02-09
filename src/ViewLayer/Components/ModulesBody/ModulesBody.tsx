@@ -45,8 +45,6 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     window.scrollTo(0, 0)
   }, [JSON.stringify(modules)])
 
-  console.info('ModulesBody [48]', { modules })
-
   const getPlateMatix: Function = (modules2: ModuleType[]): ReactElement => {
     const plates = modules2.map((module: ModuleType) => {
       const {
