@@ -2,8 +2,7 @@ import React, { useEffect, ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tooltip } from 'antd'
 
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
-
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
@@ -14,7 +13,6 @@ import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleE
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
-import { MapEntities, MapEntitiesPropsType } from '../MapEntities/MapEntities'
 
 import {
   GetScenarioDictPropsType,
@@ -33,7 +31,7 @@ import {
 const QuestionScoresComponent: QuestionScoresComponentType = (
   props: QuestionScoresComponentPropsType
 ) => {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const {
     stopVideoHandler,
@@ -120,46 +118,50 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
-  const propsOut: QuestionScoresPropsOutType & any = {
+  const propsOut: QuestionScoresPropsOutType = {
+    navLinkNextTaskProps: {
+      to: { pathname: '/' },
+    },
     buttonNextTaskProps: {
       icon: 'MdForward',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_NextTask',
       handleEvents,
       action: {
         typeEvent: 'TEST',
         data: {},
       },
-      // tooltipText: DICTIONARY.Next_Task[language],
-      // tooltipPosition: 'top',
       captureLeft: DICTIONARY.Next_Task[language],
     },
-    buttonViewRewardProps: {
+    navLinkCreditProps: {
+      to: { pathname: '/' },
+    },
+    buttonCreditProps: {
       icon: 'MdForward',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_Credit',
       handleEvents,
-      action: {
-        typeEvent: 'TEST',
-        data: {},
-      },
+      action: {},
       tooltipText: DICTIONARY.View_Reward[language],
       tooltipPosition: 'top',
       captureLeft: DICTIONARY.View_Reward[language],
     },
-    buttonSeeAchievementsProps: {
+    navLinkAchievementsProps: {
+      to: { pathname: '/my-documents' },
+    },
+    buttonAchievementsProps: {
       icon: 'MdForward',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_Achievements',
       handleEvents,
-      action: {
-        typeEvent: 'TEST',
-        data: {},
-      },
-      tooltipText: DICTIONARY.See_Achievements[language],
+      action: {},
+      tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.See_Achievements[language],
+      captureLeft: DICTIONARY.Achievements[language],
+    },
+    navLinkAllMissionsProps: {
+      onClick: () => navigate(-1),
     },
     buttonAllMissionsProps: {
       icon: 'MdForward',
-      classAdded: 'Button_UseCertificate',
+      classAdded: 'Button_AllMissions',
       handleEvents,
       action: {
         typeEvent: 'TEST',
@@ -181,11 +183,11 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_Task[language]}</div>
   )
 
-  console.info('QuestionScores [128]', { 'scenario.message': scenario.message })
+  console.info('QuestionScores [128]', { modules })
 
   return (
     <div className='QuestionScores'>
-      {/* <div className='_text'>
+      <div className='_text'>
         <div className='_greet'>{DICTIONARY.Congratulations[language]}!</div>
         <div>
           <span>{DICTIONARY.You_ve_completed_the_task_successfully[language]}.</span>
@@ -195,20 +197,22 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </div>
 
       <div className='_buttons'>
-        <Tooltip className='_tooltip' title={buttonNextTaskTooltipText}>
-          <>
-            <ButtonYrl {...propsOut.buttonNextTaskProps} />
-          </>
-        </Tooltip>
-        <ButtonYrl {...propsOut.buttonViewRewardProps} />
-
-        <ButtonYrl {...propsOut.buttonSeeAchievementsProps} />
-
-        <ButtonYrl {...propsOut.buttonAllMissionsProps} />
+        <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
+          <ButtonYrl {...propsOut.buttonNextTaskProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkCreditProps}>
+          <ButtonYrl {...propsOut.buttonCreditProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
+          <ButtonYrl {...propsOut.buttonAchievementsProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkAllMissionsProps}>
+          <ButtonYrl {...propsOut.buttonAllMissionsProps} />
+        </NavLinkWithQuery>
       </div>
       <br />
       <hr />
-      <br /> */}
+      <br />
       <div className='_text'>{scenario.message}</div>
       {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />

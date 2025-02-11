@@ -7,7 +7,7 @@ export type NavLinkWithQueryComponentPropsType = Omit<NavLinkProps, 'to'> & {
   storeStateSlice: {
     urlParamsQuery: RootStoreType['urlParamsQuery']
   }
-  to: {
+  to?: {
     pathname?: string
     search?: Record<string, string | number>
   }

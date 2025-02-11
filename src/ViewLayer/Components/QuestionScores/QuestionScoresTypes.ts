@@ -4,6 +4,7 @@ import { ButtonYrlPropsType } from 'yourails_common'
 import { CourseType, ModuleType, MetaCourseType } from 'yourails_common'
 import { ResultType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
+import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
 export type GetScenarioDictPropsType = {
   result: ResultType
@@ -45,6 +46,14 @@ export type QuestionScoresPropsType = Omit<
 >
 
 export type QuestionScoresPropsOutType = {
+  navLinkNextTaskProps: NavLinkWithQueryPropsType
+  navLinkCreditProps: NavLinkWithQueryPropsType
+  navLinkAchievementsProps: NavLinkWithQueryPropsType
+  navLinkAllMissionsProps: NavLinkWithQueryPropsType
+  buttonNextTaskProps: ButtonYrlPropsType
+  buttonCreditProps: ButtonYrlPropsType
+  buttonAchievementsProps: ButtonYrlPropsType
+  buttonAllMissionsProps: ButtonYrlPropsType
   formInputNamesProps: FormInputNamesPropsType
   buttonForwardProps: ButtonYrlPropsType
 }

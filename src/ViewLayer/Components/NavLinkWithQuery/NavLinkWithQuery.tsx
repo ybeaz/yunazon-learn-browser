@@ -25,9 +25,13 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
     storeStateSlice: {
       urlParamsQuery: { sendCc: sendCcState, sendBcc: sendBccState },
     },
-    to: { pathname, search: searchIn },
+    to,
     ...restProps
   } = props
+
+  const pathname = props.to?.pathname
+  const searchIn = props.to?.search
+
   const { sendCc: sendCcQuery, sendBcc: sendBccQuery } = getParsedUrlQuery()
 
   const sendCc = sendCcState || sendCcQuery
@@ -42,10 +46,14 @@ const NavLinkWithQueryComponent: NavLinkWithQueryComponentType = (
   const propsOut: NavLinkWithQueryPropsOutType = {
     navLinkProps: {
       ...restProps,
-      to: {
-        pathname,
-        search,
-      },
+      ...(to
+        ? {
+            to: {
+              pathname,
+              search,
+            },
+          }
+        : {}),
       end: true,
     },
   }
