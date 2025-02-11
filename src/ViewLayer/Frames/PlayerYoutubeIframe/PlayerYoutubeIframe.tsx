@@ -32,6 +32,15 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
   } = props
   const { width, height } = VIDEO_RESOLUTION
 
+  console.info('PlayerYoutubeIframe [35]', {
+    isIframe,
+    contentComponentName,
+    moduleID,
+    contentID,
+    width,
+    height,
+  })
+
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
     useYouTubePlayerWork({
       contentComponentName,
@@ -75,11 +84,22 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     },
   }
 
+  console.info('PlayerYoutubeIframe [87]', { contentID })
   return (
     <div className='PlayerYoutubeIframe'>
       {children[0]}
-      <div className='_wrapper'>
-        {isIframe && <div className='_player' id={contentID}></div>}
+      <div className='_wrapperForPlayerYoutubeIframe'>
+        {isIframe && (
+          <>
+            <div
+              className={contentID}
+              style={{ zIndex: 100, display: 'block', position: 'absolute' }}
+            >
+              We are here
+            </div>
+            <div className='_player' id={contentID} />
+          </>
+        )}
         {children[1]}
       </div>
 

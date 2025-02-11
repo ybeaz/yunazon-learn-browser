@@ -92,8 +92,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const mediaLoadedModulesString = JSON.stringify([mediaLoaded, moduleActive])
 
-  // console.info('AcademyPresent [90]', { modules, componentsState, urlParamsQuery })
-
   const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
 
@@ -224,6 +222,10 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       tags,
     },
   }
+
+  console.info('AcademyPresent [100]', {
+    PlayerYoutubeIframe: contentComponentProps.PlayerYoutubeIframe,
+  })
 
   const propsM1Out: AcademyPresentPropsM1OutType = {
     CONTENT_ASSIGNED_COMPONENT,

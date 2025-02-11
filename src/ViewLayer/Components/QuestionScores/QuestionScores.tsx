@@ -7,11 +7,13 @@ import { isParsableFloat } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getQuestionsWrongAnswered } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
+import { getMapJourneyData } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 
 import {
@@ -118,9 +120,24 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
+  const queryUrl = getParsedUrlQueryBrowserApi()
+
+  console.info('QuestionScores [45]', {
+    queryUrl,
+    modules,
+    pathname: getMapJourneyData({ modules }).find(
+      ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+    )?.pathnameModule,
+  })
+
   const propsOut: QuestionScoresPropsOutType = {
     navLinkNextTaskProps: {
-      to: { pathname: '/' },
+      to: {
+        pathname: getMapJourneyData({ modules }).find(
+          ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+        )?.pathnameModule,
+        search: queryUrl,
+      },
     },
     buttonNextTaskProps: {
       icon: 'MdForward',

@@ -104,15 +104,19 @@ const getQueryUrlReducerData = ({
 
   return {
     queryNamesArray: Object.keys(QUERY_URL_TO_REDUCER_DATA_MAP),
-    reducerArray: QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
-      ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
-      : [],
+    reducerArray:
+      QUERY_URL_TO_REDUCER_DATA_MAP[queryName] && queryUrl[queryName]
+        ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
+        : [],
   }
 }
 
 export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataIn) => {
   const queryUrl = getParsedUrlQueryBrowserApi()
-  const queryNamesArray = getQueryUrlReducerData({ queryUrl: '', queryName: '' }).queryNamesArray
+
+  if (JSON.stringify(queryUrl) === '{}') return
+
+  const queryNamesArray = getQueryUrlReducerData({ queryUrl, queryName: '' }).queryNamesArray
   queryNamesArray.forEach((queryName: string) => {
     const reducerArray = getQueryUrlReducerData({ queryUrl, queryName }).reducerArray
     reducerArray.length && reducerArray.map(({ reducerFunc, data }) => dispatch(reducerFunc(data)))

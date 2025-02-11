@@ -72,6 +72,7 @@ export const useYouTubePlayerWork = ({
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event: any) {
+    console.info('useYouTubePlayerWork [75]', { mediaKey: moduleID, isMediaLoaded: true })
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: moduleID,
@@ -90,6 +91,24 @@ export const useYouTubePlayerWork = ({
   async function onYouTubeIframeAPIReady(videoId: string) {
     if (contentComponentName === 'PlayerYoutubeIframe') {
       try {
+        const newPlayer = document.createElement('div')
+        newPlayer.id = videoId
+
+        const removeContents = function (element) {
+          while (element.firstChild) {
+            element.removeChild(element.firstChild)
+          }
+        }
+
+        // Append the new tag to the desired parent element
+        const parentELement = document.getElementsByClassName('_wrapperForPlayerYoutubeIframe')[0]
+        // removeContents(parentELement)
+        // parentELement.appendChild(newPlayer)
+        // document.body.appendChild(newPlayer)
+
+        // Store the reference
+        // playerRef.current = newPlayer
+
         window['YT'].ready(function () {
           playerRef.current = new window['YT'].Player(videoId, {
             videoId,
@@ -117,6 +136,14 @@ export const useYouTubePlayerWork = ({
             origin: window.location.origin,
           })
         })
+        console.info('useYouTubePlayerWork [120]', {
+          videoId,
+          contentID,
+          'window.location.origin': window.location.origin,
+          "window['YT']": window['YT'],
+        })
+
+        return () => {}
       } catch (error: any) {
         console.error('useYouTubePlayerWork [121]', error.name + ': ' + error.message)
       }
@@ -124,7 +151,9 @@ export const useYouTubePlayerWork = ({
   }
 
   useEffect(() => {
-    setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 250)
+    // window['onYouTubeIframeAPIReady'] = async () => await onYouTubeIframeAPIReady(contentID)
+    setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 1000)
+
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy()

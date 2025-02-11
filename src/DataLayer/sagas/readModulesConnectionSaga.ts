@@ -120,6 +120,16 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     .exec(getMappedConnectionToItems, { printRes: false })
     .exec(getSortedArrayEntityTags).result
 
+  console.info('readModulesConnectionSaga [123]', {
+    profileIDs,
+    learnerUserID,
+    modulesNext,
+    variables,
+    sub,
+    screenActive,
+    profiles,
+  })
+
   let modulesNext2 = modulesNext
   if (isAddingModules && moduleID) {
     const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {
