@@ -101,7 +101,7 @@ export const useYouTubePlayerWork = ({
         }
 
         // Append the new tag to the desired parent element
-        const parentELement = document.getElementsByClassName('_wrapperForPlayerYoutubeIframe')[0]
+        // const parentELement = document.getElementsByClassName('_wrapperForPlayerYoutubeIframe')[0]
         // removeContents(parentELement)
         // parentELement.appendChild(newPlayer)
         // document.body.appendChild(newPlayer)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { VIDEO_RESOLUTION } from 'yourails_common'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
@@ -31,6 +31,26 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     tags,
   } = props
   const { width, height } = VIDEO_RESOLUTION
+
+  const [playerDivTags, setPlayerDivTags] = useState([
+    { contentID, isActive: true, tag: <div className='_player' id={contentID} /> },
+  ])
+
+  useEffect(() => {
+    console.info('PlayerYoutubeIframe [23]', { contentID })
+    if (!playerDivTags.find((item: any) => item.contentID === contentID)) {
+      let playerDivTagsNext = playerDivTags.map((item, index) => ({
+        ...item,
+        isActive: false,
+      }))
+
+      setPlayerDivTags([
+        ...playerDivTagsNext,
+        { contentID, isActive: true, tag: <div className='_player' id={contentID} /> },
+      ])
+      console.info('PlayerYoutubeIframe [51]', { contentID })
+    }
+  }, [contentID])
 
   console.info('PlayerYoutubeIframe [35]', {
     isIframe,
@@ -84,7 +104,20 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     },
   }
 
-  console.info('PlayerYoutubeIframe [87]', { contentID })
+  const getPlayers = (playersArray: any) => {
+    return playersArray.map((item: any, index: number) => {
+      const { contentID, isActive, tag } = item
+      if (isActive) {
+        return (
+          <div key={contentID} style={{ display: isActive ? 'block' : 'none' }}>
+            {tag}
+          </div>
+        )
+      }
+    })
+  }
+
+  console.info('PlayerYoutubeIframe [87]', { contentID, playerDivTags })
   return (
     <div className='PlayerYoutubeIframe'>
       {children[0]}
@@ -97,7 +130,8 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
             >
               We are here
             </div>
-            <div className='_player' id={contentID} />
+            {getPlayers(playerDivTags)}
+            {/* <div className='_player' id={contentID} /> */}
           </>
         )}
         {children[1]}
