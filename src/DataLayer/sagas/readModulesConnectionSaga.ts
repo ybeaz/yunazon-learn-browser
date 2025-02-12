@@ -27,7 +27,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
 
-  yield delay(500)
+  // yield delay(500)
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
@@ -153,7 +153,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
 }
 
 export const readModulesConnection = withDebounce(
-  withTryCatchFinallySaga(withLoaderWrapperSaga(readModulesConnectionGenerator), {
+  withTryCatchFinallySaga(readModulesConnectionGenerator, {
     optionsDefault: { funcParent: 'readModulesConnectionSaga' },
     resDefault: [],
   }),

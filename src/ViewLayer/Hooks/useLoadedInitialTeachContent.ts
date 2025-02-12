@@ -28,7 +28,6 @@ export const useLoadedInitialTeachContent: Function = (
 
     return () => {
       const scriptTag = document.querySelector('script[src="https://www.youtube.com/iframe_api"]')
-      console.info('useLoadedInitialTeachContent [31]', { scriptTag })
       if (scriptTag) {
         scriptTag.remove()
       }

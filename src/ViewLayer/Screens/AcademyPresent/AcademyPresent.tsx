@@ -223,10 +223,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
     },
   }
 
-  console.info('AcademyPresent [100]', {
-    PlayerYoutubeIframe: contentComponentProps.PlayerYoutubeIframe,
-  })
-
   const propsM1Out: AcademyPresentPropsM1OutType = {
     CONTENT_ASSIGNED_COMPONENT,
     contentAssignedComponentProps: contentComponentProps[contentComponentName],

@@ -122,14 +122,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 
-  console.info('QuestionScores [45]', {
-    queryUrl,
-    modules,
-    pathname: getMapJourneyData({ modules }).find(
-      ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-    )?.pathnameModule,
-  })
-
   const propsOut: QuestionScoresPropsOutType = {
     navLinkNextTaskProps: {
       to: {

@@ -12,23 +12,14 @@ import { withDebounce } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { waitForStoreDataSaga } from './waitForStoreDataSaga'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 import {
   getReplacedArrObjsByPropNameVal,
   GetReplacedArrObjsByPropNameValParamsType,
 } from 'yourails_common'
 import { readModulesConnection } from './readModulesConnectionSaga'
-
-function* waitForStoreData() {
-  while (true) {
-    const data = yield select(state => state.authAwsCognitoUserData.sub)
-    console.info('getModuleSaga [26]', { data })
-    if (data) return data
-    yield delay(100)
-  }
-}
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
@@ -116,14 +107,15 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const queryUrl = getParsedUrlQueryBrowserApi()
 
   if (JSON.stringify(queryUrl) !== '{}' && !modules.length) {
-    console.info('getModuleSaga [121]', { queryUrl, '!modules.length': !modules.length })
-    yield call(waitForStoreData)
-    yield call(readModulesConnection, { data: { isAddingModules: true, moduleID } })
+    yield call(waitForStoreDataSaga, { path: 'authAwsCognitoUserData.sub', interval: 50 })
+    yield call(readModulesConnection, {
+      data: { isAddingModules: true, moduleID },
+    })
   }
 }
 
 export const getModule = withDebounce(
-  withTryCatchFinallySaga(withLoaderWrapperSaga(getModuleGenerator), {
+  withTryCatchFinallySaga(getModuleGenerator, {
     optionsDefault: { funcParent: 'getModuleSaga' },
     resDefault: [],
   }),
