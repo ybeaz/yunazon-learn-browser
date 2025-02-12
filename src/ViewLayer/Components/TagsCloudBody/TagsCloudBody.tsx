@@ -138,7 +138,6 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
               <span className='_spanTagName'>{value}</span>
               <span className='_spanCount'>{count}</span>
               <span className='_spanCompleted'>{completed}</span>
-
               <ButtonYrl {...propsOut.buttonTagExpertiseProps} />
             </div>
           </Tooltip>

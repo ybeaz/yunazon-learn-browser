@@ -2,13 +2,14 @@ import { store } from '../store'
 import { ActionEventType } from 'yourails_common'
 import { actionAsync, actionSync } from '../../DataLayer/index.action'
 import { PaginationNameEnumType } from 'yourails_common'
+import { timeout } from 'yourails_common'
 import { CLICK_ON_SEARCH_BUTTON } from './CLICK_ON_SEARCH_BUTTON'
 import { ONCHANGE_INPUT_SEARCH } from './ONCHANGE_INPUT_SEARCH'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 const { dispatch } = store
 
-export const CLICK_ON_TAG: ActionEventType = (
+export const CLICK_ON_TAG: ActionEventType = async (
   event,
   { tagCloud }: { tagCloud: { value: string } }
 ) => {
@@ -55,6 +56,8 @@ export const CLICK_ON_TAG: ActionEventType = (
       value: tagsPickValueNext,
     })
   )
+
+  await timeout(500)
 
   dispatch(
     actionAsync.READ_MODULES_CONNECTION.REQUEST({

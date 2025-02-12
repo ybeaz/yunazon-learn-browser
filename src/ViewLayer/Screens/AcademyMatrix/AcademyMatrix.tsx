@@ -39,8 +39,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     [
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
       { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
-      { type: 'GET_MODULES_CONNECTION' },
       { type: 'GET_TAGS_CONNECTION' },
+      { type: 'GET_MODULES_CONNECTION' },
     ],
     []
     /* This provides consistentgo back experience, but with flickering/ twinkle/ blinking

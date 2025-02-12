@@ -27,8 +27,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
 
-  // yield delay(500)
-
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
   const {
@@ -119,16 +117,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   let modulesNext: any = getChainedResponsibility(readModulesConnection)
     .exec(getMappedConnectionToItems, { printRes: false })
     .exec(getSortedArrayEntityTags).result
-
-  console.info('readModulesConnectionSaga [123]', {
-    profileIDs,
-    learnerUserID,
-    modulesNext,
-    variables,
-    sub,
-    screenActive,
-    profiles,
-  })
 
   let modulesNext2 = modulesNext
   if (isAddingModules && moduleID) {
