@@ -32,34 +32,11 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
   } = props
   const { width, height } = VIDEO_RESOLUTION
 
-  const [playerDivTags, setPlayerDivTags] = useState([
-    { contentID, isActive: true, tag: <div className='_player' id={contentID} /> },
-  ])
+  const [playerTag, setPlayerTag] = useState(<div className='_player' id={contentID} />)
 
   useEffect(() => {
-    console.info('PlayerYoutubeIframe [23]', { contentID })
-    if (!playerDivTags.find((item: any) => item.contentID === contentID)) {
-      let playerDivTagsNext = playerDivTags.map((item, index) => ({
-        ...item,
-        isActive: false,
-      }))
-
-      setPlayerDivTags([
-        ...playerDivTagsNext,
-        { contentID, isActive: true, tag: <div className='_player' id={contentID} /> },
-      ])
-      console.info('PlayerYoutubeIframe [51]', { contentID })
-    }
+    setPlayerTag(<div className='_player' id={contentID} />)
   }, [contentID])
-
-  console.info('PlayerYoutubeIframe [35]', {
-    isIframe,
-    contentComponentName,
-    moduleID,
-    contentID,
-    width,
-    height,
-  })
 
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
     useYouTubePlayerWork({
@@ -104,36 +81,13 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     },
   }
 
-  const getPlayers = (playersArray: any) => {
-    return playersArray.map((item: any, index: number) => {
-      const { contentID, isActive, tag } = item
-      if (isActive) {
-        return (
-          <div key={contentID} style={{ display: isActive ? 'block' : 'none' }}>
-            {tag}
-          </div>
-        )
-      }
-    })
-  }
+  const getPlayerDiv = (player: any) => <div key={contentID}>{player}</div>
 
-  console.info('PlayerYoutubeIframe [87]', { contentID, playerDivTags })
   return (
     <div className='PlayerYoutubeIframe'>
       {children[0]}
       <div className='_wrapperForPlayerYoutubeIframe'>
-        {isIframe && (
-          <>
-            <div
-              className={contentID}
-              style={{ zIndex: 100, display: 'block', position: 'absolute' }}
-            >
-              We are here
-            </div>
-            {getPlayers(playerDivTags)}
-            {/* <div className='_player' id={contentID} /> */}
-          </>
-        )}
+        {isIframe && getPlayerDiv(playerTag)}
         {children[1]}
       </div>
 

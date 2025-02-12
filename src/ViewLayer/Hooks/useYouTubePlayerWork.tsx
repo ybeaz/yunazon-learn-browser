@@ -30,7 +30,6 @@ export const useYouTubePlayerWork = ({
 
   const dispatch = useDispatch()
 
-  // const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
   const [playerState, setPlayerState] = useState({ data: 1000 })
 
@@ -72,7 +71,6 @@ export const useYouTubePlayerWork = ({
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event: any) {
-    console.info('useYouTubePlayerWork [75]', { mediaKey: moduleID, isMediaLoaded: true })
     dispatch(
       actionSync.TOGGLE_MEDIA_LOADED({
         mediaKey: moduleID,
@@ -82,9 +80,6 @@ export const useYouTubePlayerWork = ({
   }
 
   const onChangePlayerStateHandler = (state: any) => {
-    if (state.data === 0) {
-      // console.info('useYouTubePlayerWork [21] PlayerYoutubeIframe event on end is captured', { state })
-    }
     setPlayerState(state)
   }
 
@@ -99,15 +94,6 @@ export const useYouTubePlayerWork = ({
             element.removeChild(element.firstChild)
           }
         }
-
-        // Append the new tag to the desired parent element
-        // const parentELement = document.getElementsByClassName('_wrapperForPlayerYoutubeIframe')[0]
-        // removeContents(parentELement)
-        // parentELement.appendChild(newPlayer)
-        // document.body.appendChild(newPlayer)
-
-        // Store the reference
-        // playerRef.current = newPlayer
 
         window['YT'].ready(function () {
           playerRef.current = new window['YT'].Player(videoId, {
@@ -136,13 +122,6 @@ export const useYouTubePlayerWork = ({
             origin: window.location.origin,
           })
         })
-        console.info('useYouTubePlayerWork [120]', {
-          videoId,
-          contentID,
-          'window.location.origin': window.location.origin,
-          "window['YT']": window['YT'],
-        })
-
         return () => {}
       } catch (error: any) {
         console.error('useYouTubePlayerWork [121]', error.name + ': ' + error.message)
@@ -151,7 +130,6 @@ export const useYouTubePlayerWork = ({
   }
 
   useEffect(() => {
-    // window['onYouTubeIframeAPIReady'] = async () => await onYouTubeIframeAPIReady(contentID)
     setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 1000)
 
     return () => {
