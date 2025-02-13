@@ -6,6 +6,7 @@ import { timeout } from 'yourails_common'
 import { CLICK_ON_SEARCH_BUTTON } from './CLICK_ON_SEARCH_BUTTON'
 import { ONCHANGE_INPUT_SEARCH } from './ONCHANGE_INPUT_SEARCH'
 import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
+import { getWaitedForVarChange } from 'yourails_common'
 
 const { dispatch } = store
 
@@ -13,28 +14,23 @@ export const CLICK_ON_TAG: ActionEventType = async (
   event,
   { tagCloud }: { tagCloud: { value: string } }
 ) => {
-  const {
-    componentsState: { tagsPick },
-  } = store.getState()
-
   if (tagCloud?.value) {
-    ONCHANGE_INPUT_SEARCH(
-      {},
-      {
-        storeFormProp: 'modulesSearch',
+    dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'modulesSearch', value: '' }))
+    dispatch(actionSync.SET_INPUT_TO_STORE({ storeFormProp: 'tagsSearch', value: '' }))
+
+    dispatch(
+      actionSync.SET_COMPONENTS_STATE({
+        componentsStateProp: 'modulesSearchApplied',
         value: '',
-      }
+      })
     )
 
-    ONCHANGE_INPUT_SEARCH(
-      {},
-      {
-        storeFormProp: 'tagsSearch',
+    dispatch(
+      actionSync.SET_COMPONENTS_STATE({
+        componentsStateProp: 'tagsSearchApplied',
         value: '',
-      }
+      })
     )
-
-    CLICK_ON_SEARCH_BUTTON({})
   }
 
   const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
@@ -56,8 +52,6 @@ export const CLICK_ON_TAG: ActionEventType = async (
       value: tagsPickValueNext,
     })
   )
-
-  await timeout(500)
 
   dispatch(
     actionAsync.READ_MODULES_CONNECTION.REQUEST({
