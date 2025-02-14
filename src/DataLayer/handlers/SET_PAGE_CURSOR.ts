@@ -16,7 +16,7 @@ export const SET_PAGE_CURSOR_HANDLE: ActionEventType = (event, data) => {
   if (paginationName === PaginationNameEnumType['pageModules'])
     dispatch(actionAsync.READ_MODULES_CONNECTION.REQUEST())
   else if (paginationName === PaginationNameEnumType['pageDocuments'])
-    dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+    dispatch(actionAsync.READ_DOCUMENTS.REQUEST())
   else if (paginationName === PaginationNameEnumType['pageTags'])
     dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
 }

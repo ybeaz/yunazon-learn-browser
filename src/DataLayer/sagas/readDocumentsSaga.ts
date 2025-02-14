@@ -17,7 +17,7 @@ import { getUserProfileData } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
-export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<any> {
+export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable<any> {
   yield delay(1000)
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
@@ -86,14 +86,14 @@ export function* getDocumentsGenerator(params: ActionReduxType | any): Iterable<
   )
 }
 
-export const getDocuments = withDebounce(
-  withTryCatchFinallySaga(withLoaderWrapperSaga(getDocumentsGenerator), {
-    optionsDefault: { funcParent: 'getDocumentsSaga' },
+export const readDocuments = withDebounce(
+  withTryCatchFinallySaga(withLoaderWrapperSaga(readDocumentsGenerator), {
+    optionsDefault: { funcParent: 'readDocumentsSaga' },
     resDefault: [],
   }),
   500
 )
 
-export default function* getDocumentsSaga() {
-  yield takeEvery([actionAsync.GET_DOCUMENTS.REQUEST().type], getDocuments)
+export default function* readDocumentsSaga() {
+  yield takeEvery([actionAsync.READ_DOCUMENTS.REQUEST().type], readDocuments)
 }
