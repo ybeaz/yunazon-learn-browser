@@ -39,9 +39,9 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const query = getParsedUrlQueryBrowserApi()
-  const tagsPick = getNestedProp({ entity: query, path: 'tagsPick', resDefault: '' })
-  const modulesSearch = getNestedProp({ entity: query, path: 'modulesSearch', resDefault: '' })
-  const tagsSearch = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
+  const tagsPickQuery = getNestedProp({ entity: query, path: 'tagsPick', resDefault: '' })
+  const modulesSearchQuery = getNestedProp({ entity: query, path: 'modulesSearch', resDefault: '' })
+  const tagsSearchQuery = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
   useEffectedInitialRequests(
     [
@@ -50,7 +50,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       { type: 'GET_TAGS_CONNECTION' },
       { type: 'GET_MODULES_CONNECTION' },
     ],
-    [JSON.stringify({ tagsPick, modulesSearch, tagsSearch })]
+    [JSON.stringify({ tagsPickQuery, modulesSearchQuery, tagsSearchQuery })]
   )
 
   useLoadedInitialTeachContent({ isSkipping: false })

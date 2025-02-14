@@ -28,12 +28,14 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
       pagination: {
         pageDocuments: { first, offset },
       },
+      documentsSearchApplied,
       tagsPick,
       tagsOmit,
     },
-    forms: { documentsSearch },
     profiles,
   } = stateSelected as RootStoreType
+
+  console.info('readDocumentsSaga [38]', { documentsSearchApplied })
 
   if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return
 
@@ -43,7 +45,7 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
     first,
     offset,
     learnerIDs: profileIDs,
-    searchPhrase: documentsSearch,
+    searchPhrase: documentsSearchApplied,
     searchIn: ['module.capture', 'module.description', 'module.tags'],
     operators: {
       searchPhrase: 'or',

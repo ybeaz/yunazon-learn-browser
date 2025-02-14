@@ -73,6 +73,16 @@ const getQueryUrlReducerData = ({
         data: { componentsStateProp: 'tagsSearchApplied', value: queryUrl[queryName] },
       },
     ],
+    documentsSearch: [
+      {
+        reducerFunc: actionSync.SET_INPUT_TO_STORE,
+        data: { storeFormProp: queryName, value: queryUrl[queryName] },
+      },
+      {
+        reducerFunc: actionSync.SET_COMPONENTS_STATE,
+        data: { componentsStateProp: 'documentsSearchApplied', value: queryUrl[queryName] },
+      },
+    ],
     tagsPick: [
       {
         reducerFunc: actionSync.SET_COMPONENTS_STATE,

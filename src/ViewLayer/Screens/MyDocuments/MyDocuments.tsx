@@ -43,10 +43,14 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const firstRender = useRef(true)
 
   const query = getParsedUrlQueryBrowserApi()
-  const documentsSearch = getNestedProp({ entity: query, path: 'documentsSearch', resDefault: '' })
-  const tagsSearch = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
+  const documentsSearchQuery = getNestedProp({
+    entity: query,
+    path: 'documentsSearch',
+    resDefault: '',
+  })
+  const tagsSearchQuery = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
-  console.info('MyDocuments [49]', { tagsSearch, documentsSearch })
+  console.info('MyDocuments [49]', { tagsSearchQuery, documentsSearchQuery })
 
   useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
@@ -71,7 +75,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-  }, [JSON.stringify({ tagsSearch, documentsSearch, sub })])
+  }, [JSON.stringify({ tagsSearchQuery, documentsSearchQuery, sub })])
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
