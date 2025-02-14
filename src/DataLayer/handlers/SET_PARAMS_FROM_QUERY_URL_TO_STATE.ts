@@ -137,16 +137,9 @@ export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataI
       sendBcc: '',
     }
 
-  console.info('SET_PARAMS_FROM_QUERY_URL_TO_STATE [130]', { queryUrl })
-
   const queryNamesArray = getQueryUrlReducerData({ queryUrl, queryName: '' }).queryNamesArray
   queryNamesArray.forEach((queryName: string) => {
     const reducerArray = getQueryUrlReducerData({ queryUrl, queryName }).reducerArray
     reducerArray.length && reducerArray.map(({ reducerFunc, data }) => dispatch(reducerFunc(data)))
   })
-
-  const {
-    componentsState: { tagsPick },
-  } = getState()
-  console.info('SET_PARAMS_FROM_QUERY_URL_TO_STATE [139]', { tagsPick })
 }

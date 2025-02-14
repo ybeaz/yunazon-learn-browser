@@ -43,8 +43,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     authAwsCognitoUserData: { sub },
   } = stateSelected as RootStoreType
 
-  console.info('readModulesConnectionSaga [31]', { tagsPickState })
-
   let profiles = stateSelected.profiles
 
   if ((screenActive === 'MyModules' || screenActive === 'MyDocuments') && !sub) return

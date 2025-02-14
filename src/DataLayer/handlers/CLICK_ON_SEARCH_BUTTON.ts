@@ -88,12 +88,6 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
     componentsState: { screenActive },
     forms: { modulesSearch, tagsSearch, documentsSearch },
   } = getState() as RootStoreType
-  console.info('CLICK_ON_SEARCH_BUTTON [91]', {
-    screenActive,
-    documentsSearch,
-    tagsSearch,
-    modulesSearch,
-  })
 
   if (
     screenActive === 'AcademyMatrix' ||
