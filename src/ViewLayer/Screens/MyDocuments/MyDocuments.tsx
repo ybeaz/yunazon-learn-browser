@@ -15,6 +15,8 @@ import { getTagLine } from 'yourails_common'
 import { withPropsYrl, withStoreStateSelectedYrl } from 'yourails_common'
 import { useEffectedInitialRequests } from '../../Hooks/useEffectedInitialRequests'
 import { getClasses } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { getNestedProp } from 'yourails_common'
 import {
   MyDocumentsComponentPropsType,
   MyDocumentsPropsType,
@@ -40,6 +42,12 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
   const firstRender = useRef(true)
 
+  const query = getParsedUrlQueryBrowserApi()
+  const documentsSearch = getNestedProp({ entity: query, path: 'documentsSearch', resDefault: '' })
+  const tagsSearch = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
+
+  console.info('MyDocuments [49]', { tagsSearch, documentsSearch })
+
   useEffectedInitialRequests([{ type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } }])
 
   useEffect(() => {
@@ -53,6 +61,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
       )
     }
     if (sub) {
+      handleEvents({}, { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' })
       handleEvents({}, { typeEvent: 'GET_DOCUMENTS' })
       handleEvents(
         {},
@@ -62,7 +71,7 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
         }
       )
     }
-  }, [sub])
+  }, [JSON.stringify({ tagsSearch, documentsSearch, sub })])
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {

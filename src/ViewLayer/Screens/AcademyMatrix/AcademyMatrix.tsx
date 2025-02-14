@@ -13,7 +13,8 @@ import { SERVERS_MAIN } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { AcademyMatrixBody } from '../../Components/AcademyMatrixBody/AcademyMatrixBody'
-import { getTagLine } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { getNestedProp } from 'yourails_common'
 import {
   AcademyMatrixPropsType,
   AcademyMatrixPropsOutType,
@@ -28,12 +29,19 @@ import {
  */
 const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrixPropsType) => {
   const {
-    storeStateSlice: { language },
+    storeStateSlice: {},
   } = props
+
+  const [searchParams] = useSearchParams()
 
   const screenType = ScreensEnumType['AcademyMatrix']
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
+
+  const query = getParsedUrlQueryBrowserApi()
+  const tagsPick = getNestedProp({ entity: query, path: 'tagsPick', resDefault: '' })
+  const modulesSearch = getNestedProp({ entity: query, path: 'modulesSearch', resDefault: '' })
+  const tagsSearch = getNestedProp({ entity: query, path: 'tagsSearch', resDefault: '' })
 
   useEffectedInitialRequests(
     [
@@ -42,9 +50,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       { type: 'GET_TAGS_CONNECTION' },
       { type: 'GET_MODULES_CONNECTION' },
     ],
-    []
-    /* This provides consistentgo back experience, but with flickering/ twinkle/ blinking
-    [JSON.stringify({ allParams, 'location.search': location.search })] */
+    [JSON.stringify({ tagsPick, modulesSearch, tagsSearch })]
   )
 
   useLoadedInitialTeachContent({ isSkipping: false })

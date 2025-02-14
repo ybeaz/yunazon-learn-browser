@@ -1,3 +1,5 @@
+import { ReactElement, JSXElementConstructor } from 'react'
+
 import { HandleEventType } from 'yourails_common'
 import { ImageYrlPropsType } from 'yourails_common'
 import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
@@ -9,7 +11,7 @@ export type AvatarPlusInfoComponentPropsType = {
   typeEvent?: string
   imgSrc?: string
   capture: string
-  text: string
+  text: ReactElement<any, string | JSXElementConstructor<any>> | string
   isTitle?: boolean
 }
 

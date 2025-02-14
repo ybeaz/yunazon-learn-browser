@@ -4,6 +4,7 @@ import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { PaginationNameEnumType } from 'yourails_common'
 import { CLICK_ON_TAG } from './CLICK_ON_TAG'
+import { getSetUrlQueryBrowserApi, GetSetUrlQueryBrowserApiParamsType } from 'yourails_common'
 
 const { dispatch, getState } = store
 
@@ -15,14 +16,6 @@ const getSetModules = (searchValue: string) => {
     })
   )
 
-  if (searchValue)
-    CLICK_ON_TAG(
-      {},
-      {
-        tagCloud: { value: null },
-      }
-    )
-
   dispatch(
     actionSync.SET_COMPONENTS_STATE({
       componentsStateProp: 'modulesSearchApplied',
@@ -30,11 +23,15 @@ const getSetModules = (searchValue: string) => {
     })
   )
 
-  dispatch(
-    actionAsync.READ_MODULES_CONNECTION.REQUEST({
-      isLoaderOverlay: true,
-    })
-  )
+  const getSetUrlQueryBrowserApiParams: GetSetUrlQueryBrowserApiParamsType = {
+    searchParamsName: 'modulesSearch',
+    searchParamsValue: searchValue,
+  }
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
+    printRes: false,
+    parentFunction: 'CLICK_ON_SEARCH_BUTTON',
+  })
 }
 
 const getSetTags = (searchValue: string) => {
@@ -49,7 +46,15 @@ const getSetTags = (searchValue: string) => {
     })
   )
 
-  dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+  const getSetUrlQueryBrowserApiParams = {
+    searchParamsName: 'tagsSearch',
+    searchParamsValue: searchValue,
+  }
+
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
+    printRes: false,
+    parentFunction: 'CLICK_ON_SEARCH_BUTTON',
+  })
 }
 
 const getSetDocuments = (searchValue: string) => {
@@ -67,15 +72,15 @@ const getSetDocuments = (searchValue: string) => {
     })
   )
 
-  dispatch(actionAsync.GET_DOCUMENTS.REQUEST())
+  const getSetUrlQueryBrowserApiParams = {
+    searchParamsName: 'documentsSearch',
+    searchParamsValue: searchValue,
+  }
 
-  dispatch(
-    actionSync.SET_PAGE_CURSOR({
-      paginationName: PaginationNameEnumType['pageTags'],
-      first: 1,
-    })
-  )
-  dispatch(actionAsync.READ_TAGS_CONNECTION.REQUEST())
+  getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
+    printRes: false,
+    parentFunction: 'CLICK_ON_SEARCH_BUTTON',
+  })
 }
 
 export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
@@ -83,6 +88,12 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
     componentsState: { screenActive },
     forms: { modulesSearch, tagsSearch, documentsSearch },
   } = getState() as RootStoreType
+  console.info('CLICK_ON_SEARCH_BUTTON [91]', {
+    screenActive,
+    documentsSearch,
+    tagsSearch,
+    modulesSearch,
+  })
 
   if (
     screenActive === 'AcademyMatrix' ||
@@ -97,7 +108,9 @@ export const CLICK_ON_SEARCH_BUTTON: ActionEventType = (event, data) => {
       getSetTags(tagsSearch)
     }
   } else if (screenActive === 'MyDocuments') {
+    console.info('CLICK_ON_SEARCH_BUTTON [105]', { documentsSearch, tagsSearch, modulesSearch })
     getSetDocuments(documentsSearch)
+    getSetTags(documentsSearch)
   } else if (screenActive === 'TagsCloud') {
     getSetTags(tagsSearch)
   }
