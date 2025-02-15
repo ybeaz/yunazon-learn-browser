@@ -192,11 +192,11 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_Task[language]}</div>
   )
 
-  console.info('QuestionScores [128]', { modules })
+  // console.info('QuestionScores [128]', { modules })
 
   return (
     <div className='QuestionScores'>
-      <div className='_text'>
+      {/* <div className='_text'>
         <div className='_greet'>{DICTIONARY.Congratulations[language]}!</div>
         <div>
           <span>{DICTIONARY.You_ve_completed_the_task_successfully[language]}.</span>
@@ -221,7 +221,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </div>
       <br />
       <hr />
-      <br />
+      <br /> */}
       <div className='_text'>{scenario.message}</div>
       {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />
