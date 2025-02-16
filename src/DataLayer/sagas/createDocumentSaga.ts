@@ -26,8 +26,6 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
     propValue: moduleIDActive,
   })
 
-  console.info('createDocumentSaga [29]', { module })
-
   const profileCreator = getArrayItemByProp({
     arr: profiles,
     propName: 'profileID',
@@ -42,7 +40,7 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
 
   const moduleForDocument = { ...module }
 
-  ;['article', 'transcriptList', 'questions', 'objections'].forEach(
+  ;['article', 'transcriptList', 'questions', 'objections', 'questionsTotal'].forEach(
     (prop: string) => delete moduleForDocument[prop]
   )
 

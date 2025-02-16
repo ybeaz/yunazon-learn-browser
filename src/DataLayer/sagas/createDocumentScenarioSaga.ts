@@ -19,11 +19,6 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
     data: { navigate, creatorID },
   } = params
 
-  const stateSelected10: RootStoreType | any = yield select((state: RootStoreType) => state)
-  const {
-    componentsState: { createModuleStages: createModuleStages10 },
-  } = stateSelected10
-
   const data2 = [
     {
       childName: 'QuestionScores',
@@ -33,33 +28,49 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
   ]
   yield put(actionSync.SET_MODAL_FRAMES(data2))
 
-  yield call(readProfile, { data: { profileID: creatorID } })
-
-  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
+  const stateSelected10: RootStoreType | any = yield select((state: RootStoreType) => state)
   const {
     forms: {
-      profileActive: { nameFirst, nameMiddle, nameLast },
-    },
-    profiles,
-    authAwsCognitoUserData: { sub },
-  } = stateSelected as RootStoreType
-
-  const profile = getArrayItemByProp({
-    arr: profiles,
-    propName: 'userID',
-    propValue: sub,
-  })
-
-  yield call(updateProfile, {
-    data: {
-      profile: {
-        ...profile,
-        nameFirst,
-        nameMiddle,
-        nameLast,
+      profileActive: {
+        nameFirst: nameFirstForm,
+        nameMiddle: nameMiddleForm,
+        nameLast: nameLastForm,
       },
     },
+    authAwsCognitoUserData: { sub: subState },
+    profiles: profilesState,
+  } = stateSelected10
+
+  const profileActive = getArrayItemByProp({
+    arr: profilesState,
+    propName: 'userID',
+    propValue: subState,
   })
+
+  const {
+    nameFirst: nameFirstProfile,
+    nameMiddle: nameMiddleProfile,
+    nameLast: nameLastProfile,
+  } = profileActive
+
+  if (
+    nameFirstForm !== nameFirstProfile ||
+    nameLastForm !== nameLastProfile ||
+    nameMiddleForm !== nameMiddleProfile
+  ) {
+    yield call(updateProfile, {
+      data: {
+        profile: {
+          ...profileActive,
+          nameFirst: nameFirstForm,
+          nameMiddle: nameMiddleForm,
+          nameLast: nameLastForm,
+        },
+      },
+    })
+  }
+
+  yield call(readProfile, { data: { profileID: creatorID } })
 
   const documents: any = yield call(createDocument)
 
