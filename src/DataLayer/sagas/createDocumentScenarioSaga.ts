@@ -70,8 +70,6 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
     })
   }
 
-  yield call(readProfile, { data: { profileID: creatorID } })
-
   const documents: any = yield call(createDocument)
 
   const {

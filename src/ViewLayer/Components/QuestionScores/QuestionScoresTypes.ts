@@ -19,7 +19,6 @@ export type GetScenarioDictPropsType = {
   description: string
   moduleID: ModuleType['moduleID']
   contentID: ModuleType['contentID']
-  creatorID: ModuleType['creatorID']
   sub: RootStoreType['authAwsCognitoUserData']['sub']
   navigate: any
   handleEvents: HandleEventType

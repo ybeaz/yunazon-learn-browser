@@ -47,7 +47,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     meta,
     moduleID,
     contentID,
-    creatorID,
     passRate,
     questions: questionsActive,
   } = getModuleByModuleID(
@@ -85,7 +84,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     description: description || '',
     moduleID: moduleID || '',
     contentID: contentID || '',
-    creatorID: creatorID || '',
     sub,
     navigate,
     handleEvents,

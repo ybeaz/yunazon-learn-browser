@@ -1,6 +1,6 @@
 {
   "name": "yourails_sep_academy_web",
-  "version": "0.91.8",
+  "version": "0.91.9",
   "description": "webpack5 react",
   "main": "index.tsx",
   "scripts": {
