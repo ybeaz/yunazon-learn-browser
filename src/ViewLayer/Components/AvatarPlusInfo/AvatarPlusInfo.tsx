@@ -49,13 +49,6 @@ const AvatarPlusInfoComponent: AvatarPlusInfoComponentType = (
     navLinkProps: {
       className: getClasses('_link', classProps),
       to: { pathname: pathname || '/' },
-      onClick: () =>
-        handleEvents(
-          {},
-          {
-            typeEvent: 'CLICK_ON_CANCEL_APPLIED_FILTERS',
-          }
-        ),
     },
   }
 

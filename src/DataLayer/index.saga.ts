@@ -21,7 +21,7 @@ import getModuleScenarioSaga from './sagas/getModuleScenarioSaga'
 import readArticleSaga from './sagas/readArticleSaga'
 import deactivateCoursesSaga from './sagas/deactivateCoursesSaga'
 import deactivateDocumentsSaga from './sagas/deactivateDocumentsSaga'
-import getDocumentsSaga from './sagas/getDocumentsSaga'
+import readDocumentsSaga from './sagas/readDocumentsSaga'
 import getAuthDataSaga from './sagas/getAuthDataSaga'
 import getAuthAwsCognitoUserRevokedSaga from './sagas/getAuthAwsCognitoUserRevokedSaga'
 import getAuthAwsCognitoUserRefreshedSaga from './sagas/getAuthAwsCognitoUserRefreshedSaga'
@@ -55,7 +55,7 @@ export default function* indexSaga() {
     fork(readArticleSaga),
     fork(deactivateCoursesSaga),
     fork(deactivateDocumentsSaga),
-    fork(getDocumentsSaga),
+    fork(readDocumentsSaga),
     fork(getAuthDataSaga),
     fork(getAuthAwsCognitoUserRevokedSaga),
     fork(getAuthAwsCognitoUserRefreshedSaga),

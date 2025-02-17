@@ -92,13 +92,6 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
     navLinkProps: {
       className: getClasses('_link'),
       to: { pathname: '/' },
-      onClick: () =>
-        handleEvents(
-          {},
-          {
-            typeEvent: 'CLICK_ON_CANCEL_APPLIED_FILTERS',
-          }
-        ),
     },
     iconLabelWithCloseTagProps: {
       classAdded: '_iconLabelWithCloseTag',

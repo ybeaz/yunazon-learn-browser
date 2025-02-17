@@ -2,7 +2,6 @@ import { takeEvery, put, select, delay } from 'redux-saga/effects'
 
 import { ReadModulesConnectionInputType, QueryReadModulesConnectionArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
-import { ModuleType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getHeadersAuthDict } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
@@ -17,13 +16,16 @@ import { getUserProfileData } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 import { getSortedArrayEntityTags } from 'yourails_common'
+import {
+  getReplacedArrObjsByPropNameVal,
+  GetReplacedArrObjsByPropNameValParamsType,
+} from 'yourails_common'
 
 export function* readModulesConnectionGenerator(params: ActionReduxType | any): Iterable<any> {
+  const isAddingModules = params?.data?.isAddingModules || false
+  const moduleID = params?.data?.moduleID
   const operators = params?.data?.operators
   const moduleIDs = params?.data?.moduleIDs
-  const isWithinModuleIDs = params?.data?.isWithinModuleIDs || false
-
-  yield delay(1000)
 
   const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
@@ -86,16 +88,6 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       moduleID: 'and',
     }
   }
-  if (isWithinModuleIDs) {
-    const modulesIDsFromModules = modules.map((module: ModuleType) => module.moduleID)
-    readModulesConnectionInput.moduleIDs = modulesIDsFromModules
-    readModulesConnectionInput.first = 0
-    readModulesConnectionInput.offset = modulesIDsFromModules.length + 1
-    readModulesConnectionInput.operators = {
-      ...readModulesConnectionInput.operators,
-      moduleID: 'and',
-    }
-  }
   if (tagsPickState.length) {
     readModulesConnectionInput.tagsPick = tagsPickState
     readModulesConnectionInput.operators = { searchPhrase: 'or', tagPick: 'and' }
@@ -126,7 +118,17 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
     .exec(getMappedConnectionToItems, { printRes: false })
     .exec(getSortedArrayEntityTags).result
 
-  yield put(actionSync.SET_MODULES(modulesNext))
+  let modulesNext2 = modulesNext
+  if (isAddingModules && moduleID) {
+    const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {
+      arrObjs: modulesNext,
+      objIn: modules[0],
+      propName: 'moduleID',
+    }
+    modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
+  }
+
+  yield put(actionSync.SET_MODULES(modulesNext2))
 
   const pageInfo = readModulesConnection?.pageInfo
   yield put(
@@ -138,7 +140,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
 }
 
 export const readModulesConnection = withDebounce(
-  withTryCatchFinallySaga(withLoaderWrapperSaga(readModulesConnectionGenerator), {
+  withTryCatchFinallySaga(readModulesConnectionGenerator, {
     optionsDefault: { funcParent: 'readModulesConnectionSaga' },
     resDefault: [],
   }),

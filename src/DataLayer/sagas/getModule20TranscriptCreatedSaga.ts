@@ -36,14 +36,14 @@ export function* getModule20TranscriptCreatedGenerator(
 
     let variables: MutationCreateYoutubeTranscriptArgs = {
       createYoutubeTranscriptInput: {
-        originID: inputCourseCreate,
+        contentID: inputCourseCreate,
       },
     }
 
     if (inputCourseCreate.includes('youtube.com'))
       variables = {
         createYoutubeTranscriptInput: {
-          originUrl: inputCourseCreate,
+          contentUrl: inputCourseCreate,
         },
       }
 

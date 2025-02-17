@@ -29,7 +29,6 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     description,
     moduleID,
     contentID,
-    creatorID,
     sub,
     navigate,
     handleEvents,
@@ -77,7 +76,6 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
           typeEvent: 'CREATE_DOCUMENT',
           data: {
             screenType: 'Certificate',
-            creatorID,
             navigate,
           },
         },

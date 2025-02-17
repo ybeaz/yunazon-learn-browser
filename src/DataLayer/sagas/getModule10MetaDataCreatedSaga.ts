@@ -32,14 +32,14 @@ export function* getModule10MetaDataCreatedGenerator(params: ActionReduxType | a
 
     let variables: MutationCreateContentMetaDataArgs = {
       createContentMetaDataInput: {
-        originID: inputCourseCreate,
+        contentID: inputCourseCreate,
       },
     }
 
     if (inputCourseCreate.includes('youtube.com'))
       variables = {
         createContentMetaDataInput: {
-          originUrl: inputCourseCreate,
+          contentUrl: inputCourseCreate,
         },
       }
 

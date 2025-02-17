@@ -5,7 +5,7 @@ import { ActionReduxType } from 'yourails_common'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
 import { getHeadersAuthDict } from 'yourails_common'
-import { getDocuments } from './getDocumentsSaga'
+import { readDocuments } from './readDocumentsSaga'
 import { withDebounce } from 'yourails_common'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
@@ -32,7 +32,7 @@ function* deactivateDocumentsGenerator(params: ActionReduxType | any): Iterable<
     }
   )
 
-  yield call(getDocuments)
+  yield call(readDocuments)
 
   yield put(
     actionSync.SET_MODAL_FRAMES({

@@ -2,6 +2,8 @@ import { takeEvery, put, select } from 'redux-saga/effects'
 
 import { MutationCreateDocumentsArgs } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
+import { getLimitedObjProp } from 'yourails_common'
+import { UPDATE_MODULE_FOR_DOCUMENT_INPUT_TYPE_PROPS } from 'yourails_common'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { actionSync, actionAsync } from '../../DataLayer/index.action'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType } from 'yourails_common'
@@ -26,25 +28,16 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
     propValue: moduleIDActive,
   })
 
-  console.info('createDocumentSaga [29]', { module })
-
-  const profileCreator = getArrayItemByProp({
-    arr: profiles,
-    propName: 'profileID',
-    propValue: module.creatorID,
-  })
-
   const profileLearner = getArrayItemByProp({
     arr: profiles,
     propName: 'userID',
     propValue: sub,
   })
 
-  const moduleForDocument = { ...module }
-
-  ;['article', 'transcriptList', 'questions', 'objections'].forEach(
-    (prop: string) => delete moduleForDocument[prop]
-  )
+  const moduleForDocument = getLimitedObjProp({
+    obj: module,
+    propsNames: UPDATE_MODULE_FOR_DOCUMENT_INPUT_TYPE_PROPS,
+  })
 
   const variables: MutationCreateDocumentsArgs = {
     createDocumentsInput: [
@@ -52,7 +45,6 @@ function* createDocumentGenerator(params: ActionReduxType | any): Iterable<any> 
         isActive: true,
         module: moduleForDocument,
         learner: profileLearner,
-        creator: profileCreator,
       },
     ],
   }

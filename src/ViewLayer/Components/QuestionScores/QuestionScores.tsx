@@ -1,15 +1,19 @@
 import React, { useEffect, ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 
+import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 import { isParsableFloat } from 'yourails_common'
 import { getParsedUrlQuery } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getQuestionsWrongAnswered } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
+import { getMapJourneyData } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
 
 import {
@@ -29,7 +33,7 @@ import {
 const QuestionScoresComponent: QuestionScoresComponentType = (
   props: QuestionScoresComponentPropsType
 ) => {
-  let navigate = useNavigate()
+  const navigate = useNavigate()
 
   const {
     stopVideoHandler,
@@ -43,7 +47,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     meta,
     moduleID,
     contentID,
-    creatorID,
     passRate,
     questions: questionsActive,
   } = getModuleByModuleID(
@@ -81,7 +84,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     description: description || '',
     moduleID: moduleID || '',
     contentID: contentID || '',
-    creatorID: creatorID || '',
     sub,
     navigate,
     handleEvents,
@@ -116,7 +118,66 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     )
   }
 
+  const queryUrl = getParsedUrlQueryBrowserApi()
+
   const propsOut: QuestionScoresPropsOutType = {
+    navLinkNextTaskProps: {
+      to: {
+        pathname: getMapJourneyData({ modules }).find(
+          ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+        )?.pathnameModule,
+        search: queryUrl,
+      },
+    },
+    buttonNextTaskProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_NextTask',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      captureLeft: DICTIONARY.Next_Task[language],
+    },
+    navLinkCreditProps: {
+      to: { pathname: '/' },
+    },
+    buttonCreditProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_Credit',
+      handleEvents,
+      action: {},
+      tooltipText: DICTIONARY.View_Reward[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.View_Reward[language],
+    },
+    navLinkAchievementsProps: {
+      to: { pathname: '/my-documents' },
+    },
+    buttonAchievementsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_Achievements',
+      handleEvents,
+      action: {},
+      tooltipText: DICTIONARY.Achievements[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.Achievements[language],
+    },
+    navLinkAllMissionsProps: {
+      onClick: () => navigate(-1),
+    },
+    buttonAllMissionsProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_AllMissions',
+      handleEvents,
+      action: {
+        typeEvent: 'TEST',
+        data: {},
+      },
+      tooltipText: DICTIONARY.All_Missions[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.All_Missions[language],
+    },
     formInputNamesProps: {
       language,
       buttonForwardProps: scenario.buttonForwardProps,
@@ -125,8 +186,40 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     buttonForwardProps: scenario.buttonForwardProps,
   }
 
+  const buttonNextTaskTooltipText = (
+    <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_Task[language]}</div>
+  )
+
+  // console.info('QuestionScores [128]', { modules })
+
   return (
     <div className='QuestionScores'>
+      {/* <div className='_text'>
+        <div className='_greet'>{DICTIONARY.Congratulations[language]}!</div>
+        <div>
+          <span>{DICTIONARY.You_ve_completed_the_task_successfully[language]}.</span>
+          <span> </span>
+          <span>{DICTIONARY.Keep_going[language]}!</span>
+        </div>
+      </div>
+
+      <div className='_buttons'>
+        <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
+          <ButtonYrl {...propsOut.buttonNextTaskProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkCreditProps}>
+          <ButtonYrl {...propsOut.buttonCreditProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
+          <ButtonYrl {...propsOut.buttonAchievementsProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkAllMissionsProps}>
+          <ButtonYrl {...propsOut.buttonAllMissionsProps} />
+        </NavLinkWithQuery>
+      </div>
+      <br />
+      <hr />
+      <br /> */}
       <div className='_text'>{scenario.message}</div>
       {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />

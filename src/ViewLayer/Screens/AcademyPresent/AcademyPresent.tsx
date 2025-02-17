@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useParams } from 'react-router-dom'
+import { ModuleType } from 'yourails_common'
 import {
   withPropsYrl,
   withStoreStateSelectedYrl,
@@ -70,7 +71,9 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       modules,
       mediaLoaded,
       // @ts-expect-error
-      urlParamsQuery: { sendCc, sendBcc },
+      componentsState,
+      // @ts-expect-error
+      urlParamsQuery,
     },
   } = props
 
@@ -79,11 +82,15 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   const { width: widthSizeWindow } = getSizeWindow()
 
   const moduleID = params.moduleID || ''
+  const moduleActive = getModuleByModuleID(
+    { modules, moduleID: moduleIDActive || moduleID },
+    { parentFunction: 'AcademyPresentComponent' }
+  )
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
   const screenType = ScreensEnumType['AcademyPresent']
 
-  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, modules])
+  const mediaLoadedModulesString = JSON.stringify([mediaLoaded, moduleActive])
 
   const [windowWidth, setWindowWidth] = useState(widthSizeWindow)
   const [isHeaderFrame, setIsHeaderFrame] = useState(!(isMobile() && isOnLandScape()))
@@ -91,7 +98,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
   useEffectedInitialRequests(
     [
       { type: 'SET_SCREEN_ACTIVE', data: { screenActive: screenType } },
-      // { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
+      { type: 'SET_PARAMS_FROM_QUERY_URL_TO_STATE' },
       { type: 'GET_MODULE', data: { moduleID } },
     ],
     [moduleID]
@@ -146,10 +153,7 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
         summary: summary2,
         objections: objections2,
         article: article2,
-      } = getModuleByModuleID(
-        { modules, moduleID: moduleIDActive || moduleID },
-        { parentFunction: 'AcademyPresentComponent' }
-      )
+      } = moduleActive
 
       const durationObj = getDurationFromYoutubeSnippet(duration2, {
         printRes: false,
@@ -444,6 +448,7 @@ const storeStateSliceProps: string[] = [
   'moduleIDActive',
   'modules',
   'mediaLoaded',
+  'componentsState',
   'urlParamsQuery',
 ]
 

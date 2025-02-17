@@ -21,21 +21,5 @@ export const ONCHANGE_INPUT_SEARCH: ActionEventType = (event, dataIn) => {
 
   dispatch(actionSync.SET_INPUT_TO_STORE(data))
 
-  /* DELETE AFTER 2014-02-01 */
-  if (!value && valuePrev) {
-    CLICK_ON_SEARCH_BUTTON({}, { storeFormProp })
-
-    let componentsStatePropArray: string[]
-    if (storeFormProp === SCREENS_DICT[ScreensEnumType['AcademyMatrix']].storeFormProp)
-      componentsStatePropArray = ['modulesSearchApplied', 'tagsSearchApplied']
-    if (storeFormProp === SCREENS_DICT[ScreensEnumType['TagsCloud']].storeFormProp)
-      componentsStatePropArray = ['tagsSearchApplied']
-
-    // if (componentsStatePropArray.length)
-    //   componentsStatePropArray.map((componentsStateProp: string) =>
-    //     dispatch(actionSync.SET_COMPONENTS_STATE({ componentsStatePropArray }))
-    //   )
-  }
-
   valuePrev = value
 }

@@ -1,5 +1,7 @@
 import { Middleware } from '@reduxjs/toolkit'
 import { getLocalStorageSetObjTo } from 'yourails_common'
+import { getModuleByModuleID } from 'yourails_common'
+import { ModuleType } from 'yourails_common'
 
 /**
  * @description Function to setLocalStorageCoursesInProgress, for now only one active
@@ -8,10 +10,16 @@ import { getLocalStorageSetObjTo } from 'yourails_common'
 const setLocalStorageCoursesInProgress = (...args: any) => {
   const storeState = args[0]
 
-  // const courses = storeState.courses
-  // const coursesJsonString = JSON.stringify(courses)
+  const moduleIDActive: string = storeState.scorm.moduleIDActive
+  const modules: any[] = storeState.modules
+
+  const module = getModuleByModuleID({
+    modules,
+    moduleID: moduleIDActive || '',
+  })
+
   getLocalStorageSetObjTo({
-    modulesInProgress: storeState.modules,
+    modulesInProgress: [module],
   })
 }
 

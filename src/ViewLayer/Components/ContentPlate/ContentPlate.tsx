@@ -17,6 +17,8 @@ import { getClasses } from 'yourails_common'
 import { TooltipImageContent } from '../../Components/TooltipImageContent/TooltipImageContent'
 import { NavLinkWithQuery } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
 
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+
 const COMPONENT: Record<string, FunctionComponent<any>> = {
   ReaderIframe,
   PlayerYoutubeIframe,
@@ -47,11 +49,7 @@ const ContentPlateComponent: ContentPlateComponentType = (
     moduleID,
     contentID,
     screenType,
-    storeStateSlice: {
-      language,
-      mediaLoaded,
-      urlParamsQuery: { sendCc, sendBcc },
-    },
+    storeStateSlice: { language, mediaLoaded, urlParamsQuery },
     handleEvents,
     tags,
     thumbnails,
@@ -70,8 +68,8 @@ const ContentPlateComponent: ContentPlateComponentType = (
   })
 
   const slug = getSlug(capture)
-
   const pathname = `/m/${moduleID}/${slug}`
+  const queryUrl = getParsedUrlQueryBrowserApi()
 
   const CONTENT_ASSIGNED_COMPONENT: FunctionComponent = COMPONENT[contentComponentName]
 
@@ -153,35 +151,12 @@ const ContentPlateComponent: ContentPlateComponentType = (
       handleEvents,
       opacity: !isVisible ? 1 : 0,
     },
-    // playerPanelProps: {
-    //   capture,
-    //   durationObj,
-    //   screenType,
-    //   isShowingPlay,
-    //   isActionButtonDisplaying: true,
-    //   tags,
-    // },
     linkProps: {
       className: '__shield',
-      to: { pathname },
-      onClick: (event: any) => {
-        handleEvents(event, {
-          typeEvent: 'SET_MODULES',
-          data: [],
-        })
-        handleEvents(event, {
-          typeEvent: 'SELECT_MODULE',
-          data: { capture, moduleID, contentID, navigate },
-        })
-      },
+      to: { pathname, search: queryUrl },
+      onClick: (event: any) => {},
     },
   }
-
-  const tooltipTitleContent = (
-    <div className='_contentPlateTooltipContentIsCompleted'>
-      {DICTIONARY['Completed'][language]}
-    </div>
-  )
 
   return (
     <div className={getClasses('ContentPlate')} key={moduleID}>

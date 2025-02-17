@@ -53,5 +53,5 @@ export const readProfile = withDebounce(
 )
 
 export default function* readProfileSaga() {
-  yield takeEvery([actionAsync.GET_PROFILE.REQUEST().type], readProfile)
+  yield takeEvery([actionAsync.READ_PROFILE.REQUEST().type], readProfile)
 }

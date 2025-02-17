@@ -30,7 +30,6 @@ export const useYouTubePlayerWork = ({
 
   const dispatch = useDispatch()
 
-  // const [player, setPlayer] = useState(playerDefault)
   const [isShowingPlay, setIsShowingPlay] = useState(true)
   const [playerState, setPlayerState] = useState({ data: 1000 })
 
@@ -81,15 +80,21 @@ export const useYouTubePlayerWork = ({
   }
 
   const onChangePlayerStateHandler = (state: any) => {
-    if (state.data === 0) {
-      // console.info('useYouTubePlayerWork [21] PlayerYoutubeIframe event on end is captured', { state })
-    }
     setPlayerState(state)
   }
 
   async function onYouTubeIframeAPIReady(videoId: string) {
     if (contentComponentName === 'PlayerYoutubeIframe') {
       try {
+        const newPlayer = document.createElement('div')
+        newPlayer.id = videoId
+
+        const removeContents = function (element) {
+          while (element.firstChild) {
+            element.removeChild(element.firstChild)
+          }
+        }
+
         window['YT'].ready(function () {
           playerRef.current = new window['YT'].Player(videoId, {
             videoId,
@@ -117,6 +122,7 @@ export const useYouTubePlayerWork = ({
             origin: window.location.origin,
           })
         })
+        return () => {}
       } catch (error: any) {
         console.error('useYouTubePlayerWork [121]', error.name + ': ' + error.message)
       }
@@ -124,7 +130,8 @@ export const useYouTubePlayerWork = ({
   }
 
   useEffect(() => {
-    setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 250)
+    setTimeout(async () => await onYouTubeIframeAPIReady(contentID), 1000)
+
     return () => {
       if (playerRef.current) {
         playerRef.current.destroy()

@@ -1,5 +1,6 @@
-import { takeLatest, takeEvery, put, call } from 'redux-saga/effects'
+import { takeEvery, delay, select, put, call } from 'redux-saga/effects'
 
+import { RootStoreType } from '../../Interfaces'
 import { QueryReadModulesArgs, ModuleType, AcademyPresentCaseEnumType } from 'yourails_common'
 import { ActionReduxType } from 'yourails_common'
 import { getResponseGraphqlAsync, ResolveGraphqlEnumType, FragmentEnumType } from 'yourails_common'
@@ -10,12 +11,21 @@ import { getCheckedModulesAnswered } from 'yourails_common'
 import { withDebounce } from 'yourails_common'
 import { getSizeWindow } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
+import { getParsedUrlQueryBrowserApi } from 'yourails_common'
+import { waitForStoreDataSaga } from './waitForStoreDataSaga'
 import { selectGraphqlHttpClientFlag } from '../../FeatureFlags/'
-import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
+import {
+  getReplacedArrObjsByPropNameVal,
+  GetReplacedArrObjsByPropNameValParamsType,
+} from 'yourails_common'
+import { readModulesConnection } from './readModulesConnectionSaga'
 
 function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   const moduleID = params?.data?.moduleID
+
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
+  const { modules } = stateSelected
 
   let modulesNext: ModuleType[] = []
   let caseScenario = AcademyPresentCaseEnumType['moduleFirstLoading']
@@ -66,9 +76,16 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     modulesNext = getPreparedModules(readModules)
   }
 
+  const getReplacedArrObjsByPropNameValParams: GetReplacedArrObjsByPropNameValParamsType<any> = {
+    arrObjs: modules,
+    objIn: modulesNext[0],
+    propName: 'moduleID',
+  }
+  const modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
+
   yield put(actionSync.SET_MODULE_ID_ACTIVE({ moduleID }))
 
-  yield put(actionSync.SET_MODULES(modulesNext))
+  yield put(actionSync.SET_MODULES(modulesNext2))
   if (
     caseScenario === AcademyPresentCaseEnumType['moduleInProgress'] ||
     caseScenario === AcademyPresentCaseEnumType['moduleCompleted']
@@ -85,10 +102,19 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
   if (width <= 480) {
     yield put(actionSync.CHANGE_NUM_QUESTIONS_IN_SLIDE(1))
   }
+
+  const queryUrl = getParsedUrlQueryBrowserApi()
+
+  if (JSON.stringify(queryUrl) !== '{}' && !modules.length) {
+    yield call(waitForStoreDataSaga, { path: 'authAwsCognitoUserData.sub', interval: 50 })
+    yield call(readModulesConnection, {
+      data: { isAddingModules: true, moduleID },
+    })
+  }
 }
 
 export const getModule = withDebounce(
-  withTryCatchFinallySaga(withLoaderWrapperSaga(getModuleGenerator), {
+  withTryCatchFinallySaga(getModuleGenerator, {
     optionsDefault: { funcParent: 'getModuleSaga' },
     resDefault: [],
   }),

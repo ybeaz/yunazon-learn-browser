@@ -73,6 +73,16 @@ const getQueryUrlReducerData = ({
         data: { componentsStateProp: 'tagsSearchApplied', value: queryUrl[queryName] },
       },
     ],
+    documentsSearch: [
+      {
+        reducerFunc: actionSync.SET_INPUT_TO_STORE,
+        data: { storeFormProp: queryName, value: queryUrl[queryName] },
+      },
+      {
+        reducerFunc: actionSync.SET_COMPONENTS_STATE,
+        data: { componentsStateProp: 'documentsSearchApplied', value: queryUrl[queryName] },
+      },
+    ],
     tagsPick: [
       {
         reducerFunc: actionSync.SET_COMPONENTS_STATE,
@@ -104,15 +114,30 @@ const getQueryUrlReducerData = ({
 
   return {
     queryNamesArray: Object.keys(QUERY_URL_TO_REDUCER_DATA_MAP),
-    reducerArray: QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
-      ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
-      : [],
+    reducerArray:
+      QUERY_URL_TO_REDUCER_DATA_MAP[queryName] !== undefined && queryUrl[queryName] !== undefined
+        ? QUERY_URL_TO_REDUCER_DATA_MAP[queryName]
+        : [],
   }
 }
 
 export const SET_PARAMS_FROM_QUERY_URL_TO_STATE: ActionEventType = (event, dataIn) => {
-  const queryUrl = getParsedUrlQueryBrowserApi()
-  const queryNamesArray = getQueryUrlReducerData({ queryUrl: '', queryName: '' }).queryNamesArray
+  let queryUrl = getParsedUrlQueryBrowserApi()
+
+  if (JSON.stringify(queryUrl) === '{}')
+    queryUrl = {
+      pageModules: 0,
+      pageTags: 0,
+      pageDocuments: 0,
+      inputCourseCreate: '',
+      modulesSearch: '',
+      tagsSearch: '',
+      tagsPick: '',
+      sendCc: '',
+      sendBcc: '',
+    }
+
+  const queryNamesArray = getQueryUrlReducerData({ queryUrl, queryName: '' }).queryNamesArray
   queryNamesArray.forEach((queryName: string) => {
     const reducerArray = getQueryUrlReducerData({ queryUrl, queryName }).reducerArray
     reducerArray.length && reducerArray.map(({ reducerFunc, data }) => dispatch(reducerFunc(data)))

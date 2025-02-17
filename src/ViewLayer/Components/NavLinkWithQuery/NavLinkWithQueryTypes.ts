@@ -2,10 +2,14 @@ import React from 'react'
 import { NavLinkProps } from 'react-router-dom'
 import { RootStoreType } from '../../../Interfaces/'
 
-export type NavLinkWithQueryComponentPropsType = NavLinkProps & {
+export type NavLinkWithQueryComponentPropsType = Omit<NavLinkProps, 'to'> & {
   classAdded?: string | string[] | Record<string, string | string[]>
   storeStateSlice: {
     urlParamsQuery: RootStoreType['urlParamsQuery']
+  }
+  to?: {
+    pathname?: string
+    search?: Record<string, string | number>
   }
 }
 

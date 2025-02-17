@@ -1,0 +1,79 @@
+[
+  {
+    "moduleID": "l9U7XMpux7eD",
+    "creatorID": "aBpOdEr8M6gN",
+    "organizationID": "1___oooOOOooo000",
+    "channelID": "UC8butISFwT-Wl7EV0hUK0BQ",
+    "playlistID": "PLWKjhJtqVAbkK24EaPurzMq0-kw5U9pJh",
+    "contentID": "C0DPdy98e4c",
+    "isActive": true,
+    "isCompleted": false,
+    "capture": "Test module",
+    "description": "Introduction to Test module",
+    "language": "en",
+    "dateCreated": 1262304000000,
+    "dateUpdated": 1738791708726,
+    "dateDeactivated": null,
+    "stages": [],
+    "tags": ["Test Test", "Test Testing", "Test", "Testing Test", "Testing Testing", "Testing"],
+    "index": 0,
+    "contentType": "ytID",
+    "captureChannel": "test.org",
+    "capturePlaylist": "test playlist",
+    "duration": "PT9M3S",
+    "questionNumber": 6,
+    "passRate": 0.75,
+    "thumbnails": {
+      "default": {
+        "url": "https://i.ytimg.com/vi/C0DPdy98e4c/default.jpg",
+        "width": 120,
+        "height": 90
+      },
+      "medium": {
+        "url": "https://i.ytimg.com/vi/C0DPdy98e4c/mqdefault.jpg",
+        "width": 320,
+        "height": 180
+      },
+      "high": {
+        "url": "https://i.ytimg.com/vi/C0DPdy98e4c/hqdefault.jpg",
+        "width": 480,
+        "height": 360
+      },
+      "standard": null,
+      "maxres": null
+    },
+    "transcriptList": [],
+    "summary": [],
+    "questions": [
+      {
+        "questionID": "LYSawUltP8cK",
+        "capture": "What is that?",
+        "isActive": true,
+        "options": [
+          {
+            "optionID": "nM6WBnAXddE1",
+            "label": "This is that",
+            "status": true
+          },
+          {
+            "optionID": "EvznNSFIyyI2",
+            "label": "This is when",
+            "status": false
+          },
+          {
+            "optionID": "AfbmBbgAWpA3",
+            "label": "This is where",
+            "status": false
+          },
+          {
+            "optionID": "HmbPgZFrjCE4",
+            "label": "This is who",
+            "status": false
+          }
+        ]
+      }
+    ],
+    "objections": [],
+    "article": []
+  }
+]

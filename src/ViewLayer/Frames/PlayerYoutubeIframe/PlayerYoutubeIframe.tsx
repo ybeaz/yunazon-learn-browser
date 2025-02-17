@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { VIDEO_RESOLUTION } from 'yourails_common'
 import { useYouTubePlayerWork } from '../../Hooks/useYouTubePlayerWork'
 import { PlayerPanel } from '../../Components/PlayerPanel/PlayerPanel'
@@ -31,6 +31,12 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     tags,
   } = props
   const { width, height } = VIDEO_RESOLUTION
+
+  const [playerTag, setPlayerTag] = useState(<div className='_player' id={contentID} />)
+
+  useEffect(() => {
+    setPlayerTag(<div className='_player' id={contentID} />)
+  }, [contentID])
 
   const { playVideoHandler, pauseVideoHandler, stopVideoHandler, isShowingPlay } =
     useYouTubePlayerWork({
@@ -75,11 +81,13 @@ const PlayerYoutubeIframeComponent: PlayerYoutubeIframeComponentType = (
     },
   }
 
+  const getPlayerDiv = (player: any) => <div key={contentID}>{player}</div>
+
   return (
     <div className='PlayerYoutubeIframe'>
       {children[0]}
-      <div className='_wrapper'>
-        {isIframe && <div className='_player' id={contentID}></div>}
+      <div className='_wrapperForPlayerYoutubeIframe'>
+        {isIframe && getPlayerDiv(playerTag)}
         {children[1]}
       </div>
 
