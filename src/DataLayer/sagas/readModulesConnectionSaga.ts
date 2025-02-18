@@ -124,6 +124,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       arrObjs: modulesNext,
       objIn: modules[0],
       propName: 'moduleID',
+      propsValsToKeepOfArrObjs: ['isCompleted'],
     }
     modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
   }

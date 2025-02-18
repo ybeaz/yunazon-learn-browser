@@ -120,6 +120,14 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 
+  console.info('QuestionScores [123]', {
+    modules,
+    modulesNext: getMapJourneyData({ modules }),
+    found: getMapJourneyData({ modules }).find(
+      ({ isNextModule }: { isNextModule: boolean }) => isNextModule
+    ),
+  })
+
   const propsOut: QuestionScoresPropsOutType = {
     navLinkNextTaskProps: {
       to: {
@@ -194,7 +202,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   return (
     <div className='QuestionScores'>
-      {/* <div className='_text'>
+      <div className='_text'>
         <div className='_greet'>{DICTIONARY.Congratulations[language]}!</div>
         <div>
           <span>{DICTIONARY.You_ve_completed_the_task_successfully[language]}.</span>
@@ -219,7 +227,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       </div>
       <br />
       <hr />
-      <br /> */}
+      <br />
       <div className='_text'>{scenario.message}</div>
       {scenario.scenarioCase === 'success' ? (
         <FormInputNames {...propsOut.formInputNamesProps} />

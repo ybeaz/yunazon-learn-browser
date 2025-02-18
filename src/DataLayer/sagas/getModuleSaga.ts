@@ -80,6 +80,7 @@ function* getModuleGenerator(params: ActionReduxType | any): Iterable<any> {
     arrObjs: modules,
     objIn: modulesNext[0],
     propName: 'moduleID',
+    propsValsToKeepOfArrObjs: ['isCompleted'],
   }
   const modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
 
