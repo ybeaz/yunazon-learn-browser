@@ -3,6 +3,7 @@ import { createAsyncAction, CreateAsyncAction } from './createActionsAsync'
 
 // Synchroneours redux actions
 export const ACTIONS_SYNC: string[] = [
+  'SET_EDIT_NAME_VISIBILITY_STATE',
   'SET_URLPARAMSQUERY_TO_STORE',
   'SET_COMPONENTS_STATE',
   'SET_PAGINATION_OFFSET',

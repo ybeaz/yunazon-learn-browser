@@ -37,7 +37,16 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const {
     stopVideoHandler,
-    storeStateSlice: { language, moduleIDActive, modules, nameFirst, nameMiddle, nameLast, sub },
+    storeStateSlice: {
+      language,
+      moduleIDActive,
+      modules,
+      nameFirst,
+      nameMiddle,
+      nameLast,
+      sub,
+      isEditNameVisible,
+    },
     handleEvents,
   } = props
 
@@ -95,10 +104,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     stopVideoHandler && stopVideoHandler({}, {})
 
     if (scenario.scenarioCase === 'success' || scenario.scenarioCase === 'successNoAuth') {
-      /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
-      handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
+      if (true || !nameFirst || !nameLast) {
+        handleEvents(
+          {},
+          { typeEvent: 'SET_EDIT_NAME_VISIBILITY', data: { isEditNameVisible: true } }
+        )
+      }
 
-      setTimeout(() => handleEventsIn({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }), 5000)
+      /* TODO: handleEvents is undefined, reasons are unknown and incomprehensible */
+      handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: true })
+
+      setTimeout(() => handleEvents({}, { typeEvent: 'TOGGLE_IS_CONFETTI', data: false }), 5000)
     }
   }, [])
 
@@ -120,14 +136,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 
-  console.info('QuestionScores [123]', {
-    modules,
-    modulesNext: getMapJourneyData({ modules }),
-    found: getMapJourneyData({ modules }).find(
-      ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-    ),
-  })
-
   const propsOut: QuestionScoresPropsOutType = {
     navLinkNextTaskProps: {
       to: {
@@ -145,7 +153,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         typeEvent: 'TEST',
         data: {},
       },
-      captureLeft: DICTIONARY.Next_Task[language],
+      captureLeft: DICTIONARY.Next_task[language],
     },
     navLinkCreditProps: {
       to: { pathname: '/' },
@@ -155,9 +163,23 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
       classAdded: 'Button_Credit',
       handleEvents,
       action: {},
-      tooltipText: DICTIONARY.View_Reward[language],
+      tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.View_Reward[language],
+      captureLeft: DICTIONARY.View_reward[language],
+    },
+    buttonEditNameProps: {
+      icon: 'MdForward',
+      classAdded: 'Button_EditName',
+      handleEvents,
+      action: {
+        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
+        data: {
+          isEditNameVisible: !isEditNameVisible,
+        },
+      },
+      tooltipText: DICTIONARY.Edit_name[language],
+      tooltipPosition: 'top',
+      captureLeft: DICTIONARY.Edit_name[language],
     },
     navLinkAchievementsProps: {
       to: { pathname: '/my-documents' },
@@ -182,9 +204,9 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         typeEvent: 'TEST',
         data: {},
       },
-      tooltipText: DICTIONARY.All_Missions[language],
+      tooltipText: DICTIONARY.Back_to_topic[language],
       tooltipPosition: 'top',
-      captureLeft: DICTIONARY.All_Missions[language],
+      captureLeft: DICTIONARY.Back_to_topic[language],
     },
     formInputNamesProps: {
       language,
@@ -195,10 +217,10 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }
 
   const buttonNextTaskTooltipText = (
-    <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_Task[language]}</div>
+    <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_task[language]}</div>
   )
 
-  // console.info('QuestionScores [128]', { modules })
+  console.info('QuestionScores [128]', { isEditNameVisible, modules })
 
   return (
     <div className='QuestionScores'>
@@ -218,11 +240,15 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         <NavLinkWithQuery {...propsOut.navLinkCreditProps}>
           <ButtonYrl {...propsOut.buttonCreditProps} />
         </NavLinkWithQuery>
-        <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
-          <ButtonYrl {...propsOut.buttonAchievementsProps} />
-        </NavLinkWithQuery>
+        <ButtonYrl {...propsOut.buttonEditNameProps} />
+        {scenario.scenarioCase === 'success' && isEditNameVisible && (
+          <FormInputNames {...propsOut.formInputNamesProps} />
+        )}
         <NavLinkWithQuery {...propsOut.navLinkAllMissionsProps}>
           <ButtonYrl {...propsOut.buttonAllMissionsProps} />
+        </NavLinkWithQuery>
+        <NavLinkWithQuery {...propsOut.navLinkAchievementsProps}>
+          <ButtonYrl {...propsOut.buttonAchievementsProps} />
         </NavLinkWithQuery>
       </div>
       <br />
@@ -255,6 +281,7 @@ const storeStateSliceProps: string[] = [
   'nameMiddle',
   'nameLast',
   'sub',
+  'isEditNameVisible',
 ]
 
 export const QuestionScores = React.memo(

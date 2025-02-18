@@ -52,6 +52,7 @@ export type ComponentsStateType = {
   isOAuthVKontakteScriptLoaded: boolean
   isOAuthGoogleScriptLoaded: boolean
   isMobileSearchInput: boolean
+  isEditNameVisible: boolean
   oAuthStage: string | null
   modalFrames: { childName: string; isActive: boolean; childProps: any }[]
   pagination: PaginationDict
