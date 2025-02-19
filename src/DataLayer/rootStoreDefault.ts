@@ -73,6 +73,7 @@ export const componentsStateDefault: ComponentsStateType = {
   isOAuthVKontakteScriptLoaded: false,
   isOAuthGoogleScriptLoaded: false,
   isMobileSearchInput: false,
+  isEditNameVisible: false,
   oAuthStage: null,
   modalFrames: [
     {

@@ -71,7 +71,6 @@ export function* getModule20TranscriptCreatedGenerator(
     }
 
     const transcriptChunks = getChunkedString(params, {
-      printRes: false,
       ...CHUNKS_FROM_TRANSCRIPT_STRING,
     })
 

@@ -73,8 +73,7 @@ export function* readDocumentsGenerator(params: ActionReduxType | any): Iterable
   )
 
   let documentsNext: any = getChainedResponsibility(readDocumentsConnection).exec(
-    getMappedConnectionToItems,
-    { printRes: false }
+    getMappedConnectionToItems
   ).result
 
   yield put(actionSync.SET_DOCUMENTS(documentsNext))

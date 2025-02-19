@@ -15,7 +15,6 @@ export const CLICK_ON_SEND_BCC_CONFIRM: ActionEventType = (event, data) => {
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
-    printRes: false,
     parentFunction: 'CLICK_ON_SEND_BCC_CONFIRM',
   })
 

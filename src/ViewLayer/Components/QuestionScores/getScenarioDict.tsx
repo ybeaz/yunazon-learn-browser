@@ -8,7 +8,7 @@ import { withPropsYrl } from 'yourails_common'
 export type GetScenarioDictResType = any
 
 interface GetScenarioDictType {
-  (props: GetScenarioDictPropsType, options?: { printRes?: boolean }): GetScenarioDictResType
+  (props: GetScenarioDictPropsType): GetScenarioDictResType
 }
 
 /**
@@ -44,8 +44,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const ToReceiveCertificateFillTheForm = DICTIONARY.ToReceiveCertificateFillTheForm[language]
   const ToReceiveCertificateLogIn = DICTIONARY.ToReceiveCertificateLogIn[language]
   const correctAnsweresFrom = DICTIONARY.correctAnsweresFrom[language]
-  const andPassedTheTestWith = DICTIONARY.andPassedTheTestWith[language]
-  const YouCompletedTheCourse = DICTIONARY.YouCompletedTheCourse[language]
+  const isCompletedWith = DICTIONARY.is_completed_with[language]
   const Congratulations = DICTIONARY.Congratulations[language]
 
   const YouCanTryOnceAgain = DICTIONARY.YouCanTryOnceAgain[language]
@@ -61,26 +60,25 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
-          <p>{YouCompletedTheCourse}</p>
           <p>"{capture}"</p>
           <p>
-            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+            {isCompletedWith} {right} {correctAnsweresFrom} {total}
           </p>
-          <p>{ToReceiveCertificateFillTheForm}</p>
+          <span>{DICTIONARY.Keep_going[language]}!</span>
         </>
       ),
-      buttonForwardProps: {
-        icon: 'MdForward',
-        classAdded: 'Button_MdForward2',
-        action: {
-          typeEvent: 'CREATE_DOCUMENT',
-          data: {
-            screenType: 'Certificate',
-            navigate,
-          },
-        },
-        handleEvents,
-      },
+      // buttonForwardProps: {
+      //   icon: 'MdForward',
+      //   classAdded: 'Button_MdForward2',
+      //   action: {
+      //     typeEvent: 'CREATE_DOCUMENT',
+      //     data: {
+      //       screenType: 'Certificate',
+      //       navigate,
+      //     },
+      //   },
+      //   handleEvents,
+      // },
     },
 
     successNoAuth: {
@@ -88,10 +86,9 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
-          <p>{YouCompletedTheCourse}</p>
           <p>"{capture}"</p>
           <p>
-            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+            {isCompletedWith} {right} {correctAnsweresFrom} {total}
           </p>
           <p>{ToReceiveCertificateLogIn}</p>
         </>
@@ -136,10 +133,9 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
       message: (
         <>
           <div className='_greet'>{Congratulations}</div>
-          <p>{YouCompletedTheCourse}</p>
           <p>"{capture}"</p>
           <p>
-            {andPassedTheTestWith} {right} {correctAnsweresFrom} {total}
+            {isCompletedWith} {right} {correctAnsweresFrom} {total}
           </p>
           <p>{ToReceiveCertificateFillTheForm}</p>
         </>

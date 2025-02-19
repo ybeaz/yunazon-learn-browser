@@ -67,7 +67,7 @@ export function* getCoursesGenerator(params: ActionReduxType | any): Iterable<an
   )
 
   let coursesNext: any = getChainedResponsibility(readCoursesConnection)
-    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getMappedConnectionToItems)
     .exec(getPreparedCourses).result
 
   yield put(actionSync.SET_COURSES(coursesNext))

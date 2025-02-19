@@ -115,7 +115,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   )
 
   let modulesNext: any = getChainedResponsibility(readModulesConnection)
-    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getMappedConnectionToItems)
     .exec(getSortedArrayEntityTags).result
 
   let modulesNext2 = modulesNext
@@ -124,6 +124,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
       arrObjs: modulesNext,
       objIn: modules[0],
       propName: 'moduleID',
+      propsValsToKeepOfArrObjs: ['isCompleted'],
     }
     modulesNext2 = getReplacedArrObjsByPropNameVal(getReplacedArrObjsByPropNameValParams)
   }
