@@ -61,7 +61,6 @@ const ModulesBodyComponent: ModulesBodyComponentType = (props: ModulesBodyCompon
       const contentComponentName = getContentComponentName(contentType)
 
       const durationObj = getDurationFromYoutubeSnippet(duration2, {
-        printRes: false,
         funcParent: 'ModulesBody',
       })
       const { timeReadable: duration } = durationObj

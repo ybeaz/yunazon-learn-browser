@@ -34,12 +34,10 @@ function* getAuthDataGenerator(params: ActionReduxType | any): Iterable<any> {
       getRedirected(redirectAuthFrom, {
         isOrigin: true,
         parentFunction: 'getAuthData [34]',
-        printRes: false,
       })
     } else {
       getRedirected('/', {
         parentFunction: 'getAuthData [40]',
-        printRes: false,
       })
     }
   } else {

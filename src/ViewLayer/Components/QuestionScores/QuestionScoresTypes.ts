@@ -35,6 +35,7 @@ export type QuestionScoresComponentPropsType = {
     nameMiddle: RootStoreType['forms']['user']['nameMiddle']
     nameLast: RootStoreType['forms']['user']['nameLast']
     sub: RootStoreType['authAwsCognitoUserData']['sub']
+    profiles: RootStoreType['profiles']
     isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
   }
   handleEvents: HandleEventType
@@ -56,7 +57,7 @@ export type QuestionScoresPropsOutType = {
   buttonAchievementsProps: ButtonYrlPropsType
   buttonAllMissionsProps: ButtonYrlPropsType
   formInputNamesProps: FormInputNamesPropsType
-  buttonForwardProps: ButtonYrlPropsType
+  buttonConfirmEditNameProps: ButtonYrlPropsType
 }
 
 /**

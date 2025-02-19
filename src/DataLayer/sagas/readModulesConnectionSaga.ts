@@ -115,7 +115,7 @@ export function* readModulesConnectionGenerator(params: ActionReduxType | any): 
   )
 
   let modulesNext: any = getChainedResponsibility(readModulesConnection)
-    .exec(getMappedConnectionToItems, { printRes: false })
+    .exec(getMappedConnectionToItems)
     .exec(getSortedArrayEntityTags).result
 
   let modulesNext2 = modulesNext

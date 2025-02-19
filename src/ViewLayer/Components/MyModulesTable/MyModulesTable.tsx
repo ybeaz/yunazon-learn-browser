@@ -34,7 +34,6 @@ const MyModulesTableComponent: MyModulesTableComponentType = (
       const { moduleID, capture, dateCreated, duration: durationStrIn, contentID } = module
 
       const durationObj = getDurationFromYoutubeSnippet(durationStrIn, {
-        printRes: false,
         funcParent: 'MyModulesTable',
       })
       const { timeReadable: duration } = durationObj

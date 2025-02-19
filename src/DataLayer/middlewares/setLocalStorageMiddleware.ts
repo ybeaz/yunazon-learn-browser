@@ -11,14 +11,11 @@ import { RootStoreType } from 'src/Interfaces'
  */
 const getLocalStorageStoreStateSetCallback = (...args: any) => {
   const storeState = args[0]
-  getLocalStorageStoreStateSet(
-    {
-      source: 'getLocalStorageStoreStateSetCallback [13]',
-      storeState,
-      rootStoreDefault: storeState,
-    },
-    { printRes: false }
-  )
+  getLocalStorageStoreStateSet({
+    source: 'getLocalStorageStoreStateSetCallback [13]',
+    storeState,
+    rootStoreDefault: storeState,
+  })
 }
 
 const debouncedFunc = getDebouncedFunc(

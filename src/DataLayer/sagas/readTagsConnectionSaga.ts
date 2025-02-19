@@ -89,9 +89,7 @@ function* readTagsConnectionGenerator(params: ActionReduxType | any): Iterable<a
   )
 
   let tags: any = getChainedResponsibility(readTagsConnection)
-    .exec(getMappedConnectionToItems, {
-      printRes: false,
-    })
+    .exec(getMappedConnectionToItems, {})
     .exec((tags: any) =>
       tags.filter((_: any, index: number) => index < PAGINATION_OFFSET['pageTags'])
     ).result

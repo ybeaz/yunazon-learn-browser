@@ -156,7 +156,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
       } = moduleActive
 
       const durationObj = getDurationFromYoutubeSnippet(duration2, {
-        printRes: false,
         funcParent: 'AcademyPresent',
       })
       const { timeReadable: duration } = durationObj

@@ -29,7 +29,6 @@ const getSetModules = (searchValue: string) => {
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
-    printRes: false,
     parentFunction: 'CLICK_ON_SEARCH_BUTTON',
   })
 }
@@ -52,7 +51,6 @@ const getSetTags = (searchValue: string) => {
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
-    printRes: false,
     parentFunction: 'CLICK_ON_SEARCH_BUTTON',
   })
 }
@@ -78,7 +76,6 @@ const getSetDocuments = (searchValue: string) => {
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
-    printRes: false,
     parentFunction: 'CLICK_ON_SEARCH_BUTTON',
   })
 }

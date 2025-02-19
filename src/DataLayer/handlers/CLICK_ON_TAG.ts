@@ -35,7 +35,6 @@ export const CLICK_ON_TAG: ActionEventType = async (
   }
 
   getSetUrlQueryBrowserApi(getSetUrlQueryBrowserApiParams, {
-    printRes: false,
     parentFunction: 'CLICK_ON_TAG',
   })
 

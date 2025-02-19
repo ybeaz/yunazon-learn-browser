@@ -11,6 +11,7 @@ import { sendEmailDocument } from './sendEmailDocumentSaga'
 import { RootStoreType } from '../../Interfaces/RootStoreType'
 import { getArrayItemByProp } from 'yourails_common'
 import { getLocalStorageSetObjTo } from 'yourails_common'
+import { getProfileActiveToUpdate } from 'yourails_common'
 import { withLoaderWrapperSaga } from './withLoaderWrapperSaga'
 import { withTryCatchFinallySaga } from './withTryCatchFinallySaga'
 
@@ -28,44 +29,14 @@ function* createDocumentScenarioGenerator(params: ActionReduxType | any): Iterab
   ]
   yield put(actionSync.SET_MODAL_FRAMES(data2))
 
-  const stateSelected10: RootStoreType | any = yield select((state: RootStoreType) => state)
-  const {
-    forms: {
-      profileActive: {
-        nameFirst: nameFirstForm,
-        nameMiddle: nameMiddleForm,
-        nameLast: nameLastForm,
-      },
-    },
-    authAwsCognitoUserData: { sub: subState },
-    profiles: profilesState,
-  } = stateSelected10
+  const stateSelected: RootStoreType | any = yield select((state: RootStoreType) => state)
 
-  const profileActive = getArrayItemByProp({
-    arr: profilesState,
-    propName: 'userID',
-    propValue: subState,
-  })
+  const { profileActive, isUpdatingProfile } = getProfileActiveToUpdate(stateSelected)
 
-  const {
-    nameFirst: nameFirstProfile,
-    nameMiddle: nameMiddleProfile,
-    nameLast: nameLastProfile,
-  } = profileActive
-
-  if (
-    nameFirstForm !== nameFirstProfile ||
-    nameLastForm !== nameLastProfile ||
-    nameMiddleForm !== nameMiddleProfile
-  ) {
+  if (isUpdatingProfile) {
     yield call(updateProfile, {
       data: {
-        profile: {
-          ...profileActive,
-          nameFirst: nameFirstForm,
-          nameMiddle: nameMiddleForm,
-          nameLast: nameLastForm,
-        },
+        profile: profileActive,
       },
     })
   }
