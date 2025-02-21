@@ -1,9 +1,8 @@
-import { ReactElement, JSXElementConstructor } from 'react'
 import { consoler } from 'yourails_common'
-import { handleEvents } from '../../DataLayer/index.handleEvents'
 
 import { DICTIONARY } from 'yourails_common'
 import modulesJson from '../__mocks__/2025_02_20_modules.json'
+import * as expectedDict from '../__mocks__/getQuestionScoresPropsOutExpected'
 
 import {
   getQuestionScoresPropsOut,
@@ -13,15 +12,17 @@ import {
 } from '../Components/QuestionScores/getQuestionScoresPropsOut'
 
 type GetQuestionScoresPropsOutTestType = {
+  testScenario: string
   params: GetQuestionScoresPropsOutParamsType
-  options: GetQuestionScoresPropsOutOptionsType
   expected: GetQuestionScoresPropsOutResType
 }
 
 const language = 'en'
+const handleEvents = () => {}
 
 const tests: GetQuestionScoresPropsOutTestType[] = [
   {
+    testScenario: ['success (auth)', 'no names'].join(', '),
     params: {
       navigate: () => {},
       modules: modulesJson as any,
@@ -55,15 +56,14 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       nameFirst: '',
       nameLast: '',
     },
-    options: {},
-    // @ts-expect-error
-    expected: {},
+    expected: expectedDict.expected01,
   },
 ]
 
 /**
  * @Description Test to challenge function getQuestionScoresPropsOut
  * @test yarn jest src/ViewLayer/__tests__/getQuestionScoresPropsOut.test.ts
+ * yarn jest src/ViewLayer/__tests__/getQuestionScoresPropsOut.test.ts --coverage --collectCoverageFrom="src/ViewLayer/Components/QuestionScores/getQuestionScoresPropsOut.ts"
  *    In debugging mode:
  *       node --inspect-brk getQuestionScoresPropsOut.test.ts
  *       chrome://inspect/#devices > Open dedicated DevTools for Node
@@ -71,10 +71,10 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
 describe('Algoritms', () => {
   beforeEach(() => {})
 
-  it.each(tests)('-- getQuestionScoresPropsOut.test', ({ params, options, expected }) => {
-    let output: GetQuestionScoresPropsOutResType = getQuestionScoresPropsOut(params, options)
-    consoler('getQuestionScoresPropsOut.test', { output })
+  it.each(tests)(`-- getQuestionScoresPropsOut.test: $testScenario`, ({ params, expected }) => {
+    let output: GetQuestionScoresPropsOutResType = getQuestionScoresPropsOut(params)
+    // consoler('getQuestionScoresPropsOut.test', { output })
 
-    // expect(output).toEqual(expected)
+    expect(JSON.stringify(output)).toEqual(JSON.stringify(expected))
   })
 })

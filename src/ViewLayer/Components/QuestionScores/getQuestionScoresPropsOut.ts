@@ -43,23 +43,21 @@ const resDefault: GetQuestionScoresPropsOutResType | any = {}
 
 /**
  * @description Function to getQuestionScoresPropsOut
+ * @test yarn jest src/ViewLayer/__tests__/getQuestionScoresPropsOut.test.ts --coverage --collectCoverageFrom="src/ViewLayer/Components/QuestionScores/getQuestionScoresPropsOut.ts"
  * @import import { getQuestionScoresPropsOut } from './getQuestionScoresPropsOut'
  */
 
-const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = (
-  {
-    navigate,
-    modules,
-    queryUrl,
-    handleEvents,
-    scenario,
-    isEditNameVisible,
-    language,
-    nameFirst,
-    nameLast,
-  }: GetQuestionScoresPropsOutParamsType,
-  options?: GetQuestionScoresPropsOutOptionsType
-) => {
+const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
+  navigate,
+  modules,
+  queryUrl,
+  handleEvents,
+  scenario,
+  isEditNameVisible,
+  language,
+  nameFirst,
+  nameLast,
+}: GetQuestionScoresPropsOutParamsType) => {
   console.info('getQuestionScoresPropsOut [64]', {
     navigate,
     modules,
@@ -73,19 +71,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = (
   })
 
   const openClose = isEditNameVisible ? DICTIONARY.Close[language] : DICTIONARY.Open[language]
-
-  const buttonForwardProps = {
-    icon: 'MdForward',
-    classAdded: 'Button_MdForward2',
-    action: {
-      typeEvent: 'CREATE_DOCUMENT',
-      data: {
-        screenType: 'Certificate',
-        navigate,
-      },
-    },
-    handleEvents,
-  }
 
   const propsOut: QuestionScoresPropsOutType = {
     navLinkNextTaskProps: {
@@ -150,7 +135,11 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = (
       isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
     },
     navLinkAllMissionsProps: {
-      onClick: () => navigate(-1),
+      to: {
+        pathname: '/',
+        search: queryUrl,
+      },
+      /* onClick: () => navigate(-1), Alternative*/
     },
     buttonAllMissionsProps: {
       icon: 'MdForward',
@@ -184,31 +173,4 @@ export type {
   GetQuestionScoresPropsOutOptionsType,
   GetQuestionScoresPropsOutResType,
   GetQuestionScoresPropsOutType,
-}
-
-/**
- * @description Here the file is being run directly
- * @run ts-node src/Shared/getQuestionScoresPropsOut.ts
- */
-if (require.main === module) {
-  ;(async () => {
-    type ExampleType = {
-      params: GetQuestionScoresPropsOutParamsType
-      options: GetQuestionScoresPropsOutOptionsType
-      expected: GetQuestionScoresPropsOutResType
-    }
-    // @ts-expect-error
-    const examples: ExampleType[] = [{ params: {}, options: {}, expected: '' }]
-
-    examples.map((example: ExampleType, index: number) => {
-      const { params, options, expected } = example
-
-      const output = getQuestionScoresPropsOut(params, options)
-      consoler(`getQuestionScoresPropsOut [61-${index}]`, {
-        params,
-        output,
-        tested: JSON.stringify(output) === JSON.stringify(expected),
-      })
-    })
-  })()
 }

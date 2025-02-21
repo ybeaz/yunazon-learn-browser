@@ -72,3 +72,5 @@ src/@types/GraphqlTypes.d.ts
 src/@types/GraphqlTypes.js
 src/@types/GraphqlTypes.tsx
 src/@types/graphqlTypes.gql
+
+coverage
