@@ -60,6 +60,18 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = (
   }: GetQuestionScoresPropsOutParamsType,
   options?: GetQuestionScoresPropsOutOptionsType
 ) => {
+  console.info('getQuestionScoresPropsOut [64]', {
+    navigate,
+    modules,
+    queryUrl,
+    handleEvents,
+    scenario,
+    isEditNameVisible,
+    language,
+    nameFirst,
+    nameLast,
+  })
+
   const openClose = isEditNameVisible ? DICTIONARY.Close[language] : DICTIONARY.Open[language]
 
   const buttonForwardProps = {
