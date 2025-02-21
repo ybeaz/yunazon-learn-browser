@@ -38,6 +38,7 @@
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     "types": [
+      "jest",
       "react",
       "node"
     ] /* Specify type package names to be included without being referenced in a source file. */,
@@ -121,11 +122,11 @@
     "build",
     "**/__mocks__/*",
     "**/__tests__/*",
-    // "**/node_modules/*",
     "**/*.test.tsx",
     "**/*.spec.tsx",
     "**/*.test.ts",
-    "**/*.spec.ts"
-    // "node_modules/yourails_common/node_modules"
+    "**/*.spec.ts",
+    "node_modules",
+    "**/node_modules/*"
   ]
 }

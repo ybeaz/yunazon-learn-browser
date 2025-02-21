@@ -7,6 +7,7 @@ export default {
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '#node-web-compat': './node-web-compat-node.js',
   },
   testMatch: ['<rootDir>/**/(*.)test.(js|jsx|ts|tsx)'],
   testEnvironmentOptions: { url: 'http://127.0.0.1/' },
