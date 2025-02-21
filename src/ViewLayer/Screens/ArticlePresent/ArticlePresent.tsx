@@ -55,7 +55,6 @@ const ArticlePresentComponent: ArticlePresentComponentType = (
 
   const propsOut: ArticlePresentPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

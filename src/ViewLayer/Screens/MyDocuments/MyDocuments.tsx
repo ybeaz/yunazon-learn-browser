@@ -79,7 +79,6 @@ const MyDocumentsComponent: MyDocumentsComponentType = (props: MyDocumentsCompon
 
   const propsOut: MyDocumentsPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

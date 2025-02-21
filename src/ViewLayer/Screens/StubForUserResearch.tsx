@@ -28,7 +28,6 @@ export const StubForUserResearchComponent: React.FunctionComponent<
   }, [])
 
   const headerFrameProps: HeaderFramePropsType = {
-    contentComponentName: 'StubForUserResearch',
     isButtonSideMenuLeft: true,
     isLogoGroup: true,
     isButtonAddCourse: false,

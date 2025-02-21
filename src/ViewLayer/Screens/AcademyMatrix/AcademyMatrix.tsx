@@ -57,7 +57,6 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
 
   const propsOut: AcademyMatrixPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

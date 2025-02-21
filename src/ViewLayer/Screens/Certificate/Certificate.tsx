@@ -82,7 +82,6 @@ const CertificateBodyComponent: React.FC<CertificateBodyComponentProps> = ({
 
   const propsOut: CertificatePropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       moduleCapture: moduleCapture,
       documentID,
       moduleID,

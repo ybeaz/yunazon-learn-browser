@@ -68,6 +68,7 @@ export type FormsType = {
   inputCourseCreate: string
   modulesSearch: string
   documentsSearch: string
+  searchFormSep: any
   tagsSearch: string
   coursesSearch: string
   profileActive: {

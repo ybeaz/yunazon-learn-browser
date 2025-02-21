@@ -37,7 +37,6 @@ const AcademyAboutComponent: AcademyAboutComponentType = (
 
   const propsOut: AcademyAboutPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

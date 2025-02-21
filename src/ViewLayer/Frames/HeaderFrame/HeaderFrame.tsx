@@ -43,7 +43,6 @@ import {
 const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameComponentPropsType) => {
   const {
     classAdded,
-    contentComponentName,
     contentID = '',
     moduleCapture = '',
     moduleID = '',
@@ -139,7 +138,7 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       tooltipText: createCourseQuiz,
       tooltipPosition: 'bottom',
       handleEvents,
-      action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName } },
+      action: { typeEvent: 'CREATE_COURSE', data: { contentComponentName: 'searchFormSep' } },
       isDisplaying: false /* TODO: Not used so far */,
     },
     buttonQrCodeModalToggleProps: {
@@ -163,12 +162,6 @@ const HeaderFrameComponent: HeaderFrameComponentType = (props: HeaderFrameCompon
       documentID,
       moduleID,
       contentID,
-    },
-    logoGroupProps: {
-      brandName,
-      moto,
-      logoPath,
-      contentComponentName,
     },
     avatarPlusInfoProps: {
       classProps: { _link: '_logoGroup' },

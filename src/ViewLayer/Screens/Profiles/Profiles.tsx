@@ -40,7 +40,6 @@ const ProfilesComponent: ProfilesComponentType = (props: ProfilesComponentPropsT
 
   const propsOut: ProfilesPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

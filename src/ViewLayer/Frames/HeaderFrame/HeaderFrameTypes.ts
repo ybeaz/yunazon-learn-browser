@@ -7,7 +7,6 @@ import { HandleEventType } from 'yourails_common'
 
 export type HeaderFrameComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
-  contentComponentName: string
   moduleCapture?: string
   documentID?: string
   moduleID?: string
@@ -50,7 +49,6 @@ export type HeaderFramePropsOutType = {
   buttonQrCodeModalToggleProps: ButtonYrlPropsType
   buttonThemeToggleProps: ButtonYrlPropsType
   pageActionsProps: any
-  logoGroupProps: any
   avatarPlusInfoProps: AvatarPlusInfoPropsType
   abInCircleProps: AbInCirclePropsType
   inputGroupProps: InputGroupYrlPropsType

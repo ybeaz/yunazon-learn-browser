@@ -110,7 +110,6 @@ const Certificate2Component: Certificate2ComponentType = (
 
   const propsOut: Certificate2PropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       tagID,
       isButtonSideMenuLeft: true,
       isLogoGroup: true,

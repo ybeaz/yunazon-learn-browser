@@ -108,7 +108,6 @@ const MyModulesComponent: MyModulesComponentType = (props: MyModulesComponentPro
 
   const propsOut: MyModulesPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

@@ -47,7 +47,6 @@ const TagsCloudComponent: TagsCloudComponentType = (props: TagsCloudComponentPro
 
   const propsOut: TagsCloudPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,

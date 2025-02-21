@@ -313,7 +313,6 @@ const AcademyPresentComponent: AcademyPresentComponentType = (
 
   const propsOut: AcademyPresentPropsOutType = {
     headerFrameProps: {
-      contentComponentName: 'SearchFormSep',
       isButtonSideMenuLeft: true,
       isLogoGroup: true,
       isButtonAddCourse: true,
