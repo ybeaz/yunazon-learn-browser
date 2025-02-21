@@ -2,10 +2,22 @@ import React from 'react'
 import { getQuesionString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { GetScenarioDictPropsType } from './QuestionScoresTypes'
+import { ButtonYrlPropsType } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { withPropsYrl } from 'yourails_common'
 
-export type GetScenarioDictResType = any
+export type GetScenarioDictResType = {
+  scenarioCase: string
+  message: any
+  buttonForwardProps: ButtonYrlPropsType
+}
+
+export type ScenariousType = {
+  success: GetScenarioDictResType
+  successNoAuth: GetScenarioDictResType
+  failure: GetScenarioDictResType
+  debug: GetScenarioDictResType
+}
 
 interface GetScenarioDictType {
   (props: GetScenarioDictPropsType): GetScenarioDictResType
@@ -32,6 +44,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     sub,
     navigate,
     handleEvents,
+    isEditNameVisible,
   } = props
 
   let scenarioCase: string = props.result || ''
@@ -54,7 +67,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
 
-  const scenario: Record<string, any> = {
+  const scenarios: ScenariousType = {
     success: {
       scenarioCase,
       message: (
@@ -67,18 +80,19 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
           <span>{DICTIONARY.Keep_going[language]}!</span>
         </>
       ),
-      // buttonForwardProps: {
-      //   icon: 'MdForward',
-      //   classAdded: 'Button_MdForward2',
-      //   action: {
-      //     typeEvent: 'CREATE_DOCUMENT',
-      //     data: {
-      //       screenType: 'Certificate',
-      //       navigate,
-      //     },
-      //   },
-      //   handleEvents,
-      // },
+      buttonForwardProps: {
+        icon: 'MdForward',
+        classAdded: 'Button_ConfirmEditName',
+        handleEvents,
+        action: {
+          typeEvent: 'CLICK_ON_CONFIRM_NAMES',
+          data: {},
+        },
+        tooltipText: DICTIONARY.Confirm[language],
+        tooltipPosition: 'top',
+        captureLeft: DICTIONARY.Confirm[language],
+        isDisplaying: isEditNameVisible,
+      },
     },
 
     successNoAuth: {
@@ -161,7 +175,7 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
         handleEvents,
       },
     },
-  }[scenarioCase]
+  }
 
-  return scenario
+  return scenarios[scenarioCase]
 }

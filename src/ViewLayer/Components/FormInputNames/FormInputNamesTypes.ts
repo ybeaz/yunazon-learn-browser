@@ -4,7 +4,6 @@ import { HandleEventType } from 'yourails_common'
 export type FormInputNamesPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
   language: string
-  buttonForwardProps: ButtonYrlPropsType
   handleEvents: HandleEventType
 }
 
@@ -12,7 +11,6 @@ export type FormInputNamesPropsOutType = {
   inputFirstNameProps: InputYrlPropsType
   inputMiddleNameProps: InputYrlPropsType
   inputLastNameProps: InputYrlPropsType
-  buttonForwardProps: ButtonYrlPropsType
 }
 
 /**

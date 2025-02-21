@@ -18,7 +18,7 @@ import {
              from '../Components/FormInputNames/FormInputNames'
  */
 const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNamesPropsType) => {
-  const { classAdded, language, buttonForwardProps, handleEvents } = props
+  const { classAdded, language, handleEvents } = props
 
   const nameLastLabel = DICTIONARY.nameLast[language]
   const nameFirstLabel = DICTIONARY.nameFirst[language]
@@ -52,7 +52,6 @@ const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNa
       storeFormGroup: 'profileActive',
       storeFormProp: 'nameLast',
     },
-    buttonForwardProps,
   }
 
   return (

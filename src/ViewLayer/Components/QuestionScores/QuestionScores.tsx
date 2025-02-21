@@ -15,6 +15,7 @@ import { getScenarioDict } from './getScenarioDict'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
 import { getMapJourneyData } from 'yourails_common'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
+import { getQuestionScoresPropsOut } from './getQuestionScoresPropsOut'
 
 import {
   GetScenarioDictPropsType,
@@ -95,6 +96,7 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     sub,
     navigate,
     handleEvents,
+    isEditNameVisible,
   }
 
   const scenario = getScenarioDict(getScenarioDictProps)
@@ -124,105 +126,18 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   }, [])
 
   const queryUrl = getParsedUrlQueryBrowserApi()
-  const openClose = isEditNameVisible ? DICTIONARY.Close[language] : DICTIONARY.Open[language]
 
-  const propsOut: QuestionScoresPropsOutType = {
-    navLinkNextTaskProps: {
-      to: {
-        pathname: getMapJourneyData({ modules }).find(
-          ({ isNextModule }: { isNextModule: boolean }) => isNextModule
-        )?.pathnameModule,
-        search: queryUrl,
-      },
-    },
-    buttonNextTaskProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_NextTask',
-      handleEvents,
-      action: {
-        typeEvent: 'TEST',
-        data: {},
-      },
-      captureLeft: DICTIONARY.Next_task[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
-    },
-    navLinkCreditProps: {
-      to: { pathname: '/' },
-    },
-    buttonCreditProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_Credit',
-      handleEvents,
-      action: {},
-      tooltipText: DICTIONARY.View_reward[language],
-      tooltipPosition: 'top',
-      captureLeft: DICTIONARY.View_reward[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
-    },
-    buttonEditNameProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_EditName',
-      handleEvents,
-      action: {
-        typeEvent: 'SET_EDIT_NAME_VISIBILITY',
-        data: {
-          isEditNameVisible: !isEditNameVisible,
-        },
-      },
-      tooltipText: `${openClose} ${DICTIONARY.edit_name[language]}`,
-      tooltipPosition: 'top',
-      captureLeft: `${openClose} ${DICTIONARY.edit_name[language]}`,
-      isDisplaying: !(isEditNameVisible && (!nameFirst || !nameLast)),
-    },
-    buttonConfirmEditNameProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_ConfirmEditName',
-      handleEvents,
-      action: {
-        typeEvent: 'CLICK_ON_CONFIRM_NAMES',
-        data: {},
-      },
-      tooltipText: DICTIONARY.Confirm[language],
-      tooltipPosition: 'top',
-      captureLeft: DICTIONARY.Confirm[language],
-      isDisplaying: scenario.scenarioCase === 'success' && isEditNameVisible,
-    },
-    navLinkAchievementsProps: {
-      to: { pathname: '/my-documents' },
-    },
-    buttonAchievementsProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_Achievements',
-      handleEvents,
-      action: {},
-      tooltipText: DICTIONARY.Achievements[language],
-      tooltipPosition: 'top',
-      captureLeft: DICTIONARY.Achievements[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
-    },
-    navLinkAllMissionsProps: {
-      onClick: () => navigate(-1),
-    },
-    buttonAllMissionsProps: {
-      icon: 'MdForward',
-      classAdded: 'Button_BackToTopic',
-      handleEvents,
-      action: {},
-      tooltipText: DICTIONARY.Back_to_topic[language],
-      tooltipPosition: 'top',
-      captureLeft: DICTIONARY.Back_to_topic[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
-    },
-    formInputNamesProps: {
-      language,
-      buttonForwardProps: scenario.buttonForwardProps,
-      handleEvents,
-    },
-  }
-
-  const buttonNextTaskTooltipText = (
-    <div className='_tagsCloudBodyTooltipContentTagButton2'>{DICTIONARY.Next_task[language]}</div>
-  )
+  const propsOut: QuestionScoresPropsOutType = getQuestionScoresPropsOut({
+    navigate,
+    modules,
+    queryUrl,
+    handleEvents,
+    scenario,
+    isEditNameVisible,
+    language,
+    nameFirst,
+    nameLast,
+  })
 
   console.info('QuestionScores [221]', { nameFirst, nameLast, isEditNameVisible, modules })
 
@@ -251,24 +166,6 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
           <ButtonYrl {...propsOut.buttonAchievementsProps} />
         </NavLinkWithQuery>
       </div>
-      {/* <br />
-      <hr />
-      <br />
-      <div className='_text'>{scenario.message}</div>
-      {scenario.scenarioCase === 'success' ? (
-        <FormInputNames {...propsOut.formInputNamesProps} />
-      ) : null}
-      {result === 'failure' ? (
-        <div className='_qwa'>
-          <div className='_capture'>{QuestionsWithIncorrectAnswers}</div>
-          {getRendedQuestionsWrongAnswered(questionsWrongAnswered)}
-        </div>
-      ) : null} */}
-      {/* {scenario.scenarioCase === 'success' || scenario.scenarioCase === 'successNoAuth' ? (
-        <div className='_buttons'>
-          <ButtonYrl {...propsOut.buttonForwardProps} />
-        </div>
-      ) : null} */}
     </div>
   )
 }

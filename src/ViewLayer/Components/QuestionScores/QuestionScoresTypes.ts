@@ -22,6 +22,7 @@ export type GetScenarioDictPropsType = {
   sub: RootStoreType['authAwsCognitoUserData']['sub']
   navigate: any
   handleEvents: HandleEventType
+  isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
 }
 
 export type QuestionScoresComponentPropsType = {
