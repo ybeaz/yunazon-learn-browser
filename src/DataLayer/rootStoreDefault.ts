@@ -144,6 +144,7 @@ export const formsDefault: FormsType = {
   tagsSearch: '',
   coursesSearch: '',
   documentsSearch: '',
+  searchFormSep: {},
   sendTo: '',
   sendCc: '',
   sendBcc: '',

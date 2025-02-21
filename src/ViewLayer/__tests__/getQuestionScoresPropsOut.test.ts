@@ -61,8 +61,6 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   },
 ]
 
-const getNumber = () => 5
-
 /**
  * @Description Test to challenge function getQuestionScoresPropsOut
  * @test yarn jest src/ViewLayer/__tests__/getQuestionScoresPropsOut.test.ts
