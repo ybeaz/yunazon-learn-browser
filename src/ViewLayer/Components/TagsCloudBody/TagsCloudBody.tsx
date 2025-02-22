@@ -42,6 +42,8 @@ const TagsCloudBodyComponent: TagsCloudBodyComponentType = (
   if (screenActive === ScreensEnumType['AcademyMatrix']) navigate = null
 
   const getTagsCloudList = (tagsCloudIn: TagType[]) => {
+    if (!tagsCloudIn.length) return null
+
     const range = getRangeOfNumbers({
       min: 16,
       max: 36,

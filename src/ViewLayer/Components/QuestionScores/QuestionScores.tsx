@@ -9,14 +9,17 @@ import { getQuestionsWrongAnswered } from 'yourails_common'
 import { getParsedUrlQueryBrowserApi } from 'yourails_common'
 import { getAnswersChecked2, GetAnswersChecked2OutType } from 'yourails_common'
 import { getModuleByModuleID } from 'yourails_common'
+import { ScenarioCaseType } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { getScenarioDict } from './getScenarioDict'
+import { FormInputNamesWithButtons } from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
 import { FormInputNames } from '../FormInputNames/FormInputNames'
 import { withStoreStateSelectedYrl, withPropsYrl, ButtonYrl } from 'yourails_common'
-import { getQuestionScoresPropsOut } from './getQuestionScoresPropsOut'
+import {
+  getQuestionScoresPropsOut,
+  GetQuestionScoresPropsOutParamsType,
+} from './getQuestionScoresPropsOut'
 
 import {
-  GetScenarioDictPropsType,
   QuestionScoresComponentPropsType,
   QuestionScoresPropsType,
   QuestionScoresPropsOutType,
@@ -32,8 +35,6 @@ import {
 const QuestionScoresComponent: QuestionScoresComponentType = (
   props: QuestionScoresComponentPropsType
 ) => {
-  const navigate = useNavigate()
-
   const {
     stopVideoHandler,
     storeStateSlice: {
@@ -50,21 +51,17 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
     handleEvents,
   } = props
 
-  const {
-    capture,
-    description,
-    meta,
-    moduleID,
-    contentID,
-    passRate,
-    questions: questionsActive,
-  } = getModuleByModuleID(
+  // const nameFirst = ''
+
+  const moduleActive = getModuleByModuleID(
     {
       moduleID: moduleIDActive || '',
       modules,
     },
     { parentFunction: 'QuestionScoresComponent' }
   )
+
+  const { passRate, questions: questionsActive } = moduleActive
 
   const { rp, pr } = getParsedUrlQuery()
   let passRateIn = rp || pr
@@ -73,42 +70,20 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
   passRateIn = passRateIn < 0.5 ? 0.5 : passRateIn
 
   const score: GetAnswersChecked2OutType = getAnswersChecked2(questionsActive, passRateIn)
+  const { total, right, result } = score
 
-  const questionsWrongAnswered = getQuestionsWrongAnswered(questionsActive)
-  const { total, right, wrong } = score
-  let result = score.result
-
-  const getScenarioDictProps: GetScenarioDictPropsType = {
-    result,
-    language,
-    right,
-    total,
-    nameFirst,
-    nameMiddle,
-    nameLast,
-    meta: meta || {},
-    capture: capture || '',
-    description: description || '',
-    moduleID: moduleID || '',
-    contentID: contentID || '',
-    sub,
-    navigate,
-    handleEvents,
-    isEditNameVisible,
+  let scenarioCase: ScenarioCaseType = result || ScenarioCaseType.failure
+  if (!sub && result === ScenarioCaseType.success) {
+    scenarioCase = ScenarioCaseType.successNoAuth
   }
-
-  const scenario = getScenarioDict(getScenarioDictProps)
 
   useEffect(() => {
     stopVideoHandler && stopVideoHandler({}, {})
 
-    if (scenario.scenarioCase === 'success' || scenario.scenarioCase === 'successNoAuth') {
-      console.info('QuestionScores [105]', {
-        nameFirst,
-        nameLast,
-        sub,
-        'profiles.length': profiles.length,
-      })
+    if (
+      scenarioCase === ScenarioCaseType.success ||
+      scenarioCase === ScenarioCaseType.successNoAuth
+    ) {
       if ((!nameFirst || !nameLast) && sub && profiles.length) {
         handleEvents(
           {},
@@ -125,23 +100,38 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
 
   const queryUrl = getParsedUrlQueryBrowserApi()
 
-  const propsOut: QuestionScoresPropsOutType = getQuestionScoresPropsOut({
-    navigate,
+  const getQuestionScoresPropsOutProps: GetQuestionScoresPropsOutParamsType = {
     modules,
+    moduleActive,
     queryUrl,
     handleEvents,
-    scenario,
+    scenarioCase,
     isEditNameVisible,
     language,
     nameFirst,
+    nameMiddle,
     nameLast,
-  })
 
-  console.info('QuestionScores [221]', { nameFirst, nameLast, isEditNameVisible, modules })
+    score,
+
+    sub,
+    profiles,
+  }
+
+  const propsOut: QuestionScoresPropsOutType = getQuestionScoresPropsOut(
+    getQuestionScoresPropsOutProps
+  )
+
+  console.info('QuestionScores [142]', { nameFirst, nameLast, isEditNameVisible, modules })
 
   return (
     <div className='QuestionScores'>
-      <div className='_text'>{scenario.message}</div>
+      <div className='_text'>
+        <div className='_greeting'>{propsOut.message.greeting}</div>
+        <p>{propsOut.message.line1}</p>
+        <p>{propsOut.message.line2}</p>
+        <p>{propsOut.message.line3}</p>
+      </div>
 
       <div className='_buttons'>
         <NavLinkWithQuery {...propsOut.navLinkNextTaskProps}>
@@ -150,13 +140,8 @@ const QuestionScoresComponent: QuestionScoresComponentType = (
         <NavLinkWithQuery {...propsOut.navLinkCreditProps}>
           <ButtonYrl {...propsOut.buttonCreditProps} />
         </NavLinkWithQuery>
-        <ButtonYrl {...propsOut.buttonEditNameProps} />
-        {scenario.scenarioCase === 'success' && isEditNameVisible && (
-          <>
-            <FormInputNames {...propsOut.formInputNamesProps} />
-            <ButtonYrl {...propsOut.buttonConfirmEditNameProps} />
-          </>
-        )}
+        <ButtonYrl {...propsOut.buttonIsEditNameVisibleProps} />
+        <FormInputNamesWithButtons {...propsOut.formInputNamesWithButtonsProps} />
         <NavLinkWithQuery {...propsOut.navLinkAllMissionsProps}>
           <ButtonYrl {...propsOut.buttonAllMissionsProps} />
         </NavLinkWithQuery>

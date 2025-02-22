@@ -1,5 +1,6 @@
 import React from 'react'
 
+import classNames from 'classnames'
 import { withPropsYrl, InputYrl } from 'yourails_common'
 import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
 import { getClasses } from 'yourails_common'
@@ -18,7 +19,7 @@ import {
              from '../Components/FormInputNames/FormInputNames'
  */
 const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNamesPropsType) => {
-  const { classAdded, language, handleEvents } = props
+  const { classAdded, language, handleEvents, isDisplaying, isVisible } = props
 
   const nameLastLabel = DICTIONARY.nameLast[language]
   const nameFirstLabel = DICTIONARY.nameFirst[language]
@@ -55,7 +56,13 @@ const FormInputNamesComponent: FormInputNamesComponentType = (props: FormInputNa
   }
 
   return (
-    <div className={getClasses('FormInputNames', classAdded)}>
+    <div
+      className={classNames('FormInputNames', {
+        [classAdded]: !!classAdded,
+        FormInputNames_display_none: isDisplaying === false,
+        FormInputNames_visible_none: isVisible === false,
+      })}
+    >
       <form className='_form'>
         <div className='_group'>
           <label className='_label'>{nameFirstLabel}*</label>

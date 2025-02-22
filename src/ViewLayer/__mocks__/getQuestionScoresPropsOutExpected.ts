@@ -2,6 +2,7 @@ import { GetQuestionScoresPropsOutResType } from '../Components/QuestionScores/g
 
 const handleEvents = () => {}
 
+// @ts-expect-error
 export const expected01: GetQuestionScoresPropsOutResType = {
   navLinkNextTaskProps: {
     to: {
@@ -21,7 +22,7 @@ export const expected01: GetQuestionScoresPropsOutResType = {
     handleEvents,
     action: { typeEvent: 'TEST', data: {} },
     captureLeft: 'Next task',
-    isDisplaying: true,
+    isDisplaying: false,
   },
   navLinkCreditProps: { to: { pathname: '/' } },
   buttonCreditProps: {
@@ -34,7 +35,7 @@ export const expected01: GetQuestionScoresPropsOutResType = {
     captureLeft: 'View reward',
     isDisplaying: true,
   },
-  buttonEditNameProps: {
+  buttonIsEditNameVisibleProps: {
     icon: 'MdForward',
     classAdded: 'Button_EditName',
     handleEvents,

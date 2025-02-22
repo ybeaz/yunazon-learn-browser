@@ -1,14 +1,35 @@
 import React from 'react'
 import { getQuesionString } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
-import { GetScenarioDictPropsType } from './QuestionScoresTypes'
+import { RootStoreType } from '../../../Interfaces/RootStoreType'
 import { ButtonYrlPropsType } from 'yourails_common'
-import { handleEvents as handleEventsIn } from '../../../DataLayer/index.handleEvents'
-import { withPropsYrl } from 'yourails_common'
+import { getProfileActiveToUpdate } from 'yourails_common'
+import { ModuleType, MetaCourseType } from 'yourails_common'
+import { ScenarioCaseType } from 'yourails_common'
+import { HandleEventType } from 'yourails_common'
+
+export type GetScenarioDictPropsType = {
+  scenarioCase: ScenarioCaseType
+  language: RootStoreType['language']
+  capture: string
+  right: number
+  total: number
+  nameFirst: RootStoreType['forms']['user']['nameFirst']
+  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
+  nameLast: RootStoreType['forms']['user']['nameLast']
+  meta?: MetaCourseType | {}
+  description: string
+  moduleID: ModuleType['moduleID']
+  contentID: ModuleType['contentID']
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
+  handleEvents: HandleEventType
+  isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
+  profiles: RootStoreType['profiles']
+}
 
 export type GetScenarioDictResType = {
   scenarioCase: string
-  message: any
+  message: { greeting: string; line1: string; line2: string; line3: string }
   buttonForwardProps: ButtonYrlPropsType
 }
 
@@ -16,7 +37,7 @@ export type ScenariousType = {
   success: GetScenarioDictResType
   successNoAuth: GetScenarioDictResType
   failure: GetScenarioDictResType
-  debug: GetScenarioDictResType
+  debug?: GetScenarioDictResType
 }
 
 interface GetScenarioDictType {
@@ -30,6 +51,7 @@ interface GetScenarioDictType {
  */
 export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictPropsType) => {
   const {
+    scenarioCase,
     language,
     right,
     total,
@@ -42,15 +64,10 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
     moduleID,
     contentID,
     sub,
-    navigate,
     handleEvents,
     isEditNameVisible,
+    profiles = [],
   } = props
-
-  let scenarioCase: string = props.result || ''
-  if (!sub && props.result === 'success') {
-    scenarioCase = 'successNoAuth'
-  }
 
   const question = getQuesionString(language, right)
 
@@ -67,19 +84,34 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
   const andThisTimeAnswered = DICTIONARY.andThisTimeAnswered[language]
   const YouWereCommittedToSuccess = DICTIONARY.YouWereCommittedToSuccess[language]
 
+  const getProfileActiveToUpdateProps = {
+    forms: {
+      profileActive: {
+        nameFirst,
+        nameMiddle,
+        nameLast,
+      },
+    },
+    authAwsCognitoUserData: { sub },
+    profiles,
+  }
+
+  console.info('getScenarioDict [82]', getProfileActiveToUpdateProps)
+
+  const { profileActive, isUpdatingProfile } = getProfileActiveToUpdate(
+    getProfileActiveToUpdateProps
+  )
+  console.info('getScenarioDict [87]', { isUpdatingProfile, profileActive })
+
   const scenarios: ScenariousType = {
     success: {
       scenarioCase,
-      message: (
-        <>
-          <div className='_greet'>{Congratulations}</div>
-          <p>"{capture}"</p>
-          <p>
-            {isCompletedWith} {right} {correctAnsweresFrom} {total}
-          </p>
-          <span>{DICTIONARY.Keep_going[language]}!</span>
-        </>
-      ),
+      message: {
+        greeting: Congratulations,
+        line1: `"${capture}"`,
+        line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+        line3: `${DICTIONARY.Keep_going[language]}!`,
+      },
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_ConfirmEditName',
@@ -97,16 +129,12 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
 
     successNoAuth: {
       scenarioCase,
-      message: (
-        <>
-          <div className='_greet'>{Congratulations}</div>
-          <p>"{capture}"</p>
-          <p>
-            {isCompletedWith} {right} {correctAnsweresFrom} {total}
-          </p>
-          <p>{ToReceiveCertificateLogIn}</p>
-        </>
-      ),
+      message: {
+        greeting: Congratulations,
+        line1: `"${capture}"`,
+        line2: `${isCompletedWith} ${right} ${correctAnsweresFrom} ${total}`,
+        line3: `${ToReceiveCertificateLogIn}!`,
+      },
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
@@ -120,57 +148,17 @@ export const getScenarioDict: GetScenarioDictType = (props: GetScenarioDictProps
 
     failure: {
       scenarioCase,
-      message: (
-        <>
-          <div className='_greet'>{YouWereCommittedToSuccess}</div>
-          <p>
-            {andThisTimeAnswered} {right} {question} {from} {total}.
-          </p>
-          <p>
-            {ThisIsNotEnough} {andReceiveTheCertificate}
-          </p>
-          <p>{YouCanTryOnceAgain}</p>
-        </>
-      ),
+      message: {
+        greeting: YouWereCommittedToSuccess,
+        line1: `"${capture}"`,
+        line2: `${andThisTimeAnswered} ${right} ${question} ${from} ${total}`,
+        line3: `${YouCanTryOnceAgain}!`,
+      },
       buttonForwardProps: {
         icon: 'MdForward',
         classAdded: 'Button_MdForward2',
         action: {
           typeEvent: 'CLOSE_MODAL_GET_SCORES',
-        },
-        handleEvents,
-      },
-    },
-
-    debug: {
-      scenarioCase,
-      message: (
-        <>
-          <div className='_greet'>{Congratulations}</div>
-          <p>"{capture}"</p>
-          <p>
-            {isCompletedWith} {right} {correctAnsweresFrom} {total}
-          </p>
-          <p>{ToReceiveCertificateFillTheForm}</p>
-        </>
-      ),
-      buttonForwardProps: {
-        icon: 'MdForward',
-        classAdded: 'Button_MdForward2',
-        action: {
-          typeEvent: 'CREATE_DOCUMENT',
-          data: {
-            screenType: 'Certificate',
-            nameFirst,
-            nameMiddle,
-            nameLast,
-            meta,
-            capture,
-            description,
-            courseID: undefined /* Not used for now */,
-            moduleID,
-            contentID,
-          },
         },
         handleEvents,
       },

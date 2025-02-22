@@ -24,7 +24,6 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
   {
     testScenario: ['success (auth)', 'no names'].join(', '),
     params: {
-      navigate: () => {},
       modules: modulesJson as any,
       queryUrl: {
         pageModules: '1',
@@ -36,6 +35,7 @@ const tests: GetQuestionScoresPropsOutTestType[] = [
       handleEvents,
       scenario: {
         scenarioCase: 'success',
+        // @ts-expect-error
         message: 'scenario test success',
         buttonForwardProps: {
           icon: 'MdForward',

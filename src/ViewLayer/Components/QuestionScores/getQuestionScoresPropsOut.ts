@@ -8,20 +8,29 @@ import { ModuleType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { DICTIONARY } from 'yourails_common'
 import { getMapJourneyData } from 'yourails_common'
+import { ScenarioCaseType } from 'yourails_common'
 import { QuestionScoresPropsOutType } from './QuestionScoresTypes'
-import { GetScenarioDictResType } from './getScenarioDict'
+import { GetScenarioDictPropsType, GetScenarioDictResType } from './getScenarioDict'
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import { getScenarioDict } from './getScenarioDict'
+import { GetAnswersChecked2OutType } from 'yourails_common'
 
 type GetQuestionScoresPropsOutParamsType = {
-  navigate: any
   modules: ModuleType[]
+  moduleActive: ModuleType
   queryUrl: any
   handleEvents: HandleEventType
-  scenario: GetScenarioDictResType
+  scenarioCase: ScenarioCaseType
   isEditNameVisible: boolean
   language: RootStoreType['language']
   nameFirst: RootStoreType['forms']['user']['nameFirst']
+  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
   nameLast: RootStoreType['forms']['user']['nameLast']
+
+  score: GetAnswersChecked2OutType
+
+  sub: RootStoreType['authAwsCognitoUserData']['sub']
+  profiles: RootStoreType['profiles']
 }
 
 type GetQuestionScoresPropsOutOptionsType = { funcParent?: string }
@@ -48,31 +57,58 @@ const resDefault: GetQuestionScoresPropsOutResType | any = {}
  */
 
 const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
-  navigate,
   modules,
+  moduleActive,
   queryUrl,
   handleEvents,
-  scenario,
+  scenarioCase,
   isEditNameVisible,
   language,
   nameFirst,
+  nameMiddle,
   nameLast,
+  score,
+  sub,
+  profiles,
 }: GetQuestionScoresPropsOutParamsType) => {
+  const { capture, description, moduleID, contentID } = moduleActive
+
+  const { total, right } = score
+
   console.info('getQuestionScoresPropsOut [64]', {
-    navigate,
     modules,
     queryUrl,
     handleEvents,
-    scenario,
     isEditNameVisible,
     language,
     nameFirst,
     nameLast,
   })
 
+  const getScenarioDictProps: GetScenarioDictPropsType = {
+    scenarioCase,
+    language,
+    right,
+    total,
+    nameFirst,
+    nameMiddle,
+    nameLast,
+    capture: capture || '',
+    description: description || '',
+    moduleID: moduleID || '',
+    contentID: contentID || '',
+    sub,
+    handleEvents,
+    isEditNameVisible,
+    profiles,
+  }
+
+  const scenario = getScenarioDict(getScenarioDictProps)
+
   const openClose = isEditNameVisible ? DICTIONARY.Close[language] : DICTIONARY.Open[language]
 
   const propsOut: QuestionScoresPropsOutType = {
+    message: scenario.message,
     navLinkNextTaskProps: {
       to: {
         pathname: getMapJourneyData({ modules }).find(
@@ -90,7 +126,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
         data: {},
       },
       captureLeft: DICTIONARY.Next_task[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     navLinkCreditProps: {
       to: { pathname: '/' },
@@ -103,9 +139,9 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.View_reward[language],
       tooltipPosition: 'top',
       captureLeft: DICTIONARY.View_reward[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
-    buttonEditNameProps: {
+    buttonIsEditNameVisibleProps: {
       icon: 'MdForward',
       classAdded: 'Button_EditName',
       handleEvents,
@@ -120,7 +156,6 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       captureLeft: `${openClose} ${DICTIONARY.edit_name[language]}`,
       isDisplaying: !(isEditNameVisible && (!nameFirst || !nameLast)),
     },
-    buttonConfirmEditNameProps: scenario.buttonForwardProps,
     navLinkAchievementsProps: {
       to: { pathname: '/my-documents' },
     },
@@ -132,7 +167,7 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.Achievements[language],
       tooltipPosition: 'top',
       captureLeft: DICTIONARY.Achievements[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     navLinkAllMissionsProps: {
       to: {
@@ -149,11 +184,19 @@ const getQuestionScoresPropsOutUnsafe: GetQuestionScoresPropsOutType = ({
       tooltipText: DICTIONARY.Back_to_topic[language],
       tooltipPosition: 'top',
       captureLeft: DICTIONARY.Back_to_topic[language],
-      isDisplaying: scenario.scenarioCase === 'success' && !isEditNameVisible,
+      isDisplaying: scenarioCase === 'success' && !isEditNameVisible,
     },
     formInputNamesProps: {
       language,
       handleEvents,
+    },
+    formInputNamesWithButtonsProps: {
+      formInputNamesProps: {
+        language,
+        handleEvents,
+      },
+      buttonConfirmEditNameProps: scenario.buttonForwardProps,
+      isDisplaying: scenarioCase === ScenarioCaseType.success && isEditNameVisible,
     },
   }
 

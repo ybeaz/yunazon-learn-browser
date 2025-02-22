@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 
 import { ScreensEnumType } from 'yourails_common'
@@ -32,9 +32,8 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
     storeStateSlice: {},
   } = props
 
-  const [searchParams] = useSearchParams()
-
   const screenType = ScreensEnumType['AcademyMatrix']
+  const params = useParams()
   const { titleSite, descriptionSite, canonicalUrlSite, langSite } = SITE_META_DATA
   const canonicalUrl = `${SERVERS_MAIN.remote}${decodeURIComponent(location.pathname)}`
 
@@ -50,7 +49,7 @@ const AcademyMatrixComponent: AcademyMatrixComponentType = (props: AcademyMatrix
       { type: 'GET_TAGS_CONNECTION' },
       { type: 'GET_MODULES_CONNECTION' },
     ],
-    [JSON.stringify({ tagsPickQuery, modulesSearchQuery, tagsSearchQuery })]
+    [JSON.stringify({ params, tagsPickQuery, modulesSearchQuery, tagsSearchQuery })]
   )
 
   useLoadedInitialTeachContent({ isSkipping: false })

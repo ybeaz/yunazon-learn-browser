@@ -1,29 +1,14 @@
 import { RootStoreType } from '../../../Interfaces/RootStoreType'
+import {
+  FormInputNamesWithButtonsPropsType,
+  FormInputNamesWithButtonsType,
+} from '../FormInputNamesWithButtons/FormInputNamesWithButtons'
+
 import { FormInputNamesPropsType } from '../FormInputNames/FormInputNames'
 import { ButtonYrlPropsType } from 'yourails_common'
-import { CourseType, ModuleType, MetaCourseType } from 'yourails_common'
-import { ResultType } from 'yourails_common'
 import { HandleEventType } from 'yourails_common'
 import { NavLinkWithQueryPropsType } from '../../Components/NavLinkWithQuery/NavLinkWithQuery'
-
-export type GetScenarioDictPropsType = {
-  result: ResultType
-  language: RootStoreType['language']
-  capture: string
-  right: number
-  total: number
-  nameFirst: RootStoreType['forms']['user']['nameFirst']
-  nameMiddle: RootStoreType['forms']['user']['nameMiddle']
-  nameLast: RootStoreType['forms']['user']['nameLast']
-  meta?: MetaCourseType | {}
-  description: string
-  moduleID: ModuleType['moduleID']
-  contentID: ModuleType['contentID']
-  sub: RootStoreType['authAwsCognitoUserData']['sub']
-  navigate: any
-  handleEvents: HandleEventType
-  isEditNameVisible: RootStoreType['componentsState']['isEditNameVisible']
-}
+import { from } from '@apollo/client'
 
 export type QuestionScoresComponentPropsType = {
   classAdded?: string | string[] | Record<string, string | string[]>
@@ -48,17 +33,18 @@ export type QuestionScoresPropsType = Omit<
 >
 
 export type QuestionScoresPropsOutType = {
+  message: { greeting: string; line1: string; line2: string; line3: string }
   navLinkNextTaskProps: NavLinkWithQueryPropsType
   navLinkCreditProps: NavLinkWithQueryPropsType
   navLinkAchievementsProps: NavLinkWithQueryPropsType
   navLinkAllMissionsProps: NavLinkWithQueryPropsType
   buttonNextTaskProps: ButtonYrlPropsType
   buttonCreditProps: ButtonYrlPropsType
-  buttonEditNameProps: ButtonYrlPropsType
+  buttonIsEditNameVisibleProps: ButtonYrlPropsType
   buttonAchievementsProps: ButtonYrlPropsType
   buttonAllMissionsProps: ButtonYrlPropsType
   formInputNamesProps: FormInputNamesPropsType
-  buttonConfirmEditNameProps: ButtonYrlPropsType
+  formInputNamesWithButtonsProps: FormInputNamesWithButtonsPropsType
 }
 
 /**
